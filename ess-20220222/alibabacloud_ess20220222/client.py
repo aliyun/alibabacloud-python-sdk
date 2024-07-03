@@ -93,10 +93,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
         """
-        @summary Manages scaling configurations of the Elastic Container Instance type. If you want to efficiently create or update a scaling configuration of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
+        @summary Applies a scaling configuration of the Elastic Container Instance type. If you want to create and manage scaling configurations of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
         
-        @description You can manage scaling configurations of the Elastic Container Instance type by using a YAML configuration file based on the following logic:
-        If you specify the ID of a scaling configuration, you can update the scaling configuration by using the YAML configuration file. If you do not specify the ID of a scaling configuration, you can create a scaling configuration by using the YAML configuration file.
+        @description Before you use a YAML configuration file to manage scaling configurations of the Elastic Container Instance type, you must take note of the following items:
+        If you include a scaling configuration ID within your request, the system updates the scaling configuration based on the YAML configuration file.
+        If you do not include a scaling configuration ID within your request, the system creates a scaling configuration of the Elastic Container Instance type based on the YAML configuration file.
         
         @param request: ApplyEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -139,10 +140,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
         """
-        @summary Manages scaling configurations of the Elastic Container Instance type. If you want to efficiently create or update a scaling configuration of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
+        @summary Applies a scaling configuration of the Elastic Container Instance type. If you want to create and manage scaling configurations of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
         
-        @description You can manage scaling configurations of the Elastic Container Instance type by using a YAML configuration file based on the following logic:
-        If you specify the ID of a scaling configuration, you can update the scaling configuration by using the YAML configuration file. If you do not specify the ID of a scaling configuration, you can create a scaling configuration by using the YAML configuration file.
+        @description Before you use a YAML configuration file to manage scaling configurations of the Elastic Container Instance type, you must take note of the following items:
+        If you include a scaling configuration ID within your request, the system updates the scaling configuration based on the YAML configuration file.
+        If you do not include a scaling configuration ID within your request, the system creates a scaling configuration of the Elastic Container Instance type based on the YAML configuration file.
         
         @param request: ApplyEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -184,10 +186,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ApplyEciScalingConfigurationRequest,
     ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
         """
-        @summary Manages scaling configurations of the Elastic Container Instance type. If you want to efficiently create or update a scaling configuration of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
+        @summary Applies a scaling configuration of the Elastic Container Instance type. If you want to create and manage scaling configurations of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
         
-        @description You can manage scaling configurations of the Elastic Container Instance type by using a YAML configuration file based on the following logic:
-        If you specify the ID of a scaling configuration, you can update the scaling configuration by using the YAML configuration file. If you do not specify the ID of a scaling configuration, you can create a scaling configuration by using the YAML configuration file.
+        @description Before you use a YAML configuration file to manage scaling configurations of the Elastic Container Instance type, you must take note of the following items:
+        If you include a scaling configuration ID within your request, the system updates the scaling configuration based on the YAML configuration file.
+        If you do not include a scaling configuration ID within your request, the system creates a scaling configuration of the Elastic Container Instance type based on the YAML configuration file.
         
         @param request: ApplyEciScalingConfigurationRequest
         @return: ApplyEciScalingConfigurationResponse
@@ -200,10 +203,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ApplyEciScalingConfigurationRequest,
     ) -> ess_20220222_models.ApplyEciScalingConfigurationResponse:
         """
-        @summary Manages scaling configurations of the Elastic Container Instance type. If you want to efficiently create or update a scaling configuration of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
+        @summary Applies a scaling configuration of the Elastic Container Instance type. If you want to create and manage scaling configurations of the Elastic Container Instance type by using a configuration file, you can call the ApplyEciScalingConfiguration operation.
         
-        @description You can manage scaling configurations of the Elastic Container Instance type by using a YAML configuration file based on the following logic:
-        If you specify the ID of a scaling configuration, you can update the scaling configuration by using the YAML configuration file. If you do not specify the ID of a scaling configuration, you can create a scaling configuration by using the YAML configuration file.
+        @description Before you use a YAML configuration file to manage scaling configurations of the Elastic Container Instance type, you must take note of the following items:
+        If you include a scaling configuration ID within your request, the system updates the scaling configuration based on the YAML configuration file.
+        If you do not include a scaling configuration ID within your request, the system creates a scaling configuration of the Elastic Container Instance type based on the YAML configuration file.
         
         @param request: ApplyEciScalingConfigurationRequest
         @return: ApplyEciScalingConfigurationResponse
@@ -745,7 +749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachInstancesResponse:
         """
-        @summary Adds instances to a scaling group. You can call the AttachInstances operation to add independent Elastic Compute Service (ECS) instances, elastic container instances, or non-Alibaba Cloud instances to your scaling group to provide services. You can also call this operation to change the state of ECS instances in your scaling group from Economical Mode to In Service.
+        @summary Adds instances to a scaling group to provide services or restarts Elastic Compute Service (ECS) instances stopped in Economical Mode to provide services. You can call the AttachInstances operation to add ECS instances, elastic container instances, or third-party instances managed by Alibaba Cloud to your scaling group to provide services. You can also call this operation to restart ECS instances stopped in Economical Mode in your scaling group to provide services.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -815,7 +819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.AttachInstancesResponse:
         """
-        @summary Adds instances to a scaling group. You can call the AttachInstances operation to add independent Elastic Compute Service (ECS) instances, elastic container instances, or non-Alibaba Cloud instances to your scaling group to provide services. You can also call this operation to change the state of ECS instances in your scaling group from Economical Mode to In Service.
+        @summary Adds instances to a scaling group to provide services or restarts Elastic Compute Service (ECS) instances stopped in Economical Mode to provide services. You can call the AttachInstances operation to add ECS instances, elastic container instances, or third-party instances managed by Alibaba Cloud to your scaling group to provide services. You can also call this operation to restart ECS instances stopped in Economical Mode in your scaling group to provide services.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -884,7 +888,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachInstancesRequest,
     ) -> ess_20220222_models.AttachInstancesResponse:
         """
-        @summary Adds instances to a scaling group. You can call the AttachInstances operation to add independent Elastic Compute Service (ECS) instances, elastic container instances, or non-Alibaba Cloud instances to your scaling group to provide services. You can also call this operation to change the state of ECS instances in your scaling group from Economical Mode to In Service.
+        @summary Adds instances to a scaling group to provide services or restarts Elastic Compute Service (ECS) instances stopped in Economical Mode to provide services. You can call the AttachInstances operation to add ECS instances, elastic container instances, or third-party instances managed by Alibaba Cloud to your scaling group to provide services. You can also call this operation to restart ECS instances stopped in Economical Mode in your scaling group to provide services.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -912,7 +916,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.AttachInstancesRequest,
     ) -> ess_20220222_models.AttachInstancesResponse:
         """
-        @summary Adds instances to a scaling group. You can call the AttachInstances operation to add independent Elastic Compute Service (ECS) instances, elastic container instances, or non-Alibaba Cloud instances to your scaling group to provide services. You can also call this operation to change the state of ECS instances in your scaling group from Economical Mode to In Service.
+        @summary Adds instances to a scaling group to provide services or restarts Elastic Compute Service (ECS) instances stopped in Economical Mode to provide services. You can call the AttachInstances operation to add ECS instances, elastic container instances, or third-party instances managed by Alibaba Cloud to your scaling group to provide services. You can also call this operation to restart ECS instances stopped in Economical Mode in your scaling group to provide services.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -2153,7 +2157,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateLifecycleHookResponse:
         """
-        @summary Creates one or more lifecycle hooks.
+        @summary Creates one or more lifecycle hooks in a scaling group. A lifecycle hook allows you to execute custom actions like sending notifications or automating script execution at critical stages (such as instance startup and termination) in the lifecycle of an instance. Implementing the lifecycle hook feature allows for finer control and management of instances. For example, you can verify configurations, set up custom tasks, or back up data on your instances when lifecycle hooks take effect, thus enhancing the flexibility and reliability of application deployment.
         
         @description You can create up to six lifecycle hooks for each scaling group. After a lifecycle hook is created for a scaling group, Elastic Compute Service (ECS) instances in the scaling group waits to be added to or removed from the scaling group during scaling activities. You can use the HeartbeatTimeout parameter to specify the timeout period of the lifecycle hook. During the timeout period of a lifecycle hook, you can perform custom operations such as initialize ECS instance configurations and download ECS instance data on the ECS instances for which the lifecycle hook is applied.
         During a scale-out activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be added to the associated whitelist that manages access to the ApsaraDB RDS instance. The ECS instances also wait to be added to the backend server group of the associated Classic Load Balancer (CLB) instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are added to the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also added to the backend server group of the associated CLB instance. During a scale-in activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances also wait to be removed from the backend server group of the associated CLB instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also removed from the backend server group of the associated CLB instance.
@@ -2211,7 +2215,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateLifecycleHookResponse:
         """
-        @summary Creates one or more lifecycle hooks.
+        @summary Creates one or more lifecycle hooks in a scaling group. A lifecycle hook allows you to execute custom actions like sending notifications or automating script execution at critical stages (such as instance startup and termination) in the lifecycle of an instance. Implementing the lifecycle hook feature allows for finer control and management of instances. For example, you can verify configurations, set up custom tasks, or back up data on your instances when lifecycle hooks take effect, thus enhancing the flexibility and reliability of application deployment.
         
         @description You can create up to six lifecycle hooks for each scaling group. After a lifecycle hook is created for a scaling group, Elastic Compute Service (ECS) instances in the scaling group waits to be added to or removed from the scaling group during scaling activities. You can use the HeartbeatTimeout parameter to specify the timeout period of the lifecycle hook. During the timeout period of a lifecycle hook, you can perform custom operations such as initialize ECS instance configurations and download ECS instance data on the ECS instances for which the lifecycle hook is applied.
         During a scale-out activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be added to the associated whitelist that manages access to the ApsaraDB RDS instance. The ECS instances also wait to be added to the backend server group of the associated Classic Load Balancer (CLB) instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are added to the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also added to the backend server group of the associated CLB instance. During a scale-in activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances also wait to be removed from the backend server group of the associated CLB instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also removed from the backend server group of the associated CLB instance.
@@ -2268,7 +2272,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateLifecycleHookRequest,
     ) -> ess_20220222_models.CreateLifecycleHookResponse:
         """
-        @summary Creates one or more lifecycle hooks.
+        @summary Creates one or more lifecycle hooks in a scaling group. A lifecycle hook allows you to execute custom actions like sending notifications or automating script execution at critical stages (such as instance startup and termination) in the lifecycle of an instance. Implementing the lifecycle hook feature allows for finer control and management of instances. For example, you can verify configurations, set up custom tasks, or back up data on your instances when lifecycle hooks take effect, thus enhancing the flexibility and reliability of application deployment.
         
         @description You can create up to six lifecycle hooks for each scaling group. After a lifecycle hook is created for a scaling group, Elastic Compute Service (ECS) instances in the scaling group waits to be added to or removed from the scaling group during scaling activities. You can use the HeartbeatTimeout parameter to specify the timeout period of the lifecycle hook. During the timeout period of a lifecycle hook, you can perform custom operations such as initialize ECS instance configurations and download ECS instance data on the ECS instances for which the lifecycle hook is applied.
         During a scale-out activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be added to the associated whitelist that manages access to the ApsaraDB RDS instance. The ECS instances also wait to be added to the backend server group of the associated Classic Load Balancer (CLB) instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are added to the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also added to the backend server group of the associated CLB instance. During a scale-in activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances also wait to be removed from the backend server group of the associated CLB instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also removed from the backend server group of the associated CLB instance.
@@ -2286,7 +2290,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateLifecycleHookRequest,
     ) -> ess_20220222_models.CreateLifecycleHookResponse:
         """
-        @summary Creates one or more lifecycle hooks.
+        @summary Creates one or more lifecycle hooks in a scaling group. A lifecycle hook allows you to execute custom actions like sending notifications or automating script execution at critical stages (such as instance startup and termination) in the lifecycle of an instance. Implementing the lifecycle hook feature allows for finer control and management of instances. For example, you can verify configurations, set up custom tasks, or back up data on your instances when lifecycle hooks take effect, thus enhancing the flexibility and reliability of application deployment.
         
         @description You can create up to six lifecycle hooks for each scaling group. After a lifecycle hook is created for a scaling group, Elastic Compute Service (ECS) instances in the scaling group waits to be added to or removed from the scaling group during scaling activities. You can use the HeartbeatTimeout parameter to specify the timeout period of the lifecycle hook. During the timeout period of a lifecycle hook, you can perform custom operations such as initialize ECS instance configurations and download ECS instance data on the ECS instances for which the lifecycle hook is applied.
         During a scale-out activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be added to the associated whitelist that manages access to the ApsaraDB RDS instance. The ECS instances also wait to be added to the backend server group of the associated Classic Load Balancer (CLB) instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are added to the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also added to the backend server group of the associated CLB instance. During a scale-in activity and the timeout period of a lifecycle hook, the private IP addresses of ECS instances wait to be removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances also wait to be removed from the backend server group of the associated CLB instance. After the lifecycle hook times out, the private IP addresses of the ECS instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance. The ECS instances are also removed from the backend server group of the associated CLB instance.
@@ -2793,27 +2797,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingGroupResponse:
         """
-        @summary Creates a scaling group.
+        @summary Creates a scaling group. You can call the CreateScalingGroup operation to automate the adjustment of computing power of a specific type based on your business requirements and scaling polices.
         
-        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios.
-        You can create only a limited number of scaling groups in a region. Go to Quota Center to check the quota of the scaling groups.
-        A scaling group does not immediately take effect after you create the scaling group. You must call the EnableScalingGroup operation to enable the scaling group. After you enable the scaling group, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group.
-        The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances that you want to associate with a scaling group must reside in the same region as the scaling group. CLB instances are formerly known as Server Load Balancer (SLB) instances. For more information, see the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) topic.
-        If you associate a CLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the associated CLB instance. You can specify a server group to which ECS instances can be added. You can add ECS instances to the following types of server groups:
-        Default server group: a group of ECS instances that are used to receive requests. If you do not specify a vServer group or a primary/secondary server group for a listener, requests are forwarded to the ECS instances in the default server group.
-        vServer group: If you want to forward requests to backend servers that are not in the default server group or configure domain name-based or URL-based forwarding rules, you can use vServer groups.
-        > If you specify the default server group and multiple vServer groups at the same time, ECS instances are added to all specified server groups.
-        The default weight of an ECS instance that is added as a backend server of a CLB instance is 50. The CLB instance that you want to associate with your scaling group must meet the following requirements:
-        The CLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the state of the CLB instance.
-        The health check feature must be enabled on all listener ports that are configured for the CLB instance. Otherwise, the scaling group fails to be created.
-        If you associate an Application Load Balancer (ALB) server group with a scaling group, Auto Scaling automatically adds ECS instances that are in the scaling group to the ALB server group to process requests distributed by the ALB instance to which the ALB server group belongs. You can specify multiple ALB server groups. The server groups must reside in the same virtual private cloud (VPC) as the scaling group. For more information, see the "AttachAlbServerGroups" topic.
-        If you associate an ApsaraDB RDS instance with a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. The ApsaraDB RDS instance that you want to associate with your scaling group must meet the following requirements:
-        The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the state of the ApsaraDB RDS instance.
-        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the "Configure whitelists" topic.
-        If you set the MultiAZPolicy parameter of the scaling group to COST_OPTIMIZED, take note of the following items:
-        You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the instance allocation method based on the cost optimization policy. This instance allocation method is prioritized during scaling.
-        If you do not specify the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools parameter, the instance types that are provided at the lowest price are used to create instances based on the cost optimization policy.
-        If you set the `Tags.Propagate` parameter of the scaling group to true, the following rules apply:
+        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used for similar purposes.
+        You can create only a limited number of scaling groups in a region. To check the quota of the scaling groups, go to Quota Center.
+        A scaling group does not immediately take effect after you create the scaling group. You can call the [EnableScalingGroup](https://help.aliyun.com/document_detail/25939.html) operation to enable a scaling group. You can trigger scaling events and execute scaling rules only in scaling groups that are in the Enabled state.
+        If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        If you attach a CLB instance to the scaling group that you want to create, Auto Scaling will automatically add the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
+        Default server group: ECS instances in this group process frontend requests. If no listeners are configured for vServer groups or primary/secondary server groups, the frontend requests are forwarded to the ECS instances in the default server group.
+        vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names and URLs, you can specify vServer groups.
+        >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling will add the ECS instances in your scaling group to these server groups concurrently.
+        The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
+        The CLB instance is in the Active state. You can call the [DescribeLoadBalancers](https://help.aliyun.com/document_detail/2401696.html) operation to query the status of CLB instances.
+        Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
+        If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling will add the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600559.html).
+        If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling will automatically add the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
+        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance does not reach its upper limit. For more information, see [Configure a whitelist](https://help.aliyun.com/document_detail/43185.html).
+        If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
+        If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling will prioritize the implementation of the specified instance allocation mode during scale-out events.
+        If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling will preferentially create instances of the lowest-priced instance type based on the cost optimization policy.
+        If you set `Tags.Propagate` to true, the following rules will apply:
         Tags that you add to the scaling group cannot be propagated to existing instances in the scaling group. Tags that you add to the scaling group are propagated to only new instances.
         If you specify instance tags in the scaling configuration that is used to create instances and propagate the tags that you add to the scaling group to the instances, all tags exist at the same time.
         If the tag key that you specify in a scaling configuration and the tag key that you add to the scaling group of the scaling configuration are the same, the tag value that you specify in the scaling configuration is preferentially used.
@@ -2939,27 +2943,27 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingGroupResponse:
         """
-        @summary Creates a scaling group.
+        @summary Creates a scaling group. You can call the CreateScalingGroup operation to automate the adjustment of computing power of a specific type based on your business requirements and scaling polices.
         
-        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios.
-        You can create only a limited number of scaling groups in a region. Go to Quota Center to check the quota of the scaling groups.
-        A scaling group does not immediately take effect after you create the scaling group. You must call the EnableScalingGroup operation to enable the scaling group. After you enable the scaling group, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group.
-        The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances that you want to associate with a scaling group must reside in the same region as the scaling group. CLB instances are formerly known as Server Load Balancer (SLB) instances. For more information, see the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) topic.
-        If you associate a CLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the associated CLB instance. You can specify a server group to which ECS instances can be added. You can add ECS instances to the following types of server groups:
-        Default server group: a group of ECS instances that are used to receive requests. If you do not specify a vServer group or a primary/secondary server group for a listener, requests are forwarded to the ECS instances in the default server group.
-        vServer group: If you want to forward requests to backend servers that are not in the default server group or configure domain name-based or URL-based forwarding rules, you can use vServer groups.
-        > If you specify the default server group and multiple vServer groups at the same time, ECS instances are added to all specified server groups.
-        The default weight of an ECS instance that is added as a backend server of a CLB instance is 50. The CLB instance that you want to associate with your scaling group must meet the following requirements:
-        The CLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the state of the CLB instance.
-        The health check feature must be enabled on all listener ports that are configured for the CLB instance. Otherwise, the scaling group fails to be created.
-        If you associate an Application Load Balancer (ALB) server group with a scaling group, Auto Scaling automatically adds ECS instances that are in the scaling group to the ALB server group to process requests distributed by the ALB instance to which the ALB server group belongs. You can specify multiple ALB server groups. The server groups must reside in the same virtual private cloud (VPC) as the scaling group. For more information, see the "AttachAlbServerGroups" topic.
-        If you associate an ApsaraDB RDS instance with a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. The ApsaraDB RDS instance that you want to associate with your scaling group must meet the following requirements:
-        The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the state of the ApsaraDB RDS instance.
-        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the "Configure whitelists" topic.
-        If you set the MultiAZPolicy parameter of the scaling group to COST_OPTIMIZED, take note of the following items:
-        You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the instance allocation method based on the cost optimization policy. This instance allocation method is prioritized during scaling.
-        If you do not specify the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools parameter, the instance types that are provided at the lowest price are used to create instances based on the cost optimization policy.
-        If you set the `Tags.Propagate` parameter of the scaling group to true, the following rules apply:
+        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used for similar purposes.
+        You can create only a limited number of scaling groups in a region. To check the quota of the scaling groups, go to Quota Center.
+        A scaling group does not immediately take effect after you create the scaling group. You can call the [EnableScalingGroup](https://help.aliyun.com/document_detail/25939.html) operation to enable a scaling group. You can trigger scaling events and execute scaling rules only in scaling groups that are in the Enabled state.
+        If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        If you attach a CLB instance to the scaling group that you want to create, Auto Scaling will automatically add the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
+        Default server group: ECS instances in this group process frontend requests. If no listeners are configured for vServer groups or primary/secondary server groups, the frontend requests are forwarded to the ECS instances in the default server group.
+        vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names and URLs, you can specify vServer groups.
+        >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling will add the ECS instances in your scaling group to these server groups concurrently.
+        The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
+        The CLB instance is in the Active state. You can call the [DescribeLoadBalancers](https://help.aliyun.com/document_detail/2401696.html) operation to query the status of CLB instances.
+        Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
+        If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling will add the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600559.html).
+        If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling will automatically add the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
+        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance does not reach its upper limit. For more information, see [Configure a whitelist](https://help.aliyun.com/document_detail/43185.html).
+        If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
+        If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling will prioritize the implementation of the specified instance allocation mode during scale-out events.
+        If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling will preferentially create instances of the lowest-priced instance type based on the cost optimization policy.
+        If you set `Tags.Propagate` to true, the following rules will apply:
         Tags that you add to the scaling group cannot be propagated to existing instances in the scaling group. Tags that you add to the scaling group are propagated to only new instances.
         If you specify instance tags in the scaling configuration that is used to create instances and propagate the tags that you add to the scaling group to the instances, all tags exist at the same time.
         If the tag key that you specify in a scaling configuration and the tag key that you add to the scaling group of the scaling configuration are the same, the tag value that you specify in the scaling configuration is preferentially used.
@@ -3084,27 +3088,27 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingGroupRequest,
     ) -> ess_20220222_models.CreateScalingGroupResponse:
         """
-        @summary Creates a scaling group.
+        @summary Creates a scaling group. You can call the CreateScalingGroup operation to automate the adjustment of computing power of a specific type based on your business requirements and scaling polices.
         
-        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios.
-        You can create only a limited number of scaling groups in a region. Go to Quota Center to check the quota of the scaling groups.
-        A scaling group does not immediately take effect after you create the scaling group. You must call the EnableScalingGroup operation to enable the scaling group. After you enable the scaling group, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group.
-        The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances that you want to associate with a scaling group must reside in the same region as the scaling group. CLB instances are formerly known as Server Load Balancer (SLB) instances. For more information, see the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) topic.
-        If you associate a CLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the associated CLB instance. You can specify a server group to which ECS instances can be added. You can add ECS instances to the following types of server groups:
-        Default server group: a group of ECS instances that are used to receive requests. If you do not specify a vServer group or a primary/secondary server group for a listener, requests are forwarded to the ECS instances in the default server group.
-        vServer group: If you want to forward requests to backend servers that are not in the default server group or configure domain name-based or URL-based forwarding rules, you can use vServer groups.
-        > If you specify the default server group and multiple vServer groups at the same time, ECS instances are added to all specified server groups.
-        The default weight of an ECS instance that is added as a backend server of a CLB instance is 50. The CLB instance that you want to associate with your scaling group must meet the following requirements:
-        The CLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the state of the CLB instance.
-        The health check feature must be enabled on all listener ports that are configured for the CLB instance. Otherwise, the scaling group fails to be created.
-        If you associate an Application Load Balancer (ALB) server group with a scaling group, Auto Scaling automatically adds ECS instances that are in the scaling group to the ALB server group to process requests distributed by the ALB instance to which the ALB server group belongs. You can specify multiple ALB server groups. The server groups must reside in the same virtual private cloud (VPC) as the scaling group. For more information, see the "AttachAlbServerGroups" topic.
-        If you associate an ApsaraDB RDS instance with a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. The ApsaraDB RDS instance that you want to associate with your scaling group must meet the following requirements:
-        The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the state of the ApsaraDB RDS instance.
-        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the "Configure whitelists" topic.
-        If you set the MultiAZPolicy parameter of the scaling group to COST_OPTIMIZED, take note of the following items:
-        You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the instance allocation method based on the cost optimization policy. This instance allocation method is prioritized during scaling.
-        If you do not specify the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools parameter, the instance types that are provided at the lowest price are used to create instances based on the cost optimization policy.
-        If you set the `Tags.Propagate` parameter of the scaling group to true, the following rules apply:
+        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used for similar purposes.
+        You can create only a limited number of scaling groups in a region. To check the quota of the scaling groups, go to Quota Center.
+        A scaling group does not immediately take effect after you create the scaling group. You can call the [EnableScalingGroup](https://help.aliyun.com/document_detail/25939.html) operation to enable a scaling group. You can trigger scaling events and execute scaling rules only in scaling groups that are in the Enabled state.
+        If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        If you attach a CLB instance to the scaling group that you want to create, Auto Scaling will automatically add the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
+        Default server group: ECS instances in this group process frontend requests. If no listeners are configured for vServer groups or primary/secondary server groups, the frontend requests are forwarded to the ECS instances in the default server group.
+        vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names and URLs, you can specify vServer groups.
+        >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling will add the ECS instances in your scaling group to these server groups concurrently.
+        The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
+        The CLB instance is in the Active state. You can call the [DescribeLoadBalancers](https://help.aliyun.com/document_detail/2401696.html) operation to query the status of CLB instances.
+        Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
+        If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling will add the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600559.html).
+        If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling will automatically add the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
+        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance does not reach its upper limit. For more information, see [Configure a whitelist](https://help.aliyun.com/document_detail/43185.html).
+        If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
+        If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling will prioritize the implementation of the specified instance allocation mode during scale-out events.
+        If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling will preferentially create instances of the lowest-priced instance type based on the cost optimization policy.
+        If you set `Tags.Propagate` to true, the following rules will apply:
         Tags that you add to the scaling group cannot be propagated to existing instances in the scaling group. Tags that you add to the scaling group are propagated to only new instances.
         If you specify instance tags in the scaling configuration that is used to create instances and propagate the tags that you add to the scaling group to the instances, all tags exist at the same time.
         If the tag key that you specify in a scaling configuration and the tag key that you add to the scaling group of the scaling configuration are the same, the tag value that you specify in the scaling configuration is preferentially used.
@@ -3120,27 +3124,27 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingGroupRequest,
     ) -> ess_20220222_models.CreateScalingGroupResponse:
         """
-        @summary Creates a scaling group.
+        @summary Creates a scaling group. You can call the CreateScalingGroup operation to automate the adjustment of computing power of a specific type based on your business requirements and scaling polices.
         
-        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used in similar business scenarios.
-        You can create only a limited number of scaling groups in a region. Go to Quota Center to check the quota of the scaling groups.
-        A scaling group does not immediately take effect after you create the scaling group. You must call the EnableScalingGroup operation to enable the scaling group. After you enable the scaling group, Auto Scaling can execute scaling rules to trigger scaling activities in the scaling group.
-        The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances that you want to associate with a scaling group must reside in the same region as the scaling group. CLB instances are formerly known as Server Load Balancer (SLB) instances. For more information, see the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) topic.
-        If you associate a CLB instance when you create a scaling group, Auto Scaling automatically adds ECS instances in the scaling group to the backend server group of the associated CLB instance. You can specify a server group to which ECS instances can be added. You can add ECS instances to the following types of server groups:
-        Default server group: a group of ECS instances that are used to receive requests. If you do not specify a vServer group or a primary/secondary server group for a listener, requests are forwarded to the ECS instances in the default server group.
-        vServer group: If you want to forward requests to backend servers that are not in the default server group or configure domain name-based or URL-based forwarding rules, you can use vServer groups.
-        > If you specify the default server group and multiple vServer groups at the same time, ECS instances are added to all specified server groups.
-        The default weight of an ECS instance that is added as a backend server of a CLB instance is 50. The CLB instance that you want to associate with your scaling group must meet the following requirements:
-        The CLB instance must be in the Active state. You can call the DescribeLoadBalancers operation to query the state of the CLB instance.
-        The health check feature must be enabled on all listener ports that are configured for the CLB instance. Otherwise, the scaling group fails to be created.
-        If you associate an Application Load Balancer (ALB) server group with a scaling group, Auto Scaling automatically adds ECS instances that are in the scaling group to the ALB server group to process requests distributed by the ALB instance to which the ALB server group belongs. You can specify multiple ALB server groups. The server groups must reside in the same virtual private cloud (VPC) as the scaling group. For more information, see the "AttachAlbServerGroups" topic.
-        If you associate an ApsaraDB RDS instance with a scaling group, Auto Scaling automatically adds the private IP addresses of the ECS instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance. The ApsaraDB RDS instance that you want to associate with your scaling group must meet the following requirements:
-        The ApsaraDB RDS instance must be in the Running state. You can call the DescribeDBInstances operation to query the state of the ApsaraDB RDS instance.
-        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance cannot exceed the upper limit. For more information, see the "Configure whitelists" topic.
-        If you set the MultiAZPolicy parameter of the scaling group to COST_OPTIMIZED, take note of the following items:
-        You can use the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools parameters to specify the instance allocation method based on the cost optimization policy. This instance allocation method is prioritized during scaling.
-        If you do not specify the OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools parameter, the instance types that are provided at the lowest price are used to create instances based on the cost optimization policy.
-        If you set the `Tags.Propagate` parameter of the scaling group to true, the following rules apply:
+        @description A scaling group is a group of Elastic Compute Service (ECS) instances that can be used for similar purposes.
+        You can create only a limited number of scaling groups in a region. To check the quota of the scaling groups, go to Quota Center.
+        A scaling group does not immediately take effect after you create the scaling group. You can call the [EnableScalingGroup](https://help.aliyun.com/document_detail/25939.html) operation to enable a scaling group. You can trigger scaling events and execute scaling rules only in scaling groups that are in the Enabled state.
+        If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        If you attach a CLB instance to the scaling group that you want to create, Auto Scaling will automatically add the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
+        Default server group: ECS instances in this group process frontend requests. If no listeners are configured for vServer groups or primary/secondary server groups, the frontend requests are forwarded to the ECS instances in the default server group.
+        vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names and URLs, you can specify vServer groups.
+        >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling will add the ECS instances in your scaling group to these server groups concurrently.
+        The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
+        The CLB instance is in the Active state. You can call the [DescribeLoadBalancers](https://help.aliyun.com/document_detail/2401696.html) operation to query the status of CLB instances.
+        Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
+        If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling will add the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600559.html).
+        If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling will automatically add the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+        The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
+        The number of IP addresses in the IP address whitelist of the ApsaraDB RDS instance does not reach its upper limit. For more information, see [Configure a whitelist](https://help.aliyun.com/document_detail/43185.html).
+        If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
+        If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling will prioritize the implementation of the specified instance allocation mode during scale-out events.
+        If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling will preferentially create instances of the lowest-priced instance type based on the cost optimization policy.
+        If you set `Tags.Propagate` to true, the following rules will apply:
         Tags that you add to the scaling group cannot be propagated to existing instances in the scaling group. Tags that you add to the scaling group are propagated to only new instances.
         If you specify instance tags in the scaling configuration that is used to create instances and propagate the tags that you add to the scaling group to the instances, all tags exist at the same time.
         If the tag key that you specify in a scaling configuration and the tag key that you add to the scaling group of the scaling configuration are the same, the tag value that you specify in the scaling configuration is preferentially used.
@@ -3157,21 +3161,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        @summary Creates a scaling rule.
+        @summary Creates a scaling rule. The purpose of a scaling rule varies based on its type. You can use a scaling rule to trigger a scaling activity or adjust the boundary values for a scaling group. You can call the CreateScalingRule operation to create different types of scaling rules based on your business requirements. For example, if your business requires only automatic adjustment of the boundary values for your scaling group, you can call this operation to create a predictive scaling rule.
         
-        @description ## Description
-        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances that you want to add or remove. This way, the number of ECS instances can be maintained within the valid range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. Example:
-        If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
-        If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
+        @description A scaling rule defines the specific scaling action. For example, you can use a scaling rule to define N instances to add or remove. If the execution of a scaling rule causes the total number of Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to drop below the value of MinSize or to exceed the value of MaxSize, Auto Scaling adjusts the number of instances to add or remove, which ensures that the total number of instances stays within the valid range. Take note that Auto Scaling does not adjust the number of instances that you defined in the scaling rule. Examples:
+        The maximum number of instances (MaxSize) that can be contained in a scaling group is 3 and the current number of instances (Total Capacity) in the scaling group is 2. In this example, the Add3 scaling rule is created to add three ECS instances to the scaling group. However, after you execute Add3, Auto Scaling adds only one ECS instance to the scaling group. In addition, the number of ECS instances to add in the Add3 scaling rule remains unchanged.
+        The minimum number of instances (MinSize) that must be contained in a scaling group is 2 and the current number of instances (Total Capacity) is 3. In this example, the Remove5 scaling rule is created to remove five ECS instances from the scaling group. However, after you execute Remove5, Auto Scaling only removes one ECS instance from the scaling group. In addition, the number of ECS instances to remove in the Remove5 scaling rule remains unchanged.
         Before you call this operation, take note of the following items:
-        If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0.
-        If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
-        If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
-        If the cooldown time is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group.
-        You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
-        The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
-        ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier of the scaling rule.
-        CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier of the scaling rule.
+        If you set AdjustmentType to TotalCapacity, the total number of ECS instances or elastic container instances in your scaling group will be adjusted to a specified number when the scaling rule that you create by calling this operation is executed. You must set AdjustmentValue to an integer that is greater than 0.
+        If you set AdjustmentType to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be added to your scaling group, and a negative value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be removed from the scaling group.
+        If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling calculates the number of ECS instances or elastic container instances to add or remove by multiplying the current capacity of the scaling group (Total Capacity) by AdjustmentValue divided by 100, rounding off the result to determine the final adjustment count.
+        If you specify a cooldown period for a scaling rule, the cooldown period of the scaling rule takes effect after you execute the scaling rule. If you do not specify a cooldown period for a scaling rule, the value of DefaultCooldown of the scaling group takes effect after you execute the scaling rule.
+        You can create only a limited number of scaling rules for a scaling group. For more information, see [Limits](https://help.aliyun.com/document_detail/25863.html).
+        The following API operations may use the unique identifier of a scaling rule (ScalingRuleAri) that is returned after you call the CreateScalingRule operation:
+        ExecuteScalingRule: You can call this operation to manually execute a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        CreateScheduledTask: You can call this operation to create a scheduled task for a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule for which you want to create a scheduled task.
         
         @param request: CreateScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3252,21 +3255,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        @summary Creates a scaling rule.
+        @summary Creates a scaling rule. The purpose of a scaling rule varies based on its type. You can use a scaling rule to trigger a scaling activity or adjust the boundary values for a scaling group. You can call the CreateScalingRule operation to create different types of scaling rules based on your business requirements. For example, if your business requires only automatic adjustment of the boundary values for your scaling group, you can call this operation to create a predictive scaling rule.
         
-        @description ## Description
-        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances that you want to add or remove. This way, the number of ECS instances can be maintained within the valid range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. Example:
-        If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
-        If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
+        @description A scaling rule defines the specific scaling action. For example, you can use a scaling rule to define N instances to add or remove. If the execution of a scaling rule causes the total number of Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to drop below the value of MinSize or to exceed the value of MaxSize, Auto Scaling adjusts the number of instances to add or remove, which ensures that the total number of instances stays within the valid range. Take note that Auto Scaling does not adjust the number of instances that you defined in the scaling rule. Examples:
+        The maximum number of instances (MaxSize) that can be contained in a scaling group is 3 and the current number of instances (Total Capacity) in the scaling group is 2. In this example, the Add3 scaling rule is created to add three ECS instances to the scaling group. However, after you execute Add3, Auto Scaling adds only one ECS instance to the scaling group. In addition, the number of ECS instances to add in the Add3 scaling rule remains unchanged.
+        The minimum number of instances (MinSize) that must be contained in a scaling group is 2 and the current number of instances (Total Capacity) is 3. In this example, the Remove5 scaling rule is created to remove five ECS instances from the scaling group. However, after you execute Remove5, Auto Scaling only removes one ECS instance from the scaling group. In addition, the number of ECS instances to remove in the Remove5 scaling rule remains unchanged.
         Before you call this operation, take note of the following items:
-        If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0.
-        If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
-        If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
-        If the cooldown time is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group.
-        You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
-        The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
-        ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier of the scaling rule.
-        CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier of the scaling rule.
+        If you set AdjustmentType to TotalCapacity, the total number of ECS instances or elastic container instances in your scaling group will be adjusted to a specified number when the scaling rule that you create by calling this operation is executed. You must set AdjustmentValue to an integer that is greater than 0.
+        If you set AdjustmentType to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be added to your scaling group, and a negative value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be removed from the scaling group.
+        If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling calculates the number of ECS instances or elastic container instances to add or remove by multiplying the current capacity of the scaling group (Total Capacity) by AdjustmentValue divided by 100, rounding off the result to determine the final adjustment count.
+        If you specify a cooldown period for a scaling rule, the cooldown period of the scaling rule takes effect after you execute the scaling rule. If you do not specify a cooldown period for a scaling rule, the value of DefaultCooldown of the scaling group takes effect after you execute the scaling rule.
+        You can create only a limited number of scaling rules for a scaling group. For more information, see [Limits](https://help.aliyun.com/document_detail/25863.html).
+        The following API operations may use the unique identifier of a scaling rule (ScalingRuleAri) that is returned after you call the CreateScalingRule operation:
+        ExecuteScalingRule: You can call this operation to manually execute a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        CreateScheduledTask: You can call this operation to create a scheduled task for a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule for which you want to create a scheduled task.
         
         @param request: CreateScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3346,21 +3348,20 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingRuleRequest,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        @summary Creates a scaling rule.
+        @summary Creates a scaling rule. The purpose of a scaling rule varies based on its type. You can use a scaling rule to trigger a scaling activity or adjust the boundary values for a scaling group. You can call the CreateScalingRule operation to create different types of scaling rules based on your business requirements. For example, if your business requires only automatic adjustment of the boundary values for your scaling group, you can call this operation to create a predictive scaling rule.
         
-        @description ## Description
-        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances that you want to add or remove. This way, the number of ECS instances can be maintained within the valid range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. Example:
-        If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
-        If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
+        @description A scaling rule defines the specific scaling action. For example, you can use a scaling rule to define N instances to add or remove. If the execution of a scaling rule causes the total number of Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to drop below the value of MinSize or to exceed the value of MaxSize, Auto Scaling adjusts the number of instances to add or remove, which ensures that the total number of instances stays within the valid range. Take note that Auto Scaling does not adjust the number of instances that you defined in the scaling rule. Examples:
+        The maximum number of instances (MaxSize) that can be contained in a scaling group is 3 and the current number of instances (Total Capacity) in the scaling group is 2. In this example, the Add3 scaling rule is created to add three ECS instances to the scaling group. However, after you execute Add3, Auto Scaling adds only one ECS instance to the scaling group. In addition, the number of ECS instances to add in the Add3 scaling rule remains unchanged.
+        The minimum number of instances (MinSize) that must be contained in a scaling group is 2 and the current number of instances (Total Capacity) is 3. In this example, the Remove5 scaling rule is created to remove five ECS instances from the scaling group. However, after you execute Remove5, Auto Scaling only removes one ECS instance from the scaling group. In addition, the number of ECS instances to remove in the Remove5 scaling rule remains unchanged.
         Before you call this operation, take note of the following items:
-        If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0.
-        If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
-        If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
-        If the cooldown time is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group.
-        You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
-        The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
-        ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier of the scaling rule.
-        CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier of the scaling rule.
+        If you set AdjustmentType to TotalCapacity, the total number of ECS instances or elastic container instances in your scaling group will be adjusted to a specified number when the scaling rule that you create by calling this operation is executed. You must set AdjustmentValue to an integer that is greater than 0.
+        If you set AdjustmentType to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be added to your scaling group, and a negative value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be removed from the scaling group.
+        If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling calculates the number of ECS instances or elastic container instances to add or remove by multiplying the current capacity of the scaling group (Total Capacity) by AdjustmentValue divided by 100, rounding off the result to determine the final adjustment count.
+        If you specify a cooldown period for a scaling rule, the cooldown period of the scaling rule takes effect after you execute the scaling rule. If you do not specify a cooldown period for a scaling rule, the value of DefaultCooldown of the scaling group takes effect after you execute the scaling rule.
+        You can create only a limited number of scaling rules for a scaling group. For more information, see [Limits](https://help.aliyun.com/document_detail/25863.html).
+        The following API operations may use the unique identifier of a scaling rule (ScalingRuleAri) that is returned after you call the CreateScalingRule operation:
+        ExecuteScalingRule: You can call this operation to manually execute a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        CreateScheduledTask: You can call this operation to create a scheduled task for a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule for which you want to create a scheduled task.
         
         @param request: CreateScalingRuleRequest
         @return: CreateScalingRuleResponse
@@ -3373,21 +3374,20 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingRuleRequest,
     ) -> ess_20220222_models.CreateScalingRuleResponse:
         """
-        @summary Creates a scaling rule.
+        @summary Creates a scaling rule. The purpose of a scaling rule varies based on its type. You can use a scaling rule to trigger a scaling activity or adjust the boundary values for a scaling group. You can call the CreateScalingRule operation to create different types of scaling rules based on your business requirements. For example, if your business requires only automatic adjustment of the boundary values for your scaling group, you can call this operation to create a predictive scaling rule.
         
-        @description ## Description
-        A scaling rule defines a specific scaling activity, such as adding or removing N instances. If the number of Elastic Compute Service (ECS) instances in a scaling group is less than the minimum number allowed or greater than the maximum number allowed after a scaling rule is executed, Auto Scaling adjusts the number of ECS instances that you want to add or remove. This way, the number of ECS instances can be maintained within the valid range after the scaling rule is executed. The number of ECS instances that is specified in the scaling rule remains unchanged. Example:
-        If your scaling group contains two ECS instances and allows up to three ECS instances, only one ECS instance is added to your scaling group after you execute a scale-out rule in which three ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
-        If your scaling group contains three ECS instances and requires at least two ECS instances, only one ECS instance is removed from your scaling group after you execute a scale-in rule in which five ECS instances are specified. The number of ECS instances that is specified in the scaling rule remains unchanged.
+        @description A scaling rule defines the specific scaling action. For example, you can use a scaling rule to define N instances to add or remove. If the execution of a scaling rule causes the total number of Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to drop below the value of MinSize or to exceed the value of MaxSize, Auto Scaling adjusts the number of instances to add or remove, which ensures that the total number of instances stays within the valid range. Take note that Auto Scaling does not adjust the number of instances that you defined in the scaling rule. Examples:
+        The maximum number of instances (MaxSize) that can be contained in a scaling group is 3 and the current number of instances (Total Capacity) in the scaling group is 2. In this example, the Add3 scaling rule is created to add three ECS instances to the scaling group. However, after you execute Add3, Auto Scaling adds only one ECS instance to the scaling group. In addition, the number of ECS instances to add in the Add3 scaling rule remains unchanged.
+        The minimum number of instances (MinSize) that must be contained in a scaling group is 2 and the current number of instances (Total Capacity) is 3. In this example, the Remove5 scaling rule is created to remove five ECS instances from the scaling group. However, after you execute Remove5, Auto Scaling only removes one ECS instance from the scaling group. In addition, the number of ECS instances to remove in the Remove5 scaling rule remains unchanged.
         Before you call this operation, take note of the following items:
-        If you set the AdjustmentType parameter to TotalCapacity, the number of ECS instances in the scaling group is adjusted to the specified value. The value of the AdjustmentValue parameter must be greater than or equal to 0.
-        If you set the AdjustmentType parameter to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies the number of ECS instances that are added to the scaling group, and a negative value of AdjustmentValue specifies the number of ECS instances that are removed from the scaling group.
-        If you set the AdjustmentType parameter to PercentChangeInCapacity, Auto Scaling uses the following formula to calculate a value, and then rounds the value to the nearest integer to obtain the number of ECS instances that need to be scaled: Value of TotalCapacity × Value of AdjustmentValue/100.
-        If the cooldown time is specified in a scaling rule, the specified time applies to the scaling group after the rule is executed. Otherwise, the value of the DefaultCooldown parameter of the scaling group applies to the scaling group.
-        You can create only a limited number of scaling rules for a scaling group. For more information, see the "Limits" topic.
-        The unique identifier (ScalingRuleAri) of a scaling rule can be used by the following operations:
-        ExecuteScalingRule: You can call this operation to manually execute a specific scaling rule by setting the ScalingRuleAri parameter to the unique identifier of the scaling rule.
-        CreateScheduledTask: You can call this operation to create a scheduled task for a specific scaling rule by setting the ScheduledAction parameter to the unique identifier of the scaling rule.
+        If you set AdjustmentType to TotalCapacity, the total number of ECS instances or elastic container instances in your scaling group will be adjusted to a specified number when the scaling rule that you create by calling this operation is executed. You must set AdjustmentValue to an integer that is greater than 0.
+        If you set AdjustmentType to QuantityChangeInCapacity or PercentChangeInCapacity, a positive value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be added to your scaling group, and a negative value of AdjustmentValue specifies that a specific number of ECS instances or elastic container instances will be removed from the scaling group.
+        If you set AdjustmentType to PercentChangeInCapacity, Auto Scaling calculates the number of ECS instances or elastic container instances to add or remove by multiplying the current capacity of the scaling group (Total Capacity) by AdjustmentValue divided by 100, rounding off the result to determine the final adjustment count.
+        If you specify a cooldown period for a scaling rule, the cooldown period of the scaling rule takes effect after you execute the scaling rule. If you do not specify a cooldown period for a scaling rule, the value of DefaultCooldown of the scaling group takes effect after you execute the scaling rule.
+        You can create only a limited number of scaling rules for a scaling group. For more information, see [Limits](https://help.aliyun.com/document_detail/25863.html).
+        The following API operations may use the unique identifier of a scaling rule (ScalingRuleAri) that is returned after you call the CreateScalingRule operation:
+        ExecuteScalingRule: You can call this operation to manually execute a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule that you want to execute.
+        CreateScheduledTask: You can call this operation to create a scheduled task for a scaling rule. In this operation, you can set ScalingRuleAri to the unique identifier of the scaling rule for which you want to create a scheduled task.
         
         @param request: CreateScalingRuleRequest
         @return: CreateScalingRuleResponse
@@ -3403,12 +3403,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a scheduled task. A scheduled task is a type of scaling task that enables automatic execution of a specific scaling rule at a specified point in time. You can call the CreateScheduledTask operation to create a scheduled task to implement automatic scaling of computing resources. This ensures your business continuity and minimizes resource costs.
         
-        @description    If a scheduled task fails to trigger a scaling activity due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling activity after the period ends, the task is automatically skipped.
-        If multiple tasks are scheduled at similar points in time to trigger scaling activities in the same scaling group, the earliest task triggers the scaling activity first. Other tasks trigger scaling activities within their launch expiration time. Only one scaling activity can be triggered in a scaling group at a time.`` If the previous scaling activity is complete and another scheduled task attempts to trigger a scaling activity, Auto Scaling executes the scaling rule that is specified in the scheduled task and then triggers a scaling activity.``
-        A scheduled task supports the following scaling methods:
-        `ScheduledAction`: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
-        `ScalingGroupId`: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you created the scheduled task.
-        > You cannot specify the `ScheduledAction` and ScalingGroupId parameters at the same time.
+        @description    If the scaling rule of a scheduled task fails to be executed due to an ongoing scaling activity in the scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the time window specified by `LaunchExpirationTime`. If the scheduled task still fails after the specified time window ends, the task is automatically skipped.
+        If several scheduled tasks concurrently attempt to execute the same scaling rule within a scaling group, the following rules apply:
+        Scaling groups with **Expected Number of Instances** configured: The scaling activities incurred by the scheduled tasks are parallel scaling activities. In a proximate time window, Auto Scaling can trigger several scheduled tasks and then execute multiple parallel scaling activities at the same time.
+        Scaling groups with **Expected Number of Instances** not configured: The scaling activity incurred by the earliest scheduled task is executed. Considering that a scaling group allows for no more than one ongoing scaling activity simultaneously, other scheduled tasks will spontaneously invoke retries within the time window specified by `LaunchExpirationTime`. Upon completion of the first scheduled task, any retries invoked by other tasks within the time window specified by `LaunchExpirationTime` lead to continuous enforcement of the scaling rule, with each iteration generating a distinct scaling activity.
+        You can use one of the following methods to specify the scaling mode:
+        ScheduledAction: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
+        ScalingGroupId: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you create the scheduled task.
+        *\
+        *Note** You cannot specify ScheduledAction and ScalingGroupId at the same time.
         
         @param request: CreateScheduledTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3477,12 +3480,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a scheduled task. A scheduled task is a type of scaling task that enables automatic execution of a specific scaling rule at a specified point in time. You can call the CreateScheduledTask operation to create a scheduled task to implement automatic scaling of computing resources. This ensures your business continuity and minimizes resource costs.
         
-        @description    If a scheduled task fails to trigger a scaling activity due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling activity after the period ends, the task is automatically skipped.
-        If multiple tasks are scheduled at similar points in time to trigger scaling activities in the same scaling group, the earliest task triggers the scaling activity first. Other tasks trigger scaling activities within their launch expiration time. Only one scaling activity can be triggered in a scaling group at a time.`` If the previous scaling activity is complete and another scheduled task attempts to trigger a scaling activity, Auto Scaling executes the scaling rule that is specified in the scheduled task and then triggers a scaling activity.``
-        A scheduled task supports the following scaling methods:
-        `ScheduledAction`: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
-        `ScalingGroupId`: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you created the scheduled task.
-        > You cannot specify the `ScheduledAction` and ScalingGroupId parameters at the same time.
+        @description    If the scaling rule of a scheduled task fails to be executed due to an ongoing scaling activity in the scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the time window specified by `LaunchExpirationTime`. If the scheduled task still fails after the specified time window ends, the task is automatically skipped.
+        If several scheduled tasks concurrently attempt to execute the same scaling rule within a scaling group, the following rules apply:
+        Scaling groups with **Expected Number of Instances** configured: The scaling activities incurred by the scheduled tasks are parallel scaling activities. In a proximate time window, Auto Scaling can trigger several scheduled tasks and then execute multiple parallel scaling activities at the same time.
+        Scaling groups with **Expected Number of Instances** not configured: The scaling activity incurred by the earliest scheduled task is executed. Considering that a scaling group allows for no more than one ongoing scaling activity simultaneously, other scheduled tasks will spontaneously invoke retries within the time window specified by `LaunchExpirationTime`. Upon completion of the first scheduled task, any retries invoked by other tasks within the time window specified by `LaunchExpirationTime` lead to continuous enforcement of the scaling rule, with each iteration generating a distinct scaling activity.
+        You can use one of the following methods to specify the scaling mode:
+        ScheduledAction: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
+        ScalingGroupId: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you create the scheduled task.
+        *\
+        *Note** You cannot specify ScheduledAction and ScalingGroupId at the same time.
         
         @param request: CreateScheduledTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3550,12 +3556,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a scheduled task. A scheduled task is a type of scaling task that enables automatic execution of a specific scaling rule at a specified point in time. You can call the CreateScheduledTask operation to create a scheduled task to implement automatic scaling of computing resources. This ensures your business continuity and minimizes resource costs.
         
-        @description    If a scheduled task fails to trigger a scaling activity due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling activity after the period ends, the task is automatically skipped.
-        If multiple tasks are scheduled at similar points in time to trigger scaling activities in the same scaling group, the earliest task triggers the scaling activity first. Other tasks trigger scaling activities within their launch expiration time. Only one scaling activity can be triggered in a scaling group at a time.`` If the previous scaling activity is complete and another scheduled task attempts to trigger a scaling activity, Auto Scaling executes the scaling rule that is specified in the scheduled task and then triggers a scaling activity.``
-        A scheduled task supports the following scaling methods:
-        `ScheduledAction`: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
-        `ScalingGroupId`: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you created the scheduled task.
-        > You cannot specify the `ScheduledAction` and ScalingGroupId parameters at the same time.
+        @description    If the scaling rule of a scheduled task fails to be executed due to an ongoing scaling activity in the scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the time window specified by `LaunchExpirationTime`. If the scheduled task still fails after the specified time window ends, the task is automatically skipped.
+        If several scheduled tasks concurrently attempt to execute the same scaling rule within a scaling group, the following rules apply:
+        Scaling groups with **Expected Number of Instances** configured: The scaling activities incurred by the scheduled tasks are parallel scaling activities. In a proximate time window, Auto Scaling can trigger several scheduled tasks and then execute multiple parallel scaling activities at the same time.
+        Scaling groups with **Expected Number of Instances** not configured: The scaling activity incurred by the earliest scheduled task is executed. Considering that a scaling group allows for no more than one ongoing scaling activity simultaneously, other scheduled tasks will spontaneously invoke retries within the time window specified by `LaunchExpirationTime`. Upon completion of the first scheduled task, any retries invoked by other tasks within the time window specified by `LaunchExpirationTime` lead to continuous enforcement of the scaling rule, with each iteration generating a distinct scaling activity.
+        You can use one of the following methods to specify the scaling mode:
+        ScheduledAction: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
+        ScalingGroupId: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you create the scheduled task.
+        *\
+        *Note** You cannot specify ScheduledAction and ScalingGroupId at the same time.
         
         @param request: CreateScheduledTaskRequest
         @return: CreateScheduledTaskResponse
@@ -3570,12 +3579,15 @@ class Client(OpenApiClient):
         """
         @summary Creates a scheduled task. A scheduled task is a type of scaling task that enables automatic execution of a specific scaling rule at a specified point in time. You can call the CreateScheduledTask operation to create a scheduled task to implement automatic scaling of computing resources. This ensures your business continuity and minimizes resource costs.
         
-        @description    If a scheduled task fails to trigger a scaling activity due to an ongoing scaling activity in a scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the period that is specified by the LaunchExpirationTime parameter. If the scheduled task still fails to trigger a scaling activity after the period ends, the task is automatically skipped.
-        If multiple tasks are scheduled at similar points in time to trigger scaling activities in the same scaling group, the earliest task triggers the scaling activity first. Other tasks trigger scaling activities within their launch expiration time. Only one scaling activity can be triggered in a scaling group at a time.`` If the previous scaling activity is complete and another scheduled task attempts to trigger a scaling activity, Auto Scaling executes the scaling rule that is specified in the scheduled task and then triggers a scaling activity.``
-        A scheduled task supports the following scaling methods:
-        `ScheduledAction`: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
-        `ScalingGroupId`: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you created the scheduled task.
-        > You cannot specify the `ScheduledAction` and ScalingGroupId parameters at the same time.
+        @description    If the scaling rule of a scheduled task fails to be executed due to an ongoing scaling activity in the scaling group or because the scaling group is disabled, the scheduled task is automatically retried during the time window specified by `LaunchExpirationTime`. If the scheduled task still fails after the specified time window ends, the task is automatically skipped.
+        If several scheduled tasks concurrently attempt to execute the same scaling rule within a scaling group, the following rules apply:
+        Scaling groups with **Expected Number of Instances** configured: The scaling activities incurred by the scheduled tasks are parallel scaling activities. In a proximate time window, Auto Scaling can trigger several scheduled tasks and then execute multiple parallel scaling activities at the same time.
+        Scaling groups with **Expected Number of Instances** not configured: The scaling activity incurred by the earliest scheduled task is executed. Considering that a scaling group allows for no more than one ongoing scaling activity simultaneously, other scheduled tasks will spontaneously invoke retries within the time window specified by `LaunchExpirationTime`. Upon completion of the first scheduled task, any retries invoked by other tasks within the time window specified by `LaunchExpirationTime` lead to continuous enforcement of the scaling rule, with each iteration generating a distinct scaling activity.
+        You can use one of the following methods to specify the scaling mode:
+        ScheduledAction: Specify an existing scaling rule that you want Auto Scaling to execute when the scheduled task is triggered.
+        ScalingGroupId: Specify the minimum number, maximum number, or expected number of instances for the scaling group for which you create the scheduled task.
+        *\
+        *Note** You cannot specify ScheduledAction and ScalingGroupId at the same time.
         
         @param request: CreateScheduledTaskRequest
         @return: CreateScheduledTaskResponse
@@ -3941,11 +3953,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
         """
-        @summary Deletes a lifecycle hook.
+        @summary Deletes a lifecycle hook. If you no longer require a lifecycle hook, you can call the DeleteLifecycleHook operation to delete it, which frees up the lifecycle hook quota.
         
-        @description If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
+        @description If you delete an effective lifecycle hook before its timeout period ends, the instances on which the lifecycle hook takes effect exits the Pending state ahead of schedule. You can use the following methods to delete a lifecycle hook:
+        Include `LifecycleHookId` within your request to specify the lifecycle hook that you want to delete. In this case, `ScalingGroupId` and `LifecycleHookName` are ignored.
+        Include `ScalingGroupId` and `LifecycleHookName` within your request to specify the lifecycle hook that you want to delete.
         
         @param request: DeleteLifecycleHookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3992,11 +4004,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
         """
-        @summary Deletes a lifecycle hook.
+        @summary Deletes a lifecycle hook. If you no longer require a lifecycle hook, you can call the DeleteLifecycleHook operation to delete it, which frees up the lifecycle hook quota.
         
-        @description If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
+        @description If you delete an effective lifecycle hook before its timeout period ends, the instances on which the lifecycle hook takes effect exits the Pending state ahead of schedule. You can use the following methods to delete a lifecycle hook:
+        Include `LifecycleHookId` within your request to specify the lifecycle hook that you want to delete. In this case, `ScalingGroupId` and `LifecycleHookName` are ignored.
+        Include `ScalingGroupId` and `LifecycleHookName` within your request to specify the lifecycle hook that you want to delete.
         
         @param request: DeleteLifecycleHookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4042,11 +4054,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteLifecycleHookRequest,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
         """
-        @summary Deletes a lifecycle hook.
+        @summary Deletes a lifecycle hook. If you no longer require a lifecycle hook, you can call the DeleteLifecycleHook operation to delete it, which frees up the lifecycle hook quota.
         
-        @description If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
+        @description If you delete an effective lifecycle hook before its timeout period ends, the instances on which the lifecycle hook takes effect exits the Pending state ahead of schedule. You can use the following methods to delete a lifecycle hook:
+        Include `LifecycleHookId` within your request to specify the lifecycle hook that you want to delete. In this case, `ScalingGroupId` and `LifecycleHookName` are ignored.
+        Include `ScalingGroupId` and `LifecycleHookName` within your request to specify the lifecycle hook that you want to delete.
         
         @param request: DeleteLifecycleHookRequest
         @return: DeleteLifecycleHookResponse
@@ -4059,11 +4071,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteLifecycleHookRequest,
     ) -> ess_20220222_models.DeleteLifecycleHookResponse:
         """
-        @summary Deletes a lifecycle hook.
+        @summary Deletes a lifecycle hook. If you no longer require a lifecycle hook, you can call the DeleteLifecycleHook operation to delete it, which frees up the lifecycle hook quota.
         
-        @description If you delete a lifecycle hook that is in effect in a scaling group, instances exit the Pending state in advance. You can use one of the following methods to specify the lifecycle hooks that you want to delete:
-        Specify the scaling group ID of the lifecycle hook that you want to delete by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. In this case, the ScalingGroupId parameter and the LifecycleHookName parameter are ignored.
+        @description If you delete an effective lifecycle hook before its timeout period ends, the instances on which the lifecycle hook takes effect exits the Pending state ahead of schedule. You can use the following methods to delete a lifecycle hook:
+        Include `LifecycleHookId` within your request to specify the lifecycle hook that you want to delete. In this case, `ScalingGroupId` and `LifecycleHookName` are ignored.
+        Include `ScalingGroupId` and `LifecycleHookName` within your request to specify the lifecycle hook that you want to delete.
         
         @param request: DeleteLifecycleHookRequest
         @return: DeleteLifecycleHookResponse
@@ -4833,6 +4845,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
         """
+        @summary Queries the status of scaling activities that prompt text message or email notifications.
+        
         @param request: DescribeAlertConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAlertConfigurationResponse
@@ -4872,6 +4886,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
         """
+        @summary Queries the status of scaling activities that prompt text message or email notifications.
+        
         @param request: DescribeAlertConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAlertConfigurationResponse
@@ -4910,6 +4926,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeAlertConfigurationRequest,
     ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
         """
+        @summary Queries the status of scaling activities that prompt text message or email notifications.
+        
         @param request: DescribeAlertConfigurationRequest
         @return: DescribeAlertConfigurationResponse
         """
@@ -4921,6 +4939,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeAlertConfigurationRequest,
     ) -> ess_20220222_models.DescribeAlertConfigurationResponse:
         """
+        @summary Queries the status of scaling activities that prompt text message or email notifications.
+        
         @param request: DescribeAlertConfigurationRequest
         @return: DescribeAlertConfigurationResponse
         """
@@ -4933,7 +4953,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
         """
-        @summary Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries the details of a scaling configuration. You can query a scaling configuration by its ID to learn about its details such as the temporary storage size, number of IPv6 addresses, and bandwidth of the elastic IP address (EIP). The scaling configuration details can be obtained as a YAML file.
         
         @param request: DescribeEciScalingConfigurationDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4974,7 +4994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
         """
-        @summary Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries the details of a scaling configuration. You can query a scaling configuration by its ID to learn about its details such as the temporary storage size, number of IPv6 addresses, and bandwidth of the elastic IP address (EIP). The scaling configuration details can be obtained as a YAML file.
         
         @param request: DescribeEciScalingConfigurationDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5014,7 +5034,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
     ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
         """
-        @summary Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries the details of a scaling configuration. You can query a scaling configuration by its ID to learn about its details such as the temporary storage size, number of IPv6 addresses, and bandwidth of the elastic IP address (EIP). The scaling configuration details can be obtained as a YAML file.
         
         @param request: DescribeEciScalingConfigurationDetailRequest
         @return: DescribeEciScalingConfigurationDetailResponse
@@ -5027,7 +5047,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeEciScalingConfigurationDetailRequest,
     ) -> ess_20220222_models.DescribeEciScalingConfigurationDetailResponse:
         """
-        @summary Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
+        @summary Queries the details of a scaling configuration. You can query a scaling configuration by its ID to learn about its details such as the temporary storage size, number of IPv6 addresses, and bandwidth of the elastic IP address (EIP). The scaling configuration details can be obtained as a YAML file.
         
         @param request: DescribeEciScalingConfigurationDetailRequest
         @return: DescribeEciScalingConfigurationDetailResponse
@@ -5173,7 +5193,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
         """
-        @summary Queries lifecycle actions.
+        @summary Queries the details of a lifecycle hook. If you want to query the details of a lifecycle hook, you can call the DescribeLifecycleActions operation. For example, you can query the execution status and ID of a lifecycle hook, along with the Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect. When you call this operation, you can specify parameters such as ScalingActivityId, LifecycleActionToken, and MaxResults to query the details of a lifecycle hook.
         
         @description If a scaling activity is executed and a lifecycle hook is created for the scaling activity, the lifecycle hook triggers a lifecycle action. A lifecycle action can be in one of the following states:
         If a lifecycle action is in the Pending state, Elastic Compute Service (ECS) instances are waiting to be added to a scaling group or waiting to be removed from a scaling group.
@@ -5226,7 +5246,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
         """
-        @summary Queries lifecycle actions.
+        @summary Queries the details of a lifecycle hook. If you want to query the details of a lifecycle hook, you can call the DescribeLifecycleActions operation. For example, you can query the execution status and ID of a lifecycle hook, along with the Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect. When you call this operation, you can specify parameters such as ScalingActivityId, LifecycleActionToken, and MaxResults to query the details of a lifecycle hook.
         
         @description If a scaling activity is executed and a lifecycle hook is created for the scaling activity, the lifecycle hook triggers a lifecycle action. A lifecycle action can be in one of the following states:
         If a lifecycle action is in the Pending state, Elastic Compute Service (ECS) instances are waiting to be added to a scaling group or waiting to be removed from a scaling group.
@@ -5278,7 +5298,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
         """
-        @summary Queries lifecycle actions.
+        @summary Queries the details of a lifecycle hook. If you want to query the details of a lifecycle hook, you can call the DescribeLifecycleActions operation. For example, you can query the execution status and ID of a lifecycle hook, along with the Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect. When you call this operation, you can specify parameters such as ScalingActivityId, LifecycleActionToken, and MaxResults to query the details of a lifecycle hook.
         
         @description If a scaling activity is executed and a lifecycle hook is created for the scaling activity, the lifecycle hook triggers a lifecycle action. A lifecycle action can be in one of the following states:
         If a lifecycle action is in the Pending state, Elastic Compute Service (ECS) instances are waiting to be added to a scaling group or waiting to be removed from a scaling group.
@@ -5297,7 +5317,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
     ) -> ess_20220222_models.DescribeLifecycleActionsResponse:
         """
-        @summary Queries lifecycle actions.
+        @summary Queries the details of a lifecycle hook. If you want to query the details of a lifecycle hook, you can call the DescribeLifecycleActions operation. For example, you can query the execution status and ID of a lifecycle hook, along with the Elastic Compute Service (ECS) instances on which the lifecycle hook takes effect. When you call this operation, you can specify parameters such as ScalingActivityId, LifecycleActionToken, and MaxResults to query the details of a lifecycle hook.
         
         @description If a scaling activity is executed and a lifecycle hook is created for the scaling activity, the lifecycle hook triggers a lifecycle action. A lifecycle action can be in one of the following states:
         If a lifecycle action is in the Pending state, Elastic Compute Service (ECS) instances are waiting to be added to a scaling group or waiting to be removed from a scaling group.
@@ -5317,7 +5337,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
         """
-        @summary Queries lifecycle hooks.
+        @summary Queries lifecycle hooks. If you want to check whether the configurations of your lifecycle hooks are correct or you want to query the details of multiple lifecycle hooks at the same time, you can call the DescribeLifecycleHooks operation. You can specify lifecycle hook IDs or scaling group IDs when you call this operation. This operation returns details such as the default actions, scaling activities, Alibaba Cloud Resource Names (ARNs) of notification recipients, and timeout periods of lifecycle hooks.
         
         @description You can use one of the following methods to query lifecycle hooks:
         Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
@@ -5373,7 +5393,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
         """
-        @summary Queries lifecycle hooks.
+        @summary Queries lifecycle hooks. If you want to check whether the configurations of your lifecycle hooks are correct or you want to query the details of multiple lifecycle hooks at the same time, you can call the DescribeLifecycleHooks operation. You can specify lifecycle hook IDs or scaling group IDs when you call this operation. This operation returns details such as the default actions, scaling activities, Alibaba Cloud Resource Names (ARNs) of notification recipients, and timeout periods of lifecycle hooks.
         
         @description You can use one of the following methods to query lifecycle hooks:
         Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
@@ -5428,7 +5448,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleHooksRequest,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
         """
-        @summary Queries lifecycle hooks.
+        @summary Queries lifecycle hooks. If you want to check whether the configurations of your lifecycle hooks are correct or you want to query the details of multiple lifecycle hooks at the same time, you can call the DescribeLifecycleHooks operation. You can specify lifecycle hook IDs or scaling group IDs when you call this operation. This operation returns details such as the default actions, scaling activities, Alibaba Cloud Resource Names (ARNs) of notification recipients, and timeout periods of lifecycle hooks.
         
         @description You can use one of the following methods to query lifecycle hooks:
         Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
@@ -5446,7 +5466,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeLifecycleHooksRequest,
     ) -> ess_20220222_models.DescribeLifecycleHooksResponse:
         """
-        @summary Queries lifecycle hooks.
+        @summary Queries lifecycle hooks. If you want to check whether the configurations of your lifecycle hooks are correct or you want to query the details of multiple lifecycle hooks at the same time, you can call the DescribeLifecycleHooks operation. You can specify lifecycle hook IDs or scaling group IDs when you call this operation. This operation returns details such as the default actions, scaling activities, Alibaba Cloud Resource Names (ARNs) of notification recipients, and timeout periods of lifecycle hooks.
         
         @description You can use one of the following methods to query lifecycle hooks:
         Specify a list of lifecycle hook IDs by using the LifecycleHookIds parameter. In this case, you do not need to specify the ScalingGroupId and LifecycleHookName parameters.
@@ -5565,7 +5585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries event notifications.
+        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
         
         @param request: DescribeNotificationConfigurationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5606,7 +5626,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries event notifications.
+        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
         
         @param request: DescribeNotificationConfigurationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5646,7 +5666,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeNotificationConfigurationsRequest,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries event notifications.
+        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
         
         @param request: DescribeNotificationConfigurationsRequest
         @return: DescribeNotificationConfigurationsResponse
@@ -5659,7 +5679,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeNotificationConfigurationsRequest,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries event notifications.
+        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
         
         @param request: DescribeNotificationConfigurationsRequest
         @return: DescribeNotificationConfigurationsResponse
@@ -5673,7 +5693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeNotificationTypesResponse:
         """
-        @summary Queries notification types.
+        @summary Queries notification types. You can call the DescribeNotificationTypes operation to query the types of notifications on scaling events or resource changes occurred in your scaling groups. Notifications are triggered in scenarios such as successful scale-out events, successful scale-in events, expiration of scheduled tasks, and partially successful scale-out events.
         
         @param request: DescribeNotificationTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5710,7 +5730,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeNotificationTypesResponse:
         """
-        @summary Queries notification types.
+        @summary Queries notification types. You can call the DescribeNotificationTypes operation to query the types of notifications on scaling events or resource changes occurred in your scaling groups. Notifications are triggered in scenarios such as successful scale-out events, successful scale-in events, expiration of scheduled tasks, and partially successful scale-out events.
         
         @param request: DescribeNotificationTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5746,7 +5766,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeNotificationTypesRequest,
     ) -> ess_20220222_models.DescribeNotificationTypesResponse:
         """
-        @summary Queries notification types.
+        @summary Queries notification types. You can call the DescribeNotificationTypes operation to query the types of notifications on scaling events or resource changes occurred in your scaling groups. Notifications are triggered in scenarios such as successful scale-out events, successful scale-in events, expiration of scheduled tasks, and partially successful scale-out events.
         
         @param request: DescribeNotificationTypesRequest
         @return: DescribeNotificationTypesResponse
@@ -5759,7 +5779,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeNotificationTypesRequest,
     ) -> ess_20220222_models.DescribeNotificationTypesResponse:
         """
-        @summary Queries notification types.
+        @summary Queries notification types. You can call the DescribeNotificationTypes operation to query the types of notifications on scaling events or resource changes occurred in your scaling groups. Notifications are triggered in scenarios such as successful scale-out events, successful scale-in events, expiration of scheduled tasks, and partially successful scale-out events.
         
         @param request: DescribeNotificationTypesRequest
         @return: DescribeNotificationTypesResponse
@@ -6121,7 +6141,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingActivityDetailResponse:
         """
-        @summary Queries the details about a scaling activity.
+        @summary Queries the details of a scaling activity. The DescribeScalingActivityDetail operation enables you to access and monitor the details of a scaling activity, which is beneficial for troubleshooting and performance analysis purposes.
         
         @param request: DescribeScalingActivityDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6162,7 +6182,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingActivityDetailResponse:
         """
-        @summary Queries the details about a scaling activity.
+        @summary Queries the details of a scaling activity. The DescribeScalingActivityDetail operation enables you to access and monitor the details of a scaling activity, which is beneficial for troubleshooting and performance analysis purposes.
         
         @param request: DescribeScalingActivityDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6202,7 +6222,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingActivityDetailRequest,
     ) -> ess_20220222_models.DescribeScalingActivityDetailResponse:
         """
-        @summary Queries the details about a scaling activity.
+        @summary Queries the details of a scaling activity. The DescribeScalingActivityDetail operation enables you to access and monitor the details of a scaling activity, which is beneficial for troubleshooting and performance analysis purposes.
         
         @param request: DescribeScalingActivityDetailRequest
         @return: DescribeScalingActivityDetailResponse
@@ -6215,7 +6235,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingActivityDetailRequest,
     ) -> ess_20220222_models.DescribeScalingActivityDetailResponse:
         """
-        @summary Queries the details about a scaling activity.
+        @summary Queries the details of a scaling activity. The DescribeScalingActivityDetail operation enables you to access and monitor the details of a scaling activity, which is beneficial for troubleshooting and performance analysis purposes.
         
         @param request: DescribeScalingActivityDetailRequest
         @return: DescribeScalingActivityDetailResponse
@@ -6613,7 +6633,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group
+        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group. If you want to flexibly filter ECS instances that meet the specified criteria and query the instance details, you can call the DescribeScalingInstances operation. This operation enables you to input custom parameters for precise query of ECS instances, helping you gain a clear understanding of the instance details and optimize scaling configurations.
         
         @param request: DescribeScalingInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6678,7 +6698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group
+        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group. If you want to flexibly filter ECS instances that meet the specified criteria and query the instance details, you can call the DescribeScalingInstances operation. This operation enables you to input custom parameters for precise query of ECS instances, helping you gain a clear understanding of the instance details and optimize scaling configurations.
         
         @param request: DescribeScalingInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6742,7 +6762,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingInstancesRequest,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group
+        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group. If you want to flexibly filter ECS instances that meet the specified criteria and query the instance details, you can call the DescribeScalingInstances operation. This operation enables you to input custom parameters for precise query of ECS instances, helping you gain a clear understanding of the instance details and optimize scaling configurations.
         
         @param request: DescribeScalingInstancesRequest
         @return: DescribeScalingInstancesResponse
@@ -6755,7 +6775,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingInstancesRequest,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group
+        @summary Queries the Elastic Compute Service (ECS) instances in a scaling group. If you want to flexibly filter ECS instances that meet the specified criteria and query the instance details, you can call the DescribeScalingInstances operation. This operation enables you to input custom parameters for precise query of ECS instances, helping you gain a clear understanding of the instance details and optimize scaling configurations.
         
         @param request: DescribeScalingInstancesRequest
         @return: DescribeScalingInstancesResponse
@@ -6921,7 +6941,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
         """
-        @summary Queries scheduled tasks.
+        @summary Queries scheduled tasks. A scheduled task is a predefined task that triggers the automatic execution of a scaling rule at the specified point in time. It ensures an automatic scaling of computing resources to fulfill your business demands at a minimum cost. After you create a scheduled task, you can call the DescribeScheduledTasks operation to query the details of the task, such as the execution time point and the scaling group ID. You can also call this operation to query the total number of existing scheduled tasks.
         
         @description You can query scheduled tasks by scaling rule, task ID, or task name.
         
@@ -6978,7 +6998,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
         """
-        @summary Queries scheduled tasks.
+        @summary Queries scheduled tasks. A scheduled task is a predefined task that triggers the automatic execution of a scaling rule at the specified point in time. It ensures an automatic scaling of computing resources to fulfill your business demands at a minimum cost. After you create a scheduled task, you can call the DescribeScheduledTasks operation to query the details of the task, such as the execution time point and the scaling group ID. You can also call this operation to query the total number of existing scheduled tasks.
         
         @description You can query scheduled tasks by scaling rule, task ID, or task name.
         
@@ -7034,7 +7054,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScheduledTasksRequest,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
         """
-        @summary Queries scheduled tasks.
+        @summary Queries scheduled tasks. A scheduled task is a predefined task that triggers the automatic execution of a scaling rule at the specified point in time. It ensures an automatic scaling of computing resources to fulfill your business demands at a minimum cost. After you create a scheduled task, you can call the DescribeScheduledTasks operation to query the details of the task, such as the execution time point and the scaling group ID. You can also call this operation to query the total number of existing scheduled tasks.
         
         @description You can query scheduled tasks by scaling rule, task ID, or task name.
         
@@ -7049,7 +7069,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScheduledTasksRequest,
     ) -> ess_20220222_models.DescribeScheduledTasksResponse:
         """
-        @summary Queries scheduled tasks.
+        @summary Queries scheduled tasks. A scheduled task is a predefined task that triggers the automatic execution of a scaling rule at the specified point in time. It ensures an automatic scaling of computing resources to fulfill your business demands at a minimum cost. After you create a scheduled task, you can call the DescribeScheduledTasks operation to query the details of the task, such as the execution time point and the scaling group ID. You can also call this operation to query the total number of existing scheduled tasks.
         
         @description You can query scheduled tasks by scaling rule, task ID, or task name.
         
@@ -7309,16 +7329,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachInstancesResponse:
         """
-        @summary Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
+        @summary Removes instances from a scaling group. If an enabled scaling group has no ongoing scaling activities, you can call the DetachInstances operation to remove one or more Elastic Compute Service (ECS) instances, elastic container instances, or Alibaba Cloud-hosted third-party instances from the scaling group.
         
-        @description After ECS instances or elastic container instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances or elastic container instances that are removed from the scaling group to other scaling groups.
-        After you remove an ECS instance or elastic container instance by calling the DetachInstances operation, the instance is not stopped or released.
-        Before you call this operation, make sure that the following conditions are met:
+        @description    Before you call the DetachInstances operation, make sure that the following conditions are met:
         The specified scaling group is enabled.
-        No scaling activities in the specified scaling group are in progress.
-        > If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        A successful call indicates only that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        The number of ECS instances or elastic container instances in a scaling group after you remove a specific number of instances from the scaling group must be equal to or greater than the value of the MinSize parameter. Otherwise, an error is reported when you call the DetachInstances operation.
+        The specified scaling group does not have any ongoing scaling activities.
+        *\
+        *Note** If the specified scaling group does not have any ongoing scaling activities, the operation can bypass the cooldown period of the scaling group and immediately trigger scaling activities.
+        Before you call this operation, take note of the following items:
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation can run independently. If needed, you can call the [AttachInstances](https://help.aliyun.com/document_detail/25954.html) operation to re-add these instances to a scaling group.
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation are not stopped or released.
+        A successful call only means that Auto Scaling accepts your request. Scaling activities can be triggered as expected, but their successful execution is not guaranteed. You can query the status of a scaling activity based on the ScalingActivityId response parameter.
+        The removal of ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances must not result in the overall number of instances within the specified scaling group falling below the minimum capacity threshold (MinSize); otherwise, an error will be reported.
         
         @param request: DetachInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7373,16 +7395,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachInstancesResponse:
         """
-        @summary Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
+        @summary Removes instances from a scaling group. If an enabled scaling group has no ongoing scaling activities, you can call the DetachInstances operation to remove one or more Elastic Compute Service (ECS) instances, elastic container instances, or Alibaba Cloud-hosted third-party instances from the scaling group.
         
-        @description After ECS instances or elastic container instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances or elastic container instances that are removed from the scaling group to other scaling groups.
-        After you remove an ECS instance or elastic container instance by calling the DetachInstances operation, the instance is not stopped or released.
-        Before you call this operation, make sure that the following conditions are met:
+        @description    Before you call the DetachInstances operation, make sure that the following conditions are met:
         The specified scaling group is enabled.
-        No scaling activities in the specified scaling group are in progress.
-        > If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        A successful call indicates only that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        The number of ECS instances or elastic container instances in a scaling group after you remove a specific number of instances from the scaling group must be equal to or greater than the value of the MinSize parameter. Otherwise, an error is reported when you call the DetachInstances operation.
+        The specified scaling group does not have any ongoing scaling activities.
+        *\
+        *Note** If the specified scaling group does not have any ongoing scaling activities, the operation can bypass the cooldown period of the scaling group and immediately trigger scaling activities.
+        Before you call this operation, take note of the following items:
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation can run independently. If needed, you can call the [AttachInstances](https://help.aliyun.com/document_detail/25954.html) operation to re-add these instances to a scaling group.
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation are not stopped or released.
+        A successful call only means that Auto Scaling accepts your request. Scaling activities can be triggered as expected, but their successful execution is not guaranteed. You can query the status of a scaling activity based on the ScalingActivityId response parameter.
+        The removal of ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances must not result in the overall number of instances within the specified scaling group falling below the minimum capacity threshold (MinSize); otherwise, an error will be reported.
         
         @param request: DetachInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7436,16 +7460,18 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachInstancesRequest,
     ) -> ess_20220222_models.DetachInstancesResponse:
         """
-        @summary Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
+        @summary Removes instances from a scaling group. If an enabled scaling group has no ongoing scaling activities, you can call the DetachInstances operation to remove one or more Elastic Compute Service (ECS) instances, elastic container instances, or Alibaba Cloud-hosted third-party instances from the scaling group.
         
-        @description After ECS instances or elastic container instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances or elastic container instances that are removed from the scaling group to other scaling groups.
-        After you remove an ECS instance or elastic container instance by calling the DetachInstances operation, the instance is not stopped or released.
-        Before you call this operation, make sure that the following conditions are met:
+        @description    Before you call the DetachInstances operation, make sure that the following conditions are met:
         The specified scaling group is enabled.
-        No scaling activities in the specified scaling group are in progress.
-        > If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        A successful call indicates only that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        The number of ECS instances or elastic container instances in a scaling group after you remove a specific number of instances from the scaling group must be equal to or greater than the value of the MinSize parameter. Otherwise, an error is reported when you call the DetachInstances operation.
+        The specified scaling group does not have any ongoing scaling activities.
+        *\
+        *Note** If the specified scaling group does not have any ongoing scaling activities, the operation can bypass the cooldown period of the scaling group and immediately trigger scaling activities.
+        Before you call this operation, take note of the following items:
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation can run independently. If needed, you can call the [AttachInstances](https://help.aliyun.com/document_detail/25954.html) operation to re-add these instances to a scaling group.
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation are not stopped or released.
+        A successful call only means that Auto Scaling accepts your request. Scaling activities can be triggered as expected, but their successful execution is not guaranteed. You can query the status of a scaling activity based on the ScalingActivityId response parameter.
+        The removal of ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances must not result in the overall number of instances within the specified scaling group falling below the minimum capacity threshold (MinSize); otherwise, an error will be reported.
         
         @param request: DetachInstancesRequest
         @return: DetachInstancesResponse
@@ -7458,16 +7484,18 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachInstancesRequest,
     ) -> ess_20220222_models.DetachInstancesResponse:
         """
-        @summary Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
+        @summary Removes instances from a scaling group. If an enabled scaling group has no ongoing scaling activities, you can call the DetachInstances operation to remove one or more Elastic Compute Service (ECS) instances, elastic container instances, or Alibaba Cloud-hosted third-party instances from the scaling group.
         
-        @description After ECS instances or elastic container instances are removed from a scaling group, you can call the AttachInstances operation to add the ECS instances or elastic container instances that are removed from the scaling group to other scaling groups.
-        After you remove an ECS instance or elastic container instance by calling the DetachInstances operation, the instance is not stopped or released.
-        Before you call this operation, make sure that the following conditions are met:
+        @description    Before you call the DetachInstances operation, make sure that the following conditions are met:
         The specified scaling group is enabled.
-        No scaling activities in the specified scaling group are in progress.
-        > If no scaling activities in the specified scaling group are in progress, the operation can trigger scaling activities even before the cooldown time expires.
-        A successful call indicates only that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity based on the value of the ScalingActivityId parameter in the response.
-        The number of ECS instances or elastic container instances in a scaling group after you remove a specific number of instances from the scaling group must be equal to or greater than the value of the MinSize parameter. Otherwise, an error is reported when you call the DetachInstances operation.
+        The specified scaling group does not have any ongoing scaling activities.
+        *\
+        *Note** If the specified scaling group does not have any ongoing scaling activities, the operation can bypass the cooldown period of the scaling group and immediately trigger scaling activities.
+        Before you call this operation, take note of the following items:
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation can run independently. If needed, you can call the [AttachInstances](https://help.aliyun.com/document_detail/25954.html) operation to re-add these instances to a scaling group.
+        The ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances that are removed from a scaling group by using this operation are not stopped or released.
+        A successful call only means that Auto Scaling accepts your request. Scaling activities can be triggered as expected, but their successful execution is not guaranteed. You can query the status of a scaling activity based on the ScalingActivityId response parameter.
+        The removal of ECS instances, elastic container instances, or Alibaba Cloud-hosted third-party instances must not result in the overall number of instances within the specified scaling group falling below the minimum capacity threshold (MinSize); otherwise, an error will be reported.
         
         @param request: DetachInstancesRequest
         @return: DetachInstancesResponse
@@ -7481,7 +7509,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachLoadBalancersResponse:
         """
-        @summary Detaches one or more Classic Load Balancer (CLB) instances from a scaling group.
+        @summary Detaches Classic Load Balancer (CLB, formerly known as Server Load Balancer or SLB) instances from a scaling group. If the current CLB instance no longer meets your business requirements, you can call the DetachLoadBalancers operation to detach it from your scaling group. When you call this operation, you can use ScalingGroupId, LoadBalancer.N, and ForceDetach to specify one or more CLB instances to detach. You can also determine whether to call this operation asynchronously and whether to remove the Elastic Compute Service (ECS) instances acting as backend servers from the backend server groups of the CLB instance. You can call this operation to detach only CLB instances from a scaling group.
         
         @param request: DetachLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7530,7 +7558,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DetachLoadBalancersResponse:
         """
-        @summary Detaches one or more Classic Load Balancer (CLB) instances from a scaling group.
+        @summary Detaches Classic Load Balancer (CLB, formerly known as Server Load Balancer or SLB) instances from a scaling group. If the current CLB instance no longer meets your business requirements, you can call the DetachLoadBalancers operation to detach it from your scaling group. When you call this operation, you can use ScalingGroupId, LoadBalancer.N, and ForceDetach to specify one or more CLB instances to detach. You can also determine whether to call this operation asynchronously and whether to remove the Elastic Compute Service (ECS) instances acting as backend servers from the backend server groups of the CLB instance. You can call this operation to detach only CLB instances from a scaling group.
         
         @param request: DetachLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7578,7 +7606,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachLoadBalancersRequest,
     ) -> ess_20220222_models.DetachLoadBalancersResponse:
         """
-        @summary Detaches one or more Classic Load Balancer (CLB) instances from a scaling group.
+        @summary Detaches Classic Load Balancer (CLB, formerly known as Server Load Balancer or SLB) instances from a scaling group. If the current CLB instance no longer meets your business requirements, you can call the DetachLoadBalancers operation to detach it from your scaling group. When you call this operation, you can use ScalingGroupId, LoadBalancer.N, and ForceDetach to specify one or more CLB instances to detach. You can also determine whether to call this operation asynchronously and whether to remove the Elastic Compute Service (ECS) instances acting as backend servers from the backend server groups of the CLB instance. You can call this operation to detach only CLB instances from a scaling group.
         
         @param request: DetachLoadBalancersRequest
         @return: DetachLoadBalancersResponse
@@ -7591,7 +7619,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DetachLoadBalancersRequest,
     ) -> ess_20220222_models.DetachLoadBalancersResponse:
         """
-        @summary Detaches one or more Classic Load Balancer (CLB) instances from a scaling group.
+        @summary Detaches Classic Load Balancer (CLB, formerly known as Server Load Balancer or SLB) instances from a scaling group. If the current CLB instance no longer meets your business requirements, you can call the DetachLoadBalancers operation to detach it from your scaling group. When you call this operation, you can use ScalingGroupId, LoadBalancer.N, and ForceDetach to specify one or more CLB instances to detach. You can also determine whether to call this operation asynchronously and whether to remove the Elastic Compute Service (ECS) instances acting as backend servers from the backend server groups of the CLB instance. You can call this operation to detach only CLB instances from a scaling group.
         
         @param request: DetachLoadBalancersRequest
         @return: DetachLoadBalancersResponse
@@ -8533,7 +8561,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
         """
-        @summary Executes a scaling rule.
+        @summary Executes a scaling rule. To adjust the number of Elastic Compute Service (ECS) instances or elastic container instances, you can manually execute a scaling rule or enable Auto Scaling to execute a scaling rule. You can call the ExecuteScalingRule operation to execute simple scaling rules or step scaling rules. Auto Scaling automatically executes target tracking scaling rules and predictive scaling rules on your behalf without requiring explicit execution calls.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -8593,7 +8621,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
         """
-        @summary Executes a scaling rule.
+        @summary Executes a scaling rule. To adjust the number of Elastic Compute Service (ECS) instances or elastic container instances, you can manually execute a scaling rule or enable Auto Scaling to execute a scaling rule. You can call the ExecuteScalingRule operation to execute simple scaling rules or step scaling rules. Auto Scaling automatically executes target tracking scaling rules and predictive scaling rules on your behalf without requiring explicit execution calls.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -8652,7 +8680,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExecuteScalingRuleRequest,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
         """
-        @summary Executes a scaling rule.
+        @summary Executes a scaling rule. To adjust the number of Elastic Compute Service (ECS) instances or elastic container instances, you can manually execute a scaling rule or enable Auto Scaling to execute a scaling rule. You can call the ExecuteScalingRule operation to execute simple scaling rules or step scaling rules. Auto Scaling automatically executes target tracking scaling rules and predictive scaling rules on your behalf without requiring explicit execution calls.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -8674,7 +8702,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExecuteScalingRuleRequest,
     ) -> ess_20220222_models.ExecuteScalingRuleResponse:
         """
-        @summary Executes a scaling rule.
+        @summary Executes a scaling rule. To adjust the number of Elastic Compute Service (ECS) instances or elastic container instances, you can manually execute a scaling rule or enable Auto Scaling to execute a scaling rule. You can call the ExecuteScalingRule operation to execute simple scaling rules or step scaling rules. Auto Scaling automatically executes target tracking scaling rules and predictive scaling rules on your behalf without requiring explicit execution calls.
         
         @description Before you call this operation, take note of the following items:
         The scaling group is in the Active state.
@@ -8697,10 +8725,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        @summary Moves an Elastic Compute Service (ECS) instance out of the Standby state.
+        @summary Removes an instance from the Standby state. When a scale-in event is triggered in a scaling group, Auto Scaling does not remove Elastic Compute Service (ECS) instances or elastic container instances that are in the Standby state from the scaling group. If you want to restart the instances that are in the Standby state, you can call the ExitStandby operation to remove the instances from the Standby state and put them into the In Service state.
         
-        @description ## Description
-        If your scaling group is associated with a Classic Load Balancer (CLB) instance and you move an ECS instance in your scaling group out of the Standby state, the weight of the ECS instance is reset to the value that is specified in the scaling configuration of your scaling group.
+        @description After ECS instances or elastic container instances are removed from the Standby state, the following rules apply:
+        The ECS instances or elastic container instances enter the In Service state.
+        The default weight of each ECS instance or elastic container instance as a backend server of the attached load balancer is 50.
+        If you stop or restart the ECS instances or elastic container instances, the health check status of the instances will be updated.
+        When a scale-in event is triggered, Auto Scaling may remove the ECS instances or elastic container instances from the scaling group.
         
         @param request: ExitStandbyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8747,10 +8778,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        @summary Moves an Elastic Compute Service (ECS) instance out of the Standby state.
+        @summary Removes an instance from the Standby state. When a scale-in event is triggered in a scaling group, Auto Scaling does not remove Elastic Compute Service (ECS) instances or elastic container instances that are in the Standby state from the scaling group. If you want to restart the instances that are in the Standby state, you can call the ExitStandby operation to remove the instances from the Standby state and put them into the In Service state.
         
-        @description ## Description
-        If your scaling group is associated with a Classic Load Balancer (CLB) instance and you move an ECS instance in your scaling group out of the Standby state, the weight of the ECS instance is reset to the value that is specified in the scaling configuration of your scaling group.
+        @description After ECS instances or elastic container instances are removed from the Standby state, the following rules apply:
+        The ECS instances or elastic container instances enter the In Service state.
+        The default weight of each ECS instance or elastic container instance as a backend server of the attached load balancer is 50.
+        If you stop or restart the ECS instances or elastic container instances, the health check status of the instances will be updated.
+        When a scale-in event is triggered, Auto Scaling may remove the ECS instances or elastic container instances from the scaling group.
         
         @param request: ExitStandbyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8796,10 +8830,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExitStandbyRequest,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        @summary Moves an Elastic Compute Service (ECS) instance out of the Standby state.
+        @summary Removes an instance from the Standby state. When a scale-in event is triggered in a scaling group, Auto Scaling does not remove Elastic Compute Service (ECS) instances or elastic container instances that are in the Standby state from the scaling group. If you want to restart the instances that are in the Standby state, you can call the ExitStandby operation to remove the instances from the Standby state and put them into the In Service state.
         
-        @description ## Description
-        If your scaling group is associated with a Classic Load Balancer (CLB) instance and you move an ECS instance in your scaling group out of the Standby state, the weight of the ECS instance is reset to the value that is specified in the scaling configuration of your scaling group.
+        @description After ECS instances or elastic container instances are removed from the Standby state, the following rules apply:
+        The ECS instances or elastic container instances enter the In Service state.
+        The default weight of each ECS instance or elastic container instance as a backend server of the attached load balancer is 50.
+        If you stop or restart the ECS instances or elastic container instances, the health check status of the instances will be updated.
+        When a scale-in event is triggered, Auto Scaling may remove the ECS instances or elastic container instances from the scaling group.
         
         @param request: ExitStandbyRequest
         @return: ExitStandbyResponse
@@ -8812,10 +8849,13 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ExitStandbyRequest,
     ) -> ess_20220222_models.ExitStandbyResponse:
         """
-        @summary Moves an Elastic Compute Service (ECS) instance out of the Standby state.
+        @summary Removes an instance from the Standby state. When a scale-in event is triggered in a scaling group, Auto Scaling does not remove Elastic Compute Service (ECS) instances or elastic container instances that are in the Standby state from the scaling group. If you want to restart the instances that are in the Standby state, you can call the ExitStandby operation to remove the instances from the Standby state and put them into the In Service state.
         
-        @description ## Description
-        If your scaling group is associated with a Classic Load Balancer (CLB) instance and you move an ECS instance in your scaling group out of the Standby state, the weight of the ECS instance is reset to the value that is specified in the scaling configuration of your scaling group.
+        @description After ECS instances or elastic container instances are removed from the Standby state, the following rules apply:
+        The ECS instances or elastic container instances enter the In Service state.
+        The default weight of each ECS instance or elastic container instance as a backend server of the attached load balancer is 50.
+        If you stop or restart the ECS instances or elastic container instances, the health check status of the instances will be updated.
+        When a scale-in event is triggered, Auto Scaling may remove the ECS instances or elastic container instances from the scaling group.
         
         @param request: ExitStandbyRequest
         @return: ExitStandbyResponse
@@ -9389,6 +9429,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
         """
+        @summary Sets the status of scaling activities that prompt text message or email notifications.
+        
         @param request: ModifyAlertConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAlertConfigurationResponse
@@ -9430,6 +9472,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
         """
+        @summary Sets the status of scaling activities that prompt text message or email notifications.
+        
         @param request: ModifyAlertConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyAlertConfigurationResponse
@@ -9470,6 +9514,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyAlertConfigurationRequest,
     ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
         """
+        @summary Sets the status of scaling activities that prompt text message or email notifications.
+        
         @param request: ModifyAlertConfigurationRequest
         @return: ModifyAlertConfigurationResponse
         """
@@ -9481,6 +9527,8 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyAlertConfigurationRequest,
     ) -> ess_20220222_models.ModifyAlertConfigurationResponse:
         """
+        @summary Sets the status of scaling activities that prompt text message or email notifications.
+        
         @param request: ModifyAlertConfigurationRequest
         @return: ModifyAlertConfigurationResponse
         """
@@ -9909,11 +9957,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyLifecycleHookResponse:
         """
-        @summary Modifies a lifecycle hook.
+        @summary Modifies a lifecycle hook. If an existing lifecycle hook does not meet your business requirements anymore, you can call the ModifyLifecycleHook operation to modify the information such as the scaling event, timeout period, and default action of the lifecycle hook. Before you modify a lifecycle hook, you can locate the lifecycle hook by its ID, name, or scaling group.
         
-        @description You can use one of the following methods to specify the lifecycle hook that you want to modify:
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. When you use this method, the ScalingGroupId and LifecycleHookName parameters are ignored.
-        Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
+        @description You can use one of the following methods to locate the lifecycle hook that you want to modify:
+        Specify LifecycleHookId. In this case, ScalingGroupId and LifecycleHookName are ignored.
+        Specify ScalingGroupId and LifecycleHookName. Each lifecycle hook within a scaling group has a unique name.
         
         @param request: ModifyLifecycleHookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9972,11 +10020,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyLifecycleHookResponse:
         """
-        @summary Modifies a lifecycle hook.
+        @summary Modifies a lifecycle hook. If an existing lifecycle hook does not meet your business requirements anymore, you can call the ModifyLifecycleHook operation to modify the information such as the scaling event, timeout period, and default action of the lifecycle hook. Before you modify a lifecycle hook, you can locate the lifecycle hook by its ID, name, or scaling group.
         
-        @description You can use one of the following methods to specify the lifecycle hook that you want to modify:
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. When you use this method, the ScalingGroupId and LifecycleHookName parameters are ignored.
-        Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
+        @description You can use one of the following methods to locate the lifecycle hook that you want to modify:
+        Specify LifecycleHookId. In this case, ScalingGroupId and LifecycleHookName are ignored.
+        Specify ScalingGroupId and LifecycleHookName. Each lifecycle hook within a scaling group has a unique name.
         
         @param request: ModifyLifecycleHookRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10034,11 +10082,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyLifecycleHookRequest,
     ) -> ess_20220222_models.ModifyLifecycleHookResponse:
         """
-        @summary Modifies a lifecycle hook.
+        @summary Modifies a lifecycle hook. If an existing lifecycle hook does not meet your business requirements anymore, you can call the ModifyLifecycleHook operation to modify the information such as the scaling event, timeout period, and default action of the lifecycle hook. Before you modify a lifecycle hook, you can locate the lifecycle hook by its ID, name, or scaling group.
         
-        @description You can use one of the following methods to specify the lifecycle hook that you want to modify:
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. When you use this method, the ScalingGroupId and LifecycleHookName parameters are ignored.
-        Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
+        @description You can use one of the following methods to locate the lifecycle hook that you want to modify:
+        Specify LifecycleHookId. In this case, ScalingGroupId and LifecycleHookName are ignored.
+        Specify ScalingGroupId and LifecycleHookName. Each lifecycle hook within a scaling group has a unique name.
         
         @param request: ModifyLifecycleHookRequest
         @return: ModifyLifecycleHookResponse
@@ -10051,11 +10099,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyLifecycleHookRequest,
     ) -> ess_20220222_models.ModifyLifecycleHookResponse:
         """
-        @summary Modifies a lifecycle hook.
+        @summary Modifies a lifecycle hook. If an existing lifecycle hook does not meet your business requirements anymore, you can call the ModifyLifecycleHook operation to modify the information such as the scaling event, timeout period, and default action of the lifecycle hook. Before you modify a lifecycle hook, you can locate the lifecycle hook by its ID, name, or scaling group.
         
-        @description You can use one of the following methods to specify the lifecycle hook that you want to modify:
-        Specify the lifecycle hook ID by using the LifecycleHookId parameter. When you use this method, the ScalingGroupId and LifecycleHookName parameters are ignored.
-        Specify the scaling group ID by using the ScalingGroupId parameter and the lifecycle hook name by using the LifecycleHookName parameter.
+        @description You can use one of the following methods to locate the lifecycle hook that you want to modify:
+        Specify LifecycleHookId. In this case, ScalingGroupId and LifecycleHookName are ignored.
+        Specify ScalingGroupId and LifecycleHookName. Each lifecycle hook within a scaling group has a unique name.
         
         @param request: ModifyLifecycleHookRequest
         @return: ModifyLifecycleHookResponse
@@ -10069,7 +10117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyNotificationConfigurationResponse:
         """
-        @summary Modifies a notification.
+        @summary Modifies event notification rules. Event notification rules support automatic sending of notifications to CloudMonitor, Message Service (MNS) topics, or MNS queues when a specified type of events occur. This helps you learn about the dynamics of your scaling group at the earliest opportunity and further automate resource management. If an existing event notification rule does not meet your business requirements, you can call the ModifyNotificationConfiguration operation to modify the event notification rule, without the need to create a new rule. Take not that you cannot modify the notification method of an event notification rule by calling this operation.
         
         @param request: ModifyNotificationConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10114,7 +10162,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyNotificationConfigurationResponse:
         """
-        @summary Modifies a notification.
+        @summary Modifies event notification rules. Event notification rules support automatic sending of notifications to CloudMonitor, Message Service (MNS) topics, or MNS queues when a specified type of events occur. This helps you learn about the dynamics of your scaling group at the earliest opportunity and further automate resource management. If an existing event notification rule does not meet your business requirements, you can call the ModifyNotificationConfiguration operation to modify the event notification rule, without the need to create a new rule. Take not that you cannot modify the notification method of an event notification rule by calling this operation.
         
         @param request: ModifyNotificationConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10158,7 +10206,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyNotificationConfigurationRequest,
     ) -> ess_20220222_models.ModifyNotificationConfigurationResponse:
         """
-        @summary Modifies a notification.
+        @summary Modifies event notification rules. Event notification rules support automatic sending of notifications to CloudMonitor, Message Service (MNS) topics, or MNS queues when a specified type of events occur. This helps you learn about the dynamics of your scaling group at the earliest opportunity and further automate resource management. If an existing event notification rule does not meet your business requirements, you can call the ModifyNotificationConfiguration operation to modify the event notification rule, without the need to create a new rule. Take not that you cannot modify the notification method of an event notification rule by calling this operation.
         
         @param request: ModifyNotificationConfigurationRequest
         @return: ModifyNotificationConfigurationResponse
@@ -10171,7 +10219,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyNotificationConfigurationRequest,
     ) -> ess_20220222_models.ModifyNotificationConfigurationResponse:
         """
-        @summary Modifies a notification.
+        @summary Modifies event notification rules. Event notification rules support automatic sending of notifications to CloudMonitor, Message Service (MNS) topics, or MNS queues when a specified type of events occur. This helps you learn about the dynamics of your scaling group at the earliest opportunity and further automate resource management. If an existing event notification rule does not meet your business requirements, you can call the ModifyNotificationConfiguration operation to modify the event notification rule, without the need to create a new rule. Take not that you cannot modify the notification method of an event notification rule by calling this operation.
         
         @param request: ModifyNotificationConfigurationRequest
         @return: ModifyNotificationConfigurationResponse
@@ -10259,6 +10307,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
         if not UtilClient.is_unset(request.password_inherit):
             query['PasswordInherit'] = request.password_inherit
         if not UtilClient.is_unset(request.ram_role_name):
@@ -10404,6 +10454,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
         if not UtilClient.is_unset(request.password_inherit):
             query['PasswordInherit'] = request.password_inherit
         if not UtilClient.is_unset(request.ram_role_name):
@@ -10781,7 +10833,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingRuleResponse:
         """
-        @summary Modifies a scaling rule.
+        @summary Modifies a scaling rule. If an existing scaling rule cannot meet your business requirements, you can call the ModifyScalingRule operation to modify the scaling rule, without the need to create a new one. This streamlines your workflow, enhancing operational efficiency while also contributing to cost optimization by avoiding redundant steps.
         
         @param request: ModifyScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10860,7 +10912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScalingRuleResponse:
         """
-        @summary Modifies a scaling rule.
+        @summary Modifies a scaling rule. If an existing scaling rule cannot meet your business requirements, you can call the ModifyScalingRule operation to modify the scaling rule, without the need to create a new one. This streamlines your workflow, enhancing operational efficiency while also contributing to cost optimization by avoiding redundant steps.
         
         @param request: ModifyScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10938,7 +10990,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingRuleRequest,
     ) -> ess_20220222_models.ModifyScalingRuleResponse:
         """
-        @summary Modifies a scaling rule.
+        @summary Modifies a scaling rule. If an existing scaling rule cannot meet your business requirements, you can call the ModifyScalingRule operation to modify the scaling rule, without the need to create a new one. This streamlines your workflow, enhancing operational efficiency while also contributing to cost optimization by avoiding redundant steps.
         
         @param request: ModifyScalingRuleRequest
         @return: ModifyScalingRuleResponse
@@ -10951,7 +11003,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScalingRuleRequest,
     ) -> ess_20220222_models.ModifyScalingRuleResponse:
         """
-        @summary Modifies a scaling rule.
+        @summary Modifies a scaling rule. If an existing scaling rule cannot meet your business requirements, you can call the ModifyScalingRule operation to modify the scaling rule, without the need to create a new one. This streamlines your workflow, enhancing operational efficiency while also contributing to cost optimization by avoiding redundant steps.
         
         @param request: ModifyScalingRuleRequest
         @return: ModifyScalingRuleResponse
@@ -10965,7 +11017,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
         """
-        @summary Modifies a scheduled task.
+        @summary Modifies a scheduled task. If an existing scheduled task cannot meet your business requirements, you can call the ModifyScheduledTask operation to adjust its parameter settings including the scaling rule to execute and the boundary values of your scaling group, without the need to create a new scheduled task. This operation provides a flexible way to optimize scheduled tasks.
         
         @description You can use the following parameters to specify the scaling method of a scheduled task:
         If you use the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
@@ -11039,7 +11091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
         """
-        @summary Modifies a scheduled task.
+        @summary Modifies a scheduled task. If an existing scheduled task cannot meet your business requirements, you can call the ModifyScheduledTask operation to adjust its parameter settings including the scaling rule to execute and the boundary values of your scaling group, without the need to create a new scheduled task. This operation provides a flexible way to optimize scheduled tasks.
         
         @description You can use the following parameters to specify the scaling method of a scheduled task:
         If you use the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
@@ -11112,7 +11164,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScheduledTaskRequest,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
         """
-        @summary Modifies a scheduled task.
+        @summary Modifies a scheduled task. If an existing scheduled task cannot meet your business requirements, you can call the ModifyScheduledTask operation to adjust its parameter settings including the scaling rule to execute and the boundary values of your scaling group, without the need to create a new scheduled task. This operation provides a flexible way to optimize scheduled tasks.
         
         @description You can use the following parameters to specify the scaling method of a scheduled task:
         If you use the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
@@ -11130,7 +11182,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyScheduledTaskRequest,
     ) -> ess_20220222_models.ModifyScheduledTaskResponse:
         """
-        @summary Modifies a scheduled task.
+        @summary Modifies a scheduled task. If an existing scheduled task cannot meet your business requirements, you can call the ModifyScheduledTask operation to adjust its parameter settings including the scaling rule to execute and the boundary values of your scaling group, without the need to create a new scheduled task. This operation provides a flexible way to optimize scheduled tasks.
         
         @description You can use the following parameters to specify the scaling method of a scheduled task:
         If you use the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
@@ -11297,9 +11349,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
         """
-        @summary Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
+        @summary Extends the time window during which Elastic Compute Service (ECS) instances stay in a Pending state. If the current time window during which an ECS instance stays in a Pending state is not sufficient for you to complete custom operations on the ECS instance, you can call the RecordLifecycleActionHeartbeat operation to extend the time window. When you call this operation, you can specify lifecycleHookId, lifecycleActionToken, and heartbeatTimeout to extend the time window for the desired ECS instance.
         
-        @description You can call this operation to prolong the length of a lifecycle hook up to 20 times. Take note that the total length of a lifecycle hook cannot exceed 6 hours.
+        @description You can call this operation only when the desired ECS instance enters a Pending state.\\
+        An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in a Pending state up to 20 times.
         
         @param request: RecordLifecycleActionHeartbeatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11346,9 +11399,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
         """
-        @summary Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
+        @summary Extends the time window during which Elastic Compute Service (ECS) instances stay in a Pending state. If the current time window during which an ECS instance stays in a Pending state is not sufficient for you to complete custom operations on the ECS instance, you can call the RecordLifecycleActionHeartbeat operation to extend the time window. When you call this operation, you can specify lifecycleHookId, lifecycleActionToken, and heartbeatTimeout to extend the time window for the desired ECS instance.
         
-        @description You can call this operation to prolong the length of a lifecycle hook up to 20 times. Take note that the total length of a lifecycle hook cannot exceed 6 hours.
+        @description You can call this operation only when the desired ECS instance enters a Pending state.\\
+        An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in a Pending state up to 20 times.
         
         @param request: RecordLifecycleActionHeartbeatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11394,9 +11448,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RecordLifecycleActionHeartbeatRequest,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
         """
-        @summary Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
+        @summary Extends the time window during which Elastic Compute Service (ECS) instances stay in a Pending state. If the current time window during which an ECS instance stays in a Pending state is not sufficient for you to complete custom operations on the ECS instance, you can call the RecordLifecycleActionHeartbeat operation to extend the time window. When you call this operation, you can specify lifecycleHookId, lifecycleActionToken, and heartbeatTimeout to extend the time window for the desired ECS instance.
         
-        @description You can call this operation to prolong the length of a lifecycle hook up to 20 times. Take note that the total length of a lifecycle hook cannot exceed 6 hours.
+        @description You can call this operation only when the desired ECS instance enters a Pending state.\\
+        An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in a Pending state up to 20 times.
         
         @param request: RecordLifecycleActionHeartbeatRequest
         @return: RecordLifecycleActionHeartbeatResponse
@@ -11409,9 +11464,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.RecordLifecycleActionHeartbeatRequest,
     ) -> ess_20220222_models.RecordLifecycleActionHeartbeatResponse:
         """
-        @summary Prolongs a lifecycle hook for Elastic Compute Service (ECS) instances.
+        @summary Extends the time window during which Elastic Compute Service (ECS) instances stay in a Pending state. If the current time window during which an ECS instance stays in a Pending state is not sufficient for you to complete custom operations on the ECS instance, you can call the RecordLifecycleActionHeartbeat operation to extend the time window. When you call this operation, you can specify lifecycleHookId, lifecycleActionToken, and heartbeatTimeout to extend the time window for the desired ECS instance.
         
-        @description You can call this operation to prolong the length of a lifecycle hook up to 20 times. Take note that the total length of a lifecycle hook cannot exceed 6 hours.
+        @description You can call this operation only when the desired ECS instance enters a Pending state.\\
+        An ECS instance can stay in a Pending state for up to six hours. Each time an ECS instance enters a Pending state, you can extend the time window during which the ECS instance stays in a Pending state up to 20 times.
         
         @param request: RecordLifecycleActionHeartbeatRequest
         @return: RecordLifecycleActionHeartbeatResponse

@@ -17,11 +17,13 @@ class ApplyEciScalingConfigurationRequest(TeaModel):
         # 
         # This parameter is required.
         self.content = content
-        # Optional. The format of the configuration file. Default value: YAML. Set the value to YAML.
+        # Optional. Set the value to YAML.
         self.format = format
         # The region ID.
         self.region_id = region_id
-        # The ID of the scaling configuration that you want to update. If you want to update a scaling configuration based on the value of Content, you must specify ScalingConfigurationId. If you want to create a scaling configuration based on the value of Content, you can leave ScalingConfigurationId empty.
+        # The ID of the scaling configuration.
+        # 
+        # If you want the system to update a scaling configuration of the Elastic Container Instance type based on a YAML configuration file, you must specify `ScalingConfigurationId`. If you do not specify `ScalingConfigurationId`, the system creates a new scaling configuration based on the YAML configuration file.
         self.scaling_configuration_id = scaling_configuration_id
         # The ID of the scaling group.
         # 
@@ -665,6 +667,9 @@ class AttachInstancesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # Specifies whether to use the scaling group to manage the lifecycles of manually added instances. Valid values:
         # 
@@ -1543,6 +1548,8 @@ class ChangeResourceGroupRequest(TeaModel):
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the scaling group that you want to move from the current resource group to another resource group.
@@ -1598,6 +1605,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5856,6 +5864,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
+        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         # The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
         # 
@@ -6016,7 +6025,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         # 
         # Default value: default
         self.tenancy = tenancy
-        # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
+        # The user data of the Elastic Compute Service (ECS) instance. The user data must be encoded in Base64 format. The size of raw data before Base64 encoding cannot exceed 32 KB.
         self.user_data = user_data
         # The zone ID of the ECS instance.
         self.zone_id = zone_id
@@ -7185,6 +7194,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
+        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         # The ID of the dedicated host on which you want to create an ECS instance. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
         # 
@@ -7345,7 +7355,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         # 
         # Default value: default
         self.tenancy = tenancy
-        # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
+        # The user data of the Elastic Compute Service (ECS) instance. The user data must be encoded in Base64 format. The size of raw data before Base64 encoding cannot exceed 32 KB.
         self.user_data = user_data
         # The zone ID of the ECS instance.
         self.zone_id = zone_id
@@ -7739,13 +7749,13 @@ class CreateScalingGroupRequestAlbServerGroups(TeaModel):
         port: int = None,
         weight: int = None,
     ):
-        # The ID of the ALB server group that you want to associate with the scaling group.
+        # The ID of the ALB server group.
         # 
-        # You can associate only a limited number of ALB server groups with a scaling group. Go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of ALB server groups that you can associate with a scaling group.
+        # You can attach only a limited number of ALB server groups to a scaling group. To view the predefined quota limit or manually request a quota increase, go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas).
         self.alb_server_group_id = alb_server_group_id
-        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the ALB server group. Valid values: 1 to 65535.
+        # The port number used by each ECS instance as a backend server in the ALB server group. Valid values: 1 to 65535.
         self.port = port
-        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the ALB server group as a backend server. If you increase the weight of an ECS instance in the ALB server group, the number of access requests that are forwarded to the ECS instance increases. If you set the Weight parameter for an ECS instance in the ALB server group to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # The weight of an ECS instance as a backend server in the ALB server group. If you increase the weight for an ECS instance, the number of requests that are forwarded to the ECS instance also increases. If you set the weight for an ECS instance to 0, no requests are forwarded to the ECS instance. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -7785,8 +7795,8 @@ class CreateScalingGroupRequestDBInstances(TeaModel):
     ):
         # The mode in which you want to attach the database to the scaling group. Valid values:
         # 
-        # *   SecurityIp: the mode in which Auto Scaling automatically adds the private IP addresses of the scaled out instances to the IP address whitelist of the database. This mode is supported only if you set Type to RDS.
-        # *   SecurityGroup: the mode in which Auto Scaling adds the security group of the applied scaling configuration in the scaling group to the security group whitelist of the database to enable secure access from instances to the database.
+        # *   SecurityIp: the mode in which Auto Scaling automatically adds the private IP addresses of ECS instances to the IP address whitelist of the database during scale-out events. You can set the value to SecurityIp only if you set Type to RDS.
+        # *   SecurityGroup: the mode in which Auto Scaling adds the security group of the applied scaling configuration to the security group whitelist of the database. This setting allows ECS instances created from the scaling configuration to access the database.
         self.attach_mode = attach_mode
         # The database ID.
         self.dbinstance_id = dbinstance_id
@@ -7903,41 +7913,41 @@ class CreateScalingGroupRequestLifecycleHooks(TeaModel):
         notification_arn: str = None,
         notification_metadata: str = None,
     ):
-        # The action that Auto Scaling performs after the lifecycle hook of the scaling group times out. Valid values:
+        # The action that Auto Scaling performs when the lifecycle hook times out. Valid values:
         # 
-        # *   CONTINUE: continues to respond to scaling requests.
-        # *   ABANDON: releases ECS instances that are created during scale-out activities, or removes ECS instances from the scaling group during scale-in activities.
+        # *   CONTINUE: Auto Scaling continues to respond to a scale-in or scale-out request.
+        # *   ABANDON: Auto Scaling releases ECS instances that are created during scale-out events, or removes ECS instances from the scaling group during scale-in events.
         # 
-        # If multiple lifecycle hooks in the scaling group are triggered during scale-in activities and you set the LifecycleHook.N.DefaultResult parameter to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the action after the lifecycle hook whose DefaultResult parameter is set to ABANDON times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of the DefaultResult parameter that you set for the lifecycle hook that last times out.
+        # If multiple lifecycle hooks in the scaling group are triggered during scale-in events, and you set DefaultResult to ABANDON for one of the lifecycle hooks, Auto Scaling immediately performs the action after the lifecycle hook whose DefaultResult is set to ABANDON times out. In this case, other lifecycle hooks time out ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks time out. The action that Auto Scaling performs is determined by the value of DefaultResult that you specify for the lifecycle hook that most recently times out.
         # 
         # Default value: CONTINUE.
         self.default_result = default_result
-        # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action specified by the DefaultResult parameter. Valid values: 30 to 21600. Unit: seconds.
+        # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period ahead of schedule.
+        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the timeout period of the lifecycle hook. You can also call the CompleteLifecycleAction operation to end the timeout period of the lifecycle hook ahead of scheduled.
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
-        # The name of the lifecycle hook. After you specify this parameter, you cannot change the value of this parameter. If you do not specify this parameter, the ID of the lifecycle hook is used.
+        # The name of the lifecycle hook. After you specify this parameter, you cannot change the name of the lifecycle hook. If you do not specify this parameter, the name of the lifecycle hook is the same as the ID of the lifecycle hook.
         self.lifecycle_hook_name = lifecycle_hook_name
-        # The type of the scaling activity for which you create the lifecycle hook. Valid values:
+        # The type of the scaling activity to which you want to apply the lifecycle hook. Valid values:
         # 
-        # *   SCALE_OUT: scale-out activity
-        # *   SCALE_IN: scale-in activity
+        # *   SCALE_OUT
+        # *   SCALE_IN
         # 
-        # > If you create lifecycle hooks for your scaling group, you must specify the LifecycleTransition parameter.
+        # >  If you specify lifecycle hooks for the scaling group, you must specify LifecycleTransition. Other parameters are optional.
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the notification method that Auto Scaling uses to send a notification when a lifecycle hook takes effect. This notification method can be a Message Service (MNS) queue or an MNS topic. Specify the value of this parameter in the following format: acs:ess:{region}:{account-id}:{resource-relative-id}.
+        # The identifier of the notification recipient party when the lifecycle hook takes effect. You can specify a Message Service (MNS) topic or queue as the notification recipient party. Specify the value in the acs:ess:{region}:{account-id}:{resource-relative-id} format.
         # 
-        # *   region: the region where the scaling group resides
-        # *   account-id: the ID of the Alibaba Cloud account
+        # *   region: the region ID of the scaling group
+        # *   account-id: the ID of your Alibaba Cloud account.
         # 
         # Examples:
         # 
         # *   MNS queue: acs:ess:{region}:{account-id}:queue/{queuename}
         # *   MNS topic: acs:ess:{region}:{account-id}:topic/{topicname}
         self.notification_arn = notification_arn
-        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length. Auto Scaling sends the value of the notificationmetadata parameter together with the notification. This way, you can categorize and manage your notifications in an efficient manner. If you specify the notificationmetadata parameter, you must also specify the notificationarn parameter.
+        # The fixed string that you want to include in a notification. When a lifecycle hook takes effect, Auto Scaling sends a notification. The fixed string can contain up to 4,096 characters in length. When Auto Scaling sends a notification to the recipient party, it includes predefined notification metadata into the notification. This helps in managing and labeling notifications of different categories. notificationmetadata takes effect only if you specify notificationarn.
         self.notification_metadata = notification_metadata
 
     def validate(self):
@@ -7986,7 +7996,9 @@ class CreateScalingGroupRequestLoadBalancerConfigs(TeaModel):
         load_balancer_id: str = None,
         weight: int = None,
     ):
+        # The ID of the CLB instance.
         self.load_balancer_id = load_balancer_id
+        # The weight of each ECS instance as a backend server in the CLB backend server group. If you increase the weight for an ECS instance, the number of requests that are forwarded to the ECS instance also increases. If you set the weight for an ECS instance to 0, no requests are forwarded to the ECS instance. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -8021,18 +8033,18 @@ class CreateScalingGroupRequestServerGroups(TeaModel):
         type: str = None,
         weight: int = None,
     ):
-        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the server group. Valid values: 1 to 65535.
+        # The port number used by each ECS instance as backend server in the vServer group. Valid values: 1 to 65535.
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
         # The type of the server group. Valid values:
         # 
-        # *   ALB: Application Load Balancer (ALB) server group
-        # *   NLB: Network Load Balancer (NLB) server group
+        # *   ALB
+        # *   NLB
         self.type = type
-        # The weight of an Elastic Compute Service (ECS) instance in the scaling group as a backend server after Auto Scaling adds the ECS instance to the server group. Valid values: 0 to 100.
+        # The weight of each ECS instance as a backend server in the server group. Valid values: 0 to 100.
         # 
-        # If you increase the weight of an ECS instance in the server group, the number of access requests that are forwarded to the ECS instance also increases. If you set the Weight parameter of an ECS instance in the server group to 0, no access requests are forwarded to the ECS instance.
+        # If you increase the weight for an ECS instance, the number of requests that are forwarded to the ECS instance also increases. If you set the weight for an ECS instance to 0, no requests are forwarded to the ECS instance.
         self.weight = weight
 
     def validate(self):
@@ -8121,11 +8133,13 @@ class CreateScalingGroupRequestVServerGroupsVServerGroupAttributes(TeaModel):
         vserver_group_id: str = None,
         weight: int = None,
     ):
-        # The port number that is used by an ECS instance after Auto Scaling adds the ECS instance to the backend vServer group. Valid values: 1 to 65535.
+        # The port number used by each ECS instance as a backend server in the vServer group. Valid values: 1 to 65535.
         self.port = port
-        # The ID of the backend vServer group.
+        # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
-        # The weight of an ECS instance after Auto Scaling adds the ECS instance to the backend vServer group as a backend server. If you increase the weight of an ECS instance in the backend vServer group, the number of access requests that are forwarded to the ECS instance also increases. If you set the Weight parameter of an ECS instance in the backend vServer group to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100. Default value: 50.
+        # The weight of each ECS instance as a backend server in the vServer group. If you increase the weight for an ECS instance, the number of requests that are forwarded to the ECS instance also increases. If you set the weight for an ECS instance to 0, no requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # 
+        # Default value: 50.
         self.weight = weight
 
     def validate(self):
@@ -8164,7 +8178,7 @@ class CreateScalingGroupRequestVServerGroups(TeaModel):
     ):
         # The ID of the CLB instance to which the backend vServer group belongs.
         self.load_balancer_id = load_balancer_id
-        # The attributes of the backend vServer groups.
+        # The attributes of the backend vServer group.
         self.vserver_group_attributes = vserver_group_attributes
 
     def validate(self):
@@ -8248,7 +8262,7 @@ class CreateScalingGroupRequest(TeaModel):
         v_switch_id: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # Details of the Application Load Balancer (ALB) server groups that you want to associate with the scaling group.
+        # The Application Load Balancer (ALB) server groups.
         self.alb_server_groups = alb_server_groups
         # The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create the required number of instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only when you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
@@ -8257,14 +8271,18 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: priority.
         self.allocation_strategy = allocation_strategy
-        # Specifies whether to evenly distribute instances in the scaling group across zones. This parameter is available only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
+        # Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
         # *   true
         # *   false
         # 
+        # >  If you set `MultiAZPolicy` to `COMPOSABLE` and enable `AzBalance` to `true`, this setting has an equivalent effect to setting `MultiAZPolicy` to `BALANCE`.
+        # 
         # Default value: false.
         self.az_balance = az_balance
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is available only if you set the MultiAZPolicy parameter to COST_OPTIMIZED. Valid values:
         # 
@@ -8283,13 +8301,13 @@ class CreateScalingGroupRequest(TeaModel):
         self.dbinstance_ids = dbinstance_ids
         # The databases that you want to attach to the scaling group.
         self.dbinstances = dbinstances
-        # The cooldown period of the scaling group after a scaling activity is complete. Valid values: 0 to 86400. Unit: seconds.
+        # The cooldown period of the scaling group after a scaling activity is complete in the scaling group. Valid values: 0 to 86400. Unit: seconds.
         # 
-        # During the cooldown period, Auto Scaling executes only scaling activities that are triggered by CloudMonitor event-triggered tasks.
+        # During the cooldown period, Auto Scaling does not execute scaling activities that are triggered by CloudMonitor event-triggered tasks.
         # 
         # Default value: 300.
         self.default_cooldown = default_cooldown
-        # The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances. The value of the DesiredCapacity parameter cannot be greater than the value of the MaxSize parameter and less than the value of the MinSize parameter.
+        # The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the specified expected number of ECS instances. The DesiredCapacity value cannot be greater than the MaxSize value or less than the MinSize value.
         self.desired_capacity = desired_capacity
         # Specifies whether to enable deletion protection for the scaling group. Valid values:
         # 
@@ -8307,21 +8325,25 @@ class CreateScalingGroupRequest(TeaModel):
         self.group_type = group_type
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not check the health status of instances in the scaling group.
+        # *   NONE: Auto Scaling does not check the health status of instances.
         # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
+        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
         # 
         # Default value: ECS.
         self.health_check_type = health_check_type
         # The health check modes of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not check the health status of instances in the scaling group.
+        # *   NONE: Auto Scaling does not check the health status of instances.
         # *   ECS: Auto Scaling checks the health status of ECS instances in the scaling group.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+        # *   ECI: Auto Scaling checks the health status of elastic container instances in the scaling group.
+        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+        # 
+        # >  HealthCheckTypes has the same effect as `HealthCheckType`. You can select one of them to specify based on your business requirements. If you specify `HealthCheckType`, `HealthCheckTypes` is ignored. HealthCheckTypes is optional.
         # 
         # Default value: ECS.
         self.health_check_types = health_check_types
-        # The ID of the existing ECS instance that provides instance configurations for Auto Scaling to create a scaling configuration.
+        # The ID of the ECS instance. When you create a scaling group, you can specify an existing ECS instance. Auto Scaling obtains the configurations of the ECS instance and automatically creates a scaling configuration from the obtained configurations.
         self.instance_id = instance_id
         # The ID of the launch template that provides instance configurations for Auto Scaling to create instances.
         self.launch_template_id = launch_template_id
@@ -8335,6 +8357,7 @@ class CreateScalingGroupRequest(TeaModel):
         self.launch_template_version = launch_template_version
         # The lifecycle hooks.
         self.lifecycle_hooks = lifecycle_hooks
+        # The load balancer configurations.
         self.load_balancer_configs = load_balancer_configs
         # The IDs of the CLB instances that you want to associate with the scaling group. The value can be a JSON array that contains multiple CLB instance IDs. Separate multiple IDs with commas (,).
         # 
@@ -8346,29 +8369,37 @@ class CreateScalingGroupRequest(TeaModel):
         # 
         # Default value: null.
         self.max_instance_lifetime = max_instance_lifetime
-        # The maximum number of ECS instances that can be contained in the scaling group. If the number of ECS instances in the scaling group is greater than the value of the MaxSize parameter, Auto Scaling removes ECS instances from the scaling group to ensure that the number of ECS instances is equal to the value of the MaxSize parameter.
+        # The maximum number of instances that can be contained in the scaling group. When the total number of ECS instances in the scaling group exceeds the value of MaxSize, Auto Scaling automatically removes ECS instances from the scaling group until the total number equals the maximum number.
         # 
-        # The value range of the MaxSize parameter varies based on the instance quota. You can go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check the maximum number of instances that a scaling group can contain.
+        # The value range of MaxSize is directly correlated with the degree of dependency your business has on Auto Scaling. You can go to [Quota Center](https://quotas.console.aliyun.com/products/ess/quotas) to check **the maximum number of instances that a single scaling group can contain.**\
         # 
-        # For example, if the instance quota is 2,000, the value range of the **MaxSize** parameter is 0 to 2000.
+        # If **a single scaling group can contain up to 2,000 ECS instances**, the value range of MaxSize is 0 to 2,000.
         # 
         # This parameter is required.
         self.max_size = max_size
-        # The minimum number of ECS instances that must be contained in the scaling group. If the number of ECS instances in the scaling group is less than the value of the MinSize parameter, Auto Scaling adds ECS instances to the scaling group to ensure that the number of ECS instances in the scaling group is equal to the value of the MinSize parameter.
+        # The minimum number of instances that must be contained in the scaling group. When the total number of ECS instances in the scaling group is less than the value of MinSize, Auto Scaling automatically creates ECS instances in the scaling group until the total number reaches the minimum number.
         # 
-        # > The value of the MinSize parameter must be less than or equal to the value of the MaxSize parameter.
+        # >  The value of MinSize must be less than or equal to the value of MaxSize.
         # 
         # This parameter is required.
         self.min_size = min_size
-        # The scaling policy for the multi-zone scaling group that contains ECS instances. Valid values:
+        # The scaling policy for ECS instances in the multi-zone scaling group. Valid values:
         # 
-        # *   PRIORITY: scales ECS instances based on the priority of the vSwitch that is specified by the VSwitchIds parameter. Auto Scaling preferentially scales instances in the zone where the vSwitch that has the highest priority resides. If the scaling fails, Auto Scaling scales instances in the zone where the vSwitch that has the next highest priority resides.
+        # *   PRIORITY: scale ECS instances based on the priority of the vSwitches specified by VSwitchIds. Auto Scaling preferentially scales instances in the zone where the vSwitch of the highest priority resides. If the scaling fails, Auto Scaling scales instances in the zone where the vSwitch of the next highest priority resides.
         # 
-        # *   COST_OPTIMIZED: scales ECS instances based on the unit price of vCPUs. Auto Scaling preferentially scales out ECS instances whose vCPUs are provided at the lowest price and scales in ECS instances whose vCPUs are provided at the highest price. If preemptible instance types are specified in the scaling configuration, Auto Scaling preferentially scales out preemptible instances. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you-go instances when preemptible instances cannot be created due to insufficient resources.
+        # *   COST_OPTIMIZED: create ECS instances that have the lowest unit price of vCPUs during scale-out events and removes ECS instances that have the highest unit price of vCPUs during scale-in events. If you specify preemptible instance types in your scaling configuration, Auto Scaling will preferentially create preemptible instances. You can also specify CompensateWithOnDemand to allow Auto Scaling to create pay-as-you-go instances in the case that preemptible instances cannot be created due to limited stock.
         # 
-        #     **Note** The COST_OPTIMIZED setting takes effect only when multiple instance types are specified or at least one preemptible instance type is specified.
+        #     **\
         # 
-        # *   BALANCE: evenly distributes ECS instances across zones that are specified for the scaling group. If ECS instances are unevenly distributed across zones due to insufficient resources, you can call the [RebalanceInstance](https://help.aliyun.com/document_detail/71516.html) operation to evenly redistribute the instances across the zones.
+        #     **Note** The COST_OPTIMIZED setting takes effect only when your scaling configuration contains multiple instance types or specifically contains preemptible instance types.
+        # 
+        # *   BALANCE: evenly distribute ECS instances across the zones that are specified for the scaling group. If ECS instances are unevenly distributed across the specified zones due to insufficient inventory, you can call the [RebalanceInstance](https://help.aliyun.com/document_detail/71516.html) operation to evenly distribute the instances across the zones.
+        # 
+        #     **\
+        # 
+        #     **Note** When you set `MultiAZPolicy` to `BALANCE`, this setting has an equivalent effect to setting `MultiAZPolicy` to `COMPOSABLE` and enabling `AzBalance` to `true`.
+        # 
+        # *   COMPOSABLE: combine the preceding policies into a custom scaling policy based on your business requirements. Alternatively, you can specify custom parameters to finely control the capacity of the scaling group.
         # 
         # Default value: PRIORITY.
         self.multi_azpolicy = multi_azpolicy
@@ -8406,14 +8437,27 @@ class CreateScalingGroupRequest(TeaModel):
         self.scaling_group_name = scaling_group_name
         # The reclaim mode of the scaling group. Valid values:
         # 
-        # *   recycle: economical mode.
-        # *   release: release mode.
+        # *   recycle: the economical mode
         # 
-        # The ScalingPolicy parameter specifies the reclaim mode of the scaling group. The RemovePolicy parameter of the RemoveInstances operation specifies how to remove instances in a specific manner.
+        # *   release: the release mode
+        # 
+        # *   forcerelease: the forced release mode
+        # 
+        #     **\
+        # 
+        #     **Note** If you set the value to forcerelease, Auto Scaling will forcibly release the ECS instances that are in the `Running` state during the scale-out events. Forced release equates to an immediate power-off, resulting in the irreversible deletion of all ephemeral data stored on the instance. Once executed, this action cannot be undone and the lost data cannot be recovered. Exercise caution when you select this option.
+        # 
+        # *   forcerecycle: the forced recycle mode
+        # 
+        #     **\
+        # 
+        #     **Note** If you set the value to forcerecycle, Auto Scaling will forcibly shut down the ECS instances that are in the `Running` state during the scale-out events. Forced recycle equates to an immediate power-off, resulting in the irreversible deletion of all ephemeral data stored on the instance. Once executed, this action cannot be undone and the lost data cannot be recovered. Exercise caution when you select this option.
+        # 
+        # ScalingPolicy specifies the reclaim mode of the scaling group. RemovePolicy of the RemoveInstances operation specifies the specific instance removal action. For more information, see [RemoveInstances](https://help.aliyun.com/document_detail/25955.html).
         self.scaling_policy = scaling_policy
-        # Details of the server groups.
+        # The server groups.
         # 
-        # >  You cannot use the AlbServerGroups parameter and the ServerGroups parameter to specify the same server group.
+        # >  You cannot use AlbServerGroups and ServerGroups to specify the same server group.
         self.server_groups = server_groups
         # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
@@ -8430,21 +8474,21 @@ class CreateScalingGroupRequest(TeaModel):
         self.sync_alarm_rule_to_cms = sync_alarm_rule_to_cms
         # The tags that you want to add to the scaling group.
         self.tags = tags
-        # Details of the backend vServer groups that you want to associate with the scaling group.
+        # The backend vServer group that you want to associate with the scaling group.
         self.vserver_groups = vserver_groups
         # The ID of the vSwitch. If you specify the VSwitchId parameter, the network type of the scaling group is VPC.
         # 
         # > If you do not specify the VSwitchId or VSwitchIds parameter, the network type of the scaling group is classic network.
         self.v_switch_id = v_switch_id
-        # The IDs of vSwitches. If you specify the VSwitchIds parameter, the VSwitchId parameter is ignored. If you specify the VSwitchIds parameter, the network type of the scaling group is VPC.
+        # The IDs of the vSwitches. If you specify VSwitchIds, VSwitchId is ignored. If you specify VSwitchIds, the network type of the scaling group is VPC.
         # 
         # If you specify multiple vSwitches, take note of the following items:
         # 
         # *   The vSwitches must belong to the same VPC.
         # *   The vSwitches can belong to different zones.
-        # *   The vSwitches are sorted in ascending order of priority. The first vSwitch that is specified by the VSwitchIds parameter has the highest priority. If Auto Scaling fails to create ECS instances in the zone where the vSwitch that has the highest priority resides, Auto Scaling creates ECS instances in the zone where the vSwitch that has the next highest priority resides.
+        # *   vSwitches are sorted in ascending order based on their priorities. The first vSwitch has the highest priority. If Auto Scaling fails to create ECS instances in the zone where the vSwitch of the highest priority resides, Auto Scaling attempts to create ECS instances in the zone where the vSwitch of the next highest priority resides.
         # 
-        # > If you do not specify the VSwitchId or VSwitchIds parameter, the network type of the scaling group is classic network.
+        # >  If you do not specify VSwitchId or VSwitchIds for your scaling group, the network type of the scaling group is classic network.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -8796,9 +8840,9 @@ class CreateScalingRuleRequestAlarmDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # 监控项关联的维度信息键。
+        # The dimension key of the metric.
         self.dimension_key = dimension_key
-        # 监控项关联的维度信息值。
+        # The dimension value of the metric.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -8907,7 +8951,7 @@ class CreateScalingRuleRequest(TeaModel):
         # *   Valid values if you set the AdjustmentType parameter to PercentChangeInCapacity: -100 to 10000.
         # *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
         self.adjustment_value = adjustment_value
-        # 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度键值信息。
+        # The metric dimensions. This parameter is applicable to target tracking scaling rules. If your predefined metric requires extra dimensions, you must specify this parameter. For example, if you use LoadBalancerRealServerAverageQps as your predefined metric, you must use this parameter to specify the rulePool dimension.
         self.alarm_dimensions = alarm_dimensions
         # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
         # 
@@ -8925,27 +8969,27 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # Default value: 300.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The maximum number of ECS instances in the scaling group. If you specify this parameter, you must also specify the PredictiveValueBehavior parameter.
+        # The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
         # 
-        # The default value of this parameter is the value of the MaxSize parameter.
+        # The default value of this parameter is the value of MaxSize.
         self.initial_max_size = initial_max_size
-        # The predefined metric that you want to monitor. This parameter is required only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule.
+        # The predefined metric of the scaling rule. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, you must specify this parameter.
         # 
-        # Valid values if you set the ScalingRuleType parameter to TargetTrackingScalingRule:
+        # Valid values if you set ScalingRuleType to TargetTrackingScalingRule:
         # 
-        # *   CpuUtilization: the average CPU utilization
-        # *   ClassicInternetRx: the average inbound Internet traffic over the classic network
-        # *   ClassicInternetTx: the average outbound Internet traffic over the classic network
-        # *   VpcInternetRx: the average inbound Internet traffic over the virtual private cloud (VPC)
-        # *   VpcInternetTx: the average outbound Internet traffic over the VPC
-        # *   IntranetRx: the average inbound traffic over the internal network
-        # *   IntranetTx: the average outbound traffic over the internal network
+        # *   CpuUtilization: the average CPU utilization.
+        # *   IntranetTx: the outbound traffic over an internal network.
+        # *   IntranetRx: the inbound traffic over an internal network.
+        # *   VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
+        # *   VpcInternetRx: the inbound traffic from the Internet to a VPC.
+        # *   MemoryUtilization: the memory usage.
+        # *   LoadBalancerRealServerAverageQps:the queries per second (QPS) per Application Load Balancer (ALB) server group.
         # 
-        # Valid values if you set the ScalingRuleType parameter to PredictiveScalingRule:
+        # Valid values if you set ScalingRuleType to PredictiveScalingRule:
         # 
-        # *   CpuUtilization: the average CPU utilization
-        # *   IntranetRx: the average inbound traffic over the internal network
-        # *   IntranetTx: the average outbound traffic over the internal network
+        # *   CpuUtilization: the average CPU utilization.
+        # *   IntranetRx: the inbound traffic over an internal network.
+        # *   IntranetTx: the outbound traffic over an internal network.
         self.metric_name = metric_name
         # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
         self.min_adjustment_magnitude = min_adjustment_magnitude
@@ -8970,7 +9014,7 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # Default value: MaxOverridePredictiveValue.
         self.predictive_value_behavior = predictive_value_behavior
-        # The percentage of the increment to the predicted value when the PredictiveValueBehavior parameter is set to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        # The ratio based on which the predicted value is increased when you set `PredictiveValueBehavior` to `PredictiveValueOverrideMaxWithBuffer`. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         # 
         # Default value: 0.
         self.predictive_value_buffer = predictive_value_buffer
@@ -8989,16 +9033,18 @@ class CreateScalingRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The name of the scaling rule. It must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter or a digit. The name of a scaling rule must be unique in the scaling group to which the scaling rule belongs and within an Alibaba Cloud account.
+        # The name of the scaling rule. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
         # 
-        # If you do not specify this parameter, the value of the ScalingRuleId parameter is used.
+        # The name of each scaling rule must be unique under the same account within a region.
+        # 
+        # If you leave this parameter empty, the scaling rule ID is used.
         self.scaling_rule_name = scaling_rule_name
         # The type of the scaling rule. Valid values:
         # 
-        # *   SimpleScalingRule: scales the number of ECS instances based on the values that are specified for the AdjustmentType and AdjustmentValue parameters.
-        # *   TargetTrackingScalingRule: calculates the number of ECS instances that must be scaled and maintains the value of a predefined metric close to the value that is specified for the TargetValue parameter.
-        # *   StepScalingRule: scales ECS instances in steps based on the specified thresholds and metric values.
-        # *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the boundary values for the scaling group.
+        # *   SimpleScalingRule: a simple scaling rule. Once a simple scaling rule is executed, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
+        # *   TargetTrackingScalingRule: a target tracking scaling rule. Once a target tracking scaling rule is executed, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the specified target value (TargetValue).
+        # *   StepScalingRule: a step scaling rule. Once a step scaling rule is executed, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
+        # *   PredictiveScalingRule: a predictive scaling rule. Once a predictive scaling rule is executed, Auto Scaling analyzes the historical monitoring data based on the machine learning technology and predicts the trends of metric data. Auto Scaling also creates scheduled tasks to enable dynamic adjustment of the boundary values for the scaling group.
         # 
         # Default value: SimpleScalingRule.
         self.scaling_rule_type = scaling_rule_type
@@ -9288,13 +9334,13 @@ class CreateScheduledTaskRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The ID of the scaling group whose number of instances must be modified when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter for a scheduled task, you must specify the minimum, maximum, or expected numbers of instances for a scaling group in the scheduled task. That is, you must specify at least one of the `MinValue`, `MaxValue`, and `DesiredCapacity` parameters.
+        # The ID of the scaling group. If you specify this parameter, the number of instances in the scaling group will be changed when the scheduled task is triggered.
         # 
-        # > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
+        # If you specify `ScalingGroupId`, you must also specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         self.scaling_group_id = scaling_group_id
-        # The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule. If you specify the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
+        # The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule.
         # 
-        # > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
+        # If you specify `ScheduledAction`, the scheduled task uses an existing scaling rule. You cannot specify `ScheduledAction` and `ScalingGroupId` at the same time.
         self.scheduled_action = scheduled_action
         # The name of the scheduled task. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit. The name of the scheduled task must be unique in the region and within the Alibaba Cloud account.
         # 
@@ -9910,7 +9956,7 @@ class DeleteLifecycleHookResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11220,9 +11266,13 @@ class DescribeAlertConfigurationRequest(TeaModel):
         scaling_group_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID of the event-triggered task.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -11264,7 +11314,9 @@ class DescribeAlertConfigurationResponseBody(TeaModel):
         request_id: str = None,
         scale_statuses: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The status of the scaling activities that prompt text message or email notifications.
         self.scale_statuses = scale_statuses
 
     def validate(self):
@@ -11340,7 +11392,7 @@ class DescribeEciScalingConfigurationDetailRequest(TeaModel):
         scaling_configuration_id: str = None,
         scaling_group_id: str = None,
     ):
-        # The output format. Set the value to yaml.
+        # The output format. Set the value to YAML.
         self.output_format = output_format
         # The region ID of the scaling group to which the scaling configuration belongs.
         # 
@@ -11393,7 +11445,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationAcrRe
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the Container Registry Enterprise Edition instance are displayed. You can specify one or more domain names. Separate multiple domain names with commas (,).
+        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. Multiple domain names are separated by commas (,).
         self.domains = domains
         # The ID of the Container Registry Enterprise Edition instance.
         self.instance_id = instance_id
@@ -11443,7 +11495,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
     ):
         # >  This parameter is not available for use.
         self.field_ref_field_path = field_ref_field_path
-        # The key of the environment variable.
+        # The name of the environment variable.
         self.key = key
         # The value of the environment variable.
         self.value = value
@@ -11525,17 +11577,17 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
     ):
         # The directory in which the container mounts the volume.
         # 
-        # >  Data in this directory is overwritten by data on the volume. Specify this parameter with caution.
+        # >  Data in this directory is overwritten by the data on the volume. Proceed with caution if you specify this parameter.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation setting of the volume. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
+        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
+        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The name of the mounted volume.
+        # The volume name.
         self.name = name
         # Indicates whether the volume is read-only.
         # 
@@ -11636,9 +11688,9 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
         volume_mounts: List[DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationContainersVolumeMounts] = None,
         working_dir: str = None,
     ):
-        # The startup arguments of the container.
+        # The arguments that are passed to the container startup commands.
         self.args = args
-        # The startup commands of the container.
+        # The container startup commands.
         self.commands = commands
         # The number of vCPUs that are allocated to the elastic container instance.
         self.cpu = cpu
@@ -11650,35 +11702,35 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
         self.image = image
         # The image pulling policy.
         self.image_pull_policy = image_pull_policy
-        # The commands that are run by using the CLI in the container to specify the postStart callback function.
+        # The commands that are run by using a CLI for configuring the postStart callback function within the container.
         self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
-        # The host IP address detected by the HTTP GET requests that are used to specify the postStart callback function.
+        # The IP address of the host to the HTTP GET requests for configuring the postStart callback function are sent.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
-        # The path detected by the HTTP GET requests that are used to specify the postStart callback function.
+        # The path to the HTTP GET requests for configuring the postStart callback function are sent.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
-        # The port number detected by the HTTP Get requests that are used to specify the postStart callback function.
+        # The port over which the HTTP GET requests for configuring the postStart callback function are sent.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
-        # The protocol type of the HTTP Get requests that are used to specify the postStart callback function.
+        # The protocol type of the HTTP Get requests that are used for configuring the postStart callback function.
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
-        # The host IP address detected by the TCP sockets that are used to specify the postStart callback function.
+        # The IP address of the host detected by the TCP sockets that are used for configuring the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
-        # The port number detected by the TCP sockets that are used to specify the postStart callback function.
+        # The port detected by the TCP sockets that are used for configuring the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
-        # The commands that are run by using the CLI in the container to specify the preStop callback function.
+        # The commands that are run by using a CLI for configuring the preStop callback function within the container.
         self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
-        # The host IP address detected by the HTTP Get requests that are used to specify the preStop callback function.
+        # The IP address of the host to which the HTTP GET requests for configuring the preStop callback function are sent.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
-        # The path detected by the HTTP Get requests that are used to specify the preStop callback function.
+        # The path to which the HTTP GET requests for configuring the preStop callback function are sent.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
-        # The port number detected by the HTTP Get requests that are used to specify the preStop callback function.
+        # The port over which the HTTP GET requests for configuring the preStop callback function are sent.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
-        # The protocol type of the HTTP Get requests that are used to specify the preStop callback function.
+        # The protocol type of the HTTP Get requests that are used for configuring the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
-        # The host IP address detected by the TCP sockets that are used to specify the preStop callback function.
+        # The IP address of the host detected by the TCP sockets that are used for configuring the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
-        # The port number detected by the TCP sockets that are used to specify the preStop callback function.
+        # The port detected by the TCP sockets that are used for configuring the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The commands that are run in the container when you use the command line interface (CLI) to perform liveness probes.
+        # The commands that are run in the container when you use a CLI to perform liveness probes.
         self.liveness_probe_exec_commands = liveness_probe_exec_commands
         # The minimum number of consecutive failures before a successful liveness probe is considered failed.
         # 
@@ -11701,15 +11753,15 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
         self.liveness_probe_success_threshold = liveness_probe_success_threshold
         # The port detected by TCP sockets when you use the TCP sockets to perform liveness probes.
         self.liveness_probe_tcp_socket_port = liveness_probe_tcp_socket_port
-        # The timeout period of the liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period of a liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
         self.liveness_probe_timeout_seconds = liveness_probe_timeout_seconds
         # The memory size.
         self.memory = memory
         # The container name.
         self.name = name
-        # The exposed ports and protocols of the container.
+        # The exposed ports and protocols.
         self.ports = ports
-        # The commands that are run in the container when you use the CLI to perform readiness probes.
+        # The commands that are run in the container when you use a CLI to perform readiness probes.
         self.readiness_probe_exec_commands = readiness_probe_exec_commands
         # The minimum number of consecutive failures before a successful readiness probe is considered failed.
         # 
@@ -11717,7 +11769,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
         self.readiness_probe_failure_threshold = readiness_probe_failure_threshold
         # The path to which HTTP Get requests are sent when you use the HTTP requests to perform readiness probes.
         self.readiness_probe_http_get_path = readiness_probe_http_get_path
-        # The path to which HTTP Get requests are sent when you use the HTTP requests to perform readiness probes.
+        # The path to which HTTP Get requests are sent when you use the HTTP Get requests to perform readiness probes.
         self.readiness_probe_http_get_port = readiness_probe_http_get_port
         # The protocol type of HTTP GET requests when you use the HTTP requests to perform readiness probes. Valid values:
         # 
@@ -11732,21 +11784,21 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
         self.readiness_probe_success_threshold = readiness_probe_success_threshold
         # The port detected by TCP sockets when you use the TCP sockets to perform readiness probes.
         self.readiness_probe_tcp_socket_port = readiness_probe_tcp_socket_port
-        # The timeout period of the readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period of a readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
         self.readiness_probe_timeout_seconds = readiness_probe_timeout_seconds
         # The permissions that are granted to the processes in the container. Valid values: NET_ADMIN and NET_RAW.
         self.security_context_capability_adds = security_context_capability_adds
-        # Indicates whether the root file system is read-only. Valid value: true.
+        # Indicates whether the root file system on which the container runs is read-only. Valid value: true.
         self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
         # The ID of the user that runs the entry point of the container process.
         self.security_context_run_as_user = security_context_run_as_user
-        # Indicates whether the container allocates buffer resources to standard input streams when the container is run. If this parameter is not specified, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
+        # Indicates whether the container allocates buffer resources to standard input streams when the container is running. If this parameter is not specified, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
         # Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions.
         # 
-        # If StdinOnce is set to true, stdin is opened upon container startup, but remains empty until the first client attaches to stdin, and then remains open and receives data until the client disconnects. When the client disconnects, stdin is closed and remains closed until the container is restarted.
+        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
         self.stdin_once = stdin_once
-        # Indicates whether Interaction is enabled. Valid values:
+        # Specifies whether to enable the Interaction feature. Valid values:
         # 
         # *   true
         # *   false
@@ -11755,7 +11807,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationConta
         # 
         # Default value: false.
         self.tty = tty
-        # The mounted volumes.
+        # The volumes that are mounted to the container.
         self.volume_mounts = volume_mounts
         # The working directory in the container.
         self.working_dir = working_dir
@@ -12131,7 +12183,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitC
     ):
         # >  This parameter is not available for use.
         self.field_ref_field_path = field_ref_field_path
-        # The key of the environment variable.
+        # The name of the environment variable.
         self.key = key
         # The value of the environment variable.
         self.value = value
@@ -12213,17 +12265,17 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitC
     ):
         # The directory to which the init container mounts the volume.
         # 
-        # >  Data in this directory is overwritten by the data on the volume. Specify this parameter with caution.
+        # >  Data in this directory is overwritten by the data on the volume. Proceed with caution if you specify this parameter.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one init container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation setting of the volume. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the init container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
+        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
+        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The name of the mounted volume.
+        # The volume name.
         self.name = name
         # Indicates whether the mount directory is read-only.
         # 
@@ -12291,13 +12343,13 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitC
         self.cpu = cpu
         # The number of GPUs that are allocated to the init container.
         self.gpu = gpu
-        # The init container image.
+        # The image of the init container.
         self.image = image
         # The image pulling policy.
         self.image_pull_policy = image_pull_policy
-        # The startup arguments of the init container.
+        # The arguments that are passed to the startup commands of the init container.
         self.init_container_args = init_container_args
-        # The startup commands of the init container.
+        # The commands that are used to start the init container.
         self.init_container_commands = init_container_commands
         # The environment variables of the init container.
         self.init_container_environment_vars = init_container_environment_vars
@@ -12305,15 +12357,15 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationInitC
         self.init_container_ports = init_container_ports
         # The volume mounts of the init container.
         self.init_container_volume_mounts = init_container_volume_mounts
-        # The memory size that is allocated to the init container.
+        # The memory size of the init container.
         self.memory = memory
         # The name of the init container.
         self.name = name
         # The permissions that are granted to the processes in the init container. Valid values: NET_ADMIN and NET_RAW.
         self.security_context_capability_adds = security_context_capability_adds
-        # Indicates whether the root file system is read-only. Valid value: true.
+        # Indicates whether the root file system on which the init container runs is read-only. Valid value: true.
         self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
-        # The ID of the user that runs the entry point of the init container.
+        # The ID of the user that runs the init container.
         self.security_context_run_as_user = security_context_run_as_user
         # The working directory of the init container.
         self.working_dir = working_dir
@@ -12563,7 +12615,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolum
         self.disk_volume_disk_size = disk_volume_disk_size
         # The system type of the disk volume.
         self.disk_volume_fs_type = disk_volume_fs_type
-        # The storage medium of the emptyDir volume. If you do not specify a storage medium for the emptyDir volume, the volume stores data in the file system of a node by default. We recommend that you set this parameter to memory. In this case, the emptyDir volume stores data in the specified memory.
+        # The storage medium of the emptyDir volume. If you do not specify a storage medium for the emptyDir volume, the volume stores data in the file system of the node by default. We recommend that you set this parameter to memory. In this case, the emptyDir volume stores data in the specified memory.
         self.empty_dir_volume_medium = empty_dir_volume_medium
         # The storage size of the emptyDir volume.
         self.empty_dir_volume_size_limit = empty_dir_volume_size_limit
@@ -12583,7 +12635,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfigurationVolum
         # 
         # Default value: false.
         self.nfsvolume_read_only = nfsvolume_read_only
-        # The address of the Network File System (NFS) server.
+        # The endpoint of the NFS server.
         self.nfsvolume_server = nfsvolume_server
         # The volume name.
         self.name = name
@@ -12758,7 +12810,7 @@ class DescribeEciScalingConfigurationDetailResponseBodyScalingConfiguration(TeaM
         self.compute_category = compute_category
         # The name of the container group.
         self.container_group_name = container_group_name
-        # The containers that are run on the instance.
+        # The containers in the elastic container instance.
         self.containers = containers
         # Indicates whether the Cost Optimization feature is enabled. Valid values:
         # 
@@ -15384,16 +15436,16 @@ class DescribeLifecycleActionsResponseBodyLifecycleActions(TeaModel):
         lifecycle_action_token: str = None,
         lifecycle_hook_id: str = None,
     ):
-        # The IDs of the ECS instances to which the lifecycle hook applies.
+        # The IDs of the ECS instances on which the lifecycle hook takes effect
         self.instance_ids = instance_ids
-        # The action that is performed after the lifecycle action triggered by the lifecycle hook is complete. Valid values:
+        # The subsequent action that Auto Scaling performs after the lifecycle hook times out. Valid values:
         # 
-        # *   CONTINUE: Auto Scaling continues to add ECS instances to the scaling group, or continues to remove ECS instances from the scaling group.
-        # *   ABANDON: Auto Scaling stops adding ECS instances to the scaling group and releases the ECS instances, or continues to respond to scale-in requests and remove ECS instances from the scaling group.
+        # *   CONTINUE: Auto Scaling continues to respond to a scale-in or scale-out request.
+        # *   ABANDON: Auto Scaling releases ECS instances that are created during scale-out events, or removes ECS instances from the scaling group during scale-in events.
         self.lifecycle_action_result = lifecycle_action_result
-        # The status of the lifecycle action.
+        # The status of the lifecycle hook action.
         self.lifecycle_action_status = lifecycle_action_status
-        # The token of the lifecycle action.
+        # The token of the lifecycle hook action.
         self.lifecycle_action_token = lifecycle_action_token
         # The ID of the lifecycle hook.
         self.lifecycle_hook_id = lifecycle_hook_id
@@ -15443,7 +15495,7 @@ class DescribeLifecycleActionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The lifecycle actions.
+        # The actions of the lifecycle hook.
         self.lifecycle_actions = lifecycle_actions
         # The maximum number of entries returned per page.
         self.max_results = max_results
@@ -15552,7 +15604,7 @@ class DescribeLifecycleHooksRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The ID of the lifecycle hook.
+        # The IDs of the lifecycle hooks that you want to query.
         self.lifecycle_hook_ids = lifecycle_hook_ids
         # The name of the lifecycle hook.
         self.lifecycle_hook_name = lifecycle_hook_name
@@ -15637,9 +15689,9 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
         notification_metadata: str = None,
         scaling_group_id: str = None,
     ):
-        # The action that Auto Scaling performs after the lifecycle hook ends.
+        # The next action that is performed after the lifecycle hook times out.
         self.default_result = default_result
-        # The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends.
+        # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult.
         self.heartbeat_timeout = heartbeat_timeout
         # The ID of the lifecycle hook.
         self.lifecycle_hook_id = lifecycle_hook_id
@@ -15647,27 +15699,28 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(TeaModel):
         self.lifecycle_hook_name = lifecycle_hook_name
         # The status of the lifecycle hook. Valid values:
         # 
-        # *   Active
-        # *   InActive
+        # *   Active: The lifecycle hook is enabled.
+        # *   InActive: The lifecycle hook is disabled.
         self.lifecycle_hook_status = lifecycle_hook_status
         # The type of the scaling activity to which the lifecycle hook applies.
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the method that is used by Auto Scaling to send notifications when the lifecycle hook takes effect. Specify the value in one of the following formats:
+        # The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter is in one of the following formats:
         # 
-        # *   If you do not create a notification rule, specify the value in the `acs:ess:{region-id}:{account-id}:null/null` format.
-        # *   If you specify a Message Service (MNS) queue as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
-        # *   If you specify an MNS topic as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
-        # *   If you specify an Operation Orchestration Service (OOS) template as the notification method, specify the value in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
+        # *   If you did not specify this parameter, the return value is in the `acs:ess:{region-id}:{account-id}:null/null` format.
+        # *   If you specified a Message Service (MNS) queue as the notification recipient, the return value is in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+        # *   If you specified an MNS topic as the notification recipient, the return value is in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+        # *   If you specified a CloudOps Orchestration Service (OOS) template as the notification recipient, the return value is in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
+        # *   If you specified an event bus as the notification recipient, the return value is in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
         # 
-        # The variables in the preceding parameter formats have the following meanings:
+        # The variables in the preceding formats have the following meanings:
         # 
-        # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account.
+        # *   region-id: the region ID of your scaling group.
+        # *   account-id: the ID of your Alibaba Cloud.
         # *   queuename: the name of the MNS queue.
         # *   topicname: the name of the MNS topic.
         # *   templatename: the name of the OOS template.
         self.notification_arn = notification_arn
-        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect.
+        # The fixed string that is included in a notification that Auto Scaling sends when the lifecycle hook takes effect.
         self.notification_metadata = notification_metadata
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
@@ -15733,7 +15786,7 @@ class DescribeLifecycleHooksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the lifecycle hooks.
+        # The details of the lifecycle hooks.
         self.lifecycle_hooks = lifecycle_hooks
         # The page number of the returned page.
         self.page_number = page_number
@@ -17018,7 +17071,12 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
     ):
+        # Indicates whether all lifecycle hooks are disabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_lifecycle_hook = disable_lifecycle_hook
+        # The IDs of the lifecycle hooks that are disabled.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
 
     def validate(self):
@@ -17077,31 +17135,33 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         trigger_source_id: str = None,
         trigger_source_type: str = None,
     ):
+        # The metadata of the scaling activity.
         self.activity_metadata = activity_metadata
-        # The total number of instances that are manually added to the scaling group after the scaling activity is complete.
+        # The total number of instances that are manually added to the scaling group after the scaling activity was complete.
         self.attached_capacity = attached_capacity
-        # The total number of instances that are created by Auto Scaling after the scaling activity is complete.
+        # The total number of instances that are created by Auto Scaling after the scaling activity was complete.
         self.auto_created_capacity = auto_created_capacity
-        # The reason why the scaling activity is triggered.
+        # The reason why the scaling activity was triggered.
         self.cause = cause
-        # The number of instances that are created during the scale-out.
+        # The number of instances that are created during the scale-out event.
         self.created_capacity = created_capacity
-        # The instances that are created during the scale-out.
+        # The instances that are created during the scale-out event.
         self.created_instances = created_instances
         # The description of the scaling activity.
         self.description = description
-        # The number of instances that are released during the scale-in.
+        # The number of instances that are released during the scale-in event.
         self.destroyed_capacity = destroyed_capacity
-        # The instances that are released during the scale-in.
+        # The instances that are released during the scale-in event.
         self.destroyed_instances = destroyed_instances
         # Details of the scaling activity.
         self.detail = detail
-        # The time when the scaling activity is complete.
+        # The time when the scaling activity was complete.
         self.end_time = end_time
         # The error code that is returned when the scaling activity failed.
         self.error_code = error_code
         # The error message that is returned when the scaling activity failed.
         self.error_message = error_message
+        # The context of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
         # The execution progress of the scaling activity.
         self.progress = progress
@@ -17109,15 +17169,15 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.scaling_activity_id = scaling_activity_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # If you query a scale-out, the value of this parameter indicates the number of instances that are created or the number of instances that are started from the Economical Mode during the scale-out.
+        # If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from the Economical Mode during the scale-out event.
         # 
-        # If you query a scale-in, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in the Economical Mode during the scale-in.
+        # If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in the Economical Mode during the scale-in event.
         self.scaling_instance_number = scaling_instance_number
-        # The time when the scaling activity is started.
+        # The time when the scaling activity was started.
         self.start_time = start_time
-        # The number of instances that are started from the Economical Mode during the scale-out.
+        # The number of instances that are started from the Economical Mode during the scale-out event.
         self.started_capacity = started_capacity
-        # The instances that are started from the Economical Mode during the scale-out.
+        # The instances that are started from the Economical Mode during the scale-out event.
         self.started_instances = started_instances
         # The status of the scaling activity. Valid values:
         # 
@@ -17129,13 +17189,23 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.status_code = status_code
         # The status message of the scaling activity.
         self.status_message = status_message
-        # The number of instances that are stopped in the Economical Mode during the scale-in.
+        # The number of instances that are stopped in the Economical Mode during the scale-in event.
         self.stopped_capacity = stopped_capacity
-        # The instances that are stopped in the Economical Mode during the scale-in.
+        # The instances that are stopped in the Economical Mode during the scale-in event.
         self.stopped_instances = stopped_instances
-        # The total number of instances in the scaling group after the scaling activity is complete.
+        # The total number of instances in the scaling group after the scaling activity was complete.
         self.total_capacity = total_capacity
+        # The ID of the trigger source of the scaling activity.
+        # 
+        # *   If TriggerSourceType is set to Cms, the ID of the trigger source is the ID of an event-triggered task.
+        # *   If TriggerSourceType is set to Api, the ID of the trigger source is the ID of an Alibaba Cloud account or a RAM user.
+        # *   If TriggerSourceType is set to Api, the ID of the trigger source is null.
         self.trigger_source_id = trigger_source_id
+        # The type of the trigger source of the scaling activity.
+        # 
+        # *   Cms: triggered by an event-triggered task
+        # *   APIs: triggered by API calling
+        # *   Ess: triggered by a system task
         self.trigger_source_type = trigger_source_type
 
     def validate(self):
@@ -17428,7 +17498,7 @@ class DescribeScalingActivityDetailResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # Details of the scaling activity.
+        # The details of the scaling activity. If the status of the scaling activity is Rejected, no result is displayed.
         self.detail = detail
         # The ID of the request.
         self.request_id = request_id
@@ -17607,7 +17677,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriori
         instance_type: str = None,
         vswitch_id: str = None,
     ):
-        # The instance type of the ECS instances.
+        # The ECS instance type.
         self.instance_type = instance_type
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
@@ -17841,12 +17911,12 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatt
         self.instance_categories = instance_categories
         # The level of the instance family.
         # 
-        # *   EntryLevel: entry level (shared instance types) Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # *   CreditEntryLevel: credit entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         self.instance_type_families = instance_type_families
-        # The maximum hourly price for pay-as-you-go or preemptible instances.
+        # The maximum hourly price for the pay-as-you-go or preemptible instances.
         self.max_price = max_price
         self.maximum_cpu_core_count = maximum_cpu_core_count
         self.maximum_gpu_amount = maximum_gpu_amount
@@ -18097,7 +18167,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsTags(TeaMode
     ):
         # The tag key of the ECS instance. You can specify up to 20 tags for each ECS instance.
         # 
-        # The tag key cannot be an empty string. The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the ECS instance. You can specify up to 20 tags for each ECS instance.
         # 
@@ -18165,6 +18235,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         memory: int = None,
         network_interfaces: List[DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInterfaces] = None,
         password_inherit: bool = None,
+        password_setted: bool = None,
         private_pool_options_id: str = None,
         private_pool_options_match_criteria: str = None,
         ram_role_name: str = None,
@@ -18215,7 +18286,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.creation_time = creation_time
         # The performance mode of the burstable instances. Valid values:
         # 
-        # *   Standard: the standard mode. For more information, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # *   Standard: the standard mode. For more information, see the "Standard mode" section in the [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html) topic.
         # *   Unlimited: the unlimited mode. For more information, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.credit_specification = credit_specification
         # The priority of the custom ECS instance type + vSwitch combination.
@@ -18224,12 +18295,13 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # 
         # If Auto Scaling cannot create ECS instances by using the custom ECS instance type + vSwitch combination of the highest priority, Auto Scaling creates ECS instances by using the custom ECS instance type + vSwitch combination of the next highest priority.
         # 
-        # >  If you specified the priorities of only partial custom ECS instance type + vSwitch combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have specified priorities. If the custom combinations that have specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have specified priorities based on the specified orders of vSwitches and instance types.
+        # >  If you specify the priorities of only a portion of custom ECS instance type + vSwitch combinations, Auto Scaling preferentially creates ECS instances by using the custom combinations that have specified priorities. If the custom combinations that have specified priorities do not provide sufficient resources, Auto Scaling creates ECS instances by using the custom combinations that do not have specified priorities based on the specified orders of vSwitches and instance types.
         # 
         # *   Example: the specified order of vSwitches for your scaling group is vsw1 and vsw2 and the specified order of instance types in your scaling configuration is type1 and type 2. In addition, you use CustomPriorities to specify ["vsw2+type2", "vsw1+type2"]. In this example, the vsw2+type2 combination has the highest priority and the vsw2+type1 combination has the lowest priority. The vsw1+type2 combination has a higher priority than the vsw1+type1 combination.
         self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
+        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         # The ID of the dedicated host on which the ECS instance is created. Preemptible instances are not supported by dedicated hosts. Therefore, if you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
         # 
@@ -18240,7 +18312,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # *   true: Release Protection is enabled for the ECS instances. You cannot delete the ECS instances by using the ECS console or calling the DeleteInstance operation.
         # *   false: Release Protection is disabled for the ECS instances. You can delete the ECS instances by using the ECS console or calling the DeleteInstance operation.
         # 
-        # >  You can enable Release Protection for only pay-as-you-go instances to prevent unexpected instance deletion during scale-ins. The Release Protection feature does not affect normal scaling activities. In other words, an instance that meets the criteria of scale-in policies can be removed from a scaling group during a scale-in even if you enabled Release Protection for the instance.
+        # >  You can enable Release Protection for only pay-as-you-go instances to prevent unexpected instance deletion during scale-in events. The Release Protection feature does not affect normal scaling activities. In other words, an instance that meets the criteria of scale-in policies may be removed from a scaling group during a scale-in event even if you enabled Release Protection for the instance.
         self.deletion_protection = deletion_protection
         # The ID of the deployment set to which the Elastic Compute Service (ECS) instances belong.
         self.deployment_set_id = deployment_set_id
@@ -18248,7 +18320,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.host_name = host_name
         # The ID of the High Performance Computing (HPC) cluster to which the ECS instances belong.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify `ImageId`, you cannot specify this parameter.
+        # The name of the image family. You can specify this parameter to obtain the latest available images in the current image family for instance creation. If you specify ImageId, you cannot specify `ImageFamily`.
         self.image_family = image_family
         # The ID of the image file that provides the image resource for Auto Scaling to create ECS instances.
         self.image_id = image_id
@@ -18259,7 +18331,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # *   true
         # *   false
         self.image_options_login_as_non_root = image_options_login_as_non_root
-        # The source of the image. Valid values:
+        # The image source. Valid values:
         # 
         # *   system: a public image provided by Alibaba Cloud
         # *   self: a custom image that you created
@@ -18274,7 +18346,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.instance_name = instance_name
         # The information about the intelligent configuration settings, which determines the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
-        # The instance type of the ECS instances.
+        # The instance types of the ECS instances.
         self.instance_type = instance_type
         # The ECS instance types.
         self.instance_types = instance_types
@@ -18301,8 +18373,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.key_pair_name = key_pair_name
         # The status of the scaling configuration in the scaling group. Valid values:
         # 
-        # *   Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create ECS instances during scale-outs.
-        # *   Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create ECS instances during scale-outs.
+        # *   Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create ECS instances during scale-out events.
+        # *   Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create ECS instances during scale-out events.
         self.lifecycle_state = lifecycle_state
         # The weight of an ECS instance as a backend server. Valid values: 1 to 100.
         self.load_balancer_weight = load_balancer_weight
@@ -18316,6 +18388,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.network_interfaces = network_interfaces
         # Indicates whether the password preconfigured in the image is used.
         self.password_inherit = password_inherit
+        self.password_setted = password_setted
         self.private_pool_options_id = private_pool_options_id
         self.private_pool_options_match_criteria = private_pool_options_match_criteria
         # The name of the Resource Access Management (RAM) role assumed by the ECS instances. This name is provided and maintained by RAM. You can call the ListRoles operation to query the available RAM roles.
@@ -18343,13 +18416,13 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.spot_duration = spot_duration
         # The interruption event of the preemptible instances.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The information about the preemptible instances.
+        # The preemptible instances.
         self.spot_price_limits = spot_price_limits
-        # The preemption policy that is applied to the pay-as-you-go instance. Valid values:
+        # The preemption policy that is applied to pay-as-you-go instances. Valid values:
         # 
-        # *   NoSpot: The instance is created as a pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a preemptible instance that has a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+        # *   NoSpot: The instances are created as regular pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances are preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
         # The ID of the storage set.
         self.storage_set_id = storage_set_id
@@ -18377,7 +18450,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         # *   cloud_efficiency: ultra disk
         # *   cloud_ssd: standard SSD
         # *   ephemeral_ssd: local SSD
-        # *   cloud_essd: enhanced SSD (ESSD)
+        # *   cloud_essd: enterprise SSD (ESSD)
         # *   cloud_auto: ESSD AutoPL
         self.system_disk_category = system_disk_category
         # The description of the system disk.
@@ -18530,6 +18603,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
                 result['NetworkInterfaces'].append(k.to_map() if k else None)
         if self.password_inherit is not None:
             result['PasswordInherit'] = self.password_inherit
+        if self.password_setted is not None:
+            result['PasswordSetted'] = self.password_setted
         if self.private_pool_options_id is not None:
             result['PrivatePoolOptions.Id'] = self.private_pool_options_id
         if self.private_pool_options_match_criteria is not None:
@@ -18686,6 +18761,8 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
                 self.network_interfaces.append(temp_model.from_map(k))
         if m.get('PasswordInherit') is not None:
             self.password_inherit = m.get('PasswordInherit')
+        if m.get('PasswordSetted') is not None:
+            self.password_setted = m.get('PasswordSetted')
         if m.get('PrivatePoolOptions.Id') is not None:
             self.private_pool_options_id = m.get('PrivatePoolOptions.Id')
         if m.get('PrivatePoolOptions.MatchCriteria') is not None:
@@ -21177,74 +21254,74 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
         weighted_capacity: int = None,
         zone_id: str = None,
     ):
-        # The time when the ECS instance was added to the scaling group. The value is accurate to seconds.
+        # The time when the ECS instances were added to the scaling group. The value is accurate to seconds.
         self.created_time = created_time
-        # The time when the ECS instance was added to the scaling group. The value is accurate to minutes.
+        # The time when the ECS instances were added to the scaling group. The value is accurate to the minute.
         self.creation_time = creation_time
-        # Indicates how the ECS instance is created. Valid values:
+        # The instance creation method. Valid values:
         # 
-        # *   AutoCreated: Auto Scaling automatically creates ECS instances based on the instance configuration source.
-        # *   Attached: You manually add independent ECS instances to the scaling group.
+        # *   AutoCreated: Auto Scaling created the ECS instances based on the instance configuration source.
+        # *   Attached: You manually added the ECS instances to the scaling group.
         self.creation_type = creation_type
-        # Indicates whether the scaling group is allowed to manage the instance lifecycle when you manually add the instance. If the scaling group is allowed to manage the instance lifecycle, Auto Scaling can release the instance when the instance is automatically removed from the scaling group. This rule does not apply to instances that are manually removed from the scaling group. Valid values:
+        # Indicates whether the scaling group is allowed to manage the instance lifecycles when the ECS instances are added manually. If the scaling group is allowed to manage the instance lifecycles, Auto Scaling can release the ECS instances when they are automatically removed from the scaling group. Valid values:
         # 
         # *   true
         # *   false
         self.entrusted = entrusted
-        # The health status of the ECS instance in the scaling group. If the ECS instance does not run as expected, Auto Scaling considers the ECS instance unhealthy. Valid values:
+        # The health status of the ECS instances in the scaling group. If an ECS instance is not in the Running state, it is deemed as unhealthy. Valid values:
         # 
         # *   Healthy
         # *   Unhealthy
         # 
-        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases automatically created instances among the unhealthy instances.
+        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
         # 
-        # Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the instance lifecycles. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
+        # Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of their lifecycles. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
         # 
-        # >  Make sure that you have sufficient balance within your Alibaba Cloud account. If you have overdue payments within your Alibaba Cloud account, pay-as-you-go and preemptible instances are stopped or even released. For information about how the states of ECS instances change when you have overdue payments within your Alibaba Cloud account, see [Overdue payments](https://help.aliyun.com/document_detail/170589.html).
+        # >  Make sure that you have sufficient balance within your Alibaba Cloud account. If your account has an overdue payment, all pay-as-you-go ECS instances, including preemptible instances, may be stopped or even released. For information about how the status of ECS instances changes when you have an overdue payment in your Alibaba Cloud account, see [Overdue payments](https://help.aliyun.com/document_detail/170589.html).
         self.health_status = health_status
-        # The ID of the ECS instance
+        # The IDs of the ECS instances.
         self.instance_id = instance_id
         # The ID of the launch template.
         self.launch_template_id = launch_template_id
         # The version number of the launch template.
         self.launch_template_version = launch_template_version
-        # The lifecycle state of the ECS instance. Valid values:
+        # The lifecycle status of the ECS instances in the scaling group. Valid values:
         # 
-        # *   InService: The ECS instance is added to the scaling group and provides services as expected.
-        # *   Pending: The ECS instance is being added to the scaling group. During this process, Auto Scaling adds the ECS instance to the backend server groups of the associated SLB instance and adds the private IP address of the ECS instance to the IP address whitelist of the associated ApsaraDB RDS instance.
-        # *   Pending:Wait: The ECS instance is waiting to be added to the scaling group. If a lifecycle hook that applies to scale-outs is created for the scaling group, the ECS instance enters the Pending:Wait state. The ECS instance is added to the scaling group only after the lifecycle hook times out.
-        # *   Protected: The ECS instance is being protected. The ECS instance can provide services as expected. However, Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance.
-        # *   Standby: The ECS instance is on standby. The ECS instance is out of service and the weight of the ECS instance as a backend server is set to zero. Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle of the ECS instance.
-        # *   Stopped: The ECS instance is stopped. The ECS instance is stopped and cannot provide services.
-        # *   Removing: The ECS instance is being removed from the scaling group. During this process, Auto Scaling removes the ECS instance from the backend server groups of the associated SLB instance and removes the IP address of the ECS instance from the IP address whitelist of the associated ApsaraDB RDS instance.
-        # *   Removing:Wait: The ECS instance is waiting to be removed from the scaling group. If a lifecycle hook that applies to scale-ins is created for the scaling group, the ECS instance enters the Removing:Wait state. The ECS instance is removed from the scaling group only after the lifecycle hook times out.
+        # *   InService: The ECS instances have been successfully added to the scaling group and are providing the intended services.
+        # *   Pending: The ECS instances are in the process of being added to the scaling group. When an ECS instance is being added to the scaling group, Auto Scaling also adds it to the backend server groups of the attached load balancers and adds its private IP address to the IP address whitelists of the attached ApsaraDB RDS instances.
+        # *   Pending:Wait: The ECS instances are awaiting addition to the scaling group. If a scale-out lifecycle hook is in effect, ECS instances will remain in the Pending:Wait state until the timeout period for the lifecycle hook expires.
+        # *   Protected: The ECS instances are being safeguarded. Protected ECS instances can continue to provide services as expected, but Auto Scaling does not manage their lifecycles. You must manually manage the lifecycles of the ECS instances.
+        # *   Standby: The ECS instances are on standby. Standby ECS instances do not provide services as expected, and their weights as backend servers are reset to zero. Auto Scaling does not manage their lifecycles. Therefore, you must manually manage the lifecycles of the ECS instances.
+        # *   Stopped: The ECS instances are stopped. Stopped ECS instances do not provide services anymore.
+        # *   Removing: The ECS instances are in the process of being removed from the scaling group. When an ECS instance is being removed from the scaling group, Auto Scaling also removes it from the backend server groups of the attached load balancers and removes its private IP address from the IP address whitelists of the attached ApsaraDB RDS instances.
+        # *   Removing:Wait: The ECS instances are awaiting removal from the scaling group. If a scale-in lifecycle hook is in effect, ECS instances will remain in the Removing:Wait state until the timeout period for the lifecycle hook expires.
         self.lifecycle_state = lifecycle_state
-        # The weight of the ECS instance as a backend server.
+        # The weight of each ECS instance as a backend server.
         self.load_balancer_weight = load_balancer_weight
-        # The private IP address of the ECS instance in the scaling group.
+        # The private IP address of the ECS instance.
         self.private_ip_address = private_ip_address
-        # The ID of the scaling activity during which the ECS instance is added to the scaling group.
+        # The ID of the scaling activity during which the ECS instances were added to the scaling group.
         self.scaling_activity_id = scaling_activity_id
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # The identifier of the ECS instance in the scaling group. The identifier of an ECS instance or elastic container instance matches the ID of the ECS instance or elastic container instance.
+        # The ID of the ECS instance or elastic container instance.
         self.scaling_instance_id = scaling_instance_id
-        # The bidding policy for the preemptible instance. Valid values:
+        # The bidding policy for the preemptible instances. Valid values:
         # 
-        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        # *   SpotWithPriceLimit: The instances were created as preemptible instances with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances were preemptible instances for which the market price at the time of purchase was automatically used as the bidding price.
         self.spot_strategy = spot_strategy
-        # The warmup state of the ECS instance. Valid values:
+        # The warm-up status of the ECS instances. Valid values:
         # 
-        # *   NoNeedWarmup: The instance does not need to be warmed up.
-        # *   WaitingForInstanceWarmup: The instance is being warmed up.
-        # *   InstanceWarmupFinish: The instance is warmed up.
+        # *   NoNeedWarmup: The ECS instances do not need to go through a warm-up period.
+        # *   WaitingForInstanceWarmup: The ECS instances are undergoing the warm-up process.
+        # *   InstanceWarmupFinish: The warm-up process for the ECS instances is completed.
         self.warmup_state = warmup_state
         # The weight of the instance type. The weight indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         self.weighted_capacity = weighted_capacity
-        # The zone ID of the ECS instance.
+        # The zone ID of the ECS instances.
         self.zone_id = zone_id
 
     def validate(self):
@@ -21351,6 +21428,7 @@ class DescribeScalingInstancesResponseBody(TeaModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
         # The information about the ECS instances.
         self.scaling_instances = scaling_instances
@@ -22152,11 +22230,11 @@ class DescribeScheduledTasksRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 50.
+        # The number of entries per page. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -22168,9 +22246,9 @@ class DescribeScheduledTasksRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the scaling group to which the scheduled task belongs.
         self.scaling_group_id = scaling_group_id
-        # The actions that you want Auto Scaling to perform when the scheduled task is triggered.
+        # The scaling rules of the scheduled tasks. Once the scheduled tasks are triggered, the scaling rules are executed.
         self.scheduled_actions = scheduled_actions
-        # The ID of the scheduled task that you want to query.
+        # The IDs of the scheduled tasks that you want to query.
         self.scheduled_task_ids = scheduled_task_ids
         # The names of the scheduled tasks that you want to query.
         self.scheduled_task_names = scheduled_task_names
@@ -22255,25 +22333,25 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(TeaModel):
     ):
         # The description of the scheduled task.
         self.description = description
-        # The expected number of instances in the scaling group if you specify the ScalingGroupId parameter.
+        # The expected number of instances in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
         self.desired_capacity = desired_capacity
-        # The time period during which the failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600.
+        # The time window during which the scheduled task can be retried. Unit: seconds. Valid values: 0 to 21600.
         self.launch_expiration_time = launch_expiration_time
         # The point in time at which the scheduled task is triggered.
         self.launch_time = launch_time
-        # The maximum number of instances in the scaling group if you specify the ScalingGroupId parameter.
+        # The maximum number of instances that must be contained in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
         self.max_value = max_value
-        # The minimum number of instances in the scaling group if you specify the ScalingGroupId parameter.
+        # The minimum number of instances that must be contained in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
         self.min_value = min_value
         # The end time of the recurrence of the scheduled task.
         self.recurrence_end_time = recurrence_end_time
-        # The interval at which the scheduled task is repeated.
+        # The recurring interval of the scheduled task.
         self.recurrence_type = recurrence_type
-        # The number of recurrences of the scheduled task.
+        # The frequency of recurrence of the scheduled task.
         self.recurrence_value = recurrence_value
         # The ID of the scaling group to which the scheduled task belongs.
         self.scaling_group_id = scaling_group_id
-        # The scaling rule that is executed when the scheduled task is triggered. This parameter is returned only after a scaling rule is specified for the scheduled task.
+        # The scaling rule of the scheduled task. A value is returned for this parameter only after you specify ScheduledActions.
         self.scheduled_action = scheduled_action
         # The ID of the scheduled task.
         self.scheduled_task_id = scheduled_task_id
@@ -22372,9 +22450,9 @@ class DescribeScheduledTasksResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details of the scheduled tasks.
+        # The information collection of the scheduled tasks.
         self.scheduled_tasks = scheduled_tasks
         # The total number of scheduled tasks.
         self.total_count = total_count
@@ -22840,7 +22918,9 @@ class DetachInstancesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。只支持ASCII字符，且不能超过64个字符。更多信息，请参见[如何保证幂等性](https://help.aliyun.com/document_detail/25965.html)。
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # Specifies whether to adjust the expected number of instances in the scaling group. Valid values:
         # 
@@ -22849,19 +22929,28 @@ class DetachInstancesRequest(TeaModel):
         # 
         # Default value: true.
         self.decrease_desired_capacity = decrease_desired_capacity
-        # Specifies whether to remove the instances from the default server group and vServer groups of the Classic Load Balancer (CLB) instance that is associated with the scaling group, and whether to remove the IP addresses of the instances from the whitelist that manages access to the ApsaraDB RDS instance that is associated with the scaling group.
+        # Specifies whether to detach the ECS instances or elastic container instances that are marked for removal from the associated load balancers, and whether to remove the private IP addresses of these instances from the IP address whitelists of the associated ApsaraDB RDS instances.
         # 
-        # If you set this parameter to both, the instances are removed from the default sever group and vServer groups of the associated CLB instance, and the IP addresses of the instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance.
+        # Both: detaches the ECS instances or elastic container instances that are marked for removal from the associated load balancers and removes the private IP addresses of these instances from the IP address whitelists of the associated ApsaraDB RDS instances.
+        # 
+        # >  This parameter is not supported if you want to remove Alibaba Cloud-hosted third-party instances from a scaling group.
         self.detach_option = detach_option
+        # 从伸缩组移出一批实例时，是否忽略其中无效的实例。取值范围：
+        # - true：从伸缩组中移出一批实例时，会忽略其中无效的实例。如果存在无效的实例，并且有效的实例被成功移除时，伸缩活动执行状态也会显示为警告状态，可以从伸缩活动详情查看无效的实例。
+        # - false：从伸缩组中移出一批实例时，不会忽略无效的实例。如果一批实例中存在无效的实例，请求会报错。
+        # 
+        # 默认值：false。
         self.ignore_invalid_instance = ignore_invalid_instance
-        # The IDs of the ECS instances or elastic container instances that you want to remove from the scaling group.
+        # The IDs of the ECS instances, elastic container instances, or Aliababa Cloud-managed third-party instances that you want to remove from a scaling group.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # Specifies whether to trigger a lifecycle hook for a scale-in activity. Valid values:
+        # Specifies whether to trigger a lifecycle hook for scale-in purposes when ECS instances or elastic container instances are removed from the scaling group. Valid values:
         # 
         # *   true
         # *   false
+        # 
+        # >  This parameter is not supported if you want to remove Alibaba Cloud-hosted third-party instances from a scaling group.
         # 
         # Default value: false.
         self.lifecycle_hook = lifecycle_hook
@@ -23492,8 +23581,8 @@ class DetachVServerGroupsRequest(TeaModel):
         self.client_token = client_token
         # Specifies whether to remove the existing instances in the scaling group from the vServer group marked for detachment.
         # 
-        # *   true: If you set this parameter to `true`, the detachment of the load balancer from the scaling group entails automatic removal of the existing instances in the scaling group from the corresponding vServer group.
-        # *   false: If you set this parameter to `false`, the detachment of the load balancer from the scaling group does not entail automatic removal of the existing instances in the scaling group from the corresponding vServer group.
+        # *   true: If you set this parameter to `true`, the detachment of the load balancer from the scaling group causes automatic removal of the existing instances in the scaling group from the corresponding vServer group.
+        # *   false: If you set this parameter to `false`, the detachment of the load balancer from the scaling group does not cause automatic removal of the existing instances in the scaling group from the corresponding vServer group.
         # 
         # Default value: false.
         self.force_detach = force_detach
@@ -24409,7 +24498,9 @@ class ExecuteScalingRuleRequest(TeaModel):
     ):
         # The threshold specified when the step scaling rule is executed. Valid values: -9.999999E18 to 9.999999E18.
         self.breach_threshold = breach_threshold
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # The metric value specified when the step scaling rule is executed. Valid values: -9.999999E18 to 9.999999E18.
         self.metric_value = metric_value
@@ -24421,7 +24512,7 @@ class ExecuteScalingRuleRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The unique identifier of the scaling rule.
         # 
-        # > You can call the ExecuteScalingRule operation to execute only simple scaling rules and step scaling rules. To execute a step scaling rule, you must specify the BreachThreshold and MetricValue parameters.
+        # >  You can call this operation to execute simple scaling rules and step scaling rules. If you want to call this operation to execute a step scaling rule, you must specify `BreachThreshold` and `MetricValue`.
         # 
         # This parameter is required.
         self.scaling_rule_ari = scaling_rule_ari
@@ -24484,7 +24575,7 @@ class ExecuteScalingRuleResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
@@ -24565,18 +24656,18 @@ class ExitStandbyRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # Specifies whether to asynchronously move the ECS instance out of the Standby state. Valid values:
+        # Specifies whether to remove the instance from the Standby state in an asynchronous manner. Valid values:
         # 
         # *   true
         # *   false
         # 
         # Default value: false.
         self.async_ = async_
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # The IDs of the ECS instances. The value of this parameter can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
+        # The IDs of the ECS instances. The value can be a JSON array that consists of up to 20 instance IDs. Separate multiple instance IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
@@ -25794,10 +25885,15 @@ class ModifyAlertConfigurationRequest(TeaModel):
         scaling_group_id: str = None,
     ):
         self.owner_id = owner_id
+        # The region ID of the scaling group.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The status of the scaling activities that prompt text message or email notifications.
         self.scale_statuses = scale_statuses
+        # The ID of the scaling group.
+        # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
 
@@ -25842,6 +25938,7 @@ class ModifyAlertConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28635,22 +28732,20 @@ class ModifyNotificationConfigurationRequest(TeaModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
         # 
-        # *   If you use CloudMonitor as the notification method, the value format of this parameter is acs:ess:{region-id}:{account-id}:cloudmonitor.
-        # *   If you use an MNS queue as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:queue/{queuename}.
-        # *   If you use an MNS topic as the notification method, the value format of this parameter is acs:mns:{region-id}:{account-id}:topic/{topicname}.
+        # *   If you use CloudMonitor as the notification method, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
+        # *   If you use an MNS queue as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+        # *   If you use an MNS topic as the notification method, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
         # 
         # The variables in the preceding formats have the following meanings:
         # 
-        # *   region-id: the region ID of the scaling group.
-        # *   account-id: the ID of the Alibaba Cloud account.
+        # *   region-id: the region ID of your scaling group.
+        # *   account-id: the ID of your Alibaba Cloud.
         # *   queuename: the name of the MNS queue.
         # *   topicname: the name of the MNS topic.
         # 
         # This parameter is required.
         self.notification_arn = notification_arn
-        # The types of the notifications that you want to modify. You can modify one to eight notifications. Specify multiple values in the repeated list form.
-        # 
-        # You can call the DescribeNotificationTypes operation to query the values of this parameter.
+        # The event types.
         # 
         # This parameter is required.
         self.notification_types = notification_types
@@ -29548,6 +29643,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         override: bool = None,
         owner_account: str = None,
         owner_id: int = None,
+        password: str = None,
         password_inherit: bool = None,
         ram_role_name: str = None,
         resource_group_id: str = None,
@@ -29591,6 +29687,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
+        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         # The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
         # 
@@ -29666,6 +29763,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.override = override
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.password = password
         # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
         self.password_inherit = password_inherit
         # The name of the RAM role that you want to attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
@@ -29723,7 +29821,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         # *   default: does not create the ECS instance on a dedicated host.
         # *   host: creates the ECS instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud selects a dedicated host for the ECS instance.
         self.tenancy = tenancy
-        # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
+        # The user data of the Elastic Compute Service (ECS) instance. The user data must be encoded in Base64 format. The size of raw data before Base64 encoding cannot exceed 32 KB.
         self.user_data = user_data
         # The zone ID of the ECS instances that are created by using the scaling configuration.
         self.zone_id = zone_id
@@ -29842,6 +29940,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.password is not None:
+            result['Password'] = self.password
         if self.password_inherit is not None:
             result['PasswordInherit'] = self.password_inherit
         if self.ram_role_name is not None:
@@ -29972,6 +30072,8 @@ class ModifyScalingConfigurationRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
         if m.get('PasswordInherit') is not None:
             self.password_inherit = m.get('PasswordInherit')
         if m.get('RamRoleName') is not None:
@@ -30794,6 +30896,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         override: bool = None,
         owner_account: str = None,
         owner_id: int = None,
+        password: str = None,
         password_inherit: bool = None,
         ram_role_name: str = None,
         resource_group_id: str = None,
@@ -30837,6 +30940,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.custom_priorities = custom_priorities
         # The data disks.
         self.data_disks = data_disks
+        # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
         # The ID of the dedicated host on which you want to create ECS instances. You cannot create preemptible instances on dedicated hosts. If you specify DedicatedHostId, SpotStrategy and SpotPriceLimit are ignored.
         # 
@@ -30912,6 +31016,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.override = override
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.password = password
         # Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
         self.password_inherit = password_inherit
         # The name of the RAM role that you want to attach to the ECS instance. The name is provided and maintained by Resource Access Management (RAM). You can call the ListRoles operation to query the available RAM roles. You can call the CreateRole operation to create RAM roles.
@@ -30969,7 +31074,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         # *   default: does not create the ECS instance on a dedicated host.
         # *   host: creates the ECS instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud selects a dedicated host for the ECS instance.
         self.tenancy = tenancy
-        # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the data before encoding is 16 KB.
+        # The user data of the Elastic Compute Service (ECS) instance. The user data must be encoded in Base64 format. The size of raw data before Base64 encoding cannot exceed 32 KB.
         self.user_data = user_data
         # The zone ID of the ECS instances that are created by using the scaling configuration.
         self.zone_id = zone_id
@@ -31088,6 +31193,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.password is not None:
+            result['Password'] = self.password
         if self.password_inherit is not None:
             result['PasswordInherit'] = self.password_inherit
         if self.ram_role_name is not None:
@@ -31218,6 +31325,8 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
         if m.get('PasswordInherit') is not None:
             self.password_inherit = m.get('PasswordInherit')
         if m.get('RamRoleName') is not None:
@@ -31814,9 +31923,9 @@ class ModifyScalingRuleRequestAlarmDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # 监控项关联的维度信息键。
+        # The dimension key of the metric.
         self.dimension_key = dimension_key
-        # 监控项关联的维度信息值。
+        # The dimension value of the metric.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -31924,7 +32033,7 @@ class ModifyScalingRuleRequest(TeaModel):
         # *   Valid values if you set the AdjustmentType parameter to PercentChangeInCapacity: -100 to 10000.
         # *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
         self.adjustment_value = adjustment_value
-        # 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度信息。
+        # The dimensions. This parameter is applicable to target tracking scaling rules. You can specify this parameter if your predefined metric requires extra dimensions. For example, if you predefine the LoadBalancerRealServerAverageQps metric, you must use this parameter to specify the rulePool dimension.
         self.alarm_dimensions = alarm_dimensions
         # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule.
         # 
@@ -31938,27 +32047,27 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # Valid values: 0 to 86400. Unit: seconds.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The maximum number of ECS instances in the scaling group. If you specify this parameter, you must also specify the PredictiveValueBehavior parameter.
+        # The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
         self.initial_max_size = initial_max_size
-        # The predefined metric that you want to monitor. This parameter is required only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule.
+        # The predefined metric. This parameter is required only if you create a target tracking scaling rule or predictive scaling rule.
         # 
-        # Valid values if you set the ScalingRuleType parameter to TargetTrackingScalingRule:
+        # Valid values if you create a target tracking scaling rule:
         # 
-        # *   CpuUtilization: the average CPU utilization
-        # *   ClassicInternetRx: the average inbound Internet traffic over the classic network
-        # *   ClassicInternetTx: the average outbound Internet traffic over the classic network
-        # *   VpcInternetRx: the average inbound Internet traffic over the virtual private cloud (VPC)
-        # *   VpcInternetTx: the average outbound Internet traffic over the VPC
-        # *   IntranetRx: the average inbound traffic over the internal network
-        # *   IntranetTx: the average outbound traffic over the internal network
+        # *   CpuUtilization: the average CPU utilization.
+        # *   IntranetTx: the outbound traffic over an internal network.
+        # *   IntranetRx: the inbound traffic over an internal network.
+        # *   VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
+        # *   VpcInternetRx: the inbound traffic from the Internet to a VPC.
+        # *   MemoryUtilization: the memory usage.
+        # *   LoadBalancerRealServerAverageQps: the queries per second (QPS) per Application Load Balancer (ALB) server group.
         # 
-        # Valid values if you set the ScalingRuleType parameter to PredictiveScalingRule:
+        # Valid values if you create a predictive scaling rule:
         # 
-        # *   CpuUtilization: the average CPU utilization
-        # *   IntranetRx: the average inbound traffic over the internal network
-        # *   IntranetTx: the average outbound traffic over the internal network
+        # *   CpuUtilization: the average CPU utilization.
+        # *   IntranetRx: the inbound traffic over an internal network.
+        # *   IntranetTx: the outbound traffic over an internal network.
         self.metric_name = metric_name
-        # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
+        # The minimum number of instances to scale. This parameter takes effect only if you create a simple scaling rule or step scaling rule and set `AdjustmentType` to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31975,7 +32084,7 @@ class ModifyScalingRuleRequest(TeaModel):
         # *   PredictiveValueOverrideMax: uses the predicted value as the maximum value for prediction tasks when the predicted value is greater than the initial maximum capacity.
         # *   PredictiveValueOverrideMaxWithBuffer: increases the predicted value by a percentage that is specified by the PredictiveValueBuffer parameter. If the predicted value that is increased by the percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
         self.predictive_value_behavior = predictive_value_behavior
-        # The percentage of the increment to the predicted value when the PredictiveValueBehavior parameter is set to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        # The ratio based on which the predicted value is increased when `PredictiveValueBehavior` is set to `PredictiveValueOverrideMaxWithBuffer`. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         self.predictive_value_buffer = predictive_value_buffer
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -31987,7 +32096,9 @@ class ModifyScalingRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_rule_id = scaling_rule_id
-        # The name of the scaling rule. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit. The name of a scaling rule must be unique in the scaling group to which the scaling rule belongs and within an Alibaba Cloud account.
+        # The name of the scaling rule. The name must be 2 to 64 letters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter or digit.
+        # 
+        # The name of each scaling rule must be unique under the same account within the same region.
         self.scaling_rule_name = scaling_rule_name
         # Details of the step adjustments.
         self.step_adjustments = step_adjustments
@@ -32257,9 +32368,9 @@ class ModifyScheduledTaskRequest(TeaModel):
         # 
         # > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
         self.scaling_group_id = scaling_group_id
-        # The scaling rule that you want to execute when the scheduled task is triggered. Specify the unique identifier of the scaling rule. If you specify the `ScheduledAction` parameter, you must select an existing scaling rule for the scheduled task.
+        # The scaling rule that you want to execute when the scheduled task is triggered. Enter the ID of the scaling rule. To obtain the ID of a scaling rule, go to the scaling rule details page. If you specify `ScheduledAction`, you must select an existing scaling rule for the scheduled task.
         # 
-        # > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
+        # >  You can specify only one of `ScheduledAction` and `ScalingGroupId`.
         self.scheduled_action = scheduled_action
         # The ID of the scheduled task.
         # 
@@ -32585,13 +32696,15 @@ class RecordLifecycleActionHeartbeatRequest(TeaModel):
         # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends. Valid values: 30 to 21600. Unit: seconds.
+        # The time window during which the desired ECS instance stays in a Pending state. When the time window ends, Auto Scaling executes the default action. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # You can call this operation to prolong the length of a lifecycle hook. You can also call the CompleteLifecycleAction operation to end a lifecycle hook ahead of schedule.
+        # After you create a lifecycle hook, you can call this operation to extend the time window during which the desired ECS instance stays in a Pending state. You can also call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to remove the desired ECS instance from a Pending state ahead of schedule.
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
-        # The token of the lifecycle hook. You can obtain this token by using a Message Service (MNS) queue or an MNS topic that is specified for the lifecycle hook.
+        # The action token of the lifecycle hook. You can obtain the token from the details page of the Message Service (MNS) queue specified for the lifecycle hook when the desired ECS instance enters a Pending state.\\
+        # You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain the action token of the lifecycle hook.\\
+        # If you specified an MNS topic for the lifecycle hook, you can obtain the token from the MNS topic.
         # 
         # This parameter is required.
         self.lifecycle_action_token = lifecycle_action_token
@@ -33088,7 +33201,7 @@ class ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars(TeaMo
         key: str = None,
         value: str = None,
     ):
-        # The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. It cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
+        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
         self.key = key
         # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
@@ -33129,7 +33242,7 @@ class ScaleWithAdjustmentRequestOverridesContainerOverrides(TeaModel):
     ):
         # The arguments that correspond to the startup commands of the container. You can specify up to 10 arguments.
         self.args = args
-        # The startup commands of the container. You can specify up to 20 commands. Each command can contain up to 256 characters.
+        # The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
         self.commands = commands
         # The number of vCPUs that you want to allocate to the container.
         self.cpu = cpu
@@ -33277,7 +33390,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.lifecycle_hook_context = lifecycle_hook_context
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out.
+        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
         self.overrides = overrides
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -33399,7 +33512,7 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out.
+        # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
         self.overrides_shrink = overrides_shrink
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
