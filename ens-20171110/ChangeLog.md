@@ -1,3 +1,29 @@
+2024-07-03 Version: 6.1.0
+- Support API DeployInstanceSDG.
+- Support API DescribeSDG.
+- Support API ListTagResources.
+- Support API PreloadRegionSDG.
+- Support API RemoveInstanceSDG.
+- Support API TagResources.
+- Support API UnloadRegionSDG.
+- Support API UntagResources.
+- Update API CreateEipInstance: update param InternetChargeType.
+- Update API CreateEnsSaleControl: add param CustomAccount.
+- Update API CreateEnsSaleControl: update param AliUidAccount.
+- Update API CreateForwardEntry: update param InternalIp.
+- Update API DeleteEnsSaleConditionControl: add param CustomAccount.
+- Update API DeleteEnsSaleConditionControl: update param AliUidAccount.
+- Update API DeleteEnsSaleControl: add param CustomAccount.
+- Update API DeleteEnsSaleControl: update param AliUidAccount.
+- Update API DeleteSDG: update response param.
+- Update API DescribeInstances: add param InstanceType.
+- Update API DescribeLoadBalancerHTTPListenerAttribute: update response param.
+- Update API PutBucket: add param DispatchScope.
+- Update API SetLoadBalancerHTTPListenerAttribute: add param XForwardedFor.
+- Update API UpdateEnsSaleControl: add param CustomAccount.
+- Update API UpdateEnsSaleControl: update param AliUidAccount.
+
+
 2024-05-22 Version: 6.0.0
 - Support API CreateSDG.
 - Support API DeleteSDG.

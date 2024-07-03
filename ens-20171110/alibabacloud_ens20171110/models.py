@@ -3013,7 +3013,10 @@ class CreateARMServerInstancesRequest(TeaModel):
         # *   true
         # *   false (default)
         self.auto_renew = auto_renew
-        # Specifies whether to use coupons. Valid values: true and false Default value: true.
+        # Specifies whether to use coupons. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.auto_use_coupon = auto_use_coupon
         # The ID of the Edge Node Service (ENS) node.
         # 
@@ -3025,35 +3028,35 @@ class CreateARMServerInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The specification of the Android in Container (AIC) instance. Valid values:
+        # The specification of the Android in Container (AIC) instance. Examples:
         # 
-        # *   aic.cf53r.c1.np
-        # *   aic.cf53r.c2.np
-        # *   aic.cf53r.c3.np
-        # *   aic.cf53r.c4.np
-        # *   aic.cf53r.c5.np
-        # *   aic.cf53r.c6.np
-        # *   aic.cf53r.c7.np
-        # *   aic.cf53r.c8.np
-        # *   ens.a6c2
-        # *   aic.cf52m1r.c1.np
-        # *   aic.cf52m1r.c2.np
-        # *   aic.cf52m1r.c3.np
-        # *   aic.cf52m1r.c4.np
-        # *   aic.cf52m1r.c5.np
-        # *   aic.cf53r.c6
-        # *   aic.cf52m1r.c6
-        # *   aic.cf53r.c7
         # *   aic.cf52r.c1.np
         # *   aic.cf52r.c2.np
-        # *   aic.cf52r.c3.np
+        # *   aic.cf53r.c2.np
         # *   aic.cf52r.c4.np
+        # *   aic.cf53r.c3.np
+        # *   aic.cf52r.c3.np
+        # *   aic.cf53r.c1.np
+        # *   aic.cf53r.c5.np
+        # *   aic.cf53r.c6
+        # *   aic.cf53r.c4.np
+        # *   aic.cf53r.c6.np
+        # *   aic.cf53r.c7.np
+        # *   aic.cf52m1r.c5.np
+        # *   aic.cf53r.c8.np
+        # *   aic.cf53r.c7
+        # *   aic.cf52m1r.c2.np
+        # *   aic.cf52m1r.c1.np
+        # *   aic.cf52m1r.c3.np
+        # *   aic.cf52m1r.c4.np
+        # *   aic.cf52m1r.c6
+        # *   ens.a6c2
         # 
         # This parameter is required.
         self.instance_type = instance_type
         # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The name of the namespace.
+        # The namespace.
         self.name_space = name_space
         # The billing method. Set the value to **PrePaid**. PrePaid specifies the subscription billing method.
         # 
@@ -3077,33 +3080,22 @@ class CreateARMServerInstancesRequest(TeaModel):
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The resolution. Valid values:
+        # The resolution. Examples:
         # 
-        # *   1920\\*1080
+        # *   1920\\*864
         # *   1080\\*1920
-        # *   1280\\*720
+        # *   1920\\*1080
         # *   720\\*1280
         # *   2400\\*1080
-        # *   1920\\*864
         # *   1080\\*2400
-        # *   864\\*1920
-        # 
-        # <!---->
-        # 
-        # *   1920\\*1080
-        # *   1080\\*1920
         # *   1280\\*720
-        # *   720\\*1280
-        # *   2400\\*1080
-        # *   1920\\*864
-        # *   1080\\*2400
         # *   864\\*1920
         # 
         # This parameter is required.
         self.resolution = resolution
         # The name of the service.
         self.server_name = server_name
-        # The specification of the ARM server. Valid values:
+        # The specification of the ARM server. Examples:
         # 
         # *   cas.cf53r
         # *   cas.cf52r
@@ -4165,12 +4157,13 @@ class CreateEnsSaleControlRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls: List[CreateEnsSaleControlRequestSaleControls] = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls = sale_controls
 
@@ -4190,6 +4183,8 @@ class CreateEnsSaleControlRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         result['SaleControls'] = []
         if self.sale_controls is not None:
             for k in self.sale_controls:
@@ -4202,6 +4197,8 @@ class CreateEnsSaleControlRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         self.sale_controls = []
         if m.get('SaleControls') is not None:
             for k in m.get('SaleControls'):
@@ -4215,12 +4212,13 @@ class CreateEnsSaleControlShrinkRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls_shrink: str = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls_shrink = sale_controls_shrink
 
@@ -4237,6 +4235,8 @@ class CreateEnsSaleControlShrinkRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         if self.sale_controls_shrink is not None:
             result['SaleControls'] = self.sale_controls_shrink
         return result
@@ -4247,6 +4247,8 @@ class CreateEnsSaleControlShrinkRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         if m.get('SaleControls') is not None:
             self.sale_controls_shrink = m.get('SaleControls')
         return self
@@ -9209,12 +9211,13 @@ class DeleteEnsSaleConditionControlRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls: List[DeleteEnsSaleConditionControlRequestSaleControls] = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls = sale_controls
 
@@ -9234,6 +9237,8 @@ class DeleteEnsSaleConditionControlRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         result['SaleControls'] = []
         if self.sale_controls is not None:
             for k in self.sale_controls:
@@ -9246,6 +9251,8 @@ class DeleteEnsSaleConditionControlRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         self.sale_controls = []
         if m.get('SaleControls') is not None:
             for k in m.get('SaleControls'):
@@ -9259,12 +9266,13 @@ class DeleteEnsSaleConditionControlShrinkRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls_shrink: str = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls_shrink = sale_controls_shrink
 
@@ -9281,6 +9289,8 @@ class DeleteEnsSaleConditionControlShrinkRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         if self.sale_controls_shrink is not None:
             result['SaleControls'] = self.sale_controls_shrink
         return result
@@ -9291,6 +9301,8 @@ class DeleteEnsSaleConditionControlShrinkRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         if m.get('SaleControls') is not None:
             self.sale_controls_shrink = m.get('SaleControls')
         return self
@@ -9404,12 +9416,13 @@ class DeleteEnsSaleControlRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls: List[DeleteEnsSaleControlRequestSaleControls] = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls = sale_controls
 
@@ -9429,6 +9442,8 @@ class DeleteEnsSaleControlRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         result['SaleControls'] = []
         if self.sale_controls is not None:
             for k in self.sale_controls:
@@ -9441,6 +9456,8 @@ class DeleteEnsSaleControlRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         self.sale_controls = []
         if m.get('SaleControls') is not None:
             for k in m.get('SaleControls'):
@@ -9454,12 +9471,13 @@ class DeleteEnsSaleControlShrinkRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls_shrink: str = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls_shrink = sale_controls_shrink
 
@@ -9476,6 +9494,8 @@ class DeleteEnsSaleControlShrinkRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         if self.sale_controls_shrink is not None:
             result['SaleControls'] = self.sale_controls_shrink
         return result
@@ -9486,6 +9506,8 @@ class DeleteEnsSaleControlShrinkRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         if m.get('SaleControls') is not None:
             self.sale_controls_shrink = m.get('SaleControls')
         return self
@@ -10886,13 +10908,12 @@ class DeleteSDGShrinkRequest(TeaModel):
         return self
 
 
-class DeleteSDGResponseBody(TeaModel):
+class DeleteSDGResponseBodyDataResultFailedItemsItem(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        sdg_id: str = None,
     ):
-        # The request ID.
-        self.request_id = request_id
+        self.sdg_id = sdg_id
 
     def validate(self):
         pass
@@ -10903,12 +10924,171 @@ class DeleteSDGResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.sdg_id is not None:
+            result['SdgId'] = self.sdg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SdgId') is not None:
+            self.sdg_id = m.get('SdgId')
+        return self
+
+
+class DeleteSDGResponseBodyDataResultFailedItems(TeaModel):
+    def __init__(
+        self,
+        err_message: str = None,
+        item: DeleteSDGResponseBodyDataResultFailedItemsItem = None,
+    ):
+        self.err_message = err_message
+        self.item = item
+
+    def validate(self):
+        if self.item:
+            self.item.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.item is not None:
+            result['Item'] = self.item.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Item') is not None:
+            temp_model = DeleteSDGResponseBodyDataResultFailedItemsItem()
+            self.item = temp_model.from_map(m['Item'])
+        return self
+
+
+class DeleteSDGResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[DeleteSDGResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_items = failed_items
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for k in self.failed_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k in self.failed_items:
+                result['FailedItems'].append(k.to_map() if k else None)
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k in m.get('FailedItems'):
+                temp_model = DeleteSDGResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k))
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class DeleteSDGResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: DeleteSDGResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = DeleteSDGResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteSDGResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeleteSDGResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeleteSDGResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -11455,6 +11635,285 @@ class DeleteVSwitchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteVSwitchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeployInstanceSDGRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_type: str = None,
+        instance_ids: List[str] = None,
+        sdgid: str = None,
+    ):
+        self.deployment_type = deployment_type
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_type is not None:
+            result['DeploymentType'] = self.deployment_type
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeploymentType') is not None:
+            self.deployment_type = m.get('DeploymentType')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        return self
+
+
+class DeployInstanceSDGShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_type: str = None,
+        instance_ids_shrink: str = None,
+        sdgid: str = None,
+    ):
+        self.deployment_type = deployment_type
+        # This parameter is required.
+        self.instance_ids_shrink = instance_ids_shrink
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_type is not None:
+            result['DeploymentType'] = self.deployment_type
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeploymentType') is not None:
+            self.deployment_type = m.get('DeploymentType')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        return self
+
+
+class DeployInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
+    def __init__(
+        self,
+        err_message: str = None,
+        instance_id: str = None,
+    ):
+        self.err_message = err_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeployInstanceSDGResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[DeployInstanceSDGResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_items = failed_items
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for k in self.failed_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k in self.failed_items:
+                result['FailedItems'].append(k.to_map() if k else None)
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k in m.get('FailedItems'):
+                temp_model = DeployInstanceSDGResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k))
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class DeployInstanceSDGResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: DeployInstanceSDGResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = DeployInstanceSDGResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeployInstanceSDGResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeployInstanceSDGResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeployInstanceSDGResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeployInstanceSDGResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeployInstanceSDGResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeployInstanceSDGResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12710,7 +13169,7 @@ class DescribeApplicationRequest(TeaModel):
         self.app_id = app_id
         # The version number of the application. Separate multiple version numbers with commas (,). If you want to query data of all versions of applications, specify All for this parameter. By default, only data of applications in the stable versions are queried.
         self.app_versions = app_versions
-        # The region level by which edge resources of the application are collected. The value must be of the enumerated data type. Valid values:
+        # The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
         # 
         # *   National: Chinese mainland
         # *   Big: area
@@ -12722,6 +13181,7 @@ class DescribeApplicationRequest(TeaModel):
         self.level = level
         # Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
         self.out_detail_stat_params = out_detail_stat_params
+        # The resource filter.
         self.resource_selector = resource_selector
 
     def validate(self):
@@ -25100,6 +25560,7 @@ class DescribeInstancesRequest(TeaModel):
         instance_ids: str = None,
         instance_name: str = None,
         instance_resource_type: str = None,
+        instance_type: str = None,
         intranet_ip: str = None,
         network_id: str = None,
         order_by_params: str = None,
@@ -25132,6 +25593,8 @@ class DescribeInstancesRequest(TeaModel):
         # *   BuildMachine: ENS instances that are configured with image builders.
         # *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
         self.instance_resource_type = instance_resource_type
+        # The instance type.
+        self.instance_type = instance_type
         # The internal IP address of the instance.
         self.intranet_ip = intranet_ip
         # The ID of the network.
@@ -25140,7 +25603,7 @@ class DescribeInstancesRequest(TeaModel):
         # 
         # You can sort instances by name, expiration time, node ID, or creation time. You can specify one or more methods.
         self.order_by_params = order_by_params
-        # The number of the page to return. Pages start from page **1**.
+        # The page number. Pages start from page **1**.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -25158,6 +25621,7 @@ class DescribeInstancesRequest(TeaModel):
         # *   Stopped
         # *   Expired
         self.status = status
+        # The tags that are added to the resource.
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -25190,6 +25654,8 @@ class DescribeInstancesRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_resource_type is not None:
             result['InstanceResourceType'] = self.instance_resource_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
         if self.network_id is not None:
@@ -25232,6 +25698,8 @@ class DescribeInstancesRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceResourceType') is not None:
             self.instance_resource_type = m.get('InstanceResourceType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
         if m.get('NetworkId') is not None:
@@ -25269,6 +25737,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         instance_ids: str = None,
         instance_name: str = None,
         instance_resource_type: str = None,
+        instance_type: str = None,
         intranet_ip: str = None,
         network_id: str = None,
         order_by_params: str = None,
@@ -25301,6 +25770,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
         # *   BuildMachine: ENS instances that are configured with image builders.
         # *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
         self.instance_resource_type = instance_resource_type
+        # The instance type.
+        self.instance_type = instance_type
         # The internal IP address of the instance.
         self.intranet_ip = intranet_ip
         # The ID of the network.
@@ -25309,7 +25780,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         # 
         # You can sort instances by name, expiration time, node ID, or creation time. You can specify one or more methods.
         self.order_by_params = order_by_params
-        # The number of the page to return. Pages start from page **1**.
+        # The page number. Pages start from page **1**.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -25327,6 +25798,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         # *   Stopped
         # *   Expired
         self.status = status
+        # The tags that are added to the resource.
         self.tags_shrink = tags_shrink
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -25356,6 +25828,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
             result['InstanceName'] = self.instance_name
         if self.instance_resource_type is not None:
             result['InstanceResourceType'] = self.instance_resource_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
         if self.network_id is not None:
@@ -25396,6 +25870,8 @@ class DescribeInstancesShrinkRequest(TeaModel):
             self.instance_name = m.get('InstanceName')
         if m.get('InstanceResourceType') is not None:
             self.instance_resource_type = m.get('InstanceResourceType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
         if m.get('NetworkId') is not None:
@@ -25443,6 +25919,7 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         self.disk_id = disk_id
         # The name of the disk.
         self.disk_name = disk_name
+        # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
         # The size of the disk. Unit: MiB.
         self.size = size
@@ -25619,7 +26096,7 @@ class DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes(TeaModel):
         self.network_id = network_id
         # Details of the private IP addresses.
         self.private_ip_address = private_ip_address
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -25961,7 +26438,9 @@ class DescribeInstancesResponseBodyInstancesInstanceTagsTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -26055,6 +26534,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         system_disk: DescribeInstancesResponseBodyInstancesInstanceSystemDisk = None,
         tags: DescribeInstancesResponseBodyInstancesInstanceTags = None,
     ):
+        # The automatic release time of the instance.
         self.auto_release_time = auto_release_time
         # The number of vCPUs.
         self.cpu = cpu
@@ -26072,7 +26552,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         # 
         # *   The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
         # *   For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
-        # *   For other operating systems: The hostname must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-). It can be separated by periods (.).
+        # *   For an instance that runs another operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the image.
         self.image_id = image_id
@@ -26080,9 +26560,9 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.inner_ip_address = inner_ip_address
         # The ID of the instance.
         self.instance_id = instance_id
-        # The name of the virtual private cloud (VPC).
+        # The name of the instance.
         self.instance_name = instance_name
-        # The type of the instance. Valid values:
+        # The category of the instance. Valid values:
         # 
         # *   EnsInstance: ENS instances that you purchase.
         # *   EnsService: ENS instances that belong to edge services.
@@ -26119,6 +26599,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.security_group_ids = security_group_ids
         # The code of the instance type.
         self.spec_name = spec_name
+        # The bidding policy of the preemptible instance.
         self.spot_strategy = spot_strategy
         # The status of the instance. Valid values:
         # 
@@ -26128,6 +26609,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.status = status
         # Details of the system disk.
         self.system_disk = system_disk
+        # The tags of the instance.
         self.tags = tags
 
     def validate(self):
@@ -27073,6 +27555,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         server_certificate_id: str = None,
         status: str = None,
         unhealthy_threshold: int = None,
+        xforwarded_for: str = None,
     ):
         # The maximum bandwidth of the EIP.
         # 
@@ -27125,19 +27608,13 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # > 
-        # 
-        # *   This parameter is returned only if you set HealthCheck to on.
-        # 
-        # *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # >*   This parameter is returned only if you set HealthCheck to on.
+        # >*   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
         # 
-        # > 
-        # 
-        # *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
-        # 
-        # *   This parameter is returned only if you set HealthCheck to on.
+        # >*   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+        # >*   This parameter is returned only if you set HealthCheck to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         # 
@@ -27183,6 +27660,11 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if you set HealthCheck to on.
         self.unhealthy_threshold = unhealthy_threshold
+        # Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+        # 
+        # *   **on**\
+        # *   **off** (default)
+        self.xforwarded_for = xforwarded_for
 
     def validate(self):
         pass
@@ -27235,6 +27717,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             result['Status'] = self.status
         if self.unhealthy_threshold is not None:
             result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.xforwarded_for is not None:
+            result['XForwardedFor'] = self.xforwarded_for
         return result
 
     def from_map(self, m: dict = None):
@@ -27281,6 +27765,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('UnhealthyThreshold') is not None:
             self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('XForwardedFor') is not None:
+            self.xforwarded_for = m.get('XForwardedFor')
         return self
 
 
@@ -35403,6 +35889,384 @@ class DescribeResourceTimelineResponse(TeaModel):
         return self
 
 
+class DescribeSDGRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        sdgids: List[str] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sdgids = sdgids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sdgids is not None:
+            result['SDGIds'] = self.sdgids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SDGIds') is not None:
+            self.sdgids = m.get('SDGIds')
+        return self
+
+
+class DescribeSDGShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        sdgids_shrink: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.sdgids_shrink = sdgids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sdgids_shrink is not None:
+            result['SDGIds'] = self.sdgids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SDGIds') is not None:
+            self.sdgids_shrink = m.get('SDGIds')
+        return self
+
+
+class DescribeSDGResponseBodySDGsAvaliableRegionIds(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        region_id: str = None,
+        snapshot_id: str = None,
+        status: str = None,
+    ):
+        self.creation_time = creation_time
+        self.region_id = region_id
+        self.snapshot_id = snapshot_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSDGResponseBodySDGsPreloadInfos(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        namespace: str = None,
+        redundant_num: int = None,
+        region_id: str = None,
+        update_time: str = None,
+    ):
+        self.creation_time = creation_time
+        self.namespace = namespace
+        self.redundant_num = redundant_num
+        self.region_id = region_id
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.redundant_num is not None:
+            result['RedundantNum'] = self.redundant_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RedundantNum') is not None:
+            self.redundant_num = m.get('RedundantNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeSDGResponseBodySDGs(TeaModel):
+    def __init__(
+        self,
+        avaliable_region_ids: List[DescribeSDGResponseBodySDGsAvaliableRegionIds] = None,
+        creation_instance_id: str = None,
+        creation_region_id: str = None,
+        creation_time: str = None,
+        description: str = None,
+        parent_sdgid: str = None,
+        preload_infos: List[DescribeSDGResponseBodySDGsPreloadInfos] = None,
+        sdgid: str = None,
+        size: int = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.avaliable_region_ids = avaliable_region_ids
+        self.creation_instance_id = creation_instance_id
+        self.creation_region_id = creation_region_id
+        self.creation_time = creation_time
+        self.description = description
+        self.parent_sdgid = parent_sdgid
+        self.preload_infos = preload_infos
+        self.sdgid = sdgid
+        self.size = size
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        if self.avaliable_region_ids:
+            for k in self.avaliable_region_ids:
+                if k:
+                    k.validate()
+        if self.preload_infos:
+            for k in self.preload_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvaliableRegionIds'] = []
+        if self.avaliable_region_ids is not None:
+            for k in self.avaliable_region_ids:
+                result['AvaliableRegionIds'].append(k.to_map() if k else None)
+        if self.creation_instance_id is not None:
+            result['CreationInstanceId'] = self.creation_instance_id
+        if self.creation_region_id is not None:
+            result['CreationRegionId'] = self.creation_region_id
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.parent_sdgid is not None:
+            result['ParentSDGId'] = self.parent_sdgid
+        result['PreloadInfos'] = []
+        if self.preload_infos is not None:
+            for k in self.preload_infos:
+                result['PreloadInfos'].append(k.to_map() if k else None)
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.avaliable_region_ids = []
+        if m.get('AvaliableRegionIds') is not None:
+            for k in m.get('AvaliableRegionIds'):
+                temp_model = DescribeSDGResponseBodySDGsAvaliableRegionIds()
+                self.avaliable_region_ids.append(temp_model.from_map(k))
+        if m.get('CreationInstanceId') is not None:
+            self.creation_instance_id = m.get('CreationInstanceId')
+        if m.get('CreationRegionId') is not None:
+            self.creation_region_id = m.get('CreationRegionId')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ParentSDGId') is not None:
+            self.parent_sdgid = m.get('ParentSDGId')
+        self.preload_infos = []
+        if m.get('PreloadInfos') is not None:
+            for k in m.get('PreloadInfos'):
+                temp_model = DescribeSDGResponseBodySDGsPreloadInfos()
+                self.preload_infos.append(temp_model.from_map(k))
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeSDGResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        sdgs: List[DescribeSDGResponseBodySDGs] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.sdgs = sdgs
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sdgs:
+            for k in self.sdgs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SDGs'] = []
+        if self.sdgs is not None:
+            for k in self.sdgs:
+                result['SDGs'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sdgs = []
+        if m.get('SDGs') is not None:
+            for k in m.get('SDGs'):
+                temp_model = DescribeSDGResponseBodySDGs()
+                self.sdgs.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSDGResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSDGResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSDGResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSDGDeploymentStatusRequest(TeaModel):
     def __init__(
         self,
@@ -41232,11 +42096,11 @@ class ListBucketsRequest(TeaModel):
         page_size: str = None,
         prefix: str = None,
     ):
-        # The number of the page. Pages start from page 1.
+        # The page number. Pages start from page 1.
         self.page_number = page_number
-        # The maximum number of returned buckets. If this parameter is not specified, the default value is 10. The value cannot be greater than 100.
+        # The maximum number of returned buckets. You can leave this parameter empty. The default value is 10. The value cannot be greater than 100.
         self.page_size = page_size
-        # Specifies the prefix that returned bucket names must contain. If this parameter is not specified, prefix information will not be used as a filter.
+        # The prefix that returned bucket names must contain. If this parameter is not specified, prefix information will not be used as a filter.
         self.prefix = prefix
 
     def validate(self):
@@ -41279,18 +42143,22 @@ class ListBucketsResponseBodyBucketInfos(TeaModel):
         modify_time: str = None,
     ):
         # The access control list (ACL) of the bucket.
+        # 
+        # *   **public-read-write**\
+        # *   **public-read**\
+        # *   **private** (default)
         self.bucket_acl = bucket_acl
         # The name of the bucket.
         self.bucket_name = bucket_name
         # The remarks.
         self.comment = comment
-        # The time when the bucket was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The time when the bucket was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The ID of the region where the node is located.
         self.ens_region_id = ens_region_id
-        # Single-node storage. Set the value to sink.
+        # The type of the single-node storage. Set the value to sink.
         self.logical_bucket_type = logical_bucket_type
-        # The time when the bucket was modified. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The time when the bucket was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.modify_time = modify_time
 
     def validate(self):
@@ -41447,21 +42315,17 @@ class ListObjectsRequest(TeaModel):
         self.continuation_token = continuation_token
         # The encoding type of the object names in the response. Only URL encoding is supported.
         self.encoding_type = encoding_type
-        # The position from which the list operation starts. The name of the object after which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of Marker are returned. The Marker parameter is used to list the returned objects by page, and its value must be less than 1,024 bytes in length.
+        # The position from which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than value of Marker are returned. The Marker parameter is used to list the returned objects by page, and its value must be smaller than 1,024 bytes in length.
         # 
         # Even if the value specified for Marker does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of Marker.
         self.marker = marker
-        # The maximum number of objects to return.
-        # 
-        # Valid values: 0 to 1000. Default value: 100.
+        # The maximum number of objects to return. Valid values: 0 to 1000. Default value: 100.
         self.max_keys = max_keys
         # The prefix that must be included in the names of objects you want to list. If you specify a prefix to query objects, the returned object names contain the prefix.
         # 
         # The value of the parameter must be less than 1,000 bytes in length.
         self.prefix = prefix
-        # The position from which the list operation starts. The name of the object after which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of StartAfter are returned. The StartAfter parameter is used to list the returned objects by page, and its value must be less than 1,000 bytes in length.
-        # 
-        # Even if the value specified for StartAfter does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of StartAfter.
+        # The position from which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of StartAfter are returned. The StartAfter parameter is used to list the returned objects by page, and its value must be less than 1,000 bytes in length. Even if the value specified for StartAfter does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of StartAfter.
         self.start_after = start_after
 
     def validate(self):
@@ -41519,7 +42383,7 @@ class ListObjectsResponseBodyContents(TeaModel):
         # The entity tag (ETag). When an object is created, an ETag is created to identify the content of the object.
         # 
         # *   For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
-        # *   If an object is created by using other methods, the ETag value of the object is the UUID of the object content.
+        # *   For an object that is not created by calling the PutObject operation, the ETag value of the object is the UUID of the object content.
         # *   The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
         self.etag = etag
         # The name of the object.
@@ -41581,7 +42445,7 @@ class ListObjectsResponseBody(TeaModel):
     ):
         # The name of the bucket.
         self.bucket_name = bucket_name
-        # The container for all object names between Prefix and the next occurrence of the string specified by a delimiter. A response can contain CommonPrefixes only if you specify a delimiter.
+        # If the delimiter parameter is specified in the request, the response contains CommonPrefixes. Objects whose names contain the same string from the prefix to the next occurrence of the delimiter are grouped as a single result element in CommonPrefixes.
         self.common_prefixes = common_prefixes
         # The list of object metadata.
         self.contents = contents
@@ -41596,7 +42460,7 @@ class ListObjectsResponseBody(TeaModel):
         # *   **false**\
         # *   **true**\
         self.is_truncated = is_truncated
-        # The number of objects returned for this request.
+        # The number of keys returned for this request.
         self.key_count = key_count
         # The position from which the list operation starts.
         self.marker = marker
@@ -41728,6 +42592,226 @@ class ListObjectsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListObjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.next_token = next_token
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -43690,6 +44774,299 @@ class ModifyVSwitchAttributeResponse(TeaModel):
         return self
 
 
+class PreloadRegionSDGRequest(TeaModel):
+    def __init__(
+        self,
+        destination_region_ids: List[str] = None,
+        namespaces: List[str] = None,
+        redundant_num: int = None,
+        sdgid: str = None,
+    ):
+        # This parameter is required.
+        self.destination_region_ids = destination_region_ids
+        self.namespaces = namespaces
+        # This parameter is required.
+        self.redundant_num = redundant_num
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_ids is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+        if self.redundant_num is not None:
+            result['RedundantNum'] = self.redundant_num
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionIds') is not None:
+            self.destination_region_ids = m.get('DestinationRegionIds')
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+        if m.get('RedundantNum') is not None:
+            self.redundant_num = m.get('RedundantNum')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        return self
+
+
+class PreloadRegionSDGShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        destination_region_ids_shrink: str = None,
+        namespaces_shrink: str = None,
+        redundant_num: int = None,
+        sdgid: str = None,
+    ):
+        # This parameter is required.
+        self.destination_region_ids_shrink = destination_region_ids_shrink
+        self.namespaces_shrink = namespaces_shrink
+        # This parameter is required.
+        self.redundant_num = redundant_num
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_ids_shrink is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids_shrink
+        if self.namespaces_shrink is not None:
+            result['Namespaces'] = self.namespaces_shrink
+        if self.redundant_num is not None:
+            result['RedundantNum'] = self.redundant_num
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionIds') is not None:
+            self.destination_region_ids_shrink = m.get('DestinationRegionIds')
+        if m.get('Namespaces') is not None:
+            self.namespaces_shrink = m.get('Namespaces')
+        if m.get('RedundantNum') is not None:
+            self.redundant_num = m.get('RedundantNum')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        return self
+
+
+class PreloadRegionSDGResponseBodyDataResultFailedItems(TeaModel):
+    def __init__(
+        self,
+        destination_region_id: str = None,
+        error_message: str = None,
+    ):
+        self.destination_region_id = destination_region_id
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_id is not None:
+            result['DestinationRegionId'] = self.destination_region_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionId') is not None:
+            self.destination_region_id = m.get('DestinationRegionId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class PreloadRegionSDGResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[PreloadRegionSDGResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_items = failed_items
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for k in self.failed_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k in self.failed_items:
+                result['FailedItems'].append(k.to_map() if k else None)
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k in m.get('FailedItems'):
+                temp_model = PreloadRegionSDGResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k))
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class PreloadRegionSDGResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: PreloadRegionSDGResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = PreloadRegionSDGResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PreloadRegionSDGResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: PreloadRegionSDGResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = PreloadRegionSDGResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PreloadRegionSDGResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PreloadRegionSDGResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PreloadRegionSDGResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PushApplicationDataRequest(TeaModel):
     def __init__(
         self,
@@ -43916,6 +45293,7 @@ class PutBucketRequest(TeaModel):
         bucket_acl: str = None,
         bucket_name: str = None,
         comment: str = None,
+        dispatch_scope: str = None,
         ens_region_id: str = None,
         logical_bucket_type: str = None,
     ):
@@ -43925,14 +45303,13 @@ class PutBucketRequest(TeaModel):
         # *   **public-read-write**\
         # *   **public-read**\
         self.bucket_acl = bucket_acl
-        # The name of the bucket.
-        # 
-        # This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
+        # The name of the bucket. This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
         # The remarks. The remarks are 0 to 128 characters in length.
         self.comment = comment
+        self.dispatch_scope = dispatch_scope
         # The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
         self.ens_region_id = ens_region_id
         # Single-node storage. Set the value to sink.
@@ -43953,6 +45330,8 @@ class PutBucketRequest(TeaModel):
             result['BucketName'] = self.bucket_name
         if self.comment is not None:
             result['Comment'] = self.comment
+        if self.dispatch_scope is not None:
+            result['DispatchScope'] = self.dispatch_scope
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.logical_bucket_type is not None:
@@ -43967,6 +45346,8 @@ class PutBucketRequest(TeaModel):
             self.bucket_name = m.get('BucketName')
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
+        if m.get('DispatchScope') is not None:
+            self.dispatch_scope = m.get('DispatchScope')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('LogicalBucketType') is not None:
@@ -44175,17 +45556,17 @@ class PutBucketLifecycleRequest(TeaModel):
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The expiration data. EOS executes a lifecycle rule for objects that were last updated before the expiration date.
+        # The expiration time. EOS executes a lifecycle rule for objects that were last updated before the expiration time.
         # 
-        # Specify the time that follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # > ExpirationDays and CreateBeforeDate are mutually exclusive.
+        # >  ExpirationDays and CreateBeforeDate are mutually exclusive.
         self.created_before_date = created_before_date
         # The number of days from when the objects were last modified to when the lifecycle rule takes effect. The value must be a positive integer that is greater than 0.
         # 
-        # > ExpirationDays and CreateBeforeDate are mutually exclusive.
+        # >  ExpirationDays and CreateBeforeDate are mutually exclusive.
         self.expiration_days = expiration_days
-        # The prefix of a rule. The prefix must be unique.
+        # The prefix of a object name. The prefix must be unique.
         # 
         # *   If you specify a prefix, the rule applies only to objects in the bucket that match the prefix.
         # *   If you do not specify a prefix, the rule applies to all objects in the bucket.
@@ -44193,12 +45574,12 @@ class PutBucketLifecycleRequest(TeaModel):
         # The unique ID of the rule. The ID of a lifecycle rule can be up to 255 bytes in length.
         # 
         # *   You do not need to configure this parameter when you create a rule. The system automatically generates a unique ID.
-        # *   When you update a rule, you need to specify the rule ID, and the rule must exist. Otherwise, an error occurs.
+        # *   When you update a rule, you need to specify this parameter. Make sure that the rule specified by RuleId exists. Otherwise, an error occurs.
         self.rule_id = rule_id
         # The status of the rule. Valid values:
         # 
-        # *   **Enabled**: The rule is periodically executed.
-        # *   **Disabled**: The rule is ignored.
+        # *   **Enabled**\
+        # *   **Disabled**\
         # 
         # This parameter is required.
         self.status = status
@@ -45085,7 +46466,7 @@ class ReinitInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -46121,6 +47502,265 @@ class RemoveBackendServersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveBackendServersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveInstanceSDGRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.instance_ids = instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class RemoveInstanceSDGShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.instance_ids_shrink = instance_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        return self
+
+
+class RemoveInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
+    def __init__(
+        self,
+        err_message: str = None,
+        instance_id: str = None,
+    ):
+        self.err_message = err_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class RemoveInstanceSDGResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[RemoveInstanceSDGResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_items = failed_items
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for k in self.failed_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k in self.failed_items:
+                result['FailedItems'].append(k.to_map() if k else None)
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k in m.get('FailedItems'):
+                temp_model = RemoveInstanceSDGResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k))
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class RemoveInstanceSDGResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: RemoveInstanceSDGResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = RemoveInstanceSDGResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RemoveInstanceSDGResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: RemoveInstanceSDGResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = RemoveInstanceSDGResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveInstanceSDGResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveInstanceSDGResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveInstanceSDGResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -49872,6 +51512,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         request_timeout: int = None,
         scheduler: str = None,
         unhealthy_threshold: int = None,
+        xforwarded_for: str = None,
     ):
         # The description of the listener. The description must be **1** to **80** characters in length.
         # 
@@ -49963,6 +51604,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.unhealthy_threshold = unhealthy_threshold
+        self.xforwarded_for = xforwarded_for
 
     def validate(self):
         pass
@@ -50005,6 +51647,8 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             result['Scheduler'] = self.scheduler
         if self.unhealthy_threshold is not None:
             result['UnhealthyThreshold'] = self.unhealthy_threshold
+        if self.xforwarded_for is not None:
+            result['XForwardedFor'] = self.xforwarded_for
         return result
 
     def from_map(self, m: dict = None):
@@ -50041,6 +51685,8 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
             self.scheduler = m.get('Scheduler')
         if m.get('UnhealthyThreshold') is not None:
             self.unhealthy_threshold = m.get('UnhealthyThreshold')
+        if m.get('XForwardedFor') is not None:
+            self.xforwarded_for = m.get('XForwardedFor')
         return self
 
 
@@ -52080,6 +53726,159 @@ class StopSnatIpForSnatEntryResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UnAssociateEnsEipAddressRequest(TeaModel):
     def __init__(
         self,
@@ -52444,6 +54243,400 @@ class UnassociateNetworkAclResponse(TeaModel):
         return self
 
 
+class UnloadRegionSDGRequest(TeaModel):
+    def __init__(
+        self,
+        destination_region_ids: List[str] = None,
+        namespaces: List[str] = None,
+        sdgid: str = None,
+    ):
+        # This parameter is required.
+        self.destination_region_ids = destination_region_ids
+        self.namespaces = namespaces
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_ids is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids
+        if self.namespaces is not None:
+            result['Namespaces'] = self.namespaces
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionIds') is not None:
+            self.destination_region_ids = m.get('DestinationRegionIds')
+        if m.get('Namespaces') is not None:
+            self.namespaces = m.get('Namespaces')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        return self
+
+
+class UnloadRegionSDGShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        destination_region_ids_shrink: str = None,
+        namespaces_shrink: str = None,
+        sdgid: str = None,
+    ):
+        # This parameter is required.
+        self.destination_region_ids_shrink = destination_region_ids_shrink
+        self.namespaces_shrink = namespaces_shrink
+        # This parameter is required.
+        self.sdgid = sdgid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_ids_shrink is not None:
+            result['DestinationRegionIds'] = self.destination_region_ids_shrink
+        if self.namespaces_shrink is not None:
+            result['Namespaces'] = self.namespaces_shrink
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionIds') is not None:
+            self.destination_region_ids_shrink = m.get('DestinationRegionIds')
+        if m.get('Namespaces') is not None:
+            self.namespaces_shrink = m.get('Namespaces')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        return self
+
+
+class UnloadRegionSDGResponseBodyDataResultFailedItems(TeaModel):
+    def __init__(
+        self,
+        destination_region_id: str = None,
+        error_message: str = None,
+    ):
+        self.destination_region_id = destination_region_id
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_region_id is not None:
+            result['DestinationRegionId'] = self.destination_region_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationRegionId') is not None:
+            self.destination_region_id = m.get('DestinationRegionId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class UnloadRegionSDGResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[UnloadRegionSDGResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_items = failed_items
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for k in self.failed_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k in self.failed_items:
+                result['FailedItems'].append(k.to_map() if k else None)
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k in m.get('FailedItems'):
+                temp_model = UnloadRegionSDGResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k))
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class UnloadRegionSDGResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: UnloadRegionSDGResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        self.message = message
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Result') is not None:
+            temp_model = UnloadRegionSDGResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UnloadRegionSDGResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UnloadRegionSDGResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = UnloadRegionSDGResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnloadRegionSDGResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnloadRegionSDGResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnloadRegionSDGResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateEnsSaleControlRequestSaleControlsConditionControls(TeaModel):
     def __init__(
         self,
@@ -52593,12 +54786,13 @@ class UpdateEnsSaleControlRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls: List[UpdateEnsSaleControlRequestSaleControls] = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls = sale_controls
 
@@ -52618,6 +54812,8 @@ class UpdateEnsSaleControlRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         result['SaleControls'] = []
         if self.sale_controls is not None:
             for k in self.sale_controls:
@@ -52630,6 +54826,8 @@ class UpdateEnsSaleControlRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         self.sale_controls = []
         if m.get('SaleControls') is not None:
             for k in m.get('SaleControls'):
@@ -52643,12 +54841,13 @@ class UpdateEnsSaleControlShrinkRequest(TeaModel):
         self,
         ali_uid_account: str = None,
         commodity_code: str = None,
+        custom_account: str = None,
         sale_controls_shrink: str = None,
     ):
-        # This parameter is required.
         self.ali_uid_account = ali_uid_account
         # This parameter is required.
         self.commodity_code = commodity_code
+        self.custom_account = custom_account
         # This parameter is required.
         self.sale_controls_shrink = sale_controls_shrink
 
@@ -52665,6 +54864,8 @@ class UpdateEnsSaleControlShrinkRequest(TeaModel):
             result['AliUidAccount'] = self.ali_uid_account
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+        if self.custom_account is not None:
+            result['CustomAccount'] = self.custom_account
         if self.sale_controls_shrink is not None:
             result['SaleControls'] = self.sale_controls_shrink
         return result
@@ -52675,6 +54876,8 @@ class UpdateEnsSaleControlShrinkRequest(TeaModel):
             self.ali_uid_account = m.get('AliUidAccount')
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+        if m.get('CustomAccount') is not None:
+            self.custom_account = m.get('CustomAccount')
         if m.get('SaleControls') is not None:
             self.sale_controls_shrink = m.get('SaleControls')
         return self
@@ -52968,6 +55171,7 @@ class UpgradeApplicationResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
+        # The task ID. You can use the task ID to query the upgrade progress or status.
         self.task_id = task_id
 
     def validate(self):

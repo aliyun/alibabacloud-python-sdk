@@ -2335,6 +2335,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -2378,6 +2380,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -5955,6 +5959,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -5998,6 +6004,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -6067,6 +6075,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -6110,6 +6120,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -7389,7 +7401,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.sdgid):
             request.sdgid_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgid, 'SDGId', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.sdgid_shrink):
+            query['SDGId'] = request.sdgid_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7398,7 +7412,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7429,7 +7443,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.sdgid):
             request.sdgid_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgid, 'SDGId', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.sdgid_shrink):
+            query['SDGId'] = request.sdgid_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7438,7 +7454,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7980,6 +7996,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vswitch_with_options_async(request, runtime)
+
+    def deploy_instance_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.DeployInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeployInstanceSDGResponse:
+        """
+        @summary 部署SDG到计算实例
+        
+        @param tmp_req: DeployInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeployInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.deployment_type):
+            query['DeploymentType'] = request.deployment_type
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeployInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeployInstanceSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_instance_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeployInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeployInstanceSDGResponse:
+        """
+        @summary 部署SDG到计算实例
+        
+        @param tmp_req: DeployInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeployInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.deployment_type):
+            query['DeploymentType'] = request.deployment_type
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeployInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeployInstanceSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_instance_sdg(
+        self,
+        request: ens_20171110_models.DeployInstanceSDGRequest,
+    ) -> ens_20171110_models.DeployInstanceSDGResponse:
+        """
+        @summary 部署SDG到计算实例
+        
+        @param request: DeployInstanceSDGRequest
+        @return: DeployInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.deploy_instance_sdgwith_options(request, runtime)
+
+    async def deploy_instance_sdg_async(
+        self,
+        request: ens_20171110_models.DeployInstanceSDGRequest,
+    ) -> ens_20171110_models.DeployInstanceSDGResponse:
+        """
+        @summary 部署SDG到计算实例
+        
+        @param request: DeployInstanceSDGRequest
+        @return: DeployInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.deploy_instance_sdgwith_options_async(request, runtime)
 
     def deploy_sdgwith_options(
         self,
@@ -13159,6 +13287,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_resource_type):
             query['InstanceResourceType'] = request.instance_resource_type
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.intranet_ip):
             query['IntranetIp'] = request.intranet_ip
         if not UtilClient.is_unset(request.network_id):
@@ -13236,6 +13366,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_resource_type):
             query['InstanceResourceType'] = request.instance_resource_type
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.intranet_ip):
             query['IntranetIp'] = request.intranet_ip
         if not UtilClient.is_unset(request.network_id):
@@ -13537,8 +13669,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the configuration of an HTTP listener.
         
-        @description >
-        You can call this operation up to 100 times per second per account.
+        @description    You can call this operation up to 100 times per second per account.
         You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
@@ -13578,8 +13709,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the configuration of an HTTP listener.
         
-        @description >
-        You can call this operation up to 100 times per second per account.
+        @description    You can call this operation up to 100 times per second per account.
         You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
@@ -13618,8 +13748,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the configuration of an HTTP listener.
         
-        @description >
-        You can call this operation up to 100 times per second per account.
+        @description    You can call this operation up to 100 times per second per account.
         You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
@@ -13635,8 +13764,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the configuration of an HTTP listener.
         
-        @description >
-        You can call this operation up to 100 times per second per account.
+        @description    You can call this operation up to 100 times per second per account.
         You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
@@ -15631,6 +15759,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_timeline_with_options_async(request, runtime)
 
+    def describe_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.DescribeSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGResponse:
+        """
+        @summary 查询SDG信息
+        
+        @param tmp_req: DescribeSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sdgids):
+            request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sdgids_shrink):
+            query['SDGIds'] = request.sdgids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.DescribeSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGResponse:
+        """
+        @summary 查询SDG信息
+        
+        @param tmp_req: DescribeSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sdgids):
+            request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sdgids_shrink):
+            query['SDGIds'] = request.sdgids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sdg(
+        self,
+        request: ens_20171110_models.DescribeSDGRequest,
+    ) -> ens_20171110_models.DescribeSDGResponse:
+        """
+        @summary 查询SDG信息
+        
+        @param request: DescribeSDGRequest
+        @return: DescribeSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sdgwith_options(request, runtime)
+
+    async def describe_sdg_async(
+        self,
+        request: ens_20171110_models.DescribeSDGRequest,
+    ) -> ens_20171110_models.DescribeSDGResponse:
+        """
+        @summary 查询SDG信息
+        
+        @param request: DescribeSDGRequest
+        @return: DescribeSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sdgwith_options_async(request, runtime)
+
     def describe_sdgdeployment_status_with_options(
         self,
         request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
@@ -15742,7 +15982,11 @@ class Client(OpenApiClient):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         if not UtilClient.is_unset(tmp_req.sdgids):
             request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgids_shrink):
+            query['SDGIds'] = request.sdgids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15751,7 +15995,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -15781,7 +16025,11 @@ class Client(OpenApiClient):
             request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
         if not UtilClient.is_unset(tmp_req.sdgids):
             request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.sdgids_shrink):
+            query['SDGIds'] = request.sdgids_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15790,7 +16038,7 @@ class Client(OpenApiClient):
             version='2017-11-10',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -18645,7 +18893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListObjectsResponse:
         """
-        @summary Lists all objects in a bucket.
+        @summary Queries the information about all objects in a bucket.
         
         @param request: ListObjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18692,7 +18940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListObjectsResponse:
         """
-        @summary Lists all objects in a bucket.
+        @summary Queries the information about all objects in a bucket.
         
         @param request: ListObjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18738,7 +18986,7 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListObjectsRequest,
     ) -> ens_20171110_models.ListObjectsResponse:
         """
-        @summary Lists all objects in a bucket.
+        @summary Queries the information about all objects in a bucket.
         
         @param request: ListObjectsRequest
         @return: ListObjectsResponse
@@ -18751,13 +18999,121 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListObjectsRequest,
     ) -> ens_20171110_models.ListObjectsResponse:
         """
-        @summary Lists all objects in a bucket.
+        @summary Queries the information about all objects in a bucket.
         
         @param request: ListObjectsRequest
         @return: ListObjectsResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_objects_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: ens_20171110_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: ens_20171110_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: ens_20171110_models.ListTagResourcesRequest,
+    ) -> ens_20171110_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: ens_20171110_models.ListTagResourcesRequest,
+    ) -> ens_20171110_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def modify_ens_eip_address_attribute_with_options(
         self,
@@ -20431,6 +20787,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_vswitch_attribute_with_options_async(request, runtime)
 
+    def preload_region_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.PreloadRegionSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PreloadRegionSDGResponse:
+        """
+        @summary 节点及AIC的命名空间粒度预热SDG
+        
+        @param tmp_req: PreloadRegionSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreloadRegionSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.PreloadRegionSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.destination_region_ids_shrink):
+            query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.redundant_num):
+            query['RedundantNum'] = request.redundant_num
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreloadRegionSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PreloadRegionSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preload_region_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.PreloadRegionSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PreloadRegionSDGResponse:
+        """
+        @summary 节点及AIC的命名空间粒度预热SDG
+        
+        @param tmp_req: PreloadRegionSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreloadRegionSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.PreloadRegionSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.destination_region_ids_shrink):
+            query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.redundant_num):
+            query['RedundantNum'] = request.redundant_num
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreloadRegionSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PreloadRegionSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preload_region_sdg(
+        self,
+        request: ens_20171110_models.PreloadRegionSDGRequest,
+    ) -> ens_20171110_models.PreloadRegionSDGResponse:
+        """
+        @summary 节点及AIC的命名空间粒度预热SDG
+        
+        @param request: PreloadRegionSDGRequest
+        @return: PreloadRegionSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.preload_region_sdgwith_options(request, runtime)
+
+    async def preload_region_sdg_async(
+        self,
+        request: ens_20171110_models.PreloadRegionSDGRequest,
+    ) -> ens_20171110_models.PreloadRegionSDGResponse:
+        """
+        @summary 节点及AIC的命名空间粒度预热SDG
+        
+        @param request: PreloadRegionSDGRequest
+        @return: PreloadRegionSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.preload_region_sdgwith_options_async(request, runtime)
+
     def push_application_data_with_options(
         self,
         request: ens_20171110_models.PushApplicationDataRequest,
@@ -20559,6 +21035,8 @@ class Client(OpenApiClient):
             body['BucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.comment):
             body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.dispatch_scope):
+            body['DispatchScope'] = request.dispatch_scope
         if not UtilClient.is_unset(request.ens_region_id):
             body['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.logical_bucket_type):
@@ -20602,6 +21080,8 @@ class Client(OpenApiClient):
             body['BucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.comment):
             body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.dispatch_scope):
+            body['DispatchScope'] = request.dispatch_scope
         if not UtilClient.is_unset(request.ens_region_id):
             body['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.logical_bucket_type):
@@ -20759,8 +21239,8 @@ class Client(OpenApiClient):
         """
         @summary Configures lifecycle rules for objects.
         
-        @description - You can configure up to 1000 rules.
-        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        @description    You can configure up to 1,000 rules.
+        If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20809,8 +21289,8 @@ class Client(OpenApiClient):
         """
         @summary Configures lifecycle rules for objects.
         
-        @description - You can configure up to 1000 rules.
-        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        @description    You can configure up to 1,000 rules.
+        If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20858,8 +21338,8 @@ class Client(OpenApiClient):
         """
         @summary Configures lifecycle rules for objects.
         
-        @description - You can configure up to 1000 rules.
-        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        @description    You can configure up to 1,000 rules.
+        If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
         @return: PutBucketLifecycleResponse
@@ -20874,8 +21354,8 @@ class Client(OpenApiClient):
         """
         @summary Configures lifecycle rules for objects.
         
-        @description - You can configure up to 1000 rules.
-        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        @description    You can configure up to 1,000 rules.
+        If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
         @return: PutBucketLifecycleResponse
@@ -22310,6 +22790,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_backend_servers_with_options_async(request, runtime)
+
+    def remove_instance_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.RemoveInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RemoveInstanceSDGResponse:
+        """
+        @summary 移除计算实例上已挂载的SDG
+        
+        @param tmp_req: RemoveInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RemoveInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RemoveInstanceSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_instance_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.RemoveInstanceSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RemoveInstanceSDGResponse:
+        """
+        @summary 移除计算实例上已挂载的SDG
+        
+        @param tmp_req: RemoveInstanceSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveInstanceSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RemoveInstanceSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveInstanceSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RemoveInstanceSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_instance_sdg(
+        self,
+        request: ens_20171110_models.RemoveInstanceSDGRequest,
+    ) -> ens_20171110_models.RemoveInstanceSDGResponse:
+        """
+        @summary 移除计算实例上已挂载的SDG
+        
+        @param request: RemoveInstanceSDGRequest
+        @return: RemoveInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_instance_sdgwith_options(request, runtime)
+
+    async def remove_instance_sdg_async(
+        self,
+        request: ens_20171110_models.RemoveInstanceSDGRequest,
+    ) -> ens_20171110_models.RemoveInstanceSDGResponse:
+        """
+        @summary 移除计算实例上已挂载的SDG
+        
+        @param request: RemoveInstanceSDGRequest
+        @return: RemoveInstanceSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_instance_sdgwith_options_async(request, runtime)
 
     def remove_public_ips_from_epn_instance_with_options(
         self,
@@ -24572,6 +25156,8 @@ class Client(OpenApiClient):
             query['Scheduler'] = request.scheduler
         if not UtilClient.is_unset(request.unhealthy_threshold):
             query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -24640,6 +25226,8 @@ class Client(OpenApiClient):
             query['Scheduler'] = request.scheduler
         if not UtilClient.is_unset(request.unhealthy_threshold):
             query['UnhealthyThreshold'] = request.unhealthy_threshold
+        if not UtilClient.is_unset(request.xforwarded_for):
+            query['XForwardedFor'] = request.xforwarded_for
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -26359,6 +26947,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_snat_ip_for_snat_entry_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: ens_20171110_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: ens_20171110_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: ens_20171110_models.TagResourcesRequest,
+    ) -> ens_20171110_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: ens_20171110_models.TagResourcesRequest,
+    ) -> ens_20171110_models.TagResourcesResponse:
+        """
+        @summary 资源打用户标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
     def un_associate_ens_eip_address_with_options(
         self,
         request: ens_20171110_models.UnAssociateEnsEipAddressRequest,
@@ -26655,6 +27347,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unassociate_network_acl_with_options_async(request, runtime)
 
+    def unload_region_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.UnloadRegionSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnloadRegionSDGResponse:
+        """
+        @summary 释放预热的节点及AIC的命名空间粒度SDG
+        
+        @param tmp_req: UnloadRegionSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnloadRegionSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.UnloadRegionSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.destination_region_ids_shrink):
+            query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnloadRegionSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnloadRegionSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unload_region_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.UnloadRegionSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UnloadRegionSDGResponse:
+        """
+        @summary 释放预热的节点及AIC的命名空间粒度SDG
+        
+        @param tmp_req: UnloadRegionSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnloadRegionSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.UnloadRegionSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        if not UtilClient.is_unset(tmp_req.namespaces):
+            request.namespaces_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.namespaces, 'Namespaces', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.destination_region_ids_shrink):
+            query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.namespaces_shrink):
+            query['Namespaces'] = request.namespaces_shrink
+        if not UtilClient.is_unset(request.sdgid):
+            query['SDGId'] = request.sdgid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnloadRegionSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UnloadRegionSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unload_region_sdg(
+        self,
+        request: ens_20171110_models.UnloadRegionSDGRequest,
+    ) -> ens_20171110_models.UnloadRegionSDGResponse:
+        """
+        @summary 释放预热的节点及AIC的命名空间粒度SDG
+        
+        @param request: UnloadRegionSDGRequest
+        @return: UnloadRegionSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unload_region_sdgwith_options(request, runtime)
+
+    async def unload_region_sdg_async(
+        self,
+        request: ens_20171110_models.UnloadRegionSDGRequest,
+    ) -> ens_20171110_models.UnloadRegionSDGResponse:
+        """
+        @summary 释放预热的节点及AIC的命名空间粒度SDG
+        
+        @param request: UnloadRegionSDGRequest
+        @return: UnloadRegionSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unload_region_sdgwith_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: ens_20171110_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: ens_20171110_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: ens_20171110_models.UntagResourcesRequest,
+    ) -> ens_20171110_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: ens_20171110_models.UntagResourcesRequest,
+    ) -> ens_20171110_models.UntagResourcesResponse:
+        """
+        @summary 资源去除用户标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
+
     def update_ens_sale_control_with_options(
         self,
         tmp_req: ens_20171110_models.UpdateEnsSaleControlRequest,
@@ -26677,6 +27593,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
@@ -26720,6 +27638,8 @@ class Client(OpenApiClient):
             query['AliUidAccount'] = request.ali_uid_account
         if not UtilClient.is_unset(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.custom_account):
+            query['CustomAccount'] = request.custom_account
         if not UtilClient.is_unset(request.sale_controls_shrink):
             query['SaleControls'] = request.sale_controls_shrink
         req = open_api_models.OpenApiRequest(
