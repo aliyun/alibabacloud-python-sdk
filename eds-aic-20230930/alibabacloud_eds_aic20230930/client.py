@@ -2528,6 +2528,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_spec_with_options_async(request, runtime)
 
+    def describe_tasks_with_options(
+        self,
+        request: eds_aic_20230930_models.DescribeTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeTasksResponse:
+        """
+        @summary 查询异步任务
+        
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.invoke_id):
+            query['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTasks',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tasks_with_options_async(
+        self,
+        request: eds_aic_20230930_models.DescribeTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.DescribeTasksResponse:
+        """
+        @summary 查询异步任务
+        
+        @param request: DescribeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.invoke_id):
+            query['InvokeId'] = request.invoke_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        if not UtilClient.is_unset(request.task_ids):
+            query['TaskIds'] = request.task_ids
+        if not UtilClient.is_unset(request.task_status):
+            query['TaskStatus'] = request.task_status
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTasks',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.DescribeTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tasks(
+        self,
+        request: eds_aic_20230930_models.DescribeTasksRequest,
+    ) -> eds_aic_20230930_models.DescribeTasksResponse:
+        """
+        @summary 查询异步任务
+        
+        @param request: DescribeTasksRequest
+        @return: DescribeTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tasks_with_options(request, runtime)
+
+    async def describe_tasks_async(
+        self,
+        request: eds_aic_20230930_models.DescribeTasksRequest,
+    ) -> eds_aic_20230930_models.DescribeTasksResponse:
+        """
+        @summary 查询异步任务
+        
+        @param request: DescribeTasksRequest
+        @return: DescribeTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tasks_with_options_async(request, runtime)
+
     def detach_key_pair_with_options(
         self,
         request: eds_aic_20230930_models.DetachKeyPairRequest,
