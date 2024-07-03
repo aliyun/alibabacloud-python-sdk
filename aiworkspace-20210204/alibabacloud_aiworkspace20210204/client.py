@@ -1166,6 +1166,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.approval_status):
             body['ApprovalStatus'] = request.approval_status
+        if not UtilClient.is_unset(request.compression_spec):
+            body['CompressionSpec'] = request.compression_spec
         if not UtilClient.is_unset(request.evaluation_spec):
             body['EvaluationSpec'] = request.evaluation_spec
         if not UtilClient.is_unset(request.extra_info):
@@ -1233,6 +1235,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.approval_status):
             body['ApprovalStatus'] = request.approval_status
+        if not UtilClient.is_unset(request.compression_spec):
+            body['CompressionSpec'] = request.compression_spec
         if not UtilClient.is_unset(request.evaluation_spec):
             body['EvaluationSpec'] = request.evaluation_spec
         if not UtilClient.is_unset(request.extra_info):
@@ -6525,6 +6529,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.approval_status):
             body['ApprovalStatus'] = request.approval_status
+        if not UtilClient.is_unset(request.compression_spec):
+            body['CompressionSpec'] = request.compression_spec
         if not UtilClient.is_unset(request.evaluation_spec):
             body['EvaluationSpec'] = request.evaluation_spec
         if not UtilClient.is_unset(request.extra_info):
@@ -6583,6 +6589,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.approval_status):
             body['ApprovalStatus'] = request.approval_status
+        if not UtilClient.is_unset(request.compression_spec):
+            body['CompressionSpec'] = request.compression_spec
         if not UtilClient.is_unset(request.evaluation_spec):
             body['EvaluationSpec'] = request.evaluation_spec
         if not UtilClient.is_unset(request.extra_info):

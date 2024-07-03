@@ -532,6 +532,7 @@ class ModelVersion(TeaModel):
     def __init__(
         self,
         approval_status: str = None,
+        compression_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         format_type: str = None,
@@ -552,6 +553,7 @@ class ModelVersion(TeaModel):
         version_name: str = None,
     ):
         self.approval_status = approval_status
+        self.compression_spec = compression_spec
         self.evaluation_spec = evaluation_spec
         self.extra_info = extra_info
         self.format_type = format_type
@@ -585,6 +587,8 @@ class ModelVersion(TeaModel):
         result = dict()
         if self.approval_status is not None:
             result['ApprovalStatus'] = self.approval_status
+        if self.compression_spec is not None:
+            result['CompressionSpec'] = self.compression_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -629,6 +633,8 @@ class ModelVersion(TeaModel):
         m = m or dict()
         if m.get('ApprovalStatus') is not None:
             self.approval_status = m.get('ApprovalStatus')
+        if m.get('CompressionSpec') is not None:
+            self.compression_spec = m.get('CompressionSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
@@ -2385,6 +2391,7 @@ class CreateModelVersionRequest(TeaModel):
     def __init__(
         self,
         approval_status: str = None,
+        compression_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         format_type: str = None,
@@ -2401,6 +2408,7 @@ class CreateModelVersionRequest(TeaModel):
         version_name: str = None,
     ):
         self.approval_status = approval_status
+        self.compression_spec = compression_spec
         self.evaluation_spec = evaluation_spec
         self.extra_info = extra_info
         self.format_type = format_type
@@ -2431,6 +2439,8 @@ class CreateModelVersionRequest(TeaModel):
         result = dict()
         if self.approval_status is not None:
             result['ApprovalStatus'] = self.approval_status
+        if self.compression_spec is not None:
+            result['CompressionSpec'] = self.compression_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -2467,6 +2477,8 @@ class CreateModelVersionRequest(TeaModel):
         m = m or dict()
         if m.get('ApprovalStatus') is not None:
             self.approval_status = m.get('ApprovalStatus')
+        if m.get('CompressionSpec') is not None:
+            self.compression_spec = m.get('CompressionSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
@@ -5348,6 +5360,7 @@ class GetModelVersionResponseBody(TeaModel):
     def __init__(
         self,
         approval_status: str = None,
+        compression_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         format_type: str = None,
@@ -5369,6 +5382,7 @@ class GetModelVersionResponseBody(TeaModel):
         version_name: str = None,
     ):
         self.approval_status = approval_status
+        self.compression_spec = compression_spec
         self.evaluation_spec = evaluation_spec
         self.extra_info = extra_info
         self.format_type = format_type
@@ -5403,6 +5417,8 @@ class GetModelVersionResponseBody(TeaModel):
         result = dict()
         if self.approval_status is not None:
             result['ApprovalStatus'] = self.approval_status
+        if self.compression_spec is not None:
+            result['CompressionSpec'] = self.compression_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -5449,6 +5465,8 @@ class GetModelVersionResponseBody(TeaModel):
         m = m or dict()
         if m.get('ApprovalStatus') is not None:
             self.approval_status = m.get('ApprovalStatus')
+        if m.get('CompressionSpec') is not None:
+            self.compression_spec = m.get('CompressionSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
@@ -9912,6 +9930,7 @@ class UpdateModelVersionRequest(TeaModel):
     def __init__(
         self,
         approval_status: str = None,
+        compression_spec: Dict[str, Any] = None,
         evaluation_spec: Dict[str, Any] = None,
         extra_info: Dict[str, Any] = None,
         inference_spec: Dict[str, Any] = None,
@@ -9923,6 +9942,7 @@ class UpdateModelVersionRequest(TeaModel):
         version_description: str = None,
     ):
         self.approval_status = approval_status
+        self.compression_spec = compression_spec
         self.evaluation_spec = evaluation_spec
         self.extra_info = extra_info
         self.inference_spec = inference_spec
@@ -9944,6 +9964,8 @@ class UpdateModelVersionRequest(TeaModel):
         result = dict()
         if self.approval_status is not None:
             result['ApprovalStatus'] = self.approval_status
+        if self.compression_spec is not None:
+            result['CompressionSpec'] = self.compression_spec
         if self.evaluation_spec is not None:
             result['EvaluationSpec'] = self.evaluation_spec
         if self.extra_info is not None:
@@ -9968,6 +9990,8 @@ class UpdateModelVersionRequest(TeaModel):
         m = m or dict()
         if m.get('ApprovalStatus') is not None:
             self.approval_status = m.get('ApprovalStatus')
+        if m.get('CompressionSpec') is not None:
+            self.compression_spec = m.get('CompressionSpec')
         if m.get('EvaluationSpec') is not None:
             self.evaluation_spec = m.get('EvaluationSpec')
         if m.get('ExtraInfo') is not None:
