@@ -14187,9 +14187,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         total_cpu: int = None,
         used_cpu: float = None,
     ):
-        # The size of used storage space of the node, in GB.
         self.total_cpu = total_cpu
-        # Indicates whether migration can be performed.
         self.used_cpu = used_cpu
 
     def validate(self):
@@ -14222,18 +14220,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         total_disk_size: float = None,
         used_disk_size: float = None,
     ):
-        # The deployment type of the primary zone.
         self.total_disk_size = total_disk_size
-        # The status of the tenant.   
-        # - PENDING_CREATE: The tenant is being created.   
-        # - RESTORE: The tenant is being recovered.   
-        # - ONLINE: The tenant is running.   
-        # - SPEC_MODIFYING: The specification of the tenant is being modified.   
-        # - ALLOCATING_INTERNET_ADDRESS: An Internet address is being allocated.   
-        # - PENDING_OFFLINE_INTERNET_ADDRESS: The Internet address is being disabled.   
-        # - PRIMARY_ZONE_MODIFYING: The tenant is switching to a new primary zone.   
-        # - PARAMETER_MODIFYING: Parameters are being modified.   
-        # - WHITE_LIST_MODIFYING: The whitelist is being modified.
         self.used_disk_size = used_disk_size
 
     def validate(self):
@@ -14266,9 +14253,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         total_memory: int = None,
         used_memory: float = None,
     ):
-        # The ID of the replica node.
         self.total_memory = total_memory
-        # The information of node resources.
         self.used_memory = used_memory
 
     def validate(self):
@@ -14302,13 +14287,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
         disk_size: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize = None,
         memory: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory = None,
     ):
-        # The memory size of the tenant, in GB.
         self.cpu = cpu
-        # The information about the CPU resources of the node.
         self.disk_size = disk_size
-        # The role to access the zone. Valid values:   
-        #  - ReadWrite: a role that has the read and write privileges.
-        #  - ReadOnly: a role that has only the read-only privilege.
         self.memory = memory
 
     def validate(self):
@@ -14354,7 +14334,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
         logical_zone: str = None,
         node_copy_id: int = None,
         node_id: str = None,
-        node_resource: List[DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource] = None,
+        node_resource: DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource = None,
         node_status: str = None,
         read_only_copy_id: int = None,
         replica_type: str = None,
@@ -14374,9 +14354,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
 
     def validate(self):
         if self.node_resource:
-            for k in self.node_resource:
-                if k:
-                    k.validate()
+            self.node_resource.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -14392,10 +14370,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
             result['NodeCopyId'] = self.node_copy_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
-        result['NodeResource'] = []
         if self.node_resource is not None:
-            for k in self.node_resource:
-                result['NodeResource'].append(k.to_map() if k else None)
+            result['NodeResource'] = self.node_resource.to_map()
         if self.node_status is not None:
             result['NodeStatus'] = self.node_status
         if self.read_only_copy_id is not None:
@@ -14414,11 +14390,9 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
             self.node_copy_id = m.get('NodeCopyId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
-        self.node_resource = []
         if m.get('NodeResource') is not None:
-            for k in m.get('NodeResource'):
-                temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource()
-                self.node_resource.append(temp_model.from_map(k))
+            temp_model = DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource()
+            self.node_resource = temp_model.from_map(m['NodeResource'])
         if m.get('NodeStatus') is not None:
             self.node_status = m.get('NodeStatus')
         if m.get('ReadOnlyCopyId') is not None:

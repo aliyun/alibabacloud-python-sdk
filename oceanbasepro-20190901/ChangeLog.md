@@ -1,3 +1,7 @@
+2024-07-04 Version: 6.0.0
+- Update API DescribeInstanceTopology: update response param.
+
+
 2024-07-02 Version: 5.1.0
 - Support API BatchKillSessionList.
 - Support API DescribeSessionList.
