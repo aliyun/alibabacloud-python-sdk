@@ -106,6 +106,51 @@ class AliyunAccounts(TeaModel):
         return self
 
 
+class AssumeUserInfo(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        id: str = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.id = id
+        self.security_token = security_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class CodeSourceItem(TeaModel):
     def __init__(
         self,
@@ -330,6 +375,153 @@ class ContainerSpec(TeaModel):
             self.resources = temp_model.from_map(m['Resources'])
         if m.get('WorkingDir') is not None:
             self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class CredentialRole(TeaModel):
+    def __init__(
+        self,
+        assume_role_for: str = None,
+        assume_user_info: AssumeUserInfo = None,
+        policy: str = None,
+        role_arn: str = None,
+        role_type: str = None,
+    ):
+        self.assume_role_for = assume_role_for
+        self.assume_user_info = assume_user_info
+        self.policy = policy
+        self.role_arn = role_arn
+        self.role_type = role_type
+
+    def validate(self):
+        if self.assume_user_info:
+            self.assume_user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_role_for is not None:
+            result['AssumeRoleFor'] = self.assume_role_for
+        if self.assume_user_info is not None:
+            result['AssumeUserInfo'] = self.assume_user_info.to_map()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleFor') is not None:
+            self.assume_role_for = m.get('AssumeRoleFor')
+        if m.get('AssumeUserInfo') is not None:
+            temp_model = AssumeUserInfo()
+            self.assume_user_info = temp_model.from_map(m['AssumeUserInfo'])
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
+        return self
+
+
+class CredentialConfigItem(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        roles: List[CredentialRole] = None,
+        type: str = None,
+    ):
+        self.key = key
+        self.roles = roles
+        self.type = type
+
+    def validate(self):
+        if self.roles:
+            for k in self.roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        result['Roles'] = []
+        if self.roles is not None:
+            for k in self.roles:
+                result['Roles'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        self.roles = []
+        if m.get('Roles') is not None:
+            for k in m.get('Roles'):
+                temp_model = CredentialRole()
+                self.roles.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CredentialConfig(TeaModel):
+    def __init__(
+        self,
+        aliyun_env_role_key: str = None,
+        credential_config_items: List[CredentialConfigItem] = None,
+        enable_credential_inject: bool = None,
+    ):
+        self.aliyun_env_role_key = aliyun_env_role_key
+        self.credential_config_items = credential_config_items
+        self.enable_credential_inject = enable_credential_inject
+
+    def validate(self):
+        if self.credential_config_items:
+            for k in self.credential_config_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_env_role_key is not None:
+            result['AliyunEnvRoleKey'] = self.aliyun_env_role_key
+        result['CredentialConfigItems'] = []
+        if self.credential_config_items is not None:
+            for k in self.credential_config_items:
+                result['CredentialConfigItems'].append(k.to_map() if k else None)
+        if self.enable_credential_inject is not None:
+            result['EnableCredentialInject'] = self.enable_credential_inject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunEnvRoleKey') is not None:
+            self.aliyun_env_role_key = m.get('AliyunEnvRoleKey')
+        self.credential_config_items = []
+        if m.get('CredentialConfigItems') is not None:
+            for k in m.get('CredentialConfigItems'):
+                temp_model = CredentialConfigItem()
+                self.credential_config_items.append(temp_model.from_map(k))
+        if m.get('EnableCredentialInject') is not None:
+            self.enable_credential_inject = m.get('EnableCredentialInject')
         return self
 
 
@@ -1775,6 +1967,7 @@ class JobItem(TeaModel):
     def __init__(
         self,
         code_source: JobItemCodeSource = None,
+        credential_config: CredentialConfig = None,
         data_sources: List[JobItemDataSources] = None,
         display_name: str = None,
         duration: int = None,
@@ -1810,6 +2003,7 @@ class JobItem(TeaModel):
         workspace_name: str = None,
     ):
         self.code_source = code_source
+        self.credential_config = credential_config
         self.data_sources = data_sources
         self.display_name = display_name
         self.duration = duration
@@ -1847,6 +2041,8 @@ class JobItem(TeaModel):
     def validate(self):
         if self.code_source:
             self.code_source.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.data_sources:
             for k in self.data_sources:
                 if k:
@@ -1866,6 +2062,8 @@ class JobItem(TeaModel):
         result = dict()
         if self.code_source is not None:
             result['CodeSource'] = self.code_source.to_map()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['DataSources'] = []
         if self.data_sources is not None:
             for k in self.data_sources:
@@ -1943,6 +2141,9 @@ class JobItem(TeaModel):
         if m.get('CodeSource') is not None:
             temp_model = JobItemCodeSource()
             self.code_source = temp_model.from_map(m['CodeSource'])
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.data_sources = []
         if m.get('DataSources') is not None:
             for k in m.get('DataSources'):
