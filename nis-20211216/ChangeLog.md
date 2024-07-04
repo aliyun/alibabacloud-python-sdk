@@ -1,3 +1,11 @@
+2024-07-04 Version: 2.1.0
+- Support API GetNisNetworkMetrics.
+- Support API GetNisNetworkRanking.
+- Update API GetInternetTuple: update param BeginTime.
+- Update API GetInternetTuple: update param EndTime.
+- Update API GetInternetTuple: update param OrderBy.
+
+
 2024-04-10 Version: 2.0.2
 - Update API GetInternetTuple: add param CloudIpList.
 

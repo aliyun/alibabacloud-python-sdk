@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.CreateAndAnalyzeNetworkPathResponse:
         """
-        You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
+        @summary Initiates a task for analyzing network reachability.
+        
+        @description You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
         
         @param request: CreateAndAnalyzeNetworkPathRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -80,7 +82,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.CreateAndAnalyzeNetworkPathResponse:
         """
-        You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
+        @summary Initiates a task for analyzing network reachability.
+        
+        @description You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
         
         @param request: CreateAndAnalyzeNetworkPathRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -112,7 +116,9 @@ class Client(OpenApiClient):
         request: nis_20211216_models.CreateAndAnalyzeNetworkPathRequest,
     ) -> nis_20211216_models.CreateAndAnalyzeNetworkPathResponse:
         """
-        You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
+        @summary Initiates a task for analyzing network reachability.
+        
+        @description You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
         
         @param request: CreateAndAnalyzeNetworkPathRequest
         @return: CreateAndAnalyzeNetworkPathResponse
@@ -125,7 +131,9 @@ class Client(OpenApiClient):
         request: nis_20211216_models.CreateAndAnalyzeNetworkPathRequest,
     ) -> nis_20211216_models.CreateAndAnalyzeNetworkPathResponse:
         """
-        You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
+        @summary Initiates a task for analyzing network reachability.
+        
+        @description You can call this operation to initiate a task for analyzing network reachability by specifying only the information about the source and destination. You do not need to create a network path for reachability analysis. The analysis result is not recorded in the system. If you want to record the path parameters and analysis result in the Network Intelligence Service (NIS) console, we recommend that you call the *createNetworkReachableAnalysis** operation.
         
         @param request: CreateAndAnalyzeNetworkPathRequest
         @return: CreateAndAnalyzeNetworkPathResponse
@@ -139,8 +147,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.CreateNetworkPathResponse:
         """
-        You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
-        *   You can create up to 100 network paths within one Alibaba Cloud account.
+        @summary Creates a network path in the cloud for reachability analysis.
+        
+        @description    You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
+        You can create up to 100 network paths within one Alibaba Cloud account.
         
         @param request: CreateNetworkPathRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -201,8 +211,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.CreateNetworkPathResponse:
         """
-        You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
-        *   You can create up to 100 network paths within one Alibaba Cloud account.
+        @summary Creates a network path in the cloud for reachability analysis.
+        
+        @description    You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
+        You can create up to 100 network paths within one Alibaba Cloud account.
         
         @param request: CreateNetworkPathRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -262,8 +274,10 @@ class Client(OpenApiClient):
         request: nis_20211216_models.CreateNetworkPathRequest,
     ) -> nis_20211216_models.CreateNetworkPathResponse:
         """
-        You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
-        *   You can create up to 100 network paths within one Alibaba Cloud account.
+        @summary Creates a network path in the cloud for reachability analysis.
+        
+        @description    You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
+        You can create up to 100 network paths within one Alibaba Cloud account.
         
         @param request: CreateNetworkPathRequest
         @return: CreateNetworkPathResponse
@@ -276,8 +290,10 @@ class Client(OpenApiClient):
         request: nis_20211216_models.CreateNetworkPathRequest,
     ) -> nis_20211216_models.CreateNetworkPathResponse:
         """
-        You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
-        *   You can create up to 100 network paths within one Alibaba Cloud account.
+        @summary Creates a network path in the cloud for reachability analysis.
+        
+        @description    You can call the **CreateNetworkPath** operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
+        You can create up to 100 network paths within one Alibaba Cloud account.
         
         @param request: CreateNetworkPathRequest
         @return: CreateNetworkPathResponse
@@ -291,9 +307,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.CreateNetworkReachableAnalysisResponse:
         """
-        The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
-        *   The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
-        *   You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
+        @summary Creates a task for analyzing network reachability.
+        
+        @description    The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
+        The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
+        You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
         
         @param request: CreateNetworkReachableAnalysisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -332,9 +350,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.CreateNetworkReachableAnalysisResponse:
         """
-        The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
-        *   The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
-        *   You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
+        @summary Creates a task for analyzing network reachability.
+        
+        @description    The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
+        The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
+        You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
         
         @param request: CreateNetworkReachableAnalysisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -372,9 +392,11 @@ class Client(OpenApiClient):
         request: nis_20211216_models.CreateNetworkReachableAnalysisRequest,
     ) -> nis_20211216_models.CreateNetworkReachableAnalysisResponse:
         """
-        The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
-        *   The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
-        *   You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
+        @summary Creates a task for analyzing network reachability.
+        
+        @description    The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
+        The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
+        You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
         
         @param request: CreateNetworkReachableAnalysisRequest
         @return: CreateNetworkReachableAnalysisResponse
@@ -387,9 +409,11 @@ class Client(OpenApiClient):
         request: nis_20211216_models.CreateNetworkReachableAnalysisRequest,
     ) -> nis_20211216_models.CreateNetworkReachableAnalysisResponse:
         """
-        The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
-        *   The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
-        *   You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
+        @summary Creates a task for analyzing network reachability.
+        
+        @description    The **CreateNetworkReachableAnalysis** operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath** operation and record the analysis results.
+        The **CreateNetworkReachableAnalysis** operation can be called to repeatedly analyze the reachability of a network path.
+        You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
         
         @param request: CreateNetworkReachableAnalysisRequest
         @return: CreateNetworkReachableAnalysisResponse
@@ -402,6 +426,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.DeleteNetworkPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.DeleteNetworkPathResponse:
+        """
+        @summary Deletes a network path.
+        
+        @param tmp_req: DeleteNetworkPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkPathResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.DeleteNetworkPathShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -436,6 +467,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.DeleteNetworkPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.DeleteNetworkPathResponse:
+        """
+        @summary Deletes a network path.
+        
+        @param tmp_req: DeleteNetworkPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkPathResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.DeleteNetworkPathShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -469,6 +507,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.DeleteNetworkPathRequest,
     ) -> nis_20211216_models.DeleteNetworkPathResponse:
+        """
+        @summary Deletes a network path.
+        
+        @param request: DeleteNetworkPathRequest
+        @return: DeleteNetworkPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_network_path_with_options(request, runtime)
 
@@ -476,6 +520,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.DeleteNetworkPathRequest,
     ) -> nis_20211216_models.DeleteNetworkPathResponse:
+        """
+        @summary Deletes a network path.
+        
+        @param request: DeleteNetworkPathRequest
+        @return: DeleteNetworkPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_path_with_options_async(request, runtime)
 
@@ -484,6 +534,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.DeleteNetworkReachableAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.DeleteNetworkReachableAnalysisResponse:
+        """
+        @summary Deletes a task for analyzing network reachability.
+        
+        @param tmp_req: DeleteNetworkReachableAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkReachableAnalysisResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.DeleteNetworkReachableAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -518,6 +575,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.DeleteNetworkReachableAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.DeleteNetworkReachableAnalysisResponse:
+        """
+        @summary Deletes a task for analyzing network reachability.
+        
+        @param tmp_req: DeleteNetworkReachableAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkReachableAnalysisResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.DeleteNetworkReachableAnalysisShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -551,6 +615,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.DeleteNetworkReachableAnalysisRequest,
     ) -> nis_20211216_models.DeleteNetworkReachableAnalysisResponse:
+        """
+        @summary Deletes a task for analyzing network reachability.
+        
+        @param request: DeleteNetworkReachableAnalysisRequest
+        @return: DeleteNetworkReachableAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_network_reachable_analysis_with_options(request, runtime)
 
@@ -558,6 +628,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.DeleteNetworkReachableAnalysisRequest,
     ) -> nis_20211216_models.DeleteNetworkReachableAnalysisResponse:
+        """
+        @summary Deletes a task for analyzing network reachability.
+        
+        @param request: DeleteNetworkReachableAnalysisRequest
+        @return: DeleteNetworkReachableAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_reachable_analysis_with_options_async(request, runtime)
 
@@ -566,6 +642,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.GetInternetTupleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetInternetTupleResponse:
+        """
+        @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param tmp_req: GetInternetTupleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInternetTupleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetInternetTupleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -642,6 +725,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.GetInternetTupleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetInternetTupleResponse:
+        """
+        @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param tmp_req: GetInternetTupleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInternetTupleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetInternetTupleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -717,6 +807,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetInternetTupleRequest,
     ) -> nis_20211216_models.GetInternetTupleResponse:
+        """
+        @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param request: GetInternetTupleRequest
+        @return: GetInternetTupleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_internet_tuple_with_options(request, runtime)
 
@@ -724,6 +820,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetInternetTupleRequest,
     ) -> nis_20211216_models.GetInternetTupleResponse:
+        """
+        @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param request: GetInternetTupleRequest
+        @return: GetInternetTupleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_internet_tuple_with_options_async(request, runtime)
 
@@ -732,6 +834,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetNatTopNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetNatTopNResponse:
+        """
+        @summary Queries the real-time SNAT performance ranking of a NAT gateway.
+        
+        @param request: GetNatTopNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNatTopNResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -772,6 +881,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetNatTopNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetNatTopNResponse:
+        """
+        @summary Queries the real-time SNAT performance ranking of a NAT gateway.
+        
+        @param request: GetNatTopNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNatTopNResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -811,6 +927,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetNatTopNRequest,
     ) -> nis_20211216_models.GetNatTopNResponse:
+        """
+        @summary Queries the real-time SNAT performance ranking of a NAT gateway.
+        
+        @param request: GetNatTopNRequest
+        @return: GetNatTopNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_nat_top_nwith_options(request, runtime)
 
@@ -818,6 +940,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetNatTopNRequest,
     ) -> nis_20211216_models.GetNatTopNResponse:
+        """
+        @summary Queries the real-time SNAT performance ranking of a NAT gateway.
+        
+        @param request: GetNatTopNRequest
+        @return: GetNatTopNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_nat_top_nwith_options_async(request, runtime)
 
@@ -827,9 +955,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetNetworkReachableAnalysisResponse:
         """
-        *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
-        *   The **init** state indicates that the task is in progress.
-        *   The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
+        @summary Obtains the results of network reachability analysis.
+        
+        @description *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
+        The **init** state indicates that the task is in progress.
+        The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
         
         @param request: GetNetworkReachableAnalysisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -866,9 +996,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetNetworkReachableAnalysisResponse:
         """
-        *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
-        *   The **init** state indicates that the task is in progress.
-        *   The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
+        @summary Obtains the results of network reachability analysis.
+        
+        @description *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
+        The **init** state indicates that the task is in progress.
+        The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
         
         @param request: GetNetworkReachableAnalysisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -904,9 +1036,11 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetNetworkReachableAnalysisRequest,
     ) -> nis_20211216_models.GetNetworkReachableAnalysisResponse:
         """
-        *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
-        *   The **init** state indicates that the task is in progress.
-        *   The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
+        @summary Obtains the results of network reachability analysis.
+        
+        @description *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
+        The **init** state indicates that the task is in progress.
+        The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
         
         @param request: GetNetworkReachableAnalysisRequest
         @return: GetNetworkReachableAnalysisResponse
@@ -919,9 +1053,11 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetNetworkReachableAnalysisRequest,
     ) -> nis_20211216_models.GetNetworkReachableAnalysisResponse:
         """
-        *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
-        *   The **init** state indicates that the task is in progress.
-        *   The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
+        @summary Obtains the results of network reachability analysis.
+        
+        @description *GetNetworkReachableAnalysis** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
+        The **init** state indicates that the task is in progress.
+        The **finish** state indicates that the task is complete. In this state, you can obtain the analysis result.
         
         @param request: GetNetworkReachableAnalysisRequest
         @return: GetNetworkReachableAnalysisResponse
@@ -929,11 +1065,302 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_network_reachable_analysis_with_options_async(request, runtime)
 
+    def get_nis_network_metrics_with_options(
+        self,
+        tmp_req: nis_20211216_models.GetNisNetworkMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetNisNetworkMetricsResponse:
+        """
+        @summary 获取云网络指标趋势
+        
+        @param tmp_req: GetNisNetworkMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNisNetworkMetricsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetNisNetworkMetricsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dimensions):
+            request.dimensions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dimensions, 'Dimensions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.dimensions_shrink):
+            query['Dimensions'] = request.dimensions_shrink
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scan_by):
+            query['ScanBy'] = request.scan_by
+        if not UtilClient.is_unset(request.use_cross_account):
+            query['UseCrossAccount'] = request.use_cross_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNisNetworkMetrics',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetNisNetworkMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_nis_network_metrics_with_options_async(
+        self,
+        tmp_req: nis_20211216_models.GetNisNetworkMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetNisNetworkMetricsResponse:
+        """
+        @summary 获取云网络指标趋势
+        
+        @param tmp_req: GetNisNetworkMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNisNetworkMetricsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetNisNetworkMetricsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dimensions):
+            request.dimensions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dimensions, 'Dimensions', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.dimensions_shrink):
+            query['Dimensions'] = request.dimensions_shrink
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.scan_by):
+            query['ScanBy'] = request.scan_by
+        if not UtilClient.is_unset(request.use_cross_account):
+            query['UseCrossAccount'] = request.use_cross_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNisNetworkMetrics',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetNisNetworkMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_nis_network_metrics(
+        self,
+        request: nis_20211216_models.GetNisNetworkMetricsRequest,
+    ) -> nis_20211216_models.GetNisNetworkMetricsResponse:
+        """
+        @summary 获取云网络指标趋势
+        
+        @param request: GetNisNetworkMetricsRequest
+        @return: GetNisNetworkMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_nis_network_metrics_with_options(request, runtime)
+
+    async def get_nis_network_metrics_async(
+        self,
+        request: nis_20211216_models.GetNisNetworkMetricsRequest,
+    ) -> nis_20211216_models.GetNisNetworkMetricsResponse:
+        """
+        @summary 获取云网络指标趋势
+        
+        @param request: GetNisNetworkMetricsRequest
+        @return: GetNisNetworkMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_nis_network_metrics_with_options_async(request, runtime)
+
+    def get_nis_network_ranking_with_options(
+        self,
+        tmp_req: nis_20211216_models.GetNisNetworkRankingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetNisNetworkRankingResponse:
+        """
+        @summary 获取云网络指标排名
+        
+        @param tmp_req: GetNisNetworkRankingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNisNetworkRankingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetNisNetworkRankingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.top_n):
+            query['TopN'] = request.top_n
+        if not UtilClient.is_unset(request.use_cross_account):
+            query['UseCrossAccount'] = request.use_cross_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNisNetworkRanking',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetNisNetworkRankingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_nis_network_ranking_with_options_async(
+        self,
+        tmp_req: nis_20211216_models.GetNisNetworkRankingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.GetNisNetworkRankingResponse:
+        """
+        @summary 获取云网络指标排名
+        
+        @param tmp_req: GetNisNetworkRankingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNisNetworkRankingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.GetNisNetworkRankingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not UtilClient.is_unset(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.region_no):
+            query['RegionNo'] = request.region_no
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.top_n):
+            query['TopN'] = request.top_n
+        if not UtilClient.is_unset(request.use_cross_account):
+            query['UseCrossAccount'] = request.use_cross_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNisNetworkRanking',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.GetNisNetworkRankingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_nis_network_ranking(
+        self,
+        request: nis_20211216_models.GetNisNetworkRankingRequest,
+    ) -> nis_20211216_models.GetNisNetworkRankingResponse:
+        """
+        @summary 获取云网络指标排名
+        
+        @param request: GetNisNetworkRankingRequest
+        @return: GetNisNetworkRankingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_nis_network_ranking_with_options(request, runtime)
+
+    async def get_nis_network_ranking_async(
+        self,
+        request: nis_20211216_models.GetNisNetworkRankingRequest,
+    ) -> nis_20211216_models.GetNisNetworkRankingResponse:
+        """
+        @summary 获取云网络指标排名
+        
+        @param request: GetNisNetworkRankingRequest
+        @return: GetNisNetworkRankingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_nis_network_ranking_with_options_async(request, runtime)
+
     def get_transit_router_flow_top_nwith_options(
         self,
         tmp_req: nis_20211216_models.GetTransitRouterFlowTopNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        """
+        @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param tmp_req: GetTransitRouterFlowTopNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTransitRouterFlowTopNResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetTransitRouterFlowTopNShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1000,6 +1427,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.GetTransitRouterFlowTopNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        """
+        @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param tmp_req: GetTransitRouterFlowTopNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTransitRouterFlowTopNResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetTransitRouterFlowTopNShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1065,6 +1499,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetTransitRouterFlowTopNRequest,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        """
+        @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param request: GetTransitRouterFlowTopNRequest
+        @return: GetTransitRouterFlowTopNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_transit_router_flow_top_nwith_options(request, runtime)
 
@@ -1072,6 +1512,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetTransitRouterFlowTopNRequest,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
+        """
+        @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param request: GetTransitRouterFlowTopNRequest
+        @return: GetTransitRouterFlowTopNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_transit_router_flow_top_nwith_options_async(request, runtime)
 
@@ -1080,6 +1526,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.GetVbrFlowTopNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        """
+        @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param tmp_req: GetVbrFlowTopNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVbrFlowTopNResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetVbrFlowTopNShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1146,6 +1599,13 @@ class Client(OpenApiClient):
         tmp_req: nis_20211216_models.GetVbrFlowTopNRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        """
+        @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param tmp_req: GetVbrFlowTopNRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVbrFlowTopNResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetVbrFlowTopNShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1211,6 +1671,12 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetVbrFlowTopNRequest,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        """
+        @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param request: GetVbrFlowTopNRequest
+        @return: GetVbrFlowTopNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_vbr_flow_top_nwith_options(request, runtime)
 
@@ -1218,5 +1684,11 @@ class Client(OpenApiClient):
         self,
         request: nis_20211216_models.GetVbrFlowTopNRequest,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
+        """
+        @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
+        
+        @param request: GetVbrFlowTopNRequest
+        @return: GetVbrFlowTopNResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_vbr_flow_top_nwith_options_async(request, runtime)

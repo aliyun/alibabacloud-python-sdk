@@ -27,6 +27,8 @@ class CreateAndAnalyzeNetworkPathRequest(TeaModel):
         # The ID of the region for which you want to initiate a task for analyzing network reachability.
         self.region_id = region_id
         # The ID of the source resource.
+        # 
+        # This parameter is required.
         self.source_id = source_id
         # The source IP address.
         self.source_ip_address = source_ip_address
@@ -39,6 +41,8 @@ class CreateAndAnalyzeNetworkPathRequest(TeaModel):
         # *   **vsw**: the vSwitch
         # *   **vpn**: the VPN gateway
         # *   **vbr**: the virtual border router (VBR)
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The ID of the destination resource.
         self.target_id = target_id
@@ -311,6 +315,8 @@ class CreateNetworkPathRequest(TeaModel):
         # The description of the network path.
         self.network_path_description = network_path_description
         # The name of the network path.
+        # 
+        # This parameter is required.
         self.network_path_name = network_path_name
         # The protocol type. Valid values:
         # 
@@ -323,6 +329,8 @@ class CreateNetworkPathRequest(TeaModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the source resource.
+        # 
+        # This parameter is required.
         self.source_id = source_id
         # The source IP address.
         self.source_ip_address = source_ip_address
@@ -335,6 +343,8 @@ class CreateNetworkPathRequest(TeaModel):
         # *   **vsw**: the vSwitch
         # *   **vpn**: the VPN gateway
         # *   **vbr**: the virtual border router (VBR)
+        # 
+        # This parameter is required.
         self.source_type = source_type
         # The tags to add to the resource.
         self.tag = tag
@@ -556,7 +566,9 @@ class CreateNetworkReachableAnalysisRequest(TeaModel):
         region_id: str = None,
         tag: List[CreateNetworkReachableAnalysisRequestTag] = None,
     ):
-        # The ID of the network path. You can call the [CreateNetworkPath](~~2366522~~) operation to obtain the ID of the network path.
+        # The ID of the network path. You can call the [CreateNetworkPath](https://help.aliyun.com/document_detail/2366522.html) operation to obtain the ID of the network path.
+        # 
+        # This parameter is required.
         self.network_path_id = network_path_id
         # The ID of the region for which you want to create a task for analyzing network reachability.
         self.region_id = region_id
@@ -682,6 +694,8 @@ class DeleteNetworkPathRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of network paths.
+        # 
+        # This parameter is required.
         self.network_path_ids = network_path_ids
         # The region ID of the network path that you want to delete.
         self.region_id = region_id
@@ -717,6 +731,8 @@ class DeleteNetworkPathShrinkRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of network paths.
+        # 
+        # This parameter is required.
         self.network_path_ids_shrink = network_path_ids_shrink
         # The region ID of the network path that you want to delete.
         self.region_id = region_id
@@ -751,6 +767,10 @@ class DeleteNetworkPathResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Result of operation.
+        # 
+        # - **true**: Delete Success.
+        # - **false**: Delete Fail.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -827,6 +847,8 @@ class DeleteNetworkReachableAnalysisRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the tasks for analyzing network reachability.
+        # 
+        # This parameter is required.
         self.network_reachable_analysis_ids = network_reachable_analysis_ids
         # The ID of the region for which you want to delete a task for analyzing network reachability.
         self.region_id = region_id
@@ -862,6 +884,8 @@ class DeleteNetworkReachableAnalysisShrinkRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the tasks for analyzing network reachability.
+        # 
+        # This parameter is required.
         self.network_reachable_analysis_ids_shrink = network_reachable_analysis_ids_shrink
         # The ID of the region for which you want to delete a task for analyzing network reachability.
         self.region_id = region_id
@@ -896,6 +920,9 @@ class DeleteNetworkReachableAnalysisResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Result of operation.
+        # - **true**: Delete Success.
+        # - **false**: Delete Fail.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -994,6 +1021,8 @@ class GetInternetTupleRequest(TeaModel):
         # The IDs of member accounts.
         self.account_ids = account_ids
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The local IP address.
         self.cloud_ip = cloud_ip
@@ -1011,8 +1040,12 @@ class GetInternetTupleRequest(TeaModel):
         # 
         # *   **in**: inbound
         # *   **out**: outbound
+        # 
+        # This parameter is required.
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the Alibaba Cloud instance.
         self.instance_id = instance_id
@@ -1025,19 +1058,6 @@ class GetInternetTupleRequest(TeaModel):
         # *   Rtt
         # *   ByteCount
         # *   PacketCount
-        # *   InByteCount
-        # *   OutByteCount
-        # *   InPacketCount
-        # *   OutPacketCount
-        # *   InRetranCount
-        # *   OutRetranCount
-        # *   InDupAckCount
-        # *   OutDupAckCount
-        # *   InOutOrderCount
-        # *   OutOutOrderCount
-        # *   RetranCount
-        # *   OutOrderCount
-        # *   DupAckCount
         # *   RetransmitRate
         self.order_by = order_by
         # The remote city.
@@ -1065,6 +1085,8 @@ class GetInternetTupleRequest(TeaModel):
         # > All protocols are supported. This parameter is required only when you set **TupleType** to **5**.
         self.protocol = protocol
         # The ID of the region for which you want to query the Internet traffic.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The order in which instances are ranked by Internet traffic. Valid values:
         # 
@@ -1078,6 +1100,8 @@ class GetInternetTupleRequest(TeaModel):
         # *   **1**: 1-tuple
         # *   **2**: 2-tuple
         # *   **5**: 5-tuple
+        # 
+        # This parameter is required.
         self.tuple_type = tuple_type
         # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
         # 
@@ -1217,6 +1241,8 @@ class GetInternetTupleShrinkRequest(TeaModel):
         # The IDs of member accounts.
         self.account_ids = account_ids
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The local IP address.
         self.cloud_ip = cloud_ip
@@ -1234,8 +1260,12 @@ class GetInternetTupleShrinkRequest(TeaModel):
         # 
         # *   **in**: inbound
         # *   **out**: outbound
+        # 
+        # This parameter is required.
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the Alibaba Cloud instance.
         self.instance_id = instance_id
@@ -1248,19 +1278,6 @@ class GetInternetTupleShrinkRequest(TeaModel):
         # *   Rtt
         # *   ByteCount
         # *   PacketCount
-        # *   InByteCount
-        # *   OutByteCount
-        # *   InPacketCount
-        # *   OutPacketCount
-        # *   InRetranCount
-        # *   OutRetranCount
-        # *   InDupAckCount
-        # *   OutDupAckCount
-        # *   InOutOrderCount
-        # *   OutOutOrderCount
-        # *   RetranCount
-        # *   OutOrderCount
-        # *   DupAckCount
         # *   RetransmitRate
         self.order_by = order_by
         # The remote city.
@@ -1288,6 +1305,8 @@ class GetInternetTupleShrinkRequest(TeaModel):
         # > All protocols are supported. This parameter is required only when you set **TupleType** to **5**.
         self.protocol = protocol
         # The ID of the region for which you want to query the Internet traffic.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The order in which instances are ranked by Internet traffic. Valid values:
         # 
@@ -1301,6 +1320,8 @@ class GetInternetTupleShrinkRequest(TeaModel):
         # *   **1**: 1-tuple
         # *   **2**: 2-tuple
         # *   **5**: 5-tuple
+        # 
+        # This parameter is required.
         self.tuple_type = tuple_type
         # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
         # 
@@ -1757,12 +1778,16 @@ class GetNatTopNRequest(TeaModel):
         top_n: int = None,
     ):
         # The beginning of the time range to query in milliseconds. If you do not specify **EndTime**, the point in time specified by **BeginTime** is queried.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The end of the time range to query in milliseconds. The time range specified by **BeginTime** and **EndTime** cannot exceed **86400000** milliseconds (24 hours).
         self.end_time = end_time
         # Query ranking statistics for a specific IP address. If you specify this parameter, you do not need to specify **TopN** or **OrderBy**.
         self.ip = ip
         # The ID of the NAT gateway.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         # The metric that is used for real-time SNAT performance ranking. Valid values:
         # 
@@ -2007,6 +2032,8 @@ class GetNetworkReachableAnalysisRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the task for analyzing network reachability. You can call the **CreateNetworkRearchableAnalysis** operation to obtain the ID of the task for analyzing network reachability.
+        # 
+        # This parameter is required.
         self.network_reachable_analysis_id = network_reachable_analysis_id
         # The ID of the region for which you want to obtain the result of network reachability analysis.
         self.region_id = region_id
@@ -2168,6 +2195,881 @@ class GetNetworkReachableAnalysisResponse(TeaModel):
         return self
 
 
+class GetNisNetworkMetricsRequestDimensions(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetNisNetworkMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[str] = None,
+        begin_time: int = None,
+        dimensions: List[GetNisNetworkMetricsRequestDimensions] = None,
+        end_time: int = None,
+        metric_name: str = None,
+        region_no: str = None,
+        resource_type: str = None,
+        scan_by: str = None,
+        use_cross_account: bool = None,
+    ):
+        self.account_ids = account_ids
+        self.begin_time = begin_time
+        # This parameter is required.
+        self.dimensions = dimensions
+        self.end_time = end_time
+        # This parameter is required.
+        self.metric_name = metric_name
+        # This parameter is required.
+        self.region_no = region_no
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.scan_by = scan_by
+        self.use_cross_account = use_cross_account
+
+    def validate(self):
+        if self.dimensions:
+            for k in self.dimensions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        result['Dimensions'] = []
+        if self.dimensions is not None:
+            for k in self.dimensions:
+                result['Dimensions'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.scan_by is not None:
+            result['ScanBy'] = self.scan_by
+        if self.use_cross_account is not None:
+            result['UseCrossAccount'] = self.use_cross_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        self.dimensions = []
+        if m.get('Dimensions') is not None:
+            for k in m.get('Dimensions'):
+                temp_model = GetNisNetworkMetricsRequestDimensions()
+                self.dimensions.append(temp_model.from_map(k))
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ScanBy') is not None:
+            self.scan_by = m.get('ScanBy')
+        if m.get('UseCrossAccount') is not None:
+            self.use_cross_account = m.get('UseCrossAccount')
+        return self
+
+
+class GetNisNetworkMetricsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[str] = None,
+        begin_time: int = None,
+        dimensions_shrink: str = None,
+        end_time: int = None,
+        metric_name: str = None,
+        region_no: str = None,
+        resource_type: str = None,
+        scan_by: str = None,
+        use_cross_account: bool = None,
+    ):
+        self.account_ids = account_ids
+        self.begin_time = begin_time
+        # This parameter is required.
+        self.dimensions_shrink = dimensions_shrink
+        self.end_time = end_time
+        # This parameter is required.
+        self.metric_name = metric_name
+        # This parameter is required.
+        self.region_no = region_no
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.scan_by = scan_by
+        self.use_cross_account = use_cross_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.dimensions_shrink is not None:
+            result['Dimensions'] = self.dimensions_shrink
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.scan_by is not None:
+            result['ScanBy'] = self.scan_by
+        if self.use_cross_account is not None:
+            result['UseCrossAccount'] = self.use_cross_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('Dimensions') is not None:
+            self.dimensions_shrink = m.get('Dimensions')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ScanBy') is not None:
+            self.scan_by = m.get('ScanBy')
+        if m.get('UseCrossAccount') is not None:
+            self.use_cross_account = m.get('UseCrossAccount')
+        return self
+
+
+class GetNisNetworkMetricsResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        time_stamp: int = None,
+        value: float = None,
+    ):
+        self.time_stamp = time_stamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetNisNetworkMetricsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        metrics: List[GetNisNetworkMetricsResponseBodyDataMetrics] = None,
+        unit: str = None,
+    ):
+        self.metrics = metrics
+        self.unit = unit
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = GetNisNetworkMetricsResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class GetNisNetworkMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetNisNetworkMetricsResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetNisNetworkMetricsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetNisNetworkMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNisNetworkMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNisNetworkMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetNisNetworkRankingRequestFilter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetNisNetworkRankingRequest(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[str] = None,
+        begin_time: int = None,
+        direction: str = None,
+        end_time: int = None,
+        filter: List[GetNisNetworkRankingRequestFilter] = None,
+        group_by: str = None,
+        order_by: str = None,
+        region_no: str = None,
+        resource_type: str = None,
+        sort: str = None,
+        top_n: int = None,
+        use_cross_account: bool = None,
+    ):
+        self.account_ids = account_ids
+        self.begin_time = begin_time
+        # This parameter is required.
+        self.direction = direction
+        self.end_time = end_time
+        self.filter = filter
+        # This parameter is required.
+        self.group_by = group_by
+        # This parameter is required.
+        self.order_by = order_by
+        # This parameter is required.
+        self.region_no = region_no
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.sort = sort
+        self.top_n = top_n
+        self.use_cross_account = use_cross_account
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.group_by is not None:
+            result['GroupBy'] = self.group_by
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.top_n is not None:
+            result['TopN'] = self.top_n
+        if self.use_cross_account is not None:
+            result['UseCrossAccount'] = self.use_cross_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = GetNisNetworkRankingRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('GroupBy') is not None:
+            self.group_by = m.get('GroupBy')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('TopN') is not None:
+            self.top_n = m.get('TopN')
+        if m.get('UseCrossAccount') is not None:
+            self.use_cross_account = m.get('UseCrossAccount')
+        return self
+
+
+class GetNisNetworkRankingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[str] = None,
+        begin_time: int = None,
+        direction: str = None,
+        end_time: int = None,
+        filter_shrink: str = None,
+        group_by: str = None,
+        order_by: str = None,
+        region_no: str = None,
+        resource_type: str = None,
+        sort: str = None,
+        top_n: int = None,
+        use_cross_account: bool = None,
+    ):
+        self.account_ids = account_ids
+        self.begin_time = begin_time
+        # This parameter is required.
+        self.direction = direction
+        self.end_time = end_time
+        self.filter_shrink = filter_shrink
+        # This parameter is required.
+        self.group_by = group_by
+        # This parameter is required.
+        self.order_by = order_by
+        # This parameter is required.
+        self.region_no = region_no
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.sort = sort
+        self.top_n = top_n
+        self.use_cross_account = use_cross_account
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.group_by is not None:
+            result['GroupBy'] = self.group_by
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.top_n is not None:
+            result['TopN'] = self.top_n
+        if self.use_cross_account is not None:
+            result['UseCrossAccount'] = self.use_cross_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('GroupBy') is not None:
+            self.group_by = m.get('GroupBy')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('TopN') is not None:
+            self.top_n = m.get('TopN')
+        if m.get('UseCrossAccount') is not None:
+            self.use_cross_account = m.get('UseCrossAccount')
+        return self
+
+
+class GetNisNetworkRankingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        active_session_count: float = None,
+        asn: str = None,
+        attachment_id: str = None,
+        bandwidth_package_id: str = None,
+        byte_count: float = None,
+        city: str = None,
+        country: str = None,
+        destination_ip: str = None,
+        destination_isp: str = None,
+        destination_port: str = None,
+        destination_region_no: str = None,
+        destination_zone: str = None,
+        ip: str = None,
+        in_bps: float = None,
+        in_pps: float = None,
+        instance_id: str = None,
+        isp: str = None,
+        new_session_per_second: float = None,
+        out_bps: float = None,
+        out_pps: float = None,
+        packet_count: float = None,
+        protocol: str = None,
+        province: str = None,
+        rtt: float = None,
+        region_no: str = None,
+        retransmit_rate: float = None,
+        source_ip: str = None,
+        source_isp: str = None,
+        source_port: str = None,
+        source_zone: str = None,
+        vbr_id: str = None,
+    ):
+        self.active_session_count = active_session_count
+        self.asn = asn
+        self.attachment_id = attachment_id
+        self.bandwidth_package_id = bandwidth_package_id
+        self.byte_count = byte_count
+        self.city = city
+        self.country = country
+        self.destination_ip = destination_ip
+        self.destination_isp = destination_isp
+        self.destination_port = destination_port
+        self.destination_region_no = destination_region_no
+        self.destination_zone = destination_zone
+        self.ip = ip
+        self.in_bps = in_bps
+        self.in_pps = in_pps
+        self.instance_id = instance_id
+        self.isp = isp
+        self.new_session_per_second = new_session_per_second
+        self.out_bps = out_bps
+        self.out_pps = out_pps
+        self.packet_count = packet_count
+        self.protocol = protocol
+        self.province = province
+        self.rtt = rtt
+        self.region_no = region_no
+        self.retransmit_rate = retransmit_rate
+        self.source_ip = source_ip
+        self.source_isp = source_isp
+        self.source_port = source_port
+        self.source_zone = source_zone
+        self.vbr_id = vbr_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_session_count is not None:
+            result['ActiveSessionCount'] = self.active_session_count
+        if self.asn is not None:
+            result['Asn'] = self.asn
+        if self.attachment_id is not None:
+            result['AttachmentId'] = self.attachment_id
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.byte_count is not None:
+            result['ByteCount'] = self.byte_count
+        if self.city is not None:
+            result['City'] = self.city
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.destination_ip is not None:
+            result['DestinationIp'] = self.destination_ip
+        if self.destination_isp is not None:
+            result['DestinationIsp'] = self.destination_isp
+        if self.destination_port is not None:
+            result['DestinationPort'] = self.destination_port
+        if self.destination_region_no is not None:
+            result['DestinationRegionNo'] = self.destination_region_no
+        if self.destination_zone is not None:
+            result['DestinationZone'] = self.destination_zone
+        if self.ip is not None:
+            result['IP'] = self.ip
+        if self.in_bps is not None:
+            result['InBps'] = self.in_bps
+        if self.in_pps is not None:
+            result['InPps'] = self.in_pps
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.new_session_per_second is not None:
+            result['NewSessionPerSecond'] = self.new_session_per_second
+        if self.out_bps is not None:
+            result['OutBps'] = self.out_bps
+        if self.out_pps is not None:
+            result['OutPps'] = self.out_pps
+        if self.packet_count is not None:
+            result['PacketCount'] = self.packet_count
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.rtt is not None:
+            result['RTT'] = self.rtt
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        if self.retransmit_rate is not None:
+            result['RetransmitRate'] = self.retransmit_rate
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        if self.source_isp is not None:
+            result['SourceIsp'] = self.source_isp
+        if self.source_port is not None:
+            result['SourcePort'] = self.source_port
+        if self.source_zone is not None:
+            result['SourceZone'] = self.source_zone
+        if self.vbr_id is not None:
+            result['VbrId'] = self.vbr_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveSessionCount') is not None:
+            self.active_session_count = m.get('ActiveSessionCount')
+        if m.get('Asn') is not None:
+            self.asn = m.get('Asn')
+        if m.get('AttachmentId') is not None:
+            self.attachment_id = m.get('AttachmentId')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('ByteCount') is not None:
+            self.byte_count = m.get('ByteCount')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('DestinationIp') is not None:
+            self.destination_ip = m.get('DestinationIp')
+        if m.get('DestinationIsp') is not None:
+            self.destination_isp = m.get('DestinationIsp')
+        if m.get('DestinationPort') is not None:
+            self.destination_port = m.get('DestinationPort')
+        if m.get('DestinationRegionNo') is not None:
+            self.destination_region_no = m.get('DestinationRegionNo')
+        if m.get('DestinationZone') is not None:
+            self.destination_zone = m.get('DestinationZone')
+        if m.get('IP') is not None:
+            self.ip = m.get('IP')
+        if m.get('InBps') is not None:
+            self.in_bps = m.get('InBps')
+        if m.get('InPps') is not None:
+            self.in_pps = m.get('InPps')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('NewSessionPerSecond') is not None:
+            self.new_session_per_second = m.get('NewSessionPerSecond')
+        if m.get('OutBps') is not None:
+            self.out_bps = m.get('OutBps')
+        if m.get('OutPps') is not None:
+            self.out_pps = m.get('OutPps')
+        if m.get('PacketCount') is not None:
+            self.packet_count = m.get('PacketCount')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('RTT') is not None:
+            self.rtt = m.get('RTT')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        if m.get('RetransmitRate') is not None:
+            self.retransmit_rate = m.get('RetransmitRate')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        if m.get('SourceIsp') is not None:
+            self.source_isp = m.get('SourceIsp')
+        if m.get('SourcePort') is not None:
+            self.source_port = m.get('SourcePort')
+        if m.get('SourceZone') is not None:
+            self.source_zone = m.get('SourceZone')
+        if m.get('VbrId') is not None:
+            self.vbr_id = m.get('VbrId')
+        return self
+
+
+class GetNisNetworkRankingResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[GetNisNetworkRankingResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetNisNetworkRankingResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetNisNetworkRankingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNisNetworkRankingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNisNetworkRankingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTransitRouterFlowTopNRequest(TeaModel):
     def __init__(
         self,
@@ -2195,6 +3097,8 @@ class GetTransitRouterFlowTopNRequest(TeaModel):
         # The ID of the CEN bandwidth plan.
         self.bandwith_package_id = bandwith_package_id
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The CEN instance ID.
         self.cen_id = cen_id
@@ -2202,8 +3106,12 @@ class GetTransitRouterFlowTopNRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The dimension for ranking inter-region traffic data. The value of this parameter is case-sensitive. Valid values:
         # 
@@ -2214,6 +3122,8 @@ class GetTransitRouterFlowTopNRequest(TeaModel):
         # *   **RegionPair**: queries the rankings of inter-region traffic data for the local and remote regions.
         # *   **Port**: queries the rankings of inter-region traffic data for the local and remote ports.
         # *   **Protocol**: queries the rankings of inter-region traffic data for the protocols.
+        # 
+        # This parameter is required.
         self.group_by = group_by
         # The metric for ranking inter-region traffic data. Default value: Bytes. This value specifies that inter-region traffic data is ranked by traffic volume.
         self.order_by = order_by
@@ -2360,6 +3270,8 @@ class GetTransitRouterFlowTopNShrinkRequest(TeaModel):
         # The ID of the CEN bandwidth plan.
         self.bandwith_package_id = bandwith_package_id
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The CEN instance ID.
         self.cen_id = cen_id
@@ -2367,8 +3279,12 @@ class GetTransitRouterFlowTopNShrinkRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
+        # 
+        # This parameter is required.
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The dimension for ranking inter-region traffic data. The value of this parameter is case-sensitive. Valid values:
         # 
@@ -2379,6 +3295,8 @@ class GetTransitRouterFlowTopNShrinkRequest(TeaModel):
         # *   **RegionPair**: queries the rankings of inter-region traffic data for the local and remote regions.
         # *   **Port**: queries the rankings of inter-region traffic data for the local and remote ports.
         # *   **Protocol**: queries the rankings of inter-region traffic data for the protocols.
+        # 
+        # This parameter is required.
         self.group_by = group_by
         # The metric for ranking inter-region traffic data. Default value: Bytes. This value specifies that inter-region traffic data is ranked by traffic volume.
         self.order_by = order_by
@@ -2728,6 +3646,8 @@ class GetVbrFlowTopNRequest(TeaModel):
         # The CEN connection ID.
         self.attachment_id = attachment_id
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The CEN instance ID.
         self.cen_id = cen_id
@@ -2741,8 +3661,12 @@ class GetVbrFlowTopNRequest(TeaModel):
         # 
         # *   **in**: traffic from a data center to Alibaba Cloud
         # *   **out**: traffic from Alibaba Cloud to a data center
+        # 
+        # This parameter is required.
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The dimension for ranking hybrid cloud traffic data. The value of this parameter is case-sensitive. Valid values:
         # 
@@ -2752,6 +3676,8 @@ class GetVbrFlowTopNRequest(TeaModel):
         # *   **CloudPort**: queries the rankings of hybrid cloud traffic data for the local ports.
         # *   **OtherPort**: queries the rankings of hybrid cloud traffic data for the remote ports.
         # *   **Protocol**: queries the rankings of hybrid cloud traffic data for the protocols.
+        # 
+        # This parameter is required.
         self.group_by = group_by
         # The metric for ranking hybrid cloud traffic data. Default value: Bytes. This value specifies that hybrid cloud traffic data is ranked by traffic volumes.
         self.order_by = order_by
@@ -2766,6 +3692,8 @@ class GetVbrFlowTopNRequest(TeaModel):
         # >  All protocols are supported. This parameter is required only if you set **GroupBy** to **5Tuple** or **Protocol**.
         self.protocol = protocol
         # The local region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The order for ranking hybrid cloud traffic data. Valid values:
         # 
@@ -2896,6 +3824,8 @@ class GetVbrFlowTopNShrinkRequest(TeaModel):
         # The CEN connection ID.
         self.attachment_id = attachment_id
         # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The CEN instance ID.
         self.cen_id = cen_id
@@ -2909,8 +3839,12 @@ class GetVbrFlowTopNShrinkRequest(TeaModel):
         # 
         # *   **in**: traffic from a data center to Alibaba Cloud
         # *   **out**: traffic from Alibaba Cloud to a data center
+        # 
+        # This parameter is required.
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The dimension for ranking hybrid cloud traffic data. The value of this parameter is case-sensitive. Valid values:
         # 
@@ -2920,6 +3854,8 @@ class GetVbrFlowTopNShrinkRequest(TeaModel):
         # *   **CloudPort**: queries the rankings of hybrid cloud traffic data for the local ports.
         # *   **OtherPort**: queries the rankings of hybrid cloud traffic data for the remote ports.
         # *   **Protocol**: queries the rankings of hybrid cloud traffic data for the protocols.
+        # 
+        # This parameter is required.
         self.group_by = group_by
         # The metric for ranking hybrid cloud traffic data. Default value: Bytes. This value specifies that hybrid cloud traffic data is ranked by traffic volumes.
         self.order_by = order_by
@@ -2934,6 +3870,8 @@ class GetVbrFlowTopNShrinkRequest(TeaModel):
         # >  All protocols are supported. This parameter is required only if you set **GroupBy** to **5Tuple** or **Protocol**.
         self.protocol = protocol
         # The local region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The order for ranking hybrid cloud traffic data. Valid values:
         # 
