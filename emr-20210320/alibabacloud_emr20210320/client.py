@@ -457,6 +457,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_node_group_with_options_async(request, runtime)
 
+    def create_script_with_options(
+        self,
+        request: emr_20210320_models.CreateScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.CreateScriptResponse:
+        """
+        @param request: CreateScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScriptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
+        if not UtilClient.is_unset(request.scripts):
+            query['Scripts'] = request.scripts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateScript',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.CreateScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_script_with_options_async(
+        self,
+        request: emr_20210320_models.CreateScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.CreateScriptResponse:
+        """
+        @param request: CreateScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScriptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
+        if not UtilClient.is_unset(request.scripts):
+            query['Scripts'] = request.scripts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateScript',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.CreateScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_script(
+        self,
+        request: emr_20210320_models.CreateScriptRequest,
+    ) -> emr_20210320_models.CreateScriptResponse:
+        """
+        @param request: CreateScriptRequest
+        @return: CreateScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_script_with_options(request, runtime)
+
+    async def create_script_async(
+        self,
+        request: emr_20210320_models.CreateScriptRequest,
+    ) -> emr_20210320_models.CreateScriptResponse:
+        """
+        @param request: CreateScriptRequest
+        @return: CreateScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_script_with_options_async(request, runtime)
+
     def decrease_nodes_with_options(
         self,
         request: emr_20210320_models.DecreaseNodesRequest,
@@ -464,8 +564,6 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.DecreaseNodesResponse:
         """
         @summary Perform a scale-out operation on the target node group.
-        
-        @description 缩容节点。
         
         @param request: DecreaseNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -510,8 +608,6 @@ class Client(OpenApiClient):
         """
         @summary Perform a scale-out operation on the target node group.
         
-        @description 缩容节点。
-        
         @param request: DecreaseNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DecreaseNodesResponse
@@ -554,8 +650,6 @@ class Client(OpenApiClient):
         """
         @summary Perform a scale-out operation on the target node group.
         
-        @description 缩容节点。
-        
         @param request: DecreaseNodesRequest
         @return: DecreaseNodesResponse
         """
@@ -568,8 +662,6 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.DecreaseNodesResponse:
         """
         @summary Perform a scale-out operation on the target node group.
-        
-        @description 缩容节点。
         
         @param request: DecreaseNodesRequest
         @return: DecreaseNodesResponse
@@ -776,6 +868,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
+
+    def delete_script_with_options(
+        self,
+        request: emr_20210320_models.DeleteScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.DeleteScriptResponse:
+        """
+        @param request: DeleteScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScriptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScript',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.DeleteScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_script_with_options_async(
+        self,
+        request: emr_20210320_models.DeleteScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.DeleteScriptResponse:
+        """
+        @param request: DeleteScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScriptResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScript',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.DeleteScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_script(
+        self,
+        request: emr_20210320_models.DeleteScriptRequest,
+    ) -> emr_20210320_models.DeleteScriptResponse:
+        """
+        @param request: DeleteScriptRequest
+        @return: DeleteScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_script_with_options(request, runtime)
+
+    async def delete_script_async(
+        self,
+        request: emr_20210320_models.DeleteScriptRequest,
+    ) -> emr_20210320_models.DeleteScriptResponse:
+        """
+        @param request: DeleteScriptRequest
+        @return: DeleteScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_script_with_options_async(request, runtime)
 
     def get_api_template_with_options(
         self,
@@ -2989,8 +3181,6 @@ class Client(OpenApiClient):
         """
         @summary Gets the details of an asynchronous operation.
         
-        @description 获取操作详情。
-        
         @param request: GetOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOperationResponse
@@ -3030,8 +3220,6 @@ class Client(OpenApiClient):
         """
         @summary Gets the details of an asynchronous operation.
         
-        @description 获取操作详情。
-        
         @param request: GetOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOperationResponse
@@ -3070,8 +3258,6 @@ class Client(OpenApiClient):
         """
         @summary Gets the details of an asynchronous operation.
         
-        @description 获取操作详情。
-        
         @param request: GetOperationRequest
         @return: GetOperationResponse
         """
@@ -3084,8 +3270,6 @@ class Client(OpenApiClient):
     ) -> emr_20210320_models.GetOperationResponse:
         """
         @summary Gets the details of an asynchronous operation.
-        
-        @description 获取操作详情。
         
         @param request: GetOperationRequest
         @return: GetOperationResponse
@@ -3111,6 +3295,8 @@ class Client(OpenApiClient):
             query['ApplicationConfigs'] = request.application_configs
         if not UtilClient.is_unset(request.auto_pay_order):
             query['AutoPayOrder'] = request.auto_pay_order
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.increase_node_count):
@@ -3162,6 +3348,8 @@ class Client(OpenApiClient):
             query['ApplicationConfigs'] = request.application_configs
         if not UtilClient.is_unset(request.auto_pay_order):
             query['AutoPayOrder'] = request.auto_pay_order
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.increase_node_count):
@@ -5673,6 +5861,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_doctor_reports_with_options_async(request, runtime)
 
+    def list_inspection_history_with_options(
+        self,
+        request: emr_20210320_models.ListInspectionHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListInspectionHistoryResponse:
+        """
+        @param request: ListInspectionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInspectionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.component):
+            query['Component'] = request.component
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInspectionHistory',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListInspectionHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_inspection_history_with_options_async(
+        self,
+        request: emr_20210320_models.ListInspectionHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListInspectionHistoryResponse:
+        """
+        @param request: ListInspectionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInspectionHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.component):
+            query['Component'] = request.component
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInspectionHistory',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListInspectionHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_inspection_history(
+        self,
+        request: emr_20210320_models.ListInspectionHistoryRequest,
+    ) -> emr_20210320_models.ListInspectionHistoryResponse:
+        """
+        @param request: ListInspectionHistoryRequest
+        @return: ListInspectionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_inspection_history_with_options(request, runtime)
+
+    async def list_inspection_history_async(
+        self,
+        request: emr_20210320_models.ListInspectionHistoryRequest,
+    ) -> emr_20210320_models.ListInspectionHistoryResponse:
+        """
+        @param request: ListInspectionHistoryRequest
+        @return: ListInspectionHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_inspection_history_with_options_async(request, runtime)
+
     def list_instance_types_with_options(
         self,
         request: emr_20210320_models.ListInstanceTypesRequest,
@@ -6173,14 +6481,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_release_versions_with_options_async(request, runtime)
 
+    def list_resource_health_inspections_with_options(
+        self,
+        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
+        """
+        @description 查询资源巡检项。
+        
+        @param request: ListResourceHealthInspectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceHealthInspectionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.component_name):
+            query['ComponentName'] = request.component_name
+        if not UtilClient.is_unset(request.health_statuses):
+            query['HealthStatuses'] = request.health_statuses
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.node_names):
+            query['NodeNames'] = request.node_names
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceHealthInspections',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListResourceHealthInspectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resource_health_inspections_with_options_async(
+        self,
+        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
+        """
+        @description 查询资源巡检项。
+        
+        @param request: ListResourceHealthInspectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceHealthInspectionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.component_name):
+            query['ComponentName'] = request.component_name
+        if not UtilClient.is_unset(request.health_statuses):
+            query['HealthStatuses'] = request.health_statuses
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.node_names):
+            query['NodeNames'] = request.node_names
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListResourceHealthInspections',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ListResourceHealthInspectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resource_health_inspections(
+        self,
+        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
+    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
+        """
+        @description 查询资源巡检项。
+        
+        @param request: ListResourceHealthInspectionsRequest
+        @return: ListResourceHealthInspectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_resource_health_inspections_with_options(request, runtime)
+
+    async def list_resource_health_inspections_async(
+        self,
+        request: emr_20210320_models.ListResourceHealthInspectionsRequest,
+    ) -> emr_20210320_models.ListResourceHealthInspectionsResponse:
+        """
+        @description 查询资源巡检项。
+        
+        @param request: ListResourceHealthInspectionsRequest
+        @return: ListResourceHealthInspectionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_resource_health_inspections_with_options_async(request, runtime)
+
     def list_scripts_with_options(
         self,
         request: emr_20210320_models.ListScriptsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @description 查询集群脚本。
-        
         @param request: ListScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListScriptsResponse
@@ -6222,8 +6664,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @description 查询集群脚本。
-        
         @param request: ListScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListScriptsResponse
@@ -6264,8 +6704,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListScriptsRequest,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @description 查询集群脚本。
-        
         @param request: ListScriptsRequest
         @return: ListScriptsResponse
         """
@@ -6277,8 +6715,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListScriptsRequest,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        @description 查询集群脚本。
-        
         @param request: ListScriptsRequest
         @return: ListScriptsResponse
         """
@@ -6623,8 +7059,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        @description 执行集群模板
-        
         @param request: RunApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunApiTemplateResponse
@@ -6664,8 +7098,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        @description 执行集群模板
-        
         @param request: RunApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunApiTemplateResponse
@@ -6704,8 +7136,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RunApiTemplateRequest,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        @description 执行集群模板
-        
         @param request: RunApiTemplateRequest
         @return: RunApiTemplateResponse
         """
@@ -6717,8 +7147,6 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RunApiTemplateRequest,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        @description 执行集群模板
-        
         @param request: RunApiTemplateRequest
         @return: RunApiTemplateResponse
         """
@@ -6961,8 +7389,6 @@ class Client(OpenApiClient):
         """
         @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
         
-        @description 删除指定资源标签。
-        
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UntagResourcesResponse
@@ -7006,8 +7432,6 @@ class Client(OpenApiClient):
         """
         @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
         
-        @description 删除指定资源标签。
-        
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UntagResourcesResponse
@@ -7050,8 +7474,6 @@ class Client(OpenApiClient):
         """
         @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
         
-        @description 删除指定资源标签。
-        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
@@ -7065,8 +7487,6 @@ class Client(OpenApiClient):
         """
         @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
         
-        @description 删除指定资源标签。
-        
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
         """
@@ -7079,6 +7499,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
+        @summary Updates an API operation template.
+        
         @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
@@ -7124,6 +7546,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
+        @summary Updates an API operation template.
+        
         @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
@@ -7168,6 +7592,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateApiTemplateRequest,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
+        @summary Updates an API operation template.
+        
         @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
@@ -7181,6 +7607,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateApiTemplateRequest,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
+        @summary Updates an API operation template.
+        
         @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
@@ -7217,6 +7645,8 @@ class Client(OpenApiClient):
             query['NodeGroupId'] = request.node_group_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.refresh_config):
+            query['RefreshConfig'] = request.refresh_config
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -7266,6 +7696,8 @@ class Client(OpenApiClient):
             query['NodeGroupId'] = request.node_group_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.refresh_config):
+            query['RefreshConfig'] = request.refresh_config
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -7308,3 +7740,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_configs_with_options_async(request, runtime)
+
+    def update_script_with_options(
+        self,
+        tmp_req: emr_20210320_models.UpdateScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UpdateScriptResponse:
+        """
+        @param tmp_req: UpdateScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScriptResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_20210320_models.UpdateScriptShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.script):
+            request.script_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.script, 'Script', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_shrink):
+            query['Script'] = request.script_shrink
+        if not UtilClient.is_unset(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateScript',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UpdateScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_script_with_options_async(
+        self,
+        tmp_req: emr_20210320_models.UpdateScriptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.UpdateScriptResponse:
+        """
+        @param tmp_req: UpdateScriptRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScriptResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = emr_20210320_models.UpdateScriptShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.script):
+            request.script_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.script, 'Script', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.script_shrink):
+            query['Script'] = request.script_shrink
+        if not UtilClient.is_unset(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not UtilClient.is_unset(request.script_type):
+            query['ScriptType'] = request.script_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateScript',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.UpdateScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_script(
+        self,
+        request: emr_20210320_models.UpdateScriptRequest,
+    ) -> emr_20210320_models.UpdateScriptResponse:
+        """
+        @param request: UpdateScriptRequest
+        @return: UpdateScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_script_with_options(request, runtime)
+
+    async def update_script_async(
+        self,
+        request: emr_20210320_models.UpdateScriptRequest,
+    ) -> emr_20210320_models.UpdateScriptResponse:
+        """
+        @param request: UpdateScriptRequest
+        @return: UpdateScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_script_with_options_async(request, runtime)

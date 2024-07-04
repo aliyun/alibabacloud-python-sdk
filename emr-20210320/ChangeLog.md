@@ -1,3 +1,14 @@
+2024-07-04 Version: 2.0.0
+- Support API CreateScript.
+- Support API DeleteScript.
+- Support API ListInspectionHistory.
+- Support API ListResourceHealthInspections.
+- Support API UpdateScript.
+- Update API GetAutoScalingPolicy: update response param.
+- Update API IncreaseNodes: add param AutoRenew.
+- Update API UpdateApplicationConfigs: add param RefreshConfig.
+
+
 2024-06-03 Version: 1.6.2
 - Generated python 2021-03-20 for Emr.
 
