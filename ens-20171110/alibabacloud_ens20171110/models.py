@@ -8331,6 +8331,316 @@ class CreateSnatEntryResponse(TeaModel):
         return self
 
 
+class CreateStorageGatewayRequestOrderDetails(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        ens_region_id: str = None,
+        gateway_name: str = None,
+        gateway_type: str = None,
+        vpc_id: str = None,
+    ):
+        # The description of the gateway. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        self.description = description
+        # The ID of the node.
+        # 
+        # This parameter is required.
+        self.ens_region_id = ens_region_id
+        # The name of the gateway. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (.), underscores (_), and hyphens (-).
+        self.gateway_name = gateway_name
+        # The type of the gateway. Set this parameter to **1**. **1** indicates iSCSI.
+        # 
+        # This parameter is required.
+        self.gateway_type = gateway_type
+        # The ID of the VPC.
+        # 
+        # This parameter is required.
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.gateway_name is not None:
+            result['GatewayName'] = self.gateway_name
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('GatewayName') is not None:
+            self.gateway_name = m.get('GatewayName')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateStorageGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        order_details: List[CreateStorageGatewayRequestOrderDetails] = None,
+    ):
+        # The array of orders.
+        # 
+        # This parameter is required.
+        self.order_details = order_details
+
+    def validate(self):
+        if self.order_details:
+            for k in self.order_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OrderDetails'] = []
+        if self.order_details is not None:
+            for k in self.order_details:
+                result['OrderDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.order_details = []
+        if m.get('OrderDetails') is not None:
+            for k in m.get('OrderDetails'):
+                temp_model = CreateStorageGatewayRequestOrderDetails()
+                self.order_details.append(temp_model.from_map(k))
+        return self
+
+
+class CreateStorageGatewayShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        order_details_shrink: str = None,
+    ):
+        # The array of orders.
+        # 
+        # This parameter is required.
+        self.order_details_shrink = order_details_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_details_shrink is not None:
+            result['OrderDetails'] = self.order_details_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderDetails') is not None:
+            self.order_details_shrink = m.get('OrderDetails')
+        return self
+
+
+class CreateStorageGatewayResponseBodyAllocationId(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        instance_id: str = None,
+    ):
+        # The ID of the node.
+        self.ens_region_id = ens_region_id
+        # The ID of the instance.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateStorageGatewayResponseBodyUnAllocationId(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        instance_id: str = None,
+    ):
+        # The ID of the node.
+        self.ens_region_id = ens_region_id
+        # The ID of the instance.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateStorageGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        allocation_id: List[CreateStorageGatewayResponseBodyAllocationId] = None,
+        biz_status_code: str = None,
+        request_id: str = None,
+        un_allocation_id: List[CreateStorageGatewayResponseBodyUnAllocationId] = None,
+    ):
+        # The list of created nodes.
+        self.allocation_id = allocation_id
+        # The success status code.
+        # 
+        # *   **PartSuccess**: partially succeeded.
+        # *   **AllSuccess**: all succeeded.
+        self.biz_status_code = biz_status_code
+        # The request ID.
+        self.request_id = request_id
+        # The list of nodes that are not created.
+        self.un_allocation_id = un_allocation_id
+
+    def validate(self):
+        if self.allocation_id:
+            for k in self.allocation_id:
+                if k:
+                    k.validate()
+        if self.un_allocation_id:
+            for k in self.un_allocation_id:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AllocationId'] = []
+        if self.allocation_id is not None:
+            for k in self.allocation_id:
+                result['AllocationId'].append(k.to_map() if k else None)
+        if self.biz_status_code is not None:
+            result['BizStatusCode'] = self.biz_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['UnAllocationId'] = []
+        if self.un_allocation_id is not None:
+            for k in self.un_allocation_id:
+                result['UnAllocationId'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.allocation_id = []
+        if m.get('AllocationId') is not None:
+            for k in m.get('AllocationId'):
+                temp_model = CreateStorageGatewayResponseBodyAllocationId()
+                self.allocation_id.append(temp_model.from_map(k))
+        if m.get('BizStatusCode') is not None:
+            self.biz_status_code = m.get('BizStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.un_allocation_id = []
+        if m.get('UnAllocationId') is not None:
+            for k in m.get('UnAllocationId'):
+                temp_model = CreateStorageGatewayResponseBodyUnAllocationId()
+                self.un_allocation_id.append(temp_model.from_map(k))
+        return self
+
+
+class CreateStorageGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateStorageGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateStorageGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateVSwitchRequest(TeaModel):
     def __init__(
         self,
@@ -11536,6 +11846,105 @@ class DeleteSnatIpForSnatEntryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSnatIpForSnatEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteStorageGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+    ):
+        # The ID of the gateway.
+        # 
+        # This parameter is required.
+        self.gateway_id = gateway_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        return self
+
+
+class DeleteStorageGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteStorageGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteStorageGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteStorageGatewayResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -45309,6 +45718,11 @@ class PutBucketRequest(TeaModel):
         self.bucket_name = bucket_name
         # The remarks. The remarks are 0 to 128 characters in length.
         self.comment = comment
+        # Scheduling Scope, this parameter is only effective for globally scheduled Buckets.
+        # 
+        # - domestic
+        # 
+        # - oversea
         self.dispatch_scope = dispatch_scope
         # The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
         self.ens_region_id = ens_region_id
@@ -51544,12 +51958,12 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_interval = health_check_interval
-        # The health check method used in HTTP health checks. Valid values:
+        # The HTTP request method for health checks. Examples:
         # 
         # *   **head**\
         # *   **get**\
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # >  This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_method = health_check_method
         # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
         # 
@@ -51557,19 +51971,13 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # > 
-        # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
-        # 
-        # *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # > *   This parameter takes effect only if you set HealthCheck to on.
+        # >*   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
         # 
-        # > 
-        # 
-        # *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
-        # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # > *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+        # >*   This parameter takes effect only if you set HealthCheck to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         # 
@@ -51591,19 +51999,23 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Examples:
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: Consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: Consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
+        # *   **iqch**: Consistent hashing based on three specific bytes of iQUIC CID. Requests with the same second, third, and forth bytes are scheduled to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.unhealthy_threshold = unhealthy_threshold
+        # Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+        # 
+        # *   **on**\
+        # *   **off** (default)
         self.xforwarded_for = xforwarded_for
 
     def validate(self):

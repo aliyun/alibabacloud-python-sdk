@@ -5225,6 +5225,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_snat_entry_with_options_async(request, runtime)
 
+    def create_storage_gateway_with_options(
+        self,
+        tmp_req: ens_20171110_models.CreateStorageGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateStorageGatewayResponse:
+        """
+        @summary Creates a storage gateway.
+        
+        @param tmp_req: CreateStorageGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStorageGatewayResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateStorageGatewayShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_details):
+            request.order_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_details, 'OrderDetails', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.order_details_shrink):
+            query['OrderDetails'] = request.order_details_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStorageGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateStorageGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_storage_gateway_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CreateStorageGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateStorageGatewayResponse:
+        """
+        @summary Creates a storage gateway.
+        
+        @param tmp_req: CreateStorageGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStorageGatewayResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CreateStorageGatewayShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.order_details):
+            request.order_details_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.order_details, 'OrderDetails', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.order_details_shrink):
+            query['OrderDetails'] = request.order_details_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStorageGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateStorageGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_storage_gateway(
+        self,
+        request: ens_20171110_models.CreateStorageGatewayRequest,
+    ) -> ens_20171110_models.CreateStorageGatewayResponse:
+        """
+        @summary Creates a storage gateway.
+        
+        @param request: CreateStorageGatewayRequest
+        @return: CreateStorageGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_storage_gateway_with_options(request, runtime)
+
+    async def create_storage_gateway_async(
+        self,
+        request: ens_20171110_models.CreateStorageGatewayRequest,
+    ) -> ens_20171110_models.CreateStorageGatewayResponse:
+        """
+        @summary Creates a storage gateway.
+        
+        @param request: CreateStorageGatewayRequest
+        @return: CreateStorageGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_storage_gateway_with_options_async(request, runtime)
+
     def create_vswitch_with_options(
         self,
         request: ens_20171110_models.CreateVSwitchRequest,
@@ -7892,6 +7996,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snat_ip_for_snat_entry_with_options_async(request, runtime)
+
+    def delete_storage_gateway_with_options(
+        self,
+        request: ens_20171110_models.DeleteStorageGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteStorageGatewayResponse:
+        """
+        @summary Deletes a storage gateway.
+        
+        @param request: DeleteStorageGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStorageGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStorageGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteStorageGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_storage_gateway_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteStorageGatewayRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteStorageGatewayResponse:
+        """
+        @summary Deletes a storage gateway.
+        
+        @param request: DeleteStorageGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStorageGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStorageGateway',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteStorageGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_storage_gateway(
+        self,
+        request: ens_20171110_models.DeleteStorageGatewayRequest,
+    ) -> ens_20171110_models.DeleteStorageGatewayResponse:
+        """
+        @summary Deletes a storage gateway.
+        
+        @param request: DeleteStorageGatewayRequest
+        @return: DeleteStorageGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_storage_gateway_with_options(request, runtime)
+
+    async def delete_storage_gateway_async(
+        self,
+        request: ens_20171110_models.DeleteStorageGatewayRequest,
+    ) -> ens_20171110_models.DeleteStorageGatewayResponse:
+        """
+        @summary Deletes a storage gateway.
+        
+        @param request: DeleteStorageGatewayRequest
+        @return: DeleteStorageGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_storage_gateway_with_options_async(request, runtime)
 
     def delete_vswitch_with_options(
         self,
