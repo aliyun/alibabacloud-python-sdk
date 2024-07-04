@@ -22220,6 +22220,8 @@ class DescribeScheduledTasksRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        recurrence_type: str = None,
+        recurrence_value: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -22227,6 +22229,8 @@ class DescribeScheduledTasksRequest(TeaModel):
         scheduled_actions: List[str] = None,
         scheduled_task_ids: List[str] = None,
         scheduled_task_names: List[str] = None,
+        task_enabled: bool = None,
+        task_name: str = None,
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22238,6 +22242,8 @@ class DescribeScheduledTasksRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        self.recurrence_type = recurrence_type
+        self.recurrence_value = recurrence_value
         # The region ID of the scaling group to which the scheduled task belongs.
         # 
         # This parameter is required.
@@ -22252,6 +22258,8 @@ class DescribeScheduledTasksRequest(TeaModel):
         self.scheduled_task_ids = scheduled_task_ids
         # The names of the scheduled tasks that you want to query.
         self.scheduled_task_names = scheduled_task_names
+        self.task_enabled = task_enabled
+        self.task_name = task_name
 
     def validate(self):
         pass
@@ -22270,6 +22278,10 @@ class DescribeScheduledTasksRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.recurrence_type is not None:
+            result['RecurrenceType'] = self.recurrence_type
+        if self.recurrence_value is not None:
+            result['RecurrenceValue'] = self.recurrence_value
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -22284,6 +22296,10 @@ class DescribeScheduledTasksRequest(TeaModel):
             result['ScheduledTaskIds'] = self.scheduled_task_ids
         if self.scheduled_task_names is not None:
             result['ScheduledTaskNames'] = self.scheduled_task_names
+        if self.task_enabled is not None:
+            result['TaskEnabled'] = self.task_enabled
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
         return result
 
     def from_map(self, m: dict = None):
@@ -22296,6 +22312,10 @@ class DescribeScheduledTasksRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RecurrenceType') is not None:
+            self.recurrence_type = m.get('RecurrenceType')
+        if m.get('RecurrenceValue') is not None:
+            self.recurrence_value = m.get('RecurrenceValue')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -22310,6 +22330,10 @@ class DescribeScheduledTasksRequest(TeaModel):
             self.scheduled_task_ids = m.get('ScheduledTaskIds')
         if m.get('ScheduledTaskNames') is not None:
             self.scheduled_task_names = m.get('ScheduledTaskNames')
+        if m.get('TaskEnabled') is not None:
+            self.task_enabled = m.get('TaskEnabled')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
         return self
 
 

@@ -1,3 +1,10 @@
+2024-07-04 Version: 1.7.2
+- Update API DescribeScheduledTasks: add param RecurrenceType.
+- Update API DescribeScheduledTasks: add param RecurrenceValue.
+- Update API DescribeScheduledTasks: add param TaskEnabled.
+- Update API DescribeScheduledTasks: add param TaskName.
+
+
 2024-07-03 Version: 1.7.1
 - Update API DescribeScalingConfigurations: update response param.
 - Update API ModifyScalingConfiguration: add param Password.

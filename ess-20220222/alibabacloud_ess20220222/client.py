@@ -6959,6 +6959,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.recurrence_type):
+            query['RecurrenceType'] = request.recurrence_type
+        if not UtilClient.is_unset(request.recurrence_value):
+            query['RecurrenceValue'] = request.recurrence_value
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -6973,6 +6977,10 @@ class Client(OpenApiClient):
             query['ScheduledTaskIds'] = request.scheduled_task_ids
         if not UtilClient.is_unset(request.scheduled_task_names):
             query['ScheduledTaskNames'] = request.scheduled_task_names
+        if not UtilClient.is_unset(request.task_enabled):
+            query['TaskEnabled'] = request.task_enabled
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7016,6 +7024,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.recurrence_type):
+            query['RecurrenceType'] = request.recurrence_type
+        if not UtilClient.is_unset(request.recurrence_value):
+            query['RecurrenceValue'] = request.recurrence_value
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -7030,6 +7042,10 @@ class Client(OpenApiClient):
             query['ScheduledTaskIds'] = request.scheduled_task_ids
         if not UtilClient.is_unset(request.scheduled_task_names):
             query['ScheduledTaskNames'] = request.scheduled_task_names
+        if not UtilClient.is_unset(request.task_enabled):
+            query['TaskEnabled'] = request.task_enabled
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
