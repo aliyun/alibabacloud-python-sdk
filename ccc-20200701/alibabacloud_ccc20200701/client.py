@@ -11717,6 +11717,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_cases_with_options_async(request, runtime)
 
+    def list_categories_with_options(
+        self,
+        request: ccc20200701_models.ListCategoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCategoriesResponse:
+        """
+        @param request: ListCategoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCategories',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCategoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_categories_with_options_async(
+        self,
+        request: ccc20200701_models.ListCategoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCategoriesResponse:
+        """
+        @param request: ListCategoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCategories',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCategoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_categories(
+        self,
+        request: ccc20200701_models.ListCategoriesRequest,
+    ) -> ccc20200701_models.ListCategoriesResponse:
+        """
+        @param request: ListCategoriesRequest
+        @return: ListCategoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_categories_with_options(request, runtime)
+
+    async def list_categories_async(
+        self,
+        request: ccc20200701_models.ListCategoriesRequest,
+    ) -> ccc20200701_models.ListCategoriesResponse:
+        """
+        @param request: ListCategoriesRequest
+        @return: ListCategoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_categories_with_options_async(request, runtime)
+
     def list_common_ticket_fields_with_options(
         self,
         request: ccc20200701_models.ListCommonTicketFieldsRequest,

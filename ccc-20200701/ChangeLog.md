@@ -1,3 +1,7 @@
+2024-07-05 Version: 2.23.0
+- Support API ListCategories.
+
+
 2024-07-02 Version: 2.22.0
 - Support API ListTicketTemplates.
 
