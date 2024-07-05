@@ -28,7 +28,7 @@ pip install alibabacloud_mts20140618
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/mts-20140618/ChangeLog.md).
 
 ## References
 
