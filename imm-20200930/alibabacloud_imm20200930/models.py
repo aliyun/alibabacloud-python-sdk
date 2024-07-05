@@ -2181,10 +2181,12 @@ class ElementContent(TeaModel):
     def __init__(
         self,
         content: str = None,
+        time_range: List[int] = None,
         type: str = None,
         url: str = None,
     ):
         self.content = content
+        self.time_range = time_range
         self.type = type
         self.url = url
 
@@ -2199,6 +2201,8 @@ class ElementContent(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
         if self.type is not None:
             result['Type'] = self.type
         if self.url is not None:
@@ -2209,6 +2213,8 @@ class ElementContent(TeaModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('URL') is not None:
@@ -2680,6 +2686,39 @@ class Label(TeaModel):
         return self
 
 
+class SceneElement(TeaModel):
+    def __init__(
+        self,
+        frame_times: List[int] = None,
+        time_range: List[int] = None,
+    ):
+        self.frame_times = frame_times
+        self.time_range = time_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frame_times is not None:
+            result['FrameTimes'] = self.frame_times
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FrameTimes') is not None:
+            self.frame_times = m.get('FrameTimes')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        return self
+
+
 class SubtitleStream(TeaModel):
     def __init__(
         self,
@@ -2996,6 +3035,7 @@ class File(TeaModel):
         file_create_time: str = None,
         file_hash: str = None,
         file_modified_time: str = None,
+        file_status: str = None,
         filename: str = None,
         format_long_name: str = None,
         format_name: str = None,
@@ -3028,6 +3068,8 @@ class File(TeaModel):
         produce_time: str = None,
         program_count: int = None,
         project_name: str = None,
+        reason: str = None,
+        scene_elements: List[SceneElement] = None,
         semantic_types: List[str] = None,
         server_side_data_encryption: str = None,
         server_side_encryption: str = None,
@@ -3077,6 +3119,7 @@ class File(TeaModel):
         self.file_create_time = file_create_time
         self.file_hash = file_hash
         self.file_modified_time = file_modified_time
+        self.file_status = file_status
         self.filename = filename
         self.format_long_name = format_long_name
         self.format_name = format_name
@@ -3109,6 +3152,8 @@ class File(TeaModel):
         self.produce_time = produce_time
         self.program_count = program_count
         self.project_name = project_name
+        self.reason = reason
+        self.scene_elements = scene_elements
         self.semantic_types = semantic_types
         self.server_side_data_encryption = server_side_data_encryption
         self.server_side_encryption = server_side_encryption
@@ -3160,6 +3205,10 @@ class File(TeaModel):
                     k.validate()
         if self.ocrcontents:
             for k in self.ocrcontents:
+                if k:
+                    k.validate()
+        if self.scene_elements:
+            for k in self.scene_elements:
                 if k:
                     k.validate()
         if self.subtitles:
@@ -3251,6 +3300,8 @@ class File(TeaModel):
             result['FileHash'] = self.file_hash
         if self.file_modified_time is not None:
             result['FileModifiedTime'] = self.file_modified_time
+        if self.file_status is not None:
+            result['FileStatus'] = self.file_status
         if self.filename is not None:
             result['Filename'] = self.filename
         if self.format_long_name is not None:
@@ -3319,6 +3370,12 @@ class File(TeaModel):
             result['ProgramCount'] = self.program_count
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        result['SceneElements'] = []
+        if self.scene_elements is not None:
+            for k in self.scene_elements:
+                result['SceneElements'].append(k.to_map() if k else None)
         if self.semantic_types is not None:
             result['SemanticTypes'] = self.semantic_types
         if self.server_side_data_encryption is not None:
@@ -3441,6 +3498,8 @@ class File(TeaModel):
             self.file_hash = m.get('FileHash')
         if m.get('FileModifiedTime') is not None:
             self.file_modified_time = m.get('FileModifiedTime')
+        if m.get('FileStatus') is not None:
+            self.file_status = m.get('FileStatus')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
         if m.get('FormatLongName') is not None:
@@ -3512,6 +3571,13 @@ class File(TeaModel):
             self.program_count = m.get('ProgramCount')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        self.scene_elements = []
+        if m.get('SceneElements') is not None:
+            for k in m.get('SceneElements'):
+                temp_model = SceneElement()
+                self.scene_elements.append(temp_model.from_map(k))
         if m.get('SemanticTypes') is not None:
             self.semantic_types = m.get('SemanticTypes')
         if m.get('ServerSideDataEncryption') is not None:
@@ -4955,6 +5021,7 @@ class TargetAudioTranscodeAudio(TeaModel):
         self,
         bitrate: int = None,
         bitrate_option: str = None,
+        bits_per_sample: int = None,
         channel: int = None,
         codec: str = None,
         quality: int = None,
@@ -4963,6 +5030,7 @@ class TargetAudioTranscodeAudio(TeaModel):
     ):
         self.bitrate = bitrate
         self.bitrate_option = bitrate_option
+        self.bits_per_sample = bits_per_sample
         self.channel = channel
         self.codec = codec
         self.quality = quality
@@ -4982,6 +5050,8 @@ class TargetAudioTranscodeAudio(TeaModel):
             result['Bitrate'] = self.bitrate
         if self.bitrate_option is not None:
             result['BitrateOption'] = self.bitrate_option
+        if self.bits_per_sample is not None:
+            result['BitsPerSample'] = self.bits_per_sample
         if self.channel is not None:
             result['Channel'] = self.channel
         if self.codec is not None:
@@ -5000,6 +5070,8 @@ class TargetAudioTranscodeAudio(TeaModel):
             self.bitrate = m.get('Bitrate')
         if m.get('BitrateOption') is not None:
             self.bitrate_option = m.get('BitrateOption')
+        if m.get('BitsPerSample') is not None:
+            self.bits_per_sample = m.get('BitsPerSample')
         if m.get('Channel') is not None:
             self.channel = m.get('Channel')
         if m.get('Codec') is not None:
