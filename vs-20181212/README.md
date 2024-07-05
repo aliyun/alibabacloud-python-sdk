@@ -28,7 +28,7 @@ pip install alibabacloud_vs20181212
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/vs-20181212/ChangeLog.md).
 
 ## References
 

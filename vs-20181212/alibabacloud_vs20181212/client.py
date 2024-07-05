@@ -21,6 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('vs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -41,261 +42,16 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_registered_device_with_options(
-        self,
-        request: vs_20181212_models.AddRegisteredDeviceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddRegisteredDeviceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dsn):
-            query['Dsn'] = request.dsn
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.register_code):
-            query['RegisterCode'] = request.register_code
-        if not UtilClient.is_unset(request.secret_key):
-            query['SecretKey'] = request.secret_key
-        if not UtilClient.is_unset(request.vendor):
-            query['Vendor'] = request.vendor
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddRegisteredDevice',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddRegisteredDeviceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_registered_device_with_options_async(
-        self,
-        request: vs_20181212_models.AddRegisteredDeviceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddRegisteredDeviceResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dsn):
-            query['Dsn'] = request.dsn
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.register_code):
-            query['RegisterCode'] = request.register_code
-        if not UtilClient.is_unset(request.secret_key):
-            query['SecretKey'] = request.secret_key
-        if not UtilClient.is_unset(request.vendor):
-            query['Vendor'] = request.vendor
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddRegisteredDevice',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddRegisteredDeviceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_registered_device(
-        self,
-        request: vs_20181212_models.AddRegisteredDeviceRequest,
-    ) -> vs_20181212_models.AddRegisteredDeviceResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_registered_device_with_options(request, runtime)
-
-    async def add_registered_device_async(
-        self,
-        request: vs_20181212_models.AddRegisteredDeviceRequest,
-    ) -> vs_20181212_models.AddRegisteredDeviceResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_registered_device_with_options_async(request, runtime)
-
-    def add_registered_vendor_with_options(
-        self,
-        request: vs_20181212_models.AddRegisteredVendorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddRegisteredVendorResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddRegisteredVendor',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddRegisteredVendorResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_registered_vendor_with_options_async(
-        self,
-        request: vs_20181212_models.AddRegisteredVendorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddRegisteredVendorResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddRegisteredVendor',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddRegisteredVendorResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_registered_vendor(
-        self,
-        request: vs_20181212_models.AddRegisteredVendorRequest,
-    ) -> vs_20181212_models.AddRegisteredVendorResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_registered_vendor_with_options(request, runtime)
-
-    async def add_registered_vendor_async(
-        self,
-        request: vs_20181212_models.AddRegisteredVendorRequest,
-    ) -> vs_20181212_models.AddRegisteredVendorResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_registered_vendor_with_options_async(request, runtime)
-
-    def add_rendering_device_internet_ports_with_options(
-        self,
-        request: vs_20181212_models.AddRenderingDeviceInternetPortsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddRenderingDeviceInternetPortsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.isp):
-            query['ISP'] = request.isp
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.internal_port):
-            query['InternalPort'] = request.internal_port
-        if not UtilClient.is_unset(request.ip_protocol):
-            query['IpProtocol'] = request.ip_protocol
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddRenderingDeviceInternetPorts',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddRenderingDeviceInternetPortsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_rendering_device_internet_ports_with_options_async(
-        self,
-        request: vs_20181212_models.AddRenderingDeviceInternetPortsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.AddRenderingDeviceInternetPortsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.isp):
-            query['ISP'] = request.isp
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.internal_port):
-            query['InternalPort'] = request.internal_port
-        if not UtilClient.is_unset(request.ip_protocol):
-            query['IpProtocol'] = request.ip_protocol
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AddRenderingDeviceInternetPorts',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.AddRenderingDeviceInternetPortsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_rendering_device_internet_ports(
-        self,
-        request: vs_20181212_models.AddRenderingDeviceInternetPortsRequest,
-    ) -> vs_20181212_models.AddRenderingDeviceInternetPortsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.add_rendering_device_internet_ports_with_options(request, runtime)
-
-    async def add_rendering_device_internet_ports_async(
-        self,
-        request: vs_20181212_models.AddRenderingDeviceInternetPortsRequest,
-    ) -> vs_20181212_models.AddRenderingDeviceInternetPortsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.add_rendering_device_internet_ports_with_options_async(request, runtime)
-
     def add_vs_pull_stream_info_config_with_options(
         self,
         request: vs_20181212_models.AddVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.AddVsPullStreamInfoConfigResponse:
+        """
+        @param request: AddVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.always):
@@ -338,6 +94,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.AddVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.AddVsPullStreamInfoConfigResponse:
+        """
+        @param request: AddVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.always):
@@ -379,6 +140,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.AddVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.AddVsPullStreamInfoConfigResponse:
+        """
+        @param request: AddVsPullStreamInfoConfigRequest
+        @return: AddVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_vs_pull_stream_info_config_with_options(request, runtime)
 
@@ -386,6 +151,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.AddVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.AddVsPullStreamInfoConfigResponse:
+        """
+        @param request: AddVsPullStreamInfoConfigRequest
+        @return: AddVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_vs_pull_stream_info_config_with_options_async(request, runtime)
 
@@ -394,6 +163,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindDirectoriesResponse:
+        """
+        @param request: BatchBindDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -426,6 +200,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindDirectoriesResponse:
+        """
+        @param request: BatchBindDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -457,6 +236,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindDirectoriesRequest,
     ) -> vs_20181212_models.BatchBindDirectoriesResponse:
+        """
+        @param request: BatchBindDirectoriesRequest
+        @return: BatchBindDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_bind_directories_with_options(request, runtime)
 
@@ -464,6 +247,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindDirectoriesRequest,
     ) -> vs_20181212_models.BatchBindDirectoriesResponse:
+        """
+        @param request: BatchBindDirectoriesRequest
+        @return: BatchBindDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_directories_with_options_async(request, runtime)
 
@@ -472,6 +259,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindParentPlatformDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindParentPlatformDevicesResponse:
+        """
+        @param request: BatchBindParentPlatformDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindParentPlatformDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -504,6 +296,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindParentPlatformDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindParentPlatformDevicesResponse:
+        """
+        @param request: BatchBindParentPlatformDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindParentPlatformDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -535,6 +332,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindParentPlatformDevicesRequest,
     ) -> vs_20181212_models.BatchBindParentPlatformDevicesResponse:
+        """
+        @param request: BatchBindParentPlatformDevicesRequest
+        @return: BatchBindParentPlatformDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_bind_parent_platform_devices_with_options(request, runtime)
 
@@ -542,6 +343,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindParentPlatformDevicesRequest,
     ) -> vs_20181212_models.BatchBindParentPlatformDevicesResponse:
+        """
+        @param request: BatchBindParentPlatformDevicesRequest
+        @return: BatchBindParentPlatformDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_parent_platform_devices_with_options_async(request, runtime)
 
@@ -550,6 +355,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindPurchasedDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindPurchasedDevicesResponse:
+        """
+        @param request: BatchBindPurchasedDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindPurchasedDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -584,6 +394,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindPurchasedDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindPurchasedDevicesResponse:
+        """
+        @param request: BatchBindPurchasedDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindPurchasedDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -617,6 +432,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindPurchasedDevicesRequest,
     ) -> vs_20181212_models.BatchBindPurchasedDevicesResponse:
+        """
+        @param request: BatchBindPurchasedDevicesRequest
+        @return: BatchBindPurchasedDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_bind_purchased_devices_with_options(request, runtime)
 
@@ -624,6 +443,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindPurchasedDevicesRequest,
     ) -> vs_20181212_models.BatchBindPurchasedDevicesResponse:
+        """
+        @param request: BatchBindPurchasedDevicesRequest
+        @return: BatchBindPurchasedDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_purchased_devices_with_options_async(request, runtime)
 
@@ -632,6 +455,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindTemplateResponse:
+        """
+        @param request: BatchBindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_all):
@@ -670,6 +498,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindTemplateResponse:
+        """
+        @param request: BatchBindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_all):
@@ -707,6 +540,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindTemplateRequest,
     ) -> vs_20181212_models.BatchBindTemplateResponse:
+        """
+        @param request: BatchBindTemplateRequest
+        @return: BatchBindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_bind_template_with_options(request, runtime)
 
@@ -714,6 +551,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindTemplateRequest,
     ) -> vs_20181212_models.BatchBindTemplateResponse:
+        """
+        @param request: BatchBindTemplateRequest
+        @return: BatchBindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_template_with_options_async(request, runtime)
 
@@ -722,6 +563,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindTemplatesResponse:
+        """
+        @param request: BatchBindTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_all):
@@ -762,6 +608,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchBindTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchBindTemplatesResponse:
+        """
+        @param request: BatchBindTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchBindTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_all):
@@ -801,6 +652,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindTemplatesRequest,
     ) -> vs_20181212_models.BatchBindTemplatesResponse:
+        """
+        @param request: BatchBindTemplatesRequest
+        @return: BatchBindTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_bind_templates_with_options(request, runtime)
 
@@ -808,6 +663,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchBindTemplatesRequest,
     ) -> vs_20181212_models.BatchBindTemplatesResponse:
+        """
+        @param request: BatchBindTemplatesRequest
+        @return: BatchBindTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_bind_templates_with_options_async(request, runtime)
 
@@ -816,6 +675,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchDeleteDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchDeleteDevicesResponse:
+        """
+        @param request: BatchDeleteDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -846,6 +710,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchDeleteDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchDeleteDevicesResponse:
+        """
+        @param request: BatchDeleteDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -875,6 +744,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchDeleteDevicesRequest,
     ) -> vs_20181212_models.BatchDeleteDevicesResponse:
+        """
+        @param request: BatchDeleteDevicesRequest
+        @return: BatchDeleteDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_devices_with_options(request, runtime)
 
@@ -882,6 +755,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchDeleteDevicesRequest,
     ) -> vs_20181212_models.BatchDeleteDevicesResponse:
+        """
+        @param request: BatchDeleteDevicesRequest
+        @return: BatchDeleteDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_devices_with_options_async(request, runtime)
 
@@ -890,6 +767,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchDeleteVsDomainConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchDeleteVsDomainConfigsResponse:
+        """
+        @param request: BatchDeleteVsDomainConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteVsDomainConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_names):
@@ -922,6 +804,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchDeleteVsDomainConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchDeleteVsDomainConfigsResponse:
+        """
+        @param request: BatchDeleteVsDomainConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteVsDomainConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_names):
@@ -953,6 +840,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchDeleteVsDomainConfigsRequest,
     ) -> vs_20181212_models.BatchDeleteVsDomainConfigsResponse:
+        """
+        @param request: BatchDeleteVsDomainConfigsRequest
+        @return: BatchDeleteVsDomainConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_vs_domain_configs_with_options(request, runtime)
 
@@ -960,6 +851,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchDeleteVsDomainConfigsRequest,
     ) -> vs_20181212_models.BatchDeleteVsDomainConfigsResponse:
+        """
+        @param request: BatchDeleteVsDomainConfigsRequest
+        @return: BatchDeleteVsDomainConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_vs_domain_configs_with_options_async(request, runtime)
 
@@ -968,6 +863,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchForbidVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchForbidVsStreamResponse:
+        """
+        @param request: BatchForbidVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchForbidVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel):
@@ -1008,6 +908,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchForbidVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchForbidVsStreamResponse:
+        """
+        @param request: BatchForbidVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchForbidVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel):
@@ -1047,6 +952,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchForbidVsStreamRequest,
     ) -> vs_20181212_models.BatchForbidVsStreamResponse:
+        """
+        @param request: BatchForbidVsStreamRequest
+        @return: BatchForbidVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_forbid_vs_stream_with_options(request, runtime)
 
@@ -1054,6 +963,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchForbidVsStreamRequest,
     ) -> vs_20181212_models.BatchForbidVsStreamResponse:
+        """
+        @param request: BatchForbidVsStreamRequest
+        @return: BatchForbidVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_forbid_vs_stream_with_options_async(request, runtime)
 
@@ -1062,6 +975,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchResumeVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchResumeVsStreamResponse:
+        """
+        @param request: BatchResumeVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchResumeVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel):
@@ -1098,6 +1016,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchResumeVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchResumeVsStreamResponse:
+        """
+        @param request: BatchResumeVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchResumeVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channel):
@@ -1133,6 +1056,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchResumeVsStreamRequest,
     ) -> vs_20181212_models.BatchResumeVsStreamResponse:
+        """
+        @param request: BatchResumeVsStreamRequest
+        @return: BatchResumeVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_resume_vs_stream_with_options(request, runtime)
 
@@ -1140,6 +1067,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchResumeVsStreamRequest,
     ) -> vs_20181212_models.BatchResumeVsStreamResponse:
+        """
+        @param request: BatchResumeVsStreamRequest
+        @return: BatchResumeVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_resume_vs_stream_with_options_async(request, runtime)
 
@@ -1148,6 +1079,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchSetVsDomainConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchSetVsDomainConfigsResponse:
+        """
+        @param request: BatchSetVsDomainConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSetVsDomainConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_names):
@@ -1180,6 +1116,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchSetVsDomainConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchSetVsDomainConfigsResponse:
+        """
+        @param request: BatchSetVsDomainConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSetVsDomainConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_names):
@@ -1211,6 +1152,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchSetVsDomainConfigsRequest,
     ) -> vs_20181212_models.BatchSetVsDomainConfigsResponse:
+        """
+        @param request: BatchSetVsDomainConfigsRequest
+        @return: BatchSetVsDomainConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_set_vs_domain_configs_with_options(request, runtime)
 
@@ -1218,6 +1163,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchSetVsDomainConfigsRequest,
     ) -> vs_20181212_models.BatchSetVsDomainConfigsResponse:
+        """
+        @param request: BatchSetVsDomainConfigsRequest
+        @return: BatchSetVsDomainConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_set_vs_domain_configs_with_options_async(request, runtime)
 
@@ -1226,6 +1175,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStartDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStartDevicesResponse:
+        """
+        @param request: BatchStartDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStartDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1256,6 +1210,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStartDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStartDevicesResponse:
+        """
+        @param request: BatchStartDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStartDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1285,6 +1244,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStartDevicesRequest,
     ) -> vs_20181212_models.BatchStartDevicesResponse:
+        """
+        @param request: BatchStartDevicesRequest
+        @return: BatchStartDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_start_devices_with_options(request, runtime)
 
@@ -1292,6 +1255,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStartDevicesRequest,
     ) -> vs_20181212_models.BatchStartDevicesResponse:
+        """
+        @param request: BatchStartDevicesRequest
+        @return: BatchStartDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_start_devices_with_options_async(request, runtime)
 
@@ -1300,6 +1267,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStartStreamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStartStreamsResponse:
+        """
+        @param request: BatchStartStreamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStartStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1330,6 +1302,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStartStreamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStartStreamsResponse:
+        """
+        @param request: BatchStartStreamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStartStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1359,6 +1336,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStartStreamsRequest,
     ) -> vs_20181212_models.BatchStartStreamsResponse:
+        """
+        @param request: BatchStartStreamsRequest
+        @return: BatchStartStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_start_streams_with_options(request, runtime)
 
@@ -1366,6 +1347,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStartStreamsRequest,
     ) -> vs_20181212_models.BatchStartStreamsResponse:
+        """
+        @param request: BatchStartStreamsRequest
+        @return: BatchStartStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_start_streams_with_options_async(request, runtime)
 
@@ -1374,6 +1359,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStopDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStopDevicesResponse:
+        """
+        @param request: BatchStopDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStopDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1406,6 +1396,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStopDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStopDevicesResponse:
+        """
+        @param request: BatchStopDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStopDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1437,6 +1432,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStopDevicesRequest,
     ) -> vs_20181212_models.BatchStopDevicesResponse:
+        """
+        @param request: BatchStopDevicesRequest
+        @return: BatchStopDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_stop_devices_with_options(request, runtime)
 
@@ -1444,6 +1443,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStopDevicesRequest,
     ) -> vs_20181212_models.BatchStopDevicesResponse:
+        """
+        @param request: BatchStopDevicesRequest
+        @return: BatchStopDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_stop_devices_with_options_async(request, runtime)
 
@@ -1452,6 +1455,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStopStreamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStopStreamsResponse:
+        """
+        @param request: BatchStopStreamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStopStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1484,6 +1492,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchStopStreamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchStopStreamsResponse:
+        """
+        @param request: BatchStopStreamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStopStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -1515,6 +1528,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStopStreamsRequest,
     ) -> vs_20181212_models.BatchStopStreamsResponse:
+        """
+        @param request: BatchStopStreamsRequest
+        @return: BatchStopStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_stop_streams_with_options(request, runtime)
 
@@ -1522,6 +1539,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchStopStreamsRequest,
     ) -> vs_20181212_models.BatchStopStreamsResponse:
+        """
+        @param request: BatchStopStreamsRequest
+        @return: BatchStopStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_stop_streams_with_options_async(request, runtime)
 
@@ -1530,6 +1551,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindDirectoriesResponse:
+        """
+        @param request: BatchUnbindDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1562,6 +1588,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindDirectoriesResponse:
+        """
+        @param request: BatchUnbindDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1593,6 +1624,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindDirectoriesRequest,
     ) -> vs_20181212_models.BatchUnbindDirectoriesResponse:
+        """
+        @param request: BatchUnbindDirectoriesRequest
+        @return: BatchUnbindDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_unbind_directories_with_options(request, runtime)
 
@@ -1600,6 +1635,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindDirectoriesRequest,
     ) -> vs_20181212_models.BatchUnbindDirectoriesResponse:
+        """
+        @param request: BatchUnbindDirectoriesRequest
+        @return: BatchUnbindDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_unbind_directories_with_options_async(request, runtime)
 
@@ -1608,6 +1647,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindParentPlatformDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindParentPlatformDevicesResponse:
+        """
+        @param request: BatchUnbindParentPlatformDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindParentPlatformDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1640,6 +1684,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindParentPlatformDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindParentPlatformDevicesResponse:
+        """
+        @param request: BatchUnbindParentPlatformDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindParentPlatformDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1671,6 +1720,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindParentPlatformDevicesRequest,
     ) -> vs_20181212_models.BatchUnbindParentPlatformDevicesResponse:
+        """
+        @param request: BatchUnbindParentPlatformDevicesRequest
+        @return: BatchUnbindParentPlatformDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_unbind_parent_platform_devices_with_options(request, runtime)
 
@@ -1678,6 +1731,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindParentPlatformDevicesRequest,
     ) -> vs_20181212_models.BatchUnbindParentPlatformDevicesResponse:
+        """
+        @param request: BatchUnbindParentPlatformDevicesRequest
+        @return: BatchUnbindParentPlatformDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_unbind_parent_platform_devices_with_options_async(request, runtime)
 
@@ -1686,6 +1743,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindPurchasedDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindPurchasedDevicesResponse:
+        """
+        @param request: BatchUnbindPurchasedDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindPurchasedDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1716,6 +1778,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindPurchasedDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindPurchasedDevicesResponse:
+        """
+        @param request: BatchUnbindPurchasedDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindPurchasedDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1745,6 +1812,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindPurchasedDevicesRequest,
     ) -> vs_20181212_models.BatchUnbindPurchasedDevicesResponse:
+        """
+        @param request: BatchUnbindPurchasedDevicesRequest
+        @return: BatchUnbindPurchasedDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_unbind_purchased_devices_with_options(request, runtime)
 
@@ -1752,6 +1823,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindPurchasedDevicesRequest,
     ) -> vs_20181212_models.BatchUnbindPurchasedDevicesResponse:
+        """
+        @param request: BatchUnbindPurchasedDevicesRequest
+        @return: BatchUnbindPurchasedDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_unbind_purchased_devices_with_options_async(request, runtime)
 
@@ -1760,6 +1835,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindTemplateResponse:
+        """
+        @param request: BatchUnbindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1796,6 +1876,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindTemplateResponse:
+        """
+        @param request: BatchUnbindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1831,6 +1916,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindTemplateRequest,
     ) -> vs_20181212_models.BatchUnbindTemplateResponse:
+        """
+        @param request: BatchUnbindTemplateRequest
+        @return: BatchUnbindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_unbind_template_with_options(request, runtime)
 
@@ -1838,6 +1927,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindTemplateRequest,
     ) -> vs_20181212_models.BatchUnbindTemplateResponse:
+        """
+        @param request: BatchUnbindTemplateRequest
+        @return: BatchUnbindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_unbind_template_with_options_async(request, runtime)
 
@@ -1846,6 +1939,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindTemplatesResponse:
+        """
+        @param request: BatchUnbindTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1882,6 +1980,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BatchUnbindTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BatchUnbindTemplatesResponse:
+        """
+        @param request: BatchUnbindTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUnbindTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1917,6 +2020,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindTemplatesRequest,
     ) -> vs_20181212_models.BatchUnbindTemplatesResponse:
+        """
+        @param request: BatchUnbindTemplatesRequest
+        @return: BatchUnbindTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_unbind_templates_with_options(request, runtime)
 
@@ -1924,6 +2031,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BatchUnbindTemplatesRequest,
     ) -> vs_20181212_models.BatchUnbindTemplatesResponse:
+        """
+        @param request: BatchUnbindTemplatesRequest
+        @return: BatchUnbindTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_unbind_templates_with_options_async(request, runtime)
 
@@ -1932,6 +2043,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindDirectoryResponse:
+        """
+        @param request: BindDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1964,6 +2080,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindDirectoryResponse:
+        """
+        @param request: BindDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -1995,6 +2116,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindDirectoryRequest,
     ) -> vs_20181212_models.BindDirectoryResponse:
+        """
+        @param request: BindDirectoryRequest
+        @return: BindDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_directory_with_options(request, runtime)
 
@@ -2002,6 +2127,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindDirectoryRequest,
     ) -> vs_20181212_models.BindDirectoryResponse:
+        """
+        @param request: BindDirectoryRequest
+        @return: BindDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_directory_with_options_async(request, runtime)
 
@@ -2010,6 +2139,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindParentPlatformDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindParentPlatformDeviceResponse:
+        """
+        @param request: BindParentPlatformDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindParentPlatformDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -2042,6 +2176,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindParentPlatformDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindParentPlatformDeviceResponse:
+        """
+        @param request: BindParentPlatformDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindParentPlatformDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -2073,6 +2212,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindParentPlatformDeviceRequest,
     ) -> vs_20181212_models.BindParentPlatformDeviceResponse:
+        """
+        @param request: BindParentPlatformDeviceRequest
+        @return: BindParentPlatformDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_parent_platform_device_with_options(request, runtime)
 
@@ -2080,6 +2223,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindParentPlatformDeviceRequest,
     ) -> vs_20181212_models.BindParentPlatformDeviceResponse:
+        """
+        @param request: BindParentPlatformDeviceRequest
+        @return: BindParentPlatformDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_parent_platform_device_with_options_async(request, runtime)
 
@@ -2088,6 +2235,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindPurchasedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindPurchasedDeviceResponse:
+        """
+        @param request: BindPurchasedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPurchasedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -2122,6 +2274,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindPurchasedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindPurchasedDeviceResponse:
+        """
+        @param request: BindPurchasedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPurchasedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -2155,6 +2312,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindPurchasedDeviceRequest,
     ) -> vs_20181212_models.BindPurchasedDeviceResponse:
+        """
+        @param request: BindPurchasedDeviceRequest
+        @return: BindPurchasedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_purchased_device_with_options(request, runtime)
 
@@ -2162,6 +2323,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindPurchasedDeviceRequest,
     ) -> vs_20181212_models.BindPurchasedDeviceResponse:
+        """
+        @param request: BindPurchasedDeviceRequest
+        @return: BindPurchasedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_purchased_device_with_options_async(request, runtime)
 
@@ -2170,6 +2335,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindTemplateResponse:
+        """
+        @param request: BindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_all):
@@ -2210,6 +2380,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.BindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.BindTemplateResponse:
+        """
+        @param request: BindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.apply_all):
@@ -2249,6 +2424,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindTemplateRequest,
     ) -> vs_20181212_models.BindTemplateResponse:
+        """
+        @param request: BindTemplateRequest
+        @return: BindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_template_with_options(request, runtime)
 
@@ -2256,100 +2435,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.BindTemplateRequest,
     ) -> vs_20181212_models.BindTemplateResponse:
+        """
+        @param request: BindTemplateRequest
+        @return: BindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_template_with_options_async(request, runtime)
-
-    def capture_device_snapshot_with_options(
-        self,
-        request: vs_20181212_models.CaptureDeviceSnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CaptureDeviceSnapshotResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.mode):
-            query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.snapshot_config):
-            query['SnapshotConfig'] = request.snapshot_config
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CaptureDeviceSnapshot',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CaptureDeviceSnapshotResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def capture_device_snapshot_with_options_async(
-        self,
-        request: vs_20181212_models.CaptureDeviceSnapshotRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CaptureDeviceSnapshotResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.device_id):
-            query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.mode):
-            query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.snapshot_config):
-            query['SnapshotConfig'] = request.snapshot_config
-        if not UtilClient.is_unset(request.stream_id):
-            query['StreamId'] = request.stream_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CaptureDeviceSnapshot',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CaptureDeviceSnapshotResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def capture_device_snapshot(
-        self,
-        request: vs_20181212_models.CaptureDeviceSnapshotRequest,
-    ) -> vs_20181212_models.CaptureDeviceSnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.capture_device_snapshot_with_options(request, runtime)
-
-    async def capture_device_snapshot_async(
-        self,
-        request: vs_20181212_models.CaptureDeviceSnapshotRequest,
-    ) -> vs_20181212_models.CaptureDeviceSnapshotResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.capture_device_snapshot_with_options_async(request, runtime)
 
     def continuous_adjust_with_options(
         self,
         request: vs_20181212_models.ContinuousAdjustRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ContinuousAdjustResponse:
+        """
+        @param request: ContinuousAdjustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinuousAdjustResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.focus):
@@ -2384,6 +2486,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ContinuousAdjustRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ContinuousAdjustResponse:
+        """
+        @param request: ContinuousAdjustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinuousAdjustResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.focus):
@@ -2417,6 +2524,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ContinuousAdjustRequest,
     ) -> vs_20181212_models.ContinuousAdjustResponse:
+        """
+        @param request: ContinuousAdjustRequest
+        @return: ContinuousAdjustResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.continuous_adjust_with_options(request, runtime)
 
@@ -2424,6 +2535,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ContinuousAdjustRequest,
     ) -> vs_20181212_models.ContinuousAdjustResponse:
+        """
+        @param request: ContinuousAdjustRequest
+        @return: ContinuousAdjustResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.continuous_adjust_with_options_async(request, runtime)
 
@@ -2432,6 +2547,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ContinuousMoveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ContinuousMoveResponse:
+        """
+        @param request: ContinuousMoveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinuousMoveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -2468,6 +2588,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ContinuousMoveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ContinuousMoveResponse:
+        """
+        @param request: ContinuousMoveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinuousMoveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -2503,6 +2628,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ContinuousMoveRequest,
     ) -> vs_20181212_models.ContinuousMoveResponse:
+        """
+        @param request: ContinuousMoveRequest
+        @return: ContinuousMoveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.continuous_move_with_options(request, runtime)
 
@@ -2510,120 +2639,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ContinuousMoveRequest,
     ) -> vs_20181212_models.ContinuousMoveResponse:
+        """
+        @param request: ContinuousMoveRequest
+        @return: ContinuousMoveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.continuous_move_with_options_async(request, runtime)
-
-    def create_aiconfig_with_options(
-        self,
-        request: vs_20181212_models.CreateAIConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateAIConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.capture_interval):
-            query['CaptureInterval'] = request.capture_interval
-        if not UtilClient.is_unset(request.configs):
-            query['Configs'] = request.configs
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.features):
-            query['Features'] = request.features
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAIConfig',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CreateAIConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_aiconfig_with_options_async(
-        self,
-        request: vs_20181212_models.CreateAIConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateAIConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.capture_interval):
-            query['CaptureInterval'] = request.capture_interval
-        if not UtilClient.is_unset(request.configs):
-            query['Configs'] = request.configs
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.features):
-            query['Features'] = request.features
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_type):
-            query['InstanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAIConfig',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.CreateAIConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_aiconfig(
-        self,
-        request: vs_20181212_models.CreateAIConfigRequest,
-    ) -> vs_20181212_models.CreateAIConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.create_aiconfig_with_options(request, runtime)
-
-    async def create_aiconfig_async(
-        self,
-        request: vs_20181212_models.CreateAIConfigRequest,
-    ) -> vs_20181212_models.CreateAIConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.create_aiconfig_with_options_async(request, runtime)
 
     def create_cluster_with_options(
         self,
         request: vs_20181212_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2662,6 +2694,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2699,6 +2736,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateClusterRequest,
     ) -> vs_20181212_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cluster_with_options(request, runtime)
 
@@ -2706,6 +2747,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateClusterRequest,
     ) -> vs_20181212_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
@@ -2714,10 +2759,17 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateDeviceResponse:
+        """
+        @param request: CreateDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_method):
             query['AlarmMethod'] = request.alarm_method
+        if not UtilClient.is_unset(request.auto_directory):
+            query['AutoDirectory'] = request.auto_directory
         if not UtilClient.is_unset(request.auto_pos):
             query['AutoPos'] = request.auto_pos
         if not UtilClient.is_unset(request.auto_start):
@@ -2784,10 +2836,17 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateDeviceResponse:
+        """
+        @param request: CreateDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_method):
             query['AlarmMethod'] = request.alarm_method
+        if not UtilClient.is_unset(request.auto_directory):
+            query['AutoDirectory'] = request.auto_directory
         if not UtilClient.is_unset(request.auto_pos):
             query['AutoPos'] = request.auto_pos
         if not UtilClient.is_unset(request.auto_start):
@@ -2853,6 +2912,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateDeviceRequest,
     ) -> vs_20181212_models.CreateDeviceResponse:
+        """
+        @param request: CreateDeviceRequest
+        @return: CreateDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_device_with_options(request, runtime)
 
@@ -2860,6 +2923,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateDeviceRequest,
     ) -> vs_20181212_models.CreateDeviceResponse:
+        """
+        @param request: CreateDeviceRequest
+        @return: CreateDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_device_with_options_async(request, runtime)
 
@@ -2868,6 +2935,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateDeviceAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateDeviceAlarmResponse:
+        """
+        @param request: CreateDeviceAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceAlarmResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm):
@@ -2912,6 +2984,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateDeviceAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateDeviceAlarmResponse:
+        """
+        @param request: CreateDeviceAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeviceAlarmResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm):
@@ -2955,6 +3032,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateDeviceAlarmRequest,
     ) -> vs_20181212_models.CreateDeviceAlarmResponse:
+        """
+        @param request: CreateDeviceAlarmRequest
+        @return: CreateDeviceAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_device_alarm_with_options(request, runtime)
 
@@ -2962,6 +3043,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateDeviceAlarmRequest,
     ) -> vs_20181212_models.CreateDeviceAlarmResponse:
+        """
+        @param request: CreateDeviceAlarmRequest
+        @return: CreateDeviceAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_device_alarm_with_options_async(request, runtime)
 
@@ -2970,6 +3055,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateDirectoryResponse:
+        """
+        @param request: CreateDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3006,6 +3096,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateDirectoryResponse:
+        """
+        @param request: CreateDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3041,6 +3136,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateDirectoryRequest,
     ) -> vs_20181212_models.CreateDirectoryResponse:
+        """
+        @param request: CreateDirectoryRequest
+        @return: CreateDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_directory_with_options(request, runtime)
 
@@ -3048,6 +3147,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateDirectoryRequest,
     ) -> vs_20181212_models.CreateDirectoryResponse:
+        """
+        @param request: CreateDirectoryRequest
+        @return: CreateDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_directory_with_options_async(request, runtime)
 
@@ -3056,6 +3159,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateGroupResponse:
+        """
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -3104,6 +3212,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateGroupResponse:
+        """
+        @param request: CreateGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -3151,6 +3264,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateGroupRequest,
     ) -> vs_20181212_models.CreateGroupResponse:
+        """
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_group_with_options(request, runtime)
 
@@ -3158,6 +3275,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateGroupRequest,
     ) -> vs_20181212_models.CreateGroupResponse:
+        """
+        @param request: CreateGroupRequest
+        @return: CreateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_group_with_options_async(request, runtime)
 
@@ -3166,6 +3287,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateParentPlatformResponse:
+        """
+        @param request: CreateParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start):
@@ -3214,6 +3340,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateParentPlatformResponse:
+        """
+        @param request: CreateParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start):
@@ -3261,6 +3392,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateParentPlatformRequest,
     ) -> vs_20181212_models.CreateParentPlatformResponse:
+        """
+        @param request: CreateParentPlatformRequest
+        @return: CreateParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_parent_platform_with_options(request, runtime)
 
@@ -3268,53 +3403,50 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateParentPlatformRequest,
     ) -> vs_20181212_models.CreateParentPlatformResponse:
+        """
+        @param request: CreateParentPlatformRequest
+        @return: CreateParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_parent_platform_with_options_async(request, runtime)
 
-    def create_rendering_device_with_options(
+    def create_rendering_instance_with_options(
         self,
-        request: vs_20181212_models.CreateRenderingDeviceRequest,
+        tmp_req: vs_20181212_models.CreateRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateRenderingDeviceResponse:
-        UtilClient.validate_model(request)
+    ) -> vs_20181212_models.CreateRenderingInstanceResponse:
+        """
+        @summary 申请云渲染资源实例
+        
+        @param tmp_req: CreateRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRenderingInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.CreateRenderingInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.client_info):
+            request.client_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.client_info, 'ClientInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
-        if not UtilClient.is_unset(request.auto_renew_period):
-            query['AutoRenewPeriod'] = request.auto_renew_period
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.count):
-            query['Count'] = request.count
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.edge_node_name):
-            query['EdgeNodeName'] = request.edge_node_name
-        if not UtilClient.is_unset(request.isp):
-            query['ISP'] = request.isp
-        if not UtilClient.is_unset(request.image_id):
-            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.client_info_shrink):
+            query['ClientInfo'] = request.client_info_shrink
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.password):
-            query['Password'] = request.password
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth):
+            query['InternetMaxBandwidth'] = request.internet_max_bandwidth
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.security_group_id):
-            query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.specification):
-            query['Specification'] = request.specification
+        if not UtilClient.is_unset(request.rendering_spec):
+            query['RenderingSpec'] = request.rendering_spec
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateRenderingDevice',
+            action='CreateRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -3325,54 +3457,47 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.CreateRenderingDeviceResponse(),
+            vs_20181212_models.CreateRenderingInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_rendering_device_with_options_async(
+    async def create_rendering_instance_with_options_async(
         self,
-        request: vs_20181212_models.CreateRenderingDeviceRequest,
+        tmp_req: vs_20181212_models.CreateRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.CreateRenderingDeviceResponse:
-        UtilClient.validate_model(request)
+    ) -> vs_20181212_models.CreateRenderingInstanceResponse:
+        """
+        @summary 申请云渲染资源实例
+        
+        @param tmp_req: CreateRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRenderingInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.CreateRenderingInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.client_info):
+            request.client_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.client_info, 'ClientInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
-        if not UtilClient.is_unset(request.auto_renew_period):
-            query['AutoRenewPeriod'] = request.auto_renew_period
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.count):
-            query['Count'] = request.count
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.edge_node_name):
-            query['EdgeNodeName'] = request.edge_node_name
-        if not UtilClient.is_unset(request.isp):
-            query['ISP'] = request.isp
-        if not UtilClient.is_unset(request.image_id):
-            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.client_info_shrink):
+            query['ClientInfo'] = request.client_info_shrink
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
-        if not UtilClient.is_unset(request.instance_name):
-            query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.password):
-            query['Password'] = request.password
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth):
+            query['InternetMaxBandwidth'] = request.internet_max_bandwidth
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.security_group_id):
-            query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.specification):
-            query['Specification'] = request.specification
+        if not UtilClient.is_unset(request.rendering_spec):
+            query['RenderingSpec'] = request.rendering_spec
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateRenderingDevice',
+            action='CreateRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -3383,29 +3508,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.CreateRenderingDeviceResponse(),
+            vs_20181212_models.CreateRenderingInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_rendering_device(
+    def create_rendering_instance(
         self,
-        request: vs_20181212_models.CreateRenderingDeviceRequest,
-    ) -> vs_20181212_models.CreateRenderingDeviceResponse:
+        request: vs_20181212_models.CreateRenderingInstanceRequest,
+    ) -> vs_20181212_models.CreateRenderingInstanceResponse:
+        """
+        @summary 申请云渲染资源实例
+        
+        @param request: CreateRenderingInstanceRequest
+        @return: CreateRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.create_rendering_device_with_options(request, runtime)
+        return self.create_rendering_instance_with_options(request, runtime)
 
-    async def create_rendering_device_async(
+    async def create_rendering_instance_async(
         self,
-        request: vs_20181212_models.CreateRenderingDeviceRequest,
-    ) -> vs_20181212_models.CreateRenderingDeviceResponse:
+        request: vs_20181212_models.CreateRenderingInstanceRequest,
+    ) -> vs_20181212_models.CreateRenderingInstanceResponse:
+        """
+        @summary 申请云渲染资源实例
+        
+        @param request: CreateRenderingInstanceRequest
+        @return: CreateRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.create_rendering_device_with_options_async(request, runtime)
+        return await self.create_rendering_instance_with_options_async(request, runtime)
 
     def create_stream_snapshot_with_options(
         self,
         request: vs_20181212_models.CreateStreamSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateStreamSnapshotResponse:
+        """
+        @param request: CreateStreamSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3438,6 +3580,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateStreamSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateStreamSnapshotResponse:
+        """
+        @param request: CreateStreamSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3469,6 +3616,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateStreamSnapshotRequest,
     ) -> vs_20181212_models.CreateStreamSnapshotResponse:
+        """
+        @param request: CreateStreamSnapshotRequest
+        @return: CreateStreamSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_stream_snapshot_with_options(request, runtime)
 
@@ -3476,6 +3627,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateStreamSnapshotRequest,
     ) -> vs_20181212_models.CreateStreamSnapshotResponse:
+        """
+        @param request: CreateStreamSnapshotRequest
+        @return: CreateStreamSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_stream_snapshot_with_options_async(request, runtime)
 
@@ -3484,6 +3639,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callback):
@@ -3552,6 +3712,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callback):
@@ -3619,6 +3784,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateTemplateRequest,
     ) -> vs_20181212_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_template_with_options(request, runtime)
 
@@ -3626,25 +3795,34 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.CreateTemplateRequest,
     ) -> vs_20181212_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
-    def delete_aiconfig_with_options(
+    def delete_cloud_app_with_options(
         self,
-        request: vs_20181212_models.DeleteAIConfigRequest,
+        request: vs_20181212_models.DeleteCloudAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteAIConfigResponse:
+    ) -> vs_20181212_models.DeleteCloudAppResponse:
+        """
+        @summary 删除云应用
+        
+        @param request: DeleteCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteAIConfig',
+            action='DeleteCloudApp',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -3655,26 +3833,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DeleteAIConfigResponse(),
+            vs_20181212_models.DeleteCloudAppResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_aiconfig_with_options_async(
+    async def delete_cloud_app_with_options_async(
         self,
-        request: vs_20181212_models.DeleteAIConfigRequest,
+        request: vs_20181212_models.DeleteCloudAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteAIConfigResponse:
+    ) -> vs_20181212_models.DeleteCloudAppResponse:
+        """
+        @summary 删除云应用
+        
+        @param request: DeleteCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteAIConfig',
+            action='DeleteCloudApp',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -3685,103 +3868,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DeleteAIConfigResponse(),
+            vs_20181212_models.DeleteCloudAppResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_aiconfig(
+    def delete_cloud_app(
         self,
-        request: vs_20181212_models.DeleteAIConfigRequest,
-    ) -> vs_20181212_models.DeleteAIConfigResponse:
+        request: vs_20181212_models.DeleteCloudAppRequest,
+    ) -> vs_20181212_models.DeleteCloudAppResponse:
+        """
+        @summary 删除云应用
+        
+        @param request: DeleteCloudAppRequest
+        @return: DeleteCloudAppResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.delete_aiconfig_with_options(request, runtime)
+        return self.delete_cloud_app_with_options(request, runtime)
 
-    async def delete_aiconfig_async(
+    async def delete_cloud_app_async(
         self,
-        request: vs_20181212_models.DeleteAIConfigRequest,
-    ) -> vs_20181212_models.DeleteAIConfigResponse:
+        request: vs_20181212_models.DeleteCloudAppRequest,
+    ) -> vs_20181212_models.DeleteCloudAppResponse:
+        """
+        @summary 删除云应用
+        
+        @param request: DeleteCloudAppRequest
+        @return: DeleteCloudAppResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_aiconfig_with_options_async(request, runtime)
-
-    def delete_bucket_with_options(
-        self,
-        request: vs_20181212_models.DeleteBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteBucketResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteBucket',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DeleteBucketResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_bucket_with_options_async(
-        self,
-        request: vs_20181212_models.DeleteBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteBucketResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteBucket',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DeleteBucketResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_bucket(
-        self,
-        request: vs_20181212_models.DeleteBucketRequest,
-    ) -> vs_20181212_models.DeleteBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_bucket_with_options(request, runtime)
-
-    async def delete_bucket_async(
-        self,
-        request: vs_20181212_models.DeleteBucketRequest,
-    ) -> vs_20181212_models.DeleteBucketResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_bucket_with_options_async(request, runtime)
+        return await self.delete_cloud_app_with_options_async(request, runtime)
 
     def delete_cluster_with_options(
         self,
         request: vs_20181212_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3812,6 +3938,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3841,6 +3972,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteClusterRequest,
     ) -> vs_20181212_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cluster_with_options(request, runtime)
 
@@ -3848,6 +3983,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteClusterRequest,
     ) -> vs_20181212_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
@@ -3856,6 +3995,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteDeviceResponse:
+        """
+        @param request: DeleteDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3886,6 +4030,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteDeviceResponse:
+        """
+        @param request: DeleteDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3915,6 +4064,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteDeviceRequest,
     ) -> vs_20181212_models.DeleteDeviceResponse:
+        """
+        @param request: DeleteDeviceRequest
+        @return: DeleteDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_with_options(request, runtime)
 
@@ -3922,6 +4075,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteDeviceRequest,
     ) -> vs_20181212_models.DeleteDeviceResponse:
+        """
+        @param request: DeleteDeviceRequest
+        @return: DeleteDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_with_options_async(request, runtime)
 
@@ -3930,6 +4087,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteDirectoryResponse:
+        """
+        @param request: DeleteDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3960,6 +4122,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteDirectoryResponse:
+        """
+        @param request: DeleteDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3989,6 +4156,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteDirectoryRequest,
     ) -> vs_20181212_models.DeleteDirectoryResponse:
+        """
+        @param request: DeleteDirectoryRequest
+        @return: DeleteDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_directory_with_options(request, runtime)
 
@@ -3996,14 +4167,119 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteDirectoryRequest,
     ) -> vs_20181212_models.DeleteDirectoryResponse:
+        """
+        @param request: DeleteDirectoryRequest
+        @return: DeleteDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_directory_with_options_async(request, runtime)
+
+    def delete_file_with_options(
+        self,
+        request: vs_20181212_models.DeleteFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DeleteFileResponse:
+        """
+        @summary 删除文件对象。
+        
+        @param request: DeleteFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_with_options_async(
+        self,
+        request: vs_20181212_models.DeleteFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DeleteFileResponse:
+        """
+        @summary 删除文件对象。
+        
+        @param request: DeleteFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DeleteFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_file(
+        self,
+        request: vs_20181212_models.DeleteFileRequest,
+    ) -> vs_20181212_models.DeleteFileResponse:
+        """
+        @summary 删除文件对象。
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_file_with_options(request, runtime)
+
+    async def delete_file_async(
+        self,
+        request: vs_20181212_models.DeleteFileRequest,
+    ) -> vs_20181212_models.DeleteFileResponse:
+        """
+        @summary 删除文件对象。
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_file_with_options_async(request, runtime)
 
     def delete_group_with_options(
         self,
         request: vs_20181212_models.DeleteGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteGroupResponse:
+        """
+        @param request: DeleteGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4034,6 +4310,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteGroupResponse:
+        """
+        @param request: DeleteGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4063,6 +4344,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteGroupRequest,
     ) -> vs_20181212_models.DeleteGroupResponse:
+        """
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_group_with_options(request, runtime)
 
@@ -4070,6 +4355,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteGroupRequest,
     ) -> vs_20181212_models.DeleteGroupResponse:
+        """
+        @param request: DeleteGroupRequest
+        @return: DeleteGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_group_with_options_async(request, runtime)
 
@@ -4078,6 +4367,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteParentPlatformResponse:
+        """
+        @param request: DeleteParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4108,6 +4402,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteParentPlatformResponse:
+        """
+        @param request: DeleteParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4137,6 +4436,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteParentPlatformRequest,
     ) -> vs_20181212_models.DeleteParentPlatformResponse:
+        """
+        @param request: DeleteParentPlatformRequest
+        @return: DeleteParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_parent_platform_with_options(request, runtime)
 
@@ -4144,6 +4447,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteParentPlatformRequest,
     ) -> vs_20181212_models.DeleteParentPlatformResponse:
+        """
+        @param request: DeleteParentPlatformRequest
+        @return: DeleteParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_parent_platform_with_options_async(request, runtime)
 
@@ -4152,6 +4459,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeletePresetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeletePresetResponse:
+        """
+        @param request: DeletePresetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePresetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4184,6 +4496,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeletePresetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeletePresetResponse:
+        """
+        @param request: DeletePresetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePresetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4215,6 +4532,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeletePresetRequest,
     ) -> vs_20181212_models.DeletePresetResponse:
+        """
+        @param request: DeletePresetRequest
+        @return: DeletePresetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_preset_with_options(request, runtime)
 
@@ -4222,25 +4543,34 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeletePresetRequest,
     ) -> vs_20181212_models.DeletePresetResponse:
+        """
+        @param request: DeletePresetRequest
+        @return: DeletePresetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_preset_with_options_async(request, runtime)
 
-    def delete_purchased_device_with_options(
+    def delete_public_key_with_options(
         self,
-        request: vs_20181212_models.DeletePurchasedDeviceRequest,
+        request: vs_20181212_models.DeletePublicKeyRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeletePurchasedDeviceResponse:
+    ) -> vs_20181212_models.DeletePublicKeyResponse:
+        """
+        @summary 删除公钥信息
+        
+        @param request: DeletePublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePublicKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeletePurchasedDevice',
+            action='DeletePublicKey',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -4251,26 +4581,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DeletePurchasedDeviceResponse(),
+            vs_20181212_models.DeletePublicKeyResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_purchased_device_with_options_async(
+    async def delete_public_key_with_options_async(
         self,
-        request: vs_20181212_models.DeletePurchasedDeviceRequest,
+        request: vs_20181212_models.DeletePublicKeyRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeletePurchasedDeviceResponse:
+    ) -> vs_20181212_models.DeletePublicKeyResponse:
+        """
+        @summary 删除公钥信息
+        
+        @param request: DeletePublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePublicKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeletePurchasedDevice',
+            action='DeletePublicKey',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -4281,46 +4616,65 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DeletePurchasedDeviceResponse(),
+            vs_20181212_models.DeletePublicKeyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_purchased_device(
+    def delete_public_key(
         self,
-        request: vs_20181212_models.DeletePurchasedDeviceRequest,
-    ) -> vs_20181212_models.DeletePurchasedDeviceResponse:
+        request: vs_20181212_models.DeletePublicKeyRequest,
+    ) -> vs_20181212_models.DeletePublicKeyResponse:
+        """
+        @summary 删除公钥信息
+        
+        @param request: DeletePublicKeyRequest
+        @return: DeletePublicKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.delete_purchased_device_with_options(request, runtime)
+        return self.delete_public_key_with_options(request, runtime)
 
-    async def delete_purchased_device_async(
+    async def delete_public_key_async(
         self,
-        request: vs_20181212_models.DeletePurchasedDeviceRequest,
-    ) -> vs_20181212_models.DeletePurchasedDeviceResponse:
+        request: vs_20181212_models.DeletePublicKeyRequest,
+    ) -> vs_20181212_models.DeletePublicKeyResponse:
+        """
+        @summary 删除公钥信息
+        
+        @param request: DeletePublicKeyRequest
+        @return: DeletePublicKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_purchased_device_with_options_async(request, runtime)
+        return await self.delete_public_key_with_options_async(request, runtime)
 
-    def delete_rendering_device_internet_ports_with_options(
+    def delete_rendering_instance_configuration_with_options(
         self,
-        request: vs_20181212_models.DeleteRenderingDeviceInternetPortsRequest,
+        tmp_req: vs_20181212_models.DeleteRenderingInstanceConfigurationRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteRenderingDeviceInternetPortsResponse:
-        UtilClient.validate_model(request)
+    ) -> vs_20181212_models.DeleteRenderingInstanceConfigurationResponse:
+        """
+        @summary 删除云渲染实例配置参数
+        
+        @param tmp_req: DeleteRenderingInstanceConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRenderingInstanceConfigurationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.DeleteRenderingInstanceConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
         query = {}
-        if not UtilClient.is_unset(request.isp):
-            query['ISP'] = request.isp
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.internal_port):
-            query['InternalPort'] = request.internal_port
-        if not UtilClient.is_unset(request.ip_protocol):
-            query['IpProtocol'] = request.ip_protocol
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        body = {}
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='DeleteRenderingDeviceInternetPorts',
+            action='DeleteRenderingInstanceConfiguration',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -4331,32 +4685,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DeleteRenderingDeviceInternetPortsResponse(),
+            vs_20181212_models.DeleteRenderingInstanceConfigurationResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_rendering_device_internet_ports_with_options_async(
+    async def delete_rendering_instance_configuration_with_options_async(
         self,
-        request: vs_20181212_models.DeleteRenderingDeviceInternetPortsRequest,
+        tmp_req: vs_20181212_models.DeleteRenderingInstanceConfigurationRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteRenderingDeviceInternetPortsResponse:
-        UtilClient.validate_model(request)
+    ) -> vs_20181212_models.DeleteRenderingInstanceConfigurationResponse:
+        """
+        @summary 删除云渲染实例配置参数
+        
+        @param tmp_req: DeleteRenderingInstanceConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRenderingInstanceConfigurationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.DeleteRenderingInstanceConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
         query = {}
-        if not UtilClient.is_unset(request.isp):
-            query['ISP'] = request.isp
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.internal_port):
-            query['InternalPort'] = request.internal_port
-        if not UtilClient.is_unset(request.ip_protocol):
-            query['IpProtocol'] = request.ip_protocol
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        body = {}
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='DeleteRenderingDeviceInternetPorts',
+            action='DeleteRenderingInstanceConfiguration',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -4367,103 +4728,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DeleteRenderingDeviceInternetPortsResponse(),
+            vs_20181212_models.DeleteRenderingInstanceConfigurationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_rendering_device_internet_ports(
+    def delete_rendering_instance_configuration(
         self,
-        request: vs_20181212_models.DeleteRenderingDeviceInternetPortsRequest,
-    ) -> vs_20181212_models.DeleteRenderingDeviceInternetPortsResponse:
+        request: vs_20181212_models.DeleteRenderingInstanceConfigurationRequest,
+    ) -> vs_20181212_models.DeleteRenderingInstanceConfigurationResponse:
+        """
+        @summary 删除云渲染实例配置参数
+        
+        @param request: DeleteRenderingInstanceConfigurationRequest
+        @return: DeleteRenderingInstanceConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.delete_rendering_device_internet_ports_with_options(request, runtime)
+        return self.delete_rendering_instance_configuration_with_options(request, runtime)
 
-    async def delete_rendering_device_internet_ports_async(
+    async def delete_rendering_instance_configuration_async(
         self,
-        request: vs_20181212_models.DeleteRenderingDeviceInternetPortsRequest,
-    ) -> vs_20181212_models.DeleteRenderingDeviceInternetPortsResponse:
+        request: vs_20181212_models.DeleteRenderingInstanceConfigurationRequest,
+    ) -> vs_20181212_models.DeleteRenderingInstanceConfigurationResponse:
+        """
+        @summary 删除云渲染实例配置参数
+        
+        @param request: DeleteRenderingInstanceConfigurationRequest
+        @return: DeleteRenderingInstanceConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_rendering_device_internet_ports_with_options_async(request, runtime)
-
-    def delete_rendering_devices_with_options(
-        self,
-        request: vs_20181212_models.DeleteRenderingDevicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteRenderingDevicesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteRenderingDevices',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DeleteRenderingDevicesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_rendering_devices_with_options_async(
-        self,
-        request: vs_20181212_models.DeleteRenderingDevicesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DeleteRenderingDevicesResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteRenderingDevices',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DeleteRenderingDevicesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_rendering_devices(
-        self,
-        request: vs_20181212_models.DeleteRenderingDevicesRequest,
-    ) -> vs_20181212_models.DeleteRenderingDevicesResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_rendering_devices_with_options(request, runtime)
-
-    async def delete_rendering_devices_async(
-        self,
-        request: vs_20181212_models.DeleteRenderingDevicesRequest,
-    ) -> vs_20181212_models.DeleteRenderingDevicesResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_rendering_devices_with_options_async(request, runtime)
+        return await self.delete_rendering_instance_configuration_with_options_async(request, runtime)
 
     def delete_template_with_options(
         self,
         request: vs_20181212_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4494,6 +4798,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4523,6 +4832,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteTemplateRequest,
     ) -> vs_20181212_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_template_with_options(request, runtime)
 
@@ -4530,6 +4843,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteTemplateRequest,
     ) -> vs_20181212_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
@@ -4538,6 +4855,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteVsPullStreamInfoConfigResponse:
+        """
+        @param request: DeleteVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -4572,6 +4894,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteVsPullStreamInfoConfigResponse:
+        """
+        @param request: DeleteVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -4605,6 +4932,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.DeleteVsPullStreamInfoConfigResponse:
+        """
+        @param request: DeleteVsPullStreamInfoConfigRequest
+        @return: DeleteVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_vs_pull_stream_info_config_with_options(request, runtime)
 
@@ -4612,6 +4943,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.DeleteVsPullStreamInfoConfigResponse:
+        """
+        @param request: DeleteVsPullStreamInfoConfigRequest
+        @return: DeleteVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vs_pull_stream_info_config_with_options_async(request, runtime)
 
@@ -4620,6 +4955,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteVsStreamsNotifyUrlConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DeleteVsStreamsNotifyUrlConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVsStreamsNotifyUrlConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4650,6 +4990,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DeleteVsStreamsNotifyUrlConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DeleteVsStreamsNotifyUrlConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVsStreamsNotifyUrlConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4679,6 +5024,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteVsStreamsNotifyUrlConfigRequest,
     ) -> vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DeleteVsStreamsNotifyUrlConfigRequest
+        @return: DeleteVsStreamsNotifyUrlConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_vs_streams_notify_url_config_with_options(request, runtime)
 
@@ -4686,232 +5035,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DeleteVsStreamsNotifyUrlConfigRequest,
     ) -> vs_20181212_models.DeleteVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DeleteVsStreamsNotifyUrlConfigRequest
+        @return: DeleteVsStreamsNotifyUrlConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vs_streams_notify_url_config_with_options_async(request, runtime)
-
-    def describe_aiconfig_with_options(
-        self,
-        request: vs_20181212_models.DescribeAIConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeAIConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAIConfig',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeAIConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_aiconfig_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeAIConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeAIConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAIConfig',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeAIConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_aiconfig(
-        self,
-        request: vs_20181212_models.DescribeAIConfigRequest,
-    ) -> vs_20181212_models.DescribeAIConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_aiconfig_with_options(request, runtime)
-
-    async def describe_aiconfig_async(
-        self,
-        request: vs_20181212_models.DescribeAIConfigRequest,
-    ) -> vs_20181212_models.DescribeAIConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_aiconfig_with_options_async(request, runtime)
-
-    def describe_aiconfig_list_with_options(
-        self,
-        request: vs_20181212_models.DescribeAIConfigListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeAIConfigListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAIConfigList',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeAIConfigListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_aiconfig_list_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeAIConfigListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeAIConfigListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_no):
-            query['PageNo'] = request.page_no
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAIConfigList',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeAIConfigListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_aiconfig_list(
-        self,
-        request: vs_20181212_models.DescribeAIConfigListRequest,
-    ) -> vs_20181212_models.DescribeAIConfigListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_aiconfig_list_with_options(request, runtime)
-
-    async def describe_aiconfig_list_async(
-        self,
-        request: vs_20181212_models.DescribeAIConfigListRequest,
-    ) -> vs_20181212_models.DescribeAIConfigListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_aiconfig_list_with_options_async(request, runtime)
-
-    def describe_aievent_list_with_options(
-        self,
-        request: vs_20181212_models.DescribeAIEventListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeAIEventListResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAIEventList',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeAIEventListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_aievent_list_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeAIEventListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeAIEventListResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAIEventList',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeAIEventListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_aievent_list(
-        self,
-        request: vs_20181212_models.DescribeAIEventListRequest,
-    ) -> vs_20181212_models.DescribeAIEventListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_aievent_list_with_options(request, runtime)
-
-    async def describe_aievent_list_async(
-        self,
-        request: vs_20181212_models.DescribeAIEventListRequest,
-    ) -> vs_20181212_models.DescribeAIEventListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_aievent_list_with_options_async(request, runtime)
 
     def describe_account_stat_with_options(
         self,
         request: vs_20181212_models.DescribeAccountStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeAccountStatResponse:
+        """
+        @param request: DescribeAccountStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4942,6 +5082,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeAccountStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeAccountStatResponse:
+        """
+        @param request: DescribeAccountStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4971,6 +5116,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeAccountStatRequest,
     ) -> vs_20181212_models.DescribeAccountStatResponse:
+        """
+        @param request: DescribeAccountStatRequest
+        @return: DescribeAccountStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_account_stat_with_options(request, runtime)
 
@@ -4978,6 +5127,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeAccountStatRequest,
     ) -> vs_20181212_models.DescribeAccountStatResponse:
+        """
+        @param request: DescribeAccountStatRequest
+        @return: DescribeAccountStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_account_stat_with_options_async(request, runtime)
 
@@ -4986,6 +5139,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeClusterResponse:
+        """
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5016,6 +5174,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeClusterResponse:
+        """
+        @param request: DescribeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5045,6 +5208,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeClusterRequest,
     ) -> vs_20181212_models.DescribeClusterResponse:
+        """
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_with_options(request, runtime)
 
@@ -5052,6 +5219,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeClusterRequest,
     ) -> vs_20181212_models.DescribeClusterResponse:
+        """
+        @param request: DescribeClusterRequest
+        @return: DescribeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
 
@@ -5060,6 +5231,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeClusterDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeClusterDevicesResponse:
+        """
+        @param request: DescribeClusterDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5102,6 +5278,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeClusterDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeClusterDevicesResponse:
+        """
+        @param request: DescribeClusterDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5143,6 +5324,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeClusterDevicesRequest,
     ) -> vs_20181212_models.DescribeClusterDevicesResponse:
+        """
+        @param request: DescribeClusterDevicesRequest
+        @return: DescribeClusterDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_devices_with_options(request, runtime)
 
@@ -5150,6 +5335,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeClusterDevicesRequest,
     ) -> vs_20181212_models.DescribeClusterDevicesResponse:
+        """
+        @param request: DescribeClusterDevicesRequest
+        @return: DescribeClusterDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_devices_with_options_async(request, runtime)
 
@@ -5158,6 +5347,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeClustersResponse:
+        """
+        @param request: DescribeClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -5190,6 +5384,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeClustersResponse:
+        """
+        @param request: DescribeClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -5221,6 +5420,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeClustersRequest,
     ) -> vs_20181212_models.DescribeClustersResponse:
+        """
+        @param request: DescribeClustersRequest
+        @return: DescribeClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_clusters_with_options(request, runtime)
 
@@ -5228,6 +5431,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeClustersRequest,
     ) -> vs_20181212_models.DescribeClustersResponse:
+        """
+        @param request: DescribeClustersRequest
+        @return: DescribeClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_clusters_with_options_async(request, runtime)
 
@@ -5236,6 +5443,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeContainerInstanceIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
+        """
+        @param request: DescribeContainerInstanceIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerInstanceIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_name):
@@ -5268,6 +5480,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeContainerInstanceIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
+        """
+        @param request: DescribeContainerInstanceIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerInstanceIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_name):
@@ -5299,6 +5516,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeContainerInstanceIdRequest,
     ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
+        """
+        @param request: DescribeContainerInstanceIdRequest
+        @return: DescribeContainerInstanceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_container_instance_id_with_options(request, runtime)
 
@@ -5306,6 +5527,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeContainerInstanceIdRequest,
     ) -> vs_20181212_models.DescribeContainerInstanceIdResponse:
+        """
+        @param request: DescribeContainerInstanceIdRequest
+        @return: DescribeContainerInstanceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_container_instance_id_with_options_async(request, runtime)
 
@@ -5314,6 +5539,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceResponse:
+        """
+        @param request: DescribeDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5348,6 +5578,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceResponse:
+        """
+        @param request: DescribeDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5381,6 +5616,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceRequest,
     ) -> vs_20181212_models.DescribeDeviceResponse:
+        """
+        @param request: DescribeDeviceRequest
+        @return: DescribeDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_device_with_options(request, runtime)
 
@@ -5388,6 +5627,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceRequest,
     ) -> vs_20181212_models.DescribeDeviceResponse:
+        """
+        @param request: DescribeDeviceRequest
+        @return: DescribeDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_with_options_async(request, runtime)
 
@@ -5396,6 +5639,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceChannelsResponse:
+        """
+        @param request: DescribeDeviceChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5430,6 +5678,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceChannelsResponse:
+        """
+        @param request: DescribeDeviceChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5463,6 +5716,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceChannelsRequest,
     ) -> vs_20181212_models.DescribeDeviceChannelsResponse:
+        """
+        @param request: DescribeDeviceChannelsRequest
+        @return: DescribeDeviceChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_device_channels_with_options(request, runtime)
 
@@ -5470,6 +5727,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceChannelsRequest,
     ) -> vs_20181212_models.DescribeDeviceChannelsResponse:
+        """
+        @param request: DescribeDeviceChannelsRequest
+        @return: DescribeDeviceChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_channels_with_options_async(request, runtime)
 
@@ -5478,6 +5739,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceGatewayResponse:
+        """
+        @param request: DescribeDeviceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_ip):
@@ -5512,6 +5778,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceGatewayResponse:
+        """
+        @param request: DescribeDeviceGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_ip):
@@ -5545,6 +5816,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceGatewayRequest,
     ) -> vs_20181212_models.DescribeDeviceGatewayResponse:
+        """
+        @param request: DescribeDeviceGatewayRequest
+        @return: DescribeDeviceGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_device_gateway_with_options(request, runtime)
 
@@ -5552,6 +5827,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceGatewayRequest,
     ) -> vs_20181212_models.DescribeDeviceGatewayResponse:
+        """
+        @param request: DescribeDeviceGatewayRequest
+        @return: DescribeDeviceGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_gateway_with_options_async(request, runtime)
 
@@ -5560,6 +5839,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceURLResponse:
+        """
+        @param request: DescribeDeviceURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth):
@@ -5602,6 +5886,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDeviceURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDeviceURLResponse:
+        """
+        @param request: DescribeDeviceURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth):
@@ -5643,6 +5932,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceURLRequest,
     ) -> vs_20181212_models.DescribeDeviceURLResponse:
+        """
+        @param request: DescribeDeviceURLRequest
+        @return: DescribeDeviceURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_device_urlwith_options(request, runtime)
 
@@ -5650,6 +5943,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDeviceURLRequest,
     ) -> vs_20181212_models.DescribeDeviceURLResponse:
+        """
+        @param request: DescribeDeviceURLRequest
+        @return: DescribeDeviceURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_urlwith_options_async(request, runtime)
 
@@ -5658,6 +5955,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDevicesResponse:
+        """
+        @param request: DescribeDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.directory_id):
@@ -5718,6 +6020,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDevicesResponse:
+        """
+        @param request: DescribeDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.directory_id):
@@ -5777,6 +6084,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDevicesRequest,
     ) -> vs_20181212_models.DescribeDevicesResponse:
+        """
+        @param request: DescribeDevicesRequest
+        @return: DescribeDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_devices_with_options(request, runtime)
 
@@ -5784,6 +6095,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDevicesRequest,
     ) -> vs_20181212_models.DescribeDevicesResponse:
+        """
+        @param request: DescribeDevicesRequest
+        @return: DescribeDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_devices_with_options_async(request, runtime)
 
@@ -5792,6 +6107,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5834,6 +6154,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5875,6 +6200,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDirectoriesRequest,
     ) -> vs_20181212_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @return: DescribeDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_directories_with_options(request, runtime)
 
@@ -5882,6 +6211,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDirectoriesRequest,
     ) -> vs_20181212_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @return: DescribeDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_directories_with_options_async(request, runtime)
 
@@ -5890,6 +6223,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDirectoryResponse:
+        """
+        @param request: DescribeDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5920,6 +6258,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeDirectoryResponse:
+        """
+        @param request: DescribeDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5949,6 +6292,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDirectoryRequest,
     ) -> vs_20181212_models.DescribeDirectoryResponse:
+        """
+        @param request: DescribeDirectoryRequest
+        @return: DescribeDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_directory_with_options(request, runtime)
 
@@ -5956,100 +6303,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeDirectoryRequest,
     ) -> vs_20181212_models.DescribeDirectoryResponse:
+        """
+        @param request: DescribeDirectoryRequest
+        @return: DescribeDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_directory_with_options_async(request, runtime)
-
-    def describe_external_stream_urlwith_options(
-        self,
-        request: vs_20181212_models.DescribeExternalStreamURLRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeExternalStreamURLResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.kind):
-            query['Kind'] = request.kind
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.profile):
-            query['Profile'] = request.profile
-        if not UtilClient.is_unset(request.tx_id):
-            query['TxId'] = request.tx_id
-        if not UtilClient.is_unset(request.url):
-            query['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeExternalStreamURL',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeExternalStreamURLResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_external_stream_urlwith_options_async(
-        self,
-        request: vs_20181212_models.DescribeExternalStreamURLRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeExternalStreamURLResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.kind):
-            query['Kind'] = request.kind
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.profile):
-            query['Profile'] = request.profile
-        if not UtilClient.is_unset(request.tx_id):
-            query['TxId'] = request.tx_id
-        if not UtilClient.is_unset(request.url):
-            query['Url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeExternalStreamURL',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeExternalStreamURLResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_external_stream_url(
-        self,
-        request: vs_20181212_models.DescribeExternalStreamURLRequest,
-    ) -> vs_20181212_models.DescribeExternalStreamURLResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_external_stream_urlwith_options(request, runtime)
-
-    async def describe_external_stream_url_async(
-        self,
-        request: vs_20181212_models.DescribeExternalStreamURLRequest,
-    ) -> vs_20181212_models.DescribeExternalStreamURLResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_external_stream_urlwith_options_async(request, runtime)
 
     def describe_group_with_options(
         self,
         request: vs_20181212_models.DescribeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeGroupResponse:
+        """
+        @param request: DescribeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6082,6 +6352,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeGroupResponse:
+        """
+        @param request: DescribeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6113,6 +6388,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeGroupRequest,
     ) -> vs_20181212_models.DescribeGroupResponse:
+        """
+        @param request: DescribeGroupRequest
+        @return: DescribeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_group_with_options(request, runtime)
 
@@ -6120,6 +6399,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeGroupRequest,
     ) -> vs_20181212_models.DescribeGroupResponse:
+        """
+        @param request: DescribeGroupRequest
+        @return: DescribeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_group_with_options_async(request, runtime)
 
@@ -6128,6 +6411,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeGroupsResponse:
+        """
+        @param request: DescribeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6176,6 +6464,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeGroupsResponse:
+        """
+        @param request: DescribeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6223,6 +6516,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeGroupsRequest,
     ) -> vs_20181212_models.DescribeGroupsResponse:
+        """
+        @param request: DescribeGroupsRequest
+        @return: DescribeGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_groups_with_options(request, runtime)
 
@@ -6230,88 +6527,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeGroupsRequest,
     ) -> vs_20181212_models.DescribeGroupsResponse:
+        """
+        @param request: DescribeGroupsRequest
+        @return: DescribeGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_groups_with_options_async(request, runtime)
-
-    def describe_node_devices_info_with_options(
-        self,
-        request: vs_20181212_models.DescribeNodeDevicesInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeNodeDevicesInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.node_name):
-            query['NodeName'] = request.node_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeNodeDevicesInfo',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeNodeDevicesInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_node_devices_info_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeNodeDevicesInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeNodeDevicesInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.node_name):
-            query['NodeName'] = request.node_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeNodeDevicesInfo',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeNodeDevicesInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_node_devices_info(
-        self,
-        request: vs_20181212_models.DescribeNodeDevicesInfoRequest,
-    ) -> vs_20181212_models.DescribeNodeDevicesInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_node_devices_info_with_options(request, runtime)
-
-    async def describe_node_devices_info_async(
-        self,
-        request: vs_20181212_models.DescribeNodeDevicesInfoRequest,
-    ) -> vs_20181212_models.DescribeNodeDevicesInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_node_devices_info_with_options_async(request, runtime)
 
     def describe_parent_platform_with_options(
         self,
         request: vs_20181212_models.DescribeParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeParentPlatformResponse:
+        """
+        @param request: DescribeParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6342,6 +6574,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeParentPlatformResponse:
+        """
+        @param request: DescribeParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6371,6 +6608,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeParentPlatformRequest,
     ) -> vs_20181212_models.DescribeParentPlatformResponse:
+        """
+        @param request: DescribeParentPlatformRequest
+        @return: DescribeParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parent_platform_with_options(request, runtime)
 
@@ -6378,6 +6619,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeParentPlatformRequest,
     ) -> vs_20181212_models.DescribeParentPlatformResponse:
+        """
+        @param request: DescribeParentPlatformRequest
+        @return: DescribeParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parent_platform_with_options_async(request, runtime)
 
@@ -6386,6 +6631,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeParentPlatformDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeParentPlatformDevicesResponse:
+        """
+        @param request: DescribeParentPlatformDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentPlatformDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6424,6 +6674,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeParentPlatformDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeParentPlatformDevicesResponse:
+        """
+        @param request: DescribeParentPlatformDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentPlatformDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6461,6 +6716,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeParentPlatformDevicesRequest,
     ) -> vs_20181212_models.DescribeParentPlatformDevicesResponse:
+        """
+        @param request: DescribeParentPlatformDevicesRequest
+        @return: DescribeParentPlatformDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parent_platform_devices_with_options(request, runtime)
 
@@ -6468,6 +6727,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeParentPlatformDevicesRequest,
     ) -> vs_20181212_models.DescribeParentPlatformDevicesResponse:
+        """
+        @param request: DescribeParentPlatformDevicesRequest
+        @return: DescribeParentPlatformDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parent_platform_devices_with_options_async(request, runtime)
 
@@ -6476,6 +6739,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeParentPlatformsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeParentPlatformsResponse:
+        """
+        @param request: DescribeParentPlatformsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentPlatformsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gb_id):
@@ -6516,6 +6784,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeParentPlatformsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeParentPlatformsResponse:
+        """
+        @param request: DescribeParentPlatformsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentPlatformsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gb_id):
@@ -6555,6 +6828,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeParentPlatformsRequest,
     ) -> vs_20181212_models.DescribeParentPlatformsResponse:
+        """
+        @param request: DescribeParentPlatformsRequest
+        @return: DescribeParentPlatformsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parent_platforms_with_options(request, runtime)
 
@@ -6562,6 +6839,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeParentPlatformsRequest,
     ) -> vs_20181212_models.DescribeParentPlatformsResponse:
+        """
+        @param request: DescribeParentPlatformsRequest
+        @return: DescribeParentPlatformsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parent_platforms_with_options_async(request, runtime)
 
@@ -6570,6 +6851,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribePresetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribePresetsResponse:
+        """
+        @param request: DescribePresetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePresetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6600,6 +6886,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribePresetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribePresetsResponse:
+        """
+        @param request: DescribePresetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePresetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6629,6 +6920,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribePresetsRequest,
     ) -> vs_20181212_models.DescribePresetsResponse:
+        """
+        @param request: DescribePresetsRequest
+        @return: DescribePresetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_presets_with_options(request, runtime)
 
@@ -6636,14 +6931,115 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribePresetsRequest,
     ) -> vs_20181212_models.DescribePresetsResponse:
+        """
+        @param request: DescribePresetsRequest
+        @return: DescribePresetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_presets_with_options_async(request, runtime)
+
+    def describe_publish_stream_status_with_options(
+        self,
+        request: vs_20181212_models.DescribePublishStreamStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribePublishStreamStatusResponse:
+        """
+        @param request: DescribePublishStreamStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePublishStreamStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePublishStreamStatus',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePublishStreamStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_publish_stream_status_with_options_async(
+        self,
+        request: vs_20181212_models.DescribePublishStreamStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribePublishStreamStatusResponse:
+        """
+        @param request: DescribePublishStreamStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePublishStreamStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePublishStreamStatus',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribePublishStreamStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_publish_stream_status(
+        self,
+        request: vs_20181212_models.DescribePublishStreamStatusRequest,
+    ) -> vs_20181212_models.DescribePublishStreamStatusResponse:
+        """
+        @param request: DescribePublishStreamStatusRequest
+        @return: DescribePublishStreamStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_publish_stream_status_with_options(request, runtime)
+
+    async def describe_publish_stream_status_async(
+        self,
+        request: vs_20181212_models.DescribePublishStreamStatusRequest,
+    ) -> vs_20181212_models.DescribePublishStreamStatusResponse:
+        """
+        @param request: DescribePublishStreamStatusRequest
+        @return: DescribePublishStreamStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_publish_stream_status_with_options_async(request, runtime)
 
     def describe_purchased_device_with_options(
         self,
         request: vs_20181212_models.DescribePurchasedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribePurchasedDeviceResponse:
+        """
+        @param request: DescribePurchasedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6674,6 +7070,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribePurchasedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribePurchasedDeviceResponse:
+        """
+        @param request: DescribePurchasedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -6703,6 +7104,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribePurchasedDeviceRequest,
     ) -> vs_20181212_models.DescribePurchasedDeviceResponse:
+        """
+        @param request: DescribePurchasedDeviceRequest
+        @return: DescribePurchasedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_purchased_device_with_options(request, runtime)
 
@@ -6710,6 +7115,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribePurchasedDeviceRequest,
     ) -> vs_20181212_models.DescribePurchasedDeviceResponse:
+        """
+        @param request: DescribePurchasedDeviceRequest
+        @return: DescribePurchasedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_purchased_device_with_options_async(request, runtime)
 
@@ -6718,6 +7127,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribePurchasedDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribePurchasedDevicesResponse:
+        """
+        @param request: DescribePurchasedDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -6766,6 +7180,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribePurchasedDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribePurchasedDevicesResponse:
+        """
+        @param request: DescribePurchasedDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePurchasedDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -6813,6 +7232,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribePurchasedDevicesRequest,
     ) -> vs_20181212_models.DescribePurchasedDevicesResponse:
+        """
+        @param request: DescribePurchasedDevicesRequest
+        @return: DescribePurchasedDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_purchased_devices_with_options(request, runtime)
 
@@ -6820,6 +7243,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribePurchasedDevicesRequest,
     ) -> vs_20181212_models.DescribePurchasedDevicesResponse:
+        """
+        @param request: DescribePurchasedDevicesRequest
+        @return: DescribePurchasedDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_purchased_devices_with_options_async(request, runtime)
 
@@ -6828,6 +7255,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeRecordsResponse:
+        """
+        @param request: DescribeRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6874,6 +7306,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeRecordsResponse:
+        """
+        @param request: DescribeRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6919,6 +7356,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeRecordsRequest,
     ) -> vs_20181212_models.DescribeRecordsResponse:
+        """
+        @param request: DescribeRecordsRequest
+        @return: DescribeRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_records_with_options(request, runtime)
 
@@ -6926,88 +7367,215 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeRecordsRequest,
     ) -> vs_20181212_models.DescribeRecordsResponse:
+        """
+        @param request: DescribeRecordsRequest
+        @return: DescribeRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_records_with_options_async(request, runtime)
 
-    def describe_rendering_devices_with_options(
+    def describe_rendering_instance_with_options(
         self,
-        request: vs_20181212_models.DescribeRenderingDevicesRequest,
+        request: vs_20181212_models.DescribeRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeRenderingDevicesResponse:
+    ) -> vs_20181212_models.DescribeRenderingInstanceResponse:
+        """
+        @summary 查询云渲染实例详细信息。
+        
+        @param request: DescribeRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeRenderingDevices',
+            action='DescribeRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
-            method='POST',
+            method='GET',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DescribeRenderingDevicesResponse(),
+            vs_20181212_models.DescribeRenderingInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_rendering_devices_with_options_async(
+    async def describe_rendering_instance_with_options_async(
         self,
-        request: vs_20181212_models.DescribeRenderingDevicesRequest,
+        request: vs_20181212_models.DescribeRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeRenderingDevicesResponse:
+    ) -> vs_20181212_models.DescribeRenderingInstanceResponse:
+        """
+        @summary 查询云渲染实例详细信息。
+        
+        @param request: DescribeRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeRenderingDevices',
+            action='DescribeRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
-            method='POST',
+            method='GET',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.DescribeRenderingDevicesResponse(),
+            vs_20181212_models.DescribeRenderingInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_rendering_devices(
+    def describe_rendering_instance(
         self,
-        request: vs_20181212_models.DescribeRenderingDevicesRequest,
-    ) -> vs_20181212_models.DescribeRenderingDevicesResponse:
+        request: vs_20181212_models.DescribeRenderingInstanceRequest,
+    ) -> vs_20181212_models.DescribeRenderingInstanceResponse:
+        """
+        @summary 查询云渲染实例详细信息。
+        
+        @param request: DescribeRenderingInstanceRequest
+        @return: DescribeRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.describe_rendering_devices_with_options(request, runtime)
+        return self.describe_rendering_instance_with_options(request, runtime)
 
-    async def describe_rendering_devices_async(
+    async def describe_rendering_instance_async(
         self,
-        request: vs_20181212_models.DescribeRenderingDevicesRequest,
-    ) -> vs_20181212_models.DescribeRenderingDevicesResponse:
+        request: vs_20181212_models.DescribeRenderingInstanceRequest,
+    ) -> vs_20181212_models.DescribeRenderingInstanceResponse:
+        """
+        @summary 查询云渲染实例详细信息。
+        
+        @param request: DescribeRenderingInstanceRequest
+        @return: DescribeRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_rendering_devices_with_options_async(request, runtime)
+        return await self.describe_rendering_instance_with_options_async(request, runtime)
+
+    def describe_rendering_instance_configuration_with_options(
+        self,
+        tmp_req: vs_20181212_models.DescribeRenderingInstanceConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeRenderingInstanceConfigurationResponse:
+        """
+        @summary 查询云渲染实例模块配置参数
+        
+        @param tmp_req: DescribeRenderingInstanceConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenderingInstanceConfigurationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.DescribeRenderingInstanceConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRenderingInstanceConfiguration',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeRenderingInstanceConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rendering_instance_configuration_with_options_async(
+        self,
+        tmp_req: vs_20181212_models.DescribeRenderingInstanceConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeRenderingInstanceConfigurationResponse:
+        """
+        @summary 查询云渲染实例模块配置参数
+        
+        @param tmp_req: DescribeRenderingInstanceConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRenderingInstanceConfigurationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.DescribeRenderingInstanceConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRenderingInstanceConfiguration',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeRenderingInstanceConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rendering_instance_configuration(
+        self,
+        request: vs_20181212_models.DescribeRenderingInstanceConfigurationRequest,
+    ) -> vs_20181212_models.DescribeRenderingInstanceConfigurationResponse:
+        """
+        @summary 查询云渲染实例模块配置参数
+        
+        @param request: DescribeRenderingInstanceConfigurationRequest
+        @return: DescribeRenderingInstanceConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rendering_instance_configuration_with_options(request, runtime)
+
+    async def describe_rendering_instance_configuration_async(
+        self,
+        request: vs_20181212_models.DescribeRenderingInstanceConfigurationRequest,
+    ) -> vs_20181212_models.DescribeRenderingInstanceConfigurationResponse:
+        """
+        @summary 查询云渲染实例模块配置参数
+        
+        @param request: DescribeRenderingInstanceConfigurationRequest
+        @return: DescribeRenderingInstanceConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rendering_instance_configuration_with_options_async(request, runtime)
 
     def describe_stream_with_options(
         self,
         request: vs_20181212_models.DescribeStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamResponse:
+        """
+        @param request: DescribeStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -7038,6 +7606,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamResponse:
+        """
+        @param request: DescribeStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -7067,6 +7640,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamRequest,
     ) -> vs_20181212_models.DescribeStreamResponse:
+        """
+        @param request: DescribeStreamRequest
+        @return: DescribeStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_stream_with_options(request, runtime)
 
@@ -7074,6 +7651,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamRequest,
     ) -> vs_20181212_models.DescribeStreamResponse:
+        """
+        @param request: DescribeStreamRequest
+        @return: DescribeStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_stream_with_options_async(request, runtime)
 
@@ -7082,6 +7663,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamURLResponse:
+        """
+        @param request: DescribeStreamURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth):
@@ -7128,6 +7714,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamURLResponse:
+        """
+        @param request: DescribeStreamURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth):
@@ -7173,6 +7764,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamURLRequest,
     ) -> vs_20181212_models.DescribeStreamURLResponse:
+        """
+        @param request: DescribeStreamURLRequest
+        @return: DescribeStreamURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_stream_urlwith_options(request, runtime)
 
@@ -7180,6 +7775,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamURLRequest,
     ) -> vs_20181212_models.DescribeStreamURLResponse:
+        """
+        @param request: DescribeStreamURLRequest
+        @return: DescribeStreamURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_stream_urlwith_options_async(request, runtime)
 
@@ -7188,6 +7787,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamVodListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamVodListResponse:
+        """
+        @param request: DescribeStreamVodListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamVodListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7222,6 +7826,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamVodListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamVodListResponse:
+        """
+        @param request: DescribeStreamVodListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamVodListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7255,6 +7864,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamVodListRequest,
     ) -> vs_20181212_models.DescribeStreamVodListResponse:
+        """
+        @param request: DescribeStreamVodListRequest
+        @return: DescribeStreamVodListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_stream_vod_list_with_options(request, runtime)
 
@@ -7262,6 +7875,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamVodListRequest,
     ) -> vs_20181212_models.DescribeStreamVodListResponse:
+        """
+        @param request: DescribeStreamVodListRequest
+        @return: DescribeStreamVodListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_stream_vod_list_with_options_async(request, runtime)
 
@@ -7270,6 +7887,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamsResponse:
+        """
+        @param request: DescribeStreamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -7320,6 +7942,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeStreamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeStreamsResponse:
+        """
+        @param request: DescribeStreamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -7369,6 +7996,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamsRequest,
     ) -> vs_20181212_models.DescribeStreamsResponse:
+        """
+        @param request: DescribeStreamsRequest
+        @return: DescribeStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_streams_with_options(request, runtime)
 
@@ -7376,6 +8007,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeStreamsRequest,
     ) -> vs_20181212_models.DescribeStreamsResponse:
+        """
+        @param request: DescribeStreamsRequest
+        @return: DescribeStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_streams_with_options_async(request, runtime)
 
@@ -7384,6 +8019,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeTemplateResponse:
+        """
+        @param request: DescribeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -7414,6 +8054,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeTemplateResponse:
+        """
+        @param request: DescribeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -7443,6 +8088,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeTemplateRequest,
     ) -> vs_20181212_models.DescribeTemplateResponse:
+        """
+        @param request: DescribeTemplateRequest
+        @return: DescribeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_template_with_options(request, runtime)
 
@@ -7450,6 +8099,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeTemplateRequest,
     ) -> vs_20181212_models.DescribeTemplateResponse:
+        """
+        @param request: DescribeTemplateRequest
+        @return: DescribeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_template_with_options_async(request, runtime)
 
@@ -7458,6 +8111,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeTemplatesResponse:
+        """
+        @param request: DescribeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -7500,6 +8158,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeTemplatesResponse:
+        """
+        @param request: DescribeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -7541,6 +8204,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeTemplatesRequest,
     ) -> vs_20181212_models.DescribeTemplatesResponse:
+        """
+        @param request: DescribeTemplatesRequest
+        @return: DescribeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_templates_with_options(request, runtime)
 
@@ -7548,6 +8215,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeTemplatesRequest,
     ) -> vs_20181212_models.DescribeTemplatesResponse:
+        """
+        @param request: DescribeTemplatesRequest
+        @return: DescribeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_templates_with_options_async(request, runtime)
 
@@ -7556,6 +8227,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeUserDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        """
+        @param request: DescribeUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_instance_ids):
@@ -7588,6 +8264,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeUserDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        """
+        @param request: DescribeUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_instance_ids):
@@ -7619,6 +8300,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeUserDevicesRequest,
     ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        """
+        @param request: DescribeUserDevicesRequest
+        @return: DescribeUserDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_devices_with_options(request, runtime)
 
@@ -7626,6 +8311,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeUserDevicesRequest,
     ) -> vs_20181212_models.DescribeUserDevicesResponse:
+        """
+        @param request: DescribeUserDevicesRequest
+        @return: DescribeUserDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_devices_with_options_async(request, runtime)
 
@@ -7634,12 +8323,15 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVodStreamURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVodStreamURLResponse:
+        """
+        @param request: DescribeVodStreamURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodStreamURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.tx_id):
-            query['TxId'] = request.tx_id
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -7666,12 +8358,15 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVodStreamURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVodStreamURLResponse:
+        """
+        @param request: DescribeVodStreamURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodStreamURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.tx_id):
-            query['TxId'] = request.tx_id
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -7697,6 +8392,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVodStreamURLRequest,
     ) -> vs_20181212_models.DescribeVodStreamURLResponse:
+        """
+        @param request: DescribeVodStreamURLRequest
+        @return: DescribeVodStreamURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vod_stream_urlwith_options(request, runtime)
 
@@ -7704,6 +8403,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVodStreamURLRequest,
     ) -> vs_20181212_models.DescribeVodStreamURLResponse:
+        """
+        @param request: DescribeVodStreamURLRequest
+        @return: DescribeVodStreamURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_stream_urlwith_options_async(request, runtime)
 
@@ -7712,6 +8415,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsCertificateDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsCertificateDetailResponse:
+        """
+        @param request: DescribeVsCertificateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsCertificateDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_name):
@@ -7742,6 +8450,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsCertificateDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsCertificateDetailResponse:
+        """
+        @param request: DescribeVsCertificateDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsCertificateDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_name):
@@ -7771,6 +8484,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsCertificateDetailRequest,
     ) -> vs_20181212_models.DescribeVsCertificateDetailResponse:
+        """
+        @param request: DescribeVsCertificateDetailRequest
+        @return: DescribeVsCertificateDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_certificate_detail_with_options(request, runtime)
 
@@ -7778,6 +8495,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsCertificateDetailRequest,
     ) -> vs_20181212_models.DescribeVsCertificateDetailResponse:
+        """
+        @param request: DescribeVsCertificateDetailRequest
+        @return: DescribeVsCertificateDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_certificate_detail_with_options_async(request, runtime)
 
@@ -7786,6 +8507,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsCertificateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsCertificateListResponse:
+        """
+        @param request: DescribeVsCertificateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsCertificateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -7816,6 +8542,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsCertificateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsCertificateListResponse:
+        """
+        @param request: DescribeVsCertificateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsCertificateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -7845,6 +8576,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsCertificateListRequest,
     ) -> vs_20181212_models.DescribeVsCertificateListResponse:
+        """
+        @param request: DescribeVsCertificateListRequest
+        @return: DescribeVsCertificateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_certificate_list_with_options(request, runtime)
 
@@ -7852,6 +8587,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsCertificateListRequest,
     ) -> vs_20181212_models.DescribeVsCertificateListResponse:
+        """
+        @param request: DescribeVsCertificateListRequest
+        @return: DescribeVsCertificateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_certificate_list_with_options_async(request, runtime)
 
@@ -7860,6 +8599,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDevicesDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDevicesDataResponse:
+        """
+        @param request: DescribeVsDevicesDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDevicesDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7894,6 +8638,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDevicesDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDevicesDataResponse:
+        """
+        @param request: DescribeVsDevicesDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDevicesDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7927,6 +8676,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDevicesDataRequest,
     ) -> vs_20181212_models.DescribeVsDevicesDataResponse:
+        """
+        @param request: DescribeVsDevicesDataRequest
+        @return: DescribeVsDevicesDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_devices_data_with_options(request, runtime)
 
@@ -7934,6 +8687,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDevicesDataRequest,
     ) -> vs_20181212_models.DescribeVsDevicesDataResponse:
+        """
+        @param request: DescribeVsDevicesDataRequest
+        @return: DescribeVsDevicesDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_devices_data_with_options_async(request, runtime)
 
@@ -7942,6 +8699,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainBpsDataResponse:
+        """
+        @param request: DescribeVsDomainBpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainBpsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -7982,6 +8744,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainBpsDataResponse:
+        """
+        @param request: DescribeVsDomainBpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainBpsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8021,6 +8788,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainBpsDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainBpsDataResponse:
+        """
+        @param request: DescribeVsDomainBpsDataRequest
+        @return: DescribeVsDomainBpsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_bps_data_with_options(request, runtime)
 
@@ -8028,6 +8799,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainBpsDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainBpsDataResponse:
+        """
+        @param request: DescribeVsDomainBpsDataRequest
+        @return: DescribeVsDomainBpsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_bps_data_with_options_async(request, runtime)
 
@@ -8036,6 +8811,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainCertificateInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainCertificateInfoResponse:
+        """
+        @param request: DescribeVsDomainCertificateInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainCertificateInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8066,6 +8846,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainCertificateInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainCertificateInfoResponse:
+        """
+        @param request: DescribeVsDomainCertificateInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainCertificateInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8095,6 +8880,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainCertificateInfoRequest,
     ) -> vs_20181212_models.DescribeVsDomainCertificateInfoResponse:
+        """
+        @param request: DescribeVsDomainCertificateInfoRequest
+        @return: DescribeVsDomainCertificateInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_certificate_info_with_options(request, runtime)
 
@@ -8102,6 +8891,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainCertificateInfoRequest,
     ) -> vs_20181212_models.DescribeVsDomainCertificateInfoResponse:
+        """
+        @param request: DescribeVsDomainCertificateInfoRequest
+        @return: DescribeVsDomainCertificateInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_certificate_info_with_options_async(request, runtime)
 
@@ -8110,6 +8903,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainConfigsResponse:
+        """
+        @param request: DescribeVsDomainConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8142,6 +8940,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainConfigsResponse:
+        """
+        @param request: DescribeVsDomainConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8173,6 +8976,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainConfigsRequest,
     ) -> vs_20181212_models.DescribeVsDomainConfigsResponse:
+        """
+        @param request: DescribeVsDomainConfigsRequest
+        @return: DescribeVsDomainConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_configs_with_options(request, runtime)
 
@@ -8180,6 +8987,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainConfigsRequest,
     ) -> vs_20181212_models.DescribeVsDomainConfigsResponse:
+        """
+        @param request: DescribeVsDomainConfigsRequest
+        @return: DescribeVsDomainConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_configs_with_options_async(request, runtime)
 
@@ -8188,6 +8999,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainDetailResponse:
+        """
+        @param request: DescribeVsDomainDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8218,6 +9034,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainDetailResponse:
+        """
+        @param request: DescribeVsDomainDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8247,6 +9068,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainDetailRequest,
     ) -> vs_20181212_models.DescribeVsDomainDetailResponse:
+        """
+        @param request: DescribeVsDomainDetailRequest
+        @return: DescribeVsDomainDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_detail_with_options(request, runtime)
 
@@ -8254,92 +9079,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainDetailRequest,
     ) -> vs_20181212_models.DescribeVsDomainDetailResponse:
+        """
+        @param request: DescribeVsDomainDetailRequest
+        @return: DescribeVsDomainDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_detail_with_options_async(request, runtime)
-
-    def describe_vs_domain_online_user_num_with_options(
-        self,
-        request: vs_20181212_models.DescribeVsDomainOnlineUserNumRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsDomainOnlineUserNumResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.query_time):
-            query['QueryTime'] = request.query_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsDomainOnlineUserNum',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsDomainOnlineUserNumResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_vs_domain_online_user_num_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeVsDomainOnlineUserNumRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsDomainOnlineUserNumResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.query_time):
-            query['QueryTime'] = request.query_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsDomainOnlineUserNum',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsDomainOnlineUserNumResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_vs_domain_online_user_num(
-        self,
-        request: vs_20181212_models.DescribeVsDomainOnlineUserNumRequest,
-    ) -> vs_20181212_models.DescribeVsDomainOnlineUserNumResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_vs_domain_online_user_num_with_options(request, runtime)
-
-    async def describe_vs_domain_online_user_num_async(
-        self,
-        request: vs_20181212_models.DescribeVsDomainOnlineUserNumRequest,
-    ) -> vs_20181212_models.DescribeVsDomainOnlineUserNumResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_vs_domain_online_user_num_with_options_async(request, runtime)
 
     def describe_vs_domain_pv_data_with_options(
         self,
         request: vs_20181212_models.DescribeVsDomainPvDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainPvDataResponse:
+        """
+        @param request: DescribeVsDomainPvDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainPvDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8374,6 +9130,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainPvDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainPvDataResponse:
+        """
+        @param request: DescribeVsDomainPvDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainPvDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8407,6 +9168,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainPvDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainPvDataResponse:
+        """
+        @param request: DescribeVsDomainPvDataRequest
+        @return: DescribeVsDomainPvDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_pv_data_with_options(request, runtime)
 
@@ -8414,6 +9179,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainPvDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainPvDataResponse:
+        """
+        @param request: DescribeVsDomainPvDataRequest
+        @return: DescribeVsDomainPvDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_pv_data_with_options_async(request, runtime)
 
@@ -8422,6 +9191,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainPvUvDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainPvUvDataResponse:
+        """
+        @param request: DescribeVsDomainPvUvDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainPvUvDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8456,6 +9230,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainPvUvDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainPvUvDataResponse:
+        """
+        @param request: DescribeVsDomainPvUvDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainPvUvDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8489,6 +9268,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainPvUvDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainPvUvDataResponse:
+        """
+        @param request: DescribeVsDomainPvUvDataRequest
+        @return: DescribeVsDomainPvUvDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_pv_uv_data_with_options(request, runtime)
 
@@ -8496,6 +9279,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainPvUvDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainPvUvDataResponse:
+        """
+        @param request: DescribeVsDomainPvUvDataRequest
+        @return: DescribeVsDomainPvUvDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_pv_uv_data_with_options_async(request, runtime)
 
@@ -8504,6 +9291,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainRecordDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainRecordDataResponse:
+        """
+        @param request: DescribeVsDomainRecordDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainRecordDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8540,6 +9332,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainRecordDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainRecordDataResponse:
+        """
+        @param request: DescribeVsDomainRecordDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainRecordDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8575,6 +9372,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainRecordDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainRecordDataResponse:
+        """
+        @param request: DescribeVsDomainRecordDataRequest
+        @return: DescribeVsDomainRecordDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_record_data_with_options(request, runtime)
 
@@ -8582,6 +9383,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainRecordDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainRecordDataResponse:
+        """
+        @param request: DescribeVsDomainRecordDataRequest
+        @return: DescribeVsDomainRecordDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_record_data_with_options_async(request, runtime)
 
@@ -8590,6 +9395,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainRegionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainRegionDataResponse:
+        """
+        @param request: DescribeVsDomainRegionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainRegionDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8624,6 +9434,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainRegionDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainRegionDataResponse:
+        """
+        @param request: DescribeVsDomainRegionDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainRegionDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8657,6 +9472,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainRegionDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainRegionDataResponse:
+        """
+        @param request: DescribeVsDomainRegionDataRequest
+        @return: DescribeVsDomainRegionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_region_data_with_options(request, runtime)
 
@@ -8664,6 +9483,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainRegionDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainRegionDataResponse:
+        """
+        @param request: DescribeVsDomainRegionDataRequest
+        @return: DescribeVsDomainRegionDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_region_data_with_options_async(request, runtime)
 
@@ -8672,6 +9495,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainReqBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainReqBpsDataResponse:
+        """
+        @param request: DescribeVsDomainReqBpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainReqBpsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8712,6 +9540,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainReqBpsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainReqBpsDataResponse:
+        """
+        @param request: DescribeVsDomainReqBpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainReqBpsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8751,6 +9584,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainReqBpsDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainReqBpsDataResponse:
+        """
+        @param request: DescribeVsDomainReqBpsDataRequest
+        @return: DescribeVsDomainReqBpsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_req_bps_data_with_options(request, runtime)
 
@@ -8758,6 +9595,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainReqBpsDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainReqBpsDataResponse:
+        """
+        @param request: DescribeVsDomainReqBpsDataRequest
+        @return: DescribeVsDomainReqBpsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_req_bps_data_with_options_async(request, runtime)
 
@@ -8766,6 +9607,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainReqTrafficDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainReqTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainReqTrafficDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainReqTrafficDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8806,6 +9652,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainReqTrafficDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainReqTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainReqTrafficDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainReqTrafficDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8845,6 +9696,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainReqTrafficDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainReqTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainReqTrafficDataRequest
+        @return: DescribeVsDomainReqTrafficDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_req_traffic_data_with_options(request, runtime)
 
@@ -8852,6 +9707,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainReqTrafficDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainReqTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainReqTrafficDataRequest
+        @return: DescribeVsDomainReqTrafficDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_req_traffic_data_with_options_async(request, runtime)
 
@@ -8860,6 +9719,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainSnapshotDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainSnapshotDataResponse:
+        """
+        @param request: DescribeVsDomainSnapshotDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainSnapshotDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8894,6 +9758,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainSnapshotDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainSnapshotDataResponse:
+        """
+        @param request: DescribeVsDomainSnapshotDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainSnapshotDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8927,6 +9796,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainSnapshotDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainSnapshotDataResponse:
+        """
+        @param request: DescribeVsDomainSnapshotDataRequest
+        @return: DescribeVsDomainSnapshotDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_snapshot_data_with_options(request, runtime)
 
@@ -8934,6 +9807,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainSnapshotDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainSnapshotDataResponse:
+        """
+        @param request: DescribeVsDomainSnapshotDataRequest
+        @return: DescribeVsDomainSnapshotDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_snapshot_data_with_options_async(request, runtime)
 
@@ -8942,6 +9819,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainTrafficDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainTrafficDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainTrafficDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8982,6 +9864,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainTrafficDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainTrafficDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainTrafficDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9021,6 +9908,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainTrafficDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainTrafficDataRequest
+        @return: DescribeVsDomainTrafficDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_traffic_data_with_options(request, runtime)
 
@@ -9028,6 +9919,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainTrafficDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainTrafficDataResponse:
+        """
+        @param request: DescribeVsDomainTrafficDataRequest
+        @return: DescribeVsDomainTrafficDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_traffic_data_with_options_async(request, runtime)
 
@@ -9036,6 +9931,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainUvDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainUvDataResponse:
+        """
+        @param request: DescribeVsDomainUvDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainUvDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9070,6 +9970,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsDomainUvDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsDomainUvDataResponse:
+        """
+        @param request: DescribeVsDomainUvDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsDomainUvDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9103,6 +10008,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainUvDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainUvDataResponse:
+        """
+        @param request: DescribeVsDomainUvDataRequest
+        @return: DescribeVsDomainUvDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_domain_uv_data_with_options(request, runtime)
 
@@ -9110,88 +10019,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsDomainUvDataRequest,
     ) -> vs_20181212_models.DescribeVsDomainUvDataResponse:
+        """
+        @param request: DescribeVsDomainUvDataRequest
+        @return: DescribeVsDomainUvDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_domain_uv_data_with_options_async(request, runtime)
-
-    def describe_vs_pull_stream_config_with_options(
-        self,
-        request: vs_20181212_models.DescribeVsPullStreamConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsPullStreamConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsPullStreamConfig',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsPullStreamConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_vs_pull_stream_config_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeVsPullStreamConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsPullStreamConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsPullStreamConfig',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsPullStreamConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_vs_pull_stream_config(
-        self,
-        request: vs_20181212_models.DescribeVsPullStreamConfigRequest,
-    ) -> vs_20181212_models.DescribeVsPullStreamConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_vs_pull_stream_config_with_options(request, runtime)
-
-    async def describe_vs_pull_stream_config_async(
-        self,
-        request: vs_20181212_models.DescribeVsPullStreamConfigRequest,
-    ) -> vs_20181212_models.DescribeVsPullStreamConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_vs_pull_stream_config_with_options_async(request, runtime)
 
     def describe_vs_pull_stream_info_config_with_options(
         self,
         request: vs_20181212_models.DescribeVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsPullStreamInfoConfigResponse:
+        """
+        @param request: DescribeVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9222,6 +10066,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsPullStreamInfoConfigResponse:
+        """
+        @param request: DescribeVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9251,6 +10100,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.DescribeVsPullStreamInfoConfigResponse:
+        """
+        @param request: DescribeVsPullStreamInfoConfigRequest
+        @return: DescribeVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_pull_stream_info_config_with_options(request, runtime)
 
@@ -9258,194 +10111,23 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.DescribeVsPullStreamInfoConfigResponse:
+        """
+        @param request: DescribeVsPullStreamInfoConfigRequest
+        @return: DescribeVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_pull_stream_info_config_with_options_async(request, runtime)
-
-    def describe_vs_storage_traffic_usage_data_with_options(
-        self,
-        request: vs_20181212_models.DescribeVsStorageTrafficUsageDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsStorageTrafficUsageDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket):
-            query['Bucket'] = request.bucket
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.interval):
-            query['Interval'] = request.interval
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.split_by):
-            query['SplitBy'] = request.split_by
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsStorageTrafficUsageData',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsStorageTrafficUsageDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_vs_storage_traffic_usage_data_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeVsStorageTrafficUsageDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsStorageTrafficUsageDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket):
-            query['Bucket'] = request.bucket
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.interval):
-            query['Interval'] = request.interval
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.split_by):
-            query['SplitBy'] = request.split_by
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsStorageTrafficUsageData',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsStorageTrafficUsageDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_vs_storage_traffic_usage_data(
-        self,
-        request: vs_20181212_models.DescribeVsStorageTrafficUsageDataRequest,
-    ) -> vs_20181212_models.DescribeVsStorageTrafficUsageDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_vs_storage_traffic_usage_data_with_options(request, runtime)
-
-    async def describe_vs_storage_traffic_usage_data_async(
-        self,
-        request: vs_20181212_models.DescribeVsStorageTrafficUsageDataRequest,
-    ) -> vs_20181212_models.DescribeVsStorageTrafficUsageDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_vs_storage_traffic_usage_data_with_options_async(request, runtime)
-
-    def describe_vs_storage_usage_data_with_options(
-        self,
-        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket):
-            query['Bucket'] = request.bucket
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.interval):
-            query['Interval'] = request.interval
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.split_by):
-            query['SplitBy'] = request.split_by
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsStorageUsageData',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsStorageUsageDataResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_vs_storage_usage_data_with_options_async(
-        self,
-        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket):
-            query['Bucket'] = request.bucket
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.interval):
-            query['Interval'] = request.interval
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.split_by):
-            query['SplitBy'] = request.split_by
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeVsStorageUsageData',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.DescribeVsStorageUsageDataResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_vs_storage_usage_data(
-        self,
-        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
-    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_vs_storage_usage_data_with_options(request, runtime)
-
-    async def describe_vs_storage_usage_data_async(
-        self,
-        request: vs_20181212_models.DescribeVsStorageUsageDataRequest,
-    ) -> vs_20181212_models.DescribeVsStorageUsageDataResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_vs_storage_usage_data_with_options_async(request, runtime)
 
     def describe_vs_streams_notify_url_config_with_options(
         self,
         request: vs_20181212_models.DescribeVsStreamsNotifyUrlConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DescribeVsStreamsNotifyUrlConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsStreamsNotifyUrlConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9476,6 +10158,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsStreamsNotifyUrlConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DescribeVsStreamsNotifyUrlConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsStreamsNotifyUrlConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9505,6 +10192,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsStreamsNotifyUrlConfigRequest,
     ) -> vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DescribeVsStreamsNotifyUrlConfigRequest
+        @return: DescribeVsStreamsNotifyUrlConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_streams_notify_url_config_with_options(request, runtime)
 
@@ -9512,6 +10203,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsStreamsNotifyUrlConfigRequest,
     ) -> vs_20181212_models.DescribeVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: DescribeVsStreamsNotifyUrlConfigRequest
+        @return: DescribeVsStreamsNotifyUrlConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_streams_notify_url_config_with_options_async(request, runtime)
 
@@ -9520,6 +10215,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsStreamsOnlineListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsStreamsOnlineListResponse:
+        """
+        @param request: DescribeVsStreamsOnlineListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsStreamsOnlineListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -9568,6 +10268,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsStreamsOnlineListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsStreamsOnlineListResponse:
+        """
+        @param request: DescribeVsStreamsOnlineListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsStreamsOnlineListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -9615,6 +10320,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsStreamsOnlineListRequest,
     ) -> vs_20181212_models.DescribeVsStreamsOnlineListResponse:
+        """
+        @param request: DescribeVsStreamsOnlineListRequest
+        @return: DescribeVsStreamsOnlineListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_streams_online_list_with_options(request, runtime)
 
@@ -9622,6 +10331,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsStreamsOnlineListRequest,
     ) -> vs_20181212_models.DescribeVsStreamsOnlineListResponse:
+        """
+        @param request: DescribeVsStreamsOnlineListRequest
+        @return: DescribeVsStreamsOnlineListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_streams_online_list_with_options_async(request, runtime)
 
@@ -9630,6 +10343,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsStreamsPublishListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsStreamsPublishListResponse:
+        """
+        @param request: DescribeVsStreamsPublishListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsStreamsPublishListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -9678,6 +10396,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsStreamsPublishListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsStreamsPublishListResponse:
+        """
+        @param request: DescribeVsStreamsPublishListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsStreamsPublishListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -9725,6 +10448,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsStreamsPublishListRequest,
     ) -> vs_20181212_models.DescribeVsStreamsPublishListResponse:
+        """
+        @param request: DescribeVsStreamsPublishListRequest
+        @return: DescribeVsStreamsPublishListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_streams_publish_list_with_options(request, runtime)
 
@@ -9732,6 +10459,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsStreamsPublishListRequest,
     ) -> vs_20181212_models.DescribeVsStreamsPublishListResponse:
+        """
+        @param request: DescribeVsStreamsPublishListRequest
+        @return: DescribeVsStreamsPublishListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_streams_publish_list_with_options_async(request, runtime)
 
@@ -9740,6 +10471,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsTopDomainsByFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsTopDomainsByFlowResponse:
+        """
+        @param request: DescribeVsTopDomainsByFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsTopDomainsByFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9774,6 +10510,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsTopDomainsByFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsTopDomainsByFlowResponse:
+        """
+        @param request: DescribeVsTopDomainsByFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsTopDomainsByFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9807,6 +10548,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsTopDomainsByFlowRequest,
     ) -> vs_20181212_models.DescribeVsTopDomainsByFlowResponse:
+        """
+        @param request: DescribeVsTopDomainsByFlowRequest
+        @return: DescribeVsTopDomainsByFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_top_domains_by_flow_with_options(request, runtime)
 
@@ -9814,6 +10559,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsTopDomainsByFlowRequest,
     ) -> vs_20181212_models.DescribeVsTopDomainsByFlowResponse:
+        """
+        @param request: DescribeVsTopDomainsByFlowRequest
+        @return: DescribeVsTopDomainsByFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_top_domains_by_flow_with_options_async(request, runtime)
 
@@ -9822,6 +10571,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsUpPeakPublishStreamDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse:
+        """
+        @param request: DescribeVsUpPeakPublishStreamDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsUpPeakPublishStreamDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9858,6 +10612,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsUpPeakPublishStreamDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse:
+        """
+        @param request: DescribeVsUpPeakPublishStreamDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsUpPeakPublishStreamDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9893,6 +10652,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsUpPeakPublishStreamDataRequest,
     ) -> vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse:
+        """
+        @param request: DescribeVsUpPeakPublishStreamDataRequest
+        @return: DescribeVsUpPeakPublishStreamDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_up_peak_publish_stream_data_with_options(request, runtime)
 
@@ -9900,6 +10663,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsUpPeakPublishStreamDataRequest,
     ) -> vs_20181212_models.DescribeVsUpPeakPublishStreamDataResponse:
+        """
+        @param request: DescribeVsUpPeakPublishStreamDataRequest
+        @return: DescribeVsUpPeakPublishStreamDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_up_peak_publish_stream_data_with_options_async(request, runtime)
 
@@ -9908,6 +10675,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsUserResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsUserResourcePackageResponse:
+        """
+        @param request: DescribeVsUserResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsUserResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -9938,6 +10710,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.DescribeVsUserResourcePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.DescribeVsUserResourcePackageResponse:
+        """
+        @param request: DescribeVsUserResourcePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsUserResourcePackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -9967,6 +10744,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsUserResourcePackageRequest,
     ) -> vs_20181212_models.DescribeVsUserResourcePackageResponse:
+        """
+        @param request: DescribeVsUserResourcePackageRequest
+        @return: DescribeVsUserResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vs_user_resource_package_with_options(request, runtime)
 
@@ -9974,14 +10755,115 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.DescribeVsUserResourcePackageRequest,
     ) -> vs_20181212_models.DescribeVsUserResourcePackageResponse:
+        """
+        @param request: DescribeVsUserResourcePackageRequest
+        @return: DescribeVsUserResourcePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vs_user_resource_package_with_options_async(request, runtime)
+
+    def describe_vs_verify_content_with_options(
+        self,
+        request: vs_20181212_models.DescribeVsVerifyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeVsVerifyContentResponse:
+        """
+        @param request: DescribeVsVerifyContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsVerifyContentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVsVerifyContent',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsVerifyContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vs_verify_content_with_options_async(
+        self,
+        request: vs_20181212_models.DescribeVsVerifyContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.DescribeVsVerifyContentResponse:
+        """
+        @param request: DescribeVsVerifyContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVsVerifyContentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVsVerifyContent',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.DescribeVsVerifyContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vs_verify_content(
+        self,
+        request: vs_20181212_models.DescribeVsVerifyContentRequest,
+    ) -> vs_20181212_models.DescribeVsVerifyContentResponse:
+        """
+        @param request: DescribeVsVerifyContentRequest
+        @return: DescribeVsVerifyContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vs_verify_content_with_options(request, runtime)
+
+    async def describe_vs_verify_content_async(
+        self,
+        request: vs_20181212_models.DescribeVsVerifyContentRequest,
+    ) -> vs_20181212_models.DescribeVsVerifyContentResponse:
+        """
+        @param request: DescribeVsVerifyContentRequest
+        @return: DescribeVsVerifyContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vs_verify_content_with_options_async(request, runtime)
 
     def forbid_vs_stream_with_options(
         self,
         request: vs_20181212_models.ForbidVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ForbidVsStreamResponse:
+        """
+        @param request: ForbidVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForbidVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -10024,6 +10906,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ForbidVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ForbidVsStreamResponse:
+        """
+        @param request: ForbidVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForbidVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -10065,6 +10952,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ForbidVsStreamRequest,
     ) -> vs_20181212_models.ForbidVsStreamResponse:
+        """
+        @param request: ForbidVsStreamRequest
+        @return: ForbidVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.forbid_vs_stream_with_options(request, runtime)
 
@@ -10072,25 +10963,34 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ForbidVsStreamRequest,
     ) -> vs_20181212_models.ForbidVsStreamResponse:
+        """
+        @param request: ForbidVsStreamRequest
+        @return: ForbidVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.forbid_vs_stream_with_options_async(request, runtime)
 
-    def get_bucket_info_with_options(
+    def get_rendering_instance_streaming_info_with_options(
         self,
-        request: vs_20181212_models.GetBucketInfoRequest,
+        request: vs_20181212_models.GetRenderingInstanceStreamingInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.GetBucketInfoResponse:
+    ) -> vs_20181212_models.GetRenderingInstanceStreamingInfoResponse:
+        """
+        @summary 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+        
+        @param request: GetRenderingInstanceStreamingInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRenderingInstanceStreamingInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetBucketInfo',
+            action='GetRenderingInstanceStreamingInfo',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -10101,26 +11001,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.GetBucketInfoResponse(),
+            vs_20181212_models.GetRenderingInstanceStreamingInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_bucket_info_with_options_async(
+    async def get_rendering_instance_streaming_info_with_options_async(
         self,
-        request: vs_20181212_models.GetBucketInfoRequest,
+        request: vs_20181212_models.GetRenderingInstanceStreamingInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.GetBucketInfoResponse:
+    ) -> vs_20181212_models.GetRenderingInstanceStreamingInfoResponse:
+        """
+        @summary 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+        
+        @param request: GetRenderingInstanceStreamingInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRenderingInstanceStreamingInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetBucketInfo',
+            action='GetRenderingInstanceStreamingInfo',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -10131,103 +11036,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.GetBucketInfoResponse(),
+            vs_20181212_models.GetRenderingInstanceStreamingInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_bucket_info(
+    def get_rendering_instance_streaming_info(
         self,
-        request: vs_20181212_models.GetBucketInfoRequest,
-    ) -> vs_20181212_models.GetBucketInfoResponse:
+        request: vs_20181212_models.GetRenderingInstanceStreamingInfoRequest,
+    ) -> vs_20181212_models.GetRenderingInstanceStreamingInfoResponse:
+        """
+        @summary 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+        
+        @param request: GetRenderingInstanceStreamingInfoRequest
+        @return: GetRenderingInstanceStreamingInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.get_bucket_info_with_options(request, runtime)
+        return self.get_rendering_instance_streaming_info_with_options(request, runtime)
 
-    async def get_bucket_info_async(
+    async def get_rendering_instance_streaming_info_async(
         self,
-        request: vs_20181212_models.GetBucketInfoRequest,
-    ) -> vs_20181212_models.GetBucketInfoResponse:
+        request: vs_20181212_models.GetRenderingInstanceStreamingInfoRequest,
+    ) -> vs_20181212_models.GetRenderingInstanceStreamingInfoResponse:
+        """
+        @summary 获取云渲染实例流连接信息，每次流化建联前都需要调用此接口获取最新连接信息
+        
+        @param request: GetRenderingInstanceStreamingInfoRequest
+        @return: GetRenderingInstanceStreamingInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.get_bucket_info_with_options_async(request, runtime)
-
-    def get_object_total_with_options(
-        self,
-        request: vs_20181212_models.GetObjectTotalRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.GetObjectTotalResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetObjectTotal',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.GetObjectTotalResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_object_total_with_options_async(
-        self,
-        request: vs_20181212_models.GetObjectTotalRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.GetObjectTotalResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetObjectTotal',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.GetObjectTotalResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_object_total(
-        self,
-        request: vs_20181212_models.GetObjectTotalRequest,
-    ) -> vs_20181212_models.GetObjectTotalResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.get_object_total_with_options(request, runtime)
-
-    async def get_object_total_async(
-        self,
-        request: vs_20181212_models.GetObjectTotalRequest,
-    ) -> vs_20181212_models.GetObjectTotalResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.get_object_total_with_options_async(request, runtime)
+        return await self.get_rendering_instance_streaming_info_with_options_async(request, runtime)
 
     def goto_preset_with_options(
         self,
         request: vs_20181212_models.GotoPresetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.GotoPresetResponse:
+        """
+        @param request: GotoPresetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GotoPresetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -10260,6 +11108,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.GotoPresetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.GotoPresetResponse:
+        """
+        @param request: GotoPresetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GotoPresetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -10291,6 +11144,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.GotoPresetRequest,
     ) -> vs_20181212_models.GotoPresetResponse:
+        """
+        @param request: GotoPresetRequest
+        @return: GotoPresetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.goto_preset_with_options(request, runtime)
 
@@ -10298,33 +11155,36 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.GotoPresetRequest,
     ) -> vs_20181212_models.GotoPresetResponse:
+        """
+        @param request: GotoPresetRequest
+        @return: GotoPresetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.goto_preset_with_options_async(request, runtime)
 
-    def list_buckets_with_options(
+    def install_cloud_app_with_options(
         self,
-        request: vs_20181212_models.ListBucketsRequest,
+        request: vs_20181212_models.InstallCloudAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListBucketsResponse:
+    ) -> vs_20181212_models.InstallCloudAppResponse:
+        """
+        @summary 安装云应用
+        
+        @param request: InstallCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallCloudAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.keyword):
-            query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.marker):
-            query['Marker'] = request.marker
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.prefix):
-            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListBuckets',
+            action='InstallCloudApp',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -10335,34 +11195,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ListBucketsResponse(),
+            vs_20181212_models.InstallCloudAppResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_buckets_with_options_async(
+    async def install_cloud_app_with_options_async(
         self,
-        request: vs_20181212_models.ListBucketsRequest,
+        request: vs_20181212_models.InstallCloudAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListBucketsResponse:
+    ) -> vs_20181212_models.InstallCloudAppResponse:
+        """
+        @summary 安装云应用
+        
+        @param request: InstallCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallCloudAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.keyword):
-            query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.marker):
-            query['Marker'] = request.marker
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.prefix):
-            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListBuckets',
+            action='InstallCloudApp',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -10373,98 +11232,615 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ListBucketsResponse(),
+            vs_20181212_models.InstallCloudAppResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_buckets(
+    def install_cloud_app(
         self,
-        request: vs_20181212_models.ListBucketsRequest,
-    ) -> vs_20181212_models.ListBucketsResponse:
+        request: vs_20181212_models.InstallCloudAppRequest,
+    ) -> vs_20181212_models.InstallCloudAppResponse:
+        """
+        @summary 安装云应用
+        
+        @param request: InstallCloudAppRequest
+        @return: InstallCloudAppResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.list_buckets_with_options(request, runtime)
+        return self.install_cloud_app_with_options(request, runtime)
 
-    async def list_buckets_async(
+    async def install_cloud_app_async(
         self,
-        request: vs_20181212_models.ListBucketsRequest,
-    ) -> vs_20181212_models.ListBucketsResponse:
+        request: vs_20181212_models.InstallCloudAppRequest,
+    ) -> vs_20181212_models.InstallCloudAppResponse:
+        """
+        @summary 安装云应用
+        
+        @param request: InstallCloudAppRequest
+        @return: InstallCloudAppResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.list_buckets_with_options_async(request, runtime)
+        return await self.install_cloud_app_with_options_async(request, runtime)
 
-    def list_objects_with_options(
+    def list_cloud_app_installations_with_options(
         self,
-        request: vs_20181212_models.ListObjectsRequest,
+        request: vs_20181212_models.ListCloudAppInstallationsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListObjectsResponse:
+    ) -> vs_20181212_models.ListCloudAppInstallationsResponse:
+        """
+        @summary 查询云应用安装信息列表
+        
+        @param request: ListCloudAppInstallationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudAppInstallationsResponse
+        """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.continuation_token):
-            query['ContinuationToken'] = request.continuation_token
-        if not UtilClient.is_unset(request.delimiter):
-            query['Delimiter'] = request.delimiter
-        if not UtilClient.is_unset(request.encoding_type):
-            query['EncodingType'] = request.encoding_type
-        if not UtilClient.is_unset(request.marker):
-            query['Marker'] = request.marker
-        if not UtilClient.is_unset(request.max_keys):
-            query['MaxKeys'] = request.max_keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.prefix):
-            query['Prefix'] = request.prefix
-        if not UtilClient.is_unset(request.start_after):
-            query['StartAfter'] = request.start_after
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListObjects',
+            action='ListCloudAppInstallations',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
-            method='POST',
+            method='GET',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ListObjectsResponse(),
+            vs_20181212_models.ListCloudAppInstallationsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_objects_with_options_async(
+    async def list_cloud_app_installations_with_options_async(
         self,
-        request: vs_20181212_models.ListObjectsRequest,
+        request: vs_20181212_models.ListCloudAppInstallationsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ListObjectsResponse:
+    ) -> vs_20181212_models.ListCloudAppInstallationsResponse:
+        """
+        @summary 查询云应用安装信息列表
+        
+        @param request: ListCloudAppInstallationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudAppInstallationsResponse
+        """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.continuation_token):
-            query['ContinuationToken'] = request.continuation_token
-        if not UtilClient.is_unset(request.delimiter):
-            query['Delimiter'] = request.delimiter
-        if not UtilClient.is_unset(request.encoding_type):
-            query['EncodingType'] = request.encoding_type
-        if not UtilClient.is_unset(request.marker):
-            query['Marker'] = request.marker
-        if not UtilClient.is_unset(request.max_keys):
-            query['MaxKeys'] = request.max_keys
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.prefix):
-            query['Prefix'] = request.prefix
-        if not UtilClient.is_unset(request.start_after):
-            query['StartAfter'] = request.start_after
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListObjects',
+            action='ListCloudAppInstallations',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListCloudAppInstallationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_app_installations(
+        self,
+        request: vs_20181212_models.ListCloudAppInstallationsRequest,
+    ) -> vs_20181212_models.ListCloudAppInstallationsResponse:
+        """
+        @summary 查询云应用安装信息列表
+        
+        @param request: ListCloudAppInstallationsRequest
+        @return: ListCloudAppInstallationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_app_installations_with_options(request, runtime)
+
+    async def list_cloud_app_installations_async(
+        self,
+        request: vs_20181212_models.ListCloudAppInstallationsRequest,
+    ) -> vs_20181212_models.ListCloudAppInstallationsResponse:
+        """
+        @summary 查询云应用安装信息列表
+        
+        @param request: ListCloudAppInstallationsRequest
+        @return: ListCloudAppInstallationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_app_installations_with_options_async(request, runtime)
+
+    def list_cloud_apps_with_options(
+        self,
+        request: vs_20181212_models.ListCloudAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListCloudAppsResponse:
+        """
+        @summary 查询云应用列表
+        
+        @param request: ListCloudAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudApps',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListCloudAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_apps_with_options_async(
+        self,
+        request: vs_20181212_models.ListCloudAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListCloudAppsResponse:
+        """
+        @summary 查询云应用列表
+        
+        @param request: ListCloudAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudAppsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudApps',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListCloudAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_apps(
+        self,
+        request: vs_20181212_models.ListCloudAppsRequest,
+    ) -> vs_20181212_models.ListCloudAppsResponse:
+        """
+        @summary 查询云应用列表
+        
+        @param request: ListCloudAppsRequest
+        @return: ListCloudAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_apps_with_options(request, runtime)
+
+    async def list_cloud_apps_async(
+        self,
+        request: vs_20181212_models.ListCloudAppsRequest,
+    ) -> vs_20181212_models.ListCloudAppsResponse:
+        """
+        @summary 查询云应用列表
+        
+        @param request: ListCloudAppsRequest
+        @return: ListCloudAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_apps_with_options_async(request, runtime)
+
+    def list_file_push_statuses_with_options(
+        self,
+        request: vs_20181212_models.ListFilePushStatusesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListFilePushStatusesResponse:
+        """
+        @summary 查询文件的实例推送状态信息列表。
+        
+        @param request: ListFilePushStatusesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilePushStatusesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFilePushStatuses',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListFilePushStatusesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_push_statuses_with_options_async(
+        self,
+        request: vs_20181212_models.ListFilePushStatusesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListFilePushStatusesResponse:
+        """
+        @summary 查询文件的实例推送状态信息列表。
+        
+        @param request: ListFilePushStatusesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilePushStatusesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFilePushStatuses',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListFilePushStatusesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file_push_statuses(
+        self,
+        request: vs_20181212_models.ListFilePushStatusesRequest,
+    ) -> vs_20181212_models.ListFilePushStatusesResponse:
+        """
+        @summary 查询文件的实例推送状态信息列表。
+        
+        @param request: ListFilePushStatusesRequest
+        @return: ListFilePushStatusesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_file_push_statuses_with_options(request, runtime)
+
+    async def list_file_push_statuses_async(
+        self,
+        request: vs_20181212_models.ListFilePushStatusesRequest,
+    ) -> vs_20181212_models.ListFilePushStatusesResponse:
+        """
+        @summary 查询文件的实例推送状态信息列表。
+        
+        @param request: ListFilePushStatusesRequest
+        @return: ListFilePushStatusesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_file_push_statuses_with_options_async(request, runtime)
+
+    def list_files_with_options(
+        self,
+        request: vs_20181212_models.ListFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListFilesResponse:
+        """
+        @summary 查询可用文件列表。
+        
+        @param request: ListFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFiles',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_files_with_options_async(
+        self,
+        request: vs_20181212_models.ListFilesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListFilesResponse:
+        """
+        @summary 查询可用文件列表。
+        
+        @param request: ListFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFiles',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_files(
+        self,
+        request: vs_20181212_models.ListFilesRequest,
+    ) -> vs_20181212_models.ListFilesResponse:
+        """
+        @summary 查询可用文件列表。
+        
+        @param request: ListFilesRequest
+        @return: ListFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_files_with_options(request, runtime)
+
+    async def list_files_async(
+        self,
+        request: vs_20181212_models.ListFilesRequest,
+    ) -> vs_20181212_models.ListFilesResponse:
+        """
+        @summary 查询可用文件列表。
+        
+        @param request: ListFilesRequest
+        @return: ListFilesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_files_with_options_async(request, runtime)
+
+    def list_public_keys_with_options(
+        self,
+        request: vs_20181212_models.ListPublicKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListPublicKeysResponse:
+        """
+        @summary 查询公钥信息
+        
+        @param request: ListPublicKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicKeys',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListPublicKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_public_keys_with_options_async(
+        self,
+        request: vs_20181212_models.ListPublicKeysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListPublicKeysResponse:
+        """
+        @summary 查询公钥信息
+        
+        @param request: ListPublicKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicKeysResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublicKeys',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListPublicKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_public_keys(
+        self,
+        request: vs_20181212_models.ListPublicKeysRequest,
+    ) -> vs_20181212_models.ListPublicKeysResponse:
+        """
+        @summary 查询公钥信息
+        
+        @param request: ListPublicKeysRequest
+        @return: ListPublicKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_public_keys_with_options(request, runtime)
+
+    async def list_public_keys_async(
+        self,
+        request: vs_20181212_models.ListPublicKeysRequest,
+    ) -> vs_20181212_models.ListPublicKeysResponse:
+        """
+        @summary 查询公钥信息
+        
+        @param request: ListPublicKeysRequest
+        @return: ListPublicKeysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_public_keys_with_options_async(request, runtime)
+
+    def list_rendering_instances_with_options(
+        self,
+        request: vs_20181212_models.ListRenderingInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListRenderingInstancesResponse:
+        """
+        @summary 查询所有云渲染实例信息，支持分页查询。
+        
+        @param request: ListRenderingInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRenderingInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRenderingInstances',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListRenderingInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rendering_instances_with_options_async(
+        self,
+        request: vs_20181212_models.ListRenderingInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ListRenderingInstancesResponse:
+        """
+        @summary 查询所有云渲染实例信息，支持分页查询。
+        
+        @param request: ListRenderingInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRenderingInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRenderingInstances',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ListRenderingInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rendering_instances(
+        self,
+        request: vs_20181212_models.ListRenderingInstancesRequest,
+    ) -> vs_20181212_models.ListRenderingInstancesResponse:
+        """
+        @summary 查询所有云渲染实例信息，支持分页查询。
+        
+        @param request: ListRenderingInstancesRequest
+        @return: ListRenderingInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_rendering_instances_with_options(request, runtime)
+
+    async def list_rendering_instances_async(
+        self,
+        request: vs_20181212_models.ListRenderingInstancesRequest,
+    ) -> vs_20181212_models.ListRenderingInstancesResponse:
+        """
+        @summary 查询所有云渲染实例信息，支持分页查询。
+        
+        @param request: ListRenderingInstancesRequest
+        @return: ListRenderingInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rendering_instances_with_options_async(request, runtime)
+
+    def manage_login_with_options(
+        self,
+        request: vs_20181212_models.ManageLoginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ManageLoginResponse:
+        """
+        @summary 安全登陆管理
+        
+        @param request: ManageLoginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageLoginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_name):
+            query['ActionName'] = request.action_name
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManageLogin',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -10475,33 +11851,93 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ListObjectsResponse(),
+            vs_20181212_models.ManageLoginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_login_with_options_async(
+        self,
+        request: vs_20181212_models.ManageLoginRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.ManageLoginResponse:
+        """
+        @summary 安全登陆管理
+        
+        @param request: ManageLoginRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManageLoginResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_name):
+            query['ActionName'] = request.action_name
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ManageLogin',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.ManageLoginResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_objects(
+    def manage_login(
         self,
-        request: vs_20181212_models.ListObjectsRequest,
-    ) -> vs_20181212_models.ListObjectsResponse:
+        request: vs_20181212_models.ManageLoginRequest,
+    ) -> vs_20181212_models.ManageLoginResponse:
+        """
+        @summary 安全登陆管理
+        
+        @param request: ManageLoginRequest
+        @return: ManageLoginResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.list_objects_with_options(request, runtime)
+        return self.manage_login_with_options(request, runtime)
 
-    async def list_objects_async(
+    async def manage_login_async(
         self,
-        request: vs_20181212_models.ListObjectsRequest,
-    ) -> vs_20181212_models.ListObjectsResponse:
+        request: vs_20181212_models.ManageLoginRequest,
+    ) -> vs_20181212_models.ManageLoginResponse:
+        """
+        @summary 安全登陆管理
+        
+        @param request: ManageLoginRequest
+        @return: ManageLoginResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.list_objects_with_options_async(request, runtime)
+        return await self.manage_login_with_options_async(request, runtime)
 
     def modify_device_with_options(
         self,
         request: vs_20181212_models.ModifyDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceResponse:
+        """
+        @param request: ModifyDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_method):
             query['AlarmMethod'] = request.alarm_method
+        if not UtilClient.is_unset(request.auto_directory):
+            query['AutoDirectory'] = request.auto_directory
         if not UtilClient.is_unset(request.auto_pos):
             query['AutoPos'] = request.auto_pos
         if not UtilClient.is_unset(request.auto_start):
@@ -10568,10 +12004,17 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceResponse:
+        """
+        @param request: ModifyDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_method):
             query['AlarmMethod'] = request.alarm_method
+        if not UtilClient.is_unset(request.auto_directory):
+            query['AutoDirectory'] = request.auto_directory
         if not UtilClient.is_unset(request.auto_pos):
             query['AutoPos'] = request.auto_pos
         if not UtilClient.is_unset(request.auto_start):
@@ -10637,6 +12080,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceRequest,
     ) -> vs_20181212_models.ModifyDeviceResponse:
+        """
+        @param request: ModifyDeviceRequest
+        @return: ModifyDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_device_with_options(request, runtime)
 
@@ -10644,6 +12091,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceRequest,
     ) -> vs_20181212_models.ModifyDeviceResponse:
+        """
+        @param request: ModifyDeviceRequest
+        @return: ModifyDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_device_with_options_async(request, runtime)
 
@@ -10652,6 +12103,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceAlarmResponse:
+        """
+        @param request: ModifyDeviceAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceAlarmResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -10688,6 +12144,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceAlarmRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceAlarmResponse:
+        """
+        @param request: ModifyDeviceAlarmRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceAlarmResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alarm_id):
@@ -10723,6 +12184,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceAlarmRequest,
     ) -> vs_20181212_models.ModifyDeviceAlarmResponse:
+        """
+        @param request: ModifyDeviceAlarmRequest
+        @return: ModifyDeviceAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_device_alarm_with_options(request, runtime)
 
@@ -10730,6 +12195,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceAlarmRequest,
     ) -> vs_20181212_models.ModifyDeviceAlarmResponse:
+        """
+        @param request: ModifyDeviceAlarmRequest
+        @return: ModifyDeviceAlarmResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_device_alarm_with_options_async(request, runtime)
 
@@ -10738,6 +12207,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceCaptureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceCaptureResponse:
+        """
+        @param request: ModifyDeviceCaptureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceCaptureResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -10772,6 +12246,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceCaptureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceCaptureResponse:
+        """
+        @param request: ModifyDeviceCaptureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceCaptureResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -10805,6 +12284,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceCaptureRequest,
     ) -> vs_20181212_models.ModifyDeviceCaptureResponse:
+        """
+        @param request: ModifyDeviceCaptureRequest
+        @return: ModifyDeviceCaptureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_device_capture_with_options(request, runtime)
 
@@ -10812,6 +12295,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceCaptureRequest,
     ) -> vs_20181212_models.ModifyDeviceCaptureResponse:
+        """
+        @param request: ModifyDeviceCaptureRequest
+        @return: ModifyDeviceCaptureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_device_capture_with_options_async(request, runtime)
 
@@ -10820,6 +12307,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceChannelsResponse:
+        """
+        @param request: ModifyDeviceChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channels):
@@ -10856,6 +12348,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDeviceChannelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDeviceChannelsResponse:
+        """
+        @param request: ModifyDeviceChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeviceChannelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.channels):
@@ -10891,6 +12388,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceChannelsRequest,
     ) -> vs_20181212_models.ModifyDeviceChannelsResponse:
+        """
+        @param request: ModifyDeviceChannelsRequest
+        @return: ModifyDeviceChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_device_channels_with_options(request, runtime)
 
@@ -10898,6 +12399,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDeviceChannelsRequest,
     ) -> vs_20181212_models.ModifyDeviceChannelsResponse:
+        """
+        @param request: ModifyDeviceChannelsRequest
+        @return: ModifyDeviceChannelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_device_channels_with_options_async(request, runtime)
 
@@ -10906,6 +12411,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDirectoryResponse:
+        """
+        @param request: ModifyDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -10940,6 +12450,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyDirectoryResponse:
+        """
+        @param request: ModifyDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -10973,6 +12488,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDirectoryRequest,
     ) -> vs_20181212_models.ModifyDirectoryResponse:
+        """
+        @param request: ModifyDirectoryRequest
+        @return: ModifyDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_directory_with_options(request, runtime)
 
@@ -10980,6 +12499,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyDirectoryRequest,
     ) -> vs_20181212_models.ModifyDirectoryResponse:
+        """
+        @param request: ModifyDirectoryRequest
+        @return: ModifyDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_directory_with_options_async(request, runtime)
 
@@ -10988,6 +12511,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyGroupResponse:
+        """
+        @param request: ModifyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callback):
@@ -11038,6 +12566,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyGroupResponse:
+        """
+        @param request: ModifyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callback):
@@ -11087,6 +12620,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyGroupRequest,
     ) -> vs_20181212_models.ModifyGroupResponse:
+        """
+        @param request: ModifyGroupRequest
+        @return: ModifyGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_group_with_options(request, runtime)
 
@@ -11094,6 +12631,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyGroupRequest,
     ) -> vs_20181212_models.ModifyGroupResponse:
+        """
+        @param request: ModifyGroupRequest
+        @return: ModifyGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_group_with_options_async(request, runtime)
 
@@ -11102,6 +12643,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyParentPlatformResponse:
+        """
+        @param request: ModifyParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start):
@@ -11150,6 +12696,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyParentPlatformResponse:
+        """
+        @param request: ModifyParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start):
@@ -11197,6 +12748,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyParentPlatformRequest,
     ) -> vs_20181212_models.ModifyParentPlatformResponse:
+        """
+        @param request: ModifyParentPlatformRequest
+        @return: ModifyParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_parent_platform_with_options(request, runtime)
 
@@ -11204,37 +12759,38 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyParentPlatformRequest,
     ) -> vs_20181212_models.ModifyParentPlatformResponse:
+        """
+        @param request: ModifyParentPlatformRequest
+        @return: ModifyParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_parent_platform_with_options_async(request, runtime)
 
-    def modify_purchased_device_with_options(
+    def modify_rendering_instance_bandwidth_with_options(
         self,
-        request: vs_20181212_models.ModifyPurchasedDeviceRequest,
+        request: vs_20181212_models.ModifyRenderingInstanceBandwidthRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ModifyPurchasedDeviceResponse:
+    ) -> vs_20181212_models.ModifyRenderingInstanceBandwidthResponse:
+        """
+        @summary 修改云渲染实例限速带宽
+        
+        @param request: ModifyRenderingInstanceBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRenderingInstanceBandwidthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.register_code):
-            query['RegisterCode'] = request.register_code
-        if not UtilClient.is_unset(request.sub_type):
-            query['SubType'] = request.sub_type
-        if not UtilClient.is_unset(request.vendor):
-            query['Vendor'] = request.vendor
+        if not UtilClient.is_unset(request.max_egress_bandwidth):
+            query['MaxEgressBandwidth'] = request.max_egress_bandwidth
+        if not UtilClient.is_unset(request.max_ingress_bandwidth):
+            query['MaxIngressBandwidth'] = request.max_ingress_bandwidth
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ModifyPurchasedDevice',
+            action='ModifyRenderingInstanceBandwidth',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11245,38 +12801,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ModifyPurchasedDeviceResponse(),
+            vs_20181212_models.ModifyRenderingInstanceBandwidthResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def modify_purchased_device_with_options_async(
+    async def modify_rendering_instance_bandwidth_with_options_async(
         self,
-        request: vs_20181212_models.ModifyPurchasedDeviceRequest,
+        request: vs_20181212_models.ModifyRenderingInstanceBandwidthRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ModifyPurchasedDeviceResponse:
+    ) -> vs_20181212_models.ModifyRenderingInstanceBandwidthResponse:
+        """
+        @summary 修改云渲染实例限速带宽
+        
+        @param request: ModifyRenderingInstanceBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRenderingInstanceBandwidthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.description):
-            query['Description'] = request.description
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.register_code):
-            query['RegisterCode'] = request.register_code
-        if not UtilClient.is_unset(request.sub_type):
-            query['SubType'] = request.sub_type
-        if not UtilClient.is_unset(request.vendor):
-            query['Vendor'] = request.vendor
+        if not UtilClient.is_unset(request.max_egress_bandwidth):
+            query['MaxEgressBandwidth'] = request.max_egress_bandwidth
+        if not UtilClient.is_unset(request.max_ingress_bandwidth):
+            query['MaxIngressBandwidth'] = request.max_ingress_bandwidth
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ModifyPurchasedDevice',
+            action='ModifyRenderingInstanceBandwidth',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11287,29 +12840,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ModifyPurchasedDeviceResponse(),
+            vs_20181212_models.ModifyRenderingInstanceBandwidthResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def modify_purchased_device(
+    def modify_rendering_instance_bandwidth(
         self,
-        request: vs_20181212_models.ModifyPurchasedDeviceRequest,
-    ) -> vs_20181212_models.ModifyPurchasedDeviceResponse:
+        request: vs_20181212_models.ModifyRenderingInstanceBandwidthRequest,
+    ) -> vs_20181212_models.ModifyRenderingInstanceBandwidthResponse:
+        """
+        @summary 修改云渲染实例限速带宽
+        
+        @param request: ModifyRenderingInstanceBandwidthRequest
+        @return: ModifyRenderingInstanceBandwidthResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.modify_purchased_device_with_options(request, runtime)
+        return self.modify_rendering_instance_bandwidth_with_options(request, runtime)
 
-    async def modify_purchased_device_async(
+    async def modify_rendering_instance_bandwidth_async(
         self,
-        request: vs_20181212_models.ModifyPurchasedDeviceRequest,
-    ) -> vs_20181212_models.ModifyPurchasedDeviceResponse:
+        request: vs_20181212_models.ModifyRenderingInstanceBandwidthRequest,
+    ) -> vs_20181212_models.ModifyRenderingInstanceBandwidthResponse:
+        """
+        @summary 修改云渲染实例限速带宽
+        
+        @param request: ModifyRenderingInstanceBandwidthRequest
+        @return: ModifyRenderingInstanceBandwidthResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.modify_purchased_device_with_options_async(request, runtime)
+        return await self.modify_rendering_instance_bandwidth_with_options_async(request, runtime)
 
     def modify_template_with_options(
         self,
         request: vs_20181212_models.ModifyTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyTemplateResponse:
+        """
+        @param request: ModifyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callback):
@@ -11378,6 +12948,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ModifyTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ModifyTemplateResponse:
+        """
+        @param request: ModifyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.callback):
@@ -11445,6 +13020,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyTemplateRequest,
     ) -> vs_20181212_models.ModifyTemplateResponse:
+        """
+        @param request: ModifyTemplateRequest
+        @return: ModifyTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_template_with_options(request, runtime)
 
@@ -11452,6 +13031,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ModifyTemplateRequest,
     ) -> vs_20181212_models.ModifyTemplateResponse:
+        """
+        @param request: ModifyTemplateRequest
+        @return: ModifyTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_template_with_options_async(request, runtime)
 
@@ -11459,6 +13042,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.OpenVsServiceResponse:
+        """
+        @param request: OpenVsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenVsServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenVsService',
@@ -11480,6 +13068,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.OpenVsServiceResponse:
+        """
+        @param request: OpenVsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenVsServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='OpenVsService',
@@ -11498,33 +13091,42 @@ class Client(OpenApiClient):
         )
 
     def open_vs_service(self) -> vs_20181212_models.OpenVsServiceResponse:
+        """
+        @return: OpenVsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_vs_service_with_options(runtime)
 
     async def open_vs_service_async(self) -> vs_20181212_models.OpenVsServiceResponse:
+        """
+        @return: OpenVsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_vs_service_with_options_async(runtime)
 
-    def operate_rendering_devices_with_options(
+    def push_file_with_options(
         self,
-        request: vs_20181212_models.OperateRenderingDevicesRequest,
+        request: vs_20181212_models.PushFileRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.OperateRenderingDevicesResponse:
+    ) -> vs_20181212_models.PushFileResponse:
+        """
+        @summary 预推文件到云渲染实例。
+        
+        @param request: PushFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.operation):
-            query['Operation'] = request.operation
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pod_id):
-            query['PodId'] = request.pod_id
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='OperateRenderingDevices',
+            action='PushFile',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11535,30 +13137,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.OperateRenderingDevicesResponse(),
+            vs_20181212_models.PushFileResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def operate_rendering_devices_with_options_async(
+    async def push_file_with_options_async(
         self,
-        request: vs_20181212_models.OperateRenderingDevicesRequest,
+        request: vs_20181212_models.PushFileRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.OperateRenderingDevicesResponse:
+    ) -> vs_20181212_models.PushFileResponse:
+        """
+        @summary 预推文件到云渲染实例。
+        
+        @param request: PushFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.operation):
-            query['Operation'] = request.operation
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pod_id):
-            query['PodId'] = request.pod_id
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='OperateRenderingDevices',
+            action='PushFile',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11569,42 +13174,57 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.OperateRenderingDevicesResponse(),
+            vs_20181212_models.PushFileResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def operate_rendering_devices(
+    def push_file(
         self,
-        request: vs_20181212_models.OperateRenderingDevicesRequest,
-    ) -> vs_20181212_models.OperateRenderingDevicesResponse:
+        request: vs_20181212_models.PushFileRequest,
+    ) -> vs_20181212_models.PushFileResponse:
+        """
+        @summary 预推文件到云渲染实例。
+        
+        @param request: PushFileRequest
+        @return: PushFileResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.operate_rendering_devices_with_options(request, runtime)
+        return self.push_file_with_options(request, runtime)
 
-    async def operate_rendering_devices_async(
+    async def push_file_async(
         self,
-        request: vs_20181212_models.OperateRenderingDevicesRequest,
-    ) -> vs_20181212_models.OperateRenderingDevicesResponse:
+        request: vs_20181212_models.PushFileRequest,
+    ) -> vs_20181212_models.PushFileResponse:
+        """
+        @summary 预推文件到云渲染实例。
+        
+        @param request: PushFileRequest
+        @return: PushFileResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.operate_rendering_devices_with_options_async(request, runtime)
+        return await self.push_file_with_options_async(request, runtime)
 
-    def prepare_upload_with_options(
+    def reboot_rendering_instance_with_options(
         self,
-        request: vs_20181212_models.PrepareUploadRequest,
+        request: vs_20181212_models.RebootRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.PrepareUploadResponse:
+    ) -> vs_20181212_models.RebootRenderingInstanceResponse:
+        """
+        @summary 重启云渲染实例
+        
+        @param request: RebootRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.client_ip):
-            query['ClientIp'] = request.client_ip
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='PrepareUpload',
+            action='RebootRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11615,28 +13235,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.PrepareUploadResponse(),
+            vs_20181212_models.RebootRenderingInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def prepare_upload_with_options_async(
+    async def reboot_rendering_instance_with_options_async(
         self,
-        request: vs_20181212_models.PrepareUploadRequest,
+        request: vs_20181212_models.RebootRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.PrepareUploadResponse:
+    ) -> vs_20181212_models.RebootRenderingInstanceResponse:
+        """
+        @summary 重启云渲染实例
+        
+        @param request: RebootRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.client_ip):
-            query['ClientIp'] = request.client_ip
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='PrepareUpload',
+            action='RebootRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11647,54 +13270,57 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.PrepareUploadResponse(),
+            vs_20181212_models.RebootRenderingInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def prepare_upload(
+    def reboot_rendering_instance(
         self,
-        request: vs_20181212_models.PrepareUploadRequest,
-    ) -> vs_20181212_models.PrepareUploadResponse:
+        request: vs_20181212_models.RebootRenderingInstanceRequest,
+    ) -> vs_20181212_models.RebootRenderingInstanceResponse:
+        """
+        @summary 重启云渲染实例
+        
+        @param request: RebootRenderingInstanceRequest
+        @return: RebootRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.prepare_upload_with_options(request, runtime)
+        return self.reboot_rendering_instance_with_options(request, runtime)
 
-    async def prepare_upload_async(
+    async def reboot_rendering_instance_async(
         self,
-        request: vs_20181212_models.PrepareUploadRequest,
-    ) -> vs_20181212_models.PrepareUploadResponse:
+        request: vs_20181212_models.RebootRenderingInstanceRequest,
+    ) -> vs_20181212_models.RebootRenderingInstanceResponse:
+        """
+        @summary 重启云渲染实例
+        
+        @param request: RebootRenderingInstanceRequest
+        @return: RebootRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.prepare_upload_with_options_async(request, runtime)
+        return await self.reboot_rendering_instance_with_options_async(request, runtime)
 
-    def put_bucket_with_options(
+    def release_rendering_instance_with_options(
         self,
-        request: vs_20181212_models.PutBucketRequest,
+        request: vs_20181212_models.ReleaseRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.PutBucketResponse:
+    ) -> vs_20181212_models.ReleaseRenderingInstanceResponse:
+        """
+        @summary 释放云渲染实例
+        
+        @param request: ReleaseRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.bucket_acl):
-            query['BucketAcl'] = request.bucket_acl
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.comment):
-            query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.data_redundancy_type):
-            query['DataRedundancyType'] = request.data_redundancy_type
-        if not UtilClient.is_unset(request.dispatcher_type):
-            query['DispatcherType'] = request.dispatcher_type
-        if not UtilClient.is_unset(request.endpoint):
-            query['Endpoint'] = request.endpoint
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.storage_class):
-            query['StorageClass'] = request.storage_class
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='PutBucket',
+            action='ReleaseRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11705,40 +13331,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.PutBucketResponse(),
+            vs_20181212_models.ReleaseRenderingInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def put_bucket_with_options_async(
+    async def release_rendering_instance_with_options_async(
         self,
-        request: vs_20181212_models.PutBucketRequest,
+        request: vs_20181212_models.ReleaseRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.PutBucketResponse:
+    ) -> vs_20181212_models.ReleaseRenderingInstanceResponse:
+        """
+        @summary 释放云渲染实例
+        
+        @param request: ReleaseRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.bucket_acl):
-            query['BucketAcl'] = request.bucket_acl
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.comment):
-            query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.data_redundancy_type):
-            query['DataRedundancyType'] = request.data_redundancy_type
-        if not UtilClient.is_unset(request.dispatcher_type):
-            query['DispatcherType'] = request.dispatcher_type
-        if not UtilClient.is_unset(request.endpoint):
-            query['Endpoint'] = request.endpoint
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.storage_class):
-            query['StorageClass'] = request.storage_class
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='PutBucket',
+            action='ReleaseRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11749,44 +13366,61 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.PutBucketResponse(),
+            vs_20181212_models.ReleaseRenderingInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def put_bucket(
+    def release_rendering_instance(
         self,
-        request: vs_20181212_models.PutBucketRequest,
-    ) -> vs_20181212_models.PutBucketResponse:
+        request: vs_20181212_models.ReleaseRenderingInstanceRequest,
+    ) -> vs_20181212_models.ReleaseRenderingInstanceResponse:
+        """
+        @summary 释放云渲染实例
+        
+        @param request: ReleaseRenderingInstanceRequest
+        @return: ReleaseRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.put_bucket_with_options(request, runtime)
+        return self.release_rendering_instance_with_options(request, runtime)
 
-    async def put_bucket_async(
+    async def release_rendering_instance_async(
         self,
-        request: vs_20181212_models.PutBucketRequest,
-    ) -> vs_20181212_models.PutBucketResponse:
+        request: vs_20181212_models.ReleaseRenderingInstanceRequest,
+    ) -> vs_20181212_models.ReleaseRenderingInstanceResponse:
+        """
+        @summary 释放云渲染实例
+        
+        @param request: ReleaseRenderingInstanceRequest
+        @return: ReleaseRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.put_bucket_with_options_async(request, runtime)
+        return await self.release_rendering_instance_with_options_async(request, runtime)
 
-    def reset_rendering_devices_with_options(
+    def renew_rendering_instance_with_options(
         self,
-        request: vs_20181212_models.ResetRenderingDevicesRequest,
+        request: vs_20181212_models.RenewRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ResetRenderingDevicesResponse:
+    ) -> vs_20181212_models.RenewRenderingInstanceResponse:
+        """
+        @summary 续费云渲染资源实例
+        
+        @param request: RenewRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.image_id):
-            query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pod_id):
-            query['PodId'] = request.pod_id
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ResetRenderingDevices',
+            action='RenewRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11797,30 +13431,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ResetRenderingDevicesResponse(),
+            vs_20181212_models.RenewRenderingInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def reset_rendering_devices_with_options_async(
+    async def renew_rendering_instance_with_options_async(
         self,
-        request: vs_20181212_models.ResetRenderingDevicesRequest,
+        request: vs_20181212_models.RenewRenderingInstanceRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.ResetRenderingDevicesResponse:
+    ) -> vs_20181212_models.RenewRenderingInstanceResponse:
+        """
+        @summary 续费云渲染资源实例
+        
+        @param request: RenewRenderingInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewRenderingInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.image_id):
-            query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.pod_id):
-            query['PodId'] = request.pod_id
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ResetRenderingDevices',
+            action='RenewRenderingInstance',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -11831,29 +13470,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.ResetRenderingDevicesResponse(),
+            vs_20181212_models.RenewRenderingInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def reset_rendering_devices(
+    def renew_rendering_instance(
         self,
-        request: vs_20181212_models.ResetRenderingDevicesRequest,
-    ) -> vs_20181212_models.ResetRenderingDevicesResponse:
+        request: vs_20181212_models.RenewRenderingInstanceRequest,
+    ) -> vs_20181212_models.RenewRenderingInstanceResponse:
+        """
+        @summary 续费云渲染资源实例
+        
+        @param request: RenewRenderingInstanceRequest
+        @return: RenewRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.reset_rendering_devices_with_options(request, runtime)
+        return self.renew_rendering_instance_with_options(request, runtime)
 
-    async def reset_rendering_devices_async(
+    async def renew_rendering_instance_async(
         self,
-        request: vs_20181212_models.ResetRenderingDevicesRequest,
-    ) -> vs_20181212_models.ResetRenderingDevicesResponse:
+        request: vs_20181212_models.RenewRenderingInstanceRequest,
+    ) -> vs_20181212_models.RenewRenderingInstanceResponse:
+        """
+        @summary 续费云渲染资源实例
+        
+        @param request: RenewRenderingInstanceRequest
+        @return: RenewRenderingInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.reset_rendering_devices_with_options_async(request, runtime)
+        return await self.renew_rendering_instance_with_options_async(request, runtime)
 
     def resume_vs_stream_with_options(
         self,
         request: vs_20181212_models.ResumeVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ResumeVsStreamResponse:
+        """
+        @param request: ResumeVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -11892,6 +13548,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.ResumeVsStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.ResumeVsStreamResponse:
+        """
+        @param request: ResumeVsStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeVsStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -11929,6 +13590,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ResumeVsStreamRequest,
     ) -> vs_20181212_models.ResumeVsStreamResponse:
+        """
+        @param request: ResumeVsStreamRequest
+        @return: ResumeVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_vs_stream_with_options(request, runtime)
 
@@ -11936,14 +13601,127 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.ResumeVsStreamRequest,
     ) -> vs_20181212_models.ResumeVsStreamResponse:
+        """
+        @param request: ResumeVsStreamRequest
+        @return: ResumeVsStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_vs_stream_with_options_async(request, runtime)
+
+    def send_rendering_instance_commands_with_options(
+        self,
+        request: vs_20181212_models.SendRenderingInstanceCommandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
+        """
+        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        
+        @param request: SendRenderingInstanceCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendRenderingInstanceCommandsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        body = {}
+        if not UtilClient.is_unset(request.commands):
+            body['Commands'] = request.commands
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendRenderingInstanceCommands',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.SendRenderingInstanceCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_rendering_instance_commands_with_options_async(
+        self,
+        request: vs_20181212_models.SendRenderingInstanceCommandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
+        """
+        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        
+        @param request: SendRenderingInstanceCommandsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendRenderingInstanceCommandsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        body = {}
+        if not UtilClient.is_unset(request.commands):
+            body['Commands'] = request.commands
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SendRenderingInstanceCommands',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.SendRenderingInstanceCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_rendering_instance_commands(
+        self,
+        request: vs_20181212_models.SendRenderingInstanceCommandsRequest,
+    ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
+        """
+        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        
+        @param request: SendRenderingInstanceCommandsRequest
+        @return: SendRenderingInstanceCommandsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_rendering_instance_commands_with_options(request, runtime)
+
+    async def send_rendering_instance_commands_async(
+        self,
+        request: vs_20181212_models.SendRenderingInstanceCommandsRequest,
+    ) -> vs_20181212_models.SendRenderingInstanceCommandsResponse:
+        """
+        @summary 下发shell命令，同步响应。不适用于耗时命令。
+        
+        @param request: SendRenderingInstanceCommandsRequest
+        @return: SendRenderingInstanceCommandsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_rendering_instance_commands_with_options_async(request, runtime)
 
     def set_preset_with_options(
         self,
         request: vs_20181212_models.SetPresetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SetPresetResponse:
+        """
+        @param request: SetPresetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPresetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -11976,6 +13754,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SetPresetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SetPresetResponse:
+        """
+        @param request: SetPresetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPresetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12007,6 +13790,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SetPresetRequest,
     ) -> vs_20181212_models.SetPresetResponse:
+        """
+        @param request: SetPresetRequest
+        @return: SetPresetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_preset_with_options(request, runtime)
 
@@ -12014,6 +13801,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SetPresetRequest,
     ) -> vs_20181212_models.SetPresetResponse:
+        """
+        @param request: SetPresetRequest
+        @return: SetPresetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_preset_with_options_async(request, runtime)
 
@@ -12022,6 +13813,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SetVsDomainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SetVsDomainCertificateResponse:
+        """
+        @param request: SetVsDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVsDomainCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_name):
@@ -12066,6 +13862,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SetVsDomainCertificateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SetVsDomainCertificateResponse:
+        """
+        @param request: SetVsDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVsDomainCertificateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_name):
@@ -12109,6 +13910,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SetVsDomainCertificateRequest,
     ) -> vs_20181212_models.SetVsDomainCertificateResponse:
+        """
+        @param request: SetVsDomainCertificateRequest
+        @return: SetVsDomainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_vs_domain_certificate_with_options(request, runtime)
 
@@ -12116,6 +13921,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SetVsDomainCertificateRequest,
     ) -> vs_20181212_models.SetVsDomainCertificateResponse:
+        """
+        @param request: SetVsDomainCertificateRequest
+        @return: SetVsDomainCertificateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_vs_domain_certificate_with_options_async(request, runtime)
 
@@ -12124,6 +13933,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SetVsStreamsNotifyUrlConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: SetVsStreamsNotifyUrlConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVsStreamsNotifyUrlConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_key):
@@ -12160,6 +13974,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SetVsStreamsNotifyUrlConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: SetVsStreamsNotifyUrlConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVsStreamsNotifyUrlConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_key):
@@ -12195,6 +14014,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SetVsStreamsNotifyUrlConfigRequest,
     ) -> vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: SetVsStreamsNotifyUrlConfigRequest
+        @return: SetVsStreamsNotifyUrlConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_vs_streams_notify_url_config_with_options(request, runtime)
 
@@ -12202,6 +14025,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SetVsStreamsNotifyUrlConfigRequest,
     ) -> vs_20181212_models.SetVsStreamsNotifyUrlConfigResponse:
+        """
+        @param request: SetVsStreamsNotifyUrlConfigRequest
+        @return: SetVsStreamsNotifyUrlConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_vs_streams_notify_url_config_with_options_async(request, runtime)
 
@@ -12210,6 +14037,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartDeviceResponse:
+        """
+        @param request: StartDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12240,6 +14072,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartDeviceResponse:
+        """
+        @param request: StartDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12269,6 +14106,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartDeviceRequest,
     ) -> vs_20181212_models.StartDeviceResponse:
+        """
+        @param request: StartDeviceRequest
+        @return: StartDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_device_with_options(request, runtime)
 
@@ -12276,6 +14117,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartDeviceRequest,
     ) -> vs_20181212_models.StartDeviceResponse:
+        """
+        @param request: StartDeviceRequest
+        @return: StartDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_device_with_options_async(request, runtime)
 
@@ -12284,6 +14129,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartParentPlatformResponse:
+        """
+        @param request: StartParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12314,6 +14164,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartParentPlatformRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartParentPlatformResponse:
+        """
+        @param request: StartParentPlatformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartParentPlatformResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12343,6 +14198,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartParentPlatformRequest,
     ) -> vs_20181212_models.StartParentPlatformResponse:
+        """
+        @param request: StartParentPlatformRequest
+        @return: StartParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_parent_platform_with_options(request, runtime)
 
@@ -12350,14 +14209,119 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartParentPlatformRequest,
     ) -> vs_20181212_models.StartParentPlatformResponse:
+        """
+        @param request: StartParentPlatformRequest
+        @return: StartParentPlatformResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_parent_platform_with_options_async(request, runtime)
+
+    def start_publish_stream_with_options(
+        self,
+        request: vs_20181212_models.StartPublishStreamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.StartPublishStreamResponse:
+        """
+        @param request: StartPublishStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPublishStreamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish_url):
+            query['PublishUrl'] = request.publish_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartPublishStream',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.StartPublishStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_publish_stream_with_options_async(
+        self,
+        request: vs_20181212_models.StartPublishStreamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.StartPublishStreamResponse:
+        """
+        @param request: StartPublishStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPublishStreamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.publish_url):
+            query['PublishUrl'] = request.publish_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartPublishStream',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.StartPublishStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_publish_stream(
+        self,
+        request: vs_20181212_models.StartPublishStreamRequest,
+    ) -> vs_20181212_models.StartPublishStreamResponse:
+        """
+        @param request: StartPublishStreamRequest
+        @return: StartPublishStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_publish_stream_with_options(request, runtime)
+
+    async def start_publish_stream_async(
+        self,
+        request: vs_20181212_models.StartPublishStreamRequest,
+    ) -> vs_20181212_models.StartPublishStreamResponse:
+        """
+        @param request: StartPublishStreamRequest
+        @return: StartPublishStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_publish_stream_with_options_async(request, runtime)
 
     def start_record_stream_with_options(
         self,
         request: vs_20181212_models.StartRecordStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartRecordStreamResponse:
+        """
+        @param request: StartRecordStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRecordStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -12394,6 +14358,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartRecordStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartRecordStreamResponse:
+        """
+        @param request: StartRecordStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRecordStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -12429,6 +14398,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartRecordStreamRequest,
     ) -> vs_20181212_models.StartRecordStreamResponse:
+        """
+        @param request: StartRecordStreamRequest
+        @return: StartRecordStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_record_stream_with_options(request, runtime)
 
@@ -12436,6 +14409,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartRecordStreamRequest,
     ) -> vs_20181212_models.StartRecordStreamResponse:
+        """
+        @param request: StartRecordStreamRequest
+        @return: StartRecordStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_record_stream_with_options_async(request, runtime)
 
@@ -12444,6 +14421,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartStreamResponse:
+        """
+        @param request: StartStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12478,6 +14460,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartStreamResponse:
+        """
+        @param request: StartStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12511,6 +14498,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartStreamRequest,
     ) -> vs_20181212_models.StartStreamResponse:
+        """
+        @param request: StartStreamRequest
+        @return: StartStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_stream_with_options(request, runtime)
 
@@ -12518,6 +14509,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartStreamRequest,
     ) -> vs_20181212_models.StartStreamResponse:
+        """
+        @param request: StartStreamRequest
+        @return: StartStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_stream_with_options_async(request, runtime)
 
@@ -12526,6 +14521,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartTransferStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartTransferStreamResponse:
+        """
+        @param request: StartTransferStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTransferStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12560,6 +14560,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StartTransferStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StartTransferStreamResponse:
+        """
+        @param request: StartTransferStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartTransferStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12593,6 +14598,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartTransferStreamRequest,
     ) -> vs_20181212_models.StartTransferStreamResponse:
+        """
+        @param request: StartTransferStreamRequest
+        @return: StartTransferStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_transfer_stream_with_options(request, runtime)
 
@@ -12600,6 +14609,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StartTransferStreamRequest,
     ) -> vs_20181212_models.StartTransferStreamResponse:
+        """
+        @param request: StartTransferStreamRequest
+        @return: StartTransferStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_transfer_stream_with_options_async(request, runtime)
 
@@ -12608,6 +14621,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopAdjustRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopAdjustResponse:
+        """
+        @param request: StopAdjustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAdjustResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.focus):
@@ -12642,6 +14660,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopAdjustRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopAdjustResponse:
+        """
+        @param request: StopAdjustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopAdjustResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.focus):
@@ -12675,6 +14698,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopAdjustRequest,
     ) -> vs_20181212_models.StopAdjustResponse:
+        """
+        @param request: StopAdjustRequest
+        @return: StopAdjustResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_adjust_with_options(request, runtime)
 
@@ -12682,6 +14709,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopAdjustRequest,
     ) -> vs_20181212_models.StopAdjustResponse:
+        """
+        @param request: StopAdjustRequest
+        @return: StopAdjustResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_adjust_with_options_async(request, runtime)
 
@@ -12690,6 +14721,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopDeviceResponse:
+        """
+        @param request: StopDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12722,6 +14758,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopDeviceResponse:
+        """
+        @param request: StopDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12753,6 +14794,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopDeviceRequest,
     ) -> vs_20181212_models.StopDeviceResponse:
+        """
+        @param request: StopDeviceRequest
+        @return: StopDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_device_with_options(request, runtime)
 
@@ -12760,6 +14805,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopDeviceRequest,
     ) -> vs_20181212_models.StopDeviceResponse:
+        """
+        @param request: StopDeviceRequest
+        @return: StopDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_device_with_options_async(request, runtime)
 
@@ -12768,6 +14817,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopMoveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopMoveResponse:
+        """
+        @param request: StopMoveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMoveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12804,6 +14858,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopMoveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopMoveResponse:
+        """
+        @param request: StopMoveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMoveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -12839,6 +14898,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopMoveRequest,
     ) -> vs_20181212_models.StopMoveResponse:
+        """
+        @param request: StopMoveRequest
+        @return: StopMoveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_move_with_options(request, runtime)
 
@@ -12846,25 +14909,34 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopMoveRequest,
     ) -> vs_20181212_models.StopMoveResponse:
+        """
+        @param request: StopMoveRequest
+        @return: StopMoveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_move_with_options_async(request, runtime)
 
-    def stop_parent_platform_with_options(
+    def stop_publish_stream_with_options(
         self,
-        request: vs_20181212_models.StopParentPlatformRequest,
+        request: vs_20181212_models.StopPublishStreamRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.StopParentPlatformResponse:
+    ) -> vs_20181212_models.StopPublishStreamResponse:
+        """
+        @param request: StopPublishStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPublishStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='StopParentPlatform',
+            action='StopPublishStream',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -12875,26 +14947,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.StopParentPlatformResponse(),
+            vs_20181212_models.StopPublishStreamResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def stop_parent_platform_with_options_async(
+    async def stop_publish_stream_with_options_async(
         self,
-        request: vs_20181212_models.StopParentPlatformRequest,
+        request: vs_20181212_models.StopPublishStreamRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.StopParentPlatformResponse:
+    ) -> vs_20181212_models.StopPublishStreamResponse:
+        """
+        @param request: StopPublishStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPublishStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='StopParentPlatform',
+            action='StopPublishStream',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -12905,29 +14982,42 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.StopParentPlatformResponse(),
+            vs_20181212_models.StopPublishStreamResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def stop_parent_platform(
+    def stop_publish_stream(
         self,
-        request: vs_20181212_models.StopParentPlatformRequest,
-    ) -> vs_20181212_models.StopParentPlatformResponse:
+        request: vs_20181212_models.StopPublishStreamRequest,
+    ) -> vs_20181212_models.StopPublishStreamResponse:
+        """
+        @param request: StopPublishStreamRequest
+        @return: StopPublishStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.stop_parent_platform_with_options(request, runtime)
+        return self.stop_publish_stream_with_options(request, runtime)
 
-    async def stop_parent_platform_async(
+    async def stop_publish_stream_async(
         self,
-        request: vs_20181212_models.StopParentPlatformRequest,
-    ) -> vs_20181212_models.StopParentPlatformResponse:
+        request: vs_20181212_models.StopPublishStreamRequest,
+    ) -> vs_20181212_models.StopPublishStreamResponse:
+        """
+        @param request: StopPublishStreamRequest
+        @return: StopPublishStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.stop_parent_platform_with_options_async(request, runtime)
+        return await self.stop_publish_stream_with_options_async(request, runtime)
 
     def stop_record_stream_with_options(
         self,
         request: vs_20181212_models.StopRecordStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopRecordStreamResponse:
+        """
+        @param request: StopRecordStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRecordStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -12964,6 +15054,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopRecordStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopRecordStreamResponse:
+        """
+        @param request: StopRecordStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRecordStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app):
@@ -12999,6 +15094,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopRecordStreamRequest,
     ) -> vs_20181212_models.StopRecordStreamResponse:
+        """
+        @param request: StopRecordStreamRequest
+        @return: StopRecordStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_record_stream_with_options(request, runtime)
 
@@ -13006,6 +15105,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopRecordStreamRequest,
     ) -> vs_20181212_models.StopRecordStreamResponse:
+        """
+        @param request: StopRecordStreamRequest
+        @return: StopRecordStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_record_stream_with_options_async(request, runtime)
 
@@ -13014,6 +15117,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopStreamResponse:
+        """
+        @param request: StopStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13048,6 +15156,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopStreamResponse:
+        """
+        @param request: StopStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13081,6 +15194,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopStreamRequest,
     ) -> vs_20181212_models.StopStreamResponse:
+        """
+        @param request: StopStreamRequest
+        @return: StopStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_stream_with_options(request, runtime)
 
@@ -13088,6 +15205,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopStreamRequest,
     ) -> vs_20181212_models.StopStreamResponse:
+        """
+        @param request: StopStreamRequest
+        @return: StopStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_stream_with_options_async(request, runtime)
 
@@ -13096,6 +15217,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopTransferStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopTransferStreamResponse:
+        """
+        @param request: StopTransferStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTransferStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13128,6 +15254,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.StopTransferStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.StopTransferStreamResponse:
+        """
+        @param request: StopTransferStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTransferStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13159,6 +15290,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopTransferStreamRequest,
     ) -> vs_20181212_models.StopTransferStreamResponse:
+        """
+        @param request: StopTransferStreamRequest
+        @return: StopTransferStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_transfer_stream_with_options(request, runtime)
 
@@ -13166,6 +15301,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.StopTransferStreamRequest,
     ) -> vs_20181212_models.StopTransferStreamResponse:
+        """
+        @param request: StopTransferStreamRequest
+        @return: StopTransferStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_transfer_stream_with_options_async(request, runtime)
 
@@ -13174,6 +15313,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SyncCatalogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SyncCatalogsResponse:
+        """
+        @param request: SyncCatalogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncCatalogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13204,6 +15348,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.SyncCatalogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.SyncCatalogsResponse:
+        """
+        @param request: SyncCatalogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncCatalogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13233,6 +15382,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SyncCatalogsRequest,
     ) -> vs_20181212_models.SyncCatalogsResponse:
+        """
+        @param request: SyncCatalogsRequest
+        @return: SyncCatalogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sync_catalogs_with_options(request, runtime)
 
@@ -13240,6 +15393,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.SyncCatalogsRequest,
     ) -> vs_20181212_models.SyncCatalogsResponse:
+        """
+        @param request: SyncCatalogsRequest
+        @return: SyncCatalogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sync_catalogs_with_options_async(request, runtime)
 
@@ -13248,6 +15405,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindDirectoryResponse:
+        """
+        @param request: UnbindDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13280,6 +15442,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindDirectoryResponse:
+        """
+        @param request: UnbindDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13311,6 +15478,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindDirectoryRequest,
     ) -> vs_20181212_models.UnbindDirectoryResponse:
+        """
+        @param request: UnbindDirectoryRequest
+        @return: UnbindDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_directory_with_options(request, runtime)
 
@@ -13318,6 +15489,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindDirectoryRequest,
     ) -> vs_20181212_models.UnbindDirectoryResponse:
+        """
+        @param request: UnbindDirectoryRequest
+        @return: UnbindDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_directory_with_options_async(request, runtime)
 
@@ -13326,6 +15501,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindParentPlatformDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindParentPlatformDeviceResponse:
+        """
+        @param request: UnbindParentPlatformDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindParentPlatformDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13358,6 +15538,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindParentPlatformDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindParentPlatformDeviceResponse:
+        """
+        @param request: UnbindParentPlatformDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindParentPlatformDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13389,6 +15574,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindParentPlatformDeviceRequest,
     ) -> vs_20181212_models.UnbindParentPlatformDeviceResponse:
+        """
+        @param request: UnbindParentPlatformDeviceRequest
+        @return: UnbindParentPlatformDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_parent_platform_device_with_options(request, runtime)
 
@@ -13396,6 +15585,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindParentPlatformDeviceRequest,
     ) -> vs_20181212_models.UnbindParentPlatformDeviceResponse:
+        """
+        @param request: UnbindParentPlatformDeviceRequest
+        @return: UnbindParentPlatformDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_parent_platform_device_with_options_async(request, runtime)
 
@@ -13404,6 +15597,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindPurchasedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindPurchasedDeviceResponse:
+        """
+        @param request: UnbindPurchasedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindPurchasedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13434,6 +15632,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindPurchasedDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindPurchasedDeviceResponse:
+        """
+        @param request: UnbindPurchasedDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindPurchasedDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.device_id):
@@ -13463,6 +15666,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindPurchasedDeviceRequest,
     ) -> vs_20181212_models.UnbindPurchasedDeviceResponse:
+        """
+        @param request: UnbindPurchasedDeviceRequest
+        @return: UnbindPurchasedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_purchased_device_with_options(request, runtime)
 
@@ -13470,6 +15677,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindPurchasedDeviceRequest,
     ) -> vs_20181212_models.UnbindPurchasedDeviceResponse:
+        """
+        @param request: UnbindPurchasedDeviceRequest
+        @return: UnbindPurchasedDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_purchased_device_with_options_async(request, runtime)
 
@@ -13478,6 +15689,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindTemplateResponse:
+        """
+        @param request: UnbindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13514,6 +15730,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnbindTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnbindTemplateResponse:
+        """
+        @param request: UnbindTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -13549,6 +15770,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindTemplateRequest,
     ) -> vs_20181212_models.UnbindTemplateResponse:
+        """
+        @param request: UnbindTemplateRequest
+        @return: UnbindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_template_with_options(request, runtime)
 
@@ -13556,14 +15781,123 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnbindTemplateRequest,
     ) -> vs_20181212_models.UnbindTemplateResponse:
+        """
+        @param request: UnbindTemplateRequest
+        @return: UnbindTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_template_with_options_async(request, runtime)
+
+    def uninstall_cloud_app_with_options(
+        self,
+        request: vs_20181212_models.UninstallCloudAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UninstallCloudAppResponse:
+        """
+        @summary 卸载云应用
+        
+        @param request: UninstallCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallCloudAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UninstallCloudApp',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UninstallCloudAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_cloud_app_with_options_async(
+        self,
+        request: vs_20181212_models.UninstallCloudAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UninstallCloudAppResponse:
+        """
+        @summary 卸载云应用
+        
+        @param request: UninstallCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallCloudAppResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UninstallCloudApp',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UninstallCloudAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_cloud_app(
+        self,
+        request: vs_20181212_models.UninstallCloudAppRequest,
+    ) -> vs_20181212_models.UninstallCloudAppResponse:
+        """
+        @summary 卸载云应用
+        
+        @param request: UninstallCloudAppRequest
+        @return: UninstallCloudAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.uninstall_cloud_app_with_options(request, runtime)
+
+    async def uninstall_cloud_app_async(
+        self,
+        request: vs_20181212_models.UninstallCloudAppRequest,
+    ) -> vs_20181212_models.UninstallCloudAppResponse:
+        """
+        @summary 卸载云应用
+        
+        @param request: UninstallCloudAppRequest
+        @return: UninstallCloudAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.uninstall_cloud_app_with_options_async(request, runtime)
 
     def unlock_device_with_options(
         self,
         request: vs_20181212_models.UnlockDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnlockDeviceResponse:
+        """
+        @param request: UnlockDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13594,6 +15928,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UnlockDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UnlockDeviceResponse:
+        """
+        @param request: UnlockDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -13623,6 +15962,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnlockDeviceRequest,
     ) -> vs_20181212_models.UnlockDeviceResponse:
+        """
+        @param request: UnlockDeviceRequest
+        @return: UnlockDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unlock_device_with_options(request, runtime)
 
@@ -13630,39 +15973,36 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UnlockDeviceRequest,
     ) -> vs_20181212_models.UnlockDeviceResponse:
+        """
+        @param request: UnlockDeviceRequest
+        @return: UnlockDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unlock_device_with_options_async(request, runtime)
 
-    def update_aiconfig_with_options(
+    def update_cloud_app_info_with_options(
         self,
-        request: vs_20181212_models.UpdateAIConfigRequest,
+        request: vs_20181212_models.UpdateCloudAppInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateAIConfigResponse:
+    ) -> vs_20181212_models.UpdateCloudAppInfoResponse:
+        """
+        @summary 更新云应用信息
+        
+        @param request: UpdateCloudAppInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudAppInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.capture_interval):
-            query['CaptureInterval'] = request.capture_interval
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.configs):
-            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.features):
-            query['Features'] = request.features
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpdateAIConfig',
+            action='UpdateCloudAppInfo',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -13673,40 +16013,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpdateAIConfigResponse(),
+            vs_20181212_models.UpdateCloudAppInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_aiconfig_with_options_async(
+    async def update_cloud_app_info_with_options_async(
         self,
-        request: vs_20181212_models.UpdateAIConfigRequest,
+        request: vs_20181212_models.UpdateCloudAppInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateAIConfigResponse:
+    ) -> vs_20181212_models.UpdateCloudAppInfoResponse:
+        """
+        @summary 更新云应用信息
+        
+        @param request: UpdateCloudAppInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudAppInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.capture_interval):
-            query['CaptureInterval'] = request.capture_interval
-        if not UtilClient.is_unset(request.config_id):
-            query['ConfigId'] = request.config_id
-        if not UtilClient.is_unset(request.configs):
-            query['Configs'] = request.configs
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.features):
-            query['Features'] = request.features
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpdateAIConfig',
+            action='UpdateCloudAppInfo',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -13717,107 +16050,46 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpdateAIConfigResponse(),
+            vs_20181212_models.UpdateCloudAppInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_aiconfig(
+    def update_cloud_app_info(
         self,
-        request: vs_20181212_models.UpdateAIConfigRequest,
-    ) -> vs_20181212_models.UpdateAIConfigResponse:
+        request: vs_20181212_models.UpdateCloudAppInfoRequest,
+    ) -> vs_20181212_models.UpdateCloudAppInfoResponse:
+        """
+        @summary 更新云应用信息
+        
+        @param request: UpdateCloudAppInfoRequest
+        @return: UpdateCloudAppInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.update_aiconfig_with_options(request, runtime)
+        return self.update_cloud_app_info_with_options(request, runtime)
 
-    async def update_aiconfig_async(
+    async def update_cloud_app_info_async(
         self,
-        request: vs_20181212_models.UpdateAIConfigRequest,
-    ) -> vs_20181212_models.UpdateAIConfigResponse:
+        request: vs_20181212_models.UpdateCloudAppInfoRequest,
+    ) -> vs_20181212_models.UpdateCloudAppInfoResponse:
+        """
+        @summary 更新云应用信息
+        
+        @param request: UpdateCloudAppInfoRequest
+        @return: UpdateCloudAppInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.update_aiconfig_with_options_async(request, runtime)
-
-    def update_bucket_info_with_options(
-        self,
-        request: vs_20181212_models.UpdateBucketInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateBucketInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.comment):
-            query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateBucketInfo',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.UpdateBucketInfoResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_bucket_info_with_options_async(
-        self,
-        request: vs_20181212_models.UpdateBucketInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateBucketInfoResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.bucket_name):
-            query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.comment):
-            query['Comment'] = request.comment
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='UpdateBucketInfo',
-            version='2018-12-12',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vs_20181212_models.UpdateBucketInfoResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_bucket_info(
-        self,
-        request: vs_20181212_models.UpdateBucketInfoRequest,
-    ) -> vs_20181212_models.UpdateBucketInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.update_bucket_info_with_options(request, runtime)
-
-    async def update_bucket_info_async(
-        self,
-        request: vs_20181212_models.UpdateBucketInfoRequest,
-    ) -> vs_20181212_models.UpdateBucketInfoResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.update_bucket_info_with_options_async(request, runtime)
+        return await self.update_cloud_app_info_with_options_async(request, runtime)
 
     def update_cluster_with_options(
         self,
         request: vs_20181212_models.UpdateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UpdateClusterResponse:
+        """
+        @param request: UpdateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -13860,6 +16132,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UpdateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UpdateClusterResponse:
+        """
+        @param request: UpdateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -13901,6 +16178,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UpdateClusterRequest,
     ) -> vs_20181212_models.UpdateClusterResponse:
+        """
+        @param request: UpdateClusterRequest
+        @return: UpdateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_cluster_with_options(request, runtime)
 
@@ -13908,39 +16189,36 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UpdateClusterRequest,
     ) -> vs_20181212_models.UpdateClusterResponse:
+        """
+        @param request: UpdateClusterRequest
+        @return: UpdateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_cluster_with_options_async(request, runtime)
 
-    def update_rendering_device_spec_with_options(
+    def update_file_info_with_options(
         self,
-        request: vs_20181212_models.UpdateRenderingDeviceSpecRequest,
+        request: vs_20181212_models.UpdateFileInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateRenderingDeviceSpecResponse:
+    ) -> vs_20181212_models.UpdateFileInfoResponse:
+        """
+        @summary 更新文件信息。
+        
+        @param request: UpdateFileInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.auto_renew):
-            query['AutoRenew'] = request.auto_renew
-        if not UtilClient.is_unset(request.auto_renew_period):
-            query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.effective_time):
-            query['EffectiveTime'] = request.effective_time
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.specification):
-            query['Specification'] = request.specification
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpdateRenderingDeviceSpec',
+            action='UpdateFileInfo',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -13951,40 +16229,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpdateRenderingDeviceSpecResponse(),
+            vs_20181212_models.UpdateFileInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_rendering_device_spec_with_options_async(
+    async def update_file_info_with_options_async(
         self,
-        request: vs_20181212_models.UpdateRenderingDeviceSpecRequest,
+        request: vs_20181212_models.UpdateFileInfoRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpdateRenderingDeviceSpecResponse:
+    ) -> vs_20181212_models.UpdateFileInfoResponse:
+        """
+        @summary 更新文件信息。
+        
+        @param request: UpdateFileInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.auto_renew):
-            query['AutoRenew'] = request.auto_renew
-        if not UtilClient.is_unset(request.auto_renew_period):
-            query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.effective_time):
-            query['EffectiveTime'] = request.effective_time
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.period):
-            query['Period'] = request.period
-        if not UtilClient.is_unset(request.period_unit):
-            query['PeriodUnit'] = request.period_unit
-        if not UtilClient.is_unset(request.specification):
-            query['Specification'] = request.specification
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpdateRenderingDeviceSpec',
+            action='UpdateFileInfo',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -13995,29 +16266,158 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpdateRenderingDeviceSpecResponse(),
+            vs_20181212_models.UpdateFileInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_rendering_device_spec(
+    def update_file_info(
         self,
-        request: vs_20181212_models.UpdateRenderingDeviceSpecRequest,
-    ) -> vs_20181212_models.UpdateRenderingDeviceSpecResponse:
+        request: vs_20181212_models.UpdateFileInfoRequest,
+    ) -> vs_20181212_models.UpdateFileInfoResponse:
+        """
+        @summary 更新文件信息。
+        
+        @param request: UpdateFileInfoRequest
+        @return: UpdateFileInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.update_rendering_device_spec_with_options(request, runtime)
+        return self.update_file_info_with_options(request, runtime)
 
-    async def update_rendering_device_spec_async(
+    async def update_file_info_async(
         self,
-        request: vs_20181212_models.UpdateRenderingDeviceSpecRequest,
-    ) -> vs_20181212_models.UpdateRenderingDeviceSpecResponse:
+        request: vs_20181212_models.UpdateFileInfoRequest,
+    ) -> vs_20181212_models.UpdateFileInfoResponse:
+        """
+        @summary 更新文件信息。
+        
+        @param request: UpdateFileInfoRequest
+        @return: UpdateFileInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.update_rendering_device_spec_with_options_async(request, runtime)
+        return await self.update_file_info_with_options_async(request, runtime)
+
+    def update_rendering_instance_configuration_with_options(
+        self,
+        tmp_req: vs_20181212_models.UpdateRenderingInstanceConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UpdateRenderingInstanceConfigurationResponse:
+        """
+        @summary 更新云渲染实例配置参数
+        
+        @param tmp_req: UpdateRenderingInstanceConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRenderingInstanceConfigurationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UpdateRenderingInstanceConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        body = {}
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRenderingInstanceConfiguration',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UpdateRenderingInstanceConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rendering_instance_configuration_with_options_async(
+        self,
+        tmp_req: vs_20181212_models.UpdateRenderingInstanceConfigurationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UpdateRenderingInstanceConfigurationResponse:
+        """
+        @summary 更新云渲染实例配置参数
+        
+        @param tmp_req: UpdateRenderingInstanceConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRenderingInstanceConfigurationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UpdateRenderingInstanceConfigurationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.configuration):
+            request.configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.configuration, 'Configuration', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.rendering_instance_id):
+            query['RenderingInstanceId'] = request.rendering_instance_id
+        body = {}
+        if not UtilClient.is_unset(request.configuration_shrink):
+            body['Configuration'] = request.configuration_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateRenderingInstanceConfiguration',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UpdateRenderingInstanceConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rendering_instance_configuration(
+        self,
+        request: vs_20181212_models.UpdateRenderingInstanceConfigurationRequest,
+    ) -> vs_20181212_models.UpdateRenderingInstanceConfigurationResponse:
+        """
+        @summary 更新云渲染实例配置参数
+        
+        @param request: UpdateRenderingInstanceConfigurationRequest
+        @return: UpdateRenderingInstanceConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_rendering_instance_configuration_with_options(request, runtime)
+
+    async def update_rendering_instance_configuration_async(
+        self,
+        request: vs_20181212_models.UpdateRenderingInstanceConfigurationRequest,
+    ) -> vs_20181212_models.UpdateRenderingInstanceConfigurationResponse:
+        """
+        @summary 更新云渲染实例配置参数
+        
+        @param request: UpdateRenderingInstanceConfigurationRequest
+        @return: UpdateRenderingInstanceConfigurationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rendering_instance_configuration_with_options_async(request, runtime)
 
     def update_vs_pull_stream_info_config_with_options(
         self,
         request: vs_20181212_models.UpdateVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UpdateVsPullStreamInfoConfigResponse:
+        """
+        @param request: UpdateVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.always):
@@ -14060,6 +16460,11 @@ class Client(OpenApiClient):
         request: vs_20181212_models.UpdateVsPullStreamInfoConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UpdateVsPullStreamInfoConfigResponse:
+        """
+        @param request: UpdateVsPullStreamInfoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVsPullStreamInfoConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.always):
@@ -14101,6 +16506,10 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UpdateVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.UpdateVsPullStreamInfoConfigResponse:
+        """
+        @param request: UpdateVsPullStreamInfoConfigRequest
+        @return: UpdateVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_vs_pull_stream_info_config_with_options(request, runtime)
 
@@ -14108,31 +16517,42 @@ class Client(OpenApiClient):
         self,
         request: vs_20181212_models.UpdateVsPullStreamInfoConfigRequest,
     ) -> vs_20181212_models.UpdateVsPullStreamInfoConfigResponse:
+        """
+        @param request: UpdateVsPullStreamInfoConfigRequest
+        @return: UpdateVsPullStreamInfoConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_vs_pull_stream_info_config_with_options_async(request, runtime)
 
-    def upgrade_rendering_devices_host_oswith_options(
+    def upload_cloud_app_with_options(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesHostOSRequest,
+        request: vs_20181212_models.UploadCloudAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesHostOSResponse:
+    ) -> vs_20181212_models.UploadCloudAppResponse:
+        """
+        @summary 应用上架
+        
+        @param request: UploadCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadCloudAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.rom_name):
-            query['RomName'] = request.rom_name
-        if not UtilClient.is_unset(request.rom_path):
-            query['RomPath'] = request.rom_path
-        if not UtilClient.is_unset(request.rom_version):
-            query['RomVersion'] = request.rom_version
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_version):
+            query['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.download_url):
+            query['DownloadUrl'] = request.download_url
+        if not UtilClient.is_unset(request.md_5):
+            query['Md5'] = request.md_5
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpgradeRenderingDevicesHostOS',
+            action='UploadCloudApp',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -14143,32 +16563,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpgradeRenderingDevicesHostOSResponse(),
+            vs_20181212_models.UploadCloudAppResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def upgrade_rendering_devices_host_oswith_options_async(
+    async def upload_cloud_app_with_options_async(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesHostOSRequest,
+        request: vs_20181212_models.UploadCloudAppRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesHostOSResponse:
+    ) -> vs_20181212_models.UploadCloudAppResponse:
+        """
+        @summary 应用上架
+        
+        @param request: UploadCloudAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadCloudAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.rom_name):
-            query['RomName'] = request.rom_name
-        if not UtilClient.is_unset(request.rom_path):
-            query['RomPath'] = request.rom_path
-        if not UtilClient.is_unset(request.rom_version):
-            query['RomVersion'] = request.rom_version
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_version):
+            query['AppVersion'] = request.app_version
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.download_url):
+            query['DownloadUrl'] = request.download_url
+        if not UtilClient.is_unset(request.md_5):
+            query['Md5'] = request.md_5
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpgradeRenderingDevicesHostOS',
+            action='UploadCloudApp',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -14179,42 +16606,65 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpgradeRenderingDevicesHostOSResponse(),
+            vs_20181212_models.UploadCloudAppResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def upgrade_rendering_devices_host_os(
+    def upload_cloud_app(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesHostOSRequest,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesHostOSResponse:
+        request: vs_20181212_models.UploadCloudAppRequest,
+    ) -> vs_20181212_models.UploadCloudAppResponse:
+        """
+        @summary 应用上架
+        
+        @param request: UploadCloudAppRequest
+        @return: UploadCloudAppResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.upgrade_rendering_devices_host_oswith_options(request, runtime)
+        return self.upload_cloud_app_with_options(request, runtime)
 
-    async def upgrade_rendering_devices_host_os_async(
+    async def upload_cloud_app_async(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesHostOSRequest,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesHostOSResponse:
+        request: vs_20181212_models.UploadCloudAppRequest,
+    ) -> vs_20181212_models.UploadCloudAppResponse:
+        """
+        @summary 应用上架
+        
+        @param request: UploadCloudAppRequest
+        @return: UploadCloudAppResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.upgrade_rendering_devices_host_oswith_options_async(request, runtime)
+        return await self.upload_cloud_app_with_options_async(request, runtime)
 
-    def upgrade_rendering_devices_image_with_options(
+    def upload_file_with_options(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesImageRequest,
+        request: vs_20181212_models.UploadFileRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesImageResponse:
+    ) -> vs_20181212_models.UploadFileResponse:
+        """
+        @summary 文件上传
+        
+        @param request: UploadFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.image_id):
-            query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.md_5):
+            query['Md5'] = request.md_5
+        if not UtilClient.is_unset(request.origin_url):
+            query['OriginUrl'] = request.origin_url
+        if not UtilClient.is_unset(request.target_path):
+            query['TargetPath'] = request.target_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpgradeRenderingDevicesImage',
+            action='UploadFile',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -14225,28 +16675,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpgradeRenderingDevicesImageResponse(),
+            vs_20181212_models.UploadFileResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def upgrade_rendering_devices_image_with_options_async(
+    async def upload_file_with_options_async(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesImageRequest,
+        request: vs_20181212_models.UploadFileRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesImageResponse:
+    ) -> vs_20181212_models.UploadFileResponse:
+        """
+        @summary 文件上传
+        
+        @param request: UploadFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.image_id):
-            query['ImageId'] = request.image_id
-        if not UtilClient.is_unset(request.instance_ids):
-            query['InstanceIds'] = request.instance_ids
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.md_5):
+            query['Md5'] = request.md_5
+        if not UtilClient.is_unset(request.origin_url):
+            query['OriginUrl'] = request.origin_url
+        if not UtilClient.is_unset(request.target_path):
+            query['TargetPath'] = request.target_path
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UpgradeRenderingDevicesImage',
+            action='UploadFile',
             version='2018-12-12',
             protocol='HTTPS',
             pathname='/',
@@ -14257,20 +16718,236 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            vs_20181212_models.UpgradeRenderingDevicesImageResponse(),
+            vs_20181212_models.UploadFileResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def upgrade_rendering_devices_image(
+    def upload_file(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesImageRequest,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesImageResponse:
+        request: vs_20181212_models.UploadFileRequest,
+    ) -> vs_20181212_models.UploadFileResponse:
+        """
+        @summary 文件上传
+        
+        @param request: UploadFileRequest
+        @return: UploadFileResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.upgrade_rendering_devices_image_with_options(request, runtime)
+        return self.upload_file_with_options(request, runtime)
 
-    async def upgrade_rendering_devices_image_async(
+    async def upload_file_async(
         self,
-        request: vs_20181212_models.UpgradeRenderingDevicesImageRequest,
-    ) -> vs_20181212_models.UpgradeRenderingDevicesImageResponse:
+        request: vs_20181212_models.UploadFileRequest,
+    ) -> vs_20181212_models.UploadFileResponse:
+        """
+        @summary 文件上传
+        
+        @param request: UploadFileRequest
+        @return: UploadFileResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.upgrade_rendering_devices_image_with_options_async(request, runtime)
+        return await self.upload_file_with_options_async(request, runtime)
+
+    def upload_public_key_with_options(
+        self,
+        request: vs_20181212_models.UploadPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UploadPublicKeyResponse:
+        """
+        @summary 上传公钥，用于安全登陆鉴权。
+        
+        @param request: UploadPublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadPublicKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadPublicKey',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UploadPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_public_key_with_options_async(
+        self,
+        request: vs_20181212_models.UploadPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.UploadPublicKeyResponse:
+        """
+        @summary 上传公钥，用于安全登陆鉴权。
+        
+        @param request: UploadPublicKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadPublicKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.key_group):
+            query['KeyGroup'] = request.key_group
+        if not UtilClient.is_unset(request.key_name):
+            query['KeyName'] = request.key_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UploadPublicKey',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.UploadPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_public_key(
+        self,
+        request: vs_20181212_models.UploadPublicKeyRequest,
+    ) -> vs_20181212_models.UploadPublicKeyResponse:
+        """
+        @summary 上传公钥，用于安全登陆鉴权。
+        
+        @param request: UploadPublicKeyRequest
+        @return: UploadPublicKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upload_public_key_with_options(request, runtime)
+
+    async def upload_public_key_async(
+        self,
+        request: vs_20181212_models.UploadPublicKeyRequest,
+    ) -> vs_20181212_models.UploadPublicKeyResponse:
+        """
+        @summary 上传公钥，用于安全登陆鉴权。
+        
+        @param request: UploadPublicKeyRequest
+        @return: UploadPublicKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upload_public_key_with_options_async(request, runtime)
+
+    def verify_vs_domain_owner_with_options(
+        self,
+        request: vs_20181212_models.VerifyVsDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.VerifyVsDomainOwnerResponse:
+        """
+        @param request: VerifyVsDomainOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyVsDomainOwnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyVsDomainOwner',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.VerifyVsDomainOwnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_vs_domain_owner_with_options_async(
+        self,
+        request: vs_20181212_models.VerifyVsDomainOwnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vs_20181212_models.VerifyVsDomainOwnerResponse:
+        """
+        @param request: VerifyVsDomainOwnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyVsDomainOwnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyVsDomainOwner',
+            version='2018-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vs_20181212_models.VerifyVsDomainOwnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_vs_domain_owner(
+        self,
+        request: vs_20181212_models.VerifyVsDomainOwnerRequest,
+    ) -> vs_20181212_models.VerifyVsDomainOwnerResponse:
+        """
+        @param request: VerifyVsDomainOwnerRequest
+        @return: VerifyVsDomainOwnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.verify_vs_domain_owner_with_options(request, runtime)
+
+    async def verify_vs_domain_owner_async(
+        self,
+        request: vs_20181212_models.VerifyVsDomainOwnerRequest,
+    ) -> vs_20181212_models.VerifyVsDomainOwnerResponse:
+        """
+        @param request: VerifyVsDomainOwnerRequest
+        @return: VerifyVsDomainOwnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_vs_domain_owner_with_options_async(request, runtime)
