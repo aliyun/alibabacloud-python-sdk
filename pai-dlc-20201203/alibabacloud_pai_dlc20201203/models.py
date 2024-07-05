@@ -3480,6 +3480,7 @@ class CreateJobRequest(TeaModel):
     def __init__(
         self,
         code_source: CreateJobRequestCodeSource = None,
+        credential_config: CredentialConfig = None,
         data_sources: List[CreateJobRequestDataSources] = None,
         debugger_config_content: str = None,
         display_name: str = None,
@@ -3500,6 +3501,7 @@ class CreateJobRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.code_source = code_source
+        self.credential_config = credential_config
         self.data_sources = data_sources
         self.debugger_config_content = debugger_config_content
         # This parameter is required.
@@ -3526,6 +3528,8 @@ class CreateJobRequest(TeaModel):
     def validate(self):
         if self.code_source:
             self.code_source.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.data_sources:
             for k in self.data_sources:
                 if k:
@@ -3549,6 +3553,8 @@ class CreateJobRequest(TeaModel):
         result = dict()
         if self.code_source is not None:
             result['CodeSource'] = self.code_source.to_map()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['DataSources'] = []
         if self.data_sources is not None:
             for k in self.data_sources:
@@ -3596,6 +3602,9 @@ class CreateJobRequest(TeaModel):
         if m.get('CodeSource') is not None:
             temp_model = CreateJobRequestCodeSource()
             self.code_source = temp_model.from_map(m['CodeSource'])
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.data_sources = []
         if m.get('DataSources') is not None:
             for k in m.get('DataSources'):

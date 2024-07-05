@@ -111,6 +111,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.code_source):
             body['CodeSource'] = request.code_source
+        if not UtilClient.is_unset(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.data_sources):
             body['DataSources'] = request.data_sources
         if not UtilClient.is_unset(request.debugger_config_content):
@@ -185,6 +187,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.code_source):
             body['CodeSource'] = request.code_source
+        if not UtilClient.is_unset(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.data_sources):
             body['DataSources'] = request.data_sources
         if not UtilClient.is_unset(request.debugger_config_content):

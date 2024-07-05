@@ -1,3 +1,7 @@
+2024-07-05 Version: 1.4.8
+- Update API CreateJob: update param body.
+
+
 2024-07-04 Version: 1.4.7
 - Generated python 2020-12-03 for pai-dlc.
 
