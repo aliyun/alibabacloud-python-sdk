@@ -1,3 +1,18 @@
+2024-07-05 Version: 2.4.0
+- Support API DescribeDestinationPortEvent.
+- Update API DescribeDDosEventArea: add param RegionId.
+- Update API DescribeDDosEventArea: add param Range.
+- Update API DescribeDDosEventArea: update param EventType.
+- Update API DescribeDDosEventArea: update response param.
+- Update API DescribeDDosEventIsp: add param RegionId.
+- Update API DescribeDDosEventIsp: add param Range.
+- Update API DescribeDDosEventIsp: update param EventType.
+- Update API DescribeDDosEventIsp: update response param.
+- Update API DescribeDDosEventSrcIp: add param RegionId.
+- Update API DescribeDDosEventSrcIp: update param EventType.
+- Update API DescribeDDosEventSrcIp: update response param.
+
+
 2024-06-24 Version: 2.3.1
 - Update API DescribeNetworkRegionBlock: update response param.
 

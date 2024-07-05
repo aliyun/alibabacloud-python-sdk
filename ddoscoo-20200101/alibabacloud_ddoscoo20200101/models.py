@@ -7333,6 +7333,7 @@ class DescribeDDosEventAreaRequest(TeaModel):
         self,
         event_type: str = None,
         ip: str = None,
+        range: int = None,
         start_time: int = None,
     ):
         # The type of the attack event that you want to query. Valid values:
@@ -7346,6 +7347,7 @@ class DescribeDDosEventAreaRequest(TeaModel):
         # 
         # This parameter is required.
         self.ip = ip
+        self.range = range
         # The UNIX timestamp when the query starts. Unit: seconds.
         # 
         # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
@@ -7366,6 +7368,8 @@ class DescribeDDosEventAreaRequest(TeaModel):
             result['EventType'] = self.event_type
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.range is not None:
+            result['Range'] = self.range
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7376,6 +7380,8 @@ class DescribeDDosEventAreaRequest(TeaModel):
             self.event_type = m.get('EventType')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7719,6 +7725,7 @@ class DescribeDDosEventIspRequest(TeaModel):
         self,
         event_type: str = None,
         ip: str = None,
+        range: int = None,
         start_time: int = None,
     ):
         # The type of the attack event that you want to query. Valid values:
@@ -7732,6 +7739,7 @@ class DescribeDDosEventIspRequest(TeaModel):
         # 
         # This parameter is required.
         self.ip = ip
+        self.range = range
         # The UNIX timestamp when the query starts. Unit: seconds.
         # 
         # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
@@ -7752,6 +7760,8 @@ class DescribeDDosEventIspRequest(TeaModel):
             result['EventType'] = self.event_type
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.range is not None:
+            result['Range'] = self.range
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -7762,6 +7772,8 @@ class DescribeDDosEventIspRequest(TeaModel):
             self.event_type = m.get('EventType')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -8628,6 +8640,177 @@ class DescribeDefenseRecordsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDefenseRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDestinationPortEventRequest(TeaModel):
+    def __init__(
+        self,
+        event_type: str = None,
+        ip: str = None,
+        range: int = None,
+        region: str = None,
+        start_time: int = None,
+    ):
+        # This parameter is required.
+        self.event_type = event_type
+        # This parameter is required.
+        self.ip = ip
+        # This parameter is required.
+        self.range = range
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.range is not None:
+            result['Range'] = self.range
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Range') is not None:
+            self.range = m.get('Range')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDestinationPortEventResponseBodyPortList(TeaModel):
+    def __init__(
+        self,
+        dst_port: str = None,
+        in_pkts: int = None,
+    ):
+        self.dst_port = dst_port
+        self.in_pkts = in_pkts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dst_port is not None:
+            result['DstPort'] = self.dst_port
+        if self.in_pkts is not None:
+            result['InPkts'] = self.in_pkts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DstPort') is not None:
+            self.dst_port = m.get('DstPort')
+        if m.get('InPkts') is not None:
+            self.in_pkts = m.get('InPkts')
+        return self
+
+
+class DescribeDestinationPortEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        port_list: List[DescribeDestinationPortEventResponseBodyPortList] = None,
+        request_id: str = None,
+    ):
+        self.port_list = port_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.port_list:
+            for k in self.port_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PortList'] = []
+        if self.port_list is not None:
+            for k in self.port_list:
+                result['PortList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.port_list = []
+        if m.get('PortList') is not None:
+            for k in m.get('PortList'):
+                temp_model = DescribeDestinationPortEventResponseBodyPortList()
+                self.port_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDestinationPortEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDestinationPortEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDestinationPortEventResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -2631,9 +2631,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.CreateWebCCRuleResponse:
         """
+        @deprecated OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: CreateWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWebCCRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2680,9 +2683,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.CreateWebCCRuleResponse:
         """
+        @deprecated OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: CreateWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateWebCCRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -2728,8 +2734,11 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.CreateWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.CreateWebCCRuleResponse:
         """
+        @deprecated OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: CreateWebCCRuleRequest
         @return: CreateWebCCRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.create_web_ccrule_with_options(request, runtime)
@@ -2739,8 +2748,11 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.CreateWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.CreateWebCCRuleResponse:
         """
+        @deprecated OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: CreateWebCCRuleRequest
         @return: CreateWebCCRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_web_ccrule_with_options_async(request, runtime)
@@ -3819,11 +3831,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DeleteWebCCRuleResponse:
         """
+        @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
+        
         @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteWebCCRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3858,11 +3873,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DeleteWebCCRuleResponse:
         """
+        @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
+        
         @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteWebCCRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3896,10 +3914,13 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DeleteWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.DeleteWebCCRuleResponse:
         """
+        @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
+        
         @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @return: DeleteWebCCRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_web_ccrule_with_options(request, runtime)
@@ -3909,10 +3930,13 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DeleteWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.DeleteWebCCRuleResponse:
         """
+        @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
+        
         @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @return: DeleteWebCCRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_web_ccrule_with_options_async(request, runtime)
@@ -5657,6 +5681,8 @@ class Client(OpenApiClient):
             query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5698,6 +5724,8 @@ class Client(OpenApiClient):
             query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5881,6 +5909,8 @@ class Client(OpenApiClient):
             query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -5922,6 +5952,8 @@ class Client(OpenApiClient):
             query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -6428,6 +6460,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_defense_records_with_options_async(request, runtime)
+
+    def describe_destination_port_event_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeDestinationPortEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
+        """
+        @summary 查询目的端口事件
+        
+        @param request: DescribeDestinationPortEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDestinationPortEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDestinationPortEvent',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDestinationPortEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_destination_port_event_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDestinationPortEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
+        """
+        @summary 查询目的端口事件
+        
+        @param request: DescribeDestinationPortEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDestinationPortEventResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.range):
+            query['Range'] = request.range
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDestinationPortEvent',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeDestinationPortEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_destination_port_event(
+        self,
+        request: ddoscoo_20200101_models.DescribeDestinationPortEventRequest,
+    ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
+        """
+        @summary 查询目的端口事件
+        
+        @param request: DescribeDestinationPortEventRequest
+        @return: DescribeDestinationPortEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_destination_port_event_with_options(request, runtime)
+
+    async def describe_destination_port_event_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeDestinationPortEventRequest,
+    ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
+        """
+        @summary 查询目的端口事件
+        
+        @param request: DescribeDestinationPortEventRequest
+        @return: DescribeDestinationPortEventResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_destination_port_event_with_options_async(request, runtime)
 
     def describe_domain_attack_events_with_options(
         self,
@@ -13491,11 +13635,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
         """
+        @deprecated OpenAPI DescribeWebCCRules is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @summary Queries the custom frequency control rules that are created for a website.
         
         @param request: DescribeWebCCRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeWebCCRulesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13532,11 +13679,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
         """
+        @deprecated OpenAPI DescribeWebCCRules is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @summary Queries the custom frequency control rules that are created for a website.
         
         @param request: DescribeWebCCRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeWebCCRulesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13572,10 +13722,13 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
     ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
         """
+        @deprecated OpenAPI DescribeWebCCRules is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @summary Queries the custom frequency control rules that are created for a website.
         
         @param request: DescribeWebCCRulesRequest
         @return: DescribeWebCCRulesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_web_ccrules_with_options(request, runtime)
@@ -13585,10 +13738,13 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeWebCCRulesRequest,
     ) -> ddoscoo_20200101_models.DescribeWebCCRulesResponse:
         """
+        @deprecated OpenAPI DescribeWebCCRules is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @summary Queries the custom frequency control rules that are created for a website.
         
         @param request: DescribeWebCCRulesRequest
         @return: DescribeWebCCRulesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_ccrules_with_options_async(request, runtime)
@@ -18543,9 +18699,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
         """
+        @deprecated OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: ModifyWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyWebCCRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -18592,9 +18751,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
         """
+        @deprecated OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: ModifyWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyWebCCRuleResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -18640,8 +18802,11 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
         """
+        @deprecated OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: ModifyWebCCRuleRequest
         @return: ModifyWebCCRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.modify_web_ccrule_with_options(request, runtime)
@@ -18651,8 +18816,11 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.ModifyWebCCRuleResponse:
         """
+        @deprecated OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+        
         @param request: ModifyWebCCRuleRequest
         @return: ModifyWebCCRuleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_ccrule_with_options_async(request, runtime)
