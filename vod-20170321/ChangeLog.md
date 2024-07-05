@@ -1,3 +1,20 @@
+2024-07-05 Version: 3.0.0
+- Support API DescribeVodDomainQpsData.
+- Support API DescribeVodTieringStorageData.
+- Support API DescribeVodTieringStorageRetrievalData.
+- Update API DescribeVodDomainDetail: update response param.
+- Update API DescribeVodDomainRealTimeReqHitRateData: update response param.
+- Update API DescribeVodDomainReqHitRateData: update response param.
+- Update API DescribeVodMediaPlayData: update response param.
+- Update API DescribeVodStorageData: add param AppId.
+- Update API GetVideoInfo: update response param.
+- Update API GetVideoInfos: update response param.
+- Update API PreloadVodObjectCaches: add param Area.
+- Update API PreloadVodObjectCaches: add param L2Preload.
+- Update API PreloadVodObjectCaches: add param WithHeader.
+- Update API UpdateWatermark: update param Name.
+
+
 2024-04-25 Version: 2.23.0
 - Support API DescribeVodDomainRealTimeDetailData.
 
