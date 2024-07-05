@@ -888,6 +888,7 @@ class ETLConfigurationSink(TeaModel):
         self,
         access_key_id: str = None,
         access_key_secret: str = None,
+        datasets: List[str] = None,
         endpoint: str = None,
         logstore: str = None,
         name: str = None,
@@ -896,6 +897,7 @@ class ETLConfigurationSink(TeaModel):
     ):
         self.access_key_id = access_key_id
         self.access_key_secret = access_key_secret
+        self.datasets = datasets
         self.endpoint = endpoint
         # This parameter is required.
         self.logstore = logstore
@@ -919,6 +921,8 @@ class ETLConfigurationSink(TeaModel):
             result['accessKeyId'] = self.access_key_id
         if self.access_key_secret is not None:
             result['accessKeySecret'] = self.access_key_secret
+        if self.datasets is not None:
+            result['datasets'] = self.datasets
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.logstore is not None:
@@ -937,6 +941,8 @@ class ETLConfigurationSink(TeaModel):
             self.access_key_id = m.get('accessKeyId')
         if m.get('accessKeySecret') is not None:
             self.access_key_secret = m.get('accessKeySecret')
+        if m.get('datasets') is not None:
+            self.datasets = m.get('datasets')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('logstore') is not None:
@@ -956,6 +962,7 @@ class ETLConfiguration(TeaModel):
         access_key_id: str = None,
         access_key_secret: str = None,
         from_time: int = None,
+        lang: str = None,
         logstore: str = None,
         parameters: Dict[str, Any] = None,
         role_arn: str = None,
@@ -967,6 +974,7 @@ class ETLConfiguration(TeaModel):
         self.access_key_secret = access_key_secret
         # This parameter is required.
         self.from_time = from_time
+        self.lang = lang
         # This parameter is required.
         self.logstore = logstore
         self.parameters = parameters
@@ -997,6 +1005,8 @@ class ETLConfiguration(TeaModel):
             result['accessKeySecret'] = self.access_key_secret
         if self.from_time is not None:
             result['fromTime'] = self.from_time
+        if self.lang is not None:
+            result['lang'] = self.lang
         if self.logstore is not None:
             result['logstore'] = self.logstore
         if self.parameters is not None:
@@ -1021,6 +1031,8 @@ class ETLConfiguration(TeaModel):
             self.access_key_secret = m.get('accessKeySecret')
         if m.get('fromTime') is not None:
             self.from_time = m.get('fromTime')
+        if m.get('lang') is not None:
+            self.lang = m.get('lang')
         if m.get('logstore') is not None:
             self.logstore = m.get('logstore')
         if m.get('parameters') is not None:
@@ -2560,6 +2572,7 @@ class OSSExport(TeaModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
+        schedule_id: str = None,
         status: str = None,
     ):
         self.configuration = configuration
@@ -2570,6 +2583,7 @@ class OSSExport(TeaModel):
         self.last_modified_time = last_modified_time
         # This parameter is required.
         self.name = name
+        self.schedule_id = schedule_id
         self.status = status
 
     def validate(self):
@@ -2594,6 +2608,8 @@ class OSSExport(TeaModel):
             result['lastModifiedTime'] = self.last_modified_time
         if self.name is not None:
             result['name'] = self.name
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -2613,6 +2629,8 @@ class OSSExport(TeaModel):
             self.last_modified_time = m.get('lastModifiedTime')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -2795,6 +2813,7 @@ class OSSIngestion(TeaModel):
         last_modified_time: int = None,
         name: str = None,
         schedule: Schedule = None,
+        schedule_id: str = None,
         status: str = None,
     ):
         # This parameter is required.
@@ -2808,6 +2827,7 @@ class OSSIngestion(TeaModel):
         self.name = name
         # This parameter is required.
         self.schedule = schedule
+        self.schedule_id = schedule_id
         self.status = status
 
     def validate(self):
@@ -2836,6 +2856,8 @@ class OSSIngestion(TeaModel):
             result['name'] = self.name
         if self.schedule is not None:
             result['schedule'] = self.schedule.to_map()
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
         if self.status is not None:
             result['status'] = self.status
         return result
@@ -2858,6 +2880,8 @@ class OSSIngestion(TeaModel):
         if m.get('schedule') is not None:
             temp_model = Schedule()
             self.schedule = temp_model.from_map(m['schedule'])
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
         if m.get('status') is not None:
             self.status = m.get('status')
         return self
@@ -3391,329 +3415,6 @@ class Dashboard(TeaModel):
             self.description = m.get('description')
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
-        return self
-
-
-class EtlJobFunctionConfig(TeaModel):
-    def __init__(
-        self,
-        account_id: str = None,
-        endpoint: str = None,
-        function_name: str = None,
-        function_provider: str = None,
-        region_name: str = None,
-        role_arn: str = None,
-        service_name: str = None,
-    ):
-        self.account_id = account_id
-        self.endpoint = endpoint
-        self.function_name = function_name
-        # This parameter is required.
-        self.function_provider = function_provider
-        self.region_name = region_name
-        self.role_arn = role_arn
-        self.service_name = service_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.account_id is not None:
-            result['accountId'] = self.account_id
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.function_name is not None:
-            result['functionName'] = self.function_name
-        if self.function_provider is not None:
-            result['functionProvider'] = self.function_provider
-        if self.region_name is not None:
-            result['regionName'] = self.region_name
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.service_name is not None:
-            result['serviceName'] = self.service_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('accountId') is not None:
-            self.account_id = m.get('accountId')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('functionName') is not None:
-            self.function_name = m.get('functionName')
-        if m.get('functionProvider') is not None:
-            self.function_provider = m.get('functionProvider')
-        if m.get('regionName') is not None:
-            self.region_name = m.get('regionName')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('serviceName') is not None:
-            self.service_name = m.get('serviceName')
-        return self
-
-
-class EtlJobLogConfig(TeaModel):
-    def __init__(
-        self,
-        endpoint: str = None,
-        logstore_name: str = None,
-        project_name: str = None,
-    ):
-        # This parameter is required.
-        self.endpoint = endpoint
-        # This parameter is required.
-        self.logstore_name = logstore_name
-        # This parameter is required.
-        self.project_name = project_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        if self.project_name is not None:
-            result['projectName'] = self.project_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        if m.get('projectName') is not None:
-            self.project_name = m.get('projectName')
-        return self
-
-
-class EtlJobSourceConfig(TeaModel):
-    def __init__(
-        self,
-        logstore_name: str = None,
-    ):
-        # This parameter is required.
-        self.logstore_name = logstore_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logstore_name is not None:
-            result['logstoreName'] = self.logstore_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('logstoreName') is not None:
-            self.logstore_name = m.get('logstoreName')
-        return self
-
-
-class EtlJobTriggerConfig(TeaModel):
-    def __init__(
-        self,
-        max_retry_time: int = None,
-        role_arn: str = None,
-        starting_position: str = None,
-        starting_unixtime: int = None,
-        trigger_interval: int = None,
-    ):
-        # This parameter is required.
-        self.max_retry_time = max_retry_time
-        # This parameter is required.
-        self.role_arn = role_arn
-        self.starting_position = starting_position
-        self.starting_unixtime = starting_unixtime
-        # This parameter is required.
-        self.trigger_interval = trigger_interval
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max_retry_time is not None:
-            result['maxRetryTime'] = self.max_retry_time
-        if self.role_arn is not None:
-            result['roleArn'] = self.role_arn
-        if self.starting_position is not None:
-            result['startingPosition'] = self.starting_position
-        if self.starting_unixtime is not None:
-            result['startingUnixtime'] = self.starting_unixtime
-        if self.trigger_interval is not None:
-            result['triggerInterval'] = self.trigger_interval
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('maxRetryTime') is not None:
-            self.max_retry_time = m.get('maxRetryTime')
-        if m.get('roleArn') is not None:
-            self.role_arn = m.get('roleArn')
-        if m.get('startingPosition') is not None:
-            self.starting_position = m.get('startingPosition')
-        if m.get('startingUnixtime') is not None:
-            self.starting_unixtime = m.get('startingUnixtime')
-        if m.get('triggerInterval') is not None:
-            self.trigger_interval = m.get('triggerInterval')
-        return self
-
-
-class EtlJob(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_job_name: str = None,
-        function_config: EtlJobFunctionConfig = None,
-        function_parameter: Dict[str, Any] = None,
-        log_config: EtlJobLogConfig = None,
-        source_config: EtlJobSourceConfig = None,
-        trigger_config: EtlJobTriggerConfig = None,
-    ):
-        # This parameter is required.
-        self.enable = enable
-        # This parameter is required.
-        self.etl_job_name = etl_job_name
-        # This parameter is required.
-        self.function_config = function_config
-        # This parameter is required.
-        self.function_parameter = function_parameter
-        # This parameter is required.
-        self.log_config = log_config
-        # This parameter is required.
-        self.source_config = source_config
-        # This parameter is required.
-        self.trigger_config = trigger_config
-
-    def validate(self):
-        if self.function_config:
-            self.function_config.validate()
-        if self.log_config:
-            self.log_config.validate()
-        if self.source_config:
-            self.source_config.validate()
-        if self.trigger_config:
-            self.trigger_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_job_name is not None:
-            result['etlJobName'] = self.etl_job_name
-        if self.function_config is not None:
-            result['functionConfig'] = self.function_config.to_map()
-        if self.function_parameter is not None:
-            result['functionParameter'] = self.function_parameter
-        if self.log_config is not None:
-            result['logConfig'] = self.log_config.to_map()
-        if self.source_config is not None:
-            result['sourceConfig'] = self.source_config.to_map()
-        if self.trigger_config is not None:
-            result['triggerConfig'] = self.trigger_config.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlJobName') is not None:
-            self.etl_job_name = m.get('etlJobName')
-        if m.get('functionConfig') is not None:
-            temp_model = EtlJobFunctionConfig()
-            self.function_config = temp_model.from_map(m['functionConfig'])
-        if m.get('functionParameter') is not None:
-            self.function_parameter = m.get('functionParameter')
-        if m.get('logConfig') is not None:
-            temp_model = EtlJobLogConfig()
-            self.log_config = temp_model.from_map(m['logConfig'])
-        if m.get('sourceConfig') is not None:
-            temp_model = EtlJobSourceConfig()
-            self.source_config = temp_model.from_map(m['sourceConfig'])
-        if m.get('triggerConfig') is not None:
-            temp_model = EtlJobTriggerConfig()
-            self.trigger_config = temp_model.from_map(m['triggerConfig'])
-        return self
-
-
-class EtlMeta(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        etl_meta_key: str = None,
-        etl_meta_name: str = None,
-        etl_meta_tag: str = None,
-        etl_meta_value: str = None,
-    ):
-        # This parameter is required.
-        self.enable = enable
-        # This parameter is required.
-        self.etl_meta_key = etl_meta_key
-        # This parameter is required.
-        self.etl_meta_name = etl_meta_name
-        self.etl_meta_tag = etl_meta_tag
-        self.etl_meta_value = etl_meta_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.etl_meta_key is not None:
-            result['etlMetaKey'] = self.etl_meta_key
-        if self.etl_meta_name is not None:
-            result['etlMetaName'] = self.etl_meta_name
-        if self.etl_meta_tag is not None:
-            result['etlMetaTag'] = self.etl_meta_tag
-        if self.etl_meta_value is not None:
-            result['etlMetaValue'] = self.etl_meta_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('etlMetaKey') is not None:
-            self.etl_meta_key = m.get('etlMetaKey')
-        if m.get('etlMetaName') is not None:
-            self.etl_meta_name = m.get('etlMetaName')
-        if m.get('etlMetaTag') is not None:
-            self.etl_meta_tag = m.get('etlMetaTag')
-        if m.get('etlMetaValue') is not None:
-            self.etl_meta_value = m.get('etlMetaValue')
         return self
 
 
@@ -4454,6 +4155,8 @@ class KeysValue(TeaModel):
         alias: str = None,
         token: List[str] = None,
         doc_value: bool = None,
+        vector_index: str = None,
+        embedding: str = None,
     ):
         # Specifies whether to enable case sensitivity. This parameter is required only when **type** is set to **text**. Valid values:
         # 
@@ -4475,6 +4178,8 @@ class KeysValue(TeaModel):
         self.token = token
         # Specifies whether to turn on Enable Analytics for the field.
         self.doc_value = doc_value
+        self.vector_index = vector_index
+        self.embedding = embedding
 
     def validate(self):
         pass
@@ -4497,6 +4202,10 @@ class KeysValue(TeaModel):
             result['token'] = self.token
         if self.doc_value is not None:
             result['doc_value'] = self.doc_value
+        if self.vector_index is not None:
+            result['vector_index'] = self.vector_index
+        if self.embedding is not None:
+            result['embedding'] = self.embedding
         return result
 
     def from_map(self, m: dict = None):
@@ -4513,6 +4222,10 @@ class KeysValue(TeaModel):
             self.token = m.get('token')
         if m.get('doc_value') is not None:
             self.doc_value = m.get('doc_value')
+        if m.get('vector_index') is not None:
+            self.vector_index = m.get('vector_index')
+        if m.get('embedding') is not None:
+            self.embedding = m.get('embedding')
         return self
 
 
@@ -4706,18 +4419,21 @@ class ConsumerGroupHeartBeatResponse(TeaModel):
         return self
 
 
-class ConsumerGroupUpdateCheckPointRequestBody(TeaModel):
+class ConsumerGroupUpdateCheckPointRequest(TeaModel):
     def __init__(
         self,
         checkpoint: str = None,
         shard: int = None,
+        consumer: str = None,
+        force_success: bool = None,
     ):
         # This parameter is required.
         self.checkpoint = checkpoint
-        # Shard ID。
-        # 
         # This parameter is required.
         self.shard = shard
+        # This parameter is required.
+        self.consumer = consumer
+        self.force_success = force_success
 
     def validate(self):
         pass
@@ -4732,46 +4448,6 @@ class ConsumerGroupUpdateCheckPointRequestBody(TeaModel):
             result['checkpoint'] = self.checkpoint
         if self.shard is not None:
             result['shard'] = self.shard
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('checkpoint') is not None:
-            self.checkpoint = m.get('checkpoint')
-        if m.get('shard') is not None:
-            self.shard = m.get('shard')
-        return self
-
-
-class ConsumerGroupUpdateCheckPointRequest(TeaModel):
-    def __init__(
-        self,
-        body: List[ConsumerGroupUpdateCheckPointRequestBody] = None,
-        consumer: str = None,
-        force_success: bool = None,
-    ):
-        # Shard ID。
-        self.body = body
-        # This parameter is required.
-        self.consumer = consumer
-        self.force_success = force_success
-
-    def validate(self):
-        if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['body'] = []
-        if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
         if self.consumer is not None:
             result['consumer'] = self.consumer
         if self.force_success is not None:
@@ -4780,11 +4456,10 @@ class ConsumerGroupUpdateCheckPointRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.body = []
-        if m.get('body') is not None:
-            for k in m.get('body'):
-                temp_model = ConsumerGroupUpdateCheckPointRequestBody()
-                self.body.append(temp_model.from_map(k))
+        if m.get('checkpoint') is not None:
+            self.checkpoint = m.get('checkpoint')
+        if m.get('shard') is not None:
+            self.shard = m.get('shard')
         if m.get('consumer') is not None:
             self.consumer = m.get('consumer')
         if m.get('forceSuccess') is not None:
@@ -7483,47 +7158,17 @@ class DeleteCollectionPolicyRequest(TeaModel):
         return self
 
 
-class DeleteCollectionPolicyResponseBody(TeaModel):
-    def __init__(
-        self,
-        message: str = None,
-    ):
-        self.message = message
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.message is not None:
-            result['message'] = self.message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('message') is not None:
-            self.message = m.get('message')
-        return self
-
-
 class DeleteCollectionPolicyResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: DeleteCollectionPolicyResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
-        self.body = body
 
     def validate(self):
-        if self.body:
-            self.body.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -7535,8 +7180,6 @@ class DeleteCollectionPolicyResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7545,9 +7188,6 @@ class DeleteCollectionPolicyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteCollectionPolicyResponseBody()
-            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -8113,39 +7753,6 @@ class DeleteSavedSearchResponse(TeaModel):
 
 
 class DeleteScheduledSQLResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        return self
-
-
-class DeleteShipperResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8819,39 +8426,6 @@ class GetCollectionPolicyRequest(TeaModel):
         return self
 
 
-class GetCollectionPolicyResponseBodyCollectionPolicyAttribute(TeaModel):
-    def __init__(
-        self,
-        app: str = None,
-        policy_group: str = None,
-    ):
-        self.app = app
-        self.policy_group = policy_group
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app is not None:
-            result['app'] = self.app
-        if self.policy_group is not None:
-            result['policyGroup'] = self.policy_group
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('app') is not None:
-            self.app = m.get('app')
-        if m.get('policyGroup') is not None:
-            self.policy_group = m.get('policyGroup')
-        return self
-
-
 class GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig(TeaModel):
     def __init__(
         self,
@@ -8894,6 +8468,39 @@ class GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig(TeaModel):
             self.dest_region = m.get('destRegion')
         if m.get('destTTL') is not None:
             self.dest_ttl = m.get('destTTL')
+        return self
+
+
+class GetCollectionPolicyResponseBodyCollectionPolicyDataConfig(TeaModel):
+    def __init__(
+        self,
+        data_project: str = None,
+        data_region: str = None,
+    ):
+        self.data_project = data_project
+        self.data_region = data_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_project is not None:
+            result['dataProject'] = self.data_project
+        if self.data_region is not None:
+            result['dataRegion'] = self.data_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataProject') is not None:
+            self.data_project = m.get('dataProject')
+        if m.get('dataRegion') is not None:
+            self.data_region = m.get('dataRegion')
         return self
 
 
@@ -8942,34 +8549,17 @@ class GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig(TeaModel):
         return self
 
 
-class GetCollectionPolicyResponseBodyCollectionPolicy(TeaModel):
+class GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory(TeaModel):
     def __init__(
         self,
-        attribute: GetCollectionPolicyResponseBodyCollectionPolicyAttribute = None,
-        centralize_config: GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig = None,
-        centralize_enabled: bool = None,
-        data_code: str = None,
-        enabled: str = None,
-        policy_config: GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig = None,
-        policy_name: str = None,
-        product_code: str = None,
+        account_group_type: str = None,
+        members: List[str] = None,
     ):
-        self.attribute = attribute
-        self.centralize_config = centralize_config
-        self.centralize_enabled = centralize_enabled
-        self.data_code = data_code
-        self.enabled = enabled
-        self.policy_config = policy_config
-        self.policy_name = policy_name
-        self.product_code = product_code
+        self.account_group_type = account_group_type
+        self.members = members
 
     def validate(self):
-        if self.attribute:
-            self.attribute.validate()
-        if self.centralize_config:
-            self.centralize_config.validate()
-        if self.policy_config:
-            self.policy_config.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -8977,29 +8567,90 @@ class GetCollectionPolicyResponseBodyCollectionPolicy(TeaModel):
             return _map
 
         result = dict()
-        if self.attribute is not None:
-            result['attribute'] = self.attribute.to_map()
+        if self.account_group_type is not None:
+            result['accountGroupType'] = self.account_group_type
+        if self.members is not None:
+            result['members'] = self.members
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountGroupType') is not None:
+            self.account_group_type = m.get('accountGroupType')
+        if m.get('members') is not None:
+            self.members = m.get('members')
+        return self
+
+
+class GetCollectionPolicyResponseBodyCollectionPolicy(TeaModel):
+    def __init__(
+        self,
+        centralize_config: GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig = None,
+        centralize_enabled: bool = None,
+        data_code: str = None,
+        data_config: GetCollectionPolicyResponseBodyCollectionPolicyDataConfig = None,
+        enabled: bool = None,
+        internal_policy: bool = None,
+        policy_config: GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig = None,
+        policy_name: str = None,
+        policy_uid: str = None,
+        product_code: str = None,
+        resource_directory: GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory = None,
+    ):
+        self.centralize_config = centralize_config
+        self.centralize_enabled = centralize_enabled
+        self.data_code = data_code
+        self.data_config = data_config
+        self.enabled = enabled
+        self.internal_policy = internal_policy
+        self.policy_config = policy_config
+        self.policy_name = policy_name
+        self.policy_uid = policy_uid
+        self.product_code = product_code
+        self.resource_directory = resource_directory
+
+    def validate(self):
+        if self.centralize_config:
+            self.centralize_config.validate()
+        if self.data_config:
+            self.data_config.validate()
+        if self.policy_config:
+            self.policy_config.validate()
+        if self.resource_directory:
+            self.resource_directory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.centralize_config is not None:
             result['centralizeConfig'] = self.centralize_config.to_map()
         if self.centralize_enabled is not None:
             result['centralizeEnabled'] = self.centralize_enabled
         if self.data_code is not None:
             result['dataCode'] = self.data_code
+        if self.data_config is not None:
+            result['dataConfig'] = self.data_config.to_map()
         if self.enabled is not None:
             result['enabled'] = self.enabled
+        if self.internal_policy is not None:
+            result['internalPolicy'] = self.internal_policy
         if self.policy_config is not None:
             result['policyConfig'] = self.policy_config.to_map()
         if self.policy_name is not None:
             result['policyName'] = self.policy_name
+        if self.policy_uid is not None:
+            result['policyUid'] = self.policy_uid
         if self.product_code is not None:
             result['productCode'] = self.product_code
+        if self.resource_directory is not None:
+            result['resourceDirectory'] = self.resource_directory.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('attribute') is not None:
-            temp_model = GetCollectionPolicyResponseBodyCollectionPolicyAttribute()
-            self.attribute = temp_model.from_map(m['attribute'])
         if m.get('centralizeConfig') is not None:
             temp_model = GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig()
             self.centralize_config = temp_model.from_map(m['centralizeConfig'])
@@ -9007,15 +8658,25 @@ class GetCollectionPolicyResponseBodyCollectionPolicy(TeaModel):
             self.centralize_enabled = m.get('centralizeEnabled')
         if m.get('dataCode') is not None:
             self.data_code = m.get('dataCode')
+        if m.get('dataConfig') is not None:
+            temp_model = GetCollectionPolicyResponseBodyCollectionPolicyDataConfig()
+            self.data_config = temp_model.from_map(m['dataConfig'])
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        if m.get('internalPolicy') is not None:
+            self.internal_policy = m.get('internalPolicy')
         if m.get('policyConfig') is not None:
             temp_model = GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig()
             self.policy_config = temp_model.from_map(m['policyConfig'])
         if m.get('policyName') is not None:
             self.policy_name = m.get('policyName')
+        if m.get('policyUid') is not None:
+            self.policy_uid = m.get('policyUid')
         if m.get('productCode') is not None:
             self.product_code = m.get('productCode')
+        if m.get('resourceDirectory') is not None:
+            temp_model = GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory()
+            self.resource_directory = temp_model.from_map(m['resourceDirectory'])
         return self
 
 
@@ -11359,280 +11020,6 @@ class GetScheduledSQLResponse(TeaModel):
         return self
 
 
-class GetShipperStatusRequest(TeaModel):
-    def __init__(
-        self,
-        from_: int = None,
-        offset: int = None,
-        size: int = None,
-        status: str = None,
-        to: int = None,
-    ):
-        # The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        # 
-        # This parameter is required.
-        self.from_ = from_
-        # The line from which the query starts. Default value: 0.
-        self.offset = offset
-        # The number of entries per page. Default value: 100. Maximum value: 500.
-        self.size = size
-        # The status of the log shipping job. This parameter is empty by default, which indicates that log shipping jobs in all states are returned. Valid values: success, fail, and running.
-        self.status = status
-        # The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        # 
-        # This parameter is required.
-        self.to = to
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.from_ is not None:
-            result['from'] = self.from_
-        if self.offset is not None:
-            result['offset'] = self.offset
-        if self.size is not None:
-            result['size'] = self.size
-        if self.status is not None:
-            result['status'] = self.status
-        if self.to is not None:
-            result['to'] = self.to
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('from') is not None:
-            self.from_ = m.get('from')
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('to') is not None:
-            self.to = m.get('to')
-        return self
-
-
-class GetShipperStatusResponseBodyStatistics(TeaModel):
-    def __init__(
-        self,
-        fail: int = None,
-        running: int = None,
-        success: int = None,
-    ):
-        # The number of log shipping jobs that are in the fail state.
-        self.fail = fail
-        # The number of log shipping jobs that are in the running state.
-        self.running = running
-        # The number of log shipping jobs that are in the success state.
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.fail is not None:
-            result['fail'] = self.fail
-        if self.running is not None:
-            result['running'] = self.running
-        if self.success is not None:
-            result['success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('fail') is not None:
-            self.fail = m.get('fail')
-        if m.get('running') is not None:
-            self.running = m.get('running')
-        if m.get('success') is not None:
-            self.success = m.get('success')
-        return self
-
-
-class GetShipperStatusResponseBodyTasks(TeaModel):
-    def __init__(
-        self,
-        id: str = None,
-        task_code: str = None,
-        task_create_time: int = None,
-        task_data_lines: int = None,
-        task_finish_time: int = None,
-        task_last_data_receive_time: int = None,
-        task_message: str = None,
-        task_status: str = None,
-    ):
-        # The ID of the log shipping job.
-        self.id = id
-        # The error code of the log shipping job.
-        self.task_code = task_code
-        # The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        self.task_create_time = task_create_time
-        # The number of logs that are shipped in the log shipping job.
-        self.task_data_lines = task_data_lines
-        # The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        self.task_finish_time = task_finish_time
-        # The time when Simple Log Service receives the most recent log of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        self.task_last_data_receive_time = task_last_data_receive_time
-        # The error message of the log shipping job.
-        self.task_message = task_message
-        # The status of the log shipping job. Valid values: running, success, and fail.
-        self.task_status = task_status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.id is not None:
-            result['id'] = self.id
-        if self.task_code is not None:
-            result['taskCode'] = self.task_code
-        if self.task_create_time is not None:
-            result['taskCreateTime'] = self.task_create_time
-        if self.task_data_lines is not None:
-            result['taskDataLines'] = self.task_data_lines
-        if self.task_finish_time is not None:
-            result['taskFinishTime'] = self.task_finish_time
-        if self.task_last_data_receive_time is not None:
-            result['taskLastDataReceiveTime'] = self.task_last_data_receive_time
-        if self.task_message is not None:
-            result['taskMessage'] = self.task_message
-        if self.task_status is not None:
-            result['taskStatus'] = self.task_status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('taskCode') is not None:
-            self.task_code = m.get('taskCode')
-        if m.get('taskCreateTime') is not None:
-            self.task_create_time = m.get('taskCreateTime')
-        if m.get('taskDataLines') is not None:
-            self.task_data_lines = m.get('taskDataLines')
-        if m.get('taskFinishTime') is not None:
-            self.task_finish_time = m.get('taskFinishTime')
-        if m.get('taskLastDataReceiveTime') is not None:
-            self.task_last_data_receive_time = m.get('taskLastDataReceiveTime')
-        if m.get('taskMessage') is not None:
-            self.task_message = m.get('taskMessage')
-        if m.get('taskStatus') is not None:
-            self.task_status = m.get('taskStatus')
-        return self
-
-
-class GetShipperStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        statistics: GetShipperStatusResponseBodyStatistics = None,
-        tasks: GetShipperStatusResponseBodyTasks = None,
-        total: int = None,
-    ):
-        # The number of log shipping jobs returned on the current page.
-        self.count = count
-        # The statistics about log shipping jobs.
-        self.statistics = statistics
-        # The details of log shipping jobs.
-        self.tasks = tasks
-        # The total number of log shipping jobs.
-        self.total = total
-
-    def validate(self):
-        if self.statistics:
-            self.statistics.validate()
-        if self.tasks:
-            self.tasks.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.statistics is not None:
-            result['statistics'] = self.statistics.to_map()
-        if self.tasks is not None:
-            result['tasks'] = self.tasks.to_map()
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('statistics') is not None:
-            temp_model = GetShipperStatusResponseBodyStatistics()
-            self.statistics = temp_model.from_map(m['statistics'])
-        if m.get('tasks') is not None:
-            temp_model = GetShipperStatusResponseBodyTasks()
-            self.tasks = temp_model.from_map(m['tasks'])
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class GetShipperStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetShipperStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetShipperStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetSlsServiceResponse(TeaModel):
     def __init__(
         self,
@@ -12455,122 +11842,24 @@ class ListAnnotationLabelsResponse(TeaModel):
         return self
 
 
-class ListCollectionPoliciesRequestAttribute(TeaModel):
-    def __init__(
-        self,
-        app: str = None,
-        policy_group: str = None,
-    ):
-        self.app = app
-        self.policy_group = policy_group
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app is not None:
-            result['app'] = self.app
-        if self.policy_group is not None:
-            result['policyGroup'] = self.policy_group
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('app') is not None:
-            self.app = m.get('app')
-        if m.get('policyGroup') is not None:
-            self.policy_group = m.get('policyGroup')
-        return self
-
-
 class ListCollectionPoliciesRequest(TeaModel):
     def __init__(
         self,
-        attribute: ListCollectionPoliciesRequestAttribute = None,
+        central_project: str = None,
         data_code: str = None,
         instance_id: str = None,
-        page_num: int = None,
-        page_size: int = None,
+        offset: int = None,
         policy_name: str = None,
         product_code: str = None,
+        size: int = None,
     ):
-        self.attribute = attribute
+        self.central_project = central_project
         self.data_code = data_code
         self.instance_id = instance_id
-        self.page_num = page_num
-        self.page_size = page_size
+        self.offset = offset
         self.policy_name = policy_name
         self.product_code = product_code
-
-    def validate(self):
-        if self.attribute:
-            self.attribute.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.attribute is not None:
-            result['attribute'] = self.attribute.to_map()
-        if self.data_code is not None:
-            result['dataCode'] = self.data_code
-        if self.instance_id is not None:
-            result['instanceId'] = self.instance_id
-        if self.page_num is not None:
-            result['pageNum'] = self.page_num
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.policy_name is not None:
-            result['policyName'] = self.policy_name
-        if self.product_code is not None:
-            result['productCode'] = self.product_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('attribute') is not None:
-            temp_model = ListCollectionPoliciesRequestAttribute()
-            self.attribute = temp_model.from_map(m['attribute'])
-        if m.get('dataCode') is not None:
-            self.data_code = m.get('dataCode')
-        if m.get('instanceId') is not None:
-            self.instance_id = m.get('instanceId')
-        if m.get('pageNum') is not None:
-            self.page_num = m.get('pageNum')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-        if m.get('policyName') is not None:
-            self.policy_name = m.get('policyName')
-        if m.get('productCode') is not None:
-            self.product_code = m.get('productCode')
-        return self
-
-
-class ListCollectionPoliciesShrinkRequest(TeaModel):
-    def __init__(
-        self,
-        attribute_shrink: str = None,
-        data_code: str = None,
-        instance_id: str = None,
-        page_num: int = None,
-        page_size: int = None,
-        policy_name: str = None,
-        product_code: str = None,
-    ):
-        self.attribute_shrink = attribute_shrink
-        self.data_code = data_code
-        self.instance_id = instance_id
-        self.page_num = page_num
-        self.page_size = page_size
-        self.policy_name = policy_name
-        self.product_code = product_code
+        self.size = size
 
     def validate(self):
         pass
@@ -12581,71 +11870,38 @@ class ListCollectionPoliciesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.attribute_shrink is not None:
-            result['attribute'] = self.attribute_shrink
+        if self.central_project is not None:
+            result['centralProject'] = self.central_project
         if self.data_code is not None:
             result['dataCode'] = self.data_code
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
-        if self.page_num is not None:
-            result['pageNum'] = self.page_num
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
+        if self.offset is not None:
+            result['offset'] = self.offset
         if self.policy_name is not None:
             result['policyName'] = self.policy_name
         if self.product_code is not None:
             result['productCode'] = self.product_code
+        if self.size is not None:
+            result['size'] = self.size
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('attribute') is not None:
-            self.attribute_shrink = m.get('attribute')
+        if m.get('centralProject') is not None:
+            self.central_project = m.get('centralProject')
         if m.get('dataCode') is not None:
             self.data_code = m.get('dataCode')
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
-        if m.get('pageNum') is not None:
-            self.page_num = m.get('pageNum')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
         if m.get('policyName') is not None:
             self.policy_name = m.get('policyName')
         if m.get('productCode') is not None:
             self.product_code = m.get('productCode')
-        return self
-
-
-class ListCollectionPoliciesResponseBodyDataAttribute(TeaModel):
-    def __init__(
-        self,
-        app: str = None,
-        policy_group: str = None,
-    ):
-        self.app = app
-        self.policy_group = policy_group
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app is not None:
-            result['app'] = self.app
-        if self.policy_group is not None:
-            result['policyGroup'] = self.policy_group
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('app') is not None:
-            self.app = m.get('app')
-        if m.get('policyGroup') is not None:
-            self.policy_group = m.get('policyGroup')
+        if m.get('size') is not None:
+            self.size = m.get('size')
         return self
 
 
@@ -12694,6 +11950,39 @@ class ListCollectionPoliciesResponseBodyDataCentralizeConfig(TeaModel):
         return self
 
 
+class ListCollectionPoliciesResponseBodyDataDataConfig(TeaModel):
+    def __init__(
+        self,
+        data_project: str = None,
+        data_region: str = None,
+    ):
+        self.data_project = data_project
+        self.data_region = data_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_project is not None:
+            result['dataProject'] = self.data_project
+        if self.data_region is not None:
+            result['dataRegion'] = self.data_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataProject') is not None:
+            self.data_project = m.get('dataProject')
+        if m.get('dataRegion') is not None:
+            self.data_region = m.get('dataRegion')
+        return self
+
+
 class ListCollectionPoliciesResponseBodyDataPolicyConfig(TeaModel):
     def __init__(
         self,
@@ -12739,34 +12028,17 @@ class ListCollectionPoliciesResponseBodyDataPolicyConfig(TeaModel):
         return self
 
 
-class ListCollectionPoliciesResponseBodyData(TeaModel):
+class ListCollectionPoliciesResponseBodyDataResourceDirectory(TeaModel):
     def __init__(
         self,
-        attribute: ListCollectionPoliciesResponseBodyDataAttribute = None,
-        centralize_config: ListCollectionPoliciesResponseBodyDataCentralizeConfig = None,
-        centralize_enabled: bool = None,
-        data_code: str = None,
-        enabled: bool = None,
-        policy_config: ListCollectionPoliciesResponseBodyDataPolicyConfig = None,
-        policy_name: str = None,
-        product_code: str = None,
+        account_group_type: str = None,
+        members: List[str] = None,
     ):
-        self.attribute = attribute
-        self.centralize_config = centralize_config
-        self.centralize_enabled = centralize_enabled
-        self.data_code = data_code
-        self.enabled = enabled
-        self.policy_config = policy_config
-        self.policy_name = policy_name
-        self.product_code = product_code
+        self.account_group_type = account_group_type
+        self.members = members
 
     def validate(self):
-        if self.attribute:
-            self.attribute.validate()
-        if self.centralize_config:
-            self.centralize_config.validate()
-        if self.policy_config:
-            self.policy_config.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -12774,29 +12046,90 @@ class ListCollectionPoliciesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.attribute is not None:
-            result['attribute'] = self.attribute.to_map()
+        if self.account_group_type is not None:
+            result['accountGroupType'] = self.account_group_type
+        if self.members is not None:
+            result['members'] = self.members
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountGroupType') is not None:
+            self.account_group_type = m.get('accountGroupType')
+        if m.get('members') is not None:
+            self.members = m.get('members')
+        return self
+
+
+class ListCollectionPoliciesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        centralize_config: ListCollectionPoliciesResponseBodyDataCentralizeConfig = None,
+        centralize_enabled: bool = None,
+        data_code: str = None,
+        data_config: ListCollectionPoliciesResponseBodyDataDataConfig = None,
+        enabled: bool = None,
+        internal_policy: bool = None,
+        policy_config: ListCollectionPoliciesResponseBodyDataPolicyConfig = None,
+        policy_name: str = None,
+        policy_uid: str = None,
+        product_code: str = None,
+        resource_directory: ListCollectionPoliciesResponseBodyDataResourceDirectory = None,
+    ):
+        self.centralize_config = centralize_config
+        self.centralize_enabled = centralize_enabled
+        self.data_code = data_code
+        self.data_config = data_config
+        self.enabled = enabled
+        self.internal_policy = internal_policy
+        self.policy_config = policy_config
+        self.policy_name = policy_name
+        self.policy_uid = policy_uid
+        self.product_code = product_code
+        self.resource_directory = resource_directory
+
+    def validate(self):
+        if self.centralize_config:
+            self.centralize_config.validate()
+        if self.data_config:
+            self.data_config.validate()
+        if self.policy_config:
+            self.policy_config.validate()
+        if self.resource_directory:
+            self.resource_directory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.centralize_config is not None:
             result['centralizeConfig'] = self.centralize_config.to_map()
         if self.centralize_enabled is not None:
             result['centralizeEnabled'] = self.centralize_enabled
         if self.data_code is not None:
             result['dataCode'] = self.data_code
+        if self.data_config is not None:
+            result['dataConfig'] = self.data_config.to_map()
         if self.enabled is not None:
             result['enabled'] = self.enabled
+        if self.internal_policy is not None:
+            result['internalPolicy'] = self.internal_policy
         if self.policy_config is not None:
             result['policyConfig'] = self.policy_config.to_map()
         if self.policy_name is not None:
             result['policyName'] = self.policy_name
+        if self.policy_uid is not None:
+            result['policyUid'] = self.policy_uid
         if self.product_code is not None:
             result['productCode'] = self.product_code
+        if self.resource_directory is not None:
+            result['resourceDirectory'] = self.resource_directory.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('attribute') is not None:
-            temp_model = ListCollectionPoliciesResponseBodyDataAttribute()
-            self.attribute = temp_model.from_map(m['attribute'])
         if m.get('centralizeConfig') is not None:
             temp_model = ListCollectionPoliciesResponseBodyDataCentralizeConfig()
             self.centralize_config = temp_model.from_map(m['centralizeConfig'])
@@ -12804,13 +12137,97 @@ class ListCollectionPoliciesResponseBodyData(TeaModel):
             self.centralize_enabled = m.get('centralizeEnabled')
         if m.get('dataCode') is not None:
             self.data_code = m.get('dataCode')
+        if m.get('dataConfig') is not None:
+            temp_model = ListCollectionPoliciesResponseBodyDataDataConfig()
+            self.data_config = temp_model.from_map(m['dataConfig'])
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        if m.get('internalPolicy') is not None:
+            self.internal_policy = m.get('internalPolicy')
         if m.get('policyConfig') is not None:
             temp_model = ListCollectionPoliciesResponseBodyDataPolicyConfig()
             self.policy_config = temp_model.from_map(m['policyConfig'])
         if m.get('policyName') is not None:
             self.policy_name = m.get('policyName')
+        if m.get('policyUid') is not None:
+            self.policy_uid = m.get('policyUid')
+        if m.get('productCode') is not None:
+            self.product_code = m.get('productCode')
+        if m.get('resourceDirectory') is not None:
+            temp_model = ListCollectionPoliciesResponseBodyDataResourceDirectory()
+            self.resource_directory = temp_model.from_map(m['resourceDirectory'])
+        return self
+
+
+class ListCollectionPoliciesResponseBodyStatisticsPolicySourceList(TeaModel):
+    def __init__(
+        self,
+        policy_name: str = None,
+        policy_uid: str = None,
+    ):
+        self.policy_name = policy_name
+        self.policy_uid = policy_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.policy_uid is not None:
+            result['policyUid'] = self.policy_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('policyUid') is not None:
+            self.policy_uid = m.get('policyUid')
+        return self
+
+
+class ListCollectionPoliciesResponseBodyStatistics(TeaModel):
+    def __init__(
+        self,
+        policy_source_list: List[ListCollectionPoliciesResponseBodyStatisticsPolicySourceList] = None,
+        product_code: str = None,
+    ):
+        self.policy_source_list = policy_source_list
+        self.product_code = product_code
+
+    def validate(self):
+        if self.policy_source_list:
+            for k in self.policy_source_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['policySourceList'] = []
+        if self.policy_source_list is not None:
+            for k in self.policy_source_list:
+                result['policySourceList'].append(k.to_map() if k else None)
+        if self.product_code is not None:
+            result['productCode'] = self.product_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.policy_source_list = []
+        if m.get('policySourceList') is not None:
+            for k in m.get('policySourceList'):
+                temp_model = ListCollectionPoliciesResponseBodyStatisticsPolicySourceList()
+                self.policy_source_list.append(temp_model.from_map(k))
         if m.get('productCode') is not None:
             self.product_code = m.get('productCode')
         return self
@@ -12821,15 +12238,21 @@ class ListCollectionPoliciesResponseBody(TeaModel):
         self,
         current_count: int = None,
         data: List[ListCollectionPoliciesResponseBodyData] = None,
+        statistics: List[ListCollectionPoliciesResponseBodyStatistics] = None,
         total_count: int = None,
     ):
         self.current_count = current_count
         self.data = data
+        self.statistics = statistics
         self.total_count = total_count
 
     def validate(self):
         if self.data:
             for k in self.data:
+                if k:
+                    k.validate()
+        if self.statistics:
+            for k in self.statistics:
                 if k:
                     k.validate()
 
@@ -12845,6 +12268,10 @@ class ListCollectionPoliciesResponseBody(TeaModel):
         if self.data is not None:
             for k in self.data:
                 result['data'].append(k.to_map() if k else None)
+        result['statistics'] = []
+        if self.statistics is not None:
+            for k in self.statistics:
+                result['statistics'].append(k.to_map() if k else None)
         if self.total_count is not None:
             result['totalCount'] = self.total_count
         return result
@@ -12858,6 +12285,11 @@ class ListCollectionPoliciesResponseBody(TeaModel):
             for k in m.get('data'):
                 temp_model = ListCollectionPoliciesResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        self.statistics = []
+        if m.get('statistics') is not None:
+            for k in m.get('statistics'):
+                temp_model = ListCollectionPoliciesResponseBodyStatistics()
+                self.statistics.append(temp_model.from_map(k))
         if m.get('totalCount') is not None:
             self.total_count = m.get('totalCount')
         return self
@@ -13491,131 +12923,6 @@ class ListETLsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListETLsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListExternalStoreRequest(TeaModel):
-    def __init__(
-        self,
-        external_store_name: str = None,
-        offset: int = None,
-        sizs: int = None,
-    ):
-        # The name of the external store. You can query external stores that contain a specified string.
-        self.external_store_name = external_store_name
-        # The line from which the query starts. Default value: 0.
-        self.offset = offset
-        # The number of entries per page. Maximum value: 500.
-        self.sizs = sizs
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.external_store_name is not None:
-            result['externalStoreName'] = self.external_store_name
-        if self.offset is not None:
-            result['offset'] = self.offset
-        if self.sizs is not None:
-            result['sizs'] = self.sizs
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('externalStoreName') is not None:
-            self.external_store_name = m.get('externalStoreName')
-        if m.get('offset') is not None:
-            self.offset = m.get('offset')
-        if m.get('sizs') is not None:
-            self.sizs = m.get('sizs')
-        return self
-
-
-class ListExternalStoreResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        externalstores: List[str] = None,
-        total: int = None,
-    ):
-        # The number of external stores returned on the current page.
-        self.count = count
-        # The names of the external stores.
-        self.externalstores = externalstores
-        # The number of external stores that meet the query conditions.
-        self.total = total
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.externalstores is not None:
-            result['externalstores'] = self.externalstores
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('externalstores') is not None:
-            self.externalstores = m.get('externalstores')
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class ListExternalStoreResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListExternalStoreResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListExternalStoreResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14974,89 +14281,6 @@ class ListShardsResponse(TeaModel):
         return self
 
 
-class ListShipperResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        shipper: List[str] = None,
-        total: int = None,
-    ):
-        # The number of log shipping jobs returned.
-        self.count = count
-        # The names of the log shipping jobs.
-        self.shipper = shipper
-        # The total number of log shipping jobs.
-        self.total = total
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.shipper is not None:
-            result['shipper'] = self.shipper
-        if self.total is not None:
-            result['total'] = self.total
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('shipper') is not None:
-            self.shipper = m.get('shipper')
-        if m.get('total') is not None:
-            self.total = m.get('total')
-        return self
-
-
-class ListShipperResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListShipperResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListShipperResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListStoreViewsRequest(TeaModel):
     def __init__(
         self,
@@ -15226,9 +14450,15 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[ListTagResourcesRequestTags] = None,
     ):
-        # The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
+        # The IDs of the resources whose tags you want to query. You must specify at least one of resourceId and tags.
         self.resource_id = resource_id
-        # The type of the resource. Set the value to project.
+        # The type of the resource. Valid values:
+        # 
+        # *   project
+        # *   logstore
+        # *   dashboard
+        # *   MachineGroup
+        # *   LogtailConfig
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -15280,9 +14510,15 @@ class ListTagResourcesShrinkRequest(TeaModel):
         resource_type: str = None,
         tags_shrink: str = None,
     ):
-        # The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
+        # The IDs of the resources whose tags you want to query. You must specify at least one of resourceId and tags.
         self.resource_id_shrink = resource_id_shrink
-        # The type of the resource. Set the value to project.
+        # The type of the resource. Valid values:
+        # 
+        # *   project
+        # *   logstore
+        # *   dashboard
+        # *   MachineGroup
+        # *   LogtailConfig
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -15675,6 +14911,7 @@ class PutProjectTransferAccelerationRequest(TeaModel):
         self,
         enabled: bool = None,
     ):
+        # This parameter is required.
         self.enabled = enabled
 
     def validate(self):
@@ -16416,15 +15653,15 @@ class TagResourcesRequestTags(TeaModel):
         # The key of the tag. The key must meet the following requirements:
         # 
         # *   The key must be `1 to 128` characters in length.
-        # *   The key cannot contain `"http://"` or `"https://"`.
-        # *   The key cannot start with `"acs:"` or `"aliyun"`.
+        # *   The key cannot contain `http://` or `https://`.
+        # *   The key cannot start with `acs:` or `aliyun`.
         # 
         # This parameter is required.
         self.key = key
         # The value of the tag. The value must meet the following requirements:
         # 
         # *   The value must be `1 to 128` characters in length.
-        # *   The value cannot contain `"http://"` or `"https://"`.
+        # *   The value cannot contain `http://` or `https://`.
         # 
         # This parameter is required.
         self.value = value
@@ -16464,11 +15701,17 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Set the value to project.
+        # The type of the resource. Valid values:
+        # 
+        # *   project
+        # *   logstore
+        # *   dashboard
+        # *   machinegroup
+        # *   logtailconfig
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags that you want to add to the resource. Up to 20 tags are supported at a time. Each tag is a key-value pair.
+        # The tags that you want to add to the resource. You can specify up to 20 tags in each call. Each tag is a key-value pair.
         # 
         # This parameter is required.
         self.tags = tags
@@ -16550,10 +15793,24 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[str] = None,
     ):
+        # Specifies whether to unbind all tags. Default value: false. Valid values:
+        # 
+        # *   false: unbinds only the tags that match the value of tags.
+        # *   true: unbinds all tags that are bound to the resource.
         self.all = all
+        # The resource IDs. Each time you call this operation, you can unbind tags only from a single resource. Therefore, you can enter only one resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   project
+        # *   logstore
+        # *   dashboard
+        # *   machinegroup
+        # *   logtailconfig
         self.resource_type = resource_type
+        # The tag keys. If you set all to false, only the tags that match the value of this parameter are unbound.
         self.tags = tags
 
     def validate(self):
@@ -17497,6 +16754,8 @@ class UpdateLogStoreMeteringModeRequest(TeaModel):
         self,
         metering_mode: str = None,
     ):
+        # The billing mode. Valid values: ChargeByFunction and ChargeByDataIngest. Default value: ChargeByFunction. The value ChargeByFunction specifies the pay-by-feature billing mode. The value ChargeByDataIngest specifies the pay-by-ingested-data billing mode.
+        # 
         # This parameter is required.
         self.metering_mode = metering_mode
 
@@ -19068,39 +18327,6 @@ class UpdateStoreViewResponse(TeaModel):
         return self
 
 
-class UpsertCollectionPolicyRequestAttribute(TeaModel):
-    def __init__(
-        self,
-        app: str = None,
-        policy_group: str = None,
-    ):
-        self.app = app
-        self.policy_group = policy_group
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app is not None:
-            result['app'] = self.app
-        if self.policy_group is not None:
-            result['policyGroup'] = self.policy_group
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('app') is not None:
-            self.app = m.get('app')
-        if m.get('policyGroup') is not None:
-            self.policy_group = m.get('policyGroup')
-        return self
-
-
 class UpsertCollectionPolicyRequestCentralizeConfig(TeaModel):
     def __init__(
         self,
@@ -19143,6 +18369,33 @@ class UpsertCollectionPolicyRequestCentralizeConfig(TeaModel):
             self.dest_region = m.get('destRegion')
         if m.get('destTTL') is not None:
             self.dest_ttl = m.get('destTTL')
+        return self
+
+
+class UpsertCollectionPolicyRequestDataConfig(TeaModel):
+    def __init__(
+        self,
+        data_region: str = None,
+    ):
+        self.data_region = data_region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_region is not None:
+            result['dataRegion'] = self.data_region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dataRegion') is not None:
+            self.data_region = m.get('dataRegion')
         return self
 
 
@@ -19192,94 +18445,14 @@ class UpsertCollectionPolicyRequestPolicyConfig(TeaModel):
         return self
 
 
-class UpsertCollectionPolicyRequest(TeaModel):
+class UpsertCollectionPolicyRequestResourceDirectory(TeaModel):
     def __init__(
         self,
-        attribute: UpsertCollectionPolicyRequestAttribute = None,
-        centralize_config: UpsertCollectionPolicyRequestCentralizeConfig = None,
-        centralize_enabled: bool = None,
-        data_code: str = None,
-        enabled: bool = None,
-        policy_config: UpsertCollectionPolicyRequestPolicyConfig = None,
-        policy_name: str = None,
-        product_code: str = None,
+        account_group_type: str = None,
+        members: List[str] = None,
     ):
-        self.attribute = attribute
-        self.centralize_config = centralize_config
-        self.centralize_enabled = centralize_enabled
-        # This parameter is required.
-        self.data_code = data_code
-        # This parameter is required.
-        self.enabled = enabled
-        # This parameter is required.
-        self.policy_config = policy_config
-        # This parameter is required.
-        self.policy_name = policy_name
-        # This parameter is required.
-        self.product_code = product_code
-
-    def validate(self):
-        if self.attribute:
-            self.attribute.validate()
-        if self.centralize_config:
-            self.centralize_config.validate()
-        if self.policy_config:
-            self.policy_config.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.attribute is not None:
-            result['attribute'] = self.attribute.to_map()
-        if self.centralize_config is not None:
-            result['centralizeConfig'] = self.centralize_config.to_map()
-        if self.centralize_enabled is not None:
-            result['centralizeEnabled'] = self.centralize_enabled
-        if self.data_code is not None:
-            result['dataCode'] = self.data_code
-        if self.enabled is not None:
-            result['enabled'] = self.enabled
-        if self.policy_config is not None:
-            result['policyConfig'] = self.policy_config.to_map()
-        if self.policy_name is not None:
-            result['policyName'] = self.policy_name
-        if self.product_code is not None:
-            result['productCode'] = self.product_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('attribute') is not None:
-            temp_model = UpsertCollectionPolicyRequestAttribute()
-            self.attribute = temp_model.from_map(m['attribute'])
-        if m.get('centralizeConfig') is not None:
-            temp_model = UpsertCollectionPolicyRequestCentralizeConfig()
-            self.centralize_config = temp_model.from_map(m['centralizeConfig'])
-        if m.get('centralizeEnabled') is not None:
-            self.centralize_enabled = m.get('centralizeEnabled')
-        if m.get('dataCode') is not None:
-            self.data_code = m.get('dataCode')
-        if m.get('enabled') is not None:
-            self.enabled = m.get('enabled')
-        if m.get('policyConfig') is not None:
-            temp_model = UpsertCollectionPolicyRequestPolicyConfig()
-            self.policy_config = temp_model.from_map(m['policyConfig'])
-        if m.get('policyName') is not None:
-            self.policy_name = m.get('policyName')
-        if m.get('productCode') is not None:
-            self.product_code = m.get('productCode')
-        return self
-
-
-class UpsertCollectionPolicyResponseBody(TeaModel):
-    def __init__(
-        self,
-        message: str = None,
-    ):
-        self.message = message
+        self.account_group_type = account_group_type
+        self.members = members
 
     def validate(self):
         pass
@@ -19290,14 +18463,109 @@ class UpsertCollectionPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.message is not None:
-            result['message'] = self.message
+        if self.account_group_type is not None:
+            result['accountGroupType'] = self.account_group_type
+        if self.members is not None:
+            result['members'] = self.members
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('message') is not None:
-            self.message = m.get('message')
+        if m.get('accountGroupType') is not None:
+            self.account_group_type = m.get('accountGroupType')
+        if m.get('members') is not None:
+            self.members = m.get('members')
+        return self
+
+
+class UpsertCollectionPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        centralize_config: UpsertCollectionPolicyRequestCentralizeConfig = None,
+        centralize_enabled: bool = None,
+        data_code: str = None,
+        data_config: UpsertCollectionPolicyRequestDataConfig = None,
+        enabled: bool = None,
+        policy_config: UpsertCollectionPolicyRequestPolicyConfig = None,
+        policy_name: str = None,
+        product_code: str = None,
+        resource_directory: UpsertCollectionPolicyRequestResourceDirectory = None,
+    ):
+        self.centralize_config = centralize_config
+        self.centralize_enabled = centralize_enabled
+        # This parameter is required.
+        self.data_code = data_code
+        self.data_config = data_config
+        # This parameter is required.
+        self.enabled = enabled
+        # This parameter is required.
+        self.policy_config = policy_config
+        # This parameter is required.
+        self.policy_name = policy_name
+        # This parameter is required.
+        self.product_code = product_code
+        self.resource_directory = resource_directory
+
+    def validate(self):
+        if self.centralize_config:
+            self.centralize_config.validate()
+        if self.data_config:
+            self.data_config.validate()
+        if self.policy_config:
+            self.policy_config.validate()
+        if self.resource_directory:
+            self.resource_directory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.centralize_config is not None:
+            result['centralizeConfig'] = self.centralize_config.to_map()
+        if self.centralize_enabled is not None:
+            result['centralizeEnabled'] = self.centralize_enabled
+        if self.data_code is not None:
+            result['dataCode'] = self.data_code
+        if self.data_config is not None:
+            result['dataConfig'] = self.data_config.to_map()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.policy_config is not None:
+            result['policyConfig'] = self.policy_config.to_map()
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.product_code is not None:
+            result['productCode'] = self.product_code
+        if self.resource_directory is not None:
+            result['resourceDirectory'] = self.resource_directory.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('centralizeConfig') is not None:
+            temp_model = UpsertCollectionPolicyRequestCentralizeConfig()
+            self.centralize_config = temp_model.from_map(m['centralizeConfig'])
+        if m.get('centralizeEnabled') is not None:
+            self.centralize_enabled = m.get('centralizeEnabled')
+        if m.get('dataCode') is not None:
+            self.data_code = m.get('dataCode')
+        if m.get('dataConfig') is not None:
+            temp_model = UpsertCollectionPolicyRequestDataConfig()
+            self.data_config = temp_model.from_map(m['dataConfig'])
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('policyConfig') is not None:
+            temp_model = UpsertCollectionPolicyRequestPolicyConfig()
+            self.policy_config = temp_model.from_map(m['policyConfig'])
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('productCode') is not None:
+            self.product_code = m.get('productCode')
+        if m.get('resourceDirectory') is not None:
+            temp_model = UpsertCollectionPolicyRequestResourceDirectory()
+            self.resource_directory = temp_model.from_map(m['resourceDirectory'])
         return self
 
 
@@ -19306,15 +18574,12 @@ class UpsertCollectionPolicyResponse(TeaModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: UpsertCollectionPolicyResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
-        self.body = body
 
     def validate(self):
-        if self.body:
-            self.body.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -19326,8 +18591,6 @@ class UpsertCollectionPolicyResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -19336,9 +18599,6 @@ class UpsertCollectionPolicyResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpsertCollectionPolicyResponseBody()
-            self.body = temp_model.from_map(m['body'])
         return self
 
 

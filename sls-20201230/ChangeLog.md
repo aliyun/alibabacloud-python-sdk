@@ -1,3 +1,20 @@
+2024-07-05 Version: 5.2.2
+- Update API ConsumerGroupUpdateCheckPoint: update param body.
+- Update API CreateIndex: update param body.
+- Update API DeleteCollectionPolicy: update response param.
+- Update API GetCollectionPolicy: update response param.
+- Update API GetIndex: update response param.
+- Update API ListCollectionPolicies: add param centralProject.
+- Update API ListCollectionPolicies: add param offset.
+- Update API ListCollectionPolicies: add param size.
+- Update API ListCollectionPolicies: update response param.
+- Update API PutProjectTransferAcceleration: update param project.
+- Update API PutProjectTransferAcceleration: update param body.
+- Update API UpdateIndex: update param body.
+- Update API UpsertCollectionPolicy: update param body.
+- Update API UpsertCollectionPolicy: update response param.
+
+
 2024-05-17 Version: 5.2.1
 - Update API ListProject: add param fetchQuota.
 

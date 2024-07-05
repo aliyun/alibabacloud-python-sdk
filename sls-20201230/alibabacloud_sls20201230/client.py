@@ -3,7 +3,6 @@
 from typing import Dict
 from Tea.core import TeaCore
 
-from alibabacloud_gateway_spi.client import Client as SPIClient
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_gateway_sls.client import Client as GatewayClientClient
@@ -17,15 +16,13 @@ class Client(OpenApiClient):
     """
     *\
     """
-    _client: SPIClient = None
-
     def __init__(
         self, 
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._client = GatewayClientClient()
-        self._spi = self._client
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._signature_algorithm = 'v2'
         self._endpoint_rule = 'central'
 
@@ -428,11 +425,16 @@ class Client(OpenApiClient):
             query['consumer'] = request.consumer
         if not UtilClient.is_unset(request.force_success):
             query['forceSuccess'] = request.force_success
+        body = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            body['checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.shard):
+            body['shard'] = request.shard
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_array(request.body)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ConsumerGroupUpdateCheckPoint',
@@ -475,11 +477,16 @@ class Client(OpenApiClient):
             query['consumer'] = request.consumer
         if not UtilClient.is_unset(request.force_success):
             query['forceSuccess'] = request.force_success
+        body = {}
+        if not UtilClient.is_unset(request.checkpoint):
+            body['checkpoint'] = request.checkpoint
+        if not UtilClient.is_unset(request.shard):
+            body['shard'] = request.shard
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_array(request.body)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='ConsumerGroupUpdateCheckPoint',
@@ -1014,7 +1021,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
         """
-        @summary Creates a consumer group for a Logstore.
+        @summary Creates a consumer group for a specified Logstore.
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -1066,7 +1073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
         """
-        @summary Creates a consumer group for a Logstore.
+        @summary Creates a consumer group for a specified Logstore.
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -1116,7 +1123,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateConsumerGroupRequest,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
         """
-        @summary Creates a consumer group for a Logstore.
+        @summary Creates a consumer group for a specified Logstore.
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -1137,7 +1144,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateConsumerGroupRequest,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
         """
-        @summary Creates a consumer group for a Logstore.
+        @summary Creates a consumer group for a specified Logstore.
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -4071,7 +4078,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='none'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteCollectionPolicyResponse(),
@@ -4112,7 +4119,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='none'
         )
         return TeaCore.from_map(
             sls_20201230_models.DeleteCollectionPolicyResponse(),
@@ -5381,7 +5388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteOSSExportResponse:
         """
-        @summary 删除OSS投递任务
+        @summary Deletes an Object Storage Service (OSS) data shipping job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5417,7 +5424,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteOSSExportResponse:
         """
-        @summary 删除OSS投递任务
+        @summary Deletes an Object Storage Service (OSS) data shipping job.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -5451,7 +5458,7 @@ class Client(OpenApiClient):
         oss_export_name: str,
     ) -> sls_20201230_models.DeleteOSSExportResponse:
         """
-        @summary 删除OSS投递任务
+        @summary Deletes an Object Storage Service (OSS) data shipping job.
         
         @return: DeleteOSSExportResponse
         """
@@ -5465,7 +5472,7 @@ class Client(OpenApiClient):
         oss_export_name: str,
     ) -> sls_20201230_models.DeleteOSSExportResponse:
         """
-        @summary 删除OSS投递任务
+        @summary Deletes an Object Storage Service (OSS) data shipping job.
         
         @return: DeleteOSSExportResponse
         """
@@ -6088,130 +6095,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_scheduled_sqlwith_options_async(project, scheduled_sqlname, headers, runtime)
-
-    def delete_shipper_with_options(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.DeleteShipperResponse:
-        """
-        @deprecated OpenAPI DeleteShipper is deprecated
-        
-        @summary Deletes the log shipping job of a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteShipperResponse
-        Deprecated
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteShipper',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.DeleteShipperResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def delete_shipper_with_options_async(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.DeleteShipperResponse:
-        """
-        @deprecated OpenAPI DeleteShipper is deprecated
-        
-        @summary Deletes the log shipping job of a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteShipperResponse
-        Deprecated
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteShipper',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/shipper/{shipper_name}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='none'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.DeleteShipperResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def delete_shipper(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-    ) -> sls_20201230_models.DeleteShipperResponse:
-        """
-        @deprecated OpenAPI DeleteShipper is deprecated
-        
-        @summary Deletes the log shipping job of a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: DeleteShipperResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_shipper_with_options(project, logstore, shipper_name, headers, runtime)
-
-    async def delete_shipper_async(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-    ) -> sls_20201230_models.DeleteShipperResponse:
-        """
-        @deprecated OpenAPI DeleteShipper is deprecated
-        
-        @summary Deletes the log shipping job of a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: DeleteShipperResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
 
     def delete_store_view_with_options(
         self,
@@ -10404,8 +10287,11 @@ class Client(OpenApiClient):
         """
         @summary Queries a project policy.
         
-        @description ### Usage notes
+        @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10442,8 +10328,11 @@ class Client(OpenApiClient):
         """
         @summary Queries a project policy.
         
-        @description ### Usage notes
+        @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10478,8 +10367,11 @@ class Client(OpenApiClient):
         """
         @summary Queries a project policy.
         
-        @description ### Usage notes
+        @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
         
         @return: GetProjectPolicyResponse
         """
@@ -10494,8 +10386,11 @@ class Client(OpenApiClient):
         """
         @summary Queries a project policy.
         
-        @description ### Usage notes
+        @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
         
         @return: GetProjectPolicyResponse
         """
@@ -10714,164 +10609,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_scheduled_sqlwith_options_async(project, scheduled_sqlname, headers, runtime)
-
-    def get_shipper_status_with_options(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.GetShipperStatusRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.GetShipperStatusResponse:
-        """
-        @deprecated OpenAPI GetShipperStatus is deprecated
-        
-        @summary Queries the status of a log shipping job.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: GetShipperStatusRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetShipperStatusResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        query = {}
-        if not UtilClient.is_unset(request.from_):
-            query['from'] = request.from_
-        if not UtilClient.is_unset(request.offset):
-            query['offset'] = request.offset
-        if not UtilClient.is_unset(request.size):
-            query['size'] = request.size
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        if not UtilClient.is_unset(request.to):
-            query['to'] = request.to
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetShipperStatus',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/shipper/{shipper_name}/tasks',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.GetShipperStatusResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def get_shipper_status_with_options_async(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.GetShipperStatusRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.GetShipperStatusResponse:
-        """
-        @deprecated OpenAPI GetShipperStatus is deprecated
-        
-        @summary Queries the status of a log shipping job.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: GetShipperStatusRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetShipperStatusResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        query = {}
-        if not UtilClient.is_unset(request.from_):
-            query['from'] = request.from_
-        if not UtilClient.is_unset(request.offset):
-            query['offset'] = request.offset
-        if not UtilClient.is_unset(request.size):
-            query['size'] = request.size
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        if not UtilClient.is_unset(request.to):
-            query['to'] = request.to
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetShipperStatus',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/shipper/{shipper_name}/tasks',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.GetShipperStatusResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def get_shipper_status(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.GetShipperStatusRequest,
-    ) -> sls_20201230_models.GetShipperStatusResponse:
-        """
-        @deprecated OpenAPI GetShipperStatus is deprecated
-        
-        @summary Queries the status of a log shipping job.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: GetShipperStatusRequest
-        @return: GetShipperStatusResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_shipper_status_with_options(project, logstore, shipper_name, request, headers, runtime)
-
-    async def get_shipper_status_async(
-        self,
-        project: str,
-        logstore: str,
-        shipper_name: str,
-        request: sls_20201230_models.GetShipperStatusRequest,
-    ) -> sls_20201230_models.GetShipperStatusResponse:
-        """
-        @deprecated OpenAPI GetShipperStatus is deprecated
-        
-        @summary Queries the status of a log shipping job.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: GetShipperStatusRequest
-        @return: GetShipperStatusResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
 
     def get_sls_service_with_options(
         self,
@@ -11703,38 +11440,34 @@ class Client(OpenApiClient):
 
     def list_collection_policies_with_options(
         self,
-        tmp_req: sls_20201230_models.ListCollectionPoliciesRequest,
+        request: sls_20201230_models.ListCollectionPoliciesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListCollectionPoliciesResponse:
         """
         @summary 通过调用ListCollectionPolicies接口查看配置的日志采集规则
         
-        @param tmp_req: ListCollectionPoliciesRequest
+        @param request: ListCollectionPoliciesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCollectionPoliciesResponse
         """
-        UtilClient.validate_model(tmp_req)
-        request = sls_20201230_models.ListCollectionPoliciesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.attribute):
-            request.attribute_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attribute, 'attribute', 'json')
+        UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.attribute_shrink):
-            query['attribute'] = request.attribute_shrink
+        if not UtilClient.is_unset(request.central_project):
+            query['centralProject'] = request.central_project
         if not UtilClient.is_unset(request.data_code):
             query['dataCode'] = request.data_code
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.page_num):
-            query['pageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
         if not UtilClient.is_unset(request.policy_name):
             query['policyName'] = request.policy_name
         if not UtilClient.is_unset(request.product_code):
             query['productCode'] = request.product_code
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -11757,38 +11490,34 @@ class Client(OpenApiClient):
 
     async def list_collection_policies_with_options_async(
         self,
-        tmp_req: sls_20201230_models.ListCollectionPoliciesRequest,
+        request: sls_20201230_models.ListCollectionPoliciesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListCollectionPoliciesResponse:
         """
         @summary 通过调用ListCollectionPolicies接口查看配置的日志采集规则
         
-        @param tmp_req: ListCollectionPoliciesRequest
+        @param request: ListCollectionPoliciesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListCollectionPoliciesResponse
         """
-        UtilClient.validate_model(tmp_req)
-        request = sls_20201230_models.ListCollectionPoliciesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.attribute):
-            request.attribute_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attribute, 'attribute', 'json')
+        UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.attribute_shrink):
-            query['attribute'] = request.attribute_shrink
+        if not UtilClient.is_unset(request.central_project):
+            query['centralProject'] = request.central_project
         if not UtilClient.is_unset(request.data_code):
             query['dataCode'] = request.data_code
         if not UtilClient.is_unset(request.instance_id):
             query['instanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.page_num):
-            query['pageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
         if not UtilClient.is_unset(request.policy_name):
             query['policyName'] = request.policy_name
         if not UtilClient.is_unset(request.product_code):
             query['productCode'] = request.product_code
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -12496,136 +12225,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_etls_with_options_async(project, request, headers, runtime)
-
-    def list_external_store_with_options(
-        self,
-        project: str,
-        request: sls_20201230_models.ListExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.ListExternalStoreResponse:
-        """
-        @summary Queries a list of external stores.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: ListExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        query = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            query['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.offset):
-            query['offset'] = request.offset
-        if not UtilClient.is_unset(request.sizs):
-            query['sizs'] = request.sizs
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.ListExternalStoreResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def list_external_store_with_options_async(
-        self,
-        project: str,
-        request: sls_20201230_models.ListExternalStoreRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.ListExternalStoreResponse:
-        """
-        @summary Queries a list of external stores.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: ListExternalStoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListExternalStoreResponse
-        """
-        UtilClient.validate_model(request)
-        host_map = {}
-        host_map['project'] = project
-        query = {}
-        if not UtilClient.is_unset(request.external_store_name):
-            query['externalStoreName'] = request.external_store_name
-        if not UtilClient.is_unset(request.offset):
-            query['offset'] = request.offset
-        if not UtilClient.is_unset(request.sizs):
-            query['sizs'] = request.sizs
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListExternalStore',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/externalstores',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.ListExternalStoreResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def list_external_store(
-        self,
-        project: str,
-        request: sls_20201230_models.ListExternalStoreRequest,
-    ) -> sls_20201230_models.ListExternalStoreResponse:
-        """
-        @summary Queries a list of external stores.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: ListExternalStoreRequest
-        @return: ListExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_external_store_with_options(project, request, headers, runtime)
-
-    async def list_external_store_async(
-        self,
-        project: str,
-        request: sls_20201230_models.ListExternalStoreRequest,
-    ) -> sls_20201230_models.ListExternalStoreResponse:
-        """
-        @summary Queries a list of external stores.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param request: ListExternalStoreRequest
-        @return: ListExternalStoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_external_store_with_options_async(project, request, headers, runtime)
 
     def list_log_stores_with_options(
         self,
@@ -14045,126 +13644,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_shards_with_options_async(project, logstore, headers, runtime)
 
-    def list_shipper_with_options(
-        self,
-        project: str,
-        logstore: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.ListShipperResponse:
-        """
-        @deprecated OpenAPI ListShipper is deprecated
-        
-        @summary Queries a list of log shipping jobs in a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListShipperResponse
-        Deprecated
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListShipper',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/shipper',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.ListShipperResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def list_shipper_with_options_async(
-        self,
-        project: str,
-        logstore: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.ListShipperResponse:
-        """
-        @deprecated OpenAPI ListShipper is deprecated
-        
-        @summary Queries a list of log shipping jobs in a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListShipperResponse
-        Deprecated
-        """
-        host_map = {}
-        host_map['project'] = project
-        req = open_api_models.OpenApiRequest(
-            host_map=host_map,
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ListShipper',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/logstores/{logstore}/shipper',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.ListShipperResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def list_shipper(
-        self,
-        project: str,
-        logstore: str,
-    ) -> sls_20201230_models.ListShipperResponse:
-        """
-        @deprecated OpenAPI ListShipper is deprecated
-        
-        @summary Queries a list of log shipping jobs in a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: ListShipperResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_shipper_with_options(project, logstore, headers, runtime)
-
-    async def list_shipper_async(
-        self,
-        project: str,
-        logstore: str,
-    ) -> sls_20201230_models.ListShipperResponse:
-        """
-        @deprecated OpenAPI ListShipper is deprecated
-        
-        @summary Queries a list of log shipping jobs in a Logstore.
-        
-        @description Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-        
-        @return: ListShipperResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_shipper_with_options_async(project, logstore, headers, runtime)
-
     def list_store_views_with_options(
         self,
         project: str,
@@ -14302,6 +13781,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param tmp_req: ListTagResourcesRequest
         @param headers: map
@@ -14353,6 +13841,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param tmp_req: ListTagResourcesRequest
         @param headers: map
@@ -14402,6 +13899,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -14419,6 +13925,15 @@ class Client(OpenApiClient):
         
         @description ### Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -15180,7 +14695,7 @@ class Client(OpenApiClient):
             action='QueryMLServiceResults',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/ml/service/{service_name}/analysis',
+            pathname=f'/ml/v2/service/{service_name}/analysis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -15223,7 +14738,7 @@ class Client(OpenApiClient):
             action='QueryMLServiceResults',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/ml/service/{service_name}/analysis',
+            pathname=f'/ml/v2/service/{service_name}/analysis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -16440,10 +15955,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.TagResourcesResponse:
         """
-        @summary Creates and adds one or more tags to a specified resource. You can add tags only to projects.
+        @summary Creates and adds tags to a resource. You can add tags only to projects.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -16485,10 +16009,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.TagResourcesResponse:
         """
-        @summary Creates and adds one or more tags to a specified resource. You can add tags only to projects.
+        @summary Creates and adds tags to a resource. You can add tags only to projects.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: TagResourcesRequest
         @param headers: map
@@ -16528,10 +16061,19 @@ class Client(OpenApiClient):
         request: sls_20201230_models.TagResourcesRequest,
     ) -> sls_20201230_models.TagResourcesResponse:
         """
-        @summary Creates and adds one or more tags to a specified resource. You can add tags only to projects.
+        @summary Creates and adds tags to a resource. You can add tags only to projects.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -16545,10 +16087,19 @@ class Client(OpenApiClient):
         request: sls_20201230_models.TagResourcesRequest,
     ) -> sls_20201230_models.TagResourcesResponse:
         """
-        @summary Creates and adds one or more tags to a specified resource. You can add tags only to projects.
+        @summary Creates and adds tags to a resource. You can add tags only to projects.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+        For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -16567,7 +16118,15 @@ class Client(OpenApiClient):
         @summary Detaches one or more tags from a resource. You can detach tags only from Simple Log Service projects. You can detach multiple or all tags from a Simple Log Service project at a time.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: UntagResourcesRequest
         @param headers: map
@@ -16614,7 +16173,15 @@ class Client(OpenApiClient):
         @summary Detaches one or more tags from a resource. You can detach tags only from Simple Log Service projects. You can detach multiple or all tags from a Simple Log Service project at a time.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: UntagResourcesRequest
         @param headers: map
@@ -16659,7 +16226,15 @@ class Client(OpenApiClient):
         @summary Detaches one or more tags from a resource. You can detach tags only from Simple Log Service projects. You can detach multiple or all tags from a Simple Log Service project at a time.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -16676,7 +16251,15 @@ class Client(OpenApiClient):
         @summary Detaches one or more tags from a resource. You can detach tags only from Simple Log Service projects. You can detach multiple or all tags from a Simple Log Service project at a time.
         
         @description ### Usage notes
-        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -17032,7 +16615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateConfigResponse:
         """
-        @summary Updates a Logtail configuration.
+        @summary Modifies a Logtail configuration.
         
         @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -17080,7 +16663,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateConfigResponse:
         """
-        @summary Updates a Logtail configuration.
+        @summary Modifies a Logtail configuration.
         
         @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -17126,7 +16709,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateConfigRequest,
     ) -> sls_20201230_models.UpdateConfigResponse:
         """
-        @summary Updates a Logtail configuration.
+        @summary Modifies a Logtail configuration.
         
         @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -17150,7 +16733,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateConfigRequest,
     ) -> sls_20201230_models.UpdateConfigResponse:
         """
-        @summary Updates a Logtail configuration.
+        @summary Modifies a Logtail configuration.
         
         @description ### [](#)Usage notes
         Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
@@ -17918,7 +17501,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogStoreMeteringModeResponse:
         """
-        @summary 更新LogStore计量模式
+        @summary Changes the billing mode of a Logstore.
         
         @param request: UpdateLogStoreMeteringModeRequest
         @param headers: map
@@ -17961,7 +17544,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogStoreMeteringModeResponse:
         """
-        @summary 更新LogStore计量模式
+        @summary Changes the billing mode of a Logstore.
         
         @param request: UpdateLogStoreMeteringModeRequest
         @param headers: map
@@ -18002,7 +17585,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateLogStoreMeteringModeRequest,
     ) -> sls_20201230_models.UpdateLogStoreMeteringModeResponse:
         """
-        @summary 更新LogStore计量模式
+        @summary Changes the billing mode of a Logstore.
         
         @param request: UpdateLogStoreMeteringModeRequest
         @return: UpdateLogStoreMeteringModeResponse
@@ -18018,7 +17601,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpdateLogStoreMeteringModeRequest,
     ) -> sls_20201230_models.UpdateLogStoreMeteringModeResponse:
         """
-        @summary 更新LogStore计量模式
+        @summary Changes the billing mode of a Logstore.
         
         @param request: UpdateLogStoreMeteringModeRequest
         @return: UpdateLogStoreMeteringModeResponse
@@ -19982,7 +19565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口更新采集策略的属性信息
+        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
         
         @param request: UpsertCollectionPolicyRequest
         @param headers: map
@@ -19991,14 +19574,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.attribute):
-            body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.centralize_config):
             body['centralizeConfig'] = request.centralize_config
         if not UtilClient.is_unset(request.centralize_enabled):
             body['centralizeEnabled'] = request.centralize_enabled
         if not UtilClient.is_unset(request.data_code):
             body['dataCode'] = request.data_code
+        if not UtilClient.is_unset(request.data_config):
+            body['dataConfig'] = request.data_config
         if not UtilClient.is_unset(request.enabled):
             body['enabled'] = request.enabled
         if not UtilClient.is_unset(request.policy_config):
@@ -20007,6 +19590,8 @@ class Client(OpenApiClient):
             body['policyName'] = request.policy_name
         if not UtilClient.is_unset(request.product_code):
             body['productCode'] = request.product_code
+        if not UtilClient.is_unset(request.resource_directory):
+            body['resourceDirectory'] = request.resource_directory
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -20020,7 +19605,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='none'
         )
         return TeaCore.from_map(
             sls_20201230_models.UpsertCollectionPolicyResponse(),
@@ -20034,7 +19619,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口更新采集策略的属性信息
+        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
         
         @param request: UpsertCollectionPolicyRequest
         @param headers: map
@@ -20043,14 +19628,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.attribute):
-            body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.centralize_config):
             body['centralizeConfig'] = request.centralize_config
         if not UtilClient.is_unset(request.centralize_enabled):
             body['centralizeEnabled'] = request.centralize_enabled
         if not UtilClient.is_unset(request.data_code):
             body['dataCode'] = request.data_code
+        if not UtilClient.is_unset(request.data_config):
+            body['dataConfig'] = request.data_config
         if not UtilClient.is_unset(request.enabled):
             body['enabled'] = request.enabled
         if not UtilClient.is_unset(request.policy_config):
@@ -20059,6 +19644,8 @@ class Client(OpenApiClient):
             body['policyName'] = request.policy_name
         if not UtilClient.is_unset(request.product_code):
             body['productCode'] = request.product_code
+        if not UtilClient.is_unset(request.resource_directory):
+            body['resourceDirectory'] = request.resource_directory
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -20072,7 +19659,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='json'
+            body_type='none'
         )
         return TeaCore.from_map(
             sls_20201230_models.UpsertCollectionPolicyResponse(),
@@ -20084,7 +19671,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpsertCollectionPolicyRequest,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口更新采集策略的属性信息
+        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
         
         @param request: UpsertCollectionPolicyRequest
         @return: UpsertCollectionPolicyResponse
@@ -20098,7 +19685,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpsertCollectionPolicyRequest,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口更新采集策略的属性信息
+        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
         
         @param request: UpsertCollectionPolicyRequest
         @return: UpsertCollectionPolicyResponse
