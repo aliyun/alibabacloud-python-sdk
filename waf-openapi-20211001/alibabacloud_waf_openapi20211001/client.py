@@ -1129,7 +1129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
         """
-        @summary 上传国密证书
+        @summary Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
         
         @param request: CreateSM2CertRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1178,7 +1178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
         """
-        @summary 上传国密证书
+        @summary Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
         
         @param request: CreateSM2CertRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1226,7 +1226,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.CreateSM2CertRequest,
     ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
         """
-        @summary 上传国密证书
+        @summary Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
         
         @param request: CreateSM2CertRequest
         @return: CreateSM2CertResponse
@@ -1239,7 +1239,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.CreateSM2CertRequest,
     ) -> waf_openapi_20211001_models.CreateSM2CertResponse:
         """
-        @summary 上传国密证书
+        @summary Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
         
         @param request: CreateSM2CertRequest
         @return: CreateSM2CertResponse
@@ -11694,6 +11694,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_template_resources_with_options_async(request, runtime)
+
+    def release_instance_with_options(
+        self,
+        request: waf_openapi_20211001_models.ReleaseInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
+        """
+        @summary 释放实例
+        
+        @param request: ReleaseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseInstance',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ReleaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_instance_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ReleaseInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
+        """
+        @summary 释放实例
+        
+        @param request: ReleaseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReleaseInstance',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ReleaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_instance(
+        self,
+        request: waf_openapi_20211001_models.ReleaseInstanceRequest,
+    ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
+        """
+        @summary 释放实例
+        
+        @param request: ReleaseInstanceRequest
+        @return: ReleaseInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.release_instance_with_options(request, runtime)
+
+    async def release_instance_async(
+        self,
+        request: waf_openapi_20211001_models.ReleaseInstanceRequest,
+    ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
+        """
+        @summary 释放实例
+        
+        @param request: ReleaseInstanceRequest
+        @return: ReleaseInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.release_instance_with_options_async(request, runtime)
 
     def sync_product_instance_with_options(
         self,
