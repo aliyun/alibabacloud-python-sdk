@@ -5801,6 +5801,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_do_not_call_numbers_with_options_async(request, runtime)
 
+    def finish_ticket_task_with_options(
+        self,
+        request: ccc20200701_models.FinishTicketTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.FinishTicketTaskResponse:
+        """
+        @param request: FinishTicketTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishTicketTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FinishTicketTask',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.FinishTicketTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def finish_ticket_task_with_options_async(
+        self,
+        request: ccc20200701_models.FinishTicketTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.FinishTicketTaskResponse:
+        """
+        @param request: FinishTicketTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishTicketTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.ticket_id):
+            query['TicketId'] = request.ticket_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FinishTicketTask',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.FinishTicketTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def finish_ticket_task(
+        self,
+        request: ccc20200701_models.FinishTicketTaskRequest,
+    ) -> ccc20200701_models.FinishTicketTaskResponse:
+        """
+        @param request: FinishTicketTaskRequest
+        @return: FinishTicketTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.finish_ticket_task_with_options(request, runtime)
+
+    async def finish_ticket_task_async(
+        self,
+        request: ccc20200701_models.FinishTicketTaskRequest,
+    ) -> ccc20200701_models.FinishTicketTaskResponse:
+        """
+        @param request: FinishTicketTaskRequest
+        @return: FinishTicketTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.finish_ticket_task_with_options_async(request, runtime)
+
     def get_access_channel_of_staging_with_options(
         self,
         request: ccc20200701_models.GetAccessChannelOfStagingRequest,
