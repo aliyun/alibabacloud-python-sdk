@@ -426,6 +426,62 @@ class CreateIdleInstanceCullerResponse(TeaModel):
         return self
 
 
+class CreateInstanceRequestAffinityCPU(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class CreateInstanceRequestAffinity(TeaModel):
+    def __init__(
+        self,
+        cpu: CreateInstanceRequestAffinityCPU = None,
+    ):
+        self.cpu = cpu
+
+    def validate(self):
+        if self.cpu:
+            self.cpu.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            temp_model = CreateInstanceRequestAffinityCPU()
+            self.cpu = temp_model.from_map(m['CPU'])
+        return self
+
+
 class CreateInstanceRequestCloudDisksStatus(TeaModel):
     def __init__(
         self,
@@ -722,6 +778,7 @@ class CreateInstanceRequest(TeaModel):
     def __init__(
         self,
         accessibility: str = None,
+        affinity: CreateInstanceRequestAffinity = None,
         cloud_disks: List[CreateInstanceRequestCloudDisks] = None,
         datasets: List[CreateInstanceRequestDatasets] = None,
         driver: str = None,
@@ -740,6 +797,7 @@ class CreateInstanceRequest(TeaModel):
         workspace_source: str = None,
     ):
         self.accessibility = accessibility
+        self.affinity = affinity
         self.cloud_disks = cloud_disks
         self.datasets = datasets
         self.driver = driver
@@ -758,6 +816,8 @@ class CreateInstanceRequest(TeaModel):
         self.workspace_source = workspace_source
 
     def validate(self):
+        if self.affinity:
+            self.affinity.validate()
         if self.cloud_disks:
             for k in self.cloud_disks:
                 if k:
@@ -783,6 +843,8 @@ class CreateInstanceRequest(TeaModel):
         result = dict()
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity.to_map()
         result['CloudDisks'] = []
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
@@ -827,6 +889,9 @@ class CreateInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        if m.get('Affinity') is not None:
+            temp_model = CreateInstanceRequestAffinity()
+            self.affinity = temp_model.from_map(m['Affinity'])
         self.cloud_disks = []
         if m.get('CloudDisks') is not None:
             for k in m.get('CloudDisks'):
@@ -1812,6 +1877,62 @@ class GetIdleInstanceCullerResponse(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyAffinityCPU(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class GetInstanceResponseBodyAffinity(TeaModel):
+    def __init__(
+        self,
+        cpu: GetInstanceResponseBodyAffinityCPU = None,
+    ):
+        self.cpu = cpu
+
+    def validate(self):
+        if self.cpu:
+            self.cpu.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            temp_model = GetInstanceResponseBodyAffinityCPU()
+            self.cpu = temp_model.from_map(m['CPU'])
+        return self
+
+
 class GetInstanceResponseBodyCloudDisks(TeaModel):
     def __init__(
         self,
@@ -2367,6 +2488,7 @@ class GetInstanceResponseBody(TeaModel):
         accelerator_type: str = None,
         accessibility: str = None,
         accumulated_running_time_in_ms: int = None,
+        affinity: GetInstanceResponseBodyAffinity = None,
         cloud_disks: List[GetInstanceResponseBodyCloudDisks] = None,
         code: str = None,
         datasets: List[GetInstanceResponseBodyDatasets] = None,
@@ -2412,6 +2534,7 @@ class GetInstanceResponseBody(TeaModel):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
+        self.affinity = affinity
         self.cloud_disks = cloud_disks
         self.code = code
         self.datasets = datasets
@@ -2457,6 +2580,8 @@ class GetInstanceResponseBody(TeaModel):
         self.workspace_source = workspace_source
 
     def validate(self):
+        if self.affinity:
+            self.affinity.validate()
         if self.cloud_disks:
             for k in self.cloud_disks:
                 if k:
@@ -2498,6 +2623,8 @@ class GetInstanceResponseBody(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.accumulated_running_time_in_ms is not None:
             result['AccumulatedRunningTimeInMs'] = self.accumulated_running_time_in_ms
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity.to_map()
         result['CloudDisks'] = []
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
@@ -2598,6 +2725,9 @@ class GetInstanceResponseBody(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('AccumulatedRunningTimeInMs') is not None:
             self.accumulated_running_time_in_ms = m.get('AccumulatedRunningTimeInMs')
+        if m.get('Affinity') is not None:
+            temp_model = GetInstanceResponseBodyAffinity()
+            self.affinity = temp_model.from_map(m['Affinity'])
         self.cloud_disks = []
         if m.get('CloudDisks') is not None:
             for k in m.get('CloudDisks'):
@@ -5223,6 +5353,62 @@ class ListInstancesShrinkRequest(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesAffinityCPU(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class ListInstancesResponseBodyInstancesAffinity(TeaModel):
+    def __init__(
+        self,
+        cpu: ListInstancesResponseBodyInstancesAffinityCPU = None,
+    ):
+        self.cpu = cpu
+
+    def validate(self):
+        if self.cpu:
+            self.cpu.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            temp_model = ListInstancesResponseBodyInstancesAffinityCPU()
+            self.cpu = temp_model.from_map(m['CPU'])
+        return self
+
+
 class ListInstancesResponseBodyInstancesCloudDisks(TeaModel):
     def __init__(
         self,
@@ -5726,6 +5912,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         accelerator_type: str = None,
         accessibility: str = None,
         accumulated_running_time_in_ms: int = None,
+        affinity: ListInstancesResponseBodyInstancesAffinity = None,
         cloud_disks: List[ListInstancesResponseBodyInstancesCloudDisks] = None,
         datasets: List[ListInstancesResponseBodyInstancesDatasets] = None,
         driver: str = None,
@@ -5765,6 +5952,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
+        self.affinity = affinity
         self.cloud_disks = cloud_disks
         self.datasets = datasets
         self.driver = driver
@@ -5804,6 +5992,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.workspace_source = workspace_source
 
     def validate(self):
+        if self.affinity:
+            self.affinity.validate()
         if self.cloud_disks:
             for k in self.cloud_disks:
                 if k:
@@ -5843,6 +6033,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.accumulated_running_time_in_ms is not None:
             result['AccumulatedRunningTimeInMs'] = self.accumulated_running_time_in_ms
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity.to_map()
         result['CloudDisks'] = []
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
@@ -5931,6 +6123,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('AccumulatedRunningTimeInMs') is not None:
             self.accumulated_running_time_in_ms = m.get('AccumulatedRunningTimeInMs')
+        if m.get('Affinity') is not None:
+            temp_model = ListInstancesResponseBodyInstancesAffinity()
+            self.affinity = temp_model.from_map(m['Affinity'])
         self.cloud_disks = []
         if m.get('CloudDisks') is not None:
             for k in m.get('CloudDisks'):
@@ -6356,6 +6551,62 @@ class StopInstanceResponse(TeaModel):
         return self
 
 
+class UpdateInstanceRequestAffinityCPU(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class UpdateInstanceRequestAffinity(TeaModel):
+    def __init__(
+        self,
+        cpu: UpdateInstanceRequestAffinityCPU = None,
+    ):
+        self.cpu = cpu
+
+    def validate(self):
+        if self.cpu:
+            self.cpu.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            temp_model = UpdateInstanceRequestAffinityCPU()
+            self.cpu = temp_model.from_map(m['CPU'])
+        return self
+
+
 class UpdateInstanceRequestCloudDisks(TeaModel):
     def __init__(
         self,
@@ -6560,6 +6811,7 @@ class UpdateInstanceRequest(TeaModel):
     def __init__(
         self,
         accessibility: str = None,
+        affinity: UpdateInstanceRequestAffinity = None,
         cloud_disks: List[UpdateInstanceRequestCloudDisks] = None,
         datasets: List[UpdateInstanceRequestDatasets] = None,
         disassociate_datasets: bool = None,
@@ -6578,6 +6830,7 @@ class UpdateInstanceRequest(TeaModel):
         workspace_source: str = None,
     ):
         self.accessibility = accessibility
+        self.affinity = affinity
         self.cloud_disks = cloud_disks
         self.datasets = datasets
         self.disassociate_datasets = disassociate_datasets
@@ -6596,6 +6849,8 @@ class UpdateInstanceRequest(TeaModel):
         self.workspace_source = workspace_source
 
     def validate(self):
+        if self.affinity:
+            self.affinity.validate()
         if self.cloud_disks:
             for k in self.cloud_disks:
                 if k:
@@ -6617,6 +6872,8 @@ class UpdateInstanceRequest(TeaModel):
         result = dict()
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity.to_map()
         result['CloudDisks'] = []
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
@@ -6659,6 +6916,9 @@ class UpdateInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        if m.get('Affinity') is not None:
+            temp_model = UpdateInstanceRequestAffinity()
+            self.affinity = temp_model.from_map(m['Affinity'])
         self.cloud_disks = []
         if m.get('CloudDisks') is not None:
             for k in m.get('CloudDisks'):

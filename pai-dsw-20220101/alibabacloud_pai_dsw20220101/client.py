@@ -167,6 +167,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.affinity):
+            body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
@@ -237,6 +239,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.affinity):
+            body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
@@ -2744,6 +2748,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.affinity):
+            body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
@@ -2815,6 +2821,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.affinity):
+            body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
