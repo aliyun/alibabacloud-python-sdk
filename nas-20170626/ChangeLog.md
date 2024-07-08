@@ -3,6 +3,11 @@
 - Update API ModifyFileSystem: add param Options.
 
 
+2024-07-08 Version: 2.2.3
+- Update API DescribeFileSystems: update response param.
+- Update API ModifyFileSystem: add param Options.
+
+
 2024-06-05 Version: 2.2.2
 - Update API CreateFileset: add param DeletionProtection.
 - Update API CreateFileset: update response param.
