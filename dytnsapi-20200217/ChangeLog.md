@@ -1,3 +1,16 @@
+2024-07-08 Version: 2.8.1
+- Update API DescribePhoneNumberOperatorAttribute: add param FlowName.
+- Update API DescribePhoneNumberOperatorAttribute: add param ResultCount.
+- Update API DescribePhoneNumberOperatorAttribute: update param Action.
+- Update API DescribePhoneNumberOperatorAttribute: update param AuthCode.
+- Update API DescribePhoneNumberOperatorAttribute: update param InputNumber.
+- Update API DescribePhoneNumberOperatorAttribute: update param Mask.
+- Update API DescribePhoneNumberOperatorAttribute: update param OwnerId.
+- Update API DescribePhoneNumberOperatorAttribute: update param ResourceOwnerAccount.
+- Update API DescribePhoneNumberOperatorAttribute: update param ResourceOwnerId.
+- Update API DescribePhoneNumberOperatorAttribute: update response param.
+
+
 2024-06-12 Version: 2.8.0
 - Support API GetUAIDConversionSign.
 - Support API UAIDCollection.

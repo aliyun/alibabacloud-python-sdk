@@ -1390,6 +1390,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.flow_name):
+            query['FlowName'] = request.flow_name
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1400,6 +1402,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result_count):
+            query['ResultCount'] = request.result_count
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1440,6 +1444,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auth_code):
             query['AuthCode'] = request.auth_code
+        if not UtilClient.is_unset(request.flow_name):
+            query['FlowName'] = request.flow_name
         if not UtilClient.is_unset(request.input_number):
             query['InputNumber'] = request.input_number
         if not UtilClient.is_unset(request.mask):
@@ -1450,6 +1456,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.result_count):
+            query['ResultCount'] = request.result_count
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
