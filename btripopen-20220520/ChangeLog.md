@@ -1,3 +1,12 @@
+2024-07-08 Version: 4.0.0
+- Delete API HotelSuggest.
+- Update API HotelBillSettlementQuery: update response param.
+- Update API HotelOrderQuery: update response param.
+- Update API InsInvoiceScanQuery: update response param.
+- Update API MealOrderDetailQuery: update response param.
+- Update API TrainBillSettlementQuery: update response param.
+
+
 2024-07-01 Version: 3.3.0
 - Support API AddDepartment.
 - Support API AddEmployee.
