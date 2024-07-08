@@ -7517,7 +7517,7 @@ class DescribeAccessRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The ID of the rule.
+        # The rule ID.
         self.access_rule_id = access_rule_id
         # The type of the file system.
         # 
@@ -7586,9 +7586,16 @@ class DescribeAccessRulesResponseBodyAccessRulesAccessRule(TeaModel):
         source_cidr_ip: str = None,
         user_access: str = None,
     ):
+        # The name of the permission group.
         self.access_group_name = access_group_name
         # The ID of the rule.
         self.access_rule_id = access_rule_id
+        # The type of the file system.
+        # 
+        # Valid values:
+        # 
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
+        # *   extreme: Extreme NAS file system
         self.file_system_type = file_system_type
         # The IPv6 address or CIDR block of the authorized object.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
@@ -7605,6 +7612,7 @@ class DescribeAccessRulesResponseBodyAccessRulesAccessRule(TeaModel):
         # *   RDWR (default): the read and write permissions
         # *   RDONLY: the read-only permissions
         self.rwaccess = rwaccess
+        # The region ID.
         self.region_id = region_id
         # The IP address or CIDR block of the authorized object.
         self.source_cidr_ip = source_cidr_ip
@@ -7817,7 +7825,7 @@ class DescribeAutoSnapshotPoliciesRequest(TeaModel):
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The type of the file system.
         # 
-        # Valid value: extreme, which indicates Extreme NAS file systems.
+        # Valid value: extreme, which indicates Extreme Apsara File Storage NAS (NAS) file systems.
         self.file_system_type = file_system_type
         # The page number.
         # 
@@ -7886,6 +7894,7 @@ class DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPo
         self.create_time = create_time
         # The number of file systems to which the automatic snapshot policy applies.
         self.file_system_nums = file_system_nums
+        # The type of the file system.
         self.file_system_type = file_system_type
         # The region ID of the automatic snapshot policy.
         self.region_id = region_id
@@ -10685,6 +10694,33 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets(TeaModel)
         return self
 
 
+class DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions(TeaModel):
+    def __init__(
+        self,
+        enable_oplock: bool = None,
+    ):
+        self.enable_oplock = enable_oplock
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_oplock is not None:
+            result['EnableOplock'] = self.enable_oplock
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableOplock') is not None:
+            self.enable_oplock = m.get('EnableOplock')
+        return self
+
+
 class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage(TeaModel):
     def __init__(
         self,
@@ -10897,6 +10933,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         metered_iasize: int = None,
         metered_size: int = None,
         mount_targets: DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets = None,
+        options: DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions = None,
         packages: DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages = None,
         protocol_type: str = None,
         region_id: str = None,
@@ -10968,6 +11005,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.metered_size = metered_size
         # The information about mount targets.
         self.mount_targets = mount_targets
+        self.options = options
         # The information about storage plans.
         self.packages = packages
         # The protocol type of the file system.
@@ -11018,6 +11056,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             self.ldap.validate()
         if self.mount_targets:
             self.mount_targets.validate()
+        if self.options:
+            self.options.validate()
         if self.packages:
             self.packages.validate()
         if self.supported_features:
@@ -11063,6 +11103,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
             result['MeteredSize'] = self.metered_size
         if self.mount_targets is not None:
             result['MountTargets'] = self.mount_targets.to_map()
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
         if self.packages is not None:
             result['Packages'] = self.packages.to_map()
         if self.protocol_type is not None:
@@ -11121,6 +11163,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         if m.get('MountTargets') is not None:
             temp_model = DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets()
             self.mount_targets = temp_model.from_map(m['MountTargets'])
+        if m.get('Options') is not None:
+            temp_model = DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions()
+            self.options = temp_model.from_map(m['Options'])
         if m.get('Packages') is not None:
             temp_model = DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages()
             self.packages = temp_model.from_map(m['Packages'])
@@ -11846,6 +11891,13 @@ class DescribeLogAnalysisRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The type of the file system.
+        # 
+        # Valid values:
+        # 
+        # *   standard: General-purpose NAS file system
+        # *   extreme: Extreme NAS file system
+        # *   all (default): all types
         self.file_system_type = file_system_type
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -13953,7 +14005,7 @@ class DescribeSnapshotsRequest(TeaModel):
         self.file_system_id = file_system_id
         # The type of the file system.
         # 
-        # Valid value: extreme, which indicates Extreme NAS file systems.
+        # Valid value: extreme, which indicates Extreme Apsara File Storage NAS (NAS) file systems.
         self.file_system_type = file_system_type
         # The page number.
         # 
@@ -14068,6 +14120,7 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # *   0: The snapshot is not encrypted.
         # *   1: The snapshot is encrypted.
         self.encrypt_type = encrypt_type
+        # The type of the file system.
         self.file_system_type = file_system_type
         # The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
         self.progress = progress
@@ -14090,6 +14143,10 @@ class DescribeSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         # 
         # If you specify a name to create a snapshot, the name of the snapshot is returned. Otherwise, no value is returned for this parameter.
         self.snapshot_name = snapshot_name
+        # The snapshot type. Valid values:
+        # 
+        # *   auto: automatically created snapshots
+        # *   user: manually created snapshots
         self.snapshot_type = snapshot_type
         # The ID of the source file system.
         # 
@@ -15634,6 +15691,14 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(TeaModel):
         # 
         # This parameter is returned only if the value of the Type parameter is File.
         self.ctime = ctime
+        # Indicates whether the directory contains files stored in the Archive storage class.
+        # 
+        # This parameter is returned only if the Type parameter is set to Directory.
+        # 
+        # Valid values:
+        # 
+        # *   true: The directory contains files stored in the Archive storage class.
+        # *   false: The directory does not contain files stored in the Archive storage class.
         self.has_archive_file = has_archive_file
         # Indicates whether the directory contains files stored in the IA storage medium.
         # 
@@ -15749,7 +15814,7 @@ class GetDirectoryOrFilePropertiesResponseBody(TeaModel):
         entry: GetDirectoryOrFilePropertiesResponseBodyEntry = None,
         request_id: str = None,
     ):
-        # The details about the file or directory.
+        # The details about the files or directories.
         self.entry = entry
         # The request ID.
         self.request_id = request_id
@@ -16342,6 +16407,12 @@ class ListLifecycleRetrieveJobsRequest(TeaModel):
         # *   completed: The task is completed.
         # *   failed: The task has failed.
         self.status = status
+        # The storage class.
+        # 
+        # *   InfrequentAccess: the Infrequent Access (IA) storage class.
+        # *   Archive: the Archive storage class.
+        # 
+        # >  If the StorageType parameter is not specified, data retrieval tasks of all types are returned.
         self.storage_type = storage_type
 
     def validate(self):
@@ -16403,6 +16474,7 @@ class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(TeaModel):
         self.file_system_id = file_system_id
         # The ID of the data retrieval task.
         self.job_id = job_id
+        # The execution path of the data retrieval task.
         self.paths = paths
         # The total number of files that are retrieved.
         self.retrieved_file_count = retrieved_file_count
@@ -16413,6 +16485,10 @@ class ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs(TeaModel):
         # *   completed: The task is completed.
         # *   failed: The task has failed.
         self.status = status
+        # The storage class.
+        # 
+        # *   InfrequentAccess: the IA storage class.
+        # *   Archive: the Archive storage class.
         self.storage_type = storage_type
         # The time when the task was updated.
         # 
@@ -18435,11 +18511,39 @@ class ModifyDataFlowAutoRefreshResponse(TeaModel):
         return self
 
 
+class ModifyFileSystemRequestOptions(TeaModel):
+    def __init__(
+        self,
+        enable_oplock: bool = None,
+    ):
+        self.enable_oplock = enable_oplock
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_oplock is not None:
+            result['EnableOplock'] = self.enable_oplock
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableOplock') is not None:
+            self.enable_oplock = m.get('EnableOplock')
+        return self
+
+
 class ModifyFileSystemRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
         file_system_id: str = None,
+        options: ModifyFileSystemRequestOptions = None,
     ):
         # The description of the file system.
         # 
@@ -18458,6 +18562,63 @@ class ModifyFileSystemRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        self.options = options
+
+    def validate(self):
+        if self.options:
+            self.options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Options') is not None:
+            temp_model = ModifyFileSystemRequestOptions()
+            self.options = temp_model.from_map(m['Options'])
+        return self
+
+
+class ModifyFileSystemShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_system_id: str = None,
+        options_shrink: str = None,
+    ):
+        # The description of the file system.
+        # 
+        # Limits:
+        # 
+        # *   The description must be 2 to 128 characters in length.
+        # *   It must start with a letter but cannot start with `http://` or `https://`.
+        # *   The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        self.description = description
+        # The ID of the file system.
+        # 
+        # *   Sample ID of a General-purpose NAS file system: `31a8e4****`.
+        # *   The IDs of Extreme NAS file systems must start with `extreme-`. Example: `extreme-0015****`.
+        # *   The IDs of Cloud Paralleled File System (CPFS) file systems must start with `cpfs-`. Example: `cpfs-125487****`.
+        # >CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # This parameter is required.
+        self.file_system_id = file_system_id
+        self.options_shrink = options_shrink
 
     def validate(self):
         pass
@@ -18472,6 +18633,8 @@ class ModifyFileSystemRequest(TeaModel):
             result['Description'] = self.description
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
+        if self.options_shrink is not None:
+            result['Options'] = self.options_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -18480,6 +18643,8 @@ class ModifyFileSystemRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+        if m.get('Options') is not None:
+            self.options_shrink = m.get('Options')
         return self
 
 
@@ -19000,6 +19165,8 @@ class ModifyMountTargetRequest(TeaModel):
         # 
         # *   Active: The mount target is available.
         # *   Inactive: The mount target is unavailable.
+        # 
+        # >  Only General-purpose Apsara File Storage NAS (NAS) file systems support changing the mount target status.
         self.status = status
 
     def validate(self):
@@ -20147,7 +20314,10 @@ class SetDirQuotaRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The absolute path of a directory.
+        # The absolute path of the directory in the file system.
+        # 
+        # > *   You can set quotas only for the directories that have been created in a NAS file system. The path of the directory that you specify for a quota is the absolute path of the directory in the NAS file system, but not the local path of the compute node, such as an Elastic Compute Service (ECS) instance or a container.
+        # > *   Directories whose names contain Chinese characters are not supported.
         # 
         # This parameter is required.
         self.path = path

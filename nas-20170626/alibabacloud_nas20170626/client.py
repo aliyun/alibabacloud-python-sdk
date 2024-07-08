@@ -9216,7 +9216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        @summary Queries whether a directory contains files that are stored in the Infrequent Access (IA) or Archive storage class, or whether a file is stored in the IA or Archive storage class.
         
         @description Only General-purpose NAS file systems support this operation.
         
@@ -9255,7 +9255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        @summary Queries whether a directory contains files that are stored in the Infrequent Access (IA) or Archive storage class, or whether a file is stored in the IA or Archive storage class.
         
         @description Only General-purpose NAS file systems support this operation.
         
@@ -9293,7 +9293,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.GetDirectoryOrFilePropertiesRequest,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        @summary Queries whether a directory contains files that are stored in the Infrequent Access (IA) or Archive storage class, or whether a file is stored in the IA or Archive storage class.
         
         @description Only General-purpose NAS file systems support this operation.
         
@@ -9308,7 +9308,7 @@ class Client(OpenApiClient):
         request: nas20170626_models.GetDirectoryOrFilePropertiesRequest,
     ) -> nas20170626_models.GetDirectoryOrFilePropertiesResponse:
         """
-        @summary Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+        @summary Queries whether a directory contains files that are stored in the Infrequent Access (IA) or Archive storage class, or whether a file is stored in the IA or Archive storage class.
         
         @description Only General-purpose NAS file systems support this operation.
         
@@ -10820,22 +10820,28 @@ class Client(OpenApiClient):
 
     def modify_file_system_with_options(
         self,
-        request: nas20170626_models.ModifyFileSystemRequest,
+        tmp_req: nas20170626_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyFileSystemResponse:
         """
         @summary Modifies the description of a file system.
         
-        @param request: ModifyFileSystemRequest
+        @param tmp_req: ModifyFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyFileSystemResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = nas20170626_models.ModifyFileSystemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.options_shrink):
+            query['Options'] = request.options_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10857,22 +10863,28 @@ class Client(OpenApiClient):
 
     async def modify_file_system_with_options_async(
         self,
-        request: nas20170626_models.ModifyFileSystemRequest,
+        tmp_req: nas20170626_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nas20170626_models.ModifyFileSystemResponse:
         """
         @summary Modifies the description of a file system.
         
-        @param request: ModifyFileSystemRequest
+        @param tmp_req: ModifyFileSystemRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyFileSystemResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = nas20170626_models.ModifyFileSystemShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.options):
+            request.options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.options, 'Options', 'json')
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not UtilClient.is_unset(request.options_shrink):
+            query['Options'] = request.options_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12268,7 +12280,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory quota for a file system.
         
-        @description Only General-purpose NFS file systems support the directory quota feature.
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12317,7 +12329,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory quota for a file system.
         
-        @description Only General-purpose NFS file systems support the directory quota feature.
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12365,7 +12377,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory quota for a file system.
         
-        @description Only General-purpose NFS file systems support the directory quota feature.
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @return: SetDirQuotaResponse
@@ -12380,7 +12392,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a directory quota for a file system.
         
-        @description Only General-purpose NFS file systems support the directory quota feature.
+        @description Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
         
         @param request: SetDirQuotaRequest
         @return: SetDirQuotaResponse
