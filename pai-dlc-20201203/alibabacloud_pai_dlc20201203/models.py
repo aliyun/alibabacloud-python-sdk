@@ -4423,6 +4423,7 @@ class GetJobResponseBody(TeaModel):
         self,
         cluster_id: str = None,
         code_source: GetJobResponseBodyCodeSource = None,
+        credential_config: CredentialConfig = None,
         data_sources: List[GetJobResponseBodyDataSources] = None,
         display_name: str = None,
         duration: int = None,
@@ -4462,6 +4463,7 @@ class GetJobResponseBody(TeaModel):
     ):
         self.cluster_id = cluster_id
         self.code_source = code_source
+        self.credential_config = credential_config
         self.data_sources = data_sources
         self.display_name = display_name
         self.duration = duration
@@ -4502,6 +4504,8 @@ class GetJobResponseBody(TeaModel):
     def validate(self):
         if self.code_source:
             self.code_source.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.data_sources:
             for k in self.data_sources:
                 if k:
@@ -4533,6 +4537,8 @@ class GetJobResponseBody(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.code_source is not None:
             result['CodeSource'] = self.code_source.to_map()
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['DataSources'] = []
         if self.data_sources is not None:
             for k in self.data_sources:
@@ -4622,6 +4628,9 @@ class GetJobResponseBody(TeaModel):
         if m.get('CodeSource') is not None:
             temp_model = GetJobResponseBodyCodeSource()
             self.code_source = temp_model.from_map(m['CodeSource'])
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.data_sources = []
         if m.get('DataSources') is not None:
             for k in m.get('DataSources'):
