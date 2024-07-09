@@ -1,3 +1,15 @@
+2024-07-09 Version: 4.4.0
+- Support API DescribeCnameCount.
+- Update API DescribeCloudResources: add param ResourceInstanceName.
+- Update API DescribeCloudResources: update param ResourceName.
+- Update API DescribeCloudResources: update response param.
+- Update API DescribeProductInstances: add param ResourceInstanceIp.
+- Update API DescribeProductInstances: add param ResourceInstanceName.
+- Update API DescribeProductInstances: update param ResourceIp.
+- Update API DescribeProductInstances: update param ResourceName.
+- Update API DescribeProductInstances: update response param.
+
+
 2024-07-05 Version: 4.3.0
 - Support API ReleaseInstance.
 

@@ -5020,6 +5020,7 @@ class DescribeCloudResourcesRequest(TeaModel):
         resource_domain: str = None,
         resource_function: str = None,
         resource_instance_id: str = None,
+        resource_instance_name: str = None,
         resource_manager_resource_group_id: str = None,
         resource_name: str = None,
         resource_product: str = None,
@@ -5049,6 +5050,7 @@ class DescribeCloudResourcesRequest(TeaModel):
         self.resource_function = resource_function
         # The ID of the resource.
         self.resource_instance_id = resource_instance_id
+        self.resource_instance_name = resource_instance_name
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the resource.
@@ -5094,6 +5096,8 @@ class DescribeCloudResourcesRequest(TeaModel):
             result['ResourceFunction'] = self.resource_function
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_instance_name is not None:
+            result['ResourceInstanceName'] = self.resource_instance_name
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.resource_name is not None:
@@ -5124,6 +5128,8 @@ class DescribeCloudResourcesRequest(TeaModel):
             self.resource_function = m.get('ResourceFunction')
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceInstanceName') is not None:
+            self.resource_instance_name = m.get('ResourceInstanceName')
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('ResourceName') is not None:
@@ -5140,16 +5146,23 @@ class DescribeCloudResourcesRequest(TeaModel):
 class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
     def __init__(
         self,
+        http_port_count: int = None,
+        https_port_count: int = None,
         owner_user_id: str = None,
         resource_domain: str = None,
         resource_function: str = None,
         resource_instance: str = None,
+        resource_instance_id: str = None,
+        resource_instance_ip: str = None,
+        resource_instance_name: str = None,
         resource_name: str = None,
         resource_product: str = None,
         resource_region_id: str = None,
         resource_route_name: str = None,
         resource_service: str = None,
     ):
+        self.http_port_count = http_port_count
+        self.https_port_count = https_port_count
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
         # The domain name. This parameter has a value only if the value of ResourceProduct is fc or sae.
@@ -5158,6 +5171,9 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
         self.resource_function = resource_function
         # The ID of the resource.
         self.resource_instance = resource_instance
+        self.resource_instance_id = resource_instance_id
+        self.resource_instance_ip = resource_instance_ip
+        self.resource_instance_name = resource_instance_name
         # The name of the resource.
         self.resource_name = resource_name
         # The cloud service to which the resource belongs. Valid values:
@@ -5183,6 +5199,10 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
             return _map
 
         result = dict()
+        if self.http_port_count is not None:
+            result['HttpPortCount'] = self.http_port_count
+        if self.https_port_count is not None:
+            result['HttpsPortCount'] = self.https_port_count
         if self.owner_user_id is not None:
             result['OwnerUserId'] = self.owner_user_id
         if self.resource_domain is not None:
@@ -5191,6 +5211,12 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
             result['ResourceFunction'] = self.resource_function
         if self.resource_instance is not None:
             result['ResourceInstance'] = self.resource_instance
+        if self.resource_instance_id is not None:
+            result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_instance_ip is not None:
+            result['ResourceInstanceIp'] = self.resource_instance_ip
+        if self.resource_instance_name is not None:
+            result['ResourceInstanceName'] = self.resource_instance_name
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.resource_product is not None:
@@ -5205,6 +5231,10 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HttpPortCount') is not None:
+            self.http_port_count = m.get('HttpPortCount')
+        if m.get('HttpsPortCount') is not None:
+            self.https_port_count = m.get('HttpsPortCount')
         if m.get('OwnerUserId') is not None:
             self.owner_user_id = m.get('OwnerUserId')
         if m.get('ResourceDomain') is not None:
@@ -5213,6 +5243,12 @@ class DescribeCloudResourcesResponseBodyCloudResources(TeaModel):
             self.resource_function = m.get('ResourceFunction')
         if m.get('ResourceInstance') is not None:
             self.resource_instance = m.get('ResourceInstance')
+        if m.get('ResourceInstanceId') is not None:
+            self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceInstanceIp') is not None:
+            self.resource_instance_ip = m.get('ResourceInstanceIp')
+        if m.get('ResourceInstanceName') is not None:
+            self.resource_instance_name = m.get('ResourceInstanceName')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ResourceProduct') is not None:
@@ -5313,6 +5349,160 @@ class DescribeCloudResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCnameCountRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeCnameCountResponseBodyCnameCount(TeaModel):
+    def __init__(
+        self,
+        cname: int = None,
+        hybrid_cloud_cname: int = None,
+        total: int = None,
+    ):
+        self.cname = cname
+        self.hybrid_cloud_cname = hybrid_cloud_cname
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cname is not None:
+            result['Cname'] = self.cname
+        if self.hybrid_cloud_cname is not None:
+            result['HybridCloudCname'] = self.hybrid_cloud_cname
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cname') is not None:
+            self.cname = m.get('Cname')
+        if m.get('HybridCloudCname') is not None:
+            self.hybrid_cloud_cname = m.get('HybridCloudCname')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeCnameCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        cname_count: DescribeCnameCountResponseBodyCnameCount = None,
+        request_id: str = None,
+    ):
+        self.cname_count = cname_count
+        self.request_id = request_id
+
+    def validate(self):
+        if self.cname_count:
+            self.cname_count.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cname_count is not None:
+            result['CnameCount'] = self.cname_count.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CnameCount') is not None:
+            temp_model = DescribeCnameCountResponseBodyCnameCount()
+            self.cname_count = temp_model.from_map(m['CnameCount'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCnameCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCnameCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCnameCountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12874,6 +13064,8 @@ class DescribeProductInstancesRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
         resource_instance_id: str = None,
+        resource_instance_ip: str = None,
+        resource_instance_name: str = None,
         resource_ip: str = None,
         resource_manager_resource_group_id: str = None,
         resource_name: str = None,
@@ -12899,6 +13091,8 @@ class DescribeProductInstancesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the instance.
         self.resource_instance_id = resource_instance_id
+        self.resource_instance_ip = resource_instance_ip
+        self.resource_instance_name = resource_instance_name
         # The public IP address of the instance.
         self.resource_ip = resource_ip
         # The ID of the Alibaba Cloud resource group.
@@ -12946,6 +13140,10 @@ class DescribeProductInstancesRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_instance_ip is not None:
+            result['ResourceInstanceIp'] = self.resource_instance_ip
+        if self.resource_instance_name is not None:
+            result['ResourceInstanceName'] = self.resource_instance_name
         if self.resource_ip is not None:
             result['ResourceIp'] = self.resource_ip
         if self.resource_manager_resource_group_id is not None:
@@ -12972,6 +13170,10 @@ class DescribeProductInstancesRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceInstanceIp') is not None:
+            self.resource_instance_ip = m.get('ResourceInstanceIp')
+        if m.get('ResourceInstanceName') is not None:
+            self.resource_instance_name = m.get('ResourceInstanceName')
         if m.get('ResourceIp') is not None:
             self.resource_ip = m.get('ResourceIp')
         if m.get('ResourceManagerResourceGroupId') is not None:
@@ -13078,6 +13280,8 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
         self,
         owner_user_id: str = None,
         resource_instance_id: str = None,
+        resource_instance_ip: str = None,
+        resource_instance_name: str = None,
         resource_ip: str = None,
         resource_name: str = None,
         resource_ports: List[DescribeProductInstancesResponseBodyProductInstancesResourcePorts] = None,
@@ -13088,6 +13292,8 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
         self.owner_user_id = owner_user_id
         # The ID of the instance.
         self.resource_instance_id = resource_instance_id
+        self.resource_instance_ip = resource_instance_ip
+        self.resource_instance_name = resource_instance_name
         # The public IP address of the instance.
         self.resource_ip = resource_ip
         # The name of the instance.
@@ -13130,6 +13336,10 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
             result['OwnerUserId'] = self.owner_user_id
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
+        if self.resource_instance_ip is not None:
+            result['ResourceInstanceIp'] = self.resource_instance_ip
+        if self.resource_instance_name is not None:
+            result['ResourceInstanceName'] = self.resource_instance_name
         if self.resource_ip is not None:
             result['ResourceIp'] = self.resource_ip
         if self.resource_name is not None:
@@ -13150,6 +13360,10 @@ class DescribeProductInstancesResponseBodyProductInstances(TeaModel):
             self.owner_user_id = m.get('OwnerUserId')
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')
+        if m.get('ResourceInstanceIp') is not None:
+            self.resource_instance_ip = m.get('ResourceInstanceIp')
+        if m.get('ResourceInstanceName') is not None:
+            self.resource_instance_name = m.get('ResourceInstanceName')
         if m.get('ResourceIp') is not None:
             self.resource_ip = m.get('ResourceIp')
         if m.get('ResourceName') is not None:
@@ -21045,10 +21259,20 @@ class ReleaseInstanceRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region in which the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: the Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -21084,6 +21308,7 @@ class ReleaseInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

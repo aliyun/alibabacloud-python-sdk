@@ -3353,6 +3353,8 @@ class Client(OpenApiClient):
             query['ResourceFunction'] = request.resource_function
         if not UtilClient.is_unset(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_instance_name):
+            query['ResourceInstanceName'] = request.resource_instance_name
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.resource_name):
@@ -3412,6 +3414,8 @@ class Client(OpenApiClient):
             query['ResourceFunction'] = request.resource_function
         if not UtilClient.is_unset(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_instance_name):
+            query['ResourceInstanceName'] = request.resource_instance_name
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
         if not UtilClient.is_unset(request.resource_name):
@@ -3466,6 +3470,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_resources_with_options_async(request, runtime)
+
+    def describe_cname_count_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeCnameCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
+        """
+        @summary 查询Cname接入的数量
+        
+        @param request: DescribeCnameCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCnameCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCnameCount',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCnameCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cname_count_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCnameCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
+        """
+        @summary 查询Cname接入的数量
+        
+        @param request: DescribeCnameCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCnameCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCnameCount',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCnameCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cname_count(
+        self,
+        request: waf_openapi_20211001_models.DescribeCnameCountRequest,
+    ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
+        """
+        @summary 查询Cname接入的数量
+        
+        @param request: DescribeCnameCountRequest
+        @return: DescribeCnameCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cname_count_with_options(request, runtime)
+
+    async def describe_cname_count_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCnameCountRequest,
+    ) -> waf_openapi_20211001_models.DescribeCnameCountResponse:
+        """
+        @summary 查询Cname接入的数量
+        
+        @param request: DescribeCnameCountRequest
+        @return: DescribeCnameCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cname_count_with_options_async(request, runtime)
 
     def describe_ddo_sstatus_with_options(
         self,
@@ -6609,6 +6717,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_instance_ip):
+            query['ResourceInstanceIp'] = request.resource_instance_ip
+        if not UtilClient.is_unset(request.resource_instance_name):
+            query['ResourceInstanceName'] = request.resource_instance_name
         if not UtilClient.is_unset(request.resource_ip):
             query['ResourceIp'] = request.resource_ip
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -6664,6 +6776,10 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_instance_id):
             query['ResourceInstanceId'] = request.resource_instance_id
+        if not UtilClient.is_unset(request.resource_instance_ip):
+            query['ResourceInstanceIp'] = request.resource_instance_ip
+        if not UtilClient.is_unset(request.resource_instance_name):
+            query['ResourceInstanceName'] = request.resource_instance_name
         if not UtilClient.is_unset(request.resource_ip):
             query['ResourceIp'] = request.resource_ip
         if not UtilClient.is_unset(request.resource_manager_resource_group_id):
@@ -11701,7 +11817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases a Web Application Firewall (WAF) 3.0 instance.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11740,7 +11856,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases a Web Application Firewall (WAF) 3.0 instance.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11778,7 +11894,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ReleaseInstanceRequest,
     ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases a Web Application Firewall (WAF) 3.0 instance.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -11791,7 +11907,7 @@ class Client(OpenApiClient):
         request: waf_openapi_20211001_models.ReleaseInstanceRequest,
     ) -> waf_openapi_20211001_models.ReleaseInstanceResponse:
         """
-        @summary 释放实例
+        @summary Releases a Web Application Firewall (WAF) 3.0 instance.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
