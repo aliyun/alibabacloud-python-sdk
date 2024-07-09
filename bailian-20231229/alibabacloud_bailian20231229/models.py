@@ -1654,6 +1654,228 @@ class RetrieveResponse(TeaModel):
         return self
 
 
+class SubmitIndexAddDocumentsJobRequest(TeaModel):
+    def __init__(
+        self,
+        category_ids: List[str] = None,
+        document_ids: List[str] = None,
+        index_id: str = None,
+        source_type: str = None,
+    ):
+        self.category_ids = category_ids
+        self.document_ids = document_ids
+        # This parameter is required.
+        self.index_id = index_id
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_ids is not None:
+            result['CategoryIds'] = self.category_ids
+        if self.document_ids is not None:
+            result['DocumentIds'] = self.document_ids
+        if self.index_id is not None:
+            result['IndexId'] = self.index_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryIds') is not None:
+            self.category_ids = m.get('CategoryIds')
+        if m.get('DocumentIds') is not None:
+            self.document_ids = m.get('DocumentIds')
+        if m.get('IndexId') is not None:
+            self.index_id = m.get('IndexId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class SubmitIndexAddDocumentsJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category_ids_shrink: str = None,
+        document_ids_shrink: str = None,
+        index_id: str = None,
+        source_type: str = None,
+    ):
+        self.category_ids_shrink = category_ids_shrink
+        self.document_ids_shrink = document_ids_shrink
+        # This parameter is required.
+        self.index_id = index_id
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_ids_shrink is not None:
+            result['CategoryIds'] = self.category_ids_shrink
+        if self.document_ids_shrink is not None:
+            result['DocumentIds'] = self.document_ids_shrink
+        if self.index_id is not None:
+            result['IndexId'] = self.index_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryIds') is not None:
+            self.category_ids_shrink = m.get('CategoryIds')
+        if m.get('DocumentIds') is not None:
+            self.document_ids_shrink = m.get('DocumentIds')
+        if m.get('IndexId') is not None:
+            self.index_id = m.get('IndexId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class SubmitIndexAddDocumentsJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class SubmitIndexAddDocumentsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitIndexAddDocumentsJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitIndexAddDocumentsJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitIndexAddDocumentsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitIndexAddDocumentsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitIndexAddDocumentsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitIndexJobRequest(TeaModel):
     def __init__(
         self,

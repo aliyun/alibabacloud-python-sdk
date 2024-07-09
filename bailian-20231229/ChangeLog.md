@@ -1,3 +1,7 @@
+2024-07-09 Version: 1.2.0
+- Support API SubmitIndexAddDocumentsJob.
+
+
 2024-07-04 Version: 1.1.0
 - Support API CreateIndex.
 - Support API GetIndexJobStatus.

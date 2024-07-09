@@ -827,6 +827,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.retrieve_with_options_async(workspace_id, request, headers, runtime)
 
+    def submit_index_add_documents_job_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.SubmitIndexAddDocumentsJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
+        """
+        @summary 知识索引
+        
+        @param tmp_req: SubmitIndexAddDocumentsJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIndexAddDocumentsJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.SubmitIndexAddDocumentsJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.category_ids):
+            request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
+        if not UtilClient.is_unset(tmp_req.document_ids):
+            request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category_ids_shrink):
+            query['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.document_ids_shrink):
+            query['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitIndexAddDocumentsJob',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/add_documents_to_index',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_index_add_documents_job_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.SubmitIndexAddDocumentsJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
+        """
+        @summary 知识索引
+        
+        @param tmp_req: SubmitIndexAddDocumentsJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIndexAddDocumentsJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.SubmitIndexAddDocumentsJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.category_ids):
+            request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
+        if not UtilClient.is_unset(tmp_req.document_ids):
+            request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category_ids_shrink):
+            query['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.document_ids_shrink):
+            query['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitIndexAddDocumentsJob',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/add_documents_to_index',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.SubmitIndexAddDocumentsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_index_add_documents_job(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.SubmitIndexAddDocumentsJobRequest,
+    ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
+        """
+        @summary 知识索引
+        
+        @param request: SubmitIndexAddDocumentsJobRequest
+        @return: SubmitIndexAddDocumentsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.submit_index_add_documents_job_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_index_add_documents_job_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.SubmitIndexAddDocumentsJobRequest,
+    ) -> bailian_20231229_models.SubmitIndexAddDocumentsJobResponse:
+        """
+        @summary 知识索引
+        
+        @param request: SubmitIndexAddDocumentsJobRequest
+        @return: SubmitIndexAddDocumentsJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.submit_index_add_documents_job_with_options_async(workspace_id, request, headers, runtime)
+
     def submit_index_job_with_options(
         self,
         workspace_id: str,
