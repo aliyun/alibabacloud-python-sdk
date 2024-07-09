@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddResolverEndpointResponse:
+        """
+        @summary Creates an endpoint.
+        
+        @param request: AddResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_config):
@@ -84,6 +91,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddResolverEndpointResponse:
+        """
+        @summary Creates an endpoint.
+        
+        @param request: AddResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_config):
@@ -121,6 +135,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddResolverEndpointRequest,
     ) -> pvtz_20180101_models.AddResolverEndpointResponse:
+        """
+        @summary Creates an endpoint.
+        
+        @param request: AddResolverEndpointRequest
+        @return: AddResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_resolver_endpoint_with_options(request, runtime)
 
@@ -128,6 +148,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddResolverEndpointRequest,
     ) -> pvtz_20180101_models.AddResolverEndpointResponse:
+        """
+        @summary Creates an endpoint.
+        
+        @param request: AddResolverEndpointRequest
+        @return: AddResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_resolver_endpoint_with_options_async(request, runtime)
 
@@ -136,6 +162,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddResolverRuleResponse:
+        """
+        @summary Creates a forwarding rule.
+        
+        @param request: AddResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -174,6 +207,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddResolverRuleResponse:
+        """
+        @summary Creates a forwarding rule.
+        
+        @param request: AddResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -211,6 +251,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddResolverRuleRequest,
     ) -> pvtz_20180101_models.AddResolverRuleResponse:
+        """
+        @summary Creates a forwarding rule.
+        
+        @param request: AddResolverRuleRequest
+        @return: AddResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_resolver_rule_with_options(request, runtime)
 
@@ -218,6 +264,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddResolverRuleRequest,
     ) -> pvtz_20180101_models.AddResolverRuleResponse:
+        """
+        @summary Creates a forwarding rule.
+        
+        @param request: AddResolverRuleRequest
+        @return: AddResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_resolver_rule_with_options_async(request, runtime)
 
@@ -226,6 +278,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
+        """
+        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+        
+        @param request: AddUserVpcAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserVpcAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_channel):
@@ -260,6 +319,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
+        """
+        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+        
+        @param request: AddUserVpcAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserVpcAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_channel):
@@ -293,6 +359,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
     ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
+        """
+        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+        
+        @param request: AddUserVpcAuthorizationRequest
+        @return: AddUserVpcAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_vpc_authorization_with_options(request, runtime)
 
@@ -300,6 +372,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
     ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
+        """
+        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+        
+        @param request: AddUserVpcAuthorizationRequest
+        @return: AddUserVpcAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_vpc_authorization_with_options_async(request, runtime)
 
@@ -308,6 +386,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneResponse:
+        """
+        @summary Creates a zone.
+        
+        @param request: AddZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -350,6 +435,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneResponse:
+        """
+        @summary Creates a zone.
+        
+        @param request: AddZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -391,6 +483,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddZoneRequest,
     ) -> pvtz_20180101_models.AddZoneResponse:
+        """
+        @summary Creates a zone.
+        
+        @param request: AddZoneRequest
+        @return: AddZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_zone_with_options(request, runtime)
 
@@ -398,6 +496,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddZoneRequest,
     ) -> pvtz_20180101_models.AddZoneResponse:
+        """
+        @summary Creates a zone.
+        
+        @param request: AddZoneRequest
+        @return: AddZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_zone_with_options_async(request, runtime)
 
@@ -406,6 +510,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record for a zone.
+        
+        @param request: AddZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddZoneRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -456,6 +567,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.AddZoneRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record for a zone.
+        
+        @param request: AddZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddZoneRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -505,6 +623,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddZoneRecordRequest,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record for a zone.
+        
+        @param request: AddZoneRecordRequest
+        @return: AddZoneRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_zone_record_with_options(request, runtime)
 
@@ -512,6 +636,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.AddZoneRecordRequest,
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record for a zone.
+        
+        @param request: AddZoneRecordRequest
+        @return: AddZoneRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_zone_record_with_options_async(request, runtime)
 
@@ -520,6 +650,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.BindResolverRuleVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
+        """
+        @summary Associates a forwarding rule with virtual private clouds (VPCs).
+        
+        @param request: BindResolverRuleVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindResolverRuleVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -552,6 +689,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.BindResolverRuleVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
+        """
+        @summary Associates a forwarding rule with virtual private clouds (VPCs).
+        
+        @param request: BindResolverRuleVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindResolverRuleVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -583,6 +727,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.BindResolverRuleVpcRequest,
     ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
+        """
+        @summary Associates a forwarding rule with virtual private clouds (VPCs).
+        
+        @param request: BindResolverRuleVpcRequest
+        @return: BindResolverRuleVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_resolver_rule_vpc_with_options(request, runtime)
 
@@ -590,6 +740,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.BindResolverRuleVpcRequest,
     ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
+        """
+        @summary Associates a forwarding rule with virtual private clouds (VPCs).
+        
+        @param request: BindResolverRuleVpcRequest
+        @return: BindResolverRuleVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_resolver_rule_vpc_with_options_async(request, runtime)
 
@@ -598,6 +754,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.BindZoneVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
+        """
+        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        
+        @param request: BindZoneVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindZoneVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -634,6 +797,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.BindZoneVpcRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
+        """
+        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        
+        @param request: BindZoneVpcRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindZoneVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -669,6 +839,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.BindZoneVpcRequest,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
+        """
+        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        
+        @param request: BindZoneVpcRequest
+        @return: BindZoneVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_zone_vpc_with_options(request, runtime)
 
@@ -676,6 +852,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.BindZoneVpcRequest,
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
+        """
+        @summary Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+        
+        @param request: BindZoneVpcRequest
+        @return: BindZoneVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_zone_vpc_with_options_async(request, runtime)
 
@@ -684,6 +866,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.CheckZoneNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
+        """
+        @summary Checks whether the name of a zone is valid based on specific rules.
+        
+        @param request: CheckZoneNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckZoneNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -716,6 +905,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.CheckZoneNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
+        """
+        @summary Checks whether the name of a zone is valid based on specific rules.
+        
+        @param request: CheckZoneNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckZoneNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -747,6 +943,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.CheckZoneNameRequest,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
+        """
+        @summary Checks whether the name of a zone is valid based on specific rules.
+        
+        @param request: CheckZoneNameRequest
+        @return: CheckZoneNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_zone_name_with_options(request, runtime)
 
@@ -754,6 +956,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.CheckZoneNameRequest,
     ) -> pvtz_20180101_models.CheckZoneNameResponse:
+        """
+        @summary Checks whether the name of a zone is valid based on specific rules.
+        
+        @param request: CheckZoneNameRequest
+        @return: CheckZoneNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_zone_name_with_options_async(request, runtime)
 
@@ -762,6 +970,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
+        """
+        @summary Deletes an endpoint.
+        
+        @param request: DeleteResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -792,6 +1007,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
+        """
+        @summary Deletes an endpoint.
+        
+        @param request: DeleteResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -821,6 +1043,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteResolverEndpointRequest,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
+        """
+        @summary Deletes an endpoint.
+        
+        @param request: DeleteResolverEndpointRequest
+        @return: DeleteResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_resolver_endpoint_with_options(request, runtime)
 
@@ -828,6 +1056,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteResolverEndpointRequest,
     ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
+        """
+        @summary Deletes an endpoint.
+        
+        @param request: DeleteResolverEndpointRequest
+        @return: DeleteResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_resolver_endpoint_with_options_async(request, runtime)
 
@@ -836,6 +1070,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
+        """
+        @summary Deletes a forwarding rule.
+        
+        @param request: DeleteResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -866,6 +1107,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
+        """
+        @summary Deletes a forwarding rule.
+        
+        @param request: DeleteResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -895,6 +1143,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteResolverRuleRequest,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
+        """
+        @summary Deletes a forwarding rule.
+        
+        @param request: DeleteResolverRuleRequest
+        @return: DeleteResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_resolver_rule_with_options(request, runtime)
 
@@ -902,6 +1156,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteResolverRuleRequest,
     ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
+        """
+        @summary Deletes a forwarding rule.
+        
+        @param request: DeleteResolverRuleRequest
+        @return: DeleteResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_resolver_rule_with_options_async(request, runtime)
 
@@ -910,6 +1170,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
+        """
+        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DeleteUserVpcAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserVpcAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -940,6 +1207,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
+        """
+        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DeleteUserVpcAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserVpcAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -969,6 +1243,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
+        """
+        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DeleteUserVpcAuthorizationRequest
+        @return: DeleteUserVpcAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_vpc_authorization_with_options(request, runtime)
 
@@ -976,6 +1256,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
     ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
+        """
+        @summary Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DeleteUserVpcAuthorizationRequest
+        @return: DeleteUserVpcAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_vpc_authorization_with_options_async(request, runtime)
 
@@ -984,6 +1270,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
+        """
+        @summary Deletes a zone.
+        
+        @param request: DeleteZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1018,6 +1311,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
+        """
+        @summary Deletes a zone.
+        
+        @param request: DeleteZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteZoneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1051,6 +1351,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteZoneRequest,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
+        """
+        @summary Deletes a zone.
+        
+        @param request: DeleteZoneRequest
+        @return: DeleteZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_zone_with_options(request, runtime)
 
@@ -1058,6 +1364,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteZoneRequest,
     ) -> pvtz_20180101_models.DeleteZoneResponse:
+        """
+        @summary Deletes a zone.
+        
+        @param request: DeleteZoneRequest
+        @return: DeleteZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_zone_with_options_async(request, runtime)
 
@@ -1066,6 +1378,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record of a zone.
+        
+        @param request: DeleteZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteZoneRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1100,6 +1419,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DeleteZoneRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record of a zone.
+        
+        @param request: DeleteZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteZoneRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1133,6 +1459,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteZoneRecordRequest,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record of a zone.
+        
+        @param request: DeleteZoneRecordRequest
+        @return: DeleteZoneRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_zone_record_with_options(request, runtime)
 
@@ -1140,6 +1472,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DeleteZoneRecordRequest,
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record of a zone.
+        
+        @param request: DeleteZoneRecordRequest
+        @return: DeleteZoneRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_zone_record_with_options_async(request, runtime)
 
@@ -1148,6 +1486,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeChangeLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
+        """
+        @summary Queries a list of operation logs.
+        
+        @param request: DescribeChangeLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChangeLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_timestamp):
@@ -1192,6 +1537,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeChangeLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
+        """
+        @summary Queries a list of operation logs.
+        
+        @param request: DescribeChangeLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChangeLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_timestamp):
@@ -1235,6 +1587,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeChangeLogsRequest,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
+        """
+        @summary Queries a list of operation logs.
+        
+        @param request: DescribeChangeLogsRequest
+        @return: DescribeChangeLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_change_logs_with_options(request, runtime)
 
@@ -1242,6 +1600,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeChangeLogsRequest,
     ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
+        """
+        @summary Queries a list of operation logs.
+        
+        @param request: DescribeChangeLogsRequest
+        @return: DescribeChangeLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_change_logs_with_options_async(request, runtime)
 
@@ -1250,6 +1614,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
+        """
+        @summary Queries a list of available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1288,6 +1659,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
+        """
+        @summary Queries a list of available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1325,6 +1703,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeRegionsRequest,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
+        """
+        @summary Queries a list of available regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -1332,6 +1716,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeRegionsRequest,
     ) -> pvtz_20180101_models.DescribeRegionsResponse:
+        """
+        @summary Queries a list of available regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -1340,6 +1730,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRequestGraphRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
+        """
+        @summary Queries the information about Domain Name System (DNS) requests.
+        
+        @param request: DescribeRequestGraphRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRequestGraphResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1382,6 +1779,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeRequestGraphRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
+        """
+        @summary Queries the information about Domain Name System (DNS) requests.
+        
+        @param request: DescribeRequestGraphRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRequestGraphResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1423,6 +1827,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeRequestGraphRequest,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
+        """
+        @summary Queries the information about Domain Name System (DNS) requests.
+        
+        @param request: DescribeRequestGraphRequest
+        @return: DescribeRequestGraphResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_request_graph_with_options(request, runtime)
 
@@ -1430,6 +1840,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeRequestGraphRequest,
     ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
+        """
+        @summary Queries the information about Domain Name System (DNS) requests.
+        
+        @param request: DescribeRequestGraphRequest
+        @return: DescribeRequestGraphResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_request_graph_with_options_async(request, runtime)
 
@@ -1438,6 +1854,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
+        """
+        @summary Queries a list of available zones.
+        
+        @param request: DescribeResolverAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverAvailableZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.az_id):
@@ -1470,6 +1893,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
+        """
+        @summary Queries a list of available zones.
+        
+        @param request: DescribeResolverAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverAvailableZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.az_id):
@@ -1501,6 +1931,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
     ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
+        """
+        @summary Queries a list of available zones.
+        
+        @param request: DescribeResolverAvailableZonesRequest
+        @return: DescribeResolverAvailableZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resolver_available_zones_with_options(request, runtime)
 
@@ -1508,6 +1944,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
     ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
+        """
+        @summary Queries a list of available zones.
+        
+        @param request: DescribeResolverAvailableZonesRequest
+        @return: DescribeResolverAvailableZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resolver_available_zones_with_options_async(request, runtime)
 
@@ -1516,6 +1958,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
+        """
+        @summary Queries the information about an endpoint.
+        
+        @param request: DescribeResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -1546,6 +1995,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
+        """
+        @summary Queries the information about an endpoint.
+        
+        @param request: DescribeResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -1575,6 +2031,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverEndpointRequest,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
+        """
+        @summary Queries the information about an endpoint.
+        
+        @param request: DescribeResolverEndpointRequest
+        @return: DescribeResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resolver_endpoint_with_options(request, runtime)
 
@@ -1582,6 +2044,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverEndpointRequest,
     ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
+        """
+        @summary Queries the information about an endpoint.
+        
+        @param request: DescribeResolverEndpointRequest
+        @return: DescribeResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resolver_endpoint_with_options_async(request, runtime)
 
@@ -1590,6 +2058,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: DescribeResolverEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1602,6 +2077,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_region_id):
+            query['VpcRegionId'] = request.vpc_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1626,6 +2103,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: DescribeResolverEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1638,6 +2122,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.vpc_region_id):
+            query['VpcRegionId'] = request.vpc_region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1661,6 +2147,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
     ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: DescribeResolverEndpointsRequest
+        @return: DescribeResolverEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resolver_endpoints_with_options(request, runtime)
 
@@ -1668,6 +2160,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
     ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
+        """
+        @summary Queries a list of endpoints.
+        
+        @param request: DescribeResolverEndpointsRequest
+        @return: DescribeResolverEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resolver_endpoints_with_options_async(request, runtime)
 
@@ -1676,6 +2174,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
+        """
+        @summary Queries the information about a forwarding rule.
+        
+        @param request: DescribeResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1706,6 +2211,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
+        """
+        @summary Queries the information about a forwarding rule.
+        
+        @param request: DescribeResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1735,6 +2247,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverRuleRequest,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
+        """
+        @summary Queries the information about a forwarding rule.
+        
+        @param request: DescribeResolverRuleRequest
+        @return: DescribeResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resolver_rule_with_options(request, runtime)
 
@@ -1742,6 +2260,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverRuleRequest,
     ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
+        """
+        @summary Queries the information about a forwarding rule.
+        
+        @param request: DescribeResolverRuleRequest
+        @return: DescribeResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resolver_rule_with_options_async(request, runtime)
 
@@ -1750,6 +2274,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
+        """
+        @summary Queries a list of forwarding rules.
+        
+        @param request: DescribeResolverRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -1788,6 +2319,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeResolverRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
+        """
+        @summary Queries a list of forwarding rules.
+        
+        @param request: DescribeResolverRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResolverRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -1825,6 +2363,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverRulesRequest,
     ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
+        """
+        @summary Queries a list of forwarding rules.
+        
+        @param request: DescribeResolverRulesRequest
+        @return: DescribeResolverRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resolver_rules_with_options(request, runtime)
 
@@ -1832,6 +2376,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeResolverRulesRequest,
     ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
+        """
+        @summary Queries a list of forwarding rules.
+        
+        @param request: DescribeResolverRulesRequest
+        @return: DescribeResolverRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resolver_rules_with_options_async(request, runtime)
 
@@ -1840,6 +2390,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
+        """
+        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        
+        @param request: DescribeStatisticSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStatisticSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1870,6 +2427,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
+        """
+        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        
+        @param request: DescribeStatisticSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStatisticSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1899,6 +2463,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
+        """
+        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        
+        @param request: DescribeStatisticSummaryRequest
+        @return: DescribeStatisticSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_statistic_summary_with_options(request, runtime)
 
@@ -1906,6 +2476,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
     ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
+        """
+        @summary Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+        
+        @param request: DescribeStatisticSummaryRequest
+        @return: DescribeStatisticSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_statistic_summary_with_options_async(request, runtime)
 
@@ -1914,6 +2490,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
+        """
+        @summary Queries the information about a hostname synchronization task.
+        
+        @param request: DescribeSyncEcsHostTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncEcsHostTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1944,6 +2527,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
+        """
+        @summary Queries the information about a hostname synchronization task.
+        
+        @param request: DescribeSyncEcsHostTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncEcsHostTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1973,6 +2563,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
+        """
+        @summary Queries the information about a hostname synchronization task.
+        
+        @param request: DescribeSyncEcsHostTaskRequest
+        @return: DescribeSyncEcsHostTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sync_ecs_host_task_with_options(request, runtime)
 
@@ -1980,6 +2576,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
+        """
+        @summary Queries the information about a hostname synchronization task.
+        
+        @param request: DescribeSyncEcsHostTaskRequest
+        @return: DescribeSyncEcsHostTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sync_ecs_host_task_with_options_async(request, runtime)
 
@@ -1988,6 +2590,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of existing tags.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2022,6 +2631,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of existing tags.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2055,6 +2671,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeTagsRequest,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of existing tags.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
 
@@ -2062,6 +2684,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeTagsRequest,
     ) -> pvtz_20180101_models.DescribeTagsResponse:
+        """
+        @summary Queries a list of existing tags.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
@@ -2070,6 +2698,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
+        """
+        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DescribeUserVpcAuthorizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserVpcAuthorizationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -2104,6 +2739,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
+        """
+        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DescribeUserVpcAuthorizationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserVpcAuthorizationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -2137,6 +2779,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
     ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
+        """
+        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DescribeUserVpcAuthorizationsRequest
+        @return: DescribeUserVpcAuthorizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_vpc_authorizations_with_options(request, runtime)
 
@@ -2144,6 +2792,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
     ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
+        """
+        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
+        
+        @param request: DescribeUserVpcAuthorizationsRequest
+        @return: DescribeUserVpcAuthorizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_vpc_authorizations_with_options_async(request, runtime)
 
@@ -2152,6 +2806,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
+        """
+        @summary Queries the information about a zone.
+        
+        @param request: DescribeZoneInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2182,6 +2843,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
+        """
+        @summary Queries the information about a zone.
+        
+        @param request: DescribeZoneInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2211,6 +2879,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZoneInfoRequest,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
+        """
+        @summary Queries the information about a zone.
+        
+        @param request: DescribeZoneInfoRequest
+        @return: DescribeZoneInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zone_info_with_options(request, runtime)
 
@@ -2218,6 +2892,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZoneInfoRequest,
     ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
+        """
+        @summary Queries the information about a zone.
+        
+        @param request: DescribeZoneInfoRequest
+        @return: DescribeZoneInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zone_info_with_options_async(request, runtime)
 
@@ -2226,6 +2906,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
+        """
+        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        
+        @param request: DescribeZoneRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2268,6 +2955,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
+        """
+        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        
+        @param request: DescribeZoneRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2309,6 +3003,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
+        """
+        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        
+        @param request: DescribeZoneRecordsRequest
+        @return: DescribeZoneRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zone_records_with_options(request, runtime)
 
@@ -2316,6 +3016,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
     ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
+        """
+        @summary Queries a list of Domain Name System (DNS) records for a zone.
+        
+        @param request: DescribeZoneRecordsRequest
+        @return: DescribeZoneRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zone_records_with_options_async(request, runtime)
 
@@ -2324,6 +3030,15 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
+        """
+        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        
+        @param request: DescribeZoneVpcTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneVpcTreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2354,6 +3069,15 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
+        """
+        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        
+        @param request: DescribeZoneVpcTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneVpcTreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2383,6 +3107,14 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
+        """
+        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        
+        @param request: DescribeZoneVpcTreeRequest
+        @return: DescribeZoneVpcTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zone_vpc_tree_with_options(request, runtime)
 
@@ -2390,6 +3122,14 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
     ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
+        """
+        @summary Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+        
+        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+        
+        @param request: DescribeZoneVpcTreeRequest
+        @return: DescribeZoneVpcTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zone_vpc_tree_with_options_async(request, runtime)
 
@@ -2398,6 +3138,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones for a user.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2446,6 +3193,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones for a user.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2493,6 +3247,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZonesRequest,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones for a user.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -2500,6 +3260,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.DescribeZonesRequest,
     ) -> pvtz_20180101_models.DescribeZonesResponse:
+        """
+        @summary Queries a list of zones for a user.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -2508,6 +3274,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags added to one or more resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2546,6 +3319,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags added to one or more resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2583,6 +3363,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.ListTagResourcesRequest,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags added to one or more resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -2590,6 +3376,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.ListTagResourcesRequest,
     ) -> pvtz_20180101_models.ListTagResourcesResponse:
+        """
+        @summary Queries a list of tags added to one or more resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -2598,6 +3390,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a zone to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2632,6 +3431,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a zone to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2665,6 +3471,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.MoveResourceGroupRequest,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a zone to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
@@ -2672,6 +3484,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.MoveResourceGroupRequest,
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a zone to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
@@ -2680,6 +3498,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetProxyPatternRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
+        """
+        @summary Configures the recursive resolution proxy feature.
+        
+        @param request: SetProxyPatternRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetProxyPatternResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2716,6 +3541,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetProxyPatternRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
+        """
+        @summary Configures the recursive resolution proxy feature.
+        
+        @param request: SetProxyPatternRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetProxyPatternResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2751,6 +3583,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.SetProxyPatternRequest,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
+        """
+        @summary Configures the recursive resolution proxy feature.
+        
+        @param request: SetProxyPatternRequest
+        @return: SetProxyPatternResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_proxy_pattern_with_options(request, runtime)
 
@@ -2758,6 +3596,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.SetProxyPatternRequest,
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
+        """
+        @summary Configures the recursive resolution proxy feature.
+        
+        @param request: SetProxyPatternRequest
+        @return: SetProxyPatternResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_proxy_pattern_with_options_async(request, runtime)
 
@@ -2766,6 +3610,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetZoneRecordStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        
+        @param request: SetZoneRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetZoneRecordStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2802,6 +3653,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.SetZoneRecordStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        
+        @param request: SetZoneRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetZoneRecordStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2837,6 +3695,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.SetZoneRecordStatusRequest,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        
+        @param request: SetZoneRecordStatusRequest
+        @return: SetZoneRecordStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_zone_record_status_with_options(request, runtime)
 
@@ -2844,6 +3708,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.SetZoneRecordStatusRequest,
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record for a zone.
+        
+        @param request: SetZoneRecordStatusRequest
+        @return: SetZoneRecordStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_zone_record_status_with_options_async(request, runtime)
 
@@ -2852,6 +3722,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2888,6 +3765,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2923,6 +3807,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.TagResourcesRequest,
     ) -> pvtz_20180101_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -2930,6 +3820,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.TagResourcesRequest,
     ) -> pvtz_20180101_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -2938,6 +3834,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -2974,6 +3877,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -3009,6 +3919,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UntagResourcesRequest,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -3016,6 +3932,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UntagResourcesRequest,
     ) -> pvtz_20180101_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -3024,6 +3946,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateRecordRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        
+        @param request: UpdateRecordRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecordRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3058,6 +3987,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateRecordRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        
+        @param request: UpdateRecordRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecordRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3091,6 +4027,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateRecordRemarkRequest,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        
+        @param request: UpdateRecordRemarkRequest
+        @return: UpdateRecordRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_record_remark_with_options(request, runtime)
 
@@ -3098,6 +4040,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateRecordRemarkRequest,
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+        
+        @param request: UpdateRecordRemarkRequest
+        @return: UpdateRecordRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_record_remark_with_options_async(request, runtime)
 
@@ -3106,6 +4054,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
+        """
+        @summary Modifies an endpoint.
+        
+        @param request: UpdateResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -3140,6 +4095,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateResolverEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
+        """
+        @summary Modifies an endpoint.
+        
+        @param request: UpdateResolverEndpointRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResolverEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint_id):
@@ -3173,6 +4135,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateResolverEndpointRequest,
     ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
+        """
+        @summary Modifies an endpoint.
+        
+        @param request: UpdateResolverEndpointRequest
+        @return: UpdateResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_resolver_endpoint_with_options(request, runtime)
 
@@ -3180,6 +4148,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateResolverEndpointRequest,
     ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
+        """
+        @summary Modifies an endpoint.
+        
+        @param request: UpdateResolverEndpointRequest
+        @return: UpdateResolverEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_resolver_endpoint_with_options_async(request, runtime)
 
@@ -3188,8 +4162,17 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
+        """
+        @summary Modifies a forwarding rule.
+        
+        @param request: UpdateResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
         if not UtilClient.is_unset(request.forward_ip):
             query['ForwardIp'] = request.forward_ip
         if not UtilClient.is_unset(request.lang):
@@ -3222,8 +4205,17 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateResolverRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
+        """
+        @summary Modifies a forwarding rule.
+        
+        @param request: UpdateResolverRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResolverRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
         if not UtilClient.is_unset(request.forward_ip):
             query['ForwardIp'] = request.forward_ip
         if not UtilClient.is_unset(request.lang):
@@ -3255,6 +4247,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateResolverRuleRequest,
     ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
+        """
+        @summary Modifies a forwarding rule.
+        
+        @param request: UpdateResolverRuleRequest
+        @return: UpdateResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_resolver_rule_with_options(request, runtime)
 
@@ -3262,6 +4260,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateResolverRuleRequest,
     ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
+        """
+        @summary Modifies a forwarding rule.
+        
+        @param request: UpdateResolverRuleRequest
+        @return: UpdateResolverRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_resolver_rule_with_options_async(request, runtime)
 
@@ -3270,6 +4274,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
+        """
+        @summary Creates and updates a hostname synchronize task.
+        
+        @param request: UpdateSyncEcsHostTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSyncEcsHostTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3304,6 +4315,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
+        """
+        @summary Creates and updates a hostname synchronize task.
+        
+        @param request: UpdateSyncEcsHostTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSyncEcsHostTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3337,6 +4355,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
+        """
+        @summary Creates and updates a hostname synchronize task.
+        
+        @param request: UpdateSyncEcsHostTaskRequest
+        @return: UpdateSyncEcsHostTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_sync_ecs_host_task_with_options(request, runtime)
 
@@ -3344,6 +4368,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
     ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
+        """
+        @summary Creates and updates a hostname synchronize task.
+        
+        @param request: UpdateSyncEcsHostTaskRequest
+        @return: UpdateSyncEcsHostTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_sync_ecs_host_task_with_options_async(request, runtime)
 
@@ -3352,6 +4382,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record of a zone.
+        
+        @param request: UpdateZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateZoneRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3400,6 +4437,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record of a zone.
+        
+        @param request: UpdateZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateZoneRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3447,6 +4491,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateZoneRecordRequest,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record of a zone.
+        
+        @param request: UpdateZoneRecordRequest
+        @return: UpdateZoneRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_zone_record_with_options(request, runtime)
 
@@ -3454,6 +4504,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateZoneRecordRequest,
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record of a zone.
+        
+        @param request: UpdateZoneRecordRequest
+        @return: UpdateZoneRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_zone_record_with_options_async(request, runtime)
 
@@ -3462,6 +4518,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
+        """
+        @summary Modifies the description of a zone.
+        
+        @param request: UpdateZoneRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateZoneRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3498,6 +4561,13 @@ class Client(OpenApiClient):
         request: pvtz_20180101_models.UpdateZoneRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
+        """
+        @summary Modifies the description of a zone.
+        
+        @param request: UpdateZoneRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateZoneRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3533,6 +4603,12 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateZoneRemarkRequest,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
+        """
+        @summary Modifies the description of a zone.
+        
+        @param request: UpdateZoneRemarkRequest
+        @return: UpdateZoneRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_zone_remark_with_options(request, runtime)
 
@@ -3540,5 +4616,11 @@ class Client(OpenApiClient):
         self,
         request: pvtz_20180101_models.UpdateZoneRemarkRequest,
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
+        """
+        @summary Modifies the description of a zone.
+        
+        @param request: UpdateZoneRemarkRequest
+        @return: UpdateZoneRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_zone_remark_with_options_async(request, runtime)

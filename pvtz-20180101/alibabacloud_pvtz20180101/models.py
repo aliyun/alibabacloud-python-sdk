@@ -12,9 +12,19 @@ class AddResolverEndpointRequestIpConfig(TeaModel):
         ip: str = None,
         v_switch_id: str = None,
     ):
+        # The zone ID.
+        # 
+        # This parameter is required.
         self.az_id = az_id
+        # The IPv4 CIDR block of the vSwitch.
+        # 
+        # This parameter is required.
         self.cidr_block = cidr_block
+        # The source IP address of outbound traffic. The IP address must be within the specified CIDR block.
         self.ip = ip
+        # The vSwitch ID.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -59,11 +69,27 @@ class AddResolverEndpointRequest(TeaModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
+        # The source IP addresses of outbound traffic. You must add two to six source IP addresses to ensure high availability.
+        # 
+        # This parameter is required.
         self.ip_config = ip_config
+        # The language.
         self.lang = lang
+        # The endpoint name. The name can be up to 20 characters in length. If the upper limit is exceeded, an error message is returned.
+        # 
+        # This parameter is required.
         self.name = name
+        # The security group ID.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
+        # The outbound VPC ID.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # The region ID of the outbound virtual private cloud (VPC).
+        # 
+        # This parameter is required.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
@@ -120,7 +146,9 @@ class AddResolverEndpointResponseBody(TeaModel):
         endpoint_id: str = None,
         request_id: str = None,
     ):
+        # The outbound endpoint ID.
         self.endpoint_id = endpoint_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -194,7 +222,13 @@ class AddResolverRuleRequestForwardIp(TeaModel):
         ip: str = None,
         port: int = None,
     ):
+        # The destination IP address.
+        # 
+        # This parameter is required.
         self.ip = ip
+        # The port number.
+        # 
+        # This parameter is required.
         self.port = port
 
     def validate(self):
@@ -231,11 +265,27 @@ class AddResolverRuleRequest(TeaModel):
         type: str = None,
         zone_name: str = None,
     ):
+        # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
+        # The destination IP address and port number.
+        # 
+        # This parameter is required.
         self.forward_ip = forward_ip
+        # The language.
         self.lang = lang
+        # The name of the forwarding rule.
+        # 
+        # This parameter is required.
         self.name = name
+        # The type of the forwarding rule. Valid value:
+        # 
+        # *   OUTBOUND: forwards Domain Name System (DNS) requests to one or more external IP addresses.
         self.type = type
+        # The name of the forward zone.
+        # 
+        # This parameter is required.
         self.zone_name = zone_name
 
     def validate(self):
@@ -292,7 +342,9 @@ class AddResolverRuleResponseBody(TeaModel):
         request_id: str = None,
         rule_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The forwarding rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -368,9 +420,24 @@ class AddUserVpcAuthorizationRequest(TeaModel):
         auth_type: str = None,
         authorized_user_id: int = None,
     ):
+        # The authorization method. Valid values:
+        # 
+        # *   AUTH_CODE: An authorization code is used to associate VPCs across accounts. The system checks whether the value of AuthCode is valid.
+        # *   RESOURCE_DIRECTORY: A resource directory is used to associate VPCs across accounts. The system checks whether the value of AuthorizedUserId and the current account are in the same resource directory.
+        # *   If this parameter is empty, an authorization code is used to associate VPCs across accounts.
         self.auth_channel = auth_channel
+        # The verification code.
+        # 
+        # This parameter is required when AuthType is set to NORMAL or is left empty and AuthChannel is set to AUTH_CODE or is left empty.
         self.auth_code = auth_code
+        # The authorization scope. Valid values:
+        # 
+        # *   NORMAL: general authorization.
+        # *   CLOUD_PRODUCT: cloud service-related authorization
         self.auth_type = auth_type
+        # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.authorized_user_id = authorized_user_id
 
     def validate(self):
@@ -410,6 +477,7 @@ class AddUserVpcAuthorizationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -485,13 +553,25 @@ class AddZoneRequest(TeaModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The logical location of the built-in authoritative module in which the zone is added. Valid values:
+        # 
+        # *   Normal zone: regular module
+        # *   Fast Zone: acceleration module
         self.dns_group = dns_group
+        # The language.
         self.lang = lang
+        # *   Specifies whether to enable the recursive resolution proxy feature for the zone. Valid values: **ZONE**: disables the recursive resolution proxy feature for the zone.
+        # *   **RECORD**: enables the recursive resolution proxy feature for the zone.
         self.proxy_pattern = proxy_pattern
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The name of the zone.
         self.zone_name = zone_name
+        # This parameter is not available. You can ignore it.
         self.zone_tag = zone_tag
+        # This parameter is not available. You can ignore it.
         self.zone_type = zone_type
 
     def validate(self):
@@ -550,10 +630,13 @@ class AddZoneResponseBody(TeaModel):
         zone_id: str = None,
         zone_name: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
-        # zone ID。
+        # The global ID of the zone.
         self.zone_id = zone_id
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):
@@ -645,18 +728,39 @@ class AddZoneRecordRequest(TeaModel):
         weight: int = None,
         zone_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The resolution line. Default value: **default**.
         self.line = line
+        # The priority of the mail exchanger (MX) record. Valid values: **1 to 99**.
         self.priority = priority
+        # The language.
         self.remark = remark
+        # The hostname.
+        # 
+        # For example, you must set Rr to @ if you want to resolve @.example.com.
+        # 
+        # This parameter is required.
         self.rr = rr
+        # The time to live (TTL) of the DNS record. Default value: **60**.
         self.ttl = ttl
+        # The type of the DNS record. Valid values: **A**, **AAAA**, **CNAME**, **TXT**, **MX**, **PTR**, and **SRV**.
+        # 
+        # This parameter is required.
         self.type = type
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The record value.
+        # 
+        # This parameter is required.
         self.value = value
+        # The weight of the address. Valid values: **0 to 100**. Default value: 1.
         self.weight = weight
-        # Zone ID。
+        # The global ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -730,8 +834,11 @@ class AddZoneRecordResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -810,9 +917,14 @@ class BindResolverRuleVpcRequestVpc(TeaModel):
         vpc_id: str = None,
         vpc_type: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
-        # vpcID
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The VPC type. Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):
@@ -850,8 +962,13 @@ class BindResolverRuleVpcRequest(TeaModel):
         rule_id: str = None,
         vpc: List[BindResolverRuleVpcRequestVpc] = None,
     ):
+        # The language.
         self.lang = lang
+        # The forwarding rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
+        # The VPCs.
         self.vpc = vpc
 
     def validate(self):
@@ -895,6 +1012,7 @@ class BindResolverRuleVpcResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -965,8 +1083,14 @@ class BindZoneVpcRequestVpcs(TeaModel):
         vpc_id: str = None,
         vpc_type: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The VPC ID. If you do not specify this parameter, the VPCs that are bound to the zone are unbound from the zone.
         self.vpc_id = vpc_id
+        # The type of the VPC. Valid values:
+        # 
+        # *   **STANDARD**: standard VPC
+        # *   **EDS**: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):
@@ -1006,10 +1130,17 @@ class BindZoneVpcRequest(TeaModel):
         vpcs: List[BindZoneVpcRequestVpcs] = None,
         zone_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The information about VPCs.
         self.vpcs = vpcs
+        # The global ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1061,6 +1192,7 @@ class BindZoneVpcResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1131,8 +1263,11 @@ class CheckZoneNameRequest(TeaModel):
         user_client_ip: str = None,
         zone_name: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The name of the zone. This parameter is required.
         self.zone_name = zone_name
 
     def validate(self):
@@ -1170,8 +1305,14 @@ class CheckZoneNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the zone name is valid. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.check = check
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1249,7 +1390,11 @@ class DeleteResolverEndpointRequest(TeaModel):
         endpoint_id: str = None,
         lang: str = None,
     ):
+        # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
+        # The language.
         self.lang = lang
 
     def validate(self):
@@ -1281,6 +1426,7 @@ class DeleteResolverEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1350,7 +1496,11 @@ class DeleteResolverRuleRequest(TeaModel):
         lang: str = None,
         rule_id: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The forwarding rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -1382,6 +1532,7 @@ class DeleteResolverRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1451,7 +1602,14 @@ class DeleteUserVpcAuthorizationRequest(TeaModel):
         auth_type: str = None,
         authorized_user_id: int = None,
     ):
+        # The authorization scope. Valid values:
+        # 
+        # *   NORMAL: general authorization
+        # *   NORMAL: cloud service-related authorization
         self.auth_type = auth_type
+        # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.authorized_user_id = authorized_user_id
 
     def validate(self):
@@ -1483,6 +1641,7 @@ class DeleteUserVpcAuthorizationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1554,10 +1713,17 @@ class DeleteZoneRequest(TeaModel):
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # zone ID
+        # The global ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1598,8 +1764,9 @@ class DeleteZoneResponseBody(TeaModel):
         request_id: str = None,
         zone_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
-        # zone ID
+        # The global ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1675,9 +1842,15 @@ class DeleteZoneRecordRequest(TeaModel):
         record_id: int = None,
         user_client_ip: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -1718,7 +1891,9 @@ class DeleteZoneRecordResponseBody(TeaModel):
         record_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1799,14 +1974,30 @@ class DescribeChangeLogsRequest(TeaModel):
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        # The end of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_timestamp = end_timestamp
+        # The type of operation logs. Valid values:
+        # 
+        # *   **PV_ZONE**: the logs that record the operations on zones
+        # *   **PV_RECORD**: the logs that record the operations on DNS records
+        # 
+        # If you set this parameter to other values, all types of operation logs are queried.
         self.entity_type = entity_type
+        # The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
         self.keyword = keyword
+        # The language.
         self.lang = lang
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
+        # The beginning of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_timestamp = start_timestamp
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The global ID of the zone.\\
+        # If you specify this parameter, the logs that record the operations on the Domain Name System (DNS) records of the specified zone are queried.\\
+        # If you leave this parameter empty, the logs that record the operations on all zones that belong to the current Alibaba Cloud account and the DNS records of these zones are queried.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1877,17 +2068,34 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(TeaModel):
         oper_time: str = None,
         oper_timestamp: int = None,
     ):
+        # The details of the operation.
         self.content = content
+        # The operator ID.
         self.creator_id = creator_id
+        # The subtype of the operator. Valid values:
+        # 
+        # *   CUSTOMER: Alibaba Cloud account
+        # *   SUB: RAM user
+        # *   STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
+        # *   OTHER: other types
         self.creator_sub_type = creator_sub_type
+        # The operator type. No value or **USER** is returned for this parameter.
         self.creator_type = creator_type
+        # The ID of the object on which the operation was performed.
         self.entity_id = entity_id
+        # The name of the object on which the operation was performed.
         self.entity_name = entity_name
+        # The log ID.
         self.id = id
+        # The operation type.
         self.oper_action = oper_action
+        # The IP address of the client.
         self.oper_ip = oper_ip
+        # The type of the object on which the operation is performed.
         self.oper_object = oper_object
+        # The time when the operation is performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.oper_time = oper_time
+        # The time when the operation was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.oper_timestamp = oper_timestamp
 
     def validate(self):
@@ -1999,11 +2207,17 @@ class DescribeChangeLogsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The operation logs.
         self.change_logs = change_logs
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -2099,11 +2313,28 @@ class DescribeRegionsRequest(TeaModel):
         user_client_ip: str = None,
         vpc_type: str = None,
     ):
+        # The supported language. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
+        # *   ja: Japanese
         self.accept_language = accept_language
+        # The ID of the Alibaba Cloud account to which the permissions on the resources are granted.
         self.authorized_user_id = authorized_user_id
+        # The language.
         self.lang = lang
+        # The scenario. Valid values:
+        # 
+        # *   AUTH: the built-in authoritative module
+        # *   FWD: the forward module
+        # *   RA: the traffic analysis module
         self.scene = scene
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The type of the virtual private cloud (VPC). Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):
@@ -2154,9 +2385,13 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         region_id: str = None,
         region_name: str = None,
     ):
+        # The display name of the region, which varies based on the current language.
         self.local_name = local_name
+        # The endpoint of the service in the region.
         self.region_endpoint = region_endpoint
+        # The region ID.
         self.region_id = region_id
+        # The name of the region.
         self.region_name = region_name
 
     def validate(self):
@@ -2232,7 +2467,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
+        # The regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2314,15 +2551,31 @@ class DescribeRequestGraphRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The business ID. BizId is specified together with BizType.
+        # 
+        # *   If you set BizType to AUTH_ZONE, set BizId to a zone ID.
+        # *   If you set BizType to RESOLVER_RULE, set BizId to the ID of a forwarding rule.
         self.biz_id = biz_id
+        # The business type. Valid values:
+        # 
+        # *   AUTH_ZONE: authoritative zone
+        # *   RESOLVER_RULE: forwarding rule
         self.biz_type = biz_type
+        # The end of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_timestamp = end_timestamp
+        # The language.
         self.lang = lang
+        # The beginning of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # VPC ID
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # zone ID
+        # The global ID of the zone. To query the number of DNS requests for a zone, you can specify ZoneId or BizType and BizId.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2380,8 +2633,11 @@ class DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop(TeaModel):
         time: str = None,
         timestamp: int = None,
     ):
+        # The number of DNS requests.
         self.request_count = request_count
+        # The statistical time. The value is a string. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.time = time
+        # The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -2453,7 +2709,9 @@ class DescribeRequestGraphResponseBody(TeaModel):
         request_details: DescribeRequestGraphResponseBodyRequestDetails = None,
         request_id: str = None,
     ):
+        # The information about the DNS requests.
         self.request_details = request_details
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2530,8 +2788,13 @@ class DescribeResolverAvailableZonesRequest(TeaModel):
         lang: str = None,
         resolver_region_id: str = None,
     ):
+        # The zone ID.
         self.az_id = az_id
+        # The language.
         self.lang = lang
+        # The region ID.
+        # 
+        # This parameter is required.
         self.resolver_region_id = resolver_region_id
 
     def validate(self):
@@ -2568,7 +2831,12 @@ class DescribeResolverAvailableZonesResponseBodyAvailableZones(TeaModel):
         az_id: str = None,
         status: str = None,
     ):
+        # The zone ID.
         self.az_id = az_id
+        # The state of resources in the zone. Valid values:
+        # 
+        # *   NORMAL: The resources are in the normal state.
+        # *   SOLD_OUT: The resources are sold out.
         self.status = status
 
     def validate(self):
@@ -2601,7 +2869,9 @@ class DescribeResolverAvailableZonesResponseBody(TeaModel):
         available_zones: List[DescribeResolverAvailableZonesResponseBodyAvailableZones] = None,
         request_id: str = None,
     ):
+        # The information about the queried zones.
         self.available_zones = available_zones
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2683,7 +2953,11 @@ class DescribeResolverEndpointRequest(TeaModel):
         endpoint_id: str = None,
         lang: str = None,
     ):
+        # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
+        # The language.
         self.lang = lang
 
     def validate(self):
@@ -2718,9 +2992,13 @@ class DescribeResolverEndpointResponseBodyIpConfigs(TeaModel):
         ip: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the zone where the vSwitch resides.
         self.az_id = az_id
+        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # The IPv4 address.
         self.ip = ip
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -2773,19 +3051,40 @@ class DescribeResolverEndpointResponseBody(TeaModel):
         vpc_region_id: str = None,
         vpc_region_name: str = None,
     ):
+        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the endpoint was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The endpoint ID.
         self.id = id
+        # The source IP address of outbound traffic.
         self.ip_configs = ip_configs
+        # The endpoint name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The state of the endpoint. Valid values:
+        # 
+        # *   SUCCESS: The endpoint works as expected.
+        # *   INIT: The endpoint is being created.
+        # *   FAILED: The endpoint fails to be created.
+        # *   CHANGE_INIT: The endpoint is being modified.
+        # *   CHANGE_FAILED: The endpoint fails to be modified.
+        # *   EXCEPTION: The endpoint encounters an exception.
         self.status = status
+        # The time when the endpoint was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the endpoint was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
+        # The outbound VPC ID.
         self.vpc_id = vpc_id
+        # The outbound VPC name.
         self.vpc_name = vpc_name
+        # The ID of the region where the outbound VPC resides.
         self.vpc_region_id = vpc_region_id
+        # The name of the region where the outbound virtual private cloud (VPC) resides.
         self.vpc_region_name = vpc_region_name
 
     def validate(self):
@@ -2917,12 +3216,26 @@ class DescribeResolverEndpointsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         status: str = None,
+        vpc_region_id: str = None,
     ):
+        # The keyword used to filter endpoints in %keyword% mode.
         self.keyword = keyword
+        # The language.
         self.lang = lang
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The state of the endpoint that you want to query. If you do not specify this parameter, all endpoints are returned. Valid values:
+        # 
+        # *   SUCCESS: The endpoint works as expected.
+        # *   INIT: The endpoint is being created.
+        # *   FAILED: The endpoint fails to be created.
+        # *   CHANGE_INIT: The endpoint is being modified.
+        # *   CHANGE_FAILED: The endpoint fails to be modified.
+        # *   EXCEPTION: The endpoint encounters an exception.
         self.status = status
+        self.vpc_region_id = vpc_region_id
 
     def validate(self):
         pass
@@ -2943,6 +3256,8 @@ class DescribeResolverEndpointsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.status is not None:
             result['Status'] = self.status
+        if self.vpc_region_id is not None:
+            result['VpcRegionId'] = self.vpc_region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2957,6 +3272,8 @@ class DescribeResolverEndpointsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VpcRegionId') is not None:
+            self.vpc_region_id = m.get('VpcRegionId')
         return self
 
 
@@ -2968,9 +3285,13 @@ class DescribeResolverEndpointsResponseBodyEndpointsIpConfigs(TeaModel):
         ip: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the zone where the vSwitch resides.
         self.az_id = az_id
+        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # The IPv4 address.
         self.ip = ip
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -3022,18 +3343,38 @@ class DescribeResolverEndpointsResponseBodyEndpoints(TeaModel):
         vpc_region_id: str = None,
         vpc_region_name: str = None,
     ):
+        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the endpoint was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The endpoint ID.
         self.id = id
+        # The source IP addresses of outbound traffic.
         self.ip_configs = ip_configs
+        # The endpoint name.
         self.name = name
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The state of the endpoint. Valid values:
+        # 
+        # *   SUCCESS: The endpoint works as expected.
+        # *   INIT: The endpoint is being created.
+        # *   FAILED: The endpoint fails to be created.
+        # *   CHANGE_INIT: The endpoint is being modified.
+        # *   CHANGE_FAILED: The endpoint fails to be modified.
+        # *   EXCEPTION: The endpoint encounters an exception.
         self.status = status
+        # The time when the endpoint was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the endpoint was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
+        # The ID of the outbound virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The VPC name.
         self.vpc_name = vpc_name
+        # The region ID of the outbound VPC.
         self.vpc_region_id = vpc_region_id
+        # The name of the region where the outbound VPC resides.
         self.vpc_region_name = vpc_region_name
 
     def validate(self):
@@ -3122,11 +3463,17 @@ class DescribeResolverEndpointsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The information about endpoints.
         self.endpoints = endpoints
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_items = total_items
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -3224,7 +3571,11 @@ class DescribeResolverRuleRequest(TeaModel):
         lang: str = None,
         rule_id: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The forwarding rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -3261,12 +3612,20 @@ class DescribeResolverRuleResponseBodyBindVpcs(TeaModel):
         vpc_type: str = None,
         vpc_user_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The region name.
         self.region_name = region_name
-        # Vpc ID
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The VPC name.
         self.vpc_name = vpc_name
+        # The type of the VPC. Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
+        # The Alibaba Cloud account to which the VPC belongs.
         self.vpc_user_id = vpc_user_id
 
     def validate(self):
@@ -3315,7 +3674,9 @@ class DescribeResolverRuleResponseBodyForwardIps(TeaModel):
         ip: str = None,
         port: int = None,
     ):
+        # The IP address.
         self.ip = ip
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -3359,18 +3720,33 @@ class DescribeResolverRuleResponseBody(TeaModel):
         update_timestamp: int = None,
         zone_name: str = None,
     ):
+        # The virtual private clouds (VPCs) that are associated with the forwarding rule.
         self.bind_vpcs = bind_vpcs
+        # The time when the forwarding rule was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the forwarding rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The endpoint ID.
         self.endpoint_id = endpoint_id
+        # The endpoint name.
         self.endpoint_name = endpoint_name
+        # The destination IP addresses.
         self.forward_ips = forward_ips
+        # The forwarding rule ID.
         self.id = id
+        # The name of the forwarding rule.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The type of the forwarding rule. Valid value:
+        # 
+        # *   OUTBOUND: forwards Domain Name System (DNS) requests to one or more external IP addresses.
         self.type = type
+        # The time when the forwarding rule was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the forwarding rule was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
+        # The name of the forward zone.
         self.zone_name = zone_name
 
     def validate(self):
@@ -3509,11 +3885,20 @@ class DescribeResolverRulesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the outbound endpoint.
         self.endpoint_id = endpoint_id
+        # The keyword used to filter forwarding rules in %keyword% mode.
         self.keyword = keyword
+        # The language.
         self.lang = lang
+        # Specifies whether to return additional information. Default value: false.
+        # 
+        # *   If you set this parameter to true, additional information, such as the virtual private clouds (VPCs) that are associated with the queried forwarding rule, is returned.
+        # *   If you set this parameter to false, no additional information is returned.
         self.need_detail_attributes = need_detail_attributes
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -3566,12 +3951,20 @@ class DescribeResolverRulesResponseBodyRulesBindVpcs(TeaModel):
         vpc_type: str = None,
         vpc_user_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The region name.
         self.region_name = region_name
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The VPC name.
         self.vpc_name = vpc_name
+        # The type of the virtual private cloud (VPC). Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
+        # The Alibaba Cloud account to which the VPC belongs.
         self.vpc_user_id = vpc_user_id
 
     def validate(self):
@@ -3620,7 +4013,9 @@ class DescribeResolverRulesResponseBodyRulesForwardIps(TeaModel):
         ip: str = None,
         port: int = None,
     ):
+        # The IP address.
         self.ip = ip
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -3663,17 +4058,31 @@ class DescribeResolverRulesResponseBodyRules(TeaModel):
         update_timestamp: int = None,
         zone_name: str = None,
     ):
+        # The VPCs associated with the forwarding rule.
         self.bind_vpcs = bind_vpcs
+        # The time when the forwarding was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the forwarding rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The endpoint ID.
         self.endpoint_id = endpoint_id
+        # The endpoint name.
         self.endpoint_name = endpoint_name
+        # The destination IP addresses.
         self.forward_ips = forward_ips
+        # The ID of the forwarding rule.
         self.id = id
+        # The name of the forwarding rule.
         self.name = name
+        # The type of the forwarding rule. Valid value:
+        # 
+        # *   OUTBOUND: Domain Name System (DNS) requests are forwarded to one or more IP addresses.
         self.type = type
+        # The time when the forwarding rule was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
+        # The timestamp when the forwarding rule was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
+        # The name of the forward zone.
         self.zone_name = zone_name
 
     def validate(self):
@@ -3767,11 +4176,17 @@ class DescribeResolverRulesResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The forwarding rules.
         self.rules = rules
+        # The total number of entries returned.
         self.total_items = total_items
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -3869,7 +4284,9 @@ class DescribeStatisticSummaryRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -3906,12 +4323,20 @@ class DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop(TeaModel):
         vpc_id: str = None,
         vpc_type: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The name of the region.
         self.region_name = region_name
+        # The number of DNS requests.
         self.request_count = request_count
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The type of the VPC. Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):
@@ -3996,8 +4421,14 @@ class DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop(TeaModel
         request_count: int = None,
         zone_name: str = None,
     ):
+        # The business type. Valid values:
+        # 
+        # *   AUTH_ZONE: authoritative zone
+        # *   RESOLVER_RULE: forwarding rule
         self.biz_type = biz_type
+        # The number of DNS requests.
         self.request_count = request_count
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):
@@ -4071,9 +4502,13 @@ class DescribeStatisticSummaryResponseBody(TeaModel):
         vpc_request_tops: DescribeStatisticSummaryResponseBodyVpcRequestTops = None,
         zone_request_tops: DescribeStatisticSummaryResponseBodyZoneRequestTops = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The top 3 virtual private clouds (VPCs) that initiate the largest number of DNS requests.
         self.vpc_request_tops = vpc_request_tops
+        # The top 3 zones with the largest number of DNS requests.
         self.zone_request_tops = zone_request_tops
 
     def validate(self):
@@ -4160,7 +4595,11 @@ class DescribeSyncEcsHostTaskRequest(TeaModel):
         lang: str = None,
         zone_id: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4220,7 +4659,9 @@ class DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion(TeaModel):
         region_ids: DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds = None,
         user_id: int = None,
     ):
+        # The region IDs.
         self.region_ids = region_ids
+        # The Alibaba Cloud account to which the region belongs. This parameter is used in cross-account synchronization scenarios.
         self.user_id = user_id
 
     def validate(self):
@@ -4321,11 +4762,23 @@ class DescribeSyncEcsHostTaskResponseBody(TeaModel):
         success: bool = None,
         zone_id: str = None,
     ):
+        # The information about regions.
         self.ecs_regions = ecs_regions
+        # The information about the regions within the current account.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
+        # The state of the task. Valid values:
+        # 
+        # *   ON
+        # *   OFF
         self.status = status
+        # Indicates whether the task was successful. Valid values:
+        # 
+        # *   True
+        # *   False
         self.success = success
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4422,9 +4875,15 @@ class DescribeTagsRequest(TeaModel):
         page_size: int = None,
         resource_type: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 200.
         self.page_size = page_size
+        # The resource type. Valid value: ZONE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4465,7 +4924,9 @@ class DescribeTagsResponseBodyTags(TeaModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The key of tag N added to the resource.
         self.key = key
+        # The values of tags added to the resources.
         self.values = values
 
     def validate(self):
@@ -4501,10 +4962,15 @@ class DescribeTagsResponseBody(TeaModel):
         tags: List[DescribeTagsResponseBodyTags] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The tags added to the resources.
         self.tags = tags
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4600,9 +5066,16 @@ class DescribeUserVpcAuthorizationsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The authorization scope. Valid values:
+        # 
+        # *   NORMAL: general authorization.
+        # *   CLOUD_PRODUCT: cloud service-related authorization
         self.auth_type = auth_type
+        # The ID of the Alibaba Cloud account.
         self.authorized_user_id = authorized_user_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -4646,10 +5119,17 @@ class DescribeUserVpcAuthorizationsResponseBodyUsers(TeaModel):
         create_time: str = None,
         create_timestamp: int = None,
     ):
+        # The authorization scope. Valid value:
+        # 
+        # *   NORMAL: general authorization.
         self.auth_type = auth_type
+        # The name of the Alibaba Cloud account.
         self.authorized_aliyun_id = authorized_aliyun_id
+        # The ID of the Alibaba Cloud account.
         self.authorized_user_id = authorized_user_id
+        # The time when the authorization was performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the authorization was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
 
     def validate(self):
@@ -4698,11 +5178,17 @@ class DescribeUserVpcAuthorizationsResponseBody(TeaModel):
         total_pages: int = None,
         users: List[DescribeUserVpcAuthorizationsResponseBodyUsers] = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_items = total_items
+        # The total number of pages returned.
         self.total_pages = total_pages
+        # The information about the Alibaba Cloud accounts.
         self.users = users
 
     def validate(self):
@@ -4800,8 +5286,11 @@ class DescribeZoneInfoRequest(TeaModel):
         lang: str = None,
         zone_id: str = None,
     ):
+        # The language.
         self.lang = lang
-        # Zone ID。
+        # The global ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4838,12 +5327,20 @@ class DescribeZoneInfoResponseBodyBindVpcsVpc(TeaModel):
         vpc_type: str = None,
         vpc_user_id: int = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The name of the region.
         self.region_name = region_name
-        # Vpc ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
+        # The type of the VPC. Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
+        # The ID of the user to which the VPC belongs. The value null indicates that the VPC belongs to the current user.
         self.vpc_user_id = vpc_user_id
 
     def validate(self):
@@ -4945,26 +5442,60 @@ class DescribeZoneInfoResponseBody(TeaModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
+        # The virtual private clouds (VPCs) bound to the zone.
         self.bind_vpcs = bind_vpcs
+        # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The creator of the zone.
         self.creator = creator
+        # The type of the operator.
         self.creator_type = creator_type
+        # The logical location of the built-in authoritative module in which the zone is added. Valid values:
+        # 
+        # *   NORMAL_ZONE: regular module
+        # *   FAST_ZONE: acceleration module
         self.dns_group = dns_group
+        # Indicates whether the zone is being removed to another logical location. Valid values:
+        # 
+        # *   true
+        # *   false
         self.dns_group_changing = dns_group_changing
+        # *   Indicates whether the zone is a reverse lookup zone. Valid values: true and false. The value true indicates that the zone is a reverse lookup zone.
+        # *   The value false indicates that the zone is not a reverse lookup zone.
         self.is_ptr = is_ptr
+        # *   Indicates whether the recursive resolution proxy feature is enabled for the zone. Valid values: **ZONE**: The recursive resolution proxy feature is disabled for the zone.
+        # *   **RECORD**: The recursive resolution proxy feature is enabled for the zone.
         self.proxy_pattern = proxy_pattern
+        # The total number of DNS records.
         self.record_count = record_count
+        # The description of the zone.
         self.remark = remark
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. Valid values:
+        # 
+        # *   **true**: The secondary DNS feature is enabled.
+        # *   **false**: The secondary DNS feature is disabled.
         self.slave_dns = slave_dns
+        # The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the zone was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
-        # Zone ID。
+        # The global ID of the zone.
         self.zone_id = zone_id
+        # The zone name.
         self.zone_name = zone_name
+        # *   If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
+        # *   If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
         self.zone_tag = zone_tag
+        # The type of the zone. Valid values:
+        # 
+        # *   AUTH_ZONE: authoritative zone
+        # *   CLOUD_PRODUCT_ZONE: authoritative zone for cloud services
         self.zone_type = zone_type
 
     def validate(self):
@@ -5118,14 +5649,29 @@ class DescribeZoneRecordsRequest(TeaModel):
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        # The hostname keyword based on which the system queries the DNS records.
         self.keyword = keyword
+        # The language.
         self.lang = lang
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
+        # The search mode. Valid values:
+        # 
+        # *   **LIKE**: fuzzy search
+        # *   **EXACT (default)**: exact search
         self.search_mode = search_mode
+        # The tags added to the DNS record.
+        # 
+        # *   This parameter is left empty by default. In this case, the DNS records of the zone are queried.
+        # *   If you set Tag to ecs, the DNS records added to the hostnames of Elastic Compute Service (ECS) instances in the zone are queried.
         self.tag = tag
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # Zone ID。
+        # The zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5195,20 +5741,38 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
         weight: int = None,
         zone_id: str = None,
     ):
+        # The time when the DNS record was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The resolution line.
         self.line = line
+        # The priority of the mail exchanger (MX) record.
         self.priority = priority
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The description of the DNS record.
         self.remark = remark
+        # The hostname.
         self.rr = rr
+        # The state of the DNS record. Valid values:
+        # 
+        # *   ENABLE: The DNS record is enabled.
+        # *   DISABLE: The DNS record is disabled.
         self.status = status
+        # The time-to-live (TTL) of the DNS record.
         self.ttl = ttl
+        # The type of the DNS record.
         self.type = type
+        # The time when the DNS record was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
+        # The record value.
         self.value = value
+        # The weight of the address.
         self.weight = weight
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -5332,11 +5896,17 @@ class DescribeZoneRecordsResponseBody(TeaModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The returned DNS records.
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_items = total_items
+        # The total number of returned pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -5428,7 +5998,9 @@ class DescribeZoneVpcTreeRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -5464,12 +6036,18 @@ class DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc(TeaModel):
         vpc_name: str = None,
         vpc_type: str = None,
     ):
-        # region Id
+        # The region ID.
         self.region_id = region_id
+        # The name of the region.
         self.region_name = region_name
-        # vpc id
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
+        # The type of the VPC. Valid values:
+        # 
+        # *   STANDARD: standard VPC
+        # *   EDS: Elastic Desktop Service (EDS) workspace VPC
         self.vpc_type = vpc_type
 
     def validate(self):
@@ -5563,22 +6141,52 @@ class DescribeZoneVpcTreeResponseBodyZonesZone(TeaModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
+        # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The creator of the zone.
         self.creator = creator
+        # The operator type.
         self.creator_type = creator_type
+        # The logical location of the built-in authoritative module in which the zone is added. Valid values:
+        # 
+        # *   NORMAL_ZONE: regular module
+        # *   FAST_ZONE: acceleration module
         self.dns_group = dns_group
+        # Indicates whether the zone is being removed to another logical location. Valid values:
+        # 
+        # *   true
+        # *   false
         self.dns_group_changing = dns_group_changing
+        # Indicates whether the zone is a reverse lookup zone. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_ptr = is_ptr
+        # The number of Domain Name System (DNS) records.
         self.record_count = record_count
+        # The description of the zone.
         self.remark = remark
+        # The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the zone was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_timestamp = update_timestamp
+        # The VPCs bound to the zones.
         self.vpcs = vpcs
-        # Zone id
+        # The global ID of the zone.
         self.zone_id = zone_id
+        # The name of the zone.
         self.zone_name = zone_name
+        # The type of the cloud service.
+        # 
+        # *   If the value of the ZoneType parameter is AUTH_ZONE, no value is returned for this parameter.
+        # *   If the value of the ZoneType parameter is CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
         self.zone_tag = zone_tag
+        # The type of the zone. Valid values:
+        # 
+        # *   AUTH_ZONE: authoritative zone
+        # *   CLOUD_PRODUCT_ZONE: authoritative zone for cloud services
         self.zone_type = zone_type
 
     def validate(self):
@@ -5704,7 +6312,9 @@ class DescribeZoneVpcTreeResponseBody(TeaModel):
         request_id: str = None,
         zones: DescribeZoneVpcTreeResponseBodyZones = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The zones.
         self.zones = zones
 
     def validate(self):
@@ -5780,7 +6390,9 @@ class DescribeZonesRequestResourceTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the resource.
         self.key = key
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -5822,17 +6434,35 @@ class DescribeZonesRequest(TeaModel):
         zone_tag: List[str] = None,
         zone_type: str = None,
     ):
+        # The keyword of the zone name. The search is performed in the %KeyWord % mode and is not case-sensitive.
         self.keyword = keyword
+        # The language.
         self.lang = lang
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
+        # The region ID.
         self.query_region_id = query_region_id
-        # VPC ID。
+        # The virtual private cloud (VPC) ID.
         self.query_vpc_id = query_vpc_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tag added to the resource.
         self.resource_tag = resource_tag
+        # The search mode. Valid values:
+        # 
+        # *   **LIKE (default)**: fuzzy search
+        # *   **EXACT**: exact search
         self.search_mode = search_mode
+        # The type of the cloud service.
         self.zone_tag = zone_tag
+        # The type of zones to query. Default value: AUTH_ZONE.
+        # 
+        # Valid values:
+        # 
+        # *   **AUTH_ZONE**: authoritative zone
+        # *   **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
         self.zone_type = zone_type
 
     def validate(self):
@@ -5909,7 +6539,9 @@ class DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the zone.
         self.key = key
+        # The value of tag N added to the zone.
         self.value = value
 
     def validate(self):
@@ -5993,24 +6625,64 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
+        # The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_timestamp = create_timestamp
+        # The creator of the zone.
         self.creator = creator
+        # The type of the user account.
+        # 
+        # *   **CUSTOMER**: Alibaba Cloud account
+        # *   **SUB**: RAM user
+        # *   **STS**: assumed role that obtains the Security Token Service (STS) token of a RAM role
+        # *   **OTHER**: other types
         self.creator_sub_type = creator_sub_type
+        # The logical location type of the built-in authoritative module in which the zone is added. Valid values:
+        # 
+        # *   **NORMAL_ZONE**: regular module
+        # *   **FAST_ZONE**: acceleration module
         self.dns_group = dns_group
+        # Indicates whether the zone is being removed to another logical location. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.dns_group_changing = dns_group_changing
+        # Indicates whether the zone is a reverse lookup zone. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_ptr = is_ptr
+        # Indicates whether the recursive resolution proxy feature is enabled for the zone. Valid values:
+        # 
+        # *   **ZONE**: The recursive resolution proxy feature is disabled for the zone.
+        # *   **RECORD**: The recursive resolution proxy feature is enabled for the zone.
         self.proxy_pattern = proxy_pattern
+        # The number of Domain Name System (DNS) records.
         self.record_count = record_count
+        # The description of the zone.
         self.remark = remark
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags added to the resources.
         self.resource_tags = resource_tags
+        # The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
+        # The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.update_timestamp = update_timestamp
-        # zone ID。
+        # The zone ID.
         self.zone_id = zone_id
+        # The name of the zone.
         self.zone_name = zone_name
+        # The type of the cloud service. Valid values:
+        # 
+        # *   If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
+        # *   If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
         self.zone_tag = zone_tag
+        # The type of zones. Valid values:
+        # 
+        # *   **AUTH_ZONE**: authoritative zone
+        # *   **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
         self.zone_type = zone_type
 
     def validate(self):
@@ -6148,11 +6820,17 @@ class DescribeZonesResponseBody(TeaModel):
         total_pages: int = None,
         zones: DescribeZonesResponseBodyZones = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
+        # The zones.
         self.zones = zones
 
     def validate(self):
@@ -6244,7 +6922,9 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the resource.
         self.key = key
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -6281,11 +6961,19 @@ class ListTagResourcesRequest(TeaModel):
         size: int = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The language of the values for specific response parameters. Valid values: en, zh, and ja.
         self.lang = lang
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
         self.resource_id = resource_id
+        # The resource type. Valid value: ZONE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
+        # The number of entries per page. Valid values: `1 to 200`. Default value: 20.
         self.size = size
+        # The tags added to the resources.
         self.tag = tag
 
     def validate(self):
@@ -6344,9 +7032,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID, which is a zone ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The key of tag N added to the resource.
         self.tag_key = tag_key
+        # The value of tag N added to the resource.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6388,8 +7080,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The tags added to the resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -6477,10 +7172,17 @@ class MoveResourceGroupRequest(TeaModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
+        # The ID of the resource group.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # Zone Id。
+        # The global ID of the zone.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
 
     def validate(self):
@@ -6520,6 +7222,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6592,10 +7295,22 @@ class SetProxyPatternRequest(TeaModel):
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # Specifies whether to enable the recursive resolution proxy feature for the zone. Valid values:
+        # 
+        # *   **ZONE**: disables the recursive resolution proxy feature for the zone.
+        # *   **RECORD**: enables the recursive resolution proxy feature for the zone.
+        # 
+        # This parameter is required.
         self.proxy_pattern = proxy_pattern
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The global ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6640,7 +7355,9 @@ class SetProxyPatternResponseBody(TeaModel):
         request_id: str = None,
         zone_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The global ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6717,10 +7434,22 @@ class SetZoneRecordStatusRequest(TeaModel):
         status: str = None,
         user_client_ip: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
+        # The state of the DNS record. Valid values:
+        # 
+        # *   ENABLE: enables the DNS record.
+        # *   DISABLE: suspends the DNS record.
+        # 
+        # This parameter is required.
         self.status = status
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
 
     def validate(self):
@@ -6766,8 +7495,11 @@ class SetZoneRecordStatusResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the DNS record.
         self.status = status
 
     def validate(self):
@@ -6845,7 +7577,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource.
         self.key = key
+        # The value of tag N to add to the resource.
         self.value = value
 
     def validate(self):
@@ -6881,10 +7615,24 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The language.
         self.lang = lang
+        # Specifies whether to replace the original tags added to the resources. Valid values:
+        # 
+        # *   True: replaces the original tags.
+        # *   False|Null: appends the specified one or more tags to the original tags. If a new tag has the same key but a different value from an original tag, the new tag replaces the original tag.
         self.over_write = over_write
+        # The resource IDs, which are zone IDs. You can specify **1 to 50** IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
+        # The tags to add to the resources.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -6936,6 +7684,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7008,10 +7757,22 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the specified one or more resources. This parameter is valid only if the TagKey parameter is left empty. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.all = all
+        # The language.
         self.lang = lang
+        # The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Valid value: ZONE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
+        # The keys of tags that you want to remove. You can specify up to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -7055,6 +7816,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7126,9 +7888,15 @@ class UpdateRecordRemarkRequest(TeaModel):
         record_id: int = None,
         remark: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
+        # The description of the DNS record.
         self.remark = remark
 
     def validate(self):
@@ -7169,7 +7937,9 @@ class UpdateRecordRemarkResponseBody(TeaModel):
         record_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7245,9 +8015,13 @@ class UpdateResolverEndpointRequestIpConfig(TeaModel):
         ip: str = None,
         v_switch_id: str = None,
     ):
+        # The zone ID.
         self.az_id = az_id
+        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # The IP address.
         self.ip = ip
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -7290,9 +8064,15 @@ class UpdateResolverEndpointRequest(TeaModel):
         lang: str = None,
         name: str = None,
     ):
+        # The endpoint ID.
+        # 
+        # This parameter is required.
         self.endpoint_id = endpoint_id
+        # The source IP addresses of outbound traffic. You must add two to six source IP addresses to ensure high availability.
         self.ip_config = ip_config
+        # The language.
         self.lang = lang
+        # The endpoint name.
         self.name = name
 
     def validate(self):
@@ -7340,6 +8120,7 @@ class UpdateResolverEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7409,7 +8190,9 @@ class UpdateResolverRuleRequestForwardIp(TeaModel):
         ip: str = None,
         port: int = None,
     ):
+        # The destination IP address.
         self.ip = ip
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -7439,14 +8222,22 @@ class UpdateResolverRuleRequestForwardIp(TeaModel):
 class UpdateResolverRuleRequest(TeaModel):
     def __init__(
         self,
+        endpoint_id: str = None,
         forward_ip: List[UpdateResolverRuleRequestForwardIp] = None,
         lang: str = None,
         name: str = None,
         rule_id: str = None,
     ):
+        self.endpoint_id = endpoint_id
+        # The destination IP address and port number.
         self.forward_ip = forward_ip
+        # The language.
         self.lang = lang
+        # The name of the forwarding rule.
         self.name = name
+        # The forwarding rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -7461,6 +8252,8 @@ class UpdateResolverRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
         result['ForwardIp'] = []
         if self.forward_ip is not None:
             for k in self.forward_ip:
@@ -7475,6 +8268,8 @@ class UpdateResolverRuleRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
         self.forward_ip = []
         if m.get('ForwardIp') is not None:
             for k in m.get('ForwardIp'):
@@ -7494,6 +8289,7 @@ class UpdateResolverRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7563,7 +8359,9 @@ class UpdateSyncEcsHostTaskRequestRegion(TeaModel):
         region_id: str = None,
         user_id: int = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The Alibaba Cloud account to which the region belongs. This parameter is used in cross-account synchronization scenarios.
         self.user_id = user_id
 
     def validate(self):
@@ -7598,9 +8396,22 @@ class UpdateSyncEcsHostTaskRequest(TeaModel):
         status: str = None,
         zone_id: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The information about regions to be synchronized.
+        # 
+        # This parameter is required.
         self.region = region
+        # The state of the task. Valid values:
+        # 
+        # *   ON
+        # *   OFF
+        # 
+        # This parameter is required.
         self.status = status
+        # The zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7649,7 +8460,12 @@ class UpdateSyncEcsHostTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the task was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7732,16 +8548,39 @@ class UpdateZoneRecordRequest(TeaModel):
         value: str = None,
         weight: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The resolution line.
         self.line = line
+        # The priority of the mail exchanger (MX) record. Valid values: **1 to 99**.
+        # 
+        # This parameter is required if the type of the DNS record is MX.
         self.priority = priority
+        # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
+        # The hostname.
+        # 
+        # For example, you must set this parameter to @ if you want to resolve @.example.com.
+        # 
+        # This parameter is required.
         self.rr = rr
+        # The time-to-live (TTL) of the DNS record.
         self.ttl = ttl
+        # The type of the DNS record. Valid values: **A**, **AAAA**, **CNAME**, **TXT**, **MX**, **PTR**, and **SRV**.
+        # 
+        # This parameter is required.
         self.type = type
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
+        # The record value.
+        # 
+        # This parameter is required.
         self.value = value
+        # The weight of the address. Valid values: **1 to 100**.
         self.weight = weight
 
     def validate(self):
@@ -7810,7 +8649,9 @@ class UpdateZoneRecordResponseBody(TeaModel):
         record_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7887,11 +8728,17 @@ class UpdateZoneRemarkRequest(TeaModel):
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The language.
         self.lang = lang
+        # The new description.
         self.remark = remark
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
-        # Zone ID。
+        # The unique ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -7936,8 +8783,9 @@ class UpdateZoneRemarkResponseBody(TeaModel):
         request_id: str = None,
         zone_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
-        # Zone ID。
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
