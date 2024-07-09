@@ -181,7 +181,9 @@ class FilePermissionMemberCdsIdentity(TeaModel):
         id: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -216,9 +218,11 @@ class FilePermissionMember(TeaModel):
         expire_time: int = None,
         role_id: str = None,
     ):
+        # This parameter is required.
         self.cds_identity = cds_identity
         self.disinherit_sub_group = disinherit_sub_group
         self.expire_time = expire_time
+        # This parameter is required.
         self.role_id = role_id
 
     def validate(self):
@@ -255,6 +259,87 @@ class FilePermissionMember(TeaModel):
         return self
 
 
+class Permission(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        dest_cidr_ip: str = None,
+        ip_protocol: str = None,
+        nic_type: str = None,
+        policy: str = None,
+        port_range: str = None,
+        priority: str = None,
+        source_cidr_ip: str = None,
+        source_port_range: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.dest_cidr_ip = dest_cidr_ip
+        self.ip_protocol = ip_protocol
+        self.nic_type = nic_type
+        self.policy = policy
+        self.port_range = port_range
+        self.priority = priority
+        self.source_cidr_ip = source_cidr_ip
+        self.source_port_range = source_port_range
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dest_cidr_ip is not None:
+            result['DestCidrIp'] = self.dest_cidr_ip
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+        if self.nic_type is not None:
+            result['NicType'] = self.nic_type
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.source_port_range is not None:
+            result['SourcePortRange'] = self.source_port_range
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DestCidrIp') is not None:
+            self.dest_cidr_ip = m.get('DestCidrIp')
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+        if m.get('NicType') is not None:
+            self.nic_type = m.get('NicType')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('SourcePortRange') is not None:
+            self.source_port_range = m.get('SourcePortRange')
+        return self
+
+
 class ActivateOfficeSiteRequest(TeaModel):
     def __init__(
         self,
@@ -262,8 +347,12 @@ class ActivateOfficeSiteRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the convenience office network that is locked.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -359,6 +448,39 @@ class ActivateOfficeSiteResponse(TeaModel):
         return self
 
 
+class AddDesktopOversoldUserGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class AddDesktopOversoldUserGroupRequest(TeaModel):
     def __init__(
         self,
@@ -366,14 +488,19 @@ class AddDesktopOversoldUserGroupRequest(TeaModel):
         name: str = None,
         oversold_group_id: str = None,
         policy_group_id: str = None,
+        tag: List[AddDesktopOversoldUserGroupRequestTag] = None,
     ):
         self.image_id = image_id
         self.name = name
         self.oversold_group_id = oversold_group_id
         self.policy_group_id = policy_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -389,6 +516,10 @@ class AddDesktopOversoldUserGroupRequest(TeaModel):
             result['OversoldGroupId'] = self.oversold_group_id
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -401,6 +532,11 @@ class AddDesktopOversoldUserGroupRequest(TeaModel):
             self.oversold_group_id = m.get('OversoldGroupId')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AddDesktopOversoldUserGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -514,14 +650,20 @@ class AddDevicesRequest(TeaModel):
         device_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The type of the Alibaba Cloud Workspace client that runs on the device.
+        # The type of the client.
         # 
-        # *   1: the hardware client
-        # *   2: the software client
+        # Valid values:
+        # 
+        # *   1: hardware client.
+        # *   2: software client.
+        # 
+        # This parameter is required.
         self.client_type = client_type
-        # The list of devices.
+        # The IDs of the devices. You can specify up to 200 IDs.
+        # 
+        # This parameter is required.
         self.device_ids = device_ids
-        # The ID of the region.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
 
     def validate(self):
@@ -559,7 +701,9 @@ class AddDevicesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The execution result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
         self.code = code
+        # The returned error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -640,6 +784,8 @@ class AddFilePermissionRequestMemberListCdsIdentity(TeaModel):
         type: str = None,
     ):
         # The ID of the user.
+        # 
+        # This parameter is required.
         self.id = id
         # The type of the user.
         # 
@@ -660,6 +806,8 @@ class AddFilePermissionRequestMemberListCdsIdentity(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -695,6 +843,8 @@ class AddFilePermissionRequestMemberList(TeaModel):
         role_id: str = None,
     ):
         # The user of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_identity = cds_identity
         # Specifies whether the users of the child group can inherit the folder permissions.
         self.disinherit_sub_group = disinherit_sub_group
@@ -717,6 +867,8 @@ class AddFilePermissionRequestMemberList(TeaModel):
         # * SystemFileUploader
         # * SystemFileUploaderAndDownloader
         # * SystemFileMetaViewer
+        # 
+        # This parameter is required.
         self.role_id = role_id
 
     def validate(self):
@@ -764,16 +916,24 @@ class AddFilePermissionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk whose folder you want to share.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
         # The ID of the file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The ID of the team that uses cloud disks in Cloud Drive Service.
         self.group_id = group_id
         # The members who are granted the folder permissions.
+        # 
+        # This parameter is required.
         self.member_list = member_list
-        # The region ID of the folder. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID of the folder. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -835,16 +995,24 @@ class AddFilePermissionShrinkRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk whose folder you want to share.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
         # The ID of the file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The ID of the team that uses cloud disks in Cloud Drive Service.
         self.group_id = group_id
         # The members who are granted the folder permissions.
+        # 
+        # This parameter is required.
         self.member_list_shrink = member_list_shrink
-        # The region ID of the folder. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID of the folder. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -965,15 +1133,19 @@ class AddUserToDesktopGroupRequest(TeaModel):
         end_user_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the desktop group that you want to assign to more regular users.
         self.desktop_group_id = desktop_group_id
         # The IDs of the desktop groups.
         self.desktop_group_ids = desktop_group_ids
         # The regular users to whom you want to assign the desktop group.
+        # 
+        # This parameter is required.
         self.end_user_ids = end_user_ids
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1202,10 +1374,16 @@ class ApplyAutoSnapshotPolicyRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the automatic snapshot policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1315,14 +1493,20 @@ class ApplyCoordinatePrivilegeRequest(TeaModel):
         uuid: str = None,
     ):
         # The ID of the application for the coordinate permissions.
+        # 
+        # This parameter is required.
         self.co_id = co_id
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of user who requires the coordinate permissions.
         # 
         # Valid value: TENANT_ADMIN.
+        # 
+        # This parameter is required.
         self.user_type = user_type
         # The unique identifier of the client. If you use an Alibaba Cloud Workspace client, click **About** on the client logon page to view the identifier of the client.
         self.uuid = uuid
@@ -1444,16 +1628,24 @@ class ApplyCoordinationForMonitoringRequestResourceCandidates(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the current cloud desktop belongs.
+        # 
+        # This parameter is required.
         self.owner_ali_uid = owner_ali_uid
         # The ID of the current end user.
         self.owner_end_user_id = owner_end_user_id
         # The ID of the cloud desktop.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The name of the cloud desktop.
+        # 
+        # This parameter is required.
         self.resource_name = resource_name
         # The properties of the cloud desktop.
         self.resource_properties = resource_properties
         # The region where the resource resides.
+        # 
+        # This parameter is required.
         self.resource_region_id = resource_region_id
         # The resource type.
         # 
@@ -1466,6 +1658,8 @@ class ApplyCoordinationForMonitoringRequestResourceCandidates(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1533,6 +1727,8 @@ class ApplyCoordinationForMonitoringRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.coordinate_policy_type = coordinate_policy_type
         # The ID of the end user who initiates the stream collaboration. If the initiator is the administrator, do not specify this parameter.
         self.end_user_id = end_user_id
@@ -1549,10 +1745,16 @@ class ApplyCoordinationForMonitoringRequest(TeaModel):
         #     <!-- -->
         self.initiator_type = initiator_type
         # The region ID. You can call the [DescribeRegions](https://next.api.aliyun.com/document/ecd/2020-09-30/DescribeRegions) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of cloud desktops that run the collaboration task at the same time.
+        # 
+        # This parameter is required.
         self.resource_candidates = resource_candidates
         # The universally unique identifier (UUID) of the device.
+        # 
+        # This parameter is required.
         self.uuid = uuid
 
     def validate(self):
@@ -1783,10 +1985,16 @@ class ApproveFotaUpdateRequest(TeaModel):
         region_id: str = None,
     ):
         # Mirror version.
+        # 
+        # This parameter is required.
         self.app_version = app_version
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1894,10 +2102,16 @@ class AssociateNetworkPackageRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the premium bandwidth plan.
+        # 
+        # This parameter is required.
         self.network_package_id = network_package_id
-        # The ID of the office network. You can call the [DescribeNetworkPackages](~~216079~~) to obtain the ID of the office network to which a premium bandwidth plan is bound.
+        # The ID of the office network. You can call the [DescribeNetworkPackages](https://help.aliyun.com/document_detail/216079.html) to obtain the ID of the office network to which a premium bandwidth plan is bound.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2007,6 +2221,8 @@ class AttachCenRequest(TeaModel):
         verify_code: str = None,
     ):
         # The ID of the CEN instance.
+        # 
+        # This parameter is required.
         self.cen_id = cen_id
         # The Alibaba Cloud account to which the CEN instance belongs.
         # 
@@ -2014,10 +2230,14 @@ class AttachCenRequest(TeaModel):
         # *   If you do not own the CEN instance, you must specify the ID of the account that owns the CEN instance.
         self.cen_owner_id = cen_owner_id
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The verification code. If you do not own the CEN instance, you must call the [SendVerifyCode](~~436847~~) operation to obtain a verification code.
+        # The verification code. If you do not own the CEN instance, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain a verification code.
         self.verify_code = verify_code
 
     def validate(self):
@@ -2136,25 +2356,34 @@ class AttachEndUserRequest(TeaModel):
         region_id: str = None,
         user_type: str = None,
     ):
-        # The address of the Active Directory (AD) workspace.
+        # The address of the Active Directory (AD) office network.
         self.ad_domain = ad_domain
-        # The type of the Alibaba Cloud Workspace client that runs on the device.
+        # The type of the client.
         # 
-        # *   1: the hardware client
-        # *   2: the software client
+        # Valid values:
+        # 
+        # *   1: hardware client.
+        # 
+        # This parameter is required.
         self.client_type = client_type
-        # The ID of the device.
+        # The serial number (SN) of the hardware client.
+        # 
+        # This parameter is required.
         self.device_id = device_id
-        # The ID of the workspace.
+        # The ID of the convenient office network.
         self.directory_id = directory_id
-        # The ID of the user.
+        # The ID of the user that you want to bind to the hardware client.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
-        # The ID of the region.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
         # The account type of the user.
         # 
-        # *   SIMPLE: the convenience user
-        # *   AD: the AD user
+        # Valid values:
+        # 
+        # *   AD: enterprise AD account.
+        # *   SIMPLE: convenience account
         self.user_type = user_type
 
     def validate(self):
@@ -2278,10 +2507,16 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 50 IDs. The IDs cannot be an empty string. The IDs can be up to 64 characters in length and cannot contain `http://` or `https://`. The IDs cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the automatic snapshot policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2388,8 +2623,12 @@ class CancelCdsFileShareLinkRequest(TeaModel):
         share_id: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the file sharing task.
+        # 
+        # This parameter is required.
         self.share_id = share_id
 
     def validate(self):
@@ -2540,10 +2779,14 @@ class CancelCoordinationForMonitoringRequest(TeaModel):
         user_type: str = None,
     ):
         # The IDs of stream collaboration tasks.
+        # 
+        # This parameter is required.
         self.co_ids = co_ids
         # The ID of the end user that initiates stream collaboration. If the initiator is the administrator, skip this parameter.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the user.
         # 
@@ -2660,8 +2903,12 @@ class CancelCopyImageRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the new image in the destination region.
+        # 
+        # This parameter is required.
         self.image_id = image_id
         # The ID of the region to which the image is copied.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2765,10 +3012,16 @@ class ClonePolicyGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the policy.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the policy that you want to clone.
+        # 
+        # This parameter is required.
         self.policy_group_id = policy_group_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2886,15 +3139,23 @@ class CompleteCdsFileRequest(TeaModel):
         upload_id: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The name of the end user.
         self.end_user_id = end_user_id
         # The file ID. An ID is the unique identifier of a file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         self.group_id = group_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the file uploading task.
+        # 
+        # This parameter is required.
         self.upload_id = upload_id
 
     def validate(self):
@@ -3015,6 +3276,8 @@ class ConfigADConnectorTrustRequest(TeaModel):
         trust_key: str = None,
     ):
         # The ID of the enterprise AD office network.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
         # Specifies whether to configure a trust password for the Remote Desktop Services (RDS) License Domain of the enterprise AD office network.
         # 
@@ -3024,9 +3287,13 @@ class ConfigADConnectorTrustRequest(TeaModel):
         # 
         # *   false: configures a trust password for a regular enterprise AD office network.
         self.rds_license_domain = rds_license_domain
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The trust password. You can specify the password when you configure a trust relationship between the AD domain and the ecd.acs domain.
+        # 
+        # This parameter is required.
         self.trust_key = trust_key
 
     def validate(self):
@@ -3140,16 +3407,24 @@ class ConfigADConnectorUserRequest(TeaModel):
         region_id: str = None,
     ):
         # The password of the AD user that has the permissions to join computers to domains.
+        # 
+        # This parameter is required.
         self.domain_password = domain_password
         # The username of the AD user that has the permissions to join computers to domains.
         # 
         # After the username is configured, the cloud desktops in the same AD workspace are joined to the specified OU.
+        # 
+        # This parameter is required.
         self.domain_user_name = domain_user_name
-        # The name of the OU in the AD domain. You can call the [ListUserAdOrganizationUnits](~~311259~~) to obtain the OU name.
+        # The name of the OU in the AD domain. You can call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the OU name.
         self.ouname = ouname
         # The ID of the AD workspace.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3291,10 +3566,14 @@ class CopyCdsFileRequest(TeaModel):
         #     <!-- -->
         self.auto_rename = auto_rename
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The user ID that you want to use to access the cloud disk.
         self.end_user_id = end_user_id
         # The file ID. You can call the CreateCdsFile operation to query the file ID.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # 目标复制文件所在的个人空间ID（即UserId，您可以在DescribeCloudDriveUsers接口返回的报文中获取。）或者目标复制文件所在的团队空间ID（即GroupId，您可以在DescribeCloudDriveGroups接口返回的报文中获取。）
         # > FileReceiverId和FileReceiverType都为空时，默认复制到文件所在的个人空间。
@@ -3304,8 +3583,12 @@ class CopyCdsFileRequest(TeaModel):
         self.file_receiver_type = file_receiver_type
         self.group_id = group_id
         # The ID of the parent folder of the folder to which you want to copy the file. If you want to copy the file to the root directory, set this parameter to root.
+        # 
+        # This parameter is required.
         self.parent_folder_id = parent_folder_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3523,13 +3806,21 @@ class CopyImageRequest(TeaModel):
     ):
         # The description of the new image in the destination region. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.destination_description = destination_description
-        # The name of the new image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the new image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.destination_image_name = destination_image_name
-        # The ID of the destination region. The ID must be different from the current region ID of the image. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The ID of the destination region. The ID must be different from the current region ID of the image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.destination_region_id = destination_region_id
         # The ID of the image that is copied to the destination region.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3689,15 +3980,25 @@ class CreateADConnectorDirectoryRequest(TeaModel):
         # 
         #     <!-- -->
         self.desktop_access_type = desktop_access_type
-        # The directory name. The name must be 2 to 255 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The directory name. The name must be 2 to 255 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.directory_name = directory_name
         # The IP address of the DNS server corresponding to the enterprise AD. You can specify only one IP address. Make sure that the specified IP address is accessible in the network of the selected vSwitch.
+        # 
+        # This parameter is required.
         self.dns_address = dns_address
         # The fully qualified domain name (FQDN) of the enterprise AD system. The value must contain the hostname and the domain name. You can register each FQDN only once.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The password of the domain administrator. The password can be up to 64 characters in length.
+        # 
+        # This parameter is required.
         self.domain_password = domain_password
         # The username of the domain administrator. The username can be up to 64 characters in length.
+        # 
+        # This parameter is required.
         self.domain_user_name = domain_user_name
         # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
         # 
@@ -3743,7 +4044,9 @@ class CreateADConnectorDirectoryRequest(TeaModel):
         # 
         #     <!-- -->
         self.mfa_enabled = mfa_enabled
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the AD connector.
         # 
@@ -3751,12 +4054,14 @@ class CreateADConnectorDirectoryRequest(TeaModel):
         # - 1 (General)
         # - 2 (Advanced)
         self.specification = specification
-        # The DNS address of the existing AD subdomain.\
+        # The DNS address of the existing AD subdomain.\\
         # If you specify the `SubDomainName` parameter but you do not specify this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         self.sub_domain_dns_address = sub_domain_dns_address
         # The FQDN of the enterprise AD subdomain. The value must contain the hostname and the subdomain name.
         self.sub_domain_name = sub_domain_name
         # Details of the vSwitch IDs. You can specify only one vSwitch ID.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -3957,6 +4262,8 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
     def __init__(
         self,
         ad_hostname: str = None,
+        backup_dchostname: str = None,
+        backup_dns: str = None,
         bandwidth: int = None,
         cen_id: str = None,
         cen_owner_id: int = None,
@@ -3979,10 +4286,14 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
     ):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
         self.ad_hostname = ad_hostname
-        # The maximum public bandwidth of the Internet access package. Valid values: 0 to 200.\
+        self.backup_dchostname = backup_dchostname
+        self.backup_dns = backup_dns
+        # The maximum public bandwidth of the Internet access package. Valid values: 0 to 200.\\
         # If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
         self.bandwidth = bandwidth
         # The ID of the CEN instance.
+        # 
+        # This parameter is required.
         self.cen_id = cen_id
         # The Alibaba Cloud account that creates the Cloud Enterprise Network (CEN) instance.
         # 
@@ -3994,8 +4305,10 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         # *   `10.0.0.0/12` (subnet mask range: 12 to 24 bits)
         # *   `172.16.0.0/12` (subnet mask range: 12 to 24 bits)
         # *   `192.168.0.0/16` (subnet mask range: 16 to 24 bits)
+        # 
+        # This parameter is required.
         self.cidr_block = cidr_block
-        # The method to connect to cloud computers from WUYING clients.
+        # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
         # 
         # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to `VPC` or `Any`, PrivateLink is automatically activated.
         # 
@@ -4006,8 +4319,12 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         # - Any: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method based on your business requirements when you connect to your cloud desktop from a client.
         self.desktop_access_type = desktop_access_type
         # The IP address of the DNS server of the enterprise AD system. You can specify only one IP address.
+        # 
+        # This parameter is required.
         self.dns_address = dns_address
         # The domain name of the enterprise AD system. You can register each domain name only once.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The password of the domain administrator. The password can be up to 64 characters in length.
         self.domain_password = domain_password
@@ -4041,7 +4358,7 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         self.enable_internet_access = enable_internet_access
         # Specifies whether to enable multi-factor authentication (MFA).
         self.mfa_enabled = mfa_enabled
-        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.\
+        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.\\
         # This parameter is empty by default.
         self.office_site_name = office_site_name
         # The protocol type.
@@ -4056,7 +4373,9 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         # 
         #     <!-- -->
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The AD connector type.
         # 
@@ -4082,7 +4401,7 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         self.sub_domain_dns_address = sub_domain_dns_address
         # The domain name of the enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
-        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](~~436847~~) operation to obtain the verification code.
+        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
         self.verify_code = verify_code
 
     def validate(self):
@@ -4096,6 +4415,10 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         result = dict()
         if self.ad_hostname is not None:
             result['AdHostname'] = self.ad_hostname
+        if self.backup_dchostname is not None:
+            result['BackupDCHostname'] = self.backup_dchostname
+        if self.backup_dns is not None:
+            result['BackupDns'] = self.backup_dns
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.cen_id is not None:
@@ -4140,6 +4463,10 @@ class CreateADConnectorOfficeSiteRequest(TeaModel):
         m = m or dict()
         if m.get('AdHostname') is not None:
             self.ad_hostname = m.get('AdHostname')
+        if m.get('BackupDCHostname') is not None:
+            self.backup_dchostname = m.get('BackupDCHostname')
+        if m.get('BackupDns') is not None:
+            self.backup_dns = m.get('BackupDns')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('CenId') is not None:
@@ -4272,6 +4599,8 @@ class CreateAndBindNasFileSystemRequest(TeaModel):
         # The description of the NAS file system.
         self.description = description
         # The ID of the desktop group.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # Specifies whether to encrypt data in the NAS file system. You can use keys that are hosted by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted. Valid values:
         # 
@@ -4284,10 +4613,16 @@ class CreateAndBindNasFileSystemRequest(TeaModel):
         # The list of users.
         self.end_user_ids = end_user_ids
         # The name of the NAS file system.
+        # 
+        # This parameter is required.
         self.file_system_name = file_system_name
         # The ID of the workspace.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The storage type of the NAS file system. Valid values:
         # 
@@ -4295,6 +4630,8 @@ class CreateAndBindNasFileSystemRequest(TeaModel):
         # *   Performance
         # 
         # Default value: Capacity.
+        # 
+        # This parameter is required.
         self.storage_type = storage_type
 
     def validate(self):
@@ -4423,12 +4760,20 @@ class CreateAutoSnapshotPolicyRequest(TeaModel):
         retention_days: int = None,
     ):
         # The CRON expression for periodic scheduling.
+        # 
+        # This parameter is required.
         self.cron_expression = cron_expression
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). This parameter is empty by default.
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
+        # 
+        # This parameter is required.
         self.retention_days = retention_days
 
     def validate(self):
@@ -4557,11 +4902,15 @@ class CreateBundleRequest(TeaModel):
         self.bundle_name = bundle_name
         # The description of the cloud computer template.
         self.description = description
-        # The instance type of the cloud computers. You can call the [DescribeBundles](~~436974~~) operation to query cloud computer templates and obtain the instance types supported by the cloud computers from the `DesktopType` response parameter.
+        # The instance type of the cloud computers. You can call the [DescribeBundles](https://help.aliyun.com/document_detail/436974.html) operation to query cloud computer templates and obtain the instance types supported by the cloud computers from the `DesktopType` response parameter.
         # 
         # >  If you want the template to use a non-GPU-accelerated image, you can only select a non-GPU-accelerated instance type. If you want the template to use a GPU-accelerated image, you can only select a GPU-accelerated instance type.
+        # 
+        # This parameter is required.
         self.desktop_type = desktop_type
         # The ID of the image.
+        # 
+        # This parameter is required.
         self.image_id = image_id
         # The OS language. This parameter is available only for system images. Valid values:
         # 
@@ -4570,9 +4919,11 @@ class CreateBundleRequest(TeaModel):
         # *   en-US: American English
         # *   ja-JP: Japanese
         self.language = language
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The performance level (PL) of the system disk. When the cloud computer instance type that is specified by the DesktopType parameter is set to a graphical instance type or instance type with a high clock speed, you can set the performance level of the disks. For more information about the differences among disks at different PLs, see [Enhanced SSDs](~~122389~~).
+        # The performance level (PL) of the system disk. When the cloud computer instance type that is specified by the DesktopType parameter is set to a graphical instance type or instance type with a high clock speed, you can set the performance level of the disks. For more information about the differences among disks at different PLs, see [Enhanced SSDs](https://help.aliyun.com/document_detail/122389.html).
         # 
         # Valid values:
         # 
@@ -4608,9 +4959,11 @@ class CreateBundleRequest(TeaModel):
         # 
         #     <!-- -->
         self.root_disk_performance_level = root_disk_performance_level
-        # The size of the system disk. Unit: GiB. The value of this parameter must be consistent with the system disk size supported by the cloud computer instance type. For more information, see [Overview](~~188609~~).
+        # The size of the system disk. Unit: GiB. The value of this parameter must be consistent with the system disk size supported by the cloud computer instance type. For more information, see [Overview](https://help.aliyun.com/document_detail/188609.html).
+        # 
+        # This parameter is required.
         self.root_disk_size_gib = root_disk_size_gib
-        # The PL of the data disk. When the cloud computer instance type that is specified by the DesktopType parameter is set to a graphical instance type or instance type with a high clock speed, you can set the performance level of the disks. For more information about the differences among disks at different PLs, see [Enhanced SSDs](~~122389~~).
+        # The PL of the data disk. When the cloud computer instance type that is specified by the DesktopType parameter is set to a graphical instance type or instance type with a high clock speed, you can set the performance level of the disks. For more information about the differences among disks at different PLs, see [Enhanced SSDs](https://help.aliyun.com/document_detail/122389.html).
         # 
         # Valid values:
         # 
@@ -4647,6 +5000,8 @@ class CreateBundleRequest(TeaModel):
         #     <!-- -->
         self.user_disk_performance_level = user_disk_performance_level
         # The data disk sizes. You can configure only one data disk.
+        # 
+        # This parameter is required.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -4796,6 +5151,8 @@ class CreateCdsFileRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The policy that is used when the file that you want to upload has the same name as an existing file in the cloud disk.
         # 
@@ -4862,8 +5219,12 @@ class CreateCdsFileRequest(TeaModel):
         # The hash value of the SHA1 algorithm that is used by the file.
         self.file_hash = file_hash
         # The file size. Unit: bytes.
+        # 
+        # This parameter is required.
         self.file_length = file_length
         # The file name.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The file type.
         # 
@@ -4884,11 +5245,17 @@ class CreateCdsFileRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.file_type = file_type
         self.group_id = group_id
         # The ID of the parent folder.
+        # 
+        # This parameter is required.
         self.parent_file_id = parent_file_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5082,6 +5449,8 @@ class CreateCdsFileShareLinkRequest(TeaModel):
         share_pwd: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The description of the file sharing task. The description must be 0 to 1,024 characters in length.
         self.description = description
@@ -5417,6 +5786,7 @@ class CreateCloudDriveServiceRequest(TeaModel):
         self.cen_id = cen_id
         self.domain_name = domain_name
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.max_size = max_size
         # The name of the cloud disk that you want to create in Cloud Drive Service.
         self.name = name
@@ -5425,6 +5795,8 @@ class CreateCloudDriveServiceRequest(TeaModel):
         self.period = period
         self.period_unit = period_unit
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The solution ID.
         self.solution_id = solution_id
@@ -5774,12 +6146,20 @@ class CreateCloudDriveUsersRequest(TeaModel):
         user_max_size: int = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The IDs of the end users.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The maximum storage space of an end user. Unit: bytes.
+        # 
+        # This parameter is required.
         self.user_max_size = user_max_size
 
     def validate(self):
@@ -5883,6 +6263,45 @@ class CreateCloudDriveUsersResponse(TeaModel):
         return self
 
 
+class CreateDesktopGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        # 
+        # This parameter is required.
+        self.key = key
+        # The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # 
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateDesktopGroupRequest(TeaModel):
     def __init__(
         self,
@@ -5921,6 +6340,7 @@ class CreateDesktopGroupRequest(TeaModel):
         reset_type: int = None,
         scale_strategy_id: str = None,
         stop_duration: int = None,
+        tag: List[CreateDesktopGroupRequestTag] = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
         vpc_id: str = None,
@@ -5956,14 +6376,18 @@ class CreateDesktopGroupRequest(TeaModel):
         # The number of sessions that are allowed per cloud desktop in a multi-session desktop group.
         self.bind_amount = bind_amount
         # The ID of the desktop template.
+        # 
+        # This parameter is required.
         self.bundle_id = bundle_id
         # The number of cloud desktops that you want to purchase. Valid values: 0 to 200.
         self.buy_desktops_count = buy_desktops_count
         # The billing method of the cloud desktops in the desktop group.
+        # 
+        # This parameter is required.
         self.charge_type = charge_type
         # The type of the desktop group.
         self.classify = classify
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The remarks on the desktop group.
         self.comments = comments
@@ -5992,6 +6416,8 @@ class CreateDesktopGroupRequest(TeaModel):
         # The minimum number of cloud desktops that must be contained in the desktop group if you set the billing method to subscription. If you set the ChargeType parameter to PrePaid, this parameter is required. Valid values: 0 to the value of MaxDesktopsCount. Default value: 1.
         self.min_desktops_count = min_desktops_count
         # The ID of the workspace.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
         # The type of the desktop group.
         self.own_type = own_type
@@ -6015,12 +6441,16 @@ class CreateDesktopGroupRequest(TeaModel):
         # The unit of the subscription duration.
         self.period_unit = period_unit
         # The ID of the policy.
+        # 
+        # This parameter is required.
         self.policy_group_id = policy_group_id
         # Specifies whether to enable data roaming.
         self.profile_follow_switch = profile_follow_switch
         # The threshold for the ratio of connected sessions. This parameter is the condition that triggers auto scaling in a multi-session desktop group. `Ratio of connected sessions = Number of connected sessions/(Total number of cloud desktops × Maximum number of sessions allowed for each cloud desktop) × 100%`. When the specified threshold is reached, new cloud desktops are automatically created. When the specified threshold is not reached, idle cloud desktops are released.
         self.ratio_threshold = ratio_threshold
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies which type of the disk to reset for cloud desktops in the desktop group.
         self.reset_type = reset_type
@@ -6030,15 +6460,20 @@ class CreateDesktopGroupRequest(TeaModel):
         self.scale_strategy_id = scale_strategy_id
         # The period of time before the idle cloud desktop is stopped. When the specified period of time is reached, the idle cloud desktop automatically stops. If an end user connects to a stopped cloud desktop, the cloud desktop automatically starts. Unit: milliseconds.
         self.stop_duration = stop_duration
+        # The tags that you want to attach to the cloud computer pool. You can specify 1 to 20 tags.
+        self.tag = tag
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](~~28951~~) operation to obtain a list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
         # The ID of the virtual private cloud (VPC) in which you want to create the desktop group.
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6116,6 +6551,10 @@ class CreateDesktopGroupRequest(TeaModel):
             result['ScaleStrategyId'] = self.scale_strategy_id
         if self.stop_duration is not None:
             result['StopDuration'] = self.stop_duration
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.volume_encryption_enabled is not None:
             result['VolumeEncryptionEnabled'] = self.volume_encryption_enabled
         if self.volume_encryption_key is not None:
@@ -6196,6 +6635,11 @@ class CreateDesktopGroupRequest(TeaModel):
             self.scale_strategy_id = m.get('ScaleStrategyId')
         if m.get('StopDuration') is not None:
             self.stop_duration = m.get('StopDuration')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateDesktopGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VolumeEncryptionEnabled') is not None:
             self.volume_encryption_enabled = m.get('VolumeEncryptionEnabled')
         if m.get('VolumeEncryptionKey') is not None:
@@ -6533,7 +6977,7 @@ class CreateDesktopsRequestBundleModels(TeaModel):
         # 
         # *   The name must be 1 to 64 characters in length.
         # *   The name must start with a letter but cannot start with `http://` or `https://`.
-        # *   The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.desktop_name = desktop_name
         # The IDs of the end users to whom the cloud computer are assigned.
         self.end_user_ids = end_user_ids
@@ -6544,7 +6988,7 @@ class CreateDesktopsRequestBundleModels(TeaModel):
         # *   The hostnames must be 2 to 15 characters in length.
         # *   The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
         # 
-        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-\[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
         # 
         # *   `name_prefix`: the prefix of the hostname.
         # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
@@ -6552,7 +6996,7 @@ class CreateDesktopsRequestBundleModels(TeaModel):
         self.hostname = hostname
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](~~28951~~) operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -6614,7 +7058,7 @@ class CreateDesktopsRequestDesktopTimers(TeaModel):
         self.allow_client_setting = allow_client_setting
         # The cron expression for the scheduled task.
         # 
-        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \* 1,2,3,4,5,6,7
+        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7
         self.cron_expression = cron_expression
         # Specifies whether to forcibly execute the scheduled task.
         # 
@@ -6732,8 +7176,11 @@ class CreateDesktopsRequestMonthDesktopSetting(TeaModel):
         desktop_id: str = None,
         use_duration: int = None,
     ):
+        # > This parameter is not publicly available.
         self.buyer_id = buyer_id
+        # > This parameter is not publicly available.
         self.desktop_id = desktop_id
+        # > This parameter is not publicly available.
         self.use_duration = use_duration
 
     def validate(self):
@@ -6953,7 +7400,7 @@ class CreateDesktopsRequest(TeaModel):
         # 
         # *   The name must be 1 to 64 characters in length.
         # *   The name must start with a letter but cannot start with `http://` or `https://`.
-        # *   The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.desktop_name = desktop_name
         # Specifies whether to automatically add suffixes to the names of cloud computers when you create multiple cloud computers at the same time.
         # 
@@ -6990,12 +7437,13 @@ class CreateDesktopsRequest(TeaModel):
         # *   The hostnames must be 2 to 15 characters in length.
         # *   The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
         # 
-        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-\[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
         # 
         # *   `name_prefix`: the prefix of the hostname.
         # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
         # *   `name_suffix`: the suffix of the hostname.
         self.hostname = hostname
+        # > This parameter is not publicly available.
         self.month_desktop_setting = month_desktop_setting
         # The office network ID.
         self.office_site_id = office_site_id
@@ -7019,10 +7467,14 @@ class CreateDesktopsRequest(TeaModel):
         # The unit of the subscription duration.
         self.period_unit = period_unit
         # The ID of the policy.
+        # 
+        # This parameter is required.
         self.policy_group_id = policy_group_id
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
@@ -7056,7 +7508,7 @@ class CreateDesktopsRequest(TeaModel):
         self.user_name = user_name
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](~~28951~~) operation to obtain a list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
         # >  This parameter is not publicly available.
         self.vpc_id = vpc_id
@@ -7317,7 +7769,9 @@ class CreateDiskEncryptionServiceRequest(TeaModel):
         self,
         region_id: str = None,
     ):
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7436,7 +7890,7 @@ class CreateImageRequest(TeaModel):
         snapshot_id: str = None,
         snapshot_ids: List[str] = None,
     ):
-        # Specifies whether to clear private data of users. If you set AutoCleanUserdata to `true`, the custom image clears the data directories, excluding the `Administrator` and `Public` directories, in the `C:\Users` directory.
+        # Specifies whether to clear private data of users. If you set AutoCleanUserdata to `true`, the custom image clears the data directories, excluding the `Administrator` and `Public` directories, in the `C:\\Users` directory.
         self.auto_clean_userdata = auto_clean_userdata
         # The description of the custom image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
@@ -7449,11 +7903,13 @@ class CreateImageRequest(TeaModel):
         # - SYSTEM: only contain data from system disks.
         # - ALL: contain data from system disks and user disks. [default]
         self.disk_type = disk_type
-        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.image_name = image_name
         # This parameter is not publicly available.
         self.image_resource_type = image_resource_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
@@ -7601,7 +8057,9 @@ class CreateNASFileSystemRequest(TeaModel):
         self.description = description
         self.encrypt_type = encrypt_type
         self.name = name
+        # This parameter is required.
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.region_id = region_id
         self.storage_type = storage_type
 
@@ -7771,7 +8229,7 @@ class CreateNetworkPackageRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     To make the payment, log on to the WUYING Workspace console, go to the Orders page, and find the order based on the order ID.
+        #     To make the payment, log on to the Elastic Desktop Service console, go to the Orders page, and find the order based on the order ID.
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
@@ -7800,6 +8258,8 @@ class CreateNetworkPackageRequest(TeaModel):
         # *   Valid values if the premium bandwidth plan is a subscription plan: 2 to 1000.
         # *   Valid values if the premium bandwidth plan is a pay-as-you-go plan that charges by data transfer (PayByTraffic): 2 to 200.
         # *   Valid values if the premium bandwidth plan is a pay-as-you-go plan that charges by fixed bandwidth (PayByBandwidth): 2 to 1000.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The charge type of the premium bandwidth plan.
         # 
@@ -7813,6 +8273,8 @@ class CreateNetworkPackageRequest(TeaModel):
         #     *   PayByBandwidth: charges by fixed bandwidth.
         self.internet_charge_type = internet_charge_type
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
         # The billing method of the premium bandwidth plan.
         # 
@@ -7859,7 +8321,9 @@ class CreateNetworkPackageRequest(TeaModel):
         self.period_unit = period_unit
         # The ID of the sales promotion.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8126,10 +8590,10 @@ class CreatePolicyGroupRequestAuthorizeSecurityPolicyRule(TeaModel):
         # *   If you set the IpProtocol parameter to GRE, the start port number and the end port number are -1/-1.
         # *   If you set the IpProtocol parameter to ALL, the start port number and the end port number are -1/-1.
         # 
-        # For more information about the common ports of applications, see [Common ports](~~40724~~).
+        # For more information about the common ports of applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
-        # The priority of the security group rule. A smaller value specifies a higher priority.\
-        # Valid values: 1 to 60.\
+        # The priority of the security group rule. A smaller value specifies a higher priority.\\
+        # Valid values: 1 to 60.\\
         # Default value: 1.
         self.priority = priority
         # The direction of the security group rule.
@@ -8423,7 +8887,7 @@ class CreatePolicyGroupRequestUsbSupplyRedirectRule(TeaModel):
         # 
         #     <!-- -->
         self.usb_rule_type = usb_rule_type
-        # The ID of the vendor. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf\_1.pdf).
+        # The ID of the vendor. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -8490,6 +8954,7 @@ class CreatePolicyGroupRequest(TeaModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         local_drive: str = None,
+        max_reconnect_time: int = None,
         name: str = None,
         net_redirect: str = None,
         preempt_login: str = None,
@@ -8611,7 +9076,7 @@ class CreatePolicyGroupRequest(TeaModel):
         # 
         #     <!-- -->
         self.clipboard = clipboard
-        # Access control for domain names. The wildcard character (\*) is supported for domain names. Separate multiple domain names with commas (,). Valid values:
+        # Access control for domain names. The wildcard character (\\*) is supported for domain names. Separate multiple domain names with commas (,). Valid values:
         # 
         # *   off
         # *   on
@@ -8756,6 +9221,7 @@ class CreatePolicyGroupRequest(TeaModel):
         # 
         #     <!-- -->
         self.local_drive = local_drive
+        self.max_reconnect_time = max_reconnect_time
         # The name of the policy.
         self.name = name
         # Specifies whether to enable the network redirection feature.
@@ -8888,6 +9354,8 @@ class CreatePolicyGroupRequest(TeaModel):
         # The notification content sent to clients when screen recording is enabled. By default, you do not need to specify this parameter.
         self.recording_user_notify_message = recording_user_notify_message
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The permission to control the keyboard and the mouse during remote assistance.
         # 
@@ -9141,6 +9609,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.max_reconnect_time is not None:
+            result['MaxReconnectTime'] = self.max_reconnect_time
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -9265,6 +9735,8 @@ class CreatePolicyGroupRequest(TeaModel):
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('MaxReconnectTime') is not None:
+            self.max_reconnect_time = m.get('MaxReconnectTime')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -9457,7 +9929,9 @@ class CreateRAMDirectoryRequest(TeaModel):
         # 
         #     <!-- -->
         self.desktop_access_type = desktop_access_type
-        # The directory name. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (\_), and hyphens (-).
+        # The directory name. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.directory_name = directory_name
         # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
         # 
@@ -9501,9 +9975,13 @@ class CreateRAMDirectoryRequest(TeaModel):
         # 
         #     <!-- -->
         self.enable_internet_access = enable_internet_access
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The vSwitch IDs. You can configure only one vSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -9644,7 +10122,7 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         self.bandwidth = bandwidth
         # The Cloud Enterprise Network (CEN) instance ID.
         # 
-        # >  If you want end users to connect to cloud computers from WUYING clients over VPCs, you can attach the office network to a CEN instance. The CEN instance is the one that connects to your on-premises network over VPN Gateway or Express Connect.
+        # >  If you want end users to connect to cloud computers from Alibaba Cloud Workspace clients over VPCs, you can attach the office network to a CEN instance. The CEN instance is the one that connects to your on-premises network over VPN Gateway or Express Connect.
         self.cen_id = cen_id
         # The ID of the Alibaba Cloud account to which the Cloud Enterprise Network (CEN) instance belongs.
         # 
@@ -9677,7 +10155,7 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         # 
         #     <!-- -->
         self.cloud_box_office_site = cloud_box_office_site
-        # The method to connect to cloud computers from WUYING clients.
+        # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
         # 
         # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.````
         self.desktop_access_type = desktop_access_type
@@ -9710,13 +10188,15 @@ class CreateSimpleOfficeSiteRequest(TeaModel):
         self.enable_internet_access = enable_internet_access
         # Specifies whether to enable trusted device verification.
         self.need_verify_zero_device = need_verify_zero_device
-        # The office network name. The name must be 2 to 255 characters in length. It can contain digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The office network name. The name must be 2 to 255 characters in length. It can contain digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the vSwitches that you want to specify in VPCs. This parameter is required only when you create CloudBox-based office networks.
         self.v_switch_id = v_switch_id
-        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](~~335132~~) operation to obtain the verification code.
+        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) operation to obtain the verification code.
         self.verify_code = verify_code
         # The network type of the office network.
         # 
@@ -9886,10 +10366,16 @@ class CreateSnapshotRequest(TeaModel):
         # The description of the snapshot. The description can be up to 128 characters in length.
         self.description = description
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The name of the snapshot. The name must be 2 to 127 characters in length. The name must start with a letter. The name can contain letters, digits, underscores (\_), and hyphens (-). The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
+        # The name of the snapshot. The name must be 2 to 127 characters in length. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-). The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
+        # 
+        # This parameter is required.
         self.snapshot_name = snapshot_name
         # The type of the disk for which you want to create a snapshot.
         # 
@@ -9910,6 +10396,8 @@ class CreateSnapshotRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.source_disk_type = source_disk_type
 
     def validate(self):
@@ -10031,8 +10519,12 @@ class DeleteAutoSnapshotPolicyRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the automatic snapshot policies that you want to delete.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10135,8 +10627,12 @@ class DeleteBundlesRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud computer templates. You can specify 1 to 100 IDs.
+        # 
+        # This parameter is required.
         self.bundle_id = bundle_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10242,14 +10738,20 @@ class DeleteCdsFileRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
         # The ID of the file. The ID is a unique identifier for the file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The group ID.
         self.group_id = group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10429,10 +10931,14 @@ class DeleteCloudDriveGroupsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The IDs of the teams that you want to delete. You can delete multiple teams at a time.
         self.group_id = group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10567,8 +11073,10 @@ class DeleteCloudDriveUsersRequest(TeaModel):
         end_user_id: List[str] = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cds_id = cds_id
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10674,8 +11182,12 @@ class DeleteDesktopGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the desktop group.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10778,8 +11290,12 @@ class DeleteDesktopsRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10883,19 +11399,29 @@ class DeleteDevicesRequest(TeaModel):
         force: int = None,
         region_id: str = None,
     ):
-        # The type of the device.
+        # The type of the client.
         # 
-        # *   1: the hardware client device
-        # *   2: the software client device
+        # Valid values:
+        # 
+        # *   1: hardware client.
+        # *   2: software client.
+        # 
+        # This parameter is required.
         self.client_type = client_type
-        # The list of universally unique identifiers (UUIDs) of devices.
-        self.device_ids = device_ids
-        # Specifies whether to forcefully delete the device.
+        # The IDs of the devices. You can specify up to 200 IDs.
         # 
-        # *   1: forcefully deletes the device.
-        # *   0: does not forcefully delete the device. (You cannot delete a device to which a user is bound.)
+        # This parameter is required.
+        self.device_ids = device_ids
+        # Specifies whether to forcefully delete the device if the device is bound to a user.
+        # 
+        # Valid values:
+        # 
+        # *   0: do not forcefully delete the device.
+        # *   1: forcefully delete the device.
+        # 
+        # This parameter is required.
         self.force = force
-        # The ID of the region.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
 
     def validate(self):
@@ -11006,8 +11532,12 @@ class DeleteDirectoriesRequest(TeaModel):
         region_id: str = None,
     ):
         # The directory IDs. You can specify one or more directory IDs.
+        # 
+        # This parameter is required.
         self.directory_id = directory_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11109,7 +11639,9 @@ class DeleteEduRoomRequest(TeaModel):
         edu_room_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.edu_room_id = edu_room_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11214,8 +11746,12 @@ class DeleteImagesRequest(TeaModel):
         # Specifies whether to delete the associated template.
         self.delete_cascaded_bundle = delete_cascaded_bundle
         # The image IDs. You can specify 1 to 100 image IDs.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11322,8 +11858,12 @@ class DeleteNASFileSystemsRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the NAS file systems that you want to delete.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The region ID of the NAS file system that you want to delete.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11426,8 +11966,12 @@ class DeleteNetworkPackagesRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of premium bandwidth plans. You can specify one or more IDs.
+        # 
+        # This parameter is required.
         self.network_package_id = network_package_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11530,8 +12074,12 @@ class DeleteOfficeSitesRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the office networks. You can specify 1 to 100 office networks.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11634,8 +12182,12 @@ class DeletePolicyGroupsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the policy. You can specify 1 to 100 policy IDs.
+        # 
+        # This parameter is required.
         self.policy_group_id = policy_group_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11737,9 +12289,13 @@ class DeleteSnapshotRequest(TeaModel):
         region_id: str = None,
         snapshot_id: List[str] = None,
     ):
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The snapshot IDs. You can specify 1 to 100 IDs.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -11842,10 +12398,14 @@ class DeleteVirtualMFADeviceRequest(TeaModel):
         serial_number: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The serial number of the virtual MFA device, which is a unique identifier.
         # 
-        # You can call the [DescribeVirtualMFADevices](~~206210~~) operation to query the serial number of the virtual MFA device that is bound by AD users.
+        # You can call the [DescribeVirtualMFADevices](https://help.aliyun.com/document_detail/206210.html) operation to query the serial number of the virtual MFA device that is bound by AD users.
+        # 
+        # This parameter is required.
         self.serial_number = serial_number
 
     def validate(self):
@@ -11956,7 +12516,9 @@ class DescribeAclEntriesRequest(TeaModel):
         self.max_results = max_results
         # The token that is used for the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the instance to which the ACL applies. You can specify an office network ID or a cloud computer ID.
         self.source_id = source_id
@@ -12167,7 +12729,9 @@ class DescribeAutoSnapshotPolicyRequest(TeaModel):
         self.policy_id = policy_id
         # The name of the automatic snapshot policy.
         self.policy_name = policy_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12219,9 +12783,9 @@ class DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies(TeaModel):
         status: str = None,
         time_points: str = None,
     ):
-        # The time when the automatic snapshot policy was created. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The time when the automatic snapshot policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The cron expression that specifies when WUYING Workspace creates snapshots on the cloud computers.
+        # The cron expression that specifies when Elastic Desktop Service creates snapshots on the cloud computers.
         self.cron_expression = cron_expression
         # The number of cloud computers to which the automatic snapshot policy is applied.
         self.desktop_num = desktop_num
@@ -12522,7 +13086,9 @@ class DescribeBundlesRequest(TeaModel):
         # *   HDX: High-definition Experience (HDX) protocol
         # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommend)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The scenario to use the image.
         self.scope = scope
@@ -13155,6 +13721,8 @@ class DescribeCdsFileShareLinksRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The users that create the file sharing links.
         self.creators = creators
@@ -13332,13 +13900,15 @@ class DescribeCensRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The page number.\
+        # The page number.\\
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\
+        # The number of entries per page.\\
         # Default value: 50.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -13706,7 +14276,7 @@ class DescribeClientEventsRequest(TeaModel):
         self.desktop_name = desktop_name
         # This parameter is not available to the public.
         self.directory_id = directory_id
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\\
         # If you do not specify a value for this parameter, the current time is used.
         self.end_time = end_time
         # The information about the end user that connects to the cloud desktop from the Elastic Desktop Service (EDS) client. The information can be a Resource Access Management (RAM) user ID or an Active Directory (AD) username. If you do not specify a value for this parameter, the events of all end users in the specified region are queried.
@@ -13781,7 +14351,7 @@ class DescribeClientEventsRequest(TeaModel):
         self.event_type = event_type
         # The array of event types that you want to query. You can specify multiple event types. The response contains all or specified types of events.
         self.event_types = event_types
-        # The number of entries per page.\
+        # The number of entries per page.\\
         # Default value: 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
@@ -13790,9 +14360,11 @@ class DescribeClientEventsRequest(TeaModel):
         self.office_site_id = office_site_id
         # The workspace name.
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.\\
         # If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
         self.start_time = start_time
 
@@ -13956,7 +14528,7 @@ class DescribeClientEventsResponseBodyEvents(TeaModel):
         self.region_id = region_id
         # The status of the event. If you set the EventType parameter to `DESKTOP_DISCONNECT` or `GET_CONNECTION_TICKET`, this parameter is returned. Valid values:
         # 
-        # *   200\. The value indicates that the request is successful.
+        # *   200\\. The value indicates that the request is successful.
         # *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
         self.status = status
 
@@ -14172,6 +14744,8 @@ class DescribeCloudDriveGroupsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The workspace ID.
         self.directory_id = directory_id
@@ -14214,6 +14788,8 @@ class DescribeCloudDriveGroupsRequest(TeaModel):
         # Default value: null. The default value indicates that all nodes are queried.
         self.parent_group_id = parent_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14532,7 +15108,9 @@ class DescribeCloudDrivePermissionsRequest(TeaModel):
         cds_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cds_id = cds_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14683,10 +15261,12 @@ class DescribeCloudDriveUsersRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cds_id = cds_id
         self.end_user_id = end_user_id
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14885,6 +15465,7 @@ class DescribeCustomizedListHeadersRequest(TeaModel):
     ):
         self.lang_type = lang_type
         self.list_type = list_type
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -15414,6 +15995,41 @@ class DescribeDesktopGroupSessionsResponse(TeaModel):
         return self
 
 
+class DescribeDesktopGroupsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        self.key = key
+        # The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDesktopGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -15433,6 +16049,7 @@ class DescribeDesktopGroupsRequest(TeaModel):
         protocol_type: str = None,
         region_id: str = None,
         status: int = None,
+        tag: List[DescribeDesktopGroupsRequestTag] = None,
     ):
         # The IDs of the cloud computer templates.
         self.bundle_id = bundle_id
@@ -15502,7 +16119,9 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # 
         #     <!-- -->
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The payment status of the cloud computer pool.
         # 
@@ -15512,9 +16131,14 @@ class DescribeDesktopGroupsRequest(TeaModel):
         # *   1: paid
         # *   2: overdue or expired
         self.status = status
+        # The tags attached to the cloud computer pool. You can specify 1 to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15554,6 +16178,10 @@ class DescribeDesktopGroupsRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15590,6 +16218,11 @@ class DescribeDesktopGroupsRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeDesktopGroupsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -15694,6 +16327,41 @@ class DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus(TeaModel):
         return self
 
 
+class DescribeDesktopGroupsResponseBodyDesktopGroupsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag.
+        self.key = key
+        # The value of the tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
     def __init__(
         self,
@@ -15741,6 +16409,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         subnet_id: str = None,
         system_disk_category: str = None,
         system_disk_size: int = None,
+        tags: List[DescribeDesktopGroupsResponseBodyDesktopGroupsTags] = None,
         version: int = None,
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
@@ -15778,7 +16447,7 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.desktop_group_id = desktop_group_id
         # The name of the cloud computer pool.
         self.desktop_group_name = desktop_group_name
-        # The cloud computer type. You can call the [DescribeDesktopTypes](~~188882~~) operation to query the IDs of the cloud computer types supported by WUYING Workspace.
+        # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the cloud computer types supported by WUYING Workspace.
         self.desktop_type = desktop_type
         # The number of users that are granted permissions to use the cloud computer pool.
         self.end_user_count = end_user_count
@@ -15923,6 +16592,8 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
         self.system_disk_category = system_disk_category
         # The system disk capacity. Unit: GiB.
         self.system_disk_size = system_disk_size
+        # The tags attached to the cloud computer pool.
+        self.tags = tags
         # The version number of the cloud computer pool.
         self.version = version
         # Indicates whether disk encryption is enabled.
@@ -15933,6 +16604,10 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
     def validate(self):
         if self.count_per_status:
             for k in self.count_per_status:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -16032,6 +16707,10 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             result['SystemDiskCategory'] = self.system_disk_category
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.version is not None:
             result['Version'] = self.version
         if self.volume_encryption_enabled is not None:
@@ -16133,6 +16812,11 @@ class DescribeDesktopGroupsResponseBodyDesktopGroups(TeaModel):
             self.system_disk_category = m.get('SystemDiskCategory')
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeDesktopGroupsResponseBodyDesktopGroupsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('VolumeEncryptionEnabled') is not None:
@@ -16239,9 +16923,11 @@ class DescribeDesktopInfoRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
-        # The cloud desktop ID. You can specify 1 to 100 cloud desktop IDs.
+        # The IDs of the cloud computers. You can specify 1 to 100 IDs.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16282,36 +16968,41 @@ class DescribeDesktopInfoResponseBodyDesktops(TeaModel):
         release_note: str = None,
         start_time: str = None,
     ):
-        # The connection status of the user. Valid values:
+        # The connection status of the user.
+        # 
+        # Valid values:
         # 
         # *   Connected
         # *   Disconnected
         self.connection_status = connection_status
-        # The version of the image that is used by the cloud computer.
+        # The version of the cloud computer image.
         self.current_app_version = current_app_version
+        # The ID of the cloud computer pool.
         self.desktop_group_id = desktop_group_id
-        # The cloud computer ID.
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
-        # The status of the cloud computer. Valid values:
+        # The status of the cloud computer.
         # 
-        # *   Pending: The cloud computer is being created.
-        # *   Starting: The cloud computer is being started.
-        # *   Running: The cloud computer is running.
-        # *   Stopping: The cloud computer is being stopped.
-        # *   Stopped: The cloud computer is stopped.
-        # *   Expired: The cloud computer is expired.
-        # *   Deleted: The cloud computer is deleted.
-        # *   Failed: Failed to create the cloud computer.
+        # Valid values:
+        # 
+        # *   Stopped
+        # *   Failed
+        # *   Starting
+        # *   Running
+        # *   Stopping
+        # *   Expired
+        # *   Deleted
+        # *   Pending
         self.desktop_status = desktop_status
         # The information about flags that are used to manage cloud computers.
         self.management_flag = management_flag
         # The size of the update package. Unit: KB.
         self.new_app_size = new_app_size
-        # The destination version to which the image of the cloud computer can be updated.
+        # The version number of the image that can be updated on the cloud computer.
         self.new_app_version = new_app_version
-        # The description of the destination version to which the image of the cloud computer can be updated.
+        # The description of the image version that can be updated.
         self.release_note = release_note
-        # The first time when the cloud computer was started.
+        # The time when the cloud computer was first started.
         self.start_time = start_time
 
     def validate(self):
@@ -16376,7 +17067,7 @@ class DescribeDesktopInfoResponseBody(TeaModel):
         desktops: List[DescribeDesktopInfoResponseBodyDesktops] = None,
         request_id: str = None,
     ):
-        # Details of the cloud computers.
+        # The basic information about cloud computers.
         self.desktops = desktops
         # The request ID.
         self.request_id = request_id
@@ -17117,6 +17808,7 @@ class DescribeDesktopOversoldUserGroupResponse(TeaModel):
 class DescribeDesktopSessionsRequest(TeaModel):
     def __init__(
         self,
+        check_os_session: bool = None,
         desktop_id: List[str] = None,
         desktop_name: str = None,
         end_time: str = None,
@@ -17127,8 +17819,10 @@ class DescribeDesktopSessionsRequest(TeaModel):
         region_id: str = None,
         session_status: str = None,
         start_time: str = None,
+        sub_pay_type: str = None,
     ):
-        # The IDs of the cloud computers.
+        self.check_os_session = check_os_session
+        # The IDs of the cloud computers. You can specify the IDs of 1 to 100 cloud computers.
         self.desktop_id = desktop_id
         # The name of the cloud computer.
         self.desktop_name = desktop_name
@@ -17136,21 +17830,26 @@ class DescribeDesktopSessionsRequest(TeaModel):
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The workspace ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
         # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The region ID.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The session status. Valid values:
+        # The state of the session.
+        # 
+        # Valid values:
         # 
         # *   Connected
         # *   Disconnected
         self.session_status = session_status
         # The start of the time range to query.
         self.start_time = start_time
+        self.sub_pay_type = sub_pay_type
 
     def validate(self):
         pass
@@ -17161,6 +17860,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.check_os_session is not None:
+            result['CheckOsSession'] = self.check_os_session
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
         if self.desktop_name is not None:
@@ -17181,10 +17882,14 @@ class DescribeDesktopSessionsRequest(TeaModel):
             result['SessionStatus'] = self.session_status
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckOsSession') is not None:
+            self.check_os_session = m.get('CheckOsSession')
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
         if m.get('DesktopName') is not None:
@@ -17205,6 +17910,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
             self.session_status = m.get('SessionStatus')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
         return self
 
 
@@ -17221,40 +17928,47 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         latest_connection_time: int = None,
         office_site_id: str = None,
         office_site_name: str = None,
+        os_session_status: str = None,
         os_type: str = None,
         protocol_type: str = None,
         session_end_time: str = None,
         session_idle_time: int = None,
         session_start_time: str = None,
         session_status: str = None,
+        sub_pay_type: str = None,
         total_connection_time: int = None,
     ):
         # The IP address of the client.
         self.client_ip = client_ip
-        # The OS that the client runs.
+        # The client OS.
         self.client_os = client_os
         # The client version.
         self.client_version = client_version
-        # The cloud desktop ID.
+        # The ID of the cloud computer.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The name of the cloud computer.
         self.desktop_name = desktop_name
         # The duration of the remote assistance. Unit: seconds.
         self.end_user_apply_coordinate_time = end_user_apply_coordinate_time
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The duration of the latest session. Unit: seconds.
+        # The duration of the last connection to the cloud computer. Unit: seconds.
         self.latest_connection_time = latest_connection_time
-        # The workspace ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The workspace name.
+        # The name of the office network.
         self.office_site_name = office_site_name
-        # The OS. Valid values:
+        self.os_session_status = os_session_status
+        # The OS.
         # 
-        # *   Windows
+        # Valid values:
+        # 
         # *   Linux
+        # *   Windows
         self.os_type = os_type
-        # The protocol type that is supported by the cloud desktop. Valid values:
+        # The protocol type.
+        # 
+        # Valid values:
         # 
         # *   HDX
         # *   ASP
@@ -17265,12 +17979,15 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         self.session_idle_time = session_idle_time
         # The start time of the session.
         self.session_start_time = session_start_time
-        # The session status. Valid values:
+        # The state of the session.
+        # 
+        # Valid values:
         # 
         # *   Connected
         # *   Disconnected
         self.session_status = session_status
-        # The total session duration. Unit: seconds.
+        self.sub_pay_type = sub_pay_type
+        # The total connection duration. Unit: seconds.
         self.total_connection_time = total_connection_time
 
     def validate(self):
@@ -17302,6 +18019,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             result['OfficeSiteId'] = self.office_site_id
         if self.office_site_name is not None:
             result['OfficeSiteName'] = self.office_site_name
+        if self.os_session_status is not None:
+            result['OsSessionStatus'] = self.os_session_status
         if self.os_type is not None:
             result['OsType'] = self.os_type
         if self.protocol_type is not None:
@@ -17314,6 +18033,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             result['SessionStartTime'] = self.session_start_time
         if self.session_status is not None:
             result['SessionStatus'] = self.session_status
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
         if self.total_connection_time is not None:
             result['TotalConnectionTime'] = self.total_connection_time
         return result
@@ -17340,6 +18061,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('OfficeSiteName') is not None:
             self.office_site_name = m.get('OfficeSiteName')
+        if m.get('OsSessionStatus') is not None:
+            self.os_session_status = m.get('OsSessionStatus')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
         if m.get('ProtocolType') is not None:
@@ -17352,6 +18075,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             self.session_start_time = m.get('SessionStartTime')
         if m.get('SessionStatus') is not None:
             self.session_status = m.get('SessionStatus')
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
         if m.get('TotalConnectionTime') is not None:
             self.total_connection_time = m.get('TotalConnectionTime')
         return self
@@ -17704,7 +18429,9 @@ class DescribeDesktopTypesRequest(TeaModel):
         self.memory_size = memory_size
         # The order type.
         self.order_type = order_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17980,7 +18707,9 @@ class DescribeDesktopsRequest(TeaModel):
         end_user_id: List[str] = None,
         excluded_end_user_id: List[str] = None,
         expired_time: str = None,
+        fill_resource_group: bool = None,
         filter_desktop_group: bool = None,
+        gpu_instance_group_id: str = None,
         group_id: str = None,
         image_id: List[str] = None,
         management_flag: str = None,
@@ -17992,9 +18721,12 @@ class DescribeDesktopsRequest(TeaModel):
         os_types: List[str] = None,
         policy_group_id: str = None,
         protocol_type: str = None,
+        qos_rule_id: str = None,
         query_fota_update: bool = None,
         region_id: str = None,
+        resource_group_id: str = None,
         snapshot_policy_id: str = None,
+        sub_pay_type: str = None,
         tag: List[DescribeDesktopsRequestTag] = None,
         user_name: str = None,
     ):
@@ -18022,8 +18754,10 @@ class DescribeDesktopsRequest(TeaModel):
         self.excluded_end_user_id = excluded_end_user_id
         # The time when the subscription cloud desktop expires.
         self.expired_time = expired_time
+        self.fill_resource_group = fill_resource_group
         # Specifies whether to filter cloud desktops in the desktop group.
         self.filter_desktop_group = filter_desktop_group
+        self.gpu_instance_group_id = gpu_instance_group_id
         # The ID of the desktop group.
         # 
         # > The desktop group feature is in invitational preview. If you want to use this feature, submit a ticket.
@@ -18051,13 +18785,18 @@ class DescribeDesktopsRequest(TeaModel):
         self.policy_group_id = policy_group_id
         # The type of the protocol.
         self.protocol_type = protocol_type
+        self.qos_rule_id = qos_rule_id
         # Specifies whether to query the information about image update of the cloud desktop.
         self.query_fota_update = query_fota_update
         # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
-        # The tags. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud desktops by group for easy searching and batch operations. For more information, see [Use tags to manage cloud desktops](~~203781~~).
+        self.sub_pay_type = sub_pay_type
+        # The tags. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud desktops by group for easy searching and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
         # The name of the end user.
         self.user_name = user_name
@@ -18096,8 +18835,12 @@ class DescribeDesktopsRequest(TeaModel):
             result['ExcludedEndUserId'] = self.excluded_end_user_id
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.fill_resource_group is not None:
+            result['FillResourceGroup'] = self.fill_resource_group
         if self.filter_desktop_group is not None:
             result['FilterDesktopGroup'] = self.filter_desktop_group
+        if self.gpu_instance_group_id is not None:
+            result['GpuInstanceGroupId'] = self.gpu_instance_group_id
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.image_id is not None:
@@ -18120,12 +18863,18 @@ class DescribeDesktopsRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
+        if self.qos_rule_id is not None:
+            result['QosRuleId'] = self.qos_rule_id
         if self.query_fota_update is not None:
             result['QueryFotaUpdate'] = self.query_fota_update
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -18158,8 +18907,12 @@ class DescribeDesktopsRequest(TeaModel):
             self.excluded_end_user_id = m.get('ExcludedEndUserId')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('FillResourceGroup') is not None:
+            self.fill_resource_group = m.get('FillResourceGroup')
         if m.get('FilterDesktopGroup') is not None:
             self.filter_desktop_group = m.get('FilterDesktopGroup')
+        if m.get('GpuInstanceGroupId') is not None:
+            self.gpu_instance_group_id = m.get('GpuInstanceGroupId')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('ImageId') is not None:
@@ -18182,12 +18935,18 @@ class DescribeDesktopsRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+        if m.get('QosRuleId') is not None:
+            self.qos_rule_id = m.get('QosRuleId')
         if m.get('QueryFotaUpdate') is not None:
             self.query_fota_update = m.get('QueryFotaUpdate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -18237,7 +18996,7 @@ class DescribeDesktopsResponseBodyDesktopsDisks(TeaModel):
         # *   PL2
         # *   PL3
         # 
-        # For more information about the differences among ESSDs at different PLs, see [Enhanced SSDs](~~122389~~).
+        # For more information about the differences among ESSDs at different PLs, see [Enhanced SSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
 
     def validate(self):
@@ -18332,6 +19091,39 @@ class DescribeDesktopsResponseBodyDesktopsFotaUpdate(TeaModel):
             self.release_note_jp = m.get('ReleaseNoteJp')
         if m.get('Size') is not None:
             self.size = m.get('Size')
+        return self
+
+
+class DescribeDesktopsResponseBodyDesktopsResourceGroups(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
@@ -18462,6 +19254,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         policy_group_name_list: List[str] = None,
         progress: str = None,
         protocol_type: str = None,
+        resource_groups: List[DescribeDesktopsResponseBodyDesktopsResourceGroups] = None,
         session_type: str = None,
         sessions: List[DescribeDesktopsResponseBodyDesktopsSessions] = None,
         snapshot_policy_id: str = None,
@@ -18699,6 +19492,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         # 
         #     <!-- -->
         self.protocol_type = protocol_type
+        self.resource_groups = resource_groups
         # The type of the session.
         # 
         # Valid values:
@@ -18737,7 +19531,7 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
         self.tags = tags
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](~~28951~~) operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
         # The zone type. Default value: **AvailabilityZone**. This value indicates Alibaba Cloud zones.
         self.zone_type = zone_type
@@ -18749,6 +19543,10 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
                     k.validate()
         if self.fota_update:
             self.fota_update.validate()
+        if self.resource_groups:
+            for k in self.resource_groups:
+                if k:
+                    k.validate()
         if self.sessions:
             for k in self.sessions:
                 if k:
@@ -18860,6 +19658,10 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             result['Progress'] = self.progress
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
+        result['ResourceGroups'] = []
+        if self.resource_groups is not None:
+            for k in self.resource_groups:
+                result['ResourceGroups'].append(k.to_map() if k else None)
         if self.session_type is not None:
             result['SessionType'] = self.session_type
         result['Sessions'] = []
@@ -18990,6 +19792,11 @@ class DescribeDesktopsResponseBodyDesktops(TeaModel):
             self.progress = m.get('Progress')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+        self.resource_groups = []
+        if m.get('ResourceGroups') is not None:
+            for k in m.get('ResourceGroups'):
+                temp_model = DescribeDesktopsResponseBodyDesktopsResourceGroups()
+                self.resource_groups.append(temp_model.from_map(k))
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
         self.sessions = []
@@ -19132,6 +19939,8 @@ class DescribeDesktopsInGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # Specifies whether to ignore deletion flags.
         # 
@@ -19146,7 +19955,9 @@ class DescribeDesktopsInGroupRequest(TeaModel):
         self.next_token = next_token
         # The billing method of the desktop group.
         self.pay_type = pay_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -20043,29 +20854,35 @@ class DescribeDevicesRequest(TeaModel):
         region: str = None,
         user_type: str = None,
     ):
-        # The address of the Active Directory (AD) workspace.
+        # The address of the Active Directory (AD) office network.
         self.ad_domain = ad_domain
-        # The type of the Alibaba Cloud Workspace client.
+        # The type of the client.
+        # 
+        # Valid values:
         # 
         # *   1: hardware client.
         # *   2: software client.
-        self.client_type = client_type
-        # The ID of the device.
-        self.device_id = device_id
-        # The ID of the workspace.
-        self.directory_id = directory_id
-        # The ID of the convenience user to whom you want to bind the device.
-        self.end_user_id = end_user_id
-        # The number of the page to return.
-        self.page_number = page_number
-        # The number of entries to return on each page.
-        self.page_size = page_size
-        # The ID of the region.
-        self.region = region
-        # The type of the user account.
         # 
-        # *   SIMPLE: convenience account.
-        # *   AD: AD account.
+        # This parameter is required.
+        self.client_type = client_type
+        # The ID of the device. The serial number (SN) of the hardware client or the UUID of the software client.
+        self.device_id = device_id
+        # The ID of the convenient office network.
+        self.directory_id = directory_id
+        # The ID of the bound user.
+        self.end_user_id = end_user_id
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        self.region = region
+        # The account type of the user.
+        # 
+        # Valid values:
+        # 
+        # *   AD: enterprise AD account.
+        # *   SIMPLE: convenience account
         self.user_type = user_type
 
     def validate(self):
@@ -20128,13 +20945,18 @@ class DescribeDevicesResponseBodyDevicesEndUserList(TeaModel):
         end_user_id: str = None,
         user_type: str = None,
     ):
-        # The address of the AD workspace.
+        # The address of the AD office network.
         self.ad_domain = ad_domain
-        # The ID of the workspace.
+        # The ID of the convenient office network.
         self.directory_id = directory_id
         # The ID of the user.
         self.end_user_id = end_user_id
-        # The type of the account.
+        # The account type of the user.
+        # 
+        # Valid values:
+        # 
+        # *   AD: enterprise AD account.
+        # *   SIMPLE: convenience account
         self.user_type = user_type
 
     def validate(self):
@@ -20175,7 +20997,7 @@ class DescribeDevicesResponseBodyDevices(TeaModel):
         device_id: str = None,
         end_user_list: List[DescribeDevicesResponseBodyDevicesEndUserList] = None,
     ):
-        # The ID of the device.
+        # The ID of the device. The serial number (SN) of the hardware client or the UUID of the software client.
         self.device_id = device_id
         # The users who are bound to the device.
         self.end_user_list = end_user_list
@@ -20218,7 +21040,7 @@ class DescribeDevicesResponseBody(TeaModel):
         devices: List[DescribeDevicesResponseBodyDevices] = None,
         request_id: str = None,
     ):
-        # Details of the devices that are returned.
+        # The information about devices that you queried.
         self.devices = devices
         # The ID of the request.
         self.request_id = request_id
@@ -20327,7 +21149,9 @@ class DescribeDirectoriesRequest(TeaModel):
         self.max_results = max_results
         # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The directory status.
         # 
@@ -20616,6 +21440,9 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
     def __init__(
         self,
         adconnectors: List[DescribeDirectoriesResponseBodyDirectoriesADConnectors] = None,
+        ad_hostname: str = None,
+        backup_dchostname: str = None,
+        backup_dns: str = None,
         creation_time: str = None,
         custom_security_group_id: str = None,
         desktop_access_type: str = None,
@@ -20646,6 +21473,9 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
     ):
         # Details of the AD connector.
         self.adconnectors = adconnectors
+        self.ad_hostname = ad_hostname
+        self.backup_dchostname = backup_dchostname
+        self.backup_dns = backup_dns
         # The time when the directory was created.
         self.creation_time = creation_time
         # The security group ID. This parameter is returned only when the directory type is AD office network.
@@ -20728,7 +21558,7 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
         self.mfa_enabled = mfa_enabled
         # The directory name.
         self.name = name
-        # Indicates whether two-step verification for logons is enabled. This parameter is returned only for directories of convenience account type.\
+        # Indicates whether two-step verification for logons is enabled. This parameter is returned only for directories of convenience account type.\\
         # If two-factor verification is enabled, the system checks whether security risks exist within the logon account when a convenience user logs on to an Alibaba Cloud Workspace client. If risks are detected, the system sends a verification code to the email address that is associated with the account. Then, the convenience user can log on to the client only after the user enters the correct verification code.
         self.need_verify_login_risk = need_verify_login_risk
         # The organization unit that you selected when you added the cloud computer to the domain.
@@ -20786,6 +21616,12 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
         if self.adconnectors is not None:
             for k in self.adconnectors:
                 result['ADConnectors'].append(k.to_map() if k else None)
+        if self.ad_hostname is not None:
+            result['AdHostname'] = self.ad_hostname
+        if self.backup_dchostname is not None:
+            result['BackupDCHostname'] = self.backup_dchostname
+        if self.backup_dns is not None:
+            result['BackupDns'] = self.backup_dns
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.custom_security_group_id is not None:
@@ -20851,6 +21687,12 @@ class DescribeDirectoriesResponseBodyDirectories(TeaModel):
             for k in m.get('ADConnectors'):
                 temp_model = DescribeDirectoriesResponseBodyDirectoriesADConnectors()
                 self.adconnectors.append(temp_model.from_map(k))
+        if m.get('AdHostname') is not None:
+            self.ad_hostname = m.get('AdHostname')
+        if m.get('BackupDCHostname') is not None:
+            self.backup_dchostname = m.get('BackupDCHostname')
+        if m.get('BackupDns') is not None:
+            self.backup_dns = m.get('BackupDns')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('CustomSecurityGroupId') is not None:
@@ -21020,12 +21862,19 @@ class DescribeFlowMetricRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.metric_type = metric_type
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -21159,8 +22008,10 @@ class DescribeFlowStatisticRequest(TeaModel):
         # The ID of the cloud computer.
         self.desktop_id = desktop_id
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The number of the page to return.\
+        # The number of the page to return.\\
         # Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page.
@@ -21172,8 +22023,12 @@ class DescribeFlowStatisticRequest(TeaModel):
         # *   3600: 1 hour
         # *   10800: 3 hours
         # *   86400: 24 hours
+        # 
+        # This parameter is required.
         self.period = period
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -21378,11 +22233,13 @@ class DescribeFotaPendingDesktopsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
-        # The ID of the office network. You can call the [DescribeOfficeSites](~~216071~~) operation to obtain the value of this parameter.
+        # The ID of the office network. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain the value of this parameter.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the image update task. You can call the [DescribeFotaTasks](~~437001~~) operation to obtain the value of this parameter.
+        # The ID of the image update task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain the value of this parameter.
         self.task_uid = task_uid
 
     def validate(self):
@@ -21678,7 +22535,9 @@ class DescribeFotaTasksRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the image update tasks.
         self.task_uid = task_uid
@@ -21747,7 +22606,7 @@ class DescribeFotaTasksResponseBodyFotaTasks(TeaModel):
         status: str = None,
         task_uid: str = None,
     ):
-        # The image version. You can call the [DescribeImages](~~188895~~) operation to obtain the value of this parameter.
+        # The image version. You can call the [DescribeImages](https://help.aliyun.com/document_detail/188895.html) operation to obtain the value of this parameter.
         self.app_version = app_version
         # >  This parameter is not publicly available.
         self.fota_project = fota_project
@@ -21936,10 +22795,16 @@ class DescribeGuestApplicationsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the end user.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -22246,6 +23111,8 @@ class DescribeImageModifiedRecordsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The maximum number of entries to return on each page.
         # 
@@ -22254,7 +23121,9 @@ class DescribeImageModifiedRecordsRequest(TeaModel):
         self.max_results = max_results
         # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -22465,8 +23334,12 @@ class DescribeImagePermissionRequest(TeaModel):
         region_id: str = None,
     ):
         # The image ID.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -22588,7 +23461,7 @@ class DescribeImagesRequest(TeaModel):
         region_id: str = None,
         session_type: str = None,
     ):
-        # The instance type of the cloud computer. You can call the [DescribeDesktopTypes](~~436816~~) operation to obtain the parameter value.
+        # The instance type of the cloud computer. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/436816.html) operation to obtain the parameter value.
         self.desktop_instance_type = desktop_instance_type
         # The image version.
         self.fota_version = fota_version
@@ -22658,7 +23531,9 @@ class DescribeImagesRequest(TeaModel):
         # *   HDX: High-definition Experience (HDX) protocol
         # *   ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The session type.
         self.session_type = session_type
@@ -22917,7 +23792,7 @@ class DescribeImagesResponseBodyImages(TeaModel):
         self.update_time = update_time
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](~~28951~~) operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -23171,6 +24046,8 @@ class DescribeInvocationsRequest(TeaModel):
         # The query token. Set the value to the NextToken value that is returned from the last call to the previous DescribeInvocations operation.
         self.next_token = next_token
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -23777,6 +24654,8 @@ class DescribeNASFileSystemsRequest(TeaModel):
         # The ID of the workspace.
         self.office_site_id = office_site_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -24152,7 +25031,9 @@ class DescribeNetworkPackagesRequest(TeaModel):
         self.network_package_id = network_package_id
         # The token that determines the start point of the next query.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -24528,7 +25409,9 @@ class DescribeOfficeSitesRequest(TeaModel):
         # 
         #     <!-- -->
         self.office_site_type = office_site_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The office network status.
         # 
@@ -24664,46 +25547,10 @@ class DescribeOfficeSitesResponseBodyOfficeSitesADConnectors(TeaModel):
         # Valid values:
         # 
         # *   CONNECT_ERROR
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   RUNNING
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CONNECTING
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     (You must configure the AD domain in which the AD connector is used.)
-        # 
-        #     <!-- -->
-        # 
+        # *   CONNECTING (You must configure the AD domain in which the AD connector is used.)
         # *   EXPIRED
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   CREATING
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.connector_status = connector_status
         # The ID of an elastic network interface (ENI) to which the AD connector is mounted.
         self.network_interface_id = network_interface_id
@@ -24712,20 +25559,7 @@ class DescribeOfficeSitesResponseBodyOfficeSitesADConnectors(TeaModel):
         # Valid values:
         # 
         # *   1: General
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   2: Advanced
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.specification = specification
         # The trust password that is specified when you configure the AD trust relationship.
         self.trust_key = trust_key
@@ -24785,28 +25619,8 @@ class DescribeOfficeSitesResponseBodyOfficeSitesLogs(TeaModel):
         # Valid values:
         # 
         # *   ERROR
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   INFO
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   WARN
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.level = level
         # Details of the log entry.
         self.message = message
@@ -24892,6 +25706,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         status: str = None,
         sub_dns_address: List[str] = None,
         sub_domain_name: str = None,
+        subnet_mode: str = None,
         total_eds_count: int = None,
         total_eds_count_for_group: int = None,
         trust_password: str = None,
@@ -24899,13 +25714,15 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         vpc_id: str = None,
         vpc_type: str = None,
     ):
-        # The details of AD connectors.
+        # Details of AD connectors.
         self.adconnectors = adconnectors
-        # The hostname of the domain controller. The hostname must comply with Windows hostname naming convention.
+        # The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows.
         self.ad_hostname = ad_hostname
+        # The hostname of the secondary domain controller.
         self.backup_dchostname = backup_dchostname
+        # The DNS address of the secondary domain controller.
         self.backup_dns = backup_dns
-        # The maximum public bandwidth value. Valid values: 0 to 1000.\
+        # The maximum public bandwidth value. Valid values: 0 to 1000.\\
         # If you leave this parameter empty or set this parameter to 0, Internet access is not enabled.
         self.bandwidth = bandwidth
         # The CEN instance status.
@@ -24919,38 +25736,25 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.cloud_box_office_site = cloud_box_office_site
         # The time when the office network was created.
         self.creation_time = creation_time
-        # The security group ID.
+        # The ID of the security group.
         self.custom_security_group_id = custom_security_group_id
-        # The method that is used to connect cloud computers that reside in the office network from WUYING clients.
+        # The method that is used to connect cloud computers that reside in the office network from Alibaba Cloud Workspace clients.
         # 
         # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use Alibaba Cloud PrivateLink for free. When you set this parameter to `VPC` or `Any`, PrivateLink is automatically activated.
         # 
         # Valid values:
         # 
-        # *   INTERNET (default): Cloud computers are connected from WUYING clients over the Internet.
-        # *   VPC: Cloud computers are connected from WUYING clients over the VPC.
-        # *   ANY: Cloud computers are connected from WUYING clients over the Internet or the VPC. When you use can choose a method to connect cloud computers over the Internet or VPC from WUYING clients based on their business requirements.
+        # *   INTERNET (default): Cloud computers are connected from Alibaba Cloud Workspace clients over the Internet.
+        # *   VPC: Cloud computers are connected from Alibaba Cloud Workspace clients over the VPC.
+        # *   ANY: Cloud computers are connected from Alibaba Cloud Workspace clients over the Internet or the VPC. When end users connect to cloud computers from Alibaba Cloud Workspace clients, you can choose a connection method based on your business requirements.
         self.desktop_access_type = desktop_access_type
         # The number of cloud computers that are created.
         self.desktop_count = desktop_count
-        # The endpoint that is used by the VPC, over which cloud computers are connected.
+        # The endpoint that is used to connect to cloud computers in the directory over a VPC.
         self.desktop_vpc_endpoint = desktop_vpc_endpoint
         # The array of DNS addresses in the AD domains.
         self.dns_address = dns_address
@@ -24966,13 +25770,14 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         # 
         # Valid values:
         # 
-        # * true (default)
-        # * false
+        # *   true (default)
+        # *   false
         self.enable_admin_access = enable_admin_access
         # Indicates whether the connection between cloud computers in the office network is enabled. After you enable the connection between cloud computers in the office network, cloud computers in the office network can access each other.
         self.enable_cross_desktop_access = enable_cross_desktop_access
         # Indicates whether Internet access is enabled.
         self.enable_internet_access = enable_internet_access
+        # Indicates whether route access control is enabled for cloud services.
         self.enable_service_route = enable_service_route
         # An array of Apsara File Storage NAS (NAS) file system IDs.
         self.file_system_ids = file_system_ids
@@ -24980,53 +25785,27 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.logs = logs
         # Indicates whether multi-factor authentication (MFA) is enabled.
         self.mfa_enabled = mfa_enabled
-        # The office network name. The name is unique in a region.
+        # The name of the office network. The name is unique in a region.
         self.name = name
-        # Indicates whether two-factor verification is enabled when an end user logs on to a WUYING client. This parameter is required only for convenience office networks. If two-factor verification is enabled, the system checks whether security risks exist within the logon account when the end user uses a convenience user to log on to the client. If risks are detected, the system sends a verification code to the email address that is associated with the account of the convenience user. Then, the end user can log on to the client only when the verification code is correct.
+        # Indicates whether two-factor verification is enabled when an end user logs on to an Alibaba Cloud Workspace client. This parameter is required only for convenience office networks. If two-factor verification is enabled, the system checks whether security risks exist within the logon account when a convenience user logs on to the client. If risks are detected, the system sends a verification code to the email address that is associated with the account. Then, the convenience user can log on to the client only after the user enters the correct verification code.
         self.need_verify_login_risk = need_verify_login_risk
         # Indicates whether the trusted device verification is enabled.
         # 
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.need_verify_zero_device = need_verify_zero_device
         # The premium bandwidth plan ID.
         self.network_package_id = network_package_id
-        # The office network ID.
+        # The IDs of the office networks.
         self.office_site_id = office_site_id
         # The account type of the office network.
         # 
         # Valid values:
         # 
-        # *   SIMPLE: convenience account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   AD_CONNECTOR: enterprise AD account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   SIMPLE: the convenience account
+        # *   AD_CONNECTOR: the enterprise AD account
         self.office_site_type = office_site_type
         # The organizational unit (OU) in the AD domain to which the office network is connected.
         self.ou_name = ou_name
@@ -25034,21 +25813,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         # 
         # Valid values:
         # 
-        # *   High-definition Experience (HDX)
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Adaptive Streaming Protocol (ASP)
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   HDX
+        # *   ASP
         self.protocol_type = protocol_type
         # The IP address of the RDS license.
         self.rds_license_address = rds_license_address
@@ -25058,91 +25824,34 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.rds_license_status = rds_license_status
         # Indicates whether single sign-on (SSO) is enabled.
         self.sso_enabled = sso_enabled
-        # >  This parameter is unavailable.
+        # The SSO type.
+        # 
+        # Valid values:
+        # 
+        # *   SAML.
         self.sso_type = sso_type
         # The office network status.
         # 
         # Valid values:
         # 
         # *   REGISTERING: The office network is being registered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   DEREGISTERING: The office network is being deregistered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   REGISTERED: The office network is registered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   NEEDCONFIGTRUST: A trust relationship is required for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   CONFIGTRUSTFAILED: A trust relationship fails to be configured for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   DEREGISTERED: The office network is deregistered.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   ERROR: One or more configurations of the office network are invalid.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   CONFIGTRUSTING: A trust relationship is being configured for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   NEEDCONFIGUSER: Users are required for the office network.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
         # An array of DNS addresses for AD subdomains.
         self.sub_dns_address = sub_dns_address
         # The username of enterprise AD subdomain.
         self.sub_domain_name = sub_domain_name
+        self.subnet_mode = subnet_mode
         # The total number of cloud computers.
         self.total_eds_count = total_eds_count
-        # The total number of cloud computers in the cloud computer pool (formerly desktop group).
+        # The number of pooled cloud computers in the cloud computer pool.
         self.total_eds_count_for_group = total_eds_count_for_group
         # >  This parameter is unavailable.
         self.trust_password = trust_password
@@ -25155,28 +25864,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         # Valid values:
         # 
         # *   Basic
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   Customized
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   Standard
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.vpc_type = vpc_type
 
     def validate(self):
@@ -25283,6 +25972,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['SubDnsAddress'] = self.sub_dns_address
         if self.sub_domain_name is not None:
             result['SubDomainName'] = self.sub_domain_name
+        if self.subnet_mode is not None:
+            result['SubnetMode'] = self.subnet_mode
         if self.total_eds_count is not None:
             result['TotalEdsCount'] = self.total_eds_count
         if self.total_eds_count_for_group is not None:
@@ -25389,6 +26080,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.sub_dns_address = m.get('SubDnsAddress')
         if m.get('SubDomainName') is not None:
             self.sub_domain_name = m.get('SubDomainName')
+        if m.get('SubnetMode') is not None:
+            self.subnet_mode = m.get('SubnetMode')
         if m.get('TotalEdsCount') is not None:
             self.total_eds_count = m.get('TotalEdsCount')
         if m.get('TotalEdsCountForGroup') is not None:
@@ -25513,7 +26206,9 @@ class DescribePolicyGroupsRequest(TeaModel):
         self.next_token = next_token
         # The policy IDs. You can specify one or more policy IDs.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The effective scope of the policy. Valid values:
         # 
@@ -25694,7 +26389,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes(TeaModel):
         # Valid values:
         # 
         # *   html5: web client
-        # *   linux: WUYING hardware terminal
+        # *   linux: Alibaba Cloud Workspace hardware terminal
         # *   android: Android client
         # *   windows: Windows client
         # *   ios: iOS client
@@ -25862,7 +26557,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule(
         # *   1: by device class
         # *   2: by device vendor
         self.usb_rule_type = usb_rule_type
-        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf\_1.pdf).
+        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -25919,12 +26614,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         camera_redirect: str = None,
         client_types: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
+        color_enhancement: str = None,
         cpu_down_grade_duration: int = None,
         cpu_processors: List[str] = None,
         cpu_protected_mode: str = None,
         cpu_rate_limit: int = None,
         cpu_sample_duration: int = None,
         cpu_single_rate_limit: int = None,
+        display_mode: str = None,
         domain_list: str = None,
         domain_resolve_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
@@ -25936,6 +26633,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         local_drive: str = None,
+        max_reconnect_time: int = None,
         memory_down_grade_duration: int = None,
         memory_processors: List[str] = None,
         memory_protected_mode: str = None,
@@ -25951,6 +26649,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         preempt_login: str = None,
         preempt_login_users: List[str] = None,
         printer_redirection: str = None,
+        quality_enhancement: str = None,
         record_content: str = None,
         record_content_expires: int = None,
         recording: str = None,
@@ -25965,8 +26664,16 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         remote_coordinate: str = None,
         scope: str = None,
         scope_value: List[str] = None,
+        smooth_enhancement: str = None,
+        streaming_mode: str = None,
+        target_fps: int = None,
         usb_redirect: str = None,
         usb_supply_redirect_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule] = None,
+        video_enc_avg_kbps: int = None,
+        video_enc_max_qp: int = None,
+        video_enc_min_qp: int = None,
+        video_enc_peak_kbps: int = None,
+        video_enc_policy: str = None,
         video_redirect: str = None,
         visual_quality: str = None,
         watermark: str = None,
@@ -26015,6 +26722,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   readwrite: Two-way transfer is allowed.
         # *   off: Two-way transfer is not allowed.
         self.clipboard = clipboard
+        self.color_enhancement = color_enhancement
         # The CPU underclocking duration. Valid values: 30 to 120.
         self.cpu_down_grade_duration = cpu_down_grade_duration
         # The process whitelist that is not restricted by the CPU usage limit.
@@ -26027,7 +26735,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The usage of a single CPU. Valid values: 70 to 100.
         self.cpu_single_rate_limit = cpu_single_rate_limit
-        # Indicates whether the access control for domain names is enabled. The domain names can contain wildcard characters (\*). Multiple domain names are separated by commas (,). Valid values:
+        self.display_mode = display_mode
+        # Indicates whether the access control for domain names is enabled. The domain names can contain wildcard characters (\\*). Multiple domain names are separated by commas (,). Valid values:
         # 
         # *   off
         # *   on
@@ -26041,7 +26750,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # The number of cloud desktops that are associated with the policy.\
+        # The number of cloud desktops that are associated with the policy.\\
         # This parameter is returned only for custom policies.
         self.eds_count = eds_count
         # Indicates whether the switch for end users to ask for assistance from the administrator is turned on. Valid values: on and off.
@@ -26086,6 +26795,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   readwrite: read and write
         # *   off: no permissions
         self.local_drive = local_drive
+        self.max_reconnect_time = max_reconnect_time
         # The duration required for underclocking memory by a single process. Valid values: 30 to 120.
         self.memory_down_grade_duration = memory_down_grade_duration
         # The whitelist of processes that are not restricted by the memory usage limit.
@@ -26140,6 +26850,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # *   off
         # *   on
         self.printer_redirection = printer_redirection
+        self.quality_enhancement = quality_enhancement
         # Indicates whether the custom screen recording feature is enabled. Valid values:
         # 
         # *   on
@@ -26194,6 +26905,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.scope = scope
         # This parameter is required when Scope is set to IP. This parameter takes effect when Scope is set to IP.
         self.scope_value = scope_value
+        self.smooth_enhancement = smooth_enhancement
+        self.streaming_mode = streaming_mode
+        self.target_fps = target_fps
         # Indicates whether the USB redirection feature is enabled.
         # 
         # Valid values:
@@ -26203,6 +26917,11 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.usb_redirect = usb_redirect
         # The USB redirection rule.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
+        self.video_enc_avg_kbps = video_enc_avg_kbps
+        self.video_enc_max_qp = video_enc_max_qp
+        self.video_enc_min_qp = video_enc_min_qp
+        self.video_enc_peak_kbps = video_enc_peak_kbps
+        self.video_enc_policy = video_enc_policy
         # Indicates whether the multimedia redirection feature is enabled. Valid values: on and off.
         self.video_redirect = video_redirect
         # The image display quality.
@@ -26314,6 +27033,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
                 result['ClientTypes'].append(k.to_map() if k else None)
         if self.clipboard is not None:
             result['Clipboard'] = self.clipboard
+        if self.color_enhancement is not None:
+            result['ColorEnhancement'] = self.color_enhancement
         if self.cpu_down_grade_duration is not None:
             result['CpuDownGradeDuration'] = self.cpu_down_grade_duration
         if self.cpu_processors is not None:
@@ -26326,6 +27047,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['CpuSampleDuration'] = self.cpu_sample_duration
         if self.cpu_single_rate_limit is not None:
             result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
+        if self.display_mode is not None:
+            result['DisplayMode'] = self.display_mode
         if self.domain_list is not None:
             result['DomainList'] = self.domain_list
         result['DomainResolveRule'] = []
@@ -26350,6 +27073,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.max_reconnect_time is not None:
+            result['MaxReconnectTime'] = self.max_reconnect_time
         if self.memory_down_grade_duration is not None:
             result['MemoryDownGradeDuration'] = self.memory_down_grade_duration
         if self.memory_processors is not None:
@@ -26382,6 +27107,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['PreemptLoginUsers'] = self.preempt_login_users
         if self.printer_redirection is not None:
             result['PrinterRedirection'] = self.printer_redirection
+        if self.quality_enhancement is not None:
+            result['QualityEnhancement'] = self.quality_enhancement
         if self.record_content is not None:
             result['RecordContent'] = self.record_content
         if self.record_content_expires is not None:
@@ -26410,12 +27137,28 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['Scope'] = self.scope
         if self.scope_value is not None:
             result['ScopeValue'] = self.scope_value
+        if self.smooth_enhancement is not None:
+            result['SmoothEnhancement'] = self.smooth_enhancement
+        if self.streaming_mode is not None:
+            result['StreamingMode'] = self.streaming_mode
+        if self.target_fps is not None:
+            result['TargetFps'] = self.target_fps
         if self.usb_redirect is not None:
             result['UsbRedirect'] = self.usb_redirect
         result['UsbSupplyRedirectRule'] = []
         if self.usb_supply_redirect_rule is not None:
             for k in self.usb_supply_redirect_rule:
                 result['UsbSupplyRedirectRule'].append(k.to_map() if k else None)
+        if self.video_enc_avg_kbps is not None:
+            result['VideoEncAvgKbps'] = self.video_enc_avg_kbps
+        if self.video_enc_max_qp is not None:
+            result['VideoEncMaxQP'] = self.video_enc_max_qp
+        if self.video_enc_min_qp is not None:
+            result['VideoEncMinQP'] = self.video_enc_min_qp
+        if self.video_enc_peak_kbps is not None:
+            result['VideoEncPeakKbps'] = self.video_enc_peak_kbps
+        if self.video_enc_policy is not None:
+            result['VideoEncPolicy'] = self.video_enc_policy
         if self.video_redirect is not None:
             result['VideoRedirect'] = self.video_redirect
         if self.visual_quality is not None:
@@ -26473,6 +27216,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
                 self.client_types.append(temp_model.from_map(k))
         if m.get('Clipboard') is not None:
             self.clipboard = m.get('Clipboard')
+        if m.get('ColorEnhancement') is not None:
+            self.color_enhancement = m.get('ColorEnhancement')
         if m.get('CpuDownGradeDuration') is not None:
             self.cpu_down_grade_duration = m.get('CpuDownGradeDuration')
         if m.get('CpuProcessors') is not None:
@@ -26485,6 +27230,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.cpu_sample_duration = m.get('CpuSampleDuration')
         if m.get('CpuSingleRateLimit') is not None:
             self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
+        if m.get('DisplayMode') is not None:
+            self.display_mode = m.get('DisplayMode')
         if m.get('DomainList') is not None:
             self.domain_list = m.get('DomainList')
         self.domain_resolve_rule = []
@@ -26510,6 +27257,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('MaxReconnectTime') is not None:
+            self.max_reconnect_time = m.get('MaxReconnectTime')
         if m.get('MemoryDownGradeDuration') is not None:
             self.memory_down_grade_duration = m.get('MemoryDownGradeDuration')
         if m.get('MemoryProcessors') is not None:
@@ -26543,6 +27292,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.preempt_login_users = m.get('PreemptLoginUsers')
         if m.get('PrinterRedirection') is not None:
             self.printer_redirection = m.get('PrinterRedirection')
+        if m.get('QualityEnhancement') is not None:
+            self.quality_enhancement = m.get('QualityEnhancement')
         if m.get('RecordContent') is not None:
             self.record_content = m.get('RecordContent')
         if m.get('RecordContentExpires') is not None:
@@ -26571,6 +27322,12 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.scope = m.get('Scope')
         if m.get('ScopeValue') is not None:
             self.scope_value = m.get('ScopeValue')
+        if m.get('SmoothEnhancement') is not None:
+            self.smooth_enhancement = m.get('SmoothEnhancement')
+        if m.get('StreamingMode') is not None:
+            self.streaming_mode = m.get('StreamingMode')
+        if m.get('TargetFps') is not None:
+            self.target_fps = m.get('TargetFps')
         if m.get('UsbRedirect') is not None:
             self.usb_redirect = m.get('UsbRedirect')
         self.usb_supply_redirect_rule = []
@@ -26578,6 +27335,16 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             for k in m.get('UsbSupplyRedirectRule'):
                 temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule()
                 self.usb_supply_redirect_rule.append(temp_model.from_map(k))
+        if m.get('VideoEncAvgKbps') is not None:
+            self.video_enc_avg_kbps = m.get('VideoEncAvgKbps')
+        if m.get('VideoEncMaxQP') is not None:
+            self.video_enc_max_qp = m.get('VideoEncMaxQP')
+        if m.get('VideoEncMinQP') is not None:
+            self.video_enc_min_qp = m.get('VideoEncMinQP')
+        if m.get('VideoEncPeakKbps') is not None:
+            self.video_enc_peak_kbps = m.get('VideoEncPeakKbps')
+        if m.get('VideoEncPolicy') is not None:
+            self.video_enc_policy = m.get('VideoEncPolicy')
         if m.get('VideoRedirect') is not None:
             self.video_redirect = m.get('VideoRedirect')
         if m.get('VisualQuality') is not None:
@@ -26708,10 +27475,18 @@ class DescribePriceRequestBundleModels(TeaModel):
         amount: int = None,
         bundle_id: str = None,
         duration: int = None,
+        instance_type: str = None,
+        os_type: str = None,
+        root_disk_id: str = None,
+        user_disk_id: str = None,
     ):
         self.amount = amount
         self.bundle_id = bundle_id
         self.duration = duration
+        self.instance_type = instance_type
+        self.os_type = os_type
+        self.root_disk_id = root_disk_id
+        self.user_disk_id = user_disk_id
 
     def validate(self):
         pass
@@ -26728,6 +27503,14 @@ class DescribePriceRequestBundleModels(TeaModel):
             result['BundleId'] = self.bundle_id
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.root_disk_id is not None:
+            result['RootDiskId'] = self.root_disk_id
+        if self.user_disk_id is not None:
+            result['UserDiskId'] = self.user_disk_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26738,6 +27521,14 @@ class DescribePriceRequestBundleModels(TeaModel):
             self.bundle_id = m.get('BundleId')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('RootDiskId') is not None:
+            self.root_disk_id = m.get('RootDiskId')
+        if m.get('UserDiskId') is not None:
+            self.user_disk_id = m.get('UserDiskId')
         return self
 
 
@@ -26852,6 +27643,8 @@ class DescribePriceRequest(TeaModel):
         # The promotion ID.
         self.promotion_id = promotion_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource type. Valid values:
         # 
@@ -27807,6 +28600,7 @@ class DescribeRecordingsRequest(TeaModel):
         self.need_signed_url = need_signed_url
         self.next_token = next_token
         self.policy_group_id = policy_group_id
+        # This parameter is required.
         self.region_id = region_id
         self.signed_url_expire_minutes = signed_url_expire_minutes
         self.start_time = start_time
@@ -28041,6 +28835,8 @@ class DescribeRegionsRequest(TeaModel):
         # The display name of the region, which varies based on the current language.
         self.accept_language = accept_language
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28407,7 +29203,7 @@ class DescribeSnapshotsRequest(TeaModel):
         self.desktop_id = desktop_id
         # The name of the cloud computer.
         self.desktop_name = desktop_name
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.end_time = end_time
         # The maximum number of entries to return on each page.
         # 
@@ -28416,11 +29212,13 @@ class DescribeSnapshotsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot. The name must be 2 to 127 characters in length. The name must start with a letter. The name can contain letters, digits, underscores (\_), and hyphens (-). The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
+        # The name of the snapshot. The name must be 2 to 127 characters in length. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-). The name cannot start with `auto` because snapshots whose names start with auto are recognized as automatic snapshots.
         self.snapshot_name = snapshot_name
         # The category of the snapshots.
         # 
@@ -28472,7 +29270,7 @@ class DescribeSnapshotsRequest(TeaModel):
         # 
         #     <!-- -->
         self.source_disk_type = source_disk_type
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -28561,11 +29359,11 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The point in time at which the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The point in time at which the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The user who creates the snapshot.
         self.creator = creator
-        # The time when the snapshot was deleted. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+        # The time when the snapshot was deleted. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
         self.deletion_time = deletion_time
         # The description of the snapshot.
         self.description = description
@@ -28688,7 +29486,7 @@ class DescribeSnapshotsResponseBodySnapshots(TeaModel):
         self.status = status
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](~~28951~~) operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -29120,10 +29918,14 @@ class DescribeUserConnectionRecordsRequest(TeaModel):
         # The time when the cloud desktop starts to be connected, which is the maximum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
         self.connect_start_time_to = connect_start_time_to
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The ID of the cloud computer.
         self.desktop_id = desktop_id
         # The ID of the authorized user.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
         # The type of the user account.
         # 
@@ -29149,7 +29951,9 @@ class DescribeUserConnectionRecordsRequest(TeaModel):
         self.max_results = max_results
         # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -29384,6 +30188,8 @@ class DescribeUserProfilePathRulesRequest(TeaModel):
         # The desktop group ID. This parameter is required when you set RuleType parameter to DesktopGroup.
         self.desktop_group_id = desktop_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The rule type that you want to configure for the directory.
         # 
@@ -29754,6 +30560,8 @@ class DescribeUsersInGroupRequest(TeaModel):
         # - 1: Connected.
         self.connect_state = connect_state
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The ID of the authorized user.
         self.end_user_id = end_user_id
@@ -29790,7 +30598,9 @@ class DescribeUsersInGroupRequest(TeaModel):
         # 
         #     <!-- -->
         self.query_user_detail = query_user_detail
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -30240,8 +31050,12 @@ class DescribeUsersPasswordRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -30411,7 +31225,9 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the workspace.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -30468,9 +31284,9 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
         self.directory_id = directory_id
         # The name of the AD user who uses the virtual MFA device.
         self.end_user_id = end_user_id
-        # The time when the virtual MFA device was started. The time follows the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the virtual MFA device was started. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.gmt_enabled = gmt_enabled
-        # The time when a locked virtual MFA device was automatically unlocked. The time follows the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when a locked virtual MFA device was automatically unlocked. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.gmt_unlock = gmt_unlock
         # The ID of the workspace.
         self.office_site_id = office_site_id
@@ -30650,7 +31466,9 @@ class DescribeZonesRequest(TeaModel):
         region_id: str = None,
         zone_type: str = None,
     ):
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the zone. Default value: `AvailabilityZone`. This value indicates Alibaba Cloud zones.
         self.zone_type = zone_type
@@ -30798,8 +31616,12 @@ class DetachCenRequest(TeaModel):
         region_id: str = None,
     ):
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -30905,17 +31727,27 @@ class DetachEndUserRequest(TeaModel):
         end_user_id: str = None,
         region: str = None,
     ):
-        # The address of the Active Directory (AD) workspace.
+        # The address of the Active Directory (AD) office network.
         self.ad_domain = ad_domain
-        # The type of the Alibaba Cloud Workspace client. 1: the hardware client 2: the software client
+        # The type of the client.
+        # 
+        # Valid values:
+        # 
+        # *   1: hardware client.
+        # 
+        # This parameter is required.
         self.client_type = client_type
-        # The ID of the device.
+        # The serial number (SN) of the hardware client.
+        # 
+        # This parameter is required.
         self.device_id = device_id
-        # The ID of the workspace.
+        # The ID of the convenient office network.
         self.directory_id = directory_id
-        # The ID of the user that is bound to the client.
+        # The ID of the user that you want to unbind from the hardware client.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
-        # The ID of the region.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         self.region = region
 
     def validate(self):
@@ -31035,10 +31867,16 @@ class DisableDesktopsInGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the desktop group.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The IDs of cloud desktops.
+        # 
+        # This parameter is required.
         self.desktop_ids = desktop_ids
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -31182,9 +32020,13 @@ class DisconnectDesktopSessionsRequest(TeaModel):
     ):
         # Specifies whether to perform precheck. If you perform precheck, the system does not disconnect from desktop sessions. Only the sessions that do not meet specific conditions are returned.
         self.pre_check = pre_check
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The session details.
+        # 
+        # This parameter is required.
         self.sessions = sessions
 
     def validate(self):
@@ -31348,9 +32190,13 @@ class DissociateNetworkPackageRequest(TeaModel):
         network_package_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the premium bandwidth plan. You can call the [DescribeNetworkPackages](~~216079~~) operation to obtain the ID.
+        # The ID of the premium bandwidth plan. You can call the [DescribeNetworkPackages](https://help.aliyun.com/document_detail/216079.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.network_package_id = network_package_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -31466,7 +32312,7 @@ class ExportClientEventsRequest(TeaModel):
         self.desktop_id = desktop_id
         # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # 
         # If you do not specify a value for this parameter, the current time is used.
         self.end_time = end_time
@@ -31503,8 +32349,10 @@ class ExportClientEventsRequest(TeaModel):
         # The name of the workspace.
         self.office_site_name = office_site_name
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # 
         # If you do not specify a value for this parameter, all events that occurred before the point in time that you specify for `EndTime` are queried.
         self.start_time = start_time
@@ -31649,6 +32497,41 @@ class ExportClientEventsResponse(TeaModel):
         return self
 
 
+class ExportDesktopGroupInfoRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag. If you specify the `Tag` parameter, you must also specify the `Key` parameter. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`. You cannot specify an empty string as a tag key.
+        self.key = key
+        # The value of the tag. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ExportDesktopGroupInfoRequest(TeaModel):
     def __init__(
         self,
@@ -31663,6 +32546,7 @@ class ExportDesktopGroupInfoRequest(TeaModel):
         office_site_id: str = None,
         policy_group_id: str = None,
         region_id: str = None,
+        tag: List[ExportDesktopGroupInfoRequestTag] = None,
     ):
         # The billing method of the cloud computer pool.
         # 
@@ -31694,11 +32578,18 @@ class ExportDesktopGroupInfoRequest(TeaModel):
         self.office_site_id = office_site_id
         # The ID of the policy that is associated with the cloud computer pool.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The tags attached to the cloud computer pool. You can specify 1 to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -31728,6 +32619,10 @@ class ExportDesktopGroupInfoRequest(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -31754,6 +32649,11 @@ class ExportDesktopGroupInfoRequest(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ExportDesktopGroupInfoRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -32030,9 +32930,11 @@ class ExportDesktopListInfoRequest(TeaModel):
         self.office_site_id = office_site_id
         # The ID of the policy that is attached to the cloud computer.
         self.policy_group_id = policy_group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The tags that are added to the cloud computer. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud computers by group. This facilitates search and batch operations. For more information, see [Use tags to manage cloud computers](~~203781~~).
+        # The tags that are added to the cloud computer. A tag is a key-value pair that consists of a tag key and a tag value. Tags are used to identify resources. You can use tags to manage cloud computers by group. This facilitates search and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
         self.tag = tag
         # The username of the end user who is using the cloud computer.
         self.user_name = user_name
@@ -32204,8 +33106,12 @@ class GetAsyncTaskRequest(TeaModel):
         cds_id: str = None,
     ):
         # The asynchronous task ID. This parameter is not returned if you copy files. This parameter is returned if you copy folders in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and information about an asynchronous task.
+        # 
+        # This parameter is required.
         self.async_task_id = async_task_id
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
 
     def validate(self):
@@ -32444,7 +33350,7 @@ class GetConnectionTicketRequest(TeaModel):
     ):
         # The command that you want to run to configure a custom application in user mode. After you obtain the credential, the application is automatically started. Parameter description in the command:
         # 
-        # *   appPath: the path of the application startup file. Example: `"C:\\Program Files (x86)\\000\\000.exe"`. Use double slashes (\\\) as the delimiter. Type of the parameter value: string.
+        # *   appPath: the path of the application startup file. Example: `"C:\\\\Program Files (x86)\\\\000\\\\000.exe"`. Use double slashes (\\\\\\) as the delimiter. Type of the parameter value: string.
         # *   appParameter: the startup arguments of the application. Example: `"meetingid 000 meetingname aaa"`. Separate multiple arguments with spaces. Type of the parameter value: string.
         self.command_content = command_content
         # The ID of the cloud computer for which you want to generate a connection credential. This parameter is required.
@@ -32454,7 +33360,9 @@ class GetConnectionTicketRequest(TeaModel):
         self.owner_id = owner_id
         # The password of the current end user of the cloud computer.
         self.password = password
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -32566,8 +33474,8 @@ class GetConnectionTicketResponseBody(TeaModel):
         #         "Ticket": "W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********",
         #         "RequestId": "1CBAFFAB-B697-4049-A9B1-67E1FC5F****",
         #     }
-        #     f = open (\"xxx.ica\", \"w\")
-        #     out = base64.b64decode(response[\"Ticket\"])
+        #     f = open (\\"xxx.ica\\", \\"w\\")
+        #     out = base64.b64decode(response[\\"Ticket\\"])
         #     f.write(out)
         #     f.close()
         self.ticket = ticket
@@ -32655,10 +33563,14 @@ class GetCoordinateTicketRequest(TeaModel):
         user_type: str = None,
     ):
         # The ID of the stream collaboration. You can obtain the value of this parameter based on the value of `Coid` that is returned by the `ApplyCoordinationForMonitoring` operation.
+        # 
+        # This parameter is required.
         self.co_id = co_id
         # The name of the convenience user account. If you initiate the request as an administrator, you do not need to specify this parameter.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the cloud computer connection task. The first time you initiate the request, you do not need to specify the ID of the cloud computer connection task. If no ticket is returned after you initiate the first request, you must specify the value of taskId that is returned for the first request in the subsequent request.
         self.task_id = task_id
@@ -32677,6 +33589,8 @@ class GetCoordinateTicketRequest(TeaModel):
         #     <!-- -->
         # 
         #     specifies an administrator.
+        # 
+        # This parameter is required.
         self.user_type = user_type
 
     def validate(self):
@@ -32845,8 +33759,12 @@ class GetDesktopGroupDetailRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -33558,8 +34476,12 @@ class GetOfficeSiteSsoStatusRequest(TeaModel):
         region_id: str = None,
     ):
         # The workspace ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -33674,6 +34596,8 @@ class GetSpMetadataRequest(TeaModel):
         # The workspace ID.
         self.office_site_id = office_site_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -33787,8 +34711,12 @@ class HibernateDesktopsRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud desktops. You can specify 1 to 20 cloud desktop IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -33899,6 +34827,8 @@ class ListCdsFilesRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the user to whom the cloud disk is allocated.
         self.end_user_id = end_user_id
@@ -34011,7 +34941,7 @@ class ListCdsFilesRequest(TeaModel):
         self.order_type = order_type
         # The ID of the parent file.
         self.parent_file_id = parent_file_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         self.region_id = region_id
         # The file status.
         # 
@@ -34113,6 +35043,8 @@ class ListCdsFilesShrinkRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the user to whom the cloud disk is allocated.
         self.end_user_id = end_user_id
@@ -34225,7 +35157,7 @@ class ListCdsFilesShrinkRequest(TeaModel):
         self.order_type = order_type
         # The ID of the parent file.
         self.parent_file_id = parent_file_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         self.region_id = region_id
         # The file status.
         # 
@@ -34371,7 +35303,7 @@ class ListCdsFilesResponseBodyFileModels(TeaModel):
         self.open_time_stamp = open_time_stamp
         # The ID of the parent folder.
         self.parent_id = parent_id
-        # The region ID You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         self.region_id = region_id
         # The SHA 1 file.
         self.sha_1 = sha_1
@@ -34628,6 +35560,8 @@ class ListDirectoryUsersRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the AD directory.
+        # 
+        # This parameter is required.
         self.directory_id = directory_id
         # The query string for fuzzy match. If you specify this parameter, the system returns all results that contain the string.
         self.filter = filter
@@ -34641,7 +35575,9 @@ class ListDirectoryUsersRequest(TeaModel):
         self.next_token = next_token
         # The organizational unit (OU) in the specified AD domain.
         self.oupath = oupath
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -34820,14 +35756,20 @@ class ListFilePermissionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
         # The ID of the shared file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The group ID.
         self.group_id = group_id
-        # The region ID of the cloud disk. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID of the cloud disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -34979,7 +35921,9 @@ class ListOfficeSiteOverviewRequest(TeaModel):
         # *   2: queries pooled cloud computers in the office network.
         # *   3: queries all cloud computers in the office network.
         self.query_range = query_range
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -35327,8 +36271,12 @@ class ListOfficeSiteUsersRequest(TeaModel):
         # The organizational unit (OU) of the specified AD domain.
         self.oupath = oupath
         # The office network ID. The office network must be of the enterprise AD account type.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -35417,7 +36365,7 @@ class ListOfficeSiteUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The usernames of AD users.\
+        # The usernames of AD users.\\
         # If the only Administrator and Guest users exist in the enterprise AD, an empty User array is returned.
         self.users = users
 
@@ -35547,7 +36495,9 @@ class ListTagResourcesRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs, which are cloud computer IDs. You can specify 1 to 50 IDs.
         self.resource_id = resource_id
@@ -35556,6 +36506,8 @@ class ListTagResourcesRequest(TeaModel):
         # Valid values:
         # 
         # * ALIYUN::GWS::INSTANCE: cloud computer.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to query.
         self.tag = tag
@@ -35768,8 +36720,12 @@ class ListUserAdOrganizationUnitsRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no next request exists. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The enterprise AD office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -35948,10 +36904,14 @@ class LockVirtualMFADeviceRequest(TeaModel):
         serial_number: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The serial number of the virtual MFA device, which is a unique identifier.
         # 
-        # You can call the [DescribeVirtualMFADevices](~~206210~~) operation to query the serial number of the virtual MFA device bound to AD users.
+        # You can call the [DescribeVirtualMFADevices](https://help.aliyun.com/document_detail/206210.html) operation to query the serial number of the virtual MFA device bound to AD users.
+        # 
+        # This parameter is required.
         self.serial_number = serial_number
 
     def validate(self):
@@ -36055,10 +37015,16 @@ class MigrateDesktopsRequest(TeaModel):
         target_office_site_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the destination office network.
+        # 
+        # This parameter is required.
         self.target_office_site_id = target_office_site_id
 
     def validate(self):
@@ -36166,8 +37132,12 @@ class MigrateImageProtocolRequest(TeaModel):
         target_protocol_type: str = None,
     ):
         # The image IDs.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The protocol to which you want to update the image protocols. Set the value to ASP.
         self.target_protocol_type = target_protocol_type
@@ -36295,6 +37265,8 @@ class ModifyADConnectorDirectoryRequest(TeaModel):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
         self.ad_hostname = ad_hostname
         # The ID of the directory.
+        # 
+        # This parameter is required.
         self.directory_id = directory_id
         # The name of the AD directory.
         self.directory_name = directory_name
@@ -36330,9 +37302,11 @@ class ModifyADConnectorDirectoryRequest(TeaModel):
         self.mfa_enabled = mfa_enabled
         # The name of the organizational unit (OU) in the AD domain. You can call the ListUserAdOrganizationUnits operation to obtain the name of the OU.
         self.ouname = ouname
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The DNS address of the existing AD subdomain.\
+        # The DNS address of the existing AD subdomain.\\
         # If you specify the `SubDomainName` parameter but you do not specify this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
         self.sub_domain_dns_address = sub_domain_dns_address
         # The domain name of the existing AD subdomain.
@@ -36475,6 +37449,8 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
     def __init__(
         self,
         ad_hostname: str = None,
+        backup_dchostname: str = None,
+        backup_dns: str = None,
         dns_address: List[str] = None,
         domain_name: str = None,
         domain_password: str = None,
@@ -36489,6 +37465,8 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
     ):
         # The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
         self.ad_hostname = ad_hostname
+        self.backup_dchostname = backup_dchostname
+        self.backup_dns = backup_dns
         # Details of the IP addresses of the Domain Name System (DNS) servers that correspond to the enterprise AD system. You can specify only one IP address.
         self.dns_address = dns_address
         # The domain name of the enterprise AD system. You can register each domain name only once.
@@ -36519,13 +37497,17 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
         # 
         #     <!-- -->
         self.mfa_enabled = mfa_enabled
-        # The name of the organizational unit (OU) in the AD domain. You can call the [ListUserAdOrganizationUnits](~~311259~~) operation to obtain OUs.
+        # The name of the organizational unit (OU) in the AD domain. You can call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to obtain OUs.
         self.ouname = ouname
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The DNS address of the subdomain in the enterprise AD domain. You can specify only one DNS address. If you configure `SubDomainName` and leave this parameter empty, the value is the same as that of the enterprise AD domain.
         self.sub_domain_dns_address = sub_domain_dns_address
@@ -36543,6 +37525,10 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
         result = dict()
         if self.ad_hostname is not None:
             result['AdHostname'] = self.ad_hostname
+        if self.backup_dchostname is not None:
+            result['BackupDCHostname'] = self.backup_dchostname
+        if self.backup_dns is not None:
+            result['BackupDns'] = self.backup_dns
         if self.dns_address is not None:
             result['DnsAddress'] = self.dns_address
         if self.domain_name is not None:
@@ -36571,6 +37557,10 @@ class ModifyADConnectorOfficeSiteRequest(TeaModel):
         m = m or dict()
         if m.get('AdHostname') is not None:
             self.ad_hostname = m.get('AdHostname')
+        if m.get('BackupDCHostname') is not None:
+            self.backup_dchostname = m.get('BackupDCHostname')
+        if m.get('BackupDns') is not None:
+            self.backup_dns = m.get('BackupDns')
         if m.get('DnsAddress') is not None:
             self.dns_address = m.get('DnsAddress')
         if m.get('DomainName') is not None:
@@ -36680,10 +37670,16 @@ class ModifyAclEntriesRequest(TeaModel):
         # *   allow: allows access to the Internet.
         # 
         # *   disable: forbids access to the Internet.
+        # 
+        # This parameter is required.
         self.policy = policy
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The instance IDs (office network IDs or cloud computer IDs) to which the Internet access control policy is applicable.
+        # 
+        # This parameter is required.
         self.source_id = source_id
         # The granularity to which the Internet access control policy is applicable.
         # 
@@ -36692,6 +37688,8 @@ class ModifyAclEntriesRequest(TeaModel):
         # *   desktop: cloud computer granularity.
         # 
         # *   vpc: office network granularity.
+        # 
+        # This parameter is required.
         self.source_type = source_type
 
     def validate(self):
@@ -36807,10 +37805,14 @@ class ModifyAutoSnapshotPolicyRequest(TeaModel):
         # The CRON expression.
         self.cron_expression = cron_expression
         # The ID of the automatic snapshot policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). This parameter is empty by default.
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
         self.policy_name = policy_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The retention period of the automatic snapshots. Unit: days. Valid values: 1 to 180.
         self.retention_days = retention_days
@@ -36931,6 +37933,8 @@ class ModifyBundleRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer template that you want to modify.
+        # 
+        # This parameter is required.
         self.bundle_id = bundle_id
         # The name of the new cloud computer template.
         self.bundle_name = bundle_name
@@ -36953,7 +37957,9 @@ class ModifyBundleRequest(TeaModel):
         # 
         # *   ja-JP: Japanese
         self.language = language
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -37077,6 +38083,8 @@ class ModifyCdsFileRequest(TeaModel):
         region_id: str = None,
     ):
         # The cloud disk ID.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The processing mode of files that have the same name.
         # 
@@ -37102,7 +38110,7 @@ class ModifyCdsFileRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     automatically renames a file if the file has the same name as another file. By default, the current point in time is appended. Example: xxx20060102\_150405.
+        #     automatically renames a file if the file has the same name as another file. By default, the current point in time is appended. Example: xxx20060102_150405.
         # 
         #     <!-- -->
         # 
@@ -37121,12 +38129,18 @@ class ModifyCdsFileRequest(TeaModel):
         # The ID of the end user who uses the cloud disk.
         self.end_user_id = end_user_id
         # The file ID.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The file name.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The group ID.
         self.group_id = group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -37331,6 +38345,8 @@ class ModifyCdsFileShareLinkRequest(TeaModel):
         video_preview_count: int = None,
     ):
         # The ID of the cloud disk.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The description of the file sharing task. The description must be 0 to 1,024 characters in length.
         self.description = description
@@ -37411,6 +38427,8 @@ class ModifyCdsFileShareLinkRequest(TeaModel):
         # The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. The value 0 specifies that no limit is imposed on the number of times that the shared files can be downloaded.
         self.save_limit = save_limit
         # The ID of the file sharing task.
+        # 
+        # This parameter is required.
         self.share_id = share_id
         # The name of the file sharing task. If you do not configure this parameter, the sharing task name is the first ID that is returned in the file_id_list value.
         # 
@@ -37656,10 +38674,14 @@ class ModifyCloudDriveGroupsRequest(TeaModel):
         total_size: int = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The IDs of the teams.
         self.group_id = group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the team space. Valid values:
         # 
@@ -37813,12 +38835,16 @@ class ModifyCloudDrivePermissionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The IDs of the users who have the download permissions.
         self.download_end_user_ids = download_end_user_ids
         # The IDs of the users who have the upload and download permissions.
         self.download_upload_end_user_ids = download_upload_end_user_ids
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -37931,8 +38957,11 @@ class ModifyCloudDriveUsersRequest(TeaModel):
         status: str = None,
         user_max_size: int = None,
     ):
+        # This parameter is required.
         self.cds_id = cds_id
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.region_id = region_id
         # The status of Cloud Drive Service users.
         # 
@@ -38251,7 +39280,9 @@ class ModifyCustomizedListHeadersRequest(TeaModel):
         # 
         #     <!-- -->
         self.list_type = list_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -38394,6 +39425,8 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
         #     <!-- -->
         self.charge_type = charge_type
         # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The subscription duration of the cloud computers if you set the ChargeType parameter to PrePaid. The unit is specified by the `PeriodUnit` parameter. This parameter is valid only when the `ChargeType` parameter is set to `PrePaid`. In this case, you must specify this parameter.
         # 
@@ -38405,7 +39438,9 @@ class ModifyDesktopChargeTypeRequest(TeaModel):
         self.period_unit = period_unit
         # The ID of the promotional activity.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # >  This parameter is in invitational preview and not publicly available.
         self.use_duration = use_duration
@@ -38619,6 +39654,8 @@ class ModifyDesktopGroupRequest(TeaModel):
         # The maximum period of time during which the session is connected. When the specified maximum period of time is reached, the session is automatically disconnected. Unit: milliseconds. Valid values: 900000 to 345600000. That is, the session can be connected for 15 to 5,760 minutes (4 days).
         self.connect_duration = connect_duration
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The name of the cloud computer pool.
         self.desktop_group_name = desktop_group_name
@@ -38671,7 +39708,9 @@ class ModifyDesktopGroupRequest(TeaModel):
         # 
         # >  This parameter is unavailable.
         self.ratio_threshold = ratio_threshold
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The disk reset type of cloud computers.
         # 
@@ -38889,13 +39928,19 @@ class ModifyDesktopHostNameRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The new hostname of the cloud computer. The hostname must meet the following requirements:
         # 
         # *   The hostname must be 2 to 15 characters in length.
         # *   The hostname can contain only letters, digits, and hyphens (-). The hostname cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+        # 
+        # This parameter is required.
         self.new_host_name = new_host_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -39003,14 +40048,20 @@ class ModifyDesktopNameRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The new name of the cloud computer. The name of the cloud computer must meet the following requirements:
         # 
         # *   The name must be 1 to 64 characters in length.
         # *   The name must start with a letter but cannot start with `http://` or `https://`.
-        # *   The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.new_desktop_name = new_desktop_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -39602,6 +40653,45 @@ class ModifyDesktopOversoldUserGroupResponse(TeaModel):
         return self
 
 
+class ModifyDesktopSpecRequestResourceSpecs(TeaModel):
+    def __init__(
+        self,
+        desktop_id: str = None,
+        root_disk_size_gib: int = None,
+        user_disk_size_gib: int = None,
+    ):
+        self.desktop_id = desktop_id
+        self.root_disk_size_gib = root_disk_size_gib
+        self.user_disk_size_gib = user_disk_size_gib
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_id is not None:
+            result['DesktopId'] = self.desktop_id
+        if self.root_disk_size_gib is not None:
+            result['RootDiskSizeGib'] = self.root_disk_size_gib
+        if self.user_disk_size_gib is not None:
+            result['UserDiskSizeGib'] = self.user_disk_size_gib
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopId') is not None:
+            self.desktop_id = m.get('DesktopId')
+        if m.get('RootDiskSizeGib') is not None:
+            self.root_disk_size_gib = m.get('RootDiskSizeGib')
+        if m.get('UserDiskSizeGib') is not None:
+            self.user_disk_size_gib = m.get('UserDiskSizeGib')
+        return self
+
+
 class ModifyDesktopSpecRequest(TeaModel):
     def __init__(
         self,
@@ -39610,6 +40700,8 @@ class ModifyDesktopSpecRequest(TeaModel):
         desktop_type: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        resource_specs: List[ModifyDesktopSpecRequestResourceSpecs] = None,
+        resource_type: str = None,
         root_disk_size_gib: int = None,
         user_disk_performance_level: str = None,
         user_disk_size_gib: int = None,
@@ -39634,18 +40726,24 @@ class ModifyDesktopSpecRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     You can log on to the WUYING Workspace console and complete the payment based on the order ID on the Orders page.
+        #     You can log on to the Elastic Desktop Service console and complete the payment based on the order ID on the Orders page.
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
         # The ID of a cloud computer.
         self.desktop_id = desktop_id
-        # The destination instance type. You can call the [DescribeDesktopTypes](~~188882~~) operation to query the instance types supported by cloud computers.
+        # The destination instance type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+        # 
+        # This parameter is required.
         self.desktop_type = desktop_type
         # The ID of the promotional activity.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        self.resource_specs = resource_specs
+        self.resource_type = resource_type
         # The size of the new system disk. Unit: GiB. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
         self.root_disk_size_gib = root_disk_size_gib
         # The performance level (PL) of the data disk. Default value: PL0.
@@ -39691,7 +40789,10 @@ class ModifyDesktopSpecRequest(TeaModel):
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
-        pass
+        if self.resource_specs:
+            for k in self.resource_specs:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -39709,6 +40810,12 @@ class ModifyDesktopSpecRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['ResourceSpecs'] = []
+        if self.resource_specs is not None:
+            for k in self.resource_specs:
+                result['ResourceSpecs'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.root_disk_size_gib is not None:
             result['RootDiskSizeGib'] = self.root_disk_size_gib
         if self.user_disk_performance_level is not None:
@@ -39729,6 +40836,13 @@ class ModifyDesktopSpecRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.resource_specs = []
+        if m.get('ResourceSpecs') is not None:
+            for k in m.get('ResourceSpecs'):
+                temp_model = ModifyDesktopSpecRequestResourceSpecs()
+                self.resource_specs.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RootDiskSizeGib') is not None:
             self.root_disk_size_gib = m.get('RootDiskSizeGib')
         if m.get('UserDiskPerformanceLevel') is not None:
@@ -39742,10 +40856,12 @@ class ModifyDesktopSpecResponseBody(TeaModel):
     def __init__(
         self,
         order_id: str = None,
+        order_ids: List[int] = None,
         request_id: str = None,
     ):
         # The ID of the order.
         self.order_id = order_id
+        self.order_ids = order_ids
         # The ID of the request.
         self.request_id = request_id
 
@@ -39760,6 +40876,8 @@ class ModifyDesktopSpecResponseBody(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.order_ids is not None:
+            result['OrderIds'] = self.order_ids
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -39768,6 +40886,8 @@ class ModifyDesktopSpecResponseBody(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('OrderIds') is not None:
+            self.order_ids = m.get('OrderIds')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -39829,7 +40949,7 @@ class ModifyDesktopTimerRequestDesktopTimers(TeaModel):
         self.allow_client_setting = allow_client_setting
         # The cron expression of the schedule.
         # 
-        # > The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \* 1,2,3,4,5,6,7
+        # > The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7
         self.cron_expression = cron_expression
         # Specifies whether to forcibly execute the scheduled task.
         # 
@@ -40031,10 +41151,14 @@ class ModifyDesktopTimerRequest(TeaModel):
         use_desktop_timers: bool = None,
     ):
         # The IDs of the cloud computers.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The details of the scheduled task on cloud computers.
         self.desktop_timers = desktop_timers
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to use the `DesktopTimers`** parameter. Set the value to `true`**.
         self.use_desktop_timers = use_desktop_timers
@@ -40164,12 +41288,16 @@ class ModifyDesktopsPolicyGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud desktop. You can specify one or more desktop IDs. The value is a JSON array.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the policy.
         self.policy_group_id = policy_group_id
         # 策略ID列表。
         self.policy_group_ids = policy_group_ids
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -40348,10 +41476,14 @@ class ModifyDiskSpecRequest(TeaModel):
         # Default value: `true`.
         self.auto_pay = auto_pay
         # The ID of the cloud desktop.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the sales promotion activity. You can call the DescribePrice operation to obtain the IDs of matching sales promotion activities.
         self.promotion_id = promotion_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The performance level (PL) of the system disk. If the cloud desktop type is Graphics or High Frequency, you can set the PL of the system disk. Valid values:
         # 
@@ -40414,7 +41546,7 @@ class ModifyDiskSpecResponseBody(TeaModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order. You can obtain the order ID on the [Orders](https://usercenter2-intl.aliyun.com/order/list?pageIndex=1\&pageSize=20\&spm=5176.12818093.top-nav.ditem-ord.36f016d0OQFmJa) page in Alibaba Cloud User Center.
+        # The ID of the order. You can obtain the order ID on the [Orders](https://usercenter2-intl.aliyun.com/order/list?pageIndex=1\\&pageSize=20\\&spm=5176.12818093.top-nav.ditem-ord.36f016d0OQFmJa) page in Alibaba Cloud User Center.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
@@ -40492,10 +41624,14 @@ class ModifyEntitlementRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The username IDs. End users specified by this parameter become the end users of the cloud computer, and the original end users of the cloud computer are removed. You can specify 1 to 100 IDs.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -40606,10 +41742,14 @@ class ModifyImageAttributeRequest(TeaModel):
         # The description of the image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The image ID.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.name = name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -40724,8 +41864,12 @@ class ModifyImagePermissionRequest(TeaModel):
         # The IDs of Alibaba Cloud accounts to which to share the image that will be created based on the image template. You can specify up to 20 account IDs.
         self.add_account = add_account
         # The IDs of the images.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of Alibaba Cloud account N from which you want to unshare the custom image. Valid values of N: 1 to 10. If the value of N is greater than 10, this parameter is ignored.
         self.remove_account = remove_account
@@ -40839,10 +41983,16 @@ class ModifyNASDefaultMountTargetRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the NAS file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The domain name of the mount target.
+        # 
+        # This parameter is required.
         self.mount_target_domain = mount_target_domain
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -40971,7 +42121,7 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     To make the payment, log on to the WUYING Workspace console, go to the Orders page, and find the order based on the order ID.
+        #     To make the payment, log on to the Elastic Desktop Service console, go to the Orders page, and find the order based on the order ID.
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
@@ -40980,12 +42130,18 @@ class ModifyNetworkPackageBandwidthRequest(TeaModel):
         # *   Valid values if the premium bandwidth plan is a subscription plan: 2 to 1000.
         # *   Valid values if the premium bandwidth plan is a pay-as-you-go plan that charges by data transfer (PayByTraffic): 2 to 200.
         # *   Valid values if the premium bandwidth plan is a pay-as-you-go plan that charges by fixed bandwidth (PayByBandwidth): 2 to 1000.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The ID of the premium bandwidth plan.
+        # 
+        # This parameter is required.
         self.network_package_id = network_package_id
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41128,8 +42284,12 @@ class ModifyNetworkPackageEnabledRequest(TeaModel):
         #     <!-- -->
         self.enabled = enabled
         # The ID of the premium bandwidth plan.
+        # 
+        # This parameter is required.
         self.network_package_id = network_package_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41240,7 +42400,7 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
         office_site_name: str = None,
         region_id: str = None,
     ):
-        # The method to connect to cloud computers from WUYING clients.
+        # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
         # 
         # >  VPC connection relies on the Alibaba Cloud PrivateLink service. You can use PrivateLink for free. When you set this parameter to `VPC` or `Any`, the system automatically activates PrivateLink.
         # 
@@ -41248,7 +42408,7 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
         # 
         # *   INTERNET (default): allows end users to connect to cloud computers over the Internet.
         # *   VPC: allows end users to connect to cloud computers over VPCs.
-        # *   ANY: allows end users to connect to cloud computers over the Internet and VPCs. When end users connect to cloud computers from WUYING clients, you can choose a connection method based on your business requirements.
+        # *   ANY: allows end users to connect to cloud computers over the Internet and VPCs. When end users connect to cloud computers from Elastic Desktop Service, you can choose a connection method based on your business requirements.
         self.desktop_access_type = desktop_access_type
         # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
         # 
@@ -41257,16 +42417,20 @@ class ModifyOfficeSiteAttributeRequest(TeaModel):
         # * true (default)
         # * false
         self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable two-factor verification when an end user logs on to a WUYING client. This parameter is required only for convenience office networks. If two-factor verification is enabled, the system checks whether security risks exist within the logon account when the end user uses a convenience user to log on to the client. If risks are detected, the system sends a verification code to the email address that is associated with the account of the convenience user. Then, the end user can log on to the client only when the verification code is correct.
+        # Specifies whether to enable two-factor verification when an end user logs on to an Alibaba Cloud Workspace client. This parameter is required only for convenience office networks. If two-factor verification is enabled, the system checks whether security risks exist within the logon account when the end user uses a convenience user to log on to the client. If risks are detected, the system sends a verification code to the email address that is associated with the account of the convenience user. Then, the end user can log on to the client only when the verification code is correct.
         self.need_verify_login_risk = need_verify_login_risk
         # Specifies whether to enable device verification. This parameter is required only for convenience office networks. This parameter is left empty for enterprise Active Directory (AD) office networks.
         self.need_verify_zero_device = need_verify_zero_device
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.\
+        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.\\
         # This parameter is empty by default.
         self.office_site_name = office_site_name
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41390,10 +42554,16 @@ class ModifyOfficeSiteCrossDesktopAccessRequest(TeaModel):
         region_id: str = None,
     ):
         # Specifies whether to enable the communication between cloud computers in an office network. If you enable the communication between cloud computers in an office network, the cloud computers can access each other.
+        # 
+        # This parameter is required.
         self.enable_cross_desktop_access = enable_cross_desktop_access
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41519,10 +42689,16 @@ class ModifyOfficeSiteMfaEnabledRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.mfa_enabled = mfa_enabled
         # The office network ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -41629,6 +42805,8 @@ class ModifyPolicyGroupRequestAuthorizeAccessPolicyRule(TeaModel):
         description: str = None,
     ):
         # The CIDR block that the client can access.
+        # 
+        # This parameter is required.
         self.cidr_ip = cidr_ip
         # The description of the client IP address whitelist.
         self.description = description
@@ -41692,7 +42870,7 @@ class ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule(TeaModel):
         # *   When AuthorizeSecurityPolicyRule.N.IpProtocol is set to gre, set the value to -1/-1.
         # *   When AuthorizeSecurityPolicyRule.N.IpProtocol is set to all, set the value to -1/-1.
         # 
-        # For more information about the common ports of typical applications, see [Common ports](~~40724~~).
+        # For more information about the common ports of typical applications, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
         # The priority of security group rule N. A smaller value indicates a higher priority.
         # 
@@ -42085,6 +43263,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
         local_drive: str = None,
+        max_reconnect_time: int = None,
         name: str = None,
         net_redirect: str = None,
         policy_group_id: str = None,
@@ -42157,8 +43336,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         self.clipboard = clipboard
         # The domain blacklist or whitelist. Wildcard domains are supported. Separate domain names with commas (,). Valid values:
         # 
-        # *   \[black:],example1.com,example2.com: the domain name blacklist.
-        # *   \[white:],example1.com,example2.com: the domain name whitelist.
+        # *   [black:],example1.com,example2.com: the domain name blacklist.
+        # *   [white:],example1.com,example2.com: the domain name whitelist.
         self.domain_list = domain_list
         # The details of the DNS rule.
         self.domain_resolve_rule = domain_resolve_rule
@@ -42208,6 +43387,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   readwrite: read and write permissions. Local disks are mapped to cloud desktops. You can read (copy) and modify local files.
         # *   off: no permissions. Local disks are not mapped to cloud desktops.
         self.local_drive = local_drive
+        self.max_reconnect_time = max_reconnect_time
         # The name of the policy.
         self.name = name
         # The network redirection feature. Valid values:
@@ -42218,6 +43398,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         # Default value: off.
         self.net_redirect = net_redirect
         # The ID of the policy.
+        # 
+        # This parameter is required.
         self.policy_group_id = policy_group_id
         # Specifies whether to allow user preemption. Default value: off. You cannot change the value.
         self.preempt_login = preempt_login
@@ -42270,6 +43452,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         # The content of the screen recording notification sent to the client. By default, you do not need to specify this parameter.
         self.recording_user_notify_message = recording_user_notify_message
         # The ID of the region where the cloud desktop resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The permissions on the keyboard and mouse to control the cloud desktop during remote assistance. Valid values:
         # 
@@ -42420,6 +43604,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['InternetCommunicationProtocol'] = self.internet_communication_protocol
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.max_reconnect_time is not None:
+            result['MaxReconnectTime'] = self.max_reconnect_time
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -42554,6 +43740,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.internet_communication_protocol = m.get('InternetCommunicationProtocol')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('MaxReconnectTime') is not None:
+            self.max_reconnect_time = m.get('MaxReconnectTime')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -42725,7 +43913,9 @@ class ModifyUserEntitlementRequest(TeaModel):
         self.authorize_desktop_id = authorize_desktop_id
         # The ID of the users.
         self.end_user_id = end_user_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the cloud computers whose end users you want to remove.
         self.revoke_desktop_id = revoke_desktop_id
@@ -42840,12 +44030,20 @@ class ModifyUserToDesktopGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud computer pool whose end users you want to change.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # The IDs of the end users that you want to add. You can configure 1 to 500 IDs.
+        # 
+        # This parameter is required.
         self.new_end_user_ids = new_end_user_ids
         # The IDs of the end users that you want to remove. You can configure 1 to 500 IDs.
+        # 
+        # This parameter is required.
         self.old_end_user_ids = old_end_user_ids
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -43014,7 +44212,9 @@ class MoveCdsFileRequest(TeaModel):
         self.group_id = group_id
         # The ID of the parent folder that you want to move. If you want to remove the root folder, set the value to root.
         self.parent_folder_id = parent_folder_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -43245,8 +44445,12 @@ class RebootDesktopsRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 100 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -43347,18 +44551,22 @@ class RebuildDesktopsRequest(TeaModel):
         self,
         desktop_id: List[str] = None,
         image_id: str = None,
+        language: str = None,
         operate_type: str = None,
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the new image.
         self.image_id = image_id
+        self.language = language
         # The operation type on the data disk.
         # 
         # >  This parameter is empty by default regardless of whether data disks are attached to the cloud computer.
         # 
-        # *   No data disks are attached to the cloud computer:\
+        # *   No data disks are attached to the cloud computer:\\
         #     No operation is performed on the data disks of the cloud computer regardless of the value of this parameter.
         # 
         # *   Data disks are attached to the cloud computer:
@@ -43373,7 +44581,9 @@ class RebuildDesktopsRequest(TeaModel):
         #         *   If you set the OperateType parameter to `replace`, the data in the data disks of the cloud computer is replaced.
         #         *   If you leave the OperateType parameter empty, the data in the data disks of the cloud computer is cleared.
         self.operate_type = operate_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -43389,6 +44599,8 @@ class RebuildDesktopsRequest(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.language is not None:
+            result['Language'] = self.language
         if self.operate_type is not None:
             result['OperateType'] = self.operate_type
         if self.region_id is not None:
@@ -43401,6 +44613,8 @@ class RebuildDesktopsRequest(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('OperateType') is not None:
             self.operate_type = m.get('OperateType')
         if m.get('RegionId') is not None:
@@ -43541,6 +44755,8 @@ class RemoveFilePermissionRequestMemberListCdsIdentity(TeaModel):
         type: str = None,
     ):
         # The user ID or group ID.
+        # 
+        # This parameter is required.
         self.id = id
         # The object type.
         # 
@@ -43569,6 +44785,8 @@ class RemoveFilePermissionRequestMemberListCdsIdentity(TeaModel):
         #     user
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -43602,6 +44820,8 @@ class RemoveFilePermissionRequestMemberList(TeaModel):
         role_id: str = None,
     ):
         # The permission information.
+        # 
+        # This parameter is required.
         self.cds_identity = cds_identity
         # The role ID. You can configure permissions on roles or actions. This parameter is used to specify the permissions on roles, which conflicts with the ActionList parameter. When you configure both the parameters, this parameter shall prevail.
         # 
@@ -43762,6 +44982,8 @@ class RemoveFilePermissionRequestMemberList(TeaModel):
         #     the role that has the permissions to view files
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.role_id = role_id
 
     def validate(self):
@@ -43801,16 +45023,24 @@ class RemoveFilePermissionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The user ID.
         self.end_user_id = end_user_id
         # The file ID. The ID is a unique identifier for the file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The group ID.
         self.group_id = group_id
         # The users that you want to authorize.
+        # 
+        # This parameter is required.
         self.member_list = member_list
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -43872,16 +45102,24 @@ class RemoveFilePermissionShrinkRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud disk in Cloud Drive Service.
+        # 
+        # This parameter is required.
         self.cds_id = cds_id
         # The user ID.
         self.end_user_id = end_user_id
         # The file ID. The ID is a unique identifier for the file.
+        # 
+        # This parameter is required.
         self.file_id = file_id
         # The group ID.
         self.group_id = group_id
         # The users that you want to authorize.
+        # 
+        # This parameter is required.
         self.member_list_shrink = member_list_shrink
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -44006,8 +45244,12 @@ class RemoveUserFromDesktopGroupRequest(TeaModel):
         # The IDs of cloud computer pools.
         self.desktop_group_ids = desktop_group_ids
         # The IDs of the authorized users that you want to remove.
+        # 
+        # This parameter is required.
         self.end_user_ids = end_user_ids
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -44376,6 +45618,7 @@ class RenewDesktopsRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        auto_renew: bool = None,
         desktop_id: List[str] = None,
         period: int = None,
         period_unit: str = None,
@@ -44403,11 +45646,14 @@ class RenewDesktopsRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     You can log on to the WUYING Workspace console and complete the payment based on the order ID on the Orders page.
+        #     You can log on to the Elastic Desktop Service console and complete the payment based on the order ID on the Orders page.
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
         # The IDs of the cloud computers. Only IDs of subscription cloud computers are supported.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
         # 
@@ -44438,7 +45684,9 @@ class RenewDesktopsRequest(TeaModel):
         self.period_unit = period_unit
         # The ID of the promotional activity.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_type = resource_type
 
@@ -44453,6 +45701,8 @@ class RenewDesktopsRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
         if self.desktop_id is not None:
             result['DesktopId'] = self.desktop_id
         if self.period is not None:
@@ -44471,6 +45721,8 @@ class RenewDesktopsRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
         if m.get('DesktopId') is not None:
             self.desktop_id = m.get('DesktopId')
         if m.get('Period') is not None:
@@ -44592,11 +45844,13 @@ class RenewNetworkPackagesRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     To make the payment, log on to the WUYING Workspace console, go to the Orders page, and find the order based on the order ID.
+        #     To make the payment, log on to the Elastic Desktop Service console, go to the Orders page, and find the order based on the order ID.
         # 
         #     <!-- -->
         self.auto_pay = auto_pay
         # The IDs of premium bandwidth plans. You can specify up to 100 IDs.
+        # 
+        # This parameter is required.
         self.network_package_id = network_package_id
         # The subscription duration if you specify subscription as the new billing method for the cloud desktop. The unit of the value is specified by the `PeriodUnit` parameter. This parameter takes effect only when the `ChargeType` parameter is set to `PrePaid`.
         # 
@@ -44613,7 +45867,9 @@ class RenewNetworkPackagesRequest(TeaModel):
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -44756,7 +46012,9 @@ class ResetDesktopsRequest(TeaModel):
         # 
         # > This parameter is available only when you reset cloud computer pools. If you leave this parameter empty, all cloud computers in the specified cloud computer pool are reset, regardless of how the cloud computers are billed.
         self.pay_type = pay_type
-        # The region ID. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The reset scope. You can configure this parameter to reset the image or cloud computer.
         # 
@@ -44773,6 +46031,8 @@ class ResetDesktopsRequest(TeaModel):
         # *   1: resets only the system disk.
         # *   2: resets only the user disk.
         # *   3: resets the system disk and the user disk.
+        # 
+        # This parameter is required.
         self.reset_type = reset_type
 
     def validate(self):
@@ -44899,8 +46159,12 @@ class ResetNASDefaultMountTargetRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the NAS file system.
+        # 
+        # This parameter is required.
         self.file_system_id = file_system_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -45003,8 +46267,12 @@ class ResetSnapshotRequest(TeaModel):
         snapshot_id: str = None,
     ):
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the snapshot.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -45110,14 +46378,20 @@ class RevokeCoordinatePrivilegeRequest(TeaModel):
         uuid: str = None,
     ):
         # The ID of the stream coordination task.
+        # 
+        # This parameter is required.
         self.co_id = co_id
         # The ID of the end user.
         self.end_user_id = end_user_id
-        # The ID of the region. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of user who requires the coordinate permissions.
         # 
         # Set the value to TENANT_ADMIN. Only tenant administrators can be granted with the coordinate permissions.
+        # 
+        # This parameter is required.
         self.user_type = user_type
         # The unique identifier of the client. If you use an Alibaba Cloud Workspace client, click **About** on the client logon page to view the identifier of the client.
         self.uuid = uuid
@@ -45238,10 +46512,12 @@ class RunCommandRequest(TeaModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The content of the command. The command content can be plaintext or Base64-encoded.\
+        # The content of the command. The command content can be plaintext or Base64-encoded.\\
         # The Base64-encoded command content cannot exceed 16 KB in size.
         # 
         # > If the command content is Base64-encoded, you must set the ContentEncoding parameter to Base64.
+        # 
+        # This parameter is required.
         self.command_content = command_content
         # The encoding mode of the command content. Valid values:
         # 
@@ -45250,20 +46526,26 @@ class RunCommandRequest(TeaModel):
         # 
         # Default value: PlainText. If the specified value of this parameter is invalid, PlainText is used by default.
         self.content_encoding = content_encoding
-        # The ID of cloud desktop N. Valid values of N: 1 to 50.\
+        # The ID of cloud desktop N. Valid values of N: 1 to 50.\\
         # If multiple cloud desktops are specified and the command execution succeeds on at least one of the cloud desktops, the operation is considered successful. If multiple cloud desktops are specified and the command execution fails on all the cloud desktops, verify the value of the parameter and try again.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The ID of the end user. If you specify a value, you run the command as the end user that is granted specific permissions. Note: The end user has sessions on a cloud computer. That is, when the cloud computer is started, the end user logs on to a WUYING client and connects to the cloud computer, and the cloud computer is not preempted by another end user during the connection. This parameter is not available for Linux cloud computers.
+        # The ID of the end user. If you specify a value, you run the command as the end user that is granted specific permissions. Note: The end user has sessions on a cloud computer. That is, when the cloud computer is started, the end user logs on to an Alibaba Cloud Workspace client and connects to the cloud computer, and the cloud computer is not preempted by another end user during the connection. This parameter is not available for Linux cloud computers.
         self.end_user_id = end_user_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The timeout period for the command to run. Unit: seconds. Default value: 60.\
+        # The timeout period for the command to run. Unit: seconds. Default value: 60.\\
         # A timeout error occurs if the command cannot be run because the process slows down or because a specific module or the Cloud Assistant client does not exist. When a timeout error occurs, the command process is forcibly terminated.
         self.timeout = timeout
-        # The language of the O\&M command. Valid values:
+        # The language of the O\\&M command. Valid values:
         # 
         # *   RunBatScript
         # *   RunPowerShellScript
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -45400,13 +46682,17 @@ class SendVerifyCodeRequest(TeaModel):
         # 
         # >  If you own the CEN instance, skip this parameter. If you do not own the CEN instance, specify the ID of the Alibaba Cloud account that owns the CEN instance.
         self.extra_info = extra_info
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The action that you want to perform by using the verification code.
         # 
         # Valid value:
         # 
         # *   eds_cenID_securityverification: Use the verification code to verify the CEN instance.
+        # 
+        # This parameter is required.
         self.verify_code_action = verify_code_action
 
     def validate(self):
@@ -45636,8 +46922,12 @@ class SetDesktopGroupScaleTimerRequest(TeaModel):
         scale_timer_infos: List[SetDesktopGroupScaleTimerRequestScaleTimerInfos] = None,
     ):
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The information about the scheduled auto scaling task.
         self.scale_timer_infos = scale_timer_infos
@@ -45760,10 +47050,14 @@ class SetDesktopGroupTimerRequest(TeaModel):
         # The cron expression for the scheduled task. This parameter is required when `TimerType` is set to 2, 3, or 4.
         self.cron_expression = cron_expression
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
         # Specifies whether to forcefully execute the scheduled task.
         self.force = force
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the disk that you want to reset.
         # 
@@ -45782,6 +47076,8 @@ class SetDesktopGroupTimerRequest(TeaModel):
         # *   2: scheduled startup
         # *   3: scheduled stop
         # *   4: scheduled restart
+        # 
+        # This parameter is required.
         self.timer_type = timer_type
 
     def validate(self):
@@ -45902,8 +47198,12 @@ class SetDesktopGroupTimerStatusRequest(TeaModel):
         timer_type: int = None,
     ):
         # The ID of the cloud computer pool.
+        # 
+        # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the scheduled task.
         # 
@@ -45922,6 +47222,8 @@ class SetDesktopGroupTimerStatusRequest(TeaModel):
         # *   2: scheduled startup
         # *   3: scheduled stop
         # *   4: scheduled restart
+        # 
+        # This parameter is required.
         self.timer_type = timer_type
 
     def validate(self):
@@ -46025,6 +47327,116 @@ class SetDesktopGroupTimerStatusResponse(TeaModel):
         return self
 
 
+class SetDesktopMaintenanceRequest(TeaModel):
+    def __init__(
+        self,
+        desktop_ids: List[str] = None,
+        mode: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.desktop_ids = desktop_ids
+        # This parameter is required.
+        self.mode = mode
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desktop_ids is not None:
+            result['DesktopIds'] = self.desktop_ids
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesktopIds') is not None:
+            self.desktop_ids = m.get('DesktopIds')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class SetDesktopMaintenanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetDesktopMaintenanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetDesktopMaintenanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetDesktopMaintenanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetDirectorySsoStatusRequest(TeaModel):
     def __init__(
         self,
@@ -46033,13 +47445,19 @@ class SetDirectorySsoStatusRequest(TeaModel):
         region_id: str = None,
     ):
         # The AD directory ID.
+        # 
+        # This parameter is required.
         self.directory_id = directory_id
         # Specifies whether to enable SSO. Valid values:
         # 
         # *   true: enables SSO.
         # *   false: disables SSO.
+        # 
+        # This parameter is required.
         self.enable_sso = enable_sso
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -46150,10 +47568,14 @@ class SetIdpMetadataRequest(TeaModel):
         # The workspace ID. This parameter is the same as `OfficeSiteId`. We recommend that you use `OfficeSiteId` to replace `DirectoryId`. You can specify only `DirectoryId` or `OfficeSiteId`.
         self.directory_id = directory_id
         # The metadata of the IdP.
+        # 
+        # This parameter is required.
         self.idp_metadata = idp_metadata
         # The workspace ID.
         self.office_site_id = office_site_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -46290,10 +47712,16 @@ class SetOfficeSiteSsoStatusRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.enable_sso = enable_sso
         # The workspace ID.
+        # 
+        # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -46556,6 +47984,8 @@ class SetUserProfilePathRulesRequest(TeaModel):
         # The desktop group ID.
         self.desktop_group_id = desktop_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The directories that you want to configure in the blacklist and whitelist.
         self.user_profile_path_rule = user_profile_path_rule
@@ -46639,6 +48069,8 @@ class SetUserProfilePathRulesShrinkRequest(TeaModel):
         # The desktop group ID.
         self.desktop_group_id = desktop_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The directories that you want to configure in the blacklist and whitelist.
         self.user_profile_path_rule_shrink = user_profile_path_rule_shrink
@@ -46779,8 +48211,12 @@ class StartDesktopsRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -46884,8 +48320,12 @@ class StopDesktopsRequest(TeaModel):
         stopped_mode: str = None,
     ):
         # The IDs of the cloud computers. You can specify 1 to 20 IDs.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The billing mode after you stop the cloud computer.
         # 
@@ -47015,8 +48455,12 @@ class StopInvocationRequest(TeaModel):
         # The ID of cloud desktop N. Valid values of N: 1 to 50.
         self.desktop_id = desktop_id
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.invoke_id = invoke_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -47159,17 +48603,25 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs, which are cloud computer IDs. You can specify 1 to 50 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Valid values:
         # 
         # * ALIYUN::GWS::INSTANCE: cloud computer.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that you want to add to the cloud computers. You can specify 1 to 20 tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -47413,10 +48865,14 @@ class UnlockVirtualMFADeviceRequest(TeaModel):
         serial_number: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The serial number of the virtual MFA device, which is a unique identifier.
         # 
-        # You can call the [DescribeVirtualMFADevices](~~206210~~) operation to query the serial number of the virtual MFA device bound to Active Directory (AD) users.
+        # You can call the [DescribeVirtualMFADevices](https://help.aliyun.com/document_detail/206210.html) operation to query the serial number of the virtual MFA device bound to Active Directory (AD) users.
+        # 
+        # This parameter is required.
         self.serial_number = serial_number
 
     def validate(self):
@@ -47523,15 +48979,21 @@ class UntagResourcesRequest(TeaModel):
     ):
         # Specifies whether to unbind all tags from the resource. This parameter takes effect only when TagKey.N is not specified. Default value: false.
         self.all = all
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs, which are cloud computer IDs. You can specify 1 to 50 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Valid values:
         # 
         # * ALIYUN::GWS::INSTANCE: cloud computer.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys. You can specify 1 to 20 tag keys.
         self.tag_key = tag_key
@@ -47648,9 +49110,13 @@ class UpdateFotaTaskRequest(TeaModel):
         task_uid: str = None,
         user_status: str = None,
     ):
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the image update task. You can call the [DescribeFotaTasks](~~437001~~) operation to obtain the value of this parameter.
+        # The ID of the image update task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain the value of this parameter.
+        # 
+        # This parameter is required.
         self.task_uid = task_uid
         # Specifies whether to automatically push the image update task.
         # 
@@ -47788,11 +49254,13 @@ class UploadImageRequest(TeaModel):
         # *   gpu_custom: You can install the driver later.
         # *   gpu_grid12: This GPU driver is used on graphical cloud computers of specifications other than the following two specifications: graphics – 4 vCPUs, 23 GiB memory, & 4 GiB GPU memory, and graphics – 10 vCPUs, 46 GiB memory, & 8 GiB GPU memory.
         self.gpu_driver_type = gpu_driver_type
-        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.image_name = image_name
         # The type of the license that is used to activate the operating system after the image is imported. Valid values:
         # 
-        # *   Auto: WUYING Workspace detects the operating system of the image and allocates a license to the operating system. In this mode, the system first checks whether a license allocated by an official Alibaba Cloud channel is specified in the `Platform`. If a license allocated by an official Alibaba Cloud channel is specified, the system allocates the license to the imported image. If no such license is specified, the BYOL (Bring Your Own License) mode is used.
+        # *   Auto: Elastic Desktop Service detects the operating system of the image and allocates a license to the operating system. In this mode, the system first checks whether a license allocated by an official Alibaba Cloud channel is specified in the `Platform`. If a license allocated by an official Alibaba Cloud channel is specified, the system allocates the license to the imported image. If no such license is specified, the BYOL (Bring Your Own License) mode is used.
         # *   Aliyun: The license that is allocated by an official Alibaba Cloud channel and is specified by `Platform` is used for the operating system distribution.
         # *   BYOL: The license that comes with the source operating system is used. When you use the BYOL mode, make sure that your license key is supported by Alibaba Cloud.
         # 
@@ -47821,6 +49289,8 @@ class UploadImageRequest(TeaModel):
         #     <!-- -->
         self.os_type = os_type
         # The object path of the image file in Object Storage Service (OSS).
+        # 
+        # This parameter is required.
         self.oss_object_path = oss_object_path
         # The protocol type.
         # 
@@ -47828,7 +49298,9 @@ class UploadImageRequest(TeaModel):
         # 
         # *   ASP: in-house Adaptive Streaming Protocol (ASP)
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -47977,6 +49449,8 @@ class VerifyCenRequest(TeaModel):
         verify_code: str = None,
     ):
         # The ID of the CEN instance.
+        # 
+        # This parameter is required.
         self.cen_id = cen_id
         # The Alibaba Cloud account to which the CEN instance belongs.
         # 
@@ -47984,10 +49458,14 @@ class VerifyCenRequest(TeaModel):
         # *   If you do not own the CEN instance, you must specify the ID of the account that owns the CEN instance.
         self.cen_owner_id = cen_owner_id
         # The IPv4 CIDR block of the associated office network.
+        # 
+        # This parameter is required.
         self.cidr_block = cidr_block
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The verification code. If you do not own the CEN instance, you must call the [SendVerifyCode](~~436847~~) operation to obtain a verification code.
+        # The verification code. If you do not own the CEN instance, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain a verification code.
         self.verify_code = verify_code
 
     def validate(self):
@@ -48098,7 +49576,7 @@ class VerifyCenResponseBody(TeaModel):
         # 
         # Valid values:
         # 
-        # *   InvalidCen.CenUidInvalid: The Alibaba Cloud account is invalid or the Alibaba Cloud account does not have the permission to access WUYING Workspace.
+        # *   InvalidCen.CenUidInvalid: The Alibaba Cloud account is invalid or the Alibaba Cloud account does not have the permission to access Elastic Desktop Service.
         # *   VerifyCode.InvalidTokenCode: The verification code is invalid.
         # *   VerifyCode.ReachTokenRetryTime: The maximum number of times for entering a verification code reaches the limit.
         # *   Conflict: A CIDR block conflict exists. If the verification result of at least one route is Conflict, Conflict is returned for this parameter.
@@ -48193,7 +49671,9 @@ class WakeupDesktopsRequest(TeaModel):
         desktop_id: List[str] = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.desktop_id = desktop_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

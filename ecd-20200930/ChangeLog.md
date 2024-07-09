@@ -1,3 +1,39 @@
+2024-07-09 Version: 4.0.0
+- Support API SetDesktopMaintenance.
+- Update API AddDesktopOversoldUserGroup: add param Tag.
+- Update API CreateADConnectorOfficeSite: add param BackupDCHostname.
+- Update API CreateADConnectorOfficeSite: add param BackupDns.
+- Update API CreateDesktopGroup: add param Tag.
+- Update API CreatePolicyGroup: add param MaxReconnectTime.
+- Update API DescribeDesktopGroups: add param Tag.
+- Update API DescribeDesktopGroups: update response param.
+- Update API DescribeDesktopSessions: add param CheckOsSession.
+- Update API DescribeDesktopSessions: add param SubPayType.
+- Update API DescribeDesktopSessions: update response param.
+- Update API DescribeDesktops: add param FillResourceGroup.
+- Update API DescribeDesktops: add param GpuInstanceGroupId.
+- Update API DescribeDesktops: add param QosRuleId.
+- Update API DescribeDesktops: add param ResourceGroupId.
+- Update API DescribeDesktops: add param SubPayType.
+- Update API DescribeDesktops: update response param.
+- Update API DescribeDirectories: update response param.
+- Update API DescribeOfficeSites: update response param.
+- Update API DescribePolicyGroups: update response param.
+- Update API DescribePrice: update param BundleModels.
+- Update API ExportDesktopGroupInfo: add param Tag.
+- Update API ListTagResources: update param Tag.
+- Update API ModifyADConnectorOfficeSite: add param BackupDCHostname.
+- Update API ModifyADConnectorOfficeSite: add param BackupDns.
+- Update API ModifyAutoSnapshotPolicy: update response param.
+- Update API ModifyDesktopSpec: add param ResourceSpecs.
+- Update API ModifyDesktopSpec: add param ResourceType.
+- Update API ModifyDesktopSpec: update param DesktopId.
+- Update API ModifyDesktopSpec: update response param.
+- Update API ModifyPolicyGroup: add param MaxReconnectTime.
+- Update API RebuildDesktops: add param Language.
+- Update API RenewDesktops: add param AutoRenew.
+
+
 2024-05-07 Version: 3.6.3
 - Update API DescribeDesktopInfo: update response param.
 

@@ -48,7 +48,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ActivateOfficeSiteResponse:
         """
-        If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
+        @summary Unlocks a convenience office network that is automatically locked due to a long idle period of time.
+        
+        @description If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
         
         @param request: ActivateOfficeSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -85,7 +87,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ActivateOfficeSiteResponse:
         """
-        If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
+        @summary Unlocks a convenience office network that is automatically locked due to a long idle period of time.
+        
+        @description If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
         
         @param request: ActivateOfficeSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -121,7 +125,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ActivateOfficeSiteRequest,
     ) -> ecd_20200930_models.ActivateOfficeSiteResponse:
         """
-        If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
+        @summary Unlocks a convenience office network that is automatically locked due to a long idle period of time.
+        
+        @description If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
         
         @param request: ActivateOfficeSiteRequest
         @return: ActivateOfficeSiteResponse
@@ -134,7 +140,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ActivateOfficeSiteRequest,
     ) -> ecd_20200930_models.ActivateOfficeSiteResponse:
         """
-        If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
+        @summary Unlocks a convenience office network that is automatically locked due to a long idle period of time.
+        
+        @description If you do not create any cloud computer in a convenience office network within 15 days, the office network is automatically locked and virtual private cloud (VPC) resources are released. If you want to resume the office network, you can call this operation to unlock the office network.
         
         @param request: ActivateOfficeSiteRequest
         @return: ActivateOfficeSiteResponse
@@ -147,6 +155,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加桌面超卖用户组
+        
+        @param request: AddDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -157,6 +172,8 @@ class Client(OpenApiClient):
             query['OversoldGroupId'] = request.oversold_group_id
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -181,6 +198,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加桌面超卖用户组
+        
+        @param request: AddDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -191,6 +215,8 @@ class Client(OpenApiClient):
             query['OversoldGroupId'] = request.oversold_group_id
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -214,6 +240,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AddDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.AddDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加桌面超卖用户组
+        
+        @param request: AddDesktopOversoldUserGroupRequest
+        @return: AddDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_desktop_oversold_user_group_with_options(request, runtime)
 
@@ -221,6 +253,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AddDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.AddDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加桌面超卖用户组
+        
+        @param request: AddDesktopOversoldUserGroupRequest
+        @return: AddDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_desktop_oversold_user_group_with_options_async(request, runtime)
 
@@ -230,7 +268,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddDevicesResponse:
         """
-        You can add only one device to a tenant.
+        @summary Adds trusted devices.
+        
+        @description Each device can be registered in only one Alibaba Cloud account. If you register a device that has been registered in another Alibaba Cloud account, an error is reported.
         
         @param request: AddDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -269,7 +309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddDevicesResponse:
         """
-        You can add only one device to a tenant.
+        @summary Adds trusted devices.
+        
+        @description Each device can be registered in only one Alibaba Cloud account. If you register a device that has been registered in another Alibaba Cloud account, an error is reported.
         
         @param request: AddDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -307,7 +349,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddDevicesRequest,
     ) -> ecd_20200930_models.AddDevicesResponse:
         """
-        You can add only one device to a tenant.
+        @summary Adds trusted devices.
+        
+        @description Each device can be registered in only one Alibaba Cloud account. If you register a device that has been registered in another Alibaba Cloud account, an error is reported.
         
         @param request: AddDevicesRequest
         @return: AddDevicesResponse
@@ -320,7 +364,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddDevicesRequest,
     ) -> ecd_20200930_models.AddDevicesResponse:
         """
-        You can add only one device to a tenant.
+        @summary Adds trusted devices.
+        
+        @description Each device can be registered in only one Alibaba Cloud account. If you register a device that has been registered in another Alibaba Cloud account, an error is reported.
         
         @param request: AddDevicesRequest
         @return: AddDevicesResponse
@@ -334,7 +380,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
+        @summary Shares a folder of a cloud disk with other users.
+        
+        @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
         @param tmp_req: AddFilePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -383,7 +431,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
+        @summary Shares a folder of a cloud disk with other users.
+        
+        @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
         @param tmp_req: AddFilePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -431,7 +481,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddFilePermissionRequest,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
+        @summary Shares a folder of a cloud disk with other users.
+        
+        @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
         @param request: AddFilePermissionRequest
         @return: AddFilePermissionResponse
@@ -444,7 +496,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddFilePermissionRequest,
     ) -> ecd_20200930_models.AddFilePermissionResponse:
         """
-        You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
+        @summary Shares a folder of a cloud disk with other users.
+        
+        @description You can call this operation to share a specific folder with other users. You can also configure the folder permissions.
         
         @param request: AddFilePermissionRequest
         @return: AddFilePermissionResponse
@@ -457,6 +511,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
+        """
+        @summary Adds authorized end users of a desktop group.
+        
+        @param request: AddUserToDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToDesktopGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -493,6 +554,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
+        """
+        @summary Adds authorized end users of a desktop group.
+        
+        @param request: AddUserToDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToDesktopGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -528,6 +596,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
+        """
+        @summary Adds authorized end users of a desktop group.
+        
+        @param request: AddUserToDesktopGroupRequest
+        @return: AddUserToDesktopGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_to_desktop_group_with_options(request, runtime)
 
@@ -535,6 +609,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AddUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.AddUserToDesktopGroupResponse:
+        """
+        @summary Adds authorized end users of a desktop group.
+        
+        @param request: AddUserToDesktopGroupRequest
+        @return: AddUserToDesktopGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_desktop_group_with_options_async(request, runtime)
 
@@ -543,6 +623,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddUserToDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddUserToDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加用户到超卖用户组
+        
+        @param request: AddUserToDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_user_amount):
@@ -577,6 +664,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AddUserToDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AddUserToDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加用户到超卖用户组
+        
+        @param request: AddUserToDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_user_amount):
@@ -610,6 +704,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AddUserToDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.AddUserToDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加用户到超卖用户组
+        
+        @param request: AddUserToDesktopOversoldUserGroupRequest
+        @return: AddUserToDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_to_desktop_oversold_user_group_with_options(request, runtime)
 
@@ -617,6 +717,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AddUserToDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.AddUserToDesktopOversoldUserGroupResponse:
+        """
+        @summary 添加用户到超卖用户组
+        
+        @param request: AddUserToDesktopOversoldUserGroupRequest
+        @return: AddUserToDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_desktop_oversold_user_group_with_options_async(request, runtime)
 
@@ -626,7 +732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
         """
-        You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
+        @summary Apply an automatic snapshot policy to cloud computers. After the automatic snapshot policy is applied to the cloud computers, Elastic Desktop Service automatically creates snapshots for the cloud computers based on the time specified in the automatic snapshot policy.
+        
+        @description You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
         After you associate an automatic snapshot policy with the cloud desktop, the system creates snapshots for the cloud desktop based on the policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -666,7 +774,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
         """
-        You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
+        @summary Apply an automatic snapshot policy to cloud computers. After the automatic snapshot policy is applied to the cloud computers, Elastic Desktop Service automatically creates snapshots for the cloud computers based on the time specified in the automatic snapshot policy.
+        
+        @description You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
         After you associate an automatic snapshot policy with the cloud desktop, the system creates snapshots for the cloud desktop based on the policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -705,7 +815,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
         """
-        You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
+        @summary Apply an automatic snapshot policy to cloud computers. After the automatic snapshot policy is applied to the cloud computers, Elastic Desktop Service automatically creates snapshots for the cloud computers based on the time specified in the automatic snapshot policy.
+        
+        @description You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
         After you associate an automatic snapshot policy with the cloud desktop, the system creates snapshots for the cloud desktop based on the policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -719,7 +831,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApplyAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.ApplyAutoSnapshotPolicyResponse:
         """
-        You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
+        @summary Apply an automatic snapshot policy to cloud computers. After the automatic snapshot policy is applied to the cloud computers, Elastic Desktop Service automatically creates snapshots for the cloud computers based on the time specified in the automatic snapshot policy.
+        
+        @description You can also associate an automatic snapshot policy with a cloud desktop in the Elastic Desktop Service (EDS) console. To do so, perform the following steps: 1. Log on to the EDS console. 2. Choose Desktops and Groups > Desktops in the left-side navigation pane. 3. Find the cloud desktop that you want to manage on the Cloud Desktops page and choose More > Change Automatic Snapshot Policy in the Actions column. 4. Configure a policy for the cloud desktop as prompted in the Change Automatic Snapshot Policy panel.
         After you associate an automatic snapshot policy with the cloud desktop, the system creates snapshots for the cloud desktop based on the policy.
         
         @param request: ApplyAutoSnapshotPolicyRequest
@@ -733,6 +847,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApplyCoordinatePrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApplyCoordinatePrivilegeResponse:
+        """
+        @summary Applies for the coordinate permissions.
+        
+        @param request: ApplyCoordinatePrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyCoordinatePrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_id):
@@ -769,6 +890,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApplyCoordinatePrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApplyCoordinatePrivilegeResponse:
+        """
+        @summary Applies for the coordinate permissions.
+        
+        @param request: ApplyCoordinatePrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyCoordinatePrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_id):
@@ -804,6 +932,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ApplyCoordinatePrivilegeRequest,
     ) -> ecd_20200930_models.ApplyCoordinatePrivilegeResponse:
+        """
+        @summary Applies for the coordinate permissions.
+        
+        @param request: ApplyCoordinatePrivilegeRequest
+        @return: ApplyCoordinatePrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_coordinate_privilege_with_options(request, runtime)
 
@@ -811,6 +945,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ApplyCoordinatePrivilegeRequest,
     ) -> ecd_20200930_models.ApplyCoordinatePrivilegeResponse:
+        """
+        @summary Applies for the coordinate permissions.
+        
+        @param request: ApplyCoordinatePrivilegeRequest
+        @return: ApplyCoordinatePrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_coordinate_privilege_with_options_async(request, runtime)
 
@@ -819,6 +959,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApplyCoordinationForMonitoringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApplyCoordinationForMonitoringResponse:
+        """
+        @summary Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+        
+        @param request: ApplyCoordinationForMonitoringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyCoordinationForMonitoringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.coordinate_policy_type):
@@ -857,6 +1004,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApplyCoordinationForMonitoringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApplyCoordinationForMonitoringResponse:
+        """
+        @summary Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+        
+        @param request: ApplyCoordinationForMonitoringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyCoordinationForMonitoringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.coordinate_policy_type):
@@ -894,6 +1048,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ApplyCoordinationForMonitoringRequest,
     ) -> ecd_20200930_models.ApplyCoordinationForMonitoringResponse:
+        """
+        @summary Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+        
+        @param request: ApplyCoordinationForMonitoringRequest
+        @return: ApplyCoordinationForMonitoringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_coordination_for_monitoring_with_options(request, runtime)
 
@@ -901,6 +1061,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ApplyCoordinationForMonitoringRequest,
     ) -> ecd_20200930_models.ApplyCoordinationForMonitoringResponse:
+        """
+        @summary Applies for coordination monitoring. This operation is mainly used in administrator assistance scenarios and education scenarios.
+        
+        @param request: ApplyCoordinationForMonitoringRequest
+        @return: ApplyCoordinationForMonitoringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_coordination_for_monitoring_with_options_async(request, runtime)
 
@@ -910,7 +1076,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
         """
-        The cloud computers for which you want to allow image updates must be in the Running state.
+        @summary Allows you to upgrade images.
+        
+        @description The cloud computers for which you want to allow image updates must be in the Running state.
         
         @param request: ApproveFotaUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -949,7 +1117,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
         """
-        The cloud computers for which you want to allow image updates must be in the Running state.
+        @summary Allows you to upgrade images.
+        
+        @description The cloud computers for which you want to allow image updates must be in the Running state.
         
         @param request: ApproveFotaUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -987,7 +1157,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApproveFotaUpdateRequest,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
         """
-        The cloud computers for which you want to allow image updates must be in the Running state.
+        @summary Allows you to upgrade images.
+        
+        @description The cloud computers for which you want to allow image updates must be in the Running state.
         
         @param request: ApproveFotaUpdateRequest
         @return: ApproveFotaUpdateResponse
@@ -1000,7 +1172,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ApproveFotaUpdateRequest,
     ) -> ecd_20200930_models.ApproveFotaUpdateResponse:
         """
-        The cloud computers for which you want to allow image updates must be in the Running state.
+        @summary Allows you to upgrade images.
+        
+        @description The cloud computers for which you want to allow image updates must be in the Running state.
         
         @param request: ApproveFotaUpdateRequest
         @return: ApproveFotaUpdateResponse
@@ -1013,6 +1187,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AssociateNetworkPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AssociateNetworkPackageResponse:
+        """
+        @summary Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
+        
+        @param request: AssociateNetworkPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateNetworkPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_package_id):
@@ -1045,6 +1226,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AssociateNetworkPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AssociateNetworkPackageResponse:
+        """
+        @summary Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
+        
+        @param request: AssociateNetworkPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateNetworkPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_package_id):
@@ -1076,6 +1264,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AssociateNetworkPackageRequest,
     ) -> ecd_20200930_models.AssociateNetworkPackageResponse:
+        """
+        @summary Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
+        
+        @param request: AssociateNetworkPackageRequest
+        @return: AssociateNetworkPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_network_package_with_options(request, runtime)
 
@@ -1083,6 +1277,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AssociateNetworkPackageRequest,
     ) -> ecd_20200930_models.AssociateNetworkPackageResponse:
+        """
+        @summary Binds a premium bandwidth plan to an office network. A premium bandwidth plan is used together with only one office network.
+        
+        @param request: AssociateNetworkPackageRequest
+        @return: AssociateNetworkPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_network_package_with_options_async(request, runtime)
 
@@ -1092,9 +1292,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AttachCenResponse:
         """
-        Prerequisites
-        *   A CEN instance is created.
-        *   The office network is an advanced office network, and the account system type is convenient account.
+        @summary Binds an advanced office network to a Cloud Enterprise Network (CEN) instance.
+        
+        @description Prerequisites
+        A CEN instance is created.
+        The office network is an advanced office network, and the account system type is convenient account.
         >  The office network is added to the CEN instance when you create the instance. An office network can be added to only one CEN instance.
         
         @param request: AttachCenRequest
@@ -1138,9 +1340,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AttachCenResponse:
         """
-        Prerequisites
-        *   A CEN instance is created.
-        *   The office network is an advanced office network, and the account system type is convenient account.
+        @summary Binds an advanced office network to a Cloud Enterprise Network (CEN) instance.
+        
+        @description Prerequisites
+        A CEN instance is created.
+        The office network is an advanced office network, and the account system type is convenient account.
         >  The office network is added to the CEN instance when you create the instance. An office network can be added to only one CEN instance.
         
         @param request: AttachCenRequest
@@ -1183,9 +1387,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AttachCenRequest,
     ) -> ecd_20200930_models.AttachCenResponse:
         """
-        Prerequisites
-        *   A CEN instance is created.
-        *   The office network is an advanced office network, and the account system type is convenient account.
+        @summary Binds an advanced office network to a Cloud Enterprise Network (CEN) instance.
+        
+        @description Prerequisites
+        A CEN instance is created.
+        The office network is an advanced office network, and the account system type is convenient account.
         >  The office network is added to the CEN instance when you create the instance. An office network can be added to only one CEN instance.
         
         @param request: AttachCenRequest
@@ -1199,9 +1405,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AttachCenRequest,
     ) -> ecd_20200930_models.AttachCenResponse:
         """
-        Prerequisites
-        *   A CEN instance is created.
-        *   The office network is an advanced office network, and the account system type is convenient account.
+        @summary Binds an advanced office network to a Cloud Enterprise Network (CEN) instance.
+        
+        @description Prerequisites
+        A CEN instance is created.
+        The office network is an advanced office network, and the account system type is convenient account.
         >  The office network is added to the CEN instance when you create the instance. An office network can be added to only one CEN instance.
         
         @param request: AttachCenRequest
@@ -1215,6 +1423,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AttachEndUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AttachEndUserResponse:
+        """
+        @summary Binds a hardware client to a user.
+        
+        @param request: AttachEndUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEndUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_domain):
@@ -1255,6 +1470,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.AttachEndUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.AttachEndUserResponse:
+        """
+        @summary Binds a hardware client to a user.
+        
+        @param request: AttachEndUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEndUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_domain):
@@ -1294,6 +1516,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AttachEndUserRequest,
     ) -> ecd_20200930_models.AttachEndUserResponse:
+        """
+        @summary Binds a hardware client to a user.
+        
+        @param request: AttachEndUserRequest
+        @return: AttachEndUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_end_user_with_options(request, runtime)
 
@@ -1301,6 +1529,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.AttachEndUserRequest,
     ) -> ecd_20200930_models.AttachEndUserResponse:
+        """
+        @summary Binds a hardware client to a user.
+        
+        @param request: AttachEndUserRequest
+        @return: AttachEndUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_end_user_with_options_async(request, runtime)
 
@@ -1309,6 +1543,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary Cancels an automatic snapshot policy for cloud computers.
+        
+        @param request: CancelAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -1341,6 +1582,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary Cancels an automatic snapshot policy for cloud computers.
+        
+        @param request: CancelAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -1372,6 +1620,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary Cancels an automatic snapshot policy for cloud computers.
+        
+        @param request: CancelAutoSnapshotPolicyRequest
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_auto_snapshot_policy_with_options(request, runtime)
 
@@ -1379,6 +1633,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.CancelAutoSnapshotPolicyResponse:
+        """
+        @summary Cancels an automatic snapshot policy for cloud computers.
+        
+        @param request: CancelAutoSnapshotPolicyRequest
+        @return: CancelAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -1387,6 +1647,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelCdsFileShareLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelCdsFileShareLinkResponse:
+        """
+        @summary Cancels a file sharing task.
+        
+        @param request: CancelCdsFileShareLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCdsFileShareLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -1417,6 +1684,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelCdsFileShareLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelCdsFileShareLinkResponse:
+        """
+        @summary Cancels a file sharing task.
+        
+        @param request: CancelCdsFileShareLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCdsFileShareLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -1446,6 +1720,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelCdsFileShareLinkRequest,
     ) -> ecd_20200930_models.CancelCdsFileShareLinkResponse:
+        """
+        @summary Cancels a file sharing task.
+        
+        @param request: CancelCdsFileShareLinkRequest
+        @return: CancelCdsFileShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_cds_file_share_link_with_options(request, runtime)
 
@@ -1453,6 +1733,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelCdsFileShareLinkRequest,
     ) -> ecd_20200930_models.CancelCdsFileShareLinkResponse:
+        """
+        @summary Cancels a file sharing task.
+        
+        @param request: CancelCdsFileShareLinkRequest
+        @return: CancelCdsFileShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_cds_file_share_link_with_options_async(request, runtime)
 
@@ -1461,6 +1747,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelCoordinationForMonitoringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelCoordinationForMonitoringResponse:
+        """
+        @summary Cancels monitoring on stream collaboration.
+        
+        @param request: CancelCoordinationForMonitoringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCoordinationForMonitoringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_ids):
@@ -1495,6 +1788,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelCoordinationForMonitoringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelCoordinationForMonitoringResponse:
+        """
+        @summary Cancels monitoring on stream collaboration.
+        
+        @param request: CancelCoordinationForMonitoringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCoordinationForMonitoringResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_ids):
@@ -1528,6 +1828,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelCoordinationForMonitoringRequest,
     ) -> ecd_20200930_models.CancelCoordinationForMonitoringResponse:
+        """
+        @summary Cancels monitoring on stream collaboration.
+        
+        @param request: CancelCoordinationForMonitoringRequest
+        @return: CancelCoordinationForMonitoringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_coordination_for_monitoring_with_options(request, runtime)
 
@@ -1535,6 +1841,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelCoordinationForMonitoringRequest,
     ) -> ecd_20200930_models.CancelCoordinationForMonitoringResponse:
+        """
+        @summary Cancels monitoring on stream collaboration.
+        
+        @param request: CancelCoordinationForMonitoringRequest
+        @return: CancelCoordinationForMonitoringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_coordination_for_monitoring_with_options_async(request, runtime)
 
@@ -1543,6 +1855,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelCopyImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelCopyImageResponse:
+        """
+        @summary Cancels the operation of copying an image to another region.
+        
+        @param request: CancelCopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCopyImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -1573,6 +1892,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CancelCopyImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CancelCopyImageResponse:
+        """
+        @summary Cancels the operation of copying an image to another region.
+        
+        @param request: CancelCopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCopyImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -1602,6 +1928,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelCopyImageRequest,
     ) -> ecd_20200930_models.CancelCopyImageResponse:
+        """
+        @summary Cancels the operation of copying an image to another region.
+        
+        @param request: CancelCopyImageRequest
+        @return: CancelCopyImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_copy_image_with_options(request, runtime)
 
@@ -1609,6 +1941,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CancelCopyImageRequest,
     ) -> ecd_20200930_models.CancelCopyImageResponse:
+        """
+        @summary Cancels the operation of copying an image to another region.
+        
+        @param request: CancelCopyImageRequest
+        @return: CancelCopyImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_copy_image_with_options_async(request, runtime)
 
@@ -1617,6 +1955,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ClonePolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
+        """
+        @summary Clones an existing policy.
+        
+        @param request: ClonePolicyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClonePolicyGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1649,6 +1994,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ClonePolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
+        """
+        @summary Clones an existing policy.
+        
+        @param request: ClonePolicyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClonePolicyGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1680,6 +2032,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ClonePolicyGroupRequest,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
+        """
+        @summary Clones an existing policy.
+        
+        @param request: ClonePolicyGroupRequest
+        @return: ClonePolicyGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clone_policy_group_with_options(request, runtime)
 
@@ -1687,6 +2045,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ClonePolicyGroupRequest,
     ) -> ecd_20200930_models.ClonePolicyGroupResponse:
+        """
+        @summary Clones an existing policy.
+        
+        @param request: ClonePolicyGroupRequest
+        @return: ClonePolicyGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clone_policy_group_with_options_async(request, runtime)
 
@@ -1695,6 +2059,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CompleteCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
+        """
+        @summary Completes a file uploading task.
+        
+        @param request: CompleteCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -1733,6 +2104,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CompleteCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
+        """
+        @summary Completes a file uploading task.
+        
+        @param request: CompleteCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompleteCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -1770,6 +2148,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CompleteCdsFileRequest,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
+        """
+        @summary Completes a file uploading task.
+        
+        @param request: CompleteCdsFileRequest
+        @return: CompleteCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.complete_cds_file_with_options(request, runtime)
 
@@ -1777,6 +2161,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CompleteCdsFileRequest,
     ) -> ecd_20200930_models.CompleteCdsFileResponse:
+        """
+        @summary Completes a file uploading task.
+        
+        @param request: CompleteCdsFileRequest
+        @return: CompleteCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.complete_cds_file_with_options_async(request, runtime)
 
@@ -1785,6 +2175,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ConfigADConnectorTrustRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ConfigADConnectorTrustResponse:
+        """
+        @summary Configures a conditional forwarder and trust relationship for a high-definition experience (HDX)-based office network (formerly workspace). You can call the operation to configure a trust relationship for an enterprise Active Directory (AD) office network.
+        
+        @param request: ConfigADConnectorTrustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigADConnectorTrustResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.office_site_id):
@@ -1819,6 +2216,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ConfigADConnectorTrustRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ConfigADConnectorTrustResponse:
+        """
+        @summary Configures a conditional forwarder and trust relationship for a high-definition experience (HDX)-based office network (formerly workspace). You can call the operation to configure a trust relationship for an enterprise Active Directory (AD) office network.
+        
+        @param request: ConfigADConnectorTrustRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigADConnectorTrustResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.office_site_id):
@@ -1852,6 +2256,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ConfigADConnectorTrustRequest,
     ) -> ecd_20200930_models.ConfigADConnectorTrustResponse:
+        """
+        @summary Configures a conditional forwarder and trust relationship for a high-definition experience (HDX)-based office network (formerly workspace). You can call the operation to configure a trust relationship for an enterprise Active Directory (AD) office network.
+        
+        @param request: ConfigADConnectorTrustRequest
+        @return: ConfigADConnectorTrustResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.config_adconnector_trust_with_options(request, runtime)
 
@@ -1859,6 +2269,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ConfigADConnectorTrustRequest,
     ) -> ecd_20200930_models.ConfigADConnectorTrustResponse:
+        """
+        @summary Configures a conditional forwarder and trust relationship for a high-definition experience (HDX)-based office network (formerly workspace). You can call the operation to configure a trust relationship for an enterprise Active Directory (AD) office network.
+        
+        @param request: ConfigADConnectorTrustRequest
+        @return: ConfigADConnectorTrustResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.config_adconnector_trust_with_options_async(request, runtime)
 
@@ -1867,6 +2283,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ConfigADConnectorUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ConfigADConnectorUserResponse:
+        """
+        @param request: ConfigADConnectorUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigADConnectorUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_password):
@@ -1903,6 +2324,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ConfigADConnectorUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ConfigADConnectorUserResponse:
+        """
+        @param request: ConfigADConnectorUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigADConnectorUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_password):
@@ -1938,6 +2364,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ConfigADConnectorUserRequest,
     ) -> ecd_20200930_models.ConfigADConnectorUserResponse:
+        """
+        @param request: ConfigADConnectorUserRequest
+        @return: ConfigADConnectorUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.config_adconnector_user_with_options(request, runtime)
 
@@ -1945,6 +2375,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ConfigADConnectorUserRequest,
     ) -> ecd_20200930_models.ConfigADConnectorUserResponse:
+        """
+        @param request: ConfigADConnectorUserRequest
+        @return: ConfigADConnectorUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.config_adconnector_user_with_options_async(request, runtime)
 
@@ -1953,6 +2387,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CopyCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CopyCdsFileResponse:
+        """
+        @summary Copies a file or a directory.
+        
+        @param request: CopyCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_rename):
@@ -1997,6 +2438,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CopyCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CopyCdsFileResponse:
+        """
+        @summary Copies a file or a directory.
+        
+        @param request: CopyCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_rename):
@@ -2040,6 +2488,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CopyCdsFileRequest,
     ) -> ecd_20200930_models.CopyCdsFileResponse:
+        """
+        @summary Copies a file or a directory.
+        
+        @param request: CopyCdsFileRequest
+        @return: CopyCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_cds_file_with_options(request, runtime)
 
@@ -2047,6 +2501,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CopyCdsFileRequest,
     ) -> ecd_20200930_models.CopyCdsFileResponse:
+        """
+        @summary Copies a file or a directory.
+        
+        @param request: CopyCdsFileRequest
+        @return: CopyCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_cds_file_with_options_async(request, runtime)
 
@@ -2055,6 +2515,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CopyImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CopyImageResponse:
+        """
+        @summary Copy an image to another region. If you want to share an image across regions, you can call this operation to copy the image to the destination region and then share the image.
+        
+        @param request: CopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_description):
@@ -2091,6 +2558,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CopyImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CopyImageResponse:
+        """
+        @summary Copy an image to another region. If you want to share an image across regions, you can call this operation to copy the image to the destination region and then share the image.
+        
+        @param request: CopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_description):
@@ -2126,6 +2600,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CopyImageRequest,
     ) -> ecd_20200930_models.CopyImageResponse:
+        """
+        @summary Copy an image to another region. If you want to share an image across regions, you can call this operation to copy the image to the destination region and then share the image.
+        
+        @param request: CopyImageRequest
+        @return: CopyImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_image_with_options(request, runtime)
 
@@ -2133,6 +2613,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CopyImageRequest,
     ) -> ecd_20200930_models.CopyImageResponse:
+        """
+        @summary Copy an image to another region. If you want to share an image across regions, you can call this operation to copy the image to the destination region and then share the image.
+        
+        @param request: CopyImageRequest
+        @return: CopyImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_image_with_options_async(request, runtime)
 
@@ -2142,7 +2628,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
+        @summary Creates a directory of the Active Directory (AD) type.
+        
+        @description An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         
         @param request: CreateADConnectorDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2201,7 +2689,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
+        @summary Creates a directory of the Active Directory (AD) type.
+        
+        @description An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         
         @param request: CreateADConnectorDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2259,7 +2749,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
+        @summary Creates a directory of the Active Directory (AD) type.
+        
+        @description An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         
         @param request: CreateADConnectorDirectoryRequest
         @return: CreateADConnectorDirectoryResponse
@@ -2272,7 +2764,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.CreateADConnectorDirectoryResponse:
         """
-        An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](~~188395~~).
+        @summary Creates a directory of the Active Directory (AD) type.
+        
+        @description An AD directory is used to connect to an enterprise\\"s existing Active Directory and is suitable for large-scale cloud computer deployment. You are charged directory fees when you connect your AD to cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         
         @param request: CreateADConnectorDirectoryRequest
         @return: CreateADConnectorDirectoryResponse
@@ -2286,13 +2780,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateADConnectorOfficeSiteResponse:
         """
-        When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](~~188395~~).
+        @summary Creates an enterprise Active Directory (AD) office network (formerly workspace). Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @description When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         After you call this operation to create an AD office network, you must perform the following steps to complete AD domain setting:
         1.  Configure a conditional forwarder in a Domain Name System (DNS) server.
-        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship with the AD office network.
-        3.  Call the [ListUserAdOrganizationUnits](~~311259~~) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and administrator for the AD office network.
+        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](https://help.aliyun.com/document_detail/311258.html) operation to configure the trust relationship with the AD office network.
+        3.  Call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](https://help.aliyun.com/document_detail/311262.html) operation to specify an OU and administrator for the AD office network.
         >  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
-        For more information, see [Create and manage enterprise AD office networks](~~214469~~).
+        For more information, see [Create and manage enterprise AD office networks](https://help.aliyun.com/document_detail/214469.html).
         
         @param request: CreateADConnectorOfficeSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2302,6 +2798,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ad_hostname):
             query['AdHostname'] = request.ad_hostname
+        if not UtilClient.is_unset(request.backup_dchostname):
+            query['BackupDCHostname'] = request.backup_dchostname
+        if not UtilClient.is_unset(request.backup_dns):
+            query['BackupDns'] = request.backup_dns
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.cen_id):
@@ -2365,13 +2865,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateADConnectorOfficeSiteResponse:
         """
-        When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](~~188395~~).
+        @summary Creates an enterprise Active Directory (AD) office network (formerly workspace). Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @description When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         After you call this operation to create an AD office network, you must perform the following steps to complete AD domain setting:
         1.  Configure a conditional forwarder in a Domain Name System (DNS) server.
-        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship with the AD office network.
-        3.  Call the [ListUserAdOrganizationUnits](~~311259~~) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and administrator for the AD office network.
+        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](https://help.aliyun.com/document_detail/311258.html) operation to configure the trust relationship with the AD office network.
+        3.  Call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](https://help.aliyun.com/document_detail/311262.html) operation to specify an OU and administrator for the AD office network.
         >  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
-        For more information, see [Create and manage enterprise AD office networks](~~214469~~).
+        For more information, see [Create and manage enterprise AD office networks](https://help.aliyun.com/document_detail/214469.html).
         
         @param request: CreateADConnectorOfficeSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2381,6 +2883,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ad_hostname):
             query['AdHostname'] = request.ad_hostname
+        if not UtilClient.is_unset(request.backup_dchostname):
+            query['BackupDCHostname'] = request.backup_dchostname
+        if not UtilClient.is_unset(request.backup_dns):
+            query['BackupDns'] = request.backup_dns
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.cen_id):
@@ -2443,13 +2949,15 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateADConnectorOfficeSiteRequest,
     ) -> ecd_20200930_models.CreateADConnectorOfficeSiteResponse:
         """
-        When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](~~188395~~).
+        @summary Creates an enterprise Active Directory (AD) office network (formerly workspace). Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @description When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         After you call this operation to create an AD office network, you must perform the following steps to complete AD domain setting:
         1.  Configure a conditional forwarder in a Domain Name System (DNS) server.
-        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship with the AD office network.
-        3.  Call the [ListUserAdOrganizationUnits](~~311259~~) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and administrator for the AD office network.
+        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](https://help.aliyun.com/document_detail/311258.html) operation to configure the trust relationship with the AD office network.
+        3.  Call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](https://help.aliyun.com/document_detail/311262.html) operation to specify an OU and administrator for the AD office network.
         >  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
-        For more information, see [Create and manage enterprise AD office networks](~~214469~~).
+        For more information, see [Create and manage enterprise AD office networks](https://help.aliyun.com/document_detail/214469.html).
         
         @param request: CreateADConnectorOfficeSiteRequest
         @return: CreateADConnectorOfficeSiteResponse
@@ -2462,13 +2970,15 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateADConnectorOfficeSiteRequest,
     ) -> ecd_20200930_models.CreateADConnectorOfficeSiteResponse:
         """
-        When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](~~188395~~).
+        @summary Creates an enterprise Active Directory (AD) office network (formerly workspace). Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @description When you create an enterprise AD office network, the system automatically creates an AD connector to connect to an enterprise AD. You are charged for the AD connector. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
         After you call this operation to create an AD office network, you must perform the following steps to complete AD domain setting:
         1.  Configure a conditional forwarder in a Domain Name System (DNS) server.
-        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](~~311258~~) operation to configure the trust relationship with the AD office network.
-        3.  Call the [ListUserAdOrganizationUnits](~~311259~~) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](~~311262~~) operation to specify an OU and administrator for the AD office network.
+        2.  Configure a trust relationship in an AD domain controller and call the [ConfigADConnectorTrust](https://help.aliyun.com/document_detail/311258.html) operation to configure the trust relationship with the AD office network.
+        3.  Call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to query a list of organizational units (OUs) of the AD domain, and call the [ConfigADConnectorUser](https://help.aliyun.com/document_detail/311262.html) operation to specify an OU and administrator for the AD office network.
         >  When you create the AD office network, take note of the DomainUserName and DomainPassword parameters. If you specify the parameters, you need to only configure a conditional forwarder. If you do not specify the parameters, you must configure a conditional forwarder, trust relationship, and OU as prompted.
-        For more information, see [Create and manage enterprise AD office networks](~~214469~~).
+        For more information, see [Create and manage enterprise AD office networks](https://help.aliyun.com/document_detail/214469.html).
         
         @param request: CreateADConnectorOfficeSiteRequest
         @return: CreateADConnectorOfficeSiteResponse
@@ -2481,6 +2991,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateAndBindNasFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
+        """
+        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        
+        @param request: CreateAndBindNasFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndBindNasFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2523,6 +3040,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateAndBindNasFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
+        """
+        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        
+        @param request: CreateAndBindNasFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndBindNasFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2564,6 +3088,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateAndBindNasFileSystemRequest,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
+        """
+        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        
+        @param request: CreateAndBindNasFileSystemRequest
+        @return: CreateAndBindNasFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_and_bind_nas_file_system_with_options(request, runtime)
 
@@ -2571,6 +3101,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateAndBindNasFileSystemRequest,
     ) -> ecd_20200930_models.CreateAndBindNasFileSystemResponse:
+        """
+        @summary Creates an Apsara File Storage NAS (NAS) file system and mount the file system to the workspace in which a desktop group resides.
+        
+        @param request: CreateAndBindNasFileSystemRequest
+        @return: CreateAndBindNasFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_and_bind_nas_file_system_with_options_async(request, runtime)
 
@@ -2580,7 +3116,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
         """
-        You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
+        @summary Creates an automatic snapshot policy. WUYING WorkSpace automatically creates snapshots based on the time specified by the cron expression in the automatic snapshot policy.
+        
+        @description You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2621,7 +3159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
         """
-        You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
+        @summary Creates an automatic snapshot policy. WUYING WorkSpace automatically creates snapshots based on the time specified by the cron expression in the automatic snapshot policy.
+        
+        @description You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2661,7 +3201,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
         """
-        You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
+        @summary Creates an automatic snapshot policy. WUYING WorkSpace automatically creates snapshots based on the time specified by the cron expression in the automatic snapshot policy.
+        
+        @description You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @return: CreateAutoSnapshotPolicyResponse
@@ -2674,7 +3216,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.CreateAutoSnapshotPolicyResponse:
         """
-        You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
+        @summary Creates an automatic snapshot policy. WUYING WorkSpace automatically creates snapshots based on the time specified by the cron expression in the automatic snapshot policy.
+        
+        @description You can call the operation to create an automatic snapshot policy based on a CRON expression. Then, the system automatically creates snapshots of a cloud desktop based on the policy.
         
         @param request: CreateAutoSnapshotPolicyRequest
         @return: CreateAutoSnapshotPolicyResponse
@@ -2688,7 +3232,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateBundleResponse:
         """
-        Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
+        @summary Creates a custom cloud computer template.
+        
+        @description Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
         
         @param request: CreateBundleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2741,7 +3287,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateBundleResponse:
         """
-        Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
+        @summary Creates a custom cloud computer template.
+        
+        @description Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
         
         @param request: CreateBundleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2793,7 +3341,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateBundleRequest,
     ) -> ecd_20200930_models.CreateBundleResponse:
         """
-        Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
+        @summary Creates a custom cloud computer template.
+        
+        @description Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
         
         @param request: CreateBundleRequest
         @return: CreateBundleResponse
@@ -2806,7 +3356,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateBundleRequest,
     ) -> ecd_20200930_models.CreateBundleResponse:
         """
-        Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
+        @summary Creates a custom cloud computer template.
+        
+        @description Cloud computer templates include system templates and custom templates. A system template is the default template provided by Alibaba Cloud. You can call this operation to create a custom template.
         
         @param request: CreateBundleRequest
         @return: CreateBundleResponse
@@ -2820,7 +3372,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCdsFileResponse:
         """
-        After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
+        @summary Uploads a file to a cloud disk.
+        
+        @description After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
         
         @param request: CreateCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2873,7 +3427,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCdsFileResponse:
         """
-        After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
+        @summary Uploads a file to a cloud disk.
+        
+        @description After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
         
         @param request: CreateCdsFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2925,7 +3481,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCdsFileRequest,
     ) -> ecd_20200930_models.CreateCdsFileResponse:
         """
-        After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
+        @summary Uploads a file to a cloud disk.
+        
+        @description After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
         
         @param request: CreateCdsFileRequest
         @return: CreateCdsFileResponse
@@ -2938,7 +3496,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCdsFileRequest,
     ) -> ecd_20200930_models.CreateCdsFileResponse:
         """
-        After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
+        @summary Uploads a file to a cloud disk.
+        
+        @description After the RAM permissions are authenticated, you can call the CreateCdsFile operation to obtain the upload URL of a file and upload the file to a cloud disk.
         
         @param request: CreateCdsFileRequest
         @return: CreateCdsFileResponse
@@ -2951,6 +3511,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCdsFileShareLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCdsFileShareLinkResponse:
+        """
+        @summary Creates a file sharing task.
+        
+        @param request: CreateCdsFileShareLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCdsFileShareLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -3005,6 +3572,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCdsFileShareLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCdsFileShareLinkResponse:
+        """
+        @summary Creates a file sharing task.
+        
+        @param request: CreateCdsFileShareLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCdsFileShareLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -3058,6 +3632,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateCdsFileShareLinkRequest,
     ) -> ecd_20200930_models.CreateCdsFileShareLinkResponse:
+        """
+        @summary Creates a file sharing task.
+        
+        @param request: CreateCdsFileShareLinkRequest
+        @return: CreateCdsFileShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cds_file_share_link_with_options(request, runtime)
 
@@ -3065,6 +3645,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateCdsFileShareLinkRequest,
     ) -> ecd_20200930_models.CreateCdsFileShareLinkResponse:
+        """
+        @summary Creates a file sharing task.
+        
+        @param request: CreateCdsFileShareLinkRequest
+        @return: CreateCdsFileShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cds_file_share_link_with_options_async(request, runtime)
 
@@ -3073,6 +3659,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
+        """
+        @summary Creates a cloud disk.
+        
+        @param request: CreateCloudDriveServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudDriveServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -3133,6 +3726,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
+        """
+        @summary Creates a cloud disk.
+        
+        @param request: CreateCloudDriveServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudDriveServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -3192,6 +3792,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
+        """
+        @summary Creates a cloud disk.
+        
+        @param request: CreateCloudDriveServiceRequest
+        @return: CreateCloudDriveServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cloud_drive_service_with_options(request, runtime)
 
@@ -3199,6 +3805,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateCloudDriveServiceRequest,
     ) -> ecd_20200930_models.CreateCloudDriveServiceResponse:
+        """
+        @summary Creates a cloud disk.
+        
+        @param request: CreateCloudDriveServiceRequest
+        @return: CreateCloudDriveServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cloud_drive_service_with_options_async(request, runtime)
 
@@ -3207,6 +3819,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCloudDriveUsersResponse:
+        """
+        @summary Creates the users of a cloud disk.
+        
+        @param request: CreateCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -3241,6 +3860,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateCloudDriveUsersResponse:
+        """
+        @summary Creates the users of a cloud disk.
+        
+        @param request: CreateCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -3274,6 +3900,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateCloudDriveUsersRequest,
     ) -> ecd_20200930_models.CreateCloudDriveUsersResponse:
+        """
+        @summary Creates the users of a cloud disk.
+        
+        @param request: CreateCloudDriveUsersRequest
+        @return: CreateCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cloud_drive_users_with_options(request, runtime)
 
@@ -3281,6 +3913,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateCloudDriveUsersRequest,
     ) -> ecd_20200930_models.CreateCloudDriveUsersResponse:
+        """
+        @summary Creates the users of a cloud disk.
+        
+        @param request: CreateCloudDriveUsersRequest
+        @return: CreateCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cloud_drive_users_with_options_async(request, runtime)
 
@@ -3290,9 +3928,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        *   You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](~~290959~~) of desktop groups.
-        *   Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @summary Creates a cloud computer pool (formerly desktop group).
+        
+        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
+        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
+        Resources, such as workspaces, users, desktop templates, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3370,6 +4010,8 @@ class Client(OpenApiClient):
             query['ScaleStrategyId'] = request.scale_strategy_id
         if not UtilClient.is_unset(request.stop_duration):
             query['StopDuration'] = request.stop_duration
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.volume_encryption_enabled):
             query['VolumeEncryptionEnabled'] = request.volume_encryption_enabled
         if not UtilClient.is_unset(request.volume_encryption_key):
@@ -3401,9 +4043,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        *   You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](~~290959~~) of desktop groups.
-        *   Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @summary Creates a cloud computer pool (formerly desktop group).
+        
+        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
+        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
+        Resources, such as workspaces, users, desktop templates, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3481,6 +4125,8 @@ class Client(OpenApiClient):
             query['ScaleStrategyId'] = request.scale_strategy_id
         if not UtilClient.is_unset(request.stop_duration):
             query['StopDuration'] = request.stop_duration
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.volume_encryption_enabled):
             query['VolumeEncryptionEnabled'] = request.volume_encryption_enabled
         if not UtilClient.is_unset(request.volume_encryption_key):
@@ -3511,9 +4157,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopGroupRequest,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        *   You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](~~290959~~) of desktop groups.
-        *   Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @summary Creates a cloud computer pool (formerly desktop group).
+        
+        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
+        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
+        Resources, such as workspaces, users, desktop templates, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @return: CreateDesktopGroupResponse
@@ -3526,9 +4174,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopGroupRequest,
     ) -> ecd_20200930_models.CreateDesktopGroupResponse:
         """
-        Before you call this operation to create a desktop group, make sure that the following operations are complete:
-        *   You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](~~290959~~) of desktop groups.
-        *   Resources, such as workspaces, users, desktop templates, and policies, are created.
+        @summary Creates a cloud computer pool (formerly desktop group).
+        
+        @description Before you call this operation to create a desktop group, make sure that the following operations are complete:
+        You are familiar with the features, usage limits, and scaling policies of desktop groups. For more information, see [Overview](https://help.aliyun.com/document_detail/290959.html) of desktop groups.
+        Resources, such as workspaces, users, desktop templates, and policies, are created.
         
         @param request: CreateDesktopGroupRequest
         @return: CreateDesktopGroupResponse
@@ -3541,6 +4191,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopOversoldGroupResponse:
+        """
+        @summary 创建桌面超卖组
+        
+        @param request: CreateDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -3599,6 +4256,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopOversoldGroupResponse:
+        """
+        @summary 创建桌面超卖组
+        
+        @param request: CreateDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -3656,6 +4320,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.CreateDesktopOversoldGroupResponse:
+        """
+        @summary 创建桌面超卖组
+        
+        @param request: CreateDesktopOversoldGroupRequest
+        @return: CreateDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_desktop_oversold_group_with_options(request, runtime)
 
@@ -3663,6 +4333,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.CreateDesktopOversoldGroupResponse:
+        """
+        @summary 创建桌面超卖组
+        
+        @param request: CreateDesktopOversoldGroupRequest
+        @return: CreateDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_desktop_oversold_group_with_options_async(request, runtime)
 
@@ -3672,12 +4348,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopsResponse:
         """
-        Before you create cloud computers, complete the following preparations:
-        *   An office network (formerly called workspace) and users are created. For more information, see:
-        *   Convenience office network: [CreateSimpleOfficeSite](~~215416~~) and [CreateUsers](~~437832~~).
-        *   Active Directory (AD) office network: [CreateADConnectorOfficeSite](~~215417~~) and [Create an AD user](~~188619~~).
-        *   Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](~~188883~~) operation to create a template.
-        *   Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](~~188889~~) operation to create a policy.
+        @summary Creates cloud computers. If you specify end users when you create cloud computers, the cloud computers are assigned to the end users after the cloud computers are created.
+        
+        @description Before you create cloud computers, complete the following preparations:
+        An office network (formerly called workspace) and users are created. For more information, see:
+        Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+        Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
+        Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
+        Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
         If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
         
         @param request: CreateDesktopsRequest
@@ -3767,12 +4445,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDesktopsResponse:
         """
-        Before you create cloud computers, complete the following preparations:
-        *   An office network (formerly called workspace) and users are created. For more information, see:
-        *   Convenience office network: [CreateSimpleOfficeSite](~~215416~~) and [CreateUsers](~~437832~~).
-        *   Active Directory (AD) office network: [CreateADConnectorOfficeSite](~~215417~~) and [Create an AD user](~~188619~~).
-        *   Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](~~188883~~) operation to create a template.
-        *   Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](~~188889~~) operation to create a policy.
+        @summary Creates cloud computers. If you specify end users when you create cloud computers, the cloud computers are assigned to the end users after the cloud computers are created.
+        
+        @description Before you create cloud computers, complete the following preparations:
+        An office network (formerly called workspace) and users are created. For more information, see:
+        Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+        Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
+        Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
+        Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
         If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
         
         @param request: CreateDesktopsRequest
@@ -3861,12 +4541,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopsRequest,
     ) -> ecd_20200930_models.CreateDesktopsResponse:
         """
-        Before you create cloud computers, complete the following preparations:
-        *   An office network (formerly called workspace) and users are created. For more information, see:
-        *   Convenience office network: [CreateSimpleOfficeSite](~~215416~~) and [CreateUsers](~~437832~~).
-        *   Active Directory (AD) office network: [CreateADConnectorOfficeSite](~~215417~~) and [Create an AD user](~~188619~~).
-        *   Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](~~188883~~) operation to create a template.
-        *   Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](~~188889~~) operation to create a policy.
+        @summary Creates cloud computers. If you specify end users when you create cloud computers, the cloud computers are assigned to the end users after the cloud computers are created.
+        
+        @description Before you create cloud computers, complete the following preparations:
+        An office network (formerly called workspace) and users are created. For more information, see:
+        Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+        Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
+        Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
+        Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
         If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
         
         @param request: CreateDesktopsRequest
@@ -3880,12 +4562,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDesktopsRequest,
     ) -> ecd_20200930_models.CreateDesktopsResponse:
         """
-        Before you create cloud computers, complete the following preparations:
-        *   An office network (formerly called workspace) and users are created. For more information, see:
-        *   Convenience office network: [CreateSimpleOfficeSite](~~215416~~) and [CreateUsers](~~437832~~).
-        *   Active Directory (AD) office network: [CreateADConnectorOfficeSite](~~215417~~) and [Create an AD user](~~188619~~).
-        *   Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](~~188883~~) operation to create a template.
-        *   Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](~~188889~~) operation to create a policy.
+        @summary Creates cloud computers. If you specify end users when you create cloud computers, the cloud computers are assigned to the end users after the cloud computers are created.
+        
+        @description Before you create cloud computers, complete the following preparations:
+        An office network (formerly called workspace) and users are created. For more information, see:
+        Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+        Active Directory (AD) office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create an AD user](https://help.aliyun.com/document_detail/188619.html).
+        Make sure a cloud computer template exists. If no cloud computer template exists, call the [CreateBundle](https://help.aliyun.com/document_detail/188883.html) operation to create a template.
+        Make sure a policy exists. If no policy exists, call the [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) operation to create a policy.
         If you want the cloud computers to automatically execute a custom command script, you can use the `UserCommands` field to configure a custom command.
         
         @param request: CreateDesktopsRequest
@@ -3899,6 +4583,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDiskEncryptionServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDiskEncryptionServiceResponse:
+        """
+        @summary Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+        
+        @param request: CreateDiskEncryptionServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiskEncryptionServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3927,6 +4618,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateDiskEncryptionServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateDiskEncryptionServiceResponse:
+        """
+        @summary Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+        
+        @param request: CreateDiskEncryptionServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiskEncryptionServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3954,6 +4652,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateDiskEncryptionServiceRequest,
     ) -> ecd_20200930_models.CreateDiskEncryptionServiceResponse:
+        """
+        @summary Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+        
+        @param request: CreateDiskEncryptionServiceRequest
+        @return: CreateDiskEncryptionServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_disk_encryption_service_with_options(request, runtime)
 
@@ -3961,6 +4665,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateDiskEncryptionServiceRequest,
     ) -> ecd_20200930_models.CreateDiskEncryptionServiceResponse:
+        """
+        @summary Enables the disk encryption feature and adds the service-linked role that is encrypted by Cloud Drive Service to a Resource Access Management (RAM) user.
+        
+        @param request: CreateDiskEncryptionServiceRequest
+        @return: CreateDiskEncryptionServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_disk_encryption_service_with_options_async(request, runtime)
 
@@ -3969,6 +4679,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateImageResponse:
+        """
+        @summary Creates a custom image based on a deployed cloud computer. Then, you can use the custom image to create cloud computers that have the same configurations. This prevents the repeated settings when you create cloud computers.
+        
+        @param request: CreateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_clean_userdata):
@@ -4013,6 +4730,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateImageResponse:
+        """
+        @summary Creates a custom image based on a deployed cloud computer. Then, you can use the custom image to create cloud computers that have the same configurations. This prevents the repeated settings when you create cloud computers.
+        
+        @param request: CreateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_clean_userdata):
@@ -4056,6 +4780,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateImageRequest,
     ) -> ecd_20200930_models.CreateImageResponse:
+        """
+        @summary Creates a custom image based on a deployed cloud computer. Then, you can use the custom image to create cloud computers that have the same configurations. This prevents the repeated settings when you create cloud computers.
+        
+        @param request: CreateImageRequest
+        @return: CreateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_with_options(request, runtime)
 
@@ -4063,6 +4793,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateImageRequest,
     ) -> ecd_20200930_models.CreateImageResponse:
+        """
+        @summary Creates a custom image based on a deployed cloud computer. Then, you can use the custom image to create cloud computers that have the same configurations. This prevents the repeated settings when you create cloud computers.
+        
+        @param request: CreateImageRequest
+        @return: CreateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_with_options_async(request, runtime)
 
@@ -4071,6 +4807,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateNASFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
+        """
+        @param request: CreateNASFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNASFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4109,6 +4850,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateNASFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
+        """
+        @param request: CreateNASFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNASFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4146,6 +4892,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateNASFileSystemRequest,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
+        """
+        @param request: CreateNASFileSystemRequest
+        @return: CreateNASFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_nasfile_system_with_options(request, runtime)
 
@@ -4153,6 +4903,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateNASFileSystemRequest,
     ) -> ecd_20200930_models.CreateNASFileSystemResponse:
+        """
+        @param request: CreateNASFileSystemRequest
+        @return: CreateNASFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_nasfile_system_with_options_async(request, runtime)
 
@@ -4161,6 +4915,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateNetworkPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateNetworkPackageResponse:
+        """
+        @summary Creates a premium bandwidth plan for an office network.
+        
+        @param request: CreateNetworkPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -4207,6 +4968,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateNetworkPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateNetworkPackageResponse:
+        """
+        @summary Creates a premium bandwidth plan for an office network.
+        
+        @param request: CreateNetworkPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -4252,6 +5020,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateNetworkPackageRequest,
     ) -> ecd_20200930_models.CreateNetworkPackageResponse:
+        """
+        @summary Creates a premium bandwidth plan for an office network.
+        
+        @param request: CreateNetworkPackageRequest
+        @return: CreateNetworkPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_network_package_with_options(request, runtime)
 
@@ -4259,6 +5033,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateNetworkPackageRequest,
     ) -> ecd_20200930_models.CreateNetworkPackageResponse:
+        """
+        @summary Creates a premium bandwidth plan for an office network.
+        
+        @param request: CreateNetworkPackageRequest
+        @return: CreateNetworkPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_network_package_with_options_async(request, runtime)
 
@@ -4268,7 +5048,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](~~189345~~).
+        @summary Creates a policy.
+        
+        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4310,6 +5092,8 @@ class Client(OpenApiClient):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -4407,7 +5191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](~~189345~~).
+        @summary Creates a policy.
+        
+        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4449,6 +5235,8 @@ class Client(OpenApiClient):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -4545,7 +5333,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreatePolicyGroupRequest,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](~~189345~~).
+        @summary Creates a policy.
+        
+        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @return: CreatePolicyGroupResponse
@@ -4558,7 +5348,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreatePolicyGroupRequest,
     ) -> ecd_20200930_models.CreatePolicyGroupResponse:
         """
-        A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](~~189345~~).
+        @summary Creates a policy.
+        
+        @description A policy is a set of security rules that are used to control security configurations when end users use cloud desktops. A policy contains basic features, such as USB redirection and watermarking, and other features, such as security group control. For more information, see [Policy overview](https://help.aliyun.com/document_detail/189345.html).
         
         @param request: CreatePolicyGroupRequest
         @return: CreatePolicyGroupResponse
@@ -4572,9 +5364,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, complete the following preparations:
-        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
-        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
+        @summary Creates a Resource Access Management (RAM) directory.
+        
+        @description Before you create a RAM directory, complete the following preparations:
+        Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
+        Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
         
         @param request: CreateRAMDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4619,9 +5413,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, complete the following preparations:
-        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
-        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
+        @summary Creates a Resource Access Management (RAM) directory.
+        
+        @description Before you create a RAM directory, complete the following preparations:
+        Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
+        Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
         
         @param request: CreateRAMDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4665,9 +5461,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateRAMDirectoryRequest,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, complete the following preparations:
-        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
-        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
+        @summary Creates a Resource Access Management (RAM) directory.
+        
+        @description Before you create a RAM directory, complete the following preparations:
+        Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
+        Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
         
         @param request: CreateRAMDirectoryRequest
         @return: CreateRAMDirectoryResponse
@@ -4680,9 +5478,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateRAMDirectoryRequest,
     ) -> ecd_20200930_models.CreateRAMDirectoryResponse:
         """
-        Before you create a RAM directory, complete the following preparations:
-        *   Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by WUYING Workspace.
-        *   Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by WUYING Workspace. You can call the [DescribeZones](~~196648~~) operation to obtain the most recent zone list for a region supported by WUYING Workspace.
+        @summary Creates a Resource Access Management (RAM) directory.
+        
+        @description Before you create a RAM directory, complete the following preparations:
+        Call the `CreateVpc` operation to create a virtual private cloud (VPC) in a region supported by Elastic Desktop Service.
+        Call the `CreateVSwitch` operation to create a vSwitch in the VPC. The vSwitch is in a zone that is supported by Elastic Desktop Service. You can call the [DescribeZones](https://help.aliyun.com/document_detail/196648.html) operation to obtain the most recent zone list for a region supported by Elastic Desktop Service
         
         @param request: CreateRAMDirectoryRequest
         @return: CreateRAMDirectoryResponse
@@ -4695,6 +5495,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateSimpleOfficeSiteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateSimpleOfficeSiteResponse:
+        """
+        @summary Creates an office network of the convenience account type. Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @param request: CreateSimpleOfficeSiteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimpleOfficeSiteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -4749,6 +5556,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateSimpleOfficeSiteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateSimpleOfficeSiteResponse:
+        """
+        @summary Creates an office network of the convenience account type. Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @param request: CreateSimpleOfficeSiteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimpleOfficeSiteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -4802,6 +5616,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateSimpleOfficeSiteRequest,
     ) -> ecd_20200930_models.CreateSimpleOfficeSiteResponse:
+        """
+        @summary Creates an office network of the convenience account type. Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @param request: CreateSimpleOfficeSiteRequest
+        @return: CreateSimpleOfficeSiteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_simple_office_site_with_options(request, runtime)
 
@@ -4809,6 +5629,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.CreateSimpleOfficeSiteRequest,
     ) -> ecd_20200930_models.CreateSimpleOfficeSiteResponse:
+        """
+        @summary Creates an office network of the convenience account type. Elastic Desktop Service supports the following types of accounts: convenience accounts and enterprise AD accounts.
+        
+        @param request: CreateSimpleOfficeSiteRequest
+        @return: CreateSimpleOfficeSiteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_simple_office_site_with_options_async(request, runtime)
 
@@ -4818,7 +5644,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateSnapshotResponse:
         """
-        The cloud computer must be in the *Running** or **Stopped** state.
+        @summary Create a snapshot for a disk of a cloud computer to back up or restore the data on the disk.
+        
+        @description The cloud computer must be in the *Running** or **Stopped** state.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4861,7 +5689,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.CreateSnapshotResponse:
         """
-        The cloud computer must be in the *Running** or **Stopped** state.
+        @summary Create a snapshot for a disk of a cloud computer to back up or restore the data on the disk.
+        
+        @description The cloud computer must be in the *Running** or **Stopped** state.
         
         @param request: CreateSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4903,7 +5733,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateSnapshotRequest,
     ) -> ecd_20200930_models.CreateSnapshotResponse:
         """
-        The cloud computer must be in the *Running** or **Stopped** state.
+        @summary Create a snapshot for a disk of a cloud computer to back up or restore the data on the disk.
+        
+        @description The cloud computer must be in the *Running** or **Stopped** state.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -4916,7 +5748,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.CreateSnapshotRequest,
     ) -> ecd_20200930_models.CreateSnapshotResponse:
         """
-        The cloud computer must be in the *Running** or **Stopped** state.
+        @summary Create a snapshot for a disk of a cloud computer to back up or restore the data on the disk.
+        
+        @description The cloud computer must be in the *Running** or **Stopped** state.
         
         @param request: CreateSnapshotRequest
         @return: CreateSnapshotResponse
@@ -4929,6 +5763,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary Deletes an automatic snapshot policy.
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -4959,6 +5800,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary Deletes an automatic snapshot policy.
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -4988,6 +5836,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary Deletes an automatic snapshot policy.
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_auto_snapshot_policy_with_options(request, runtime)
 
@@ -4995,6 +5849,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.DeleteAutoSnapshotPolicyResponse:
+        """
+        @summary Deletes an automatic snapshot policy.
+        
+        @param request: DeleteAutoSnapshotPolicyRequest
+        @return: DeleteAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -5003,6 +5863,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteBundlesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteBundlesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @param request: DeleteBundlesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBundlesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -5033,6 +5900,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteBundlesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteBundlesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @param request: DeleteBundlesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBundlesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -5062,6 +5936,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteBundlesRequest,
     ) -> ecd_20200930_models.DeleteBundlesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @param request: DeleteBundlesRequest
+        @return: DeleteBundlesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_bundles_with_options(request, runtime)
 
@@ -5069,6 +5949,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteBundlesRequest,
     ) -> ecd_20200930_models.DeleteBundlesResponse:
+        """
+        @summary Deletes custom cloud computer templates.
+        
+        @param request: DeleteBundlesRequest
+        @return: DeleteBundlesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_bundles_with_options_async(request, runtime)
 
@@ -5077,6 +5963,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
+        """
+        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        
+        @param request: DeleteCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -5113,6 +6006,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
+        """
+        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        
+        @param request: DeleteCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -5148,6 +6048,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteCdsFileRequest,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
+        """
+        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        
+        @param request: DeleteCdsFileRequest
+        @return: DeleteCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cds_file_with_options(request, runtime)
 
@@ -5155,6 +6061,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteCdsFileRequest,
     ) -> ecd_20200930_models.DeleteCdsFileResponse:
+        """
+        @summary Deletes a file from a cloud disk in Cloud Drive Service.
+        
+        @param request: DeleteCdsFileRequest
+        @return: DeleteCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cds_file_with_options_async(request, runtime)
 
@@ -5163,6 +6075,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCloudDriveGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCloudDriveGroupsResponse:
+        """
+        @summary Deletes team spaces.
+        
+        @param request: DeleteCloudDriveGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudDriveGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -5195,6 +6114,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCloudDriveGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCloudDriveGroupsResponse:
+        """
+        @summary Deletes team spaces.
+        
+        @param request: DeleteCloudDriveGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudDriveGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -5226,6 +6152,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteCloudDriveGroupsRequest,
     ) -> ecd_20200930_models.DeleteCloudDriveGroupsResponse:
+        """
+        @summary Deletes team spaces.
+        
+        @param request: DeleteCloudDriveGroupsRequest
+        @return: DeleteCloudDriveGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cloud_drive_groups_with_options(request, runtime)
 
@@ -5233,6 +6165,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteCloudDriveGroupsRequest,
     ) -> ecd_20200930_models.DeleteCloudDriveGroupsResponse:
+        """
+        @summary Deletes team spaces.
+        
+        @param request: DeleteCloudDriveGroupsRequest
+        @return: DeleteCloudDriveGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cloud_drive_groups_with_options_async(request, runtime)
 
@@ -5241,6 +6179,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCloudDriveUsersResponse:
+        """
+        @summary 删除无影网盘中的终端用户
+        
+        @param request: DeleteCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -5273,6 +6218,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteCloudDriveUsersResponse:
+        """
+        @summary 删除无影网盘中的终端用户
+        
+        @param request: DeleteCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -5304,6 +6256,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteCloudDriveUsersRequest,
     ) -> ecd_20200930_models.DeleteCloudDriveUsersResponse:
+        """
+        @summary 删除无影网盘中的终端用户
+        
+        @param request: DeleteCloudDriveUsersRequest
+        @return: DeleteCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cloud_drive_users_with_options(request, runtime)
 
@@ -5311,6 +6269,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteCloudDriveUsersRequest,
     ) -> ecd_20200930_models.DeleteCloudDriveUsersResponse:
+        """
+        @summary 删除无影网盘中的终端用户
+        
+        @param request: DeleteCloudDriveUsersRequest
+        @return: DeleteCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cloud_drive_users_with_options_async(request, runtime)
 
@@ -5320,9 +6284,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        *   You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        *   If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @summary Releases a desktop group.
+        
+        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
+        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
+        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
         
         @param request: DeleteDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5359,9 +6325,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        *   You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        *   If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @summary Releases a desktop group.
+        
+        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
+        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
+        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
         
         @param request: DeleteDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5397,9 +6365,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDesktopGroupRequest,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        *   You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        *   If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @summary Releases a desktop group.
+        
+        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
+        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
+        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
         
         @param request: DeleteDesktopGroupRequest
         @return: DeleteDesktopGroupResponse
@@ -5412,9 +6382,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDesktopGroupRequest,
     ) -> ecd_20200930_models.DeleteDesktopGroupResponse:
         """
-        Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
-        *   You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
-        *   If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
+        @summary Releases a desktop group.
+        
+        @description    Before you delete a desktop group, make sure that cloud desktops in the desktop group are not connected and no users are authorized to use the cloud desktops.
+        You cannot delete a subscription desktop group when cloud desktops in the group are in valid period.
+        If you delete a pay-as-you-go desktop group, cloud desktops in the group are deleted.
         
         @param request: DeleteDesktopGroupRequest
         @return: DeleteDesktopGroupResponse
@@ -5427,6 +6399,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDesktopsResponse:
+        """
+        @summary Releases pay-as-you-go cloud computers or expired subscription cloud computers.
+        
+        @param request: DeleteDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -5457,6 +6436,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDesktopsResponse:
+        """
+        @summary Releases pay-as-you-go cloud computers or expired subscription cloud computers.
+        
+        @param request: DeleteDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -5486,6 +6472,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteDesktopsRequest,
     ) -> ecd_20200930_models.DeleteDesktopsResponse:
+        """
+        @summary Releases pay-as-you-go cloud computers or expired subscription cloud computers.
+        
+        @param request: DeleteDesktopsRequest
+        @return: DeleteDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_desktops_with_options(request, runtime)
 
@@ -5493,6 +6485,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteDesktopsRequest,
     ) -> ecd_20200930_models.DeleteDesktopsResponse:
+        """
+        @summary Releases pay-as-you-go cloud computers or expired subscription cloud computers.
+        
+        @param request: DeleteDesktopsRequest
+        @return: DeleteDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_desktops_with_options_async(request, runtime)
 
@@ -5502,7 +6500,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDevicesResponse:
         """
-        You can call the operation to manage client devices.
+        @summary Deletes trusted devices.
+        
+        @description You can call the operation to manage client devices.
         
         @param request: DeleteDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5543,7 +6543,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDevicesResponse:
         """
-        You can call the operation to manage client devices.
+        @summary Deletes trusted devices.
+        
+        @description You can call the operation to manage client devices.
         
         @param request: DeleteDevicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5583,7 +6585,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDevicesRequest,
     ) -> ecd_20200930_models.DeleteDevicesResponse:
         """
-        You can call the operation to manage client devices.
+        @summary Deletes trusted devices.
+        
+        @description You can call the operation to manage client devices.
         
         @param request: DeleteDevicesRequest
         @return: DeleteDevicesResponse
@@ -5596,7 +6600,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDevicesRequest,
     ) -> ecd_20200930_models.DeleteDevicesResponse:
         """
-        You can call the operation to manage client devices.
+        @summary Deletes trusted devices.
+        
+        @description You can call the operation to manage client devices.
         
         @param request: DeleteDevicesRequest
         @return: DeleteDevicesResponse
@@ -5610,7 +6616,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
+        @summary Deletes one or more directories.
+        
+        @description You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5647,7 +6655,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
+        @summary Deletes one or more directories.
+        
+        @description You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5683,7 +6693,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDirectoriesRequest,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
+        @summary Deletes one or more directories.
+        
+        @description You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @return: DeleteDirectoriesResponse
@@ -5696,7 +6708,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteDirectoriesRequest,
     ) -> ecd_20200930_models.DeleteDirectoriesResponse:
         """
-        You cannot delete a directory that has a cloud computer or is used by a cloud computer.
+        @summary Deletes one or more directories.
+        
+        @description You cannot delete a directory that has a cloud computer or is used by a cloud computer.
         
         @param request: DeleteDirectoriesRequest
         @return: DeleteDirectoriesResponse
@@ -5709,6 +6723,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteEduRoomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteEduRoomResponse:
+        """
+        @param request: DeleteEduRoomRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEduRoomResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.edu_room_id):
@@ -5739,6 +6758,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteEduRoomRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteEduRoomResponse:
+        """
+        @param request: DeleteEduRoomRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEduRoomResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.edu_room_id):
@@ -5768,6 +6792,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteEduRoomRequest,
     ) -> ecd_20200930_models.DeleteEduRoomResponse:
+        """
+        @param request: DeleteEduRoomRequest
+        @return: DeleteEduRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_edu_room_with_options(request, runtime)
 
@@ -5775,6 +6803,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteEduRoomRequest,
     ) -> ecd_20200930_models.DeleteEduRoomResponse:
+        """
+        @param request: DeleteEduRoomRequest
+        @return: DeleteEduRoomResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_edu_room_with_options_async(request, runtime)
 
@@ -5784,8 +6816,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteImagesResponse:
         """
-        Images include system images and custom images. System images cannot be deleted.
-        *   If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](~~436972~~) operation to delete the cloud computer template before you delete the image.
+        @summary Deletes one or more custom images.
+        
+        @description    Images include system images and custom images. System images cannot be deleted.
+        If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
         
         @param request: DeleteImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5824,8 +6858,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteImagesResponse:
         """
-        Images include system images and custom images. System images cannot be deleted.
-        *   If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](~~436972~~) operation to delete the cloud computer template before you delete the image.
+        @summary Deletes one or more custom images.
+        
+        @description    Images include system images and custom images. System images cannot be deleted.
+        If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
         
         @param request: DeleteImagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5863,8 +6899,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteImagesRequest,
     ) -> ecd_20200930_models.DeleteImagesResponse:
         """
-        Images include system images and custom images. System images cannot be deleted.
-        *   If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](~~436972~~) operation to delete the cloud computer template before you delete the image.
+        @summary Deletes one or more custom images.
+        
+        @description    Images include system images and custom images. System images cannot be deleted.
+        If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
         
         @param request: DeleteImagesRequest
         @return: DeleteImagesResponse
@@ -5877,8 +6915,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteImagesRequest,
     ) -> ecd_20200930_models.DeleteImagesResponse:
         """
-        Images include system images and custom images. System images cannot be deleted.
-        *   If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](~~436972~~) operation to delete the cloud computer template before you delete the image.
+        @summary Deletes one or more custom images.
+        
+        @description    Images include system images and custom images. System images cannot be deleted.
+        If an image that you want to delete is referenced by a cloud computer template, call the [DeleteBundles](https://help.aliyun.com/document_detail/436972.html) operation to delete the cloud computer template before you delete the image.
         
         @param request: DeleteImagesRequest
         @return: DeleteImagesResponse
@@ -5892,8 +6932,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteNASFileSystemsResponse:
         """
-        Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
-        ><warning>If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.></warning>
+        @summary Deletes NAS file systems.
+        
+        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5930,8 +6972,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteNASFileSystemsResponse:
         """
-        Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
-        ><warning>If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.></warning>
+        @summary Deletes NAS file systems.
+        
+        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5967,8 +7011,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteNASFileSystemsRequest,
     ) -> ecd_20200930_models.DeleteNASFileSystemsResponse:
         """
-        Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
-        ><warning>If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.></warning>
+        @summary Deletes NAS file systems.
+        
+        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
         @return: DeleteNASFileSystemsResponse
@@ -5981,8 +7027,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteNASFileSystemsRequest,
     ) -> ecd_20200930_models.DeleteNASFileSystemsResponse:
         """
-        Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
-        ><warning>If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.></warning>
+        @summary Deletes NAS file systems.
+        
+        @description Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+        >Warning: If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
         
         @param request: DeleteNASFileSystemsRequest
         @return: DeleteNASFileSystemsResponse
@@ -5995,6 +7043,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteNetworkPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteNetworkPackagesResponse:
+        """
+        @summary Deletes one or more premium bandwidth plans.
+        
+        @param request: DeleteNetworkPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_package_id):
@@ -6025,6 +7080,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteNetworkPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteNetworkPackagesResponse:
+        """
+        @summary Deletes one or more premium bandwidth plans.
+        
+        @param request: DeleteNetworkPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_package_id):
@@ -6054,6 +7116,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteNetworkPackagesRequest,
     ) -> ecd_20200930_models.DeleteNetworkPackagesResponse:
+        """
+        @summary Deletes one or more premium bandwidth plans.
+        
+        @param request: DeleteNetworkPackagesRequest
+        @return: DeleteNetworkPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_network_packages_with_options(request, runtime)
 
@@ -6061,6 +7129,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeleteNetworkPackagesRequest,
     ) -> ecd_20200930_models.DeleteNetworkPackagesResponse:
+        """
+        @summary Deletes one or more premium bandwidth plans.
+        
+        @param request: DeleteNetworkPackagesRequest
+        @return: DeleteNetworkPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_packages_with_options_async(request, runtime)
 
@@ -6070,9 +7144,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteOfficeSitesResponse:
         """
-        Before you delete an office network, make sure that the following operations are complete:
-        *   All cloud computers in the office network are released.
-        *   The data that you want to retain is backed up.
+        @summary Deletes office networks (formerly workspaces).
+        
+        @description Before you delete an office network, make sure that the following operations are complete:
+        All cloud computers in the office network are released.
+        The data that you want to retain is backed up.
         >  Resources and data on cloud computers in an office network cannot be restored after you delete it. Proceed with caution.
         
         @param request: DeleteOfficeSitesRequest
@@ -6110,9 +7186,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteOfficeSitesResponse:
         """
-        Before you delete an office network, make sure that the following operations are complete:
-        *   All cloud computers in the office network are released.
-        *   The data that you want to retain is backed up.
+        @summary Deletes office networks (formerly workspaces).
+        
+        @description Before you delete an office network, make sure that the following operations are complete:
+        All cloud computers in the office network are released.
+        The data that you want to retain is backed up.
         >  Resources and data on cloud computers in an office network cannot be restored after you delete it. Proceed with caution.
         
         @param request: DeleteOfficeSitesRequest
@@ -6149,9 +7227,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteOfficeSitesRequest,
     ) -> ecd_20200930_models.DeleteOfficeSitesResponse:
         """
-        Before you delete an office network, make sure that the following operations are complete:
-        *   All cloud computers in the office network are released.
-        *   The data that you want to retain is backed up.
+        @summary Deletes office networks (formerly workspaces).
+        
+        @description Before you delete an office network, make sure that the following operations are complete:
+        All cloud computers in the office network are released.
+        The data that you want to retain is backed up.
         >  Resources and data on cloud computers in an office network cannot be restored after you delete it. Proceed with caution.
         
         @param request: DeleteOfficeSitesRequest
@@ -6165,9 +7245,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteOfficeSitesRequest,
     ) -> ecd_20200930_models.DeleteOfficeSitesResponse:
         """
-        Before you delete an office network, make sure that the following operations are complete:
-        *   All cloud computers in the office network are released.
-        *   The data that you want to retain is backed up.
+        @summary Deletes office networks (formerly workspaces).
+        
+        @description Before you delete an office network, make sure that the following operations are complete:
+        All cloud computers in the office network are released.
+        The data that you want to retain is backed up.
         >  Resources and data on cloud computers in an office network cannot be restored after you delete it. Proceed with caution.
         
         @param request: DeleteOfficeSitesRequest
@@ -6181,6 +7263,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeletePolicyGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
+        """
+        @summary Deletes one or more custom policies.
+        
+        @param request: DeletePolicyGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_group_id):
@@ -6211,6 +7300,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeletePolicyGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
+        """
+        @summary Deletes one or more custom policies.
+        
+        @param request: DeletePolicyGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePolicyGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_group_id):
@@ -6240,6 +7336,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeletePolicyGroupsRequest,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
+        """
+        @summary Deletes one or more custom policies.
+        
+        @param request: DeletePolicyGroupsRequest
+        @return: DeletePolicyGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_policy_groups_with_options(request, runtime)
 
@@ -6247,6 +7349,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DeletePolicyGroupsRequest,
     ) -> ecd_20200930_models.DeletePolicyGroupsResponse:
+        """
+        @summary Deletes one or more custom policies.
+        
+        @param request: DeletePolicyGroupsRequest
+        @return: DeletePolicyGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_policy_groups_with_options_async(request, runtime)
 
@@ -6256,7 +7364,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteSnapshotResponse:
         """
-        If the IDs of the snapshots that you specify do not exist, requests are ignored.
+        @summary Deletes one or more snapshots.
+        
+        @description If the IDs of the snapshots that you specify do not exist, requests are ignored.
         
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6293,7 +7403,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteSnapshotResponse:
         """
-        If the IDs of the snapshots that you specify do not exist, requests are ignored.
+        @summary Deletes one or more snapshots.
+        
+        @description If the IDs of the snapshots that you specify do not exist, requests are ignored.
         
         @param request: DeleteSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6329,7 +7441,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteSnapshotRequest,
     ) -> ecd_20200930_models.DeleteSnapshotResponse:
         """
-        If the IDs of the snapshots that you specify do not exist, requests are ignored.
+        @summary Deletes one or more snapshots.
+        
+        @description If the IDs of the snapshots that you specify do not exist, requests are ignored.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -6342,7 +7456,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteSnapshotRequest,
     ) -> ecd_20200930_models.DeleteSnapshotResponse:
         """
-        If the IDs of the snapshots that you specify do not exist, requests are ignored.
+        @summary Deletes one or more snapshots.
+        
+        @description If the IDs of the snapshots that you specify do not exist, requests are ignored.
         
         @param request: DeleteSnapshotRequest
         @return: DeleteSnapshotResponse
@@ -6356,7 +7472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteVirtualMFADeviceResponse:
         """
-        If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
+        @summary Delete virtual multi-factor authentication (MFA) devices.
+        
+        @description If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6393,7 +7511,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DeleteVirtualMFADeviceResponse:
         """
-        If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
+        @summary Delete virtual multi-factor authentication (MFA) devices.
+        
+        @description If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6429,7 +7549,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteVirtualMFADeviceRequest,
     ) -> ecd_20200930_models.DeleteVirtualMFADeviceResponse:
         """
-        If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
+        @summary Delete virtual multi-factor authentication (MFA) devices.
+        
+        @description If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @return: DeleteVirtualMFADeviceResponse
@@ -6442,7 +7564,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DeleteVirtualMFADeviceRequest,
     ) -> ecd_20200930_models.DeleteVirtualMFADeviceResponse:
         """
-        If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
+        @summary Delete virtual multi-factor authentication (MFA) devices.
+        
+        @description If an MFA device is deleted, the device is unbound, reset, and disabled. When an Active Directory (AD) user wants to connect to the cloud desktop that is bound to the MFA device, the AD user must bind a new MFA device.
         
         @param request: DeleteVirtualMFADeviceRequest
         @return: DeleteVirtualMFADeviceResponse
@@ -6455,6 +7579,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeAclEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeAclEntriesResponse:
+        """
+        @summary Queries the details of an access control list (ACL) of an office network or a cloud computer.
+        
+        @param request: DescribeAclEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6491,6 +7622,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeAclEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeAclEntriesResponse:
+        """
+        @summary Queries the details of an access control list (ACL) of an office network or a cloud computer.
+        
+        @param request: DescribeAclEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAclEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -6526,6 +7664,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeAclEntriesRequest,
     ) -> ecd_20200930_models.DescribeAclEntriesResponse:
+        """
+        @summary Queries the details of an access control list (ACL) of an office network or a cloud computer.
+        
+        @param request: DescribeAclEntriesRequest
+        @return: DescribeAclEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_acl_entries_with_options(request, runtime)
 
@@ -6533,6 +7677,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeAclEntriesRequest,
     ) -> ecd_20200930_models.DescribeAclEntriesResponse:
+        """
+        @summary Queries the details of an access control list (ACL) of an office network or a cloud computer.
+        
+        @param request: DescribeAclEntriesRequest
+        @return: DescribeAclEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_acl_entries_with_options_async(request, runtime)
 
@@ -6542,7 +7692,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
         """
-        You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
+        @summary Queries the automatic snapshot policy.
+        
+        @description You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
         
         @param request: DescribeAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6585,7 +7737,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
         """
-        You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
+        @summary Queries the automatic snapshot policy.
+        
+        @description You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
         
         @param request: DescribeAutoSnapshotPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6627,7 +7781,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
         """
-        You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
+        @summary Queries the automatic snapshot policy.
+        
+        @description You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
         
         @param request: DescribeAutoSnapshotPolicyRequest
         @return: DescribeAutoSnapshotPolicyResponse
@@ -6640,7 +7796,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.DescribeAutoSnapshotPolicyResponse:
         """
-        You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
+        @summary Queries the automatic snapshot policy.
+        
+        @description You can view an automatic snapshot policy that is associated with a cloud desktop in the Elastic Desktop Service (EDS) console. To view the automatic snapshot policy, you can go to the EDS console, choose Deployment > Snapshots in the left-side navigation pane, and then view an automatic snapshot policy on the Snapshots page.
         
         @param request: DescribeAutoSnapshotPolicyRequest
         @return: DescribeAutoSnapshotPolicyResponse
@@ -6653,6 +7811,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeBundlesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeBundlesResponse:
+        """
+        @summary Queries the details of cloud computer templates.
+        
+        @param request: DescribeBundlesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBundlesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -6719,6 +7884,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeBundlesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeBundlesResponse:
+        """
+        @summary Queries the details of cloud computer templates.
+        
+        @param request: DescribeBundlesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBundlesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -6784,6 +7956,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeBundlesRequest,
     ) -> ecd_20200930_models.DescribeBundlesResponse:
+        """
+        @summary Queries the details of cloud computer templates.
+        
+        @param request: DescribeBundlesRequest
+        @return: DescribeBundlesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_bundles_with_options(request, runtime)
 
@@ -6791,6 +7969,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeBundlesRequest,
     ) -> ecd_20200930_models.DescribeBundlesResponse:
+        """
+        @summary Queries the details of cloud computer templates.
+        
+        @param request: DescribeBundlesRequest
+        @return: DescribeBundlesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_bundles_with_options_async(request, runtime)
 
@@ -6799,6 +7983,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCdsFileShareLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCdsFileShareLinksResponse:
+        """
+        @summary Queries file sharing links of a cloud disk in Cloud Drive Service.
+        
+        @param request: DescribeCdsFileShareLinksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdsFileShareLinksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -6839,6 +8030,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCdsFileShareLinksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCdsFileShareLinksResponse:
+        """
+        @summary Queries file sharing links of a cloud disk in Cloud Drive Service.
+        
+        @param request: DescribeCdsFileShareLinksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdsFileShareLinksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -6878,6 +8076,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCdsFileShareLinksRequest,
     ) -> ecd_20200930_models.DescribeCdsFileShareLinksResponse:
+        """
+        @summary Queries file sharing links of a cloud disk in Cloud Drive Service.
+        
+        @param request: DescribeCdsFileShareLinksRequest
+        @return: DescribeCdsFileShareLinksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cds_file_share_links_with_options(request, runtime)
 
@@ -6885,6 +8089,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCdsFileShareLinksRequest,
     ) -> ecd_20200930_models.DescribeCdsFileShareLinksResponse:
+        """
+        @summary Queries file sharing links of a cloud disk in Cloud Drive Service.
+        
+        @param request: DescribeCdsFileShareLinksRequest
+        @return: DescribeCdsFileShareLinksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cds_file_share_links_with_options_async(request, runtime)
 
@@ -6893,6 +8103,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCensRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCensResponse:
+        """
+        @summary Queries the details of all Cloud Enterprise Network (CEN) instances within an Alibaba Cloud account.
+        
+        @param request: DescribeCensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCensResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6925,6 +8142,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCensRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCensResponse:
+        """
+        @summary Queries the details of all Cloud Enterprise Network (CEN) instances within an Alibaba Cloud account.
+        
+        @param request: DescribeCensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCensResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6956,6 +8180,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCensRequest,
     ) -> ecd_20200930_models.DescribeCensResponse:
+        """
+        @summary Queries the details of all Cloud Enterprise Network (CEN) instances within an Alibaba Cloud account.
+        
+        @param request: DescribeCensRequest
+        @return: DescribeCensResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cens_with_options(request, runtime)
 
@@ -6963,6 +8193,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCensRequest,
     ) -> ecd_20200930_models.DescribeCensResponse:
+        """
+        @summary Queries the details of all Cloud Enterprise Network (CEN) instances within an Alibaba Cloud account.
+        
+        @param request: DescribeCensRequest
+        @return: DescribeCensResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cens_with_options_async(request, runtime)
 
@@ -6972,7 +8208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
+        @summary Queries the operation logs of end users. For example, the logs record the events that end users start and stop cloud desktops, and disconnect desktop sessions.
+        
+        @description You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7033,7 +8271,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
+        @summary Queries the operation logs of end users. For example, the logs record the events that end users start and stop cloud desktops, and disconnect desktop sessions.
+        
+        @description You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7093,7 +8333,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeClientEventsRequest,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
+        @summary Queries the operation logs of end users. For example, the logs record the events that end users start and stop cloud desktops, and disconnect desktop sessions.
+        
+        @description You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @return: DescribeClientEventsResponse
@@ -7106,7 +8348,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeClientEventsRequest,
     ) -> ecd_20200930_models.DescribeClientEventsResponse:
         """
-        You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
+        @summary Queries the operation logs of end users. For example, the logs record the events that end users start and stop cloud desktops, and disconnect desktop sessions.
+        
+        @description You can audit the operation logs of regular users to improve security. The operation logs record events such as desktop startup, shutdown, and session disconnection.
         
         @param request: DescribeClientEventsRequest
         @return: DescribeClientEventsResponse
@@ -7119,6 +8363,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCloudDriveGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCloudDriveGroupsResponse:
+        """
+        @summary Queries a list of authorized team spaces.
+        
+        @param request: DescribeCloudDriveGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDriveGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -7169,6 +8420,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCloudDriveGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCloudDriveGroupsResponse:
+        """
+        @summary Queries a list of authorized team spaces.
+        
+        @param request: DescribeCloudDriveGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDriveGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -7218,6 +8476,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCloudDriveGroupsRequest,
     ) -> ecd_20200930_models.DescribeCloudDriveGroupsResponse:
+        """
+        @summary Queries a list of authorized team spaces.
+        
+        @param request: DescribeCloudDriveGroupsRequest
+        @return: DescribeCloudDriveGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_drive_groups_with_options(request, runtime)
 
@@ -7225,6 +8489,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCloudDriveGroupsRequest,
     ) -> ecd_20200930_models.DescribeCloudDriveGroupsResponse:
+        """
+        @summary Queries a list of authorized team spaces.
+        
+        @param request: DescribeCloudDriveGroupsRequest
+        @return: DescribeCloudDriveGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_drive_groups_with_options_async(request, runtime)
 
@@ -7233,6 +8503,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCloudDrivePermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCloudDrivePermissionsResponse:
+        """
+        @summary 查询pds用户权限
+        
+        @param request: DescribeCloudDrivePermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDrivePermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -7263,6 +8540,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCloudDrivePermissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCloudDrivePermissionsResponse:
+        """
+        @summary 查询pds用户权限
+        
+        @param request: DescribeCloudDrivePermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDrivePermissionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -7292,6 +8576,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCloudDrivePermissionsRequest,
     ) -> ecd_20200930_models.DescribeCloudDrivePermissionsResponse:
+        """
+        @summary 查询pds用户权限
+        
+        @param request: DescribeCloudDrivePermissionsRequest
+        @return: DescribeCloudDrivePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_drive_permissions_with_options(request, runtime)
 
@@ -7299,6 +8589,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCloudDrivePermissionsRequest,
     ) -> ecd_20200930_models.DescribeCloudDrivePermissionsResponse:
+        """
+        @summary 查询pds用户权限
+        
+        @param request: DescribeCloudDrivePermissionsRequest
+        @return: DescribeCloudDrivePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_drive_permissions_with_options_async(request, runtime)
 
@@ -7307,6 +8603,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCloudDriveUsersResponse:
+        """
+        @summary 查询所有无影网盘终端用户的信息
+        
+        @param request: DescribeCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -7343,6 +8646,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCloudDriveUsersResponse:
+        """
+        @summary 查询所有无影网盘终端用户的信息
+        
+        @param request: DescribeCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -7378,6 +8688,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCloudDriveUsersRequest,
     ) -> ecd_20200930_models.DescribeCloudDriveUsersResponse:
+        """
+        @summary 查询所有无影网盘终端用户的信息
+        
+        @param request: DescribeCloudDriveUsersRequest
+        @return: DescribeCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_drive_users_with_options(request, runtime)
 
@@ -7385,6 +8701,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCloudDriveUsersRequest,
     ) -> ecd_20200930_models.DescribeCloudDriveUsersResponse:
+        """
+        @summary 查询所有无影网盘终端用户的信息
+        
+        @param request: DescribeCloudDriveUsersRequest
+        @return: DescribeCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_drive_users_with_options_async(request, runtime)
 
@@ -7393,6 +8715,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCustomizedListHeadersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCustomizedListHeadersResponse:
+        """
+        @param request: DescribeCustomizedListHeadersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizedListHeadersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang_type):
@@ -7425,6 +8752,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeCustomizedListHeadersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeCustomizedListHeadersResponse:
+        """
+        @param request: DescribeCustomizedListHeadersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizedListHeadersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang_type):
@@ -7456,6 +8788,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCustomizedListHeadersRequest,
     ) -> ecd_20200930_models.DescribeCustomizedListHeadersResponse:
+        """
+        @param request: DescribeCustomizedListHeadersRequest
+        @return: DescribeCustomizedListHeadersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_customized_list_headers_with_options(request, runtime)
 
@@ -7463,6 +8799,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeCustomizedListHeadersRequest,
     ) -> ecd_20200930_models.DescribeCustomizedListHeadersResponse:
+        """
+        @param request: DescribeCustomizedListHeadersRequest
+        @return: DescribeCustomizedListHeadersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_customized_list_headers_with_options_async(request, runtime)
 
@@ -7471,6 +8811,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        """
+        @summary Queries sessions in a desktop group.
+        
+        @param request: DescribeDesktopGroupSessionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopGroupSessionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7513,6 +8860,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        """
+        @summary Queries sessions in a desktop group.
+        
+        @param request: DescribeDesktopGroupSessionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopGroupSessionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7554,6 +8908,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        """
+        @summary Queries sessions in a desktop group.
+        
+        @param request: DescribeDesktopGroupSessionsRequest
+        @return: DescribeDesktopGroupSessionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktop_group_sessions_with_options(request, runtime)
 
@@ -7561,6 +8921,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopGroupSessionsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupSessionsResponse:
+        """
+        @summary Queries sessions in a desktop group.
+        
+        @param request: DescribeDesktopGroupSessionsRequest
+        @return: DescribeDesktopGroupSessionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_group_sessions_with_options_async(request, runtime)
 
@@ -7569,6 +8935,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
+        """
+        @summary Queries a list of desktop groups.
+        
+        @param request: DescribeDesktopGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -7603,6 +8976,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7627,6 +9002,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
+        """
+        @summary Queries a list of desktop groups.
+        
+        @param request: DescribeDesktopGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -7661,6 +9043,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7684,6 +9068,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
+        """
+        @summary Queries a list of desktop groups.
+        
+        @param request: DescribeDesktopGroupsRequest
+        @return: DescribeDesktopGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktop_groups_with_options(request, runtime)
 
@@ -7691,6 +9081,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopGroupsRequest,
     ) -> ecd_20200930_models.DescribeDesktopGroupsResponse:
+        """
+        @summary Queries a list of desktop groups.
+        
+        @param request: DescribeDesktopGroupsRequest
+        @return: DescribeDesktopGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_groups_with_options_async(request, runtime)
 
@@ -7699,6 +9095,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopInfoResponse:
+        """
+        @summary Queries the basic information about cloud computers.
+        
+        @param request: DescribeDesktopInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -7729,6 +9132,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopInfoResponse:
+        """
+        @summary Queries the basic information about cloud computers.
+        
+        @param request: DescribeDesktopInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -7758,6 +9168,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopInfoRequest,
     ) -> ecd_20200930_models.DescribeDesktopInfoResponse:
+        """
+        @summary Queries the basic information about cloud computers.
+        
+        @param request: DescribeDesktopInfoRequest
+        @return: DescribeDesktopInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktop_info_with_options(request, runtime)
 
@@ -7765,6 +9181,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopInfoRequest,
     ) -> ecd_20200930_models.DescribeDesktopInfoResponse:
+        """
+        @summary Queries the basic information about cloud computers.
+        
+        @param request: DescribeDesktopInfoRequest
+        @return: DescribeDesktopInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_info_with_options_async(request, runtime)
 
@@ -7773,6 +9195,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopOversoldGroupResponse:
+        """
+        @summary 查询超卖组
+        
+        @param request: DescribeDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -7805,6 +9234,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopOversoldGroupResponse:
+        """
+        @summary 查询超卖组
+        
+        @param request: DescribeDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -7836,6 +9272,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopOversoldGroupResponse:
+        """
+        @summary 查询超卖组
+        
+        @param request: DescribeDesktopOversoldGroupRequest
+        @return: DescribeDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktop_oversold_group_with_options(request, runtime)
 
@@ -7843,6 +9285,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopOversoldGroupResponse:
+        """
+        @summary 查询超卖组
+        
+        @param request: DescribeDesktopOversoldGroupRequest
+        @return: DescribeDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_oversold_group_with_options_async(request, runtime)
 
@@ -7851,6 +9299,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopOversoldUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserResponse:
+        """
+        @summary 查询超卖组用户
+        
+        @param request: DescribeDesktopOversoldUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopOversoldUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7891,6 +9346,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopOversoldUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserResponse:
+        """
+        @summary 查询超卖组用户
+        
+        @param request: DescribeDesktopOversoldUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopOversoldUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -7930,6 +9392,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldUserRequest,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserResponse:
+        """
+        @summary 查询超卖组用户
+        
+        @param request: DescribeDesktopOversoldUserRequest
+        @return: DescribeDesktopOversoldUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktop_oversold_user_with_options(request, runtime)
 
@@ -7937,6 +9405,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldUserRequest,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserResponse:
+        """
+        @summary 查询超卖组用户
+        
+        @param request: DescribeDesktopOversoldUserRequest
+        @return: DescribeDesktopOversoldUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_oversold_user_with_options_async(request, runtime)
 
@@ -7945,6 +9419,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserGroupResponse:
+        """
+        @summary 查询超卖用户组
+        
+        @param request: DescribeDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -7979,6 +9460,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserGroupResponse:
+        """
+        @summary 查询超卖用户组
+        
+        @param request: DescribeDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -8012,6 +9500,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserGroupResponse:
+        """
+        @summary 查询超卖用户组
+        
+        @param request: DescribeDesktopOversoldUserGroupRequest
+        @return: DescribeDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktop_oversold_user_group_with_options(request, runtime)
 
@@ -8019,6 +9513,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopOversoldUserGroupResponse:
+        """
+        @summary 查询超卖用户组
+        
+        @param request: DescribeDesktopOversoldUserGroupRequest
+        @return: DescribeDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktop_oversold_user_group_with_options_async(request, runtime)
 
@@ -8028,7 +9528,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopSessionsResponse:
         """
-        You can query data within the last 30 days.
+        @summary Queries the detailed session information of a cloud computer.
+        
+        @description You can only query data within the last 30 days.
         
         @param request: DescribeDesktopSessionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8036,6 +9538,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_os_session):
+            query['CheckOsSession'] = request.check_os_session
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.desktop_name):
@@ -8056,6 +9560,8 @@ class Client(OpenApiClient):
             query['SessionStatus'] = request.session_status
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8081,7 +9587,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopSessionsResponse:
         """
-        You can query data within the last 30 days.
+        @summary Queries the detailed session information of a cloud computer.
+        
+        @description You can only query data within the last 30 days.
         
         @param request: DescribeDesktopSessionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8089,6 +9597,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_os_session):
+            query['CheckOsSession'] = request.check_os_session
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.desktop_name):
@@ -8109,6 +9619,8 @@ class Client(OpenApiClient):
             query['SessionStatus'] = request.session_status
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8133,7 +9645,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopSessionsRequest,
     ) -> ecd_20200930_models.DescribeDesktopSessionsResponse:
         """
-        You can query data within the last 30 days.
+        @summary Queries the detailed session information of a cloud computer.
+        
+        @description You can only query data within the last 30 days.
         
         @param request: DescribeDesktopSessionsRequest
         @return: DescribeDesktopSessionsResponse
@@ -8146,7 +9660,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopSessionsRequest,
     ) -> ecd_20200930_models.DescribeDesktopSessionsResponse:
         """
-        You can query data within the last 30 days.
+        @summary Queries the detailed session information of a cloud computer.
+        
+        @description You can only query data within the last 30 days.
         
         @param request: DescribeDesktopSessionsRequest
         @return: DescribeDesktopSessionsResponse
@@ -8160,7 +9676,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopTypesResponse:
         """
-        When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
+        @summary Queries the instance types of cloud computers.
+        
+        @description When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
         
         @param request: DescribeDesktopTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8213,7 +9731,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopTypesResponse:
         """
-        When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
+        @summary Queries the instance types of cloud computers.
+        
+        @description When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
         
         @param request: DescribeDesktopTypesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8265,7 +9785,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopTypesRequest,
     ) -> ecd_20200930_models.DescribeDesktopTypesResponse:
         """
-        When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
+        @summary Queries the instance types of cloud computers.
+        
+        @description When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
         
         @param request: DescribeDesktopTypesRequest
         @return: DescribeDesktopTypesResponse
@@ -8278,7 +9800,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopTypesRequest,
     ) -> ecd_20200930_models.DescribeDesktopTypesResponse:
         """
-        When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
+        @summary Queries the instance types of cloud computers.
+        
+        @description When no values are specified for the `InstanceTypeFamily` and `DesktopTypeId` parameters for a cloud desktop, all types of cloud desktops are queried.
         
         @param request: DescribeDesktopTypesRequest
         @return: DescribeDesktopTypesResponse
@@ -8291,6 +9815,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
+        """
+        @summary Query the details of the cloud desktop.
+        
+        @param request: DescribeDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -8315,8 +9846,12 @@ class Client(OpenApiClient):
             query['ExcludedEndUserId'] = request.excluded_end_user_id
         if not UtilClient.is_unset(request.expired_time):
             query['ExpiredTime'] = request.expired_time
+        if not UtilClient.is_unset(request.fill_resource_group):
+            query['FillResourceGroup'] = request.fill_resource_group
         if not UtilClient.is_unset(request.filter_desktop_group):
             query['FilterDesktopGroup'] = request.filter_desktop_group
+        if not UtilClient.is_unset(request.gpu_instance_group_id):
+            query['GpuInstanceGroupId'] = request.gpu_instance_group_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.image_id):
@@ -8339,12 +9874,18 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
         if not UtilClient.is_unset(request.query_fota_update):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not UtilClient.is_unset(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_name):
@@ -8373,6 +9914,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
+        """
+        @summary Query the details of the cloud desktop.
+        
+        @param request: DescribeDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -8397,8 +9945,12 @@ class Client(OpenApiClient):
             query['ExcludedEndUserId'] = request.excluded_end_user_id
         if not UtilClient.is_unset(request.expired_time):
             query['ExpiredTime'] = request.expired_time
+        if not UtilClient.is_unset(request.fill_resource_group):
+            query['FillResourceGroup'] = request.fill_resource_group
         if not UtilClient.is_unset(request.filter_desktop_group):
             query['FilterDesktopGroup'] = request.filter_desktop_group
+        if not UtilClient.is_unset(request.gpu_instance_group_id):
+            query['GpuInstanceGroupId'] = request.gpu_instance_group_id
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.image_id):
@@ -8421,12 +9973,18 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
         if not UtilClient.is_unset(request.query_fota_update):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not UtilClient.is_unset(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_name):
@@ -8454,6 +10012,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopsRequest,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
+        """
+        @summary Query the details of the cloud desktop.
+        
+        @param request: DescribeDesktopsRequest
+        @return: DescribeDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktops_with_options(request, runtime)
 
@@ -8461,6 +10025,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopsRequest,
     ) -> ecd_20200930_models.DescribeDesktopsResponse:
+        """
+        @summary Query the details of the cloud desktop.
+        
+        @param request: DescribeDesktopsRequest
+        @return: DescribeDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktops_with_options_async(request, runtime)
 
@@ -8469,6 +10039,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
+        """
+        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        
+        @param request: DescribeDesktopsInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopsInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -8507,6 +10084,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDesktopsInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
+        """
+        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        
+        @param request: DescribeDesktopsInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDesktopsInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -8544,6 +10128,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
+        """
+        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        
+        @param request: DescribeDesktopsInGroupRequest
+        @return: DescribeDesktopsInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_desktops_in_group_with_options(request, runtime)
 
@@ -8551,6 +10141,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DescribeDesktopsInGroupResponse:
+        """
+        @summary Queries the cloud computers in a cloud computer pool by billing method.
+        
+        @param request: DescribeDesktopsInGroupRequest
+        @return: DescribeDesktopsInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_desktops_in_group_with_options_async(request, runtime)
 
@@ -8559,6 +10155,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDevicesResponse:
+        """
+        @summary Queries the list of trusted devices.
+        
+        @param request: DescribeDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_domain):
@@ -8603,6 +10206,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDevicesResponse:
+        """
+        @summary Queries the list of trusted devices.
+        
+        @param request: DescribeDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_domain):
@@ -8646,6 +10256,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDevicesRequest,
     ) -> ecd_20200930_models.DescribeDevicesResponse:
+        """
+        @summary Queries the list of trusted devices.
+        
+        @param request: DescribeDevicesRequest
+        @return: DescribeDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_devices_with_options(request, runtime)
 
@@ -8653,6 +10269,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDevicesRequest,
     ) -> ecd_20200930_models.DescribeDevicesResponse:
+        """
+        @summary Queries the list of trusted devices.
+        
+        @param request: DescribeDevicesRequest
+        @return: DescribeDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_devices_with_options_async(request, runtime)
 
@@ -8661,6 +10283,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDirectoriesResponse:
+        """
+        @summary Queries the details of directories.
+        
+        @param request: DescribeDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.directory_id):
@@ -8701,6 +10330,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeDirectoriesResponse:
+        """
+        @summary Queries the details of directories.
+        
+        @param request: DescribeDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.directory_id):
@@ -8740,6 +10376,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDirectoriesRequest,
     ) -> ecd_20200930_models.DescribeDirectoriesResponse:
+        """
+        @summary Queries the details of directories.
+        
+        @param request: DescribeDirectoriesRequest
+        @return: DescribeDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_directories_with_options(request, runtime)
 
@@ -8747,6 +10389,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeDirectoriesRequest,
     ) -> ecd_20200930_models.DescribeDirectoriesResponse:
+        """
+        @summary Queries the details of directories.
+        
+        @param request: DescribeDirectoriesRequest
+        @return: DescribeDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_directories_with_options_async(request, runtime)
 
@@ -8755,6 +10403,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFlowMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
+        """
+        @param request: DescribeFlowMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8795,6 +10448,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFlowMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
+        """
+        @param request: DescribeFlowMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -8834,6 +10492,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeFlowMetricRequest,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
+        """
+        @param request: DescribeFlowMetricRequest
+        @return: DescribeFlowMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_flow_metric_with_options(request, runtime)
 
@@ -8841,6 +10503,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeFlowMetricRequest,
     ) -> ecd_20200930_models.DescribeFlowMetricResponse:
+        """
+        @param request: DescribeFlowMetricRequest
+        @return: DescribeFlowMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_metric_with_options_async(request, runtime)
 
@@ -8850,7 +10516,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFlowStatisticResponse:
         """
-        > You can query only the traffic data in the last 90 days.
+        @summary Queries cloud computer-level traffic statistics of a single office network.
+        
+        @description > You can query only the traffic data in the last 90 days.
         
         @param request: DescribeFlowStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8895,7 +10563,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFlowStatisticResponse:
         """
-        > You can query only the traffic data in the last 90 days.
+        @summary Queries cloud computer-level traffic statistics of a single office network.
+        
+        @description > You can query only the traffic data in the last 90 days.
         
         @param request: DescribeFlowStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8939,7 +10609,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFlowStatisticRequest,
     ) -> ecd_20200930_models.DescribeFlowStatisticResponse:
         """
-        > You can query only the traffic data in the last 90 days.
+        @summary Queries cloud computer-level traffic statistics of a single office network.
+        
+        @description > You can query only the traffic data in the last 90 days.
         
         @param request: DescribeFlowStatisticRequest
         @return: DescribeFlowStatisticResponse
@@ -8952,7 +10624,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFlowStatisticRequest,
     ) -> ecd_20200930_models.DescribeFlowStatisticResponse:
         """
-        > You can query only the traffic data in the last 90 days.
+        @summary Queries cloud computer-level traffic statistics of a single office network.
+        
+        @description > You can query only the traffic data in the last 90 days.
         
         @param request: DescribeFlowStatisticRequest
         @return: DescribeFlowStatisticResponse
@@ -8965,6 +10639,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFotaPendingDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFotaPendingDesktopsResponse:
+        """
+        @summary Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
+        
+        @param request: DescribeFotaPendingDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFotaPendingDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8991,6 +10672,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFotaPendingDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFotaPendingDesktopsResponse:
+        """
+        @summary Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
+        
+        @param request: DescribeFotaPendingDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFotaPendingDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9016,6 +10704,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeFotaPendingDesktopsRequest,
     ) -> ecd_20200930_models.DescribeFotaPendingDesktopsResponse:
+        """
+        @summary Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
+        
+        @param request: DescribeFotaPendingDesktopsRequest
+        @return: DescribeFotaPendingDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fota_pending_desktops_with_options(request, runtime)
 
@@ -9023,6 +10717,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeFotaPendingDesktopsRequest,
     ) -> ecd_20200930_models.DescribeFotaPendingDesktopsResponse:
+        """
+        @summary Queries information about the cloud computers whose images can be and are pending to be updated to the specified version.
+        
+        @param request: DescribeFotaPendingDesktopsRequest
+        @return: DescribeFotaPendingDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fota_pending_desktops_with_options_async(request, runtime)
 
@@ -9031,6 +10731,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFotaTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFotaTasksResponse:
+        """
+        @summary Queries a list of update tasks.
+        
+        @param request: DescribeFotaTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFotaTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fota_status):
@@ -9071,6 +10778,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeFotaTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeFotaTasksResponse:
+        """
+        @summary Queries a list of update tasks.
+        
+        @param request: DescribeFotaTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFotaTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fota_status):
@@ -9110,6 +10824,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeFotaTasksRequest,
     ) -> ecd_20200930_models.DescribeFotaTasksResponse:
+        """
+        @summary Queries a list of update tasks.
+        
+        @param request: DescribeFotaTasksRequest
+        @return: DescribeFotaTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fota_tasks_with_options(request, runtime)
 
@@ -9117,6 +10837,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeFotaTasksRequest,
     ) -> ecd_20200930_models.DescribeFotaTasksResponse:
+        """
+        @summary Queries a list of update tasks.
+        
+        @param request: DescribeFotaTasksRequest
+        @return: DescribeFotaTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fota_tasks_with_options_async(request, runtime)
 
@@ -9125,6 +10851,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeGuestApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeGuestApplicationsResponse:
+        """
+        @summary Queries the applications and their processes of an end user.
+        
+        @param request: DescribeGuestApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -9157,6 +10890,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeGuestApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeGuestApplicationsResponse:
+        """
+        @summary Queries the applications and their processes of an end user.
+        
+        @param request: DescribeGuestApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGuestApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -9188,6 +10928,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeGuestApplicationsRequest,
     ) -> ecd_20200930_models.DescribeGuestApplicationsResponse:
+        """
+        @summary Queries the applications and their processes of an end user.
+        
+        @param request: DescribeGuestApplicationsRequest
+        @return: DescribeGuestApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_guest_applications_with_options(request, runtime)
 
@@ -9195,6 +10941,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeGuestApplicationsRequest,
     ) -> ecd_20200930_models.DescribeGuestApplicationsResponse:
+        """
+        @summary Queries the applications and their processes of an end user.
+        
+        @param request: DescribeGuestApplicationsRequest
+        @return: DescribeGuestApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_guest_applications_with_options_async(request, runtime)
 
@@ -9203,6 +10955,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeImageModifiedRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeImageModifiedRecordsResponse:
+        """
+        @summary Queries the image modification records of cloud computers.
+        
+        @param request: DescribeImageModifiedRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageModifiedRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -9237,6 +10996,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeImageModifiedRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeImageModifiedRecordsResponse:
+        """
+        @summary Queries the image modification records of cloud computers.
+        
+        @param request: DescribeImageModifiedRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageModifiedRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -9270,6 +11036,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeImageModifiedRecordsRequest,
     ) -> ecd_20200930_models.DescribeImageModifiedRecordsResponse:
+        """
+        @summary Queries the image modification records of cloud computers.
+        
+        @param request: DescribeImageModifiedRecordsRequest
+        @return: DescribeImageModifiedRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_modified_records_with_options(request, runtime)
 
@@ -9277,6 +11049,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeImageModifiedRecordsRequest,
     ) -> ecd_20200930_models.DescribeImageModifiedRecordsResponse:
+        """
+        @summary Queries the image modification records of cloud computers.
+        
+        @param request: DescribeImageModifiedRecordsRequest
+        @return: DescribeImageModifiedRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_modified_records_with_options_async(request, runtime)
 
@@ -9286,7 +11064,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeImagePermissionResponse:
         """
-        You can call the [ModifyImagePermission](~~436982~~) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
+        @summary Queries the recipient Alibaba Cloud accounts with which an image is shared.
+        
+        @description You can call the [ModifyImagePermission](https://help.aliyun.com/document_detail/436982.html) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
         
         @param request: DescribeImagePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9323,7 +11103,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeImagePermissionResponse:
         """
-        You can call the [ModifyImagePermission](~~436982~~) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
+        @summary Queries the recipient Alibaba Cloud accounts with which an image is shared.
+        
+        @description You can call the [ModifyImagePermission](https://help.aliyun.com/document_detail/436982.html) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
         
         @param request: DescribeImagePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9359,7 +11141,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeImagePermissionRequest,
     ) -> ecd_20200930_models.DescribeImagePermissionResponse:
         """
-        You can call the [ModifyImagePermission](~~436982~~) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
+        @summary Queries the recipient Alibaba Cloud accounts with which an image is shared.
+        
+        @description You can call the [ModifyImagePermission](https://help.aliyun.com/document_detail/436982.html) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
         
         @param request: DescribeImagePermissionRequest
         @return: DescribeImagePermissionResponse
@@ -9372,7 +11156,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeImagePermissionRequest,
     ) -> ecd_20200930_models.DescribeImagePermissionResponse:
         """
-        You can call the [ModifyImagePermission](~~436982~~) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
+        @summary Queries the recipient Alibaba Cloud accounts with which an image is shared.
+        
+        @description You can call the [ModifyImagePermission](https://help.aliyun.com/document_detail/436982.html) operation to share an image with another cloud computer user or unshare an image. You can call the DescribeImagePermission operation to obtain the Alibaba Cloud accounts with which the current image is shared.
         
         @param request: DescribeImagePermissionRequest
         @return: DescribeImagePermissionResponse
@@ -9385,6 +11171,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeImagesResponse:
+        """
+        @summary Queries the information about images.
+        
+        @param request: DescribeImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_instance_type):
@@ -9441,6 +11234,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeImagesResponse:
+        """
+        @summary Queries the information about images.
+        
+        @param request: DescribeImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_instance_type):
@@ -9496,6 +11296,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeImagesRequest,
     ) -> ecd_20200930_models.DescribeImagesResponse:
+        """
+        @summary Queries the information about images.
+        
+        @param request: DescribeImagesRequest
+        @return: DescribeImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_images_with_options(request, runtime)
 
@@ -9503,6 +11309,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeImagesRequest,
     ) -> ecd_20200930_models.DescribeImagesResponse:
+        """
+        @summary Queries the information about images.
+        
+        @param request: DescribeImagesRequest
+        @return: DescribeImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_images_with_options_async(request, runtime)
 
@@ -9512,8 +11324,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeInvocationsResponse:
         """
-        After you run a command, it may not succeed. You can call this operation to query the execution result.
-        *   You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
+        @description    After you run a command, it may not succeed. You can call this operation to query the execution result.
+        You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9568,8 +11380,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeInvocationsResponse:
         """
-        After you run a command, it may not succeed. You can call this operation to query the execution result.
-        *   You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
+        @description    After you run a command, it may not succeed. You can call this operation to query the execution result.
+        You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9623,8 +11435,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeInvocationsRequest,
     ) -> ecd_20200930_models.DescribeInvocationsResponse:
         """
-        After you run a command, it may not succeed. You can call this operation to query the execution result.
-        *   You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
+        @description    After you run a command, it may not succeed. You can call this operation to query the execution result.
+        You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -9637,8 +11449,8 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeInvocationsRequest,
     ) -> ecd_20200930_models.DescribeInvocationsResponse:
         """
-        After you run a command, it may not succeed. You can call this operation to query the execution result.
-        *   You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
+        @description    After you run a command, it may not succeed. You can call this operation to query the execution result.
+        You can query the information about execution in the last two weeks. A maximum of 100,000 lines of execution information can be retained.
         
         @param request: DescribeInvocationsRequest
         @return: DescribeInvocationsResponse
@@ -9651,6 +11463,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeKmsKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeKmsKeysResponse:
+        """
+        @summary Queries Key Management Service (KMS) keys of users. The first time you call this operation, you can try to create a service key for Elastic Desktop Service (EDS) and call the operation to return results.
+        
+        @param request: DescribeKmsKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKmsKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -9679,6 +11498,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeKmsKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeKmsKeysResponse:
+        """
+        @summary Queries Key Management Service (KMS) keys of users. The first time you call this operation, you can try to create a service key for Elastic Desktop Service (EDS) and call the operation to return results.
+        
+        @param request: DescribeKmsKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKmsKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -9706,6 +11532,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeKmsKeysRequest,
     ) -> ecd_20200930_models.DescribeKmsKeysResponse:
+        """
+        @summary Queries Key Management Service (KMS) keys of users. The first time you call this operation, you can try to create a service key for Elastic Desktop Service (EDS) and call the operation to return results.
+        
+        @param request: DescribeKmsKeysRequest
+        @return: DescribeKmsKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_kms_keys_with_options(request, runtime)
 
@@ -9713,6 +11545,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeKmsKeysRequest,
     ) -> ecd_20200930_models.DescribeKmsKeysResponse:
+        """
+        @summary Queries Key Management Service (KMS) keys of users. The first time you call this operation, you can try to create a service key for Elastic Desktop Service (EDS) and call the operation to return results.
+        
+        @param request: DescribeKmsKeysRequest
+        @return: DescribeKmsKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_kms_keys_with_options_async(request, runtime)
 
@@ -9721,6 +11559,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
+        """
+        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        
+        @param request: DescribeNASFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNASFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -9759,6 +11604,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
+        """
+        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        
+        @param request: DescribeNASFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNASFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_system_id):
@@ -9796,6 +11648,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
+        """
+        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        
+        @param request: DescribeNASFileSystemsRequest
+        @return: DescribeNASFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_nasfile_systems_with_options(request, runtime)
 
@@ -9803,6 +11661,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeNASFileSystemsRequest,
     ) -> ecd_20200930_models.DescribeNASFileSystemsResponse:
+        """
+        @summary Queries the information about Apsara File Storage NAS (NAS) file systems.
+        
+        @param request: DescribeNASFileSystemsRequest
+        @return: DescribeNASFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nasfile_systems_with_options_async(request, runtime)
 
@@ -9811,6 +11675,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeNetworkPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeNetworkPackagesResponse:
+        """
+        @summary Queries the details of one or more premium bandwidth plans.
+        
+        @param request: DescribeNetworkPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.internet_charge_type):
@@ -9847,6 +11718,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeNetworkPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeNetworkPackagesResponse:
+        """
+        @summary Queries the details of one or more premium bandwidth plans.
+        
+        @param request: DescribeNetworkPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.internet_charge_type):
@@ -9882,6 +11760,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeNetworkPackagesRequest,
     ) -> ecd_20200930_models.DescribeNetworkPackagesResponse:
+        """
+        @summary Queries the details of one or more premium bandwidth plans.
+        
+        @param request: DescribeNetworkPackagesRequest
+        @return: DescribeNetworkPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_network_packages_with_options(request, runtime)
 
@@ -9889,6 +11773,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeNetworkPackagesRequest,
     ) -> ecd_20200930_models.DescribeNetworkPackagesResponse:
+        """
+        @summary Queries the details of one or more premium bandwidth plans.
+        
+        @param request: DescribeNetworkPackagesRequest
+        @return: DescribeNetworkPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_network_packages_with_options_async(request, runtime)
 
@@ -9897,6 +11787,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeOfficeSitesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeOfficeSitesResponse:
+        """
+        @summary Queries office network properties, including office network ID, name, status, and creation time.
+        
+        @param request: DescribeOfficeSitesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOfficeSitesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -9935,6 +11832,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeOfficeSitesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeOfficeSitesResponse:
+        """
+        @summary Queries office network properties, including office network ID, name, status, and creation time.
+        
+        @param request: DescribeOfficeSitesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOfficeSitesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -9972,6 +11876,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeOfficeSitesRequest,
     ) -> ecd_20200930_models.DescribeOfficeSitesResponse:
+        """
+        @summary Queries office network properties, including office network ID, name, status, and creation time.
+        
+        @param request: DescribeOfficeSitesRequest
+        @return: DescribeOfficeSitesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_office_sites_with_options(request, runtime)
 
@@ -9979,6 +11889,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeOfficeSitesRequest,
     ) -> ecd_20200930_models.DescribeOfficeSitesResponse:
+        """
+        @summary Queries office network properties, including office network ID, name, status, and creation time.
+        
+        @param request: DescribeOfficeSitesRequest
+        @return: DescribeOfficeSitesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_office_sites_with_options_async(request, runtime)
 
@@ -9987,6 +11903,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePolicyGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
+        """
+        @summary Queries the information about one or more policies.
+        
+        @param request: DescribePolicyGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -10023,6 +11946,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePolicyGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
+        """
+        @summary Queries the information about one or more policies.
+        
+        @param request: DescribePolicyGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePolicyGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -10058,6 +11988,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePolicyGroupsRequest,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
+        """
+        @summary Queries the information about one or more policies.
+        
+        @param request: DescribePolicyGroupsRequest
+        @return: DescribePolicyGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_policy_groups_with_options(request, runtime)
 
@@ -10065,6 +12001,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePolicyGroupsRequest,
     ) -> ecd_20200930_models.DescribePolicyGroupsResponse:
+        """
+        @summary Queries the information about one or more policies.
+        
+        @param request: DescribePolicyGroupsRequest
+        @return: DescribePolicyGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_policy_groups_with_options_async(request, runtime)
 
@@ -10074,12 +12016,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        ## Usage notes
+        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        
+        @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
-        *   If you set ResourceType to OfficeSite, you must specify InstanceType.
-        *   If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
-        *   If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
-        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](~~188609~~).
+        If you set ResourceType to OfficeSite, you must specify InstanceType.
+        If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+        If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](https://help.aliyun.com/document_detail/188609.html).
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10176,12 +12120,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        ## Usage notes
+        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        
+        @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
-        *   If you set ResourceType to OfficeSite, you must specify InstanceType.
-        *   If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
-        *   If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
-        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](~~188609~~).
+        If you set ResourceType to OfficeSite, you must specify InstanceType.
+        If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+        If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](https://help.aliyun.com/document_detail/188609.html).
         
         @param request: DescribePriceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10277,12 +12223,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceRequest,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        ## Usage notes
+        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        
+        @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
-        *   If you set ResourceType to OfficeSite, you must specify InstanceType.
-        *   If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
-        *   If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
-        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](~~188609~~).
+        If you set ResourceType to OfficeSite, you must specify InstanceType.
+        If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+        If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](https://help.aliyun.com/document_detail/188609.html).
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -10295,12 +12243,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceRequest,
     ) -> ecd_20200930_models.DescribePriceResponse:
         """
-        ## Usage notes
+        @summary Queries the price information of desktop resources in Elastic Desktop Service (EDS).
+        
+        @description ## Usage notes
         The request parameters vary based on the type of desktop resources whose price you want to query. Take note of the following items:
-        *   If you set ResourceType to OfficeSite, you must specify InstanceType.
-        *   If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
-        *   If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
-        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](~~188609~~).
+        If you set ResourceType to OfficeSite, you must specify InstanceType.
+        If you set ResourceType to Bandwidth, the pay-by-data-transfer metering method is used for network billing.
+        If you set ResourceType to Desktop, you must specify InstanceType, RootDiskSizeGib, and UserDiskSizeGib. You can specify OsType, PeriodUnit, Period, and Amount based on your business requirements.
+        > Before you call this operation to query the prices of cloud desktops by setting ResourceType to Desktop, you must know the desktop types and disk sizes that EDS provides. The disk sizes vary based on the desktop types. For more information, see [Cloud desktop types](https://help.aliyun.com/document_detail/188609.html).
         
         @param request: DescribePriceRequest
         @return: DescribePriceResponse
@@ -10313,6 +12263,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于创建超卖组
+        
+        @param request: DescribePriceForCreateDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceForCreateDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -10353,6 +12310,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于创建超卖组
+        
+        @param request: DescribePriceForCreateDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceForCreateDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -10392,6 +12356,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于创建超卖组
+        
+        @param request: DescribePriceForCreateDesktopOversoldGroupRequest
+        @return: DescribePriceForCreateDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_for_create_desktop_oversold_group_with_options(request, runtime)
 
@@ -10399,6 +12369,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.DescribePriceForCreateDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于创建超卖组
+        
+        @param request: DescribePriceForCreateDesktopOversoldGroupRequest
+        @return: DescribePriceForCreateDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_for_create_desktop_oversold_group_with_options_async(request, runtime)
 
@@ -10407,6 +12383,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 查询价格用于变配超卖组
+        
+        @param request: DescribePriceForModifyDesktopOversoldGroupSaleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceForModifyDesktopOversoldGroupSaleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -10439,6 +12422,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 查询价格用于变配超卖组
+        
+        @param request: DescribePriceForModifyDesktopOversoldGroupSaleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceForModifyDesktopOversoldGroupSaleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -10470,6 +12460,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleRequest,
     ) -> ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 查询价格用于变配超卖组
+        
+        @param request: DescribePriceForModifyDesktopOversoldGroupSaleRequest
+        @return: DescribePriceForModifyDesktopOversoldGroupSaleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_for_modify_desktop_oversold_group_sale_with_options(request, runtime)
 
@@ -10477,6 +12473,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleRequest,
     ) -> ecd_20200930_models.DescribePriceForModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 查询价格用于变配超卖组
+        
+        @param request: DescribePriceForModifyDesktopOversoldGroupSaleRequest
+        @return: DescribePriceForModifyDesktopOversoldGroupSaleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_for_modify_desktop_oversold_group_sale_with_options_async(request, runtime)
 
@@ -10485,6 +12487,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于续费超卖组
+        
+        @param request: DescribePriceForRenewDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceForRenewDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.oversold_group_id):
@@ -10517,6 +12526,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于续费超卖组
+        
+        @param request: DescribePriceForRenewDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceForRenewDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.oversold_group_id):
@@ -10548,6 +12564,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于续费超卖组
+        
+        @param request: DescribePriceForRenewDesktopOversoldGroupRequest
+        @return: DescribePriceForRenewDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_for_renew_desktop_oversold_group_with_options(request, runtime)
 
@@ -10555,6 +12577,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.DescribePriceForRenewDesktopOversoldGroupResponse:
+        """
+        @summary 查询价格用于续费超卖组
+        
+        @param request: DescribePriceForRenewDesktopOversoldGroupRequest
+        @return: DescribePriceForRenewDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_for_renew_desktop_oversold_group_with_options_async(request, runtime)
 
@@ -10563,6 +12591,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
+        """
+        @param request: DescribeRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -10607,6 +12640,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRecordingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
+        """
+        @param request: DescribeRecordingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -10650,6 +12688,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeRecordingsRequest,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
+        """
+        @param request: DescribeRecordingsRequest
+        @return: DescribeRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_recordings_with_options(request, runtime)
 
@@ -10657,6 +12699,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeRecordingsRequest,
     ) -> ecd_20200930_models.DescribeRecordingsResponse:
+        """
+        @param request: DescribeRecordingsRequest
+        @return: DescribeRecordingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_recordings_with_options_async(request, runtime)
 
@@ -10665,6 +12711,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRegionsResponse:
+        """
+        @summary Queries the Alibaba Cloud regions that are available for Elastic Desktop Service (EDS).
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10695,6 +12748,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeRegionsResponse:
+        """
+        @summary Queries the Alibaba Cloud regions that are available for Elastic Desktop Service (EDS).
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10724,6 +12784,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeRegionsRequest,
     ) -> ecd_20200930_models.DescribeRegionsResponse:
+        """
+        @summary Queries the Alibaba Cloud regions that are available for Elastic Desktop Service (EDS).
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -10731,6 +12797,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeRegionsRequest,
     ) -> ecd_20200930_models.DescribeRegionsResponse:
+        """
+        @summary Queries the Alibaba Cloud regions that are available for Elastic Desktop Service (EDS).
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -10740,8 +12812,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeSessionStatisticResponse:
         """
-        This is a central operation and can be called only by using services in the China (Shanghai) region.
-        *   You can query session statistics for the past hour.
+        @summary Queries the session statistics of a region.
+        
+        @description    This is a central operation and can be called only by using services in the China (Shanghai) region.
+        You can query session statistics for the past hour.
         
         @param request: DescribeSessionStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10786,8 +12860,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeSessionStatisticResponse:
         """
-        This is a central operation and can be called only by using services in the China (Shanghai) region.
-        *   You can query session statistics for the past hour.
+        @summary Queries the session statistics of a region.
+        
+        @description    This is a central operation and can be called only by using services in the China (Shanghai) region.
+        You can query session statistics for the past hour.
         
         @param request: DescribeSessionStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10831,8 +12907,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeSessionStatisticRequest,
     ) -> ecd_20200930_models.DescribeSessionStatisticResponse:
         """
-        This is a central operation and can be called only by using services in the China (Shanghai) region.
-        *   You can query session statistics for the past hour.
+        @summary Queries the session statistics of a region.
+        
+        @description    This is a central operation and can be called only by using services in the China (Shanghai) region.
+        You can query session statistics for the past hour.
         
         @param request: DescribeSessionStatisticRequest
         @return: DescribeSessionStatisticResponse
@@ -10845,8 +12923,10 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeSessionStatisticRequest,
     ) -> ecd_20200930_models.DescribeSessionStatisticResponse:
         """
-        This is a central operation and can be called only by using services in the China (Shanghai) region.
-        *   You can query session statistics for the past hour.
+        @summary Queries the session statistics of a region.
+        
+        @description    This is a central operation and can be called only by using services in the China (Shanghai) region.
+        You can query session statistics for the past hour.
         
         @param request: DescribeSessionStatisticRequest
         @return: DescribeSessionStatisticResponse
@@ -10859,6 +12939,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.creator):
@@ -10909,6 +12996,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.creator):
@@ -10958,6 +13052,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeSnapshotsRequest,
     ) -> ecd_20200930_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @return: DescribeSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_snapshots_with_options(request, runtime)
 
@@ -10965,6 +13065,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeSnapshotsRequest,
     ) -> ecd_20200930_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries the snapshots that are created based on a cloud computer and the details of the snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @return: DescribeSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
 
@@ -10973,6 +13079,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUserConnectTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUserConnectTimeResponse:
+        """
+        @summary 查询超卖组中用户连接数据
+        
+        @param request: DescribeUserConnectTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserConnectTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -11015,6 +13128,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUserConnectTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUserConnectTimeResponse:
+        """
+        @summary 查询超卖组中用户连接数据
+        
+        @param request: DescribeUserConnectTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserConnectTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -11056,6 +13176,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUserConnectTimeRequest,
     ) -> ecd_20200930_models.DescribeUserConnectTimeResponse:
+        """
+        @summary 查询超卖组中用户连接数据
+        
+        @param request: DescribeUserConnectTimeRequest
+        @return: DescribeUserConnectTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_connect_time_with_options(request, runtime)
 
@@ -11063,6 +13189,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUserConnectTimeRequest,
     ) -> ecd_20200930_models.DescribeUserConnectTimeResponse:
+        """
+        @summary 查询超卖组中用户连接数据
+        
+        @param request: DescribeUserConnectTimeRequest
+        @return: DescribeUserConnectTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_connect_time_with_options_async(request, runtime)
 
@@ -11071,6 +13203,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUserConnectionRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUserConnectionRecordsResponse:
+        """
+        @summary Queries the connection records of an authorized user to cloud computers in a cloud computer pool.
+        
+        @param request: DescribeUserConnectionRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserConnectionRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connect_duration_from):
@@ -11123,6 +13262,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUserConnectionRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUserConnectionRecordsResponse:
+        """
+        @summary Queries the connection records of an authorized user to cloud computers in a cloud computer pool.
+        
+        @param request: DescribeUserConnectionRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserConnectionRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connect_duration_from):
@@ -11174,6 +13320,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUserConnectionRecordsRequest,
     ) -> ecd_20200930_models.DescribeUserConnectionRecordsResponse:
+        """
+        @summary Queries the connection records of an authorized user to cloud computers in a cloud computer pool.
+        
+        @param request: DescribeUserConnectionRecordsRequest
+        @return: DescribeUserConnectionRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_connection_records_with_options(request, runtime)
 
@@ -11181,6 +13333,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUserConnectionRecordsRequest,
     ) -> ecd_20200930_models.DescribeUserConnectionRecordsResponse:
+        """
+        @summary Queries the connection records of an authorized user to cloud computers in a cloud computer pool.
+        
+        @param request: DescribeUserConnectionRecordsRequest
+        @return: DescribeUserConnectionRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_connection_records_with_options_async(request, runtime)
 
@@ -11189,6 +13347,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUserProfilePathRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUserProfilePathRulesResponse:
+        """
+        @summary Queries the configurations of the user profile management (UPM) directory blacklist and whitelist.
+        
+        @param request: DescribeUserProfilePathRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserProfilePathRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -11221,6 +13386,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUserProfilePathRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUserProfilePathRulesResponse:
+        """
+        @summary Queries the configurations of the user profile management (UPM) directory blacklist and whitelist.
+        
+        @param request: DescribeUserProfilePathRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserProfilePathRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -11252,6 +13424,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUserProfilePathRulesRequest,
     ) -> ecd_20200930_models.DescribeUserProfilePathRulesResponse:
+        """
+        @summary Queries the configurations of the user profile management (UPM) directory blacklist and whitelist.
+        
+        @param request: DescribeUserProfilePathRulesRequest
+        @return: DescribeUserProfilePathRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_profile_path_rules_with_options(request, runtime)
 
@@ -11259,6 +13437,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUserProfilePathRulesRequest,
     ) -> ecd_20200930_models.DescribeUserProfilePathRulesResponse:
+        """
+        @summary Queries the configurations of the user profile management (UPM) directory blacklist and whitelist.
+        
+        @param request: DescribeUserProfilePathRulesRequest
+        @return: DescribeUserProfilePathRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_profile_path_rules_with_options_async(request, runtime)
 
@@ -11267,6 +13451,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUsersInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
+        """
+        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        
+        @param request: DescribeUsersInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsersInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connect_state):
@@ -11313,6 +13504,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUsersInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
+        """
+        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        
+        @param request: DescribeUsersInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsersInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.connect_state):
@@ -11358,6 +13556,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUsersInGroupRequest,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
+        """
+        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        
+        @param request: DescribeUsersInGroupRequest
+        @return: DescribeUsersInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_users_in_group_with_options(request, runtime)
 
@@ -11365,6 +13569,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUsersInGroupRequest,
     ) -> ecd_20200930_models.DescribeUsersInGroupResponse:
+        """
+        @summary Queries the information about authorized users in a cloud computer pool, including the usernames, email addresses, mobile numbers, and cloud computer IDs.
+        
+        @param request: DescribeUsersInGroupRequest
+        @return: DescribeUsersInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_users_in_group_with_options_async(request, runtime)
 
@@ -11373,6 +13583,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUsersPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUsersPasswordResponse:
+        """
+        @summary Queries the passwords of authorized users of a cloud computer.
+        
+        @param request: DescribeUsersPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsersPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -11403,6 +13620,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeUsersPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeUsersPasswordResponse:
+        """
+        @summary Queries the passwords of authorized users of a cloud computer.
+        
+        @param request: DescribeUsersPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsersPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -11432,6 +13656,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUsersPasswordRequest,
     ) -> ecd_20200930_models.DescribeUsersPasswordResponse:
+        """
+        @summary Queries the passwords of authorized users of a cloud computer.
+        
+        @param request: DescribeUsersPasswordRequest
+        @return: DescribeUsersPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_users_password_with_options(request, runtime)
 
@@ -11439,6 +13669,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeUsersPasswordRequest,
     ) -> ecd_20200930_models.DescribeUsersPasswordResponse:
+        """
+        @summary Queries the passwords of authorized users of a cloud computer.
+        
+        @param request: DescribeUsersPasswordRequest
+        @return: DescribeUsersPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_users_password_with_options_async(request, runtime)
 
@@ -11447,6 +13683,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeVirtualMFADevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+        
+        @param request: DescribeVirtualMFADevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVirtualMFADevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
@@ -11483,6 +13726,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeVirtualMFADevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+        
+        @param request: DescribeVirtualMFADevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVirtualMFADevicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
@@ -11518,6 +13768,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeVirtualMFADevicesRequest,
     ) -> ecd_20200930_models.DescribeVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+        
+        @param request: DescribeVirtualMFADevicesRequest
+        @return: DescribeVirtualMFADevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_virtual_mfadevices_with_options(request, runtime)
 
@@ -11525,6 +13781,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeVirtualMFADevicesRequest,
     ) -> ecd_20200930_models.DescribeVirtualMFADevicesResponse:
+        """
+        @summary Queries multi-factor authentication (MFA) devices that are bound to an Active Directory (AD) account.
+        
+        @param request: DescribeVirtualMFADevicesRequest
+        @return: DescribeVirtualMFADevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_virtual_mfadevices_with_options_async(request, runtime)
 
@@ -11533,6 +13795,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region in which Elastic Desktop Service is supported.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -11563,6 +13832,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region in which Elastic Desktop Service is supported.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -11592,6 +13868,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeZonesRequest,
     ) -> ecd_20200930_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region in which Elastic Desktop Service is supported.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -11599,6 +13881,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DescribeZonesRequest,
     ) -> ecd_20200930_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region in which Elastic Desktop Service is supported.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -11607,6 +13895,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DetachCenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DetachCenResponse:
+        """
+        @summary Unbinds an advanced office network from a CEN instance.
+        
+        @param request: DetachCenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachCenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.office_site_id):
@@ -11637,6 +13932,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DetachCenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DetachCenResponse:
+        """
+        @summary Unbinds an advanced office network from a CEN instance.
+        
+        @param request: DetachCenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachCenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.office_site_id):
@@ -11666,6 +13968,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DetachCenRequest,
     ) -> ecd_20200930_models.DetachCenResponse:
+        """
+        @summary Unbinds an advanced office network from a CEN instance.
+        
+        @param request: DetachCenRequest
+        @return: DetachCenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_cen_with_options(request, runtime)
 
@@ -11673,6 +13981,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DetachCenRequest,
     ) -> ecd_20200930_models.DetachCenResponse:
+        """
+        @summary Unbinds an advanced office network from a CEN instance.
+        
+        @param request: DetachCenRequest
+        @return: DetachCenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_cen_with_options_async(request, runtime)
 
@@ -11681,6 +13995,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DetachEndUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DetachEndUserResponse:
+        """
+        @summary Unbinds a hardware client from a user.
+        
+        @param request: DetachEndUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachEndUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_domain):
@@ -11719,6 +14040,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DetachEndUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DetachEndUserResponse:
+        """
+        @summary Unbinds a hardware client from a user.
+        
+        @param request: DetachEndUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachEndUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ad_domain):
@@ -11756,6 +14084,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DetachEndUserRequest,
     ) -> ecd_20200930_models.DetachEndUserResponse:
+        """
+        @summary Unbinds a hardware client from a user.
+        
+        @param request: DetachEndUserRequest
+        @return: DetachEndUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_end_user_with_options(request, runtime)
 
@@ -11763,6 +14097,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DetachEndUserRequest,
     ) -> ecd_20200930_models.DetachEndUserResponse:
+        """
+        @summary Unbinds a hardware client from a user.
+        
+        @param request: DetachEndUserRequest
+        @return: DetachEndUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_end_user_with_options_async(request, runtime)
 
@@ -11771,6 +14111,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
+        """
+        @summary Disables cloud desktops in a desktop group.
+        
+        @param request: DisableDesktopsInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDesktopsInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -11803,6 +14150,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
+        """
+        @summary Disables cloud desktops in a desktop group.
+        
+        @param request: DisableDesktopsInGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDesktopsInGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -11834,6 +14188,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
+        """
+        @summary Disables cloud desktops in a desktop group.
+        
+        @param request: DisableDesktopsInGroupRequest
+        @return: DisableDesktopsInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_desktops_in_group_with_options(request, runtime)
 
@@ -11841,6 +14201,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DisableDesktopsInGroupRequest,
     ) -> ecd_20200930_models.DisableDesktopsInGroupResponse:
+        """
+        @summary Disables cloud desktops in a desktop group.
+        
+        @param request: DisableDesktopsInGroupRequest
+        @return: DisableDesktopsInGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_desktops_in_group_with_options_async(request, runtime)
 
@@ -11849,6 +14215,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        """
+        @summary Disconnects from desktop sessions.
+        
+        @param request: DisconnectDesktopSessionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisconnectDesktopSessionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pre_check):
@@ -11881,6 +14254,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        """
+        @summary Disconnects from desktop sessions.
+        
+        @param request: DisconnectDesktopSessionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisconnectDesktopSessionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pre_check):
@@ -11912,6 +14292,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
     ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        """
+        @summary Disconnects from desktop sessions.
+        
+        @param request: DisconnectDesktopSessionsRequest
+        @return: DisconnectDesktopSessionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disconnect_desktop_sessions_with_options(request, runtime)
 
@@ -11919,6 +14305,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DisconnectDesktopSessionsRequest,
     ) -> ecd_20200930_models.DisconnectDesktopSessionsResponse:
+        """
+        @summary Disconnects from desktop sessions.
+        
+        @param request: DisconnectDesktopSessionsRequest
+        @return: DisconnectDesktopSessionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disconnect_desktop_sessions_with_options_async(request, runtime)
 
@@ -11927,6 +14319,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DissociateNetworkPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DissociateNetworkPackageResponse:
+        """
+        @summary Unbinds a premium bandwidth plan from an office network.
+        
+        @param request: DissociateNetworkPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateNetworkPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_package_id):
@@ -11957,6 +14356,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.DissociateNetworkPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.DissociateNetworkPackageResponse:
+        """
+        @summary Unbinds a premium bandwidth plan from an office network.
+        
+        @param request: DissociateNetworkPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DissociateNetworkPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_package_id):
@@ -11986,6 +14392,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DissociateNetworkPackageRequest,
     ) -> ecd_20200930_models.DissociateNetworkPackageResponse:
+        """
+        @summary Unbinds a premium bandwidth plan from an office network.
+        
+        @param request: DissociateNetworkPackageRequest
+        @return: DissociateNetworkPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dissociate_network_package_with_options(request, runtime)
 
@@ -11993,6 +14405,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.DissociateNetworkPackageRequest,
     ) -> ecd_20200930_models.DissociateNetworkPackageResponse:
+        """
+        @summary Unbinds a premium bandwidth plan from an office network.
+        
+        @param request: DissociateNetworkPackageRequest
+        @return: DissociateNetworkPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dissociate_network_package_with_options_async(request, runtime)
 
@@ -12001,6 +14419,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportClientEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportClientEventsResponse:
+        """
+        @summary Exports events that occur on a cloud desktop from an Alibaba Cloud Workspace client.
+        
+        @param request: ExportClientEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportClientEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -12051,6 +14476,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportClientEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportClientEventsResponse:
+        """
+        @summary Exports events that occur on a cloud desktop from an Alibaba Cloud Workspace client.
+        
+        @param request: ExportClientEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportClientEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -12100,6 +14532,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ExportClientEventsRequest,
     ) -> ecd_20200930_models.ExportClientEventsResponse:
+        """
+        @summary Exports events that occur on a cloud desktop from an Alibaba Cloud Workspace client.
+        
+        @param request: ExportClientEventsRequest
+        @return: ExportClientEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_client_events_with_options(request, runtime)
 
@@ -12107,6 +14545,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ExportClientEventsRequest,
     ) -> ecd_20200930_models.ExportClientEventsResponse:
+        """
+        @summary Exports events that occur on a cloud desktop from an Alibaba Cloud Workspace client.
+        
+        @param request: ExportClientEventsRequest
+        @return: ExportClientEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_client_events_with_options_async(request, runtime)
 
@@ -12115,6 +14559,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportDesktopGroupInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
+        """
+        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        
+        @param request: ExportDesktopGroupInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportDesktopGroupInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -12139,6 +14590,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12163,6 +14616,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportDesktopGroupInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
+        """
+        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        
+        @param request: ExportDesktopGroupInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportDesktopGroupInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -12187,6 +14647,8 @@ class Client(OpenApiClient):
             query['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12210,6 +14672,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ExportDesktopGroupInfoRequest,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
+        """
+        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        
+        @param request: ExportDesktopGroupInfoRequest
+        @return: ExportDesktopGroupInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_desktop_group_info_with_options(request, runtime)
 
@@ -12217,6 +14685,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ExportDesktopGroupInfoRequest,
     ) -> ecd_20200930_models.ExportDesktopGroupInfoResponse:
+        """
+        @summary Exports cloud computer pools. The list of cloud computer pools is saved as an XLSX file. Each entry of cloud computer pool data includes the ID and name of the cloud computer pool, the ID and name of the office network, the cloud computer pool template, and the name of the security policy.
+        
+        @param request: ExportDesktopGroupInfoRequest
+        @return: ExportDesktopGroupInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_desktop_group_info_with_options_async(request, runtime)
 
@@ -12226,22 +14700,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportDesktopListInfoResponse:
         """
-        The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
-        *   Cloud computer ID and name
-        *   Office network ID and name
-        *   The instance type, OS and protocol of the cloud computer
-        *   System disk and data disk of the cloud computer
-        *   The status
-        *   Purchase method
-        *   The time when the cloud computer expires
-        *   Remaining duration and total duration
-        *   Number of assigned users and number of current users
-        *   Office network type
-        *   The time when the cloud computer was created
-        *   Tags
-        *   Encryption status
-        *   IP
-        *   The hostname
+        @summary Exports a cloud computer list as a CSV file.
+        
+        @description The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
+        Cloud computer ID and name
+        Office network ID and name
+        The instance type, OS and protocol of the cloud computer
+        System disk and data disk of the cloud computer
+        The status
+        Purchase method
+        The time when the cloud computer expires
+        Remaining duration and total duration
+        Number of assigned users and number of current users
+        Office network type
+        The time when the cloud computer was created
+        Tags
+        Encryption status
+        IP
+        The hostname
         
         @param request: ExportDesktopListInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12304,22 +14780,24 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ExportDesktopListInfoResponse:
         """
-        The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
-        *   Cloud computer ID and name
-        *   Office network ID and name
-        *   The instance type, OS and protocol of the cloud computer
-        *   System disk and data disk of the cloud computer
-        *   The status
-        *   Purchase method
-        *   The time when the cloud computer expires
-        *   Remaining duration and total duration
-        *   Number of assigned users and number of current users
-        *   Office network type
-        *   The time when the cloud computer was created
-        *   Tags
-        *   Encryption status
-        *   IP
-        *   The hostname
+        @summary Exports a cloud computer list as a CSV file.
+        
+        @description The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
+        Cloud computer ID and name
+        Office network ID and name
+        The instance type, OS and protocol of the cloud computer
+        System disk and data disk of the cloud computer
+        The status
+        Purchase method
+        The time when the cloud computer expires
+        Remaining duration and total duration
+        Number of assigned users and number of current users
+        Office network type
+        The time when the cloud computer was created
+        Tags
+        Encryption status
+        IP
+        The hostname
         
         @param request: ExportDesktopListInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12381,22 +14859,24 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportDesktopListInfoRequest,
     ) -> ecd_20200930_models.ExportDesktopListInfoResponse:
         """
-        The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
-        *   Cloud computer ID and name
-        *   Office network ID and name
-        *   The instance type, OS and protocol of the cloud computer
-        *   System disk and data disk of the cloud computer
-        *   The status
-        *   Purchase method
-        *   The time when the cloud computer expires
-        *   Remaining duration and total duration
-        *   Number of assigned users and number of current users
-        *   Office network type
-        *   The time when the cloud computer was created
-        *   Tags
-        *   Encryption status
-        *   IP
-        *   The hostname
+        @summary Exports a cloud computer list as a CSV file.
+        
+        @description The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
+        Cloud computer ID and name
+        Office network ID and name
+        The instance type, OS and protocol of the cloud computer
+        System disk and data disk of the cloud computer
+        The status
+        Purchase method
+        The time when the cloud computer expires
+        Remaining duration and total duration
+        Number of assigned users and number of current users
+        Office network type
+        The time when the cloud computer was created
+        Tags
+        Encryption status
+        IP
+        The hostname
         
         @param request: ExportDesktopListInfoRequest
         @return: ExportDesktopListInfoResponse
@@ -12409,22 +14889,24 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ExportDesktopListInfoRequest,
     ) -> ecd_20200930_models.ExportDesktopListInfoResponse:
         """
-        The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
-        *   Cloud computer ID and name
-        *   Office network ID and name
-        *   The instance type, OS and protocol of the cloud computer
-        *   System disk and data disk of the cloud computer
-        *   The status
-        *   Purchase method
-        *   The time when the cloud computer expires
-        *   Remaining duration and total duration
-        *   Number of assigned users and number of current users
-        *   Office network type
-        *   The time when the cloud computer was created
-        *   Tags
-        *   Encryption status
-        *   IP
-        *   The hostname
+        @summary Exports a cloud computer list as a CSV file.
+        
+        @description The cloud computer list exported by calling this operation is saved as a CSV file. Each entry of data of a cloud computer includes the following fields:
+        Cloud computer ID and name
+        Office network ID and name
+        The instance type, OS and protocol of the cloud computer
+        System disk and data disk of the cloud computer
+        The status
+        Purchase method
+        The time when the cloud computer expires
+        Remaining duration and total duration
+        Number of assigned users and number of current users
+        Office network type
+        The time when the cloud computer was created
+        Tags
+        Encryption status
+        IP
+        The hostname
         
         @param request: ExportDesktopListInfoRequest
         @return: ExportDesktopListInfoResponse
@@ -12437,6 +14919,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetAsyncTaskResponse:
+        """
+        @summary Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+        
+        @param request: GetAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_task_id):
@@ -12467,6 +14956,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetAsyncTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetAsyncTaskResponse:
+        """
+        @summary Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+        
+        @param request: GetAsyncTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_task_id):
@@ -12496,6 +14992,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetAsyncTaskRequest,
     ) -> ecd_20200930_models.GetAsyncTaskResponse:
+        """
+        @summary Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+        
+        @param request: GetAsyncTaskRequest
+        @return: GetAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_async_task_with_options(request, runtime)
 
@@ -12503,6 +15005,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetAsyncTaskRequest,
     ) -> ecd_20200930_models.GetAsyncTaskResponse:
+        """
+        @summary Obtains the information about an asynchronous task based on the value of the AsyncTaskId parameter that you obtain by calling the CopyCdsFile operation.
+        
+        @param request: GetAsyncTaskRequest
+        @return: GetAsyncTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_async_task_with_options_async(request, runtime)
 
@@ -12512,7 +15020,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetConnectionTicketResponse:
         """
-        The cloud computer must be in the Running state.
+        @summary Obtains the credential that is used to connect to a cloud desktop.
+        
+        @description The cloud computer must be in the Running state.
         
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12565,7 +15075,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetConnectionTicketResponse:
         """
-        The cloud computer must be in the Running state.
+        @summary Obtains the credential that is used to connect to a cloud desktop.
+        
+        @description The cloud computer must be in the Running state.
         
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12617,7 +15129,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetConnectionTicketRequest,
     ) -> ecd_20200930_models.GetConnectionTicketResponse:
         """
-        The cloud computer must be in the Running state.
+        @summary Obtains the credential that is used to connect to a cloud desktop.
+        
+        @description The cloud computer must be in the Running state.
         
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
@@ -12630,7 +15144,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetConnectionTicketRequest,
     ) -> ecd_20200930_models.GetConnectionTicketResponse:
         """
-        The cloud computer must be in the Running state.
+        @summary Obtains the credential that is used to connect to a cloud desktop.
+        
+        @description The cloud computer must be in the Running state.
         
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
@@ -12643,6 +15159,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetCoordinateTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetCoordinateTicketResponse:
+        """
+        @summary Obtains the credentials of the stream collaboration
+        
+        @param request: GetCoordinateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCoordinateTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_id):
@@ -12679,6 +15202,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetCoordinateTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetCoordinateTicketResponse:
+        """
+        @summary Obtains the credentials of the stream collaboration
+        
+        @param request: GetCoordinateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCoordinateTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_id):
@@ -12714,6 +15244,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetCoordinateTicketRequest,
     ) -> ecd_20200930_models.GetCoordinateTicketResponse:
+        """
+        @summary Obtains the credentials of the stream collaboration
+        
+        @param request: GetCoordinateTicketRequest
+        @return: GetCoordinateTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_coordinate_ticket_with_options(request, runtime)
 
@@ -12721,6 +15257,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetCoordinateTicketRequest,
     ) -> ecd_20200930_models.GetCoordinateTicketResponse:
+        """
+        @summary Obtains the credentials of the stream collaboration
+        
+        @param request: GetCoordinateTicketRequest
+        @return: GetCoordinateTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_coordinate_ticket_with_options_async(request, runtime)
 
@@ -12729,6 +15271,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetDesktopGroupDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
+        """
+        @summary Queries the information about a cloud computer pool.
+        
+        @param request: GetDesktopGroupDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDesktopGroupDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -12759,6 +15308,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetDesktopGroupDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
+        """
+        @summary Queries the information about a cloud computer pool.
+        
+        @param request: GetDesktopGroupDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDesktopGroupDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -12788,6 +15344,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetDesktopGroupDetailRequest,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
+        """
+        @summary Queries the information about a cloud computer pool.
+        
+        @param request: GetDesktopGroupDetailRequest
+        @return: GetDesktopGroupDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_desktop_group_detail_with_options(request, runtime)
 
@@ -12795,6 +15357,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetDesktopGroupDetailRequest,
     ) -> ecd_20200930_models.GetDesktopGroupDetailResponse:
+        """
+        @summary Queries the information about a cloud computer pool.
+        
+        @param request: GetDesktopGroupDetailRequest
+        @return: GetDesktopGroupDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_desktop_group_detail_with_options_async(request, runtime)
 
@@ -12803,6 +15371,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetOfficeSiteSsoStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetOfficeSiteSsoStatusResponse:
+        """
+        @summary Queries whether single sign-on (SSO) is enabled for a workspace.
+        
+        @param request: GetOfficeSiteSsoStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOfficeSiteSsoStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.office_site_id):
@@ -12833,6 +15408,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetOfficeSiteSsoStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetOfficeSiteSsoStatusResponse:
+        """
+        @summary Queries whether single sign-on (SSO) is enabled for a workspace.
+        
+        @param request: GetOfficeSiteSsoStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOfficeSiteSsoStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.office_site_id):
@@ -12862,6 +15444,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetOfficeSiteSsoStatusRequest,
     ) -> ecd_20200930_models.GetOfficeSiteSsoStatusResponse:
+        """
+        @summary Queries whether single sign-on (SSO) is enabled for a workspace.
+        
+        @param request: GetOfficeSiteSsoStatusRequest
+        @return: GetOfficeSiteSsoStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_office_site_sso_status_with_options(request, runtime)
 
@@ -12869,6 +15457,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.GetOfficeSiteSsoStatusRequest,
     ) -> ecd_20200930_models.GetOfficeSiteSsoStatusResponse:
+        """
+        @summary Queries whether single sign-on (SSO) is enabled for a workspace.
+        
+        @param request: GetOfficeSiteSsoStatusRequest
+        @return: GetOfficeSiteSsoStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_office_site_sso_status_with_options_async(request, runtime)
 
@@ -12878,7 +15472,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetSpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Obtains the metadata of a Security Assertion Markup Language (SAML) 2.0-based service provider (SP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: GetSpMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12917,7 +15513,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.GetSpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Obtains the metadata of a Security Assertion Markup Language (SAML) 2.0-based service provider (SP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: GetSpMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12955,7 +15553,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetSpMetadataRequest,
     ) -> ecd_20200930_models.GetSpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Obtains the metadata of a Security Assertion Markup Language (SAML) 2.0-based service provider (SP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: GetSpMetadataRequest
         @return: GetSpMetadataResponse
@@ -12968,7 +15568,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.GetSpMetadataRequest,
     ) -> ecd_20200930_models.GetSpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Obtains the metadata of a Security Assertion Markup Language (SAML) 2.0-based service provider (SP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: GetSpMetadataRequest
         @return: GetSpMetadataResponse
@@ -12982,7 +15584,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.HibernateDesktopsResponse:
         """
-        Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
+        @summary Hibernates cloud desktops.
+        
+        @description Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
         
         @param request: HibernateDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13019,7 +15623,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.HibernateDesktopsResponse:
         """
-        Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
+        @summary Hibernates cloud desktops.
+        
+        @description Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
         
         @param request: HibernateDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13055,7 +15661,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.HibernateDesktopsRequest,
     ) -> ecd_20200930_models.HibernateDesktopsResponse:
         """
-        Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
+        @summary Hibernates cloud desktops.
+        
+        @description Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
         
         @param request: HibernateDesktopsRequest
         @return: HibernateDesktopsResponse
@@ -13068,7 +15676,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.HibernateDesktopsRequest,
     ) -> ecd_20200930_models.HibernateDesktopsResponse:
         """
-        Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
+        @summary Hibernates cloud desktops.
+        
+        @description Hibernating a cloud desktop is in private preview. If you want to try this feature, submit a ticket.
         
         @param request: HibernateDesktopsRequest
         @return: HibernateDesktopsResponse
@@ -13081,6 +15691,13 @@ class Client(OpenApiClient):
         tmp_req: ecd_20200930_models.ListCdsFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
+        """
+        @summary Queries the files in a cloud disk.
+        
+        @param tmp_req: ListCdsFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCdsFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecd_20200930_models.ListCdsFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13131,6 +15748,13 @@ class Client(OpenApiClient):
         tmp_req: ecd_20200930_models.ListCdsFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
+        """
+        @summary Queries the files in a cloud disk.
+        
+        @param tmp_req: ListCdsFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCdsFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecd_20200930_models.ListCdsFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13180,6 +15804,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListCdsFilesRequest,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
+        """
+        @summary Queries the files in a cloud disk.
+        
+        @param request: ListCdsFilesRequest
+        @return: ListCdsFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cds_files_with_options(request, runtime)
 
@@ -13187,6 +15817,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListCdsFilesRequest,
     ) -> ecd_20200930_models.ListCdsFilesResponse:
+        """
+        @summary Queries the files in a cloud disk.
+        
+        @param request: ListCdsFilesRequest
+        @return: ListCdsFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cds_files_with_options_async(request, runtime)
 
@@ -13196,7 +15832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListDirectoryUsersResponse:
         """
-        If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
+        @summary Obtains the user information in the AD system if you use an AD directory to connect to an AD system.
+        
+        @description If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
         
         @param request: ListDirectoryUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13241,7 +15879,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListDirectoryUsersResponse:
         """
-        If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
+        @summary Obtains the user information in the AD system if you use an AD directory to connect to an AD system.
+        
+        @description If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
         
         @param request: ListDirectoryUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13285,7 +15925,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListDirectoryUsersRequest,
     ) -> ecd_20200930_models.ListDirectoryUsersResponse:
         """
-        If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
+        @summary Obtains the user information in the AD system if you use an AD directory to connect to an AD system.
+        
+        @description If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
         
         @param request: ListDirectoryUsersRequest
         @return: ListDirectoryUsersResponse
@@ -13298,7 +15940,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListDirectoryUsersRequest,
     ) -> ecd_20200930_models.ListDirectoryUsersResponse:
         """
-        If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
+        @summary Obtains the user information in the AD system if you use an AD directory to connect to an AD system.
+        
+        @description If you use an AD directory to connect to an AD system, you can call this operation to obtain the user information in the AD system.
         
         @param request: ListDirectoryUsersRequest
         @return: ListDirectoryUsersResponse
@@ -13311,6 +15955,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListFilePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
+        """
+        @summary Queries the information about shared files of cloud disks.
+        
+        @param request: ListFilePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -13347,6 +15998,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListFilePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
+        """
+        @summary Queries the information about shared files of cloud disks.
+        
+        @param request: ListFilePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFilePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -13382,6 +16040,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListFilePermissionRequest,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
+        """
+        @summary Queries the information about shared files of cloud disks.
+        
+        @param request: ListFilePermissionRequest
+        @return: ListFilePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_file_permission_with_options(request, runtime)
 
@@ -13389,6 +16053,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListFilePermissionRequest,
     ) -> ecd_20200930_models.ListFilePermissionResponse:
+        """
+        @summary Queries the information about shared files of cloud disks.
+        
+        @param request: ListFilePermissionRequest
+        @return: ListFilePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_file_permission_with_options_async(request, runtime)
 
@@ -13397,6 +16067,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListOfficeSiteOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListOfficeSiteOverviewResponse:
+        """
+        @summary Queries information about an office network, including its status, cloud computer quantity, virtual private cloud (VPC) type, and more.
+        
+        @param request: ListOfficeSiteOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOfficeSiteOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_refresh):
@@ -13435,6 +16112,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListOfficeSiteOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListOfficeSiteOverviewResponse:
+        """
+        @summary Queries information about an office network, including its status, cloud computer quantity, virtual private cloud (VPC) type, and more.
+        
+        @param request: ListOfficeSiteOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOfficeSiteOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_refresh):
@@ -13472,6 +16156,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListOfficeSiteOverviewRequest,
     ) -> ecd_20200930_models.ListOfficeSiteOverviewResponse:
+        """
+        @summary Queries information about an office network, including its status, cloud computer quantity, virtual private cloud (VPC) type, and more.
+        
+        @param request: ListOfficeSiteOverviewRequest
+        @return: ListOfficeSiteOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_office_site_overview_with_options(request, runtime)
 
@@ -13479,6 +16169,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListOfficeSiteOverviewRequest,
     ) -> ecd_20200930_models.ListOfficeSiteOverviewResponse:
+        """
+        @summary Queries information about an office network, including its status, cloud computer quantity, virtual private cloud (VPC) type, and more.
+        
+        @param request: ListOfficeSiteOverviewRequest
+        @return: ListOfficeSiteOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_office_site_overview_with_options_async(request, runtime)
 
@@ -13487,6 +16183,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListOfficeSiteUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
+        """
+        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        
+        @param request: ListOfficeSiteUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOfficeSiteUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -13525,6 +16228,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListOfficeSiteUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
+        """
+        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        
+        @param request: ListOfficeSiteUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOfficeSiteUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -13562,6 +16272,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListOfficeSiteUsersRequest,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
+        """
+        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        
+        @param request: ListOfficeSiteUsersRequest
+        @return: ListOfficeSiteUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_office_site_users_with_options(request, runtime)
 
@@ -13569,6 +16285,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListOfficeSiteUsersRequest,
     ) -> ecd_20200930_models.ListOfficeSiteUsersResponse:
+        """
+        @summary Queries information about Active Directory (AD) users after an enterprise AD office network (formerly workspace) interconnects to an AD domain.
+        
+        @param request: ListOfficeSiteUsersRequest
+        @return: ListOfficeSiteUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_office_site_users_with_options_async(request, runtime)
 
@@ -13578,7 +16300,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListTagResourcesResponse:
         """
-        You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
+        @summary Queries the tags of cloud computers.
+        
+        @description You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13623,7 +16347,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListTagResourcesResponse:
         """
-        You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
+        @summary Queries the tags of cloud computers.
+        
+        @description You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13667,7 +16393,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListTagResourcesRequest,
     ) -> ecd_20200930_models.ListTagResourcesResponse:
         """
-        You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
+        @summary Queries the tags of cloud computers.
+        
+        @description You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13680,7 +16408,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListTagResourcesRequest,
     ) -> ecd_20200930_models.ListTagResourcesResponse:
         """
-        You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
+        @summary Queries the tags of cloud computers.
+        
+        @description You must use at least one of the following parameters in the request to determine the object that you want to query: `ResourceId.N`, `Tag.N.Key`, and `Tag.N.Value`.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13693,6 +16423,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListUserAdOrganizationUnitsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListUserAdOrganizationUnitsResponse:
+        """
+        @summary Obtains the organizational units (OUs) of an Active Directory (AD) domain that is connected to an enterprise AD office network (formerly workspace).
+        
+        @param request: ListUserAdOrganizationUnitsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAdOrganizationUnitsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -13729,6 +16466,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ListUserAdOrganizationUnitsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ListUserAdOrganizationUnitsResponse:
+        """
+        @summary Obtains the organizational units (OUs) of an Active Directory (AD) domain that is connected to an enterprise AD office network (formerly workspace).
+        
+        @param request: ListUserAdOrganizationUnitsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAdOrganizationUnitsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -13764,6 +16508,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListUserAdOrganizationUnitsRequest,
     ) -> ecd_20200930_models.ListUserAdOrganizationUnitsResponse:
+        """
+        @summary Obtains the organizational units (OUs) of an Active Directory (AD) domain that is connected to an enterprise AD office network (formerly workspace).
+        
+        @param request: ListUserAdOrganizationUnitsRequest
+        @return: ListUserAdOrganizationUnitsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_ad_organization_units_with_options(request, runtime)
 
@@ -13771,6 +16521,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ListUserAdOrganizationUnitsRequest,
     ) -> ecd_20200930_models.ListUserAdOrganizationUnitsResponse:
+        """
+        @summary Obtains the organizational units (OUs) of an Active Directory (AD) domain that is connected to an enterprise AD office network (formerly workspace).
+        
+        @param request: ListUserAdOrganizationUnitsRequest
+        @return: ListUserAdOrganizationUnitsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_ad_organization_units_with_options_async(request, runtime)
 
@@ -13780,7 +16536,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.LockVirtualMFADeviceResponse:
         """
-        After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](~~206212~~) operation to unlock the device.
+        @summary Locks a multi-factor authentication (MFA) device that is in the NORMAL state.
+        
+        @description After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](https://help.aliyun.com/document_detail/206212.html) operation to unlock the device.
         
         @param request: LockVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13817,7 +16575,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.LockVirtualMFADeviceResponse:
         """
-        After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](~~206212~~) operation to unlock the device.
+        @summary Locks a multi-factor authentication (MFA) device that is in the NORMAL state.
+        
+        @description After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](https://help.aliyun.com/document_detail/206212.html) operation to unlock the device.
         
         @param request: LockVirtualMFADeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13853,7 +16613,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.LockVirtualMFADeviceRequest,
     ) -> ecd_20200930_models.LockVirtualMFADeviceResponse:
         """
-        After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](~~206212~~) operation to unlock the device.
+        @summary Locks a multi-factor authentication (MFA) device that is in the NORMAL state.
+        
+        @description After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](https://help.aliyun.com/document_detail/206212.html) operation to unlock the device.
         
         @param request: LockVirtualMFADeviceRequest
         @return: LockVirtualMFADeviceResponse
@@ -13866,7 +16628,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.LockVirtualMFADeviceRequest,
     ) -> ecd_20200930_models.LockVirtualMFADeviceResponse:
         """
-        After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](~~206212~~) operation to unlock the device.
+        @summary Locks a multi-factor authentication (MFA) device that is in the NORMAL state.
+        
+        @description After a virtual MFA device is locked, its status changes to LOCKED. The Active Directory (AD) user who uses the virtual MFA device is unable to pass MFA and is therefore unable to log on to the client. You can call the [UnlockVirtualMFADevice](https://help.aliyun.com/document_detail/206212.html) operation to unlock the device.
         
         @param request: LockVirtualMFADeviceRequest
         @return: LockVirtualMFADeviceResponse
@@ -13879,6 +16643,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.MigrateDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.MigrateDesktopsResponse:
+        """
+        @summary Migrates cloud computers from the current office network (formerly called workspace) to the new office network.
+        
+        @param request: MigrateDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -13911,6 +16682,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.MigrateDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.MigrateDesktopsResponse:
+        """
+        @summary Migrates cloud computers from the current office network (formerly called workspace) to the new office network.
+        
+        @param request: MigrateDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -13942,6 +16720,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.MigrateDesktopsRequest,
     ) -> ecd_20200930_models.MigrateDesktopsResponse:
+        """
+        @summary Migrates cloud computers from the current office network (formerly called workspace) to the new office network.
+        
+        @param request: MigrateDesktopsRequest
+        @return: MigrateDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.migrate_desktops_with_options(request, runtime)
 
@@ -13949,6 +16733,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.MigrateDesktopsRequest,
     ) -> ecd_20200930_models.MigrateDesktopsResponse:
+        """
+        @summary Migrates cloud computers from the current office network (formerly called workspace) to the new office network.
+        
+        @param request: MigrateDesktopsRequest
+        @return: MigrateDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.migrate_desktops_with_options_async(request, runtime)
 
@@ -13957,6 +16747,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.MigrateImageProtocolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.MigrateImageProtocolResponse:
+        """
+        @summary Update the protocols of images to Adaptive Streaming Protocol (ASP).
+        
+        @param request: MigrateImageProtocolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateImageProtocolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -13989,6 +16786,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.MigrateImageProtocolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.MigrateImageProtocolResponse:
+        """
+        @summary Update the protocols of images to Adaptive Streaming Protocol (ASP).
+        
+        @param request: MigrateImageProtocolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateImageProtocolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -14020,6 +16824,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.MigrateImageProtocolRequest,
     ) -> ecd_20200930_models.MigrateImageProtocolResponse:
+        """
+        @summary Update the protocols of images to Adaptive Streaming Protocol (ASP).
+        
+        @param request: MigrateImageProtocolRequest
+        @return: MigrateImageProtocolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.migrate_image_protocol_with_options(request, runtime)
 
@@ -14027,6 +16837,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.MigrateImageProtocolRequest,
     ) -> ecd_20200930_models.MigrateImageProtocolResponse:
+        """
+        @summary Update the protocols of images to Adaptive Streaming Protocol (ASP).
+        
+        @param request: MigrateImageProtocolRequest
+        @return: MigrateImageProtocolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.migrate_image_protocol_with_options_async(request, runtime)
 
@@ -14036,7 +16852,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
         """
-        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        @summary Modifies an Active Directory (AD) directory.
+        
+        @description You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
         
         @param request: ModifyADConnectorDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14093,7 +16911,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
         """
-        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        @summary Modifies an Active Directory (AD) directory.
+        
+        @description You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
         
         @param request: ModifyADConnectorDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14149,7 +16969,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
         """
-        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        @summary Modifies an Active Directory (AD) directory.
+        
+        @description You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
         
         @param request: ModifyADConnectorDirectoryRequest
         @return: ModifyADConnectorDirectoryResponse
@@ -14162,7 +16984,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyADConnectorDirectoryRequest,
     ) -> ecd_20200930_models.ModifyADConnectorDirectoryResponse:
         """
-        You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
+        @summary Modifies an Active Directory (AD) directory.
+        
+        @description You can modify the following domain name- and Domain Name System (DNS)-related parameters only for Active Directory (AD) directories that are in the ERROR or REGISTERING state: `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress`.
         
         @param request: ModifyADConnectorDirectoryRequest
         @return: ModifyADConnectorDirectoryResponse
@@ -14176,7 +17000,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyADConnectorOfficeSiteResponse:
         """
-        You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+        @summary Modifies the basic properties of an enterprise Active Directory (AD) office network, such as the office network name and domain names of the enterprise AD subdomains.
+        
+        @description You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
         
         @param request: ModifyADConnectorOfficeSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14186,6 +17012,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ad_hostname):
             query['AdHostname'] = request.ad_hostname
+        if not UtilClient.is_unset(request.backup_dchostname):
+            query['BackupDCHostname'] = request.backup_dchostname
+        if not UtilClient.is_unset(request.backup_dns):
+            query['BackupDns'] = request.backup_dns
         if not UtilClient.is_unset(request.dns_address):
             query['DnsAddress'] = request.dns_address
         if not UtilClient.is_unset(request.domain_name):
@@ -14233,7 +17063,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyADConnectorOfficeSiteResponse:
         """
-        You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+        @summary Modifies the basic properties of an enterprise Active Directory (AD) office network, such as the office network name and domain names of the enterprise AD subdomains.
+        
+        @description You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
         
         @param request: ModifyADConnectorOfficeSiteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14243,6 +17075,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ad_hostname):
             query['AdHostname'] = request.ad_hostname
+        if not UtilClient.is_unset(request.backup_dchostname):
+            query['BackupDCHostname'] = request.backup_dchostname
+        if not UtilClient.is_unset(request.backup_dns):
+            query['BackupDns'] = request.backup_dns
         if not UtilClient.is_unset(request.dns_address):
             query['DnsAddress'] = request.dns_address
         if not UtilClient.is_unset(request.domain_name):
@@ -14289,7 +17125,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyADConnectorOfficeSiteRequest,
     ) -> ecd_20200930_models.ModifyADConnectorOfficeSiteResponse:
         """
-        You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+        @summary Modifies the basic properties of an enterprise Active Directory (AD) office network, such as the office network name and domain names of the enterprise AD subdomains.
+        
+        @description You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
         
         @param request: ModifyADConnectorOfficeSiteRequest
         @return: ModifyADConnectorOfficeSiteResponse
@@ -14302,7 +17140,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyADConnectorOfficeSiteRequest,
     ) -> ecd_20200930_models.ModifyADConnectorOfficeSiteResponse:
         """
-        You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
+        @summary Modifies the basic properties of an enterprise Active Directory (AD) office network, such as the office network name and domain names of the enterprise AD subdomains.
+        
+        @description You can modify parameters of domain names and Domain Name System (DNS) for enterprise AD office networks that are in the `ERROR` or `REGISTERED` state. The parameters include `DomainName`, `SubDomainName`, `DnsAddress.N`, and `SubDomainDnsAddress.N`.
         
         @param request: ModifyADConnectorOfficeSiteRequest
         @return: ModifyADConnectorOfficeSiteResponse
@@ -14316,7 +17156,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyAclEntriesResponse:
         """
-        You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
+        @summary Modify the Internet access control policy on the office network or cloud computer granularity.
+        
+        @description You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
         
         @param request: ModifyAclEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14357,7 +17199,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyAclEntriesResponse:
         """
-        You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
+        @summary Modify the Internet access control policy on the office network or cloud computer granularity.
+        
+        @description You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
         
         @param request: ModifyAclEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14397,7 +17241,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyAclEntriesRequest,
     ) -> ecd_20200930_models.ModifyAclEntriesResponse:
         """
-        You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
+        @summary Modify the Internet access control policy on the office network or cloud computer granularity.
+        
+        @description You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
         
         @param request: ModifyAclEntriesRequest
         @return: ModifyAclEntriesResponse
@@ -14410,7 +17256,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyAclEntriesRequest,
     ) -> ecd_20200930_models.ModifyAclEntriesResponse:
         """
-        You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
+        @summary Modify the Internet access control policy on the office network or cloud computer granularity.
+        
+        @description You can set different Internet access control policies at different granularities to achieve the effect of composite policies. For example, you can disable the Internet access on the office network granularity and enable the Internet access on specific cloud computer granularity. The effect is that all cloud computers in the office network except the specified cloud computers are not allowed to access the Internet.
         
         @param request: ModifyAclEntriesRequest
         @return: ModifyAclEntriesResponse
@@ -14423,6 +17271,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary Modifies the parameters of an automatic snapshot policy, such as the policy name and snapshot retention period.
+        
+        @param request: ModifyAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -14459,6 +17314,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary Modifies the parameters of an automatic snapshot policy, such as the policy name and snapshot retention period.
+        
+        @param request: ModifyAutoSnapshotPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -14494,6 +17356,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary Modifies the parameters of an automatic snapshot policy, such as the policy name and snapshot retention period.
+        
+        @param request: ModifyAutoSnapshotPolicyRequest
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_auto_snapshot_policy_with_options(request, runtime)
 
@@ -14501,6 +17369,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyAutoSnapshotPolicyRequest,
     ) -> ecd_20200930_models.ModifyAutoSnapshotPolicyResponse:
+        """
+        @summary Modifies the parameters of an automatic snapshot policy, such as the policy name and snapshot retention period.
+        
+        @param request: ModifyAutoSnapshotPolicyRequest
+        @return: ModifyAutoSnapshotPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_auto_snapshot_policy_with_options_async(request, runtime)
 
@@ -14510,7 +17384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyBundleResponse:
         """
-        Only custom desktop templates can be modified.
+        @summary Modifies a custom cloud computer template.
+        
+        @description Only custom desktop templates can be modified.
         
         @param request: ModifyBundleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14555,7 +17431,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyBundleResponse:
         """
-        Only custom desktop templates can be modified.
+        @summary Modifies a custom cloud computer template.
+        
+        @description Only custom desktop templates can be modified.
         
         @param request: ModifyBundleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14599,7 +17477,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyBundleRequest,
     ) -> ecd_20200930_models.ModifyBundleResponse:
         """
-        Only custom desktop templates can be modified.
+        @summary Modifies a custom cloud computer template.
+        
+        @description Only custom desktop templates can be modified.
         
         @param request: ModifyBundleRequest
         @return: ModifyBundleResponse
@@ -14612,7 +17492,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyBundleRequest,
     ) -> ecd_20200930_models.ModifyBundleResponse:
         """
-        Only custom desktop templates can be modified.
+        @summary Modifies a custom cloud computer template.
+        
+        @description Only custom desktop templates can be modified.
         
         @param request: ModifyBundleRequest
         @return: ModifyBundleResponse
@@ -14625,6 +17507,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
+        """
+        @summary Modifies the files in a cloud disk.
+        
+        @param request: ModifyCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14665,6 +17554,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
+        """
+        @summary Modifies the files in a cloud disk.
+        
+        @param request: ModifyCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14704,6 +17600,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCdsFileRequest,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
+        """
+        @summary Modifies the files in a cloud disk.
+        
+        @param request: ModifyCdsFileRequest
+        @return: ModifyCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cds_file_with_options(request, runtime)
 
@@ -14711,6 +17613,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCdsFileRequest,
     ) -> ecd_20200930_models.ModifyCdsFileResponse:
+        """
+        @summary Modifies the files in a cloud disk.
+        
+        @param request: ModifyCdsFileRequest
+        @return: ModifyCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cds_file_with_options_async(request, runtime)
 
@@ -14719,6 +17627,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCdsFileShareLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCdsFileShareLinkResponse:
+        """
+        @summary Modifies the link for file sharing.
+        
+        @param request: ModifyCdsFileShareLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCdsFileShareLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14781,6 +17696,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCdsFileShareLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCdsFileShareLinkResponse:
+        """
+        @summary Modifies the link for file sharing.
+        
+        @param request: ModifyCdsFileShareLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCdsFileShareLinkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14842,6 +17764,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCdsFileShareLinkRequest,
     ) -> ecd_20200930_models.ModifyCdsFileShareLinkResponse:
+        """
+        @summary Modifies the link for file sharing.
+        
+        @param request: ModifyCdsFileShareLinkRequest
+        @return: ModifyCdsFileShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cds_file_share_link_with_options(request, runtime)
 
@@ -14849,6 +17777,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCdsFileShareLinkRequest,
     ) -> ecd_20200930_models.ModifyCdsFileShareLinkResponse:
+        """
+        @summary Modifies the link for file sharing.
+        
+        @param request: ModifyCdsFileShareLinkRequest
+        @return: ModifyCdsFileShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cds_file_share_link_with_options_async(request, runtime)
 
@@ -14857,6 +17791,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCloudDriveGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCloudDriveGroupsResponse:
+        """
+        @summary Modifies team spaces.
+        
+        @param request: ModifyCloudDriveGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudDriveGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14893,6 +17834,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCloudDriveGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCloudDriveGroupsResponse:
+        """
+        @summary Modifies team spaces.
+        
+        @param request: ModifyCloudDriveGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudDriveGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14928,6 +17876,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCloudDriveGroupsRequest,
     ) -> ecd_20200930_models.ModifyCloudDriveGroupsResponse:
+        """
+        @summary Modifies team spaces.
+        
+        @param request: ModifyCloudDriveGroupsRequest
+        @return: ModifyCloudDriveGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cloud_drive_groups_with_options(request, runtime)
 
@@ -14935,6 +17889,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCloudDriveGroupsRequest,
     ) -> ecd_20200930_models.ModifyCloudDriveGroupsResponse:
+        """
+        @summary Modifies team spaces.
+        
+        @param request: ModifyCloudDriveGroupsRequest
+        @return: ModifyCloudDriveGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cloud_drive_groups_with_options_async(request, runtime)
 
@@ -14943,6 +17903,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCloudDrivePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCloudDrivePermissionResponse:
+        """
+        @summary Modifies the user permissions on Cloud Drive Service, and configures users who have the download permissions and upload and download permissions. By default, the users that are not configured the preceding permissions only have the upload permissions.
+        
+        @param request: ModifyCloudDrivePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudDrivePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -14977,6 +17944,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCloudDrivePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCloudDrivePermissionResponse:
+        """
+        @summary Modifies the user permissions on Cloud Drive Service, and configures users who have the download permissions and upload and download permissions. By default, the users that are not configured the preceding permissions only have the upload permissions.
+        
+        @param request: ModifyCloudDrivePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudDrivePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -15010,6 +17984,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCloudDrivePermissionRequest,
     ) -> ecd_20200930_models.ModifyCloudDrivePermissionResponse:
+        """
+        @summary Modifies the user permissions on Cloud Drive Service, and configures users who have the download permissions and upload and download permissions. By default, the users that are not configured the preceding permissions only have the upload permissions.
+        
+        @param request: ModifyCloudDrivePermissionRequest
+        @return: ModifyCloudDrivePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cloud_drive_permission_with_options(request, runtime)
 
@@ -15017,6 +17997,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCloudDrivePermissionRequest,
     ) -> ecd_20200930_models.ModifyCloudDrivePermissionResponse:
+        """
+        @summary Modifies the user permissions on Cloud Drive Service, and configures users who have the download permissions and upload and download permissions. By default, the users that are not configured the preceding permissions only have the upload permissions.
+        
+        @param request: ModifyCloudDrivePermissionRequest
+        @return: ModifyCloudDrivePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cloud_drive_permission_with_options_async(request, runtime)
 
@@ -15025,6 +18011,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCloudDriveUsersResponse:
+        """
+        @summary 修改无影网盘终端用户的属性
+        
+        @param request: ModifyCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -15061,6 +18054,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCloudDriveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCloudDriveUsersResponse:
+        """
+        @summary 修改无影网盘终端用户的属性
+        
+        @param request: ModifyCloudDriveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudDriveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -15096,6 +18096,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCloudDriveUsersRequest,
     ) -> ecd_20200930_models.ModifyCloudDriveUsersResponse:
+        """
+        @summary 修改无影网盘终端用户的属性
+        
+        @param request: ModifyCloudDriveUsersRequest
+        @return: ModifyCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cloud_drive_users_with_options(request, runtime)
 
@@ -15103,6 +18109,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCloudDriveUsersRequest,
     ) -> ecd_20200930_models.ModifyCloudDriveUsersResponse:
+        """
+        @summary 修改无影网盘终端用户的属性
+        
+        @param request: ModifyCloudDriveUsersRequest
+        @return: ModifyCloudDriveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cloud_drive_users_with_options_async(request, runtime)
 
@@ -15111,6 +18123,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCustomizedListHeadersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCustomizedListHeadersResponse:
+        """
+        @summary Modifies the layouts of cloud computer list headers, such as the required fields and the display and hide settings.
+        
+        @param request: ModifyCustomizedListHeadersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomizedListHeadersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.headers):
@@ -15143,6 +18162,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyCustomizedListHeadersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyCustomizedListHeadersResponse:
+        """
+        @summary Modifies the layouts of cloud computer list headers, such as the required fields and the display and hide settings.
+        
+        @param request: ModifyCustomizedListHeadersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomizedListHeadersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.headers):
@@ -15174,6 +18200,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCustomizedListHeadersRequest,
     ) -> ecd_20200930_models.ModifyCustomizedListHeadersResponse:
+        """
+        @summary Modifies the layouts of cloud computer list headers, such as the required fields and the display and hide settings.
+        
+        @param request: ModifyCustomizedListHeadersRequest
+        @return: ModifyCustomizedListHeadersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_customized_list_headers_with_options(request, runtime)
 
@@ -15181,6 +18213,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyCustomizedListHeadersRequest,
     ) -> ecd_20200930_models.ModifyCustomizedListHeadersResponse:
+        """
+        @summary Modifies the layouts of cloud computer list headers, such as the required fields and the display and hide settings.
+        
+        @param request: ModifyCustomizedListHeadersRequest
+        @return: ModifyCustomizedListHeadersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_customized_list_headers_with_options_async(request, runtime)
 
@@ -15190,9 +18228,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](~~188395~~).
-        *   Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
-        *   After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
+        @summary Changes the billing method of cloud computers to subscription or pay-as-you-go.
+        
+        @description    Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+        Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
+        After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
         
         @param request: ModifyDesktopChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15241,9 +18281,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](~~188395~~).
-        *   Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
-        *   After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
+        @summary Changes the billing method of cloud computers to subscription or pay-as-you-go.
+        
+        @description    Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+        Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
+        After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
         
         @param request: ModifyDesktopChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15291,9 +18333,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopChargeTypeRequest,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](~~188395~~).
-        *   Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
-        *   After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
+        @summary Changes the billing method of cloud computers to subscription or pay-as-you-go.
+        
+        @description    Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+        Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
+        After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
         
         @param request: ModifyDesktopChargeTypeRequest
         @return: ModifyDesktopChargeTypeResponse
@@ -15306,9 +18350,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopChargeTypeRequest,
     ) -> ecd_20200930_models.ModifyDesktopChargeTypeResponse:
         """
-        Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](~~188395~~).
-        *   Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
-        *   After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
+        @summary Changes the billing method of cloud computers to subscription or pay-as-you-go.
+        
+        @description    Before you call this operation, make sure that you fully understand the billing methods of cloud computers. For more information, see [Billing overview](https://help.aliyun.com/document_detail/188395.html).
+        Before you call this operation, make sure that the cloud computers whose billing method you want to change are in the Running or Stopped state and you have no overdue payments in your Alibaba Cloud account.
+        After the order payment is completed, the system starts to change the billing method of the cloud computers. During the change, you cannot perform operations, such as starting or stopping the cloud computers, and changing configurations of the cloud computers.
         
         @param request: ModifyDesktopChargeTypeRequest
         @return: ModifyDesktopChargeTypeResponse
@@ -15322,7 +18368,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @summary Modifies the configurations of a cloud computer pool.
+        
+        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15407,7 +18455,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @summary Modifies the configurations of a cloud computer pool.
+        
+        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15491,7 +18541,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @summary Modifies the configurations of a cloud computer pool.
+        
+        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @return: ModifyDesktopGroupResponse
@@ -15504,7 +18556,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopGroupResponse:
         """
-        After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
+        @summary Modifies the configurations of a cloud computer pool.
+        
+        @description After a cloud computer pool is created, the system creates a specific number of cloud computers in the pool based on the auto scaling policy and user connections. Cloud computers are created by using the same cloud computer template and security policy. You can modify the configurations of the pool, including the pool name, cloud computer template, and policy, in different business scenarios.
         
         @param request: ModifyDesktopGroupRequest
         @return: ModifyDesktopGroupResponse
@@ -15518,7 +18572,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopHostNameResponse:
         """
-        The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
+        @summary Modifies the hostname of a Windows cloud computer in the Active Directory (AD) office network.
+        
+        @description The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
         
         @param request: ModifyDesktopHostNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15557,7 +18613,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopHostNameResponse:
         """
-        The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
+        @summary Modifies the hostname of a Windows cloud computer in the Active Directory (AD) office network.
+        
+        @description The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
         
         @param request: ModifyDesktopHostNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15595,7 +18653,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopHostNameRequest,
     ) -> ecd_20200930_models.ModifyDesktopHostNameResponse:
         """
-        The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
+        @summary Modifies the hostname of a Windows cloud computer in the Active Directory (AD) office network.
+        
+        @description The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
         
         @param request: ModifyDesktopHostNameRequest
         @return: ModifyDesktopHostNameResponse
@@ -15608,7 +18668,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopHostNameRequest,
     ) -> ecd_20200930_models.ModifyDesktopHostNameResponse:
         """
-        The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
+        @summary Modifies the hostname of a Windows cloud computer in the Active Directory (AD) office network.
+        
+        @description The Windows cloud computer whose hostname you want to modify must be in an AD office network. After the hostname is modified, the cloud computer is re-created.
         
         @param request: ModifyDesktopHostNameRequest
         @return: ModifyDesktopHostNameResponse
@@ -15621,6 +18683,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopNameResponse:
+        """
+        @summary Changes the name of a cloud computer to a new name.
+        
+        @param request: ModifyDesktopNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -15653,6 +18722,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopNameResponse:
+        """
+        @summary Changes the name of a cloud computer to a new name.
+        
+        @param request: ModifyDesktopNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -15684,6 +18760,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopNameRequest,
     ) -> ecd_20200930_models.ModifyDesktopNameResponse:
+        """
+        @summary Changes the name of a cloud computer to a new name.
+        
+        @param request: ModifyDesktopNameRequest
+        @return: ModifyDesktopNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_desktop_name_with_options(request, runtime)
 
@@ -15691,6 +18773,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopNameRequest,
     ) -> ecd_20200930_models.ModifyDesktopNameResponse:
+        """
+        @summary Changes the name of a cloud computer to a new name.
+        
+        @param request: ModifyDesktopNameRequest
+        @return: ModifyDesktopNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_desktop_name_with_options_async(request, runtime)
 
@@ -15699,6 +18787,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupResponse:
+        """
+        @summary 修改桌面超卖组
+        
+        @param request: ModifyDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -15747,6 +18842,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupResponse:
+        """
+        @summary 修改桌面超卖组
+        
+        @param request: ModifyDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -15794,6 +18896,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupResponse:
+        """
+        @summary 修改桌面超卖组
+        
+        @param request: ModifyDesktopOversoldGroupRequest
+        @return: ModifyDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_desktop_oversold_group_with_options(request, runtime)
 
@@ -15801,6 +18909,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupResponse:
+        """
+        @summary 修改桌面超卖组
+        
+        @param request: ModifyDesktopOversoldGroupRequest
+        @return: ModifyDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_desktop_oversold_group_with_options_async(request, runtime)
 
@@ -15809,6 +18923,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopOversoldGroupSaleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 修改桌面超卖组售卖数据
+        
+        @param request: ModifyDesktopOversoldGroupSaleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopOversoldGroupSaleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -15841,6 +18962,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopOversoldGroupSaleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 修改桌面超卖组售卖数据
+        
+        @param request: ModifyDesktopOversoldGroupSaleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopOversoldGroupSaleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrence_count):
@@ -15872,6 +19000,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopOversoldGroupSaleRequest,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 修改桌面超卖组售卖数据
+        
+        @param request: ModifyDesktopOversoldGroupSaleRequest
+        @return: ModifyDesktopOversoldGroupSaleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_desktop_oversold_group_sale_with_options(request, runtime)
 
@@ -15879,6 +19013,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopOversoldGroupSaleRequest,
     ) -> ecd_20200930_models.ModifyDesktopOversoldGroupSaleResponse:
+        """
+        @summary 修改桌面超卖组售卖数据
+        
+        @param request: ModifyDesktopOversoldGroupSaleRequest
+        @return: ModifyDesktopOversoldGroupSaleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_desktop_oversold_group_sale_with_options_async(request, runtime)
 
@@ -15887,6 +19027,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopOversoldUserGroupResponse:
+        """
+        @summary 修改桌面超卖用户组
+        
+        @param request: ModifyDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -15923,6 +19070,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopOversoldUserGroupResponse:
+        """
+        @summary 修改桌面超卖用户组
+        
+        @param request: ModifyDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -15958,6 +19112,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopOversoldUserGroupResponse:
+        """
+        @summary 修改桌面超卖用户组
+        
+        @param request: ModifyDesktopOversoldUserGroupRequest
+        @return: ModifyDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_desktop_oversold_user_group_with_options(request, runtime)
 
@@ -15965,6 +19125,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopOversoldUserGroupResponse:
+        """
+        @summary 修改桌面超卖用户组
+        
+        @param request: ModifyDesktopOversoldUserGroupRequest
+        @return: ModifyDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_desktop_oversold_user_group_with_options_async(request, runtime)
 
@@ -15974,16 +19140,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopSpecResponse:
         """
-        Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
-        *   Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](~~188609~~). You can call the [DescribeDesktopTypes](~~188882~~) operation to query the instance types supported by cloud computers.
-        *   You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
-        *   The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
-        *   You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
-        *   The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
-        *   If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
-        *   We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
-        *   When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
-        *   After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
+        @summary Changes the instance type of a cloud computer and scales up the disks of the cloud computer.
+        
+        @description Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
+        Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+        You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
+        The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
+        You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
+        The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
+        If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
+        We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
+        When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
+        After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
         
         @param request: ModifyDesktopSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16001,6 +19169,10 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_specs):
+            query['ResourceSpecs'] = request.resource_specs
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
         if not UtilClient.is_unset(request.user_disk_performance_level):
@@ -16032,16 +19204,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopSpecResponse:
         """
-        Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
-        *   Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](~~188609~~). You can call the [DescribeDesktopTypes](~~188882~~) operation to query the instance types supported by cloud computers.
-        *   You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
-        *   The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
-        *   You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
-        *   The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
-        *   If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
-        *   We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
-        *   When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
-        *   After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
+        @summary Changes the instance type of a cloud computer and scales up the disks of the cloud computer.
+        
+        @description Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
+        Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+        You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
+        The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
+        You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
+        The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
+        If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
+        We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
+        When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
+        After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
         
         @param request: ModifyDesktopSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16059,6 +19233,10 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_specs):
+            query['ResourceSpecs'] = request.resource_specs
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
         if not UtilClient.is_unset(request.user_disk_performance_level):
@@ -16089,16 +19267,18 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopSpecRequest,
     ) -> ecd_20200930_models.ModifyDesktopSpecResponse:
         """
-        Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
-        *   Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](~~188609~~). You can call the [DescribeDesktopTypes](~~188882~~) operation to query the instance types supported by cloud computers.
-        *   You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
-        *   The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
-        *   You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
-        *   The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
-        *   If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
-        *   We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
-        *   When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
-        *   After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
+        @summary Changes the instance type of a cloud computer and scales up the disks of the cloud computer.
+        
+        @description Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
+        Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+        You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
+        The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
+        You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
+        The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
+        If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
+        We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
+        When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
+        After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
         
         @param request: ModifyDesktopSpecRequest
         @return: ModifyDesktopSpecResponse
@@ -16111,16 +19291,18 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopSpecRequest,
     ) -> ecd_20200930_models.ModifyDesktopSpecResponse:
         """
-        Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
-        *   Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](~~188609~~). You can call the [DescribeDesktopTypes](~~188882~~) operation to query the instance types supported by cloud computers.
-        *   You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
-        *   The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
-        *   You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
-        *   The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
-        *   If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
-        *   We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
-        *   When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
-        *   After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
+        @summary Changes the instance type of a cloud computer and scales up the disks of the cloud computer.
+        
+        @description Changing the configurations of a cloud computer includes changing the instance type of the cloud computer and scaling up the disks of the cloud computer.
+        Before you change the configurations of a cloud computer, you must understand the instance types and disk sizes supported by cloud computers. For more information, see [Cloud computer types](https://help.aliyun.com/document_detail/188609.html). You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+        You must change at least one of the following configurations: instance type, system disk size, and data disk size of the cloud computer. You must specify at least one of the following parameters: `DesktopType`, `RootDiskSizeGib`, and `UserDiskSizeGib`. Take note of the following items:
+        The instance type of a cloud computer includes the configurations of vCPUs, memory, and GPUs. You can only change an instance type to another. You cannot change only one of the configurations.
+        You cannot change a cloud computer between the General Office type and the non-General Office type. You cannot yet change a cloud computer between the Graphics type and the non-Graphics type.
+        The system disk and data disks of a cloud computer can only be scaled up and cannot be scaled down.
+        If the billing method of the cloud computer is subscription, the system calculates the price difference based on the configuration difference between the original cloud computer and the new cloud computer. You must make up for the price difference or receive a refund for the price difference.
+        We recommend that you do not change the configurations of a cloud computer twice within 5 minutes.
+        When you change the configurations of a cloud computer, the cloud computer must be in the Stopped state.
+        After you change the configurations of a cloud computer, the personal data on the cloud computer is not affected.
         
         @param request: ModifyDesktopSpecRequest
         @return: ModifyDesktopSpecResponse
@@ -16133,6 +19315,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopTimerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopTimerResponse:
+        """
+        @summary Creates or modifies scheduled tasks on cloud computers, such as starting, stopping, restarting, and resetting cloud computers on schedule.
+        
+        @param request: ModifyDesktopTimerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopTimerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -16167,6 +19356,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopTimerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopTimerResponse:
+        """
+        @summary Creates or modifies scheduled tasks on cloud computers, such as starting, stopping, restarting, and resetting cloud computers on schedule.
+        
+        @param request: ModifyDesktopTimerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDesktopTimerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -16200,6 +19396,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopTimerRequest,
     ) -> ecd_20200930_models.ModifyDesktopTimerResponse:
+        """
+        @summary Creates or modifies scheduled tasks on cloud computers, such as starting, stopping, restarting, and resetting cloud computers on schedule.
+        
+        @param request: ModifyDesktopTimerRequest
+        @return: ModifyDesktopTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_desktop_timer_with_options(request, runtime)
 
@@ -16207,6 +19409,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyDesktopTimerRequest,
     ) -> ecd_20200930_models.ModifyDesktopTimerResponse:
+        """
+        @summary Creates or modifies scheduled tasks on cloud computers, such as starting, stopping, restarting, and resetting cloud computers on schedule.
+        
+        @param request: ModifyDesktopTimerRequest
+        @return: ModifyDesktopTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_desktop_timer_with_options_async(request, runtime)
 
@@ -16216,7 +19424,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @summary Modifies the policies that are configured for a cloud desktop.
+        
+        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16257,7 +19467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @summary Modifies the policies that are configured for a cloud desktop.
+        
+        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16297,7 +19509,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopsPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @summary Modifies the policies that are configured for a cloud desktop.
+        
+        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @return: ModifyDesktopsPolicyGroupResponse
@@ -16310,7 +19524,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDesktopsPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyDesktopsPolicyGroupResponse:
         """
-        The cloud desktops that you want to restart by calling this operation must be in the Running state.
+        @summary Modifies the policies that are configured for a cloud desktop.
+        
+        @description The cloud desktops that you want to restart by calling this operation must be in the Running state.
         
         @param request: ModifyDesktopsPolicyGroupRequest
         @return: ModifyDesktopsPolicyGroupResponse
@@ -16324,16 +19540,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        *   Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        *   When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
+        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        
+        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
+        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
+        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
         1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
         2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
         3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
         4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
         5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
         6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        *   The changes do not affect your personal data on the cloud desktop.
+        The changes do not affect your personal data on the cloud desktop.
         
         @param request: ModifyDiskSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16378,16 +19596,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        *   Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        *   When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
+        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        
+        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
+        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
+        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
         1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
         2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
         3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
         4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
         5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
         6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        *   The changes do not affect your personal data on the cloud desktop.
+        The changes do not affect your personal data on the cloud desktop.
         
         @param request: ModifyDiskSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16431,16 +19651,18 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDiskSpecRequest,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        *   Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        *   When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
+        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        
+        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
+        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
+        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
         1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
         2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
         3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
         4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
         5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
         6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        *   The changes do not affect your personal data on the cloud desktop.
+        The changes do not affect your personal data on the cloud desktop.
         
         @param request: ModifyDiskSpecRequest
         @return: ModifyDiskSpecResponse
@@ -16453,16 +19675,18 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyDiskSpecRequest,
     ) -> ecd_20200930_models.ModifyDiskSpecResponse:
         """
-        You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
-        *   Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
-        *   When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
+        @summary Changes the configurations of a cloud desktop, including the number of vCPUs, memory size, and disk size.
+        
+        @description You can call this operation to change the configurations, such as the desktop type and disk size, of a cloud desktop.
+        Before you call this operation, you must know the cloud desktop types and the disk sizes for each type of cloud desktop that Elastic Desktop Service (EDS) provides.
+        When you change the configurations of a cloud desktop, you must change the desktop type or the size of the system disk or data disk. You must configure at least one of the following parameters: DesktopType, RootDiskSizeGib, and UserDiskSizeGib. Take note of the following items:
         1\\. Desktop types include the specifications of vCPUs, memory, and GPUs. You can change only the desktop type, instead of one of the specifications.
         2\\. You cannot change a cloud desktop from the General Office type to a non-General Office type, or from a non-General Office type to the General Office type. You cannot change a cloud desktop from the Graphics type to a non-Graphics type, or from a non-Graphics type to the Graphics type.
         3\\. You can only increase the sizes of system and data disks. You cannot decrease the sizes of system and data disks.
         4\\. If your cloud desktop uses the subscription billing method, the price difference is calculated based on the price before and after configuration changes. You may receive a refund, or must pay for the price difference.
         5\\. If you need to change the configurations of a cloud desktop multiple times, we recommend that you wait at least 5 minutes between consecutive operations on the cloud desktop.
         6\\. The cloud desktop for which you want to change the desktop type must be in the Stopped state.
-        *   The changes do not affect your personal data on the cloud desktop.
+        The changes do not affect your personal data on the cloud desktop.
         
         @param request: ModifyDiskSpecRequest
         @return: ModifyDiskSpecResponse
@@ -16476,9 +19700,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyEntitlementResponse:
         """
-        The cloud computer must be in the Running state.
-        *   After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](~~436815~~) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
-        *   We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        @summary Assigns a cloud computer to end users and removes all original end users of the cloud computer.
+        
+        @description    The cloud computer must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
         
         @param request: ModifyEntitlementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16517,9 +19743,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyEntitlementResponse:
         """
-        The cloud computer must be in the Running state.
-        *   After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](~~436815~~) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
-        *   We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        @summary Assigns a cloud computer to end users and removes all original end users of the cloud computer.
+        
+        @description    The cloud computer must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
         
         @param request: ModifyEntitlementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16557,9 +19785,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyEntitlementRequest,
     ) -> ecd_20200930_models.ModifyEntitlementResponse:
         """
-        The cloud computer must be in the Running state.
-        *   After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](~~436815~~) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
-        *   We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        @summary Assigns a cloud computer to end users and removes all original end users of the cloud computer.
+        
+        @description    The cloud computer must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
         
         @param request: ModifyEntitlementRequest
         @return: ModifyEntitlementResponse
@@ -16572,9 +19802,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyEntitlementRequest,
     ) -> ecd_20200930_models.ModifyEntitlementResponse:
         """
-        The cloud computer must be in the Running state.
-        *   After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](~~436815~~) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
-        *   We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
+        @summary Assigns a cloud computer to end users and removes all original end users of the cloud computer.
+        
+        @description    The cloud computer must be in the Running state.
+        After you call this operation, the assignment result is immediately returned. You can call the [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) operation to query the assignment of the cloud computer. The value of the `ManagementFlags` response parameter indicates the assignment of the cloud computer. A value of `ASSIGNING` indicates that the cloud computer is being assigned, and other values indicate that the cloud computer is assigned.
+        We recommend that you check the assignment every 2 to 5 seconds and perform the checks within 50 seconds. Typically, 1 to 5 seconds are required to complete the assignment.
         
         @param request: ModifyEntitlementRequest
         @return: ModifyEntitlementResponse
@@ -16588,7 +19820,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyImageAttributeResponse:
         """
-        You can call this operation to modify the attributes of only custom images that are in the Available state.
+        @summary Modifies the attributes of an image, including the name and description of the image.
+        
+        @description You can call this operation to modify the attributes of only custom images that are in the Available state.
         
         @param request: ModifyImageAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16629,7 +19863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyImageAttributeResponse:
         """
-        You can call this operation to modify the attributes of only custom images that are in the Available state.
+        @summary Modifies the attributes of an image, including the name and description of the image.
+        
+        @description You can call this operation to modify the attributes of only custom images that are in the Available state.
         
         @param request: ModifyImageAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16669,7 +19905,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyImageAttributeRequest,
     ) -> ecd_20200930_models.ModifyImageAttributeResponse:
         """
-        You can call this operation to modify the attributes of only custom images that are in the Available state.
+        @summary Modifies the attributes of an image, including the name and description of the image.
+        
+        @description You can call this operation to modify the attributes of only custom images that are in the Available state.
         
         @param request: ModifyImageAttributeRequest
         @return: ModifyImageAttributeResponse
@@ -16682,7 +19920,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyImageAttributeRequest,
     ) -> ecd_20200930_models.ModifyImageAttributeResponse:
         """
-        You can call this operation to modify the attributes of only custom images that are in the Available state.
+        @summary Modifies the attributes of an image, including the name and description of the image.
+        
+        @description You can call this operation to modify the attributes of only custom images that are in the Available state.
         
         @param request: ModifyImageAttributeRequest
         @return: ModifyImageAttributeResponse
@@ -16696,19 +19936,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyImagePermissionResponse:
         """
-        ### [](#)Security of shared images
-        WUYING Workspace cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
+        @summary Shares an image with other Alibaba Cloud accounts, or unshares an image from the recipient Alibaba Cloud accounts.
+        
+        @description ### [](#)Security of shared images
+        Elastic Desktop Service cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
         ### [](#)Quota and billing
-        *   A shared image does not count against the image quotas of principals to which the image is shared.
-        *   After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
-        *   You are not charged for shared images.
+        A shared image does not count against the image quotas of principals to which the image is shared.
+        After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
+        You are not charged for shared images.
         ### [](#)Supported sharing behaviors
-        *   You can share custom images with other Alibaba Cloud accounts.
-        *   You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
+        You can share custom images with other Alibaba Cloud accounts.
+        You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
         ### [](#)Unsupported sharing behaviors
-        *   You cannot share images that are shared by other Alibaba Cloud accounts.
-        *   You cannot share encrypted images.
-        *   You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](~~436978~~).
+        You cannot share images that are shared by other Alibaba Cloud accounts.
+        You cannot share encrypted images.
+        You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
         
         @param request: ModifyImagePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16749,19 +19991,21 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyImagePermissionResponse:
         """
-        ### [](#)Security of shared images
-        WUYING Workspace cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
+        @summary Shares an image with other Alibaba Cloud accounts, or unshares an image from the recipient Alibaba Cloud accounts.
+        
+        @description ### [](#)Security of shared images
+        Elastic Desktop Service cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
         ### [](#)Quota and billing
-        *   A shared image does not count against the image quotas of principals to which the image is shared.
-        *   After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
-        *   You are not charged for shared images.
+        A shared image does not count against the image quotas of principals to which the image is shared.
+        After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
+        You are not charged for shared images.
         ### [](#)Supported sharing behaviors
-        *   You can share custom images with other Alibaba Cloud accounts.
-        *   You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
+        You can share custom images with other Alibaba Cloud accounts.
+        You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
         ### [](#)Unsupported sharing behaviors
-        *   You cannot share images that are shared by other Alibaba Cloud accounts.
-        *   You cannot share encrypted images.
-        *   You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](~~436978~~).
+        You cannot share images that are shared by other Alibaba Cloud accounts.
+        You cannot share encrypted images.
+        You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
         
         @param request: ModifyImagePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16801,19 +20045,21 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyImagePermissionRequest,
     ) -> ecd_20200930_models.ModifyImagePermissionResponse:
         """
-        ### [](#)Security of shared images
-        WUYING Workspace cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
+        @summary Shares an image with other Alibaba Cloud accounts, or unshares an image from the recipient Alibaba Cloud accounts.
+        
+        @description ### [](#)Security of shared images
+        Elastic Desktop Service cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
         ### [](#)Quota and billing
-        *   A shared image does not count against the image quotas of principals to which the image is shared.
-        *   After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
-        *   You are not charged for shared images.
+        A shared image does not count against the image quotas of principals to which the image is shared.
+        After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
+        You are not charged for shared images.
         ### [](#)Supported sharing behaviors
-        *   You can share custom images with other Alibaba Cloud accounts.
-        *   You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
+        You can share custom images with other Alibaba Cloud accounts.
+        You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
         ### [](#)Unsupported sharing behaviors
-        *   You cannot share images that are shared by other Alibaba Cloud accounts.
-        *   You cannot share encrypted images.
-        *   You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](~~436978~~).
+        You cannot share images that are shared by other Alibaba Cloud accounts.
+        You cannot share encrypted images.
+        You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
         
         @param request: ModifyImagePermissionRequest
         @return: ModifyImagePermissionResponse
@@ -16826,19 +20072,21 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyImagePermissionRequest,
     ) -> ecd_20200930_models.ModifyImagePermissionResponse:
         """
-        ### [](#)Security of shared images
-        WUYING Workspace cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
+        @summary Shares an image with other Alibaba Cloud accounts, or unshares an image from the recipient Alibaba Cloud accounts.
+        
+        @description ### [](#)Security of shared images
+        Elastic Desktop Service cannot guarantee the integrity and security of shared images. When you use a shared image, you must make sure that the image comes from a trusted sharer or account, and you are legally responsible for using the shared image.
         ### [](#)Quota and billing
-        *   A shared image does not count against the image quotas of principals to which the image is shared.
-        *   After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
-        *   You are not charged for shared images.
+        A shared image does not count against the image quotas of principals to which the image is shared.
+        After a principal uses a shared image to create a cloud computer, the sharer is not charged for the shared image.
+        You are not charged for shared images.
         ### [](#)Supported sharing behaviors
-        *   You can share custom images with other Alibaba Cloud accounts.
-        *   You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
+        You can share custom images with other Alibaba Cloud accounts.
+        You can share custom images between accounts in the China site (aliyun.com) and the international site (alibabacloud.com).
         ### [](#)Unsupported sharing behaviors
-        *   You cannot share images that are shared by other Alibaba Cloud accounts.
-        *   You cannot share encrypted images.
-        *   You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](~~436978~~).
+        You cannot share images that are shared by other Alibaba Cloud accounts.
+        You cannot share encrypted images.
+        You cannot share images across regions. If you want to share an image across regions, you must copy the image to the destination region and then share the image. For more information, see [CopyImage](https://help.aliyun.com/document_detail/436978.html).
         
         @param request: ModifyImagePermissionRequest
         @return: ModifyImagePermissionResponse
@@ -16852,7 +20100,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](~~62621~~) operation to create a mount target.
+        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
         @param request: ModifyNASDefaultMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16891,7 +20141,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](~~62621~~) operation to create a mount target.
+        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
         @param request: ModifyNASDefaultMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16929,7 +20181,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](~~62621~~) operation to create a mount target.
+        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
         @param request: ModifyNASDefaultMountTargetRequest
         @return: ModifyNASDefaultMountTargetResponse
@@ -16942,7 +20196,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ModifyNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](~~62621~~) operation to create a mount target.
+        @summary Modifies the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, the mount target does not need to be changed. If the mount target is deleted by misoperation, you must specify a new mount target for the NAS file system in the workspace. You can call the [CreateMountTarget](https://help.aliyun.com/document_detail/62621.html) operation to create a mount target.
         
         @param request: ModifyNASDefaultMountTargetRequest
         @return: ModifyNASDefaultMountTargetResponse
@@ -16955,6 +20211,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNetworkPackageBandwidthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNetworkPackageBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of a premium bandwidth plan.
+        
+        @param request: ModifyNetworkPackageBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNetworkPackageBandwidthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -16991,6 +20254,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNetworkPackageBandwidthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNetworkPackageBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of a premium bandwidth plan.
+        
+        @param request: ModifyNetworkPackageBandwidthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNetworkPackageBandwidthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -17026,6 +20296,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyNetworkPackageBandwidthRequest,
     ) -> ecd_20200930_models.ModifyNetworkPackageBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of a premium bandwidth plan.
+        
+        @param request: ModifyNetworkPackageBandwidthRequest
+        @return: ModifyNetworkPackageBandwidthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_network_package_bandwidth_with_options(request, runtime)
 
@@ -17033,6 +20309,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyNetworkPackageBandwidthRequest,
     ) -> ecd_20200930_models.ModifyNetworkPackageBandwidthResponse:
+        """
+        @summary Modifies the bandwidth of a premium bandwidth plan.
+        
+        @param request: ModifyNetworkPackageBandwidthRequest
+        @return: ModifyNetworkPackageBandwidthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_network_package_bandwidth_with_options_async(request, runtime)
 
@@ -17042,7 +20324,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNetworkPackageEnabledResponse:
         """
-        If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
+        @summary Restores or disables a premium bandwidth plan.
+        
+        @description If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
         
         @param request: ModifyNetworkPackageEnabledRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17081,7 +20365,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyNetworkPackageEnabledResponse:
         """
-        If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
+        @summary Restores or disables a premium bandwidth plan.
+        
+        @description If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
         
         @param request: ModifyNetworkPackageEnabledRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17119,7 +20405,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNetworkPackageEnabledRequest,
     ) -> ecd_20200930_models.ModifyNetworkPackageEnabledResponse:
         """
-        If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
+        @summary Restores or disables a premium bandwidth plan.
+        
+        @description If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
         
         @param request: ModifyNetworkPackageEnabledRequest
         @return: ModifyNetworkPackageEnabledResponse
@@ -17132,7 +20420,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyNetworkPackageEnabledRequest,
     ) -> ecd_20200930_models.ModifyNetworkPackageEnabledResponse:
         """
-        If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
+        @summary Restores or disables a premium bandwidth plan.
+        
+        @description If you want to temporarily disable the Internet access of your cloud computer after the Internet access is enabled for your cloud computer, you can disable the premium bandwidth plan and restore it as needed.
         
         @param request: ModifyNetworkPackageEnabledRequest
         @return: ModifyNetworkPackageEnabledResponse
@@ -17145,6 +20435,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteAttributeResponse:
+        """
+        @summary Modifies the basic properties of an office network, including the name and local administrator permission settings.
+        
+        @param request: ModifyOfficeSiteAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_access_type):
@@ -17185,6 +20482,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteAttributeResponse:
+        """
+        @summary Modifies the basic properties of an office network, including the name and local administrator permission settings.
+        
+        @param request: ModifyOfficeSiteAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_access_type):
@@ -17224,6 +20528,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyOfficeSiteAttributeRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteAttributeResponse:
+        """
+        @summary Modifies the basic properties of an office network, including the name and local administrator permission settings.
+        
+        @param request: ModifyOfficeSiteAttributeRequest
+        @return: ModifyOfficeSiteAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_office_site_attribute_with_options(request, runtime)
 
@@ -17231,6 +20541,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyOfficeSiteAttributeRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteAttributeResponse:
+        """
+        @summary Modifies the basic properties of an office network, including the name and local administrator permission settings.
+        
+        @param request: ModifyOfficeSiteAttributeRequest
+        @return: ModifyOfficeSiteAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_office_site_attribute_with_options_async(request, runtime)
 
@@ -17239,6 +20555,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessResponse:
+        """
+        @summary Enables or disables the communication between cloud computers in an office network (formerly workspace). If you enable the communication between cloud computers in an office network, the cloud computers can access each other.
+        
+        @param request: ModifyOfficeSiteCrossDesktopAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteCrossDesktopAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_cross_desktop_access):
@@ -17271,6 +20594,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessResponse:
+        """
+        @summary Enables or disables the communication between cloud computers in an office network (formerly workspace). If you enable the communication between cloud computers in an office network, the cloud computers can access each other.
+        
+        @param request: ModifyOfficeSiteCrossDesktopAccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteCrossDesktopAccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_cross_desktop_access):
@@ -17302,6 +20632,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessResponse:
+        """
+        @summary Enables or disables the communication between cloud computers in an office network (formerly workspace). If you enable the communication between cloud computers in an office network, the cloud computers can access each other.
+        
+        @param request: ModifyOfficeSiteCrossDesktopAccessRequest
+        @return: ModifyOfficeSiteCrossDesktopAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_office_site_cross_desktop_access_with_options(request, runtime)
 
@@ -17309,6 +20645,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteCrossDesktopAccessResponse:
+        """
+        @summary Enables or disables the communication between cloud computers in an office network (formerly workspace). If you enable the communication between cloud computers in an office network, the cloud computers can access each other.
+        
+        @param request: ModifyOfficeSiteCrossDesktopAccessRequest
+        @return: ModifyOfficeSiteCrossDesktopAccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_office_site_cross_desktop_access_with_options_async(request, runtime)
 
@@ -17317,6 +20659,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteMfaEnabledRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteMfaEnabledResponse:
+        """
+        @summary Enables or disables multi-factor authentication (MFA) for an enterprise Active Directory (AD) office network (formerly workspace).
+        
+        @param request: ModifyOfficeSiteMfaEnabledRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteMfaEnabledResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfa_enabled):
@@ -17349,6 +20698,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyOfficeSiteMfaEnabledRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyOfficeSiteMfaEnabledResponse:
+        """
+        @summary Enables or disables multi-factor authentication (MFA) for an enterprise Active Directory (AD) office network (formerly workspace).
+        
+        @param request: ModifyOfficeSiteMfaEnabledRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyOfficeSiteMfaEnabledResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mfa_enabled):
@@ -17380,6 +20736,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyOfficeSiteMfaEnabledRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteMfaEnabledResponse:
+        """
+        @summary Enables or disables multi-factor authentication (MFA) for an enterprise Active Directory (AD) office network (formerly workspace).
+        
+        @param request: ModifyOfficeSiteMfaEnabledRequest
+        @return: ModifyOfficeSiteMfaEnabledResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_office_site_mfa_enabled_with_options(request, runtime)
 
@@ -17387,6 +20749,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyOfficeSiteMfaEnabledRequest,
     ) -> ecd_20200930_models.ModifyOfficeSiteMfaEnabledResponse:
+        """
+        @summary Enables or disables multi-factor authentication (MFA) for an enterprise Active Directory (AD) office network (formerly workspace).
+        
+        @param request: ModifyOfficeSiteMfaEnabledRequest
+        @return: ModifyOfficeSiteMfaEnabledResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_office_site_mfa_enabled_with_options_async(request, runtime)
 
@@ -17395,6 +20763,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyPolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
+        """
+        @summary Modifies a policy.
+        
+        @param request: ModifyPolicyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_access):
@@ -17431,6 +20806,8 @@ class Client(OpenApiClient):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -17533,6 +20910,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyPolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
+        """
+        @summary Modifies a policy.
+        
+        @param request: ModifyPolicyGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPolicyGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_access):
@@ -17569,6 +20953,8 @@ class Client(OpenApiClient):
             query['InternetCommunicationProtocol'] = request.internet_communication_protocol
         if not UtilClient.is_unset(request.local_drive):
             query['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.max_reconnect_time):
+            query['MaxReconnectTime'] = request.max_reconnect_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -17670,6 +21056,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
+        """
+        @summary Modifies a policy.
+        
+        @param request: ModifyPolicyGroupRequest
+        @return: ModifyPolicyGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_policy_group_with_options(request, runtime)
 
@@ -17677,6 +21069,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyPolicyGroupRequest,
     ) -> ecd_20200930_models.ModifyPolicyGroupResponse:
+        """
+        @summary Modifies a policy.
+        
+        @param request: ModifyPolicyGroupRequest
+        @return: ModifyPolicyGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_policy_group_with_options_async(request, runtime)
 
@@ -17686,7 +21084,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyUserEntitlementResponse:
         """
-        You can modify end users only for cloud computers that are in the Running state.
+        @summary Grants permissions on cloud desktops to end users, or revokes the permissions from the end users.
+        
+        @description You can modify end users only for cloud computers that are in the Running state.
         
         @param request: ModifyUserEntitlementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17727,7 +21127,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyUserEntitlementResponse:
         """
-        You can modify end users only for cloud computers that are in the Running state.
+        @summary Grants permissions on cloud desktops to end users, or revokes the permissions from the end users.
+        
+        @description You can modify end users only for cloud computers that are in the Running state.
         
         @param request: ModifyUserEntitlementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17767,7 +21169,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyUserEntitlementRequest,
     ) -> ecd_20200930_models.ModifyUserEntitlementResponse:
         """
-        You can modify end users only for cloud computers that are in the Running state.
+        @summary Grants permissions on cloud desktops to end users, or revokes the permissions from the end users.
+        
+        @description You can modify end users only for cloud computers that are in the Running state.
         
         @param request: ModifyUserEntitlementRequest
         @return: ModifyUserEntitlementResponse
@@ -17780,7 +21184,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyUserEntitlementRequest,
     ) -> ecd_20200930_models.ModifyUserEntitlementResponse:
         """
-        You can modify end users only for cloud computers that are in the Running state.
+        @summary Grants permissions on cloud desktops to end users, or revokes the permissions from the end users.
+        
+        @description You can modify end users only for cloud computers that are in the Running state.
         
         @param request: ModifyUserEntitlementRequest
         @return: ModifyUserEntitlementResponse
@@ -17793,6 +21199,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyUserToDesktopGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
+        """
+        @summary Changes the end users of a cloud computer pool into new end users.
+        
+        @param request: ModifyUserToDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserToDesktopGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -17827,6 +21240,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ModifyUserToDesktopGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
+        """
+        @summary Changes the end users of a cloud computer pool into new end users.
+        
+        @param request: ModifyUserToDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserToDesktopGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -17860,6 +21280,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
+        """
+        @summary Changes the end users of a cloud computer pool into new end users.
+        
+        @param request: ModifyUserToDesktopGroupRequest
+        @return: ModifyUserToDesktopGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_user_to_desktop_group_with_options(request, runtime)
 
@@ -17867,6 +21293,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.ModifyUserToDesktopGroupRequest,
     ) -> ecd_20200930_models.ModifyUserToDesktopGroupResponse:
+        """
+        @summary Changes the end users of a cloud computer pool into new end users.
+        
+        @param request: ModifyUserToDesktopGroupRequest
+        @return: ModifyUserToDesktopGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_user_to_desktop_group_with_options_async(request, runtime)
 
@@ -17875,6 +21307,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.MoveCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.MoveCdsFileResponse:
+        """
+        @summary Move files or folders.
+        
+        @param request: MoveCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -17915,6 +21354,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.MoveCdsFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.MoveCdsFileResponse:
+        """
+        @summary Move files or folders.
+        
+        @param request: MoveCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveCdsFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cds_id):
@@ -17954,6 +21400,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.MoveCdsFileRequest,
     ) -> ecd_20200930_models.MoveCdsFileResponse:
+        """
+        @summary Move files or folders.
+        
+        @param request: MoveCdsFileRequest
+        @return: MoveCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_cds_file_with_options(request, runtime)
 
@@ -17961,6 +21413,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.MoveCdsFileRequest,
     ) -> ecd_20200930_models.MoveCdsFileResponse:
+        """
+        @summary Move files or folders.
+        
+        @param request: MoveCdsFileRequest
+        @return: MoveCdsFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_cds_file_with_options_async(request, runtime)
 
@@ -17970,7 +21428,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RebootDesktopsResponse:
         """
-        The cloud computers that you want to restart must be in the Running state.
+        @summary Restart cloud computers.
+        
+        @description The cloud computers that you want to restart must be in the Running state.
         
         @param request: RebootDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18007,7 +21467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RebootDesktopsResponse:
         """
-        The cloud computers that you want to restart must be in the Running state.
+        @summary Restart cloud computers.
+        
+        @description The cloud computers that you want to restart must be in the Running state.
         
         @param request: RebootDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18043,7 +21505,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RebootDesktopsRequest,
     ) -> ecd_20200930_models.RebootDesktopsResponse:
         """
-        The cloud computers that you want to restart must be in the Running state.
+        @summary Restart cloud computers.
+        
+        @description The cloud computers that you want to restart must be in the Running state.
         
         @param request: RebootDesktopsRequest
         @return: RebootDesktopsResponse
@@ -18056,7 +21520,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RebootDesktopsRequest,
     ) -> ecd_20200930_models.RebootDesktopsResponse:
         """
-        The cloud computers that you want to restart must be in the Running state.
+        @summary Restart cloud computers.
+        
+        @description The cloud computers that you want to restart must be in the Running state.
         
         @param request: RebootDesktopsRequest
         @return: RebootDesktopsResponse
@@ -18070,12 +21536,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        Before you change the image of a cloud computer, take note of the following limits:
-        *   You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        *   GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
+        @summary Recreates cloud computers.
+        
+        @description Before you change the image of a cloud computer, take note of the following limits:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
         After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        *   Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        *   If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18087,6 +21555,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.operate_type):
             query['OperateType'] = request.operate_type
         if not UtilClient.is_unset(request.region_id):
@@ -18116,12 +21586,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        Before you change the image of a cloud computer, take note of the following limits:
-        *   You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        *   GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
+        @summary Recreates cloud computers.
+        
+        @description Before you change the image of a cloud computer, take note of the following limits:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
         After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        *   Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        *   If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18133,6 +21605,8 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.operate_type):
             query['OperateType'] = request.operate_type
         if not UtilClient.is_unset(request.region_id):
@@ -18161,12 +21635,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RebuildDesktopsRequest,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        Before you change the image of a cloud computer, take note of the following limits:
-        *   You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        *   GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
+        @summary Recreates cloud computers.
+        
+        @description Before you change the image of a cloud computer, take note of the following limits:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
         After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        *   Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        *   If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @return: RebuildDesktopsResponse
@@ -18179,12 +21655,14 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RebuildDesktopsRequest,
     ) -> ecd_20200930_models.RebuildDesktopsResponse:
         """
-        Before you change the image of a cloud computer, take note of the following limits:
-        *   You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
-        *   GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
+        @summary Recreates cloud computers.
+        
+        @description Before you change the image of a cloud computer, take note of the following limits:
+        You can select an image whose OS is different from the OS of the original image. The image change feature is not supported in the following regions: China (Hong Kong), Australia (Sydney), Singapore, and Japan (Tokyo).
+        GPU images and non-GPU images cannot be exchanged. Graphical cloud computers can only use GPU-accelerated images. Non-graphical cloud computers can only use non-GPU-accelerated images.
         After the image is changed, the system uses the new image to initialize the system disk of the cloud computer. This has the following impacts:
-        *   Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
-        *   If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
+        Data in the system disk of the original cloud computer is cleared. Snapshots that are created based on the system disk of the original cloud computer can no longer be used. The system automatically deletes the snapshots.
+        If the OS of the image is changed, the data in the data disks of the original cloud computer is cleared, and the snapshots that are created based on the data disks of the original cloud computer can no longer be used. The system automatically deletes the snapshots. If the OS of the image is not changed, the data in the data disks of the original cloud computer is retained, and the snapshots that are created based on the data disks of the original cloud computer can still be used.
         
         @param request: RebuildDesktopsRequest
         @return: RebuildDesktopsResponse
@@ -18197,6 +21675,13 @@ class Client(OpenApiClient):
         tmp_req: ecd_20200930_models.RemoveFilePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
+        """
+        @summary Removes the file sharing feature of a folder in a cloud disk.
+        
+        @param tmp_req: RemoveFilePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveFilePermissionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecd_20200930_models.RemoveFilePermissionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18239,6 +21724,13 @@ class Client(OpenApiClient):
         tmp_req: ecd_20200930_models.RemoveFilePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
+        """
+        @summary Removes the file sharing feature of a folder in a cloud disk.
+        
+        @param tmp_req: RemoveFilePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveFilePermissionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecd_20200930_models.RemoveFilePermissionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18280,6 +21772,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RemoveFilePermissionRequest,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
+        """
+        @summary Removes the file sharing feature of a folder in a cloud disk.
+        
+        @param request: RemoveFilePermissionRequest
+        @return: RemoveFilePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_file_permission_with_options(request, runtime)
 
@@ -18287,6 +21785,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RemoveFilePermissionRequest,
     ) -> ecd_20200930_models.RemoveFilePermissionResponse:
+        """
+        @summary Removes the file sharing feature of a folder in a cloud disk.
+        
+        @param request: RemoveFilePermissionRequest
+        @return: RemoveFilePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_file_permission_with_options_async(request, runtime)
 
@@ -18295,6 +21799,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveUserFromDesktopGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
+        """
+        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        
+        @param request: RemoveUserFromDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromDesktopGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -18329,6 +21840,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveUserFromDesktopGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
+        """
+        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        
+        @param request: RemoveUserFromDesktopGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromDesktopGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -18362,6 +21880,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RemoveUserFromDesktopGroupRequest,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
+        """
+        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        
+        @param request: RemoveUserFromDesktopGroupRequest
+        @return: RemoveUserFromDesktopGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_user_from_desktop_group_with_options(request, runtime)
 
@@ -18369,6 +21893,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RemoveUserFromDesktopGroupRequest,
     ) -> ecd_20200930_models.RemoveUserFromDesktopGroupResponse:
+        """
+        @summary Removes authorized users of cloud computer pools. The removed users can no longer connect to cloud computers in the cloud computer pool.
+        
+        @param request: RemoveUserFromDesktopGroupRequest
+        @return: RemoveUserFromDesktopGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_from_desktop_group_with_options_async(request, runtime)
 
@@ -18377,6 +21907,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupResponse:
+        """
+        @summary 移除超卖用户组用户
+        
+        @param request: RemoveUserFromDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
@@ -18411,6 +21948,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupResponse:
+        """
+        @summary 移除超卖用户组用户
+        
+        @param request: RemoveUserFromDesktopOversoldUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserFromDesktopOversoldUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
@@ -18444,6 +21988,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupResponse:
+        """
+        @summary 移除超卖用户组用户
+        
+        @param request: RemoveUserFromDesktopOversoldUserGroupRequest
+        @return: RemoveUserFromDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_user_from_desktop_oversold_user_group_with_options(request, runtime)
 
@@ -18451,6 +22001,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupRequest,
     ) -> ecd_20200930_models.RemoveUserFromDesktopOversoldUserGroupResponse:
+        """
+        @summary 移除超卖用户组用户
+        
+        @param request: RemoveUserFromDesktopOversoldUserGroupRequest
+        @return: RemoveUserFromDesktopOversoldUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_from_desktop_oversold_user_group_with_options_async(request, runtime)
 
@@ -18459,6 +22015,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopOversoldGroupResponse:
+        """
+        @summary 续费桌面超卖组
+        
+        @param request: RenewDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.oversold_group_id):
@@ -18491,6 +22054,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopOversoldGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopOversoldGroupResponse:
+        """
+        @summary 续费桌面超卖组
+        
+        @param request: RenewDesktopOversoldGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDesktopOversoldGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.oversold_group_id):
@@ -18522,6 +22092,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RenewDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.RenewDesktopOversoldGroupResponse:
+        """
+        @summary 续费桌面超卖组
+        
+        @param request: RenewDesktopOversoldGroupRequest
+        @return: RenewDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_desktop_oversold_group_with_options(request, runtime)
 
@@ -18529,6 +22105,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RenewDesktopOversoldGroupRequest,
     ) -> ecd_20200930_models.RenewDesktopOversoldGroupResponse:
+        """
+        @summary 续费桌面超卖组
+        
+        @param request: RenewDesktopOversoldGroupRequest
+        @return: RenewDesktopOversoldGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_desktop_oversold_group_with_options_async(request, runtime)
 
@@ -18537,10 +22119,19 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
+        """
+        @summary Renew subscription cloud computers.
+        
+        @param request: RenewDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.period):
@@ -18577,10 +22168,19 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
+        """
+        @summary Renew subscription cloud computers.
+        
+        @param request: RenewDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not UtilClient.is_unset(request.period):
@@ -18616,6 +22216,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RenewDesktopsRequest,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
+        """
+        @summary Renew subscription cloud computers.
+        
+        @param request: RenewDesktopsRequest
+        @return: RenewDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_desktops_with_options(request, runtime)
 
@@ -18623,6 +22229,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RenewDesktopsRequest,
     ) -> ecd_20200930_models.RenewDesktopsResponse:
+        """
+        @summary Renew subscription cloud computers.
+        
+        @param request: RenewDesktopsRequest
+        @return: RenewDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_desktops_with_options_async(request, runtime)
 
@@ -18631,6 +22243,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewNetworkPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewNetworkPackagesResponse:
+        """
+        @summary Renews premium bandwidth plans.
+        
+        @param request: RenewNetworkPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewNetworkPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -18669,6 +22288,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RenewNetworkPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RenewNetworkPackagesResponse:
+        """
+        @summary Renews premium bandwidth plans.
+        
+        @param request: RenewNetworkPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewNetworkPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -18706,6 +22332,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RenewNetworkPackagesRequest,
     ) -> ecd_20200930_models.RenewNetworkPackagesResponse:
+        """
+        @summary Renews premium bandwidth plans.
+        
+        @param request: RenewNetworkPackagesRequest
+        @return: RenewNetworkPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_network_packages_with_options(request, runtime)
 
@@ -18713,6 +22345,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RenewNetworkPackagesRequest,
     ) -> ecd_20200930_models.RenewNetworkPackagesResponse:
+        """
+        @summary Renews premium bandwidth plans.
+        
+        @param request: RenewNetworkPackagesRequest
+        @return: RenewNetworkPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_network_packages_with_options_async(request, runtime)
 
@@ -18722,7 +22360,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @summary Resets cloud computers.
+        
+        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
         
         @param request: ResetDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18771,7 +22411,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @summary Resets cloud computers.
+        
+        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
         
         @param request: ResetDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18819,7 +22461,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetDesktopsRequest,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @summary Resets cloud computers.
+        
+        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
         
         @param request: ResetDesktopsRequest
         @return: ResetDesktopsResponse
@@ -18832,7 +22476,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetDesktopsRequest,
     ) -> ecd_20200930_models.ResetDesktopsResponse:
         """
-        > You can call this operation to reset only cloud computers in a cloud computer pool.
+        @summary Resets cloud computers.
+        
+        @description > You can call this operation to reset only cloud computers in a cloud computer pool.
         
         @param request: ResetDesktopsRequest
         @return: ResetDesktopsResponse
@@ -18846,7 +22492,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
+        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
         @param request: ResetNASDefaultMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18883,7 +22531,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
+        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
         @param request: ResetNASDefaultMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18919,7 +22569,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
+        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
         @param request: ResetNASDefaultMountTargetRequest
         @return: ResetNASDefaultMountTargetResponse
@@ -18932,7 +22584,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetNASDefaultMountTargetRequest,
     ) -> ecd_20200930_models.ResetNASDefaultMountTargetResponse:
         """
-        When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
+        @summary Resets the mount target of an Apsara File Storage NAS (NAS) file system.
+        
+        @description When you create a NAS file system, a mount target is automatically generated. By default, you do not need to modify the mount target of the NAS file system. If the mount target is disabled, you need to reset the mount target of the NAS file system.
         
         @param request: ResetNASDefaultMountTargetRequest
         @return: ResetNASDefaultMountTargetResponse
@@ -18946,10 +22600,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetSnapshotResponse:
         """
-        Before you call this operation, make sure that the following operations are performed:
-        *   The data that you want to retain is backed up.
+        @summary Restores the data of a disk from a snapshot.
+        
+        @description Before you call this operation, make sure that the following operations are performed:
+        The data that you want to retain is backed up.
         > The disk restoration operation is irreversible. After you call this operation, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore the disk based on the snapshot, make sure that you back up data.
-        *   The cloud computer to which the disk belongs is stopped.
+        The cloud computer to which the disk belongs is stopped.
         
         @param request: ResetSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18986,10 +22642,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.ResetSnapshotResponse:
         """
-        Before you call this operation, make sure that the following operations are performed:
-        *   The data that you want to retain is backed up.
+        @summary Restores the data of a disk from a snapshot.
+        
+        @description Before you call this operation, make sure that the following operations are performed:
+        The data that you want to retain is backed up.
         > The disk restoration operation is irreversible. After you call this operation, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore the disk based on the snapshot, make sure that you back up data.
-        *   The cloud computer to which the disk belongs is stopped.
+        The cloud computer to which the disk belongs is stopped.
         
         @param request: ResetSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19025,10 +22683,12 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetSnapshotRequest,
     ) -> ecd_20200930_models.ResetSnapshotResponse:
         """
-        Before you call this operation, make sure that the following operations are performed:
-        *   The data that you want to retain is backed up.
+        @summary Restores the data of a disk from a snapshot.
+        
+        @description Before you call this operation, make sure that the following operations are performed:
+        The data that you want to retain is backed up.
         > The disk restoration operation is irreversible. After you call this operation, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore the disk based on the snapshot, make sure that you back up data.
-        *   The cloud computer to which the disk belongs is stopped.
+        The cloud computer to which the disk belongs is stopped.
         
         @param request: ResetSnapshotRequest
         @return: ResetSnapshotResponse
@@ -19041,10 +22701,12 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.ResetSnapshotRequest,
     ) -> ecd_20200930_models.ResetSnapshotResponse:
         """
-        Before you call this operation, make sure that the following operations are performed:
-        *   The data that you want to retain is backed up.
+        @summary Restores the data of a disk from a snapshot.
+        
+        @description Before you call this operation, make sure that the following operations are performed:
+        The data that you want to retain is backed up.
         > The disk restoration operation is irreversible. After you call this operation, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore the disk based on the snapshot, make sure that you back up data.
-        *   The cloud computer to which the disk belongs is stopped.
+        The cloud computer to which the disk belongs is stopped.
         
         @param request: ResetSnapshotRequest
         @return: ResetSnapshotResponse
@@ -19057,6 +22719,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RevokeCoordinatePrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RevokeCoordinatePrivilegeResponse:
+        """
+        @summary Revokes the coordinate permissions.
+        
+        @param request: RevokeCoordinatePrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeCoordinatePrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_id):
@@ -19093,6 +22762,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RevokeCoordinatePrivilegeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RevokeCoordinatePrivilegeResponse:
+        """
+        @summary Revokes the coordinate permissions.
+        
+        @param request: RevokeCoordinatePrivilegeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeCoordinatePrivilegeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_id):
@@ -19128,6 +22804,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RevokeCoordinatePrivilegeRequest,
     ) -> ecd_20200930_models.RevokeCoordinatePrivilegeResponse:
+        """
+        @summary Revokes the coordinate permissions.
+        
+        @param request: RevokeCoordinatePrivilegeRequest
+        @return: RevokeCoordinatePrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_coordinate_privilege_with_options(request, runtime)
 
@@ -19135,6 +22817,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.RevokeCoordinatePrivilegeRequest,
     ) -> ecd_20200930_models.RevokeCoordinatePrivilegeResponse:
+        """
+        @summary Revokes the coordinate permissions.
+        
+        @param request: RevokeCoordinatePrivilegeRequest
+        @return: RevokeCoordinatePrivilegeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_coordinate_privilege_with_options_async(request, runtime)
 
@@ -19144,7 +22832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RunCommandResponse:
         """
-        You can use the RunCommand operation to run scripts only on Windows cloud desktops.
+        @summary Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+        
+        @description You can use the RunCommand operation to run scripts only on Windows cloud desktops.
         
         @param request: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19191,7 +22881,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.RunCommandResponse:
         """
-        You can use the RunCommand operation to run scripts only on Windows cloud desktops.
+        @summary Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+        
+        @description You can use the RunCommand operation to run scripts only on Windows cloud desktops.
         
         @param request: RunCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19237,7 +22929,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RunCommandRequest,
     ) -> ecd_20200930_models.RunCommandResponse:
         """
-        You can use the RunCommand operation to run scripts only on Windows cloud desktops.
+        @summary Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+        
+        @description You can use the RunCommand operation to run scripts only on Windows cloud desktops.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -19250,7 +22944,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.RunCommandRequest,
     ) -> ecd_20200930_models.RunCommandResponse:
         """
-        You can use the RunCommand operation to run scripts only on Windows cloud desktops.
+        @summary Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
+        
+        @description You can use the RunCommand operation to run scripts only on Windows cloud desktops.
         
         @param request: RunCommandRequest
         @return: RunCommandResponse
@@ -19264,7 +22960,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SendVerifyCodeResponse:
         """
-        You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
+        @summary Obtains the verification code that is required when you bind an advanced office network to a Cloud Enterprise Network (CEN) instance that belongs to another Alibaba Cloud account.
+        
+        @description You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
         
         @param request: SendVerifyCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19303,7 +23001,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SendVerifyCodeResponse:
         """
-        You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
+        @summary Obtains the verification code that is required when you bind an advanced office network to a Cloud Enterprise Network (CEN) instance that belongs to another Alibaba Cloud account.
+        
+        @description You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
         
         @param request: SendVerifyCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19341,7 +23041,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SendVerifyCodeRequest,
     ) -> ecd_20200930_models.SendVerifyCodeResponse:
         """
-        You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
+        @summary Obtains the verification code that is required when you bind an advanced office network to a Cloud Enterprise Network (CEN) instance that belongs to another Alibaba Cloud account.
+        
+        @description You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
         
         @param request: SendVerifyCodeRequest
         @return: SendVerifyCodeResponse
@@ -19354,7 +23056,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SendVerifyCodeRequest,
     ) -> ecd_20200930_models.SendVerifyCodeResponse:
         """
-        You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
+        @summary Obtains the verification code that is required when you bind an advanced office network to a Cloud Enterprise Network (CEN) instance that belongs to another Alibaba Cloud account.
+        
+        @description You must call this operation to obtain the verification code that is required when you bind an advanced office network to a CEN instance that belongs to another Alibaba Cloud account. After you call this operation, the system sends a verification code to the email address associated with the Alibaba Cloud account to which the CEN instance belongs.
         
         @param request: SendVerifyCodeRequest
         @return: SendVerifyCodeResponse
@@ -19367,6 +23071,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        """
+        @summary Configures an auto scaling policy for a multi-session cloud computer. Elastic Desktop Service allows multiple end users to share a cloud computer in a multi-session cloud computer pool. This helps save costs.
+        
+        @param request: SetDesktopGroupScaleTimerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopGroupScaleTimerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -19399,6 +23110,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        """
+        @summary Configures an auto scaling policy for a multi-session cloud computer. Elastic Desktop Service allows multiple end users to share a cloud computer in a multi-session cloud computer pool. This helps save costs.
+        
+        @param request: SetDesktopGroupScaleTimerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopGroupScaleTimerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -19430,6 +23148,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
     ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        """
+        @summary Configures an auto scaling policy for a multi-session cloud computer. Elastic Desktop Service allows multiple end users to share a cloud computer in a multi-session cloud computer pool. This helps save costs.
+        
+        @param request: SetDesktopGroupScaleTimerRequest
+        @return: SetDesktopGroupScaleTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_desktop_group_scale_timer_with_options(request, runtime)
 
@@ -19437,6 +23161,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetDesktopGroupScaleTimerRequest,
     ) -> ecd_20200930_models.SetDesktopGroupScaleTimerResponse:
+        """
+        @summary Configures an auto scaling policy for a multi-session cloud computer. Elastic Desktop Service allows multiple end users to share a cloud computer in a multi-session cloud computer pool. This helps save costs.
+        
+        @param request: SetDesktopGroupScaleTimerRequest
+        @return: SetDesktopGroupScaleTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_desktop_group_scale_timer_with_options_async(request, runtime)
 
@@ -19445,6 +23175,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
+        """
+        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        
+        @param request: SetDesktopGroupTimerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopGroupTimerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -19483,6 +23220,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
+        """
+        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        
+        @param request: SetDesktopGroupTimerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopGroupTimerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -19520,6 +23264,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetDesktopGroupTimerRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
+        """
+        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        
+        @param request: SetDesktopGroupTimerRequest
+        @return: SetDesktopGroupTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_desktop_group_timer_with_options(request, runtime)
 
@@ -19527,6 +23277,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetDesktopGroupTimerRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerResponse:
+        """
+        @summary Configures a scheduled task for a cloud computer pool, such as starting, stopping, restarting or resting cloud computers in the pool.
+        
+        @param request: SetDesktopGroupTimerRequest
+        @return: SetDesktopGroupTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_desktop_group_timer_with_options_async(request, runtime)
 
@@ -19535,6 +23291,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
+        """
+        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        
+        @param request: SetDesktopGroupTimerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopGroupTimerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -19569,6 +23332,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDesktopGroupTimerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
+        """
+        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        
+        @param request: SetDesktopGroupTimerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopGroupTimerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_group_id):
@@ -19602,6 +23372,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetDesktopGroupTimerStatusRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
+        """
+        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        
+        @param request: SetDesktopGroupTimerStatusRequest
+        @return: SetDesktopGroupTimerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_desktop_group_timer_status_with_options(request, runtime)
 
@@ -19609,8 +23385,118 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetDesktopGroupTimerStatusRequest,
     ) -> ecd_20200930_models.SetDesktopGroupTimerStatusResponse:
+        """
+        @summary Sets the status of a scheduled task for a cloud computer pool. For example, you enable or disable the scheduled task.
+        
+        @param request: SetDesktopGroupTimerStatusRequest
+        @return: SetDesktopGroupTimerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_desktop_group_timer_status_with_options_async(request, runtime)
+
+    def set_desktop_maintenance_with_options(
+        self,
+        request: ecd_20200930_models.SetDesktopMaintenanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
+        """
+        @summary 设置桌面维护模式
+        
+        @param request: SetDesktopMaintenanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopMaintenanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDesktopMaintenance',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.SetDesktopMaintenanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_desktop_maintenance_with_options_async(
+        self,
+        request: ecd_20200930_models.SetDesktopMaintenanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
+        """
+        @summary 设置桌面维护模式
+        
+        @param request: SetDesktopMaintenanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDesktopMaintenanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDesktopMaintenance',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.SetDesktopMaintenanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_desktop_maintenance(
+        self,
+        request: ecd_20200930_models.SetDesktopMaintenanceRequest,
+    ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
+        """
+        @summary 设置桌面维护模式
+        
+        @param request: SetDesktopMaintenanceRequest
+        @return: SetDesktopMaintenanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_desktop_maintenance_with_options(request, runtime)
+
+    async def set_desktop_maintenance_async(
+        self,
+        request: ecd_20200930_models.SetDesktopMaintenanceRequest,
+    ) -> ecd_20200930_models.SetDesktopMaintenanceResponse:
+        """
+        @summary 设置桌面维护模式
+        
+        @param request: SetDesktopMaintenanceRequest
+        @return: SetDesktopMaintenanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_desktop_maintenance_with_options_async(request, runtime)
 
     def set_directory_sso_status_with_options(
         self,
@@ -19618,7 +23504,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDirectorySsoStatusResponse:
         """
-        This operation is supported only for AD directories, not for RAM directories.
+        @summary Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+        
+        @description This operation is supported only for AD directories, not for RAM directories.
         
         @param request: SetDirectorySsoStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19657,7 +23545,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetDirectorySsoStatusResponse:
         """
-        This operation is supported only for AD directories, not for RAM directories.
+        @summary Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+        
+        @description This operation is supported only for AD directories, not for RAM directories.
         
         @param request: SetDirectorySsoStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19695,7 +23585,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDirectorySsoStatusRequest,
     ) -> ecd_20200930_models.SetDirectorySsoStatusResponse:
         """
-        This operation is supported only for AD directories, not for RAM directories.
+        @summary Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+        
+        @description This operation is supported only for AD directories, not for RAM directories.
         
         @param request: SetDirectorySsoStatusRequest
         @return: SetDirectorySsoStatusResponse
@@ -19708,7 +23600,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetDirectorySsoStatusRequest,
     ) -> ecd_20200930_models.SetDirectorySsoStatusResponse:
         """
-        This operation is supported only for AD directories, not for RAM directories.
+        @summary Configures the single sign-on (SSO) status of an Active Directory (AD) directory.
+        
+        @description This operation is supported only for AD directories, not for RAM directories.
         
         @param request: SetDirectorySsoStatusRequest
         @return: SetDirectorySsoStatusResponse
@@ -19722,7 +23616,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetIdpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Uploads the metadata of a Security Assertion Markup Language (SAML) 2.0-based identity provider (IdP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: SetIdpMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19763,7 +23659,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetIdpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Uploads the metadata of a Security Assertion Markup Language (SAML) 2.0-based identity provider (IdP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: SetIdpMetadataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19803,7 +23701,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetIdpMetadataRequest,
     ) -> ecd_20200930_models.SetIdpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Uploads the metadata of a Security Assertion Markup Language (SAML) 2.0-based identity provider (IdP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: SetIdpMetadataRequest
         @return: SetIdpMetadataResponse
@@ -19816,7 +23716,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetIdpMetadataRequest,
     ) -> ecd_20200930_models.SetIdpMetadataResponse:
         """
-        You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
+        @summary Uploads the metadata of a Security Assertion Markup Language (SAML) 2.0-based identity provider (IdP).
+        
+        @description You can call this operation only for workspaces of the Active Directory (AD) and convenience account types.
         
         @param request: SetIdpMetadataRequest
         @return: SetIdpMetadataResponse
@@ -19829,6 +23731,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetOfficeSiteSsoStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetOfficeSiteSsoStatusResponse:
+        """
+        @summary Enables or disables single sign-on (SSO) for a workspace.
+        
+        @param request: SetOfficeSiteSsoStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetOfficeSiteSsoStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_sso):
@@ -19861,6 +23770,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.SetOfficeSiteSsoStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetOfficeSiteSsoStatusResponse:
+        """
+        @summary Enables or disables single sign-on (SSO) for a workspace.
+        
+        @param request: SetOfficeSiteSsoStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetOfficeSiteSsoStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_sso):
@@ -19892,6 +23808,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetOfficeSiteSsoStatusRequest,
     ) -> ecd_20200930_models.SetOfficeSiteSsoStatusResponse:
+        """
+        @summary Enables or disables single sign-on (SSO) for a workspace.
+        
+        @param request: SetOfficeSiteSsoStatusRequest
+        @return: SetOfficeSiteSsoStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_office_site_sso_status_with_options(request, runtime)
 
@@ -19899,6 +23821,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetOfficeSiteSsoStatusRequest,
     ) -> ecd_20200930_models.SetOfficeSiteSsoStatusResponse:
+        """
+        @summary Enables or disables single sign-on (SSO) for a workspace.
+        
+        @param request: SetOfficeSiteSsoStatusRequest
+        @return: SetOfficeSiteSsoStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_office_site_sso_status_with_options_async(request, runtime)
 
@@ -19907,6 +23835,13 @@ class Client(OpenApiClient):
         tmp_req: ecd_20200930_models.SetUserProfilePathRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetUserProfilePathRulesResponse:
+        """
+        @summary Configures directories in the blacklist and whitelist based on the user profile management (UPM) feature.
+        
+        @param tmp_req: SetUserProfilePathRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetUserProfilePathRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecd_20200930_models.SetUserProfilePathRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19945,6 +23880,13 @@ class Client(OpenApiClient):
         tmp_req: ecd_20200930_models.SetUserProfilePathRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.SetUserProfilePathRulesResponse:
+        """
+        @summary Configures directories in the blacklist and whitelist based on the user profile management (UPM) feature.
+        
+        @param tmp_req: SetUserProfilePathRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetUserProfilePathRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ecd_20200930_models.SetUserProfilePathRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19982,6 +23924,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetUserProfilePathRulesRequest,
     ) -> ecd_20200930_models.SetUserProfilePathRulesResponse:
+        """
+        @summary Configures directories in the blacklist and whitelist based on the user profile management (UPM) feature.
+        
+        @param request: SetUserProfilePathRulesRequest
+        @return: SetUserProfilePathRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_user_profile_path_rules_with_options(request, runtime)
 
@@ -19989,6 +23937,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.SetUserProfilePathRulesRequest,
     ) -> ecd_20200930_models.SetUserProfilePathRulesResponse:
+        """
+        @summary Configures directories in the blacklist and whitelist based on the user profile management (UPM) feature.
+        
+        @param request: SetUserProfilePathRulesRequest
+        @return: SetUserProfilePathRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_user_profile_path_rules_with_options_async(request, runtime)
 
@@ -19998,7 +23952,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state.
+        @summary Starts stopped cloud computers. After the API operation is successfully called, the cloud computers enter the Running state.
+        
+        @description The cloud computers that you want to start must be in the Stopped state.
         
         @param request: StartDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20035,7 +23991,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state.
+        @summary Starts stopped cloud computers. After the API operation is successfully called, the cloud computers enter the Running state.
+        
+        @description The cloud computers that you want to start must be in the Stopped state.
         
         @param request: StartDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20071,7 +24029,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StartDesktopsRequest,
     ) -> ecd_20200930_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state.
+        @summary Starts stopped cloud computers. After the API operation is successfully called, the cloud computers enter the Running state.
+        
+        @description The cloud computers that you want to start must be in the Stopped state.
         
         @param request: StartDesktopsRequest
         @return: StartDesktopsResponse
@@ -20084,7 +24044,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StartDesktopsRequest,
     ) -> ecd_20200930_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state.
+        @summary Starts stopped cloud computers. After the API operation is successfully called, the cloud computers enter the Running state.
+        
+        @description The cloud computers that you want to start must be in the Stopped state.
         
         @param request: StartDesktopsRequest
         @return: StartDesktopsResponse
@@ -20098,7 +24060,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state.
+        @summary Stop cloud computers that are in the Running state. After the operation is successfully called, the cloud computers enter the Stopped state.
+        
+        @description The cloud computers that you want to stop must be in the Running state.
         
         @param request: StopDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20137,7 +24101,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state.
+        @summary Stop cloud computers that are in the Running state. After the operation is successfully called, the cloud computers enter the Stopped state.
+        
+        @description The cloud computers that you want to stop must be in the Running state.
         
         @param request: StopDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20175,7 +24141,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StopDesktopsRequest,
     ) -> ecd_20200930_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state.
+        @summary Stop cloud computers that are in the Running state. After the operation is successfully called, the cloud computers enter the Stopped state.
+        
+        @description The cloud computers that you want to stop must be in the Running state.
         
         @param request: StopDesktopsRequest
         @return: StopDesktopsResponse
@@ -20188,7 +24156,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StopDesktopsRequest,
     ) -> ecd_20200930_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state.
+        @summary Stop cloud computers that are in the Running state. After the operation is successfully called, the cloud computers enter the Stopped state.
+        
+        @description The cloud computers that you want to stop must be in the Running state.
         
         @param request: StopDesktopsRequest
         @return: StopDesktopsResponse
@@ -20202,7 +24172,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
+        @summary Stops a Cloud Assistant command that is running on one or more cloud desktops.
+        
+        @description When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20241,7 +24213,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
+        @summary Stops a Cloud Assistant command that is running on one or more cloud desktops.
+        
+        @description When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20279,7 +24253,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StopInvocationRequest,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
+        @summary Stops a Cloud Assistant command that is running on one or more cloud desktops.
+        
+        @description When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -20292,7 +24268,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.StopInvocationRequest,
     ) -> ecd_20200930_models.StopInvocationResponse:
         """
-        When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
+        @summary Stops a Cloud Assistant command that is running on one or more cloud desktops.
+        
+        @description When you stop a one-time execution of a command, the command continues to run on the cloud desktops where it has started to run, and will not run on the cloud desktops where it has not started to run.
         
         @param request: StopInvocationRequest
         @return: StopInvocationResponse
@@ -20306,7 +24284,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.TagResourcesResponse:
         """
-        If TagKey is specified, the new TagValue value overrides the original TagValue value.
+        @summary Adds tags to cloud computers. This allows you to filter and manage cloud computers by tag.
+        
+        @description If TagKey is specified, the new TagValue value overrides the original TagValue value.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20347,7 +24327,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.TagResourcesResponse:
         """
-        If TagKey is specified, the new TagValue value overrides the original TagValue value.
+        @summary Adds tags to cloud computers. This allows you to filter and manage cloud computers by tag.
+        
+        @description If TagKey is specified, the new TagValue value overrides the original TagValue value.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20387,7 +24369,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.TagResourcesRequest,
     ) -> ecd_20200930_models.TagResourcesResponse:
         """
-        If TagKey is specified, the new TagValue value overrides the original TagValue value.
+        @summary Adds tags to cloud computers. This allows you to filter and manage cloud computers by tag.
+        
+        @description If TagKey is specified, the new TagValue value overrides the original TagValue value.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -20400,7 +24384,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.TagResourcesRequest,
     ) -> ecd_20200930_models.TagResourcesResponse:
         """
-        If TagKey is specified, the new TagValue value overrides the original TagValue value.
+        @summary Adds tags to cloud computers. This allows you to filter and manage cloud computers by tag.
+        
+        @description If TagKey is specified, the new TagValue value overrides the original TagValue value.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -20413,6 +24399,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UnbindUserDesktopRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindUserDesktopResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_agent_ids):
@@ -20451,6 +24444,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UnbindUserDesktopRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindUserDesktopResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_agent_ids):
@@ -20488,6 +24488,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UnbindUserDesktopRequest,
     ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @return: UnbindUserDesktopResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_user_desktop_with_options(request, runtime)
 
@@ -20495,6 +24501,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UnbindUserDesktopRequest,
     ) -> ecd_20200930_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @return: UnbindUserDesktopResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_user_desktop_with_options_async(request, runtime)
 
@@ -20503,6 +24515,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UnlockVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UnlockVirtualMFADeviceResponse:
+        """
+        @summary Unlocks a virtual multi-factor authentication (MFA) device that is in the LOCKED state.
+        
+        @param request: UnlockVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -20533,6 +24552,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UnlockVirtualMFADeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UnlockVirtualMFADeviceResponse:
+        """
+        @summary Unlocks a virtual multi-factor authentication (MFA) device that is in the LOCKED state.
+        
+        @param request: UnlockVirtualMFADeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnlockVirtualMFADeviceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -20562,6 +24588,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UnlockVirtualMFADeviceRequest,
     ) -> ecd_20200930_models.UnlockVirtualMFADeviceResponse:
+        """
+        @summary Unlocks a virtual multi-factor authentication (MFA) device that is in the LOCKED state.
+        
+        @param request: UnlockVirtualMFADeviceRequest
+        @return: UnlockVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unlock_virtual_mfadevice_with_options(request, runtime)
 
@@ -20569,6 +24601,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UnlockVirtualMFADeviceRequest,
     ) -> ecd_20200930_models.UnlockVirtualMFADeviceResponse:
+        """
+        @summary Unlocks a virtual multi-factor authentication (MFA) device that is in the LOCKED state.
+        
+        @param request: UnlockVirtualMFADeviceRequest
+        @return: UnlockVirtualMFADeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unlock_virtual_mfadevice_with_options_async(request, runtime)
 
@@ -20577,6 +24615,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from cloud computers. After you remove a tag, if the tag is not added to a cloud computer, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -20613,6 +24658,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from cloud computers. After you remove a tag, if the tag is not added to a cloud computer, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -20648,6 +24700,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UntagResourcesRequest,
     ) -> ecd_20200930_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from cloud computers. After you remove a tag, if the tag is not added to a cloud computer, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -20655,6 +24713,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.UntagResourcesRequest,
     ) -> ecd_20200930_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from cloud computers. After you remove a tag, if the tag is not added to a cloud computer, the tag is automatically deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -20664,7 +24728,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
         """
-        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        @summary Enables or disables the auto-push feature for an image update task.
+        
+        @description You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the Elastic Desktop Service console and choose *Operations > Image Updates** in the left-side navigation pane.
         
         @param request: UpdateFotaTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20703,7 +24769,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
         """
-        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        @summary Enables or disables the auto-push feature for an image update task.
+        
+        @description You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the Elastic Desktop Service console and choose *Operations > Image Updates** in the left-side navigation pane.
         
         @param request: UpdateFotaTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20741,7 +24809,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UpdateFotaTaskRequest,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
         """
-        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        @summary Enables or disables the auto-push feature for an image update task.
+        
+        @description You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the Elastic Desktop Service console and choose *Operations > Image Updates** in the left-side navigation pane.
         
         @param request: UpdateFotaTaskRequest
         @return: UpdateFotaTaskResponse
@@ -20754,7 +24824,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UpdateFotaTaskRequest,
     ) -> ecd_20200930_models.UpdateFotaTaskResponse:
         """
-        You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the WUYING Workspace console and choose *Operations > Image Updates** in the left-side navigation pane.
+        @summary Enables or disables the auto-push feature for an image update task.
+        
+        @description You can call this operation to manage each image update task. This operation is valid only when the auto-update switch in the image update module for global image updates is turned off. If the auto-update switch is turned on, the switches for each image update task are always turned on. If you want to turn on or off the auto-update switch, go to the Elastic Desktop Service console and choose *Operations > Image Updates** in the left-side navigation pane.
         
         @param request: UpdateFotaTaskRequest
         @return: UpdateFotaTaskResponse
@@ -20768,7 +24840,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UploadImageResponse:
         """
-        >  You can upload only Windows images.
+        @summary Uploads your custom Windows image.
+        
+        @description >  You can upload only Windows images.
         
         @param request: UploadImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20823,7 +24897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.UploadImageResponse:
         """
-        >  You can upload only Windows images.
+        @summary Uploads your custom Windows image.
+        
+        @description >  You can upload only Windows images.
         
         @param request: UploadImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20877,7 +24953,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UploadImageRequest,
     ) -> ecd_20200930_models.UploadImageResponse:
         """
-        >  You can upload only Windows images.
+        @summary Uploads your custom Windows image.
+        
+        @description >  You can upload only Windows images.
         
         @param request: UploadImageRequest
         @return: UploadImageResponse
@@ -20890,7 +24968,9 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.UploadImageRequest,
     ) -> ecd_20200930_models.UploadImageResponse:
         """
-        >  You can upload only Windows images.
+        @summary Uploads your custom Windows image.
+        
+        @description >  You can upload only Windows images.
         
         @param request: UploadImageRequest
         @return: UploadImageResponse
@@ -20903,6 +24983,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.VerifyCenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.VerifyCenResponse:
+        """
+        @summary Verifies the ID of a Cloud Enterprise Network (CEN) instance and the ID of the Alibaba Cloud account to which the instance belongs and checks whether a CIDR block conflict exists between the routes of the instance and the IPv4 CIDR blocks of the associated office network.
+        
+        @param request: VerifyCenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyCenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -20939,6 +25026,13 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.VerifyCenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.VerifyCenResponse:
+        """
+        @summary Verifies the ID of a Cloud Enterprise Network (CEN) instance and the ID of the Alibaba Cloud account to which the instance belongs and checks whether a CIDR block conflict exists between the routes of the instance and the IPv4 CIDR blocks of the associated office network.
+        
+        @param request: VerifyCenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyCenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -20974,6 +25068,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.VerifyCenRequest,
     ) -> ecd_20200930_models.VerifyCenResponse:
+        """
+        @summary Verifies the ID of a Cloud Enterprise Network (CEN) instance and the ID of the Alibaba Cloud account to which the instance belongs and checks whether a CIDR block conflict exists between the routes of the instance and the IPv4 CIDR blocks of the associated office network.
+        
+        @param request: VerifyCenRequest
+        @return: VerifyCenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_cen_with_options(request, runtime)
 
@@ -20981,6 +25081,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.VerifyCenRequest,
     ) -> ecd_20200930_models.VerifyCenResponse:
+        """
+        @summary Verifies the ID of a Cloud Enterprise Network (CEN) instance and the ID of the Alibaba Cloud account to which the instance belongs and checks whether a CIDR block conflict exists between the routes of the instance and the IPv4 CIDR blocks of the associated office network.
+        
+        @param request: VerifyCenRequest
+        @return: VerifyCenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_cen_with_options_async(request, runtime)
 
@@ -20989,6 +25095,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.WakeupDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
+        """
+        @param request: WakeupDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WakeupDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -21019,6 +25130,11 @@ class Client(OpenApiClient):
         request: ecd_20200930_models.WakeupDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
+        """
+        @param request: WakeupDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WakeupDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
@@ -21048,6 +25164,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.WakeupDesktopsRequest,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
+        """
+        @param request: WakeupDesktopsRequest
+        @return: WakeupDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.wakeup_desktops_with_options(request, runtime)
 
@@ -21055,5 +25175,9 @@ class Client(OpenApiClient):
         self,
         request: ecd_20200930_models.WakeupDesktopsRequest,
     ) -> ecd_20200930_models.WakeupDesktopsResponse:
+        """
+        @param request: WakeupDesktopsRequest
+        @return: WakeupDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.wakeup_desktops_with_options_async(request, runtime)
