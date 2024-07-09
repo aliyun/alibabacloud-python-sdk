@@ -1,3 +1,8 @@
+2024-07-09 Version: 1.4.1
+- Update API ListSessionClusters: add param kind.
+- Update API ListSessionClusters: update response param.
+
+
 2024-05-31 Version: 1.4.0
 - Support API CreateSqlStatement.
 - Support API GetSqlStatement.

@@ -1305,8 +1305,11 @@ class AddMembersRequest(TeaModel):
     ):
         # This parameter is required.
         self.member_arns = member_arns
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1342,6 +1345,7 @@ class AddMembersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1410,6 +1414,7 @@ class CancelJobRunRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1438,8 +1443,9 @@ class CancelJobRunResponseBody(TeaModel):
         job_run_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_run_id = job_run_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1517,11 +1523,17 @@ class CreateSqlStatementRequest(TeaModel):
         sql_compute_id: str = None,
         region_id: str = None,
     ):
+        # The SQL code. You can specify one or more SQL statements.
         self.code_content = code_content
+        # The default Data Lake Formation (DLF) catalog ID.
         self.default_catalog = default_catalog
+        # The name of the default database.
         self.default_database = default_database
+        # The maximum number of entries to return. Valid values: 1 to 10000.
         self.limit = limit
+        # The SQL Compute ID. You can create an SQL Compute in the workspace created in EMR Serverless Spark.
         self.sql_compute_id = sql_compute_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1569,6 +1581,7 @@ class CreateSqlStatementResponseBodyData(TeaModel):
         self,
         statement_id: str = None,
     ):
+        # The ID of the SQL query.
         self.statement_id = statement_id
 
     def validate(self):
@@ -1597,7 +1610,9 @@ class CreateSqlStatementResponseBody(TeaModel):
         data: CreateSqlStatementResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1672,6 +1687,7 @@ class GetJobRunRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -1699,6 +1715,7 @@ class GetJobRunResponseBodyJobRunConfigurationOverrides(TeaModel):
         self,
         configurations: List[Configuration] = None,
     ):
+        # The configurations.
         self.configurations = configurations
 
     def validate(self):
@@ -1735,7 +1752,9 @@ class GetJobRunResponseBodyJobRunStateChangeReason(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -1783,33 +1802,43 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # 作业代码类型。
+        # The code type of the job. Valid values:
+        # 
+        # *   SQL
+        # *   JAR
+        # *   PYTHON
         self.code_type = code_type
+        # The task configurations of Spark.
         self.configuration_overrides = configuration_overrides
-        # 作业结束时间。
+        # The end time of the job.
         self.end_time = end_time
-        # 运行超时时间。
+        # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # The information about Spark Driver.
         self.job_driver = job_driver
-        # 任务实例ID。
+        # The job ID.
         self.job_run_id = job_run_id
+        # The path where the operational logs are stored.
         self.log = log
-        # 作业实例名称。
+        # The job name.
         self.name = name
+        # The version of the Spark engine on which the job runs.
         self.release_version = release_version
-        # 创建用户Uid。
+        # The ID of the user who created the job.
         self.resource_owner_id = resource_owner_id
+        # The name of the queue on which the job runs.
         self.resource_queue_id = resource_queue_id
-        # 作业状态。
+        # The job state.
         self.state = state
+        # The reason of the job status change.
         self.state_change_reason = state_change_reason
-        # 作业提交时间。
+        # The time when the job was submitted.
         self.submit_time = submit_time
-        # 标签。
+        # The tags of the job.
         self.tags = tags
-        # 作业web ui。
+        # The web UI of the job.
         self.web_ui = web_ui
-        # 工作空间id。
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1922,8 +1951,9 @@ class GetJobRunResponseBody(TeaModel):
         job_run: GetJobRunResponseBodyJobRun = None,
         request_id: str = None,
     ):
+        # The details of the job.
         self.job_run = job_run
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1998,6 +2028,7 @@ class GetSqlStatementRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2026,7 +2057,9 @@ class GetSqlStatementResponseBodyDataSqlOutputs(TeaModel):
         rows: str = None,
         schema: str = None,
     ):
+        # The queried data, which is a string in the JSON format.
         self.rows = rows
+        # The information about the schema, which is a string in the JSON format.
         self.schema = schema
 
     def validate(self):
@@ -2063,11 +2096,25 @@ class GetSqlStatementResponseBodyData(TeaModel):
         state: str = None,
         statement_id: str = None,
     ):
+        # The list of time that is consumed by SQL queries.
         self.execution_time = execution_time
+        # The error code.
         self.sql_error_code = sql_error_code
+        # The error message.
         self.sql_error_message = sql_error_message
+        # The query results.
         self.sql_outputs = sql_outputs
+        # The query status.
+        # 
+        # Valid values:
+        # 
+        # *   running
+        # *   available
+        # *   cancelled
+        # *   error
+        # *   cancelling
         self.state = state
+        # The query ID.
         self.statement_id = statement_id
 
     def validate(self):
@@ -2124,7 +2171,9 @@ class GetSqlStatementResponseBody(TeaModel):
         data: GetSqlStatementResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2201,8 +2250,10 @@ class GrantRoleToUsersRequest(TeaModel):
         user_arns: List[str] = None,
         region_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the role.
         self.role_arn = role_arn
         self.user_arns = user_arns
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -2238,6 +2289,7 @@ class GrantRoleToUsersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2307,7 +2359,9 @@ class ListJobRunsRequestEndTime(TeaModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end of the end time range.
         self.end_time = end_time
+        # The beginning of the end time range.
         self.start_time = start_time
 
     def validate(self):
@@ -2340,7 +2394,9 @@ class ListJobRunsRequestStartTime(TeaModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end of the start time range.
         self.end_time = end_time
+        # The beginning of the start time range.
         self.start_time = start_time
 
     def validate(self):
@@ -2373,7 +2429,9 @@ class ListJobRunsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N.
         self.key = key
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -2416,24 +2474,28 @@ class ListJobRunsRequest(TeaModel):
         states: List[str] = None,
         tags: List[ListJobRunsRequestTags] = None,
     ):
-        # 创建用户Uid。
+        # The ID of the user who creates a Spark job.
         self.creator = creator
+        # The range of end time.
         self.end_time = end_time
         self.job_run_deployment_id = job_run_deployment_id
-        # 作业id。
+        # The job ID.
         self.job_run_id = job_run_id
-        # 一次获取的最大记录数。
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # 作业名称。
+        # The job name.
         self.name = name
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The name of the resource queue on which the Spark jobs run.
         self.resource_queue_id = resource_queue_id
+        # The range of start time.
         self.start_time = start_time
-        # 作业状态。
+        # The job states.
         self.states = states
-        # 标签。
+        # The tags of the job.
         self.tags = tags
 
     def validate(self):
@@ -2530,24 +2592,28 @@ class ListJobRunsShrinkRequest(TeaModel):
         states_shrink: str = None,
         tags_shrink: str = None,
     ):
-        # 创建用户Uid。
+        # The ID of the user who creates a Spark job.
         self.creator = creator
+        # The range of end time.
         self.end_time_shrink = end_time_shrink
         self.job_run_deployment_id = job_run_deployment_id
-        # 作业id。
+        # The job ID.
         self.job_run_id = job_run_id
-        # 一次获取的最大记录数。
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # 作业名称。
+        # The job name.
         self.name = name
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The name of the resource queue on which the Spark jobs run.
         self.resource_queue_id = resource_queue_id
+        # The range of start time.
         self.start_time_shrink = start_time_shrink
-        # 作业状态。
+        # The job states.
         self.states_shrink = states_shrink
-        # 标签。
+        # The tags of the job.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -2619,6 +2685,7 @@ class ListJobRunsResponseBodyJobRunsConfigurationOverrides(TeaModel):
         self,
         configurations: List[Configuration] = None,
     ):
+        # The SparkConf objects.
         self.configurations = configurations
 
     def validate(self):
@@ -2655,7 +2722,9 @@ class ListJobRunsResponseBodyJobRunsStateChangeReason(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -2702,32 +2771,43 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # 作业代码类型。
+        # The code type of the job. Valid values:
+        # 
+        # SQL
+        # 
+        # JAR
+        # 
+        # PYTHON
         self.code_type = code_type
+        # The advanced configurations of Spark.
         self.configuration_overrides = configuration_overrides
-        # 创建用户Uid。
+        # The ID of the user who created the job.
         self.creator = creator
-        # 作业结束时间。
+        # The end time of the job.
         self.end_time = end_time
-        # 运行超时时间。
+        # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # The information about Spark Driver.
         self.job_driver = job_driver
-        # 任务实例ID。
+        # The job ID.
         self.job_run_id = job_run_id
+        # The path where the operational logs are stored.
         self.log = log
-        # 作业实例名称。
+        # The job name.
         self.name = name
+        # The version of Spark on which the jobs run.
         self.release_version = release_version
-        # 作业状态。
+        # The job state.
         self.state = state
+        # The reason of the job status change.
         self.state_change_reason = state_change_reason
-        # 作业提交时间。
+        # The time when the job was submitted.
         self.submit_time = submit_time
-        # 标签。
+        # The tags of the job.
         self.tags = tags
-        # 作业web ui。
+        # The web UI of the job.
         self.web_ui = web_ui
-        # 工作空间id。
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2839,14 +2919,15 @@ class ListJobRunsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Spark jobs.
         self.job_runs = job_runs
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2942,9 +3023,23 @@ class ListReleaseVersionsRequest(TeaModel):
         release_version: str = None,
         release_version_status: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The type of the version.
+        # 
+        # Valid values:
+        # 
+        # *   stable
+        # *   beta
         self.release_type = release_type
+        # The version of Serverless Spark.
         self.release_version = release_version
+        # The status of the version. Valid values:
+        # 
+        # Valid values:
+        # 
+        # *   ONLINE
+        # *   OFFLINE
         self.release_version_status = release_version_status
 
     def validate(self):
@@ -2991,13 +3086,21 @@ class ListReleaseVersionsResponseBodyReleaseVersions(TeaModel):
         state: str = None,
         type: str = None,
     ):
+        # The version number of open source Spark.
         self.community_version = community_version
+        # The CPU architectures.
         self.cpu_architectures = cpu_architectures
+        # The creation time.
         self.gmt_create = gmt_create
+        # The type of the Infrastructure as a Service (IaaS) layer.
         self.iaas_type = iaas_type
+        # The version.
         self.release_version = release_version
+        # The version of Scala.
         self.scala_version = scala_version
+        # The status of the version.
         self.state = state
+        # The type of the version.
         self.type = type
 
     def validate(self):
@@ -3057,14 +3160,15 @@ class ListReleaseVersionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 下一页TOKEN。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The versions.
         self.release_versions = release_versions
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 记录总数。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3155,19 +3259,23 @@ class ListReleaseVersionsResponse(TeaModel):
 class ListSessionClustersRequest(TeaModel):
     def __init__(
         self,
+        kind: str = None,
         max_results: int = None,
         next_token: str = None,
         queue_name: str = None,
         region_id: str = None,
         session_cluster_id: str = None,
     ):
-        # 一次获取的最大记录数。
+        self.kind = kind
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The name of the queue.
         self.queue_name = queue_name
+        # The region ID.
         self.region_id = region_id
-        # 作业名称。
+        # The name of the job.
         self.session_cluster_id = session_cluster_id
 
     def validate(self):
@@ -3179,6 +3287,8 @@ class ListSessionClustersRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.kind is not None:
+            result['kind'] = self.kind
         if self.max_results is not None:
             result['maxResults'] = self.max_results
         if self.next_token is not None:
@@ -3193,6 +3303,8 @@ class ListSessionClustersRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
         if m.get('nextToken') is not None:
@@ -3213,8 +3325,11 @@ class ListSessionClustersResponseBodySessionClustersApplicationConfigs(TeaModel)
         config_item_key: str = None,
         config_item_value: str = None,
     ):
+        # The name of the configuration file.
         self.config_file_name = config_file_name
+        # The key of the configuration item.
         self.config_item_key = config_item_key
+        # The value of the configuration item.
         self.config_item_value = config_item_value
 
     def validate(self):
@@ -3250,6 +3365,7 @@ class ListSessionClustersResponseBodySessionClustersAutoStartConfiguration(TeaMo
         self,
         enable: bool = None,
     ):
+        # Indicates whether automatic startup is enabled.
         self.enable = enable
 
     def validate(self):
@@ -3278,7 +3394,9 @@ class ListSessionClustersResponseBodySessionClustersAutoStopConfiguration(TeaMod
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
+        # Indicates whether automatic termination is enabled.
         self.enable = enable
+        # The idle timeout period. The SQL Compute is automatically terminated if the idle timeout period is exceeded.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -3311,7 +3429,9 @@ class ListSessionClustersResponseBodySessionClustersStateChangeReason(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The status change code.
         self.code = code
+        # The status change message.
         self.message = message
 
     def validate(self):
@@ -3344,30 +3464,46 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         application_configs: List[ListSessionClustersResponseBodySessionClustersApplicationConfigs] = None,
         auto_start_configuration: ListSessionClustersResponseBodySessionClustersAutoStartConfiguration = None,
         auto_stop_configuration: ListSessionClustersResponseBodySessionClustersAutoStopConfiguration = None,
+        domain: str = None,
+        draft_id: str = None,
+        kind: str = None,
         name: str = None,
         queue_name: str = None,
+        release_version: str = None,
         session_cluster_id: str = None,
         state: str = None,
         state_change_reason: ListSessionClustersResponseBodySessionClustersStateChangeReason = None,
         user_id: str = None,
         user_name: str = None,
+        web_ui: str = None,
         workspace_id: str = None,
     ):
+        # The SQL Compute configurations, which are equivalent to the configurations of the Spark job.
         self.application_configs = application_configs
+        # The automatic startup configurations.
         self.auto_start_configuration = auto_start_configuration
+        # The automatic termination configurations.
         self.auto_stop_configuration = auto_stop_configuration
+        self.domain = domain
+        self.draft_id = draft_id
+        self.kind = kind
+        # The name of the SQL Compute.
         self.name = name
-        # 作业实例名称。
+        # The name of the queue on which the SQL Compute runs.
         self.queue_name = queue_name
-        # SQL Compute id
+        self.release_version = release_version
+        # The SQL Compute ID.
         self.session_cluster_id = session_cluster_id
-        # 作业状态。
+        # The status of the SQL Compute.
         self.state = state
+        # The details of the last status change of the SQL Compute.
         self.state_change_reason = state_change_reason
-        # 任务实例ID。
+        # The user ID.
         self.user_id = user_id
+        # The name of the user.
         self.user_name = user_name
-        # 工作空间id。
+        self.web_ui = web_ui
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3396,10 +3532,18 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
         if self.auto_stop_configuration is not None:
             result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.domain is not None:
+            result['domain'] = self.domain
+        if self.draft_id is not None:
+            result['draftId'] = self.draft_id
+        if self.kind is not None:
+            result['kind'] = self.kind
         if self.name is not None:
             result['name'] = self.name
         if self.queue_name is not None:
             result['queueName'] = self.queue_name
+        if self.release_version is not None:
+            result['releaseVersion'] = self.release_version
         if self.session_cluster_id is not None:
             result['sessionClusterId'] = self.session_cluster_id
         if self.state is not None:
@@ -3410,6 +3554,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['userId'] = self.user_id
         if self.user_name is not None:
             result['userName'] = self.user_name
+        if self.web_ui is not None:
+            result['webUI'] = self.web_ui
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
         return result
@@ -3427,10 +3573,18 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         if m.get('autoStopConfiguration') is not None:
             temp_model = ListSessionClustersResponseBodySessionClustersAutoStopConfiguration()
             self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('domain') is not None:
+            self.domain = m.get('domain')
+        if m.get('draftId') is not None:
+            self.draft_id = m.get('draftId')
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('queueName') is not None:
             self.queue_name = m.get('queueName')
+        if m.get('releaseVersion') is not None:
+            self.release_version = m.get('releaseVersion')
         if m.get('sessionClusterId') is not None:
             self.session_cluster_id = m.get('sessionClusterId')
         if m.get('state') is not None:
@@ -3442,6 +3596,8 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             self.user_id = m.get('userId')
         if m.get('userName') is not None:
             self.user_name = m.get('userName')
+        if m.get('webUI') is not None:
+            self.web_ui = m.get('webUI')
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
         return self
@@ -3456,14 +3612,15 @@ class ListSessionClustersResponseBody(TeaModel):
         session_clusters: List[ListSessionClustersResponseBodySessionClusters] = None,
         total_count: int = None,
     ):
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
+        # The SQL Computes.
         self.session_clusters = session_clusters
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3557,7 +3714,14 @@ class ListWorkspaceQueuesRequest(TeaModel):
         environment: str = None,
         region_id: str = None,
     ):
+        # The environment type.
+        # 
+        # Valid values:
+        # 
+        # *   dev
+        # *   production
         self.environment = environment
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -3593,15 +3757,15 @@ class ListWorkspaceQueuesResponseBodyQueuesAllowActions(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
-        # 行为 arn。
+        # The Alibaba Cloud Resource Name (ARN) of a behavior.
         self.action_arn = action_arn
-        # 权限名称。
+        # The name of the permission.
         self.action_name = action_name
-        # action 依赖列表。
+        # The dependencies of the operation.
         self.dependencies = dependencies
-        # action 描述。
+        # The description of the operation.
         self.description = description
-        # 权限展示名称。
+        # The display name of the permission.
         self.display_name = display_name
 
     def validate(self):
@@ -3657,28 +3821,31 @@ class ListWorkspaceQueuesResponseBodyQueues(TeaModel):
         used_resource: str = None,
         workspace_id: str = None,
     ):
-        # 队列允许的操作
+        # The operations allowed for the queue.
         self.allow_actions = allow_actions
+        # The ID of the user who created the queue.
         self.creator = creator
+        # The environment types of the queue.
         self.environments = environments
-        # 队列资源最大容量
+        # The maximum capacity of resources that can be used in the queue.
         self.max_resource = max_resource
-        # 队列资源最小容量
+        # The minimum capacity of resources that can be used in the queue.
         self.min_resource = min_resource
-        # 队列Label
+        # The queue label.
         self.properties = properties
-        # 队列名称。
+        # The name of the queue.
         self.queue_name = queue_name
-        # 队列架构
+        # The queue architecture.
         self.queue_scope = queue_scope
+        # The status of the queue.
         self.queue_status = queue_status
-        # 队列类型
+        # The queue type.
         self.queue_type = queue_type
-        # regionId。
+        # The region ID.
         self.region_id = region_id
-        # 队列资源使用容量
+        # The capacity of resources that are used in the queue.
         self.used_resource = used_resource
-        # 工作空间id。
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3766,14 +3933,15 @@ class ListWorkspaceQueuesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 下一页TOKEN。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The list of queues.
         self.queues = queues
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 记录总数。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -3870,12 +4038,15 @@ class ListWorkspacesRequest(TeaModel):
         region_id: str = None,
         state: str = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # Fuzzy match is supported.
         self.name = name
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The workspace status.
         self.state = state
 
     def validate(self):
@@ -3920,7 +4091,9 @@ class ListWorkspacesResponseBodyWorkspacesStateChangeReason(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -3970,38 +4143,43 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # 是否自动续费(pre付费类型必须)。
+        # Indicates whether auto-renewal is enabled. This parameter is required only if the paymentType parameter is set to Subscription.
         self.auto_renew = auto_renew
-        # 自动续费时长(pre付费类型必须)。
+        # The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Subscription.
         self.auto_renew_period = auto_renew_period
-        # 自动续费周期(pre付费类型必须)。
+        # The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Subscription.
         self.auto_renew_period_unit = auto_renew_period_unit
+        # The time when the workspace was created.
         self.create_time = create_time
-        # dlf catalog 信息。
+        # The information of the Data Lake Formation (DLF) catalog.
         self.dlf_catalog_id = dlf_catalog_id
-        # 订购周期数量(pre付费类型必须)。
+        # The subscription period. This parameter is required only if the paymentType parameter is set to Subscription.
         self.duration = duration
+        # The time when the workspace was released.
         self.end_time = end_time
-        # 失败原因。
+        # The reason for the failure.
         self.fail_reason = fail_reason
-        # 订购周期(pre付费类型必须)。
+        # The unit of the subscription duration. This parameter is required only if the paymentType parameter is set to Subscription.
         self.payment_duration_unit = payment_duration_unit
-        # 支付状态。
+        # The status of the payment.
         self.payment_status = payment_status
-        # 付费类型。
+        # The payment type.
         self.payment_type = payment_type
+        # The region ID.
         self.region_id = region_id
+        # The reason why the workspace is released.
         self.release_type = release_type
-        # 资源规格。
+        # The resource specifications.
         self.resource_spec = resource_spec
+        # The information about the workspace status change.
         self.state_change_reason = state_change_reason
-        # oss 路径。
+        # The Object Storage Service (OSS) path.
         self.storage = storage
-        # Workspace Id。
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # 工作空间名称。
+        # The name of the workspace.
         self.workspace_name = workspace_name
-        # 工作空间状态。
+        # The workspace status.
         self.workspace_status = workspace_status
 
     def validate(self):
@@ -4107,14 +4285,15 @@ class ListWorkspacesResponseBody(TeaModel):
         total_count: int = None,
         workspaces: List[ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 下一页TOKEN。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 记录总数。
+        # The total number of entries returned.
         self.total_count = total_count
+        # The workspaces.
         self.workspaces = workspaces
 
     def validate(self):
@@ -4209,8 +4388,11 @@ class StartJobRunRequestConfigurationOverridesConfigurations(TeaModel):
         config_item_key: str = None,
         config_item_value: str = None,
     ):
+        # The configuration file of SparkConf.
         self.config_file_name = config_file_name
+        # The key of SparkConf.
         self.config_item_key = config_item_key
+        # The value of SparkConf.
         self.config_item_value = config_item_value
 
     def validate(self):
@@ -4246,6 +4428,7 @@ class StartJobRunRequestConfigurationOverrides(TeaModel):
         self,
         configurations: List[StartJobRunRequestConfigurationOverridesConfigurations] = None,
     ):
+        # The SparkConf objects.
         self.configurations = configurations
 
     def validate(self):
@@ -4291,16 +4474,31 @@ class StartJobRunRequest(TeaModel):
         tags: List[Tag] = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The code type of the job. Valid values:
+        # 
+        # *   SQL
+        # *   JAR
+        # *   PYTHON
         self.code_type = code_type
+        # The advanced configurations of Spark.
         self.configuration_overrides = configuration_overrides
+        # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # The information about Spark Driver.
         self.job_driver = job_driver
+        # The job ID.
         self.job_id = job_id
+        # The job name.
         self.name = name
+        # The version number of Spark.
         self.release_version = release_version
+        # The name of the resource queue on which the Spark job runs.
         self.resource_queue_id = resource_queue_id
+        # The tags of the job.
         self.tags = tags
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4383,8 +4581,9 @@ class StartJobRunResponseBody(TeaModel):
         job_run_id: str = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_run_id = job_run_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4457,6 +4656,7 @@ class TerminateSqlStatementRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4484,6 +4684,7 @@ class TerminateSqlStatementResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_emr-serverless-spark20230808.
 
-Created on 31/05/2024
+Created on 09/07/2024
 
 @author: Alibaba Cloud SDK
 """
@@ -38,7 +38,7 @@ URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "alibabacloud_tea_util>=0.3.12, <1.0.0",
-    "alibabacloud_tea_openapi>=0.3.9, <1.0.0",
+    "alibabacloud_tea_openapi>=0.3.10, <1.0.0",
     "alibabacloud_openapi_util>=0.2.1, <1.0.0",
     "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
 ]

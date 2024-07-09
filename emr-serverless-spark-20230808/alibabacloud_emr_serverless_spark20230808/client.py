@@ -48,7 +48,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
         """
-        @summary 添加用户
+        @summary Adds a RAM user or RAM role to a workspace as a member.
         
         @param request: AddMembersRequest
         @param headers: map
@@ -92,7 +92,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
         """
-        @summary 添加用户
+        @summary Adds a RAM user or RAM role to a workspace as a member.
         
         @param request: AddMembersRequest
         @param headers: map
@@ -134,7 +134,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.AddMembersRequest,
     ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
         """
-        @summary 添加用户
+        @summary Adds a RAM user or RAM role to a workspace as a member.
         
         @param request: AddMembersRequest
         @return: AddMembersResponse
@@ -148,7 +148,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.AddMembersRequest,
     ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
         """
-        @summary 添加用户
+        @summary Adds a RAM user or RAM role to a workspace as a member.
         
         @param request: AddMembersRequest
         @return: AddMembersResponse
@@ -166,7 +166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
         """
-        @summary 取消jobRun作业
+        @summary Terminates a Spark job.
         
         @param request: CancelJobRunRequest
         @param headers: map
@@ -206,7 +206,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
         """
-        @summary 取消jobRun作业
+        @summary Terminates a Spark job.
         
         @param request: CancelJobRunRequest
         @param headers: map
@@ -244,7 +244,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.CancelJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
         """
-        @summary 取消jobRun作业
+        @summary Terminates a Spark job.
         
         @param request: CancelJobRunRequest
         @return: CancelJobRunResponse
@@ -260,7 +260,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.CancelJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.CancelJobRunResponse:
         """
-        @summary 取消jobRun作业
+        @summary Terminates a Spark job.
         
         @param request: CancelJobRunRequest
         @return: CancelJobRunResponse
@@ -410,7 +410,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
         """
-        @summary 获取任务
+        @summary Obtain the job details.
         
         @param request: GetJobRunRequest
         @param headers: map
@@ -450,7 +450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
         """
-        @summary 获取任务
+        @summary Obtain the job details.
         
         @param request: GetJobRunRequest
         @param headers: map
@@ -488,7 +488,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
         """
-        @summary 获取任务
+        @summary Obtain the job details.
         
         @param request: GetJobRunRequest
         @return: GetJobRunResponse
@@ -504,7 +504,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GetJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.GetJobRunResponse:
         """
-        @summary 获取任务
+        @summary Obtain the job details.
         
         @param request: GetJobRunRequest
         @return: GetJobRunResponse
@@ -632,7 +632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
         """
-        @summary 给用户授权Role列表
+        @summary Assigns a specified role to users.
         
         @param request: GrantRoleToUsersRequest
         @param headers: map
@@ -676,7 +676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
         """
-        @summary 给用户授权Role列表
+        @summary Assigns a specified role to users.
         
         @param request: GrantRoleToUsersRequest
         @param headers: map
@@ -718,7 +718,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,
     ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
         """
-        @summary 给用户授权Role列表
+        @summary Assigns a specified role to users.
         
         @param request: GrantRoleToUsersRequest
         @return: GrantRoleToUsersResponse
@@ -732,7 +732,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,
     ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
         """
-        @summary 给用户授权Role列表
+        @summary Assigns a specified role to users.
         
         @param request: GrantRoleToUsersRequest
         @return: GrantRoleToUsersResponse
@@ -749,7 +749,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
         """
-        @summary 查询run列表
+        @summary Queries a list of Spark jobs.
         
         @param tmp_req: ListJobRunsRequest
         @param headers: map
@@ -820,7 +820,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
         """
-        @summary 查询run列表
+        @summary Queries a list of Spark jobs.
         
         @param tmp_req: ListJobRunsRequest
         @param headers: map
@@ -889,7 +889,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListJobRunsRequest,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
         """
-        @summary 查询run列表
+        @summary Queries a list of Spark jobs.
         
         @param request: ListJobRunsRequest
         @return: ListJobRunsResponse
@@ -904,7 +904,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListJobRunsRequest,
     ) -> emr_serverless_spark_20230808_models.ListJobRunsResponse:
         """
-        @summary 查询run列表
+        @summary Queries a list of Spark jobs.
         
         @param request: ListJobRunsRequest
         @return: ListJobRunsResponse
@@ -1046,6 +1046,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.kind):
+            query['kind'] = request.kind
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1093,6 +1095,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.kind):
+            query['kind'] = request.kind
         if not UtilClient.is_unset(request.max_results):
             query['maxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1272,7 +1276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListWorkspacesResponse:
         """
-        @summary 查看工作空间列表
+        @summary Queries a list of workspaces.
         
         @param request: ListWorkspacesRequest
         @param headers: map
@@ -1318,7 +1322,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.ListWorkspacesResponse:
         """
-        @summary 查看工作空间列表
+        @summary Queries a list of workspaces.
         
         @param request: ListWorkspacesRequest
         @param headers: map
@@ -1362,7 +1366,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListWorkspacesRequest,
     ) -> emr_serverless_spark_20230808_models.ListWorkspacesResponse:
         """
-        @summary 查看工作空间列表
+        @summary Queries a list of workspaces.
         
         @param request: ListWorkspacesRequest
         @return: ListWorkspacesResponse
@@ -1376,7 +1380,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.ListWorkspacesRequest,
     ) -> emr_serverless_spark_20230808_models.ListWorkspacesResponse:
         """
-        @summary 查看工作空间列表
+        @summary Queries a list of workspaces.
         
         @param request: ListWorkspacesRequest
         @return: ListWorkspacesResponse
@@ -1393,7 +1397,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
         """
-        @summary 启动作业
+        @summary Starts a Spark job.
         
         @param request: StartJobRunRequest
         @param headers: map
@@ -1454,7 +1458,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
         """
-        @summary 启动作业
+        @summary Starts a Spark job.
         
         @param request: StartJobRunRequest
         @param headers: map
@@ -1513,7 +1517,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.StartJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
         """
-        @summary 启动作业
+        @summary Starts a Spark job.
         
         @param request: StartJobRunRequest
         @return: StartJobRunResponse
@@ -1528,7 +1532,7 @@ class Client(OpenApiClient):
         request: emr_serverless_spark_20230808_models.StartJobRunRequest,
     ) -> emr_serverless_spark_20230808_models.StartJobRunResponse:
         """
-        @summary 启动作业
+        @summary Starts a Spark job.
         
         @param request: StartJobRunRequest
         @return: StartJobRunResponse
