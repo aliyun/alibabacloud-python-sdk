@@ -179,6 +179,8 @@ class Client(OpenApiClient):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.environment_variables):
             body['EnvironmentVariables'] = request.environment_variables
+        if not UtilClient.is_unset(request.image_auth):
+            body['ImageAuth'] = request.image_auth
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
@@ -251,6 +253,8 @@ class Client(OpenApiClient):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.environment_variables):
             body['EnvironmentVariables'] = request.environment_variables
+        if not UtilClient.is_unset(request.image_auth):
+            body['ImageAuth'] = request.image_auth
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
@@ -2766,6 +2770,8 @@ class Client(OpenApiClient):
             body['Driver'] = request.driver
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.image_auth):
+            body['ImageAuth'] = request.image_auth
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):
@@ -2839,6 +2845,8 @@ class Client(OpenApiClient):
             body['Driver'] = request.driver
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
+        if not UtilClient.is_unset(request.image_auth):
+            body['ImageAuth'] = request.image_auth
         if not UtilClient.is_unset(request.image_id):
             body['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.image_url):

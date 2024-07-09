@@ -784,6 +784,7 @@ class CreateInstanceRequest(TeaModel):
         driver: str = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
+        image_auth: str = None,
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
@@ -803,6 +804,7 @@ class CreateInstanceRequest(TeaModel):
         self.driver = driver
         self.ecs_spec = ecs_spec
         self.environment_variables = environment_variables
+        self.image_auth = image_auth
         self.image_id = image_id
         self.image_url = image_url
         self.instance_name = instance_name
@@ -859,6 +861,8 @@ class CreateInstanceRequest(TeaModel):
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
             result['EnvironmentVariables'] = self.environment_variables
+        if self.image_auth is not None:
+            result['ImageAuth'] = self.image_auth
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_url is not None:
@@ -908,6 +912,8 @@ class CreateInstanceRequest(TeaModel):
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
             self.environment_variables = m.get('EnvironmentVariables')
+        if m.get('ImageAuth') is not None:
+            self.image_auth = m.get('ImageAuth')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageUrl') is not None:
@@ -2499,6 +2505,7 @@ class GetInstanceResponseBody(TeaModel):
         gmt_modified_time: str = None,
         http_status_code: int = None,
         idle_instance_culler: GetInstanceResponseBodyIdleInstanceCuller = None,
+        image_auth: str = None,
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
@@ -2545,6 +2552,7 @@ class GetInstanceResponseBody(TeaModel):
         self.gmt_modified_time = gmt_modified_time
         self.http_status_code = http_status_code
         self.idle_instance_culler = idle_instance_culler
+        self.image_auth = image_auth
         self.image_id = image_id
         self.image_name = image_name
         self.image_url = image_url
@@ -2649,6 +2657,8 @@ class GetInstanceResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.idle_instance_culler is not None:
             result['IdleInstanceCuller'] = self.idle_instance_culler.to_map()
+        if self.image_auth is not None:
+            result['ImageAuth'] = self.image_auth
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -2755,6 +2765,8 @@ class GetInstanceResponseBody(TeaModel):
         if m.get('IdleInstanceCuller') is not None:
             temp_model = GetInstanceResponseBodyIdleInstanceCuller()
             self.idle_instance_culler = temp_model.from_map(m['IdleInstanceCuller'])
+        if m.get('ImageAuth') is not None:
+            self.image_auth = m.get('ImageAuth')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
@@ -5921,6 +5933,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         idle_instance_culler: ListInstancesResponseBodyInstancesIdleInstanceCuller = None,
+        image_auth: str = None,
         image_id: str = None,
         image_name: str = None,
         image_url: str = None,
@@ -5961,6 +5974,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.idle_instance_culler = idle_instance_culler
+        self.image_auth = image_auth
         self.image_id = image_id
         self.image_name = image_name
         self.image_url = image_url
@@ -6055,6 +6069,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.idle_instance_culler is not None:
             result['IdleInstanceCuller'] = self.idle_instance_culler.to_map()
+        if self.image_auth is not None:
+            result['ImageAuth'] = self.image_auth
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -6149,6 +6165,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         if m.get('IdleInstanceCuller') is not None:
             temp_model = ListInstancesResponseBodyInstancesIdleInstanceCuller()
             self.idle_instance_culler = temp_model.from_map(m['IdleInstanceCuller'])
+        if m.get('ImageAuth') is not None:
+            self.image_auth = m.get('ImageAuth')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
@@ -6820,6 +6838,7 @@ class UpdateInstanceRequest(TeaModel):
         disassociate_vpc: bool = None,
         driver: str = None,
         ecs_spec: str = None,
+        image_auth: str = None,
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
@@ -6839,6 +6858,7 @@ class UpdateInstanceRequest(TeaModel):
         self.disassociate_vpc = disassociate_vpc
         self.driver = driver
         self.ecs_spec = ecs_spec
+        self.image_auth = image_auth
         self.image_id = image_id
         self.image_url = image_url
         self.instance_name = instance_name
@@ -6894,6 +6914,8 @@ class UpdateInstanceRequest(TeaModel):
             result['Driver'] = self.driver
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
+        if self.image_auth is not None:
+            result['ImageAuth'] = self.image_auth
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_url is not None:
@@ -6941,6 +6963,8 @@ class UpdateInstanceRequest(TeaModel):
             self.driver = m.get('Driver')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
+        if m.get('ImageAuth') is not None:
+            self.image_auth = m.get('ImageAuth')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageUrl') is not None:
