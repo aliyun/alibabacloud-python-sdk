@@ -690,6 +690,10 @@ class BatchDescribeCdnIpInfoRequest(TeaModel):
         # 
         # This parameter is required.
         self.ip_addr_list = ip_addr_list
+        # The language of the query results. Valid values:
+        # 
+        # *   **zh** (default): Simplified Chinese.
+        # *   **en**: English.
         self.language = language
 
     def validate(self):
@@ -7512,6 +7516,288 @@ class DescribeCdnDomainStagingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCdnDomainStagingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPConfigRequest(TeaModel):
+    def __init__(
+        self,
+        iplist: str = None,
+    ):
+        self.iplist = iplist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.iplist is not None:
+            result['IPList'] = self.iplist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPList') is not None:
+            self.iplist = m.get('IPList')
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCdnFullDomainsBlockIPConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCdnFullDomainsBlockIPConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        iplist: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.iplist = iplist
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.iplist is not None:
+            result['IPList'] = self.iplist
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IPList') is not None:
+            self.iplist = m.get('IPList')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo(TeaModel):
+    def __init__(
+        self,
+        block_ip: str = None,
+        deliver_time: str = None,
+        status: str = None,
+    ):
+        self.block_ip = block_ip
+        self.deliver_time = deliver_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_ip is not None:
+            result['BlockIP'] = self.block_ip
+        if self.deliver_time is not None:
+            result['DeliverTime'] = self.deliver_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockIP') is not None:
+            self.block_ip = m.get('BlockIP')
+        if m.get('DeliverTime') is not None:
+            self.deliver_time = m.get('DeliverTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        description: str = None,
+        ipblock_info: List[DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.description = description
+        self.ipblock_info = ipblock_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ipblock_info:
+            for k in self.ipblock_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.description is not None:
+            result['Description'] = self.description
+        result['IPBlockInfo'] = []
+        if self.ipblock_info is not None:
+            for k in self.ipblock_info:
+                result['IPBlockInfo'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.ipblock_info = []
+        if m.get('IPBlockInfo') is not None:
+            for k in m.get('IPBlockInfo'):
+                temp_model = DescribeCdnFullDomainsBlockIPHistoryResponseBodyIPBlockInfo()
+                self.ipblock_info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCdnFullDomainsBlockIPHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCdnFullDomainsBlockIPHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCdnFullDomainsBlockIPHistoryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24653,12 +24939,18 @@ class DescribeEsExceptionDataRequest(TeaModel):
         return self
 
 
-class DescribeEsExceptionDataResponseBodyContentsPoints(TeaModel):
+class DescribeEsExceptionDataResponseBodyContents(TeaModel):
     def __init__(
         self,
+        columns: List[str] = None,
+        name: str = None,
         points: List[str] = None,
     ):
-        # The data points.
+        # Information about the time column and the error column name.
+        self.columns = columns
+        # The name of the table that shows the errors of the script.
+        self.name = name
+        # The time columns and error column names.
         self.points = points
 
     def validate(self):
@@ -24670,51 +24962,12 @@ class DescribeEsExceptionDataResponseBodyContentsPoints(TeaModel):
             return _map
 
         result = dict()
-        if self.points is not None:
-            result['Points'] = self.points
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Points') is not None:
-            self.points = m.get('Points')
-        return self
-
-
-class DescribeEsExceptionDataResponseBodyContents(TeaModel):
-    def __init__(
-        self,
-        columns: List[str] = None,
-        name: str = None,
-        points: List[DescribeEsExceptionDataResponseBodyContentsPoints] = None,
-    ):
-        # Information about the time column and the error column name.
-        self.columns = columns
-        # The name of the table that shows the errors of the script.
-        self.name = name
-        # The time columns and error column names.
-        self.points = points
-
-    def validate(self):
-        if self.points:
-            for k in self.points:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
         if self.columns is not None:
             result['Columns'] = self.columns
         if self.name is not None:
             result['Name'] = self.name
-        result['Points'] = []
         if self.points is not None:
-            for k in self.points:
-                result['Points'].append(k.to_map() if k else None)
+            result['Points'] = self.points
         return result
 
     def from_map(self, m: dict = None):
@@ -24723,11 +24976,8 @@ class DescribeEsExceptionDataResponseBodyContents(TeaModel):
             self.columns = m.get('Columns')
         if m.get('Name') is not None:
             self.name = m.get('Name')
-        self.points = []
         if m.get('Points') is not None:
-            for k in m.get('Points'):
-                temp_model = DescribeEsExceptionDataResponseBodyContentsPoints()
-                self.points.append(temp_model.from_map(k))
+            self.points = m.get('Points')
         return self
 
 
@@ -32537,6 +32787,133 @@ class SetCdnDomainStagingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetCdnDomainStagingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetCdnFullDomainsBlockIPRequest(TeaModel):
+    def __init__(
+        self,
+        block_interval: int = None,
+        iplist: str = None,
+        operation_type: str = None,
+        update_type: str = None,
+    ):
+        self.block_interval = block_interval
+        # This parameter is required.
+        self.iplist = iplist
+        # This parameter is required.
+        self.operation_type = operation_type
+        self.update_type = update_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.block_interval is not None:
+            result['BlockInterval'] = self.block_interval
+        if self.iplist is not None:
+            result['IPList'] = self.iplist
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.update_type is not None:
+            result['UpdateType'] = self.update_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlockInterval') is not None:
+            self.block_interval = m.get('BlockInterval')
+        if m.get('IPList') is not None:
+            self.iplist = m.get('IPList')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('UpdateType') is not None:
+            self.update_type = m.get('UpdateType')
+        return self
+
+
+class SetCdnFullDomainsBlockIPResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetCdnFullDomainsBlockIPResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetCdnFullDomainsBlockIPResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetCdnFullDomainsBlockIPResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

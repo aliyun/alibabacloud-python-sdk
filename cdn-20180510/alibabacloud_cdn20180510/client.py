@@ -5108,6 +5108,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_domain_staging_config_with_options_async(request, runtime)
 
+    def describe_cdn_full_domains_block_ipconfig_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
+        """
+        @summary 获取海量封禁全量配置
+        
+        @param request: DescribeCdnFullDomainsBlockIPConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnFullDomainsBlockIPConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnFullDomainsBlockIPConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_full_domains_block_ipconfig_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
+        """
+        @summary 获取海量封禁全量配置
+        
+        @param request: DescribeCdnFullDomainsBlockIPConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnFullDomainsBlockIPConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnFullDomainsBlockIPConfig',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_full_domains_block_ipconfig(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigRequest,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
+        """
+        @summary 获取海量封禁全量配置
+        
+        @param request: DescribeCdnFullDomainsBlockIPConfigRequest
+        @return: DescribeCdnFullDomainsBlockIPConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_full_domains_block_ipconfig_with_options(request, runtime)
+
+    async def describe_cdn_full_domains_block_ipconfig_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigRequest,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPConfigResponse:
+        """
+        @summary 获取海量封禁全量配置
+        
+        @param request: DescribeCdnFullDomainsBlockIPConfigRequest
+        @return: DescribeCdnFullDomainsBlockIPConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_full_domains_block_ipconfig_with_options_async(request, runtime)
+
+    def describe_cdn_full_domains_block_iphistory_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
+        """
+        @summary 查询用户海量封禁历史
+        
+        @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnFullDomainsBlockIPHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnFullDomainsBlockIPHistory',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_full_domains_block_iphistory_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
+        """
+        @summary 查询用户海量封禁历史
+        
+        @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnFullDomainsBlockIPHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnFullDomainsBlockIPHistory',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_full_domains_block_iphistory(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryRequest,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
+        """
+        @summary 查询用户海量封禁历史
+        
+        @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
+        @return: DescribeCdnFullDomainsBlockIPHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_full_domains_block_iphistory_with_options(request, runtime)
+
+    async def describe_cdn_full_domains_block_iphistory_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryRequest,
+    ) -> cdn_20180510_models.DescribeCdnFullDomainsBlockIPHistoryResponse:
+        """
+        @summary 查询用户海量封禁历史
+        
+        @param request: DescribeCdnFullDomainsBlockIPHistoryRequest
+        @return: DescribeCdnFullDomainsBlockIPHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_full_domains_block_iphistory_with_options_async(request, runtime)
+
     def describe_cdn_https_domain_list_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnHttpsDomainListRequest,
@@ -18755,6 +18955,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_cdn_domain_staging_config_with_options_async(request, runtime)
+
+    def set_cdn_full_domains_block_ipwith_options(
+        self,
+        request: cdn_20180510_models.SetCdnFullDomainsBlockIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
+        """
+        @summary 配置CDN上的海量封禁功能
+        
+        @param request: SetCdnFullDomainsBlockIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetCdnFullDomainsBlockIPResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.block_interval):
+            body['BlockInterval'] = request.block_interval
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.update_type):
+            body['UpdateType'] = request.update_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetCdnFullDomainsBlockIP',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.SetCdnFullDomainsBlockIPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_cdn_full_domains_block_ipwith_options_async(
+        self,
+        request: cdn_20180510_models.SetCdnFullDomainsBlockIPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
+        """
+        @summary 配置CDN上的海量封禁功能
+        
+        @param request: SetCdnFullDomainsBlockIPRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetCdnFullDomainsBlockIPResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.block_interval):
+            body['BlockInterval'] = request.block_interval
+        if not UtilClient.is_unset(request.iplist):
+            body['IPList'] = request.iplist
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        if not UtilClient.is_unset(request.update_type):
+            body['UpdateType'] = request.update_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetCdnFullDomainsBlockIP',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.SetCdnFullDomainsBlockIPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_cdn_full_domains_block_ip(
+        self,
+        request: cdn_20180510_models.SetCdnFullDomainsBlockIPRequest,
+    ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
+        """
+        @summary 配置CDN上的海量封禁功能
+        
+        @param request: SetCdnFullDomainsBlockIPRequest
+        @return: SetCdnFullDomainsBlockIPResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_cdn_full_domains_block_ipwith_options(request, runtime)
+
+    async def set_cdn_full_domains_block_ip_async(
+        self,
+        request: cdn_20180510_models.SetCdnFullDomainsBlockIPRequest,
+    ) -> cdn_20180510_models.SetCdnFullDomainsBlockIPResponse:
+        """
+        @summary 配置CDN上的海量封禁功能
+        
+        @param request: SetCdnFullDomainsBlockIPRequest
+        @return: SetCdnFullDomainsBlockIPResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_cdn_full_domains_block_ipwith_options_async(request, runtime)
 
     def set_domain_server_certificate_with_options(
         self,
