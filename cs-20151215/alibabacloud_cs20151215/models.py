@@ -4830,6 +4830,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         period_unit: str = None,
         platform: str = None,
         private_pool_options: CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions = None,
+        ram_role_name: str = None,
         rds_instances: List[str] = None,
         scaling_policy: str = None,
         security_group_id: str = None,
@@ -4961,6 +4962,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.platform = platform
         # The configurations of the private node pool.
         self.private_pool_options = private_pool_options
+        self.ram_role_name = ram_role_name
         # The ApsaraDB RDS instances.
         self.rds_instances = rds_instances
         # The scaling mode of the scaling group. Valid values:
@@ -5129,6 +5131,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
             result['platform'] = self.platform
         if self.private_pool_options is not None:
             result['private_pool_options'] = self.private_pool_options.to_map()
+        if self.ram_role_name is not None:
+            result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
         if self.scaling_policy is not None:
@@ -5234,6 +5238,8 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         if m.get('private_pool_options') is not None:
             temp_model = CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['private_pool_options'])
+        if m.get('ram_role_name') is not None:
+            self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
         if m.get('scaling_policy') is not None:
@@ -9871,6 +9877,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         platform: str = None,
         private_pool_options: DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions = None,
         ram_policy: str = None,
+        ram_role_name: str = None,
         rds_instances: List[str] = None,
         scaling_group_id: str = None,
         scaling_policy: str = None,
@@ -9977,6 +9984,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.private_pool_options = private_pool_options
         # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
         self.ram_policy = ram_policy
+        self.ram_role_name = ram_role_name
         # After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
         self.rds_instances = rds_instances
         # The ID of the scaling group.
@@ -10138,6 +10146,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             result['private_pool_options'] = self.private_pool_options.to_map()
         if self.ram_policy is not None:
             result['ram_policy'] = self.ram_policy
+        if self.ram_role_name is not None:
+            result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
         if self.scaling_group_id is not None:
@@ -10247,6 +10257,8 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
             self.private_pool_options = temp_model.from_map(m['private_pool_options'])
         if m.get('ram_policy') is not None:
             self.ram_policy = m.get('ram_policy')
+        if m.get('ram_role_name') is not None:
+            self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
         if m.get('scaling_group_id') is not None:
@@ -11332,6 +11344,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         platform: str = None,
         private_pool_options: DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions = None,
         ram_policy: str = None,
+        ram_role_name: str = None,
         rds_instances: List[str] = None,
         scaling_group_id: str = None,
         scaling_policy: str = None,
@@ -11438,6 +11451,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.private_pool_options = private_pool_options
         # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
         self.ram_policy = ram_policy
+        self.ram_role_name = ram_role_name
         # The ApsaraDB RDS instances. If you specify the list of ApsaraDB RDS instances, ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
         self.rds_instances = rds_instances
         # The scaling group ID.
@@ -11592,6 +11606,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             result['private_pool_options'] = self.private_pool_options.to_map()
         if self.ram_policy is not None:
             result['ram_policy'] = self.ram_policy
+        if self.ram_role_name is not None:
+            result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
         if self.scaling_group_id is not None:
@@ -11701,6 +11717,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
             self.private_pool_options = temp_model.from_map(m['private_pool_options'])
         if m.get('ram_policy') is not None:
             self.ram_policy = m.get('ram_policy')
+        if m.get('ram_role_name') is not None:
+            self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
         if m.get('scaling_group_id') is not None:
@@ -15737,10 +15755,11 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
         # 
         # Valid values:
         # 
-        # *   nntf: You can ignore the vulnerability
-        # *   later: You can fix the vulnerability later
-        # *   asap: You need to fix the vulnerability at the earliest opportunity
+        # *   nntf: You can ignore the vulnerability.
+        # *   later: You can fix the vulnerability later.
+        # *   asap: You need to fix the vulnerability at the earliest opportunity.
         self.necessity = necessity
+        # Indicates whether a restart is required.
         self.need_reboot = need_reboot
 
     def validate(self):
@@ -15786,7 +15805,7 @@ class DescribeNodePoolVulsResponseBodyVulRecords(TeaModel):
         node_name: str = None,
         vul_list: List[DescribeNodePoolVulsResponseBodyVulRecordsVulList] = None,
     ):
-        # The node ID.
+        # The ID of the node.
         self.instance_id = instance_id
         # The node name. This name is the identifier of the node in the cluster.
         self.node_name = node_name
@@ -16915,7 +16934,9 @@ class DescribeResourcesDeleteProtectionRequest(TeaModel):
         namespace: str = None,
         resources: str = None,
     ):
+        # The namespace to which the resource belongs.
         self.namespace = namespace
+        # The name of the resource that you want to query. Separate multiple resource names with commas (,).
         self.resources = resources
 
     def validate(self):
@@ -16950,10 +16971,20 @@ class DescribeResourcesDeleteProtectionResponseBody(TeaModel):
         resource: str = None,
         protection: bool = None,
     ):
+        # The name of the resource.
+        # 
         # This parameter is required.
         self.name = name
+        # The namespace to which the resource belongs.
         self.namespace = namespace
+        # The type of resource for which deletion protection is enabled.
         self.resource = resource
+        # Indicates whether deletion protection is enabled.
+        # 
+        # *   true: deletion protection is enabled.
+        # *   false: deletion protection is disabled.
+        # 
+        # Default value: false
         self.protection = protection
 
     def validate(self):
@@ -26423,9 +26454,13 @@ class UpdateResourcesDeleteProtectionRequest(TeaModel):
         resource_type: str = None,
         resources: List[str] = None,
     ):
+        # Specify whether to enable deletion protection. Set the value to true to enable deletion protection and set the value to false to disable deletion protection.
         self.enable = enable
+        # The namespace to which the resource belongs.
         self.namespace = namespace
+        # The type of resource for which deletion protection is enabled or disabled. You can specify namespaces or Services.
         self.resource_type = resource_type
+        # The resources list.
         self.resources = resources
 
     def validate(self):
@@ -26469,11 +26504,15 @@ class UpdateResourcesDeleteProtectionResponseBody(TeaModel):
         resource_type: str = None,
         resources: List[str] = None,
     ):
+        # The namespace to which the resource belongs.
         self.namespace = namespace
+        # Indicates the status of deletion protection. A value of true indicates that deletion protection is enabled and a value of false indicates that deletion protection is disabled.
         self.protection = protection
         # Id of the request
         self.request_id = request_id
+        # The type of resource for which deletion protection is enabled or disabled.
         self.resource_type = resource_type
+        # The list of resources whose deletion protection status is updated.
         self.resources = resources
 
     def validate(self):

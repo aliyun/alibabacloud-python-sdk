@@ -1,3 +1,9 @@
+2024-07-09 Version: 4.3.3
+- Update API CreateClusterNodePool: update param body.
+- Update API DescribeClusterNodePoolDetail: update response param.
+- Update API DescribeClusterNodePools: update response param.
+
+
 2024-06-25 Version: 4.3.2
 - Update API DescribeClusters: add param resource_group_id.
 

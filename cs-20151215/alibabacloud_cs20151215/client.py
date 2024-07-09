@@ -7461,7 +7461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Queries whether the deletion protection feature is enabled for the specified resources. The resources that you can query include namespaces and Services.
         
         @param request: DescribeResourcesDeleteProtectionRequest
         @param headers: map
@@ -7503,7 +7503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Queries whether the deletion protection feature is enabled for the specified resources. The resources that you can query include namespaces and Services.
         
         @param request: DescribeResourcesDeleteProtectionRequest
         @param headers: map
@@ -7543,7 +7543,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeResourcesDeleteProtectionRequest,
     ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Queries whether the deletion protection feature is enabled for the specified resources. The resources that you can query include namespaces and Services.
         
         @param request: DescribeResourcesDeleteProtectionRequest
         @return: DescribeResourcesDeleteProtectionResponse
@@ -7559,7 +7559,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.DescribeResourcesDeleteProtectionRequest,
     ) -> cs20151215_models.DescribeResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Queries whether the deletion protection feature is enabled for the specified resources. The resources that you can query include namespaces and Services.
         
         @param request: DescribeResourcesDeleteProtectionRequest
         @return: DescribeResourcesDeleteProtectionResponse
@@ -14270,7 +14270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @param headers: map
@@ -14315,7 +14315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @param headers: map
@@ -14358,7 +14358,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @return: UpdateResourcesDeleteProtectionResponse
@@ -14373,7 +14373,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.UpdateResourcesDeleteProtectionRequest,
     ) -> cs20151215_models.UpdateResourcesDeleteProtectionResponse:
         """
-        @summary 修改资源删除保护配置
+        @summary Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
         
         @param request: UpdateResourcesDeleteProtectionRequest
         @return: UpdateResourcesDeleteProtectionResponse
