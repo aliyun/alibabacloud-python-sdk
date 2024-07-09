@@ -34,7 +34,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchplat_20240529_models.CreateDocumentAnalyzeTaskResponse:
         """
-        @summary 创建异步提取任务
+        @summary 创建文档解析异步提取任务
         
         @param request: CreateDocumentAnalyzeTaskRequest
         @param headers: map
@@ -76,7 +76,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchplat_20240529_models.CreateDocumentAnalyzeTaskResponse:
         """
-        @summary 创建异步提取任务
+        @summary 创建文档解析异步提取任务
         
         @param request: CreateDocumentAnalyzeTaskRequest
         @param headers: map
@@ -116,7 +116,7 @@ class Client(OpenApiClient):
         request: searchplat_20240529_models.CreateDocumentAnalyzeTaskRequest,
     ) -> searchplat_20240529_models.CreateDocumentAnalyzeTaskResponse:
         """
-        @summary 创建异步提取任务
+        @summary 创建文档解析异步提取任务
         
         @param request: CreateDocumentAnalyzeTaskRequest
         @return: CreateDocumentAnalyzeTaskResponse
@@ -132,7 +132,7 @@ class Client(OpenApiClient):
         request: searchplat_20240529_models.CreateDocumentAnalyzeTaskRequest,
     ) -> searchplat_20240529_models.CreateDocumentAnalyzeTaskResponse:
         """
-        @summary 创建异步提取任务
+        @summary 创建文档解析异步提取任务
         
         @param request: CreateDocumentAnalyzeTaskRequest
         @return: CreateDocumentAnalyzeTaskResponse
@@ -140,6 +140,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_document_analyze_task_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def create_image_analyze_task_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateImageAnalyzeTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.CreateImageAnalyzeTaskResponse:
+        """
+        @summary 创建图片解析异步提取任务
+        
+        @param request: CreateImageAnalyzeTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageAnalyzeTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document):
+            body['document'] = request.document
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageAnalyzeTask',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/image-analyze/{service_id}/async',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.CreateImageAnalyzeTaskResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_image_analyze_task_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateImageAnalyzeTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.CreateImageAnalyzeTaskResponse:
+        """
+        @summary 创建图片解析异步提取任务
+        
+        @param request: CreateImageAnalyzeTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageAnalyzeTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.document):
+            body['document'] = request.document
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateImageAnalyzeTask',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/image-analyze/{service_id}/async',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.CreateImageAnalyzeTaskResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_image_analyze_task(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateImageAnalyzeTaskRequest,
+    ) -> searchplat_20240529_models.CreateImageAnalyzeTaskResponse:
+        """
+        @summary 创建图片解析异步提取任务
+        
+        @param request: CreateImageAnalyzeTaskRequest
+        @return: CreateImageAnalyzeTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_image_analyze_task_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def create_image_analyze_task_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.CreateImageAnalyzeTaskRequest,
+    ) -> searchplat_20240529_models.CreateImageAnalyzeTaskResponse:
+        """
+        @summary 创建图片解析异步提取任务
+        
+        @param request: CreateImageAnalyzeTaskRequest
+        @return: CreateImageAnalyzeTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_image_analyze_task_with_options_async(workspace_name, service_id, request, headers, runtime)
 
     def get_document_analyze_task_status_with_options(
         self,
@@ -150,7 +262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchplat_20240529_models.GetDocumentAnalyzeTaskStatusResponse:
         """
-        @summary 获取异步提取任务状态
+        @summary 获取文档解析异步提取任务状态
         
         @param request: GetDocumentAnalyzeTaskStatusRequest
         @param headers: map
@@ -190,7 +302,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchplat_20240529_models.GetDocumentAnalyzeTaskStatusResponse:
         """
-        @summary 获取异步提取任务状态
+        @summary 获取文档解析异步提取任务状态
         
         @param request: GetDocumentAnalyzeTaskStatusRequest
         @param headers: map
@@ -228,7 +340,7 @@ class Client(OpenApiClient):
         request: searchplat_20240529_models.GetDocumentAnalyzeTaskStatusRequest,
     ) -> searchplat_20240529_models.GetDocumentAnalyzeTaskStatusResponse:
         """
-        @summary 获取异步提取任务状态
+        @summary 获取文档解析异步提取任务状态
         
         @param request: GetDocumentAnalyzeTaskStatusRequest
         @return: GetDocumentAnalyzeTaskStatusResponse
@@ -244,7 +356,7 @@ class Client(OpenApiClient):
         request: searchplat_20240529_models.GetDocumentAnalyzeTaskStatusRequest,
     ) -> searchplat_20240529_models.GetDocumentAnalyzeTaskStatusResponse:
         """
-        @summary 获取异步提取任务状态
+        @summary 获取文档解析异步提取任务状态
         
         @param request: GetDocumentAnalyzeTaskStatusRequest
         @return: GetDocumentAnalyzeTaskStatusResponse
@@ -484,6 +596,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_document_split_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def get_image_analyze_task_status_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageAnalyzeTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetImageAnalyzeTaskStatusResponse:
+        """
+        @summary 获取图片解析异步提取任务状态
+        
+        @param request: GetImageAnalyzeTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageAnalyzeTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageAnalyzeTaskStatus',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/image-analyze/{service_id}/async/task-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetImageAnalyzeTaskStatusResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_image_analyze_task_status_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageAnalyzeTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetImageAnalyzeTaskStatusResponse:
+        """
+        @summary 获取图片解析异步提取任务状态
+        
+        @param request: GetImageAnalyzeTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageAnalyzeTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['task_id'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageAnalyzeTaskStatus',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/image-analyze/{service_id}/async/task-status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetImageAnalyzeTaskStatusResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_image_analyze_task_status(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageAnalyzeTaskStatusRequest,
+    ) -> searchplat_20240529_models.GetImageAnalyzeTaskStatusResponse:
+        """
+        @summary 获取图片解析异步提取任务状态
+        
+        @param request: GetImageAnalyzeTaskStatusRequest
+        @return: GetImageAnalyzeTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_image_analyze_task_status_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_image_analyze_task_status_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetImageAnalyzeTaskStatusRequest,
+    ) -> searchplat_20240529_models.GetImageAnalyzeTaskStatusResponse:
+        """
+        @summary 获取图片解析异步提取任务状态
+        
+        @param request: GetImageAnalyzeTaskStatusRequest
+        @return: GetImageAnalyzeTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_image_analyze_task_status_with_options_async(workspace_name, service_id, request, headers, runtime)
+
+    def get_query_analysis_with_options(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetQueryAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetQueryAnalysisResponse:
+        """
+        @summary 获取query分析结果
+        
+        @param request: GetQueryAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQueryAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.history):
+            body['history'] = request.history
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetQueryAnalysis',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/query-analyze/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetQueryAnalysisResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_query_analysis_with_options_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetQueryAnalysisRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> searchplat_20240529_models.GetQueryAnalysisResponse:
+        """
+        @summary 获取query分析结果
+        
+        @param request: GetQueryAnalysisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQueryAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.history):
+            body['history'] = request.history
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetQueryAnalysis',
+            version='2024-05-29',
+            protocol='HTTPS',
+            pathname=f'/v3/openapi/workspaces/{workspace_name}/query-analyze/{service_id}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            searchplat_20240529_models.GetQueryAnalysisResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_query_analysis(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetQueryAnalysisRequest,
+    ) -> searchplat_20240529_models.GetQueryAnalysisResponse:
+        """
+        @summary 获取query分析结果
+        
+        @param request: GetQueryAnalysisRequest
+        @return: GetQueryAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_query_analysis_with_options(workspace_name, service_id, request, headers, runtime)
+
+    async def get_query_analysis_async(
+        self,
+        workspace_name: str,
+        service_id: str,
+        request: searchplat_20240529_models.GetQueryAnalysisRequest,
+    ) -> searchplat_20240529_models.GetQueryAnalysisResponse:
+        """
+        @summary 获取query分析结果
+        
+        @param request: GetQueryAnalysisRequest
+        @return: GetQueryAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_query_analysis_with_options_async(workspace_name, service_id, request, headers, runtime)
 
     def get_text_embedding_with_options(
         self,

@@ -223,6 +223,189 @@ class CreateDocumentAnalyzeTaskResponse(TeaModel):
         return self
 
 
+class CreateImageAnalyzeTaskRequestDocument(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.file_name = file_name
+        self.file_type = file_type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.file_type is not None:
+            result['file_type'] = self.file_type
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('file_type') is not None:
+            self.file_type = m.get('file_type')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class CreateImageAnalyzeTaskRequest(TeaModel):
+    def __init__(
+        self,
+        document: CreateImageAnalyzeTaskRequestDocument = None,
+    ):
+        self.document = document
+
+    def validate(self):
+        if self.document:
+            self.document.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document is not None:
+            result['document'] = self.document.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('document') is not None:
+            temp_model = CreateImageAnalyzeTaskRequestDocument()
+            self.document = temp_model.from_map(m['document'])
+        return self
+
+
+class CreateImageAnalyzeTaskResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class CreateImageAnalyzeTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: CreateImageAnalyzeTaskResponseBodyResult = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = CreateImageAnalyzeTaskResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        return self
+
+
+class CreateImageAnalyzeTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateImageAnalyzeTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateImageAnalyzeTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDocumentAnalyzeTaskStatusRequest(TeaModel):
     def __init__(
         self,
@@ -294,10 +477,12 @@ class GetDocumentAnalyzeTaskStatusResponseBodyResult(TeaModel):
     def __init__(
         self,
         data: GetDocumentAnalyzeTaskStatusResponseBodyResultData = None,
+        error: str = None,
         status: str = None,
         task_id: str = None,
     ):
         self.data = data
+        self.error = error
         self.status = status
         self.task_id = task_id
 
@@ -313,6 +498,8 @@ class GetDocumentAnalyzeTaskStatusResponseBodyResult(TeaModel):
         result = dict()
         if self.data is not None:
             result['data'] = self.data.to_map()
+        if self.error is not None:
+            result['error'] = self.error
         if self.status is not None:
             result['status'] = self.status
         if self.task_id is not None:
@@ -324,6 +511,8 @@ class GetDocumentAnalyzeTaskStatusResponseBodyResult(TeaModel):
         if m.get('data') is not None:
             temp_model = GetDocumentAnalyzeTaskStatusResponseBodyResultData()
             self.data = temp_model.from_map(m['data'])
+        if m.get('error') is not None:
+            self.error = m.get('error')
         if m.get('status') is not None:
             self.status = m.get('status')
         if m.get('task_id') is not None:
@@ -1083,6 +1272,488 @@ class GetDocumentSplitResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDocumentSplitResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetImageAnalyzeTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetImageAnalyzeTaskStatusResponseBodyResultData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        content_type: str = None,
+        page_num: int = None,
+    ):
+        self.content = content
+        self.content_type = content_type
+        self.page_num = page_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.content_type is not None:
+            result['content_type'] = self.content_type
+        if self.page_num is not None:
+            result['page_num'] = self.page_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('content_type') is not None:
+            self.content_type = m.get('content_type')
+        if m.get('page_num') is not None:
+            self.page_num = m.get('page_num')
+        return self
+
+
+class GetImageAnalyzeTaskStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: GetImageAnalyzeTaskStatusResponseBodyResultData = None,
+        error: str = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.data = data
+        self.error = error
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error is not None:
+            result['error'] = self.error
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetImageAnalyzeTaskStatusResponseBodyResultData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('error') is not None:
+            self.error = m.get('error')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class GetImageAnalyzeTaskStatusResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        pv_count: int = None,
+        token_count: int = None,
+    ):
+        self.pv_count = pv_count
+        self.token_count = token_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pv_count is not None:
+            result['pv_count'] = self.pv_count
+        if self.token_count is not None:
+            result['token_count'] = self.token_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pv_count') is not None:
+            self.pv_count = m.get('pv_count')
+        if m.get('token_count') is not None:
+            self.token_count = m.get('token_count')
+        return self
+
+
+class GetImageAnalyzeTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetImageAnalyzeTaskStatusResponseBodyResult = None,
+        usage: GetImageAnalyzeTaskStatusResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetImageAnalyzeTaskStatusResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetImageAnalyzeTaskStatusResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetImageAnalyzeTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetImageAnalyzeTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetImageAnalyzeTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQueryAnalysisRequestHistory(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        return self
+
+
+class GetQueryAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        history: List[GetQueryAnalysisRequestHistory] = None,
+        query: str = None,
+    ):
+        self.history = history
+        # This parameter is required.
+        self.query = query
+
+    def validate(self):
+        if self.history:
+            for k in self.history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['history'] = []
+        if self.history is not None:
+            for k in self.history:
+                result['history'].append(k.to_map() if k else None)
+        if self.query is not None:
+            result['query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.history = []
+        if m.get('history') is not None:
+            for k in m.get('history'):
+                temp_model = GetQueryAnalysisRequestHistory()
+                self.history.append(temp_model.from_map(k))
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        return self
+
+
+class GetQueryAnalysisResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        intent: str = None,
+        queries: List[str] = None,
+        query: str = None,
+    ):
+        self.intent = intent
+        self.queries = queries
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.intent is not None:
+            result['intent'] = self.intent
+        if self.queries is not None:
+            result['queries'] = self.queries
+        if self.query is not None:
+            result['query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('intent') is not None:
+            self.intent = m.get('intent')
+        if m.get('queries') is not None:
+            self.queries = m.get('queries')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        return self
+
+
+class GetQueryAnalysisResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['input_tokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['output_tokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['total_tokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('input_tokens') is not None:
+            self.input_tokens = m.get('input_tokens')
+        if m.get('output_tokens') is not None:
+            self.output_tokens = m.get('output_tokens')
+        if m.get('total_tokens') is not None:
+            self.total_tokens = m.get('total_tokens')
+        return self
+
+
+class GetQueryAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        latency: int = None,
+        request_id: str = None,
+        result: GetQueryAnalysisResponseBodyResult = None,
+        usage: GetQueryAnalysisResponseBodyUsage = None,
+    ):
+        self.latency = latency
+        self.request_id = request_id
+        self.result = result
+        self.usage = usage
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.latency is not None:
+            result['latency'] = self.latency
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('latency') is not None:
+            self.latency = m.get('latency')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('result') is not None:
+            temp_model = GetQueryAnalysisResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('usage') is not None:
+            temp_model = GetQueryAnalysisResponseBodyUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetQueryAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQueryAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQueryAnalysisResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
