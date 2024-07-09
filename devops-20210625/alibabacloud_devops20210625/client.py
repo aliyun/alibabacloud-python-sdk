@@ -913,6 +913,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_branch_with_options_async(repository_id, request, headers, runtime)
 
+    def create_change_request_with_options(
+        self,
+        app_name: str,
+        request: devops_20210625_models.CreateChangeRequestRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateChangeRequestResponse:
+        """
+        @summary 创建变更
+        
+        @param request: CreateChangeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChangeRequestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.app_code_repo_sn):
+            body['appCodeRepoSn'] = request.app_code_repo_sn
+        if not UtilClient.is_unset(request.auto_delete_branch_when_end):
+            body['autoDeleteBranchWhenEnd'] = request.auto_delete_branch_when_end
+        if not UtilClient.is_unset(request.branch_name):
+            body['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.create_branch):
+            body['createBranch'] = request.create_branch
+        if not UtilClient.is_unset(request.owner_account_id):
+            body['ownerAccountId'] = request.owner_account_id
+        if not UtilClient.is_unset(request.owner_id):
+            body['ownerId'] = request.owner_id
+        if not UtilClient.is_unset(request.title):
+            body['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateChangeRequest',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/changeRequests',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateChangeRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_change_request_with_options_async(
+        self,
+        app_name: str,
+        request: devops_20210625_models.CreateChangeRequestRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CreateChangeRequestResponse:
+        """
+        @summary 创建变更
+        
+        @param request: CreateChangeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateChangeRequestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.app_code_repo_sn):
+            body['appCodeRepoSn'] = request.app_code_repo_sn
+        if not UtilClient.is_unset(request.auto_delete_branch_when_end):
+            body['autoDeleteBranchWhenEnd'] = request.auto_delete_branch_when_end
+        if not UtilClient.is_unset(request.branch_name):
+            body['branchName'] = request.branch_name
+        if not UtilClient.is_unset(request.create_branch):
+            body['createBranch'] = request.create_branch
+        if not UtilClient.is_unset(request.owner_account_id):
+            body['ownerAccountId'] = request.owner_account_id
+        if not UtilClient.is_unset(request.owner_id):
+            body['ownerId'] = request.owner_id
+        if not UtilClient.is_unset(request.title):
+            body['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateChangeRequest',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/changeRequests',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CreateChangeRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_change_request(
+        self,
+        app_name: str,
+        request: devops_20210625_models.CreateChangeRequestRequest,
+    ) -> devops_20210625_models.CreateChangeRequestResponse:
+        """
+        @summary 创建变更
+        
+        @param request: CreateChangeRequestRequest
+        @return: CreateChangeRequestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_change_request_with_options(app_name, request, headers, runtime)
+
+    async def create_change_request_async(
+        self,
+        app_name: str,
+        request: devops_20210625_models.CreateChangeRequestRequest,
+    ) -> devops_20210625_models.CreateChangeRequestResponse:
+        """
+        @summary 创建变更
+        
+        @param request: CreateChangeRequestRequest
+        @return: CreateChangeRequestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_change_request_with_options_async(app_name, request, headers, runtime)
+
     def create_check_run_with_options(
         self,
         request: devops_20210625_models.CreateCheckRunRequest,
@@ -15350,6 +15490,306 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_applications_with_options_async(request, headers, runtime)
+
+    def list_change_request_workflow_executions_with_options(
+        self,
+        app_name: str,
+        sn: str,
+        request: devops_20210625_models.ListChangeRequestWorkflowExecutionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListChangeRequestWorkflowExecutionsResponse:
+        """
+        @summary 查询变更研发流程运行记录
+        
+        @param request: ListChangeRequestWorkflowExecutionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChangeRequestWorkflowExecutionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.release_stage_sn):
+            query['releaseStageSn'] = request.release_stage_sn
+        if not UtilClient.is_unset(request.release_workflow_sn):
+            query['releaseWorkflowSn'] = request.release_workflow_sn
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChangeRequestWorkflowExecutions',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/changeRequests/{OpenApiUtilClient.get_encode_param(sn)}/executions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListChangeRequestWorkflowExecutionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_change_request_workflow_executions_with_options_async(
+        self,
+        app_name: str,
+        sn: str,
+        request: devops_20210625_models.ListChangeRequestWorkflowExecutionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListChangeRequestWorkflowExecutionsResponse:
+        """
+        @summary 查询变更研发流程运行记录
+        
+        @param request: ListChangeRequestWorkflowExecutionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChangeRequestWorkflowExecutionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.release_stage_sn):
+            query['releaseStageSn'] = request.release_stage_sn
+        if not UtilClient.is_unset(request.release_workflow_sn):
+            query['releaseWorkflowSn'] = request.release_workflow_sn
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChangeRequestWorkflowExecutions',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/changeRequests/{OpenApiUtilClient.get_encode_param(sn)}/executions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListChangeRequestWorkflowExecutionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_change_request_workflow_executions(
+        self,
+        app_name: str,
+        sn: str,
+        request: devops_20210625_models.ListChangeRequestWorkflowExecutionsRequest,
+    ) -> devops_20210625_models.ListChangeRequestWorkflowExecutionsResponse:
+        """
+        @summary 查询变更研发流程运行记录
+        
+        @param request: ListChangeRequestWorkflowExecutionsRequest
+        @return: ListChangeRequestWorkflowExecutionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_change_request_workflow_executions_with_options(app_name, sn, request, headers, runtime)
+
+    async def list_change_request_workflow_executions_async(
+        self,
+        app_name: str,
+        sn: str,
+        request: devops_20210625_models.ListChangeRequestWorkflowExecutionsRequest,
+    ) -> devops_20210625_models.ListChangeRequestWorkflowExecutionsResponse:
+        """
+        @summary 查询变更研发流程运行记录
+        
+        @param request: ListChangeRequestWorkflowExecutionsRequest
+        @return: ListChangeRequestWorkflowExecutionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_change_request_workflow_executions_with_options_async(app_name, sn, request, headers, runtime)
+
+    def list_change_requests_with_options(
+        self,
+        app_name: str,
+        tmp_req: devops_20210625_models.ListChangeRequestsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListChangeRequestsResponse:
+        """
+        @summary 查询变更列表
+        
+        @param tmp_req: ListChangeRequestsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChangeRequestsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = devops_20210625_models.ListChangeRequestsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_name_list):
+            request.app_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_name_list, 'appNameList', 'json')
+        if not UtilClient.is_unset(tmp_req.owner_id_list):
+            request.owner_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.owner_id_list, 'ownerIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.state_list):
+            request.state_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.state_list, 'stateList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_name_list_shrink):
+            query['appNameList'] = request.app_name_list_shrink
+        if not UtilClient.is_unset(request.display_name_keyword):
+            query['displayNameKeyword'] = request.display_name_keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.owner_id_list_shrink):
+            query['ownerIdList'] = request.owner_id_list_shrink
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.pagination):
+            query['pagination'] = request.pagination
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.state_list_shrink):
+            query['stateList'] = request.state_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChangeRequests',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/changeRequests',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListChangeRequestsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_change_requests_with_options_async(
+        self,
+        app_name: str,
+        tmp_req: devops_20210625_models.ListChangeRequestsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ListChangeRequestsResponse:
+        """
+        @summary 查询变更列表
+        
+        @param tmp_req: ListChangeRequestsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChangeRequestsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = devops_20210625_models.ListChangeRequestsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.app_name_list):
+            request.app_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.app_name_list, 'appNameList', 'json')
+        if not UtilClient.is_unset(tmp_req.owner_id_list):
+            request.owner_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.owner_id_list, 'ownerIdList', 'json')
+        if not UtilClient.is_unset(tmp_req.state_list):
+            request.state_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.state_list, 'stateList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_name_list_shrink):
+            query['appNameList'] = request.app_name_list_shrink
+        if not UtilClient.is_unset(request.display_name_keyword):
+            query['displayNameKeyword'] = request.display_name_keyword
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['orderBy'] = request.order_by
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        if not UtilClient.is_unset(request.owner_id_list_shrink):
+            query['ownerIdList'] = request.owner_id_list_shrink
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.pagination):
+            query['pagination'] = request.pagination
+        if not UtilClient.is_unset(request.per_page):
+            query['perPage'] = request.per_page
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.state_list_shrink):
+            query['stateList'] = request.state_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListChangeRequests',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/changeRequests',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ListChangeRequestsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_change_requests(
+        self,
+        app_name: str,
+        request: devops_20210625_models.ListChangeRequestsRequest,
+    ) -> devops_20210625_models.ListChangeRequestsResponse:
+        """
+        @summary 查询变更列表
+        
+        @param request: ListChangeRequestsRequest
+        @return: ListChangeRequestsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_change_requests_with_options(app_name, request, headers, runtime)
+
+    async def list_change_requests_async(
+        self,
+        app_name: str,
+        request: devops_20210625_models.ListChangeRequestsRequest,
+    ) -> devops_20210625_models.ListChangeRequestsResponse:
+        """
+        @summary 查询变更列表
+        
+        @param request: ListChangeRequestsRequest
+        @return: ListChangeRequestsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_change_requests_with_options_async(app_name, request, headers, runtime)
 
     def list_check_runs_with_options(
         self,

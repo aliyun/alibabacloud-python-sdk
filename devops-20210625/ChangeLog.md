@@ -1,3 +1,9 @@
+2024-07-09 Version: 4.21.0
+- Support API CreateChangeRequest.
+- Support API ListChangeRequestWorkflowExecutions.
+- Support API ListChangeRequests.
+
+
 2024-07-02 Version: 4.20.0
 - Support API ListAllReleaseWorkflows.
 - Support API ListAppReleaseStageExecutionIntegratedMetadata.

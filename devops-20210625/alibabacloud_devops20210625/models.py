@@ -1361,6 +1361,237 @@ class CreateBranchResponse(TeaModel):
         return self
 
 
+class CreateChangeRequestRequest(TeaModel):
+    def __init__(
+        self,
+        app_code_repo_sn: str = None,
+        auto_delete_branch_when_end: bool = None,
+        branch_name: str = None,
+        create_branch: bool = None,
+        owner_account_id: str = None,
+        owner_id: str = None,
+        title: str = None,
+        organization_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_code_repo_sn = app_code_repo_sn
+        self.auto_delete_branch_when_end = auto_delete_branch_when_end
+        # This parameter is required.
+        self.branch_name = branch_name
+        self.create_branch = create_branch
+        self.owner_account_id = owner_account_id
+        # This parameter is required.
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.title = title
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_code_repo_sn is not None:
+            result['appCodeRepoSn'] = self.app_code_repo_sn
+        if self.auto_delete_branch_when_end is not None:
+            result['autoDeleteBranchWhenEnd'] = self.auto_delete_branch_when_end
+        if self.branch_name is not None:
+            result['branchName'] = self.branch_name
+        if self.create_branch is not None:
+            result['createBranch'] = self.create_branch
+        if self.owner_account_id is not None:
+            result['ownerAccountId'] = self.owner_account_id
+        if self.owner_id is not None:
+            result['ownerId'] = self.owner_id
+        if self.title is not None:
+            result['title'] = self.title
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appCodeRepoSn') is not None:
+            self.app_code_repo_sn = m.get('appCodeRepoSn')
+        if m.get('autoDeleteBranchWhenEnd') is not None:
+            self.auto_delete_branch_when_end = m.get('autoDeleteBranchWhenEnd')
+        if m.get('branchName') is not None:
+            self.branch_name = m.get('branchName')
+        if m.get('createBranch') is not None:
+            self.create_branch = m.get('createBranch')
+        if m.get('ownerAccountId') is not None:
+            self.owner_account_id = m.get('ownerAccountId')
+        if m.get('ownerId') is not None:
+            self.owner_id = m.get('ownerId')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class CreateChangeRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_code_repo_sn: str = None,
+        app_name: str = None,
+        auto_delete_branch_when_end: bool = None,
+        branch: str = None,
+        creator_account_id: str = None,
+        creator_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        name: str = None,
+        origin_branch: str = None,
+        origin_branch_revision_sha: str = None,
+        owner_account_id: str = None,
+        owner_id: str = None,
+        sn: str = None,
+        state: str = None,
+        type: str = None,
+    ):
+        self.app_code_repo_sn = app_code_repo_sn
+        self.app_name = app_name
+        self.auto_delete_branch_when_end = auto_delete_branch_when_end
+        self.branch = branch
+        self.creator_account_id = creator_account_id
+        self.creator_id = creator_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.name = name
+        self.origin_branch = origin_branch
+        self.origin_branch_revision_sha = origin_branch_revision_sha
+        self.owner_account_id = owner_account_id
+        self.owner_id = owner_id
+        self.sn = sn
+        self.state = state
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_code_repo_sn is not None:
+            result['appCodeRepoSn'] = self.app_code_repo_sn
+        if self.app_name is not None:
+            result['appName'] = self.app_name
+        if self.auto_delete_branch_when_end is not None:
+            result['autoDeleteBranchWhenEnd'] = self.auto_delete_branch_when_end
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.creator_account_id is not None:
+            result['creatorAccountId'] = self.creator_account_id
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.name is not None:
+            result['name'] = self.name
+        if self.origin_branch is not None:
+            result['originBranch'] = self.origin_branch
+        if self.origin_branch_revision_sha is not None:
+            result['originBranchRevisionSha'] = self.origin_branch_revision_sha
+        if self.owner_account_id is not None:
+            result['ownerAccountId'] = self.owner_account_id
+        if self.owner_id is not None:
+            result['ownerId'] = self.owner_id
+        if self.sn is not None:
+            result['sn'] = self.sn
+        if self.state is not None:
+            result['state'] = self.state
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appCodeRepoSn') is not None:
+            self.app_code_repo_sn = m.get('appCodeRepoSn')
+        if m.get('appName') is not None:
+            self.app_name = m.get('appName')
+        if m.get('autoDeleteBranchWhenEnd') is not None:
+            self.auto_delete_branch_when_end = m.get('autoDeleteBranchWhenEnd')
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('creatorAccountId') is not None:
+            self.creator_account_id = m.get('creatorAccountId')
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('originBranch') is not None:
+            self.origin_branch = m.get('originBranch')
+        if m.get('originBranchRevisionSha') is not None:
+            self.origin_branch_revision_sha = m.get('originBranchRevisionSha')
+        if m.get('ownerAccountId') is not None:
+            self.owner_account_id = m.get('ownerAccountId')
+        if m.get('ownerId') is not None:
+            self.owner_id = m.get('ownerId')
+        if m.get('sn') is not None:
+            self.sn = m.get('sn')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateChangeRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateChangeRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateChangeRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCheckRunRequestAnnotations(TeaModel):
     def __init__(
         self,
@@ -31895,6 +32126,437 @@ class ListApplicationsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChangeRequestWorkflowExecutionsRequest(TeaModel):
+    def __init__(
+        self,
+        order_by: str = None,
+        organization_id: str = None,
+        page: int = None,
+        per_page: int = None,
+        release_stage_sn: str = None,
+        release_workflow_sn: str = None,
+        sort: str = None,
+    ):
+        self.order_by = order_by
+        self.organization_id = organization_id
+        self.page = page
+        self.per_page = per_page
+        # This parameter is required.
+        self.release_stage_sn = release_stage_sn
+        # This parameter is required.
+        self.release_workflow_sn = release_workflow_sn
+        self.sort = sort
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.page is not None:
+            result['page'] = self.page
+        if self.per_page is not None:
+            result['perPage'] = self.per_page
+        if self.release_stage_sn is not None:
+            result['releaseStageSn'] = self.release_stage_sn
+        if self.release_workflow_sn is not None:
+            result['releaseWorkflowSn'] = self.release_workflow_sn
+        if self.sort is not None:
+            result['sort'] = self.sort
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('perPage') is not None:
+            self.per_page = m.get('perPage')
+        if m.get('releaseStageSn') is not None:
+            self.release_stage_sn = m.get('releaseStageSn')
+        if m.get('releaseWorkflowSn') is not None:
+            self.release_workflow_sn = m.get('releaseWorkflowSn')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        return self
+
+
+class ListChangeRequestWorkflowExecutionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        page_size: int = None,
+        pages: int = None,
+        records: List[Any] = None,
+        total: int = None,
+    ):
+        self.current = current
+        self.page_size = page_size
+        self.pages = pages
+        self.records = records
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.pages is not None:
+            result['pages'] = self.pages
+        if self.records is not None:
+            result['records'] = self.records
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('pages') is not None:
+            self.pages = m.get('pages')
+        if m.get('records') is not None:
+            self.records = m.get('records')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListChangeRequestWorkflowExecutionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChangeRequestWorkflowExecutionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChangeRequestWorkflowExecutionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListChangeRequestsRequest(TeaModel):
+    def __init__(
+        self,
+        app_name_list: List[str] = None,
+        display_name_keyword: str = None,
+        next_token: str = None,
+        order_by: str = None,
+        organization_id: str = None,
+        owner_id_list: List[str] = None,
+        page: int = None,
+        pagination: str = None,
+        per_page: int = None,
+        sort: str = None,
+        state_list: List[str] = None,
+    ):
+        self.app_name_list = app_name_list
+        self.display_name_keyword = display_name_keyword
+        self.next_token = next_token
+        self.order_by = order_by
+        # This parameter is required.
+        self.organization_id = organization_id
+        self.owner_id_list = owner_id_list
+        self.page = page
+        self.pagination = pagination
+        self.per_page = per_page
+        self.sort = sort
+        self.state_list = state_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name_list is not None:
+            result['appNameList'] = self.app_name_list
+        if self.display_name_keyword is not None:
+            result['displayNameKeyword'] = self.display_name_keyword
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.owner_id_list is not None:
+            result['ownerIdList'] = self.owner_id_list
+        if self.page is not None:
+            result['page'] = self.page
+        if self.pagination is not None:
+            result['pagination'] = self.pagination
+        if self.per_page is not None:
+            result['perPage'] = self.per_page
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.state_list is not None:
+            result['stateList'] = self.state_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appNameList') is not None:
+            self.app_name_list = m.get('appNameList')
+        if m.get('displayNameKeyword') is not None:
+            self.display_name_keyword = m.get('displayNameKeyword')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('ownerIdList') is not None:
+            self.owner_id_list = m.get('ownerIdList')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pagination') is not None:
+            self.pagination = m.get('pagination')
+        if m.get('perPage') is not None:
+            self.per_page = m.get('perPage')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('stateList') is not None:
+            self.state_list = m.get('stateList')
+        return self
+
+
+class ListChangeRequestsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_name_list_shrink: str = None,
+        display_name_keyword: str = None,
+        next_token: str = None,
+        order_by: str = None,
+        organization_id: str = None,
+        owner_id_list_shrink: str = None,
+        page: int = None,
+        pagination: str = None,
+        per_page: int = None,
+        sort: str = None,
+        state_list_shrink: str = None,
+    ):
+        self.app_name_list_shrink = app_name_list_shrink
+        self.display_name_keyword = display_name_keyword
+        self.next_token = next_token
+        self.order_by = order_by
+        # This parameter is required.
+        self.organization_id = organization_id
+        self.owner_id_list_shrink = owner_id_list_shrink
+        self.page = page
+        self.pagination = pagination
+        self.per_page = per_page
+        self.sort = sort
+        self.state_list_shrink = state_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name_list_shrink is not None:
+            result['appNameList'] = self.app_name_list_shrink
+        if self.display_name_keyword is not None:
+            result['displayNameKeyword'] = self.display_name_keyword
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.owner_id_list_shrink is not None:
+            result['ownerIdList'] = self.owner_id_list_shrink
+        if self.page is not None:
+            result['page'] = self.page
+        if self.pagination is not None:
+            result['pagination'] = self.pagination
+        if self.per_page is not None:
+            result['perPage'] = self.per_page
+        if self.sort is not None:
+            result['sort'] = self.sort
+        if self.state_list_shrink is not None:
+            result['stateList'] = self.state_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('appNameList') is not None:
+            self.app_name_list_shrink = m.get('appNameList')
+        if m.get('displayNameKeyword') is not None:
+            self.display_name_keyword = m.get('displayNameKeyword')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('ownerIdList') is not None:
+            self.owner_id_list_shrink = m.get('ownerIdList')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pagination') is not None:
+            self.pagination = m.get('pagination')
+        if m.get('perPage') is not None:
+            self.per_page = m.get('perPage')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        if m.get('stateList') is not None:
+            self.state_list_shrink = m.get('stateList')
+        return self
+
+
+class ListChangeRequestsResponseBody(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        data: List[Any] = None,
+        next_token: str = None,
+        pages: int = None,
+        per_page: int = None,
+        total: int = None,
+    ):
+        self.current = current
+        self.data = data
+        self.next_token = next_token
+        self.pages = pages
+        self.per_page = per_page
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.data is not None:
+            result['data'] = self.data
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.pages is not None:
+            result['pages'] = self.pages
+        if self.per_page is not None:
+            result['perPage'] = self.per_page
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('pages') is not None:
+            self.pages = m.get('pages')
+        if m.get('perPage') is not None:
+            self.per_page = m.get('perPage')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListChangeRequestsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListChangeRequestsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListChangeRequestsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
