@@ -315,6 +315,254 @@ class Client(OpenApiClient):
         create_text_file_resp = await self.create_text_file_with_options_async(workspace_id, create_text_file_req, headers, runtime)
         return create_text_file_resp
 
+    def run_contract_result_generation_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunContractResultGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunContractResultGenerationResponse:
+        """
+        @summary 生成合同审查结果
+        
+        @param tmp_req: RunContractResultGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunContractResultGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunContractResultGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assistant):
+            request.assistant_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assistant, 'assistant', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.assistant_shrink):
+            body['assistant'] = request.assistant_shrink
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunContractResultGeneration',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/contract/result/genarate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunContractResultGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_contract_result_generation_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunContractResultGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunContractResultGenerationResponse:
+        """
+        @summary 生成合同审查结果
+        
+        @param tmp_req: RunContractResultGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunContractResultGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunContractResultGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assistant):
+            request.assistant_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assistant, 'assistant', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.assistant_shrink):
+            body['assistant'] = request.assistant_shrink
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunContractResultGeneration',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/contract/result/genarate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunContractResultGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_contract_result_generation(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunContractResultGenerationRequest,
+    ) -> fa_rui_20240628_models.RunContractResultGenerationResponse:
+        """
+        @summary 生成合同审查结果
+        
+        @param request: RunContractResultGenerationRequest
+        @return: RunContractResultGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_contract_result_generation_with_options(workspace_id, request, headers, runtime)
+
+    async def run_contract_result_generation_async(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunContractResultGenerationRequest,
+    ) -> fa_rui_20240628_models.RunContractResultGenerationResponse:
+        """
+        @summary 生成合同审查结果
+        
+        @param request: RunContractResultGenerationRequest
+        @return: RunContractResultGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_contract_result_generation_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_contract_rule_generation_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunContractRuleGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunContractRuleGenerationResponse:
+        """
+        @summary 生成合同审查规则
+        
+        @param tmp_req: RunContractRuleGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunContractRuleGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunContractRuleGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assistant):
+            request.assistant_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assistant, 'assistant', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.assistant_shrink):
+            body['assistant'] = request.assistant_shrink
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunContractRuleGeneration',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/contract/rule/genarate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunContractRuleGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_contract_rule_generation_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: fa_rui_20240628_models.RunContractRuleGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fa_rui_20240628_models.RunContractRuleGenerationResponse:
+        """
+        @summary 生成合同审查规则
+        
+        @param tmp_req: RunContractRuleGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunContractRuleGenerationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = fa_rui_20240628_models.RunContractRuleGenerationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.assistant):
+            request.assistant_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.assistant, 'assistant', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['appId'] = request.app_id
+        if not UtilClient.is_unset(request.assistant_shrink):
+            body['assistant'] = request.assistant_shrink
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunContractRuleGeneration',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/farui/contract/rule/genarate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fa_rui_20240628_models.RunContractRuleGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_contract_rule_generation(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunContractRuleGenerationRequest,
+    ) -> fa_rui_20240628_models.RunContractRuleGenerationResponse:
+        """
+        @summary 生成合同审查规则
+        
+        @param request: RunContractRuleGenerationRequest
+        @return: RunContractRuleGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_contract_rule_generation_with_options(workspace_id, request, headers, runtime)
+
+    async def run_contract_rule_generation_async(
+        self,
+        workspace_id: str,
+        request: fa_rui_20240628_models.RunContractRuleGenerationRequest,
+    ) -> fa_rui_20240628_models.RunContractRuleGenerationResponse:
+        """
+        @summary 生成合同审查规则
+        
+        @param request: RunContractRuleGenerationRequest
+        @return: RunContractRuleGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_contract_rule_generation_with_options_async(workspace_id, request, headers, runtime)
+
     def run_legal_advice_consultation_with_options(
         self,
         workspace_id: str,
