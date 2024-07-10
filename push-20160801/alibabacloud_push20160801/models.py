@@ -3726,7 +3726,6 @@ class QueryDeviceStatRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_key = app_key
-        # This parameter is required.
         self.device_type = device_type
         # This parameter is required.
         self.end_time = end_time

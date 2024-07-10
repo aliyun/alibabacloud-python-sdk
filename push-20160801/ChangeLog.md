@@ -1,3 +1,7 @@
+2024-07-10 Version: 1.0.11
+- Update API QueryDeviceStat: update param DeviceType.
+
+
 2024-06-26 Version: 1.0.10
 - Update API MassPush: update param PushTask.
 - Update API Push: add param HarmonyAction.
