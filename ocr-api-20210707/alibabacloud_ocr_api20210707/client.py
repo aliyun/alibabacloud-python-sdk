@@ -3561,6 +3561,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.recognize_general_with_options_async(request, runtime)
 
+    def recognize_general_structure_with_options(
+        self,
+        tmp_req: ocr_api_20210707_models.RecognizeGeneralStructureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeGeneralStructureResponse:
+        """
+        @summary DocMaster
+        
+        @param tmp_req: RecognizeGeneralStructureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecognizeGeneralStructureResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ocr_api_20210707_models.RecognizeGeneralStructureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keys):
+            request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=tmp_req.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeGeneralStructure',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeGeneralStructureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_general_structure_with_options_async(
+        self,
+        tmp_req: ocr_api_20210707_models.RecognizeGeneralStructureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocr_api_20210707_models.RecognizeGeneralStructureResponse:
+        """
+        @summary DocMaster
+        
+        @param tmp_req: RecognizeGeneralStructureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecognizeGeneralStructureResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ocr_api_20210707_models.RecognizeGeneralStructureShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.keys):
+            request.keys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=request.body,
+            stream=tmp_req.body
+        )
+        params = open_api_models.Params(
+            action='RecognizeGeneralStructure',
+            version='2021-07-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocr_api_20210707_models.RecognizeGeneralStructureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_general_structure(
+        self,
+        request: ocr_api_20210707_models.RecognizeGeneralStructureRequest,
+    ) -> ocr_api_20210707_models.RecognizeGeneralStructureResponse:
+        """
+        @summary DocMaster
+        
+        @param request: RecognizeGeneralStructureRequest
+        @return: RecognizeGeneralStructureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.recognize_general_structure_with_options(request, runtime)
+
+    async def recognize_general_structure_async(
+        self,
+        request: ocr_api_20210707_models.RecognizeGeneralStructureRequest,
+    ) -> ocr_api_20210707_models.RecognizeGeneralStructureResponse:
+        """
+        @summary DocMaster
+        
+        @param request: RecognizeGeneralStructureRequest
+        @return: RecognizeGeneralStructureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.recognize_general_structure_with_options_async(request, runtime)
+
     def recognize_hkidcard_with_options(
         self,
         request: ocr_api_20210707_models.RecognizeHKIdcardRequest,

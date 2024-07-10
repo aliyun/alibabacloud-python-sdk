@@ -1,3 +1,7 @@
+2024-07-10 Version: 3.1.0
+- Support API RecognizeGeneralStructure.
+
+
 2024-06-07 Version: 3.0.0
 - Update API RecognizeAllText: update param OutputCoordinate.
 

@@ -6923,6 +6923,299 @@ class RecognizeGeneralResponse(TeaModel):
         return self
 
 
+class RecognizeGeneralStructureRequest(TeaModel):
+    def __init__(
+        self,
+        keys: List[str] = None,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        self.keys = keys
+        self.url = url
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeGeneralStructureShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        keys_shrink: str = None,
+        url: str = None,
+        body: BinaryIO = None,
+    ):
+        self.keys_shrink = keys_shrink
+        self.url = url
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keys_shrink is not None:
+            result['Keys'] = self.keys_shrink
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keys') is not None:
+            self.keys_shrink = m.get('Keys')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
+class RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        kv_count: int = None,
+    ):
+        self.data = data
+        self.kv_count = kv_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.kv_count is not None:
+            result['KvCount'] = self.kv_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('KvCount') is not None:
+            self.kv_count = m.get('KvCount')
+        return self
+
+
+class RecognizeGeneralStructureResponseBodyDataSubImages(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        kv_info: RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo = None,
+        sub_image_id: int = None,
+    ):
+        self.angle = angle
+        self.kv_info = kv_info
+        self.sub_image_id = sub_image_id
+
+    def validate(self):
+        if self.kv_info:
+            self.kv_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.kv_info is not None:
+            result['KvInfo'] = self.kv_info.to_map()
+        if self.sub_image_id is not None:
+            result['SubImageId'] = self.sub_image_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('KvInfo') is not None:
+            temp_model = RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo()
+            self.kv_info = temp_model.from_map(m['KvInfo'])
+        if m.get('SubImageId') is not None:
+            self.sub_image_id = m.get('SubImageId')
+        return self
+
+
+class RecognizeGeneralStructureResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        sub_image_count: int = None,
+        sub_images: List[RecognizeGeneralStructureResponseBodyDataSubImages] = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.sub_image_count = sub_image_count
+        self.sub_images = sub_images
+        self.width = width
+
+    def validate(self):
+        if self.sub_images:
+            for k in self.sub_images:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.sub_image_count is not None:
+            result['SubImageCount'] = self.sub_image_count
+        result['SubImages'] = []
+        if self.sub_images is not None:
+            for k in self.sub_images:
+                result['SubImages'].append(k.to_map() if k else None)
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('SubImageCount') is not None:
+            self.sub_image_count = m.get('SubImageCount')
+        self.sub_images = []
+        if m.get('SubImages') is not None:
+            for k in m.get('SubImages'):
+                temp_model = RecognizeGeneralStructureResponseBodyDataSubImages()
+                self.sub_images.append(temp_model.from_map(k))
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class RecognizeGeneralStructureResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: RecognizeGeneralStructureResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = RecognizeGeneralStructureResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RecognizeGeneralStructureResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RecognizeGeneralStructureResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RecognizeGeneralStructureResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RecognizeHKIdcardRequest(TeaModel):
     def __init__(
         self,
