@@ -12816,10 +12816,317 @@ class GetOrderDetailRequest(TeaModel):
         return self
 
 
+class GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties(TeaModel):
+    def __init__(
+        self,
+        attr_api_code: str = None,
+        module_api_code: str = None,
+        value: str = None,
+    ):
+        self.attr_api_code = attr_api_code
+        self.module_api_code = module_api_code
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attr_api_code is not None:
+            result['AttrApiCode'] = self.attr_api_code
+        if self.module_api_code is not None:
+            result['ModuleApiCode'] = self.module_api_code
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AttrApiCode') is not None:
+            self.attr_api_code = m.get('AttrApiCode')
+        if m.get('ModuleApiCode') is not None:
+            self.module_api_code = m.get('ModuleApiCode')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties(TeaModel):
+    def __init__(
+        self,
+        bill_module_properties: List[GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties] = None,
+    ):
+        self.bill_module_properties = bill_module_properties
+
+    def validate(self):
+        if self.bill_module_properties:
+            for k in self.bill_module_properties:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['billModuleProperties'] = []
+        if self.bill_module_properties is not None:
+            for k in self.bill_module_properties:
+                result['billModuleProperties'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bill_module_properties = []
+        if m.get('billModuleProperties') is not None:
+            for k in m.get('billModuleProperties'):
+                temp_model = GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties()
+                self.bill_module_properties.append(temp_model.from_map(k))
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig(TeaModel):
+    def __init__(
+        self,
+        api_code: str = None,
+        bill_module_properties: GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties = None,
+        code: str = None,
+        name: str = None,
+    ):
+        self.api_code = api_code
+        self.bill_module_properties = bill_module_properties
+        self.code = code
+        self.name = name
+
+    def validate(self):
+        if self.bill_module_properties:
+            self.bill_module_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_code is not None:
+            result['ApiCode'] = self.api_code
+        if self.bill_module_properties is not None:
+            result['BillModuleProperties'] = self.bill_module_properties.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiCode') is not None:
+            self.api_code = m.get('ApiCode')
+        if m.get('BillModuleProperties') is not None:
+            temp_model = GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties()
+            self.bill_module_properties = temp_model.from_map(m['BillModuleProperties'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig(TeaModel):
+    def __init__(
+        self,
+        bill_module_config: List[GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig] = None,
+    ):
+        self.bill_module_config = bill_module_config
+
+    def validate(self):
+        if self.bill_module_config:
+            for k in self.bill_module_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['billModuleConfig'] = []
+        if self.bill_module_config is not None:
+            for k in self.bill_module_config:
+                result['billModuleConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.bill_module_config = []
+        if m.get('billModuleConfig') is not None:
+            for k in m.get('billModuleConfig'):
+                temp_model = GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig()
+                self.bill_module_config.append(temp_model.from_map(k))
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        value: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties(TeaModel):
+    def __init__(
+        self,
+        module_properties: List[GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties] = None,
+    ):
+        self.module_properties = module_properties
+
+    def validate(self):
+        if self.module_properties:
+            for k in self.module_properties:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['moduleProperties'] = []
+        if self.module_properties is not None:
+            for k in self.module_properties:
+                result['moduleProperties'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.module_properties = []
+        if m.get('moduleProperties') is not None:
+            for k in m.get('moduleProperties'):
+                temp_model = GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties()
+                self.module_properties.append(temp_model.from_map(k))
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        module_properties: GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties = None,
+        name: str = None,
+    ):
+        self.code = code
+        self.module_properties = module_properties
+        self.name = name
+
+    def validate(self):
+        if self.module_properties:
+            self.module_properties.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.module_properties is not None:
+            result['ModuleProperties'] = self.module_properties.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ModuleProperties') is not None:
+            temp_model = GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties()
+            self.module_properties = temp_model.from_map(m['ModuleProperties'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig(TeaModel):
+    def __init__(
+        self,
+        original_module_config: List[GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig] = None,
+    ):
+        self.original_module_config = original_module_config
+
+    def validate(self):
+        if self.original_module_config:
+            for k in self.original_module_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['originalModuleConfig'] = []
+        if self.original_module_config is not None:
+            for k in self.original_module_config:
+                result['originalModuleConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.original_module_config = []
+        if m.get('originalModuleConfig') is not None:
+            for k in m.get('originalModuleConfig'):
+                temp_model = GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig()
+                self.original_module_config.append(temp_model.from_map(k))
+        return self
+
+
 class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
     def __init__(
         self,
         after_tax_amount: str = None,
+        bill_module_config: GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig = None,
         commodity_code: str = None,
         config: str = None,
         create_time: str = None,
@@ -12831,6 +13138,7 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         order_sub_type: str = None,
         order_type: str = None,
         original_config: str = None,
+        original_module_config: GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig = None,
         payment_currency: str = None,
         payment_status: str = None,
         payment_time: str = None,
@@ -12850,6 +13158,7 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
     ):
         # The after-tax amount of the order.
         self.after_tax_amount = after_tax_amount
+        self.bill_module_config = bill_module_config
         # The service code.
         self.commodity_code = commodity_code
         # The configurations of the main service.
@@ -12883,6 +13192,7 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         self.order_type = order_type
         # The module information without standardized conversion.
         self.original_config = original_config
+        self.original_module_config = original_module_config
         # The currency of payment.
         self.payment_currency = payment_currency
         # The status of payment. Valid values:
@@ -12924,7 +13234,10 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         self.usage_start_time = usage_start_time
 
     def validate(self):
-        pass
+        if self.bill_module_config:
+            self.bill_module_config.validate()
+        if self.original_module_config:
+            self.original_module_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12934,6 +13247,8 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         result = dict()
         if self.after_tax_amount is not None:
             result['AfterTaxAmount'] = self.after_tax_amount
+        if self.bill_module_config is not None:
+            result['BillModuleConfig'] = self.bill_module_config.to_map()
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
         if self.config is not None:
@@ -12956,6 +13271,8 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
             result['OrderType'] = self.order_type
         if self.original_config is not None:
             result['OriginalConfig'] = self.original_config
+        if self.original_module_config is not None:
+            result['OriginalModuleConfig'] = self.original_module_config.to_map()
         if self.payment_currency is not None:
             result['PaymentCurrency'] = self.payment_currency
         if self.payment_status is not None:
@@ -12994,6 +13311,9 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
         m = m or dict()
         if m.get('AfterTaxAmount') is not None:
             self.after_tax_amount = m.get('AfterTaxAmount')
+        if m.get('BillModuleConfig') is not None:
+            temp_model = GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig()
+            self.bill_module_config = temp_model.from_map(m['BillModuleConfig'])
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
         if m.get('Config') is not None:
@@ -13016,6 +13336,9 @@ class GetOrderDetailResponseBodyDataOrderListOrder(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('OriginalConfig') is not None:
             self.original_config = m.get('OriginalConfig')
+        if m.get('OriginalModuleConfig') is not None:
+            temp_model = GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig()
+            self.original_module_config = temp_model.from_map(m['OriginalModuleConfig'])
         if m.get('PaymentCurrency') is not None:
             self.payment_currency = m.get('PaymentCurrency')
         if m.get('PaymentStatus') is not None:

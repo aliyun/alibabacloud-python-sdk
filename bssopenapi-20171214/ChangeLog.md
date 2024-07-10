@@ -1,3 +1,7 @@
+2024-07-10 Version: 4.0.1
+- Update API GetOrderDetail: update response param.
+
+
 2024-06-28 Version: 4.0.0
 - Delete API EnableBillGeneration.
 - Update API CreateResourcePackage: update response param.
