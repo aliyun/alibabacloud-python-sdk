@@ -1,3 +1,16 @@
+2024-07-10 Version: 4.1.0
+- Support API QueryCopyrightExtractJob.
+- Support API QueryCopyrightJob.
+- Support API QueryTraceAbJob.
+- Support API QueryTraceExtractJob.
+- Support API QueryTraceM3u8Job.
+- Support API SubmitCopyrightExtractJob.
+- Support API SubmitCopyrightJob.
+- Support API SubmitTraceAbJob.
+- Support API SubmitTraceExtractJob.
+- Support API SubmitTraceM3u8Job.
+
+
 2024-07-05 Version: 4.0.0
 - Delete API QuerySnapshotJobListV2.
 - Delete API QueryVideoQualityJob.

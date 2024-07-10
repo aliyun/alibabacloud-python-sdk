@@ -5121,6 +5121,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_analysis_job_list_with_options_async(request, runtime)
 
+    def query_copyright_extract_job_with_options(
+        self,
+        request: mts_20140618_models.QueryCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryCopyrightExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_copyright_extract_job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryCopyrightExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_copyright_extract_job(
+        self,
+        request: mts_20140618_models.QueryCopyrightExtractJobRequest,
+    ) -> mts_20140618_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @return: QueryCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_copyright_extract_job_with_options(request, runtime)
+
+    async def query_copyright_extract_job_async(
+        self,
+        request: mts_20140618_models.QueryCopyrightExtractJobRequest,
+    ) -> mts_20140618_models.QueryCopyrightExtractJobResponse:
+        """
+        @summary 查询版权水印提取任务
+        
+        @param request: QueryCopyrightExtractJobRequest
+        @return: QueryCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_copyright_extract_job_with_options_async(request, runtime)
+
+    def query_copyright_job_with_options(
+        self,
+        request: mts_20140618_models.QueryCopyrightJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryCopyrightJobResponse:
+        """
+        @summary 查询视频版权水印任务
+        
+        @param request: QueryCopyrightJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryCopyrightJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_copyright_job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryCopyrightJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryCopyrightJobResponse:
+        """
+        @summary 查询视频版权水印任务
+        
+        @param request: QueryCopyrightJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopyrightJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopyrightJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryCopyrightJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_copyright_job(
+        self,
+        request: mts_20140618_models.QueryCopyrightJobRequest,
+    ) -> mts_20140618_models.QueryCopyrightJobResponse:
+        """
+        @summary 查询视频版权水印任务
+        
+        @param request: QueryCopyrightJobRequest
+        @return: QueryCopyrightJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_copyright_job_with_options(request, runtime)
+
+    async def query_copyright_job_async(
+        self,
+        request: mts_20140618_models.QueryCopyrightJobRequest,
+    ) -> mts_20140618_models.QueryCopyrightJobResponse:
+        """
+        @summary 查询视频版权水印任务
+        
+        @param request: QueryCopyrightJobRequest
+        @return: QueryCopyrightJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_copyright_job_with_options_async(request, runtime)
+
     def query_fp_dbdelete_job_list_with_options(
         self,
         request: mts_20140618_models.QueryFpDBDeleteJobListRequest,
@@ -7401,6 +7613,314 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_template_list_with_options_async(request, runtime)
 
+    def query_trace_ab_job_with_options(
+        self,
+        request: mts_20140618_models.QueryTraceAbJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryTraceAbJobResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceAbJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceAbJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryTraceAbJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_trace_ab_job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryTraceAbJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryTraceAbJobResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceAbJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceAbJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryTraceAbJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_trace_ab_job(
+        self,
+        request: mts_20140618_models.QueryTraceAbJobRequest,
+    ) -> mts_20140618_models.QueryTraceAbJobResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobRequest
+        @return: QueryTraceAbJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_trace_ab_job_with_options(request, runtime)
+
+    async def query_trace_ab_job_async(
+        self,
+        request: mts_20140618_models.QueryTraceAbJobRequest,
+    ) -> mts_20140618_models.QueryTraceAbJobResponse:
+        """
+        @summary 查询视频溯源水印ab流任务
+        
+        @param request: QueryTraceAbJobRequest
+        @return: QueryTraceAbJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_trace_ab_job_with_options_async(request, runtime)
+
+    def query_trace_extract_job_with_options(
+        self,
+        request: mts_20140618_models.QueryTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryTraceExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_trace_extract_job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryTraceExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_trace_extract_job(
+        self,
+        request: mts_20140618_models.QueryTraceExtractJobRequest,
+    ) -> mts_20140618_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @return: QueryTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_trace_extract_job_with_options(request, runtime)
+
+    async def query_trace_extract_job_async(
+        self,
+        request: mts_20140618_models.QueryTraceExtractJobRequest,
+    ) -> mts_20140618_models.QueryTraceExtractJobResponse:
+        """
+        @summary 查询溯源水印提取任务
+        
+        @param request: QueryTraceExtractJobRequest
+        @return: QueryTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_trace_extract_job_with_options_async(request, runtime)
+
+    def query_trace_m3u_8job_with_options(
+        self,
+        request: mts_20140618_models.QueryTraceM3u8JobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryTraceM3u8JobResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceM3u8JobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceM3u8Job',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryTraceM3u8JobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_trace_m3u_8job_with_options_async(
+        self,
+        request: mts_20140618_models.QueryTraceM3u8JobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.QueryTraceM3u8JobResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTraceM3u8JobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryTraceM3u8Job',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.QueryTraceM3u8JobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_trace_m3u_8job(
+        self,
+        request: mts_20140618_models.QueryTraceM3u8JobRequest,
+    ) -> mts_20140618_models.QueryTraceM3u8JobResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobRequest
+        @return: QueryTraceM3u8JobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_trace_m3u_8job_with_options(request, runtime)
+
+    async def query_trace_m3u_8job_async(
+        self,
+        request: mts_20140618_models.QueryTraceM3u8JobRequest,
+    ) -> mts_20140618_models.QueryTraceM3u8JobResponse:
+        """
+        @summary 查询视频溯源水印m3u8任务
+        
+        @param request: QueryTraceM3u8JobRequest
+        @return: QueryTraceM3u8JobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_trace_m3u_8job_with_options_async(request, runtime)
+
     def query_water_mark_template_list_with_options(
         self,
         request: mts_20140618_models.QueryWaterMarkTemplateListRequest,
@@ -8464,6 +8984,254 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_analysis_job_with_options_async(request, runtime)
+
+    def submit_copyright_extract_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取任务
+        
+        @param request: SubmitCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitCopyrightExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_copyright_extract_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitCopyrightExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取任务
+        
+        @param request: SubmitCopyrightExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitCopyrightExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_copyright_extract_job(
+        self,
+        request: mts_20140618_models.SubmitCopyrightExtractJobRequest,
+    ) -> mts_20140618_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取任务
+        
+        @param request: SubmitCopyrightExtractJobRequest
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_copyright_extract_job_with_options(request, runtime)
+
+    async def submit_copyright_extract_job_async(
+        self,
+        request: mts_20140618_models.SubmitCopyrightExtractJobRequest,
+    ) -> mts_20140618_models.SubmitCopyrightExtractJobResponse:
+        """
+        @summary 提交版权水印提取任务
+        
+        @param request: SubmitCopyrightExtractJobRequest
+        @return: SubmitCopyrightExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_copyright_extract_job_with_options_async(request, runtime)
+
+    def submit_copyright_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitCopyrightJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交视频版权水印
+        
+        @param request: SubmitCopyrightJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitCopyrightJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_copyright_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitCopyrightJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交视频版权水印
+        
+        @param request: SubmitCopyrightJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCopyrightJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitCopyrightJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitCopyrightJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_copyright_job(
+        self,
+        request: mts_20140618_models.SubmitCopyrightJobRequest,
+    ) -> mts_20140618_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交视频版权水印
+        
+        @param request: SubmitCopyrightJobRequest
+        @return: SubmitCopyrightJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_copyright_job_with_options(request, runtime)
+
+    async def submit_copyright_job_async(
+        self,
+        request: mts_20140618_models.SubmitCopyrightJobRequest,
+    ) -> mts_20140618_models.SubmitCopyrightJobResponse:
+        """
+        @summary 提交视频版权水印
+        
+        @param request: SubmitCopyrightJobRequest
+        @return: SubmitCopyrightJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_copyright_job_with_options_async(request, runtime)
 
     def submit_fp_dbdelete_job_with_options(
         self,
@@ -9836,6 +10604,358 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_snapshot_job_with_options_async(request, runtime)
+
+    def submit_trace_ab_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitTraceAbJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param request: SubmitTraceAbJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceAbJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.cipher_base_64ed):
+            query['CipherBase64ed'] = request.cipher_base_64ed
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceAbJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitTraceAbJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_trace_ab_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitTraceAbJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param request: SubmitTraceAbJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceAbJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.cipher_base_64ed):
+            query['CipherBase64ed'] = request.cipher_base_64ed
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.total_time):
+            query['TotalTime'] = request.total_time
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceAbJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitTraceAbJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_trace_ab_job(
+        self,
+        request: mts_20140618_models.SubmitTraceAbJobRequest,
+    ) -> mts_20140618_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param request: SubmitTraceAbJobRequest
+        @return: SubmitTraceAbJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_trace_ab_job_with_options(request, runtime)
+
+    async def submit_trace_ab_job_async(
+        self,
+        request: mts_20140618_models.SubmitTraceAbJobRequest,
+    ) -> mts_20140618_models.SubmitTraceAbJobResponse:
+        """
+        @summary 提交视频溯源水印ab流任务
+        
+        @param request: SubmitTraceAbJobRequest
+        @return: SubmitTraceAbJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_trace_ab_job_with_options_async(request, runtime)
+
+    def submit_trace_extract_job_with_options(
+        self,
+        request: mts_20140618_models.SubmitTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param request: SubmitTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitTraceExtractJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_trace_extract_job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitTraceExtractJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param request: SubmitTraceExtractJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceExtractJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_back):
+            query['CallBack'] = request.call_back
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceExtractJob',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitTraceExtractJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_trace_extract_job(
+        self,
+        request: mts_20140618_models.SubmitTraceExtractJobRequest,
+    ) -> mts_20140618_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param request: SubmitTraceExtractJobRequest
+        @return: SubmitTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_trace_extract_job_with_options(request, runtime)
+
+    async def submit_trace_extract_job_async(
+        self,
+        request: mts_20140618_models.SubmitTraceExtractJobRequest,
+    ) -> mts_20140618_models.SubmitTraceExtractJobResponse:
+        """
+        @summary 提交溯源水印提取任务
+        
+        @param request: SubmitTraceExtractJobRequest
+        @return: SubmitTraceExtractJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_trace_extract_job_with_options_async(request, runtime)
+
+    def submit_trace_m3u_8job_with_options(
+        self,
+        request: mts_20140618_models.SubmitTraceM3u8JobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param request: SubmitTraceM3u8JobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceM3u8JobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_uri):
+            query['KeyUri'] = request.key_uri
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.trace):
+            query['Trace'] = request.trace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceM3u8Job',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitTraceM3u8JobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_trace_m3u_8job_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitTraceM3u8JobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param request: SubmitTraceM3u8JobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTraceM3u8JobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_uri):
+            query['KeyUri'] = request.key_uri
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.trace):
+            query['Trace'] = request.trace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitTraceM3u8Job',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitTraceM3u8JobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_trace_m3u_8job(
+        self,
+        request: mts_20140618_models.SubmitTraceM3u8JobRequest,
+    ) -> mts_20140618_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param request: SubmitTraceM3u8JobRequest
+        @return: SubmitTraceM3u8JobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_trace_m3u_8job_with_options(request, runtime)
+
+    async def submit_trace_m3u_8job_async(
+        self,
+        request: mts_20140618_models.SubmitTraceM3u8JobRequest,
+    ) -> mts_20140618_models.SubmitTraceM3u8JobResponse:
+        """
+        @summary 提交视频溯源水印m3u8文件任务
+        
+        @param request: SubmitTraceM3u8JobRequest
+        @return: SubmitTraceM3u8JobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_trace_m3u_8job_with_options_async(request, runtime)
 
     def tag_custom_person_with_options(
         self,
