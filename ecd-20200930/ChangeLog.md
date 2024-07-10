@@ -1,3 +1,8 @@
+2024-07-10 Version: 4.0.1
+- Update API DescribeOfficeSites: add param SecurityProtection.
+- Update API DescribeOfficeSites: update response param.
+
+
 2024-07-09 Version: 4.0.0
 - Support API SetDesktopMaintenance.
 - Update API AddDesktopOversoldUserGroup: add param Tag.

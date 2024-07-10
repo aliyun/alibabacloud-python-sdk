@@ -25378,6 +25378,7 @@ class DescribeOfficeSitesRequest(TeaModel):
         office_site_id: List[str] = None,
         office_site_type: str = None,
         region_id: str = None,
+        security_protection: str = None,
         status: str = None,
     ):
         # The number of entries to return on each page.
@@ -25413,6 +25414,7 @@ class DescribeOfficeSitesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.security_protection = security_protection
         # The office network status.
         # 
         # Valid values:
@@ -25509,6 +25511,8 @@ class DescribeOfficeSitesRequest(TeaModel):
             result['OfficeSiteType'] = self.office_site_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.security_protection is not None:
+            result['SecurityProtection'] = self.security_protection
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -25525,6 +25529,8 @@ class DescribeOfficeSitesRequest(TeaModel):
             self.office_site_type = m.get('OfficeSiteType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SecurityProtection') is not None:
+            self.security_protection = m.get('SecurityProtection')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -25701,6 +25707,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         rds_license_address: str = None,
         rds_license_domain_name: str = None,
         rds_license_status: str = None,
+        security_protection: str = None,
         sso_enabled: bool = None,
         sso_type: str = None,
         status: str = None,
@@ -25822,6 +25829,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
         self.rds_license_domain_name = rds_license_domain_name
         # The remote desktop service (RDS) license status.
         self.rds_license_status = rds_license_status
+        self.security_protection = security_protection
         # Indicates whether single sign-on (SSO) is enabled.
         self.sso_enabled = sso_enabled
         # The SSO type.
@@ -25962,6 +25970,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             result['RdsLicenseDomainName'] = self.rds_license_domain_name
         if self.rds_license_status is not None:
             result['RdsLicenseStatus'] = self.rds_license_status
+        if self.security_protection is not None:
+            result['SecurityProtection'] = self.security_protection
         if self.sso_enabled is not None:
             result['SsoEnabled'] = self.sso_enabled
         if self.sso_type is not None:
@@ -26070,6 +26080,8 @@ class DescribeOfficeSitesResponseBodyOfficeSites(TeaModel):
             self.rds_license_domain_name = m.get('RdsLicenseDomainName')
         if m.get('RdsLicenseStatus') is not None:
             self.rds_license_status = m.get('RdsLicenseStatus')
+        if m.get('SecurityProtection') is not None:
+            self.security_protection = m.get('SecurityProtection')
         if m.get('SsoEnabled') is not None:
             self.sso_enabled = m.get('SsoEnabled')
         if m.get('SsoType') is not None:
@@ -26103,6 +26115,7 @@ class DescribeOfficeSitesResponseBody(TeaModel):
         next_token: str = None,
         office_sites: List[DescribeOfficeSitesResponseBodyOfficeSites] = None,
         request_id: str = None,
+        total_count: int = None,
     ):
         # The token that determines the start point of the next query. If this parameter is empty, all results are returned.
         self.next_token = next_token
@@ -26110,6 +26123,7 @@ class DescribeOfficeSitesResponseBody(TeaModel):
         self.office_sites = office_sites
         # The ID of the request.
         self.request_id = request_id
+        self.total_count = total_count
 
     def validate(self):
         if self.office_sites:
@@ -26131,6 +26145,8 @@ class DescribeOfficeSitesResponseBody(TeaModel):
                 result['OfficeSites'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -26144,6 +26160,8 @@ class DescribeOfficeSitesResponseBody(TeaModel):
                 self.office_sites.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

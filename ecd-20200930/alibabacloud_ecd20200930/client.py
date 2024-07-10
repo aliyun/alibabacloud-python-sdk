@@ -11806,6 +11806,8 @@ class Client(OpenApiClient):
             query['OfficeSiteType'] = request.office_site_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_protection):
+            query['SecurityProtection'] = request.security_protection
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
@@ -11851,6 +11853,8 @@ class Client(OpenApiClient):
             query['OfficeSiteType'] = request.office_site_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_protection):
+            query['SecurityProtection'] = request.security_protection
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
