@@ -1,3 +1,6 @@
+2024-07-10 Version: 1.1.4
+- Generated python 2017-09-12 for Cbn.
+
 2024-06-13 Version: 1.1.3
 - Update API CreateFlowlog: update response param.
 - Update API DescribeFlowlogs: update response param.
