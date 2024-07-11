@@ -11867,6 +11867,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         interval: str = None,
         key: str = None,
         start_time: str = None,
+        type: str = None,
     ):
         # The cluster ID.
         # 
@@ -11887,6 +11888,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        self.type = type
 
     def validate(self):
         pass
@@ -11907,6 +11909,8 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
             result['Key'] = self.key
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -11921,6 +11925,8 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
             self.key = m.get('Key')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -18389,6 +18395,7 @@ class DescribeMaskingRulesResponseBodyData(TeaModel):
     ):
         # Details about the masking rules.
         self.rule_list = rule_list
+        # The version of the masking rule. Valid values: v1 and v2. Default value: v1
         self.rule_version = rule_version
 
     def validate(self):
@@ -30005,6 +30012,10 @@ class ModifyMaskingRulesRequest(TeaModel):
         # 
         # > You must specify either the `RuleName` or `RuleNameList` parameter.
         self.rule_name_list = rule_name_list
+        # The version of the masking rule. Default value: v1. Valid values:
+        # 
+        # *   v1
+        # *   v2
         self.rule_version = rule_version
 
     def validate(self):

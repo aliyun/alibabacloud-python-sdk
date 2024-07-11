@@ -1,3 +1,9 @@
+2024-07-11 Version: 5.1.6
+- Update API DescribeAccounts: update response param.
+- Update API DescribeDBClusterPerformance: add param Type.
+- Update API DescribeDBClusters: update response param.
+
+
 2024-06-28 Version: 5.1.5
 - Generated python 2017-08-01 for polardb.
 
