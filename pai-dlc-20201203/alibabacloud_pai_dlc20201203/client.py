@@ -307,6 +307,10 @@ class Client(OpenApiClient):
             body['Memory'] = request.memory
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.quota_id):
+            body['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.source_id):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
@@ -377,6 +381,10 @@ class Client(OpenApiClient):
             body['Memory'] = request.memory
         if not UtilClient.is_unset(request.options):
             body['Options'] = request.options
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
+        if not UtilClient.is_unset(request.quota_id):
+            body['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.source_id):
             body['SourceId'] = request.source_id
         if not UtilClient.is_unset(request.source_type):
@@ -2265,6 +2273,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.payment_type):
             query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.quota_id):
+            query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.show_own):
             query['ShowOwn'] = request.show_own
         if not UtilClient.is_unset(request.sort_by):
@@ -2337,6 +2347,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.payment_type):
             query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.quota_id):
+            query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.show_own):
             query['ShowOwn'] = request.show_own
         if not UtilClient.is_unset(request.sort_by):

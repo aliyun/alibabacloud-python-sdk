@@ -3107,6 +3107,9 @@ class Tensorboard(TeaModel):
         gmt_finish_time: str = None,
         gmt_modify_time: str = None,
         job_id: str = None,
+        priority: str = None,
+        quota_id: str = None,
+        quota_name: str = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
@@ -3126,6 +3129,9 @@ class Tensorboard(TeaModel):
         self.gmt_finish_time = gmt_finish_time
         self.gmt_modify_time = gmt_modify_time
         self.job_id = job_id
+        self.priority = priority
+        self.quota_id = quota_id
+        self.quota_name = quota_name
         self.reason_code = reason_code
         self.reason_message = reason_message
         self.request_id = request_id
@@ -3166,6 +3172,12 @@ class Tensorboard(TeaModel):
             result['GmtModifyTime'] = self.gmt_modify_time
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
@@ -3208,6 +3220,12 @@ class Tensorboard(TeaModel):
             self.gmt_modify_time = m.get('GmtModifyTime')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
@@ -3739,6 +3757,8 @@ class CreateTensorboardRequest(TeaModel):
         max_running_time_minutes: int = None,
         memory: int = None,
         options: str = None,
+        priority: str = None,
+        quota_id: str = None,
         source_id: str = None,
         source_type: str = None,
         summary_path: str = None,
@@ -3757,6 +3777,8 @@ class CreateTensorboardRequest(TeaModel):
         self.max_running_time_minutes = max_running_time_minutes
         self.memory = memory
         self.options = options
+        self.priority = priority
+        self.quota_id = quota_id
         self.source_id = source_id
         self.source_type = source_type
         self.summary_path = summary_path
@@ -3804,6 +3826,10 @@ class CreateTensorboardRequest(TeaModel):
             result['Memory'] = self.memory
         if self.options is not None:
             result['Options'] = self.options
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_type is not None:
@@ -3847,6 +3873,10 @@ class CreateTensorboardRequest(TeaModel):
             self.memory = m.get('Memory')
         if m.get('Options') is not None:
             self.options = m.get('Options')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceType') is not None:
@@ -6496,6 +6526,7 @@ class ListTensorboardsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         payment_type: str = None,
+        quota_id: str = None,
         show_own: bool = None,
         sort_by: str = None,
         source_id: str = None,
@@ -6515,6 +6546,7 @@ class ListTensorboardsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.payment_type = payment_type
+        self.quota_id = quota_id
         self.show_own = show_own
         self.sort_by = sort_by
         self.source_id = source_id
@@ -6550,6 +6582,8 @@ class ListTensorboardsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
         if self.show_own is not None:
             result['ShowOwn'] = self.show_own
         if self.sort_by is not None:
@@ -6590,6 +6624,8 @@ class ListTensorboardsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
         if m.get('ShowOwn') is not None:
             self.show_own = m.get('ShowOwn')
         if m.get('SortBy') is not None:
