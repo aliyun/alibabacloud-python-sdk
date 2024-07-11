@@ -1,3 +1,6 @@
+2024-07-11 Version: 2.4.1
+- Generated python 2020-01-01 for ddoscoo.
+
 2024-07-05 Version: 2.4.0
 - Support API DescribeDestinationPortEvent.
 - Update API DescribeDDosEventArea: add param RegionId.
