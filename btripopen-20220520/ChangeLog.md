@@ -1,3 +1,15 @@
+2024-07-11 Version: 4.1.0
+- Support API ChannelCorpCreate.
+- Support API HotelOrderChangeApply.
+- Support API HotelOrderChangeDetail.
+- Update API ApplyInvoiceTask: update param invoice_task_list.
+- Update API FlightModifyOrderDetailV2: add param out_modify_apply_id.
+- Update API FlightModifyOrderDetailV2: add param out_order_id.
+- Update API FlightRefundDetailV2: add param out_order_id.
+- Update API FlightRefundDetailV2: add param out_refund_apply_id.
+- Update API WaitApplyInvoiceTaskDetailQuery: update response param.
+
+
 2024-07-08 Version: 4.0.0
 - Delete API HotelSuggest.
 - Update API HotelBillSettlementQuery: update response param.

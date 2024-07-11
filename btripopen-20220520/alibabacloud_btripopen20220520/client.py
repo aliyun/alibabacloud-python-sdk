@@ -3705,6 +3705,144 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CarSceneQueryHeaders()
         return await self.car_scene_query_with_options_async(headers, runtime)
 
+    def channel_corp_create_with_options(
+        self,
+        request: btrip_open_20220520_models.ChannelCorpCreateRequest,
+        headers: btrip_open_20220520_models.ChannelCorpCreateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ChannelCorpCreateResponse:
+        """
+        @summary 渠道商创建企业
+        
+        @param request: ChannelCorpCreateRequest
+        @param headers: ChannelCorpCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChannelCorpCreateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.administrator_name):
+            body['administrator_name'] = request.administrator_name
+        if not UtilClient.is_unset(request.administrator_phone):
+            body['administrator_phone'] = request.administrator_phone
+        if not UtilClient.is_unset(request.city):
+            body['city'] = request.city
+        if not UtilClient.is_unset(request.corp_name):
+            body['corp_name'] = request.corp_name
+        if not UtilClient.is_unset(request.province):
+            body['province'] = request.province
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.third_corp_id):
+            body['third_corp_id'] = request.third_corp_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChannelCorpCreate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/corp/v1/channelCorps',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ChannelCorpCreateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def channel_corp_create_with_options_async(
+        self,
+        request: btrip_open_20220520_models.ChannelCorpCreateRequest,
+        headers: btrip_open_20220520_models.ChannelCorpCreateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ChannelCorpCreateResponse:
+        """
+        @summary 渠道商创建企业
+        
+        @param request: ChannelCorpCreateRequest
+        @param headers: ChannelCorpCreateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChannelCorpCreateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.administrator_name):
+            body['administrator_name'] = request.administrator_name
+        if not UtilClient.is_unset(request.administrator_phone):
+            body['administrator_phone'] = request.administrator_phone
+        if not UtilClient.is_unset(request.city):
+            body['city'] = request.city
+        if not UtilClient.is_unset(request.corp_name):
+            body['corp_name'] = request.corp_name
+        if not UtilClient.is_unset(request.province):
+            body['province'] = request.province
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
+        if not UtilClient.is_unset(request.third_corp_id):
+            body['third_corp_id'] = request.third_corp_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChannelCorpCreate',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/corp/v1/channelCorps',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ChannelCorpCreateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def channel_corp_create(
+        self,
+        request: btrip_open_20220520_models.ChannelCorpCreateRequest,
+    ) -> btrip_open_20220520_models.ChannelCorpCreateResponse:
+        """
+        @summary 渠道商创建企业
+        
+        @param request: ChannelCorpCreateRequest
+        @return: ChannelCorpCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ChannelCorpCreateHeaders()
+        return self.channel_corp_create_with_options(request, headers, runtime)
+
+    async def channel_corp_create_async(
+        self,
+        request: btrip_open_20220520_models.ChannelCorpCreateRequest,
+    ) -> btrip_open_20220520_models.ChannelCorpCreateResponse:
+        """
+        @summary 渠道商创建企业
+        
+        @param request: ChannelCorpCreateRequest
+        @return: ChannelCorpCreateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ChannelCorpCreateHeaders()
+        return await self.channel_corp_create_with_options_async(request, headers, runtime)
+
     def city_search_with_options(
         self,
         request: btrip_open_20220520_models.CitySearchRequest,
@@ -8731,6 +8869,10 @@ class Client(OpenApiClient):
             query['need_query_service_fee'] = request.need_query_service_fee
         if not UtilClient.is_unset(request.order_id):
             query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_modify_apply_id):
+            query['out_modify_apply_id'] = request.out_modify_apply_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -8780,6 +8922,10 @@ class Client(OpenApiClient):
             query['need_query_service_fee'] = request.need_query_service_fee
         if not UtilClient.is_unset(request.order_id):
             query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_modify_apply_id):
+            query['out_modify_apply_id'] = request.out_modify_apply_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -10817,6 +10963,10 @@ class Client(OpenApiClient):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
             query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_apply_id):
+            query['out_refund_apply_id'] = request.out_refund_apply_id
         if not UtilClient.is_unset(request.refund_apply_id):
             query['refund_apply_id'] = request.refund_apply_id
         real_headers = {}
@@ -10864,6 +11014,10 @@ class Client(OpenApiClient):
             query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
             query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_apply_id):
+            query['out_refund_apply_id'] = request.out_refund_apply_id
         if not UtilClient.is_unset(request.refund_apply_id):
             query['refund_apply_id'] = request.refund_apply_id
         real_headers = {}
@@ -12720,6 +12874,270 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelOrderCancelHeaders()
         return await self.hotel_order_cancel_with_options_async(request, headers, runtime)
+
+    def hotel_order_change_apply_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.HotelOrderChangeApplyRequest,
+        headers: btrip_open_20220520_models.HotelOrderChangeApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelOrderChangeApplyResponse:
+        """
+        @summary 酒店订单修改申请
+        
+        @param tmp_req: HotelOrderChangeApplyRequest
+        @param headers: HotelOrderChangeApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderChangeApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.HotelOrderChangeApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.room_info_list):
+            request.room_info_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_info_list, 'room_info_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.dis_order_id):
+            body['dis_order_id'] = request.dis_order_id
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        if not UtilClient.is_unset(request.room_info_list_shrink):
+            body['room_info_list'] = request.room_info_list_shrink
+        if not UtilClient.is_unset(request.sale_order_id):
+            body['sale_order_id'] = request.sale_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HotelOrderChangeApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/orders/action/change/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelOrderChangeApplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hotel_order_change_apply_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.HotelOrderChangeApplyRequest,
+        headers: btrip_open_20220520_models.HotelOrderChangeApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelOrderChangeApplyResponse:
+        """
+        @summary 酒店订单修改申请
+        
+        @param tmp_req: HotelOrderChangeApplyRequest
+        @param headers: HotelOrderChangeApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderChangeApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.HotelOrderChangeApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.room_info_list):
+            request.room_info_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_info_list, 'room_info_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.dis_order_id):
+            body['dis_order_id'] = request.dis_order_id
+        if not UtilClient.is_unset(request.reason):
+            body['reason'] = request.reason
+        if not UtilClient.is_unset(request.room_info_list_shrink):
+            body['room_info_list'] = request.room_info_list_shrink
+        if not UtilClient.is_unset(request.sale_order_id):
+            body['sale_order_id'] = request.sale_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HotelOrderChangeApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/orders/action/change/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelOrderChangeApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hotel_order_change_apply(
+        self,
+        request: btrip_open_20220520_models.HotelOrderChangeApplyRequest,
+    ) -> btrip_open_20220520_models.HotelOrderChangeApplyResponse:
+        """
+        @summary 酒店订单修改申请
+        
+        @param request: HotelOrderChangeApplyRequest
+        @return: HotelOrderChangeApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelOrderChangeApplyHeaders()
+        return self.hotel_order_change_apply_with_options(request, headers, runtime)
+
+    async def hotel_order_change_apply_async(
+        self,
+        request: btrip_open_20220520_models.HotelOrderChangeApplyRequest,
+    ) -> btrip_open_20220520_models.HotelOrderChangeApplyResponse:
+        """
+        @summary 酒店订单修改申请
+        
+        @param request: HotelOrderChangeApplyRequest
+        @return: HotelOrderChangeApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelOrderChangeApplyHeaders()
+        return await self.hotel_order_change_apply_with_options_async(request, headers, runtime)
+
+    def hotel_order_change_detail_with_options(
+        self,
+        request: btrip_open_20220520_models.HotelOrderChangeDetailRequest,
+        headers: btrip_open_20220520_models.HotelOrderChangeDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelOrderChangeDetailResponse:
+        """
+        @summary 酒店订单修改详情
+        
+        @param request: HotelOrderChangeDetailRequest
+        @param headers: HotelOrderChangeDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderChangeDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.change_order_id):
+            body['change_order_id'] = request.change_order_id
+        if not UtilClient.is_unset(request.dis_order_id):
+            body['dis_order_id'] = request.dis_order_id
+        if not UtilClient.is_unset(request.sale_order_id):
+            body['sale_order_id'] = request.sale_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HotelOrderChangeDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/orders/action/change/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelOrderChangeDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hotel_order_change_detail_with_options_async(
+        self,
+        request: btrip_open_20220520_models.HotelOrderChangeDetailRequest,
+        headers: btrip_open_20220520_models.HotelOrderChangeDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelOrderChangeDetailResponse:
+        """
+        @summary 酒店订单修改详情
+        
+        @param request: HotelOrderChangeDetailRequest
+        @param headers: HotelOrderChangeDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderChangeDetailResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            body['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.change_order_id):
+            body['change_order_id'] = request.change_order_id
+        if not UtilClient.is_unset(request.dis_order_id):
+            body['dis_order_id'] = request.dis_order_id
+        if not UtilClient.is_unset(request.sale_order_id):
+            body['sale_order_id'] = request.sale_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HotelOrderChangeDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v1/orders/action/change/detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelOrderChangeDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hotel_order_change_detail(
+        self,
+        request: btrip_open_20220520_models.HotelOrderChangeDetailRequest,
+    ) -> btrip_open_20220520_models.HotelOrderChangeDetailResponse:
+        """
+        @summary 酒店订单修改详情
+        
+        @param request: HotelOrderChangeDetailRequest
+        @return: HotelOrderChangeDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelOrderChangeDetailHeaders()
+        return self.hotel_order_change_detail_with_options(request, headers, runtime)
+
+    async def hotel_order_change_detail_async(
+        self,
+        request: btrip_open_20220520_models.HotelOrderChangeDetailRequest,
+    ) -> btrip_open_20220520_models.HotelOrderChangeDetailResponse:
+        """
+        @summary 酒店订单修改详情
+        
+        @param request: HotelOrderChangeDetailRequest
+        @return: HotelOrderChangeDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelOrderChangeDetailHeaders()
+        return await self.hotel_order_change_detail_with_options_async(request, headers, runtime)
 
     def hotel_order_create_with_options(
         self,
