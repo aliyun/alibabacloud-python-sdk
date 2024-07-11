@@ -47,6 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
         """
+        @summary Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
         
         @param request: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -91,6 +92,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
         """
+        @summary Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
         
         @param request: CreateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -134,6 +136,7 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateAccountRequest,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
         """
+        @summary Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -146,6 +149,7 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateAccountRequest,
     ) -> amqp_open_20191212_models.CreateAccountResponse:
         """
+        @summary Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
         
         @param request: CreateAccountRequest
         @return: CreateAccountResponse
@@ -158,6 +162,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateBindingResponse:
+        """
+        @summary Creates a binding. In ApsaraMQ for RabbitMQ, after a producer sends a message to an exchange, the exchange routes the message to a queue or another exchange based on the binding relationship and the routing rule.
+        
+        @param request: CreateBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBindingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.argument):
@@ -198,6 +209,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateBindingResponse:
+        """
+        @summary Creates a binding. In ApsaraMQ for RabbitMQ, after a producer sends a message to an exchange, the exchange routes the message to a queue or another exchange based on the binding relationship and the routing rule.
+        
+        @param request: CreateBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBindingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.argument):
@@ -237,6 +255,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateBindingRequest,
     ) -> amqp_open_20191212_models.CreateBindingResponse:
+        """
+        @summary Creates a binding. In ApsaraMQ for RabbitMQ, after a producer sends a message to an exchange, the exchange routes the message to a queue or another exchange based on the binding relationship and the routing rule.
+        
+        @param request: CreateBindingRequest
+        @return: CreateBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_binding_with_options(request, runtime)
 
@@ -244,6 +268,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateBindingRequest,
     ) -> amqp_open_20191212_models.CreateBindingResponse:
+        """
+        @summary Creates a binding. In ApsaraMQ for RabbitMQ, after a producer sends a message to an exchange, the exchange routes the message to a queue or another exchange based on the binding relationship and the routing rule.
+        
+        @param request: CreateBindingRequest
+        @return: CreateBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_binding_with_options_async(request, runtime)
 
@@ -252,6 +282,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateExchangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateExchangeResponse:
+        """
+        @summary Creates an exchange. In ApsaraMQ for RabbitMQ, an exchange is used to route a message that is received from a producer to one or more queues or to discard the message. An exchange routes a message to queues by using the routing key and binding keys.
+        
+        @param request: CreateExchangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExchangeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alternate_exchange):
@@ -268,6 +305,8 @@ class Client(OpenApiClient):
             body['Internal'] = request.internal
         if not UtilClient.is_unset(request.virtual_host):
             body['VirtualHost'] = request.virtual_host
+        if not UtilClient.is_unset(request.xdelayed_type):
+            body['XDelayedType'] = request.xdelayed_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -292,6 +331,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateExchangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateExchangeResponse:
+        """
+        @summary Creates an exchange. In ApsaraMQ for RabbitMQ, an exchange is used to route a message that is received from a producer to one or more queues or to discard the message. An exchange routes a message to queues by using the routing key and binding keys.
+        
+        @param request: CreateExchangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExchangeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alternate_exchange):
@@ -308,6 +354,8 @@ class Client(OpenApiClient):
             body['Internal'] = request.internal
         if not UtilClient.is_unset(request.virtual_host):
             body['VirtualHost'] = request.virtual_host
+        if not UtilClient.is_unset(request.xdelayed_type):
+            body['XDelayedType'] = request.xdelayed_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -331,6 +379,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateExchangeRequest,
     ) -> amqp_open_20191212_models.CreateExchangeResponse:
+        """
+        @summary Creates an exchange. In ApsaraMQ for RabbitMQ, an exchange is used to route a message that is received from a producer to one or more queues or to discard the message. An exchange routes a message to queues by using the routing key and binding keys.
+        
+        @param request: CreateExchangeRequest
+        @return: CreateExchangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_exchange_with_options(request, runtime)
 
@@ -338,6 +392,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateExchangeRequest,
     ) -> amqp_open_20191212_models.CreateExchangeResponse:
+        """
+        @summary Creates an exchange. In ApsaraMQ for RabbitMQ, an exchange is used to route a message that is received from a producer to one or more queues or to discard the message. An exchange routes a message to queues by using the routing key and binding keys.
+        
+        @param request: CreateExchangeRequest
+        @return: CreateExchangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_exchange_with_options_async(request, runtime)
 
@@ -346,6 +406,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        """
+        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -410,6 +477,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        """
+        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -473,6 +547,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateInstanceRequest,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        """
+        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -480,6 +560,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateInstanceRequest,
     ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        """
+        @summary 创建实例-基于 openAPI 构建南天门购买工单信息数据
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -488,6 +574,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateQueueResponse:
+        """
+        @summary Creates a queue. In ApsaraMQ for RabbitMQ, a queue is a message queue. All messages in ApsaraMQ for RabbitMQ are sent to a specific exchange and then routed to a bound queue by the exchange.
+        
+        @param request: CreateQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQueueResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_delete_state):
@@ -536,6 +629,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateQueueResponse:
+        """
+        @summary Creates a queue. In ApsaraMQ for RabbitMQ, a queue is a message queue. All messages in ApsaraMQ for RabbitMQ are sent to a specific exchange and then routed to a bound queue by the exchange.
+        
+        @param request: CreateQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQueueResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_delete_state):
@@ -583,6 +683,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateQueueRequest,
     ) -> amqp_open_20191212_models.CreateQueueResponse:
+        """
+        @summary Creates a queue. In ApsaraMQ for RabbitMQ, a queue is a message queue. All messages in ApsaraMQ for RabbitMQ are sent to a specific exchange and then routed to a bound queue by the exchange.
+        
+        @param request: CreateQueueRequest
+        @return: CreateQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_queue_with_options(request, runtime)
 
@@ -590,6 +696,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateQueueRequest,
     ) -> amqp_open_20191212_models.CreateQueueResponse:
+        """
+        @summary Creates a queue. In ApsaraMQ for RabbitMQ, a queue is a message queue. All messages in ApsaraMQ for RabbitMQ are sent to a specific exchange and then routed to a bound queue by the exchange.
+        
+        @param request: CreateQueueRequest
+        @return: CreateQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_queue_with_options_async(request, runtime)
 
@@ -598,6 +710,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateVirtualHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
+        """
+        @summary Creates a vhost. A vhost is used to logically isolate resources. Each vhost manages its own exchanges, queues, and bindings. Applications can run on independent vhosts in a secure manner. This way, the business of an application is not affected by other applications. Before you connect producers and consumers to an ApsaraMQ for RabbitMQ instance, you must specify vhosts for the producers and consumers.
+        
+        @param request: CreateVirtualHostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualHostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -628,6 +747,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.CreateVirtualHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
+        """
+        @summary Creates a vhost. A vhost is used to logically isolate resources. Each vhost manages its own exchanges, queues, and bindings. Applications can run on independent vhosts in a secure manner. This way, the business of an application is not affected by other applications. Before you connect producers and consumers to an ApsaraMQ for RabbitMQ instance, you must specify vhosts for the producers and consumers.
+        
+        @param request: CreateVirtualHostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVirtualHostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -657,6 +783,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateVirtualHostRequest,
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
+        """
+        @summary Creates a vhost. A vhost is used to logically isolate resources. Each vhost manages its own exchanges, queues, and bindings. Applications can run on independent vhosts in a secure manner. This way, the business of an application is not affected by other applications. Before you connect producers and consumers to an ApsaraMQ for RabbitMQ instance, you must specify vhosts for the producers and consumers.
+        
+        @param request: CreateVirtualHostRequest
+        @return: CreateVirtualHostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_virtual_host_with_options(request, runtime)
 
@@ -664,6 +796,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.CreateVirtualHostRequest,
     ) -> amqp_open_20191212_models.CreateVirtualHostResponse:
+        """
+        @summary Creates a vhost. A vhost is used to logically isolate resources. Each vhost manages its own exchanges, queues, and bindings. Applications can run on independent vhosts in a secure manner. This way, the business of an application is not affected by other applications. Before you connect producers and consumers to an ApsaraMQ for RabbitMQ instance, you must specify vhosts for the producers and consumers.
+        
+        @param request: CreateVirtualHostRequest
+        @return: CreateVirtualHostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_virtual_host_with_options_async(request, runtime)
 
@@ -672,6 +810,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        """
+        @summary Deletes a pair of username and password.
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_timestamp):
@@ -702,6 +847,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        """
+        @summary Deletes a pair of username and password.
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_timestamp):
@@ -731,6 +883,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteAccountRequest,
     ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        """
+        @summary Deletes a pair of username and password.
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
@@ -738,6 +896,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteAccountRequest,
     ) -> amqp_open_20191212_models.DeleteAccountResponse:
+        """
+        @summary Deletes a pair of username and password.
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
@@ -746,6 +910,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteBindingResponse:
+        """
+        @summary Deletes a binding to unbind a queue or an exchange from a source exchange.
+        
+        @param request: DeleteBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBindingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.binding_key):
@@ -784,6 +955,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteBindingResponse:
+        """
+        @summary Deletes a binding to unbind a queue or an exchange from a source exchange.
+        
+        @param request: DeleteBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBindingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.binding_key):
@@ -821,6 +999,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteBindingRequest,
     ) -> amqp_open_20191212_models.DeleteBindingResponse:
+        """
+        @summary Deletes a binding to unbind a queue or an exchange from a source exchange.
+        
+        @param request: DeleteBindingRequest
+        @return: DeleteBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_binding_with_options(request, runtime)
 
@@ -828,6 +1012,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteBindingRequest,
     ) -> amqp_open_20191212_models.DeleteBindingResponse:
+        """
+        @summary Deletes a binding to unbind a queue or an exchange from a source exchange.
+        
+        @param request: DeleteBindingRequest
+        @return: DeleteBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_binding_with_options_async(request, runtime)
 
@@ -837,9 +1027,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
         """
-        ## [](#)Usage notes
-        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
-        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        @summary Deletes an exchange.
+        
+        @description ## [](#)Usage notes
+        You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
         
         @param request: DeleteExchangeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -878,9 +1070,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
         """
-        ## [](#)Usage notes
-        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
-        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        @summary Deletes an exchange.
+        
+        @description ## [](#)Usage notes
+        You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
         
         @param request: DeleteExchangeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -918,9 +1112,11 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteExchangeRequest,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
         """
-        ## [](#)Usage notes
-        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
-        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        @summary Deletes an exchange.
+        
+        @description ## [](#)Usage notes
+        You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
         
         @param request: DeleteExchangeRequest
         @return: DeleteExchangeResponse
@@ -933,9 +1129,11 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteExchangeRequest,
     ) -> amqp_open_20191212_models.DeleteExchangeResponse:
         """
-        ## [](#)Usage notes
-        *   You cannot delete exchanges of the **headers** and **x-jms-topic** types.
-        *   You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+        @summary Deletes an exchange.
+        
+        @description ## [](#)Usage notes
+        You cannot delete exchanges of the **headers** and **x-jms-topic** types.
+        You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
         
         @param request: DeleteExchangeRequest
         @return: DeleteExchangeResponse
@@ -948,6 +1146,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteQueueResponse:
+        """
+        @summary Deletes a queue.
+        
+        @param request: DeleteQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQueueResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -980,6 +1185,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteQueueResponse:
+        """
+        @summary Deletes a queue.
+        
+        @param request: DeleteQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQueueResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1011,6 +1223,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteQueueRequest,
     ) -> amqp_open_20191212_models.DeleteQueueResponse:
+        """
+        @summary Deletes a queue.
+        
+        @param request: DeleteQueueRequest
+        @return: DeleteQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_queue_with_options(request, runtime)
 
@@ -1018,6 +1236,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.DeleteQueueRequest,
     ) -> amqp_open_20191212_models.DeleteQueueResponse:
+        """
+        @summary Deletes a queue.
+        
+        @param request: DeleteQueueRequest
+        @return: DeleteQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_queue_with_options_async(request, runtime)
 
@@ -1027,7 +1251,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
         """
-        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        @summary Deletes a virtual host (vhost).
+        
+        @description Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
         
         @param request: DeleteVirtualHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1064,7 +1290,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
         """
-        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        @summary Deletes a virtual host (vhost).
+        
+        @description Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
         
         @param request: DeleteVirtualHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1100,7 +1328,9 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteVirtualHostRequest,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
         """
-        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        @summary Deletes a virtual host (vhost).
+        
+        @description Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
         
         @param request: DeleteVirtualHostRequest
         @return: DeleteVirtualHostResponse
@@ -1113,7 +1343,9 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.DeleteVirtualHostRequest,
     ) -> amqp_open_20191212_models.DeleteVirtualHostResponse:
         """
-        Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
+        @summary Deletes a virtual host (vhost).
+        
+        @description Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
         
         @param request: DeleteVirtualHostRequest
         @return: DeleteVirtualHostResponse
@@ -1126,6 +1358,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.GetMetadataAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.GetMetadataAmountResponse:
+        """
+        @summary Queries the maximum number of vhosts, exchanges, and queues that you can create and the number of created vhosts, exchanges, and queues on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: GetMetadataAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetadataAmountResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1152,6 +1391,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.GetMetadataAmountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.GetMetadataAmountResponse:
+        """
+        @summary Queries the maximum number of vhosts, exchanges, and queues that you can create and the number of created vhosts, exchanges, and queues on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: GetMetadataAmountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMetadataAmountResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1177,6 +1423,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.GetMetadataAmountRequest,
     ) -> amqp_open_20191212_models.GetMetadataAmountResponse:
+        """
+        @summary Queries the maximum number of vhosts, exchanges, and queues that you can create and the number of created vhosts, exchanges, and queues on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: GetMetadataAmountRequest
+        @return: GetMetadataAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_metadata_amount_with_options(request, runtime)
 
@@ -1184,6 +1436,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.GetMetadataAmountRequest,
     ) -> amqp_open_20191212_models.GetMetadataAmountResponse:
+        """
+        @summary Queries the maximum number of vhosts, exchanges, and queues that you can create and the number of created vhosts, exchanges, and queues on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: GetMetadataAmountRequest
+        @return: GetMetadataAmountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_metadata_amount_with_options_async(request, runtime)
 
@@ -1192,6 +1450,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListAccountsResponse:
+        """
+        @summary Queries the static username and password of an ApsaraMQ for RabbitMQ.
+        
+        @param request: ListAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1220,6 +1485,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListAccountsResponse:
+        """
+        @summary Queries the static username and password of an ApsaraMQ for RabbitMQ.
+        
+        @param request: ListAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1247,6 +1519,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListAccountsRequest,
     ) -> amqp_open_20191212_models.ListAccountsResponse:
+        """
+        @summary Queries the static username and password of an ApsaraMQ for RabbitMQ.
+        
+        @param request: ListAccountsRequest
+        @return: ListAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_accounts_with_options(request, runtime)
 
@@ -1254,6 +1532,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListAccountsRequest,
     ) -> amqp_open_20191212_models.ListAccountsResponse:
+        """
+        @summary Queries the static username and password of an ApsaraMQ for RabbitMQ.
+        
+        @param request: ListAccountsRequest
+        @return: ListAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_accounts_with_options_async(request, runtime)
 
@@ -1262,6 +1546,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListBindingsResponse:
+        """
+        @summary Queries all bindings of a virtual host (vhost) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1288,6 +1579,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListBindingsResponse:
+        """
+        @summary Queries all bindings of a virtual host (vhost) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1313,6 +1611,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListBindingsRequest,
     ) -> amqp_open_20191212_models.ListBindingsResponse:
+        """
+        @summary Queries all bindings of a virtual host (vhost) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListBindingsRequest
+        @return: ListBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_bindings_with_options(request, runtime)
 
@@ -1320,6 +1624,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListBindingsRequest,
     ) -> amqp_open_20191212_models.ListBindingsResponse:
+        """
+        @summary Queries all bindings of a virtual host (vhost) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListBindingsRequest
+        @return: ListBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_bindings_with_options_async(request, runtime)
 
@@ -1328,6 +1638,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListDownStreamBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListDownStreamBindingsResponse:
+        """
+        @summary Queries all exchanges or queues to which an exchange is bound.
+        
+        @param request: ListDownStreamBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDownStreamBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1354,6 +1671,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListDownStreamBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListDownStreamBindingsResponse:
+        """
+        @summary Queries all exchanges or queues to which an exchange is bound.
+        
+        @param request: ListDownStreamBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDownStreamBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1379,6 +1703,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListDownStreamBindingsRequest,
     ) -> amqp_open_20191212_models.ListDownStreamBindingsResponse:
+        """
+        @summary Queries all exchanges or queues to which an exchange is bound.
+        
+        @param request: ListDownStreamBindingsRequest
+        @return: ListDownStreamBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_down_stream_bindings_with_options(request, runtime)
 
@@ -1386,6 +1716,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListDownStreamBindingsRequest,
     ) -> amqp_open_20191212_models.ListDownStreamBindingsResponse:
+        """
+        @summary Queries all exchanges or queues to which an exchange is bound.
+        
+        @param request: ListDownStreamBindingsRequest
+        @return: ListDownStreamBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_down_stream_bindings_with_options_async(request, runtime)
 
@@ -1394,6 +1730,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListExchangeUpStreamBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse:
+        """
+        @summary Queries all queues or exchanges that are bound to an exchange.
+        
+        @param request: ListExchangeUpStreamBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExchangeUpStreamBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1420,6 +1763,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListExchangeUpStreamBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse:
+        """
+        @summary Queries all queues or exchanges that are bound to an exchange.
+        
+        @param request: ListExchangeUpStreamBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExchangeUpStreamBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1445,6 +1795,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListExchangeUpStreamBindingsRequest,
     ) -> amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse:
+        """
+        @summary Queries all queues or exchanges that are bound to an exchange.
+        
+        @param request: ListExchangeUpStreamBindingsRequest
+        @return: ListExchangeUpStreamBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_exchange_up_stream_bindings_with_options(request, runtime)
 
@@ -1452,6 +1808,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListExchangeUpStreamBindingsRequest,
     ) -> amqp_open_20191212_models.ListExchangeUpStreamBindingsResponse:
+        """
+        @summary Queries all queues or exchanges that are bound to an exchange.
+        
+        @param request: ListExchangeUpStreamBindingsRequest
+        @return: ListExchangeUpStreamBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_exchange_up_stream_bindings_with_options_async(request, runtime)
 
@@ -1460,6 +1822,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListExchangesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListExchangesResponse:
+        """
+        @summary Queries all exchanges that are created in a virtual host (vhost).
+        
+        @param request: ListExchangesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExchangesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1486,6 +1855,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListExchangesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListExchangesResponse:
+        """
+        @summary Queries all exchanges that are created in a virtual host (vhost).
+        
+        @param request: ListExchangesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExchangesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1511,6 +1887,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListExchangesRequest,
     ) -> amqp_open_20191212_models.ListExchangesResponse:
+        """
+        @summary Queries all exchanges that are created in a virtual host (vhost).
+        
+        @param request: ListExchangesRequest
+        @return: ListExchangesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_exchanges_with_options(request, runtime)
 
@@ -1518,6 +1900,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListExchangesRequest,
     ) -> amqp_open_20191212_models.ListExchangesResponse:
+        """
+        @summary Queries all exchanges that are created in a virtual host (vhost).
+        
+        @param request: ListExchangesRequest
+        @return: ListExchangesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_exchanges_with_options_async(request, runtime)
 
@@ -1526,6 +1914,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListInstancesResponse:
+        """
+        @summary Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1552,6 +1947,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListInstancesResponse:
+        """
+        @summary Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1577,6 +1979,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListInstancesRequest,
     ) -> amqp_open_20191212_models.ListInstancesResponse:
+        """
+        @summary Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_with_options(request, runtime)
 
@@ -1584,6 +1992,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListInstancesRequest,
     ) -> amqp_open_20191212_models.ListInstancesResponse:
+        """
+        @summary Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
@@ -1593,7 +2007,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
         """
-        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        @summary Queries the online consumers of a queue.
+        
+        @description ApsaraMQ for RabbitMQ allows you to query only online consumers.
         
         @param request: ListQueueConsumersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1626,7 +2042,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
         """
-        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        @summary Queries the online consumers of a queue.
+        
+        @description ApsaraMQ for RabbitMQ allows you to query only online consumers.
         
         @param request: ListQueueConsumersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1658,7 +2076,9 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueueConsumersRequest,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
         """
-        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        @summary Queries the online consumers of a queue.
+        
+        @description ApsaraMQ for RabbitMQ allows you to query only online consumers.
         
         @param request: ListQueueConsumersRequest
         @return: ListQueueConsumersResponse
@@ -1671,7 +2091,9 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueueConsumersRequest,
     ) -> amqp_open_20191212_models.ListQueueConsumersResponse:
         """
-        ApsaraMQ for RabbitMQ allows you to query only online consumers.
+        @summary Queries the online consumers of a queue.
+        
+        @description ApsaraMQ for RabbitMQ allows you to query only online consumers.
         
         @param request: ListQueueConsumersRequest
         @return: ListQueueConsumersResponse
@@ -1684,6 +2106,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueueUpStreamBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueueUpStreamBindingsResponse:
+        """
+        @summary Queries the exchanges that are bound to a queue.
+        
+        @param request: ListQueueUpStreamBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueueUpStreamBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1710,6 +2139,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueueUpStreamBindingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueueUpStreamBindingsResponse:
+        """
+        @summary Queries the exchanges that are bound to a queue.
+        
+        @param request: ListQueueUpStreamBindingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueueUpStreamBindingsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1735,6 +2171,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListQueueUpStreamBindingsRequest,
     ) -> amqp_open_20191212_models.ListQueueUpStreamBindingsResponse:
+        """
+        @summary Queries the exchanges that are bound to a queue.
+        
+        @param request: ListQueueUpStreamBindingsRequest
+        @return: ListQueueUpStreamBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_queue_up_stream_bindings_with_options(request, runtime)
 
@@ -1742,6 +2184,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListQueueUpStreamBindingsRequest,
     ) -> amqp_open_20191212_models.ListQueueUpStreamBindingsResponse:
+        """
+        @summary Queries the exchanges that are bound to a queue.
+        
+        @param request: ListQueueUpStreamBindingsRequest
+        @return: ListQueueUpStreamBindingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_queue_up_stream_bindings_with_options_async(request, runtime)
 
@@ -1750,6 +2198,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueuesResponse:
+        """
+        @summary Queries all queues in a vhost of an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListQueuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueuesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1776,6 +2231,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListQueuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListQueuesResponse:
+        """
+        @summary Queries all queues in a vhost of an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListQueuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueuesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1801,6 +2263,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListQueuesRequest,
     ) -> amqp_open_20191212_models.ListQueuesResponse:
+        """
+        @summary Queries all queues in a vhost of an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListQueuesRequest
+        @return: ListQueuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_queues_with_options(request, runtime)
 
@@ -1808,6 +2276,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListQueuesRequest,
     ) -> amqp_open_20191212_models.ListQueuesResponse:
+        """
+        @summary Queries all queues in a vhost of an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListQueuesRequest
+        @return: ListQueuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_queues_with_options_async(request, runtime)
 
@@ -1816,6 +2290,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListVirtualHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListVirtualHostsResponse:
+        """
+        @summary Queries all virtual hosts (vhosts) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListVirtualHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualHostsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1842,6 +2323,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.ListVirtualHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.ListVirtualHostsResponse:
+        """
+        @summary Queries all virtual hosts (vhosts) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListVirtualHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVirtualHostsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1867,6 +2355,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListVirtualHostsRequest,
     ) -> amqp_open_20191212_models.ListVirtualHostsResponse:
+        """
+        @summary Queries all virtual hosts (vhosts) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListVirtualHostsRequest
+        @return: ListVirtualHostsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_virtual_hosts_with_options(request, runtime)
 
@@ -1874,6 +2368,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.ListVirtualHostsRequest,
     ) -> amqp_open_20191212_models.ListVirtualHostsResponse:
+        """
+        @summary Queries all virtual hosts (vhosts) on an ApsaraMQ for RabbitMQ instance.
+        
+        @param request: ListVirtualHostsRequest
+        @return: ListVirtualHostsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_virtual_hosts_with_options_async(request, runtime)
 
@@ -1882,6 +2382,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.UpdateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        """
+        @summary 变更实例，升降配
+        
+        @param request: UpdateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1934,6 +2441,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.UpdateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        """
+        @summary 变更实例，升降配
+        
+        @param request: UpdateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1985,6 +2499,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.UpdateInstanceRequest,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        """
+        @summary 变更实例，升降配
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_with_options(request, runtime)
 
@@ -1992,6 +2512,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.UpdateInstanceRequest,
     ) -> amqp_open_20191212_models.UpdateInstanceResponse:
+        """
+        @summary 变更实例，升降配
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_with_options_async(request, runtime)
 
@@ -2000,6 +2526,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.UpdateInstanceNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        """
+        @summary Updates the name of an ApsaraMQ for RabbitMQ instance. After an ApsaraMQ for RabbitMQ instance is created, the ID of the instance is used as its name by default. You can specify a custom name for an instance to facilitate instance identification.
+        
+        @param request: UpdateInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2030,6 +2563,13 @@ class Client(OpenApiClient):
         request: amqp_open_20191212_models.UpdateInstanceNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        """
+        @summary Updates the name of an ApsaraMQ for RabbitMQ instance. After an ApsaraMQ for RabbitMQ instance is created, the ID of the instance is used as its name by default. You can specify a custom name for an instance to facilitate instance identification.
+        
+        @param request: UpdateInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2059,6 +2599,12 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.UpdateInstanceNameRequest,
     ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        """
+        @summary Updates the name of an ApsaraMQ for RabbitMQ instance. After an ApsaraMQ for RabbitMQ instance is created, the ID of the instance is used as its name by default. You can specify a custom name for an instance to facilitate instance identification.
+        
+        @param request: UpdateInstanceNameRequest
+        @return: UpdateInstanceNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_name_with_options(request, runtime)
 
@@ -2066,5 +2612,11 @@ class Client(OpenApiClient):
         self,
         request: amqp_open_20191212_models.UpdateInstanceNameRequest,
     ) -> amqp_open_20191212_models.UpdateInstanceNameResponse:
+        """
+        @summary Updates the name of an ApsaraMQ for RabbitMQ instance. After an ApsaraMQ for RabbitMQ instance is created, the ID of the instance is used as its name by default. You can specify a custom name for an instance to facilitate instance identification.
+        
+        @param request: UpdateInstanceNameRequest
+        @return: UpdateInstanceNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_name_with_options_async(request, runtime)

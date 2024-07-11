@@ -84,27 +84,39 @@ class CreateAccountRequest(TeaModel):
         signature: str = None,
         user_name: str = None,
     ):
-        # The AccessKey ID of your Alibaba Cloud account or RAM user. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+        # The AccessKey ID of your Alibaba Cloud account or RAM user. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         # 
-        # >  If you use the pair of static username and password that is created by using the Accesskey pair of a RAM user to access ApsaraMQ for RabbitMQ to send and receive messages, make sure that the RAM user is granted the required permissions. For more information, see [RAM policies](~~146559~~).
+        # >  If you use the pair of static username and password that is created by using the Accesskey pair of a RAM user to access ApsaraMQ for RabbitMQ to send and receive messages, make sure that the RAM user is granted the required permissions. For more information, see [RAM policies](https://help.aliyun.com/document_detail/146559.html).
+        # 
+        # This parameter is required.
         self.account_access_key = account_access_key
         # The timestamp that indicates when the password is created. Unit: milliseconds.
         # 
         # >  This timestamp is specified by you and is used to generate a static password. The timestamp is not the timestamp that indicates when the system generates the password.
+        # 
+        # This parameter is required.
         self.create_timestamp = create_timestamp
         # The ID of the instance for which you want to create a pair of static username and password.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The AccessKey secret signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
         # 
         # The system uses the HMAC-SHA1 algorithm to generate the AccessKey secret signature based on the timestamp that indicates when the username is created and the AccessKey ID. For more information, see the **"Sample code on how to generate a signature"** section of this topic.
+        # 
+        # This parameter is required.
         self.secret_sign = secret_sign
         # The signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
         # 
         # The system uses the HMAC-SHA1 algorithm to generate the signature based on the timestamp that indicates when the username is created and the AccessKey ID. For more information, see the **"Sample code on how to generate a signature"** section of this topic.
+        # 
+        # This parameter is required.
         self.signature = signature
         # The static username that you want to create.
         # 
         # The value of this parameter is a Base64-encoded string that is generated based on the instance ID and AccessKey ID. For more information, see the "**Sample code on how to generate a username**" section of this topic.
+        # 
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -322,8 +334,8 @@ class CreateBindingRequest(TeaModel):
     ):
         # The key-value pairs that are configured for the headers attributes of a message. One or more key-value pairs can be concatenated to configure the headers attributes of a message. You must specify the x-match attribute as one of the valid values. You can specify custom values for other attributes. Valid values of the x-match attribute:
         # 
-        # *   \*\*all: \*\*A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
-        # *   \*\*any: \*\*A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # *   \\*\\*all: \\*\\*A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
+        # *   \\*\\*any: \\*\\*A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         # 
         # Separate the attributes with semicolons (;). Separate the key and value of an attribute with a colon (:). Example: x-match:all;type:report;format:pdf. This parameter is available for only headers exchanges. You can set this parameter to an arbitrary value for other types of exchanges.
         self.argument = argument
@@ -331,27 +343,39 @@ class CreateBindingRequest(TeaModel):
         # 
         # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
         #     *   The binding key must be 1 to 255 characters in length.
         # 
         # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), asterisks (\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), asterisks (\\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
         #     *   The binding key must be 1 to 255 characters in length.
+        # 
+        # This parameter is required.
         self.binding_key = binding_key
         # The type of the object that you want to bind to the source exchange. Valid values:
         # 
-        # *   \*\*0: \*\*Queue
-        # *   \*\*1: \*\*Exchange
+        # *   \\*\\*0: \\*\\*Queue
+        # *   \\*\\*1: \\*\\*Exchange
+        # 
+        # This parameter is required.
         self.binding_type = binding_type
         # The name of the object that you want to bind to the source exchange. You must create the object in the ApsaraMQ for RabbitMQ console in advance. The vhost of the object is the same as the vhost to which the source exchange specified by **SourceExchange** belongs. The vhost of the source exchange is the one specified by **VirtualHost**.
+        # 
+        # This parameter is required.
         self.destination_name = destination_name
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the source exchange. You must create the source exchange in the ApsaraMQ for RabbitMQ console in advance.
+        # 
+        # This parameter is required.
         self.source_exchange = source_exchange
         # The virtual host (vhost) name. You must create the vhost in the ApsaraMQ for RabbitMQ console in advance. The object specified by **DestinationName** and the source exchange specified by **SourceExchange** must belong to the vhost.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -477,6 +501,7 @@ class CreateExchangeRequest(TeaModel):
         instance_id: str = None,
         internal: bool = None,
         virtual_host: str = None,
+        xdelayed_type: str = None,
     ):
         # The alternate exchange. An alternate exchange is used to receive messages that fail to be routed to queues from the current exchange.
         self.alternate_exchange = alternate_exchange
@@ -484,11 +509,15 @@ class CreateExchangeRequest(TeaModel):
         # 
         # *   **true**: If the last queue that is bound to the exchange is unbound, the exchange is automatically deleted.
         # *   **false**: If the last queue that is bound to the exchange is unbound, the exchange is not automatically deleted.
+        # 
+        # This parameter is required.
         self.auto_delete_state = auto_delete_state
         # The name of the exchange that you want to create. The exchange name must meet the following conventions:
         # 
-        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
         # *   After the exchange is created, you cannot change its name. If you want to change its name, delete the exchange and create another exchange.
+        # 
+        # This parameter is required.
         self.exchange_name = exchange_name
         # The exchange type. Valid values:
         # 
@@ -497,16 +526,25 @@ class CreateExchangeRequest(TeaModel):
         # *   **FANOUT**: An exchange of this type routes all received messages to all queues bound to this exchange. You can use a fanout exchange to broadcast messages.
         # *   **HEADERS**: This type of exchange is similar to direct exchanges. The only difference is that a headers exchange routes messages based on the headers attributes instead of routing keys. When you bind a headers exchange to a queue, you must configure binding attributes in the key-value format for the binding. When you send a message to a headers exchange, you must configure the headers attributes in the key-value format for the message. After a headers exchange receives a message, the exchange routes the message based on the matching results between the headers attributes of the message and the binding attributes of the bound queues.
         # *   **X-CONSISTENT-HASH**: An exchange of this type allows you to perform hash calculations on routing keys or header values and use consistent hashing to route a message to different queues.
+        # 
+        # This parameter is required.
         self.exchange_type = exchange_type
         # The ID of the ApsaraMQ for RabbitMQ for which you want to create an exchange.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether the exchange is an internal exchange. Valid values:
         # 
         # *   **false**\
         # *   **true**\
+        # 
+        # This parameter is required.
         self.internal = internal
         # The name of the vhost to which the exchange that you want to create belongs.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
+        self.xdelayed_type = xdelayed_type
 
     def validate(self):
         pass
@@ -531,6 +569,8 @@ class CreateExchangeRequest(TeaModel):
             result['Internal'] = self.internal
         if self.virtual_host is not None:
             result['VirtualHost'] = self.virtual_host
+        if self.xdelayed_type is not None:
+            result['XDelayedType'] = self.xdelayed_type
         return result
 
     def from_map(self, m: dict = None):
@@ -549,6 +589,8 @@ class CreateExchangeRequest(TeaModel):
             self.internal = m.get('Internal')
         if m.get('VirtualHost') is not None:
             self.virtual_host = m.get('VirtualHost')
+        if m.get('XDelayedType') is not None:
+            self.xdelayed_type = m.get('XDelayedType')
         return self
 
 
@@ -652,6 +694,7 @@ class CreateInstanceRequest(TeaModel):
         self.max_connections = max_connections
         self.max_eip_tps = max_eip_tps
         self.max_private_tps = max_private_tps
+        # This parameter is required.
         self.payment_type = payment_type
         self.period = period
         self.period_cycle = period_cycle
@@ -879,7 +922,7 @@ class CreateQueueRequest(TeaModel):
         # 
         # If a consumer rejects a message that cannot be redelivered, ApsaraMQ for RabbitMQ routes the message to the specified dead-letter exchange. Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange for storage.
         self.dead_letter_exchange = dead_letter_exchange
-        # The dead-letter routing key. The key must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # The dead-letter routing key. The key must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
         self.dead_letter_routing_key = dead_letter_routing_key
         # Specifies whether the exchange is an exclusive exchange. Valid values:
         # 
@@ -887,6 +930,8 @@ class CreateQueueRequest(TeaModel):
         # *   false: The exchange is not an exclusive exchange.
         self.exclusive_state = exclusive_state
         # The ID of the ApsaraMQ for RabbitMQ instance on which you want to create a queue.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # This parameter is unavailable in the current version of ApsaraMQ for RabbitMQ.
         # 
@@ -901,10 +946,14 @@ class CreateQueueRequest(TeaModel):
         self.message_ttl = message_ttl
         # The name of the queue that you want to create.
         # 
-        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
         # *   After the queue is created, you cannot change the name of the queue. If you want to change the name of the queue, delete the queue and create another queue.
+        # 
+        # This parameter is required.
         self.queue_name = queue_name
-        # The name of the vhost to which the queue that you want to create belongs. The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # The name of the vhost to which the queue that you want to create belongs. The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1043,12 +1092,16 @@ class CreateVirtualHostRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the vhost that you want to create. Valid values:
         # 
-        # *   The name can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slash (/), and at signs (@).
+        # *   The name can contain letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slash (/), and at signs (@).
         # *   The name must be 1 to 255 characters in length.
         # *   After the vhost is created, you cannot change its name. If you want to change the name of a vhost, delete the vhost and create another vhost.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1152,9 +1205,13 @@ class DeleteAccountRequest(TeaModel):
     ):
         # The timestamp that indicates when the pair of static username and password that you want to delete was created. Unit: milliseconds.
         # 
-        # You can call the [ListAccounts](~~472730~~) operation to view the timestamp.
+        # You can call the [ListAccounts](https://help.aliyun.com/document_detail/472730.html) operation to view the timestamp.
+        # 
+        # This parameter is required.
         self.create_timestamp = create_timestamp
         # The pair of username and password that you want to delete.
+        # 
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -1289,19 +1346,31 @@ class DeleteBindingRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The binding key.
+        # 
+        # This parameter is required.
         self.binding_key = binding_key
         # The type of the object that you want to unbind from the source exchange. Valid values:
         # 
         # *   **QUEUE**\
         # *   **EXCHANGE**\
+        # 
+        # This parameter is required.
         self.binding_type = binding_type
         # The name of the object that you want to unbind from the source exchange.
+        # 
+        # This parameter is required.
         self.destination_name = destination_name
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the source exchange.
+        # 
+        # This parameter is required.
         self.source_exchange = source_exchange
         # The vhost name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1421,10 +1490,16 @@ class DeleteExchangeRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The name of the exchange that you want to delete.
+        # 
+        # This parameter is required.
         self.exchange_name = exchange_name
         # The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The vhost to which the exchange that you want to delete belongs.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1532,10 +1607,16 @@ class DeleteQueueRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The queue name.
+        # 
+        # This parameter is required.
         self.queue_name = queue_name
         # The vhost name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -1642,8 +1723,12 @@ class DeleteVirtualHostRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance to which the vhost you want to delete belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the vhost that you want to delete.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2057,14 +2142,20 @@ class ListBindingsRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return. Valid values:
         # 
         # **1 to 100**\
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
         # The vhost name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2119,13 +2210,13 @@ class ListBindingsResponseBodyDataBindings(TeaModel):
         # 
         # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
         #     *   The binding key must be 1 to 255 characters in length.
         # 
         # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), asterisks (\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), asterisks (\\*), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
         #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
         # The type of the object to which the source exchange is bound. Valid values:
@@ -2312,14 +2403,22 @@ class ListDownStreamBindingsRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The exchange name.
+        # 
+        # This parameter is required.
         self.exchange_name = exchange_name
         # The ID of the ApsaraMQ for RabbitMQ instance to which the exchange belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
         # The name of the vhost to which the exchange belongs.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2378,13 +2477,13 @@ class ListDownStreamBindingsResponseBodyDataBindings(TeaModel):
         # 
         # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
         #     *   The binding key must be 1 to 255 characters in length.
         # 
         # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
         #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
         # The type of the object to which the source exchange is bound. Valid values:
@@ -2592,14 +2691,22 @@ class ListExchangeUpStreamBindingsRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The exchange name.
+        # 
+        # This parameter is required.
         self.exchange_name = exchange_name
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
         # The virtual host (vhost) name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -2658,13 +2765,13 @@ class ListExchangeUpStreamBindingsResponseBodyDataBindings(TeaModel):
         # 
         # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
         #     *   The binding key must be 1 to 255 characters in length.
         # 
         # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
         #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
         # The type of the object to which the source exchange is bound. Valid values:
@@ -2871,8 +2978,12 @@ class ListExchangesRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return. Valid values: **1 to 100**\
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
@@ -2880,6 +2991,8 @@ class ListExchangesRequest(TeaModel):
         # *   If a next query is to be sent, set the value to the value of `NextToken` that is returned from the previous request.
         self.next_token = next_token
         # The vhost name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -3115,6 +3228,8 @@ class ListInstancesRequest(TeaModel):
         next_token: str = None,
     ):
         # The maximum number of entries to return. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
@@ -3244,7 +3359,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.status = status
         # The disk size. Unit: GB.
         # 
-        # >  For Professional Edition instances and Enterprise Edition instances, this parameter is unavailable and \*\*-1\*\* is returned.
+        # >  For Professional Edition instances and Enterprise Edition instances, this parameter is unavailable and \\*\\*-1\\*\\* is returned.
         self.storage_size = storage_size
         # Indicates whether the instance supports elastic IP addresses (EIPs).
         self.support_eip = support_eip
@@ -3485,6 +3600,8 @@ class ListQueueConsumersRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
@@ -3493,8 +3610,12 @@ class ListQueueConsumersRequest(TeaModel):
         # Valid values: 1 to 100.
         self.query_count = query_count
         # The name of the queue for which you want to query online consumers.
+        # 
+        # This parameter is required.
         self.queue = queue
         # The virtual host (vhost) name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -3699,14 +3820,22 @@ class ListQueueUpStreamBindingsRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
         # The queue name.
+        # 
+        # This parameter is required.
         self.queue_name = queue_name
         # The virtual host (vhost) name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -3765,13 +3894,13 @@ class ListQueueUpStreamBindingsResponseBodyDataBindings(TeaModel):
         # 
         # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (\_), periods (.), forward slashes (/), and at signs (@).
+        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
         #     *   The binding key must be 1 to 255 characters in length.
         # 
         # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
         # 
-        #     *   The binding key can contain letters, digits, hyphens (-), underscores (\_), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\*), the number sign (#) or asterisk (\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\*) is used in the middle of a binding key, the number sign (#) or asterisk (\*) must be preceded and followed by a period (.).
+        #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
         #     *   The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
         # The type of the object to which the source exchange is bound. Valid values:
@@ -3957,12 +4086,18 @@ class ListQueuesRequest(TeaModel):
         virtual_host: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
         # The virtual host (vhost) name.
+        # 
+        # This parameter is required.
         self.virtual_host = virtual_host
 
     def validate(self):
@@ -4210,8 +4345,12 @@ class ListVirtualHostsRequest(TeaModel):
         next_token: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return. Valid values: **1 to 100**\
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
@@ -4418,11 +4557,13 @@ class UpdateInstanceRequest(TeaModel):
         tracing_storage_time: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_type = instance_type
         self.max_connections = max_connections
         self.max_eip_tps = max_eip_tps
         self.max_private_tps = max_private_tps
+        # This parameter is required.
         self.modify_type = modify_type
         self.queue_capacity = queue_capacity
         self.serverless_charge_type = serverless_charge_type
@@ -4604,8 +4745,12 @@ class UpdateInstanceNameRequest(TeaModel):
         instance_name: str = None,
     ):
         # The ID of the ApsaraMQ for RabbitMQ instance for which you want to update the name.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new name of the instance. No limits are imposed on the value. We recommend that you set this parameter to a maximum of 64 characters in length.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
 
     def validate(self):
