@@ -1373,6 +1373,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_version_with_options_async(request, runtime)
 
+    def describe_instance_stats_info_with_options(
+        self,
+        request: cgcs20211111_models.DescribeInstanceStatsInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.DescribeInstanceStatsInfoResponse:
+        """
+        @param request: DescribeInstanceStatsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceStatsInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceStatsInfo',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.DescribeInstanceStatsInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_stats_info_with_options_async(
+        self,
+        request: cgcs20211111_models.DescribeInstanceStatsInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cgcs20211111_models.DescribeInstanceStatsInfoResponse:
+        """
+        @param request: DescribeInstanceStatsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceStatsInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceStatsInfo',
+            version='2021-11-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cgcs20211111_models.DescribeInstanceStatsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_stats_info(
+        self,
+        request: cgcs20211111_models.DescribeInstanceStatsInfoRequest,
+    ) -> cgcs20211111_models.DescribeInstanceStatsInfoResponse:
+        """
+        @param request: DescribeInstanceStatsInfoRequest
+        @return: DescribeInstanceStatsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_stats_info_with_options(request, runtime)
+
+    async def describe_instance_stats_info_async(
+        self,
+        request: cgcs20211111_models.DescribeInstanceStatsInfoRequest,
+    ) -> cgcs20211111_models.DescribeInstanceStatsInfoResponse:
+        """
+        @param request: DescribeInstanceStatsInfoRequest
+        @return: DescribeInstanceStatsInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_stats_info_with_options_async(request, runtime)
+
     def get_adaptation_with_options(
         self,
         request: cgcs20211111_models.GetAdaptationRequest,

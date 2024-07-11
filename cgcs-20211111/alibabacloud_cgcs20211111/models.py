@@ -2905,6 +2905,196 @@ class DeleteAppVersionResponse(TeaModel):
         return self
 
 
+class DescribeInstanceStatsInfoRequest(TeaModel):
+    def __init__(
+        self,
+        district_ids: List[str] = None,
+        instance_types: List[str] = None,
+        project_ids: List[str] = None,
+    ):
+        self.district_ids = district_ids
+        self.instance_types = instance_types
+        self.project_ids = project_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.district_ids is not None:
+            result['DistrictIds'] = self.district_ids
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
+        if self.project_ids is not None:
+            result['ProjectIds'] = self.project_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistrictIds') is not None:
+            self.district_ids = m.get('DistrictIds')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
+        if m.get('ProjectIds') is not None:
+            self.project_ids = m.get('ProjectIds')
+        return self
+
+
+class DescribeInstanceStatsInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        district_id: str = None,
+        instance_type: str = None,
+        operating_instance_count: int = None,
+        project_id: str = None,
+        releasing_instance_count: int = None,
+        reserving_instance_count: int = None,
+        running_instance_count: int = None,
+        total_count: int = None,
+    ):
+        self.district_id = district_id
+        self.instance_type = instance_type
+        self.operating_instance_count = operating_instance_count
+        self.project_id = project_id
+        self.releasing_instance_count = releasing_instance_count
+        self.reserving_instance_count = reserving_instance_count
+        self.running_instance_count = running_instance_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.district_id is not None:
+            result['DistrictId'] = self.district_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.operating_instance_count is not None:
+            result['OperatingInstanceCount'] = self.operating_instance_count
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.releasing_instance_count is not None:
+            result['ReleasingInstanceCount'] = self.releasing_instance_count
+        if self.reserving_instance_count is not None:
+            result['ReservingInstanceCount'] = self.reserving_instance_count
+        if self.running_instance_count is not None:
+            result['RunningInstanceCount'] = self.running_instance_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistrictId') is not None:
+            self.district_id = m.get('DistrictId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('OperatingInstanceCount') is not None:
+            self.operating_instance_count = m.get('OperatingInstanceCount')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ReleasingInstanceCount') is not None:
+            self.releasing_instance_count = m.get('ReleasingInstanceCount')
+        if m.get('ReservingInstanceCount') is not None:
+            self.reserving_instance_count = m.get('ReservingInstanceCount')
+        if m.get('RunningInstanceCount') is not None:
+            self.running_instance_count = m.get('RunningInstanceCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeInstanceStatsInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeInstanceStatsInfoResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeInstanceStatsInfoResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceStatsInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceStatsInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceStatsInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAdaptationRequest(TeaModel):
     def __init__(
         self,

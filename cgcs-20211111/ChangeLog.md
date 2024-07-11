@@ -1,3 +1,7 @@
+2024-07-11 Version: 2.9.0
+- Support API DescribeInstanceStatsInfo.
+
+
 2024-05-20 Version: 2.8.0
 - Support API ListInstances.
 - Support API ReleaseInstances.
