@@ -13936,6 +13936,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
+    def update_cluster_audit_log_config_with_options(
+        self,
+        clusterid: str,
+        request: cs20151215_models.UpdateClusterAuditLogConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateClusterAuditLogConfigResponse:
+        """
+        @summary 更新集群审计日志配置
+        
+        @param request: UpdateClusterAuditLogConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterAuditLogConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.disable):
+            body['disable'] = request.disable
+        if not UtilClient.is_unset(request.sls_project_name):
+            body['sls_project_name'] = request.sls_project_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterAuditLogConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/audit_log',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateClusterAuditLogConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cluster_audit_log_config_with_options_async(
+        self,
+        clusterid: str,
+        request: cs20151215_models.UpdateClusterAuditLogConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.UpdateClusterAuditLogConfigResponse:
+        """
+        @summary 更新集群审计日志配置
+        
+        @param request: UpdateClusterAuditLogConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterAuditLogConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.disable):
+            body['disable'] = request.disable
+        if not UtilClient.is_unset(request.sls_project_name):
+            body['sls_project_name'] = request.sls_project_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterAuditLogConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/audit_log',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.UpdateClusterAuditLogConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cluster_audit_log_config(
+        self,
+        clusterid: str,
+        request: cs20151215_models.UpdateClusterAuditLogConfigRequest,
+    ) -> cs20151215_models.UpdateClusterAuditLogConfigResponse:
+        """
+        @summary 更新集群审计日志配置
+        
+        @param request: UpdateClusterAuditLogConfigRequest
+        @return: UpdateClusterAuditLogConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_cluster_audit_log_config_with_options(clusterid, request, headers, runtime)
+
+    async def update_cluster_audit_log_config_async(
+        self,
+        clusterid: str,
+        request: cs20151215_models.UpdateClusterAuditLogConfigRequest,
+    ) -> cs20151215_models.UpdateClusterAuditLogConfigResponse:
+        """
+        @summary 更新集群审计日志配置
+        
+        @param request: UpdateClusterAuditLogConfigRequest
+        @return: UpdateClusterAuditLogConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_cluster_audit_log_config_with_options_async(clusterid, request, headers, runtime)
+
     def update_contact_group_for_alert_with_options(
         self,
         cluster_id: str,

@@ -1,3 +1,7 @@
+2024-07-11 Version: 4.4.0
+- Support API UpdateClusterAuditLogConfig.
+
+
 2024-07-09 Version: 4.3.3
 - Update API CreateClusterNodePool: update param body.
 - Update API DescribeClusterNodePoolDetail: update response param.
