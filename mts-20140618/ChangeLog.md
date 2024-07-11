@@ -1,3 +1,7 @@
+2024-07-11 Version: 4.2.0
+- Support API SubmitImageCopyright.
+
+
 2024-07-10 Version: 4.1.0
 - Support API QueryCopyrightExtractJob.
 - Support API QueryCopyrightJob.

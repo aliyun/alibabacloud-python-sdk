@@ -9845,6 +9845,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_iproduction_job_with_options_async(request, runtime)
 
+    def submit_image_copyright_with_options(
+        self,
+        request: mts_20140618_models.SubmitImageCopyrightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitImageCopyrightResponse:
+        """
+        @summary 提交图片版权水印任务
+        
+        @param request: SubmitImageCopyrightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImageCopyrightResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitImageCopyright',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitImageCopyrightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_image_copyright_with_options_async(
+        self,
+        request: mts_20140618_models.SubmitImageCopyrightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mts_20140618_models.SubmitImageCopyrightResponse:
+        """
+        @summary 提交图片版权水印任务
+        
+        @param request: SubmitImageCopyrightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImageCopyrightResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.output):
+            query['Output'] = request.output
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitImageCopyright',
+            version='2014-06-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mts_20140618_models.SubmitImageCopyrightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_image_copyright(
+        self,
+        request: mts_20140618_models.SubmitImageCopyrightRequest,
+    ) -> mts_20140618_models.SubmitImageCopyrightResponse:
+        """
+        @summary 提交图片版权水印任务
+        
+        @param request: SubmitImageCopyrightRequest
+        @return: SubmitImageCopyrightResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_image_copyright_with_options(request, runtime)
+
+    async def submit_image_copyright_async(
+        self,
+        request: mts_20140618_models.SubmitImageCopyrightRequest,
+    ) -> mts_20140618_models.SubmitImageCopyrightResponse:
+        """
+        @summary 提交图片版权水印任务
+        
+        @param request: SubmitImageCopyrightRequest
+        @return: SubmitImageCopyrightResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_image_copyright_with_options_async(request, runtime)
+
     def submit_jobs_with_options(
         self,
         request: mts_20140618_models.SubmitJobsRequest,
