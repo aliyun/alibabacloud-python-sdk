@@ -899,6 +899,8 @@ class Client(OpenApiClient):
             query['NewApproverList'] = request.new_approver_list
         if not UtilClient.is_unset(request.old_approver):
             query['OldApprover'] = request.old_approver
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -950,6 +952,8 @@ class Client(OpenApiClient):
             query['NewApproverList'] = request.new_approver_list
         if not UtilClient.is_unset(request.old_approver):
             query['OldApprover'] = request.old_approver
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         if not UtilClient.is_unset(request.workflow_instance_id):
@@ -1845,7 +1849,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
         """
-        @summary Creates data archiving tickets.
+        @summary Creates a data archiving ticket to archive data to destinations such as dedicated storage space or ApsaraDB RDS for MySQL instances.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param tmp_req: CreateDataArchiveOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1896,7 +1902,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
         """
-        @summary Creates data archiving tickets.
+        @summary Creates a data archiving ticket to archive data to destinations such as dedicated storage space or ApsaraDB RDS for MySQL instances.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param tmp_req: CreateDataArchiveOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1946,7 +1954,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
         """
-        @summary Creates data archiving tickets.
+        @summary Creates a data archiving ticket to archive data to destinations such as dedicated storage space or ApsaraDB RDS for MySQL instances.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: CreateDataArchiveOrderRequest
         @return: CreateDataArchiveOrderResponse
@@ -1959,7 +1969,9 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.CreateDataArchiveOrderRequest,
     ) -> dms_enterprise_20181101_models.CreateDataArchiveOrderResponse:
         """
-        @summary Creates data archiving tickets.
+        @summary Creates a data archiving ticket to archive data to destinations such as dedicated storage space or ApsaraDB RDS for MySQL instances.
+        
+        @description You can call this API operation only for database instances that are managed in Security Collaboration mode.
         
         @param request: CreateDataArchiveOrderRequest
         @return: CreateDataArchiveOrderResponse
@@ -1995,6 +2007,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not UtilClient.is_unset(request.param_shrink):
             query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.related_user_list_shrink):
             query['RelatedUserList'] = request.related_user_list_shrink
         if not UtilClient.is_unset(request.tid):
@@ -2046,6 +2060,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not UtilClient.is_unset(request.param_shrink):
             query['Param'] = request.param_shrink
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.related_user_list_shrink):
             query['RelatedUserList'] = request.related_user_list_shrink
         if not UtilClient.is_unset(request.tid):
@@ -2263,6 +2279,8 @@ class Client(OpenApiClient):
             query['ParentId'] = request.parent_id
         if not UtilClient.is_unset(request.plugin_param_shrink):
             query['PluginParam'] = request.plugin_param_shrink
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.related_user_list_shrink):
             query['RelatedUserList'] = request.related_user_list_shrink
         if not UtilClient.is_unset(request.tid):
@@ -2314,6 +2332,8 @@ class Client(OpenApiClient):
             query['ParentId'] = request.parent_id
         if not UtilClient.is_unset(request.plugin_param_shrink):
             query['PluginParam'] = request.plugin_param_shrink
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.related_user_list_shrink):
             query['RelatedUserList'] = request.related_user_list_shrink
         if not UtilClient.is_unset(request.tid):
@@ -6705,6 +6725,8 @@ class Client(OpenApiClient):
             query['ActionDetail'] = request.action_detail_shrink
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -6748,6 +6770,8 @@ class Client(OpenApiClient):
             query['ActionDetail'] = request.action_detail_shrink
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -6817,6 +6841,8 @@ class Client(OpenApiClient):
             query['ActionDetail'] = request.action_detail_shrink
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -6860,6 +6886,8 @@ class Client(OpenApiClient):
             query['ActionDetail'] = request.action_detail_shrink
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -8703,6 +8731,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -8740,6 +8770,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -12333,7 +12365,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
         """
-        @summary 获取结构设计项目的流程信息
+        @summary Queries the information about a schema design ticket, such as the current node of the ticket, whether the ticket can be returned to the schema design node, and the publishing strategy.
         
         @param request: GetTableDesignProjectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12370,7 +12402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
         """
-        @summary 获取结构设计项目的流程信息
+        @summary Queries the information about a schema design ticket, such as the current node of the ticket, whether the ticket can be returned to the schema design node, and the publishing strategy.
         
         @param request: GetTableDesignProjectFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12406,7 +12438,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectFlowRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
         """
-        @summary 获取结构设计项目的流程信息
+        @summary Queries the information about a schema design ticket, such as the current node of the ticket, whether the ticket can be returned to the schema design node, and the publishing strategy.
         
         @param request: GetTableDesignProjectFlowRequest
         @return: GetTableDesignProjectFlowResponse
@@ -12419,7 +12451,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectFlowRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectFlowResponse:
         """
-        @summary 获取结构设计项目的流程信息
+        @summary Queries the information about a schema design ticket, such as the current node of the ticket, whether the ticket can be returned to the schema design node, and the publishing strategy.
         
         @param request: GetTableDesignProjectFlowRequest
         @return: GetTableDesignProjectFlowResponse
@@ -12433,7 +12465,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
         """
-        @summary 获取结构设计项目的详细信息
+        @summary Queries the information about the project and change base database of a schema design ticket, such as the state of the ticket, the ID of the user who created the ticket, and the name and ID of the change base database.
         
         @param request: GetTableDesignProjectInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12470,7 +12502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
         """
-        @summary 获取结构设计项目的详细信息
+        @summary Queries the information about the project and change base database of a schema design ticket, such as the state of the ticket, the ID of the user who created the ticket, and the name and ID of the change base database.
         
         @param request: GetTableDesignProjectInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12506,7 +12538,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectInfoRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
         """
-        @summary 获取结构设计项目的详细信息
+        @summary Queries the information about the project and change base database of a schema design ticket, such as the state of the ticket, the ID of the user who created the ticket, and the name and ID of the change base database.
         
         @param request: GetTableDesignProjectInfoRequest
         @return: GetTableDesignProjectInfoResponse
@@ -12519,7 +12551,7 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.GetTableDesignProjectInfoRequest,
     ) -> dms_enterprise_20181101_models.GetTableDesignProjectInfoResponse:
         """
-        @summary 获取结构设计项目的详细信息
+        @summary Queries the information about the project and change base database of a schema design ticket, such as the state of the ticket, the ID of the user who created the ticket, and the name and ID of the change base database.
         
         @param request: GetTableDesignProjectInfoRequest
         @return: GetTableDesignProjectInfoResponse
@@ -22567,6 +22599,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(
@@ -22604,6 +22638,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.order_id):
             query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.tid):
             query['Tid'] = request.tid
         req = open_api_models.OpenApiRequest(

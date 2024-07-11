@@ -2226,6 +2226,7 @@ class ApproveOrderRequest(TeaModel):
         new_approver: int = None,
         new_approver_list: str = None,
         old_approver: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
         workflow_instance_id: int = None,
     ):
@@ -2253,6 +2254,7 @@ class ApproveOrderRequest(TeaModel):
         self.new_approver_list = new_approver_list
         # The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
         self.old_approver = old_approver
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
         self.tid = tid
         # The ID of the approval process. You can call the [GetOrderBaseInfo](https://help.aliyun.com/document_detail/144642.html) operation to obtain the ID of the approval process.
@@ -2283,6 +2285,8 @@ class ApproveOrderRequest(TeaModel):
             result['NewApproverList'] = self.new_approver_list
         if self.old_approver is not None:
             result['OldApprover'] = self.old_approver
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         if self.workflow_instance_id is not None:
@@ -2305,6 +2309,8 @@ class ApproveOrderRequest(TeaModel):
             self.new_approver_list = m.get('NewApproverList')
         if m.get('OldApprover') is not None:
             self.old_approver = m.get('OldApprover')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         if m.get('WorkflowInstanceId') is not None:
@@ -3810,12 +3816,12 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         # 
         # >  If you set ArchiveMethod to a value other than inner_oss, you must connect the destination database for archiving data to Data Management (DMS) before you create the data archiving ticket. After the database is connected to DMS, the database is displayed in the Instances Connected section of the DMS console.
         # 
-        # *   **inner_oss**: dedicated storage, which is a built-in Object Storage Service (OSS) bucket.
-        # *   **oss_userself**: OSS bucket of the user.
+        # *   **inner_oss**: dedicated storage space, which is a built-in space.
+        # *   **oss_userself**: Object Storage Service (OSS) bucket of the user.
         # *   **mysql**: ApsaraDB RDS for MySQL instance.
         # *   **polardb**: PolarDB for MySQL cluster.
         # *   **adb_mysql**: AnalyticDB for MySQL V3.0 cluster.
-        # *   **lindorm**: ApsaraDB for Lindorm instance.
+        # *   **lindorm**: Lindorm instance.
         # 
         # This parameter is required.
         self.archive_method = archive_method
@@ -3836,7 +3842,7 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         # The catalog of the source database. Valid values:
         # 
         # *   **def**: Set this parameter to def if the source database is of the two-layer logical schema, such as a MySQL database, a PolarDB for MySQL cluster, or an AnalyticDB for MySQL instance.
-        # *   **An empty string**: Set this parameter to an empty string if the source database is an ApsaraDB for Lindorm or ApsaraDB for MongoDB instance.
+        # *   **Empty string**: Set this parameter to an empty string if the source database is a Lindorm or ApsaraDB for MongoDB instance.
         # *   **Catalog name**: Set this parameter to the catalog name of the source database if the source database is of the three-layer logical schema, such as a PostgreSQL database.
         # 
         # This parameter is required.
@@ -3853,12 +3859,12 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         # 
         # This parameter is required.
         self.table_includes = table_includes
-        # The table names mapped to the destination database. If you call an API operation to create the data archiving ticket, you do not need to specify this parameter. The default value is used.
+        # The table names mapped to the destination database. This parameter is not required and the default value is used.
         self.table_mapping = table_mapping
         # The host of the destination instance. If the destination instance can be accessed over an internal network or the Internet, preferentially set the value to the internal endpoint of the destination instance.
         # 
-        # *   If the data is archived in an OSS bucket, set the value to the name of the bucket.
-        # *   If the data is archived in the dedicated storage space, set the value to inner_oss.
+        # *   If data is archived in an OSS bucket, set the value to the name of the bucket.
+        # *   If data is archived in dedicated storage space, set the value to inner_oss.
         # 
         # This parameter is required.
         self.target_instance_host = target_instance_host
@@ -4360,6 +4366,7 @@ class CreateDataCorrectOrderRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param: CreateDataCorrectOrderRequestParam = None,
+        real_login_user_uid: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
@@ -4373,6 +4380,7 @@ class CreateDataCorrectOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.param = param
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list = related_user_list
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -4394,6 +4402,8 @@ class CreateDataCorrectOrderRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param is not None:
             result['Param'] = self.param.to_map()
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -4409,6 +4419,8 @@ class CreateDataCorrectOrderRequest(TeaModel):
         if m.get('Param') is not None:
             temp_model = CreateDataCorrectOrderRequestParam()
             self.param = temp_model.from_map(m['Param'])
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -4422,6 +4434,7 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
         attachment_key: str = None,
         comment: str = None,
         param_shrink: str = None,
+        real_login_user_uid: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
@@ -4435,6 +4448,7 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.param_shrink = param_shrink
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
         self.related_user_list_shrink = related_user_list_shrink
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -4455,6 +4469,8 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
             result['Comment'] = self.comment
         if self.param_shrink is not None:
             result['Param'] = self.param_shrink
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -4469,6 +4485,8 @@ class CreateDataCorrectOrderShrinkRequest(TeaModel):
             self.comment = m.get('Comment')
         if m.get('Param') is not None:
             self.param_shrink = m.get('Param')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -5174,6 +5192,7 @@ class CreateDataExportOrderRequest(TeaModel):
         comment: str = None,
         parent_id: int = None,
         plugin_param: CreateDataExportOrderRequestPluginParam = None,
+        real_login_user_uid: str = None,
         related_user_list: List[int] = None,
         tid: int = None,
     ):
@@ -5189,6 +5208,7 @@ class CreateDataExportOrderRequest(TeaModel):
         # 
         # This parameter is required.
         self.plugin_param = plugin_param
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders involved in this operation.
         self.related_user_list = related_user_list
         # The tenant ID.
@@ -5214,6 +5234,8 @@ class CreateDataExportOrderRequest(TeaModel):
             result['ParentId'] = self.parent_id
         if self.plugin_param is not None:
             result['PluginParam'] = self.plugin_param.to_map()
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
         if self.tid is not None:
@@ -5231,6 +5253,8 @@ class CreateDataExportOrderRequest(TeaModel):
         if m.get('PluginParam') is not None:
             temp_model = CreateDataExportOrderRequestPluginParam()
             self.plugin_param = temp_model.from_map(m['PluginParam'])
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -5245,6 +5269,7 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
         comment: str = None,
         parent_id: int = None,
         plugin_param_shrink: str = None,
+        real_login_user_uid: str = None,
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
@@ -5260,6 +5285,7 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.plugin_param_shrink = plugin_param_shrink
+        self.real_login_user_uid = real_login_user_uid
         # The stakeholders involved in this operation.
         self.related_user_list_shrink = related_user_list_shrink
         # The tenant ID.
@@ -5284,6 +5310,8 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
             result['ParentId'] = self.parent_id
         if self.plugin_param_shrink is not None:
             result['PluginParam'] = self.plugin_param_shrink
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.related_user_list_shrink is not None:
             result['RelatedUserList'] = self.related_user_list_shrink
         if self.tid is not None:
@@ -5300,6 +5328,8 @@ class CreateDataExportOrderShrinkRequest(TeaModel):
             self.parent_id = m.get('ParentId')
         if m.get('PluginParam') is not None:
             self.plugin_param_shrink = m.get('PluginParam')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('RelatedUserList') is not None:
             self.related_user_list_shrink = m.get('RelatedUserList')
         if m.get('Tid') is not None:
@@ -13025,6 +13055,7 @@ class ExecuteDataCorrectRequest(TeaModel):
         self,
         action_detail: Dict[str, Any] = None,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: str = None,
     ):
         # The parameters that are required to perform the data change.
@@ -13044,6 +13075,7 @@ class ExecuteDataCorrectRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
@@ -13060,6 +13092,8 @@ class ExecuteDataCorrectRequest(TeaModel):
             result['ActionDetail'] = self.action_detail
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -13070,6 +13104,8 @@ class ExecuteDataCorrectRequest(TeaModel):
             self.action_detail = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -13080,6 +13116,7 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
         self,
         action_detail_shrink: str = None,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: str = None,
     ):
         # The parameters that are required to perform the data change.
@@ -13099,6 +13136,7 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
         self.tid = tid
 
@@ -13115,6 +13153,8 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
             result['ActionDetail'] = self.action_detail_shrink
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -13125,6 +13165,8 @@ class ExecuteDataCorrectShrinkRequest(TeaModel):
             self.action_detail_shrink = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -13228,6 +13270,7 @@ class ExecuteDataExportRequest(TeaModel):
         self,
         action_detail: Dict[str, Any] = None,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
     ):
         # The parameters that are required to perform the operation:
@@ -13243,6 +13286,7 @@ class ExecuteDataExportRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant.
         # 
         # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -13261,6 +13305,8 @@ class ExecuteDataExportRequest(TeaModel):
             result['ActionDetail'] = self.action_detail
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -13271,6 +13317,8 @@ class ExecuteDataExportRequest(TeaModel):
             self.action_detail = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -13281,6 +13329,7 @@ class ExecuteDataExportShrinkRequest(TeaModel):
         self,
         action_detail_shrink: str = None,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
     ):
         # The parameters that are required to perform the operation:
@@ -13296,6 +13345,7 @@ class ExecuteDataExportShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant.
         # 
         # > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -13314,6 +13364,8 @@ class ExecuteDataExportShrinkRequest(TeaModel):
             result['ActionDetail'] = self.action_detail_shrink
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -13324,6 +13376,8 @@ class ExecuteDataExportShrinkRequest(TeaModel):
             self.action_detail_shrink = m.get('ActionDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -18734,12 +18788,14 @@ class GetDataExportDownloadURLRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
     ):
         # The ID of the ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
         self.tid = tid
 
@@ -18754,6 +18810,8 @@ class GetDataExportDownloadURLRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -18762,6 +18820,8 @@ class GetDataExportDownloadURLRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self
@@ -28720,8 +28780,13 @@ class GetTableDesignProjectFlowRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the schema design ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The tenant ID.
+        # 
+        # >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -28759,12 +28824,30 @@ class GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray(TeaModel):
         publish_anchor: bool = None,
         publish_strategies: List[str] = None,
     ):
+        # Indicates whether the ticket can be returned to the schema design node. Valid values:
+        # 
+        # *   **1**: The ticket can be returned to the schema design node.
+        # *   **0**: The ticket cannot be returned to the schema design node. This value can be returned only for the PUBLISH node.
         self.back_to_design = back_to_design
+        # Indicates whether the current node can be skipped. Valid values:
+        # 
+        # *   **1**: The current node can be skipped.
+        # *   **0**: The current node cannot be skipped. This value can be returned only for the PUBLISH node.
         self.can_skip = can_skip
+        # The role of the node in the process.
+        # 
+        # *   START: The ticket was created.
+        # *   DESIGN: The schema is being created.
+        # *   PUBLISH: The schema is published.
+        # *   END: The ticket is complete.
         self.node_role = node_role
+        # The title of the node.
         self.node_title = node_title
+        # The position of the node in the process. The value starts from 1.
         self.position = position
+        # Indicates whether the node is the anchor node. A schema design process has only one anchor node, on which the schema is published. After the schema is published on the anchor node, a post-publish image is generated and the DDL metadata lock is released.
         self.publish_anchor = publish_anchor
+        # The available publishing strategies.
         self.publish_strategies = publish_strategies
 
     def validate(self):
@@ -28819,9 +28902,13 @@ class GetTableDesignProjectFlowResponseBodyProjectFlow(TeaModel):
         rule_comment: str = None,
         rule_name: str = None,
     ):
+        # The position of the current node in the process.
         self.current_position = current_position
+        # The nodes in the process.
         self.flow_node_array = flow_node_array
+        # The description of the security rule set that is applied to the schema design ticket.
         self.rule_comment = rule_comment
+        # The name of the security rule set that is applied to the schema design ticket.
         self.rule_name = rule_name
 
     def validate(self):
@@ -28873,10 +28960,18 @@ class GetTableDesignProjectFlowResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The information about the schema design process.
         self.project_flow = project_flow
+        # The request ID. You can use the request ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -28964,8 +29059,13 @@ class GetTableDesignProjectInfoRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the schema design ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/465867.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
+        # The tenant ID.
+        # 
+        # >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic
         self.tid = tid
 
     def validate(self):
@@ -29003,12 +29103,31 @@ class GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase(TeaModel):
         schema_name: str = None,
         search_name: str = None,
     ):
+        # The alias of the database instance.
         self.alias = alias
+        # The database ID.
         self.db_id = db_id
+        # The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
         self.db_type = db_type
+        # The type of the environment in which the database instance is deployed. Valid values:
+        # 
+        # *   **product**: production environment.
+        # *   **dev**: development environment.
+        # *   **pre**: pre-release environment.
+        # *   **test**: test environment.
+        # *   **sit**: system integration testing (SIT) environment.
+        # *   **uat**: user acceptance testing (UAT) environment.
+        # *   **pet**: stress testing environment.
+        # *   **stag**: staging environment.
         self.env_type = env_type
+        # Indicates whether the database is a logical database. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.logic = logic
+        # The database name.
         self.schema_name = schema_name
+        # The name that is used to search for the database.
         self.search_name = search_name
 
     def validate(self):
@@ -29068,14 +29187,27 @@ class GetTableDesignProjectInfoResponseBodyProjectInfo(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        # The information about the change base database of the schema design ticket.
         self.base_database = base_database
+        # The ID of the user who created the ticket.
         self.creator_id = creator_id
+        # The description of the schema design project.
         self.description = description
+        # The time when the ticket was created.
         self.gmt_create = gmt_create
+        # The time when the ticket was last modified.
         self.gmt_modified = gmt_modified
+        # The ticket ID.
         self.order_id = order_id
+        # The project ID.
         self.project_id = project_id
+        # The state of the schema design project. Valid values:
+        # 
+        # *   **DESIGN**: The schema is being designed.
+        # *   **PUBLISHED**: The schema is published.
+        # *   **CLOSE**: The ticket is closed.
         self.status = status
+        # The name of the schema design project.
         self.title = title
 
     def validate(self):
@@ -29141,10 +29273,18 @@ class GetTableDesignProjectInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The information about the schema design project.
         self.project_info = project_info
+        # The request ID. You can use the request ID to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -53680,12 +53820,14 @@ class SubmitOrderApprovalRequest(TeaModel):
     def __init__(
         self,
         order_id: int = None,
+        real_login_user_uid: str = None,
         tid: int = None,
     ):
         # The ID of the ticket.
         # 
         # This parameter is required.
         self.order_id = order_id
+        self.real_login_user_uid = real_login_user_uid
         # The ID of the tenant.
         # 
         # > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -53702,6 +53844,8 @@ class SubmitOrderApprovalRequest(TeaModel):
         result = dict()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.tid is not None:
             result['Tid'] = self.tid
         return result
@@ -53710,6 +53854,8 @@ class SubmitOrderApprovalRequest(TeaModel):
         m = m or dict()
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
         return self

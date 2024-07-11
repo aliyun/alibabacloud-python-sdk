@@ -1,3 +1,13 @@
+2024-07-11 Version: 1.61.2
+- Update API ApproveOrder: add param RealLoginUserUid.
+- Update API CreateDataCorrectOrder: add param RealLoginUserUid.
+- Update API CreateDataExportOrder: add param RealLoginUserUid.
+- Update API ExecuteDataCorrect: add param RealLoginUserUid.
+- Update API ExecuteDataExport: add param RealLoginUserUid.
+- Update API GetDataExportDownloadURL: add param RealLoginUserUid.
+- Update API SubmitOrderApproval: add param RealLoginUserUid.
+
+
 2024-05-13 Version: 1.61.1
 - Update API CreateDataArchiveOrder: update param Param.
 
