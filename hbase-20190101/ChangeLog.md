@@ -1,3 +1,9 @@
+2024-07-11 Version: 2.10.1
+- Update API DescribeInstance: update response param.
+- Update API DescribeMultiZoneCluster: update response param.
+- Update API ResizeColdStorageSize: update param ColdStorageSize.
+
+
 2024-04-18 Version: 2.10.0
 - Support API CreateAccount.
 - Support API DeleteAccount.

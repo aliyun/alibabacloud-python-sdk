@@ -60,6 +60,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.AddUserHdfsInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AddUserHdfsInfoResponse:
+        """
+        @param request: AddUserHdfsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserHdfsInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -92,6 +97,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.AddUserHdfsInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AddUserHdfsInfoResponse:
+        """
+        @param request: AddUserHdfsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserHdfsInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -123,6 +133,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.AddUserHdfsInfoRequest,
     ) -> hbase_20190101_models.AddUserHdfsInfoResponse:
+        """
+        @param request: AddUserHdfsInfoRequest
+        @return: AddUserHdfsInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_hdfs_info_with_options(request, runtime)
 
@@ -130,6 +144,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.AddUserHdfsInfoRequest,
     ) -> hbase_20190101_models.AddUserHdfsInfoResponse:
+        """
+        @param request: AddUserHdfsInfoRequest
+        @return: AddUserHdfsInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_hdfs_info_with_options_async(request, runtime)
 
@@ -138,6 +156,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.AllocatePublicNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AllocatePublicNetworkAddressResponse:
+        """
+        @param request: AllocatePublicNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocatePublicNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -168,6 +191,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.AllocatePublicNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.AllocatePublicNetworkAddressResponse:
+        """
+        @param request: AllocatePublicNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocatePublicNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -197,6 +225,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.AllocatePublicNetworkAddressRequest,
     ) -> hbase_20190101_models.AllocatePublicNetworkAddressResponse:
+        """
+        @param request: AllocatePublicNetworkAddressRequest
+        @return: AllocatePublicNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_public_network_address_with_options(request, runtime)
 
@@ -204,6 +236,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.AllocatePublicNetworkAddressRequest,
     ) -> hbase_20190101_models.AllocatePublicNetworkAddressResponse:
+        """
+        @param request: AllocatePublicNetworkAddressRequest
+        @return: AllocatePublicNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_public_network_address_with_options_async(request, runtime)
 
@@ -212,6 +248,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CancelActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        """
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
@@ -250,6 +291,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CancelActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        """
+        @param request: CancelActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
@@ -287,6 +333,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CancelActiveOperationTasksRequest,
     ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        """
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_active_operation_tasks_with_options(request, runtime)
 
@@ -294,6 +344,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CancelActiveOperationTasksRequest,
     ) -> hbase_20190101_models.CancelActiveOperationTasksResponse:
+        """
+        @param request: CancelActiveOperationTasksRequest
+        @return: CancelActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_active_operation_tasks_with_options_async(request, runtime)
 
@@ -302,6 +356,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CheckComponentsVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CheckComponentsVersionResponse:
+        """
+        @param request: CheckComponentsVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckComponentsVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -332,6 +391,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CheckComponentsVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CheckComponentsVersionResponse:
+        """
+        @param request: CheckComponentsVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckComponentsVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -361,6 +425,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CheckComponentsVersionRequest,
     ) -> hbase_20190101_models.CheckComponentsVersionResponse:
+        """
+        @param request: CheckComponentsVersionRequest
+        @return: CheckComponentsVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_components_version_with_options(request, runtime)
 
@@ -368,6 +436,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CheckComponentsVersionRequest,
     ) -> hbase_20190101_models.CheckComponentsVersionResponse:
+        """
+        @param request: CheckComponentsVersionRequest
+        @return: CheckComponentsVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_components_version_with_options_async(request, runtime)
 
@@ -376,6 +448,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CloseBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CloseBackupResponse:
+        """
+        @param request: CloseBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -404,6 +481,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CloseBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CloseBackupResponse:
+        """
+        @param request: CloseBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -431,6 +513,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CloseBackupRequest,
     ) -> hbase_20190101_models.CloseBackupResponse:
+        """
+        @param request: CloseBackupRequest
+        @return: CloseBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_backup_with_options(request, runtime)
 
@@ -438,6 +524,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CloseBackupRequest,
     ) -> hbase_20190101_models.CloseBackupResponse:
+        """
+        @param request: CloseBackupRequest
+        @return: CloseBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_backup_with_options_async(request, runtime)
 
@@ -446,6 +536,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ConvertInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ConvertInstanceResponse:
+        """
+        @param request: ConvertInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -480,6 +575,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ConvertInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ConvertInstanceResponse:
+        """
+        @param request: ConvertInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -513,6 +613,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ConvertInstanceRequest,
     ) -> hbase_20190101_models.ConvertInstanceResponse:
+        """
+        @param request: ConvertInstanceRequest
+        @return: ConvertInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.convert_instance_with_options(request, runtime)
 
@@ -520,6 +624,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ConvertInstanceRequest,
     ) -> hbase_20190101_models.ConvertInstanceResponse:
+        """
+        @param request: ConvertInstanceRequest
+        @return: ConvertInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.convert_instance_with_options_async(request, runtime)
 
@@ -528,6 +636,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateAccountResponse:
+        """
+        @summary 新建账户
+        
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -560,6 +675,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateAccountResponse:
+        """
+        @summary 新建账户
+        
+        @param request: CreateAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -591,6 +713,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateAccountRequest,
     ) -> hbase_20190101_models.CreateAccountResponse:
+        """
+        @summary 新建账户
+        
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_account_with_options(request, runtime)
 
@@ -598,6 +726,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateAccountRequest,
     ) -> hbase_20190101_models.CreateAccountResponse:
+        """
+        @summary 新建账户
+        
+        @param request: CreateAccountRequest
+        @return: CreateAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
@@ -606,6 +740,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateBackupPlanResponse:
+        """
+        @param request: CreateBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -634,6 +773,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateBackupPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateBackupPlanResponse:
+        """
+        @param request: CreateBackupPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -661,6 +805,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateBackupPlanRequest,
     ) -> hbase_20190101_models.CreateBackupPlanResponse:
+        """
+        @param request: CreateBackupPlanRequest
+        @return: CreateBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_plan_with_options(request, runtime)
 
@@ -668,6 +816,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateBackupPlanRequest,
     ) -> hbase_20190101_models.CreateBackupPlanResponse:
+        """
+        @param request: CreateBackupPlanRequest
+        @return: CreateBackupPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_plan_with_options_async(request, runtime)
 
@@ -676,6 +828,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -744,6 +901,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -811,6 +973,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateClusterRequest,
     ) -> hbase_20190101_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cluster_with_options(request, runtime)
 
@@ -818,6 +984,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateClusterRequest,
     ) -> hbase_20190101_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
@@ -826,6 +996,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateGlobalResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateGlobalResourceResponse:
+        """
+        @param request: CreateGlobalResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -862,6 +1037,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateGlobalResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateGlobalResourceResponse:
+        """
+        @param request: CreateGlobalResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGlobalResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -897,6 +1077,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateGlobalResourceRequest,
     ) -> hbase_20190101_models.CreateGlobalResourceResponse:
+        """
+        @param request: CreateGlobalResourceRequest
+        @return: CreateGlobalResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_global_resource_with_options(request, runtime)
 
@@ -904,6 +1088,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateGlobalResourceRequest,
     ) -> hbase_20190101_models.CreateGlobalResourceResponse:
+        """
+        @param request: CreateGlobalResourceRequest
+        @return: CreateGlobalResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_global_resource_with_options_async(request, runtime)
 
@@ -912,6 +1100,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateHBaseSlbServerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateHBaseSlbServerResponse:
+        """
+        @param request: CreateHBaseSlbServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHBaseSlbServerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -944,6 +1137,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateHBaseSlbServerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateHBaseSlbServerResponse:
+        """
+        @param request: CreateHBaseSlbServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHBaseSlbServerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -975,6 +1173,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateHBaseSlbServerRequest,
     ) -> hbase_20190101_models.CreateHBaseSlbServerResponse:
+        """
+        @param request: CreateHBaseSlbServerRequest
+        @return: CreateHBaseSlbServerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_hbase_slb_server_with_options(request, runtime)
 
@@ -982,6 +1184,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateHBaseSlbServerRequest,
     ) -> hbase_20190101_models.CreateHBaseSlbServerResponse:
+        """
+        @param request: CreateHBaseSlbServerRequest
+        @return: CreateHBaseSlbServerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_hbase_slb_server_with_options_async(request, runtime)
 
@@ -990,6 +1196,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateHbaseHaSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        """
+        @param request: CreateHbaseHaSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHbaseHaSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -1026,6 +1237,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateHbaseHaSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        """
+        @param request: CreateHbaseHaSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHbaseHaSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -1061,6 +1277,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateHbaseHaSlbRequest,
     ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        """
+        @param request: CreateHbaseHaSlbRequest
+        @return: CreateHbaseHaSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_hbase_ha_slb_with_options(request, runtime)
 
@@ -1068,6 +1288,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateHbaseHaSlbRequest,
     ) -> hbase_20190101_models.CreateHbaseHaSlbResponse:
+        """
+        @param request: CreateHbaseHaSlbRequest
+        @return: CreateHbaseHaSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_hbase_ha_slb_with_options_async(request, runtime)
 
@@ -1076,6 +1300,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateMultiZoneClusterResponse:
+        """
+        @param request: CreateMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -1160,6 +1389,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateMultiZoneClusterResponse:
+        """
+        @param request: CreateMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -1243,6 +1477,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateMultiZoneClusterRequest,
     ) -> hbase_20190101_models.CreateMultiZoneClusterResponse:
+        """
+        @param request: CreateMultiZoneClusterRequest
+        @return: CreateMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_multi_zone_cluster_with_options(request, runtime)
 
@@ -1250,6 +1488,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateMultiZoneClusterRequest,
     ) -> hbase_20190101_models.CreateMultiZoneClusterResponse:
+        """
+        @param request: CreateMultiZoneClusterRequest
+        @return: CreateMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_multi_zone_cluster_with_options_async(request, runtime)
 
@@ -1258,6 +1500,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateRestorePlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateRestorePlanResponse:
+        """
+        @param request: CreateRestorePlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRestorePlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1296,6 +1543,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateRestorePlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateRestorePlanResponse:
+        """
+        @param request: CreateRestorePlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRestorePlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1333,6 +1585,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateRestorePlanRequest,
     ) -> hbase_20190101_models.CreateRestorePlanResponse:
+        """
+        @param request: CreateRestorePlanRequest
+        @return: CreateRestorePlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_restore_plan_with_options(request, runtime)
 
@@ -1340,6 +1596,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateRestorePlanRequest,
     ) -> hbase_20190101_models.CreateRestorePlanResponse:
+        """
+        @param request: CreateRestorePlanRequest
+        @return: CreateRestorePlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_restore_plan_with_options_async(request, runtime)
 
@@ -1348,6 +1608,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateServerlessClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateServerlessClusterResponse:
+        """
+        @param request: CreateServerlessClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServerlessClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -1410,6 +1675,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.CreateServerlessClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.CreateServerlessClusterResponse:
+        """
+        @param request: CreateServerlessClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServerlessClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -1471,6 +1741,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateServerlessClusterRequest,
     ) -> hbase_20190101_models.CreateServerlessClusterResponse:
+        """
+        @param request: CreateServerlessClusterRequest
+        @return: CreateServerlessClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_serverless_cluster_with_options(request, runtime)
 
@@ -1478,6 +1752,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.CreateServerlessClusterRequest,
     ) -> hbase_20190101_models.CreateServerlessClusterResponse:
+        """
+        @param request: CreateServerlessClusterRequest
+        @return: CreateServerlessClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_serverless_cluster_with_options_async(request, runtime)
 
@@ -1486,6 +1764,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteAccountResponse:
+        """
+        @summary 删除账户
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1516,6 +1801,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteAccountResponse:
+        """
+        @summary 删除账户
+        
+        @param request: DeleteAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1545,6 +1837,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteAccountRequest,
     ) -> hbase_20190101_models.DeleteAccountResponse:
+        """
+        @summary 删除账户
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
@@ -1552,6 +1850,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteAccountRequest,
     ) -> hbase_20190101_models.DeleteAccountResponse:
+        """
+        @summary 删除账户
+        
+        @param request: DeleteAccountRequest
+        @return: DeleteAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
@@ -1560,6 +1864,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteGlobalResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteGlobalResourceResponse:
+        """
+        @param request: DeleteGlobalResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1594,6 +1903,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteGlobalResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteGlobalResourceResponse:
+        """
+        @param request: DeleteGlobalResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1627,6 +1941,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteGlobalResourceRequest,
     ) -> hbase_20190101_models.DeleteGlobalResourceResponse:
+        """
+        @param request: DeleteGlobalResourceRequest
+        @return: DeleteGlobalResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_global_resource_with_options(request, runtime)
 
@@ -1634,6 +1952,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteGlobalResourceRequest,
     ) -> hbase_20190101_models.DeleteGlobalResourceResponse:
+        """
+        @param request: DeleteGlobalResourceRequest
+        @return: DeleteGlobalResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_global_resource_with_options_async(request, runtime)
 
@@ -1642,6 +1964,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteHBaseHaDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseHaDBResponse:
+        """
+        @param request: DeleteHBaseHaDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHBaseHaDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -1672,6 +1999,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteHBaseHaDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseHaDBResponse:
+        """
+        @param request: DeleteHBaseHaDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHBaseHaDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -1701,6 +2033,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteHBaseHaDBRequest,
     ) -> hbase_20190101_models.DeleteHBaseHaDBResponse:
+        """
+        @param request: DeleteHBaseHaDBRequest
+        @return: DeleteHBaseHaDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hbase_ha_dbwith_options(request, runtime)
 
@@ -1708,6 +2044,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteHBaseHaDBRequest,
     ) -> hbase_20190101_models.DeleteHBaseHaDBResponse:
+        """
+        @param request: DeleteHBaseHaDBRequest
+        @return: DeleteHBaseHaDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hbase_ha_dbwith_options_async(request, runtime)
 
@@ -1716,6 +2056,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteHBaseSlbServerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseSlbServerResponse:
+        """
+        @param request: DeleteHBaseSlbServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHBaseSlbServerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1746,6 +2091,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteHBaseSlbServerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHBaseSlbServerResponse:
+        """
+        @param request: DeleteHBaseSlbServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHBaseSlbServerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1775,6 +2125,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteHBaseSlbServerRequest,
     ) -> hbase_20190101_models.DeleteHBaseSlbServerResponse:
+        """
+        @param request: DeleteHBaseSlbServerRequest
+        @return: DeleteHBaseSlbServerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hbase_slb_server_with_options(request, runtime)
 
@@ -1782,6 +2136,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteHBaseSlbServerRequest,
     ) -> hbase_20190101_models.DeleteHBaseSlbServerResponse:
+        """
+        @param request: DeleteHBaseSlbServerRequest
+        @return: DeleteHBaseSlbServerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hbase_slb_server_with_options_async(request, runtime)
 
@@ -1790,6 +2148,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        """
+        @param request: DeleteHbaseHaSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHbaseHaSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -1822,6 +2185,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        """
+        @param request: DeleteHbaseHaSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHbaseHaSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -1853,6 +2221,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
     ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        """
+        @param request: DeleteHbaseHaSlbRequest
+        @return: DeleteHbaseHaSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_hbase_ha_slb_with_options(request, runtime)
 
@@ -1860,6 +2232,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteHbaseHaSlbRequest,
     ) -> hbase_20190101_models.DeleteHbaseHaSlbResponse:
+        """
+        @param request: DeleteHbaseHaSlbRequest
+        @return: DeleteHbaseHaSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_hbase_ha_slb_with_options_async(request, runtime)
 
@@ -1868,6 +2244,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1898,6 +2279,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1927,6 +2313,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteInstanceRequest,
     ) -> hbase_20190101_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_instance_with_options(request, runtime)
 
@@ -1934,6 +2324,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteInstanceRequest,
     ) -> hbase_20190101_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
 
@@ -1942,6 +2336,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteMultiZoneClusterResponse:
+        """
+        @param request: DeleteMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1972,6 +2371,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteMultiZoneClusterResponse:
+        """
+        @param request: DeleteMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2001,6 +2405,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteMultiZoneClusterRequest,
     ) -> hbase_20190101_models.DeleteMultiZoneClusterResponse:
+        """
+        @param request: DeleteMultiZoneClusterRequest
+        @return: DeleteMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_multi_zone_cluster_with_options(request, runtime)
 
@@ -2008,6 +2416,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteMultiZoneClusterRequest,
     ) -> hbase_20190101_models.DeleteMultiZoneClusterResponse:
+        """
+        @param request: DeleteMultiZoneClusterRequest
+        @return: DeleteMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_multi_zone_cluster_with_options_async(request, runtime)
 
@@ -2016,6 +2428,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteServerlessClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteServerlessClusterResponse:
+        """
+        @param request: DeleteServerlessClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServerlessClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2048,6 +2465,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteServerlessClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteServerlessClusterResponse:
+        """
+        @param request: DeleteServerlessClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServerlessClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2079,6 +2501,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteServerlessClusterRequest,
     ) -> hbase_20190101_models.DeleteServerlessClusterResponse:
+        """
+        @param request: DeleteServerlessClusterRequest
+        @return: DeleteServerlessClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_serverless_cluster_with_options(request, runtime)
 
@@ -2086,6 +2512,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteServerlessClusterRequest,
     ) -> hbase_20190101_models.DeleteServerlessClusterResponse:
+        """
+        @param request: DeleteServerlessClusterRequest
+        @return: DeleteServerlessClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_serverless_cluster_with_options_async(request, runtime)
 
@@ -2094,6 +2524,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteUserHdfsInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
+        """
+        @param request: DeleteUserHdfsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserHdfsInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2124,6 +2559,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DeleteUserHdfsInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
+        """
+        @param request: DeleteUserHdfsInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserHdfsInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2153,6 +2593,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteUserHdfsInfoRequest,
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
+        """
+        @param request: DeleteUserHdfsInfoRequest
+        @return: DeleteUserHdfsInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_hdfs_info_with_options(request, runtime)
 
@@ -2160,6 +2604,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DeleteUserHdfsInfoRequest,
     ) -> hbase_20190101_models.DeleteUserHdfsInfoResponse:
+        """
+        @param request: DeleteUserHdfsInfoRequest
+        @return: DeleteUserHdfsInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_hdfs_info_with_options_async(request, runtime)
 
@@ -2168,6 +2616,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeAccountsResponse:
+        """
+        @summary 查询账户列表
+        
+        @param request: DescribeAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2196,6 +2651,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeAccountsResponse:
+        """
+        @summary 查询账户列表
+        
+        @param request: DescribeAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2223,6 +2685,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeAccountsRequest,
     ) -> hbase_20190101_models.DescribeAccountsResponse:
+        """
+        @summary 查询账户列表
+        
+        @param request: DescribeAccountsRequest
+        @return: DescribeAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_accounts_with_options(request, runtime)
 
@@ -2230,6 +2698,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeAccountsRequest,
     ) -> hbase_20190101_models.DescribeAccountsResponse:
+        """
+        @summary 查询账户列表
+        
+        @param request: DescribeAccountsRequest
+        @return: DescribeAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_accounts_with_options_async(request, runtime)
 
@@ -2238,6 +2712,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        """
+        @param request: DescribeActiveOperationTaskTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTaskTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_history):
@@ -2276,6 +2755,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        """
+        @param request: DescribeActiveOperationTaskTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTaskTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_history):
@@ -2313,6 +2797,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
     ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        """
+        @param request: DescribeActiveOperationTaskTypeRequest
+        @return: DescribeActiveOperationTaskTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_active_operation_task_type_with_options(request, runtime)
 
@@ -2320,6 +2808,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeActiveOperationTaskTypeRequest,
     ) -> hbase_20190101_models.DescribeActiveOperationTaskTypeResponse:
+        """
+        @param request: DescribeActiveOperationTaskTypeRequest
+        @return: DescribeActiveOperationTaskTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_task_type_with_options_async(request, runtime)
 
@@ -2328,6 +2820,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_cancel):
@@ -2386,6 +2883,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_cancel):
@@ -2443,6 +2945,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
     ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_active_operation_tasks_with_options(request, runtime)
 
@@ -2450,6 +2956,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeActiveOperationTasksRequest,
     ) -> hbase_20190101_models.DescribeActiveOperationTasksResponse:
+        """
+        @param request: DescribeActiveOperationTasksRequest
+        @return: DescribeActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_active_operation_tasks_with_options_async(request, runtime)
 
@@ -2458,6 +2968,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeAvailableResourceResponse:
+        """
+        @param request: DescribeAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -2498,6 +3013,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeAvailableResourceResponse:
+        """
+        @param request: DescribeAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -2537,6 +3057,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeAvailableResourceRequest,
     ) -> hbase_20190101_models.DescribeAvailableResourceResponse:
+        """
+        @param request: DescribeAvailableResourceRequest
+        @return: DescribeAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_resource_with_options(request, runtime)
 
@@ -2544,6 +3068,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeAvailableResourceRequest,
     ) -> hbase_20190101_models.DescribeAvailableResourceResponse:
+        """
+        @param request: DescribeAvailableResourceRequest
+        @return: DescribeAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_resource_with_options_async(request, runtime)
 
@@ -2552,6 +3080,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupPlanConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPlanConfigResponse:
+        """
+        @param request: DescribeBackupPlanConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlanConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2580,6 +3113,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupPlanConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPlanConfigResponse:
+        """
+        @param request: DescribeBackupPlanConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPlanConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2607,6 +3145,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupPlanConfigRequest,
     ) -> hbase_20190101_models.DescribeBackupPlanConfigResponse:
+        """
+        @param request: DescribeBackupPlanConfigRequest
+        @return: DescribeBackupPlanConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_plan_config_with_options(request, runtime)
 
@@ -2614,6 +3156,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupPlanConfigRequest,
     ) -> hbase_20190101_models.DescribeBackupPlanConfigResponse:
+        """
+        @param request: DescribeBackupPlanConfigRequest
+        @return: DescribeBackupPlanConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_plan_config_with_options_async(request, runtime)
 
@@ -2622,6 +3168,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2650,6 +3201,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2677,6 +3233,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupPolicyRequest,
     ) -> hbase_20190101_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_policy_with_options(request, runtime)
 
@@ -2684,6 +3244,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupPolicyRequest,
     ) -> hbase_20190101_models.DescribeBackupPolicyResponse:
+        """
+        @param request: DescribeBackupPolicyRequest
+        @return: DescribeBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_policy_with_options_async(request, runtime)
 
@@ -2692,6 +3256,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupStatusResponse:
+        """
+        @param request: DescribeBackupStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2720,6 +3289,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupStatusResponse:
+        """
+        @param request: DescribeBackupStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2747,6 +3321,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupStatusRequest,
     ) -> hbase_20190101_models.DescribeBackupStatusResponse:
+        """
+        @param request: DescribeBackupStatusRequest
+        @return: DescribeBackupStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_status_with_options(request, runtime)
 
@@ -2754,6 +3332,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupStatusRequest,
     ) -> hbase_20190101_models.DescribeBackupStatusResponse:
+        """
+        @param request: DescribeBackupStatusRequest
+        @return: DescribeBackupStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_status_with_options_async(request, runtime)
 
@@ -2762,6 +3344,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupSummaryResponse:
+        """
+        @param request: DescribeBackupSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2794,6 +3381,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupSummaryResponse:
+        """
+        @param request: DescribeBackupSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -2825,6 +3417,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupSummaryRequest,
     ) -> hbase_20190101_models.DescribeBackupSummaryResponse:
+        """
+        @param request: DescribeBackupSummaryRequest
+        @return: DescribeBackupSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_summary_with_options(request, runtime)
 
@@ -2832,6 +3428,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupSummaryRequest,
     ) -> hbase_20190101_models.DescribeBackupSummaryResponse:
+        """
+        @param request: DescribeBackupSummaryRequest
+        @return: DescribeBackupSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_summary_with_options_async(request, runtime)
 
@@ -2840,6 +3440,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupTablesResponse:
+        """
+        @param request: DescribeBackupTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_record_id):
@@ -2874,6 +3479,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupTablesResponse:
+        """
+        @param request: DescribeBackupTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_record_id):
@@ -2907,6 +3517,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupTablesRequest,
     ) -> hbase_20190101_models.DescribeBackupTablesResponse:
+        """
+        @param request: DescribeBackupTablesRequest
+        @return: DescribeBackupTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_tables_with_options(request, runtime)
 
@@ -2914,6 +3528,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupTablesRequest,
     ) -> hbase_20190101_models.DescribeBackupTablesResponse:
+        """
+        @param request: DescribeBackupTablesRequest
+        @return: DescribeBackupTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_tables_with_options_async(request, runtime)
 
@@ -2922,6 +3540,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupsResponse:
+        """
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -2964,6 +3587,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeBackupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeBackupsResponse:
+        """
+        @param request: DescribeBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -3005,6 +3633,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupsRequest,
     ) -> hbase_20190101_models.DescribeBackupsResponse:
+        """
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backups_with_options(request, runtime)
 
@@ -3012,6 +3644,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeBackupsRequest,
     ) -> hbase_20190101_models.DescribeBackupsResponse:
+        """
+        @param request: DescribeBackupsRequest
+        @return: DescribeBackupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
@@ -3020,6 +3656,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeClusterConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeClusterConnectionResponse:
+        """
+        @param request: DescribeClusterConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3050,6 +3691,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeClusterConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeClusterConnectionResponse:
+        """
+        @param request: DescribeClusterConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterConnectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3079,6 +3725,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeClusterConnectionRequest,
     ) -> hbase_20190101_models.DescribeClusterConnectionResponse:
+        """
+        @param request: DescribeClusterConnectionRequest
+        @return: DescribeClusterConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cluster_connection_with_options(request, runtime)
 
@@ -3086,6 +3736,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeClusterConnectionRequest,
     ) -> hbase_20190101_models.DescribeClusterConnectionResponse:
+        """
+        @param request: DescribeClusterConnectionRequest
+        @return: DescribeClusterConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_connection_with_options_async(request, runtime)
 
@@ -3094,6 +3748,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeColdStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeColdStorageResponse:
+        """
+        @param request: DescribeColdStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeColdStorageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3122,6 +3781,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeColdStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeColdStorageResponse:
+        """
+        @param request: DescribeColdStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeColdStorageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3149,6 +3813,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeColdStorageRequest,
     ) -> hbase_20190101_models.DescribeColdStorageResponse:
+        """
+        @param request: DescribeColdStorageRequest
+        @return: DescribeColdStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cold_storage_with_options(request, runtime)
 
@@ -3156,6 +3824,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeColdStorageRequest,
     ) -> hbase_20190101_models.DescribeColdStorageResponse:
+        """
+        @param request: DescribeColdStorageRequest
+        @return: DescribeColdStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cold_storage_with_options_async(request, runtime)
 
@@ -3164,6 +3836,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeDBInstanceUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDBInstanceUsageResponse:
+        """
+        @param request: DescribeDBInstanceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3192,6 +3869,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeDBInstanceUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDBInstanceUsageResponse:
+        """
+        @param request: DescribeDBInstanceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBInstanceUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3219,6 +3901,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeDBInstanceUsageRequest,
     ) -> hbase_20190101_models.DescribeDBInstanceUsageResponse:
+        """
+        @param request: DescribeDBInstanceUsageRequest
+        @return: DescribeDBInstanceUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dbinstance_usage_with_options(request, runtime)
 
@@ -3226,6 +3912,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeDBInstanceUsageRequest,
     ) -> hbase_20190101_models.DescribeDBInstanceUsageResponse:
+        """
+        @param request: DescribeDBInstanceUsageRequest
+        @return: DescribeDBInstanceUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstance_usage_with_options_async(request, runtime)
 
@@ -3234,6 +3924,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeDeletedInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDeletedInstancesResponse:
+        """
+        @param request: DescribeDeletedInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeletedInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3266,6 +3961,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeDeletedInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDeletedInstancesResponse:
+        """
+        @param request: DescribeDeletedInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeletedInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3297,6 +3997,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeDeletedInstancesRequest,
     ) -> hbase_20190101_models.DescribeDeletedInstancesResponse:
+        """
+        @param request: DescribeDeletedInstancesRequest
+        @return: DescribeDeletedInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_deleted_instances_with_options(request, runtime)
 
@@ -3304,6 +4008,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeDeletedInstancesRequest,
     ) -> hbase_20190101_models.DescribeDeletedInstancesResponse:
+        """
+        @param request: DescribeDeletedInstancesRequest
+        @return: DescribeDeletedInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_deleted_instances_with_options_async(request, runtime)
 
@@ -3312,6 +4020,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeDiskWarningLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDiskWarningLineResponse:
+        """
+        @param request: DescribeDiskWarningLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskWarningLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3340,6 +4053,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeDiskWarningLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeDiskWarningLineResponse:
+        """
+        @param request: DescribeDiskWarningLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskWarningLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3367,6 +4085,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeDiskWarningLineRequest,
     ) -> hbase_20190101_models.DescribeDiskWarningLineResponse:
+        """
+        @param request: DescribeDiskWarningLineRequest
+        @return: DescribeDiskWarningLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_disk_warning_line_with_options(request, runtime)
 
@@ -3374,6 +4096,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeDiskWarningLineRequest,
     ) -> hbase_20190101_models.DescribeDiskWarningLineResponse:
+        """
+        @param request: DescribeDiskWarningLineRequest
+        @return: DescribeDiskWarningLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_disk_warning_line_with_options_async(request, runtime)
 
@@ -3382,6 +4108,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeEndpointsResponse:
+        """
+        @param request: DescribeEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3410,6 +4141,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeEndpointsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeEndpointsResponse:
+        """
+        @param request: DescribeEndpointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3437,6 +4173,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeEndpointsRequest,
     ) -> hbase_20190101_models.DescribeEndpointsResponse:
+        """
+        @param request: DescribeEndpointsRequest
+        @return: DescribeEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_endpoints_with_options(request, runtime)
 
@@ -3444,6 +4184,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeEndpointsRequest,
     ) -> hbase_20190101_models.DescribeEndpointsResponse:
+        """
+        @param request: DescribeEndpointsRequest
+        @return: DescribeEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_endpoints_with_options_async(request, runtime)
 
@@ -3452,6 +4196,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3480,6 +4229,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3507,6 +4261,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeInstanceRequest,
     ) -> hbase_20190101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_with_options(request, runtime)
 
@@ -3514,6 +4272,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeInstanceRequest,
     ) -> hbase_20190101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
@@ -3522,6 +4284,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceTypeResponse:
+        """
+        @param request: DescribeInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_type):
@@ -3550,6 +4317,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstanceTypeResponse:
+        """
+        @param request: DescribeInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_type):
@@ -3577,6 +4349,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeInstanceTypeRequest,
     ) -> hbase_20190101_models.DescribeInstanceTypeResponse:
+        """
+        @param request: DescribeInstanceTypeRequest
+        @return: DescribeInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_type_with_options(request, runtime)
 
@@ -3584,6 +4360,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeInstanceTypeRequest,
     ) -> hbase_20190101_models.DescribeInstanceTypeResponse:
+        """
+        @param request: DescribeInstanceTypeRequest
+        @return: DescribeInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_type_with_options_async(request, runtime)
 
@@ -3592,6 +4372,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3634,6 +4419,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3675,6 +4465,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeInstancesRequest,
     ) -> hbase_20190101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -3682,6 +4476,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeInstancesRequest,
     ) -> hbase_20190101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -3690,6 +4488,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeIpWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeIpWhitelistResponse:
+        """
+        @param request: DescribeIpWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIpWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3718,6 +4521,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeIpWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeIpWhitelistResponse:
+        """
+        @param request: DescribeIpWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIpWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3745,6 +4553,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeIpWhitelistRequest,
     ) -> hbase_20190101_models.DescribeIpWhitelistResponse:
+        """
+        @param request: DescribeIpWhitelistRequest
+        @return: DescribeIpWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ip_whitelist_with_options(request, runtime)
 
@@ -3752,6 +4564,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeIpWhitelistRequest,
     ) -> hbase_20190101_models.DescribeIpWhitelistResponse:
+        """
+        @param request: DescribeIpWhitelistRequest
+        @return: DescribeIpWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ip_whitelist_with_options_async(request, runtime)
 
@@ -3760,6 +4576,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeMultiZoneAvailableRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse:
+        """
+        @param request: DescribeMultiZoneAvailableRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiZoneAvailableRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3788,6 +4609,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeMultiZoneAvailableRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse:
+        """
+        @param request: DescribeMultiZoneAvailableRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiZoneAvailableRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3815,6 +4641,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeMultiZoneAvailableRegionsRequest,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse:
+        """
+        @param request: DescribeMultiZoneAvailableRegionsRequest
+        @return: DescribeMultiZoneAvailableRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_multi_zone_available_regions_with_options(request, runtime)
 
@@ -3822,6 +4652,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeMultiZoneAvailableRegionsRequest,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableRegionsResponse:
+        """
+        @param request: DescribeMultiZoneAvailableRegionsRequest
+        @return: DescribeMultiZoneAvailableRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_multi_zone_available_regions_with_options_async(request, runtime)
 
@@ -3830,6 +4664,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeMultiZoneAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse:
+        """
+        @param request: DescribeMultiZoneAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiZoneAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3862,6 +4701,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeMultiZoneAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse:
+        """
+        @param request: DescribeMultiZoneAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiZoneAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3893,6 +4737,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeMultiZoneAvailableResourceRequest,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse:
+        """
+        @param request: DescribeMultiZoneAvailableResourceRequest
+        @return: DescribeMultiZoneAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_multi_zone_available_resource_with_options(request, runtime)
 
@@ -3900,6 +4748,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeMultiZoneAvailableResourceRequest,
     ) -> hbase_20190101_models.DescribeMultiZoneAvailableResourceResponse:
+        """
+        @param request: DescribeMultiZoneAvailableResourceRequest
+        @return: DescribeMultiZoneAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_multi_zone_available_resource_with_options_async(request, runtime)
 
@@ -3908,6 +4760,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneClusterResponse:
+        """
+        @param request: DescribeMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3936,6 +4793,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeMultiZoneClusterResponse:
+        """
+        @param request: DescribeMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -3963,6 +4825,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeMultiZoneClusterRequest,
     ) -> hbase_20190101_models.DescribeMultiZoneClusterResponse:
+        """
+        @param request: DescribeMultiZoneClusterRequest
+        @return: DescribeMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_multi_zone_cluster_with_options(request, runtime)
 
@@ -3970,6 +4836,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeMultiZoneClusterRequest,
     ) -> hbase_20190101_models.DescribeMultiZoneClusterResponse:
+        """
+        @param request: DescribeMultiZoneClusterRequest
+        @return: DescribeMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_multi_zone_cluster_with_options_async(request, runtime)
 
@@ -3978,6 +4848,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRecoverableTimeRangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRecoverableTimeRangeResponse:
+        """
+        @param request: DescribeRecoverableTimeRangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecoverableTimeRangeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4006,6 +4881,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRecoverableTimeRangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRecoverableTimeRangeResponse:
+        """
+        @param request: DescribeRecoverableTimeRangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecoverableTimeRangeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4033,6 +4913,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRecoverableTimeRangeRequest,
     ) -> hbase_20190101_models.DescribeRecoverableTimeRangeResponse:
+        """
+        @param request: DescribeRecoverableTimeRangeRequest
+        @return: DescribeRecoverableTimeRangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_recoverable_time_range_with_options(request, runtime)
 
@@ -4040,6 +4924,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRecoverableTimeRangeRequest,
     ) -> hbase_20190101_models.DescribeRecoverableTimeRangeResponse:
+        """
+        @param request: DescribeRecoverableTimeRangeRequest
+        @return: DescribeRecoverableTimeRangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_recoverable_time_range_with_options_async(request, runtime)
 
@@ -4048,6 +4936,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4078,6 +4971,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4107,6 +5005,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRegionsRequest,
     ) -> hbase_20190101_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -4114,6 +5016,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRegionsRequest,
     ) -> hbase_20190101_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -4122,6 +5028,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreFullDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreFullDetailsResponse:
+        """
+        @param request: DescribeRestoreFullDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreFullDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4156,6 +5067,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreFullDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreFullDetailsResponse:
+        """
+        @param request: DescribeRestoreFullDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreFullDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4189,6 +5105,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreFullDetailsRequest,
     ) -> hbase_20190101_models.DescribeRestoreFullDetailsResponse:
+        """
+        @param request: DescribeRestoreFullDetailsRequest
+        @return: DescribeRestoreFullDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_full_details_with_options(request, runtime)
 
@@ -4196,6 +5116,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreFullDetailsRequest,
     ) -> hbase_20190101_models.DescribeRestoreFullDetailsResponse:
+        """
+        @param request: DescribeRestoreFullDetailsRequest
+        @return: DescribeRestoreFullDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_full_details_with_options_async(request, runtime)
 
@@ -4204,6 +5128,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreIncrDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreIncrDetailResponse:
+        """
+        @param request: DescribeRestoreIncrDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreIncrDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4234,6 +5163,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreIncrDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreIncrDetailResponse:
+        """
+        @param request: DescribeRestoreIncrDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreIncrDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4263,6 +5197,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreIncrDetailRequest,
     ) -> hbase_20190101_models.DescribeRestoreIncrDetailResponse:
+        """
+        @param request: DescribeRestoreIncrDetailRequest
+        @return: DescribeRestoreIncrDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_incr_detail_with_options(request, runtime)
 
@@ -4270,6 +5208,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreIncrDetailRequest,
     ) -> hbase_20190101_models.DescribeRestoreIncrDetailResponse:
+        """
+        @param request: DescribeRestoreIncrDetailRequest
+        @return: DescribeRestoreIncrDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_incr_detail_with_options_async(request, runtime)
 
@@ -4278,6 +5220,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreSchemaDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSchemaDetailsResponse:
+        """
+        @param request: DescribeRestoreSchemaDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreSchemaDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4312,6 +5259,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreSchemaDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSchemaDetailsResponse:
+        """
+        @param request: DescribeRestoreSchemaDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreSchemaDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4345,6 +5297,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreSchemaDetailsRequest,
     ) -> hbase_20190101_models.DescribeRestoreSchemaDetailsResponse:
+        """
+        @param request: DescribeRestoreSchemaDetailsRequest
+        @return: DescribeRestoreSchemaDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_schema_details_with_options(request, runtime)
 
@@ -4352,6 +5308,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreSchemaDetailsRequest,
     ) -> hbase_20190101_models.DescribeRestoreSchemaDetailsResponse:
+        """
+        @param request: DescribeRestoreSchemaDetailsRequest
+        @return: DescribeRestoreSchemaDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_schema_details_with_options_async(request, runtime)
 
@@ -4360,6 +5320,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSummaryResponse:
+        """
+        @param request: DescribeRestoreSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4392,6 +5357,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreSummaryResponse:
+        """
+        @param request: DescribeRestoreSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4423,6 +5393,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreSummaryRequest,
     ) -> hbase_20190101_models.DescribeRestoreSummaryResponse:
+        """
+        @param request: DescribeRestoreSummaryRequest
+        @return: DescribeRestoreSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_summary_with_options(request, runtime)
 
@@ -4430,6 +5404,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreSummaryRequest,
     ) -> hbase_20190101_models.DescribeRestoreSummaryResponse:
+        """
+        @param request: DescribeRestoreSummaryRequest
+        @return: DescribeRestoreSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_summary_with_options_async(request, runtime)
 
@@ -4438,6 +5416,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreTablesResponse:
+        """
+        @param request: DescribeRestoreTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4468,6 +5451,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeRestoreTablesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeRestoreTablesResponse:
+        """
+        @param request: DescribeRestoreTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestoreTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4497,6 +5485,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreTablesRequest,
     ) -> hbase_20190101_models.DescribeRestoreTablesResponse:
+        """
+        @param request: DescribeRestoreTablesRequest
+        @return: DescribeRestoreTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_restore_tables_with_options(request, runtime)
 
@@ -4504,6 +5496,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeRestoreTablesRequest,
     ) -> hbase_20190101_models.DescribeRestoreTablesResponse:
+        """
+        @param request: DescribeRestoreTablesRequest
+        @return: DescribeRestoreTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_restore_tables_with_options_async(request, runtime)
 
@@ -4512,6 +5508,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSecurityGroupsResponse:
+        """
+        @param request: DescribeSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4540,6 +5541,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSecurityGroupsResponse:
+        """
+        @param request: DescribeSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4567,6 +5573,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeSecurityGroupsRequest,
     ) -> hbase_20190101_models.DescribeSecurityGroupsResponse:
+        """
+        @param request: DescribeSecurityGroupsRequest
+        @return: DescribeSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_groups_with_options(request, runtime)
 
@@ -4574,6 +5584,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeSecurityGroupsRequest,
     ) -> hbase_20190101_models.DescribeSecurityGroupsResponse:
+        """
+        @param request: DescribeSecurityGroupsRequest
+        @return: DescribeSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_groups_with_options_async(request, runtime)
 
@@ -4582,6 +5596,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeServerlessClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        """
+        @param request: DescribeServerlessClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerlessClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4612,6 +5631,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeServerlessClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        """
+        @param request: DescribeServerlessClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServerlessClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -4641,6 +5665,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeServerlessClusterRequest,
     ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        """
+        @param request: DescribeServerlessClusterRequest
+        @return: DescribeServerlessClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_serverless_cluster_with_options(request, runtime)
 
@@ -4648,6 +5676,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeServerlessClusterRequest,
     ) -> hbase_20190101_models.DescribeServerlessClusterResponse:
+        """
+        @param request: DescribeServerlessClusterRequest
+        @return: DescribeServerlessClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_serverless_cluster_with_options_async(request, runtime)
 
@@ -4656,6 +5688,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeSubDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSubDomainResponse:
+        """
+        @param request: DescribeSubDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4686,6 +5723,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.DescribeSubDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.DescribeSubDomainResponse:
+        """
+        @param request: DescribeSubDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4715,6 +5757,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeSubDomainRequest,
     ) -> hbase_20190101_models.DescribeSubDomainResponse:
+        """
+        @param request: DescribeSubDomainRequest
+        @return: DescribeSubDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sub_domain_with_options(request, runtime)
 
@@ -4722,6 +5768,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.DescribeSubDomainRequest,
     ) -> hbase_20190101_models.DescribeSubDomainResponse:
+        """
+        @param request: DescribeSubDomainRequest
+        @return: DescribeSubDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sub_domain_with_options_async(request, runtime)
 
@@ -4730,6 +5780,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.EnableHBaseueBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueBackupResponse:
+        """
+        @param request: EnableHBaseueBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHBaseueBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4764,6 +5819,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.EnableHBaseueBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueBackupResponse:
+        """
+        @param request: EnableHBaseueBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHBaseueBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4797,6 +5857,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.EnableHBaseueBackupRequest,
     ) -> hbase_20190101_models.EnableHBaseueBackupResponse:
+        """
+        @param request: EnableHBaseueBackupRequest
+        @return: EnableHBaseueBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_hbaseue_backup_with_options(request, runtime)
 
@@ -4804,6 +5868,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.EnableHBaseueBackupRequest,
     ) -> hbase_20190101_models.EnableHBaseueBackupResponse:
+        """
+        @param request: EnableHBaseueBackupRequest
+        @return: EnableHBaseueBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_hbaseue_backup_with_options_async(request, runtime)
 
@@ -4812,6 +5880,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.EnableHBaseueModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueModuleResponse:
+        """
+        @param request: EnableHBaseueModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHBaseueModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -4874,6 +5947,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.EnableHBaseueModuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EnableHBaseueModuleResponse:
+        """
+        @param request: EnableHBaseueModuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHBaseueModuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew_period):
@@ -4935,6 +6013,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.EnableHBaseueModuleRequest,
     ) -> hbase_20190101_models.EnableHBaseueModuleResponse:
+        """
+        @param request: EnableHBaseueModuleRequest
+        @return: EnableHBaseueModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_hbaseue_module_with_options(request, runtime)
 
@@ -4942,6 +6024,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.EnableHBaseueModuleRequest,
     ) -> hbase_20190101_models.EnableHBaseueModuleResponse:
+        """
+        @param request: EnableHBaseueModuleRequest
+        @return: EnableHBaseueModuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_hbaseue_module_with_options_async(request, runtime)
 
@@ -4950,6 +6036,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.EvaluateMultiZoneResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EvaluateMultiZoneResourceResponse:
+        """
+        @param request: EvaluateMultiZoneResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvaluateMultiZoneResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -5032,6 +6123,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.EvaluateMultiZoneResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.EvaluateMultiZoneResourceResponse:
+        """
+        @param request: EvaluateMultiZoneResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvaluateMultiZoneResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -5113,6 +6209,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.EvaluateMultiZoneResourceRequest,
     ) -> hbase_20190101_models.EvaluateMultiZoneResourceResponse:
+        """
+        @param request: EvaluateMultiZoneResourceRequest
+        @return: EvaluateMultiZoneResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.evaluate_multi_zone_resource_with_options(request, runtime)
 
@@ -5120,6 +6220,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.EvaluateMultiZoneResourceRequest,
     ) -> hbase_20190101_models.EvaluateMultiZoneResourceResponse:
+        """
+        @param request: EvaluateMultiZoneResourceRequest
+        @return: EvaluateMultiZoneResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.evaluate_multi_zone_resource_with_options_async(request, runtime)
 
@@ -5128,6 +6232,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.GetMultimodeCmsUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.GetMultimodeCmsUrlResponse:
+        """
+        @param request: GetMultimodeCmsUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultimodeCmsUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5158,6 +6267,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.GetMultimodeCmsUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.GetMultimodeCmsUrlResponse:
+        """
+        @param request: GetMultimodeCmsUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultimodeCmsUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5187,6 +6301,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.GetMultimodeCmsUrlRequest,
     ) -> hbase_20190101_models.GetMultimodeCmsUrlResponse:
+        """
+        @param request: GetMultimodeCmsUrlRequest
+        @return: GetMultimodeCmsUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_multimode_cms_url_with_options(request, runtime)
 
@@ -5194,6 +6312,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.GetMultimodeCmsUrlRequest,
     ) -> hbase_20190101_models.GetMultimodeCmsUrlResponse:
+        """
+        @param request: GetMultimodeCmsUrlRequest
+        @return: GetMultimodeCmsUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_multimode_cms_url_with_options_async(request, runtime)
 
@@ -5202,6 +6324,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.GrantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.GrantResponse:
+        """
+        @summary 授权账户权限
+        
+        @param request: GrantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -5238,6 +6367,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.GrantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.GrantResponse:
+        """
+        @summary 授权账户权限
+        
+        @param request: GrantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -5273,6 +6409,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.GrantRequest,
     ) -> hbase_20190101_models.GrantResponse:
+        """
+        @summary 授权账户权限
+        
+        @param request: GrantRequest
+        @return: GrantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_with_options(request, runtime)
 
@@ -5280,6 +6422,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.GrantRequest,
     ) -> hbase_20190101_models.GrantResponse:
+        """
+        @summary 授权账户权限
+        
+        @param request: GrantRequest
+        @return: GrantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_with_options_async(request, runtime)
 
@@ -5288,6 +6436,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListHBaseInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListHBaseInstancesResponse:
+        """
+        @param request: ListHBaseInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHBaseInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.vpc_id):
@@ -5316,6 +6469,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListHBaseInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListHBaseInstancesResponse:
+        """
+        @param request: ListHBaseInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHBaseInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.vpc_id):
@@ -5343,6 +6501,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListHBaseInstancesRequest,
     ) -> hbase_20190101_models.ListHBaseInstancesResponse:
+        """
+        @param request: ListHBaseInstancesRequest
+        @return: ListHBaseInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_hbase_instances_with_options(request, runtime)
 
@@ -5350,6 +6512,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListHBaseInstancesRequest,
     ) -> hbase_20190101_models.ListHBaseInstancesResponse:
+        """
+        @param request: ListHBaseInstancesRequest
+        @return: ListHBaseInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_hbase_instances_with_options_async(request, runtime)
 
@@ -5358,6 +6524,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListInstanceServiceConfigHistoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse:
+        """
+        @param request: ListInstanceServiceConfigHistoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceServiceConfigHistoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5390,6 +6561,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListInstanceServiceConfigHistoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse:
+        """
+        @param request: ListInstanceServiceConfigHistoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceServiceConfigHistoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5421,6 +6597,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListInstanceServiceConfigHistoriesRequest,
     ) -> hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse:
+        """
+        @param request: ListInstanceServiceConfigHistoriesRequest
+        @return: ListInstanceServiceConfigHistoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_service_config_histories_with_options(request, runtime)
 
@@ -5428,6 +6608,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListInstanceServiceConfigHistoriesRequest,
     ) -> hbase_20190101_models.ListInstanceServiceConfigHistoriesResponse:
+        """
+        @param request: ListInstanceServiceConfigHistoriesRequest
+        @return: ListInstanceServiceConfigHistoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_service_config_histories_with_options_async(request, runtime)
 
@@ -5436,6 +6620,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListInstanceServiceConfigurationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigurationsResponse:
+        """
+        @param request: ListInstanceServiceConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceServiceConfigurationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5468,6 +6657,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListInstanceServiceConfigurationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListInstanceServiceConfigurationsResponse:
+        """
+        @param request: ListInstanceServiceConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceServiceConfigurationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5499,6 +6693,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListInstanceServiceConfigurationsRequest,
     ) -> hbase_20190101_models.ListInstanceServiceConfigurationsResponse:
+        """
+        @param request: ListInstanceServiceConfigurationsRequest
+        @return: ListInstanceServiceConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_service_configurations_with_options(request, runtime)
 
@@ -5506,6 +6704,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListInstanceServiceConfigurationsRequest,
     ) -> hbase_20190101_models.ListInstanceServiceConfigurationsResponse:
+        """
+        @param request: ListInstanceServiceConfigurationsRequest
+        @return: ListInstanceServiceConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_service_configurations_with_options_async(request, runtime)
 
@@ -5514,6 +6716,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -5548,6 +6755,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -5581,6 +6793,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListTagResourcesRequest,
     ) -> hbase_20190101_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -5588,6 +6804,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListTagResourcesRequest,
     ) -> hbase_20190101_models.ListTagResourcesResponse:
+        """
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -5596,6 +6816,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5624,6 +6849,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ListTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5651,6 +6881,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListTagsRequest,
     ) -> hbase_20190101_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tags_with_options(request, runtime)
 
@@ -5658,6 +6892,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ListTagsRequest,
     ) -> hbase_20190101_models.ListTagsResponse:
+        """
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_with_options_async(request, runtime)
 
@@ -5666,6 +6904,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyAccountPasswordResponse:
+        """
+        @summary 更改账户密码
+        
+        @param request: ModifyAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -5698,6 +6943,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyAccountPasswordResponse:
+        """
+        @summary 更改账户密码
+        
+        @param request: ModifyAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -5729,6 +6981,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyAccountPasswordRequest,
     ) -> hbase_20190101_models.ModifyAccountPasswordResponse:
+        """
+        @summary 更改账户密码
+        
+        @param request: ModifyAccountPasswordRequest
+        @return: ModifyAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_account_password_with_options(request, runtime)
 
@@ -5736,6 +6994,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyAccountPasswordRequest,
     ) -> hbase_20190101_models.ModifyAccountPasswordResponse:
+        """
+        @summary 更改账户密码
+        
+        @param request: ModifyAccountPasswordRequest
+        @return: ModifyAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_password_with_options_async(request, runtime)
 
@@ -5744,6 +7008,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
@@ -5786,6 +7055,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyActiveOperationTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ids):
@@ -5827,6 +7101,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
     ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_active_operation_tasks_with_options(request, runtime)
 
@@ -5834,6 +7112,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyActiveOperationTasksRequest,
     ) -> hbase_20190101_models.ModifyActiveOperationTasksResponse:
+        """
+        @param request: ModifyActiveOperationTasksRequest
+        @return: ModifyActiveOperationTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_active_operation_tasks_with_options_async(request, runtime)
 
@@ -5842,6 +7124,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyBackupPlanConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPlanConfigResponse:
+        """
+        @param request: ModifyBackupPlanConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPlanConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5878,6 +7165,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyBackupPlanConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPlanConfigResponse:
+        """
+        @param request: ModifyBackupPlanConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPlanConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5913,6 +7205,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyBackupPlanConfigRequest,
     ) -> hbase_20190101_models.ModifyBackupPlanConfigResponse:
+        """
+        @param request: ModifyBackupPlanConfigRequest
+        @return: ModifyBackupPlanConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_plan_config_with_options(request, runtime)
 
@@ -5920,6 +7216,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyBackupPlanConfigRequest,
     ) -> hbase_20190101_models.ModifyBackupPlanConfigResponse:
+        """
+        @param request: ModifyBackupPlanConfigRequest
+        @return: ModifyBackupPlanConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_plan_config_with_options_async(request, runtime)
 
@@ -5928,6 +7228,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPolicyResponse:
+        """
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5964,6 +7269,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyBackupPolicyResponse:
+        """
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5999,6 +7309,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyBackupPolicyRequest,
     ) -> hbase_20190101_models.ModifyBackupPolicyResponse:
+        """
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_backup_policy_with_options(request, runtime)
 
@@ -6006,6 +7320,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyBackupPolicyRequest,
     ) -> hbase_20190101_models.ModifyBackupPolicyResponse:
+        """
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_backup_policy_with_options_async(request, runtime)
 
@@ -6014,6 +7332,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyClusterDeletionProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyClusterDeletionProtectionResponse:
+        """
+        @param request: ModifyClusterDeletionProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterDeletionProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6044,6 +7367,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyClusterDeletionProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyClusterDeletionProtectionResponse:
+        """
+        @param request: ModifyClusterDeletionProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyClusterDeletionProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6073,6 +7401,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyClusterDeletionProtectionRequest,
     ) -> hbase_20190101_models.ModifyClusterDeletionProtectionResponse:
+        """
+        @param request: ModifyClusterDeletionProtectionRequest
+        @return: ModifyClusterDeletionProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_cluster_deletion_protection_with_options(request, runtime)
 
@@ -6080,6 +7412,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyClusterDeletionProtectionRequest,
     ) -> hbase_20190101_models.ModifyClusterDeletionProtectionResponse:
+        """
+        @param request: ModifyClusterDeletionProtectionRequest
+        @return: ModifyClusterDeletionProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cluster_deletion_protection_with_options_async(request, runtime)
 
@@ -6088,6 +7424,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyDiskWarningLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyDiskWarningLineResponse:
+        """
+        @param request: ModifyDiskWarningLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDiskWarningLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6118,6 +7459,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyDiskWarningLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyDiskWarningLineResponse:
+        """
+        @param request: ModifyDiskWarningLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDiskWarningLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6147,6 +7493,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyDiskWarningLineRequest,
     ) -> hbase_20190101_models.ModifyDiskWarningLineResponse:
+        """
+        @param request: ModifyDiskWarningLineRequest
+        @return: ModifyDiskWarningLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_disk_warning_line_with_options(request, runtime)
 
@@ -6154,6 +7504,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyDiskWarningLineRequest,
     ) -> hbase_20190101_models.ModifyDiskWarningLineResponse:
+        """
+        @param request: ModifyDiskWarningLineRequest
+        @return: ModifyDiskWarningLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_disk_warning_line_with_options_async(request, runtime)
 
@@ -6162,6 +7516,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceMaintainTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceMaintainTimeResponse:
+        """
+        @param request: ModifyInstanceMaintainTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceMaintainTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6194,6 +7553,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceMaintainTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceMaintainTimeResponse:
+        """
+        @param request: ModifyInstanceMaintainTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceMaintainTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6225,6 +7589,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceMaintainTimeRequest,
     ) -> hbase_20190101_models.ModifyInstanceMaintainTimeResponse:
+        """
+        @param request: ModifyInstanceMaintainTimeRequest
+        @return: ModifyInstanceMaintainTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_maintain_time_with_options(request, runtime)
 
@@ -6232,6 +7600,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceMaintainTimeRequest,
     ) -> hbase_20190101_models.ModifyInstanceMaintainTimeResponse:
+        """
+        @param request: ModifyInstanceMaintainTimeRequest
+        @return: ModifyInstanceMaintainTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_maintain_time_with_options_async(request, runtime)
 
@@ -6240,6 +7612,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceNameResponse:
+        """
+        @param request: ModifyInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6276,6 +7653,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceNameResponse:
+        """
+        @param request: ModifyInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6311,6 +7693,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceNameRequest,
     ) -> hbase_20190101_models.ModifyInstanceNameResponse:
+        """
+        @param request: ModifyInstanceNameRequest
+        @return: ModifyInstanceNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_name_with_options(request, runtime)
 
@@ -6318,6 +7704,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceNameRequest,
     ) -> hbase_20190101_models.ModifyInstanceNameResponse:
+        """
+        @param request: ModifyInstanceNameRequest
+        @return: ModifyInstanceNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_name_with_options_async(request, runtime)
 
@@ -6326,6 +7716,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceServiceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceServiceConfigResponse:
+        """
+        @param request: ModifyInstanceServiceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceServiceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6362,6 +7757,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceServiceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceServiceConfigResponse:
+        """
+        @param request: ModifyInstanceServiceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceServiceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6397,6 +7797,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceServiceConfigRequest,
     ) -> hbase_20190101_models.ModifyInstanceServiceConfigResponse:
+        """
+        @param request: ModifyInstanceServiceConfigRequest
+        @return: ModifyInstanceServiceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_service_config_with_options(request, runtime)
 
@@ -6404,6 +7808,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceServiceConfigRequest,
     ) -> hbase_20190101_models.ModifyInstanceServiceConfigResponse:
+        """
+        @param request: ModifyInstanceServiceConfigRequest
+        @return: ModifyInstanceServiceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_service_config_with_options_async(request, runtime)
 
@@ -6412,6 +7820,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceTypeResponse:
+        """
+        @param request: ModifyInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6444,6 +7857,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyInstanceTypeResponse:
+        """
+        @param request: ModifyInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6475,6 +7893,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceTypeRequest,
     ) -> hbase_20190101_models.ModifyInstanceTypeResponse:
+        """
+        @param request: ModifyInstanceTypeRequest
+        @return: ModifyInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_type_with_options(request, runtime)
 
@@ -6482,6 +7904,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyInstanceTypeRequest,
     ) -> hbase_20190101_models.ModifyInstanceTypeResponse:
+        """
+        @param request: ModifyInstanceTypeRequest
+        @return: ModifyInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_type_with_options_async(request, runtime)
 
@@ -6490,6 +7916,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyIpWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyIpWhitelistResponse:
+        """
+        @param request: ModifyIpWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIpWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6524,6 +7955,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyIpWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyIpWhitelistResponse:
+        """
+        @param request: ModifyIpWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIpWhitelistResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6557,6 +7993,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyIpWhitelistRequest,
     ) -> hbase_20190101_models.ModifyIpWhitelistResponse:
+        """
+        @param request: ModifyIpWhitelistRequest
+        @return: ModifyIpWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_ip_whitelist_with_options(request, runtime)
 
@@ -6564,6 +8004,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyIpWhitelistRequest,
     ) -> hbase_20190101_models.ModifyIpWhitelistResponse:
+        """
+        @param request: ModifyIpWhitelistRequest
+        @return: ModifyIpWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_ip_whitelist_with_options_async(request, runtime)
 
@@ -6572,6 +8016,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyMultiZoneClusterNodeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse:
+        """
+        @param request: ModifyMultiZoneClusterNodeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMultiZoneClusterNodeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6606,6 +8055,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyMultiZoneClusterNodeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse:
+        """
+        @param request: ModifyMultiZoneClusterNodeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMultiZoneClusterNodeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6639,6 +8093,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyMultiZoneClusterNodeTypeRequest,
     ) -> hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse:
+        """
+        @param request: ModifyMultiZoneClusterNodeTypeRequest
+        @return: ModifyMultiZoneClusterNodeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_multi_zone_cluster_node_type_with_options(request, runtime)
 
@@ -6646,6 +8104,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyMultiZoneClusterNodeTypeRequest,
     ) -> hbase_20190101_models.ModifyMultiZoneClusterNodeTypeResponse:
+        """
+        @param request: ModifyMultiZoneClusterNodeTypeRequest
+        @return: ModifyMultiZoneClusterNodeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_multi_zone_cluster_node_type_with_options_async(request, runtime)
 
@@ -6654,6 +8116,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifySecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifySecurityGroupsResponse:
+        """
+        @param request: ModifySecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6684,6 +8151,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifySecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifySecurityGroupsResponse:
+        """
+        @param request: ModifySecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6713,6 +8185,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifySecurityGroupsRequest,
     ) -> hbase_20190101_models.ModifySecurityGroupsResponse:
+        """
+        @param request: ModifySecurityGroupsRequest
+        @return: ModifySecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_security_groups_with_options(request, runtime)
 
@@ -6720,6 +8196,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifySecurityGroupsRequest,
     ) -> hbase_20190101_models.ModifySecurityGroupsResponse:
+        """
+        @param request: ModifySecurityGroupsRequest
+        @return: ModifySecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_groups_with_options_async(request, runtime)
 
@@ -6728,6 +8208,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyUIAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyUIAccountPasswordResponse:
+        """
+        @param request: ModifyUIAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUIAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -6760,6 +8245,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ModifyUIAccountPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ModifyUIAccountPasswordResponse:
+        """
+        @param request: ModifyUIAccountPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUIAccountPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -6791,6 +8281,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyUIAccountPasswordRequest,
     ) -> hbase_20190101_models.ModifyUIAccountPasswordResponse:
+        """
+        @param request: ModifyUIAccountPasswordRequest
+        @return: ModifyUIAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_uiaccount_password_with_options(request, runtime)
 
@@ -6798,6 +8292,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ModifyUIAccountPasswordRequest,
     ) -> hbase_20190101_models.ModifyUIAccountPasswordResponse:
+        """
+        @param request: ModifyUIAccountPasswordRequest
+        @return: ModifyUIAccountPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_uiaccount_password_with_options_async(request, runtime)
 
@@ -6806,6 +8304,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.MoveResourceGroupResponse:
+        """
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6836,6 +8339,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.MoveResourceGroupResponse:
+        """
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6865,6 +8373,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.MoveResourceGroupRequest,
     ) -> hbase_20190101_models.MoveResourceGroupResponse:
+        """
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
@@ -6872,6 +8384,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.MoveResourceGroupRequest,
     ) -> hbase_20190101_models.MoveResourceGroupResponse:
+        """
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
@@ -6880,6 +8396,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.OpenBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.OpenBackupResponse:
+        """
+        @param request: OpenBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6908,6 +8429,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.OpenBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.OpenBackupResponse:
+        """
+        @param request: OpenBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6935,6 +8461,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.OpenBackupRequest,
     ) -> hbase_20190101_models.OpenBackupResponse:
+        """
+        @param request: OpenBackupRequest
+        @return: OpenBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_backup_with_options(request, runtime)
 
@@ -6942,6 +8472,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.OpenBackupRequest,
     ) -> hbase_20190101_models.OpenBackupResponse:
+        """
+        @param request: OpenBackupRequest
+        @return: OpenBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_backup_with_options_async(request, runtime)
 
@@ -6950,6 +8484,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.PurgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.PurgeInstanceResponse:
+        """
+        @param request: PurgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PurgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6978,6 +8517,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.PurgeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.PurgeInstanceResponse:
+        """
+        @param request: PurgeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PurgeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7005,6 +8549,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.PurgeInstanceRequest,
     ) -> hbase_20190101_models.PurgeInstanceResponse:
+        """
+        @param request: PurgeInstanceRequest
+        @return: PurgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.purge_instance_with_options(request, runtime)
 
@@ -7012,6 +8560,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.PurgeInstanceRequest,
     ) -> hbase_20190101_models.PurgeInstanceResponse:
+        """
+        @param request: PurgeInstanceRequest
+        @return: PurgeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.purge_instance_with_options_async(request, runtime)
 
@@ -7020,6 +8572,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.QueryHBaseHaDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryHBaseHaDBResponse:
+        """
+        @param request: QueryHBaseHaDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHBaseHaDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -7048,6 +8605,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.QueryHBaseHaDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryHBaseHaDBResponse:
+        """
+        @param request: QueryHBaseHaDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryHBaseHaDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -7075,6 +8637,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.QueryHBaseHaDBRequest,
     ) -> hbase_20190101_models.QueryHBaseHaDBResponse:
+        """
+        @param request: QueryHBaseHaDBRequest
+        @return: QueryHBaseHaDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_hbase_ha_dbwith_options(request, runtime)
 
@@ -7082,6 +8648,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.QueryHBaseHaDBRequest,
     ) -> hbase_20190101_models.QueryHBaseHaDBResponse:
+        """
+        @param request: QueryHBaseHaDBRequest
+        @return: QueryHBaseHaDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_hbase_ha_dbwith_options_async(request, runtime)
 
@@ -7090,6 +8660,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.QueryXpackRelateDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryXpackRelateDBResponse:
+        """
+        @param request: QueryXpackRelateDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryXpackRelateDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7122,6 +8697,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.QueryXpackRelateDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.QueryXpackRelateDBResponse:
+        """
+        @param request: QueryXpackRelateDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryXpackRelateDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7153,6 +8733,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.QueryXpackRelateDBRequest,
     ) -> hbase_20190101_models.QueryXpackRelateDBResponse:
+        """
+        @param request: QueryXpackRelateDBRequest
+        @return: QueryXpackRelateDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_xpack_relate_dbwith_options(request, runtime)
 
@@ -7160,6 +8744,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.QueryXpackRelateDBRequest,
     ) -> hbase_20190101_models.QueryXpackRelateDBResponse:
+        """
+        @param request: QueryXpackRelateDBRequest
+        @return: QueryXpackRelateDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_xpack_relate_dbwith_options_async(request, runtime)
 
@@ -7168,6 +8756,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RelateDbForHBaseHaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RelateDbForHBaseHaResponse:
+        """
+        @param request: RelateDbForHBaseHaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RelateDbForHBaseHaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7236,6 +8829,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RelateDbForHBaseHaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RelateDbForHBaseHaResponse:
+        """
+        @param request: RelateDbForHBaseHaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RelateDbForHBaseHaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7303,6 +8901,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RelateDbForHBaseHaRequest,
     ) -> hbase_20190101_models.RelateDbForHBaseHaResponse:
+        """
+        @param request: RelateDbForHBaseHaRequest
+        @return: RelateDbForHBaseHaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.relate_db_for_hbase_ha_with_options(request, runtime)
 
@@ -7310,6 +8912,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RelateDbForHBaseHaRequest,
     ) -> hbase_20190101_models.RelateDbForHBaseHaResponse:
+        """
+        @param request: RelateDbForHBaseHaRequest
+        @return: RelateDbForHBaseHaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.relate_db_for_hbase_ha_with_options_async(request, runtime)
 
@@ -7318,6 +8924,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ReleasePublicNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ReleasePublicNetworkAddressResponse:
+        """
+        @param request: ReleasePublicNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePublicNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7346,6 +8957,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ReleasePublicNetworkAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ReleasePublicNetworkAddressResponse:
+        """
+        @param request: ReleasePublicNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePublicNetworkAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7373,6 +8989,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ReleasePublicNetworkAddressRequest,
     ) -> hbase_20190101_models.ReleasePublicNetworkAddressResponse:
+        """
+        @param request: ReleasePublicNetworkAddressRequest
+        @return: ReleasePublicNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_public_network_address_with_options(request, runtime)
 
@@ -7380,6 +9000,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ReleasePublicNetworkAddressRequest,
     ) -> hbase_20190101_models.ReleasePublicNetworkAddressResponse:
+        """
+        @param request: ReleasePublicNetworkAddressRequest
+        @return: ReleasePublicNetworkAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_public_network_address_with_options_async(request, runtime)
 
@@ -7388,6 +9012,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RenewInstanceResponse:
+        """
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7420,6 +9049,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RenewInstanceResponse:
+        """
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7451,6 +9085,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RenewInstanceRequest,
     ) -> hbase_20190101_models.RenewInstanceResponse:
+        """
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_instance_with_options(request, runtime)
 
@@ -7458,6 +9096,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RenewInstanceRequest,
     ) -> hbase_20190101_models.RenewInstanceResponse:
+        """
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
 
@@ -7466,6 +9108,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeColdStorageSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeColdStorageSizeResponse:
+        """
+        @param request: ResizeColdStorageSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeColdStorageSizeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7496,6 +9143,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeColdStorageSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeColdStorageSizeResponse:
+        """
+        @param request: ResizeColdStorageSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeColdStorageSizeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7525,6 +9177,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeColdStorageSizeRequest,
     ) -> hbase_20190101_models.ResizeColdStorageSizeResponse:
+        """
+        @param request: ResizeColdStorageSizeRequest
+        @return: ResizeColdStorageSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_cold_storage_size_with_options(request, runtime)
 
@@ -7532,6 +9188,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeColdStorageSizeRequest,
     ) -> hbase_20190101_models.ResizeColdStorageSizeResponse:
+        """
+        @param request: ResizeColdStorageSizeRequest
+        @return: ResizeColdStorageSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_cold_storage_size_with_options_async(request, runtime)
 
@@ -7540,6 +9200,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeDiskSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeDiskSizeResponse:
+        """
+        @param request: ResizeDiskSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeDiskSizeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7570,6 +9235,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeDiskSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeDiskSizeResponse:
+        """
+        @param request: ResizeDiskSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeDiskSizeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7599,6 +9269,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeDiskSizeRequest,
     ) -> hbase_20190101_models.ResizeDiskSizeResponse:
+        """
+        @param request: ResizeDiskSizeRequest
+        @return: ResizeDiskSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_disk_size_with_options(request, runtime)
 
@@ -7606,6 +9280,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeDiskSizeRequest,
     ) -> hbase_20190101_models.ResizeDiskSizeResponse:
+        """
+        @param request: ResizeDiskSizeRequest
+        @return: ResizeDiskSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_disk_size_with_options_async(request, runtime)
 
@@ -7614,6 +9292,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeMultiZoneClusterDiskSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse:
+        """
+        @param request: ResizeMultiZoneClusterDiskSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeMultiZoneClusterDiskSizeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7646,6 +9329,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeMultiZoneClusterDiskSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse:
+        """
+        @param request: ResizeMultiZoneClusterDiskSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeMultiZoneClusterDiskSizeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7677,6 +9365,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeMultiZoneClusterDiskSizeRequest,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse:
+        """
+        @param request: ResizeMultiZoneClusterDiskSizeRequest
+        @return: ResizeMultiZoneClusterDiskSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_multi_zone_cluster_disk_size_with_options(request, runtime)
 
@@ -7684,6 +9376,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeMultiZoneClusterDiskSizeRequest,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterDiskSizeResponse:
+        """
+        @param request: ResizeMultiZoneClusterDiskSizeRequest
+        @return: ResizeMultiZoneClusterDiskSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_multi_zone_cluster_disk_size_with_options_async(request, runtime)
 
@@ -7692,6 +9388,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeMultiZoneClusterNodeCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse:
+        """
+        @param request: ResizeMultiZoneClusterNodeCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeMultiZoneClusterNodeCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -7734,6 +9435,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeMultiZoneClusterNodeCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse:
+        """
+        @param request: ResizeMultiZoneClusterNodeCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeMultiZoneClusterNodeCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -7775,6 +9481,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeMultiZoneClusterNodeCountRequest,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse:
+        """
+        @param request: ResizeMultiZoneClusterNodeCountRequest
+        @return: ResizeMultiZoneClusterNodeCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_multi_zone_cluster_node_count_with_options(request, runtime)
 
@@ -7782,6 +9492,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeMultiZoneClusterNodeCountRequest,
     ) -> hbase_20190101_models.ResizeMultiZoneClusterNodeCountResponse:
+        """
+        @param request: ResizeMultiZoneClusterNodeCountRequest
+        @return: ResizeMultiZoneClusterNodeCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_multi_zone_cluster_node_count_with_options_async(request, runtime)
 
@@ -7790,6 +9504,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeNodeCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeNodeCountResponse:
+        """
+        @param request: ResizeNodeCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeNodeCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7824,6 +9543,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.ResizeNodeCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.ResizeNodeCountResponse:
+        """
+        @param request: ResizeNodeCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeNodeCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7857,6 +9581,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeNodeCountRequest,
     ) -> hbase_20190101_models.ResizeNodeCountResponse:
+        """
+        @param request: ResizeNodeCountRequest
+        @return: ResizeNodeCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_node_count_with_options(request, runtime)
 
@@ -7864,6 +9592,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.ResizeNodeCountRequest,
     ) -> hbase_20190101_models.ResizeNodeCountResponse:
+        """
+        @param request: ResizeNodeCountRequest
+        @return: ResizeNodeCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_node_count_with_options_async(request, runtime)
 
@@ -7872,6 +9604,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RestartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RestartInstanceResponse:
+        """
+        @param request: RestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7902,6 +9639,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RestartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RestartInstanceResponse:
+        """
+        @param request: RestartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -7931,6 +9673,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RestartInstanceRequest,
     ) -> hbase_20190101_models.RestartInstanceResponse:
+        """
+        @param request: RestartInstanceRequest
+        @return: RestartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_instance_with_options(request, runtime)
 
@@ -7938,6 +9684,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RestartInstanceRequest,
     ) -> hbase_20190101_models.RestartInstanceResponse:
+        """
+        @param request: RestartInstanceRequest
+        @return: RestartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_instance_with_options_async(request, runtime)
 
@@ -7946,6 +9696,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RevokeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RevokeResponse:
+        """
+        @summary 回收账户权限
+        
+        @param request: RevokeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -7982,6 +9739,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.RevokeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.RevokeResponse:
+        """
+        @summary 回收账户权限
+        
+        @param request: RevokeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -8017,6 +9781,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RevokeRequest,
     ) -> hbase_20190101_models.RevokeResponse:
+        """
+        @summary 回收账户权限
+        
+        @param request: RevokeRequest
+        @return: RevokeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_with_options(request, runtime)
 
@@ -8024,6 +9794,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.RevokeRequest,
     ) -> hbase_20190101_models.RevokeResponse:
+        """
+        @summary 回收账户权限
+        
+        @param request: RevokeRequest
+        @return: RevokeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_with_options_async(request, runtime)
 
@@ -8032,6 +9808,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.SwitchHbaseHaSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
+        """
+        @param request: SwitchHbaseHaSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchHbaseHaSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -8066,6 +9847,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.SwitchHbaseHaSlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
+        """
+        @param request: SwitchHbaseHaSlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchHbaseHaSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bds_id):
@@ -8099,6 +9885,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.SwitchHbaseHaSlbRequest,
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
+        """
+        @param request: SwitchHbaseHaSlbRequest
+        @return: SwitchHbaseHaSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_hbase_ha_slb_with_options(request, runtime)
 
@@ -8106,6 +9896,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.SwitchHbaseHaSlbRequest,
     ) -> hbase_20190101_models.SwitchHbaseHaSlbResponse:
+        """
+        @param request: SwitchHbaseHaSlbRequest
+        @return: SwitchHbaseHaSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_hbase_ha_slb_with_options_async(request, runtime)
 
@@ -8114,6 +9908,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.SwitchServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.SwitchServiceResponse:
+        """
+        @summary 开通/关闭 扩展服务
+        
+        @param request: SwitchServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8146,6 +9947,13 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.SwitchServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.SwitchServiceResponse:
+        """
+        @summary 开通/关闭 扩展服务
+        
+        @param request: SwitchServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8177,6 +9985,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.SwitchServiceRequest,
     ) -> hbase_20190101_models.SwitchServiceResponse:
+        """
+        @summary 开通/关闭 扩展服务
+        
+        @param request: SwitchServiceRequest
+        @return: SwitchServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_service_with_options(request, runtime)
 
@@ -8184,6 +9998,12 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.SwitchServiceRequest,
     ) -> hbase_20190101_models.SwitchServiceResponse:
+        """
+        @summary 开通/关闭 扩展服务
+        
+        @param request: SwitchServiceRequest
+        @return: SwitchServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_service_with_options_async(request, runtime)
 
@@ -8192,6 +10012,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -8224,6 +10049,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -8255,6 +10085,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.TagResourcesRequest,
     ) -> hbase_20190101_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -8262,6 +10096,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.TagResourcesRequest,
     ) -> hbase_20190101_models.TagResourcesResponse:
+        """
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -8270,6 +10108,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UnTagResourcesResponse:
+        """
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -8304,6 +10147,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.UnTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UnTagResourcesResponse:
+        """
+        @param request: UnTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -8337,6 +10185,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.UnTagResourcesRequest,
     ) -> hbase_20190101_models.UnTagResourcesResponse:
+        """
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.un_tag_resources_with_options(request, runtime)
 
@@ -8344,6 +10196,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.UnTagResourcesRequest,
     ) -> hbase_20190101_models.UnTagResourcesResponse:
+        """
+        @param request: UnTagResourcesRequest
+        @return: UnTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
 
@@ -8352,6 +10208,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.UpgradeMinorVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMinorVersionResponse:
+        """
+        @param request: UpgradeMinorVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMinorVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8382,6 +10243,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.UpgradeMinorVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMinorVersionResponse:
+        """
+        @param request: UpgradeMinorVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMinorVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8411,6 +10277,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.UpgradeMinorVersionRequest,
     ) -> hbase_20190101_models.UpgradeMinorVersionResponse:
+        """
+        @param request: UpgradeMinorVersionRequest
+        @return: UpgradeMinorVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_minor_version_with_options(request, runtime)
 
@@ -8418,6 +10288,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.UpgradeMinorVersionRequest,
     ) -> hbase_20190101_models.UpgradeMinorVersionResponse:
+        """
+        @param request: UpgradeMinorVersionRequest
+        @return: UpgradeMinorVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_minor_version_with_options_async(request, runtime)
 
@@ -8426,6 +10300,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.UpgradeMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMultiZoneClusterResponse:
+        """
+        @param request: UpgradeMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8464,6 +10343,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.UpgradeMultiZoneClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.UpgradeMultiZoneClusterResponse:
+        """
+        @param request: UpgradeMultiZoneClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeMultiZoneClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8501,6 +10385,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.UpgradeMultiZoneClusterRequest,
     ) -> hbase_20190101_models.UpgradeMultiZoneClusterResponse:
+        """
+        @param request: UpgradeMultiZoneClusterRequest
+        @return: UpgradeMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_multi_zone_cluster_with_options(request, runtime)
 
@@ -8508,6 +10396,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.UpgradeMultiZoneClusterRequest,
     ) -> hbase_20190101_models.UpgradeMultiZoneClusterResponse:
+        """
+        @param request: UpgradeMultiZoneClusterRequest
+        @return: UpgradeMultiZoneClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_multi_zone_cluster_with_options_async(request, runtime)
 
@@ -8516,6 +10408,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.XpackRelateDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.XpackRelateDBResponse:
+        """
+        @param request: XpackRelateDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: XpackRelateDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8548,6 +10445,11 @@ class Client(OpenApiClient):
         request: hbase_20190101_models.XpackRelateDBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hbase_20190101_models.XpackRelateDBResponse:
+        """
+        @param request: XpackRelateDBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: XpackRelateDBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -8579,6 +10481,10 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.XpackRelateDBRequest,
     ) -> hbase_20190101_models.XpackRelateDBResponse:
+        """
+        @param request: XpackRelateDBRequest
+        @return: XpackRelateDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.xpack_relate_dbwith_options(request, runtime)
 
@@ -8586,5 +10492,9 @@ class Client(OpenApiClient):
         self,
         request: hbase_20190101_models.XpackRelateDBRequest,
     ) -> hbase_20190101_models.XpackRelateDBResponse:
+        """
+        @param request: XpackRelateDBRequest
+        @return: XpackRelateDBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.xpack_relate_dbwith_options_async(request, runtime)

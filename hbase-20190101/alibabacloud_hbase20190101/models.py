@@ -12,7 +12,9 @@ class AddUserHdfsInfoRequest(TeaModel):
         ext_info: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.ext_info = ext_info
 
     def validate(self):
@@ -118,6 +120,7 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
         cluster_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -222,6 +225,7 @@ class CancelActiveOperationTasksRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -349,7 +353,9 @@ class CheckComponentsVersionRequest(TeaModel):
         cluster_id: str = None,
         components: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.components = components
 
     def validate(self):
@@ -525,6 +531,7 @@ class CloseBackupRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -623,6 +630,7 @@ class ConvertInstanceRequest(TeaModel):
         pay_type: str = None,
         pricing_cycle: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.duration = duration
         self.pay_type = pay_type
@@ -741,8 +749,11 @@ class CreateAccountRequest(TeaModel):
         account_password: str = None,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -846,6 +857,7 @@ class CreateBackupPlanRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -965,22 +977,29 @@ class CreateClusterRequest(TeaModel):
         self.client_token = client_token
         self.cluster_name = cluster_name
         self.cold_storage_size = cold_storage_size
+        # This parameter is required.
         self.core_instance_type = core_instance_type
         self.disk_size = disk_size
         self.disk_type = disk_type
         self.encryption_key = encryption_key
+        # This parameter is required.
         self.engine = engine
+        # This parameter is required.
         self.engine_version = engine_version
         self.master_instance_type = master_instance_type
+        # This parameter is required.
         self.node_count = node_count
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_iplist = security_iplist
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1173,9 +1192,12 @@ class CreateGlobalResourceRequest(TeaModel):
         resource_type: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.region_id = region_id
+        # This parameter is required.
         self.resource_name = resource_name
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -1290,7 +1312,9 @@ class CreateHBaseSlbServerRequest(TeaModel):
         slb_server: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.slb_server = slb_server
 
     def validate(self):
@@ -1398,10 +1422,14 @@ class CreateHbaseHaSlbRequest(TeaModel):
         ha_types: str = None,
         hbase_type: str = None,
     ):
+        # This parameter is required.
         self.bds_id = bds_id
         self.client_token = client_token
+        # This parameter is required.
         self.ha_id = ha_id
+        # This parameter is required.
         self.ha_types = ha_types
+        # This parameter is required.
         self.hbase_type = hbase_type
 
     def validate(self):
@@ -1541,34 +1569,56 @@ class CreateMultiZoneClusterRequest(TeaModel):
         standby_zone_id: str = None,
         vpc_id: str = None,
     ):
+        # This parameter is required.
         self.arbiter_vswitch_id = arbiter_vswitch_id
+        # This parameter is required.
         self.arbiter_zone_id = arbiter_zone_id
+        # This parameter is required.
         self.arch_version = arch_version
         self.auto_renew_period = auto_renew_period
         self.client_token = client_token
         self.cluster_name = cluster_name
+        # This parameter is required.
         self.core_disk_size = core_disk_size
+        # This parameter is required.
         self.core_disk_type = core_disk_type
+        # This parameter is required.
         self.core_instance_type = core_instance_type
+        # This parameter is required.
         self.core_node_count = core_node_count
+        # This parameter is required.
         self.engine = engine
+        # This parameter is required.
         self.engine_version = engine_version
+        # This parameter is required.
         self.log_disk_size = log_disk_size
+        # This parameter is required.
         self.log_disk_type = log_disk_type
+        # This parameter is required.
         self.log_instance_type = log_instance_type
+        # This parameter is required.
         self.log_node_count = log_node_count
+        # This parameter is required.
         self.master_instance_type = master_instance_type
+        # This parameter is required.
         self.multi_zone_combination = multi_zone_combination
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
+        # This parameter is required.
         self.primary_vswitch_id = primary_vswitch_id
+        # This parameter is required.
         self.primary_zone_id = primary_zone_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.security_iplist = security_iplist
+        # This parameter is required.
         self.standby_vswitch_id = standby_vswitch_id
+        # This parameter is required.
         self.standby_zone_id = standby_zone_id
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1793,11 +1843,16 @@ class CreateRestorePlanRequest(TeaModel):
         tables: str = None,
         target_cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.restore_all_table = restore_all_table
+        # This parameter is required.
         self.restore_by_copy = restore_by_copy
+        # This parameter is required.
         self.restore_to_date = restore_to_date
         self.tables = tables
+        # This parameter is required.
         self.target_cluster_id = target_cluster_id
 
     def validate(self):
@@ -1937,9 +1992,11 @@ class CreateServerlessClusterRequest(TeaModel):
         self.disk_type = disk_type
         self.engine = engine
         self.engine_version = engine_version
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.serverless_capability = serverless_capability
@@ -1947,6 +2004,7 @@ class CreateServerlessClusterRequest(TeaModel):
         self.serverless_storage = serverless_storage
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2129,7 +2187,9 @@ class DeleteAccountRequest(TeaModel):
         account_name: str = None,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -2232,9 +2292,12 @@ class DeleteGlobalResourceRequest(TeaModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.region_id = region_id
+        # This parameter is required.
         self.resource_name = resource_name
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -2343,7 +2406,9 @@ class DeleteHBaseHaDBRequest(TeaModel):
         bds_id: str = None,
         ha_id: str = None,
     ):
+        # This parameter is required.
         self.bds_id = bds_id
+        # This parameter is required.
         self.ha_id = ha_id
 
     def validate(self):
@@ -2444,7 +2509,9 @@ class DeleteHBaseSlbServerRequest(TeaModel):
         cluster_id: str = None,
         slb_server: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.slb_server = slb_server
 
     def validate(self):
@@ -2546,8 +2613,11 @@ class DeleteHbaseHaSlbRequest(TeaModel):
         ha_id: str = None,
         ha_types: str = None,
     ):
+        # This parameter is required.
         self.bds_id = bds_id
+        # This parameter is required.
         self.ha_id = ha_id
+        # This parameter is required.
         self.ha_types = ha_types
 
     def validate(self):
@@ -2652,6 +2722,7 @@ class DeleteInstanceRequest(TeaModel):
         cluster_id: str = None,
         immediate_delete_flag: bool = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.immediate_delete_flag = immediate_delete_flag
 
@@ -2753,6 +2824,7 @@ class DeleteMultiZoneClusterRequest(TeaModel):
         cluster_id: str = None,
         immediate_delete_flag: bool = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.immediate_delete_flag = immediate_delete_flag
 
@@ -2855,8 +2927,11 @@ class DeleteServerlessClusterRequest(TeaModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2961,7 +3036,9 @@ class DeleteUserHdfsInfoRequest(TeaModel):
         cluster_id: str = None,
         name_service: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.name_service = name_service
 
     def validate(self):
@@ -3061,6 +3138,7 @@ class DescribeAccountsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -3775,11 +3853,13 @@ class DescribeAvailableResourceRequest(TeaModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.charge_type = charge_type
         self.core_instance_type = core_instance_type
         self.disk_type = disk_type
         self.engine = engine
         self.engine_version = engine_version
+        # This parameter is required.
         self.region_id = region_id
         self.zone_id = zone_id
 
@@ -4533,6 +4613,7 @@ class DescribeBackupPlanConfigRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -4681,6 +4762,7 @@ class DescribeBackupPolicyRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -4806,6 +4888,7 @@ class DescribeBackupStatusRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -4921,6 +5004,7 @@ class DescribeBackupSummaryRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
@@ -5260,7 +5344,9 @@ class DescribeBackupTablesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.backup_record_id = backup_record_id
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
@@ -5544,6 +5630,7 @@ class DescribeBackupsRequest(TeaModel):
         start_time_utc: str = None,
     ):
         self.backup_id = backup_id
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.end_time = end_time
         self.end_time_utc = end_time_utc
@@ -5834,7 +5921,9 @@ class DescribeClusterConnectionRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6378,6 +6467,7 @@ class DescribeColdStorageRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -6515,6 +6605,7 @@ class DescribeDBInstanceUsageRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -6877,6 +6968,7 @@ class DescribeDiskWarningLineRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -6978,6 +7070,7 @@ class DescribeEndpointsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -7185,6 +7278,7 @@ class DescribeInstanceRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -7355,6 +7449,7 @@ class DescribeInstanceResponseBody(TeaModel):
         status: str = None,
         tags: DescribeInstanceResponseBodyTags = None,
         task_progress: str = None,
+        task_status: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
@@ -7375,6 +7470,7 @@ class DescribeInstanceResponseBody(TeaModel):
         self.created_time = created_time
         self.created_time_utc = created_time_utc
         self.duration = duration
+        # This parameter is required.
         self.enable_hbase_proxy = enable_hbase_proxy
         self.encryption_key = encryption_key
         self.encryption_type = encryption_type
@@ -7409,6 +7505,7 @@ class DescribeInstanceResponseBody(TeaModel):
         self.status = status
         self.tags = tags
         self.task_progress = task_progress
+        self.task_status = task_status
         self.vpc_id = vpc_id
         self.vswitch_id = vswitch_id
         self.zone_id = zone_id
@@ -7525,6 +7622,8 @@ class DescribeInstanceResponseBody(TeaModel):
             result['Tags'] = self.tags.to_map()
         if self.task_progress is not None:
             result['TaskProgress'] = self.task_progress
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -7637,6 +7736,8 @@ class DescribeInstanceResponseBody(TeaModel):
             self.tags = temp_model.from_map(m['Tags'])
         if m.get('TaskProgress') is not None:
             self.task_progress = m.get('TaskProgress')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -8427,6 +8528,7 @@ class DescribeIpWhitelistRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -8917,7 +9019,9 @@ class DescribeMultiZoneAvailableResourceRequest(TeaModel):
         region_id: str = None,
         zone_combination: str = None,
     ):
+        # This parameter is required.
         self.charge_type = charge_type
+        # This parameter is required.
         self.region_id = region_id
         self.zone_combination = zone_combination
 
@@ -9655,6 +9759,7 @@ class DescribeMultiZoneClusterRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -9908,6 +10013,8 @@ class DescribeMultiZoneClusterResponseBody(TeaModel):
         standby_zone_id: str = None,
         status: str = None,
         tags: DescribeMultiZoneClusterResponseBodyTags = None,
+        task_progress: str = None,
+        task_status: str = None,
         vpc_id: str = None,
     ):
         self.arbiter_vswitch_ids = arbiter_vswitch_ids
@@ -9960,6 +10067,8 @@ class DescribeMultiZoneClusterResponseBody(TeaModel):
         self.standby_zone_id = standby_zone_id
         self.status = status
         self.tags = tags
+        self.task_progress = task_progress
+        self.task_status = task_status
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10074,6 +10183,10 @@ class DescribeMultiZoneClusterResponseBody(TeaModel):
             result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.task_progress is not None:
+            result['TaskProgress'] = self.task_progress
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -10182,6 +10295,10 @@ class DescribeMultiZoneClusterResponseBody(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeMultiZoneClusterResponseBodyTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('TaskProgress') is not None:
+            self.task_progress = m.get('TaskProgress')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -10233,6 +10350,7 @@ class DescribeRecoverableTimeRangeRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -10596,9 +10714,11 @@ class DescribeRestoreFullDetailsRequest(TeaModel):
         page_size: int = None,
         restore_record_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.restore_record_id = restore_record_id
 
     def validate(self):
@@ -10890,7 +11010,9 @@ class DescribeRestoreIncrDetailRequest(TeaModel):
         cluster_id: str = None,
         restore_record_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.restore_record_id = restore_record_id
 
     def validate(self):
@@ -11064,9 +11186,11 @@ class DescribeRestoreSchemaDetailsRequest(TeaModel):
         page_size: int = None,
         restore_record_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.restore_record_id = restore_record_id
 
     def validate(self):
@@ -11329,6 +11453,7 @@ class DescribeRestoreSummaryRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
@@ -11571,7 +11696,9 @@ class DescribeRestoreTablesRequest(TeaModel):
         cluster_id: str = None,
         restore_record_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.restore_record_id = restore_record_id
 
     def validate(self):
@@ -12182,6 +12309,7 @@ class DescribeSecurityGroupsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -12313,7 +12441,9 @@ class DescribeServerlessClusterRequest(TeaModel):
         cluster_id: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -12675,7 +12805,9 @@ class EnableHBaseueBackupRequest(TeaModel):
     ):
         self.client_token = client_token
         self.cold_storage_size = cold_storage_size
+        # This parameter is required.
         self.hbaseue_cluster_id = hbaseue_cluster_id
+        # This parameter is required.
         self.node_count = node_count
 
     def validate(self):
@@ -12815,20 +12947,29 @@ class EnableHBaseueModuleRequest(TeaModel):
         self.auto_renew_period = auto_renew_period
         self.bds_id = bds_id
         self.client_token = client_token
+        # This parameter is required.
         self.core_instance_type = core_instance_type
         self.disk_size = disk_size
         self.disk_type = disk_type
+        # This parameter is required.
         self.hbaseue_cluster_id = hbaseue_cluster_id
         self.master_instance_type = master_instance_type
         self.module_cluster_name = module_cluster_name
+        # This parameter is required.
         self.module_type_name = module_type_name
+        # This parameter is required.
         self.node_count = node_count
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.vswitch_id = vswitch_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -13031,33 +13172,51 @@ class EvaluateMultiZoneResourceRequest(TeaModel):
         standby_zone_id: str = None,
         vpc_id: str = None,
     ):
+        # This parameter is required.
         self.arbiter_vswitch_id = arbiter_vswitch_id
+        # This parameter is required.
         self.arbiter_zone_id = arbiter_zone_id
+        # This parameter is required.
         self.arch_version = arch_version
         self.auto_renew_period = auto_renew_period
         self.client_token = client_token
         self.cluster_name = cluster_name
+        # This parameter is required.
         self.core_disk_size = core_disk_size
+        # This parameter is required.
         self.core_disk_type = core_disk_type
+        # This parameter is required.
         self.core_instance_type = core_instance_type
+        # This parameter is required.
         self.core_node_count = core_node_count
+        # This parameter is required.
         self.engine = engine
+        # This parameter is required.
         self.engine_version = engine_version
         self.log_disk_size = log_disk_size
         self.log_disk_type = log_disk_type
         self.log_instance_type = log_instance_type
         self.log_node_count = log_node_count
+        # This parameter is required.
         self.master_instance_type = master_instance_type
+        # This parameter is required.
         self.multi_zone_combination = multi_zone_combination
+        # This parameter is required.
         self.pay_type = pay_type
         self.period = period
         self.period_unit = period_unit
+        # This parameter is required.
         self.primary_vswitch_id = primary_vswitch_id
+        # This parameter is required.
         self.primary_zone_id = primary_zone_id
+        # This parameter is required.
         self.region_id = region_id
         self.security_iplist = security_iplist
+        # This parameter is required.
         self.standby_vswitch_id = standby_vswitch_id
+        # This parameter is required.
         self.standby_zone_id = standby_zone_id
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13268,7 +13427,9 @@ class GetMultimodeCmsUrlRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -13384,10 +13545,15 @@ class GrantRequest(TeaModel):
         namespace: str = None,
         table_name: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.acl_actions = acl_actions
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -13499,6 +13665,7 @@ class ListHBaseInstancesRequest(TeaModel):
         self,
         vpc_id: str = None,
     ):
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13678,6 +13845,7 @@ class ListInstanceServiceConfigHistoriesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
@@ -13897,6 +14065,7 @@ class ListInstanceServiceConfigurationsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.page_number = page_number
         self.page_size = page_size
@@ -14163,6 +14332,7 @@ class ListTagResourcesRequest(TeaModel):
         tag: List[ListTagResourcesRequestTag] = None,
     ):
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
         self.tag = tag
@@ -14374,6 +14544,7 @@ class ListTagsRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -14547,8 +14718,11 @@ class ModifyAccountPasswordRequest(TeaModel):
         cluster_id: str = None,
         new_account_password: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.new_account_password = new_account_password
 
     def validate(self):
@@ -14659,6 +14833,7 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         security_token: str = None,
         switch_time: str = None,
     ):
+        # This parameter is required.
         self.ids = ids
         self.immediate_start = immediate_start
         self.owner_account = owner_account
@@ -14666,6 +14841,7 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # This parameter is required.
         self.switch_time = switch_time
 
     def validate(self):
@@ -14799,10 +14975,15 @@ class ModifyBackupPlanConfigRequest(TeaModel):
         next_full_backup_date: str = None,
         tables: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.full_backup_cycle = full_backup_cycle
+        # This parameter is required.
         self.min_hfile_backup_count = min_hfile_backup_count
+        # This parameter is required.
         self.next_full_backup_date = next_full_backup_date
+        # This parameter is required.
         self.tables = tables
 
     def validate(self):
@@ -14918,10 +15099,13 @@ class ModifyBackupPolicyRequest(TeaModel):
         preferred_backup_start_time_utc: str = None,
         preferred_backup_time: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.preferred_backup_end_time_utc = preferred_backup_end_time_utc
+        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         self.preferred_backup_start_time_utc = preferred_backup_start_time_utc
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
 
     def validate(self):
@@ -15034,7 +15218,9 @@ class ModifyClusterDeletionProtectionRequest(TeaModel):
         cluster_id: str = None,
         protection: bool = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.protection = protection
 
     def validate(self):
@@ -15135,7 +15321,9 @@ class ModifyDiskWarningLineRequest(TeaModel):
         cluster_id: str = None,
         warning_line: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.warning_line = warning_line
 
     def validate(self):
@@ -15237,8 +15425,11 @@ class ModifyInstanceMaintainTimeRequest(TeaModel):
         maintain_end_time: str = None,
         maintain_start_time: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.maintain_end_time = maintain_end_time
+        # This parameter is required.
         self.maintain_start_time = maintain_start_time
 
     def validate(self):
@@ -15347,8 +15538,11 @@ class ModifyInstanceNameRequest(TeaModel):
         zone_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.cluster_name = cluster_name
+        # This parameter is required.
         self.region_id = region_id
         self.zone_id = zone_id
 
@@ -15465,8 +15659,11 @@ class ModifyInstanceServiceConfigRequest(TeaModel):
         parameters: str = None,
         restart: bool = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.configure_name = configure_name
+        # This parameter is required.
         self.configure_value = configure_value
         self.parameters = parameters
         self.restart = restart
@@ -15582,6 +15779,7 @@ class ModifyInstanceTypeRequest(TeaModel):
         core_instance_type: str = None,
         master_instance_type: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.core_instance_type = core_instance_type
         self.master_instance_type = master_instance_type
@@ -15696,9 +15894,12 @@ class ModifyIpWhitelistRequest(TeaModel):
         ip_list: str = None,
         ip_version: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.group_name = group_name
         self.ip_list = ip_list
+        # This parameter is required.
         self.ip_version = ip_version
 
     def validate(self):
@@ -15809,6 +16010,7 @@ class ModifyMultiZoneClusterNodeTypeRequest(TeaModel):
         log_instance_type: str = None,
         master_instance_type: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.core_instance_type = core_instance_type
         self.log_instance_type = log_instance_type
@@ -15926,7 +16128,9 @@ class ModifySecurityGroupsRequest(TeaModel):
         cluster_id: str = None,
         security_group_ids: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -16028,8 +16232,11 @@ class ModifyUIAccountPasswordRequest(TeaModel):
         account_password: str = None,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -16134,7 +16341,9 @@ class MoveResourceGroupRequest(TeaModel):
         cluster_id: str = None,
         new_resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
 
     def validate(self):
@@ -16234,6 +16443,7 @@ class OpenBackupRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -16329,6 +16539,7 @@ class PurgeInstanceRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -16424,6 +16635,7 @@ class QueryHBaseHaDBRequest(TeaModel):
         self,
         bds_id: str = None,
     ):
+        # This parameter is required.
         self.bds_id = bds_id
 
     def validate(self):
@@ -16710,8 +16922,10 @@ class QueryXpackRelateDBRequest(TeaModel):
         has_single_node: bool = None,
         relate_db_type: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.has_single_node = has_single_node
+        # This parameter is required.
         self.relate_db_type = relate_db_type
 
     def validate(self):
@@ -16941,18 +17155,24 @@ class RelateDbForHBaseHaRequest(TeaModel):
         is_active_standard: bool = None,
         is_standby_standard: bool = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.ha_active = ha_active
         self.ha_active_cluster_key = ha_active_cluster_key
+        # This parameter is required.
         self.ha_active_dbtype = ha_active_dbtype
         self.ha_active_hbase_fs_dir = ha_active_hbase_fs_dir
         self.ha_active_hdfs_uri = ha_active_hdfs_uri
         self.ha_active_password = ha_active_password
         self.ha_active_user = ha_active_user
         self.ha_active_version = ha_active_version
+        # This parameter is required.
         self.ha_migrate_type = ha_migrate_type
+        # This parameter is required.
         self.ha_standby = ha_standby
         self.ha_standby_cluster_key = ha_standby_cluster_key
+        # This parameter is required.
         self.ha_standby_dbtype = ha_standby_dbtype
         self.ha_standby_hbase_fs_dir = ha_standby_hbase_fs_dir
         self.ha_standby_hdfs_uri = ha_standby_hdfs_uri
@@ -16960,7 +17180,9 @@ class RelateDbForHBaseHaRequest(TeaModel):
         self.ha_standby_user = ha_standby_user
         self.ha_standby_version = ha_standby_version
         self.ha_tables = ha_tables
+        # This parameter is required.
         self.is_active_standard = is_active_standard
+        # This parameter is required.
         self.is_standby_standard = is_standby_standard
 
     def validate(self):
@@ -17136,6 +17358,7 @@ class ReleasePublicNetworkAddressRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -17233,8 +17456,11 @@ class RenewInstanceRequest(TeaModel):
         duration: int = None,
         pricing_cycle: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
 
     def validate(self):
@@ -17345,7 +17571,9 @@ class ResizeColdStorageSizeRequest(TeaModel):
         cluster_id: str = None,
         cold_storage_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.cold_storage_size = cold_storage_size
 
     def validate(self):
@@ -17452,7 +17680,9 @@ class ResizeDiskSizeRequest(TeaModel):
         cluster_id: str = None,
         node_disk_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.node_disk_size = node_disk_size
 
     def validate(self):
@@ -17560,6 +17790,7 @@ class ResizeMultiZoneClusterDiskSizeRequest(TeaModel):
         core_disk_size: int = None,
         log_disk_size: int = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.core_disk_size = core_disk_size
         self.log_disk_size = log_disk_size
@@ -17679,6 +17910,7 @@ class ResizeMultiZoneClusterNodeCountRequest(TeaModel):
         standby_vswitch_id: str = None,
     ):
         self.arbiter_vswitch_id = arbiter_vswitch_id
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.core_node_count = core_node_count
         self.log_node_count = log_node_count
@@ -17817,7 +18049,9 @@ class ResizeNodeCountRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.node_count = node_count
         self.v_switch_id = v_switch_id
         self.zone_id = zone_id
@@ -17934,6 +18168,7 @@ class RestartInstanceRequest(TeaModel):
         cluster_id: str = None,
         components: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.components = components
 
@@ -18038,10 +18273,15 @@ class RevokeRequest(TeaModel):
         namespace: str = None,
         table_name: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.acl_actions = acl_actions
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -18156,9 +18396,13 @@ class SwitchHbaseHaSlbRequest(TeaModel):
         ha_types: str = None,
         hbase_type: str = None,
     ):
+        # This parameter is required.
         self.bds_id = bds_id
+        # This parameter is required.
         self.ha_id = ha_id
+        # This parameter is required.
         self.ha_types = ha_types
+        # This parameter is required.
         self.hbase_type = hbase_type
 
     def validate(self):
@@ -18268,8 +18512,11 @@ class SwitchServiceRequest(TeaModel):
         operate: str = None,
         service_name: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.operate = operate
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -18408,8 +18655,11 @@ class TagResourcesRequest(TeaModel):
         resource_id: List[str] = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -18525,7 +18775,9 @@ class UnTagResourcesRequest(TeaModel):
         tag_key: List[str] = None,
     ):
         self.all = all
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.tag_key = tag_key
 
@@ -18635,6 +18887,7 @@ class UpgradeMinorVersionRequest(TeaModel):
         cluster_id: str = None,
         components: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
         self.components = components
 
@@ -18746,7 +18999,9 @@ class UpgradeMultiZoneClusterRequest(TeaModel):
         upgrade_ins_name: str = None,
         versions: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.components = components
         self.restart_components = restart_components
         self.run_mode = run_mode
@@ -18874,8 +19129,11 @@ class XpackRelateDBRequest(TeaModel):
         db_cluster_ids: str = None,
         relate_db_type: str = None,
     ):
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.db_cluster_ids = db_cluster_ids
+        # This parameter is required.
         self.relate_db_type = relate_db_type
 
     def validate(self):
