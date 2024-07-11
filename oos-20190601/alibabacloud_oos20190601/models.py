@@ -11,6 +11,8 @@ class CancelExecutionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The ID of the region.
         self.region_id = region_id
@@ -116,7 +118,9 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group to which the cloud resource is to be moved. You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
+        # The ID of the resource group to which the cloud resource is to be moved. You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The ID of the region.
         self.region_id = region_id
@@ -127,6 +131,8 @@ class ChangeResourceGroupRequest(TeaModel):
         # *   If the ResourceType parameter is set to secretparameter, set the ResourceId parameter to the name of the encryption parameter.
         # *   If the ResourceType parameter is set to stateconfiguration, set the ResourceId parameter to the ID of the desired-state configuration.
         # *   If the ResourceType parameter is set to application, set the ResourceId parameter to the name of the application.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the cloud resource. Valid values:
         # 
@@ -135,6 +141,8 @@ class ChangeResourceGroupRequest(TeaModel):
         # *   secretparameter: encryption parameter
         # *   stateconfiguration: desired-state configuration
         # *   application: application
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -247,10 +255,16 @@ class ContinueDeployApplicationGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the application.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The deployment information about the application group.
+        # 
+        # This parameter is required.
         self.deploy_parameters = deploy_parameters
         # The name of the application group.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -417,6 +431,8 @@ class CreateApplicationRequest(TeaModel):
         # The description of the application.
         self.description = description
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -496,6 +512,8 @@ class CreateApplicationShrinkRequest(TeaModel):
         # The description of the application.
         self.description = description
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -702,12 +720,16 @@ class CreateApplicationGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The application name.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The ID of the application group in CloudMonitor.
         self.cms_group_id = cms_group_id
         # The ID of the region in which the related sources reside.
+        # 
+        # This parameter is required.
         self.deploy_region_id = deploy_region_id
         # The description of the application group.
         self.description = description
@@ -716,6 +738,8 @@ class CreateApplicationGroupRequest(TeaModel):
         # The value of the tag. You must set both the ImportTagKey and the ImportTagValue parameters, or leave both of them empty. If you do not set the ImportTagKey and ImportTagValue parameters, the application group name is used for this parameter by default.
         self.import_tag_value = import_tag_value
         # The name of the application group.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -994,6 +1018,8 @@ class CreateOpsItemRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.category = category
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -1044,14 +1070,20 @@ class CreateOpsItemRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.severity = severity
         # The solutions.
         self.solutions = solutions
         # The source business.
+        # 
+        # This parameter is required.
         self.source = source
         # The tags.
         self.tags = tags
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
+        # 
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -1182,6 +1214,8 @@ class CreateOpsItemShrinkRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.category = category
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -1232,14 +1266,20 @@ class CreateOpsItemShrinkRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.severity = severity
         # The solutions.
         self.solutions = solutions
         # The source business.
+        # 
+        # This parameter is required.
         self.source = source
         # The tags.
         self.tags_shrink = tags_shrink
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
+        # 
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -1331,39 +1371,39 @@ class CreateOpsItemResponseBodyOpsItem(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
-        # The attributes of the O\&M item.
+        # The attributes of the O\\&M item.
         self.attributes = attributes
-        # The category of the O\&M item.
+        # The category of the O\\&M item.
         self.category = category
-        # The time when the O\&M item was created.
+        # The time when the O\\&M item was created.
         self.create_date = create_date
-        # The user who created the O\&M item.
+        # The user who created the O\\&M item.
         self.created_by = created_by
-        # The description of the O\&M item.
+        # The description of the O\\&M item.
         self.description = description
-        # The user who last modified the O\&M item.
+        # The user who last modified the O\\&M item.
         self.last_modified_by = last_modified_by
-        # The ID of the O\&M item.
+        # The ID of the O\\&M item.
         self.ops_item_id = ops_item_id
-        # The priority of the O\&M item.
+        # The priority of the O\\&M item.
         self.priority = priority
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ARNs of the associated resources.
         self.resources = resources
-        # The severity level of the O\&M item.
+        # The severity level of the O\\&M item.
         self.severity = severity
         # The solutions.
         self.solutions = solutions
-        # The source business of the O\&M item.
+        # The source business of the O\\&M item.
         self.source = source
-        # The state of the O\&M item.
+        # The state of the O\\&M item.
         self.status = status
-        # The tags of the O\&M item.
+        # The tags of the O\\&M item.
         self.tags = tags
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
         self.title = title
-        # The time when the O\&M item was updated.
+        # The time when the O\\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -1456,7 +1496,7 @@ class CreateOpsItemResponseBody(TeaModel):
         ops_item: CreateOpsItemResponseBodyOpsItem = None,
         request_id: str = None,
     ):
-        # The information about the O\&M item.
+        # The information about the O\\&M item.
         self.ops_item = ops_item
         # The request ID.
         self.request_id = request_id
@@ -1541,7 +1581,7 @@ class CreateParameterRequest(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
         self.client_token = client_token
         # The constraints of the common parameter. By default, this parameter is null. Valid values:
         # 
@@ -1552,7 +1592,9 @@ class CreateParameterRequest(TeaModel):
         self.constraints = constraints
         # The description of the common parameter. The description must be 1 to 200 characters in length.
         self.description = description
-        # The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -1561,8 +1603,12 @@ class CreateParameterRequest(TeaModel):
         # The tags.
         self.tags = tags
         # The data type of the parameter. Valid values: String and StringList.
+        # 
+        # This parameter is required.
         self.type = type
         # The value of the common parameter. The value must be 1 to 4096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1630,7 +1676,7 @@ class CreateParameterShrinkRequest(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
         self.client_token = client_token
         # The constraints of the common parameter. By default, this parameter is null. Valid values:
         # 
@@ -1641,7 +1687,9 @@ class CreateParameterShrinkRequest(TeaModel):
         self.constraints = constraints
         # The description of the common parameter. The description must be 1 to 200 characters in length.
         self.description = description
-        # The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -1650,8 +1698,12 @@ class CreateParameterShrinkRequest(TeaModel):
         # The tags.
         self.tags_shrink = tags_shrink
         # The data type of the parameter. Valid values: String and StringList.
+        # 
+        # This parameter is required.
         self.type = type
         # The value of the common parameter. The value must be 1 to 4096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1949,6 +2001,8 @@ class CreatePatchBaselineRequest(TeaModel):
         tags: List[CreatePatchBaselineRequestTags] = None,
     ):
         # The rules of scanning and installing patches for the specified operating system.
+        # 
+        # This parameter is required.
         self.approval_rules = approval_rules
         # The approved patches.
         self.approved_patches = approved_patches
@@ -1959,6 +2013,8 @@ class CreatePatchBaselineRequest(TeaModel):
         # The description of the patch baseline.
         self.description = description
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the operating system. Valid values:
         # 
@@ -1970,6 +2026,8 @@ class CreatePatchBaselineRequest(TeaModel):
         # *   RedhatEnterpriseLinux
         # *   Anolis
         # *   AlmaLinux
+        # 
+        # This parameter is required.
         self.operation_system = operation_system
         # The ID of the region in which you want to create a patch baseline.
         self.region_id = region_id
@@ -2078,6 +2136,8 @@ class CreatePatchBaselineShrinkRequest(TeaModel):
         tags_shrink: str = None,
     ):
         # The rules of scanning and installing patches for the specified operating system.
+        # 
+        # This parameter is required.
         self.approval_rules = approval_rules
         # The approved patches.
         self.approved_patches_shrink = approved_patches_shrink
@@ -2088,6 +2148,8 @@ class CreatePatchBaselineShrinkRequest(TeaModel):
         # The description of the patch baseline.
         self.description = description
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the operating system. Valid values:
         # 
@@ -2099,6 +2161,8 @@ class CreatePatchBaselineShrinkRequest(TeaModel):
         # *   RedhatEnterpriseLinux
         # *   Anolis
         # *   AlmaLinux
+        # 
+        # This parameter is required.
         self.operation_system = operation_system
         # The ID of the region in which you want to create a patch baseline.
         self.region_id = region_id
@@ -2457,7 +2521,7 @@ class CreateSecretParameterRequest(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
         self.client_token = client_token
         # The constraints of the encryption parameter. By default, this parameter is null. Valid values:
         # 
@@ -2466,12 +2530,15 @@ class CreateSecretParameterRequest(TeaModel):
         # *   MinLength: The minimum length of the encryption parameter.
         # *   MaxLength: The maximum length of the encryption parameter.
         self.constraints = constraints
+        # The instance ID of the KMS instance.
         self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter. The description must be 1 to 200 characters in length.
         self.description = description
         # The key ID of Key Management Service (KMS) that is used to encrypt the parameter.
         self.key_id = key_id
-        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -2482,6 +2549,8 @@ class CreateSecretParameterRequest(TeaModel):
         # The type of the parameter. Set the value to Secret.
         self.type = type
         # The value of the encryption parameter. The value must be 1 to 4096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -2559,7 +2628,7 @@ class CreateSecretParameterShrinkRequest(TeaModel):
         type: str = None,
         value: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
         self.client_token = client_token
         # The constraints of the encryption parameter. By default, this parameter is null. Valid values:
         # 
@@ -2568,12 +2637,15 @@ class CreateSecretParameterShrinkRequest(TeaModel):
         # *   MinLength: The minimum length of the encryption parameter.
         # *   MaxLength: The maximum length of the encryption parameter.
         self.constraints = constraints
+        # The instance ID of the KMS instance.
         self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter. The description must be 1 to 200 characters in length.
         self.description = description
         # The key ID of Key Management Service (KMS) that is used to encrypt the parameter.
         self.key_id = key_id
-        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -2584,6 +2656,8 @@ class CreateSecretParameterShrinkRequest(TeaModel):
         # The type of the parameter. Set the value to Secret.
         self.type = type
         # The value of the encryption parameter. The value must be 1 to 4096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -2671,6 +2745,7 @@ class CreateSecretParameterResponseBodyParameter(TeaModel):
         self.created_by = created_by
         # The time when the encryption parameter was created.
         self.created_date = created_date
+        # The instance ID of the KMS instance.
         self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter.
         self.description = description
@@ -2878,14 +2953,22 @@ class CreateStateConfigurationRequest(TeaModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
+        # 
+        # This parameter is required.
         self.schedule_expression = schedule_expression
         # The schedule type. Set the value to rate.
+        # 
+        # This parameter is required.
         self.schedule_type = schedule_type
         # The tags to be added to the configuration.
         self.tags = tags
         # The resources to be queried.
+        # 
+        # This parameter is required.
         self.targets = targets
-        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The version number of the template. If you do not specify this parameter, the latest version of the template is used.
         self.template_version = template_version
@@ -2983,14 +3066,22 @@ class CreateStateConfigurationShrinkRequest(TeaModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
+        # 
+        # This parameter is required.
         self.schedule_expression = schedule_expression
         # The schedule type. Set the value to rate.
+        # 
+        # This parameter is required.
         self.schedule_type = schedule_type
         # The tags to be added to the configuration.
         self.tags_shrink = tags_shrink
         # The resources to be queried.
+        # 
+        # This parameter is required.
         self.targets = targets
-        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The version number of the template. If you do not specify this parameter, the latest version of the template is used.
         self.template_version = template_version
@@ -3260,6 +3351,8 @@ class CreateTemplateRequest(TeaModel):
         version_name: str = None,
     ):
         # The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+        # 
+        # This parameter is required.
         self.content = content
         # The ID of the region.
         self.region_id = region_id
@@ -3267,7 +3360,9 @@ class CreateTemplateRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The tag keys and tag values. The number of key-value pairs ranges from 1 to 20.
         self.tags = tags
-        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The name of the version of the template.
         self.version_name = version_name
@@ -3323,6 +3418,8 @@ class CreateTemplateShrinkRequest(TeaModel):
         version_name: str = None,
     ):
         # The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+        # 
+        # This parameter is required.
         self.content = content
         # The ID of the region.
         self.region_id = region_id
@@ -3330,7 +3427,9 @@ class CreateTemplateShrinkRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The tag keys and tag values. The number of key-value pairs ranges from 1 to 20.
         self.tags_shrink = tags_shrink
-        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The name of the version of the template.
         self.version_name = version_name
@@ -3593,6 +3692,8 @@ class DeleteApplicationRequest(TeaModel):
         # *   false
         self.force = force
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -3711,8 +3812,12 @@ class DeleteApplicationGroupRequest(TeaModel):
         retain_resource: bool = None,
     ):
         # The name of the application.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The name of the application group.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -3831,6 +3936,8 @@ class DeleteExecutionsRequest(TeaModel):
         # The execution IDs.
         # 
         # You can specify multiple execution IDs in a JSON array in the format of `["xxxxxxxxx", "yyyyyyyyy", ... "zzzzzzzzz"]`. You can specify up to 100 execution IDs at a time. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.execution_ids = execution_ids
         # The region ID.
         self.region_id = region_id
@@ -3934,7 +4041,9 @@ class DeleteParameterRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The name of the common parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_). It cannot start with aliyun, acs, alibaba, alicloud, or oos.
+        # The name of the common parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). It cannot start with aliyun, acs, alibaba, alicloud, or oos.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -4039,6 +4148,8 @@ class DeletePatchBaselineRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -4142,7 +4253,9 @@ class DeleteSecretParameterRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The name of the encryption parameter. The name must be 1 to 180 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the encryption parameter. The name must be 1 to 180 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -4252,6 +4365,8 @@ class DeleteStateConfigurationsRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The IDs of desired-state configurations.
+        # 
+        # This parameter is required.
         self.state_configuration_ids = state_configuration_ids
 
     def validate(self):
@@ -4362,7 +4477,9 @@ class DeleteTemplateRequest(TeaModel):
         self.auto_delete_executions = auto_delete_executions
         # The region ID.
         self.region_id = region_id
-        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # 
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -4474,6 +4591,8 @@ class DeleteTemplatesRequest(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The names of the templates to be deleted.
+        # 
+        # This parameter is required.
         self.template_names = template_names
 
     def validate(self):
@@ -4582,10 +4701,16 @@ class DeployApplicationGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the application.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The deployment information about the application group.
+        # 
+        # This parameter is required.
         self.deploy_parameters = deploy_parameters
         # The name of the application group.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region in which you want to deploy the application group.
         self.region_id = region_id
@@ -4703,18 +4828,26 @@ class DescribeApplicationGroupBillRequest(TeaModel):
         resource_type: str = None,
     ):
         # The application name.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The billing cycle, in the YYYY-MM format.
+        # 
+        # This parameter is required.
         self.billing_cycle = billing_cycle
         # The number of entries per page.
         self.max_results = max_results
         # The application group name.
+        # 
+        # This parameter is required.
         self.name = name
         # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The ID of the region.
         self.region_id = region_id
         # The type of the cloud resource.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -5260,6 +5393,8 @@ class GetApplicationRequest(TeaModel):
         region_id: str = None,
     ):
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -5528,8 +5663,12 @@ class GetApplicationGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the application.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The name of the application group.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -5766,6 +5905,8 @@ class GetExecutionTemplateRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The ID of the region.
         self.region_id = region_id
@@ -6241,7 +6382,9 @@ class GetOpsItemRequest(TeaModel):
         ops_item_id: str = None,
         region_id: str = None,
     ):
-        # The O\&M item ID.
+        # The O\\&M item ID.
+        # 
+        # This parameter is required.
         self.ops_item_id = ops_item_id
         # The region ID.
         self.region_id = region_id
@@ -6291,39 +6434,39 @@ class GetOpsItemResponseBodyOpsItem(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
-        # The information about the attributes of the O\&M item.
+        # The information about the attributes of the O\\&M item.
         self.attributes = attributes
-        # The category of the O\&M item.
+        # The category of the O\\&M item.
         self.category = category
-        # The user who created the O\&M item.
+        # The user who created the O\\&M item.
         self.create_by = create_by
-        # The time when the O\&M item was created.
+        # The time when the O\\&M item was created.
         self.create_date = create_date
         # The description.
         self.description = description
-        # The user who last modified the O\&M item.
+        # The user who last modified the O\\&M item.
         self.last_modified_by = last_modified_by
-        # The O\&M item ID.
+        # The O\\&M item ID.
         self.ops_item_id = ops_item_id
-        # The priority of the O\&M item.
+        # The priority of the O\\&M item.
         self.priority = priority
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The Alibaba Cloud Resource Names (ARNs) of the associated resources.
         self.resources = resources
-        # The severity level of the O\&M item.
+        # The severity level of the O\\&M item.
         self.severity = severity
-        # The solutions to the O\&M item.
+        # The solutions to the O\\&M item.
         self.solutions = solutions
-        # The source business of the O\&M item.
+        # The source business of the O\\&M item.
         self.source = source
-        # The status of the O\&M item.
+        # The status of the O\\&M item.
         self.status = status
-        # The tags attached to the O\&M item.
+        # The tags attached to the O\\&M item.
         self.tags = tags
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
         self.title = title
-        # The time when the O\&M item was updated.
+        # The time when the O\\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -6416,7 +6559,7 @@ class GetOpsItemResponseBody(TeaModel):
         ops_item: GetOpsItemResponseBodyOpsItem = None,
         request_id: str = None,
     ):
-        # The information about the O\&M item.
+        # The information about the O\\&M item.
         self.ops_item = ops_item
         # The request ID.
         self.request_id = request_id
@@ -6496,7 +6639,9 @@ class GetParameterRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the common parameter. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the common parameter. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # 
+        # This parameter is required.
         self.name = name
         # The version number of the common parameter. Valid values: 1 to 100.
         self.parameter_version = parameter_version
@@ -6741,6 +6886,8 @@ class GetParametersRequest(TeaModel):
         region_id: str = None,
     ):
         # The names of the common parameters.
+        # 
+        # This parameter is required.
         self.names = names
         # The ID of the region.
         self.region_id = region_id
@@ -6993,6 +7140,8 @@ class GetParametersByPathRequest(TeaModel):
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
+        # 
+        # This parameter is required.
         self.path = path
         # Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
         # 
@@ -7262,6 +7411,8 @@ class GetPatchBaselineRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region in which the patch baseline whose details you want to query resides.
         self.region_id = region_id
@@ -7566,7 +7717,9 @@ class GetSecretParameterRequest(TeaModel):
         region_id: str = None,
         with_decryption: bool = None,
     ):
-        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The version number of the common parameter. Valid values: 1 to 100.
         self.parameter_version = parameter_version
@@ -7633,6 +7786,7 @@ class GetSecretParameterResponseBodyParameter(TeaModel):
         self.created_by = created_by
         # The time when the encryption parameter was created.
         self.created_date = created_date
+        # The instance ID of the KMS instance.
         self.dkmsinstance_id = dkmsinstance_id
         # The description of the encryption parameter.
         self.description = description
@@ -7824,7 +7978,9 @@ class GetSecretParametersRequest(TeaModel):
         region_id: str = None,
         with_decryption: bool = None,
     ):
-        # The name of the encryption parameter. Multiple encryption parameters can form a JSON array in the format of \["xxxxxxxxx", "yyyyyyyyy", … "zzzzzzzzz"]. Each JSON array can contain a maximum of 10 encryption parameters. Multiple encryption parameters in the array are separated by commas (,).
+        # The name of the encryption parameter. Multiple encryption parameters can form a JSON array in the format of ["xxxxxxxxx", "yyyyyyyyy", … "zzzzzzzzz"]. Each JSON array can contain a maximum of 10 encryption parameters. Multiple encryption parameters in the array are separated by commas (,).
+        # 
+        # This parameter is required.
         self.names = names
         # The ID of the region.
         self.region_id = region_id
@@ -8094,6 +8250,8 @@ class GetSecretParametersByPathRequest(TeaModel):
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The path of the encryption parameter. The path must be 1 to 200 characters in length. For example, if the name of an encryption parameter is /secretParameter/mySecretParameter, the path of the encryption parameter is /secretParameter.
+        # 
+        # This parameter is required.
         self.path = path
         # Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
         # 
@@ -8549,7 +8707,9 @@ class GetTemplateRequest(TeaModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The version of the template. The default value is the latest version of the template.
         self.template_version = template_version
@@ -9685,6 +9845,8 @@ class ListExecutionLogsRequest(TeaModel):
         task_execution_id: str = None,
     ):
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The type of the log.
         self.log_type = log_type
@@ -9900,6 +10062,8 @@ class ListExecutionRiskyTasksRequest(TeaModel):
         # The ID of the region.
         self.region_id = region_id
         # The name of the template.
+        # 
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -10880,13 +11044,17 @@ class ListGitRepositoriesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         platform: str = None,
+        region_id: str = None,
     ):
         self.client_token = client_token
         self.org_name = org_name
+        # This parameter is required.
         self.owner = owner
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.platform = platform
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -10909,6 +11077,8 @@ class ListGitRepositoriesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.platform is not None:
             result['Platform'] = self.platform
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -10925,6 +11095,8 @@ class ListGitRepositoriesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -11598,6 +11770,8 @@ class ListInventoryEntriesRequest(TeaModel):
         # The filter rules for the component.
         self.filter = filter
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of entries per page. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
@@ -11615,6 +11789,8 @@ class ListInventoryEntriesRequest(TeaModel):
         # *   ACS:Service
         # *   ACS:WindowsRegistry
         # *   ACS:WindowsUpdate
+        # 
+        # This parameter is required.
         self.type_name = type_name
 
     def validate(self):
@@ -12026,9 +12202,9 @@ class ListOpsItemsResponseBodyOpsItems(TeaModel):
     ):
         # The category.
         self.category = category
-        # The time when the O\&M item was created.
+        # The time when the O\\&M item was created.
         self.create_date = create_date
-        # The ID of the O\&M item.
+        # The ID of the O\\&M item.
         self.ops_item_id = ops_item_id
         # The priority.
         self.priority = priority
@@ -12038,13 +12214,13 @@ class ListOpsItemsResponseBodyOpsItems(TeaModel):
         self.severity = severity
         # The source business.
         self.source = source
-        # The status of the O\&M item.
+        # The status of the O\\&M item.
         self.status = status
         # The tags.
         self.tags = tags
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
         self.title = title
-        # The time when the O\&M item was updated.
+        # The time when the O\\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -12120,7 +12296,7 @@ class ListOpsItemsResponseBody(TeaModel):
         self.max_results = max_results
         # The pagination token that can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The list of O\&M items.
+        # The list of O\\&M items.
         self.ops_items = ops_items
         # The request ID.
         self.request_id = request_id
@@ -12224,6 +12400,8 @@ class ListParameterVersionsRequest(TeaModel):
         # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
         # The name of the common parameter.
+        # 
+        # This parameter is required.
         self.name = name
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -13445,6 +13623,8 @@ class ListResourceExecutionStatusRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
@@ -13652,6 +13832,8 @@ class ListSecretParameterVersionsRequest(TeaModel):
         # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
         # The name of the encryption parameter.
+        # 
+        # This parameter is required.
         self.name = name
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -14326,7 +14508,7 @@ class ListStateConfigurationsRequest(TeaModel):
         self.state_configuration_ids = state_configuration_ids
         # The tags to be added to the configuration.
         self.tags = tags
-        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.template_name = template_name
         # The version number of the template. If you do not specify this parameter, the latest version of the template is used.
         self.template_version = template_version
@@ -14403,7 +14585,7 @@ class ListStateConfigurationsShrinkRequest(TeaModel):
         self.state_configuration_ids = state_configuration_ids
         # The tags to be added to the configuration.
         self.tags_shrink = tags_shrink
-        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.template_name = template_name
         # The version number of the template. If you do not specify this parameter, the latest version of the template is used.
         self.template_version = template_version
@@ -14817,10 +14999,14 @@ class ListTagResourcesRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of resources. The number of resource IDs ranges from 1 to 50.
         self.resource_ids = resource_ids
         # The type of the resource. Valid values: template execution
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags = tags
@@ -14873,10 +15059,14 @@ class ListTagResourcesShrinkRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of resources. The number of resource IDs ranges from 1 to 50.
         self.resource_ids_shrink = resource_ids_shrink
         # The type of the resource. Valid values: template execution
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags_shrink = tags_shrink
@@ -15642,6 +15832,8 @@ class ListTemplateVersionsRequest(TeaModel):
         # The type of the template. Valid values: Private and Public.
         self.share_type = share_type
         # The name of the template.
+        # 
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -15849,6 +16041,7 @@ class ListTemplatesRequest(TeaModel):
         created_date_after: str = None,
         created_date_before: str = None,
         has_trigger: bool = None,
+        is_example: bool = None,
         is_favorite: bool = None,
         max_results: int = None,
         next_token: str = None,
@@ -15879,6 +16072,7 @@ class ListTemplatesRequest(TeaModel):
         self.created_date_before = created_date_before
         # Specifies whether to query the template that is configured with a trigger.
         self.has_trigger = has_trigger
+        self.is_example = is_example
         # The template is favorite or not.
         self.is_favorite = is_favorite
         # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
@@ -15942,6 +16136,8 @@ class ListTemplatesRequest(TeaModel):
             result['CreatedDateBefore'] = self.created_date_before
         if self.has_trigger is not None:
             result['HasTrigger'] = self.has_trigger
+        if self.is_example is not None:
+            result['IsExample'] = self.is_example
         if self.is_favorite is not None:
             result['IsFavorite'] = self.is_favorite
         if self.max_results is not None:
@@ -15980,6 +16176,8 @@ class ListTemplatesRequest(TeaModel):
             self.created_date_before = m.get('CreatedDateBefore')
         if m.get('HasTrigger') is not None:
             self.has_trigger = m.get('HasTrigger')
+        if m.get('IsExample') is not None:
+            self.is_example = m.get('IsExample')
         if m.get('IsFavorite') is not None:
             self.is_favorite = m.get('IsFavorite')
         if m.get('MaxResults') is not None:
@@ -16015,6 +16213,7 @@ class ListTemplatesShrinkRequest(TeaModel):
         created_date_after: str = None,
         created_date_before: str = None,
         has_trigger: bool = None,
+        is_example: bool = None,
         is_favorite: bool = None,
         max_results: int = None,
         next_token: str = None,
@@ -16045,6 +16244,7 @@ class ListTemplatesShrinkRequest(TeaModel):
         self.created_date_before = created_date_before
         # Specifies whether to query the template that is configured with a trigger.
         self.has_trigger = has_trigger
+        self.is_example = is_example
         # The template is favorite or not.
         self.is_favorite = is_favorite
         # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
@@ -16108,6 +16308,8 @@ class ListTemplatesShrinkRequest(TeaModel):
             result['CreatedDateBefore'] = self.created_date_before
         if self.has_trigger is not None:
             result['HasTrigger'] = self.has_trigger
+        if self.is_example is not None:
+            result['IsExample'] = self.is_example
         if self.is_favorite is not None:
             result['IsFavorite'] = self.is_favorite
         if self.max_results is not None:
@@ -16146,6 +16348,8 @@ class ListTemplatesShrinkRequest(TeaModel):
             self.created_date_before = m.get('CreatedDateBefore')
         if m.get('HasTrigger') is not None:
             self.has_trigger = m.get('HasTrigger')
+        if m.get('IsExample') is not None:
+            self.is_example = m.get('IsExample')
         if m.get('IsFavorite') is not None:
             self.is_favorite = m.get('IsFavorite')
         if m.get('MaxResults') is not None:
@@ -16461,6 +16665,8 @@ class NotifyExecutionRequest(TeaModel):
         task_name: str = None,
     ):
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The state of the terminated execution. This parameter is valid if you set the NotifyType parameter to CompleteExecution.
         self.execution_status = execution_status
@@ -16477,6 +16683,8 @@ class NotifyExecutionRequest(TeaModel):
         # *   **Reject**: rejects an execution. For example, you want to reject the execution of a high-risk operation task.
         # *   **RetryTask**: retries a failed task whose execution mode is Suspend upon Failure.
         # *   **SkipTask**: skips a failed task whose execution mode is Suspend upon Failure.
+        # 
+        # This parameter is required.
         self.notify_type = notify_type
         # The parameters of the subsequent task. This parameter is valid if you set the NotifyType parameter to ExecuteTask.
         self.parameters = parameters
@@ -16621,6 +16829,8 @@ class RegisterDefaultPatchBaselineRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -16832,7 +17042,7 @@ class SearchInventoryRequestFilter(TeaModel):
         operator: str = None,
         value: List[str] = None,
     ):
-        # The name of the component property. Valid values of N: 1 to 5. Different components have different property names. You can call the [GetInventorySchema](https://api.aliyun.com/#/?product=oos\&version=2019-06-01\&api=GetInventorySchema) operation to query the property names of different components. For example, the ACS:InstanceInformation component has the InstanceId property. Therefore, you can set this parameter to ACS:InstanceInformation.InstanceId.
+        # The name of the component property. Valid values of N: 1 to 5. Different components have different property names. You can call the [GetInventorySchema](https://api.aliyun.com/#/?product=oos\\&version=2019-06-01\\&api=GetInventorySchema) operation to query the property names of different components. For example, the ACS:InstanceInformation component has the InstanceId property. Therefore, you can set this parameter to ACS:InstanceInformation.InstanceId.
         self.name = name
         # The comparison operator that is used to filter property values. Valid values of N: 1 to 5. Valid values:
         # 
@@ -17297,7 +17507,7 @@ class StartExecutionRequest(TeaModel):
         self.tags = tags
         # The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
         self.template_content = template_content
-        # The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         self.template_name = template_name
         # The Object Storage Service (OSS) URL of the object that stores the content of the Operation Orchestration Service (OOS) template. The access control list (ACL) of the object must be public-read. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
         self.template_url = template_url
@@ -17427,7 +17637,7 @@ class StartExecutionShrinkRequest(TeaModel):
         self.tags_shrink = tags_shrink
         # The content of the template in the JSON or YAML format. This parameter is the same as the Content parameter that you can specify when you call the CreateTemplate operation. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
         self.template_content = template_content
-        # The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
         self.template_name = template_name
         # The Object Storage Service (OSS) URL of the object that stores the content of the Operation Orchestration Service (OOS) template. The access control list (ACL) of the object must be public-read. You can use this parameter to specify the tasks that you want to run. This way, you do not need to create a template before you start an execution. If you select an existing template, you do not need to specify this parameter.
         self.template_url = template_url
@@ -17832,14 +18042,18 @@ class TagResourcesRequest(TeaModel):
         tags: Dict[str, Any] = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
         # 
-        # *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-        # *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-        # *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+        # *   If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
+        # *   If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
+        # *   If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource for which you want to modify the resource group. Valid values:
         # 
@@ -17848,8 +18062,12 @@ class TagResourcesRequest(TeaModel):
         # *   secretparameter: encryption parameter.
         # *   stateconfiguration: desired-state configuration.
         # *   application: application.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -17893,14 +18111,18 @@ class TagResourcesShrinkRequest(TeaModel):
         tags_shrink: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
         # 
-        # *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-        # *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-        # *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+        # *   If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
+        # *   If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
+        # *   If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+        # 
+        # This parameter is required.
         self.resource_ids_shrink = resource_ids_shrink
         # The type of the resource for which you want to modify the resource group. Valid values:
         # 
@@ -17909,8 +18131,12 @@ class TagResourcesShrinkRequest(TeaModel):
         # *   secretparameter: encryption parameter.
         # *   stateconfiguration: desired-state configuration.
         # *   application: application.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+        # 
+        # This parameter is required.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -18028,14 +18254,20 @@ class TriggerExecutionRequest(TeaModel):
         # The message body to be sent to the trigger task.
         self.content = content
         # The ID of the event-, alert-, or timer-triggered execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the trigger. Valid values:
         # 
         # *   Event
         # *   Alarm
         # *   Timer
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -18155,14 +18387,18 @@ class UntagResourcesRequest(TeaModel):
         # Specifies whether to remove all tags. This parameter takes effect only if TagKeys is left empty. Valid values: true and false. Default value: false. TagKeys is required if this parameter is set to false.
         self.all = all
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
         # 
-        # *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-        # *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-        # *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+        # *   If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
+        # *   If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
+        # *   If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource for which you want to modify the resource group. Valid values:
         # 
@@ -18171,6 +18407,8 @@ class UntagResourcesRequest(TeaModel):
         # *   secretparameter: encryption parameter.
         # *   stateconfiguration: desired-state configuration.
         # *   application: application.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys. The number of keys ranges from 1 to 20.
         self.tag_keys = tag_keys
@@ -18223,14 +18461,18 @@ class UntagResourcesShrinkRequest(TeaModel):
         # Specifies whether to remove all tags. This parameter takes effect only if TagKeys is left empty. Valid values: true and false. Default value: false. TagKeys is required if this parameter is set to false.
         self.all = all
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
         # 
-        # *   If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
-        # *   If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
-        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
-        # *   If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+        # *   If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
+        # *   If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
+        # *   If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
+        # *   If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+        # 
+        # This parameter is required.
         self.resource_ids_shrink = resource_ids_shrink
         # The type of the resource for which you want to modify the resource group. Valid values:
         # 
@@ -18239,6 +18481,8 @@ class UntagResourcesShrinkRequest(TeaModel):
         # *   secretparameter: encryption parameter.
         # *   stateconfiguration: desired-state configuration.
         # *   application: application.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys. The number of keys ranges from 1 to 20.
         self.tag_keys_shrink = tag_keys_shrink
@@ -18407,6 +18651,8 @@ class UpdateApplicationRequest(TeaModel):
         # The description to be updated for the application.
         self.description = description
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -18472,6 +18718,8 @@ class UpdateApplicationShrinkRequest(TeaModel):
         # The description to be updated for the application.
         self.description = description
         # The application name.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
@@ -18668,8 +18916,12 @@ class UpdateApplicationGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The application name.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The name of the application group.
+        # 
+        # This parameter is required.
         self.name = name
         # The new name of the application group.
         self.new_name = new_name
@@ -18879,6 +19131,8 @@ class UpdateExecutionRequest(TeaModel):
         # The description of the execution.
         self.description = description
         # The ID of the execution.
+        # 
+        # This parameter is required.
         self.execution_id = execution_id
         # The information about the parameters.
         self.parameters = parameters
@@ -19027,9 +19281,9 @@ class UpdateOpsItemRequest(TeaModel):
         self.client_token = client_token
         # The string to be deduplicated.
         self.dedup_string = dedup_string
-        # The description of the O\&M item.
+        # The description of the O\\&M item.
         self.description = description
-        # The ID of the O\&M item.
+        # The ID of the O\\&M item.
         self.ops_item_id = ops_item_id
         # The priority.
         self.priority = priority
@@ -19049,7 +19303,7 @@ class UpdateOpsItemRequest(TeaModel):
         self.status = status
         # The tags.
         self.tags = tags
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
         self.title = title
 
     def validate(self):
@@ -19153,9 +19407,9 @@ class UpdateOpsItemShrinkRequest(TeaModel):
         self.client_token = client_token
         # The string to be deduplicated.
         self.dedup_string = dedup_string
-        # The description of the O\&M item.
+        # The description of the O\\&M item.
         self.description = description
-        # The ID of the O\&M item.
+        # The ID of the O\\&M item.
         self.ops_item_id = ops_item_id
         # The priority.
         self.priority = priority
@@ -19175,7 +19429,7 @@ class UpdateOpsItemShrinkRequest(TeaModel):
         self.status = status
         # The tags.
         self.tags_shrink = tags_shrink
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
         self.title = title
 
     def validate(self):
@@ -19275,19 +19529,19 @@ class UpdateOpsItemResponseBodyOpsItem(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
-        # The attributes of the O\&M item.
+        # The attributes of the O\\&M item.
         self.attributes = attributes
         # The category.
         self.category = category
-        # The time when the O\&M item was created.
+        # The time when the O\\&M item was created.
         self.create_date = create_date
         # The user who created the patch baseline.
         self.created_by = created_by
         # The description.
         self.description = description
-        # The user who modified the O\&M item.
+        # The user who modified the O\\&M item.
         self.last_modified_by = last_modified_by
-        # The ID of the O\&M item.
+        # The ID of the O\\&M item.
         self.ops_item_id = ops_item_id
         # The priority.
         self.priority = priority
@@ -19305,9 +19559,9 @@ class UpdateOpsItemResponseBodyOpsItem(TeaModel):
         self.status = status
         # The tags.
         self.tags = tags
-        # The title of the O\&M item.
+        # The title of the O\\&M item.
         self.title = title
-        # The time when the O\&M item was updated.
+        # The time when the O\\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -19400,7 +19654,7 @@ class UpdateOpsItemResponseBody(TeaModel):
         ops_item: UpdateOpsItemResponseBodyOpsItem = None,
         request_id: str = None,
     ):
-        # The information about the O\&M item.
+        # The information about the O\\&M item.
         self.ops_item = ops_item
         # The request ID.
         self.request_id = request_id
@@ -19484,7 +19738,9 @@ class UpdateParameterRequest(TeaModel):
     ):
         # The description of the common parameter. The description must be 1 to 200 characters in length.
         self.description = description
-        # The name of the common parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the common parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
         self.region_id = region_id
@@ -19493,6 +19749,8 @@ class UpdateParameterRequest(TeaModel):
         # The tags to be added to common parameter.
         self.tags = tags
         # The value of the common parameter. The value must be 1 to 4,096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -19787,6 +20045,8 @@ class UpdatePatchBaselineRequest(TeaModel):
         # The description of the patch baseline.
         self.description = description
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -19900,6 +20160,8 @@ class UpdatePatchBaselineShrinkRequest(TeaModel):
         # The description of the patch baseline.
         self.description = description
         # The name of the patch baseline.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -20251,7 +20513,9 @@ class UpdateSecretParameterRequest(TeaModel):
     ):
         # The description of the parameter. The description must be 1 to 200 characters in length.
         self.description = description
-        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -20260,6 +20524,8 @@ class UpdateSecretParameterRequest(TeaModel):
         # The tags of the parameter.
         self.tags = tags
         # The value of the parameter. The value must be 1 to 4096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -20314,7 +20580,9 @@ class UpdateSecretParameterShrinkRequest(TeaModel):
     ):
         # The description of the parameter. The description must be 1 to 200 characters in length.
         self.description = description
-        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the region.
         self.region_id = region_id
@@ -20323,6 +20591,8 @@ class UpdateSecretParameterShrinkRequest(TeaModel):
         # The tags of the parameter.
         self.tags_shrink = tags_shrink
         # The value of the parameter. The value must be 1 to 4096 characters in length.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -20594,6 +20864,8 @@ class UpdateStateConfigurationRequest(TeaModel):
         # The schedule type.
         self.schedule_type = schedule_type
         # The ID of the desired-state configuration.
+        # 
+        # This parameter is required.
         self.state_configuration_id = state_configuration_id
         # The tags to be added to the configuration.
         self.tags = tags
@@ -20692,6 +20964,8 @@ class UpdateStateConfigurationShrinkRequest(TeaModel):
         # The schedule type.
         self.schedule_type = schedule_type
         # The ID of the desired-state configuration.
+        # 
+        # This parameter is required.
         self.state_configuration_id = state_configuration_id
         # The tags to be added to the configuration.
         self.tags_shrink = tags_shrink
@@ -20972,6 +21246,8 @@ class UpdateTemplateRequest(TeaModel):
         version_name: str = None,
     ):
         # The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+        # 
+        # This parameter is required.
         self.content = content
         # The ID of the region.
         self.region_id = region_id
@@ -20979,7 +21255,9 @@ class UpdateTemplateRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags = tags
-        # The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The name of the template version.
         self.version_name = version_name
@@ -21035,6 +21313,8 @@ class UpdateTemplateShrinkRequest(TeaModel):
         version_name: str = None,
     ):
         # The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
+        # 
+        # This parameter is required.
         self.content = content
         # The ID of the region.
         self.region_id = region_id
@@ -21042,7 +21322,9 @@ class UpdateTemplateShrinkRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags_shrink = tags_shrink
-        # The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The name of the template version.
         self.version_name = version_name

@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.CancelExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CancelExecutionResponse:
+        """
+        @summary Cancels an execution.
+        
+        @param request: CancelExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.CancelExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CancelExecutionResponse:
+        """
+        @summary Cancels an execution.
+        
+        @param request: CancelExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CancelExecutionRequest,
     ) -> oos_20190601_models.CancelExecutionResponse:
+        """
+        @summary Cancels an execution.
+        
+        @param request: CancelExecutionRequest
+        @return: CancelExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_execution_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CancelExecutionRequest,
     ) -> oos_20190601_models.CancelExecutionResponse:
+        """
+        @summary Cancels an execution.
+        
+        @param request: CancelExecutionRequest
+        @return: CancelExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_execution_with_options_async(request, runtime)
 
@@ -120,6 +146,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies the resource group to which a cloud resource belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -154,6 +187,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies the resource group to which a cloud resource belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -187,6 +227,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ChangeResourceGroupRequest,
     ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies the resource group to which a cloud resource belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -194,6 +240,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ChangeResourceGroupRequest,
     ) -> oos_20190601_models.ChangeResourceGroupResponse:
+        """
+        @summary Modifies the resource group to which a cloud resource belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -202,6 +254,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ContinueDeployApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ContinueDeployApplicationGroupResponse:
+        """
+        @summary Continues deploying an application group when an error occurs for calling the DeployApplicationGroup operation. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ContinueDeployApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinueDeployApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -236,6 +295,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ContinueDeployApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ContinueDeployApplicationGroupResponse:
+        """
+        @summary Continues deploying an application group when an error occurs for calling the DeployApplicationGroup operation. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ContinueDeployApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinueDeployApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -269,6 +335,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ContinueDeployApplicationGroupRequest,
     ) -> oos_20190601_models.ContinueDeployApplicationGroupResponse:
+        """
+        @summary Continues deploying an application group when an error occurs for calling the DeployApplicationGroup operation. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ContinueDeployApplicationGroupRequest
+        @return: ContinueDeployApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.continue_deploy_application_group_with_options(request, runtime)
 
@@ -276,6 +348,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ContinueDeployApplicationGroupRequest,
     ) -> oos_20190601_models.ContinueDeployApplicationGroupResponse:
+        """
+        @summary Continues deploying an application group when an error occurs for calling the DeployApplicationGroup operation. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ContinueDeployApplicationGroupRequest
+        @return: ContinueDeployApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.continue_deploy_application_group_with_options_async(request, runtime)
 
@@ -284,6 +362,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateApplicationResponse:
+        """
+        @summary Creates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param tmp_req: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -332,6 +417,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateApplicationResponse:
+        """
+        @summary Creates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param tmp_req: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -379,6 +471,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateApplicationRequest,
     ) -> oos_20190601_models.CreateApplicationResponse:
+        """
+        @summary Creates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_application_with_options(request, runtime)
 
@@ -386,6 +484,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateApplicationRequest,
     ) -> oos_20190601_models.CreateApplicationResponse:
+        """
+        @summary Creates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
 
@@ -394,6 +498,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.CreateApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        """
+        @summary Creates an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: CreateApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -438,6 +549,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.CreateApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        """
+        @summary Creates an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: CreateApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -481,6 +599,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateApplicationGroupRequest,
     ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        """
+        @summary Creates an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: CreateApplicationGroupRequest
+        @return: CreateApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_application_group_with_options(request, runtime)
 
@@ -488,6 +612,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateApplicationGroupRequest,
     ) -> oos_20190601_models.CreateApplicationGroupResponse:
+        """
+        @summary Creates an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: CreateApplicationGroupRequest
+        @return: CreateApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_group_with_options_async(request, runtime)
 
@@ -496,6 +626,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateOpsItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateOpsItemResponse:
+        """
+        @summary Creates an O\\\\\\\\\\\\&M Item.
+        
+        @param tmp_req: CreateOpsItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpsItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateOpsItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -552,6 +689,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateOpsItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateOpsItemResponse:
+        """
+        @summary Creates an O\\\\\\\\\\\\&M Item.
+        
+        @param tmp_req: CreateOpsItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpsItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateOpsItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -607,6 +751,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateOpsItemRequest,
     ) -> oos_20190601_models.CreateOpsItemResponse:
+        """
+        @summary Creates an O\\\\\\\\\\\\&M Item.
+        
+        @param request: CreateOpsItemRequest
+        @return: CreateOpsItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ops_item_with_options(request, runtime)
 
@@ -614,6 +764,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateOpsItemRequest,
     ) -> oos_20190601_models.CreateOpsItemResponse:
+        """
+        @summary Creates an O\\\\\\\\\\\\&M Item.
+        
+        @param request: CreateOpsItemRequest
+        @return: CreateOpsItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ops_item_with_options_async(request, runtime)
 
@@ -622,6 +778,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateParameterResponse:
+        """
+        @summary Creates a common parameter.
+        
+        @param tmp_req: CreateParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParameterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateParameterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -670,6 +833,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateParameterResponse:
+        """
+        @summary Creates a common parameter.
+        
+        @param tmp_req: CreateParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateParameterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateParameterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -717,6 +887,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateParameterRequest,
     ) -> oos_20190601_models.CreateParameterResponse:
+        """
+        @summary Creates a common parameter.
+        
+        @param request: CreateParameterRequest
+        @return: CreateParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_parameter_with_options(request, runtime)
 
@@ -724,6 +900,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateParameterRequest,
     ) -> oos_20190601_models.CreateParameterResponse:
+        """
+        @summary Creates a common parameter.
+        
+        @param request: CreateParameterRequest
+        @return: CreateParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_parameter_with_options_async(request, runtime)
 
@@ -732,6 +914,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        """
+        @summary Creates a patch baseline.
+        
+        @param tmp_req: CreatePatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePatchBaselineResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreatePatchBaselineShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -794,6 +983,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        """
+        @summary Creates a patch baseline.
+        
+        @param tmp_req: CreatePatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePatchBaselineResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreatePatchBaselineShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -855,6 +1051,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreatePatchBaselineRequest,
     ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        """
+        @summary Creates a patch baseline.
+        
+        @param request: CreatePatchBaselineRequest
+        @return: CreatePatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_patch_baseline_with_options(request, runtime)
 
@@ -862,6 +1064,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreatePatchBaselineRequest,
     ) -> oos_20190601_models.CreatePatchBaselineResponse:
+        """
+        @summary Creates a patch baseline.
+        
+        @param request: CreatePatchBaselineRequest
+        @return: CreatePatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_patch_baseline_with_options_async(request, runtime)
 
@@ -870,6 +1078,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateSecretParameterResponse:
+        """
+        @summary Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+        
+        @param tmp_req: CreateSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecretParameterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateSecretParameterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -922,6 +1137,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateSecretParameterResponse:
+        """
+        @summary Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+        
+        @param tmp_req: CreateSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecretParameterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateSecretParameterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -973,6 +1195,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateSecretParameterRequest,
     ) -> oos_20190601_models.CreateSecretParameterResponse:
+        """
+        @summary Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+        
+        @param request: CreateSecretParameterRequest
+        @return: CreateSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_secret_parameter_with_options(request, runtime)
 
@@ -980,6 +1208,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateSecretParameterRequest,
     ) -> oos_20190601_models.CreateSecretParameterResponse:
+        """
+        @summary Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+        
+        @param request: CreateSecretParameterRequest
+        @return: CreateSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_secret_parameter_with_options_async(request, runtime)
 
@@ -988,6 +1222,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateStateConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        """
+        @summary Creates a desired-state configuration.
+        
+        @param tmp_req: CreateStateConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStateConfigurationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateStateConfigurationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1042,6 +1283,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateStateConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        """
+        @summary Creates a desired-state configuration.
+        
+        @param tmp_req: CreateStateConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStateConfigurationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateStateConfigurationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1095,6 +1343,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateStateConfigurationRequest,
     ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        """
+        @summary Creates a desired-state configuration.
+        
+        @param request: CreateStateConfigurationRequest
+        @return: CreateStateConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_state_configuration_with_options(request, runtime)
 
@@ -1102,6 +1356,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateStateConfigurationRequest,
     ) -> oos_20190601_models.CreateStateConfigurationResponse:
+        """
+        @summary Creates a desired-state configuration.
+        
+        @param request: CreateStateConfigurationRequest
+        @return: CreateStateConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_state_configuration_with_options_async(request, runtime)
 
@@ -1110,6 +1370,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateTemplateResponse:
+        """
+        @summary Creates a template.
+        
+        @param tmp_req: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1152,6 +1419,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.CreateTemplateResponse:
+        """
+        @summary Creates a template.
+        
+        @param tmp_req: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.CreateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1193,6 +1467,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateTemplateRequest,
     ) -> oos_20190601_models.CreateTemplateResponse:
+        """
+        @summary Creates a template.
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_template_with_options(request, runtime)
 
@@ -1200,6 +1480,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.CreateTemplateRequest,
     ) -> oos_20190601_models.CreateTemplateResponse:
+        """
+        @summary Creates a template.
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
@@ -1208,6 +1494,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -1242,6 +1535,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -1275,6 +1575,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteApplicationRequest,
     ) -> oos_20190601_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_application_with_options(request, runtime)
 
@@ -1282,6 +1588,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteApplicationRequest,
     ) -> oos_20190601_models.DeleteApplicationResponse:
+        """
+        @summary Deletes an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
 
@@ -1290,6 +1602,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        """
+        @summary Deletes an application group. You can call this operation only for the application groups which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -1324,6 +1643,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        """
+        @summary Deletes an application group. You can call this operation only for the application groups which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -1357,6 +1683,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteApplicationGroupRequest,
     ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        """
+        @summary Deletes an application group. You can call this operation only for the application groups which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationGroupRequest
+        @return: DeleteApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_application_group_with_options(request, runtime)
 
@@ -1364,6 +1696,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteApplicationGroupRequest,
     ) -> oos_20190601_models.DeleteApplicationGroupResponse:
+        """
+        @summary Deletes an application group. You can call this operation only for the application groups which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeleteApplicationGroupRequest
+        @return: DeleteApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_group_with_options_async(request, runtime)
 
@@ -1372,6 +1710,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteExecutionsResponse:
+        """
+        @summary Deletes multiple executions.
+        
+        @param request: DeleteExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_ids):
@@ -1402,6 +1747,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteExecutionsResponse:
+        """
+        @summary Deletes multiple executions.
+        
+        @param request: DeleteExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_ids):
@@ -1431,6 +1783,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteExecutionsRequest,
     ) -> oos_20190601_models.DeleteExecutionsResponse:
+        """
+        @summary Deletes multiple executions.
+        
+        @param request: DeleteExecutionsRequest
+        @return: DeleteExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_executions_with_options(request, runtime)
 
@@ -1438,6 +1796,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteExecutionsRequest,
     ) -> oos_20190601_models.DeleteExecutionsResponse:
+        """
+        @summary Deletes multiple executions.
+        
+        @param request: DeleteExecutionsRequest
+        @return: DeleteExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_executions_with_options_async(request, runtime)
 
@@ -1446,6 +1810,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteParameterResponse:
+        """
+        @summary Deletes a common parameter.
+        
+        @param request: DeleteParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1476,6 +1847,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteParameterResponse:
+        """
+        @summary Deletes a common parameter.
+        
+        @param request: DeleteParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1505,6 +1883,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteParameterRequest,
     ) -> oos_20190601_models.DeleteParameterResponse:
+        """
+        @summary Deletes a common parameter.
+        
+        @param request: DeleteParameterRequest
+        @return: DeleteParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_parameter_with_options(request, runtime)
 
@@ -1512,6 +1896,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteParameterRequest,
     ) -> oos_20190601_models.DeleteParameterResponse:
+        """
+        @summary Deletes a common parameter.
+        
+        @param request: DeleteParameterRequest
+        @return: DeleteParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_with_options_async(request, runtime)
 
@@ -1520,6 +1910,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeletePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        """
+        @summary Deletes a patch baseline.
+        
+        @param request: DeletePatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePatchBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1550,6 +1947,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeletePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        """
+        @summary Deletes a patch baseline.
+        
+        @param request: DeletePatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePatchBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1579,6 +1983,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeletePatchBaselineRequest,
     ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        """
+        @summary Deletes a patch baseline.
+        
+        @param request: DeletePatchBaselineRequest
+        @return: DeletePatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_patch_baseline_with_options(request, runtime)
 
@@ -1586,6 +1996,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeletePatchBaselineRequest,
     ) -> oos_20190601_models.DeletePatchBaselineResponse:
+        """
+        @summary Deletes a patch baseline.
+        
+        @param request: DeletePatchBaselineRequest
+        @return: DeletePatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_patch_baseline_with_options_async(request, runtime)
 
@@ -1594,6 +2010,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteSecretParameterResponse:
+        """
+        @summary Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+        
+        @param request: DeleteSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1624,6 +2047,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteSecretParameterResponse:
+        """
+        @summary Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+        
+        @param request: DeleteSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1653,6 +2083,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteSecretParameterRequest,
     ) -> oos_20190601_models.DeleteSecretParameterResponse:
+        """
+        @summary Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+        
+        @param request: DeleteSecretParameterRequest
+        @return: DeleteSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_secret_parameter_with_options(request, runtime)
 
@@ -1660,6 +2096,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteSecretParameterRequest,
     ) -> oos_20190601_models.DeleteSecretParameterResponse:
+        """
+        @summary Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+        
+        @param request: DeleteSecretParameterRequest
+        @return: DeleteSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_secret_parameter_with_options_async(request, runtime)
 
@@ -1668,6 +2110,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteStateConfigurationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        """
+        @summary Deletes multiple desired-state configurations at a time.
+        
+        @param request: DeleteStateConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStateConfigurationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1700,6 +2149,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteStateConfigurationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        """
+        @summary Deletes multiple desired-state configurations at a time.
+        
+        @param request: DeleteStateConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStateConfigurationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1731,6 +2187,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteStateConfigurationsRequest,
     ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        """
+        @summary Deletes multiple desired-state configurations at a time.
+        
+        @param request: DeleteStateConfigurationsRequest
+        @return: DeleteStateConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_state_configurations_with_options(request, runtime)
 
@@ -1738,6 +2200,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteStateConfigurationsRequest,
     ) -> oos_20190601_models.DeleteStateConfigurationsResponse:
+        """
+        @summary Deletes multiple desired-state configurations at a time.
+        
+        @param request: DeleteStateConfigurationsRequest
+        @return: DeleteStateConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_state_configurations_with_options_async(request, runtime)
 
@@ -1746,6 +2214,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteTemplateResponse:
+        """
+        @summary Deletes a template.
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_delete_executions):
@@ -1778,6 +2253,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteTemplateResponse:
+        """
+        @summary Deletes a template.
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_delete_executions):
@@ -1809,6 +2291,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteTemplateRequest,
     ) -> oos_20190601_models.DeleteTemplateResponse:
+        """
+        @summary Deletes a template.
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_template_with_options(request, runtime)
 
@@ -1816,6 +2304,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteTemplateRequest,
     ) -> oos_20190601_models.DeleteTemplateResponse:
+        """
+        @summary Deletes a template.
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
@@ -1824,6 +2318,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes multiple templates.
+        
+        @param request: DeleteTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_delete_executions):
@@ -1856,6 +2357,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeleteTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes multiple templates.
+        
+        @param request: DeleteTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_delete_executions):
@@ -1887,6 +2395,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteTemplatesRequest,
     ) -> oos_20190601_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes multiple templates.
+        
+        @param request: DeleteTemplatesRequest
+        @return: DeleteTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_templates_with_options(request, runtime)
 
@@ -1894,6 +2408,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeleteTemplatesRequest,
     ) -> oos_20190601_models.DeleteTemplatesResponse:
+        """
+        @summary Deletes multiple templates.
+        
+        @param request: DeleteTemplatesRequest
+        @return: DeleteTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_templates_with_options_async(request, runtime)
 
@@ -1902,6 +2422,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeployApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeployApplicationGroupResponse:
+        """
+        @summary Deploys an application group. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeployApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -1936,6 +2463,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DeployApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DeployApplicationGroupResponse:
+        """
+        @summary Deploys an application group. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeployApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -1969,6 +2503,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeployApplicationGroupRequest,
     ) -> oos_20190601_models.DeployApplicationGroupResponse:
+        """
+        @summary Deploys an application group. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeployApplicationGroupRequest
+        @return: DeployApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deploy_application_group_with_options(request, runtime)
 
@@ -1976,6 +2516,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DeployApplicationGroupRequest,
     ) -> oos_20190601_models.DeployApplicationGroupResponse:
+        """
+        @summary Deploys an application group. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: DeployApplicationGroupRequest
+        @return: DeployApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deploy_application_group_with_options_async(request, runtime)
 
@@ -1984,6 +2530,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DescribeApplicationGroupBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        """
+        @summary 查询应用分组资源成本
+        
+        @param request: DescribeApplicationGroupBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationGroupBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -2024,6 +2577,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DescribeApplicationGroupBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        """
+        @summary 查询应用分组资源成本
+        
+        @param request: DescribeApplicationGroupBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationGroupBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -2063,6 +2623,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DescribeApplicationGroupBillRequest,
     ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        """
+        @summary 查询应用分组资源成本
+        
+        @param request: DescribeApplicationGroupBillRequest
+        @return: DescribeApplicationGroupBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_application_group_bill_with_options(request, runtime)
 
@@ -2070,6 +2636,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DescribeApplicationGroupBillRequest,
     ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        """
+        @summary 查询应用分组资源成本
+        
+        @param request: DescribeApplicationGroupBillRequest
+        @return: DescribeApplicationGroupBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_application_group_bill_with_options_async(request, runtime)
 
@@ -2078,6 +2650,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DescribeRegionsResponse:
+        """
+        @summary Queries supported regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2108,6 +2687,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.DescribeRegionsResponse:
+        """
+        @summary Queries supported regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2137,6 +2723,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DescribeRegionsRequest,
     ) -> oos_20190601_models.DescribeRegionsResponse:
+        """
+        @summary Queries supported regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -2144,6 +2736,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.DescribeRegionsRequest,
     ) -> oos_20190601_models.DescribeRegionsResponse:
+        """
+        @summary Queries supported regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -2152,6 +2750,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GenerateExecutionPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) policy required for template execution.
+        
+        @param request: GenerateExecutionPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateExecutionPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ram_role):
@@ -2188,6 +2793,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GenerateExecutionPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) policy required for template execution.
+        
+        @param request: GenerateExecutionPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateExecutionPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ram_role):
@@ -2223,6 +2835,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GenerateExecutionPolicyRequest,
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) policy required for template execution.
+        
+        @param request: GenerateExecutionPolicyRequest
+        @return: GenerateExecutionPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_execution_policy_with_options(request, runtime)
 
@@ -2230,6 +2848,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GenerateExecutionPolicyRequest,
     ) -> oos_20190601_models.GenerateExecutionPolicyResponse:
+        """
+        @summary Queries the Resource Access Management (RAM) policy required for template execution.
+        
+        @param request: GenerateExecutionPolicyRequest
+        @return: GenerateExecutionPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_execution_policy_with_options_async(request, runtime)
 
@@ -2238,6 +2862,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetApplicationResponse:
+        """
+        @summary Queries the information of an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2268,6 +2899,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetApplicationResponse:
+        """
+        @summary Queries the information of an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2297,6 +2935,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetApplicationRequest,
     ) -> oos_20190601_models.GetApplicationResponse:
+        """
+        @summary Queries the information of an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_application_with_options(request, runtime)
 
@@ -2304,6 +2948,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetApplicationRequest,
     ) -> oos_20190601_models.GetApplicationResponse:
+        """
+        @summary Queries the information of an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
@@ -2312,6 +2962,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetApplicationGroupResponse:
+        """
+        @summary Queries the information about an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -2344,6 +3001,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetApplicationGroupResponse:
+        """
+        @summary Queries the information about an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -2375,6 +3039,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetApplicationGroupRequest,
     ) -> oos_20190601_models.GetApplicationGroupResponse:
+        """
+        @summary Queries the information about an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationGroupRequest
+        @return: GetApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_application_group_with_options(request, runtime)
 
@@ -2382,6 +3052,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetApplicationGroupRequest,
     ) -> oos_20190601_models.GetApplicationGroupResponse:
+        """
+        @summary Queries the information about an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: GetApplicationGroupRequest
+        @return: GetApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_group_with_options_async(request, runtime)
 
@@ -2390,6 +3066,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetExecutionTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetExecutionTemplateResponse:
+        """
+        @summary Queries the information about the template of an execution, including the content of the template.
+        
+        @param request: GetExecutionTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecutionTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -2420,6 +3103,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetExecutionTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetExecutionTemplateResponse:
+        """
+        @summary Queries the information about the template of an execution, including the content of the template.
+        
+        @param request: GetExecutionTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecutionTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -2449,6 +3139,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetExecutionTemplateRequest,
     ) -> oos_20190601_models.GetExecutionTemplateResponse:
+        """
+        @summary Queries the information about the template of an execution, including the content of the template.
+        
+        @param request: GetExecutionTemplateRequest
+        @return: GetExecutionTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_execution_template_with_options(request, runtime)
 
@@ -2456,6 +3152,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetExecutionTemplateRequest,
     ) -> oos_20190601_models.GetExecutionTemplateResponse:
+        """
+        @summary Queries the information about the template of an execution, including the content of the template.
+        
+        @param request: GetExecutionTemplateRequest
+        @return: GetExecutionTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_execution_template_with_options_async(request, runtime)
 
@@ -2464,6 +3166,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetInventorySchemaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetInventorySchemaResponse:
+        """
+        @summary Queries the properties of a configuration list.
+        
+        @param request: GetInventorySchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInventorySchemaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator):
@@ -2500,6 +3209,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetInventorySchemaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetInventorySchemaResponse:
+        """
+        @summary Queries the properties of a configuration list.
+        
+        @param request: GetInventorySchemaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInventorySchemaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator):
@@ -2535,6 +3251,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetInventorySchemaRequest,
     ) -> oos_20190601_models.GetInventorySchemaResponse:
+        """
+        @summary Queries the properties of a configuration list.
+        
+        @param request: GetInventorySchemaRequest
+        @return: GetInventorySchemaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_inventory_schema_with_options(request, runtime)
 
@@ -2542,6 +3264,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetInventorySchemaRequest,
     ) -> oos_20190601_models.GetInventorySchemaResponse:
+        """
+        @summary Queries the properties of a configuration list.
+        
+        @param request: GetInventorySchemaRequest
+        @return: GetInventorySchemaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_inventory_schema_with_options_async(request, runtime)
 
@@ -2550,6 +3278,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetOpsItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetOpsItemResponse:
+        """
+        @summary Queries the details of an O\\\\\\\\\\\\&M item.
+        
+        @param request: GetOpsItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpsItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ops_item_id):
@@ -2580,6 +3315,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetOpsItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetOpsItemResponse:
+        """
+        @summary Queries the details of an O\\\\\\\\\\\\&M item.
+        
+        @param request: GetOpsItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpsItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ops_item_id):
@@ -2609,6 +3351,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetOpsItemRequest,
     ) -> oos_20190601_models.GetOpsItemResponse:
+        """
+        @summary Queries the details of an O\\\\\\\\\\\\&M item.
+        
+        @param request: GetOpsItemRequest
+        @return: GetOpsItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ops_item_with_options(request, runtime)
 
@@ -2616,6 +3364,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetOpsItemRequest,
     ) -> oos_20190601_models.GetOpsItemResponse:
+        """
+        @summary Queries the details of an O\\\\\\\\\\\\&M item.
+        
+        @param request: GetOpsItemRequest
+        @return: GetOpsItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ops_item_with_options_async(request, runtime)
 
@@ -2624,6 +3378,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetParameterResponse:
+        """
+        @summary Queries a common parameter and its value.
+        
+        @param request: GetParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2658,6 +3419,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetParameterResponse:
+        """
+        @summary Queries a common parameter and its value.
+        
+        @param request: GetParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2691,6 +3459,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetParameterRequest,
     ) -> oos_20190601_models.GetParameterResponse:
+        """
+        @summary Queries a common parameter and its value.
+        
+        @param request: GetParameterRequest
+        @return: GetParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_parameter_with_options(request, runtime)
 
@@ -2698,6 +3472,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetParameterRequest,
     ) -> oos_20190601_models.GetParameterResponse:
+        """
+        @summary Queries a common parameter and its value.
+        
+        @param request: GetParameterRequest
+        @return: GetParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_parameter_with_options_async(request, runtime)
 
@@ -2706,6 +3486,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetParametersResponse:
+        """
+        @summary Queries the information about one or more parameters.
+        
+        @param request: GetParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.names):
@@ -2736,6 +3523,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetParametersResponse:
+        """
+        @summary Queries the information about one or more parameters.
+        
+        @param request: GetParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.names):
@@ -2765,6 +3559,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetParametersRequest,
     ) -> oos_20190601_models.GetParametersResponse:
+        """
+        @summary Queries the information about one or more parameters.
+        
+        @param request: GetParametersRequest
+        @return: GetParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_parameters_with_options(request, runtime)
 
@@ -2772,6 +3572,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetParametersRequest,
     ) -> oos_20190601_models.GetParametersResponse:
+        """
+        @summary Queries the information about one or more parameters.
+        
+        @param request: GetParametersRequest
+        @return: GetParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_parameters_with_options_async(request, runtime)
 
@@ -2780,6 +3586,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetParametersByPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetParametersByPathResponse:
+        """
+        @summary Queries one or more parameters by path.
+        
+        @param request: GetParametersByPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParametersByPathResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2816,6 +3629,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetParametersByPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetParametersByPathResponse:
+        """
+        @summary Queries one or more parameters by path.
+        
+        @param request: GetParametersByPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParametersByPathResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -2851,6 +3671,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetParametersByPathRequest,
     ) -> oos_20190601_models.GetParametersByPathResponse:
+        """
+        @summary Queries one or more parameters by path.
+        
+        @param request: GetParametersByPathRequest
+        @return: GetParametersByPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_parameters_by_path_with_options(request, runtime)
 
@@ -2858,6 +3684,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetParametersByPathRequest,
     ) -> oos_20190601_models.GetParametersByPathResponse:
+        """
+        @summary Queries one or more parameters by path.
+        
+        @param request: GetParametersByPathRequest
+        @return: GetParametersByPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_parameters_by_path_with_options_async(request, runtime)
 
@@ -2866,6 +3698,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetPatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetPatchBaselineResponse:
+        """
+        @summary Queries the information of a patch baseline.
+        
+        @param request: GetPatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPatchBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2896,6 +3735,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetPatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetPatchBaselineResponse:
+        """
+        @summary Queries the information of a patch baseline.
+        
+        @param request: GetPatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPatchBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2925,6 +3771,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetPatchBaselineRequest,
     ) -> oos_20190601_models.GetPatchBaselineResponse:
+        """
+        @summary Queries the information of a patch baseline.
+        
+        @param request: GetPatchBaselineRequest
+        @return: GetPatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_patch_baseline_with_options(request, runtime)
 
@@ -2932,6 +3784,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetPatchBaselineRequest,
     ) -> oos_20190601_models.GetPatchBaselineResponse:
+        """
+        @summary Queries the information of a patch baseline.
+        
+        @param request: GetPatchBaselineRequest
+        @return: GetPatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_patch_baseline_with_options_async(request, runtime)
 
@@ -2940,6 +3798,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetSecretParameterResponse:
+        """
+        @summary Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2974,6 +3839,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetSecretParameterResponse:
+        """
+        @summary Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -3007,6 +3879,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetSecretParameterRequest,
     ) -> oos_20190601_models.GetSecretParameterResponse:
+        """
+        @summary Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParameterRequest
+        @return: GetSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_secret_parameter_with_options(request, runtime)
 
@@ -3014,6 +3892,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetSecretParameterRequest,
     ) -> oos_20190601_models.GetSecretParameterResponse:
+        """
+        @summary Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParameterRequest
+        @return: GetSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_parameter_with_options_async(request, runtime)
 
@@ -3022,6 +3906,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetSecretParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetSecretParametersResponse:
+        """
+        @summary Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.names):
@@ -3054,6 +3945,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetSecretParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetSecretParametersResponse:
+        """
+        @summary Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.names):
@@ -3085,6 +3983,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetSecretParametersRequest,
     ) -> oos_20190601_models.GetSecretParametersResponse:
+        """
+        @summary Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersRequest
+        @return: GetSecretParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_secret_parameters_with_options(request, runtime)
 
@@ -3092,6 +3996,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetSecretParametersRequest,
     ) -> oos_20190601_models.GetSecretParametersResponse:
+        """
+        @summary Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersRequest
+        @return: GetSecretParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_parameters_with_options_async(request, runtime)
 
@@ -3100,6 +4010,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetSecretParametersByPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetSecretParametersByPathResponse:
+        """
+        @summary Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersByPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretParametersByPathResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3138,6 +4055,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetSecretParametersByPathRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetSecretParametersByPathResponse:
+        """
+        @summary Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersByPathRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretParametersByPathResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3175,6 +4099,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetSecretParametersByPathRequest,
     ) -> oos_20190601_models.GetSecretParametersByPathResponse:
+        """
+        @summary Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersByPathRequest
+        @return: GetSecretParametersByPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_secret_parameters_by_path_with_options(request, runtime)
 
@@ -3182,6 +4112,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetSecretParametersByPathRequest,
     ) -> oos_20190601_models.GetSecretParametersByPathResponse:
+        """
+        @summary Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+        
+        @param request: GetSecretParametersByPathRequest
+        @return: GetSecretParametersByPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_secret_parameters_by_path_with_options_async(request, runtime)
 
@@ -3190,6 +4126,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetServiceSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetServiceSettingsResponse:
+        """
+        @summary Queries the settings of the delivery feature.
+        
+        @param request: GetServiceSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3218,6 +4161,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetServiceSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetServiceSettingsResponse:
+        """
+        @summary Queries the settings of the delivery feature.
+        
+        @param request: GetServiceSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3245,6 +4195,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetServiceSettingsRequest,
     ) -> oos_20190601_models.GetServiceSettingsResponse:
+        """
+        @summary Queries the settings of the delivery feature.
+        
+        @param request: GetServiceSettingsRequest
+        @return: GetServiceSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_settings_with_options(request, runtime)
 
@@ -3252,6 +4208,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetServiceSettingsRequest,
     ) -> oos_20190601_models.GetServiceSettingsResponse:
+        """
+        @summary Queries the settings of the delivery feature.
+        
+        @param request: GetServiceSettingsRequest
+        @return: GetServiceSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_settings_with_options_async(request, runtime)
 
@@ -3260,6 +4222,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetTemplateResponse:
+        """
+        @summary Queries the information about a template, including the content of the template.
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3292,6 +4261,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.GetTemplateResponse:
+        """
+        @summary Queries the information about a template, including the content of the template.
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3323,6 +4299,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetTemplateRequest,
     ) -> oos_20190601_models.GetTemplateResponse:
+        """
+        @summary Queries the information about a template, including the content of the template.
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_template_with_options(request, runtime)
 
@@ -3330,6 +4312,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.GetTemplateRequest,
     ) -> oos_20190601_models.GetTemplateResponse:
+        """
+        @summary Queries the information about a template, including the content of the template.
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_with_options_async(request, runtime)
 
@@ -3338,6 +4326,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListActionsResponse:
+        """
+        @summary Queries the available actions, including atomic actions and cloud product actions.
+        
+        @param request: ListActionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3372,6 +4367,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListActionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListActionsResponse:
+        """
+        @summary Queries the available actions, including atomic actions and cloud product actions.
+        
+        @param request: ListActionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -3405,6 +4407,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListActionsRequest,
     ) -> oos_20190601_models.ListActionsResponse:
+        """
+        @summary Queries the available actions, including atomic actions and cloud product actions.
+        
+        @param request: ListActionsRequest
+        @return: ListActionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_actions_with_options(request, runtime)
 
@@ -3412,6 +4420,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListActionsRequest,
     ) -> oos_20190601_models.ListActionsResponse:
+        """
+        @summary Queries the available actions, including atomic actions and cloud product actions.
+        
+        @param request: ListActionsRequest
+        @return: ListActionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_actions_with_options_async(request, runtime)
 
@@ -3420,6 +4434,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListApplicationGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        """
+        @summary Queries a list of application groups. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ListApplicationGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -3462,6 +4483,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListApplicationGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        """
+        @summary Queries a list of application groups. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ListApplicationGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -3503,6 +4531,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListApplicationGroupsRequest,
     ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        """
+        @summary Queries a list of application groups. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ListApplicationGroupsRequest
+        @return: ListApplicationGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_application_groups_with_options(request, runtime)
 
@@ -3510,6 +4544,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListApplicationGroupsRequest,
     ) -> oos_20190601_models.ListApplicationGroupsResponse:
+        """
+        @summary Queries a list of application groups. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ListApplicationGroupsRequest
+        @return: ListApplicationGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_application_groups_with_options_async(request, runtime)
 
@@ -3518,6 +4558,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListApplicationsResponse:
+        """
+        @summary Queries a list of applications. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param tmp_req: ListApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListApplicationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3562,6 +4609,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListApplicationsResponse:
+        """
+        @summary Queries a list of applications. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param tmp_req: ListApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListApplicationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3605,6 +4659,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListApplicationsRequest,
     ) -> oos_20190601_models.ListApplicationsResponse:
+        """
+        @summary Queries a list of applications. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_applications_with_options(request, runtime)
 
@@ -3612,6 +4672,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListApplicationsRequest,
     ) -> oos_20190601_models.ListApplicationsResponse:
+        """
+        @summary Queries a list of applications. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
 
@@ -3621,7 +4687,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
         """
-        ***\
+        @summary Queries the logs of an execution.
+        
+        @description ***\
         
         @param request: ListExecutionLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3666,7 +4734,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
         """
-        ***\
+        @summary Queries the logs of an execution.
+        
+        @description ***\
         
         @param request: ListExecutionLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3710,7 +4780,9 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListExecutionLogsRequest,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
         """
-        ***\
+        @summary Queries the logs of an execution.
+        
+        @description ***\
         
         @param request: ListExecutionLogsRequest
         @return: ListExecutionLogsResponse
@@ -3723,7 +4795,9 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListExecutionLogsRequest,
     ) -> oos_20190601_models.ListExecutionLogsResponse:
         """
-        ***\
+        @summary Queries the logs of an execution.
+        
+        @description ***\
         
         @param request: ListExecutionLogsRequest
         @return: ListExecutionLogsResponse
@@ -3736,6 +4810,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListExecutionRiskyTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionRiskyTasksResponse:
+        """
+        @summary Queries high-risk tasks in the execution of a template.
+        
+        @param request: ListExecutionRiskyTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionRiskyTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3766,6 +4847,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListExecutionRiskyTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionRiskyTasksResponse:
+        """
+        @summary Queries high-risk tasks in the execution of a template.
+        
+        @param request: ListExecutionRiskyTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionRiskyTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3795,6 +4883,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListExecutionRiskyTasksRequest,
     ) -> oos_20190601_models.ListExecutionRiskyTasksResponse:
+        """
+        @summary Queries high-risk tasks in the execution of a template.
+        
+        @param request: ListExecutionRiskyTasksRequest
+        @return: ListExecutionRiskyTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_execution_risky_tasks_with_options(request, runtime)
 
@@ -3802,6 +4896,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListExecutionRiskyTasksRequest,
     ) -> oos_20190601_models.ListExecutionRiskyTasksResponse:
+        """
+        @summary Queries high-risk tasks in the execution of a template.
+        
+        @param request: ListExecutionRiskyTasksRequest
+        @return: ListExecutionRiskyTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_execution_risky_tasks_with_options_async(request, runtime)
 
@@ -3810,6 +4910,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionsResponse:
+        """
+        @summary Queries executions. Multiple methods are supported to filter executions.
+        
+        @param tmp_req: ListExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListExecutionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3890,6 +4997,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListExecutionsResponse:
+        """
+        @summary Queries executions. Multiple methods are supported to filter executions.
+        
+        @param tmp_req: ListExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListExecutionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3969,6 +5083,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListExecutionsRequest,
     ) -> oos_20190601_models.ListExecutionsResponse:
+        """
+        @summary Queries executions. Multiple methods are supported to filter executions.
+        
+        @param request: ListExecutionsRequest
+        @return: ListExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_executions_with_options(request, runtime)
 
@@ -3976,6 +5096,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListExecutionsRequest,
     ) -> oos_20190601_models.ListExecutionsResponse:
+        """
+        @summary Queries executions. Multiple methods are supported to filter executions.
+        
+        @param request: ListExecutionsRequest
+        @return: ListExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_executions_with_options_async(request, runtime)
 
@@ -3984,6 +5110,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListGitRepositoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 获取仓库信息
+        
+        @param request: ListGitRepositoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitRepositoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -3998,6 +5131,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4022,6 +5157,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListGitRepositoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 获取仓库信息
+        
+        @param request: ListGitRepositoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGitRepositoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4036,6 +5178,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.platform):
             query['Platform'] = request.platform
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4059,6 +5203,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListGitRepositoriesRequest,
     ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 获取仓库信息
+        
+        @param request: ListGitRepositoriesRequest
+        @return: ListGitRepositoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_git_repositories_with_options(request, runtime)
 
@@ -4066,6 +5216,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListGitRepositoriesRequest,
     ) -> oos_20190601_models.ListGitRepositoriesResponse:
+        """
+        @summary 获取仓库信息
+        
+        @param request: ListGitRepositoriesRequest
+        @return: ListGitRepositoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_git_repositories_with_options_async(request, runtime)
 
@@ -4074,6 +5230,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInstancePatchStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancePatchStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -4108,6 +5271,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInstancePatchStatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancePatchStatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -4141,6 +5311,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListInstancePatchStatesRequest,
     ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchStatesRequest
+        @return: ListInstancePatchStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_patch_states_with_options(request, runtime)
 
@@ -4148,6 +5324,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListInstancePatchStatesRequest,
     ) -> oos_20190601_models.ListInstancePatchStatesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchStatesRequest
+        @return: ListInstancePatchStatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_patch_states_with_options_async(request, runtime)
 
@@ -4156,6 +5338,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInstancePatchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInstancePatchesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancePatchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4192,6 +5381,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInstancePatchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInstancePatchesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancePatchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4227,6 +5423,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListInstancePatchesRequest,
     ) -> oos_20190601_models.ListInstancePatchesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchesRequest
+        @return: ListInstancePatchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_patches_with_options(request, runtime)
 
@@ -4234,6 +5436,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListInstancePatchesRequest,
     ) -> oos_20190601_models.ListInstancePatchesResponse:
+        """
+        @summary Queries the information about the patches of an instance.
+        
+        @param request: ListInstancePatchesRequest
+        @return: ListInstancePatchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_patches_with_options_async(request, runtime)
 
@@ -4242,6 +5450,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInventoryEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInventoryEntriesResponse:
+        """
+        @summary Queries the configurations of an Elastic Compute Service (ECS) instance.
+        
+        @param request: ListInventoryEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInventoryEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -4280,6 +5495,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListInventoryEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListInventoryEntriesResponse:
+        """
+        @summary Queries the configurations of an Elastic Compute Service (ECS) instance.
+        
+        @param request: ListInventoryEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInventoryEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -4317,6 +5539,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListInventoryEntriesRequest,
     ) -> oos_20190601_models.ListInventoryEntriesResponse:
+        """
+        @summary Queries the configurations of an Elastic Compute Service (ECS) instance.
+        
+        @param request: ListInventoryEntriesRequest
+        @return: ListInventoryEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_inventory_entries_with_options(request, runtime)
 
@@ -4324,6 +5552,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListInventoryEntriesRequest,
     ) -> oos_20190601_models.ListInventoryEntriesResponse:
+        """
+        @summary Queries the configurations of an Elastic Compute Service (ECS) instance.
+        
+        @param request: ListInventoryEntriesRequest
+        @return: ListInventoryEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_inventory_entries_with_options_async(request, runtime)
 
@@ -4332,6 +5566,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListOpsItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListOpsItemsResponse:
+        """
+        @summary Queries O\\&M items.
+        
+        @param tmp_req: ListOpsItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOpsItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListOpsItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4376,6 +5617,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListOpsItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListOpsItemsResponse:
+        """
+        @summary Queries O\\&M items.
+        
+        @param tmp_req: ListOpsItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOpsItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListOpsItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4419,6 +5667,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListOpsItemsRequest,
     ) -> oos_20190601_models.ListOpsItemsResponse:
+        """
+        @summary Queries O\\&M items.
+        
+        @param request: ListOpsItemsRequest
+        @return: ListOpsItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ops_items_with_options(request, runtime)
 
@@ -4426,6 +5680,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListOpsItemsRequest,
     ) -> oos_20190601_models.ListOpsItemsResponse:
+        """
+        @summary Queries O\\&M items.
+        
+        @param request: ListOpsItemsRequest
+        @return: ListOpsItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ops_items_with_options_async(request, runtime)
 
@@ -4434,6 +5694,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListParameterVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListParameterVersionsResponse:
+        """
+        @summary Queries the versions of a common parameter.
+        
+        @param request: ListParameterVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListParameterVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4470,6 +5737,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListParameterVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListParameterVersionsResponse:
+        """
+        @summary Queries the versions of a common parameter.
+        
+        @param request: ListParameterVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListParameterVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4505,6 +5779,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListParameterVersionsRequest,
     ) -> oos_20190601_models.ListParameterVersionsResponse:
+        """
+        @summary Queries the versions of a common parameter.
+        
+        @param request: ListParameterVersionsRequest
+        @return: ListParameterVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_parameter_versions_with_options(request, runtime)
 
@@ -4512,6 +5792,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListParameterVersionsRequest,
     ) -> oos_20190601_models.ListParameterVersionsResponse:
+        """
+        @summary Queries the versions of a common parameter.
+        
+        @param request: ListParameterVersionsRequest
+        @return: ListParameterVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_parameter_versions_with_options_async(request, runtime)
 
@@ -4520,6 +5806,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListParametersResponse:
+        """
+        @summary Queries common parameters. Multiple methods are supported to filter common parameters.
+        
+        @param tmp_req: ListParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListParametersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListParametersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4574,6 +5867,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListParametersResponse:
+        """
+        @summary Queries common parameters. Multiple methods are supported to filter common parameters.
+        
+        @param tmp_req: ListParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListParametersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListParametersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4627,6 +5927,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListParametersRequest,
     ) -> oos_20190601_models.ListParametersResponse:
+        """
+        @summary Queries common parameters. Multiple methods are supported to filter common parameters.
+        
+        @param request: ListParametersRequest
+        @return: ListParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_parameters_with_options(request, runtime)
 
@@ -4634,6 +5940,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListParametersRequest,
     ) -> oos_20190601_models.ListParametersResponse:
+        """
+        @summary Queries common parameters. Multiple methods are supported to filter common parameters.
+        
+        @param request: ListParametersRequest
+        @return: ListParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_parameters_with_options_async(request, runtime)
 
@@ -4642,6 +5954,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListPatchBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        """
+        @summary Queries a list of patch baselines.
+        
+        @param tmp_req: ListPatchBaselinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPatchBaselinesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListPatchBaselinesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4698,6 +6017,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListPatchBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        """
+        @summary Queries a list of patch baselines.
+        
+        @param tmp_req: ListPatchBaselinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPatchBaselinesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListPatchBaselinesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4753,6 +6079,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListPatchBaselinesRequest,
     ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        """
+        @summary Queries a list of patch baselines.
+        
+        @param request: ListPatchBaselinesRequest
+        @return: ListPatchBaselinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_patch_baselines_with_options(request, runtime)
 
@@ -4760,6 +6092,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListPatchBaselinesRequest,
     ) -> oos_20190601_models.ListPatchBaselinesResponse:
+        """
+        @summary Queries a list of patch baselines.
+        
+        @param request: ListPatchBaselinesRequest
+        @return: ListPatchBaselinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_patch_baselines_with_options_async(request, runtime)
 
@@ -4768,6 +6106,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListResourceExecutionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListResourceExecutionStatusResponse:
+        """
+        @summary Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+        
+        @param request: ListResourceExecutionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceExecutionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -4802,6 +6147,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListResourceExecutionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListResourceExecutionStatusResponse:
+        """
+        @summary Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+        
+        @param request: ListResourceExecutionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceExecutionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.execution_id):
@@ -4835,6 +6187,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListResourceExecutionStatusRequest,
     ) -> oos_20190601_models.ListResourceExecutionStatusResponse:
+        """
+        @summary Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+        
+        @param request: ListResourceExecutionStatusRequest
+        @return: ListResourceExecutionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_resource_execution_status_with_options(request, runtime)
 
@@ -4842,6 +6200,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListResourceExecutionStatusRequest,
     ) -> oos_20190601_models.ListResourceExecutionStatusResponse:
+        """
+        @summary Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+        
+        @param request: ListResourceExecutionStatusRequest
+        @return: ListResourceExecutionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_resource_execution_status_with_options_async(request, runtime)
 
@@ -4850,6 +6214,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListSecretParameterVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParameterVersionsResponse:
+        """
+        @summary Queries versions of an encryption parameter.
+        
+        @param request: ListSecretParameterVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretParameterVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4888,6 +6259,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListSecretParameterVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParameterVersionsResponse:
+        """
+        @summary Queries versions of an encryption parameter.
+        
+        @param request: ListSecretParameterVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretParameterVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4925,6 +6303,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListSecretParameterVersionsRequest,
     ) -> oos_20190601_models.ListSecretParameterVersionsResponse:
+        """
+        @summary Queries versions of an encryption parameter.
+        
+        @param request: ListSecretParameterVersionsRequest
+        @return: ListSecretParameterVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_secret_parameter_versions_with_options(request, runtime)
 
@@ -4932,6 +6316,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListSecretParameterVersionsRequest,
     ) -> oos_20190601_models.ListSecretParameterVersionsResponse:
+        """
+        @summary Queries versions of an encryption parameter.
+        
+        @param request: ListSecretParameterVersionsRequest
+        @return: ListSecretParameterVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_secret_parameter_versions_with_options_async(request, runtime)
 
@@ -4941,7 +6331,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParametersResponse:
         """
-        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        @summary Queries common parameters. Multiple types of queries are supported.
+        
+        @description Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
         
         @param tmp_req: ListSecretParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4998,7 +6390,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListSecretParametersResponse:
         """
-        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        @summary Queries common parameters. Multiple types of queries are supported.
+        
+        @description Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
         
         @param tmp_req: ListSecretParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5054,7 +6448,9 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListSecretParametersRequest,
     ) -> oos_20190601_models.ListSecretParametersResponse:
         """
-        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        @summary Queries common parameters. Multiple types of queries are supported.
+        
+        @description Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
         
         @param request: ListSecretParametersRequest
         @return: ListSecretParametersResponse
@@ -5067,7 +6463,9 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListSecretParametersRequest,
     ) -> oos_20190601_models.ListSecretParametersResponse:
         """
-        Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
+        @summary Queries common parameters. Multiple types of queries are supported.
+        
+        @description Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
         
         @param request: ListSecretParametersRequest
         @return: ListSecretParametersResponse
@@ -5080,6 +6478,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListStateConfigurationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        """
+        @summary Queries desired-state configurations.
+        
+        @param tmp_req: ListStateConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStateConfigurationsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListStateConfigurationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5126,6 +6531,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListStateConfigurationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        """
+        @summary Queries desired-state configurations.
+        
+        @param tmp_req: ListStateConfigurationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStateConfigurationsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListStateConfigurationsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5171,6 +6583,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListStateConfigurationsRequest,
     ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        """
+        @summary Queries desired-state configurations.
+        
+        @param request: ListStateConfigurationsRequest
+        @return: ListStateConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_state_configurations_with_options(request, runtime)
 
@@ -5178,6 +6596,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListStateConfigurationsRequest,
     ) -> oos_20190601_models.ListStateConfigurationsResponse:
+        """
+        @summary Queries desired-state configurations.
+        
+        @param request: ListStateConfigurationsRequest
+        @return: ListStateConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_state_configurations_with_options_async(request, runtime)
 
@@ -5186,6 +6610,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTagKeysResponse:
+        """
+        @summary Queries the tags.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5220,6 +6651,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTagKeysResponse:
+        """
+        @summary Queries the tags.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5253,6 +6691,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTagKeysRequest,
     ) -> oos_20190601_models.ListTagKeysResponse:
+        """
+        @summary Queries the tags.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -5260,6 +6704,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTagKeysRequest,
     ) -> oos_20190601_models.ListTagKeysResponse:
+        """
+        @summary Queries the tags.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -5268,6 +6718,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to one or more resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5310,6 +6767,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to one or more resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5351,6 +6815,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTagResourcesRequest,
     ) -> oos_20190601_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to one or more resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -5358,6 +6828,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTagResourcesRequest,
     ) -> oos_20190601_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to one or more resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -5366,6 +6842,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTagValuesResponse:
+        """
+        @summary Queries the values of created tags.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key):
@@ -5402,6 +6885,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTagValuesResponse:
+        """
+        @summary Queries the values of created tags.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key):
@@ -5437,6 +6927,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTagValuesRequest,
     ) -> oos_20190601_models.ListTagValuesResponse:
+        """
+        @summary Queries the values of created tags.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
@@ -5444,6 +6940,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTagValuesRequest,
     ) -> oos_20190601_models.ListTagValuesResponse:
+        """
+        @summary Queries the values of created tags.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
@@ -5452,6 +6954,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTaskExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTaskExecutionsResponse:
+        """
+        @summary Queries task executions. Multiple methods are supported to filter task executions.
+        
+        @param request: ListTaskExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date_after):
@@ -5510,6 +7019,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTaskExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTaskExecutionsResponse:
+        """
+        @summary Queries task executions. Multiple methods are supported to filter task executions.
+        
+        @param request: ListTaskExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTaskExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date_after):
@@ -5567,6 +7083,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTaskExecutionsRequest,
     ) -> oos_20190601_models.ListTaskExecutionsResponse:
+        """
+        @summary Queries task executions. Multiple methods are supported to filter task executions.
+        
+        @param request: ListTaskExecutionsRequest
+        @return: ListTaskExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_task_executions_with_options(request, runtime)
 
@@ -5574,6 +7096,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTaskExecutionsRequest,
     ) -> oos_20190601_models.ListTaskExecutionsResponse:
+        """
+        @summary Queries task executions. Multiple methods are supported to filter task executions.
+        
+        @param request: ListTaskExecutionsRequest
+        @return: ListTaskExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_task_executions_with_options_async(request, runtime)
 
@@ -5582,6 +7110,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTemplateVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTemplateVersionsResponse:
+        """
+        @summary Queries a list of versions of a template.
+        
+        @param request: ListTemplateVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5618,6 +7153,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ListTemplateVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTemplateVersionsResponse:
+        """
+        @summary Queries a list of versions of a template.
+        
+        @param request: ListTemplateVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5653,6 +7195,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTemplateVersionsRequest,
     ) -> oos_20190601_models.ListTemplateVersionsResponse:
+        """
+        @summary Queries a list of versions of a template.
+        
+        @param request: ListTemplateVersionsRequest
+        @return: ListTemplateVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_template_versions_with_options(request, runtime)
 
@@ -5660,6 +7208,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTemplateVersionsRequest,
     ) -> oos_20190601_models.ListTemplateVersionsResponse:
+        """
+        @summary Queries a list of versions of a template.
+        
+        @param request: ListTemplateVersionsRequest
+        @return: ListTemplateVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_template_versions_with_options_async(request, runtime)
 
@@ -5668,6 +7222,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTemplatesResponse:
+        """
+        @summary Queries templates. Multiple methods are supported to filter templates.
+        
+        @param tmp_req: ListTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListTemplatesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5684,6 +7245,8 @@ class Client(OpenApiClient):
             query['CreatedDateBefore'] = request.created_date_before
         if not UtilClient.is_unset(request.has_trigger):
             query['HasTrigger'] = request.has_trigger
+        if not UtilClient.is_unset(request.is_example):
+            query['IsExample'] = request.is_example
         if not UtilClient.is_unset(request.is_favorite):
             query['IsFavorite'] = request.is_favorite
         if not UtilClient.is_unset(request.max_results):
@@ -5732,6 +7295,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.ListTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ListTemplatesResponse:
+        """
+        @summary Queries templates. Multiple methods are supported to filter templates.
+        
+        @param tmp_req: ListTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.ListTemplatesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5748,6 +7318,8 @@ class Client(OpenApiClient):
             query['CreatedDateBefore'] = request.created_date_before
         if not UtilClient.is_unset(request.has_trigger):
             query['HasTrigger'] = request.has_trigger
+        if not UtilClient.is_unset(request.is_example):
+            query['IsExample'] = request.is_example
         if not UtilClient.is_unset(request.is_favorite):
             query['IsFavorite'] = request.is_favorite
         if not UtilClient.is_unset(request.max_results):
@@ -5795,6 +7367,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTemplatesRequest,
     ) -> oos_20190601_models.ListTemplatesResponse:
+        """
+        @summary Queries templates. Multiple methods are supported to filter templates.
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_templates_with_options(request, runtime)
 
@@ -5802,6 +7380,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ListTemplatesRequest,
     ) -> oos_20190601_models.ListTemplatesResponse:
+        """
+        @summary Queries templates. Multiple methods are supported to filter templates.
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_templates_with_options_async(request, runtime)
 
@@ -5811,10 +7395,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.NotifyExecutionResponse:
         """
-        You can call this operation to notify an execution in the following scenarios:
-        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
-        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
-        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        @summary Notifies an execution in the Waiting state of the subsequent operations.
+        
+        @description You can call this operation to notify an execution in the following scenarios:
+        If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
         
         @param request: NotifyExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5867,10 +7453,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.NotifyExecutionResponse:
         """
-        You can call this operation to notify an execution in the following scenarios:
-        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
-        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
-        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        @summary Notifies an execution in the Waiting state of the subsequent operations.
+        
+        @description You can call this operation to notify an execution in the following scenarios:
+        If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
         
         @param request: NotifyExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5922,10 +7510,12 @@ class Client(OpenApiClient):
         request: oos_20190601_models.NotifyExecutionRequest,
     ) -> oos_20190601_models.NotifyExecutionResponse:
         """
-        You can call this operation to notify an execution in the following scenarios:
-        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
-        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
-        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        @summary Notifies an execution in the Waiting state of the subsequent operations.
+        
+        @description You can call this operation to notify an execution in the following scenarios:
+        If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
         
         @param request: NotifyExecutionRequest
         @return: NotifyExecutionResponse
@@ -5938,10 +7528,12 @@ class Client(OpenApiClient):
         request: oos_20190601_models.NotifyExecutionRequest,
     ) -> oos_20190601_models.NotifyExecutionResponse:
         """
-        You can call this operation to notify an execution in the following scenarios:
-        *   If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
-        *   If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
-        *   If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+        @summary Notifies an execution in the Waiting state of the subsequent operations.
+        
+        @description You can call this operation to notify an execution in the following scenarios:
+        If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+        If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+        If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
         
         @param request: NotifyExecutionRequest
         @return: NotifyExecutionResponse
@@ -5954,6 +7546,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        """
+        @summary Registers the default patch baseline.
+        
+        @param request: RegisterDefaultPatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDefaultPatchBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -5984,6 +7583,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        """
+        @summary Registers the default patch baseline.
+        
+        @param request: RegisterDefaultPatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterDefaultPatchBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -6013,6 +7619,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
     ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        """
+        @summary Registers the default patch baseline.
+        
+        @param request: RegisterDefaultPatchBaselineRequest
+        @return: RegisterDefaultPatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_default_patch_baseline_with_options(request, runtime)
 
@@ -6020,6 +7632,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.RegisterDefaultPatchBaselineRequest,
     ) -> oos_20190601_models.RegisterDefaultPatchBaselineResponse:
+        """
+        @summary Registers the default patch baseline.
+        
+        @param request: RegisterDefaultPatchBaselineRequest
+        @return: RegisterDefaultPatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_default_patch_baseline_with_options_async(request, runtime)
 
@@ -6028,6 +7646,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.SearchInventoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.SearchInventoryResponse:
+        """
+        @summary Queries the details or aggregate information of a configuration inventory.
+        
+        @param request: SearchInventoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchInventoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator):
@@ -6064,6 +7689,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.SearchInventoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.SearchInventoryResponse:
+        """
+        @summary Queries the details or aggregate information of a configuration inventory.
+        
+        @param request: SearchInventoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchInventoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator):
@@ -6099,6 +7731,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.SearchInventoryRequest,
     ) -> oos_20190601_models.SearchInventoryResponse:
+        """
+        @summary Queries the details or aggregate information of a configuration inventory.
+        
+        @param request: SearchInventoryRequest
+        @return: SearchInventoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_inventory_with_options(request, runtime)
 
@@ -6106,6 +7744,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.SearchInventoryRequest,
     ) -> oos_20190601_models.SearchInventoryResponse:
+        """
+        @summary Queries the details or aggregate information of a configuration inventory.
+        
+        @param request: SearchInventoryRequest
+        @return: SearchInventoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_inventory_with_options_async(request, runtime)
 
@@ -6114,6 +7758,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.SetServiceSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.SetServiceSettingsResponse:
+        """
+        @summary Enables or disables the feature of delivering template execution records and sets the storage location.
+        
+        @param request: SetServiceSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetServiceSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_oss_bucket_name):
@@ -6154,6 +7805,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.SetServiceSettingsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.SetServiceSettingsResponse:
+        """
+        @summary Enables or disables the feature of delivering template execution records and sets the storage location.
+        
+        @param request: SetServiceSettingsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetServiceSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delivery_oss_bucket_name):
@@ -6193,6 +7851,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.SetServiceSettingsRequest,
     ) -> oos_20190601_models.SetServiceSettingsResponse:
+        """
+        @summary Enables or disables the feature of delivering template execution records and sets the storage location.
+        
+        @param request: SetServiceSettingsRequest
+        @return: SetServiceSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_service_settings_with_options(request, runtime)
 
@@ -6200,6 +7864,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.SetServiceSettingsRequest,
     ) -> oos_20190601_models.SetServiceSettingsResponse:
+        """
+        @summary Enables or disables the feature of delivering template execution records and sets the storage location.
+        
+        @param request: SetServiceSettingsRequest
+        @return: SetServiceSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_service_settings_with_options_async(request, runtime)
 
@@ -6208,6 +7878,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.StartExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.StartExecutionResponse:
+        """
+        @summary Starts an execution.
+        
+        @param tmp_req: StartExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartExecutionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.StartExecutionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6266,6 +7943,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.StartExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.StartExecutionResponse:
+        """
+        @summary Starts an execution.
+        
+        @param tmp_req: StartExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartExecutionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.StartExecutionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6323,6 +8007,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.StartExecutionRequest,
     ) -> oos_20190601_models.StartExecutionResponse:
+        """
+        @summary Starts an execution.
+        
+        @param request: StartExecutionRequest
+        @return: StartExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_execution_with_options(request, runtime)
 
@@ -6330,6 +8020,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.StartExecutionRequest,
     ) -> oos_20190601_models.StartExecutionResponse:
+        """
+        @summary Starts an execution.
+        
+        @param request: StartExecutionRequest
+        @return: StartExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_execution_with_options_async(request, runtime)
 
@@ -6338,6 +8034,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.TagResourcesResponse:
+        """
+        @summary Adds tags to one or more resources.
+        
+        @param tmp_req: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.TagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6378,6 +8081,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.TagResourcesResponse:
+        """
+        @summary Adds tags to one or more resources.
+        
+        @param tmp_req: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.TagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6417,6 +8127,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.TagResourcesRequest,
     ) -> oos_20190601_models.TagResourcesResponse:
+        """
+        @summary Adds tags to one or more resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -6424,6 +8140,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.TagResourcesRequest,
     ) -> oos_20190601_models.TagResourcesResponse:
+        """
+        @summary Adds tags to one or more resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -6432,6 +8154,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.TriggerExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.TriggerExecutionResponse:
+        """
+        @summary Debugs a started execution that contains an event trigger task or alert trigger task. If the operation is called, a message body is sent to the event trigger task or alert trigger task. After the trigger task receives the message body, the trigger task generates a new child execution.
+        
+        @param request: TriggerExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6468,6 +8197,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.TriggerExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.TriggerExecutionResponse:
+        """
+        @summary Debugs a started execution that contains an event trigger task or alert trigger task. If the operation is called, a message body is sent to the event trigger task or alert trigger task. After the trigger task receives the message body, the trigger task generates a new child execution.
+        
+        @param request: TriggerExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6503,6 +8239,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.TriggerExecutionRequest,
     ) -> oos_20190601_models.TriggerExecutionResponse:
+        """
+        @summary Debugs a started execution that contains an event trigger task or alert trigger task. If the operation is called, a message body is sent to the event trigger task or alert trigger task. After the trigger task receives the message body, the trigger task generates a new child execution.
+        
+        @param request: TriggerExecutionRequest
+        @return: TriggerExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.trigger_execution_with_options(request, runtime)
 
@@ -6510,6 +8252,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.TriggerExecutionRequest,
     ) -> oos_20190601_models.TriggerExecutionResponse:
+        """
+        @summary Debugs a started execution that contains an event trigger task or alert trigger task. If the operation is called, a message body is sent to the event trigger task or alert trigger task. After the trigger task receives the message body, the trigger task generates a new child execution.
+        
+        @param request: TriggerExecutionRequest
+        @return: TriggerExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.trigger_execution_with_options_async(request, runtime)
 
@@ -6518,6 +8266,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from one or more resources.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6560,6 +8315,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from one or more resources.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6601,6 +8363,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UntagResourcesRequest,
     ) -> oos_20190601_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from one or more resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -6608,6 +8376,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UntagResourcesRequest,
     ) -> oos_20190601_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from one or more resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -6616,6 +8390,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateApplicationResponse:
+        """
+        @summary Updates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param tmp_req: UpdateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6660,6 +8441,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateApplicationResponse:
+        """
+        @summary Updates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param tmp_req: UpdateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6703,6 +8491,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateApplicationRequest,
     ) -> oos_20190601_models.UpdateApplicationResponse:
+        """
+        @summary Updates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: UpdateApplicationRequest
+        @return: UpdateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_application_with_options(request, runtime)
 
@@ -6710,6 +8504,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateApplicationRequest,
     ) -> oos_20190601_models.UpdateApplicationResponse:
+        """
+        @summary Updates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: UpdateApplicationRequest
+        @return: UpdateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_with_options_async(request, runtime)
 
@@ -6718,6 +8518,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        """
+        @summary Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: UpdateApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -6752,6 +8559,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        """
+        @summary Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: UpdateApplicationGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_name):
@@ -6785,6 +8599,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateApplicationGroupRequest,
     ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        """
+        @summary Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: UpdateApplicationGroupRequest
+        @return: UpdateApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_application_group_with_options(request, runtime)
 
@@ -6792,6 +8612,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateApplicationGroupRequest,
     ) -> oos_20190601_models.UpdateApplicationGroupResponse:
+        """
+        @summary Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+        
+        @param request: UpdateApplicationGroupRequest
+        @return: UpdateApplicationGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_group_with_options_async(request, runtime)
 
@@ -6800,6 +8626,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateExecutionResponse:
+        """
+        @summary Updates an execution.
+        
+        @param request: UpdateExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6840,6 +8673,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateExecutionResponse:
+        """
+        @summary Updates an execution.
+        
+        @param request: UpdateExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6879,6 +8719,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateExecutionRequest,
     ) -> oos_20190601_models.UpdateExecutionResponse:
+        """
+        @summary Updates an execution.
+        
+        @param request: UpdateExecutionRequest
+        @return: UpdateExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_execution_with_options(request, runtime)
 
@@ -6886,6 +8732,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateExecutionRequest,
     ) -> oos_20190601_models.UpdateExecutionResponse:
+        """
+        @summary Updates an execution.
+        
+        @param request: UpdateExecutionRequest
+        @return: UpdateExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_execution_with_options_async(request, runtime)
 
@@ -6894,6 +8746,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateOpsItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateOpsItemResponse:
+        """
+        @summary Modifies an O\\\\\\\\\\\\&M item.
+        
+        @param tmp_req: UpdateOpsItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOpsItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateOpsItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6954,6 +8813,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateOpsItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateOpsItemResponse:
+        """
+        @summary Modifies an O\\\\\\\\\\\\&M item.
+        
+        @param tmp_req: UpdateOpsItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOpsItemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateOpsItemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7013,6 +8879,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateOpsItemRequest,
     ) -> oos_20190601_models.UpdateOpsItemResponse:
+        """
+        @summary Modifies an O\\\\\\\\\\\\&M item.
+        
+        @param request: UpdateOpsItemRequest
+        @return: UpdateOpsItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ops_item_with_options(request, runtime)
 
@@ -7020,6 +8892,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateOpsItemRequest,
     ) -> oos_20190601_models.UpdateOpsItemResponse:
+        """
+        @summary Modifies an O\\\\\\\\\\\\&M item.
+        
+        @param request: UpdateOpsItemRequest
+        @return: UpdateOpsItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ops_item_with_options_async(request, runtime)
 
@@ -7028,6 +8906,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateParameterResponse:
+        """
+        @summary Updates a common parameter.
+        
+        @param request: UpdateParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -7066,6 +8951,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.UpdateParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateParameterResponse:
+        """
+        @summary Updates a common parameter.
+        
+        @param request: UpdateParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateParameterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -7103,6 +8995,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateParameterRequest,
     ) -> oos_20190601_models.UpdateParameterResponse:
+        """
+        @summary Updates a common parameter.
+        
+        @param request: UpdateParameterRequest
+        @return: UpdateParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_parameter_with_options(request, runtime)
 
@@ -7110,6 +9008,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateParameterRequest,
     ) -> oos_20190601_models.UpdateParameterResponse:
+        """
+        @summary Updates a common parameter.
+        
+        @param request: UpdateParameterRequest
+        @return: UpdateParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_parameter_with_options_async(request, runtime)
 
@@ -7118,6 +9022,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        """
+        @summary Updates a patch baseline.
+        
+        @param tmp_req: UpdatePatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePatchBaselineResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdatePatchBaselineShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7178,6 +9089,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdatePatchBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        """
+        @summary Updates a patch baseline.
+        
+        @param tmp_req: UpdatePatchBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePatchBaselineResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdatePatchBaselineShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7237,6 +9155,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdatePatchBaselineRequest,
     ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        """
+        @summary Updates a patch baseline.
+        
+        @param request: UpdatePatchBaselineRequest
+        @return: UpdatePatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_patch_baseline_with_options(request, runtime)
 
@@ -7244,6 +9168,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdatePatchBaselineRequest,
     ) -> oos_20190601_models.UpdatePatchBaselineResponse:
+        """
+        @summary Updates a patch baseline.
+        
+        @param request: UpdatePatchBaselineRequest
+        @return: UpdatePatchBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_patch_baseline_with_options_async(request, runtime)
 
@@ -7252,6 +9182,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateSecretParameterResponse:
+        """
+        @summary Updates an encryption parameter.
+        
+        @param tmp_req: UpdateSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecretParameterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateSecretParameterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7294,6 +9231,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateSecretParameterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateSecretParameterResponse:
+        """
+        @summary Updates an encryption parameter.
+        
+        @param tmp_req: UpdateSecretParameterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecretParameterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateSecretParameterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7335,6 +9279,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateSecretParameterRequest,
     ) -> oos_20190601_models.UpdateSecretParameterResponse:
+        """
+        @summary Updates an encryption parameter.
+        
+        @param request: UpdateSecretParameterRequest
+        @return: UpdateSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_secret_parameter_with_options(request, runtime)
 
@@ -7342,6 +9292,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateSecretParameterRequest,
     ) -> oos_20190601_models.UpdateSecretParameterResponse:
+        """
+        @summary Updates an encryption parameter.
+        
+        @param request: UpdateSecretParameterRequest
+        @return: UpdateSecretParameterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_secret_parameter_with_options_async(request, runtime)
 
@@ -7350,6 +9306,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateStateConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        """
+        @summary Updates a desired-state configuration.
+        
+        @param tmp_req: UpdateStateConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStateConfigurationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateStateConfigurationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7404,6 +9367,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateStateConfigurationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        """
+        @summary Updates a desired-state configuration.
+        
+        @param tmp_req: UpdateStateConfigurationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateStateConfigurationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateStateConfigurationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7457,6 +9427,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateStateConfigurationRequest,
     ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        """
+        @summary Updates a desired-state configuration.
+        
+        @param request: UpdateStateConfigurationRequest
+        @return: UpdateStateConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_state_configuration_with_options(request, runtime)
 
@@ -7464,6 +9440,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateStateConfigurationRequest,
     ) -> oos_20190601_models.UpdateStateConfigurationResponse:
+        """
+        @summary Updates a desired-state configuration.
+        
+        @param request: UpdateStateConfigurationRequest
+        @return: UpdateStateConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_state_configuration_with_options_async(request, runtime)
 
@@ -7472,6 +9454,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateTemplateResponse:
+        """
+        @summary Updates the information about an existing template.
+        
+        @param tmp_req: UpdateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7514,6 +9503,13 @@ class Client(OpenApiClient):
         tmp_req: oos_20190601_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateTemplateResponse:
+        """
+        @summary Updates the information about an existing template.
+        
+        @param tmp_req: UpdateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = oos_20190601_models.UpdateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7555,6 +9551,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateTemplateRequest,
     ) -> oos_20190601_models.UpdateTemplateResponse:
+        """
+        @summary Updates the information about an existing template.
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_template_with_options(request, runtime)
 
@@ -7562,6 +9564,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.UpdateTemplateRequest,
     ) -> oos_20190601_models.UpdateTemplateResponse:
+        """
+        @summary Updates the information about an existing template.
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_template_with_options_async(request, runtime)
 
@@ -7570,6 +9578,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ValidateTemplateContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ValidateTemplateContentResponse:
+        """
+        @summary Check whether a template is valid.
+        
+        @param request: ValidateTemplateContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateTemplateContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -7602,6 +9617,13 @@ class Client(OpenApiClient):
         request: oos_20190601_models.ValidateTemplateContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.ValidateTemplateContentResponse:
+        """
+        @summary Check whether a template is valid.
+        
+        @param request: ValidateTemplateContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateTemplateContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.content):
@@ -7633,6 +9655,12 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ValidateTemplateContentRequest,
     ) -> oos_20190601_models.ValidateTemplateContentResponse:
+        """
+        @summary Check whether a template is valid.
+        
+        @param request: ValidateTemplateContentRequest
+        @return: ValidateTemplateContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.validate_template_content_with_options(request, runtime)
 
@@ -7640,5 +9668,11 @@ class Client(OpenApiClient):
         self,
         request: oos_20190601_models.ValidateTemplateContentRequest,
     ) -> oos_20190601_models.ValidateTemplateContentResponse:
+        """
+        @summary Check whether a template is valid.
+        
+        @param request: ValidateTemplateContentRequest
+        @return: ValidateTemplateContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.validate_template_content_with_options_async(request, runtime)

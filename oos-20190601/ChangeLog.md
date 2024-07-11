@@ -1,3 +1,8 @@
+2024-07-11 Version: 3.1.2
+- Update API ListGitRepositories: add param RegionId.
+- Update API ListTemplates: add param IsExample.
+
+
 2024-05-08 Version: 3.1.1
 - Generated python 2019-06-01 for oos.
 
