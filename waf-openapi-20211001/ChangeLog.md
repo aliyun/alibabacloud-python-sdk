@@ -1,3 +1,7 @@
+2024-07-12 Version: 4.5.0
+- Support API ChangeResourceGroup.
+
+
 2024-07-09 Version: 4.4.0
 - Support API DescribeCnameCount.
 - Update API DescribeCloudResources: add param ResourceInstanceName.
