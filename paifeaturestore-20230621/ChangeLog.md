@@ -1,3 +1,7 @@
+2024-07-12 Version: 3.2.1
+- Update API ExportModelFeatureTrainingSetTable: update param body.
+
+
 2024-06-11 Version: 3.2.0
 - Support API ListFeatureViewOnlineFeatures.
 

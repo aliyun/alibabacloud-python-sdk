@@ -2176,10 +2176,12 @@ class ExportModelFeatureTrainingSetTableRequest(TeaModel):
         self,
         feature_view_config: Dict[str, FeatureViewConfigValue] = None,
         label_input_config: ExportModelFeatureTrainingSetTableRequestLabelInputConfig = None,
+        real_time_iterate_interval: int = None,
         training_set_config: ExportModelFeatureTrainingSetTableRequestTrainingSetConfig = None,
     ):
         self.feature_view_config = feature_view_config
         self.label_input_config = label_input_config
+        self.real_time_iterate_interval = real_time_iterate_interval
         self.training_set_config = training_set_config
 
     def validate(self):
@@ -2204,6 +2206,8 @@ class ExportModelFeatureTrainingSetTableRequest(TeaModel):
                 result['FeatureViewConfig'][k] = v.to_map()
         if self.label_input_config is not None:
             result['LabelInputConfig'] = self.label_input_config.to_map()
+        if self.real_time_iterate_interval is not None:
+            result['RealTimeIterateInterval'] = self.real_time_iterate_interval
         if self.training_set_config is not None:
             result['TrainingSetConfig'] = self.training_set_config.to_map()
         return result
@@ -2218,6 +2222,8 @@ class ExportModelFeatureTrainingSetTableRequest(TeaModel):
         if m.get('LabelInputConfig') is not None:
             temp_model = ExportModelFeatureTrainingSetTableRequestLabelInputConfig()
             self.label_input_config = temp_model.from_map(m['LabelInputConfig'])
+        if m.get('RealTimeIterateInterval') is not None:
+            self.real_time_iterate_interval = m.get('RealTimeIterateInterval')
         if m.get('TrainingSetConfig') is not None:
             temp_model = ExportModelFeatureTrainingSetTableRequestTrainingSetConfig()
             self.training_set_config = temp_model.from_map(m['TrainingSetConfig'])

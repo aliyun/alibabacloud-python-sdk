@@ -2041,6 +2041,8 @@ class Client(OpenApiClient):
             body['FeatureViewConfig'] = request.feature_view_config
         if not UtilClient.is_unset(request.label_input_config):
             body['LabelInputConfig'] = request.label_input_config
+        if not UtilClient.is_unset(request.real_time_iterate_interval):
+            body['RealTimeIterateInterval'] = request.real_time_iterate_interval
         if not UtilClient.is_unset(request.training_set_config):
             body['TrainingSetConfig'] = request.training_set_config
         req = open_api_models.OpenApiRequest(
@@ -2085,6 +2087,8 @@ class Client(OpenApiClient):
             body['FeatureViewConfig'] = request.feature_view_config
         if not UtilClient.is_unset(request.label_input_config):
             body['LabelInputConfig'] = request.label_input_config
+        if not UtilClient.is_unset(request.real_time_iterate_interval):
+            body['RealTimeIterateInterval'] = request.real_time_iterate_interval
         if not UtilClient.is_unset(request.training_set_config):
             body['TrainingSetConfig'] = request.training_set_config
         req = open_api_models.OpenApiRequest(
