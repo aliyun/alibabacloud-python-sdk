@@ -130,9 +130,6 @@ class AuditPublicTemplateRegistrationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -171,8 +168,11 @@ class CreateActionRequest(TeaModel):
         popularity: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.action_name = action_name
+        # This parameter is required.
         self.action_type = action_type
+        # This parameter is required.
         self.content = content
         self.popularity = popularity
         self.region_id = region_id
@@ -294,9 +294,6 @@ class CreateActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -340,9 +337,12 @@ class CreatePublicParameterRequest(TeaModel):
         self.client_token = client_token
         self.constraints = constraints
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.parameter_type = parameter_type
         self.region_id = region_id
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -529,9 +529,6 @@ class CreatePublicParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -571,10 +568,13 @@ class CreatePublicPatchBaselineRequest(TeaModel):
         operation_system: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.approval_rules = approval_rules
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.operation_system = operation_system
         self.region_id = region_id
 
@@ -746,9 +746,6 @@ class CreatePublicPatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -783,16 +780,20 @@ class CreatePublicTemplateRequest(TeaModel):
         self,
         category: str = None,
         content: str = None,
+        is_example: bool = None,
         popularity: int = None,
         publisher: str = None,
         region_id: str = None,
         template_name: str = None,
     ):
         self.category = category
+        # This parameter is required.
         self.content = content
+        self.is_example = is_example
         self.popularity = popularity
         self.publisher = publisher
         self.region_id = region_id
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -808,6 +809,8 @@ class CreatePublicTemplateRequest(TeaModel):
             result['Category'] = self.category
         if self.content is not None:
             result['Content'] = self.content
+        if self.is_example is not None:
+            result['IsExample'] = self.is_example
         if self.popularity is not None:
             result['Popularity'] = self.popularity
         if self.publisher is not None:
@@ -824,6 +827,8 @@ class CreatePublicTemplateRequest(TeaModel):
             self.category = m.get('Category')
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('IsExample') is not None:
+            self.is_example = m.get('IsExample')
         if m.get('Popularity') is not None:
             self.popularity = m.get('Popularity')
         if m.get('Publisher') is not None:
@@ -981,9 +986,6 @@ class CreatePublicTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1019,7 +1021,9 @@ class DeleteFailureMsgRequest(TeaModel):
         operation: str = None,
         request_fingerprint: str = None,
     ):
+        # This parameter is required.
         self.operation = operation
+        # This parameter is required.
         self.request_fingerprint = request_fingerprint
 
     def validate(self):
@@ -1085,9 +1089,6 @@ class DeleteFailureMsgResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1123,6 +1124,7 @@ class DeletePublicParameterRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.region_id = region_id
 
@@ -1189,9 +1191,6 @@ class DeletePublicParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1226,6 +1225,7 @@ class DeletePublicPatchBaselineRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -1287,9 +1287,6 @@ class DeletePublicPatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1326,6 +1323,7 @@ class DeletePublicTemplateRequest(TeaModel):
         template_name: str = None,
     ):
         self.region_id = region_id
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -1391,9 +1389,6 @@ class DeletePublicTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1651,9 +1646,6 @@ class DoCheckResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1791,9 +1783,6 @@ class GetActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1833,6 +1822,7 @@ class GetFlowControlRequest(TeaModel):
     ):
         self.api = api
         self.service = service
+        # This parameter is required.
         self.type = type
         self.uid = uid
 
@@ -1913,9 +1903,6 @@ class GetFlowControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1952,6 +1939,7 @@ class GetPublicParameterRequest(TeaModel):
         parameter_version: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.parameter_version = parameter_version
         self.region_id = region_id
@@ -2130,9 +2118,6 @@ class GetPublicParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2168,6 +2153,7 @@ class GetPublicPatchBaselineRequest(TeaModel):
         name: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.region_id = region_id
 
@@ -2323,9 +2309,6 @@ class GetPublicPatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2363,6 +2346,7 @@ class GetPublicTemplateRequest(TeaModel):
         template_version: str = None,
     ):
         self.region_id = region_id
+        # This parameter is required.
         self.template_name = template_name
         self.template_version = template_version
 
@@ -2540,9 +2524,6 @@ class GetPublicTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2579,8 +2560,10 @@ class GetQuotaRequest(TeaModel):
         region_id: str = None,
         uid: str = None,
     ):
+        # This parameter is required.
         self.quota_name = quota_name
         self.region_id = region_id
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -2703,9 +2686,6 @@ class GetQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2742,7 +2722,9 @@ class GetUserExecutionTemplateRequest(TeaModel):
         execution_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.execution_id = execution_id
         self.region_id = region_id
 
@@ -2914,9 +2896,6 @@ class GetUserExecutionTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2954,8 +2933,10 @@ class GetUserTemplateRequest(TeaModel):
         template_name: str = None,
         template_version: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
         self.region_id = region_id
+        # This parameter is required.
         self.template_name = template_name
         self.template_version = template_version
 
@@ -3131,9 +3112,6 @@ class GetUserTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3342,9 +3320,6 @@ class ListActionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3466,9 +3441,6 @@ class ListDefaultQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3653,9 +3625,6 @@ class ListFailureMsgsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3696,12 +3665,14 @@ class ListOOSLogsRequest(TeaModel):
         request_fingerprint: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
         self.execution_id = execution_id
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
         self.request_fingerprint = request_fingerprint
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3805,9 +3776,6 @@ class ListOOSLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4070,9 +4038,6 @@ class ListPublicParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4305,9 +4270,6 @@ class ListPublicPatchBaselinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4540,9 +4502,6 @@ class ListPublicTemplateRegistrationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4578,6 +4537,7 @@ class ListPublicTemplatesRequest(TeaModel):
         created_by: str = None,
         created_date_after: str = None,
         created_date_before: str = None,
+        is_example: bool = None,
         max_results: int = None,
         next_token: str = None,
         popularity: int = None,
@@ -4591,6 +4551,7 @@ class ListPublicTemplatesRequest(TeaModel):
         self.created_by = created_by
         self.created_date_after = created_date_after
         self.created_date_before = created_date_before
+        self.is_example = is_example
         self.max_results = max_results
         self.next_token = next_token
         self.popularity = popularity
@@ -4616,6 +4577,8 @@ class ListPublicTemplatesRequest(TeaModel):
             result['CreatedDateAfter'] = self.created_date_after
         if self.created_date_before is not None:
             result['CreatedDateBefore'] = self.created_date_before
+        if self.is_example is not None:
+            result['IsExample'] = self.is_example
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -4644,6 +4607,8 @@ class ListPublicTemplatesRequest(TeaModel):
             self.created_date_after = m.get('CreatedDateAfter')
         if m.get('CreatedDateBefore') is not None:
             self.created_date_before = m.get('CreatedDateBefore')
+        if m.get('IsExample') is not None:
+            self.is_example = m.get('IsExample')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -4829,9 +4794,6 @@ class ListPublicTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4872,7 +4834,9 @@ class ListUserExecutionLogsRequest(TeaModel):
         region_id: str = None,
         task_execution_id: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.execution_id = execution_id
         self.log_type = log_type
         self.max_results = max_results
@@ -5034,9 +4998,6 @@ class ListUserExecutionLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5088,6 +5049,7 @@ class ListUserExecutionsRequest(TeaModel):
         status: str = None,
         template_name: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
         self.end_date_after = end_date_after
         self.end_date_before = end_date_before
@@ -5454,9 +5416,6 @@ class ListUserExecutionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5495,7 +5454,9 @@ class ListUserInstancePatchStatesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.instance_ids = instance_ids
         self.max_results = max_results
         self.next_token = next_token
@@ -5701,9 +5662,6 @@ class ListUserInstancePatchStatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5742,7 +5700,9 @@ class ListUserInstancePatchesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.instance_id = instance_id
         self.max_results = max_results
         self.next_token = next_token
@@ -5906,9 +5866,6 @@ class ListUserInstancePatchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5988,12 +5945,15 @@ class ListUserInventoryEntriesRequest(TeaModel):
         region_id: str = None,
         type_name: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
         self.filter = filter
+        # This parameter is required.
         self.instance_id = instance_id
         self.max_results = max_results
         self.next_token = next_token
         self.region_id = region_id
+        # This parameter is required.
         self.type_name = type_name
 
     def validate(self):
@@ -6129,9 +6089,6 @@ class ListUserInventoryEntriesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6182,6 +6139,7 @@ class ListUserTaskExecutionsRequest(TeaModel):
         task_execution_id: str = None,
         task_name: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
         self.end_date_after = end_date_after
         self.end_date_before = end_date_before
@@ -6484,9 +6442,6 @@ class ListUserTaskExecutionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6535,6 +6490,7 @@ class ListUserTemplatesRequest(TeaModel):
         template_name: str = None,
         template_type: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
         self.category = category
         self.created_by = created_by
@@ -6791,9 +6747,6 @@ class ListUserTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6830,7 +6783,9 @@ class ResetTimerTriggerExecutionRequest(TeaModel):
         execution_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.execution_id = execution_id
         self.region_id = region_id
 
@@ -6901,9 +6856,6 @@ class ResetTimerTriggerExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6941,7 +6893,9 @@ class ResetUserExecutionRequest(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.execution_id = execution_id
         self.region_id = region_id
         self.status = status
@@ -7017,9 +6971,6 @@ class ResetUserExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7060,8 +7011,10 @@ class SetFlowControlRequest(TeaModel):
     ):
         self.api = api
         self.service = service
+        # This parameter is required.
         self.type = type
         self.uid = uid
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -7139,9 +7092,6 @@ class SetFlowControlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7179,9 +7129,12 @@ class SetQuotaRequest(TeaModel):
         uid: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.quota_name = quota_name
         self.region_id = region_id
+        # This parameter is required.
         self.uid = uid
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -7267,9 +7220,6 @@ class SetQuotaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7306,7 +7256,9 @@ class TerminateUserExecutionRequest(TeaModel):
         execution_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.execution_id = execution_id
         self.region_id = region_id
 
@@ -7377,9 +7329,6 @@ class TerminateUserExecutionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7418,8 +7367,11 @@ class UpdateActionRequest(TeaModel):
         popularity: int = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.action_name = action_name
+        # This parameter is required.
         self.action_type = action_type
+        # This parameter is required.
         self.content = content
         self.popularity = popularity
         self.region_id = region_id
@@ -7541,9 +7493,6 @@ class UpdateActionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7582,8 +7531,10 @@ class UpdatePublicParameterRequest(TeaModel):
         value: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
         self.region_id = region_id
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -7758,9 +7709,6 @@ class UpdatePublicParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7802,6 +7750,7 @@ class UpdatePublicPatchBaselineRequest(TeaModel):
         self.approval_rules = approval_rules
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.name = name
         self.region_id = region_id
 
@@ -7969,9 +7918,6 @@ class UpdatePublicPatchBaselineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8012,10 +7958,12 @@ class UpdatePublicTemplateRequest(TeaModel):
         template_name: str = None,
     ):
         self.category = category
+        # This parameter is required.
         self.content = content
         self.popularity = popularity
         self.publisher = publisher
         self.region_id = region_id
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -8204,9 +8152,6 @@ class UpdatePublicTemplateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8244,9 +8189,11 @@ class ValidatePublicTemplateContentRequest(TeaModel):
         template_name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.content = content
         self.region_id = region_id
         self.template_name = template_name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8409,9 +8356,6 @@ class ValidatePublicTemplateContentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
