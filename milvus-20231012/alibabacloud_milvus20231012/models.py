@@ -1564,10 +1564,12 @@ class UpdateInstanceNameResponse(TeaModel):
 class UpdatePublicNetworkStatusRequest(TeaModel):
     def __init__(
         self,
+        cidr: str = None,
         component_type: str = None,
         instance_id: str = None,
         public_network_enabled: bool = None,
     ):
+        self.cidr = cidr
         # This parameter is required.
         self.component_type = component_type
         # This parameter is required.
@@ -1583,6 +1585,8 @@ class UpdatePublicNetworkStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cidr is not None:
+            result['Cidr'] = self.cidr
         if self.component_type is not None:
             result['ComponentType'] = self.component_type
         if self.instance_id is not None:
@@ -1593,6 +1597,8 @@ class UpdatePublicNetworkStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cidr') is not None:
+            self.cidr = m.get('Cidr')
         if m.get('ComponentType') is not None:
             self.component_type = m.get('ComponentType')
         if m.get('InstanceId') is not None:

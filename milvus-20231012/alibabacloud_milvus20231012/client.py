@@ -821,6 +821,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
         if not UtilClient.is_unset(request.component_type):
             query['ComponentType'] = request.component_type
         if not UtilClient.is_unset(request.instance_id):
@@ -863,6 +865,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cidr):
+            query['Cidr'] = request.cidr
         if not UtilClient.is_unset(request.component_type):
             query['ComponentType'] = request.component_type
         if not UtilClient.is_unset(request.instance_id):
