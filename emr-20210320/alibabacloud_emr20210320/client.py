@@ -463,6 +463,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateScriptResponse:
         """
+        @summary Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: CreateScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateScriptResponse
@@ -502,6 +504,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateScriptResponse:
         """
+        @summary Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: CreateScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateScriptResponse
@@ -540,6 +544,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateScriptRequest,
     ) -> emr_20210320_models.CreateScriptResponse:
         """
+        @summary Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: CreateScriptRequest
         @return: CreateScriptResponse
         """
@@ -551,6 +557,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateScriptRequest,
     ) -> emr_20210320_models.CreateScriptResponse:
         """
+        @summary Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: CreateScriptRequest
         @return: CreateScriptResponse
         """
@@ -875,6 +883,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DeleteScriptResponse:
         """
+        @summary Deletes a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: DeleteScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteScriptResponse
@@ -914,6 +924,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DeleteScriptResponse:
         """
+        @summary Deletes a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: DeleteScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteScriptResponse
@@ -952,6 +964,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DeleteScriptRequest,
     ) -> emr_20210320_models.DeleteScriptResponse:
         """
+        @summary Deletes a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: DeleteScriptRequest
         @return: DeleteScriptResponse
         """
@@ -963,6 +977,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DeleteScriptRequest,
     ) -> emr_20210320_models.DeleteScriptResponse:
         """
+        @summary Deletes a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: DeleteScriptRequest
         @return: DeleteScriptResponse
         """
@@ -7629,8 +7645,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.application_configs):
-            query['ApplicationConfigs'] = request.application_configs
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
         if not UtilClient.is_unset(request.cluster_id):
@@ -7649,8 +7663,15 @@ class Client(OpenApiClient):
             query['RefreshConfig'] = request.refresh_config
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_configs):
+            body_flat['ApplicationConfigs'] = request.application_configs
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateApplicationConfigs',
@@ -7680,8 +7701,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.application_configs):
-            query['ApplicationConfigs'] = request.application_configs
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
         if not UtilClient.is_unset(request.cluster_id):
@@ -7700,8 +7719,15 @@ class Client(OpenApiClient):
             query['RefreshConfig'] = request.refresh_config
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.application_configs):
+            body_flat['ApplicationConfigs'] = request.application_configs
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateApplicationConfigs',
@@ -7747,6 +7773,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateScriptResponse:
         """
+        @summary Updates a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param tmp_req: UpdateScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateScriptResponse
@@ -7792,6 +7820,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateScriptResponse:
         """
+        @summary Updates a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param tmp_req: UpdateScriptRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateScriptResponse
@@ -7836,6 +7866,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateScriptRequest,
     ) -> emr_20210320_models.UpdateScriptResponse:
         """
+        @summary Updates a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: UpdateScriptRequest
         @return: UpdateScriptResponse
         """
@@ -7847,6 +7879,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateScriptRequest,
     ) -> emr_20210320_models.UpdateScriptResponse:
         """
+        @summary Updates a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+        
         @param request: UpdateScriptRequest
         @return: UpdateScriptResponse
         """

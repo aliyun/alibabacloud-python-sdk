@@ -1,3 +1,7 @@
+2024-07-13 Version: 2.0.1
+- Update API UpdateApplicationConfigs: update param ApplicationConfigs.
+
+
 2024-07-04 Version: 2.0.0
 - Support API CreateScript.
 - Support API DeleteScript.

@@ -7837,19 +7837,22 @@ class CreateScriptRequest(TeaModel):
         script_type: str = None,
         scripts: List[Script] = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 集群脚本类型。
+        # The type of the script. Valid values:
+        # 
+        # *   BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+        # *   NORMAL: indicates a common script.
         # 
         # This parameter is required.
         self.script_type = script_type
-        # 集群脚本列表。
+        # The scripts.
         # 
         # This parameter is required.
         self.scripts = scripts
@@ -7900,8 +7903,9 @@ class CreateScriptResponseBody(TeaModel):
         request_id: str = None,
         script_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
+        # The script ID.
         self.script_id = script_id
 
     def validate(self):
@@ -8360,19 +8364,22 @@ class DeleteScriptRequest(TeaModel):
         script_id: str = None,
         script_type: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 脚本ID。
+        # The script ID.
         # 
         # This parameter is required.
         self.script_id = script_id
-        # 集群脚本类型。
+        # The type of the script. Valid values:
+        # 
+        # *   BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+        # *   NORMAL: indicates a common script.
         # 
         # This parameter is required.
         self.script_type = script_type
@@ -8414,7 +8421,7 @@ class DeleteScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48370,7 +48377,7 @@ class UpdateApplicationConfigsRequest(TeaModel):
         refresh_config: bool = None,
         region_id: str = None,
     ):
-        # The application configurations.
+        # 应用配置列表。
         # 
         # This parameter is required.
         self.application_configs = application_configs
@@ -48555,23 +48562,26 @@ class UpdateScriptRequest(TeaModel):
         script_id: str = None,
         script_type: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 集群脚本。
+        # The script.
         # 
         # This parameter is required.
         self.script = script
-        # 脚本ID。
+        # The script ID.
         # 
         # This parameter is required.
         self.script_id = script_id
-        # 集群脚本类型。
+        # The type of the script. Valid values:
+        # 
+        # *   BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+        # *   NORMAL: indicates a common script.
         # 
         # This parameter is required.
         self.script_type = script_type
@@ -48623,23 +48633,26 @@ class UpdateScriptShrinkRequest(TeaModel):
         script_id: str = None,
         script_type: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 区域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # 集群脚本。
+        # The script.
         # 
         # This parameter is required.
         self.script_shrink = script_shrink
-        # 脚本ID。
+        # The script ID.
         # 
         # This parameter is required.
         self.script_id = script_id
-        # 集群脚本类型。
+        # The type of the script. Valid values:
+        # 
+        # *   BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+        # *   NORMAL: indicates a common script.
         # 
         # This parameter is required.
         self.script_type = script_type
@@ -48685,7 +48698,7 @@ class UpdateScriptResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
