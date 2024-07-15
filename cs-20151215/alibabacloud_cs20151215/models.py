@@ -2590,6 +2590,206 @@ class CheckServiceRoleResponse(TeaModel):
         return self
 
 
+class CleanClusterUserPermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+    ):
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        return self
+
+
+class CleanClusterUserPermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CleanUserPermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_ids: List[str] = None,
+        force: bool = None,
+    ):
+        self.cluster_ids = cluster_ids
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_ids is not None:
+            result['ClusterIds'] = self.cluster_ids
+        if self.force is not None:
+            result['Force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterIds') is not None:
+            self.cluster_ids = m.get('ClusterIds')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        return self
+
+
+class CleanUserPermissionsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_ids_shrink: str = None,
+        force: bool = None,
+    ):
+        self.cluster_ids_shrink = cluster_ids_shrink
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_ids_shrink is not None:
+            result['ClusterIds'] = self.cluster_ids_shrink
+        if self.force is not None:
+            result['Force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterIds') is not None:
+            self.cluster_ids_shrink = m.get('ClusterIds')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        return self
+
+
+class CleanUserPermissionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
+class CleanUserPermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CleanUserPermissionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CleanUserPermissionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAutoscalingConfigRequest(TeaModel):
     def __init__(
         self,
@@ -20660,6 +20860,232 @@ class ListClusterChecksResponse(TeaModel):
         return self
 
 
+class ListClusterKubeconfigStatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListClusterKubeconfigStatesResponseBodyPage(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class ListClusterKubeconfigStatesResponseBodyStates(TeaModel):
+    def __init__(
+        self,
+        account_display_name: str = None,
+        account_id: str = None,
+        account_name: str = None,
+        account_state: str = None,
+        account_type: str = None,
+        cert_expire_time: str = None,
+        cert_state: str = None,
+        revokable: bool = None,
+    ):
+        self.account_display_name = account_display_name
+        self.account_id = account_id
+        self.account_name = account_name
+        self.account_state = account_state
+        self.account_type = account_type
+        self.cert_expire_time = cert_expire_time
+        self.cert_state = cert_state
+        self.revokable = revokable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_display_name is not None:
+            result['account_display_name'] = self.account_display_name
+        if self.account_id is not None:
+            result['account_id'] = self.account_id
+        if self.account_name is not None:
+            result['account_name'] = self.account_name
+        if self.account_state is not None:
+            result['account_state'] = self.account_state
+        if self.account_type is not None:
+            result['account_type'] = self.account_type
+        if self.cert_expire_time is not None:
+            result['cert_expire_time'] = self.cert_expire_time
+        if self.cert_state is not None:
+            result['cert_state'] = self.cert_state
+        if self.revokable is not None:
+            result['revokable'] = self.revokable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('account_display_name') is not None:
+            self.account_display_name = m.get('account_display_name')
+        if m.get('account_id') is not None:
+            self.account_id = m.get('account_id')
+        if m.get('account_name') is not None:
+            self.account_name = m.get('account_name')
+        if m.get('account_state') is not None:
+            self.account_state = m.get('account_state')
+        if m.get('account_type') is not None:
+            self.account_type = m.get('account_type')
+        if m.get('cert_expire_time') is not None:
+            self.cert_expire_time = m.get('cert_expire_time')
+        if m.get('cert_state') is not None:
+            self.cert_state = m.get('cert_state')
+        if m.get('revokable') is not None:
+            self.revokable = m.get('revokable')
+        return self
+
+
+class ListClusterKubeconfigStatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page: ListClusterKubeconfigStatesResponseBodyPage = None,
+        states: List[ListClusterKubeconfigStatesResponseBodyStates] = None,
+    ):
+        self.page = page
+        self.states = states
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+        if self.states:
+            for k in self.states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['page'] = self.page.to_map()
+        result['states'] = []
+        if self.states is not None:
+            for k in self.states:
+                result['states'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page') is not None:
+            temp_model = ListClusterKubeconfigStatesResponseBodyPage()
+            self.page = temp_model.from_map(m['page'])
+        self.states = []
+        if m.get('states') is not None:
+            for k in m.get('states'):
+                temp_model = ListClusterKubeconfigStatesResponseBodyStates()
+                self.states.append(temp_model.from_map(k))
+        return self
+
+
+class ListClusterKubeconfigStatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListClusterKubeconfigStatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListClusterKubeconfigStatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListOperationPlansRequest(TeaModel):
     def __init__(
         self,
@@ -21159,6 +21585,214 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListUserKubeConfigStatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        return self
+
+
+class ListUserKubeConfigStatesResponseBodyPage(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['page_number'] = self.page_number
+        if self.page_size is not None:
+            result['page_size'] = self.page_size
+        if self.total_count is not None:
+            result['total_count'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page_number') is not None:
+            self.page_number = m.get('page_number')
+        if m.get('page_size') is not None:
+            self.page_size = m.get('page_size')
+        if m.get('total_count') is not None:
+            self.total_count = m.get('total_count')
+        return self
+
+
+class ListUserKubeConfigStatesResponseBodyStates(TeaModel):
+    def __init__(
+        self,
+        cert_expire_time: str = None,
+        cert_state: str = None,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cluster_state: str = None,
+    ):
+        self.cert_expire_time = cert_expire_time
+        self.cert_state = cert_state
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cluster_state = cluster_state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_expire_time is not None:
+            result['cert_expire_time'] = self.cert_expire_time
+        if self.cert_state is not None:
+            result['cert_state'] = self.cert_state
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['cluster_name'] = self.cluster_name
+        if self.cluster_state is not None:
+            result['cluster_state'] = self.cluster_state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cert_expire_time') is not None:
+            self.cert_expire_time = m.get('cert_expire_time')
+        if m.get('cert_state') is not None:
+            self.cert_state = m.get('cert_state')
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_name') is not None:
+            self.cluster_name = m.get('cluster_name')
+        if m.get('cluster_state') is not None:
+            self.cluster_state = m.get('cluster_state')
+        return self
+
+
+class ListUserKubeConfigStatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page: ListUserKubeConfigStatesResponseBodyPage = None,
+        states: List[ListUserKubeConfigStatesResponseBodyStates] = None,
+    ):
+        self.page = page
+        self.states = states
+
+    def validate(self):
+        if self.page:
+            self.page.validate()
+        if self.states:
+            for k in self.states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page is not None:
+            result['page'] = self.page.to_map()
+        result['states'] = []
+        if self.states is not None:
+            for k in self.states:
+                result['states'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('page') is not None:
+            temp_model = ListUserKubeConfigStatesResponseBodyPage()
+            self.page = temp_model.from_map(m['page'])
+        self.states = []
+        if m.get('states') is not None:
+            for k in m.get('states'):
+                temp_model = ListUserKubeConfigStatesResponseBodyStates()
+                self.states.append(temp_model.from_map(k))
+        return self
+
+
+class ListUserKubeConfigStatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListUserKubeConfigStatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListUserKubeConfigStatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

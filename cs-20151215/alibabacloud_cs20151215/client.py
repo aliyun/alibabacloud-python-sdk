@@ -1056,6 +1056,238 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_service_role_with_options_async(request, headers, runtime)
 
+    def clean_cluster_user_permissions_with_options(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.CleanClusterUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
+        """
+        @summary 清理某个用户在某个集群的证书以及权限
+        
+        @param request: CleanClusterUserPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CleanClusterUserPermissionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CleanClusterUserPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/cluster/{OpenApiUtilClient.get_encode_param(cluster_id)}/user/{OpenApiUtilClient.get_encode_param(uid)}/permissions',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CleanClusterUserPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clean_cluster_user_permissions_with_options_async(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.CleanClusterUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
+        """
+        @summary 清理某个用户在某个集群的证书以及权限
+        
+        @param request: CleanClusterUserPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CleanClusterUserPermissionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CleanClusterUserPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/cluster/{OpenApiUtilClient.get_encode_param(cluster_id)}/user/{OpenApiUtilClient.get_encode_param(uid)}/permissions',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CleanClusterUserPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clean_cluster_user_permissions(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.CleanClusterUserPermissionsRequest,
+    ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
+        """
+        @summary 清理某个用户在某个集群的证书以及权限
+        
+        @param request: CleanClusterUserPermissionsRequest
+        @return: CleanClusterUserPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.clean_cluster_user_permissions_with_options(cluster_id, uid, request, headers, runtime)
+
+    async def clean_cluster_user_permissions_async(
+        self,
+        cluster_id: str,
+        uid: str,
+        request: cs20151215_models.CleanClusterUserPermissionsRequest,
+    ) -> cs20151215_models.CleanClusterUserPermissionsResponse:
+        """
+        @summary 清理某个用户在某个集群的证书以及权限
+        
+        @param request: CleanClusterUserPermissionsRequest
+        @return: CleanClusterUserPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.clean_cluster_user_permissions_with_options_async(cluster_id, uid, request, headers, runtime)
+
+    def clean_user_permissions_with_options(
+        self,
+        uid: str,
+        tmp_req: cs20151215_models.CleanUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CleanUserPermissionsResponse:
+        """
+        @summary 清除某个用户的证书以及相关RBAC权限
+        
+        @param tmp_req: CleanUserPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CleanUserPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.CleanUserPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_ids):
+            request.cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_ids, 'ClusterIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_ids_shrink):
+            query['ClusterIds'] = request.cluster_ids_shrink
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CleanUserPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/users/{OpenApiUtilClient.get_encode_param(uid)}/permissions',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CleanUserPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clean_user_permissions_with_options_async(
+        self,
+        uid: str,
+        tmp_req: cs20151215_models.CleanUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CleanUserPermissionsResponse:
+        """
+        @summary 清除某个用户的证书以及相关RBAC权限
+        
+        @param tmp_req: CleanUserPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CleanUserPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cs20151215_models.CleanUserPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cluster_ids):
+            request.cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cluster_ids, 'ClusterIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_ids_shrink):
+            query['ClusterIds'] = request.cluster_ids_shrink
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CleanUserPermissions',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/users/{OpenApiUtilClient.get_encode_param(uid)}/permissions',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CleanUserPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clean_user_permissions(
+        self,
+        uid: str,
+        request: cs20151215_models.CleanUserPermissionsRequest,
+    ) -> cs20151215_models.CleanUserPermissionsResponse:
+        """
+        @summary 清除某个用户的证书以及相关RBAC权限
+        
+        @param request: CleanUserPermissionsRequest
+        @return: CleanUserPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.clean_user_permissions_with_options(uid, request, headers, runtime)
+
+    async def clean_user_permissions_async(
+        self,
+        uid: str,
+        request: cs20151215_models.CleanUserPermissionsRequest,
+    ) -> cs20151215_models.CleanUserPermissionsResponse:
+        """
+        @summary 清除某个用户的证书以及相关RBAC权限
+        
+        @param request: CleanUserPermissionsRequest
+        @return: CleanUserPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.clean_user_permissions_with_options_async(uid, request, headers, runtime)
+
     def create_autoscaling_config_with_options(
         self,
         cluster_id: str,
@@ -9894,6 +10126,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_cluster_checks_with_options_async(cluster_id, request, headers, runtime)
 
+    def list_cluster_kubeconfig_states_with_options(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.ListClusterKubeconfigStatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
+        """
+        @summary 获取当前集群已下发的用户Kubeconfig的状态列表
+        
+        @param request: ListClusterKubeconfigStatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterKubeconfigStatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterKubeconfigStates',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/kubeconfig/states',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListClusterKubeconfigStatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_kubeconfig_states_with_options_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.ListClusterKubeconfigStatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
+        """
+        @summary 获取当前集群已下发的用户Kubeconfig的状态列表
+        
+        @param request: ListClusterKubeconfigStatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterKubeconfigStatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterKubeconfigStates',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(cluster_id)}/kubeconfig/states',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListClusterKubeconfigStatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_kubeconfig_states(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.ListClusterKubeconfigStatesRequest,
+    ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
+        """
+        @summary 获取当前集群已下发的用户Kubeconfig的状态列表
+        
+        @param request: ListClusterKubeconfigStatesRequest
+        @return: ListClusterKubeconfigStatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_cluster_kubeconfig_states_with_options(cluster_id, request, headers, runtime)
+
+    async def list_cluster_kubeconfig_states_async(
+        self,
+        cluster_id: str,
+        request: cs20151215_models.ListClusterKubeconfigStatesRequest,
+    ) -> cs20151215_models.ListClusterKubeconfigStatesResponse:
+        """
+        @summary 获取当前集群已下发的用户Kubeconfig的状态列表
+        
+        @param request: ListClusterKubeconfigStatesRequest
+        @return: ListClusterKubeconfigStatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_cluster_kubeconfig_states_with_options_async(cluster_id, request, headers, runtime)
+
     def list_operation_plans_with_options(
         self,
         request: cs20151215_models.ListOperationPlansRequest,
@@ -10133,6 +10477,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
+
+    def list_user_kube_config_states_with_options(
+        self,
+        uid: str,
+        request: cs20151215_models.ListUserKubeConfigStatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListUserKubeConfigStatesResponse:
+        """
+        @summary 查询单用户所有集群的证书状态
+        
+        @param request: ListUserKubeConfigStatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserKubeConfigStatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserKubeConfigStates',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/users/{OpenApiUtilClient.get_encode_param(uid)}/kubeconfig/states',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListUserKubeConfigStatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_kube_config_states_with_options_async(
+        self,
+        uid: str,
+        request: cs20151215_models.ListUserKubeConfigStatesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.ListUserKubeConfigStatesResponse:
+        """
+        @summary 查询单用户所有集群的证书状态
+        
+        @param request: ListUserKubeConfigStatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserKubeConfigStatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListUserKubeConfigStates',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/users/{OpenApiUtilClient.get_encode_param(uid)}/kubeconfig/states',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.ListUserKubeConfigStatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_kube_config_states(
+        self,
+        uid: str,
+        request: cs20151215_models.ListUserKubeConfigStatesRequest,
+    ) -> cs20151215_models.ListUserKubeConfigStatesResponse:
+        """
+        @summary 查询单用户所有集群的证书状态
+        
+        @param request: ListUserKubeConfigStatesRequest
+        @return: ListUserKubeConfigStatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_user_kube_config_states_with_options(uid, request, headers, runtime)
+
+    async def list_user_kube_config_states_async(
+        self,
+        uid: str,
+        request: cs20151215_models.ListUserKubeConfigStatesRequest,
+    ) -> cs20151215_models.ListUserKubeConfigStatesResponse:
+        """
+        @summary 查询单用户所有集群的证书状态
+        
+        @param request: ListUserKubeConfigStatesRequest
+        @return: ListUserKubeConfigStatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_user_kube_config_states_with_options_async(uid, request, headers, runtime)
 
     def migrate_cluster_with_options(
         self,
