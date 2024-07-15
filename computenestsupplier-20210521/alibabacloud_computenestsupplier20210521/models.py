@@ -197,11 +197,21 @@ class ContinueDeployServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not create a service instance.
+        # *   false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The configuration parameters of the service instance.
         self.parameters = parameters
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -248,8 +258,17 @@ class ContinueDeployServiceInstanceResponseBodyDryRunResult(TeaModel):
         parameters_conditionally_allowed_to_be_modified: List[str] = None,
         parameters_not_allowed_to_be_modified: List[str] = None,
     ):
+        # The parameters that can be modified. The operation that is performed to modify the parameters does not cause a validation error.
+        # 
+        # >  This parameter is returned only if DryRun is set to true.
         self.parameters_allowed_to_be_modified = parameters_allowed_to_be_modified
+        # The parameters that can be modified under specific conditions. The new values of the parameters determine whether the operation that is performed to modify the parameters causes a validation error.
+        # 
+        # >  This parameter is returned only if DryRun is set to true.
         self.parameters_conditionally_allowed_to_be_modified = parameters_conditionally_allowed_to_be_modified
+        # The parameters that cannot be modified. The operation that is performed to modify the parameters causes a validation error.
+        # 
+        # >  This parameter is returned only if DryRun is set to true.
         self.parameters_not_allowed_to_be_modified = parameters_not_allowed_to_be_modified
 
     def validate(self):
@@ -287,8 +306,11 @@ class ContinueDeployServiceInstanceResponseBody(TeaModel):
         request_id: str = None,
         service_instance_id: str = None,
     ):
+        # The dry run result.
         self.dry_run_result = dry_run_result
+        # The request ID.
         self.request_id = request_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
 
     def validate(self):
@@ -376,15 +398,41 @@ class CreateArtifactRequestArtifactProperty(TeaModel):
         tag: str = None,
         url: str = None,
     ):
+        # The commodity code of the service in Alibaba Cloud Marketplace.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.commodity_code = commodity_code
+        # The commodity version of the service in Alibaba Cloud Marketplace.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.commodity_version = commodity_version
+        # The script metadata.
         self.file_script_metadata = file_script_metadata
+        # The image ID.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.image_id = image_id
+        # The region ID.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.region_id = region_id
+        # The ID of the image repository.
+        # 
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
         self.repo_id = repo_id
+        # The name of the image repository.
+        # 
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
         self.repo_name = repo_name
+        # The script content.
+        # 
+        # >  This parameter is available only if the deployment package is a script.
         self.script_metadata = script_metadata
+        # The version tag of the image repository.
+        # 
+        # >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
         self.tag = tag
+        # The object URL of the deployment package.
         self.url = url
 
     def validate(self):
@@ -449,7 +497,9 @@ class CreateArtifactRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -489,16 +539,33 @@ class CreateArtifactRequest(TeaModel):
         tag: List[CreateArtifactRequestTag] = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The properties of the deployment object.
         self.artifact_property = artifact_property
+        # The type of the deployment package. Valid values:
+        # 
+        # *   EcsImage: Elastic Compute Service (ECS) image.
+        # *   AcrImage: container image.
+        # *   File: Object Storage Service (OSS) object.
+        # *   Script: script.
+        # 
         # This parameter is required.
         self.artifact_type = artifact_type
+        # The description of the deployment package.
         self.description = description
+        # The name of the deployment package.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The supported regions.
         self.support_region_ids = support_region_ids
+        # The custom tags.
         self.tag = tag
+        # The version name of the deployment package.
+        # 
         # This parameter is required.
         self.version_name = version_name
 
@@ -571,7 +638,9 @@ class CreateArtifactShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -611,16 +680,33 @@ class CreateArtifactShrinkRequest(TeaModel):
         tag: List[CreateArtifactShrinkRequestTag] = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The properties of the deployment object.
         self.artifact_property_shrink = artifact_property_shrink
+        # The type of the deployment package. Valid values:
+        # 
+        # *   EcsImage: Elastic Compute Service (ECS) image.
+        # *   AcrImage: container image.
+        # *   File: Object Storage Service (OSS) object.
+        # *   Script: script.
+        # 
         # This parameter is required.
         self.artifact_type = artifact_type
+        # The description of the deployment package.
         self.description = description
+        # The name of the deployment package.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The supported regions.
         self.support_region_ids = support_region_ids
+        # The custom tags.
         self.tag = tag
+        # The version name of the deployment package.
+        # 
         # This parameter is required.
         self.version_name = version_name
 
@@ -700,17 +786,29 @@ class CreateArtifactResponseBody(TeaModel):
         support_region_ids: str = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The properties of the deployment object.
         self.artifact_property = artifact_property
+        # The type of the deployment package.
         self.artifact_type = artifact_type
+        # The version of the deployment package.
         self.artifact_version = artifact_version
+        # The description of the deployment package.
         self.description = description
+        # The time when the deployment package was modified.
         self.gmt_modified = gmt_modified
+        # The latest version of the deployment package.
         self.max_version = max_version
+        # The name of the deployment package.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The status of the deployment package. Valid values:
         self.status = status
+        # The ID of the region that supports the deployment package.
         self.support_region_ids = support_region_ids
+        # The name of the deployment package.
         self.version_name = version_name
 
     def validate(self):
@@ -824,7 +922,9 @@ class CreateServiceRequestServiceInfoAgreements(TeaModel):
         name: str = None,
         url: str = None,
     ):
+        # Protocol name.
         self.name = name
+        # Protocol url.
         self.url = url
 
     def validate(self):
@@ -861,13 +961,24 @@ class CreateServiceRequestServiceInfo(TeaModel):
         name: str = None,
         short_description: str = None,
     ):
+        # Protocol document information about the service.
         self.agreements = agreements
+        # The URL of the service icon.
         self.image = image
+        # The language of the service. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
+        # 
         # This parameter is required.
         self.locale = locale
+        # The URL of the detailed description of the service.
         self.long_description_url = long_description_url
+        # The service name.
+        # 
         # This parameter is required.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -924,7 +1035,9 @@ class CreateServiceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -981,33 +1094,91 @@ class CreateServiceRequest(TeaModel):
         upgrade_metadata: str = None,
         version_name: str = None,
     ):
+        # The alert configurations of the service.
+        # 
+        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
         self.alarm_metadata = alarm_metadata
+        # The approval type of the service usage application. Valid values:
+        # 
+        # *   Manual: The application is manually approved.
+        # *   AutoPass: The application is automatically approved.
         self.approval_type = approval_type
+        # The parameters for building the service
         self.build_parameters = build_parameters
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   ack: The service is deployed by using Container Service for Kubernetes (ACK).
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # 
         # This parameter is required.
         self.deploy_type = deploy_type
+        # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
+        # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter is required if you set **ServiceType** to **private**.
         self.is_support_operated = is_support_operated
+        # The license metadata.
         self.license_metadata = license_metadata
+        # The logging configurations.
         self.log_metadata = log_metadata
+        # The hosted O\\&M configurations.
         self.operation_metadata = operation_metadata
+        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
         self.policy_names = policy_names
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Whether resell is supported.
         self.resellable = resellable
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The service ID.
         self.service_id = service_id
+        # The service details.
         self.service_info = service_info
+        # The service type. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
         self.service_type = service_type
+        # The permission type of the deployment URL. Valid values:
+        # 
+        # *   Public: All users can go to the URL to create a service instance or a trial service instance.
+        # *   Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
         self.share_type = share_type
+        # The source service ID for resell。
         self.source_service_id = source_service_id
+        # The source service version for resell。
         self.source_service_version = source_service_version
+        # The custom tags.
         self.tag = tag
+        # The type of the tenant. Valid values:
+        # 
+        # *   SingleTenant
+        # *   MultiTenant
         self.tenant_type = tenant_type
+        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
         self.trial_duration = trial_duration
+        # The metadata about the upgrade.
         self.upgrade_metadata = upgrade_metadata
+        # The version name.
         self.version_name = version_name
 
     def validate(self):
@@ -1155,9 +1326,13 @@ class CreateServiceResponseBody(TeaModel):
         status: str = None,
         version: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The service ID.
         self.service_id = service_id
+        # The status of the service.
         self.status = status
+        # The service version.
         self.version = version
 
     def validate(self):
@@ -1239,7 +1414,9 @@ class CreateServiceInstanceRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1283,21 +1460,50 @@ class CreateServiceInstanceRequest(TeaModel):
         template_name: str = None,
         user_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not create a service instance.
+        # *   false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The time when the service instance was released.
+        # 
+        # >  This parameter is available only for the service instances that are managed by service providers.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The name of the service instance. The value must meet the following requirements:
+        # 
+        # *   The name cannot exceed 64 characters in length.
+        # *   It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
         self.name = name
+        # The parameters that are specified for service instance deployment.
+        # 
+        # >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
         self.parameters = parameters
+        # The region ID. Valid values:
+        # 
+        # *   cn-hangzhou: China (Hangzhou)
+        # *   ap-southeast-1: Singapore
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
         self.service_version = service_version
+        # The name of the package specification.
         self.specification_name = specification_name
+        # The custom tags.
         self.tag = tag
+        # The template name. You must specify a template name if the service supports multiple templates.
         self.template_name = template_name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -1382,7 +1588,9 @@ class CreateServiceInstanceShrinkRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -1426,21 +1634,50 @@ class CreateServiceInstanceShrinkRequest(TeaModel):
         template_name: str = None,
         user_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not create a service instance.
+        # *   false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The time when the service instance was released.
+        # 
+        # >  This parameter is available only for the service instances that are managed by service providers.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The name of the service instance. The value must meet the following requirements:
+        # 
+        # *   The name cannot exceed 64 characters in length.
+        # *   It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
         self.name = name
+        # The parameters that are specified for service instance deployment.
+        # 
+        # >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
         self.parameters_shrink = parameters_shrink
+        # The region ID. Valid values:
+        # 
+        # *   cn-hangzhou: China (Hangzhou)
+        # *   ap-southeast-1: Singapore
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
         self.service_version = service_version
+        # The name of the package specification.
         self.specification_name = specification_name
+        # The custom tags.
         self.tag = tag
+        # The template name. You must specify a template name if the service supports multiple templates.
         self.template_name = template_name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -1526,8 +1763,20 @@ class CreateServiceInstanceResponseBody(TeaModel):
         service_instance_id: str = None,
         status: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The status of the service instance. Valid values:
+        # 
+        # *   Created
+        # *   Deploying
+        # *   DeployedFailed
+        # *   Deployed
+        # *   Upgrading
+        # *   Deleting
+        # *   Deleted
+        # *   DeletedFailed
         self.status = status
 
     def validate(self):
@@ -1605,8 +1854,11 @@ class DeleteArtifactRequest(TeaModel):
         artifact_id: str = None,
         artifact_version: str = None,
     ):
+        # The ID of the artifact.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
+        # The version of the artifact.
         self.artifact_version = artifact_version
 
     def validate(self):
@@ -1638,6 +1890,7 @@ class DeleteArtifactResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1832,9 +2085,14 @@ class DeleteServiceInstancesRequest(TeaModel):
         region_id: str = None,
         service_instance_id: List[str] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The IDs of the service instances.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -1871,6 +2129,7 @@ class DeleteServiceInstancesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1941,9 +2200,14 @@ class DeployServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -1980,6 +2244,7 @@ class DeployServiceInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2050,8 +2315,11 @@ class GetArtifactRequest(TeaModel):
         artifact_name: str = None,
         artifact_version: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The name of the deployment package.
         self.artifact_name = artifact_name
+        # The version of the deployment package.
         self.artifact_version = artifact_version
 
     def validate(self):
@@ -2088,7 +2356,9 @@ class GetArtifactResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the deployment package.
         self.key = key
+        # The tag value of the deployment package.
         self.value = value
 
     def validate(self):
@@ -2134,20 +2404,35 @@ class GetArtifactResponseBody(TeaModel):
         tags: List[GetArtifactResponseBodyTags] = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The properties of the deployment package.
         self.artifact_property = artifact_property
+        # The type of the deployment package.
         self.artifact_type = artifact_type
+        # The version of the deployment package.
         self.artifact_version = artifact_version
+        # The description of the deployment package.
         self.description = description
+        # The time when the deployment package was modified.
         self.gmt_modified = gmt_modified
+        # The latest version of the deployment package.
         self.max_version = max_version
+        # The name of the deployment package.
         self.name = name
+        # The distribution progress of the deployment package.
         self.progress = progress
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the deployment package. Valid values:
         self.status = status
+        # The ID of the region that supports the deployment package.
         self.support_region_ids = support_region_ids
+        # The tags of the deployment package.
         self.tags = tags
+        # The version name of the deployment package.
         self.version_name = version_name
 
     def validate(self):
@@ -2281,8 +2566,14 @@ class GetArtifactRepositoryCredentialsRequest(TeaModel):
         artifact_type: str = None,
         deploy_region_id: str = None,
     ):
+        # The type of the deployment package. Valid values:
+        # 
+        # *   File: Object Storage Service (OSS) object.
+        # *   AcrImage: container image.
+        # 
         # This parameter is required.
         self.artifact_type = artifact_type
+        # The region ID.
         self.deploy_region_id = deploy_region_id
 
     def validate(self):
@@ -2316,8 +2607,11 @@ class GetArtifactRepositoryCredentialsResponseBodyAvailableResources(TeaModel):
         region_id: str = None,
         repository_name: str = None,
     ):
+        # The path.
         self.path = path
+        # The region ID.
         self.region_id = region_id
+        # The repository name.
         self.repository_name = repository_name
 
     def validate(self):
@@ -2357,10 +2651,15 @@ class GetArtifactRepositoryCredentialsResponseBodyCredentials(TeaModel):
         security_token: str = None,
         username: str = None,
     ):
+        # The AccessKey ID.
         self.access_key_id = access_key_id
+        # The AccessKey secret.
         self.access_key_secret = access_key_secret
+        # The password.
         self.password = password
+        # The Security Token Service (STS) token.
         self.security_token = security_token
+        # The username.
         self.username = username
 
     def validate(self):
@@ -2407,9 +2706,13 @@ class GetArtifactRepositoryCredentialsResponseBody(TeaModel):
         expire_date: str = None,
         request_id: str = None,
     ):
+        # The information about the resources that can be uploaded.
         self.available_resources = available_resources
+        # The credentials.
         self.credentials = credentials
+        # The time when the credentials expired.
         self.expire_date = expire_date
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2506,12 +2809,22 @@ class GetServiceRequest(TeaModel):
         shared_account_type: str = None,
         show_detail: List[str] = None,
     ):
+        # Specifies whether to filter information based on Alibaba Cloud account IDs.
         self.filter_ali_uid = filter_ali_uid
+        # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service version.
         self.service_version = service_version
+        # The share type of the service. Default value: SharedAccount. Valid values:
+        # 
+        # *   SharedAccount: The service is shared by multiple accounts.
+        # *   Resell: The service is distributed.
         self.shared_account_type = shared_account_type
+        # The information that you want to query.
         self.show_detail = show_detail
 
     def validate(self):
@@ -2560,7 +2873,9 @@ class GetServiceResponseBodyCommodityCssMetadataComponentsMappings(TeaModel):
         mappings: Dict[str, str] = None,
         template_name: str = None,
     ):
+        # The mappings.
         self.mappings = mappings
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -2595,9 +2910,13 @@ class GetServiceResponseBodyCommodityCssMetadataMeteringEntityExtraInfos(TeaMode
         promql: str = None,
         type: str = None,
     ):
+        # The ID of the entity.
         self.entity_id = entity_id
+        # Name of a measurement indicator.
         self.metric_name = metric_name
+        # Custom PromQL.
         self.promql = promql
+        # Measurement indicators.
         self.type = type
 
     def validate(self):
@@ -2639,8 +2958,11 @@ class GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings(TeaModel)
         specification_name: str = None,
         template_name: str = None,
     ):
+        # The ID of the entity.
         self.entity_ids = entity_ids
+        # The package name.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -2678,8 +3000,11 @@ class GetServiceResponseBodyCommodityCssMetadata(TeaModel):
         metering_entity_extra_infos: List[GetServiceResponseBodyCommodityCssMetadataMeteringEntityExtraInfos] = None,
         metering_entity_mappings: List[GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings] = None,
     ):
+        # The mapping information about the billing items.
         self.components_mappings = components_mappings
+        # Metering item configuration information.
         self.metering_entity_extra_infos = metering_entity_extra_infos
+        # The binding relationship between package and measurement dimension.
         self.metering_entity_mappings = metering_entity_mappings
 
     def validate(self):
@@ -2744,9 +3069,13 @@ class GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityExtraInfos
         promql: str = None,
         type: str = None,
     ):
+        # The ID of the billable item.
         self.entity_id = entity_id
+        # The metric name.
         self.metric_name = metric_name
+        # The custom prometheus statement.
         self.promql = promql
+        # The metric.
         self.type = type
 
     def validate(self):
@@ -2788,8 +3117,11 @@ class GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMappings(T
         specification_name: str = None,
         template_name: str = None,
     ):
+        # The ID of the billable item.
         self.entity_ids = entity_ids
+        # The name of the specification package.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -2828,9 +3160,16 @@ class GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings(Te
         template_name: str = None,
         trial_type: str = None,
     ):
+        # The specification code of the service in Alibaba Cloud Marketplace.
         self.specification_code = specification_code
+        # The name of the specification package.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
+        # The trial policy. Valid values:
+        # 
+        # *   Trial: Trials are supported.
+        # *   NotTrial: Trials are not supported.
         self.trial_type = trial_type
 
     def validate(self):
@@ -2872,8 +3211,11 @@ class GetServiceResponseBodyCommodityMarketplaceMetadata(TeaModel):
         metering_entity_mappings: List[GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMappings] = None,
         specification_mappings: List[GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings] = None,
     ):
+        # The configurations of the billable items.
         self.metering_entity_extra_infos = metering_entity_extra_infos
+        # The billable items that are associated with the package.
         self.metering_entity_mappings = metering_entity_mappings
+        # The mappings between the service specifications and the template or package.
         self.specification_mappings = specification_mappings
 
     def validate(self):
@@ -2936,7 +3278,9 @@ class GetServiceResponseBodyCommodityMeteringEntities(TeaModel):
         entity_id: str = None,
         name: str = None,
     ):
+        # The ID of the billable item.
         self.entity_id = entity_id
+        # The name of the billable item.
         self.name = name
 
     def validate(self):
@@ -2970,8 +3314,11 @@ class GetServiceResponseBodyCommoditySpecifications(TeaModel):
         name: str = None,
         times: List[str] = None,
     ):
+        # The commodity code.
         self.code = code
+        # The specification name.
         self.name = name
+        # The subscription duration. Unit: week or year.
         self.times = times
 
     def validate(self):
@@ -3015,14 +3362,29 @@ class GetServiceResponseBodyCommodity(TeaModel):
         specifications: List[GetServiceResponseBodyCommoditySpecifications] = None,
         type: str = None,
     ):
+        # The billing method of the service. Valid values:
+        # 
+        # *   **PREPAY** (default): subscription.
+        # *   **POSTPAY**: pay-as-you-go.
         self.charge_type = charge_type
+        # The commodity code of the service in Alibaba Cloud Marketplace.
         self.commodity_code = commodity_code
+        # The commodity modules.
         self.components = components
+        # The configuration metadata related to Lingxiao.
         self.css_metadata = css_metadata
+        # The metadata of Alibaba Cloud Marketplace.
         self.marketplace_metadata = marketplace_metadata
+        # The information about the billable item.
         self.metering_entities = metering_entities
+        # The configuration metadata related to Saas Boost.
         self.saas_boost_metadata = saas_boost_metadata
+        # The specification details of the service in Alibaba Cloud Marketplace.
         self.specifications = specifications
+        # The service type. Valid values:
+        # 
+        # *   marketplace: Alibaba Cloud Marketplace.
+        # *   Css: Lingxiao.
         self.type = type
 
     def validate(self):
@@ -3106,7 +3468,9 @@ class GetServiceResponseBodyServiceInfosAgreements(TeaModel):
         name: str = None,
         url: str = None,
     ):
+        # The agreement name.
         self.name = name
+        # The agreement URL.
         self.url = url
 
     def validate(self):
@@ -3143,11 +3507,20 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
         name: str = None,
         short_description: str = None,
     ):
+        # The agreement information about the service.
         self.agreements = agreements
+        # The URL of the service icon.
         self.image = image
+        # The language of the service. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.locale = locale
+        # The URL of the detailed description of the service.
         self.long_description_url = long_description_url
+        # The service name.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -3211,14 +3584,23 @@ class GetServiceResponseBodyStatistic(TeaModel):
         deployed_user_count: int = None,
         submitted_usage_count: int = None,
     ):
+        # The total number of service instances that belong to the service. The service instances that are deleted are counted.
         self.accumulative_instance_count = accumulative_instance_count
+        # The total amount consumed for trial service instances. Unit: CNY.
         self.accumulative_poc_amount = accumulative_poc_amount
+        # The total number of users who use the service. The historical users are counted.
         self.accumulative_user_count = accumulative_user_count
+        # The average amount consumed for trial service instances per instance. Unit: CNY.
         self.average_poc_amount = average_poc_amount
+        # The average duration for which trial service instances are in use. Unit: Hour.
         self.average_poc_duration = average_poc_duration
+        # The average amount consumed for trial service instances per a period of time. Unit: CNY.
         self.average_poc_unit_amount = average_poc_unit_amount
+        # The number of online service instances. It means the number of service instances that are successfully deployed.
         self.deployed_service_instance_count = deployed_service_instance_count
+        # The number of online users. It means the number of users who successfully deployed the service instances.
         self.deployed_user_count = deployed_user_count
+        # The number of service applications that are in the Submitted state.
         self.submitted_usage_count = submitted_usage_count
 
     def validate(self):
@@ -3279,7 +3661,9 @@ class GetServiceResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3365,60 +3749,182 @@ class GetServiceResponseBody(TeaModel):
         virtual_internet_service: str = None,
         virtual_internet_service_id: str = None,
     ):
+        # The alert configurations of the service.
+        # 
+        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
         self.alarm_metadata = alarm_metadata
+        # The approval type of the service usage application. Valid values:
+        # 
+        # *   Manual: The application is manually approved.
+        # *   AutoPass: The application is automatically approved.
         self.approval_type = approval_type
+        # The information of build service information.
         self.build_info = build_info
+        # The category of the service.
         self.categories = categories
+        # The commodity details.
         self.commodity = commodity
+        # The commodity code of the service in Alibaba Cloud Marketplace.
         self.commodity_code = commodity_code
+        # The time when the service was created.
         self.create_time = create_time
+        # The binding configurations of the commodity module.
         self.cross_region_connection_status = cross_region_connection_status
+        # The validity period of the default license. Unit: day. Valid values: 1 to 1000.
         self.default_license_days = default_license_days
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # *   container: The service is deployed by using a container.
+        # *   pkg: The service is deployed by using a package.
         self.deploy_type = deploy_type
+        # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
+        # The report source.
         self.entity_source = entity_source
+        # Indicates whether the hosted O\\&M feature is enabled for the service. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter is returned if you set **ServiceType** to **private**.
         self.is_support_operated = is_support_operated
+        # The license metadata.
         self.license_metadata = license_metadata
+        # The logging configurations.
         self.log_metadata = log_metadata
+        # The hosted O\\&M configurations.
         self.operation_metadata = operation_metadata
+        # The source for which fees are generated. Valid values:
+        # 
+        # *   None: No fees are generated.
+        # *   Marketplace: Fees are generated for Alibaba Cloud Marketplace.
+        # *   Custom: The custom fees.
         self.pay_from_type = pay_from_type
+        # The billing method of the service. Valid values:
+        # 
+        # *   Permanent: Once you purchase the service, you can use it permanently.
+        # *   Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+        # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+        # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
         self.pay_type = pay_type
+        # The permissions on the service. Valid values:
+        # 
+        # *   Deployable: Permissions to deploy the service.
+        # *   Accessible: Permissions to access the service.
         self.permission = permission
+        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
         self.policy_names = policy_names
+        # The deployment progress of the service instance. Unit: percentage.
         self.progress = progress
+        # The time when the service was published.
         self.publish_time = publish_time
+        # The registration ID.
         self.registration_id = registration_id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the distribution is supported. Valid values:
+        # 
+        # *   false
+        # *   true
         self.resellable = resellable
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The URL of the service audit file.
         self.service_audit_document_url = service_audit_document_url
+        # Indicates whether the service is visible. Valid values:
+        # 
+        # *   INVISIBLE
+        # *   DISCOVERABLE
         self.service_discoverable = service_discoverable
+        # The URL of the service documentation.
         self.service_doc_url = service_doc_url
+        # The service ID.
         self.service_id = service_id
+        # The information about the service.
         self.service_infos = service_infos
+        # The URL of the service page.
         self.service_product_url = service_product_url
+        # The type of the service. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
         self.service_type = service_type
+        # The permission type of the deployment URL. Valid values:
+        # 
+        # *   Public: All users can go to the URL to create a service instance or a trial service instance.
+        # *   Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
         self.share_type = share_type
+        # The share status of the instance.
+        # 
+        # > This parameter is discontinued.
         self.share_type_status = share_type_status
+        # The ID of the distribution source service.
         self.source_service_id = source_service_id
+        # The version of the distribution source service.
         self.source_service_version = source_service_version
+        # The name of the distribution source service provider.
         self.source_supplier_name = source_supplier_name
+        # The statistics.
         self.statistic = statistic
+        # The status of the service. Valid values:
+        # 
+        # *   Draft: The service is a draft.
+        # *   Submitted: The service is submitted for review. You cannot modify services in this state.
+        # *   Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+        # *   Launching: The service is being published.
+        # *   Online: The service is published.
+        # *   Offline: The service is unpublished.
         self.status = status
+        # The description of the service status.
         self.status_detail = status_detail
+        # The name of the service provider.
         self.supplier_name = supplier_name
+        # The URL of the service provider.
         self.supplier_url = supplier_url
+        # The service tags.
         self.tags = tags
+        # The type of the tenant. Valid values:
+        # 
+        # *   SingleTenant
+        # *   MultiTenant
         self.tenant_type = tenant_type
+        # The status of the test. Valid values:
+        # 
+        # *   `CONFIG_IS_NULL`: No test configurations exist.
+        # *   `SERVICE_TEST_SUCCEED`: The service passed the test.
+        # *   `SERVICE_TSET_DOING`: The service does not pass the test.
         self.test_status = test_status
+        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
         self.trial_duration = trial_duration
+        # The trial policy. Valid values:
+        # 
+        # *   Trial: Trials are supported.
+        # *   NotTrial: Trials are not supported.
         self.trial_type = trial_type
+        # The time when the service was updated.
         self.update_time = update_time
+        # The metadata about the upgrade.
         self.upgrade_metadata = upgrade_metadata
+        # The service version.
         self.version = version
+        # The version name.
         self.version_name = version_name
+        # Indicates whether the service is a virtual Internet service. Valid values:
+        # 
+        # *   false
+        # *   true
         self.virtual_internet_service = virtual_internet_service
+        # The ID of the virtual Internet service.
         self.virtual_internet_service_id = virtual_internet_service_id
 
     def validate(self):
@@ -3727,7 +4233,13 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
         pay_period: int = None,
         pay_period_unit: str = None,
     ):
+        # The subscription duration.
         self.pay_period = pay_period
+        # The unit of the subscription duration. Valid values:
+        # 
+        # *   Year
+        # *   Month
+        # *   Day
         self.pay_period_unit = pay_period_unit
 
     def validate(self):
@@ -3767,15 +4279,25 @@ class GetServiceEstimateCostRequest(TeaModel):
         specification_name: str = None,
         template_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
         self.commodity = commodity
+        # The parameters that are specified to deploy the service instance.
         self.parameters = parameters
+        # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The service version.
         self.service_version = service_version
+        # The package name.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -3845,15 +4367,25 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
         specification_name: str = None,
         template_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
         self.commodity_shrink = commodity_shrink
+        # The parameters that are specified to deploy the service instance.
         self.parameters_shrink = parameters_shrink
+        # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The service version.
         self.service_version = service_version
+        # The package name.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -3915,8 +4447,11 @@ class GetServiceEstimateCostResponseBody(TeaModel):
         request_id: str = None,
         resources: Dict[str, Any] = None,
     ):
+        # The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
         self.commodity = commodity
+        # The request ID.
         self.request_id = request_id
+        # The list of resources.
         self.resources = resources
 
     def validate(self):
@@ -3994,8 +4529,12 @@ class GetServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -4035,13 +4574,33 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnection
         v_switches: List[str] = None,
         vpc_id: str = None,
     ):
+        # The bandwidth limit for the private connection established based on the private network interconnection mode of Compute Nest.
         self.connect_bandwidth = connect_bandwidth
+        # The domain name.
         self.domain_name = domain_name
+        # The IP addresses of the endpoints for private connections.
         self.endpoint_ips = endpoint_ips
+        # The status of the Ingress endpoint. Valid values:
+        # 
+        # *   Ready: The Ingress endpoint is connected.
+        # *   Pending: The Ingress endpoint is being connected.
+        # *   Failed: The Ingress endpoint fails to be connected.
+        # *   Deleted: The Ingress endpoint is deleted.
+        # *   Deleting: The Ingress endpoint is being deleted.
         self.ingress_endpoint_status = ingress_endpoint_status
+        # The status of the network service. Valid values:
+        # 
+        # *   Ready: The network service is connected.
+        # *   Pending: The network service is being connected.
+        # *   Failed: The network service fails to be connected.
+        # *   Deleted: The network service is deleted.
+        # *   Deleting: The network service is being deleted.
         self.network_service_status = network_service_status
+        # The names of the security groups.
         self.security_groups = security_groups
+        # The names of the vSwitches.
         self.v_switches = v_switches
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4100,9 +4659,13 @@ class GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections(TeaModel)
         endpoint_service_id: str = None,
         private_zone_name: str = None,
     ):
+        # The network configurations, which are mainly used for the private connection.
         self.connection_configs = connection_configs
+        # The ID of the endpoint for the private connection.
         self.endpoint_id = endpoint_id
+        # The ID of the endpoint service for the private connection.
         self.endpoint_service_id = endpoint_service_id
+        # The custom domain name.
         self.private_zone_name = private_zone_name
 
     def validate(self):
@@ -4151,7 +4714,9 @@ class GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections(Te
         endpoint_id: str = None,
         endpoint_service_id: str = None,
     ):
+        # The ID of the endpoint for the reverse private connection.
         self.endpoint_id = endpoint_id
+        # The ID of the endpoint service for the reverse private connection.
         self.endpoint_service_id = endpoint_service_id
 
     def validate(self):
@@ -4186,9 +4751,17 @@ class GetServiceInstanceResponseBodyNetworkConfig(TeaModel):
         private_vpc_connections: List[GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections] = None,
         reverse_private_vpc_connections: List[GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections] = None,
     ):
+        # The ID of the endpoint for the private connection.
+        # 
+        # >  This parameter is discontinued.
         self.endpoint_id = endpoint_id
+        # The ID of the endpoint service for the private connection.
+        # 
+        # >  This parameter is discontinued.
         self.endpoint_service_id = endpoint_service_id
+        # The information about private connections.
         self.private_vpc_connections = private_vpc_connections
+        # The information about the reverse private connection.
         self.reverse_private_vpc_connections = reverse_private_vpc_connections
 
     def validate(self):
@@ -4248,9 +4821,13 @@ class GetServiceInstanceResponseBodyServiceServiceInfos(TeaModel):
         name: str = None,
         short_description: str = None,
     ):
+        # The URL of the service icon.
         self.image = image
+        # The language of the service instance.
         self.locale = locale
+        # The service name.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -4303,19 +4880,57 @@ class GetServiceInstanceResponseBodyService(TeaModel):
         version: str = None,
         version_name: str = None,
     ):
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   ack: The service is deployed by using Container Service for Kubernetes (ACK).
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
         self.deploy_type = deploy_type
+        # The time when the service was published.
         self.publish_time = publish_time
+        # The URL of the service documentation.
         self.service_doc_url = service_doc_url
+        # The service ID.
         self.service_id = service_id
+        # The information about the service.
         self.service_infos = service_infos
+        # The URL of the service page.
         self.service_product_url = service_product_url
+        # The type of the service. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
         self.service_type = service_type
+        # The status of the service. Valid values:
+        # 
+        # Draft: The registration request of the service is pending to be submitted.
+        # 
+        # Submitted: The registration request of the service is submitted.
+        # 
+        # Approved: The registration request of the service is approved.
+        # 
+        # Online: The service is published.
+        # 
+        # Offline: The service is unpublished.
+        # 
+        # Deleted: The service is deleted.
+        # 
+        # Launching: The service is being published.
         self.status = status
+        # The name of the service provider.
         self.supplier_name = supplier_name
+        # The URL of the service provider.
         self.supplier_url = supplier_url
+        # The service versions that can be updated.
         self.upgradable_service_versions = upgradable_service_versions
+        # The service version.
         self.version = version
+        # The custom version name defined by the service provider.
         self.version_name = version_name
 
     def validate(self):
@@ -4404,7 +5019,9 @@ class GetServiceInstanceResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4468,38 +5085,110 @@ class GetServiceInstanceResponseBody(TeaModel):
         update_time: str = None,
         user_id: int = None,
     ):
+        # The business status of the service instance. Valid values:
+        # 
+        # *   Normal: The service instance is normal.
+        # *   Renewing: The service instance is being renewed.
+        # *   RenewFailed: The service instance failed to be renewed.
+        # *   Expired: The service instance expired.
         self.biz_status = biz_status
+        # The time when the service instance was created.
         self.create_time = create_time
+        # Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_instance_ops = enable_instance_ops
+        # Indicates whether the Prometheus monitoring feature is enabled on the user side.
         self.enable_user_prometheus = enable_user_prometheus
+        # The time when the service instance expires.
         self.end_time = end_time
+        # The URL of the Grafana dashboard.
         self.grafana_dash_board_url = grafana_dash_board_url
+        # Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_operated = is_operated
+        # The license metadata.
         self.license_metadata = license_metadata
+        # The name of the service instance.
         self.name = name
+        # The network configurations.
+        # 
+        # >  This parameter is discontinued.
         self.network_config = network_config
+        # The ID of the service instance that is used to implement hosted O\\&M.
         self.operated_service_instance_id = operated_service_instance_id
+        # The end of the time range during which hosted O\\&M is implemented.
         self.operation_end_time = operation_end_time
+        # The beginning of the time range during which hosted O\\&M is implemented.
         self.operation_start_time = operation_start_time
+        # The outputs returned from creating the service instance.
+        # 
+        # *   If the service is deployed by using a ROS template, all output fields of the template are returned.
+        # *   If the service is deployed by calling an SPI operation, the output fields of the service provider and for the Compute Nest additional features are returned.
         self.outputs = outputs
+        # The parameters that are specified to deploy the service instance.
         self.parameters = parameters
+        # The billing method of the service. Valid values:
+        # 
+        # *   Permanent: Once you purchase the service, you can use it permanently.
+        # *   Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+        # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+        # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
         self.pay_type = pay_type
+        # The package name.
         self.predefined_parameter_name = predefined_parameter_name
+        # The deployment progress of the service instance. Unit: percentage.
         self.progress = progress
+        # The logon URL for the accounts in the resource directory corresponding to the service instance.
         self.rd_account_login_url = rd_account_login_url
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The list of resources.
         self.resources = resources
+        # The information about the service to which the service instance belongs.
         self.service = service
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The type of the service. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
         self.service_type = service_type
+        # The source of the service instance. Valid values:
+        # 
+        # *   User: Compute Nest customer
+        # *   Market: Alibaba Cloud Marketplace
+        # *   Supplier: Compute Nest service provider
         self.source = source
+        # The deployment state of the service instance. Valid values:
+        # 
+        # *   Created
+        # *   Deploying
+        # *   DeployedFailed
+        # *   Deployed
+        # *   Upgrading
+        # *   Deleting
+        # *   Deleted
+        # *   DeletedFailed
         self.status = status
+        # The description of the deployment state of the service instance.
         self.status_detail = status_detail
+        # The Alibaba Cloud account ID of the service provider.
         self.supplier_uid = supplier_uid
+        # The custom tags.
         self.tags = tags
+        # The template name.
         self.template_name = template_name
+        # The time when the service instance was updated.
         self.update_time = update_time
+        # The Alibaba Cloud account ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -4711,7 +5400,9 @@ class GetServiceTemplateParameterConstraintsRequestParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The parameter name.
         self.parameter_key = parameter_key
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -4751,17 +5442,33 @@ class GetServiceTemplateParameterConstraintsRequest(TeaModel):
         service_version: str = None,
         template_name: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The ID of the region in which the service instance is deployed.
+        # 
         # This parameter is required.
         self.deploy_region_id = deploy_region_id
+        # Specifies whether to enable the private connection feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_private_vpc_connection = enable_private_vpc_connection
+        # The parameters in the template.
         self.parameters = parameters
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The service version.
         self.service_version = service_version
+        # The template name.
+        # 
         # This parameter is required.
         self.template_name = template_name
 
@@ -4833,9 +5540,13 @@ class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOrig
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The valid values of the parameter.
         self.allowed_values = allowed_values
+        # The property name.
         self.property_name = property_name
+        # The resource name.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4881,12 +5592,25 @@ class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints(Tea
         parameter_key: str = None,
         type: str = None,
     ):
+        # The valid values of the parameter.
         self.allowed_values = allowed_values
+        # The names of the associated parameters.
         self.association_parameter_names = association_parameter_names
+        # The behavior of the parameter. Valid values:
+        # 
+        # *   NoLimit: The value of this parameter is not limited.
+        # *   NotSupport: The value of this parameter cannot be queried.
+        # *   QueryError: The query failed.
+        # 
+        # >  If AllowedValues is not returned, Behavior and BehaviorReason are returned.
         self.behavior = behavior
+        # The reason why the behavior of the parameter is returned.
         self.behavior_reason = behavior_reason
+        # The original constraint information.
         self.original_constraints = original_constraints
+        # The name of the parameter.
         self.parameter_key = parameter_key
+        # The type of the parameter.
         self.type = type
 
     def validate(self):
@@ -4948,8 +5672,11 @@ class GetServiceTemplateParameterConstraintsResponseBody(TeaModel):
         parameter_constraints: List[GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints] = None,
         request_id: str = None,
     ):
+        # The constraint families.
         self.family_constraints = family_constraints
+        # The parameters in the template.
         self.parameter_constraints = parameter_constraints
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5035,8 +5762,11 @@ class GetUploadCredentialsRequest(TeaModel):
         file_name: str = None,
         visibility: str = None,
     ):
+        # The file name to upload.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Specifies whether the file is publicly accessible. Valid values: **public** or **private**. The default value is **private**.
         self.visibility = visibility
 
     def validate(self):
@@ -5074,12 +5804,19 @@ class GetUploadCredentialsResponseBodyData(TeaModel):
         region_id: str = None,
         security_token: str = None,
     ):
+        # The AccessKey ID.
         self.access_key_id = access_key_id
+        # The AccessKey secret.
         self.access_key_secret = access_key_secret
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The time when the AccessKey pair expires.
         self.expire_date = expire_date
+        # The name of the key.
         self.key = key
+        # The region ID.
         self.region_id = region_id
+        # The security token.
         self.security_token = security_token
 
     def validate(self):
@@ -5136,11 +5873,17 @@ class GetUploadCredentialsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The response parameters.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates the request was successful. A value of false indicates the request failed.
         self.success = success
 
     def validate(self):
@@ -5234,9 +5977,16 @@ class ListAcrImageRepositoriesRequest(TeaModel):
         next_token: str = None,
         repo_name: str = None,
     ):
+        # The type of the artifact. Default value: AcrImage. Valid values:
+        # 
+        # *   HelmChart: Helm chart image.
+        # *   AcrImage: container image.
         self.artifact_type = artifact_type
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The name of the image repository.
         self.repo_name = repo_name
 
     def validate(self):
@@ -5279,9 +6029,13 @@ class ListAcrImageRepositoriesResponseBodyRepositories(TeaModel):
         repo_id: str = None,
         repo_name: str = None,
     ):
+        # The time when the image was created.
         self.create_time = create_time
+        # The time when the image was modified.
         self.modified_time = modified_time
+        # The image repo ID.
         self.repo_id = repo_id
+        # The image repo name.
         self.repo_name = repo_name
 
     def validate(self):
@@ -5325,10 +6079,15 @@ class ListAcrImageRepositoriesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
+        # The images.
         self.repositories = repositories
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5424,9 +6183,16 @@ class ListAcrImageTagsRequest(TeaModel):
         next_token: str = None,
         repo_id: str = None,
     ):
+        # The type of the deployment package. Default value: AcrImage. Valid values:
+        # 
+        # *   HelmChart: Helm chart image.
+        # *   AcrImage: container image.
         self.artifact_type = artifact_type
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The image ID.
         self.repo_id = repo_id
 
     def validate(self):
@@ -5469,9 +6235,13 @@ class ListAcrImageTagsResponseBodyImages(TeaModel):
         modified_time: str = None,
         tag: str = None,
     ):
+        # The time when the image was created.
         self.create_time = create_time
+        # The image size. Unit: bytes.
         self.image_size = image_size
+        # The time when the image was modified.
         self.modified_time = modified_time
+        # The image version.
         self.tag = tag
 
     def validate(self):
@@ -5515,10 +6285,15 @@ class ListAcrImageTagsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of images.
         self.images = images
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5613,9 +6388,13 @@ class ListArtifactVersionsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The ID of the deployment package.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):
@@ -5663,18 +6442,42 @@ class ListArtifactVersionsResponseBodyArtifacts(TeaModel):
         support_region_ids: str = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The properties of the deployment package.
         self.artifact_property = artifact_property
+        # The type of the deployment package.
         self.artifact_type = artifact_type
+        # The version of the deployment package.
         self.artifact_version = artifact_version
+        # The time when the certificate was created.
         self.gmt_create = gmt_create
+        # The time when the deployment package was modified.
         self.gmt_modified = gmt_modified
+        # The distribution result of the image.
         self.image_delivery = image_delivery
+        # The distribution progress of the deployment package.
         self.progress = progress
+        # The result file of the security scan.
         self.result_file = result_file
+        # The result of the security scan. Valid values:
+        # 
+        # *   Normal: No risks exist on the deployment package.
+        # *   AtRisk: Risks exist on the deployment package.
+        # *   Processing: The deployment package is being scanned.
         self.security_audit_result = security_audit_result
+        # The status of the deployment package. Valid values:
+        # 
+        # *   Created: The deployment package is created.
+        # *   Scanning: The deployment package is being scanned.
+        # *   ScanFailed: The deployment package failed to be scanned.
+        # *   Delivering: The deployment package is being distributed.
+        # *   Available: The deployment package is available.
+        # *   Deleted: The deployment package is deleted.
         self.status = status
+        # The ID of the region that supports the deployment package.
         self.support_region_ids = support_region_ids
+        # The version name of the deployment package.
         self.version_name = version_name
 
     def validate(self):
@@ -5754,10 +6557,15 @@ class ListArtifactVersionsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The version information about the deployment package.
         self.artifacts = artifacts
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5851,7 +6659,13 @@ class ListArtifactsRequestFilter(TeaModel):
         name: str = None,
         values: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more filters. Valid values:
+        # 
+        # *   *Name*: The name of the deployment package. Fuzzy match is used.
+        # *   ArtifactId: The ID of the deployment package.
+        # *   ArtifactType: The type of the deployment package.
         self.name = name
+        # The parameter values of the filter.
         self.values = values
 
     def validate(self):
@@ -5884,7 +6698,9 @@ class ListArtifactsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -5920,10 +6736,15 @@ class ListArtifactsRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[ListArtifactsRequestTag] = None,
     ):
+        # The filter.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -5985,7 +6806,9 @@ class ListArtifactsResponseBodyArtifactsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6025,14 +6848,30 @@ class ListArtifactsResponseBodyArtifacts(TeaModel):
         status: str = None,
         tags: List[ListArtifactsResponseBodyArtifactsTags] = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The type of the deployment package.
         self.artifact_type = artifact_type
+        # The description of the deployment package.
         self.description = description
+        # The time when the deployment package was modified.
         self.gmt_modified = gmt_modified
+        # The latest version of the deployment package.
         self.max_version = max_version
+        # The name of the deployment package.
         self.name = name
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The status of the deployment package. Valid values:
+        # 
+        # *   Created: The deployment package is created.
+        # *   Scanning: The deployment package is being scanned.
+        # *   ScanFailed: The deployment package failed to be scanned.
+        # *   Delivering: The deployment package is being distributed.
+        # *   Available: The deployment package is available.
+        # *   Deleted: The deployment package is deleted.
         self.status = status
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -6104,10 +6943,15 @@ class ListArtifactsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about deployment packages.
         self.artifacts = artifacts
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6201,7 +7045,25 @@ class ListServiceInstancesRequestFilter(TeaModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more filters. Valid values:
+        # 
+        # *   Name: The service name. If you want to perform a fuzzy match, specify the service name in the *xxx* format. For example, if the service name is My Service, you can set the filter value to *My* or *Service*.
+        # *   ServiceInstanceId: The ID of the service instance.
+        # *   ServiceId: The service ID.
+        # *   UserId: The user ID.
+        # *   Version: The service version.
+        # *   Status: The status of the service instance.
+        # *   DeployType: The deployment type of the service.
+        # *   ServiceType: The service type.
+        # *   OperationStartTimeBefore: The time before the hosted O\\&M starts.
+        # *   OperationStartTimeAfter: The time after the hosted O\\&M starts.
+        # *   OperationEndTimeBefore: The time before the hosted O\\&M ends.
+        # *   OperationEndTimeAfter: The time after the hosted O\\&M ends.
+        # *   OperatedServiceInstanceId: The ID of the hosted O\\&M instance that belongs to a private service.
+        # *   OperationServiceInstanceId: The ID of the hosted O\\&M service instance that belongs to a hosted O\\&M service.
+        # *   EnableInstanceOps: Whether the hosted O\\&M feature is enabled for service instances.
         self.name = name
+        # The parameter values of the filter.
         self.value = value
 
     def validate(self):
@@ -6234,7 +7096,9 @@ class ListServiceInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6272,12 +7136,22 @@ class ListServiceInstancesRequest(TeaModel):
         show_deleted: bool = None,
         tag: List[ListServiceInstancesRequestTag] = None,
     ):
+        # The filter.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Specifies whether to display the information that the service instance is deleted. Valid values:
+        # 
+        # *   true
+        # *   false
         self.show_deleted = show_deleted
+        # The custom tags.
         self.tag = tag
 
     def validate(self):
@@ -6349,9 +7223,13 @@ class ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos(TeaMod
         name: str = None,
         short_description: str = None,
     ):
+        # The URL of the service icon.
         self.image = image
+        # The language of the service instance.
         self.locale = locale
+        # The service name.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -6403,18 +7281,45 @@ class ListServiceInstancesResponseBodyServiceInstancesService(TeaModel):
         version: str = None,
         version_name: str = None,
     ):
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   ack: The service is deployed by using Container Service for Kubernetes (ACK).
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
         self.deploy_type = deploy_type
+        # Indicates whether the private connection feature is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_private_vpc_connection = enable_private_vpc_connection
+        # The time when the service was published.
         self.publish_time = publish_time
+        # The service ID.
         self.service_id = service_id
+        # The information about the service.
         self.service_infos = service_infos
+        # The type of the service. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
         self.service_type = service_type
+        # The name of the distribution source service provider.
         self.source_supplier_name = source_supplier_name
+        # The status of the service.
         self.status = status
+        # The name of the service provider.
         self.supplier_name = supplier_name
+        # The URL of the service provider.
         self.supplier_url = supplier_url
+        # The service version.
         self.version = version
+        # The custom version name defined by the service provider.
         self.version_name = version_name
 
     def validate(self):
@@ -6499,7 +7404,9 @@ class ListServiceInstancesResponseBodyServiceInstancesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6553,28 +7460,80 @@ class ListServiceInstancesResponseBodyServiceInstances(TeaModel):
         update_time: str = None,
         user_id: int = None,
     ):
+        # The business status of the service instance. Valid values:
+        # 
+        # *   Normal: The service instance is normal.
+        # *   Renewing: The service instance is being renewed.
+        # *   RenewFailed: The service instance failed to be renewed.
+        # *   Expired: The service instance expired.
         self.biz_status = biz_status
+        # The time when the service instance was created.
         self.create_time = create_time
+        # Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_instance_ops = enable_instance_ops
+        # The time when the service instance expires.
         self.end_time = end_time
+        # Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_operated = is_operated
+        # The name of the service instance.
         self.name = name
+        # The ID of the service instance that is used to implement hosted O\\&M.
         self.operated_service_instance_id = operated_service_instance_id
+        # The end of the time range during which hosted O\\&M is implemented.
         self.operation_end_time = operation_end_time
+        # The beginning of the time range during which hosted O\\&M is implemented.
         self.operation_start_time = operation_start_time
+        # The parameters of the service instance.
         self.parameters = parameters
+        # The billing method of the service. Valid values:
+        # 
+        # *   Permanent: Once you purchase the service, you can use it permanently.
+        # *   Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+        # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+        # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
         self.pay_type = pay_type
+        # The deployment progress of the service instance. Unit: percentage.
         self.progress = progress
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The information about the service.
         self.service = service
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The type of the service. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
         self.service_type = service_type
+        # The source from which the service instance is created.
         self.source = source
+        # The status of the service instance. Valid values:
+        # 
+        # *   Created
+        # *   Deploying
+        # *   DeployedFailed
+        # *   Deployed
+        # *   Upgrading
+        # *   Deleting
+        # *   Deleted
         self.status = status
+        # The description of the deployment of the service instance.
         self.status_detail = status_detail
+        # The custom tags.
         self.tags = tags
+        # The template name.
         self.template_name = template_name
+        # The time when the service instance was updated.
         self.update_time = update_time
+        # The Alibaba Cloud account ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -6705,10 +7664,15 @@ class ListServiceInstancesResponseBody(TeaModel):
         service_instances: List[ListServiceInstancesResponseBodyServiceInstances] = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The information about service instances.
         self.service_instances = service_instances
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6802,7 +7766,14 @@ class ListServiceUsagesRequestFilter(TeaModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more filters. Valid values:
+        # 
+        # *   ServiceId: the ID of the service.
+        # *   ServiceName: the service name.
+        # *   Status: the state of the service.
+        # *   SupplierName: the name of the service provider.
         self.name = name
+        # The parameter value N of the filter. Valid values of N: 1 to 10.
         self.value = value
 
     def validate(self):
@@ -6837,9 +7808,13 @@ class ListServiceUsagesRequest(TeaModel):
         next_token: str = None,
         supplier_role: str = None,
     ):
+        # The filter.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The role of the service provider.
         self.supplier_role = supplier_role
 
     def validate(self):
@@ -6895,14 +7870,28 @@ class ListServiceUsagesResponseBodyServiceUsages(TeaModel):
         user_ali_uid: int = None,
         user_information: Dict[str, str] = None,
     ):
+        # The comment on the approval.
         self.comments = comments
+        # The time when the application was created.
         self.create_time = create_time
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The status of the service application. Valid values:
+        # 
+        # *   Submitted: The application is submitted or is to be approved.
+        # *   Approved: The application is approved.
+        # *   Rejected: The application is rejected.
+        # *   Canceled: The application is canceled.
         self.status = status
+        # The name of the service provider.
         self.supplier_name = supplier_name
+        # The time when the application was updated.
         self.update_time = update_time
+        # The ID of the Alibaba Cloud account.
         self.user_ali_uid = user_ali_uid
+        # The user information.
         self.user_information = user_information
 
     def validate(self):
@@ -6966,10 +7955,15 @@ class ListServiceUsagesResponseBody(TeaModel):
         service_usages: List[ListServiceUsagesResponseBodyServiceUsages] = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The service applications.
         self.service_usages = service_usages
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7063,7 +8057,14 @@ class ListServicesRequestFilter(TeaModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # 
+        # *   ServiceId: the ID of the service.
+        # *   Name: the name of the service.
+        # *   Status: the state of the service.
+        # *   SupplierName: the name of the service provider.
         self.name = name
+        # The parameter values of the filter.
         self.value = value
 
     def validate(self):
@@ -7096,7 +8097,9 @@ class ListServicesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7134,13 +8137,21 @@ class ListServicesRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[ListServicesRequestTag] = None,
     ):
+        # Specifies whether to return all versions of a service. Default value: false, which specifies that only the default version of a service is returned.
         self.all_versions = all_versions
+        # The filters.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The custom tags.
         self.tag = tag
 
     def validate(self):
@@ -7211,8 +8222,15 @@ class ListServicesResponseBodyServicesCommodity(TeaModel):
         saas_boost_metadata: str = None,
         type: str = None,
     ):
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The configuration metadata related to Saas Boost.
         self.saas_boost_metadata = saas_boost_metadata
+        # The platform type. Valid values:
+        # 
+        # *   marketplace: Alibaba Cloud Marketplace.
+        # *   Css: Lingxiao.
+        # *   SaasBoost: Saas Boost.
         self.type = type
 
     def validate(self):
@@ -7251,9 +8269,16 @@ class ListServicesResponseBodyServicesServiceInfos(TeaModel):
         name: str = None,
         short_description: str = None,
     ):
+        # The URL of the service icon.
         self.image = image
+        # The language of the service. Valid values:
+        # 
+        # *   zh-CN: Chinese.
+        # *   en-US: English.
         self.locale = locale
+        # The name of the service.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -7294,7 +8319,9 @@ class ListServicesResponseBodyServicesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7362,42 +8389,134 @@ class ListServicesResponseBodyServices(TeaModel):
         version_name: str = None,
         virtual_internet_service: str = None,
     ):
+        # The approval type for applications for using the service. Valid values:
+        # 
+        # *   Manual: The applications are manual reviewed.
+        # *   AutoPass: The applications are automatically approved.
         self.approval_type = approval_type
+        # The ID of the artifact.
         self.artifact_id = artifact_id
+        # The version of the artifact.
         self.artifact_version = artifact_version
+        # The informathon for build service.
         self.build_info = build_info
+        # The category of the service.
         self.categories = categories
+        # The commodity details.
         self.commodity = commodity
+        # The commodity code of the service in Alibaba Cloud Marketplace.
         self.commodity_code = commodity_code
+        # The time when the service was created.
         self.create_time = create_time
+        # Indicates whether the version is the default version. Valid values:
+        # 
+        # *   false
+        # *   true
         self.default_version = default_version
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   spi: The service is deployed by calling the Service Provider Interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # *   container: The service is deployed by using a container.
+        # *\
         self.deploy_type = deploy_type
+        # Indicates whether the service has a beta version. Valid values:
+        # 
+        # *   true
+        # *   false
         self.has_beta = has_beta
+        # Indicates whether the service has a draft version. Valid values:
+        # 
+        # *   true
+        # *   false
         self.has_draft = has_draft
+        # The latest version of the distribution source service.
         self.latest_resell_source_service_version = latest_resell_source_service_version
+        # The time when the service was published.
         self.publish_time = publish_time
+        # The purpose of the artifact. Valid values:
+        # 
+        # *   ServiceDeployment: The artifact is used to create service instances.
+        # *   ServiceUpgrade: The artifact is used to upgrade service instances.
         self.relation_type = relation_type
+        # The state of distribution authorization of the service. Valid values:
+        # 
+        # *   CanApply: Distributors can apply for distribution permissions.
+        # *   Applied: The application for distribution permissions is submitted.
+        # *   Approved: The application for distribution permissions is approved.
         self.resell_apply_status = resell_apply_status
+        # The ID of the distribution service.
         self.resell_service_id = resell_service_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # Indicates whether the service is visible. Valid values:
+        # 
+        # *   INVISIBLE
+        # *   DISCOVERABLE
         self.service_discoverable = service_discoverable
+        # The service ID.
         self.service_id = service_id
+        # The information about the service.
         self.service_infos = service_infos
+        # The type of the service. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
         self.service_type = service_type
+        # The permission type of the deployment URL. Valid values:
+        # 
+        # *   Public: All users can go to the URL to create a formal service instance or a trial service instance.
+        # *   Restricted: Only users in the whitelist can go to the URL to create a formal service instance or a trial service instance.
+        # *   OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a formal service instance.
+        # *   OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+        # *   Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
         self.share_type = share_type
+        # The source image.
         self.source_image = source_image
+        # The ID of the distribution source service.
         self.source_service_id = source_service_id
+        # The version of the distribution source service.
         self.source_service_version = source_service_version
+        # The name of the distribution source service provider.
         self.source_supplier_name = source_supplier_name
+        # The state of the service. Valid values:
+        # 
+        # *   Draft: The service is a draft.
+        # *   Submitted: The service is submitted for review. You cannot modify services in this state.
+        # *   Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+        # *   Launching: The service is being published.
+        # *   Online: The service is published.
+        # *   Offline: The service is unpublished.
         self.status = status
+        # The name of the service provider.
         self.supplier_name = supplier_name
+        # The URL of the service provider.
         self.supplier_url = supplier_url
+        # The service tags.
         self.tags = tags
+        # The tenant type of the managed service. Valid values:
+        # 
+        # *   SingleTenant
+        # *   MultiTenant
         self.tenant_type = tenant_type
+        # The trial policy. Valid values:
+        # 
+        # *   Trial: Trials are supported.
+        # *   NotTrial: Trials are not supported.
         self.trial_type = trial_type
+        # The time when the service was modified.
         self.update_time = update_time
+        # The version of the service.
         self.version = version
+        # The custom version name defined by the service provider.
         self.version_name = version_name
+        # Indicates whether the service is a virtual Internet service. Valid values:
+        # 
+        # *   false
+        # *   true
         self.virtual_internet_service = virtual_internet_service
 
     def validate(self):
@@ -7593,10 +8712,15 @@ class ListServicesResponseBody(TeaModel):
         services: List[ListServicesResponseBodyServices] = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The services.
         self.services = services
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7691,9 +8815,16 @@ class ModifyServiceInstanceResourcesRequest(TeaModel):
         service_instance_id: str = None,
         service_instance_resources_action: str = None,
     ):
+        # The imported resources.
         self.resources = resources
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
+        # The type of operation performed on the service instance resource. Valid values:
+        # 
+        # *   Import: The resource is imported.
+        # *   UnImport: The resource import is canceled.
         self.service_instance_resources_action = service_instance_resources_action
 
     def validate(self):
@@ -7729,6 +8860,7 @@ class ModifyServiceInstanceResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7798,8 +8930,42 @@ class PushMeteringDataRequest(TeaModel):
         metering: str = None,
         service_instance_id: str = None,
     ):
+        # The metering data. Parameters in the example value:
+        # 
+        # *   InstanceId: the ID of an instance in Alibaba Cloud Marketplace. Parameter type: STRING.
+        # 
+        # *   StartTime: the time when the metering operation started. Set the parameter to a UNIX timestamp. Unit: seconds. Parameter type: LONG.
+        # 
+        # *   EndTime: the time when the metering operation ended. Set the parameter to a UNIX timestamp. Unit: seconds. Parameter type: LONG.
+        # 
+        # *   Entities: the metering entities. Parameter type: LIST.
+        # 
+        #     *   Key: the name of the metering item. Parameter type: STRING.
+        # 
+        #         *   Frequency: the number of times the instance was used.
+        #         *   Period: the usage duration of the instance. Unit: seconds.
+        # 
+        #     Note: The metering unit is second, whereas the billing unit is hour. Therefore, when bills are generated, seconds are converted to hours. For example, the usage metered from 19:00 to 20:00 is 1800 seconds and the price is USD 1 per hour. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 1800/3600 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.
+        # 
+        #           - Storage: The used storage space. Unit: bytes.   
+        #            Note: The metering unit is byte, whereas the billing unit is MB. Therefore, when bills are generated, bytes are converted to megabytes. For example, the usage metered from 19:00 to 20:00 is 524,288 bytes and the price is USD 1 per MB. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 524288/1024/1024 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.  - NetworkOut: the upstream traffic consumed. Unit: bit.  
+        #            Note: The metering unit is bit, whereas the billing unit is Mbit. Therefore, when bills are generated, bits are converted to megabits. For example, the usage metered from 19:00 to 20:00 is 524,288 bits and the price is USD 1 per Mbit. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 524288/1024/1024 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.  - NetworkIn: the downstream traffic consumed. Unit: bit.  
+        #            Note: The metering unit is bit, whereas the billing unit is Mbit. Therefore, when bills are generated, bits are converted to megabits. For example, the usage metered from 19:00 to 20:00 is 524,288 bits and the price is USD 1 per Mbit. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 524288/1024/1024 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.  - Character: the number of characters.
+        #           - DailyActiveUser: the number of daily active users (DAU).
+        #           - PeriodMin: the usage duration of the instance. Unit: minutes.  - VirtualCpu: the number of virtual CPU cores.
+        # 
+        #     *   Value: the value of the metering item. The value is equal to or greater than 0. Parameter type: INTEGER.
+        # 
+        # **Note**:
+        # 
+        # *   If bills are generated for the commodity in real time, the difference between the values of StartTime and EndTime is not limited. However, the time specified by EndTime must be later than that specified by StartTime.
+        # *   If bills are generated for the commodity by billing cycle, such as by hour, by day, or by month, the difference between the values of StartTime and EndTime must be greater than 5 minutes.
+        # *   In a request for pushing multiple metering data records, the values of InstanceId must indicate instances of the same commodity. You cannot push metering data of instances of multiple commodities at a time.
+        # 
         # This parameter is required.
         self.metering = metering
+        # The service instance ID.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -7832,6 +8998,7 @@ class PushMeteringDataResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7902,9 +9069,14 @@ class RegisterServiceRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -7942,7 +9114,9 @@ class RegisterServiceResponseBody(TeaModel):
         registration_id: str = None,
         request_id: str = None,
     ):
+        # The registration ID.
         self.registration_id = registration_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8179,9 +9353,16 @@ class RestartServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID where the service instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -8218,6 +9399,7 @@ class RestartServiceInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8288,9 +9470,16 @@ class StartServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The region ID where the service instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -8327,6 +9516,7 @@ class StartServiceInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8397,9 +9587,16 @@ class StopServiceInstanceRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The region id where the service instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the service instance.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -8436,6 +9633,7 @@ class StopServiceInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8510,12 +9708,34 @@ class UpdateArtifactRequestArtifactProperty(TeaModel):
         script_metadata: str = None,
         url: str = None,
     ):
+        # The commodity code of the service in Alibaba Cloud Marketplace.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.commodity_code = commodity_code
+        # The commodity version of the service in Alibaba Cloud Marketplace.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.commodity_version = commodity_version
+        # The metadata of the Object Storage Service (OSS) object.
+        # 
+        # >  This parameter is available only if the deployment package is an OSS object.
         self.file_script_metadata = file_script_metadata
+        # The image ID.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.image_id = image_id
+        # The region ID.
+        # 
+        # >  This parameter is available only if the deployment package is an image.
         self.region_id = region_id
+        # The script content of the deployment package.
+        # 
+        # >  This parameter is available only if the deployment package is a script.
         self.script_metadata = script_metadata
+        # The URL of the deployment package object.
+        # 
+        # 
+        # > Note This parameter is available only if the deployment package is an file.
         self.url = url
 
     def validate(self):
@@ -8571,12 +9791,20 @@ class UpdateArtifactRequest(TeaModel):
         support_region_ids: List[str] = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
+        # The properties of the deployment package.
+        # 
         # This parameter is required.
         self.artifact_property = artifact_property
+        # The description of the deployment package.
         self.description = description
+        # The IDs of the regions that support the deployment package.
         self.support_region_ids = support_region_ids
+        # The version name of the deployment package.
+        # 
         # This parameter is required.
         self.version_name = version_name
 
@@ -8627,12 +9855,20 @@ class UpdateArtifactShrinkRequest(TeaModel):
         support_region_ids: List[str] = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
+        # The properties of the deployment package.
+        # 
         # This parameter is required.
         self.artifact_property_shrink = artifact_property_shrink
+        # The description of the deployment package.
         self.description = description
+        # The IDs of the regions that support the deployment package.
         self.support_region_ids = support_region_ids
+        # The version name of the deployment package.
+        # 
         # This parameter is required.
         self.version_name = version_name
 
@@ -8686,15 +9922,32 @@ class UpdateArtifactResponseBody(TeaModel):
         support_region_ids: str = None,
         version_name: str = None,
     ):
+        # The ID of the deployment package.
         self.artifact_id = artifact_id
+        # The properties of the deployment package.
         self.artifact_property = artifact_property
+        # The type of the deployment package.
         self.artifact_type = artifact_type
+        # The version of the deployment package.
         self.artifact_version = artifact_version
+        # The description of the deployment package.
         self.description = description
+        # The time when the deployment package was modified.
         self.gmt_modified = gmt_modified
+        # The request ID.
         self.request_id = request_id
+        # The status of the deployment package. Valid values:
+        # 
+        # *   Created: The deployment package is created.
+        # *   Scanning: The deployment package is being scanned.
+        # *   ScanFailed: The deployment package failed to be scanned.
+        # *   Delivering: The deployment package is being distributed.
+        # *   Available: The deployment package is available.
+        # *   Deleted: The deployment package is deleted.
         self.status = status
+        # The ID of the region that supports the deployment package.
         self.support_region_ids = support_region_ids
+        # The name of the deployment package.
         self.version_name = version_name
 
     def validate(self):
@@ -8794,13 +10047,257 @@ class UpdateArtifactResponse(TeaModel):
         return self
 
 
+class UpdateServiceRequestCommodityComponentsMappings(TeaModel):
+    def __init__(
+        self,
+        mappings: str = None,
+        template_name: str = None,
+    ):
+        self.mappings = mappings
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mappings is not None:
+            result['Mappings'] = self.mappings
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mappings') is not None:
+            self.mappings = m.get('Mappings')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class UpdateServiceRequestCommodityMeteringEntityExtraInfos(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        metric_name: str = None,
+        promql: str = None,
+        type: str = None,
+    ):
+        self.entity_id = entity_id
+        self.metric_name = metric_name
+        self.promql = promql
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        if self.promql is not None:
+            result['Promql'] = self.promql
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        if m.get('Promql') is not None:
+            self.promql = m.get('Promql')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateServiceRequestCommodityMeteringEntityMappings(TeaModel):
+    def __init__(
+        self,
+        entity_ids: List[str] = None,
+        specification_name: str = None,
+        template_name: str = None,
+    ):
+        self.entity_ids = entity_ids
+        self.specification_name = specification_name
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_ids is not None:
+            result['EntityIds'] = self.entity_ids
+        if self.specification_name is not None:
+            result['SpecificationName'] = self.specification_name
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityIds') is not None:
+            self.entity_ids = m.get('EntityIds')
+        if m.get('SpecificationName') is not None:
+            self.specification_name = m.get('SpecificationName')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class UpdateServiceRequestCommoditySpecificationMappings(TeaModel):
+    def __init__(
+        self,
+        specification_code: str = None,
+        specification_name: str = None,
+        template_name: str = None,
+    ):
+        self.specification_code = specification_code
+        self.specification_name = specification_name
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.specification_code is not None:
+            result['SpecificationCode'] = self.specification_code
+        if self.specification_name is not None:
+            result['SpecificationName'] = self.specification_name
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpecificationCode') is not None:
+            self.specification_code = m.get('SpecificationCode')
+        if m.get('SpecificationName') is not None:
+            self.specification_name = m.get('SpecificationName')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class UpdateServiceRequestCommodity(TeaModel):
+    def __init__(
+        self,
+        components_mappings: List[UpdateServiceRequestCommodityComponentsMappings] = None,
+        metering_entity_extra_infos: List[UpdateServiceRequestCommodityMeteringEntityExtraInfos] = None,
+        metering_entity_mappings: List[UpdateServiceRequestCommodityMeteringEntityMappings] = None,
+        saas_boost_config: str = None,
+        specification_mappings: List[UpdateServiceRequestCommoditySpecificationMappings] = None,
+    ):
+        self.components_mappings = components_mappings
+        self.metering_entity_extra_infos = metering_entity_extra_infos
+        self.metering_entity_mappings = metering_entity_mappings
+        self.saas_boost_config = saas_boost_config
+        self.specification_mappings = specification_mappings
+
+    def validate(self):
+        if self.components_mappings:
+            for k in self.components_mappings:
+                if k:
+                    k.validate()
+        if self.metering_entity_extra_infos:
+            for k in self.metering_entity_extra_infos:
+                if k:
+                    k.validate()
+        if self.metering_entity_mappings:
+            for k in self.metering_entity_mappings:
+                if k:
+                    k.validate()
+        if self.specification_mappings:
+            for k in self.specification_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ComponentsMappings'] = []
+        if self.components_mappings is not None:
+            for k in self.components_mappings:
+                result['ComponentsMappings'].append(k.to_map() if k else None)
+        result['MeteringEntityExtraInfos'] = []
+        if self.metering_entity_extra_infos is not None:
+            for k in self.metering_entity_extra_infos:
+                result['MeteringEntityExtraInfos'].append(k.to_map() if k else None)
+        result['MeteringEntityMappings'] = []
+        if self.metering_entity_mappings is not None:
+            for k in self.metering_entity_mappings:
+                result['MeteringEntityMappings'].append(k.to_map() if k else None)
+        if self.saas_boost_config is not None:
+            result['SaasBoostConfig'] = self.saas_boost_config
+        result['SpecificationMappings'] = []
+        if self.specification_mappings is not None:
+            for k in self.specification_mappings:
+                result['SpecificationMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.components_mappings = []
+        if m.get('ComponentsMappings') is not None:
+            for k in m.get('ComponentsMappings'):
+                temp_model = UpdateServiceRequestCommodityComponentsMappings()
+                self.components_mappings.append(temp_model.from_map(k))
+        self.metering_entity_extra_infos = []
+        if m.get('MeteringEntityExtraInfos') is not None:
+            for k in m.get('MeteringEntityExtraInfos'):
+                temp_model = UpdateServiceRequestCommodityMeteringEntityExtraInfos()
+                self.metering_entity_extra_infos.append(temp_model.from_map(k))
+        self.metering_entity_mappings = []
+        if m.get('MeteringEntityMappings') is not None:
+            for k in m.get('MeteringEntityMappings'):
+                temp_model = UpdateServiceRequestCommodityMeteringEntityMappings()
+                self.metering_entity_mappings.append(temp_model.from_map(k))
+        if m.get('SaasBoostConfig') is not None:
+            self.saas_boost_config = m.get('SaasBoostConfig')
+        self.specification_mappings = []
+        if m.get('SpecificationMappings') is not None:
+            for k in m.get('SpecificationMappings'):
+                temp_model = UpdateServiceRequestCommoditySpecificationMappings()
+                self.specification_mappings.append(temp_model.from_map(k))
+        return self
+
+
 class UpdateServiceRequestServiceInfoAgreements(TeaModel):
     def __init__(
         self,
         name: str = None,
         url: str = None,
     ):
+        # Protocol name.
         self.name = name
+        # Protocol url.
         self.url = url
 
     def validate(self):
@@ -8837,11 +10334,20 @@ class UpdateServiceRequestServiceInfo(TeaModel):
         name: str = None,
         short_description: str = None,
     ):
+        # Protocol document information about the service.
         self.agreements = agreements
+        # The URL of the service icon.
         self.image = image
+        # The language of the service. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.locale = locale
+        # The URL of the detailed description of the service.
         self.long_description_url = long_description_url
+        # The service name.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -8897,6 +10403,9 @@ class UpdateServiceRequestUpdateOption(TeaModel):
         self,
         update_from: str = None,
     ):
+        # The options for update the service. Valid values:
+        # - CODE
+        # - PARAMETERS
         self.update_from = update_from
 
     def validate(self):
@@ -8925,6 +10434,7 @@ class UpdateServiceRequest(TeaModel):
         alarm_metadata: str = None,
         approval_type: str = None,
         client_token: str = None,
+        commodity: UpdateServiceRequestCommodity = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
         duration: int = None,
@@ -8946,33 +10456,95 @@ class UpdateServiceRequest(TeaModel):
         upgrade_metadata: str = None,
         version_name: str = None,
     ):
+        # The alert configurations of the service.
+        # 
+        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
         self.alarm_metadata = alarm_metadata
+        # The approval type of the service usage application. Valid values:
+        # 
+        # - Manual: The application is manually approved.
+        # - AutoPass: The application is automatically approved.
         self.approval_type = approval_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.commodity = commodity
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # *   container: The service is deployed by using a container.
+        # *   pkg: The service is deployed by using a package.
         self.deploy_type = deploy_type
+        # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
+        # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter is required if you set **ServiceType** to **private**.
         self.is_support_operated = is_support_operated
+        # The license metadata.
         self.license_metadata = license_metadata
+        # The logging configurations.
         self.log_metadata = log_metadata
+        # The hosted O\\&M configurations.
         self.operation_metadata = operation_metadata
+        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
         self.policy_names = policy_names
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether to support distribution. Valid values:
+        # 
+        # *   false
+        # *   true
         self.resellable = resellable
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service details.
         self.service_info = service_info
+        # The service type. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
         self.service_type = service_type
+        # The service version.
         self.service_version = service_version
+        # The permission type of the deployment URL. Valid values:
+        # 
+        # - Public: All users can go to the URL to create a service instance or a trial service instance.
+        # - Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+        # - OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+        # - OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+        # - Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
         self.share_type = share_type
+        # The type of the tenant. Valid values:
+        # 
+        # *   SingleTenant
+        # *   MultiTenant
         self.tenant_type = tenant_type
+        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
         self.trial_duration = trial_duration
+        # The options for update the service.
         self.update_option = update_option
+        # The metadata about the upgrade.
         self.upgrade_metadata = upgrade_metadata
+        # The version name.
         self.version_name = version_name
 
     def validate(self):
+        if self.commodity:
+            self.commodity.validate()
         if self.service_info:
             for k in self.service_info:
                 if k:
@@ -8992,6 +10564,8 @@ class UpdateServiceRequest(TeaModel):
             result['ApprovalType'] = self.approval_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.commodity is not None:
+            result['Commodity'] = self.commodity.to_map()
         if self.deploy_metadata is not None:
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
@@ -9044,6 +10618,9 @@ class UpdateServiceRequest(TeaModel):
             self.approval_type = m.get('ApprovalType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            temp_model = UpdateServiceRequestCommodity()
+            self.commodity = temp_model.from_map(m['Commodity'])
         if m.get('DeployMetadata') is not None:
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
@@ -9097,7 +10674,9 @@ class UpdateServiceShrinkRequestServiceInfoAgreements(TeaModel):
         name: str = None,
         url: str = None,
     ):
+        # Protocol name.
         self.name = name
+        # Protocol url.
         self.url = url
 
     def validate(self):
@@ -9134,11 +10713,20 @@ class UpdateServiceShrinkRequestServiceInfo(TeaModel):
         name: str = None,
         short_description: str = None,
     ):
+        # Protocol document information about the service.
         self.agreements = agreements
+        # The URL of the service icon.
         self.image = image
+        # The language of the service. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.locale = locale
+        # The URL of the detailed description of the service.
         self.long_description_url = long_description_url
+        # The service name.
         self.name = name
+        # The description of the service.
         self.short_description = short_description
 
     def validate(self):
@@ -9195,6 +10783,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         alarm_metadata: str = None,
         approval_type: str = None,
         client_token: str = None,
+        commodity_shrink: str = None,
         deploy_metadata: str = None,
         deploy_type: str = None,
         duration: int = None,
@@ -9216,30 +10805,90 @@ class UpdateServiceShrinkRequest(TeaModel):
         upgrade_metadata: str = None,
         version_name: str = None,
     ):
+        # The alert configurations of the service.
+        # 
+        # >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
         self.alarm_metadata = alarm_metadata
+        # The approval type of the service usage application. Valid values:
+        # 
+        # - Manual: The application is manually approved.
+        # - AutoPass: The application is automatically approved.
         self.approval_type = approval_type
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.commodity_shrink = commodity_shrink
+        # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
+        # The deployment type of the service. Valid values:
+        # 
+        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
+        # *   terraform: The service is deployed by using Terraform.
+        # *   spi: The service is deployed by calling a service provider interface (SPI).
+        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # *   container: The service is deployed by using a container.
+        # *   pkg: The service is deployed by using a package.
         self.deploy_type = deploy_type
+        # The duration for which hosted O\\&M is implemented. Unit: seconds.
         self.duration = duration
+        # Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter is required if you set **ServiceType** to **private**.
         self.is_support_operated = is_support_operated
+        # The license metadata.
         self.license_metadata = license_metadata
+        # The logging configurations.
         self.log_metadata = log_metadata
+        # The hosted O\\&M configurations.
         self.operation_metadata = operation_metadata
+        # The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
         self.policy_names = policy_names
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether to support distribution. Valid values:
+        # 
+        # *   false
+        # *   true
         self.resellable = resellable
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service details.
         self.service_info = service_info
+        # The service type. Valid values:
+        # 
+        # *   private: The service is a private service and is deployed within the account of a customer.
+        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
+        # *   operation: The service is a hosted O\\&M service.
+        # *   poc: The service is a trial service.
         self.service_type = service_type
+        # The service version.
         self.service_version = service_version
+        # The permission type of the deployment URL. Valid values:
+        # 
+        # - Public: All users can go to the URL to create a service instance or a trial service instance.
+        # - Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+        # - OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+        # - OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+        # - Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
         self.share_type = share_type
+        # The type of the tenant. Valid values:
+        # 
+        # *   SingleTenant
+        # *   MultiTenant
         self.tenant_type = tenant_type
+        # The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
         self.trial_duration = trial_duration
+        # The options for update the service.
         self.update_option_shrink = update_option_shrink
+        # The metadata about the upgrade.
         self.upgrade_metadata = upgrade_metadata
+        # The version name.
         self.version_name = version_name
 
     def validate(self):
@@ -9260,6 +10909,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             result['ApprovalType'] = self.approval_type
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.commodity_shrink is not None:
+            result['Commodity'] = self.commodity_shrink
         if self.deploy_metadata is not None:
             result['DeployMetadata'] = self.deploy_metadata
         if self.deploy_type is not None:
@@ -9312,6 +10963,8 @@ class UpdateServiceShrinkRequest(TeaModel):
             self.approval_type = m.get('ApprovalType')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            self.commodity_shrink = m.get('Commodity')
         if m.get('DeployMetadata') is not None:
             self.deploy_metadata = m.get('DeployMetadata')
         if m.get('DeployType') is not None:
@@ -9363,6 +11016,7 @@ class UpdateServiceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9426,17 +11080,108 @@ class UpdateServiceResponse(TeaModel):
         return self
 
 
+class UpdateServiceInstanceAttributeRequestLicenseData(TeaModel):
+    def __init__(
+        self,
+        custom_data: str = None,
+    ):
+        self.custom_data = custom_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_data is not None:
+            result['CustomData'] = self.custom_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomData') is not None:
+            self.custom_data = m.get('CustomData')
+        return self
+
+
 class UpdateServiceInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        license_data: UpdateServiceInstanceAttributeRequestLicenseData = None,
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        # The time when the service instance expires.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        self.license_data = license_data
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service instance ID.
+        # 
+        # This parameter is required.
+        self.service_instance_id = service_instance_id
+
+    def validate(self):
+        if self.license_data:
+            self.license_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.license_data is not None:
+            result['LicenseData'] = self.license_data.to_map()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_instance_id is not None:
+            result['ServiceInstanceId'] = self.service_instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('LicenseData') is not None:
+            temp_model = UpdateServiceInstanceAttributeRequestLicenseData()
+            self.license_data = temp_model.from_map(m['LicenseData'])
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceInstanceId') is not None:
+            self.service_instance_id = m.get('ServiceInstanceId')
+        return self
+
+
+class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        license_data_shrink: str = None,
+        region_id: str = None,
+        service_instance_id: str = None,
+    ):
+        # The time when the service instance expires.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.end_time = end_time
+        self.license_data_shrink = license_data_shrink
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The service instance ID.
+        # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
 
@@ -9451,6 +11196,8 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.license_data_shrink is not None:
+            result['LicenseData'] = self.license_data_shrink
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.service_instance_id is not None:
@@ -9461,6 +11208,8 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('LicenseData') is not None:
+            self.license_data_shrink = m.get('LicenseData')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ServiceInstanceId') is not None:
@@ -9473,6 +11222,7 @@ class UpdateServiceInstanceAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9754,11 +11504,20 @@ class UpgradeServiceInstanceRequest(TeaModel):
         service_instance_id: str = None,
         service_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not create a service instance.
+        # *   false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The configuration parameters of the service instance.
         self.parameters = parameters
+        # The region ID.
         self.region_id = region_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The service version.
         self.service_version = service_version
 
     def validate(self):
@@ -9811,11 +11570,20 @@ class UpgradeServiceInstanceShrinkRequest(TeaModel):
         service_instance_id: str = None,
         service_version: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+        # 
+        # *   true: performs a dry run for the request, but does not create a service instance.
+        # *   false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
         self.dry_run = dry_run
+        # The configuration parameters of the service instance.
         self.parameters_shrink = parameters_shrink
+        # The region ID.
         self.region_id = region_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The service version.
         self.service_version = service_version
 
     def validate(self):
@@ -9866,9 +11634,22 @@ class UpgradeServiceInstanceResponseBody(TeaModel):
         status: str = None,
         upgrade_required_parameters: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
+        # The deployment state of the service instance. Valid values:
+        # 
+        # *   Created
+        # *   Deploying
+        # *   DeployedFailed
+        # *   Deployed
+        # *   Upgrading
+        # *   Deleting
+        # *   Deleted
+        # *   DeletedFailed
         self.status = status
+        # The parameters required for the upgrade.
         self.upgrade_required_parameters = upgrade_required_parameters
 
     def validate(self):

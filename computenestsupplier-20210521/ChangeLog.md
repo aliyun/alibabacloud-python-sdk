@@ -1,3 +1,8 @@
+2024-07-15 Version: 2.4.3
+- Update API UpdateService: add param Commodity.
+- Update API UpdateServiceInstanceAttribute: add param LicenseData.
+
+
 2024-06-28 Version: 2.4.2
 - Update API GetUploadCredentials: add param Visibility.
 
