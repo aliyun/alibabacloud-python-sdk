@@ -1,3 +1,6 @@
+2024-07-15 Version: 4.1.2
+- Generated python 2023-03-30 for FC.
+
 2024-07-03 Version: 4.1.1
 - Update API PutLayerACL: add param acl.
 - Update API PutLayerACL: update param public.

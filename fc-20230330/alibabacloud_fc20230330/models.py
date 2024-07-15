@@ -4114,6 +4114,7 @@ class ProvisionConfig(TeaModel):
     def __init__(
         self,
         always_allocate_cpu: bool = None,
+        always_allocate_gpu: bool = None,
         current: int = None,
         current_error: str = None,
         function_arn: str = None,
@@ -4122,6 +4123,7 @@ class ProvisionConfig(TeaModel):
         target_tracking_policies: List[TargetTrackingPolicy] = None,
     ):
         self.always_allocate_cpu = always_allocate_cpu
+        self.always_allocate_gpu = always_allocate_gpu
         self.current = current
         self.current_error = current_error
         self.function_arn = function_arn
@@ -4147,6 +4149,8 @@ class ProvisionConfig(TeaModel):
         result = dict()
         if self.always_allocate_cpu is not None:
             result['alwaysAllocateCPU'] = self.always_allocate_cpu
+        if self.always_allocate_gpu is not None:
+            result['alwaysAllocateGPU'] = self.always_allocate_gpu
         if self.current is not None:
             result['current'] = self.current
         if self.current_error is not None:
@@ -4169,6 +4173,8 @@ class ProvisionConfig(TeaModel):
         m = m or dict()
         if m.get('alwaysAllocateCPU') is not None:
             self.always_allocate_cpu = m.get('alwaysAllocateCPU')
+        if m.get('alwaysAllocateGPU') is not None:
+            self.always_allocate_gpu = m.get('alwaysAllocateGPU')
         if m.get('current') is not None:
             self.current = m.get('current')
         if m.get('currentError') is not None:
@@ -4877,11 +4883,13 @@ class PutProvisionConfigInput(TeaModel):
     def __init__(
         self,
         always_allocate_cpu: bool = None,
+        always_allocate_gpu: bool = None,
         scheduled_actions: List[ScheduledAction] = None,
         target: int = None,
         target_tracking_policies: List[TargetTrackingPolicy] = None,
     ):
         self.always_allocate_cpu = always_allocate_cpu
+        self.always_allocate_gpu = always_allocate_gpu
         self.scheduled_actions = scheduled_actions
         # This parameter is required.
         self.target = target
@@ -4905,6 +4913,8 @@ class PutProvisionConfigInput(TeaModel):
         result = dict()
         if self.always_allocate_cpu is not None:
             result['alwaysAllocateCPU'] = self.always_allocate_cpu
+        if self.always_allocate_gpu is not None:
+            result['alwaysAllocateGPU'] = self.always_allocate_gpu
         result['scheduledActions'] = []
         if self.scheduled_actions is not None:
             for k in self.scheduled_actions:
@@ -4921,6 +4931,8 @@ class PutProvisionConfigInput(TeaModel):
         m = m or dict()
         if m.get('alwaysAllocateCPU') is not None:
             self.always_allocate_cpu = m.get('alwaysAllocateCPU')
+        if m.get('alwaysAllocateGPU') is not None:
+            self.always_allocate_gpu = m.get('alwaysAllocateGPU')
         self.scheduled_actions = []
         if m.get('scheduledActions') is not None:
             for k in m.get('scheduledActions'):
