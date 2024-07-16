@@ -107,6 +107,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.AbortLockResponse:
+        """
+        @summary abort lock context with the lockid
+        
+        @param request: AbortLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -137,6 +145,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.AbortLockResponse:
+        """
+        @summary abort lock context with the lockid
+        
+        @param request: AbortLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -165,6 +181,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.AbortLockRequest,
     ) -> data_lake_20200710_models.AbortLockResponse:
+        """
+        @summary abort lock context with the lockid
+        
+        @param request: AbortLockRequest
+        @return: AbortLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.abort_lock_with_options(request, headers, runtime)
@@ -173,6 +195,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.AbortLockRequest,
     ) -> data_lake_20200710_models.AbortLockResponse:
+        """
+        @summary abort lock context with the lockid
+        
+        @param request: AbortLockRequest
+        @return: AbortLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.abort_lock_with_options_async(request, headers, runtime)
@@ -183,6 +211,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
+        """
+        @summary 批量创建分区
+        
+        @param request: BatchCreatePartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreatePartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -223,6 +259,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
+        """
+        @summary 批量创建分区
+        
+        @param request: BatchCreatePartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreatePartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -261,6 +305,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchCreatePartitionsRequest,
     ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
+        """
+        @summary 批量创建分区
+        
+        @param request: BatchCreatePartitionsRequest
+        @return: BatchCreatePartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_create_partitions_with_options(request, headers, runtime)
@@ -269,6 +319,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchCreatePartitionsRequest,
     ) -> data_lake_20200710_models.BatchCreatePartitionsResponse:
+        """
+        @summary 批量创建分区
+        
+        @param request: BatchCreatePartitionsRequest
+        @return: BatchCreatePartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_create_partitions_with_options_async(request, headers, runtime)
@@ -279,6 +335,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchCreateTablesResponse:
+        """
+        @summary 批量创建表
+        
+        @param request: BatchCreateTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -315,6 +379,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchCreateTablesResponse:
+        """
+        @summary 批量创建表
+        
+        @param request: BatchCreateTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchCreateTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -349,6 +421,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchCreateTablesRequest,
     ) -> data_lake_20200710_models.BatchCreateTablesResponse:
+        """
+        @summary 批量创建表
+        
+        @param request: BatchCreateTablesRequest
+        @return: BatchCreateTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_create_tables_with_options(request, headers, runtime)
@@ -357,6 +435,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchCreateTablesRequest,
     ) -> data_lake_20200710_models.BatchCreateTablesResponse:
+        """
+        @summary 批量创建表
+        
+        @param request: BatchCreateTablesRequest
+        @return: BatchCreateTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_create_tables_with_options_async(request, headers, runtime)
@@ -367,6 +451,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
+        """
+        @summary batch delete partitions
+        
+        @param request: BatchDeletePartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeletePartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -405,6 +497,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
+        """
+        @summary batch delete partitions
+        
+        @param request: BatchDeletePartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeletePartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -441,6 +541,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchDeletePartitionsRequest,
     ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
+        """
+        @summary batch delete partitions
+        
+        @param request: BatchDeletePartitionsRequest
+        @return: BatchDeletePartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_delete_partitions_with_options(request, headers, runtime)
@@ -449,6 +555,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchDeletePartitionsRequest,
     ) -> data_lake_20200710_models.BatchDeletePartitionsResponse:
+        """
+        @summary batch delete partitions
+        
+        @param request: BatchDeletePartitionsRequest
+        @return: BatchDeletePartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_delete_partitions_with_options_async(request, headers, runtime)
@@ -459,6 +571,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
+        """
+        @summary BatchDeleteTableVersions
+        
+        @param request: BatchDeleteTableVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteTableVersionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -495,6 +615,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
+        """
+        @summary BatchDeleteTableVersions
+        
+        @param request: BatchDeleteTableVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteTableVersionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -529,6 +657,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchDeleteTableVersionsRequest,
     ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
+        """
+        @summary BatchDeleteTableVersions
+        
+        @param request: BatchDeleteTableVersionsRequest
+        @return: BatchDeleteTableVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_delete_table_versions_with_options(request, headers, runtime)
@@ -537,6 +671,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchDeleteTableVersionsRequest,
     ) -> data_lake_20200710_models.BatchDeleteTableVersionsResponse:
+        """
+        @summary BatchDeleteTableVersions
+        
+        @param request: BatchDeleteTableVersionsRequest
+        @return: BatchDeleteTableVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_delete_table_versions_with_options_async(request, headers, runtime)
@@ -547,6 +687,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
+        """
+        @summary BatchDeleteTables
+        
+        @param request: BatchDeleteTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -583,6 +731,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
+        """
+        @summary BatchDeleteTables
+        
+        @param request: BatchDeleteTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -617,6 +773,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchDeleteTablesRequest,
     ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
+        """
+        @summary BatchDeleteTables
+        
+        @param request: BatchDeleteTablesRequest
+        @return: BatchDeleteTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_delete_tables_with_options(request, headers, runtime)
@@ -625,6 +787,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchDeleteTablesRequest,
     ) -> data_lake_20200710_models.BatchDeleteTablesResponse:
+        """
+        @summary BatchDeleteTables
+        
+        @param request: BatchDeleteTablesRequest
+        @return: BatchDeleteTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_delete_tables_with_options_async(request, headers, runtime)
@@ -635,6 +803,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param request: BatchGetPartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetPartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -673,6 +849,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param request: BatchGetPartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetPartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -709,6 +893,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGetPartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param request: BatchGetPartitionColumnStatisticsRequest
+        @return: BatchGetPartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_get_partition_column_statistics_with_options(request, headers, runtime)
@@ -717,6 +907,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGetPartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.BatchGetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param request: BatchGetPartitionColumnStatisticsRequest
+        @return: BatchGetPartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_get_partition_column_statistics_with_options_async(request, headers, runtime)
@@ -727,6 +923,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
+        """
+        @summary batch get partitions
+        
+        @param request: BatchGetPartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetPartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -765,6 +969,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
+        """
+        @summary batch get partitions
+        
+        @param request: BatchGetPartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetPartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -801,6 +1013,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGetPartitionsRequest,
     ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
+        """
+        @summary batch get partitions
+        
+        @param request: BatchGetPartitionsRequest
+        @return: BatchGetPartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_get_partitions_with_options(request, headers, runtime)
@@ -809,6 +1027,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGetPartitionsRequest,
     ) -> data_lake_20200710_models.BatchGetPartitionsResponse:
+        """
+        @summary batch get partitions
+        
+        @param request: BatchGetPartitionsRequest
+        @return: BatchGetPartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_get_partitions_with_options_async(request, headers, runtime)
@@ -819,6 +1043,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGetTablesResponse:
+        """
+        @summary batch get tables
+        
+        @param request: BatchGetTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -853,6 +1085,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGetTablesResponse:
+        """
+        @summary batch get tables
+        
+        @param request: BatchGetTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -885,6 +1125,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGetTablesRequest,
     ) -> data_lake_20200710_models.BatchGetTablesResponse:
+        """
+        @summary batch get tables
+        
+        @param request: BatchGetTablesRequest
+        @return: BatchGetTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_get_tables_with_options(request, headers, runtime)
@@ -893,6 +1139,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGetTablesRequest,
     ) -> data_lake_20200710_models.BatchGetTablesResponse:
+        """
+        @summary batch get tables
+        
+        @param request: BatchGetTablesRequest
+        @return: BatchGetTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_get_tables_with_options_async(request, headers, runtime)
@@ -903,6 +1155,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
+        """
+        @summary 批量授权
+        
+        @param request: BatchGrantPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGrantPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -937,6 +1197,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
+        """
+        @summary 批量授权
+        
+        @param request: BatchGrantPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGrantPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -969,6 +1237,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGrantPermissionsRequest,
     ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
+        """
+        @summary 批量授权
+        
+        @param request: BatchGrantPermissionsRequest
+        @return: BatchGrantPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_grant_permissions_with_options(request, headers, runtime)
@@ -977,6 +1251,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchGrantPermissionsRequest,
     ) -> data_lake_20200710_models.BatchGrantPermissionsResponse:
+        """
+        @summary 批量授权
+        
+        @param request: BatchGrantPermissionsRequest
+        @return: BatchGrantPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_grant_permissions_with_options_async(request, headers, runtime)
@@ -987,6 +1267,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
+        """
+        @summary 批量取消授权
+        
+        @param request: BatchRevokePermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRevokePermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1021,6 +1309,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
+        """
+        @summary 批量取消授权
+        
+        @param request: BatchRevokePermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchRevokePermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1053,6 +1349,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchRevokePermissionsRequest,
     ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
+        """
+        @summary 批量取消授权
+        
+        @param request: BatchRevokePermissionsRequest
+        @return: BatchRevokePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_revoke_permissions_with_options(request, headers, runtime)
@@ -1061,6 +1363,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchRevokePermissionsRequest,
     ) -> data_lake_20200710_models.BatchRevokePermissionsResponse:
+        """
+        @summary 批量取消授权
+        
+        @param request: BatchRevokePermissionsRequest
+        @return: BatchRevokePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_revoke_permissions_with_options_async(request, headers, runtime)
@@ -1071,6 +1379,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
+        """
+        @summary batch update partitions
+        
+        @param request: BatchUpdatePartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdatePartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1107,6 +1423,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
+        """
+        @summary batch update partitions
+        
+        @param request: BatchUpdatePartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdatePartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1141,6 +1465,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchUpdatePartitionsRequest,
     ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
+        """
+        @summary batch update partitions
+        
+        @param request: BatchUpdatePartitionsRequest
+        @return: BatchUpdatePartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_update_partitions_with_options(request, headers, runtime)
@@ -1149,6 +1479,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchUpdatePartitionsRequest,
     ) -> data_lake_20200710_models.BatchUpdatePartitionsResponse:
+        """
+        @summary batch update partitions
+        
+        @param request: BatchUpdatePartitionsRequest
+        @return: BatchUpdatePartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_update_partitions_with_options_async(request, headers, runtime)
@@ -1159,6 +1495,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
+        """
+        @summary 批量更新表
+        
+        @param request: BatchUpdateTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1195,6 +1539,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
+        """
+        @summary 批量更新表
+        
+        @param request: BatchUpdateTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateTablesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1229,6 +1581,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchUpdateTablesRequest,
     ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
+        """
+        @summary 批量更新表
+        
+        @param request: BatchUpdateTablesRequest
+        @return: BatchUpdateTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_update_tables_with_options(request, headers, runtime)
@@ -1237,6 +1595,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.BatchUpdateTablesRequest,
     ) -> data_lake_20200710_models.BatchUpdateTablesResponse:
+        """
+        @summary 批量更新表
+        
+        @param request: BatchUpdateTablesRequest
+        @return: BatchUpdateTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_update_tables_with_options_async(request, headers, runtime)
@@ -1247,6 +1611,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CancelQueryResponse:
+        """
+        @summary 取消查询任务
+        
+        @param request: CancelQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query_id):
@@ -1277,6 +1649,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CancelQueryResponse:
+        """
+        @summary 取消查询任务
+        
+        @param request: CancelQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelQueryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query_id):
@@ -1305,6 +1685,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CancelQueryRequest,
     ) -> data_lake_20200710_models.CancelQueryResponse:
+        """
+        @summary 取消查询任务
+        
+        @param request: CancelQueryRequest
+        @return: CancelQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_query_with_options(request, headers, runtime)
@@ -1313,6 +1699,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CancelQueryRequest,
     ) -> data_lake_20200710_models.CancelQueryResponse:
+        """
+        @summary 取消查询任务
+        
+        @param request: CancelQueryRequest
+        @return: CancelQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_query_with_options_async(request, headers, runtime)
@@ -1323,6 +1715,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CheckPermissionsResponse:
+        """
+        @summary Check permissions
+        
+        @param request: CheckPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckPermissionsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1350,6 +1750,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CheckPermissionsResponse:
+        """
+        @summary Check permissions
+        
+        @param request: CheckPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckPermissionsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1375,6 +1783,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CheckPermissionsRequest,
     ) -> data_lake_20200710_models.CheckPermissionsResponse:
+        """
+        @summary Check permissions
+        
+        @param request: CheckPermissionsRequest
+        @return: CheckPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.check_permissions_with_options(request, headers, runtime)
@@ -1383,6 +1797,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CheckPermissionsRequest,
     ) -> data_lake_20200710_models.CheckPermissionsResponse:
+        """
+        @summary Check permissions
+        
+        @param request: CheckPermissionsRequest
+        @return: CheckPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.check_permissions_with_options_async(request, headers, runtime)
@@ -1393,6 +1813,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateCatalogResponse:
+        """
+        @summary 创建数据湖Catalog
+        
+        @param request: CreateCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCatalogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_input):
@@ -1423,6 +1851,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateCatalogResponse:
+        """
+        @summary 创建数据湖Catalog
+        
+        @param request: CreateCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCatalogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_input):
@@ -1451,6 +1887,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateCatalogRequest,
     ) -> data_lake_20200710_models.CreateCatalogResponse:
+        """
+        @summary 创建数据湖Catalog
+        
+        @param request: CreateCatalogRequest
+        @return: CreateCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_catalog_with_options(request, headers, runtime)
@@ -1459,6 +1901,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateCatalogRequest,
     ) -> data_lake_20200710_models.CreateCatalogResponse:
+        """
+        @summary 创建数据湖Catalog
+        
+        @param request: CreateCatalogRequest
+        @return: CreateCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_catalog_with_options_async(request, headers, runtime)
@@ -1469,6 +1917,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateDatabaseResponse:
+        """
+        @summary create database
+        
+        @param request: CreateDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1501,6 +1957,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateDatabaseResponse:
+        """
+        @summary create database
+        
+        @param request: CreateDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1531,6 +1995,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateDatabaseRequest,
     ) -> data_lake_20200710_models.CreateDatabaseResponse:
+        """
+        @summary create database
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_database_with_options(request, headers, runtime)
@@ -1539,6 +2009,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateDatabaseRequest,
     ) -> data_lake_20200710_models.CreateDatabaseResponse:
+        """
+        @summary create database
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_database_with_options_async(request, headers, runtime)
@@ -1549,6 +2025,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateFunctionResponse:
+        """
+        @summary Create function
+        
+        @param request: CreateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1583,6 +2067,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateFunctionResponse:
+        """
+        @summary Create function
+        
+        @param request: CreateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1615,6 +2107,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateFunctionRequest,
     ) -> data_lake_20200710_models.CreateFunctionResponse:
+        """
+        @summary Create function
+        
+        @param request: CreateFunctionRequest
+        @return: CreateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_function_with_options(request, headers, runtime)
@@ -1623,6 +2121,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateFunctionRequest,
     ) -> data_lake_20200710_models.CreateFunctionResponse:
+        """
+        @summary Create function
+        
+        @param request: CreateFunctionRequest
+        @return: CreateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_function_with_options_async(request, headers, runtime)
@@ -1633,6 +2137,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateLockResponse:
+        """
+        @summary create lock
+        
+        @param request: CreateLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLockResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lock_obj_list):
@@ -1663,6 +2175,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateLockResponse:
+        """
+        @summary create lock
+        
+        @param request: CreateLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLockResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lock_obj_list):
@@ -1691,6 +2211,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateLockRequest,
     ) -> data_lake_20200710_models.CreateLockResponse:
+        """
+        @summary create lock
+        
+        @param request: CreateLockRequest
+        @return: CreateLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_lock_with_options(request, headers, runtime)
@@ -1699,6 +2225,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateLockRequest,
     ) -> data_lake_20200710_models.CreateLockResponse:
+        """
+        @summary create lock
+        
+        @param request: CreateLockRequest
+        @return: CreateLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_lock_with_options_async(request, headers, runtime)
@@ -1709,6 +2241,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreatePartitionResponse:
+        """
+        @summary Create Partition
+        
+        @param request: CreatePartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1749,6 +2289,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreatePartitionResponse:
+        """
+        @summary Create Partition
+        
+        @param request: CreatePartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1787,6 +2335,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreatePartitionRequest,
     ) -> data_lake_20200710_models.CreatePartitionResponse:
+        """
+        @summary Create Partition
+        
+        @param request: CreatePartitionRequest
+        @return: CreatePartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_partition_with_options(request, headers, runtime)
@@ -1795,6 +2349,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreatePartitionRequest,
     ) -> data_lake_20200710_models.CreatePartitionResponse:
+        """
+        @summary Create Partition
+        
+        @param request: CreatePartitionRequest
+        @return: CreatePartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_partition_with_options_async(request, headers, runtime)
@@ -1805,6 +2365,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateRoleResponse:
+        """
+        @summary 创建数据糊角色
+        
+        @param request: CreateRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoleResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1832,6 +2400,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateRoleResponse:
+        """
+        @summary 创建数据糊角色
+        
+        @param request: CreateRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRoleResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1857,6 +2433,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateRoleRequest,
     ) -> data_lake_20200710_models.CreateRoleResponse:
+        """
+        @summary 创建数据糊角色
+        
+        @param request: CreateRoleRequest
+        @return: CreateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_role_with_options(request, headers, runtime)
@@ -1865,6 +2447,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateRoleRequest,
     ) -> data_lake_20200710_models.CreateRoleResponse:
+        """
+        @summary 创建数据糊角色
+        
+        @param request: CreateRoleRequest
+        @return: CreateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_role_with_options_async(request, headers, runtime)
@@ -1875,6 +2463,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateTableResponse:
+        """
+        @summary Create tables
+        
+        @param request: CreateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1909,6 +2505,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.CreateTableResponse:
+        """
+        @summary Create tables
+        
+        @param request: CreateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1941,6 +2545,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateTableRequest,
     ) -> data_lake_20200710_models.CreateTableResponse:
+        """
+        @summary Create tables
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_table_with_options(request, headers, runtime)
@@ -1949,6 +2559,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.CreateTableRequest,
     ) -> data_lake_20200710_models.CreateTableResponse:
+        """
+        @summary Create tables
+        
+        @param request: CreateTableRequest
+        @return: CreateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_table_with_options_async(request, headers, runtime)
@@ -1959,6 +2575,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteCatalogResponse:
+        """
+        @summary Delete Catalog by catalogId
+        
+        @param request: DeleteCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -1991,6 +2615,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteCatalogResponse:
+        """
+        @summary Delete Catalog by catalogId
+        
+        @param request: DeleteCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2021,6 +2653,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteCatalogRequest,
     ) -> data_lake_20200710_models.DeleteCatalogResponse:
+        """
+        @summary Delete Catalog by catalogId
+        
+        @param request: DeleteCatalogRequest
+        @return: DeleteCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_catalog_with_options(request, headers, runtime)
@@ -2029,6 +2667,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteCatalogRequest,
     ) -> data_lake_20200710_models.DeleteCatalogResponse:
+        """
+        @summary Delete Catalog by catalogId
+        
+        @param request: DeleteCatalogRequest
+        @return: DeleteCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_catalog_with_options_async(request, headers, runtime)
@@ -2039,6 +2683,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteDatabaseResponse:
+        """
+        @summary Delete database by catalogId and database name
+        
+        @param request: DeleteDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -2075,6 +2727,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteDatabaseResponse:
+        """
+        @summary Delete database by catalogId and database name
+        
+        @param request: DeleteDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.async_):
@@ -2109,6 +2769,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteDatabaseRequest,
     ) -> data_lake_20200710_models.DeleteDatabaseResponse:
+        """
+        @summary Delete database by catalogId and database name
+        
+        @param request: DeleteDatabaseRequest
+        @return: DeleteDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_database_with_options(request, headers, runtime)
@@ -2117,6 +2783,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteDatabaseRequest,
     ) -> data_lake_20200710_models.DeleteDatabaseResponse:
+        """
+        @summary Delete database by catalogId and database name
+        
+        @param request: DeleteDatabaseRequest
+        @return: DeleteDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_database_with_options_async(request, headers, runtime)
@@ -2127,6 +2799,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteFunctionResponse:
+        """
+        @summary Delete function
+        
+        @param request: DeleteFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2161,6 +2841,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteFunctionResponse:
+        """
+        @summary Delete function
+        
+        @param request: DeleteFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2193,6 +2881,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteFunctionRequest,
     ) -> data_lake_20200710_models.DeleteFunctionResponse:
+        """
+        @summary Delete function
+        
+        @param request: DeleteFunctionRequest
+        @return: DeleteFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_function_with_options(request, headers, runtime)
@@ -2201,6 +2895,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteFunctionRequest,
     ) -> data_lake_20200710_models.DeleteFunctionResponse:
+        """
+        @summary Delete function
+        
+        @param request: DeleteFunctionRequest
+        @return: DeleteFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_function_with_options_async(request, headers, runtime)
@@ -2211,6 +2911,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeletePartitionResponse:
+        """
+        @summary delete partition
+        
+        @param request: DeletePartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2249,6 +2957,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeletePartitionResponse:
+        """
+        @summary delete partition
+        
+        @param request: DeletePartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2285,6 +3001,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeletePartitionRequest,
     ) -> data_lake_20200710_models.DeletePartitionResponse:
+        """
+        @summary delete partition
+        
+        @param request: DeletePartitionRequest
+        @return: DeletePartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_partition_with_options(request, headers, runtime)
@@ -2293,6 +3015,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeletePartitionRequest,
     ) -> data_lake_20200710_models.DeletePartitionResponse:
+        """
+        @summary delete partition
+        
+        @param request: DeletePartitionRequest
+        @return: DeletePartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_partition_with_options_async(request, headers, runtime)
@@ -2303,6 +3031,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
+        """
+        @summary DeletePartitionColumnStatistics
+        
+        @param tmp_req: DeletePartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.DeletePartitionColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2347,6 +3083,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
+        """
+        @summary DeletePartitionColumnStatistics
+        
+        @param tmp_req: DeletePartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.DeletePartitionColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2389,6 +3133,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeletePartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
+        """
+        @summary DeletePartitionColumnStatistics
+        
+        @param request: DeletePartitionColumnStatisticsRequest
+        @return: DeletePartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_partition_column_statistics_with_options(request, headers, runtime)
@@ -2397,6 +3147,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeletePartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.DeletePartitionColumnStatisticsResponse:
+        """
+        @summary DeletePartitionColumnStatistics
+        
+        @param request: DeletePartitionColumnStatisticsRequest
+        @return: DeletePartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_partition_column_statistics_with_options_async(request, headers, runtime)
@@ -2407,6 +3163,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteRoleResponse:
+        """
+        @summary 删除角色
+        
+        @param request: DeleteRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -2437,6 +3201,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteRoleResponse:
+        """
+        @summary 删除角色
+        
+        @param request: DeleteRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -2465,6 +3237,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteRoleRequest,
     ) -> data_lake_20200710_models.DeleteRoleResponse:
+        """
+        @summary 删除角色
+        
+        @param request: DeleteRoleRequest
+        @return: DeleteRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_role_with_options(request, headers, runtime)
@@ -2473,6 +3251,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteRoleRequest,
     ) -> data_lake_20200710_models.DeleteRoleResponse:
+        """
+        @summary 删除角色
+        
+        @param request: DeleteRoleRequest
+        @return: DeleteRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_role_with_options_async(request, headers, runtime)
@@ -2483,6 +3267,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteTableResponse:
+        """
+        @summary delete table
+        
+        @param request: DeleteTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2517,6 +3309,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteTableResponse:
+        """
+        @summary delete table
+        
+        @param request: DeleteTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2549,6 +3349,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteTableRequest,
     ) -> data_lake_20200710_models.DeleteTableResponse:
+        """
+        @summary delete table
+        
+        @param request: DeleteTableRequest
+        @return: DeleteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_table_with_options(request, headers, runtime)
@@ -2557,6 +3363,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteTableRequest,
     ) -> data_lake_20200710_models.DeleteTableResponse:
+        """
+        @summary delete table
+        
+        @param request: DeleteTableRequest
+        @return: DeleteTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_table_with_options_async(request, headers, runtime)
@@ -2567,6 +3379,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
+        """
+        @summary DeleteTableColumnStatistics
+        
+        @param tmp_req: DeleteTableColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.DeleteTableColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2607,6 +3427,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
+        """
+        @summary DeleteTableColumnStatistics
+        
+        @param tmp_req: DeleteTableColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.DeleteTableColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2645,6 +3473,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteTableColumnStatisticsRequest,
     ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
+        """
+        @summary DeleteTableColumnStatistics
+        
+        @param request: DeleteTableColumnStatisticsRequest
+        @return: DeleteTableColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_table_column_statistics_with_options(request, headers, runtime)
@@ -2653,6 +3487,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteTableColumnStatisticsRequest,
     ) -> data_lake_20200710_models.DeleteTableColumnStatisticsResponse:
+        """
+        @summary DeleteTableColumnStatistics
+        
+        @param request: DeleteTableColumnStatisticsRequest
+        @return: DeleteTableColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_table_column_statistics_with_options_async(request, headers, runtime)
@@ -2663,6 +3503,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteTableVersionResponse:
+        """
+        @summary delete table version
+        
+        @param request: DeleteTableVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2699,6 +3547,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeleteTableVersionResponse:
+        """
+        @summary delete table version
+        
+        @param request: DeleteTableVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTableVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2733,6 +3589,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteTableVersionRequest,
     ) -> data_lake_20200710_models.DeleteTableVersionResponse:
+        """
+        @summary delete table version
+        
+        @param request: DeleteTableVersionRequest
+        @return: DeleteTableVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_table_version_with_options(request, headers, runtime)
@@ -2741,6 +3603,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeleteTableVersionRequest,
     ) -> data_lake_20200710_models.DeleteTableVersionResponse:
+        """
+        @summary delete table version
+        
+        @param request: DeleteTableVersionRequest
+        @return: DeleteTableVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_table_version_with_options_async(request, headers, runtime)
@@ -2751,6 +3619,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        """
+        @summary 取消注册Location
+        
+        @param request: DeregisterLocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterLocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.location_id):
@@ -2781,6 +3657,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        """
+        @summary 取消注册Location
+        
+        @param request: DeregisterLocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeregisterLocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.location_id):
@@ -2809,6 +3693,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeregisterLocationRequest,
     ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        """
+        @summary 取消注册Location
+        
+        @param request: DeregisterLocationRequest
+        @return: DeregisterLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.deregister_location_with_options(request, headers, runtime)
@@ -2817,6 +3707,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.DeregisterLocationRequest,
     ) -> data_lake_20200710_models.DeregisterLocationResponse:
+        """
+        @summary 取消注册Location
+        
+        @param request: DeregisterLocationRequest
+        @return: DeregisterLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.deregister_location_with_options_async(request, headers, runtime)
@@ -2826,6 +3722,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DescribeRegionsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2850,6 +3751,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.DescribeRegionsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2870,11 +3776,17 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> data_lake_20200710_models.DescribeRegionsResponse:
+        """
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_regions_with_options(headers, runtime)
 
     async def describe_regions_async(self) -> data_lake_20200710_models.DescribeRegionsResponse:
+        """
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(headers, runtime)
@@ -2885,6 +3797,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
+        """
+        @summary GetAsyncTaskStatus
+        
+        @param request: GetAsyncTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2917,6 +3837,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
+        """
+        @summary GetAsyncTaskStatus
+        
+        @param request: GetAsyncTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2947,6 +3875,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetAsyncTaskStatusRequest,
     ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
+        """
+        @summary GetAsyncTaskStatus
+        
+        @param request: GetAsyncTaskStatusRequest
+        @return: GetAsyncTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_async_task_status_with_options(request, headers, runtime)
@@ -2955,6 +3889,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetAsyncTaskStatusRequest,
     ) -> data_lake_20200710_models.GetAsyncTaskStatusResponse:
+        """
+        @summary GetAsyncTaskStatus
+        
+        @param request: GetAsyncTaskStatusRequest
+        @return: GetAsyncTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_async_task_status_with_options_async(request, headers, runtime)
@@ -2965,6 +3905,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetCatalogResponse:
+        """
+        @summary 获取Catalog
+        
+        @param request: GetCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -2995,6 +3943,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetCatalogResponse:
+        """
+        @summary 获取Catalog
+        
+        @param request: GetCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3023,6 +3979,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetCatalogRequest,
     ) -> data_lake_20200710_models.GetCatalogResponse:
+        """
+        @summary 获取Catalog
+        
+        @param request: GetCatalogRequest
+        @return: GetCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_catalog_with_options(request, headers, runtime)
@@ -3031,6 +3993,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetCatalogRequest,
     ) -> data_lake_20200710_models.GetCatalogResponse:
+        """
+        @summary 获取Catalog
+        
+        @param request: GetCatalogRequest
+        @return: GetCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_catalog_with_options_async(request, headers, runtime)
@@ -3041,6 +4009,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: GetCatalogSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3071,6 +4047,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: GetCatalogSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCatalogSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3099,6 +4083,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetCatalogSettingsRequest,
     ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: GetCatalogSettingsRequest
+        @return: GetCatalogSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_catalog_settings_with_options(request, headers, runtime)
@@ -3107,6 +4097,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetCatalogSettingsRequest,
     ) -> data_lake_20200710_models.GetCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: GetCatalogSettingsRequest
+        @return: GetCatalogSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_catalog_settings_with_options_async(request, headers, runtime)
@@ -3117,6 +4113,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetDatabaseResponse:
+        """
+        @summary Get Database
+        
+        @param request: GetDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3149,6 +4153,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetDatabaseResponse:
+        """
+        @summary Get Database
+        
+        @param request: GetDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3179,6 +4191,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetDatabaseRequest,
     ) -> data_lake_20200710_models.GetDatabaseResponse:
+        """
+        @summary Get Database
+        
+        @param request: GetDatabaseRequest
+        @return: GetDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_database_with_options(request, headers, runtime)
@@ -3187,6 +4205,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetDatabaseRequest,
     ) -> data_lake_20200710_models.GetDatabaseResponse:
+        """
+        @summary Get Database
+        
+        @param request: GetDatabaseRequest
+        @return: GetDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_database_with_options_async(request, headers, runtime)
@@ -3197,6 +4221,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetDatabaseProfileResponse:
+        """
+        @summary 获取库数据概览信息
+        
+        @param request: GetDatabaseProfileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3229,6 +4261,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetDatabaseProfileResponse:
+        """
+        @summary 获取库数据概览信息
+        
+        @param request: GetDatabaseProfileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDatabaseProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3259,6 +4299,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetDatabaseProfileRequest,
     ) -> data_lake_20200710_models.GetDatabaseProfileResponse:
+        """
+        @summary 获取库数据概览信息
+        
+        @param request: GetDatabaseProfileRequest
+        @return: GetDatabaseProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_database_profile_with_options(request, headers, runtime)
@@ -3267,6 +4313,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetDatabaseProfileRequest,
     ) -> data_lake_20200710_models.GetDatabaseProfileResponse:
+        """
+        @summary 获取库数据概览信息
+        
+        @param request: GetDatabaseProfileRequest
+        @return: GetDatabaseProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_database_profile_with_options_async(request, headers, runtime)
@@ -3277,6 +4329,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetFunctionResponse:
+        """
+        @summary Get Function
+        
+        @param request: GetFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3311,6 +4371,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetFunctionResponse:
+        """
+        @summary Get Function
+        
+        @param request: GetFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3343,6 +4411,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetFunctionRequest,
     ) -> data_lake_20200710_models.GetFunctionResponse:
+        """
+        @summary Get Function
+        
+        @param request: GetFunctionRequest
+        @return: GetFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_with_options(request, headers, runtime)
@@ -3351,6 +4425,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetFunctionRequest,
     ) -> data_lake_20200710_models.GetFunctionResponse:
+        """
+        @summary Get Function
+        
+        @param request: GetFunctionRequest
+        @return: GetFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_with_options_async(request, headers, runtime)
@@ -3361,6 +4441,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        """
+        @summary 获取生命周期规则
+        
+        @param request: GetLifecycleRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLifecycleRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -3393,6 +4481,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        """
+        @summary 获取生命周期规则
+        
+        @param request: GetLifecycleRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLifecycleRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -3423,6 +4519,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetLifecycleRuleRequest,
     ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        """
+        @summary 获取生命周期规则
+        
+        @param request: GetLifecycleRuleRequest
+        @return: GetLifecycleRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_lifecycle_rule_with_options(request, headers, runtime)
@@ -3431,6 +4533,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetLifecycleRuleRequest,
     ) -> data_lake_20200710_models.GetLifecycleRuleResponse:
+        """
+        @summary 获取生命周期规则
+        
+        @param request: GetLifecycleRuleRequest
+        @return: GetLifecycleRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_lifecycle_rule_with_options_async(request, headers, runtime)
@@ -3441,6 +4549,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetLockResponse:
+        """
+        @summary get lock status
+        
+        @param request: GetLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -3471,6 +4587,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetLockResponse:
+        """
+        @summary get lock status
+        
+        @param request: GetLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -3499,6 +4623,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetLockRequest,
     ) -> data_lake_20200710_models.GetLockResponse:
+        """
+        @summary get lock status
+        
+        @param request: GetLockRequest
+        @return: GetLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_lock_with_options(request, headers, runtime)
@@ -3507,6 +4637,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetLockRequest,
     ) -> data_lake_20200710_models.GetLockResponse:
+        """
+        @summary get lock status
+        
+        @param request: GetLockRequest
+        @return: GetLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_lock_with_options_async(request, headers, runtime)
@@ -3517,6 +4653,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetPartitionResponse:
+        """
+        @summary get partition
+        
+        @param request: GetPartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3553,6 +4697,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetPartitionResponse:
+        """
+        @summary get partition
+        
+        @param request: GetPartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -3587,6 +4739,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetPartitionRequest,
     ) -> data_lake_20200710_models.GetPartitionResponse:
+        """
+        @summary get partition
+        
+        @param request: GetPartitionRequest
+        @return: GetPartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_partition_with_options(request, headers, runtime)
@@ -3595,6 +4753,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetPartitionRequest,
     ) -> data_lake_20200710_models.GetPartitionResponse:
+        """
+        @summary get partition
+        
+        @param request: GetPartitionRequest
+        @return: GetPartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_partition_with_options_async(request, headers, runtime)
@@ -3605,6 +4769,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param tmp_req: GetPartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.GetPartitionColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3649,6 +4821,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param tmp_req: GetPartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.GetPartitionColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3691,6 +4871,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetPartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param request: GetPartitionColumnStatisticsRequest
+        @return: GetPartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_partition_column_statistics_with_options(request, headers, runtime)
@@ -3699,6 +4885,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetPartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.GetPartitionColumnStatisticsResponse:
+        """
+        @summary Batch Get Partition Column Statistics
+        
+        @param request: GetPartitionColumnStatisticsRequest
+        @return: GetPartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_partition_column_statistics_with_options_async(request, headers, runtime)
@@ -3709,6 +4901,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetQueryResultResponse:
+        """
+        @summary 获取查询结果
+        
+        @param request: GetQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQueryResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3743,6 +4943,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetQueryResultResponse:
+        """
+        @summary 获取查询结果
+        
+        @param request: GetQueryResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQueryResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3775,6 +4983,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetQueryResultRequest,
     ) -> data_lake_20200710_models.GetQueryResultResponse:
+        """
+        @summary 获取查询结果
+        
+        @param request: GetQueryResultRequest
+        @return: GetQueryResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_query_result_with_options(request, headers, runtime)
@@ -3783,6 +4997,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetQueryResultRequest,
     ) -> data_lake_20200710_models.GetQueryResultResponse:
+        """
+        @summary 获取查询结果
+        
+        @param request: GetQueryResultRequest
+        @return: GetQueryResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_query_result_with_options_async(request, headers, runtime)
@@ -3793,6 +5013,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetRegionStatusResponse:
+        """
+        @param request: GetRegionStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3823,6 +5049,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetRegionStatusResponse:
+        """
+        @param request: GetRegionStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3851,6 +5083,10 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetRegionStatusRequest,
     ) -> data_lake_20200710_models.GetRegionStatusResponse:
+        """
+        @param request: GetRegionStatusRequest
+        @return: GetRegionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_region_status_with_options(request, headers, runtime)
@@ -3859,6 +5095,10 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetRegionStatusRequest,
     ) -> data_lake_20200710_models.GetRegionStatusResponse:
+        """
+        @param request: GetRegionStatusRequest
+        @return: GetRegionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_region_status_with_options_async(request, headers, runtime)
@@ -3869,6 +5109,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetRoleResponse:
+        """
+        @summary GetRole
+        
+        @param request: GetRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -3899,6 +5147,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetRoleResponse:
+        """
+        @summary GetRole
+        
+        @param request: GetRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_name):
@@ -3927,6 +5183,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetRoleRequest,
     ) -> data_lake_20200710_models.GetRoleResponse:
+        """
+        @summary GetRole
+        
+        @param request: GetRoleRequest
+        @return: GetRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_role_with_options(request, headers, runtime)
@@ -3935,6 +5197,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetRoleRequest,
     ) -> data_lake_20200710_models.GetRoleResponse:
+        """
+        @summary GetRole
+        
+        @param request: GetRoleRequest
+        @return: GetRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_role_with_options_async(request, headers, runtime)
@@ -3945,6 +5213,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetServiceStatusResponse:
+        """
+        @param request: GetServiceStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3975,6 +5249,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetServiceStatusResponse:
+        """
+        @param request: GetServiceStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4003,6 +5283,10 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetServiceStatusRequest,
     ) -> data_lake_20200710_models.GetServiceStatusResponse:
+        """
+        @param request: GetServiceStatusRequest
+        @return: GetServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_service_status_with_options(request, headers, runtime)
@@ -4011,6 +5295,10 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetServiceStatusRequest,
     ) -> data_lake_20200710_models.GetServiceStatusResponse:
+        """
+        @param request: GetServiceStatusRequest
+        @return: GetServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_service_status_with_options_async(request, headers, runtime)
@@ -4021,6 +5309,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableResponse:
+        """
+        @summary Get table
+        
+        @param request: GetTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4055,6 +5351,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableResponse:
+        """
+        @summary Get table
+        
+        @param request: GetTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4087,6 +5391,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableRequest,
     ) -> data_lake_20200710_models.GetTableResponse:
+        """
+        @summary Get table
+        
+        @param request: GetTableRequest
+        @return: GetTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_with_options(request, headers, runtime)
@@ -4095,6 +5405,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableRequest,
     ) -> data_lake_20200710_models.GetTableResponse:
+        """
+        @summary Get table
+        
+        @param request: GetTableRequest
+        @return: GetTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_with_options_async(request, headers, runtime)
@@ -4105,6 +5421,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
+        """
+        @summary An example of API
+        
+        @param tmp_req: GetTableColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.GetTableColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4145,6 +5469,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
+        """
+        @summary An example of API
+        
+        @param tmp_req: GetTableColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableColumnStatisticsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.GetTableColumnStatisticsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4183,6 +5515,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableColumnStatisticsRequest,
     ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
+        """
+        @summary An example of API
+        
+        @param request: GetTableColumnStatisticsRequest
+        @return: GetTableColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_column_statistics_with_options(request, headers, runtime)
@@ -4191,6 +5529,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableColumnStatisticsRequest,
     ) -> data_lake_20200710_models.GetTableColumnStatisticsResponse:
+        """
+        @summary An example of API
+        
+        @param request: GetTableColumnStatisticsRequest
+        @return: GetTableColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_column_statistics_with_options_async(request, headers, runtime)
@@ -4201,6 +5545,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableProfileResponse:
+        """
+        @summary 获取表数据概况信息
+        
+        @param request: GetTableProfileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4235,6 +5587,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableProfileResponse:
+        """
+        @summary 获取表数据概况信息
+        
+        @param request: GetTableProfileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableProfileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4267,6 +5627,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableProfileRequest,
     ) -> data_lake_20200710_models.GetTableProfileResponse:
+        """
+        @summary 获取表数据概况信息
+        
+        @param request: GetTableProfileRequest
+        @return: GetTableProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_profile_with_options(request, headers, runtime)
@@ -4275,6 +5641,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableProfileRequest,
     ) -> data_lake_20200710_models.GetTableProfileResponse:
+        """
+        @summary 获取表数据概况信息
+        
+        @param request: GetTableProfileRequest
+        @return: GetTableProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_profile_with_options_async(request, headers, runtime)
@@ -4285,6 +5657,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableVersionResponse:
+        """
+        @summary Get table version
+        
+        @param request: GetTableVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4321,6 +5701,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GetTableVersionResponse:
+        """
+        @summary Get table version
+        
+        @param request: GetTableVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4355,6 +5743,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableVersionRequest,
     ) -> data_lake_20200710_models.GetTableVersionResponse:
+        """
+        @summary Get table version
+        
+        @param request: GetTableVersionRequest
+        @return: GetTableVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_table_version_with_options(request, headers, runtime)
@@ -4363,6 +5757,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GetTableVersionRequest,
     ) -> data_lake_20200710_models.GetTableVersionResponse:
+        """
+        @summary Get table version
+        
+        @param request: GetTableVersionRequest
+        @return: GetTableVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_table_version_with_options_async(request, headers, runtime)
@@ -4373,6 +5773,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GrantPermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: GrantPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accesses):
@@ -4413,6 +5821,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GrantPermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: GrantPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accesses):
@@ -4451,6 +5867,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GrantPermissionsRequest,
     ) -> data_lake_20200710_models.GrantPermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: GrantPermissionsRequest
+        @return: GrantPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.grant_permissions_with_options(request, headers, runtime)
@@ -4459,6 +5881,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GrantPermissionsRequest,
     ) -> data_lake_20200710_models.GrantPermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: GrantPermissionsRequest
+        @return: GrantPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.grant_permissions_with_options_async(request, headers, runtime)
@@ -4469,6 +5897,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
+        """
+        @summary Grant 单个角色给一个或多个用户
+        
+        @param request: GrantRoleToUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantRoleToUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -4501,6 +5937,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
+        """
+        @summary Grant 单个角色给一个或多个用户
+        
+        @param request: GrantRoleToUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantRoleToUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -4531,6 +5975,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GrantRoleToUsersRequest,
     ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
+        """
+        @summary Grant 单个角色给一个或多个用户
+        
+        @param request: GrantRoleToUsersRequest
+        @return: GrantRoleToUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.grant_role_to_users_with_options(request, headers, runtime)
@@ -4539,6 +5989,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GrantRoleToUsersRequest,
     ) -> data_lake_20200710_models.GrantRoleToUsersResponse:
+        """
+        @summary Grant 单个角色给一个或多个用户
+        
+        @param request: GrantRoleToUsersRequest
+        @return: GrantRoleToUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.grant_role_to_users_with_options_async(request, headers, runtime)
@@ -4549,6 +6005,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GrantRolesToUserResponse:
+        """
+        @summary Grant 一个或多个角色给一个用户
+        
+        @param request: GrantRolesToUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantRolesToUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_names):
@@ -4581,6 +6045,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.GrantRolesToUserResponse:
+        """
+        @summary Grant 一个或多个角色给一个用户
+        
+        @param request: GrantRolesToUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantRolesToUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_names):
@@ -4611,6 +6083,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GrantRolesToUserRequest,
     ) -> data_lake_20200710_models.GrantRolesToUserResponse:
+        """
+        @summary Grant 一个或多个角色给一个用户
+        
+        @param request: GrantRolesToUserRequest
+        @return: GrantRolesToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.grant_roles_to_user_with_options(request, headers, runtime)
@@ -4619,6 +6097,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.GrantRolesToUserRequest,
     ) -> data_lake_20200710_models.GrantRolesToUserResponse:
+        """
+        @summary Grant 一个或多个角色给一个用户
+        
+        @param request: GrantRolesToUserRequest
+        @return: GrantRolesToUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.grant_roles_to_user_with_options_async(request, headers, runtime)
@@ -4629,6 +6113,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListCatalogsResponse:
+        """
+        @summary ListCatalogs
+        
+        @param request: ListCatalogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCatalogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id_pattern):
@@ -4663,6 +6155,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListCatalogsResponse:
+        """
+        @summary ListCatalogs
+        
+        @param request: ListCatalogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCatalogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id_pattern):
@@ -4695,6 +6195,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListCatalogsRequest,
     ) -> data_lake_20200710_models.ListCatalogsResponse:
+        """
+        @summary ListCatalogs
+        
+        @param request: ListCatalogsRequest
+        @return: ListCatalogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_catalogs_with_options(request, headers, runtime)
@@ -4703,6 +6209,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListCatalogsRequest,
     ) -> data_lake_20200710_models.ListCatalogsResponse:
+        """
+        @summary ListCatalogs
+        
+        @param request: ListCatalogsRequest
+        @return: ListCatalogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_catalogs_with_options_async(request, headers, runtime)
@@ -4713,6 +6225,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListDatabasesResponse:
+        """
+        @summary Get Databases List
+        
+        @param request: ListDatabasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4749,6 +6269,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListDatabasesResponse:
+        """
+        @summary Get Databases List
+        
+        @param request: ListDatabasesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4783,6 +6311,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListDatabasesRequest,
     ) -> data_lake_20200710_models.ListDatabasesResponse:
+        """
+        @summary Get Databases List
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_databases_with_options(request, headers, runtime)
@@ -4791,6 +6325,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListDatabasesRequest,
     ) -> data_lake_20200710_models.ListDatabasesResponse:
+        """
+        @summary Get Databases List
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_databases_with_options_async(request, headers, runtime)
@@ -4801,6 +6341,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListFunctionNamesResponse:
+        """
+        @summary list function names
+        
+        @param request: ListFunctionNamesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4839,6 +6387,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListFunctionNamesResponse:
+        """
+        @summary list function names
+        
+        @param request: ListFunctionNamesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4875,6 +6431,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListFunctionNamesRequest,
     ) -> data_lake_20200710_models.ListFunctionNamesResponse:
+        """
+        @summary list function names
+        
+        @param request: ListFunctionNamesRequest
+        @return: ListFunctionNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_function_names_with_options(request, headers, runtime)
@@ -4883,6 +6445,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListFunctionNamesRequest,
     ) -> data_lake_20200710_models.ListFunctionNamesResponse:
+        """
+        @summary list function names
+        
+        @param request: ListFunctionNamesRequest
+        @return: ListFunctionNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_function_names_with_options_async(request, headers, runtime)
@@ -4893,6 +6461,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListFunctionsResponse:
+        """
+        @summary list functions
+        
+        @param request: ListFunctionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4931,6 +6507,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListFunctionsResponse:
+        """
+        @summary list functions
+        
+        @param request: ListFunctionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -4967,6 +6551,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListFunctionsRequest,
     ) -> data_lake_20200710_models.ListFunctionsResponse:
+        """
+        @summary list functions
+        
+        @param request: ListFunctionsRequest
+        @return: ListFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_functions_with_options(request, headers, runtime)
@@ -4975,6 +6565,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListFunctionsRequest,
     ) -> data_lake_20200710_models.ListFunctionsResponse:
+        """
+        @summary list functions
+        
+        @param request: ListFunctionsRequest
+        @return: ListFunctionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_functions_with_options_async(request, headers, runtime)
@@ -4985,6 +6581,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionNamesResponse:
+        """
+        @summary partition names
+        
+        @param request: ListPartitionNamesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionNamesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5025,6 +6629,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionNamesResponse:
+        """
+        @summary partition names
+        
+        @param request: ListPartitionNamesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionNamesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5063,6 +6675,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionNamesRequest,
     ) -> data_lake_20200710_models.ListPartitionNamesResponse:
+        """
+        @summary partition names
+        
+        @param request: ListPartitionNamesRequest
+        @return: ListPartitionNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_partition_names_with_options(request, headers, runtime)
@@ -5071,6 +6689,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionNamesRequest,
     ) -> data_lake_20200710_models.ListPartitionNamesResponse:
+        """
+        @summary partition names
+        
+        @param request: ListPartitionNamesRequest
+        @return: ListPartitionNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_partition_names_with_options_async(request, headers, runtime)
@@ -5081,6 +6705,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsResponse:
+        """
+        @summary list partitions
+        
+        @param request: ListPartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5123,6 +6755,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsResponse:
+        """
+        @summary list partitions
+        
+        @param request: ListPartitionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5163,6 +6803,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionsRequest,
     ) -> data_lake_20200710_models.ListPartitionsResponse:
+        """
+        @summary list partitions
+        
+        @param request: ListPartitionsRequest
+        @return: ListPartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_partitions_with_options(request, headers, runtime)
@@ -5171,6 +6817,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionsRequest,
     ) -> data_lake_20200710_models.ListPartitionsResponse:
+        """
+        @summary list partitions
+        
+        @param request: ListPartitionsRequest
+        @return: ListPartitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_partitions_with_options_async(request, headers, runtime)
@@ -5180,6 +6832,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsByExprResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsByExprResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5204,6 +6861,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsByExprResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsByExprResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5224,11 +6886,17 @@ class Client(OpenApiClient):
         )
 
     def list_partitions_by_expr(self) -> data_lake_20200710_models.ListPartitionsByExprResponse:
+        """
+        @return: ListPartitionsByExprResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_partitions_by_expr_with_options(headers, runtime)
 
     async def list_partitions_by_expr_async(self) -> data_lake_20200710_models.ListPartitionsByExprResponse:
+        """
+        @return: ListPartitionsByExprResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_partitions_by_expr_with_options_async(headers, runtime)
@@ -5239,6 +6907,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
+        """
+        @summary list partitions by filter
+        
+        @param request: ListPartitionsByFilterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsByFilterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5281,6 +6957,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
+        """
+        @summary list partitions by filter
+        
+        @param request: ListPartitionsByFilterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsByFilterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5321,6 +7005,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionsByFilterRequest,
     ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
+        """
+        @summary list partitions by filter
+        
+        @param request: ListPartitionsByFilterRequest
+        @return: ListPartitionsByFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_partitions_by_filter_with_options(request, headers, runtime)
@@ -5329,6 +7019,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionsByFilterRequest,
     ) -> data_lake_20200710_models.ListPartitionsByFilterResponse:
+        """
+        @summary list partitions by filter
+        
+        @param request: ListPartitionsByFilterRequest
+        @return: ListPartitionsByFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_partitions_by_filter_with_options_async(request, headers, runtime)
@@ -5339,6 +7035,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsProfileResponse:
+        """
+        @summary 获取分区数据概况信息
+        
+        @param tmp_req: ListPartitionsProfileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsProfileResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.ListPartitionsProfileShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5383,6 +7087,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPartitionsProfileResponse:
+        """
+        @summary 获取分区数据概况信息
+        
+        @param tmp_req: ListPartitionsProfileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPartitionsProfileResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = data_lake_20200710_models.ListPartitionsProfileShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5425,6 +7137,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionsProfileRequest,
     ) -> data_lake_20200710_models.ListPartitionsProfileResponse:
+        """
+        @summary 获取分区数据概况信息
+        
+        @param request: ListPartitionsProfileRequest
+        @return: ListPartitionsProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_partitions_profile_with_options(request, headers, runtime)
@@ -5433,6 +7151,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPartitionsProfileRequest,
     ) -> data_lake_20200710_models.ListPartitionsProfileResponse:
+        """
+        @summary 获取分区数据概况信息
+        
+        @param request: ListPartitionsProfileRequest
+        @return: ListPartitionsProfileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_partitions_profile_with_options_async(request, headers, runtime)
@@ -5443,6 +7167,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPermissionsResponse:
+        """
+        @summary 获取指定资源或指定Principal的权限信息
+        
+        @param request: ListPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5487,6 +7219,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListPermissionsResponse:
+        """
+        @summary 获取指定资源或指定Principal的权限信息
+        
+        @param request: ListPermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5529,6 +7269,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPermissionsRequest,
     ) -> data_lake_20200710_models.ListPermissionsResponse:
+        """
+        @summary 获取指定资源或指定Principal的权限信息
+        
+        @param request: ListPermissionsRequest
+        @return: ListPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_permissions_with_options(request, headers, runtime)
@@ -5537,6 +7283,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListPermissionsRequest,
     ) -> data_lake_20200710_models.ListPermissionsResponse:
+        """
+        @summary 获取指定资源或指定Principal的权限信息
+        
+        @param request: ListPermissionsRequest
+        @return: ListPermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_permissions_with_options_async(request, headers, runtime)
@@ -5547,6 +7299,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListRoleUsersResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListRoleUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_page_token):
@@ -5583,6 +7343,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListRoleUsersResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListRoleUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_page_token):
@@ -5617,6 +7385,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListRoleUsersRequest,
     ) -> data_lake_20200710_models.ListRoleUsersResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListRoleUsersRequest
+        @return: ListRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_role_users_with_options(request, headers, runtime)
@@ -5625,6 +7399,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListRoleUsersRequest,
     ) -> data_lake_20200710_models.ListRoleUsersResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListRoleUsersRequest
+        @return: ListRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_role_users_with_options_async(request, headers, runtime)
@@ -5635,6 +7415,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListRolesResponse:
+        """
+        @summary ListRoles
+        
+        @param request: ListRolesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_page_token):
@@ -5669,6 +7457,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListRolesResponse:
+        """
+        @summary ListRoles
+        
+        @param request: ListRolesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_page_token):
@@ -5701,6 +7497,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListRolesRequest,
     ) -> data_lake_20200710_models.ListRolesResponse:
+        """
+        @summary ListRoles
+        
+        @param request: ListRolesRequest
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_roles_with_options(request, headers, runtime)
@@ -5709,6 +7511,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListRolesRequest,
     ) -> data_lake_20200710_models.ListRolesResponse:
+        """
+        @summary ListRoles
+        
+        @param request: ListRolesRequest
+        @return: ListRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_roles_with_options_async(request, headers, runtime)
@@ -5719,6 +7527,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListTableNamesResponse:
+        """
+        @summary list table names
+        
+        @param request: ListTableNamesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5759,6 +7575,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListTableNamesResponse:
+        """
+        @summary list table names
+        
+        @param request: ListTableNamesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableNamesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5797,6 +7621,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListTableNamesRequest,
     ) -> data_lake_20200710_models.ListTableNamesResponse:
+        """
+        @summary list table names
+        
+        @param request: ListTableNamesRequest
+        @return: ListTableNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_table_names_with_options(request, headers, runtime)
@@ -5805,6 +7635,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListTableNamesRequest,
     ) -> data_lake_20200710_models.ListTableNamesResponse:
+        """
+        @summary list table names
+        
+        @param request: ListTableNamesRequest
+        @return: ListTableNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_table_names_with_options_async(request, headers, runtime)
@@ -5815,6 +7651,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListTableVersionsResponse:
+        """
+        @summary List table versions
+        
+        @param request: ListTableVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5853,6 +7697,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListTableVersionsResponse:
+        """
+        @summary List table versions
+        
+        @param request: ListTableVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTableVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5889,6 +7741,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListTableVersionsRequest,
     ) -> data_lake_20200710_models.ListTableVersionsResponse:
+        """
+        @summary List table versions
+        
+        @param request: ListTableVersionsRequest
+        @return: ListTableVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_table_versions_with_options(request, headers, runtime)
@@ -5897,6 +7755,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListTableVersionsRequest,
     ) -> data_lake_20200710_models.ListTableVersionsResponse:
+        """
+        @summary List table versions
+        
+        @param request: ListTableVersionsRequest
+        @return: ListTableVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_table_versions_with_options_async(request, headers, runtime)
@@ -5907,6 +7771,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListTablesResponse:
+        """
+        @summary list tables
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5947,6 +7819,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListTablesResponse:
+        """
+        @summary list tables
+        
+        @param request: ListTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -5985,6 +7865,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListTablesRequest,
     ) -> data_lake_20200710_models.ListTablesResponse:
+        """
+        @summary list tables
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tables_with_options(request, headers, runtime)
@@ -5993,6 +7879,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListTablesRequest,
     ) -> data_lake_20200710_models.ListTablesResponse:
+        """
+        @summary list tables
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tables_with_options_async(request, headers, runtime)
@@ -6003,6 +7895,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListUserRolesResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListUserRolesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_page_token):
@@ -6039,6 +7939,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.ListUserRolesResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListUserRolesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_page_token):
@@ -6073,6 +7981,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListUserRolesRequest,
     ) -> data_lake_20200710_models.ListUserRolesResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListUserRolesRequest
+        @return: ListUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_roles_with_options(request, headers, runtime)
@@ -6081,6 +7995,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.ListUserRolesRequest,
     ) -> data_lake_20200710_models.ListUserRolesResponse:
+        """
+        @summary 查询用户角色列表
+        
+        @param request: ListUserRolesRequest
+        @return: ListUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_roles_with_options_async(request, headers, runtime)
@@ -6091,6 +8011,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RefreshLockResponse:
+        """
+        @summary refresh to keep the lock alive
+        
+        @param request: RefreshLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -6121,6 +8049,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RefreshLockResponse:
+        """
+        @summary refresh to keep the lock alive
+        
+        @param request: RefreshLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -6149,6 +8085,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RefreshLockRequest,
     ) -> data_lake_20200710_models.RefreshLockResponse:
+        """
+        @summary refresh to keep the lock alive
+        
+        @param request: RefreshLockRequest
+        @return: RefreshLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.refresh_lock_with_options(request, headers, runtime)
@@ -6157,6 +8099,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RefreshLockRequest,
     ) -> data_lake_20200710_models.RefreshLockResponse:
+        """
+        @summary refresh to keep the lock alive
+        
+        @param request: RefreshLockRequest
+        @return: RefreshLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.refresh_lock_with_options_async(request, headers, runtime)
@@ -6167,6 +8115,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RegisterLocationResponse:
+        """
+        @summary 注册Location
+        
+        @param request: RegisterLocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterLocationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.inventory_collect_enabled):
@@ -6203,6 +8159,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RegisterLocationResponse:
+        """
+        @summary 注册Location
+        
+        @param request: RegisterLocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterLocationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.inventory_collect_enabled):
@@ -6237,6 +8201,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RegisterLocationRequest,
     ) -> data_lake_20200710_models.RegisterLocationResponse:
+        """
+        @summary 注册Location
+        
+        @param request: RegisterLocationRequest
+        @return: RegisterLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.register_location_with_options(request, headers, runtime)
@@ -6245,6 +8215,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RegisterLocationRequest,
     ) -> data_lake_20200710_models.RegisterLocationResponse:
+        """
+        @summary 注册Location
+        
+        @param request: RegisterLocationRequest
+        @return: RegisterLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.register_location_with_options_async(request, headers, runtime)
@@ -6255,6 +8231,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RenamePartitionResponse:
+        """
+        @summary rename partition
+        
+        @param request: RenamePartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenamePartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -6293,6 +8277,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RenamePartitionResponse:
+        """
+        @summary rename partition
+        
+        @param request: RenamePartitionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenamePartitionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -6329,6 +8321,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RenamePartitionRequest,
     ) -> data_lake_20200710_models.RenamePartitionResponse:
+        """
+        @summary rename partition
+        
+        @param request: RenamePartitionRequest
+        @return: RenamePartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.rename_partition_with_options(request, headers, runtime)
@@ -6337,6 +8335,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RenamePartitionRequest,
     ) -> data_lake_20200710_models.RenamePartitionResponse:
+        """
+        @summary rename partition
+        
+        @param request: RenamePartitionRequest
+        @return: RenamePartitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rename_partition_with_options_async(request, headers, runtime)
@@ -6347,6 +8351,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RenameTableResponse:
+        """
+        @summary rename table
+        
+        @param request: RenameTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -6385,6 +8397,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RenameTableResponse:
+        """
+        @summary rename table
+        
+        @param request: RenameTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -6421,6 +8441,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RenameTableRequest,
     ) -> data_lake_20200710_models.RenameTableResponse:
+        """
+        @summary rename table
+        
+        @param request: RenameTableRequest
+        @return: RenameTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.rename_table_with_options(request, headers, runtime)
@@ -6429,6 +8455,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RenameTableRequest,
     ) -> data_lake_20200710_models.RenameTableResponse:
+        """
+        @summary rename table
+        
+        @param request: RenameTableRequest
+        @return: RenameTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rename_table_with_options_async(request, headers, runtime)
@@ -6439,6 +8471,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RevokePermissionsResponse:
+        """
+        @summary 取消Principal资源的权限
+        
+        @param request: RevokePermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accesses):
@@ -6479,6 +8519,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RevokePermissionsResponse:
+        """
+        @summary 取消Principal资源的权限
+        
+        @param request: RevokePermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accesses):
@@ -6517,6 +8565,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RevokePermissionsRequest,
     ) -> data_lake_20200710_models.RevokePermissionsResponse:
+        """
+        @summary 取消Principal资源的权限
+        
+        @param request: RevokePermissionsRequest
+        @return: RevokePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.revoke_permissions_with_options(request, headers, runtime)
@@ -6525,6 +8579,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RevokePermissionsRequest,
     ) -> data_lake_20200710_models.RevokePermissionsResponse:
+        """
+        @summary 取消Principal资源的权限
+        
+        @param request: RevokePermissionsRequest
+        @return: RevokePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.revoke_permissions_with_options_async(request, headers, runtime)
@@ -6535,6 +8595,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
+        """
+        @summary 批量将该角色从这些用户中revoke
+        
+        @param request: RevokeRoleFromUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeRoleFromUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -6567,6 +8635,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
+        """
+        @summary 批量将该角色从这些用户中revoke
+        
+        @param request: RevokeRoleFromUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeRoleFromUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -6597,6 +8673,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RevokeRoleFromUsersRequest,
     ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
+        """
+        @summary 批量将该角色从这些用户中revoke
+        
+        @param request: RevokeRoleFromUsersRequest
+        @return: RevokeRoleFromUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.revoke_role_from_users_with_options(request, headers, runtime)
@@ -6605,6 +8687,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RevokeRoleFromUsersRequest,
     ) -> data_lake_20200710_models.RevokeRoleFromUsersResponse:
+        """
+        @summary 批量将该角色从这些用户中revoke
+        
+        @param request: RevokeRoleFromUsersRequest
+        @return: RevokeRoleFromUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.revoke_role_from_users_with_options_async(request, headers, runtime)
@@ -6615,6 +8703,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
+        """
+        @summary 批量Revoke该用户的角色
+        
+        @param request: RevokeRolesFromUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeRolesFromUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_names):
@@ -6647,6 +8743,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
+        """
+        @summary 批量Revoke该用户的角色
+        
+        @param request: RevokeRolesFromUserRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeRolesFromUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_names):
@@ -6677,6 +8781,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RevokeRolesFromUserRequest,
     ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
+        """
+        @summary 批量Revoke该用户的角色
+        
+        @param request: RevokeRolesFromUserRequest
+        @return: RevokeRolesFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.revoke_roles_from_user_with_options(request, headers, runtime)
@@ -6685,6 +8795,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RevokeRolesFromUserRequest,
     ) -> data_lake_20200710_models.RevokeRolesFromUserResponse:
+        """
+        @summary 批量Revoke该用户的角色
+        
+        @param request: RevokeRolesFromUserRequest
+        @return: RevokeRolesFromUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.revoke_roles_from_user_with_options_async(request, headers, runtime)
@@ -6695,6 +8811,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
+        """
+        @summary 运行元数据迁移任务
+        
+        @param request: RunMigrationWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMigrationWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6725,6 +8849,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
+        """
+        @summary 运行元数据迁移任务
+        
+        @param request: RunMigrationWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMigrationWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6753,6 +8885,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RunMigrationWorkflowRequest,
     ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
+        """
+        @summary 运行元数据迁移任务
+        
+        @param request: RunMigrationWorkflowRequest
+        @return: RunMigrationWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.run_migration_workflow_with_options(request, headers, runtime)
@@ -6761,6 +8899,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.RunMigrationWorkflowRequest,
     ) -> data_lake_20200710_models.RunMigrationWorkflowResponse:
+        """
+        @summary 运行元数据迁移任务
+        
+        @param request: RunMigrationWorkflowRequest
+        @return: RunMigrationWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_migration_workflow_with_options_async(request, headers, runtime)
@@ -6771,6 +8915,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.SearchResponse:
+        """
+        @summary DLF 元数据search
+        
+        @param request: SearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -6811,6 +8963,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.SearchResponse:
+        """
+        @summary DLF 元数据search
+        
+        @param request: SearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -6849,6 +9009,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.SearchRequest,
     ) -> data_lake_20200710_models.SearchResponse:
+        """
+        @summary DLF 元数据search
+        
+        @param request: SearchRequest
+        @return: SearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_with_options(request, headers, runtime)
@@ -6857,6 +9023,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.SearchRequest,
     ) -> data_lake_20200710_models.SearchResponse:
+        """
+        @summary DLF 元数据search
+        
+        @param request: SearchRequest
+        @return: SearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_with_options_async(request, headers, runtime)
@@ -6867,6 +9039,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
+        """
+        @summary DLF 跨Catalog检索元数据
+        
+        @param request: SearchAcrossCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchAcrossCatalogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_ids):
@@ -6907,6 +9087,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
+        """
+        @summary DLF 跨Catalog检索元数据
+        
+        @param request: SearchAcrossCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchAcrossCatalogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_ids):
@@ -6945,6 +9133,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.SearchAcrossCatalogRequest,
     ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
+        """
+        @summary DLF 跨Catalog检索元数据
+        
+        @param request: SearchAcrossCatalogRequest
+        @return: SearchAcrossCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.search_across_catalog_with_options(request, headers, runtime)
@@ -6953,6 +9147,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.SearchAcrossCatalogRequest,
     ) -> data_lake_20200710_models.SearchAcrossCatalogResponse:
+        """
+        @summary DLF 跨Catalog检索元数据
+        
+        @param request: SearchAcrossCatalogRequest
+        @return: SearchAcrossCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.search_across_catalog_with_options_async(request, headers, runtime)
@@ -6963,6 +9163,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
+        """
+        @summary 停止元数据迁移任务
+        
+        @param request: StopMigrationWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMigrationWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6993,6 +9201,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
+        """
+        @summary 停止元数据迁移任务
+        
+        @param request: StopMigrationWorkflowRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMigrationWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7021,6 +9237,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.StopMigrationWorkflowRequest,
     ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
+        """
+        @summary 停止元数据迁移任务
+        
+        @param request: StopMigrationWorkflowRequest
+        @return: StopMigrationWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_migration_workflow_with_options(request, headers, runtime)
@@ -7029,6 +9251,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.StopMigrationWorkflowRequest,
     ) -> data_lake_20200710_models.StopMigrationWorkflowResponse:
+        """
+        @summary 停止元数据迁移任务
+        
+        @param request: StopMigrationWorkflowRequest
+        @return: StopMigrationWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_migration_workflow_with_options_async(request, headers, runtime)
@@ -7039,6 +9267,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.SubmitQueryResponse:
+        """
+        @param request: SubmitQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7073,6 +9307,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.SubmitQueryResponse:
+        """
+        @param request: SubmitQueryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7105,6 +9345,10 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.SubmitQueryRequest,
     ) -> data_lake_20200710_models.SubmitQueryResponse:
+        """
+        @param request: SubmitQueryRequest
+        @return: SubmitQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.submit_query_with_options(request, headers, runtime)
@@ -7113,6 +9357,10 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.SubmitQueryRequest,
     ) -> data_lake_20200710_models.SubmitQueryResponse:
+        """
+        @param request: SubmitQueryRequest
+        @return: SubmitQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_query_with_options_async(request, headers, runtime)
@@ -7123,6 +9371,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UnLockResponse:
+        """
+        @summary unlock
+        
+        @param request: UnLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -7153,6 +9409,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UnLockResponse:
+        """
+        @summary unlock
+        
+        @param request: UnLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnLockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lock_id):
@@ -7181,6 +9445,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UnLockRequest,
     ) -> data_lake_20200710_models.UnLockResponse:
+        """
+        @summary unlock
+        
+        @param request: UnLockRequest
+        @return: UnLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.un_lock_with_options(request, headers, runtime)
@@ -7189,6 +9459,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UnLockRequest,
     ) -> data_lake_20200710_models.UnLockResponse:
+        """
+        @summary unlock
+        
+        @param request: UnLockRequest
+        @return: UnLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.un_lock_with_options_async(request, headers, runtime)
@@ -7199,6 +9475,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateCatalogResponse:
+        """
+        @summary 更新数据湖Catalog
+        
+        @param request: UpdateCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCatalogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_input):
@@ -7229,6 +9513,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateCatalogResponse:
+        """
+        @summary 更新数据湖Catalog
+        
+        @param request: UpdateCatalogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCatalogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_input):
@@ -7257,6 +9549,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateCatalogRequest,
     ) -> data_lake_20200710_models.UpdateCatalogResponse:
+        """
+        @summary 更新数据湖Catalog
+        
+        @param request: UpdateCatalogRequest
+        @return: UpdateCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_catalog_with_options(request, headers, runtime)
@@ -7265,6 +9563,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateCatalogRequest,
     ) -> data_lake_20200710_models.UpdateCatalogResponse:
+        """
+        @summary 更新数据湖Catalog
+        
+        @param request: UpdateCatalogRequest
+        @return: UpdateCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_catalog_with_options_async(request, headers, runtime)
@@ -7275,6 +9579,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: UpdateCatalogSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCatalogSettingsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7307,6 +9619,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: UpdateCatalogSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCatalogSettingsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7337,6 +9657,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateCatalogSettingsRequest,
     ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: UpdateCatalogSettingsRequest
+        @return: UpdateCatalogSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_catalog_settings_with_options(request, headers, runtime)
@@ -7345,6 +9671,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateCatalogSettingsRequest,
     ) -> data_lake_20200710_models.UpdateCatalogSettingsResponse:
+        """
+        @summary 获取数据湖配置
+        
+        @param request: UpdateCatalogSettingsRequest
+        @return: UpdateCatalogSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_catalog_settings_with_options_async(request, headers, runtime)
@@ -7355,6 +9687,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateDatabaseResponse:
+        """
+        @summary Update database
+        
+        @param request: UpdateDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7389,6 +9729,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateDatabaseResponse:
+        """
+        @summary Update database
+        
+        @param request: UpdateDatabaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7421,6 +9769,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateDatabaseRequest,
     ) -> data_lake_20200710_models.UpdateDatabaseResponse:
+        """
+        @summary Update database
+        
+        @param request: UpdateDatabaseRequest
+        @return: UpdateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_database_with_options(request, headers, runtime)
@@ -7429,6 +9783,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateDatabaseRequest,
     ) -> data_lake_20200710_models.UpdateDatabaseResponse:
+        """
+        @summary Update database
+        
+        @param request: UpdateDatabaseRequest
+        @return: UpdateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_database_with_options_async(request, headers, runtime)
@@ -7439,6 +9799,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateFunctionResponse:
+        """
+        @summary update function
+        
+        @param request: UpdateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7475,6 +9843,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateFunctionResponse:
+        """
+        @summary update function
+        
+        @param request: UpdateFunctionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.catalog_id):
@@ -7509,6 +9885,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateFunctionRequest,
     ) -> data_lake_20200710_models.UpdateFunctionResponse:
+        """
+        @summary update function
+        
+        @param request: UpdateFunctionRequest
+        @return: UpdateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_function_with_options(request, headers, runtime)
@@ -7517,6 +9899,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateFunctionRequest,
     ) -> data_lake_20200710_models.UpdateFunctionResponse:
+        """
+        @summary update function
+        
+        @param request: UpdateFunctionRequest
+        @return: UpdateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_function_with_options_async(request, headers, runtime)
@@ -7527,6 +9915,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
+        """
+        @summary update partition columnstatistics
+        
+        @param request: UpdatePartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -7554,6 +9950,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
+        """
+        @summary update partition columnstatistics
+        
+        @param request: UpdatePartitionColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePartitionColumnStatisticsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -7579,6 +9983,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdatePartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
+        """
+        @summary update partition columnstatistics
+        
+        @param request: UpdatePartitionColumnStatisticsRequest
+        @return: UpdatePartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_partition_column_statistics_with_options(request, headers, runtime)
@@ -7587,6 +9997,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdatePartitionColumnStatisticsRequest,
     ) -> data_lake_20200710_models.UpdatePartitionColumnStatisticsResponse:
+        """
+        @summary update partition columnstatistics
+        
+        @param request: UpdatePartitionColumnStatisticsRequest
+        @return: UpdatePartitionColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_partition_column_statistics_with_options_async(request, headers, runtime)
@@ -7597,6 +10013,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdatePermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: UpdatePermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accesses):
@@ -7637,6 +10061,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdatePermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: UpdatePermissionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePermissionsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accesses):
@@ -7675,6 +10107,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdatePermissionsRequest,
     ) -> data_lake_20200710_models.UpdatePermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: UpdatePermissionsRequest
+        @return: UpdatePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_permissions_with_options(request, headers, runtime)
@@ -7683,6 +10121,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdatePermissionsRequest,
     ) -> data_lake_20200710_models.UpdatePermissionsResponse:
+        """
+        @summary 赋予Principal资源的权限
+        
+        @param request: UpdatePermissionsRequest
+        @return: UpdatePermissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_permissions_with_options_async(request, headers, runtime)
@@ -7693,6 +10137,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        """
+        @summary 修改Location
+        
+        @param request: UpdateRegisteredLocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRegisteredLocationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.inventory_collect_enabled):
@@ -7727,6 +10179,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        """
+        @summary 修改Location
+        
+        @param request: UpdateRegisteredLocationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRegisteredLocationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.inventory_collect_enabled):
@@ -7759,6 +10219,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateRegisteredLocationRequest,
     ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        """
+        @summary 修改Location
+        
+        @param request: UpdateRegisteredLocationRequest
+        @return: UpdateRegisteredLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_registered_location_with_options(request, headers, runtime)
@@ -7767,6 +10233,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateRegisteredLocationRequest,
     ) -> data_lake_20200710_models.UpdateRegisteredLocationResponse:
+        """
+        @summary 修改Location
+        
+        @param request: UpdateRegisteredLocationRequest
+        @return: UpdateRegisteredLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_registered_location_with_options_async(request, headers, runtime)
@@ -7777,6 +10249,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateRoleResponse:
+        """
+        @summary 更新角色
+        
+        @param request: UpdateRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_input):
@@ -7809,6 +10289,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateRoleResponse:
+        """
+        @summary 更新角色
+        
+        @param request: UpdateRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_input):
@@ -7839,6 +10327,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateRoleRequest,
     ) -> data_lake_20200710_models.UpdateRoleResponse:
+        """
+        @summary 更新角色
+        
+        @param request: UpdateRoleRequest
+        @return: UpdateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_role_with_options(request, headers, runtime)
@@ -7847,6 +10341,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateRoleRequest,
     ) -> data_lake_20200710_models.UpdateRoleResponse:
+        """
+        @summary 更新角色
+        
+        @param request: UpdateRoleRequest
+        @return: UpdateRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_role_with_options_async(request, headers, runtime)
@@ -7857,6 +10357,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
+        """
+        @summary 更新Role中的Users
+        
+        @param request: UpdateRoleUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -7889,6 +10397,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
+        """
+        @summary 更新Role中的Users
+        
+        @param request: UpdateRoleUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -7919,6 +10435,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateRoleUsersRequest,
     ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
+        """
+        @summary 更新Role中的Users
+        
+        @param request: UpdateRoleUsersRequest
+        @return: UpdateRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_role_users_with_options(request, headers, runtime)
@@ -7927,6 +10449,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateRoleUsersRequest,
     ) -> data_lake_20200710_models.UpdateRoleUsersResponse:
+        """
+        @summary 更新Role中的Users
+        
+        @param request: UpdateRoleUsersRequest
+        @return: UpdateRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_role_users_with_options_async(request, headers, runtime)
@@ -7937,6 +10465,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateTableResponse:
+        """
+        @summary update table
+        
+        @param request: UpdateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allow_partition_key_change):
@@ -7979,6 +10515,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateTableResponse:
+        """
+        @summary update table
+        
+        @param request: UpdateTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allow_partition_key_change):
@@ -8019,6 +10563,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateTableRequest,
     ) -> data_lake_20200710_models.UpdateTableResponse:
+        """
+        @summary update table
+        
+        @param request: UpdateTableRequest
+        @return: UpdateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_table_with_options(request, headers, runtime)
@@ -8027,6 +10577,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateTableRequest,
     ) -> data_lake_20200710_models.UpdateTableResponse:
+        """
+        @summary update table
+        
+        @param request: UpdateTableRequest
+        @return: UpdateTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_table_with_options_async(request, headers, runtime)
@@ -8037,6 +10593,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        """
+        @summary update table columnstatistics
+        
+        @param request: UpdateTableColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableColumnStatisticsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -8064,6 +10628,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        """
+        @summary update table columnstatistics
+        
+        @param request: UpdateTableColumnStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTableColumnStatisticsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -8089,6 +10661,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateTableColumnStatisticsRequest,
     ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        """
+        @summary update table columnstatistics
+        
+        @param request: UpdateTableColumnStatisticsRequest
+        @return: UpdateTableColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_table_column_statistics_with_options(request, headers, runtime)
@@ -8097,6 +10675,12 @@ class Client(OpenApiClient):
         self,
         request: data_lake_20200710_models.UpdateTableColumnStatisticsRequest,
     ) -> data_lake_20200710_models.UpdateTableColumnStatisticsResponse:
+        """
+        @summary update table columnstatistics
+        
+        @param request: UpdateTableColumnStatisticsRequest
+        @return: UpdateTableColumnStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_table_column_statistics_with_options_async(request, headers, runtime)

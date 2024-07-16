@@ -1,3 +1,6 @@
+2024-07-16 Version: 1.2.2
+- Generated python 2020-07-10 for DataLake.
+
 2023-09-13 Version: 1.2.1
 - Generated python 2020-07-10 for DataLake.
 
