@@ -3043,6 +3043,7 @@ class GetSuppressionListLevelResponse(TeaModel):
 class GetTrackListRequest(TeaModel):
     def __init__(
         self,
+        account_name: str = None,
         end_time: str = None,
         offset: str = None,
         offset_create_time: str = None,
@@ -3053,8 +3054,10 @@ class GetTrackListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         start_time: str = None,
+        tag_name: str = None,
         total: str = None,
     ):
+        self.account_name = account_name
         # This parameter is required.
         self.end_time = end_time
         self.offset = offset
@@ -3067,6 +3070,7 @@ class GetTrackListRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # This parameter is required.
         self.start_time = start_time
+        self.tag_name = tag_name
         self.total = total
 
     def validate(self):
@@ -3078,6 +3082,8 @@ class GetTrackListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.offset is not None:
@@ -3098,12 +3104,16 @@ class GetTrackListRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
         if self.total is not None:
             result['Total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Offset') is not None:
@@ -3124,6 +3134,8 @@ class GetTrackListRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self

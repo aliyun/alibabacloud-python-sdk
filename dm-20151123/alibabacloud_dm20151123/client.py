@@ -2475,6 +2475,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.offset):
@@ -2495,6 +2497,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.total):
             query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
@@ -2530,6 +2534,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.offset):
@@ -2550,6 +2556,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.total):
             query['Total'] = request.total
         req = open_api_models.OpenApiRequest(

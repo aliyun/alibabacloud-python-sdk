@@ -1,3 +1,8 @@
+2024-07-16 Version: 1.2.1
+- Update API GetTrackList: add param AccountName.
+- Update API GetTrackList: add param TagName.
+
+
 2024-05-30 Version: 1.2.0
 - Support API GetUser.
 - Support API UpdateUser.
