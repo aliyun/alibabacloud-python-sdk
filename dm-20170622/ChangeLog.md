@@ -1,3 +1,13 @@
+2024-07-16 Version: 1.2.3
+- Update API BatchSendMail: add param UnSubscribeFilterLevel.
+- Update API BatchSendMail: add param UnSubscribeLinkType.
+- Update API GetTrackList: add param AccountName.
+- Update API GetTrackList: add param TagName.
+- Update API SenderStatisticsDetailByParam: update response param.
+- Update API SingleSendMail: add param UnSubscribeFilterLevel.
+- Update API SingleSendMail: add param UnSubscribeLinkType.
+
+
 2024-04-10 Version: 1.2.2
 - Update API BatchSendMail: add param UnSubscribeFilterLevel.
 - Update API BatchSendMail: add param UnSubscribeLinkType.

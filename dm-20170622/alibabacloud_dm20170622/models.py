@@ -12,6 +12,7 @@ class AddIpfilterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.ip_address = ip_address
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -140,16 +141,20 @@ class BatchSendMailRequest(TeaModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.address_type = address_type
         self.click_trace = click_trace
         self.owner_id = owner_id
+        # This parameter is required.
         self.receivers_name = receivers_name
         self.reply_address = reply_address
         self.reply_address_alias = reply_address_alias
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tag_name = tag_name
+        # This parameter is required.
         self.template_name = template_name
         self.un_subscribe_filter_level = un_subscribe_filter_level
         self.un_subscribe_link_type = un_subscribe_link_type
@@ -304,6 +309,7 @@ class CheckDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -424,6 +430,7 @@ class CheckDomainDnsRequest(TeaModel):
         resource_owner_id: int = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -548,6 +555,7 @@ class CreateDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -669,11 +677,13 @@ class CreateMailAddressRequest(TeaModel):
         resource_owner_id: int = None,
         sendtype: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
         self.owner_id = owner_id
         self.reply_address = reply_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.sendtype = sendtype
 
     def validate(self):
@@ -802,7 +812,9 @@ class CreateReceiverRequest(TeaModel):
     ):
         self.desc = desc
         self.owner_id = owner_id
+        # This parameter is required.
         self.receivers_alias = receivers_alias
+        # This parameter is required.
         self.receivers_name = receivers_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -934,6 +946,7 @@ class CreateTagRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tag_description = tag_description
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -1069,6 +1082,7 @@ class CreateTemplateRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.sms_content = sms_content
         self.sms_type = sms_type
+        # This parameter is required.
         self.template_name = template_name
         self.template_nick_name = template_nick_name
         self.template_subject = template_subject
@@ -1221,6 +1235,7 @@ class DeleteDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1334,6 +1349,7 @@ class DeleteMailAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.mail_address_id = mail_address_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1448,6 +1464,7 @@ class DeleteReceiverRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1563,6 +1580,7 @@ class DeleteReceiverDetailRequest(TeaModel):
     ):
         self.email = email
         self.owner_id = owner_id
+        # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1682,6 +1700,7 @@ class DeleteTagRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.tag_id = tag_id
 
     def validate(self):
@@ -1797,6 +1816,7 @@ class DeleteTemplateRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -2115,6 +2135,7 @@ class DescDomainRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.domain_id = domain_id
         self.owner_id = owner_id
         self.require_real_time_dns_records = require_real_time_dns_records
@@ -2406,6 +2427,7 @@ class DescTemplateRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -2823,6 +2845,7 @@ class GetMailAddressMsgCallBackUrlRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.mail_from = mail_from
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -2943,6 +2966,7 @@ class GetMailAddressMsgCallBackUrlResponse(TeaModel):
 class GetTrackListRequest(TeaModel):
     def __init__(
         self,
+        account_name: str = None,
         end_time: str = None,
         offset: str = None,
         offset_create_time: str = None,
@@ -2953,8 +2977,11 @@ class GetTrackListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         start_time: str = None,
+        tag_name: str = None,
         total: str = None,
     ):
+        self.account_name = account_name
+        # This parameter is required.
         self.end_time = end_time
         self.offset = offset
         self.offset_create_time = offset_create_time
@@ -2964,7 +2991,9 @@ class GetTrackListRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.start_time = start_time
+        self.tag_name = tag_name
         self.total = total
 
     def validate(self):
@@ -2976,6 +3005,8 @@ class GetTrackListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.offset is not None:
@@ -2996,12 +3027,16 @@ class GetTrackListRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
         if self.total is not None:
             result['Total'] = self.total
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Offset') is not None:
@@ -3022,6 +3057,8 @@ class GetTrackListRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
         if m.get('Total') is not None:
             self.total = m.get('Total')
         return self
@@ -3259,6 +3296,7 @@ class ModifyMailAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.mail_address_id = mail_address_id
         self.owner_id = owner_id
         self.password = password
@@ -3381,7 +3419,9 @@ class ModifyPWByDomainRequest(TeaModel):
         password: str = None,
         resource_owner_id: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.password = password
         self.resource_owner_id = resource_owner_id
 
@@ -3513,7 +3553,9 @@ class ModifyTagRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.tag_description = tag_description
+        # This parameter is required.
         self.tag_id = tag_id
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -3647,7 +3689,9 @@ class ModifyTemplateRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.sms_content = sms_content
         self.sms_type = sms_type
+        # This parameter is required.
         self.template_id = template_id
+        # This parameter is required.
         self.template_name = template_name
         self.template_nick_name = template_nick_name
         self.template_subject = template_subject
@@ -4856,6 +4900,7 @@ class QueryReceiverDetailRequest(TeaModel):
         self.next_start = next_start
         self.owner_id = owner_id
         self.page_size = page_size
+        # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5858,8 +5903,10 @@ class SaveReceiverDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.detail = detail
         self.owner_id = owner_id
+        # This parameter is required.
         self.receiver_id = receiver_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6062,10 +6109,12 @@ class SenderStatisticsByTagNameAndBatchIDRequest(TeaModel):
         tag_name: str = None,
     ):
         self.account_name = account_name
+        # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.start_time = start_time
         self.tag_name = tag_name
 
@@ -6587,7 +6636,9 @@ class SingleSendMailRequest(TeaModel):
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.address_type = address_type
         self.click_trace = click_trace
         self.from_alias = from_alias
@@ -6595,12 +6646,15 @@ class SingleSendMailRequest(TeaModel):
         self.owner_id = owner_id
         self.reply_address = reply_address
         self.reply_address_alias = reply_address_alias
+        # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subject = subject
         self.tag_name = tag_name
         self.text_body = text_body
+        # This parameter is required.
         self.to_address = to_address
         self.un_subscribe_filter_level = un_subscribe_filter_level
         self.un_subscribe_link_type = un_subscribe_link_type
@@ -6816,7 +6870,9 @@ class SingleSendMailV2Request(TeaModel):
         text_body: str = None,
         to_address: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.address_type = address_type
         self.click_trace = click_trace
         self.from_alias = from_alias
@@ -6825,12 +6881,15 @@ class SingleSendMailV2Request(TeaModel):
         self.owner_id = owner_id
         self.reply_address = reply_address
         self.reply_address_alias = reply_address_alias
+        # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subject = subject
         self.tag_name = tag_name
         self.text_body = text_body
+        # This parameter is required.
         self.to_address = to_address
 
     def validate(self):
@@ -6941,7 +7000,9 @@ class SingleSendMailV2ShrinkRequest(TeaModel):
         text_body: str = None,
         to_address: str = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.address_type = address_type
         self.click_trace = click_trace
         self.from_alias = from_alias
@@ -6950,12 +7011,15 @@ class SingleSendMailV2ShrinkRequest(TeaModel):
         self.owner_id = owner_id
         self.reply_address = reply_address
         self.reply_address_alias = reply_address_alias
+        # This parameter is required.
         self.reply_to_address = reply_to_address
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.subject = subject
         self.tag_name = tag_name
         self.text_body = text_body
+        # This parameter is required.
         self.to_address = to_address
 
     def validate(self):

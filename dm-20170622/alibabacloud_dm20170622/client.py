@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.AddIpfilterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.AddIpfilterResponse:
+        """
+        @summary 添加IP白名单
+        
+        @param request: AddIpfilterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIpfilterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_address):
@@ -80,6 +87,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.AddIpfilterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.AddIpfilterResponse:
+        """
+        @summary 添加IP白名单
+        
+        @param request: AddIpfilterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIpfilterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_address):
@@ -113,6 +127,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.AddIpfilterRequest,
     ) -> dm_20170622_models.AddIpfilterResponse:
+        """
+        @summary 添加IP白名单
+        
+        @param request: AddIpfilterRequest
+        @return: AddIpfilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_ipfilter_with_options(request, runtime)
 
@@ -120,6 +140,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.AddIpfilterRequest,
     ) -> dm_20170622_models.AddIpfilterResponse:
+        """
+        @summary 添加IP白名单
+        
+        @param request: AddIpfilterRequest
+        @return: AddIpfilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_ipfilter_with_options_async(request, runtime)
 
@@ -128,6 +154,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.BatchSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.BatchSendMailResponse:
+        """
+        @param request: BatchSendMailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSendMailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -180,6 +211,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.BatchSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.BatchSendMailResponse:
+        """
+        @param request: BatchSendMailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSendMailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -231,6 +267,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.BatchSendMailRequest,
     ) -> dm_20170622_models.BatchSendMailResponse:
+        """
+        @param request: BatchSendMailRequest
+        @return: BatchSendMailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_send_mail_with_options(request, runtime)
 
@@ -238,6 +278,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.BatchSendMailRequest,
     ) -> dm_20170622_models.BatchSendMailResponse:
+        """
+        @param request: BatchSendMailRequest
+        @return: BatchSendMailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_send_mail_with_options_async(request, runtime)
 
@@ -246,6 +290,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CheckDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CheckDomainResponse:
+        """
+        @summary 校验域名状态
+        
+        @param request: CheckDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -280,6 +331,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CheckDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CheckDomainResponse:
+        """
+        @summary 校验域名状态
+        
+        @param request: CheckDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -313,6 +371,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CheckDomainRequest,
     ) -> dm_20170622_models.CheckDomainResponse:
+        """
+        @summary 校验域名状态
+        
+        @param request: CheckDomainRequest
+        @return: CheckDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_domain_with_options(request, runtime)
 
@@ -320,6 +384,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CheckDomainRequest,
     ) -> dm_20170622_models.CheckDomainResponse:
+        """
+        @summary 校验域名状态
+        
+        @param request: CheckDomainRequest
+        @return: CheckDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_domain_with_options_async(request, runtime)
 
@@ -328,6 +398,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CheckDomainDnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CheckDomainDnsResponse:
+        """
+        @summary 校验域名Dns状态
+        
+        @param request: CheckDomainDnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDomainDnsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -364,6 +441,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CheckDomainDnsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CheckDomainDnsResponse:
+        """
+        @summary 校验域名Dns状态
+        
+        @param request: CheckDomainDnsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDomainDnsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -399,6 +483,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CheckDomainDnsRequest,
     ) -> dm_20170622_models.CheckDomainDnsResponse:
+        """
+        @summary 校验域名Dns状态
+        
+        @param request: CheckDomainDnsRequest
+        @return: CheckDomainDnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_domain_dns_with_options(request, runtime)
 
@@ -406,6 +496,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CheckDomainDnsRequest,
     ) -> dm_20170622_models.CheckDomainDnsResponse:
+        """
+        @summary 校验域名Dns状态
+        
+        @param request: CheckDomainDnsRequest
+        @return: CheckDomainDnsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_domain_dns_with_options_async(request, runtime)
 
@@ -414,6 +510,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateDomainResponse:
+        """
+        @param request: CreateDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -448,6 +549,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateDomainResponse:
+        """
+        @param request: CreateDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -481,6 +587,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateDomainRequest,
     ) -> dm_20170622_models.CreateDomainResponse:
+        """
+        @param request: CreateDomainRequest
+        @return: CreateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_domain_with_options(request, runtime)
 
@@ -488,6 +598,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateDomainRequest,
     ) -> dm_20170622_models.CreateDomainResponse:
+        """
+        @param request: CreateDomainRequest
+        @return: CreateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_domain_with_options_async(request, runtime)
 
@@ -496,6 +610,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateMailAddressResponse:
+        """
+        @param request: CreateMailAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMailAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -534,6 +653,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateMailAddressResponse:
+        """
+        @param request: CreateMailAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMailAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -571,6 +695,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateMailAddressRequest,
     ) -> dm_20170622_models.CreateMailAddressResponse:
+        """
+        @param request: CreateMailAddressRequest
+        @return: CreateMailAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mail_address_with_options(request, runtime)
 
@@ -578,6 +706,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateMailAddressRequest,
     ) -> dm_20170622_models.CreateMailAddressResponse:
+        """
+        @param request: CreateMailAddressRequest
+        @return: CreateMailAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mail_address_with_options_async(request, runtime)
 
@@ -586,6 +718,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateReceiverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateReceiverResponse:
+        """
+        @param request: CreateReceiverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReceiverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desc):
@@ -624,6 +761,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateReceiverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateReceiverResponse:
+        """
+        @param request: CreateReceiverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReceiverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.desc):
@@ -661,6 +803,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateReceiverRequest,
     ) -> dm_20170622_models.CreateReceiverResponse:
+        """
+        @param request: CreateReceiverRequest
+        @return: CreateReceiverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_receiver_with_options(request, runtime)
 
@@ -668,6 +814,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateReceiverRequest,
     ) -> dm_20170622_models.CreateReceiverResponse:
+        """
+        @param request: CreateReceiverRequest
+        @return: CreateReceiverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_receiver_with_options_async(request, runtime)
 
@@ -676,6 +826,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateTagResponse:
+        """
+        @param request: CreateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -712,6 +867,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateTagResponse:
+        """
+        @param request: CreateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -747,6 +907,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateTagRequest,
     ) -> dm_20170622_models.CreateTagResponse:
+        """
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tag_with_options(request, runtime)
 
@@ -754,6 +918,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateTagRequest,
     ) -> dm_20170622_models.CreateTagResponse:
+        """
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tag_with_options_async(request, runtime)
 
@@ -762,6 +930,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -812,6 +985,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -861,6 +1039,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateTemplateRequest,
     ) -> dm_20170622_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_template_with_options(request, runtime)
 
@@ -868,6 +1050,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.CreateTemplateRequest,
     ) -> dm_20170622_models.CreateTemplateResponse:
+        """
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
@@ -876,6 +1062,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -910,6 +1101,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -943,6 +1139,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteDomainRequest,
     ) -> dm_20170622_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_domain_with_options(request, runtime)
 
@@ -950,6 +1150,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteDomainRequest,
     ) -> dm_20170622_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_with_options_async(request, runtime)
 
@@ -958,6 +1162,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteMailAddressResponse:
+        """
+        @param request: DeleteMailAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMailAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mail_address_id):
@@ -992,6 +1201,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteMailAddressResponse:
+        """
+        @param request: DeleteMailAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMailAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mail_address_id):
@@ -1025,6 +1239,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteMailAddressRequest,
     ) -> dm_20170622_models.DeleteMailAddressResponse:
+        """
+        @param request: DeleteMailAddressRequest
+        @return: DeleteMailAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mail_address_with_options(request, runtime)
 
@@ -1032,6 +1250,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteMailAddressRequest,
     ) -> dm_20170622_models.DeleteMailAddressResponse:
+        """
+        @param request: DeleteMailAddressRequest
+        @return: DeleteMailAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mail_address_with_options_async(request, runtime)
 
@@ -1040,6 +1262,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteReceiverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteReceiverResponse:
+        """
+        @param request: DeleteReceiverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReceiverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1074,6 +1301,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteReceiverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteReceiverResponse:
+        """
+        @param request: DeleteReceiverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReceiverResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1107,6 +1339,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteReceiverRequest,
     ) -> dm_20170622_models.DeleteReceiverResponse:
+        """
+        @param request: DeleteReceiverRequest
+        @return: DeleteReceiverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_receiver_with_options(request, runtime)
 
@@ -1114,6 +1350,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteReceiverRequest,
     ) -> dm_20170622_models.DeleteReceiverResponse:
+        """
+        @param request: DeleteReceiverRequest
+        @return: DeleteReceiverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_receiver_with_options_async(request, runtime)
 
@@ -1122,6 +1362,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteReceiverDetailResponse:
+        """
+        @param request: DeleteReceiverDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReceiverDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.email):
@@ -1158,6 +1403,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteReceiverDetailResponse:
+        """
+        @param request: DeleteReceiverDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReceiverDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.email):
@@ -1193,6 +1443,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteReceiverDetailRequest,
     ) -> dm_20170622_models.DeleteReceiverDetailResponse:
+        """
+        @param request: DeleteReceiverDetailRequest
+        @return: DeleteReceiverDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_receiver_detail_with_options(request, runtime)
 
@@ -1200,6 +1454,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteReceiverDetailRequest,
     ) -> dm_20170622_models.DeleteReceiverDetailResponse:
+        """
+        @param request: DeleteReceiverDetailRequest
+        @return: DeleteReceiverDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_receiver_detail_with_options_async(request, runtime)
 
@@ -1208,6 +1466,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteTagResponse:
+        """
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1242,6 +1505,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteTagResponse:
+        """
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1275,6 +1543,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteTagRequest,
     ) -> dm_20170622_models.DeleteTagResponse:
+        """
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tag_with_options(request, runtime)
 
@@ -1282,6 +1554,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteTagRequest,
     ) -> dm_20170622_models.DeleteTagResponse:
+        """
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tag_with_options_async(request, runtime)
 
@@ -1290,6 +1566,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -1326,6 +1607,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -1361,6 +1647,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteTemplateRequest,
     ) -> dm_20170622_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_template_with_options(request, runtime)
 
@@ -1368,6 +1658,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DeleteTemplateRequest,
     ) -> dm_20170622_models.DeleteTemplateResponse:
+        """
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
@@ -1376,6 +1670,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DescAccountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DescAccountSummaryResponse:
+        """
+        @param request: DescAccountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescAccountSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1408,6 +1707,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DescAccountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DescAccountSummaryResponse:
+        """
+        @param request: DescAccountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescAccountSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1439,6 +1743,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DescAccountSummaryRequest,
     ) -> dm_20170622_models.DescAccountSummaryResponse:
+        """
+        @param request: DescAccountSummaryRequest
+        @return: DescAccountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.desc_account_summary_with_options(request, runtime)
 
@@ -1446,6 +1754,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DescAccountSummaryRequest,
     ) -> dm_20170622_models.DescAccountSummaryResponse:
+        """
+        @param request: DescAccountSummaryRequest
+        @return: DescAccountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.desc_account_summary_with_options_async(request, runtime)
 
@@ -1454,6 +1766,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DescDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DescDomainResponse:
+        """
+        @param request: DescDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -1490,6 +1807,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DescDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DescDomainResponse:
+        """
+        @param request: DescDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_id):
@@ -1525,6 +1847,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DescDomainRequest,
     ) -> dm_20170622_models.DescDomainResponse:
+        """
+        @param request: DescDomainRequest
+        @return: DescDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.desc_domain_with_options(request, runtime)
 
@@ -1532,6 +1858,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DescDomainRequest,
     ) -> dm_20170622_models.DescDomainResponse:
+        """
+        @param request: DescDomainRequest
+        @return: DescDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.desc_domain_with_options_async(request, runtime)
 
@@ -1540,6 +1870,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DescTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DescTemplateResponse:
+        """
+        @param request: DescTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -1576,6 +1911,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.DescTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.DescTemplateResponse:
+        """
+        @param request: DescTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -1611,6 +1951,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DescTemplateRequest,
     ) -> dm_20170622_models.DescTemplateResponse:
+        """
+        @param request: DescTemplateRequest
+        @return: DescTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.desc_template_with_options(request, runtime)
 
@@ -1618,6 +1962,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.DescTemplateRequest,
     ) -> dm_20170622_models.DescTemplateResponse:
+        """
+        @param request: DescTemplateRequest
+        @return: DescTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.desc_template_with_options_async(request, runtime)
 
@@ -1626,6 +1974,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetAccountListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetAccountListResponse:
+        """
+        @param request: GetAccountListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.offset):
@@ -1670,6 +2023,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetAccountListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetAccountListResponse:
+        """
+        @param request: GetAccountListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.offset):
@@ -1713,6 +2071,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.GetAccountListRequest,
     ) -> dm_20170622_models.GetAccountListResponse:
+        """
+        @param request: GetAccountListRequest
+        @return: GetAccountListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_list_with_options(request, runtime)
 
@@ -1720,6 +2082,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.GetAccountListRequest,
     ) -> dm_20170622_models.GetAccountListResponse:
+        """
+        @param request: GetAccountListRequest
+        @return: GetAccountListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_list_with_options_async(request, runtime)
 
@@ -1729,7 +2095,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetMailAddressMsgCallBackUrl is deprecated
+        
+        @summary 查询发信地址消息回调地址信息
         
         @param request: GetMailAddressMsgCallBackUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1771,7 +2139,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetMailAddressMsgCallBackUrl is deprecated
+        
+        @summary 查询发信地址消息回调地址信息
         
         @param request: GetMailAddressMsgCallBackUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1812,7 +2182,9 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetMailAddressMsgCallBackUrlRequest,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetMailAddressMsgCallBackUrl is deprecated
+        
+        @summary 查询发信地址消息回调地址信息
         
         @param request: GetMailAddressMsgCallBackUrlRequest
         @return: GetMailAddressMsgCallBackUrlResponse
@@ -1826,7 +2198,9 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetMailAddressMsgCallBackUrlRequest,
     ) -> dm_20170622_models.GetMailAddressMsgCallBackUrlResponse:
         """
-        @deprecated
+        @deprecated OpenAPI GetMailAddressMsgCallBackUrl is deprecated
+        
+        @summary 查询发信地址消息回调地址信息
         
         @param request: GetMailAddressMsgCallBackUrlRequest
         @return: GetMailAddressMsgCallBackUrlResponse
@@ -1840,8 +2214,17 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetTrackListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetTrackListResponse:
+        """
+        @summary 获取打开、点击等跟踪行为的统计结果
+        
+        @param request: GetTrackListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrackListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.offset):
@@ -1862,6 +2245,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.total):
             query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
@@ -1888,8 +2273,17 @@ class Client(OpenApiClient):
         request: dm_20170622_models.GetTrackListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.GetTrackListResponse:
+        """
+        @summary 获取打开、点击等跟踪行为的统计结果
+        
+        @param request: GetTrackListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrackListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.offset):
@@ -1910,6 +2304,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.total):
             query['Total'] = request.total
         req = open_api_models.OpenApiRequest(
@@ -1935,6 +2331,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.GetTrackListRequest,
     ) -> dm_20170622_models.GetTrackListResponse:
+        """
+        @summary 获取打开、点击等跟踪行为的统计结果
+        
+        @param request: GetTrackListRequest
+        @return: GetTrackListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_track_list_with_options(request, runtime)
 
@@ -1942,6 +2344,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.GetTrackListRequest,
     ) -> dm_20170622_models.GetTrackListResponse:
+        """
+        @summary 获取打开、点击等跟踪行为的统计结果
+        
+        @param request: GetTrackListRequest
+        @return: GetTrackListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_track_list_with_options_async(request, runtime)
 
@@ -1950,6 +2358,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyMailAddressResponse:
+        """
+        @param request: ModifyMailAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMailAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mail_address_id):
@@ -1988,6 +2401,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyMailAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyMailAddressResponse:
+        """
+        @param request: ModifyMailAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMailAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.mail_address_id):
@@ -2025,6 +2443,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyMailAddressRequest,
     ) -> dm_20170622_models.ModifyMailAddressResponse:
+        """
+        @param request: ModifyMailAddressRequest
+        @return: ModifyMailAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_mail_address_with_options(request, runtime)
 
@@ -2032,6 +2454,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyMailAddressRequest,
     ) -> dm_20170622_models.ModifyMailAddressResponse:
+        """
+        @param request: ModifyMailAddressRequest
+        @return: ModifyMailAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_mail_address_with_options_async(request, runtime)
 
@@ -2040,6 +2466,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyPWByDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyPWByDomainResponse:
+        """
+        @param request: ModifyPWByDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPWByDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -2072,6 +2503,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyPWByDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyPWByDomainResponse:
+        """
+        @param request: ModifyPWByDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPWByDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -2103,6 +2539,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyPWByDomainRequest,
     ) -> dm_20170622_models.ModifyPWByDomainResponse:
+        """
+        @param request: ModifyPWByDomainRequest
+        @return: ModifyPWByDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_pwby_domain_with_options(request, runtime)
 
@@ -2110,6 +2550,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyPWByDomainRequest,
     ) -> dm_20170622_models.ModifyPWByDomainResponse:
+        """
+        @param request: ModifyPWByDomainRequest
+        @return: ModifyPWByDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_pwby_domain_with_options_async(request, runtime)
 
@@ -2118,6 +2562,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyTagResponse:
+        """
+        @param request: ModifyTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2156,6 +2605,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyTagResponse:
+        """
+        @param request: ModifyTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -2193,6 +2647,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyTagRequest,
     ) -> dm_20170622_models.ModifyTagResponse:
+        """
+        @param request: ModifyTagRequest
+        @return: ModifyTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tag_with_options(request, runtime)
 
@@ -2200,6 +2658,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyTagRequest,
     ) -> dm_20170622_models.ModifyTagResponse:
+        """
+        @param request: ModifyTagRequest
+        @return: ModifyTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tag_with_options_async(request, runtime)
 
@@ -2208,6 +2670,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyTemplateResponse:
+        """
+        @summary 修改模板信息
+        
+        @param request: ModifyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -2258,6 +2727,13 @@ class Client(OpenApiClient):
         request: dm_20170622_models.ModifyTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.ModifyTemplateResponse:
+        """
+        @summary 修改模板信息
+        
+        @param request: ModifyTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -2307,6 +2783,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyTemplateRequest,
     ) -> dm_20170622_models.ModifyTemplateResponse:
+        """
+        @summary 修改模板信息
+        
+        @param request: ModifyTemplateRequest
+        @return: ModifyTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_template_with_options(request, runtime)
 
@@ -2314,6 +2796,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.ModifyTemplateRequest,
     ) -> dm_20170622_models.ModifyTemplateResponse:
+        """
+        @summary 修改模板信息
+        
+        @param request: ModifyTemplateRequest
+        @return: ModifyTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_template_with_options_async(request, runtime)
 
@@ -2322,6 +2810,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryDomainByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryDomainByParamResponse:
+        """
+        @param request: QueryDomainByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDomainByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2362,6 +2855,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryDomainByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryDomainByParamResponse:
+        """
+        @param request: QueryDomainByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDomainByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2401,6 +2899,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryDomainByParamRequest,
     ) -> dm_20170622_models.QueryDomainByParamResponse:
+        """
+        @param request: QueryDomainByParamRequest
+        @return: QueryDomainByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_domain_by_param_with_options(request, runtime)
 
@@ -2408,6 +2910,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryDomainByParamRequest,
     ) -> dm_20170622_models.QueryDomainByParamResponse:
+        """
+        @param request: QueryDomainByParamRequest
+        @return: QueryDomainByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_domain_by_param_with_options_async(request, runtime)
 
@@ -2416,6 +2922,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryInvalidAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryInvalidAddressResponse:
+        """
+        @param request: QueryInvalidAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInvalidAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2458,6 +2969,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryInvalidAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryInvalidAddressResponse:
+        """
+        @param request: QueryInvalidAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInvalidAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2499,6 +3015,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryInvalidAddressRequest,
     ) -> dm_20170622_models.QueryInvalidAddressResponse:
+        """
+        @param request: QueryInvalidAddressRequest
+        @return: QueryInvalidAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_invalid_address_with_options(request, runtime)
 
@@ -2506,6 +3026,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryInvalidAddressRequest,
     ) -> dm_20170622_models.QueryInvalidAddressResponse:
+        """
+        @param request: QueryInvalidAddressRequest
+        @return: QueryInvalidAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_invalid_address_with_options_async(request, runtime)
 
@@ -2514,6 +3038,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryMailAddressByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryMailAddressByParamResponse:
+        """
+        @param request: QueryMailAddressByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMailAddressByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2554,6 +3083,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryMailAddressByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryMailAddressByParamResponse:
+        """
+        @param request: QueryMailAddressByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMailAddressByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2593,6 +3127,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryMailAddressByParamRequest,
     ) -> dm_20170622_models.QueryMailAddressByParamResponse:
+        """
+        @param request: QueryMailAddressByParamRequest
+        @return: QueryMailAddressByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mail_address_by_param_with_options(request, runtime)
 
@@ -2600,6 +3138,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryMailAddressByParamRequest,
     ) -> dm_20170622_models.QueryMailAddressByParamResponse:
+        """
+        @param request: QueryMailAddressByParamRequest
+        @return: QueryMailAddressByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mail_address_by_param_with_options_async(request, runtime)
 
@@ -2608,6 +3150,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryReceiverByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryReceiverByParamResponse:
+        """
+        @param request: QueryReceiverByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReceiverByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2648,6 +3195,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryReceiverByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryReceiverByParamResponse:
+        """
+        @param request: QueryReceiverByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReceiverByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2687,6 +3239,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryReceiverByParamRequest,
     ) -> dm_20170622_models.QueryReceiverByParamResponse:
+        """
+        @param request: QueryReceiverByParamRequest
+        @return: QueryReceiverByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_receiver_by_param_with_options(request, runtime)
 
@@ -2694,6 +3250,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryReceiverByParamRequest,
     ) -> dm_20170622_models.QueryReceiverByParamResponse:
+        """
+        @param request: QueryReceiverByParamRequest
+        @return: QueryReceiverByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_receiver_by_param_with_options_async(request, runtime)
 
@@ -2702,6 +3262,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryReceiverDetailResponse:
+        """
+        @param request: QueryReceiverDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReceiverDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2742,6 +3307,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryReceiverDetailResponse:
+        """
+        @param request: QueryReceiverDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReceiverDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2781,6 +3351,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryReceiverDetailRequest,
     ) -> dm_20170622_models.QueryReceiverDetailResponse:
+        """
+        @param request: QueryReceiverDetailRequest
+        @return: QueryReceiverDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_receiver_detail_with_options(request, runtime)
 
@@ -2788,6 +3362,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryReceiverDetailRequest,
     ) -> dm_20170622_models.QueryReceiverDetailResponse:
+        """
+        @param request: QueryReceiverDetailRequest
+        @return: QueryReceiverDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_receiver_detail_with_options_async(request, runtime)
 
@@ -2796,6 +3374,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryTagByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryTagByParamResponse:
+        """
+        @param request: QueryTagByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTagByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2834,6 +3417,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryTagByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryTagByParamResponse:
+        """
+        @param request: QueryTagByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTagByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2871,6 +3459,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryTagByParamRequest,
     ) -> dm_20170622_models.QueryTagByParamResponse:
+        """
+        @param request: QueryTagByParamRequest
+        @return: QueryTagByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_tag_by_param_with_options(request, runtime)
 
@@ -2878,6 +3470,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryTagByParamRequest,
     ) -> dm_20170622_models.QueryTagByParamResponse:
+        """
+        @param request: QueryTagByParamRequest
+        @return: QueryTagByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_tag_by_param_with_options_async(request, runtime)
 
@@ -2886,6 +3482,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryTaskByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryTaskByParamResponse:
+        """
+        @param request: QueryTaskByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTaskByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2926,6 +3527,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryTaskByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryTaskByParamResponse:
+        """
+        @param request: QueryTaskByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTaskByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2965,6 +3571,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryTaskByParamRequest,
     ) -> dm_20170622_models.QueryTaskByParamResponse:
+        """
+        @param request: QueryTaskByParamRequest
+        @return: QueryTaskByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_task_by_param_with_options(request, runtime)
 
@@ -2972,6 +3582,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryTaskByParamRequest,
     ) -> dm_20170622_models.QueryTaskByParamResponse:
+        """
+        @param request: QueryTaskByParamRequest
+        @return: QueryTaskByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_task_by_param_with_options_async(request, runtime)
 
@@ -2980,6 +3594,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryTemplateByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryTemplateByParamResponse:
+        """
+        @param request: QueryTemplateByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTemplateByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -3022,6 +3641,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.QueryTemplateByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.QueryTemplateByParamResponse:
+        """
+        @param request: QueryTemplateByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTemplateByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_type):
@@ -3063,6 +3687,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryTemplateByParamRequest,
     ) -> dm_20170622_models.QueryTemplateByParamResponse:
+        """
+        @param request: QueryTemplateByParamRequest
+        @return: QueryTemplateByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_template_by_param_with_options(request, runtime)
 
@@ -3070,6 +3698,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.QueryTemplateByParamRequest,
     ) -> dm_20170622_models.QueryTemplateByParamResponse:
+        """
+        @param request: QueryTemplateByParamRequest
+        @return: QueryTemplateByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_template_by_param_with_options_async(request, runtime)
 
@@ -3078,6 +3710,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SaveReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SaveReceiverDetailResponse:
+        """
+        @param request: SaveReceiverDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveReceiverDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.detail):
@@ -3114,6 +3751,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SaveReceiverDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SaveReceiverDetailResponse:
+        """
+        @param request: SaveReceiverDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveReceiverDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.detail):
@@ -3149,6 +3791,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SaveReceiverDetailRequest,
     ) -> dm_20170622_models.SaveReceiverDetailResponse:
+        """
+        @param request: SaveReceiverDetailRequest
+        @return: SaveReceiverDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_receiver_detail_with_options(request, runtime)
 
@@ -3156,6 +3802,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SaveReceiverDetailRequest,
     ) -> dm_20170622_models.SaveReceiverDetailResponse:
+        """
+        @param request: SaveReceiverDetailRequest
+        @return: SaveReceiverDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_receiver_detail_with_options_async(request, runtime)
 
@@ -3164,6 +3814,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SenderStatisticsByTagNameAndBatchIDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SenderStatisticsByTagNameAndBatchIDResponse:
+        """
+        @param request: SenderStatisticsByTagNameAndBatchIDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SenderStatisticsByTagNameAndBatchIDResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -3204,6 +3859,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SenderStatisticsByTagNameAndBatchIDRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SenderStatisticsByTagNameAndBatchIDResponse:
+        """
+        @param request: SenderStatisticsByTagNameAndBatchIDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SenderStatisticsByTagNameAndBatchIDResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -3243,6 +3903,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SenderStatisticsByTagNameAndBatchIDRequest,
     ) -> dm_20170622_models.SenderStatisticsByTagNameAndBatchIDResponse:
+        """
+        @param request: SenderStatisticsByTagNameAndBatchIDRequest
+        @return: SenderStatisticsByTagNameAndBatchIDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sender_statistics_by_tag_name_and_batch_idwith_options(request, runtime)
 
@@ -3250,6 +3914,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SenderStatisticsByTagNameAndBatchIDRequest,
     ) -> dm_20170622_models.SenderStatisticsByTagNameAndBatchIDResponse:
+        """
+        @param request: SenderStatisticsByTagNameAndBatchIDRequest
+        @return: SenderStatisticsByTagNameAndBatchIDResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sender_statistics_by_tag_name_and_batch_idwith_options_async(request, runtime)
 
@@ -3258,6 +3926,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SenderStatisticsDetailByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SenderStatisticsDetailByParamResponse:
+        """
+        @param request: SenderStatisticsDetailByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SenderStatisticsDetailByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -3306,6 +3979,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SenderStatisticsDetailByParamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SenderStatisticsDetailByParamResponse:
+        """
+        @param request: SenderStatisticsDetailByParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SenderStatisticsDetailByParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -3353,6 +4031,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SenderStatisticsDetailByParamRequest,
     ) -> dm_20170622_models.SenderStatisticsDetailByParamResponse:
+        """
+        @param request: SenderStatisticsDetailByParamRequest
+        @return: SenderStatisticsDetailByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.sender_statistics_detail_by_param_with_options(request, runtime)
 
@@ -3360,6 +4042,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SenderStatisticsDetailByParamRequest,
     ) -> dm_20170622_models.SenderStatisticsDetailByParamResponse:
+        """
+        @param request: SenderStatisticsDetailByParamRequest
+        @return: SenderStatisticsDetailByParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.sender_statistics_detail_by_param_with_options_async(request, runtime)
 
@@ -3368,6 +4054,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SingleSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SingleSendMailResponse:
+        """
+        @param request: SingleSendMailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SingleSendMailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -3428,6 +4119,11 @@ class Client(OpenApiClient):
         request: dm_20170622_models.SingleSendMailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SingleSendMailResponse:
+        """
+        @param request: SingleSendMailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SingleSendMailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -3487,6 +4183,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SingleSendMailRequest,
     ) -> dm_20170622_models.SingleSendMailResponse:
+        """
+        @param request: SingleSendMailRequest
+        @return: SingleSendMailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.single_send_mail_with_options(request, runtime)
 
@@ -3494,6 +4194,10 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SingleSendMailRequest,
     ) -> dm_20170622_models.SingleSendMailResponse:
+        """
+        @param request: SingleSendMailRequest
+        @return: SingleSendMailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.single_send_mail_with_options_async(request, runtime)
 
@@ -3502,6 +4206,13 @@ class Client(OpenApiClient):
         tmp_req: dm_20170622_models.SingleSendMailV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SingleSendMailV2Response:
+        """
+        @summary 极高发信专用API
+        
+        @param tmp_req: SingleSendMailV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SingleSendMailV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = dm_20170622_models.SingleSendMailV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3564,6 +4275,13 @@ class Client(OpenApiClient):
         tmp_req: dm_20170622_models.SingleSendMailV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> dm_20170622_models.SingleSendMailV2Response:
+        """
+        @summary 极高发信专用API
+        
+        @param tmp_req: SingleSendMailV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SingleSendMailV2Response
+        """
         UtilClient.validate_model(tmp_req)
         request = dm_20170622_models.SingleSendMailV2ShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3625,6 +4343,12 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SingleSendMailV2Request,
     ) -> dm_20170622_models.SingleSendMailV2Response:
+        """
+        @summary 极高发信专用API
+        
+        @param request: SingleSendMailV2Request
+        @return: SingleSendMailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.single_send_mail_v2with_options(request, runtime)
 
@@ -3632,5 +4356,11 @@ class Client(OpenApiClient):
         self,
         request: dm_20170622_models.SingleSendMailV2Request,
     ) -> dm_20170622_models.SingleSendMailV2Response:
+        """
+        @summary 极高发信专用API
+        
+        @param request: SingleSendMailV2Request
+        @return: SingleSendMailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.single_send_mail_v2with_options_async(request, runtime)
