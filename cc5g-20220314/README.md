@@ -28,7 +28,7 @@ pip install alibabacloud_cc5g20220314
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/cc5g-20220314/ChangeLog.md).
 
 ## References
 

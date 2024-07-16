@@ -20,7 +20,9 @@ class AddDNSAuthorizationRuleRequest(TeaModel):
         self.destination_ip = destination_ip
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.source_dnsip = source_dnsip
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -112,9 +114,6 @@ class AddDNSAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -160,7 +159,9 @@ class AddGroupDnsAuthorizationRuleRequest(TeaModel):
         self.destination_ip = destination_ip
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.source_dnsip = source_dnsip
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -252,9 +253,6 @@ class AddGroupDnsAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -295,8 +293,11 @@ class AddWirelessCloudConnectorToGroupRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
+        # This parameter is required.
         self.wireless_cloud_connector_ids = wireless_cloud_connector_ids
 
     def validate(self):
@@ -374,9 +375,6 @@ class AddWirelessCloudConnectorToGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -419,10 +417,15 @@ class AttachVpcToNetLinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.v_switches = v_switches
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -508,9 +511,6 @@ class AttachVpcToNetLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -557,14 +557,18 @@ class CreateAuthorizationRuleRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.destination = destination
         self.destination_port = destination_port
+        # This parameter is required.
         self.destination_type = destination_type
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.policy = policy
         self.protocol = protocol
         self.source_cidr = source_cidr
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -672,9 +676,6 @@ class CreateAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -722,12 +723,15 @@ class CreateBatchOperateCardsTaskRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
+        # This parameter is required.
         self.effect_type = effect_type
         self.iccids = iccids
         self.iccids_oss_file_path = iccids_oss_file_path
         self.name = name
+        # This parameter is required.
         self.operate_type = operate_type
         self.region_id = region_id
+        # This parameter is required.
         self.threshold = threshold
         self.wireless_cloud_connector_ids = wireless_cloud_connector_ids
 
@@ -842,9 +846,6 @@ class CreateBatchOperateCardsTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -891,14 +892,18 @@ class CreateGroupAuthorizationRuleRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.destination = destination
         self.destination_port = destination_port
+        # This parameter is required.
         self.destination_type = destination_type
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.policy = policy
         self.protocol = protocol
         self.source_cidr = source_cidr
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -1006,9 +1011,6 @@ class CreateGroupAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1049,6 +1051,7 @@ class CreateIoTCloudConnectorBackhaulRouteRequest(TeaModel):
         self.client_token = client_token
         self.dry_run = dry_run
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -1122,9 +1125,6 @@ class CreateIoTCloudConnectorBackhaulRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1162,9 +1162,13 @@ class CreateWirelessCloudConnectorRequestNetLinks(TeaModel):
         v_switchs: List[str] = None,
         vpc_id: str = None,
     ):
+        # This parameter is required.
         self.apn = apn
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.v_switchs = v_switchs
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1216,9 +1220,12 @@ class CreateWirelessCloudConnectorRequest(TeaModel):
         self.client_token = client_token
         self.description = description
         self.dry_run = dry_run
+        # This parameter is required.
         self.isp = isp
         self.name = name
+        # This parameter is required.
         self.net_links = net_links
+        # This parameter is required.
         self.region_id = region_id
         self.use_case = use_case
 
@@ -1327,9 +1334,6 @@ class CreateWirelessCloudConnectorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1372,6 +1376,7 @@ class CreateWirelessCloudConnectorGroupRequest(TeaModel):
         self.description = description
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1455,9 +1460,6 @@ class CreateWirelessCloudConnectorGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1495,9 +1497,11 @@ class DeleteAuthorizationRuleRequest(TeaModel):
         dry_run: bool = None,
         wireless_cloud_connector_id: str = None,
     ):
+        # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -1571,9 +1575,6 @@ class DeleteAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1611,6 +1612,7 @@ class DeleteBatchOperateCardsTaskRequest(TeaModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.batch_operate_cards_task_id = batch_operate_cards_task_id
         self.client_token = client_token
         self.dry_run = dry_run
@@ -1687,9 +1689,6 @@ class DeleteBatchOperateCardsTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1727,9 +1726,11 @@ class DeleteGroupAuthorizationRuleRequest(TeaModel):
         dry_run: bool = None,
         wireless_cloud_connector_group_id: str = None,
     ):
+        # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -1803,9 +1804,6 @@ class DeleteGroupAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1846,6 +1844,7 @@ class DeleteIoTCloudConnectorBackhaulRouteRequest(TeaModel):
         self.client_token = client_token
         self.dry_run = dry_run
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -1919,9 +1918,6 @@ class DeleteIoTCloudConnectorBackhaulRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1960,6 +1956,7 @@ class DeleteWirelessCloudConnectorRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -2029,9 +2026,6 @@ class DeleteWirelessCloudConnectorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2070,6 +2064,7 @@ class DeleteWirelessCloudConnectorGroupRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -2139,9 +2134,6 @@ class DeleteWirelessCloudConnectorGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2181,7 +2173,9 @@ class DetachVpcFromNetLinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -2255,9 +2249,6 @@ class DetachVpcFromNetLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2297,6 +2288,7 @@ class FailCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
         self.region_id = region_id
 
@@ -2371,9 +2363,6 @@ class FailCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2408,6 +2397,7 @@ class GetCardRequest(TeaModel):
         self,
         iccid: str = None,
     ):
+        # This parameter is required.
         self.iccid = iccid
 
     def validate(self):
@@ -2607,9 +2597,6 @@ class GetCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2644,6 +2631,7 @@ class GetCardLockReasonRequest(TeaModel):
         self,
         iccid: str = None,
     ):
+        # This parameter is required.
         self.iccid = iccid
 
     def validate(self):
@@ -2711,9 +2699,6 @@ class GetCardLockReasonResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2739,6 +2724,113 @@ class GetCardLockReasonResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetCardLockReasonResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCreateCustomerInfomationRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetCreateCustomerInfomationResponseBody(TeaModel):
+    def __init__(
+        self,
+        can_buy_card: str = None,
+        request_id: str = None,
+        url: str = None,
+    ):
+        self.can_buy_card = can_buy_card
+        self.request_id = request_id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_buy_card is not None:
+            result['CanBuyCard'] = self.can_buy_card
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanBuyCard') is not None:
+            self.can_buy_card = m.get('CanBuyCard')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class GetCreateCustomerInfomationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCreateCustomerInfomationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCreateCustomerInfomationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2827,9 +2919,6 @@ class GetCreateCustomerInformationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2865,6 +2954,7 @@ class GetDiagnoseResultForSingleCardRequest(TeaModel):
         diagnose_task_id: str = None,
         region_no: str = None,
     ):
+        # This parameter is required.
         self.diagnose_task_id = diagnose_task_id
         self.region_no = region_no
 
@@ -3145,9 +3235,6 @@ class GetDiagnoseResultForSingleCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3184,6 +3271,7 @@ class GetWirelessCloudConnectorRequest(TeaModel):
         wireless_cloud_connector_id: str = None,
     ):
         self.region_id = region_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -3442,9 +3530,6 @@ class GetWirelessCloudConnectorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3485,8 +3570,11 @@ class GrantNetLinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.grant_ali_uid = grant_ali_uid
+        # This parameter is required.
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -3564,9 +3652,6 @@ class GrantNetLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3596,6 +3681,258 @@ class GrantNetLinkResponse(TeaModel):
         return self
 
 
+class InnerLimitRateCardsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        iccids: List[str] = None,
+        inner_api: bool = None,
+        region_id: str = None,
+        task: bool = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.iccids = iccids
+        self.inner_api = inner_api
+        self.region_id = region_id
+        self.task = task
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.iccids is not None:
+            result['Iccids'] = self.iccids
+        if self.inner_api is not None:
+            result['InnerApi'] = self.inner_api
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task is not None:
+            result['Task'] = self.task
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('Iccids') is not None:
+            self.iccids = m.get('Iccids')
+        if m.get('InnerApi') is not None:
+            self.inner_api = m.get('InnerApi')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Task') is not None:
+            self.task = m.get('Task')
+        return self
+
+
+class InnerLimitRateCardsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InnerLimitRateCardsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InnerLimitRateCardsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InnerLimitRateCardsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class InnerStopCardsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dry_run: bool = None,
+        iccids: List[str] = None,
+        inner_api: bool = None,
+        region_id: str = None,
+        task: bool = None,
+    ):
+        self.client_token = client_token
+        self.dry_run = dry_run
+        # This parameter is required.
+        self.iccids = iccids
+        self.inner_api = inner_api
+        self.region_id = region_id
+        self.task = task
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.iccids is not None:
+            result['Iccids'] = self.iccids
+        if self.inner_api is not None:
+            result['InnerApi'] = self.inner_api
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task is not None:
+            result['Task'] = self.task
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('Iccids') is not None:
+            self.iccids = m.get('Iccids')
+        if m.get('InnerApi') is not None:
+            self.inner_api = m.get('InnerApi')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Task') is not None:
+            self.task = m.get('Task')
+        return self
+
+
+class InnerStopCardsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InnerStopCardsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InnerStopCardsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InnerStopCardsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAPNsRequest(TeaModel):
     def __init__(
         self,
@@ -3609,6 +3946,7 @@ class ListAPNsRequest(TeaModel):
         self.isp = isp
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3772,9 +4110,6 @@ class ListAPNsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3833,6 +4168,7 @@ class ListAuthorizationRulesRequest(TeaModel):
         self.protocol = protocol
         self.statuses = statuses
         self.type = type
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -4076,9 +4412,6 @@ class ListAuthorizationRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4366,9 +4699,6 @@ class ListBatchOperateCardsTasksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4482,9 +4812,6 @@ class ListCardAreaLimitSupportAreaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4521,8 +4848,10 @@ class ListCardDayUsagesRequest(TeaModel):
         latest_month_num: int = None,
         wireless_cloud_connector_id: str = None,
     ):
+        # This parameter is required.
         self.iccids = iccids
         self.latest_month_num = latest_month_num
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -4728,9 +5057,6 @@ class ListCardDayUsagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4767,6 +5093,7 @@ class ListCardUsagesRequest(TeaModel):
         wireless_cloud_connector_id: str = None,
     ):
         self.iccids = iccids
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -4886,9 +5213,6 @@ class ListCardUsagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4945,6 +5269,7 @@ class ListCardsRequest(TeaModel):
         self.next_token = next_token
         self.online = online
         self.statuses = statuses
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -5214,9 +5539,6 @@ class ListCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5261,6 +5583,7 @@ class ListDataPackagesRequest(TeaModel):
         self.names = names
         self.next_token = next_token
         self.statuses = statuses
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -5445,9 +5768,6 @@ class ListDataPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5494,6 +5814,7 @@ class ListDiagnoseInfoForSingleCardRequest(TeaModel):
         self.source = source
         self.source_type = source_type
         self.status = status
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -5704,9 +6025,6 @@ class ListDiagnoseInfoForSingleCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5765,6 +6083,7 @@ class ListGroupAuthorizationRulesRequest(TeaModel):
         self.protocol = protocol
         self.statuses = statuses
         self.type = type
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -6008,9 +6327,6 @@ class ListGroupAuthorizationRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6047,8 +6363,11 @@ class ListIoTCloudConnectorBackhaulRouteRequest(TeaModel):
         region_id: str = None,
         wireless_cloud_connector_id: str = None,
     ):
+        # This parameter is required.
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -6194,9 +6513,6 @@ class ListIoTCloudConnectorBackhaulRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6241,6 +6557,7 @@ class ListOrdersRequest(TeaModel):
         self.order_action = order_action
         self.order_ids = order_ids
         self.statuses = statuses
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -6479,9 +6796,6 @@ class ListOrdersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6632,9 +6946,6 @@ class ListRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6959,9 +7270,6 @@ class ListWirelessCloudConnectorGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7239,9 +7547,6 @@ class ListWirelessCloudConnectorsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7276,6 +7581,7 @@ class ListZonesRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7386,9 +7692,6 @@ class ListZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7428,6 +7731,7 @@ class LockCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
         self.region_id = region_id
 
@@ -7502,9 +7806,6 @@ class LockCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7547,6 +7848,7 @@ class ModifyWirelessCloudConnectorFeatureRequest(TeaModel):
         self.dry_run = dry_run
         self.feature_name = feature_name
         self.feature_value = feature_value
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -7624,9 +7926,6 @@ class ModifyWirelessCloudConnectorFeatureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7661,6 +7960,7 @@ class OpenCc5gServiceRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7722,9 +8022,6 @@ class OpenCc5gServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7764,6 +8061,7 @@ class RebindCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
         self.region_id = region_id
 
@@ -7838,9 +8136,6 @@ class RebindCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7881,8 +8176,11 @@ class RemoveWirelessCloudConnectorFromGroupRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
+        # This parameter is required.
         self.wireless_cloud_connector_ids = wireless_cloud_connector_ids
 
     def validate(self):
@@ -7960,9 +8258,6 @@ class RemoveWirelessCloudConnectorFromGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8003,7 +8298,9 @@ class ResetAreaLimitCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
+        # This parameter is required.
         self.province = province
         self.region_id = region_id
 
@@ -8082,9 +8379,6 @@ class ResetAreaLimitCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8124,6 +8418,7 @@ class ResumeCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
         self.region_id = region_id
 
@@ -8198,9 +8493,6 @@ class ResumeCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8240,7 +8532,9 @@ class RevokeNetLinkRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.net_link_id = net_link_id
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -8314,9 +8608,6 @@ class RevokeNetLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8356,6 +8647,7 @@ class StopCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
         self.region_id = region_id
 
@@ -8430,9 +8722,6 @@ class StopCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8473,12 +8762,17 @@ class SubmitDiagnoseTaskForSingleCardRequest(TeaModel):
         source: str = None,
         wireless_cloud_connector_id: str = None,
     ):
+        # This parameter is required.
         self.begin_time = begin_time
         self.destination = destination
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.region_no = region_no
         self.resource_uid = resource_uid
+        # This parameter is required.
         self.source = source
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -8570,9 +8864,6 @@ class SubmitDiagnoseTaskForSingleCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8611,6 +8902,7 @@ class SwitchWirelessCloudConnectorToBusinessRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -8681,9 +8973,6 @@ class SwitchWirelessCloudConnectorToBusinessResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8723,6 +9012,7 @@ class UnlockCardsRequest(TeaModel):
     ):
         self.client_token = client_token
         self.dry_run = dry_run
+        # This parameter is required.
         self.iccids = iccids
         self.region_id = region_id
 
@@ -8797,9 +9087,6 @@ class UnlockCardsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8844,6 +9131,7 @@ class UpdateAuthorizationRuleRequest(TeaModel):
         source_cidr: str = None,
         wireless_cloud_connector_id: str = None,
     ):
+        # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
         self.client_token = client_token
         self.description = description
@@ -8854,6 +9142,7 @@ class UpdateAuthorizationRuleRequest(TeaModel):
         self.policy = policy
         self.protocol = protocol
         self.source_cidr = source_cidr
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -8955,9 +9244,6 @@ class UpdateAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9003,6 +9289,7 @@ class UpdateBatchOperateCardsTaskRequest(TeaModel):
         threshold: int = None,
         wireless_cloud_connector_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.batch_operate_cards_task_id = batch_operate_cards_task_id
         self.client_token = client_token
         self.description = description
@@ -9119,9 +9406,6 @@ class UpdateBatchOperateCardsTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9166,6 +9450,7 @@ class UpdateCardRequest(TeaModel):
         self.dry_run = dry_run
         self.iccid = iccid
         self.name = name
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -9247,9 +9532,6 @@ class UpdateCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9291,6 +9573,7 @@ class UpdateDNSAuthorizationRuleRequest(TeaModel):
         source_dnsip: str = None,
         wireless_cloud_connector_id: str = None,
     ):
+        # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
         self.client_token = client_token
         self.description = description
@@ -9298,6 +9581,7 @@ class UpdateDNSAuthorizationRuleRequest(TeaModel):
         self.dry_run = dry_run
         self.name = name
         self.source_dnsip = source_dnsip
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -9387,9 +9671,6 @@ class UpdateDNSAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9434,6 +9715,7 @@ class UpdateGroupAuthorizationRuleRequest(TeaModel):
         source_cidr: str = None,
         wireless_cloud_connector_group_id: str = None,
     ):
+        # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
         self.client_token = client_token
         self.description = description
@@ -9444,6 +9726,7 @@ class UpdateGroupAuthorizationRuleRequest(TeaModel):
         self.policy = policy
         self.protocol = protocol
         self.source_cidr = source_cidr
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -9545,9 +9828,6 @@ class UpdateGroupAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9589,6 +9869,7 @@ class UpdateGroupDnsAuthorizationRuleRequest(TeaModel):
         source_dnsip: str = None,
         wireless_cloud_connector_group_id: str = None,
     ):
+        # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
         self.client_token = client_token
         self.description = description
@@ -9596,6 +9877,7 @@ class UpdateGroupDnsAuthorizationRuleRequest(TeaModel):
         self.dry_run = dry_run
         self.name = name
         self.source_dnsip = source_dnsip
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -9685,9 +9967,6 @@ class UpdateGroupDnsAuthorizationRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9730,6 +10009,7 @@ class UpdateWirelessCloudConnectorRequest(TeaModel):
         self.description = description
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.wireless_cloud_connector_id = wireless_cloud_connector_id
 
     def validate(self):
@@ -9807,9 +10087,6 @@ class UpdateWirelessCloudConnectorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9852,6 +10129,7 @@ class UpdateWirelessCloudConnectorGroupRequest(TeaModel):
         self.description = description
         self.dry_run = dry_run
         self.name = name
+        # This parameter is required.
         self.wireless_cloud_connector_group_id = wireless_cloud_connector_group_id
 
     def validate(self):
@@ -9929,9 +10207,6 @@ class UpdateWirelessCloudConnectorGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
