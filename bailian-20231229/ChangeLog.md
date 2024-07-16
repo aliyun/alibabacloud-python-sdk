@@ -1,3 +1,11 @@
+2024-07-16 Version: 1.3.0
+- Support API DeleteIndex.
+- Support API DeleteIndexDocument.
+- Support API ListChunks.
+- Support API ListIndexDocuments.
+- Support API ListIndices.
+
+
 2024-07-09 Version: 1.2.0
 - Support API SubmitIndexAddDocumentsJob.
 

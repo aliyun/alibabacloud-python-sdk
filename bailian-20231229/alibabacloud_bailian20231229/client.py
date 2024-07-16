@@ -461,6 +461,234 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_index_with_options_async(workspace_id, request, headers, runtime)
 
+    def delete_index_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteIndexRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteIndexResponse:
+        """
+        @summary 删除Index
+        
+        @param request: DeleteIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndex',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_index_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteIndexRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteIndexResponse:
+        """
+        @summary 删除Index
+        
+        @param request: DeleteIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndex',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_index(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteIndexRequest,
+    ) -> bailian_20231229_models.DeleteIndexResponse:
+        """
+        @summary 删除Index
+        
+        @param request: DeleteIndexRequest
+        @return: DeleteIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_index_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_index_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteIndexRequest,
+    ) -> bailian_20231229_models.DeleteIndexResponse:
+        """
+        @summary 删除Index
+        
+        @param request: DeleteIndexRequest
+        @return: DeleteIndexResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_index_with_options_async(workspace_id, request, headers, runtime)
+
+    def delete_index_document_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.DeleteIndexDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
+        """
+        @summary 删除index doc
+        
+        @param tmp_req: DeleteIndexDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexDocumentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.DeleteIndexDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document_ids):
+            request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.document_ids_shrink):
+            query['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndexDocument',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/delete_index_document',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_index_document_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.DeleteIndexDocumentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
+        """
+        @summary 删除index doc
+        
+        @param tmp_req: DeleteIndexDocumentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexDocumentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.DeleteIndexDocumentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.document_ids):
+            request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.document_ids_shrink):
+            query['DocumentIds'] = request.document_ids_shrink
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIndexDocument',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/delete_index_document',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteIndexDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_index_document(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteIndexDocumentRequest,
+    ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
+        """
+        @summary 删除index doc
+        
+        @param request: DeleteIndexDocumentRequest
+        @return: DeleteIndexDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_index_document_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_index_document_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteIndexDocumentRequest,
+    ) -> bailian_20231229_models.DeleteIndexDocumentResponse:
+        """
+        @summary 删除index doc
+        
+        @param request: DeleteIndexDocumentRequest
+        @return: DeleteIndexDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_index_document_with_options_async(workspace_id, request, headers, runtime)
+
     def describe_file_with_options(
         self,
         workspace_id: str,
@@ -666,6 +894,370 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_index_job_status_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_chunks_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListChunksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListChunksResponse:
+        """
+        @summary Chunk
+        
+        @param request: ListChunksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChunksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.fields):
+            body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.filed):
+            body['Filed'] = request.filed
+        if not UtilClient.is_unset(request.index_id):
+            body['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListChunks',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_chunks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chunks_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListChunksRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListChunksResponse:
+        """
+        @summary Chunk
+        
+        @param request: ListChunksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChunksResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.fields):
+            body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.filed):
+            body['Filed'] = request.filed
+        if not UtilClient.is_unset(request.index_id):
+            body['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.page_num):
+            body['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListChunks',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_chunks',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chunks(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListChunksRequest,
+    ) -> bailian_20231229_models.ListChunksResponse:
+        """
+        @summary Chunk
+        
+        @param request: ListChunksRequest
+        @return: ListChunksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_chunks_with_options(workspace_id, request, headers, runtime)
+
+    async def list_chunks_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListChunksRequest,
+    ) -> bailian_20231229_models.ListChunksResponse:
+        """
+        @summary Chunk
+        
+        @param request: ListChunksRequest
+        @return: ListChunksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_chunks_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_index_documents_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexDocumentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListIndexDocumentsResponse:
+        """
+        @summary 查询Index文件
+        
+        @param request: ListIndexDocumentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.document_name):
+            query['DocumentName'] = request.document_name
+        if not UtilClient.is_unset(request.document_status):
+            query['DocumentStatus'] = request.document_status
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndexDocuments',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_index_documents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndexDocumentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_index_documents_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexDocumentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListIndexDocumentsResponse:
+        """
+        @summary 查询Index文件
+        
+        @param request: ListIndexDocumentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexDocumentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.document_name):
+            query['DocumentName'] = request.document_name
+        if not UtilClient.is_unset(request.document_status):
+            query['DocumentStatus'] = request.document_status
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndexDocuments',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_index_documents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndexDocumentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_index_documents(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexDocumentsRequest,
+    ) -> bailian_20231229_models.ListIndexDocumentsResponse:
+        """
+        @summary 查询Index文件
+        
+        @param request: ListIndexDocumentsRequest
+        @return: ListIndexDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_index_documents_with_options(workspace_id, request, headers, runtime)
+
+    async def list_index_documents_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexDocumentsRequest,
+    ) -> bailian_20231229_models.ListIndexDocumentsResponse:
+        """
+        @summary 查询Index文件
+        
+        @param request: ListIndexDocumentsRequest
+        @return: ListIndexDocumentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_index_documents_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_indices_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListIndicesResponse:
+        """
+        @summary 查询pipeline
+        
+        @param request: ListIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndices',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_indices',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_indices_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListIndicesResponse:
+        """
+        @summary 查询pipeline
+        
+        @param request: ListIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.index_name):
+            query['IndexName'] = request.index_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndices',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_indices',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_indices(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndicesRequest,
+    ) -> bailian_20231229_models.ListIndicesResponse:
+        """
+        @summary 查询pipeline
+        
+        @param request: ListIndicesRequest
+        @return: ListIndicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_indices_with_options(workspace_id, request, headers, runtime)
+
+    async def list_indices_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndicesRequest,
+    ) -> bailian_20231229_models.ListIndicesResponse:
+        """
+        @summary 查询pipeline
+        
+        @param request: ListIndicesRequest
+        @return: ListIndicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_indices_with_options_async(workspace_id, request, headers, runtime)
 
     def retrieve_with_options(
         self,
