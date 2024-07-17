@@ -11390,6 +11390,8 @@ class Client(OpenApiClient):
             body['Environment'] = request.environment
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.set_points):
+            body['SetPoints'] = request.set_points
         if not UtilClient.is_unset(request.set_values):
             body['SetValues'] = request.set_values
         if not UtilClient.is_unset(request.time_points):
@@ -11435,6 +11437,8 @@ class Client(OpenApiClient):
             body['Environment'] = request.environment
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.set_points):
+            body['SetPoints'] = request.set_points
         if not UtilClient.is_unset(request.set_values):
             body['SetValues'] = request.set_values
         if not UtilClient.is_unset(request.time_points):

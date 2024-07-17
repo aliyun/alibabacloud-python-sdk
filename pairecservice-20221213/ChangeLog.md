@@ -1,3 +1,9 @@
+2024-07-17 Version: 2.0.1
+- Update API GetTrafficControlTarget: update response param.
+- Update API GetTrafficControlTask: update response param.
+- Update API SplitTrafficControlTarget: update param body.
+
+
 2024-06-25 Version: 2.0.0
 - Update API GetTrafficControlTaskTraffic: update response param.
 - Update API ListExperimentGroups: add param TimeRangeEnd.
