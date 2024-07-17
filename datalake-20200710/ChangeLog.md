@@ -1,3 +1,6 @@
+2024-07-17 Version: 1.2.3
+- Update SDK.
+
 2024-07-16 Version: 1.2.2
 - Generated python 2020-07-10 for DataLake.
 
