@@ -3145,19 +3145,23 @@ class CreateTemplateScratchRequestPreferenceParameters(TeaModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The key of the parameter.
+        # The parameter name.
         # 
-        # For information about the valid values of ParameterKey, see the **Additional information about request parameters** section of this topic.
-        # > - PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
-        # > -  If you set TemplateScratchType to ResourceImport, you must set ParameterKey to DeletionPolicy.
+        # For more information about the valid values of ParameterKey, see the "**Additional information about request parameters**" section of this topic.
+        # 
+        # > 
+        # 
+        # *   PreferenceParameters is optional. If you specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
+        # 
+        # *   You must set ParameterKey to DeletionPolicy when TemplateScratchType is set to ResourceImport.
         # 
         # This parameter is required.
         self.parameter_key = parameter_key
-        # The value of the parameter. The value of ParameterValue varies based on the value of ParameterKey.
+        # The parameter value. The value is an assignment to the parameter key.
         # 
-        # For information about the valid values of ParameterValue, see the **Additional information about request parameters** section of this topic.
+        # For more information about the valid values of ParameterValue, see the "**Additional information about request parameters**" section of this topic.
         # 
-        # > PreferenceParameters is optional. If you want to specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
+        # >  PreferenceParameters is optional. If you specify PreferenceParameters, you must specify ParameterKey and ParameterValue.
         # 
         # This parameter is required.
         self.parameter_value = parameter_value
@@ -3196,7 +3200,7 @@ class CreateTemplateScratchRequestSourceResourceGroup(TeaModel):
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The resource types.
+        # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -3231,14 +3235,23 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The region ID.
+        # The region ID of the resource.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
+        # 
+        # > 
+        # 
+        # *   This parameter takes effect only when TemplateScratchType is set to ArchitectureDetection.
+        # 
+        # *   The region ID of a global resource is `global`. For example, the region ID of the ALIYUN::CDN::Domain global resource is `global`.
         self.region_id = region_id
+        # The related resource type filters.
         self.related_resource_type_filter = related_resource_type_filter
-        # The ID of the resource.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -3287,7 +3300,7 @@ class CreateTemplateScratchRequestSourceTag(TeaModel):
         # 
         # This parameter is required.
         self.resource_tags = resource_tags
-        # The resource types.
+        # The resource types for filtering resources.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -3320,13 +3333,13 @@ class CreateTemplateScratchRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the scenario.
+        # The tag key of the resource scenario.
         # 
         # > Tags is optional. If you want to specify Tags, you must specify Key.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value of the scenario.
+        # The tag value of the resource scenario.
         self.value = value
 
     def validate(self):
@@ -3373,7 +3386,7 @@ class CreateTemplateScratchRequest(TeaModel):
         # 
         # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
-        # The description of the scenario.
+        # The description of the resource scenario.
         self.description = description
         # The execution mode. Valid values:
         # 
@@ -3388,9 +3401,9 @@ class CreateTemplateScratchRequest(TeaModel):
         # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
         # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
-        # The preference parameters of the scenario.
+        # The preference parameters of the resource scenario.
         self.preference_parameters = preference_parameters
-        # The region ID of the scenario.
+        # The region ID of the resource scenario.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         # 
@@ -3401,16 +3414,23 @@ class CreateTemplateScratchRequest(TeaModel):
         # The source resource group.
         self.source_resource_group = source_resource_group
         # The source resources.
+        # 
+        # When you set TemplateScratchType to ArchitectureDetection, you can specify SourceResources to detect the architecture data of all resources associated with the specified source resources. For example, if you set SourceResources to the ID of a Classic Load Balancer (CLB) instance, the architecture data of all resources, such as the Elastic Compute Service (ECS) instance, vSwitch, and VPC, associated with the CLB instance is detected.
+        # 
+        # If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources. In other cases, you can specify up to 200 source resources.
         self.source_resources = source_resources
         # The source tag.
         self.source_tag = source_tag
-        # The tags of the scenario.
+        # The tags of the resource scenario.
         self.tags = tags
-        # The type of the scenario. Valid values:
+        # The type of the resource scenario. Valid values:
         # 
-        # *   ResourceImport: resource management
         # *   ArchitectureReplication: resource replication
+        # *   ArchitectureDetection: resource detection
+        # *   ResourceImport: resource management
         # *   ResourceMigration: resource migration
+        # 
+        # >  The valid values of the ParameterKey and ParameterValue request parameters vary based on the value of TemplateScratchType. For more information, see the "**Additional information about request parameters**" section of this topic.
         # 
         # This parameter is required.
         self.template_scratch_type = template_scratch_type
@@ -3517,13 +3537,13 @@ class CreateTemplateScratchShrinkRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the scenario.
+        # The tag key of the resource scenario.
         # 
         # > Tags is optional. If you want to specify Tags, you must specify Key.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value of the scenario.
+        # The tag value of the resource scenario.
         self.value = value
 
     def validate(self):
@@ -3570,7 +3590,7 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         # 
         # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/134212.html).
         self.client_token = client_token
-        # The description of the scenario.
+        # The description of the resource scenario.
         self.description = description
         # The execution mode. Valid values:
         # 
@@ -3585,9 +3605,9 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
         # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
-        # The preference parameters of the scenario.
+        # The preference parameters of the resource scenario.
         self.preference_parameters_shrink = preference_parameters_shrink
-        # The region ID of the scenario.
+        # The region ID of the resource scenario.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         # 
@@ -3598,16 +3618,23 @@ class CreateTemplateScratchShrinkRequest(TeaModel):
         # The source resource group.
         self.source_resource_group_shrink = source_resource_group_shrink
         # The source resources.
+        # 
+        # When you set TemplateScratchType to ArchitectureDetection, you can specify SourceResources to detect the architecture data of all resources associated with the specified source resources. For example, if you set SourceResources to the ID of a Classic Load Balancer (CLB) instance, the architecture data of all resources, such as the Elastic Compute Service (ECS) instance, vSwitch, and VPC, associated with the CLB instance is detected.
+        # 
+        # If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources. In other cases, you can specify up to 200 source resources.
         self.source_resources_shrink = source_resources_shrink
         # The source tag.
         self.source_tag_shrink = source_tag_shrink
-        # The tags of the scenario.
+        # The tags of the resource scenario.
         self.tags = tags
-        # The type of the scenario. Valid values:
+        # The type of the resource scenario. Valid values:
         # 
-        # *   ResourceImport: resource management
         # *   ArchitectureReplication: resource replication
+        # *   ArchitectureDetection: resource detection
+        # *   ResourceImport: resource management
         # *   ResourceMigration: resource migration
+        # 
+        # >  The valid values of the ParameterKey and ParameterValue request parameters vary based on the value of TemplateScratchType. For more information, see the "**Additional information about request parameters**" section of this topic.
         # 
         # This parameter is required.
         self.template_scratch_type = template_scratch_type
@@ -3692,7 +3719,7 @@ class CreateTemplateScratchResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scenario.
+        # The ID of the resource scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -8142,7 +8169,7 @@ class GetServiceProvisionsRequestServices(TeaModel):
         self,
         service_name: str = None,
     ):
-        # The service or feature name. Valid values:
+        # The name of the service or feature. Valid values:
         # 
         # *   AHAS: Application High Availability Service
         # *   ARMS: Application Real-Time Monitoring Service (ARMS)
@@ -8157,26 +8184,26 @@ class GetServiceProvisionsRequestServices(TeaModel):
         # *   DataHub: DataHub
         # *   DataWorks: DataWorks
         # *   EDAS: Enterprise Distributed Application Service (EDAS)
-        # *   EHPC: Elastic High Performance Computing (E-HPC)
+        # *   EHPC: E-HPC
         # *   EMAS: Enterprise Mobile Application Studio (EMAS)
         # *   FC: Function Compute
-        # *   FNF: Serverless Workflow (SWF)
+        # *   FNF: CloudFlow (SWF)
         # *   MaxCompute: MaxCompute
         # *   MNS: Message Service (MNS)
-        # *   HBR: Hybrid Backup Recovery (HBR)
-        # *   IMM: Intelligent Media Management
+        # *   HBR: Cloud Backup
+        # *   IMM: Intelligent Media Management (IMM)
         # *   IOT: IoT Platform
         # *   KMS: Key Management Service (KMS)
         # *   NAS: Apsara File Storage NAS (NAS)
         # *   NLP: Natural Language Processing (NLP)
-        # *   OSS: OSS
+        # *   OSS: Object Storage Service (OSS)
         # *   OTS: Tablestore
         # *   PrivateLink: PrivateLink
         # *   PrivateZone: Alibaba Cloud DNS PrivateZone
         # *   RocketMQ: ApsaraMQ for RocketMQ
         # *   SAE: Serverless App Engine (SAE)
-        # *   SLS: Log Service
-        # *   TrafficMirror: the traffic mirroring feature
+        # *   SLS: Simple Log Service (SLS)
+        # *   TrafficMirror: traffic mirroring
         # *   VS: Video Surveillance System
         # *   Xtrace: Managed Service for OpenTelemetry
         # 
@@ -12622,6 +12649,45 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors
         return self
 
 
+class GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryTimeoutDetails(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        self.error_message = error_message
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
 class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
     def __init__(
         self,
@@ -12635,6 +12701,7 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         original_constraints: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints] = None,
         parameter_key: str = None,
         query_errors: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors] = None,
+        query_timeout_details: List[GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryTimeoutDetails] = None,
         type: str = None,
     ):
         # The values of the parameter.
@@ -12667,6 +12734,7 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         self.parameter_key = parameter_key
         # The error that is returned when the request fails.
         self.query_errors = query_errors
+        self.query_timeout_details = query_timeout_details
         # The data type of the parameter.
         self.type = type
 
@@ -12681,6 +12749,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
                     k.validate()
         if self.query_errors:
             for k in self.query_errors:
+                if k:
+                    k.validate()
+        if self.query_timeout_details:
+            for k in self.query_timeout_details:
                 if k:
                     k.validate()
 
@@ -12716,6 +12788,10 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
         if self.query_errors is not None:
             for k in self.query_errors:
                 result['QueryErrors'].append(k.to_map() if k else None)
+        result['QueryTimeoutDetails'] = []
+        if self.query_timeout_details is not None:
+            for k in self.query_timeout_details:
+                result['QueryTimeoutDetails'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -12751,6 +12827,11 @@ class GetTemplateParameterConstraintsResponseBodyParameterConstraints(TeaModel):
             for k in m.get('QueryErrors'):
                 temp_model = GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors()
                 self.query_errors.append(temp_model.from_map(k))
+        self.query_timeout_details = []
+        if m.get('QueryTimeoutDetails') is not None:
+            for k in m.get('QueryTimeoutDetails'):
+                temp_model = GetTemplateParameterConstraintsResponseBodyParameterConstraintsQueryTimeoutDetails()
+                self.query_timeout_details.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -13073,7 +13154,7 @@ class GetTemplateScratchRequest(TeaModel):
         show_data_option: str = None,
         template_scratch_id: str = None,
     ):
-        # The region ID of the scenario.
+        # The region ID of the resource scenario.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
         # 
@@ -13090,7 +13171,7 @@ class GetTemplateScratchRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the node data is not displayed.
         self.show_data_option = show_data_option
-        # The ID of the scenario.
+        # The ID of the resource scenario.
         self.template_scratch_id = template_scratch_id
 
     def validate(self):
@@ -13127,9 +13208,9 @@ class GetTemplateScratchResponseBodyTemplateScratchPreferenceParameters(TeaModel
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         self.parameter_key = parameter_key
-        # The value of the parameter.
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -13164,7 +13245,7 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResourceGroup(TeaModel)
     ):
         # The ID of the source resource group.
         self.resource_group_id = resource_group_id
-        # The resource types.
+        # The resource type filters.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -13198,6 +13279,7 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceResources(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The related resource type filters.
         self.related_resource_type_filter = related_resource_type_filter
         # The resource ID.
         self.resource_id = resource_id
@@ -13240,7 +13322,7 @@ class GetTemplateScratchResponseBodyTemplateScratchSourceTag(TeaModel):
     ):
         # The source tags.
         self.resource_tags = resource_tags
-        # The resource types.
+        # The resource type filters.
         self.resource_type_filter = resource_type_filter
 
     def validate(self):
@@ -13374,13 +13456,13 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         template_scratch_type: str = None,
         update_time: str = None,
     ):
-        # The time at which the scenario was created.
+        # The time at which the resource scenario was created.
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the scenario.
+        # The description of the resource scenario.
         self.description = description
-        # The status code of the scenario that fails to be created.
+        # The status code of the resource scenario that fails to be created.
         # 
         # > This parameter is returned only if you set Status to GENERATE_FAILED.
         self.failed_code = failed_code
@@ -13390,7 +13472,7 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         # *   LongTypePrefixAndHashSuffix: long-type prefix + hash-type suffix
         # *   ShortTypePrefixAndHashSuffix: short-type prefix + hash-type suffix
         self.logical_id_strategy = logical_id_strategy
-        # The preference parameters of the scenario.
+        # The preference parameters of the resource scenario.
         self.preference_parameters = preference_parameters
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -13402,28 +13484,28 @@ class GetTemplateScratchResponseBodyTemplateScratch(TeaModel):
         self.source_tag = source_tag
         # The preset information of the stack.
         self.stack_provision = stack_provision
-        # The stacks that are associated with the scenario.
+        # The stacks that are associated with the resource scenario.
         self.stacks = stacks
-        # The state of the scenario. Valid values:
+        # The state of the resource scenario. Valid values:
         # 
-        # *   GENERATE_IN_PROGRESS: The scenario is being created.
-        # *   GENERATE_COMPLETE: The scenario is created.
-        # *   GENERATE_FAILED: The scenario fails to be created.
+        # *   GENERATE_IN_PROGRESS: The resource scenario is being created.
+        # *   GENERATE_COMPLETE: The resource scenario is created.
+        # *   GENERATE_FAILED: The resource scenario fails to be created.
         self.status = status
-        # The reason why the scenario fails to be created.
+        # The reason why the resource scenario fails to be created.
         # 
         # > This parameter is returned only if you set Status to GENERATE_FAILED.
         self.status_reason = status_reason
-        # The scenario data.
+        # The resource scenario data.
         self.template_scratch_data = template_scratch_data
-        # The ID of the scenario.
+        # The ID of the resource scenario.
         self.template_scratch_id = template_scratch_id
-        # The type of the scenario. Valid values:
+        # The type of the resource scenario. Valid values:
         # 
         # *   ResourceImport: resource management
         # *   ArchitectureReplication: resource replication
         self.template_scratch_type = template_scratch_type
-        # The time at which the scenario was updated.
+        # The time at which the resource scenario was updated.
         # 
         # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
