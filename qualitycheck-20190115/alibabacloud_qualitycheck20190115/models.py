@@ -2323,6 +2323,7 @@ class AddBusinessCategoryRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -2449,6 +2450,7 @@ class AddRuleCategoryRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -2479,8 +2481,10 @@ class AddRuleCategoryResponseBodyData(TeaModel):
     def __init__(
         self,
         select: bool = None,
+        type: int = None,
     ):
         self.select = select
+        self.type = type
 
     def validate(self):
         pass
@@ -2493,12 +2497,16 @@ class AddRuleCategoryResponseBodyData(TeaModel):
         result = dict()
         if self.select is not None:
             result['Select'] = self.select
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Select') is not None:
             self.select = m.get('Select')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -2606,6 +2614,7 @@ class AddRuleV4Request(TeaModel):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
         self.is_copy = is_copy
+        # This parameter is required.
         self.json_str_for_rule = json_str_for_rule
 
     def validate(self):
@@ -2769,132 +2778,6 @@ class AddRuleV4Response(TeaModel):
         return self
 
 
-class AddThesaurusForApiRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class AddThesaurusForApiResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: int = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class AddThesaurusForApiResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AddThesaurusForApiResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AddThesaurusForApiResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AssignReviewerRequest(TeaModel):
     def __init__(
         self,
@@ -2903,6 +2786,7 @@ class AssignReviewerRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -3345,6 +3229,7 @@ class CreateAsrVocabRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -3638,6 +3523,7 @@ class CreateQualityCheckSchemeRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -3972,6 +3858,7 @@ class CreateSkillGroupConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4098,6 +3985,7 @@ class CreateTaskAssignRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4224,6 +4112,7 @@ class CreateUserRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4344,6 +4233,7 @@ class CreateWarningConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4469,6 +4359,7 @@ class CreateWarningStrategyConfigRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4595,6 +4486,7 @@ class DelRuleCategoryRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4742,126 +4634,6 @@ class DelRuleCategoryResponse(TeaModel):
         return self
 
 
-class DelThesaurusForApiRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class DelThesaurusForApiResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DelThesaurusForApiResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DelThesaurusForApiResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DelThesaurusForApiResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteAsrVocabRequest(TeaModel):
     def __init__(
         self,
@@ -4870,6 +4642,7 @@ class DeleteAsrVocabRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -4996,6 +4769,7 @@ class DeleteBusinessCategoryRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -5122,6 +4896,7 @@ class DeleteCustomizationConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -5248,6 +5023,7 @@ class DeleteDataSetRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -5368,6 +5144,7 @@ class DeletePrecisionTaskRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -5653,6 +5430,7 @@ class DeleteRuleRequest(TeaModel):
         self.base_me_agent_id = base_me_agent_id
         self.force_delete = force_delete
         self.is_scheme_data = is_scheme_data
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -5824,6 +5602,7 @@ class DeleteRuleV4Request(TeaModel):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
         self.force_delete = force_delete
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -6150,6 +5929,7 @@ class DeleteScoreForApiRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -6270,6 +6050,7 @@ class DeleteSkillGroupConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -6390,6 +6171,7 @@ class DeleteSubScoreForApiRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -6510,6 +6292,7 @@ class DeleteTaskAssignRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -6622,126 +6405,6 @@ class DeleteTaskAssignRuleResponse(TeaModel):
         return self
 
 
-class DeleteUserRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class DeleteUserResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DeleteUserResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteUserResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteUserResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteWarningConfigRequest(TeaModel):
     def __init__(
         self,
@@ -6750,6 +6413,7 @@ class DeleteWarningConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -6869,6 +6533,7 @@ class DeleteWarningStrategyConfigRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -6983,132 +6648,6 @@ class DeleteWarningStrategyConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteWarningStrategyConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class EditThesaurusForApiRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class EditThesaurusForApiResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: int = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class EditThesaurusForApiResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: EditThesaurusForApiResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = EditThesaurusForApiResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7351,6 +6890,7 @@ class GetBusinessCategoryListRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -7553,6 +7093,7 @@ class GetCustomizationConfigListRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -7765,220 +7306,6 @@ class GetCustomizationConfigListResponse(TeaModel):
         return self
 
 
-class GetHitResultRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class GetHitResultResponseBodyDataResultInfo(TeaModel):
-    def __init__(
-        self,
-        rid: int = None,
-        rule_name: str = None,
-    ):
-        self.rid = rid
-        self.rule_name = rule_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.rid is not None:
-            result['Rid'] = self.rid
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Rid') is not None:
-            self.rid = m.get('Rid')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
-        return self
-
-
-class GetHitResultResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        result_info: List[GetHitResultResponseBodyDataResultInfo] = None,
-    ):
-        self.result_info = result_info
-
-    def validate(self):
-        if self.result_info:
-            for k in self.result_info:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ResultInfo'] = []
-        if self.result_info is not None:
-            for k in self.result_info:
-                result['ResultInfo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.result_info = []
-        if m.get('ResultInfo') is not None:
-            for k in m.get('ResultInfo'):
-                temp_model = GetHitResultResponseBodyDataResultInfo()
-                self.result_info.append(temp_model.from_map(k))
-        return self
-
-
-class GetHitResultResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        count: int = None,
-        data: GetHitResultResponseBodyData = None,
-        message: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.count = count
-        self.data = data
-        self.message = message
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('Data') is not None:
-            temp_model = GetHitResultResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetHitResultResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetHitResultResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetHitResultResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetNextResultToVerifyRequest(TeaModel):
     def __init__(
         self,
@@ -7987,6 +7314,7 @@ class GetNextResultToVerifyRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -8567,6 +7895,7 @@ class GetPrecisionTaskRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -9207,6 +8536,7 @@ class GetResultRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -10810,6 +10140,266 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
         return self
 
 
+class GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule(TeaModel):
+    def __init__(
+        self,
+        rid: int = None,
+        rule_name: str = None,
+    ):
+        self.rid = rid
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistory(TeaModel):
+    def __init__(
+        self,
+        comments: str = None,
+        complain_result: int = None,
+        old_score: int = None,
+        operator: int = None,
+        operator_name: str = None,
+        review_manager_type: str = None,
+        review_result: int = None,
+        review_right_rule: GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule = None,
+        score: int = None,
+        time: int = None,
+        time_str: str = None,
+        type: int = None,
+    ):
+        self.comments = comments
+        self.complain_result = complain_result
+        self.old_score = old_score
+        self.operator = operator
+        self.operator_name = operator_name
+        self.review_manager_type = review_manager_type
+        self.review_result = review_result
+        self.review_right_rule = review_right_rule
+        self.score = score
+        self.time = time
+        self.time_str = time_str
+        self.type = type
+
+    def validate(self):
+        if self.review_right_rule:
+            self.review_right_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.complain_result is not None:
+            result['ComplainResult'] = self.complain_result
+        if self.old_score is not None:
+            result['OldScore'] = self.old_score
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.operator_name is not None:
+            result['OperatorName'] = self.operator_name
+        if self.review_manager_type is not None:
+            result['ReviewManagerType'] = self.review_manager_type
+        if self.review_result is not None:
+            result['ReviewResult'] = self.review_result
+        if self.review_right_rule is not None:
+            result['ReviewRightRule'] = self.review_right_rule.to_map()
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.time_str is not None:
+            result['TimeStr'] = self.time_str
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('ComplainResult') is not None:
+            self.complain_result = m.get('ComplainResult')
+        if m.get('OldScore') is not None:
+            self.old_score = m.get('OldScore')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OperatorName') is not None:
+            self.operator_name = m.get('OperatorName')
+        if m.get('ReviewManagerType') is not None:
+            self.review_manager_type = m.get('ReviewManagerType')
+        if m.get('ReviewResult') is not None:
+            self.review_result = m.get('ReviewResult')
+        if m.get('ReviewRightRule') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule()
+            self.review_right_rule = temp_model.from_map(m['ReviewRightRule'])
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('TimeStr') is not None:
+            self.time_str = m.get('TimeStr')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoReviewHistoryList(TeaModel):
+    def __init__(
+        self,
+        review_history: List[GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistory] = None,
+    ):
+        self.review_history = review_history
+
+    def validate(self):
+        if self.review_history:
+            for k in self.review_history:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReviewHistory'] = []
+        if self.review_history is not None:
+            for k in self.review_history:
+                result['ReviewHistory'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.review_history = []
+        if m.get('ReviewHistory') is not None:
+            for k in m.get('ReviewHistory'):
+                temp_model = GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistory()
+                self.review_history.append(temp_model.from_map(k))
+        return self
+
+
+class GetResultResponseBodyDataResultInfoReviewTypeIdListReviewTypeIdListReviewKeyIdList(TeaModel):
+    def __init__(
+        self,
+        review_key_id_list: List[int] = None,
+    ):
+        self.review_key_id_list = review_key_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.review_key_id_list is not None:
+            result['ReviewKeyIdList'] = self.review_key_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReviewKeyIdList') is not None:
+            self.review_key_id_list = m.get('ReviewKeyIdList')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoReviewTypeIdListReviewTypeIdList(TeaModel):
+    def __init__(
+        self,
+        review_key_id_list: GetResultResponseBodyDataResultInfoReviewTypeIdListReviewTypeIdListReviewKeyIdList = None,
+        review_type_id: int = None,
+    ):
+        self.review_key_id_list = review_key_id_list
+        self.review_type_id = review_type_id
+
+    def validate(self):
+        if self.review_key_id_list:
+            self.review_key_id_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.review_key_id_list is not None:
+            result['ReviewKeyIdList'] = self.review_key_id_list.to_map()
+        if self.review_type_id is not None:
+            result['ReviewTypeId'] = self.review_type_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReviewKeyIdList') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoReviewTypeIdListReviewTypeIdListReviewKeyIdList()
+            self.review_key_id_list = temp_model.from_map(m['ReviewKeyIdList'])
+        if m.get('ReviewTypeId') is not None:
+            self.review_type_id = m.get('ReviewTypeId')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoReviewTypeIdList(TeaModel):
+    def __init__(
+        self,
+        review_type_id_list: List[GetResultResponseBodyDataResultInfoReviewTypeIdListReviewTypeIdList] = None,
+    ):
+        self.review_type_id_list = review_type_id_list
+
+    def validate(self):
+        if self.review_type_id_list:
+            for k in self.review_type_id_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReviewTypeIdList'] = []
+        if self.review_type_id_list is not None:
+            for k in self.review_type_id_list:
+                result['ReviewTypeIdList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.review_type_id_list = []
+        if m.get('ReviewTypeIdList') is not None:
+            for k in m.get('ReviewTypeIdList'):
+                temp_model = GetResultResponseBodyDataResultInfoReviewTypeIdListReviewTypeIdList()
+                self.review_type_id_list.append(temp_model.from_map(k))
+        return self
+
+
 class GetResultResponseBodyDataResultInfoSchemeIdList(TeaModel):
     def __init__(
         self,
@@ -10879,11 +10469,13 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         last_data_id: str = None,
         recording: GetResultResponseBodyDataResultInfoRecording = None,
         resolver: str = None,
+        review_history_list: GetResultResponseBodyDataResultInfoReviewHistoryList = None,
         review_result: int = None,
         review_status: int = None,
         review_time: str = None,
         review_time_long: str = None,
         review_type: int = None,
+        review_type_id_list: GetResultResponseBodyDataResultInfoReviewTypeIdList = None,
         reviewer: str = None,
         scheme_id_list: GetResultResponseBodyDataResultInfoSchemeIdList = None,
         scheme_name_list: GetResultResponseBodyDataResultInfoSchemeNameList = None,
@@ -10904,11 +10496,13 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
         self.last_data_id = last_data_id
         self.recording = recording
         self.resolver = resolver
+        self.review_history_list = review_history_list
         self.review_result = review_result
         self.review_status = review_status
         self.review_time = review_time
         self.review_time_long = review_time_long
         self.review_type = review_type
+        self.review_type_id_list = review_type_id_list
         self.reviewer = reviewer
         self.scheme_id_list = scheme_id_list
         self.scheme_name_list = scheme_name_list
@@ -10928,6 +10522,10 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             self.hit_score.validate()
         if self.recording:
             self.recording.validate()
+        if self.review_history_list:
+            self.review_history_list.validate()
+        if self.review_type_id_list:
+            self.review_type_id_list.validate()
         if self.scheme_id_list:
             self.scheme_id_list.validate()
         if self.scheme_name_list:
@@ -10963,6 +10561,8 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             result['Recording'] = self.recording.to_map()
         if self.resolver is not None:
             result['Resolver'] = self.resolver
+        if self.review_history_list is not None:
+            result['ReviewHistoryList'] = self.review_history_list.to_map()
         if self.review_result is not None:
             result['ReviewResult'] = self.review_result
         if self.review_status is not None:
@@ -10973,6 +10573,8 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             result['ReviewTimeLong'] = self.review_time_long
         if self.review_type is not None:
             result['ReviewType'] = self.review_type
+        if self.review_type_id_list is not None:
+            result['ReviewTypeIdList'] = self.review_type_id_list.to_map()
         if self.reviewer is not None:
             result['Reviewer'] = self.reviewer
         if self.scheme_id_list is not None:
@@ -11020,6 +10622,9 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             self.recording = temp_model.from_map(m['Recording'])
         if m.get('Resolver') is not None:
             self.resolver = m.get('Resolver')
+        if m.get('ReviewHistoryList') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoReviewHistoryList()
+            self.review_history_list = temp_model.from_map(m['ReviewHistoryList'])
         if m.get('ReviewResult') is not None:
             self.review_result = m.get('ReviewResult')
         if m.get('ReviewStatus') is not None:
@@ -11030,6 +10635,9 @@ class GetResultResponseBodyDataResultInfo(TeaModel):
             self.review_time_long = m.get('ReviewTimeLong')
         if m.get('ReviewType') is not None:
             self.review_type = m.get('ReviewType')
+        if m.get('ReviewTypeIdList') is not None:
+            temp_model = GetResultResponseBodyDataResultInfoReviewTypeIdList()
+            self.review_type_id_list = temp_model.from_map(m['ReviewTypeIdList'])
         if m.get('Reviewer') is not None:
             self.reviewer = m.get('Reviewer')
         if m.get('SchemeIdList') is not None:
@@ -11210,6 +10818,7 @@ class GetResultToReviewRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -12069,24 +11678,14 @@ class GetResultToReviewResponseBodyDataManualScoreInfoList(TeaModel):
         return self
 
 
-class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(TeaModel):
+class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule(TeaModel):
     def __init__(
         self,
-        complain_result: int = None,
-        old_score: int = None,
-        operator_name: str = None,
-        review_result: int = None,
-        score: int = None,
-        time_str: str = None,
-        type: int = None,
+        rid: int = None,
+        rule_name: str = None,
     ):
-        self.complain_result = complain_result
-        self.old_score = old_score
-        self.operator_name = operator_name
-        self.review_result = review_result
-        self.score = score
-        self.time_str = time_str
-        self.type = type
+        self.rid = rid
+        self.rule_name = rule_name
 
     def validate(self):
         pass
@@ -12097,16 +11696,80 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(TeaModel):
             return _map
 
         result = dict()
+        if self.rid is not None:
+            result['Rid'] = self.rid
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(TeaModel):
+    def __init__(
+        self,
+        comments: str = None,
+        complain_result: int = None,
+        old_score: int = None,
+        operator: int = None,
+        operator_name: str = None,
+        review_manager_type: str = None,
+        review_result: int = None,
+        review_right_rule: GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule = None,
+        score: int = None,
+        time: int = None,
+        time_str: str = None,
+        type: int = None,
+    ):
+        self.comments = comments
+        self.complain_result = complain_result
+        self.old_score = old_score
+        self.operator = operator
+        self.operator_name = operator_name
+        self.review_manager_type = review_manager_type
+        self.review_result = review_result
+        self.review_right_rule = review_right_rule
+        self.score = score
+        self.time = time
+        self.time_str = time_str
+        self.type = type
+
+    def validate(self):
+        if self.review_right_rule:
+            self.review_right_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comments is not None:
+            result['Comments'] = self.comments
         if self.complain_result is not None:
             result['ComplainResult'] = self.complain_result
         if self.old_score is not None:
             result['OldScore'] = self.old_score
+        if self.operator is not None:
+            result['Operator'] = self.operator
         if self.operator_name is not None:
             result['OperatorName'] = self.operator_name
+        if self.review_manager_type is not None:
+            result['ReviewManagerType'] = self.review_manager_type
         if self.review_result is not None:
             result['ReviewResult'] = self.review_result
+        if self.review_right_rule is not None:
+            result['ReviewRightRule'] = self.review_right_rule.to_map()
         if self.score is not None:
             result['Score'] = self.score
+        if self.time is not None:
+            result['Time'] = self.time
         if self.time_str is not None:
             result['TimeStr'] = self.time_str
         if self.type is not None:
@@ -12115,16 +11778,27 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
         if m.get('ComplainResult') is not None:
             self.complain_result = m.get('ComplainResult')
         if m.get('OldScore') is not None:
             self.old_score = m.get('OldScore')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
         if m.get('OperatorName') is not None:
             self.operator_name = m.get('OperatorName')
+        if m.get('ReviewManagerType') is not None:
+            self.review_manager_type = m.get('ReviewManagerType')
         if m.get('ReviewResult') is not None:
             self.review_result = m.get('ReviewResult')
+        if m.get('ReviewRightRule') is not None:
+            temp_model = GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule()
+            self.review_right_rule = temp_model.from_map(m['ReviewRightRule'])
         if m.get('Score') is not None:
             self.score = m.get('Score')
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
         if m.get('TimeStr') is not None:
             self.time_str = m.get('TimeStr')
         if m.get('Type') is not None:
@@ -12167,6 +11841,103 @@ class GetResultToReviewResponseBodyDataReviewHistoryList(TeaModel):
         return self
 
 
+class GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdListReviewKeyIdList(TeaModel):
+    def __init__(
+        self,
+        review_key_id_list: List[int] = None,
+    ):
+        self.review_key_id_list = review_key_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.review_key_id_list is not None:
+            result['ReviewKeyIdList'] = self.review_key_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReviewKeyIdList') is not None:
+            self.review_key_id_list = m.get('ReviewKeyIdList')
+        return self
+
+
+class GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdList(TeaModel):
+    def __init__(
+        self,
+        review_key_id_list: GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdListReviewKeyIdList = None,
+        review_type_id: int = None,
+    ):
+        self.review_key_id_list = review_key_id_list
+        self.review_type_id = review_type_id
+
+    def validate(self):
+        if self.review_key_id_list:
+            self.review_key_id_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.review_key_id_list is not None:
+            result['ReviewKeyIdList'] = self.review_key_id_list.to_map()
+        if self.review_type_id is not None:
+            result['ReviewTypeId'] = self.review_type_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReviewKeyIdList') is not None:
+            temp_model = GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdListReviewKeyIdList()
+            self.review_key_id_list = temp_model.from_map(m['ReviewKeyIdList'])
+        if m.get('ReviewTypeId') is not None:
+            self.review_type_id = m.get('ReviewTypeId')
+        return self
+
+
+class GetResultToReviewResponseBodyDataReviewTypeIdList(TeaModel):
+    def __init__(
+        self,
+        review_type_id_list: List[GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdList] = None,
+    ):
+        self.review_type_id_list = review_type_id_list
+
+    def validate(self):
+        if self.review_type_id_list:
+            for k in self.review_type_id_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReviewTypeIdList'] = []
+        if self.review_type_id_list is not None:
+            for k in self.review_type_id_list:
+                result['ReviewTypeIdList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.review_type_id_list = []
+        if m.get('ReviewTypeIdList') is not None:
+            for k in m.get('ReviewTypeIdList'):
+                temp_model = GetResultToReviewResponseBodyDataReviewTypeIdListReviewTypeIdList()
+                self.review_type_id_list.append(temp_model.from_map(k))
+        return self
+
+
 class GetResultToReviewResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -12179,6 +11950,7 @@ class GetResultToReviewResponseBodyData(TeaModel):
         hit_rule_review_info_list: GetResultToReviewResponseBodyDataHitRuleReviewInfoList = None,
         manual_score_info_list: GetResultToReviewResponseBodyDataManualScoreInfoList = None,
         review_history_list: GetResultToReviewResponseBodyDataReviewHistoryList = None,
+        review_type_id_list: GetResultToReviewResponseBodyDataReviewTypeIdList = None,
         status: int = None,
         total_score: int = None,
         vid: str = None,
@@ -12192,6 +11964,7 @@ class GetResultToReviewResponseBodyData(TeaModel):
         self.hit_rule_review_info_list = hit_rule_review_info_list
         self.manual_score_info_list = manual_score_info_list
         self.review_history_list = review_history_list
+        self.review_type_id_list = review_type_id_list
         self.status = status
         self.total_score = total_score
         self.vid = vid
@@ -12205,6 +11978,8 @@ class GetResultToReviewResponseBodyData(TeaModel):
             self.manual_score_info_list.validate()
         if self.review_history_list:
             self.review_history_list.validate()
+        if self.review_type_id_list:
+            self.review_type_id_list.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12230,6 +12005,8 @@ class GetResultToReviewResponseBodyData(TeaModel):
             result['ManualScoreInfoList'] = self.manual_score_info_list.to_map()
         if self.review_history_list is not None:
             result['ReviewHistoryList'] = self.review_history_list.to_map()
+        if self.review_type_id_list is not None:
+            result['ReviewTypeIdList'] = self.review_type_id_list.to_map()
         if self.status is not None:
             result['Status'] = self.status
         if self.total_score is not None:
@@ -12262,6 +12039,9 @@ class GetResultToReviewResponseBodyData(TeaModel):
         if m.get('ReviewHistoryList') is not None:
             temp_model = GetResultToReviewResponseBodyDataReviewHistoryList()
             self.review_history_list = temp_model.from_map(m['ReviewHistoryList'])
+        if m.get('ReviewTypeIdList') is not None:
+            temp_model = GetResultToReviewResponseBodyDataReviewTypeIdList()
+            self.review_type_id_list = temp_model.from_map(m['ReviewTypeIdList'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TotalScore') is not None:
@@ -12373,6 +12153,7 @@ class GetRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -12747,6 +12528,7 @@ class GetRuleByIdRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -12887,6 +12669,7 @@ class GetRuleCategoryRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -13089,6 +12872,7 @@ class GetRuleDetailRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -14131,6 +13915,7 @@ class GetRuleV4Request(TeaModel):
         self,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -14255,137 +14040,6 @@ class GetRuleV4Response(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRuleV4ResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetRuleV4StrRequest(TeaModel):
-    def __init__(
-        self,
-        is_scheme_data: int = None,
-        rule_id: int = None,
-    ):
-        self.is_scheme_data = is_scheme_data
-        self.rule_id = rule_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.is_scheme_data is not None:
-            result['IsSchemeData'] = self.is_scheme_data
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('IsSchemeData') is not None:
-            self.is_scheme_data = m.get('IsSchemeData')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        return self
-
-
-class GetRuleV4StrResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        http_status_code: int = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.http_status_code = http_status_code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetRuleV4StrResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetRuleV4StrResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetRuleV4StrResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14775,6 +14429,7 @@ class GetScoreInfoRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -15059,6 +14714,7 @@ class GetSkillGroupConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -15469,6 +15125,7 @@ class GetSyncResultRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -16189,237 +15846,6 @@ class GetSyncResultResponse(TeaModel):
         return self
 
 
-class GetThesaurusBySynonymForApiRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class GetThesaurusBySynonymForApiResponseBodyDataThesaurusPoSynonymList(TeaModel):
-    def __init__(
-        self,
-        synonym_list: List[str] = None,
-    ):
-        self.synonym_list = synonym_list
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.synonym_list is not None:
-            result['SynonymList'] = self.synonym_list
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('SynonymList') is not None:
-            self.synonym_list = m.get('SynonymList')
-        return self
-
-
-class GetThesaurusBySynonymForApiResponseBodyDataThesaurusPo(TeaModel):
-    def __init__(
-        self,
-        business: str = None,
-        id: int = None,
-        synonym_list: GetThesaurusBySynonymForApiResponseBodyDataThesaurusPoSynonymList = None,
-    ):
-        self.business = business
-        self.id = id
-        self.synonym_list = synonym_list
-
-    def validate(self):
-        if self.synonym_list:
-            self.synonym_list.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.business is not None:
-            result['Business'] = self.business
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.synonym_list is not None:
-            result['SynonymList'] = self.synonym_list.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Business') is not None:
-            self.business = m.get('Business')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('SynonymList') is not None:
-            temp_model = GetThesaurusBySynonymForApiResponseBodyDataThesaurusPoSynonymList()
-            self.synonym_list = temp_model.from_map(m['SynonymList'])
-        return self
-
-
-class GetThesaurusBySynonymForApiResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        thesaurus_po: List[GetThesaurusBySynonymForApiResponseBodyDataThesaurusPo] = None,
-    ):
-        self.thesaurus_po = thesaurus_po
-
-    def validate(self):
-        if self.thesaurus_po:
-            for k in self.thesaurus_po:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ThesaurusPo'] = []
-        if self.thesaurus_po is not None:
-            for k in self.thesaurus_po:
-                result['ThesaurusPo'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.thesaurus_po = []
-        if m.get('ThesaurusPo') is not None:
-            for k in m.get('ThesaurusPo'):
-                temp_model = GetThesaurusBySynonymForApiResponseBodyDataThesaurusPo()
-                self.thesaurus_po.append(temp_model.from_map(k))
-        return self
-
-
-class GetThesaurusBySynonymForApiResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: GetThesaurusBySynonymForApiResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetThesaurusBySynonymForApiResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetThesaurusBySynonymForApiResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetThesaurusBySynonymForApiResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetThesaurusBySynonymForApiResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class GetWarningStrategyConfigRequest(TeaModel):
     def __init__(
         self,
@@ -16427,6 +15853,7 @@ class GetWarningStrategyConfigRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -16771,6 +16198,7 @@ class HandleComplaintRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -16897,6 +16325,7 @@ class InsertScoreForApiRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -17058,6 +16487,7 @@ class InsertSubScoreForApiRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -17219,6 +16649,7 @@ class InvalidRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -17345,6 +16776,7 @@ class ListAsrVocabRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -17547,262 +16979,6 @@ class ListAsrVocabResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAsrVocabResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListBusinessSpacesRequest(TeaModel):
-    def __init__(
-        self,
-        json_str: str = None,
-    ):
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class ListBusinessSpacesResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        ali_uid: int = None,
-        business_space_code: str = None,
-        business_space_name: str = None,
-        current_status: int = None,
-        end_time: str = None,
-        id: int = None,
-        language: str = None,
-        login_user_type: int = None,
-        order_instance_id: str = None,
-        product_type: str = None,
-        role_name: str = None,
-        start_time: str = None,
-        sub_ali_uid: int = None,
-        xspace_commodity_code: str = None,
-        xspace_product_code: str = None,
-    ):
-        self.ali_uid = ali_uid
-        self.business_space_code = business_space_code
-        self.business_space_name = business_space_name
-        self.current_status = current_status
-        self.end_time = end_time
-        self.id = id
-        self.language = language
-        self.login_user_type = login_user_type
-        self.order_instance_id = order_instance_id
-        self.product_type = product_type
-        self.role_name = role_name
-        self.start_time = start_time
-        self.sub_ali_uid = sub_ali_uid
-        self.xspace_commodity_code = xspace_commodity_code
-        self.xspace_product_code = xspace_product_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.ali_uid is not None:
-            result['AliUid'] = self.ali_uid
-        if self.business_space_code is not None:
-            result['BusinessSpaceCode'] = self.business_space_code
-        if self.business_space_name is not None:
-            result['BusinessSpaceName'] = self.business_space_name
-        if self.current_status is not None:
-            result['CurrentStatus'] = self.current_status
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.language is not None:
-            result['Language'] = self.language
-        if self.login_user_type is not None:
-            result['LoginUserType'] = self.login_user_type
-        if self.order_instance_id is not None:
-            result['OrderInstanceId'] = self.order_instance_id
-        if self.product_type is not None:
-            result['ProductType'] = self.product_type
-        if self.role_name is not None:
-            result['RoleName'] = self.role_name
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-        if self.sub_ali_uid is not None:
-            result['SubAliUid'] = self.sub_ali_uid
-        if self.xspace_commodity_code is not None:
-            result['XspaceCommodityCode'] = self.xspace_commodity_code
-        if self.xspace_product_code is not None:
-            result['XspaceProductCode'] = self.xspace_product_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AliUid') is not None:
-            self.ali_uid = m.get('AliUid')
-        if m.get('BusinessSpaceCode') is not None:
-            self.business_space_code = m.get('BusinessSpaceCode')
-        if m.get('BusinessSpaceName') is not None:
-            self.business_space_name = m.get('BusinessSpaceName')
-        if m.get('CurrentStatus') is not None:
-            self.current_status = m.get('CurrentStatus')
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Language') is not None:
-            self.language = m.get('Language')
-        if m.get('LoginUserType') is not None:
-            self.login_user_type = m.get('LoginUserType')
-        if m.get('OrderInstanceId') is not None:
-            self.order_instance_id = m.get('OrderInstanceId')
-        if m.get('ProductType') is not None:
-            self.product_type = m.get('ProductType')
-        if m.get('RoleName') is not None:
-            self.role_name = m.get('RoleName')
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-        if m.get('SubAliUid') is not None:
-            self.sub_ali_uid = m.get('SubAliUid')
-        if m.get('XspaceCommodityCode') is not None:
-            self.xspace_commodity_code = m.get('XspaceCommodityCode')
-        if m.get('XspaceProductCode') is not None:
-            self.xspace_product_code = m.get('XspaceProductCode')
-        return self
-
-
-class ListBusinessSpacesResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        current_page: int = None,
-        data: List[ListBusinessSpacesResponseBodyData] = None,
-        message: str = None,
-        page_number: int = None,
-        page_size: int = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.current_page = current_page
-        self.data = data
-        self.message = message
-        self.page_number = page_number
-        self.page_size = page_size
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
-        result['Data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
-        self.data = []
-        if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ListBusinessSpacesResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ListBusinessSpacesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListBusinessSpacesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListBusinessSpacesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18203,6 +17379,7 @@ class ListPrecisionTaskRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -18577,6 +17754,7 @@ class ListQualityCheckSchemeRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -19004,226 +18182,6 @@ class ListQualityCheckSchemeResponse(TeaModel):
         return self
 
 
-class ListRolesRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class ListRolesResponseBodyDataRole(TeaModel):
-    def __init__(
-        self,
-        create_time: str = None,
-        display_name: str = None,
-        id: int = None,
-        level: int = None,
-        name: str = None,
-        update_time: str = None,
-    ):
-        self.create_time = create_time
-        self.display_name = display_name
-        self.id = id
-        self.level = level
-        self.name = name
-        self.update_time = update_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        if self.display_name is not None:
-            result['DisplayName'] = self.display_name
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.update_time is not None:
-            result['UpdateTime'] = self.update_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        if m.get('DisplayName') is not None:
-            self.display_name = m.get('DisplayName')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('UpdateTime') is not None:
-            self.update_time = m.get('UpdateTime')
-        return self
-
-
-class ListRolesResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        role: List[ListRolesResponseBodyDataRole] = None,
-    ):
-        self.role = role
-
-    def validate(self):
-        if self.role:
-            for k in self.role:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Role'] = []
-        if self.role is not None:
-            for k in self.role:
-                result['Role'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.role = []
-        if m.get('Role') is not None:
-            for k in m.get('Role'):
-                temp_model = ListRolesResponseBodyDataRole()
-                self.role.append(temp_model.from_map(k))
-        return self
-
-
-class ListRolesResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: ListRolesResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = ListRolesResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ListRolesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListRolesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListRolesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListRulesRequest(TeaModel):
     def __init__(
         self,
@@ -19232,6 +18190,7 @@ class ListRulesRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -21105,6 +20064,7 @@ class ListSkillGroupConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -21645,6 +20605,7 @@ class ListTaskAssignRulesRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -22386,6 +21347,7 @@ class ListUsersRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -22642,6 +21604,7 @@ class ListWarningConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -23044,6 +22007,7 @@ class ListWarningStrategyConfigRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -23258,208 +22222,6 @@ class ListWarningStrategyConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWarningStrategyConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class RestartAsrTaskRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class RestartAsrTaskResponseBodyDataRestartResult(TeaModel):
-    def __init__(
-        self,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class RestartAsrTaskResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        restart_result: List[RestartAsrTaskResponseBodyDataRestartResult] = None,
-    ):
-        self.restart_result = restart_result
-
-    def validate(self):
-        if self.restart_result:
-            for k in self.restart_result:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['RestartResult'] = []
-        if self.restart_result is not None:
-            for k in self.restart_result:
-                result['RestartResult'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.restart_result = []
-        if m.get('RestartResult') is not None:
-            for k in m.get('RestartResult'):
-                temp_model = RestartAsrTaskResponseBodyDataRestartResult()
-                self.restart_result.append(temp_model.from_map(k))
-        return self
-
-
-class RestartAsrTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: RestartAsrTaskResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = RestartAsrTaskResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class RestartAsrTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RestartAsrTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RestartAsrTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23794,6 +22556,7 @@ class SaveConfigDataSetRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -23914,6 +22677,7 @@ class SubmitComplaintRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -24040,6 +22804,7 @@ class SubmitPrecisionTaskRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -24166,6 +22931,7 @@ class SubmitQualityCheckTaskRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -24292,6 +23058,7 @@ class SubmitReviewInfoRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -24418,6 +23185,7 @@ class SyncQualityCheckRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -24815,6 +23583,7 @@ class TestRuleV4Request(TeaModel):
         test_json: str = None,
     ):
         self.is_scheme_data = is_scheme_data
+        # This parameter is required.
         self.test_json = test_json
 
     def validate(self):
@@ -25558,6 +24327,7 @@ class UpdateAsrVocabRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -25851,6 +24621,7 @@ class UpdateQualityCheckDataRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -26132,6 +24903,7 @@ class UpdateRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -26262,6 +25034,7 @@ class UpdateRuleByIdRequest(TeaModel):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
         self.is_copy = is_copy
+        # This parameter is required.
         self.json_str_for_rule = json_str_for_rule
         self.return_related_schemes = return_related_schemes
         self.rule_id = rule_id
@@ -26605,6 +25378,7 @@ class UpdateRuleV4Request(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str_for_rule = json_str_for_rule
         self.rule_id = rule_id
 
@@ -26938,6 +25712,7 @@ class UpdateScoreForApiRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27058,6 +25833,7 @@ class UpdateSkillGroupConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27178,6 +25954,7 @@ class UpdateSubScoreForApiRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27298,6 +26075,7 @@ class UpdateSyncQualityCheckDataRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27459,6 +26237,7 @@ class UpdateTaskAssignRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27579,6 +26358,7 @@ class UpdateUserRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27691,126 +26471,6 @@ class UpdateUserResponse(TeaModel):
         return self
 
 
-class UpdateUserConfigRequest(TeaModel):
-    def __init__(
-        self,
-        base_me_agent_id: int = None,
-        json_str: str = None,
-    ):
-        # baseMeAgentId
-        self.base_me_agent_id = base_me_agent_id
-        self.json_str = json_str
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_me_agent_id is not None:
-            result['BaseMeAgentId'] = self.base_me_agent_id
-        if self.json_str is not None:
-            result['JsonStr'] = self.json_str
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BaseMeAgentId') is not None:
-            self.base_me_agent_id = m.get('BaseMeAgentId')
-        if m.get('JsonStr') is not None:
-            self.json_str = m.get('JsonStr')
-        return self
-
-
-class UpdateUserConfigResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.message = message
-        self.request_id = request_id
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class UpdateUserConfigResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdateUserConfigResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdateUserConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class UpdateWarningConfigRequest(TeaModel):
     def __init__(
         self,
@@ -27819,6 +26479,7 @@ class UpdateWarningConfigRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -27938,6 +26599,7 @@ class UpdateWarningStrategyConfigRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -28063,6 +26725,7 @@ class UploadAudioDataRequest(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -28189,6 +26852,7 @@ class UploadDataRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -28315,6 +26979,7 @@ class UploadDataSyncRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -28947,6 +27612,7 @@ class UploadDataV4Request(TeaModel):
         json_str: str = None,
     ):
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -29073,6 +27739,7 @@ class UploadRuleRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -29228,6 +27895,7 @@ class VerifyFileRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):
@@ -29354,6 +28022,7 @@ class VerifySentenceRequest(TeaModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # This parameter is required.
         self.json_str = json_str
 
     def validate(self):

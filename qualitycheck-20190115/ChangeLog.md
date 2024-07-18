@@ -1,3 +1,20 @@
+2024-07-18 Version: 6.0.0
+- Delete API AddThesaurusForApi.
+- Delete API DelThesaurusForApi.
+- Delete API DeleteUser.
+- Delete API EditThesaurusForApi.
+- Delete API GetHitResult.
+- Delete API GetRuleV4Str.
+- Delete API GetThesaurusBySynonymForApi.
+- Delete API ListBusinessSpaces.
+- Delete API ListRoles.
+- Delete API RestartAsrTask.
+- Delete API UpdateUserConfig.
+- Update API AddRuleCategory: update response param.
+- Update API GetResult: update response param.
+- Update API GetResultToReview: update response param.
+
+
 2024-04-19 Version: 5.0.0
 - Delete API GetResultCallback.
 - Delete API ListHotWordsTasks.
