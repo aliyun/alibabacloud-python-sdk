@@ -3024,7 +3024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Creates the configurations for an external data source.
         
         @param tmp_req: CreateStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3111,7 +3111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Creates the configurations for an external data source.
         
         @param tmp_req: CreateStreamingJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3197,7 +3197,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingJobRequest,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Creates the configurations for an external data source.
         
         @param request: CreateStreamingJobRequest
         @return: CreateStreamingJobResponse
@@ -3210,7 +3210,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateStreamingJobRequest,
     ) -> gpdb_20160503_models.CreateStreamingJobResponse:
         """
-        @summary 创建外部数据源配置
+        @summary Creates the configurations for an external data source.
         
         @param request: CreateStreamingJobRequest
         @return: CreateStreamingJobResponse
@@ -4300,7 +4300,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary 删除外部数据服务
+        @summary Deletes an external data service.
         
         @param request: DeleteExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4339,7 +4339,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary 删除外部数据服务
+        @summary Deletes an external data service.
         
         @param request: DeleteExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4377,7 +4377,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary 删除外部数据服务
+        @summary Deletes an external data service.
         
         @param request: DeleteExternalDataServiceRequest
         @return: DeleteExternalDataServiceResponse
@@ -4390,7 +4390,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
     ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
         """
-        @summary 删除外部数据服务
+        @summary Deletes an external data service.
         
         @param request: DeleteExternalDataServiceRequest
         @return: DeleteExternalDataServiceResponse
@@ -9232,7 +9232,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
         """
-        @summary 获取外部数据服务详情
+        @summary Queries the information about an external data service.
         
         @param request: DescribeExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9271,7 +9271,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
         """
-        @summary 获取外部数据服务详情
+        @summary Queries the information about an external data service.
         
         @param request: DescribeExternalDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9309,7 +9309,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeExternalDataServiceRequest,
     ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
         """
-        @summary 获取外部数据服务详情
+        @summary Queries the information about an external data service.
         
         @param request: DescribeExternalDataServiceRequest
         @return: DescribeExternalDataServiceResponse
@@ -9322,7 +9322,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeExternalDataServiceRequest,
     ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
         """
-        @summary 获取外部数据服务详情
+        @summary Queries the information about an external data service.
         
         @param request: DescribeExternalDataServiceRequest
         @return: DescribeExternalDataServiceResponse
@@ -13796,10 +13796,14 @@ class Client(OpenApiClient):
             query['Collection'] = request.collection
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.namespace_password):
             query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -13841,10 +13845,14 @@ class Client(OpenApiClient):
             query['Collection'] = request.collection
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.namespace_password):
             query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -17592,7 +17600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary 查询
+        @summary Retrieves vector data and metadata from a document collection by using natural statements.
         
         @param tmp_req: QueryContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17622,6 +17630,8 @@ class Client(OpenApiClient):
             query['HybridSearch'] = request.hybrid_search
         if not UtilClient.is_unset(request.hybrid_search_args_shrink):
             query['HybridSearchArgs'] = request.hybrid_search_args_shrink
+        if not UtilClient.is_unset(request.include_file_url):
+            query['IncludeFileUrl'] = request.include_file_url
         if not UtilClient.is_unset(request.include_metadata_fields):
             query['IncludeMetadataFields'] = request.include_metadata_fields
         if not UtilClient.is_unset(request.include_vector):
@@ -17669,7 +17679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary 查询
+        @summary Retrieves vector data and metadata from a document collection by using natural statements.
         
         @param tmp_req: QueryContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17699,6 +17709,8 @@ class Client(OpenApiClient):
             query['HybridSearch'] = request.hybrid_search
         if not UtilClient.is_unset(request.hybrid_search_args_shrink):
             query['HybridSearchArgs'] = request.hybrid_search_args_shrink
+        if not UtilClient.is_unset(request.include_file_url):
+            query['IncludeFileUrl'] = request.include_file_url
         if not UtilClient.is_unset(request.include_metadata_fields):
             query['IncludeMetadataFields'] = request.include_metadata_fields
         if not UtilClient.is_unset(request.include_vector):
@@ -17745,7 +17757,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.QueryContentRequest,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary 查询
+        @summary Retrieves vector data and metadata from a document collection by using natural statements.
         
         @param request: QueryContentRequest
         @return: QueryContentResponse
@@ -17758,7 +17770,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.QueryContentRequest,
     ) -> gpdb_20160503_models.QueryContentResponse:
         """
-        @summary 查询
+        @summary Retrieves vector data and metadata from a document collection by using natural statements.
         
         @param request: QueryContentRequest
         @return: QueryContentResponse

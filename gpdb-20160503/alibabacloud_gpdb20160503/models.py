@@ -1,7 +1,250 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any, BinaryIO
+from typing import List, Dict, Any, BinaryIO
+
+
+class ColumnMetadata(TeaModel):
+    def __init__(
+        self,
+        column_default: str = None,
+        comment: str = None,
+        data_type: str = None,
+        is_case_sensitive: bool = None,
+        is_currency: bool = None,
+        is_primary_key: bool = None,
+        is_signed: bool = None,
+        max_length: int = None,
+        name: str = None,
+        nullable: bool = None,
+        precision: int = None,
+        scale: int = None,
+        schema_name: str = None,
+        table_name: str = None,
+        udt_name: str = None,
+    ):
+        self.column_default = column_default
+        self.comment = comment
+        self.data_type = data_type
+        self.is_case_sensitive = is_case_sensitive
+        self.is_currency = is_currency
+        self.is_primary_key = is_primary_key
+        self.is_signed = is_signed
+        self.max_length = max_length
+        self.name = name
+        self.nullable = nullable
+        self.precision = precision
+        self.scale = scale
+        self.schema_name = schema_name
+        self.table_name = table_name
+        self.udt_name = udt_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_default is not None:
+            result['ColumnDefault'] = self.column_default
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.is_case_sensitive is not None:
+            result['IsCaseSensitive'] = self.is_case_sensitive
+        if self.is_currency is not None:
+            result['IsCurrency'] = self.is_currency
+        if self.is_primary_key is not None:
+            result['IsPrimaryKey'] = self.is_primary_key
+        if self.is_signed is not None:
+            result['IsSigned'] = self.is_signed
+        if self.max_length is not None:
+            result['MaxLength'] = self.max_length
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.nullable is not None:
+            result['Nullable'] = self.nullable
+        if self.precision is not None:
+            result['Precision'] = self.precision
+        if self.scale is not None:
+            result['Scale'] = self.scale
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.udt_name is not None:
+            result['UdtName'] = self.udt_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnDefault') is not None:
+            self.column_default = m.get('ColumnDefault')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('IsCaseSensitive') is not None:
+            self.is_case_sensitive = m.get('IsCaseSensitive')
+        if m.get('IsCurrency') is not None:
+            self.is_currency = m.get('IsCurrency')
+        if m.get('IsPrimaryKey') is not None:
+            self.is_primary_key = m.get('IsPrimaryKey')
+        if m.get('IsSigned') is not None:
+            self.is_signed = m.get('IsSigned')
+        if m.get('MaxLength') is not None:
+            self.max_length = m.get('MaxLength')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Nullable') is not None:
+            self.nullable = m.get('Nullable')
+        if m.get('Precision') is not None:
+            self.precision = m.get('Precision')
+        if m.get('Scale') is not None:
+            self.scale = m.get('Scale')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('UdtName') is not None:
+            self.udt_name = m.get('UdtName')
+        return self
+
+
+class Field(TeaModel):
+    def __init__(
+        self,
+        blob_value: str = None,
+        boolean_value: bool = None,
+        double_value: float = None,
+        is_null: bool = None,
+        long_value: int = None,
+        string_value: str = None,
+    ):
+        self.blob_value = blob_value
+        self.boolean_value = boolean_value
+        self.double_value = double_value
+        self.is_null = is_null
+        self.long_value = long_value
+        self.string_value = string_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blob_value is not None:
+            result['BlobValue'] = self.blob_value
+        if self.boolean_value is not None:
+            result['BooleanValue'] = self.boolean_value
+        if self.double_value is not None:
+            result['DoubleValue'] = self.double_value
+        if self.is_null is not None:
+            result['IsNull'] = self.is_null
+        if self.long_value is not None:
+            result['LongValue'] = self.long_value
+        if self.string_value is not None:
+            result['StringValue'] = self.string_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BlobValue') is not None:
+            self.blob_value = m.get('BlobValue')
+        if m.get('BooleanValue') is not None:
+            self.boolean_value = m.get('BooleanValue')
+        if m.get('DoubleValue') is not None:
+            self.double_value = m.get('DoubleValue')
+        if m.get('IsNull') is not None:
+            self.is_null = m.get('IsNull')
+        if m.get('LongValue') is not None:
+            self.long_value = m.get('LongValue')
+        if m.get('StringValue') is not None:
+            self.string_value = m.get('StringValue')
+        return self
+
+
+class StatementData(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        database: str = None,
+        id: str = None,
+        parameters: List[str] = None,
+        secret_arn: str = None,
+        sql: str = None,
+        sqls: List[str] = None,
+        status: str = None,
+        updated_at: str = None,
+    ):
+        self.created_at = created_at
+        self.database = database
+        self.id = id
+        self.parameters = parameters
+        self.secret_arn = secret_arn
+        self.sql = sql
+        self.sqls = sqls
+        self.status = status
+        self.updated_at = updated_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['CreatedAt'] = self.created_at
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.secret_arn is not None:
+            result['SecretArn'] = self.secret_arn
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.sqls is not None:
+            result['Sqls'] = self.sqls
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.updated_at is not None:
+            result['UpdatedAt'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedAt') is not None:
+            self.created_at = m.get('CreatedAt')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('SecretArn') is not None:
+            self.secret_arn = m.get('SecretArn')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('Sqls') is not None:
+            self.sqls = m.get('Sqls')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdatedAt') is not None:
+            self.updated_at = m.get('UpdatedAt')
+        return self
 
 
 class AllocateInstancePublicConnectionRequest(TeaModel):
@@ -1408,7 +1651,16 @@ class CreateCollectionRequest(TeaModel):
         self.manager_account_password = manager_account_password
         # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
         # 
-        # >Warning: Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+        # > 
+        # 
+        # *   For information about the supported data types, see [Data types](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/data-types-1/?spm=a2c4g.11186623.0.0.43e567a1C35QRD).
+        # 
+        # *   The money data type is not supported.
+        # 
+        # **\
+        # 
+        # **Warning**\
+        # Reserved fields such as id, vector, to_tsvector, and source cannot be used.
         # 
         # This parameter is required.
         self.metadata = metadata
@@ -2212,13 +2464,10 @@ class CreateDBInstancePlanRequest(TeaModel):
         self.plan_config = plan_config
         # The description of the plan.
         self.plan_desc = plan_desc
-        # The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC. The end time must be later than the start time.
         # 
-        # > 
-        # 
-        # *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
-        # 
-        # *   If you do not specify this parameter, the plan does not end.
+        # > - This parameter must be specified only when **PlanScheduleType** is set to **Regular.
+        #  > - If you do not specify this parameter, the plan stops until the plan is deleted.
         self.plan_end_date = plan_end_date
         # The name of the plan.
         # 
@@ -2231,13 +2480,10 @@ class CreateDBInstancePlanRequest(TeaModel):
         # 
         # This parameter is required.
         self.plan_schedule_type = plan_schedule_type
-        # The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > 
-        # 
-        # *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
-        # 
-        # *   If you do not specify this parameter, the plan is executed immediately.
+        # > -  This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+        # > -  If you do not specify this parameter, the current time is used.
         self.plan_start_date = plan_start_date
         # The type of the plan. Valid values:
         # 
@@ -2245,11 +2491,8 @@ class CreateDBInstancePlanRequest(TeaModel):
         # *   **Resize**: changes the number of compute nodes.
         # *   **ModifySpec**: changes compute node specifications.
         # 
-        # > 
-        # 
-        # *   You can specify the value to Resize only for instances in Serverless mode.
-        # 
-        # *   You can specify the value to ModifySpec only for instances in elastic storage mode.
+        # > - You can specify the value to ModifySpec only for instances in elastic storage mode.
+        # >- You can specify the value to ModifySpec only for instances in elastic storage mode.
         # 
         # This parameter is required.
         self.plan_type = plan_type
@@ -2626,6 +2869,18 @@ class CreateDocumentCollectionRequest(TeaModel):
         self.manager_account = manager_account
         # This parameter is required.
         self.manager_account_password = manager_account_password
+        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # 
+        # > 
+        # 
+        # *   For information about the supported data types, see [Data types](https://help.aliyun.com/zh/analyticdb-for-postgresql/developer-reference/data-types-1/?spm=a2c4g.11186623.0.0.43e567a1C35QRD).
+        # 
+        # *   The money data type is not supported.
+        # 
+        # **\
+        # 
+        # **Warning**\
+        # Reserved fields such as id, vector, doc_name, content, loader_metadata, source, and to_tsvector cannot be used.
         self.metadata = metadata
         self.metrics = metrics
         self.namespace = namespace
@@ -4103,30 +4358,70 @@ class CreateStreamingJobRequest(TeaModel):
         update_columns: List[str] = None,
         write_mode: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The delivery guarantee setting.
+        # 
+        # Valid values:
+        # 
+        # *   ATLEAST
+        # *   EXACTLY
         self.consistency = consistency
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The destination fields.
         self.dest_columns = dest_columns
+        # The name of the destination database.
         self.dest_database = dest_database
         self.dest_schema = dest_schema
+        # The name of the destination table.
         self.dest_table = dest_table
+        # The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
         self.error_limit_count = error_limit_count
         self.fallback_offset = fallback_offset
         self.group_name = group_name
+        # The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
         self.job_config = job_config
+        # The description of the job.
         self.job_description = job_description
+        # The name of the job.
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The update condition columns that are used to join the source data and the destination table. Typically, the columns are all the primary key columns of the destination table. If the values of all columns specified by this parameter in different rows are the same, the rows are considered duplicates.
         self.match_columns = match_columns
+        # The configuration mode. Valid values:
+        # 
+        # 1.  basic: In basic mode, you must configure the configuration parameters.
+        # 2.  professional: In professional mode, you can submit a YAML configuration file.
         self.mode = mode
+        # The password of the database account.
         self.password = password
         self.region_id = region_id
+        # The source fields.
         self.src_columns = src_columns
+        # Specifies whether to test the real-time job. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.try_run = try_run
+        # The columns to be updated if a row of data meets the update condition. Typically, the columns are all non-primary key columns of the destination table. When the columns specified by the MatchColumns parameter are used as conditions to join the source data and the destination table, data in columns of the UpdateColumns type is updated if data is matched.
         self.update_columns = update_columns
+        # The write mode.
+        # 
+        # Valid values:
+        # 
+        # *   insert
+        # *   update
+        # *   merge
         self.write_mode = write_mode
 
     def validate(self):
@@ -4259,30 +4554,70 @@ class CreateStreamingJobShrinkRequest(TeaModel):
         update_columns_shrink: str = None,
         write_mode: str = None,
     ):
+        # The name of the database account.
         self.account = account
+        # The delivery guarantee setting.
+        # 
+        # Valid values:
+        # 
+        # *   ATLEAST
+        # *   EXACTLY
         self.consistency = consistency
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The destination fields.
         self.dest_columns_shrink = dest_columns_shrink
+        # The name of the destination database.
         self.dest_database = dest_database
         self.dest_schema = dest_schema
+        # The name of the destination table.
         self.dest_table = dest_table
+        # The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
         self.error_limit_count = error_limit_count
         self.fallback_offset = fallback_offset
         self.group_name = group_name
+        # The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
         self.job_config = job_config
+        # The description of the job.
         self.job_description = job_description
+        # The name of the job.
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The update condition columns that are used to join the source data and the destination table. Typically, the columns are all the primary key columns of the destination table. If the values of all columns specified by this parameter in different rows are the same, the rows are considered duplicates.
         self.match_columns_shrink = match_columns_shrink
+        # The configuration mode. Valid values:
+        # 
+        # 1.  basic: In basic mode, you must configure the configuration parameters.
+        # 2.  professional: In professional mode, you can submit a YAML configuration file.
         self.mode = mode
+        # The password of the database account.
         self.password = password
         self.region_id = region_id
+        # The source fields.
         self.src_columns_shrink = src_columns_shrink
+        # Specifies whether to test the real-time job. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.try_run = try_run
+        # The columns to be updated if a row of data meets the update condition. Typically, the columns are all non-primary key columns of the destination table. When the columns specified by the MatchColumns parameter are used as conditions to join the source data and the destination table, data in columns of the UpdateColumns type is updated if data is matched.
         self.update_columns_shrink = update_columns_shrink
+        # The write mode.
+        # 
+        # Valid values:
+        # 
+        # *   insert
+        # *   update
+        # *   merge
         self.write_mode = write_mode
 
     def validate(self):
@@ -4395,7 +4730,9 @@ class CreateStreamingJobResponseBody(TeaModel):
         job_id: int = None,
         request_id: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5847,8 +6184,13 @@ class DeleteExternalDataServiceRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
         # This parameter is required.
         self.service_id = service_id
@@ -7199,8 +7541,8 @@ class DescribeActiveSQLRecordsResponseBodyQueries(TeaModel):
         self.sql_truncated_threshold = sql_truncated_threshold
         # The status of the asynchronous request. Valid values:
         # 
-        # *   **RUNNING**\
-        # *   **BLOCK**\
+        # *   **running**\
+        # *   **block**\
         self.state = state
         # The name of the database account.
         self.user = user
@@ -8343,6 +8685,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # *   **bottom10**: the 10 nodes that have the lowest metric values.
         # *   **bottom20**: the 20 nodes that have the lowest metric values.
         self.nodes = nodes
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
         # 
@@ -9589,7 +9932,7 @@ class DescribeDBInstanceDataBloatResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of data bloat.
+        # The queried data bloat.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -9694,13 +10037,13 @@ class DescribeDBInstanceDataSkewRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **20**\
+        # *   **30**\
         # *   **50**\
         # *   **100**\
         # 
-        # Default value: **20**.
+        # Default value: **30**.
         self.page_size = page_size
 
     def validate(self):
@@ -11510,7 +11853,7 @@ class DescribeDBInstancePlansRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The time used to filter plans. If you specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format, the plans created before this time are returned. The time must be in UTC. If you do not specify this parameter, all plans are returned.
+        # The time that is used to filter plans. If you specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format, the plans that are created before this time are returned. The time must be in UTC. If you do not specify this parameter, all plans are returned.
         self.plan_create_date = plan_create_date
         # The description of the plan.
         self.plan_desc = plan_desc
@@ -11527,6 +11870,7 @@ class DescribeDBInstancePlansRequest(TeaModel):
         # 
         # *   **PauseResume**: pauses and resumes an instance.
         # *   **Resize**: scales an instance.
+        # *   **ModifySpec**: changes compute node specifications.
         self.plan_type = plan_type
 
     def validate(self):
@@ -11587,17 +11931,21 @@ class DescribeDBInstancePlansResponseBodyItemsPlanList(TeaModel):
         plan_status: str = None,
         plan_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The execution information of the plan.
         self.plan_config = plan_config
         # The description of the plan.
         self.plan_desc = plan_desc
-        # The end time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The end time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
-        # >  This parameter is returned only for periodically executed plans.
+        # > 
+        # 
+        # *   This parameter is returned only for the plans that are periodically executed.
+        # 
+        # *   If you did not specify the end time when you created the plan, this parameter is not returned.
         self.plan_end_date = plan_end_date
-        # The ID of the plan.
+        # The plan ID.
         self.plan_id = plan_id
         # The name of the plan.
         self.plan_name = plan_name
@@ -11606,16 +11954,20 @@ class DescribeDBInstancePlansResponseBodyItemsPlanList(TeaModel):
         # *   **Postpone**: The plan is executed later.
         # *   **Regular**: The plan is executed periodically.
         self.plan_schedule_type = plan_schedule_type
-        # The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
-        # >  This parameter is returned only for periodically executed plans.
+        # > 
+        # 
+        # *   This parameter is returned only for the plans that are periodically executed.
+        # 
+        # *   If you did not specify the start time when you created the plan, the current time is returned.
         self.plan_start_date = plan_start_date
-        # The state of the plan. Valid values:
+        # The status of the plan. Valid values:
         # 
-        # *   **active**: The plan is running.
-        # *   **cancel**: The plan is canceled.
-        # *   **deleted**: The plan is deleted.
-        # *   **finished**: The plan execution is complete.
+        # *   **active**\
+        # *   **cancel**\
+        # *   **deleted**\
+        # *   **finished**\
         self.plan_status = plan_status
         # The type of the plan. Valid values:
         # 
@@ -11729,7 +12081,7 @@ class DescribeDBInstancePlansResponseBody(TeaModel):
         # 
         # This parameter is returned only if the request fails.
         self.error_message = error_message
-        # The instance ID.
+        # The queried plans.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -16114,8 +16466,13 @@ class DescribeExternalDataServiceRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
         self.region_id = region_id
         # This parameter is required.
         self.service_id = service_id
@@ -16163,9 +16520,12 @@ class DescribeExternalDataServiceResponseBody(TeaModel):
         self.create_time = create_time
         self.modify_time = modify_time
         self.request_id = request_id
+        # The description of the service.
         self.service_description = service_description
         self.service_id = service_id
+        # The name of the service.
         self.service_name = service_name
+        # The specifications of the service. Unit: compute units (CUs).
         self.service_spec = service_spec
         self.status = status
 
@@ -16965,6 +17325,7 @@ class DescribeHealthStatusResponseBodyStatusAdbpgInstanceColdDataGb(TeaModel):
         self,
         value: float = None,
     ):
+        # The total amount of cold data storage. Unit: GB.
         self.value = value
 
     def validate(self):
@@ -16992,6 +17353,7 @@ class DescribeHealthStatusResponseBodyStatusAdbpgInstanceHotDataGb(TeaModel):
         self,
         value: float = None,
     ):
+        # The total amount of hot data storage. Unit: GB.
         self.value = value
 
     def validate(self):
@@ -17019,6 +17381,7 @@ class DescribeHealthStatusResponseBodyStatusAdbpgInstanceTotalDataGb(TeaModel):
         self,
         value: float = None,
     ):
+        # The total amount of data storage of the instance. Unit: GB.
         self.value = value
 
     def validate(self):
@@ -17404,8 +17767,11 @@ class DescribeHealthStatusResponseBodyStatus(TeaModel):
         # 
         # >  This parameter value is returned only for instances in elastic storage mode.
         self.adbpg_disk_usage_percent = adbpg_disk_usage_percent
+        # The total amount of cold data storage.
         self.adbpg_instance_cold_data_gb = adbpg_instance_cold_data_gb
+        # The total amount of hot data storage.
         self.adbpg_instance_hot_data_gb = adbpg_instance_hot_data_gb
+        # The total amount of data storage of the instance.
         self.adbpg_instance_total_data_gb = adbpg_instance_total_data_gb
         # The information of maximum coordinator node storage usage.
         # 
@@ -19907,10 +20273,11 @@ class DescribeSQLLogCountRequest(TeaModel):
         self.end_time = end_time
         # The execution duration of the SQL statement. Unit: seconds.
         self.execute_cost = execute_cost
-        # The execution state of the SQL statement. Valid values:
+        # The execution status of the query. Valid values:
         # 
-        # *   **success**\
-        # *   **fail**\
+        # *   1: successful.
+        # *   0: failed.
+        # *   0,1 or 1,0: all.
         self.execute_state = execute_state
         # The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
         self.max_execute_cost = max_execute_cost
@@ -19928,10 +20295,11 @@ class DescribeSQLLogCountRequest(TeaModel):
         # 
         # > 
         # 
-        # *   If **OperationClass** is specified, the value of **OperationType** must belong to the corresponding query language. For example, if **OperationClass** is set to **DQL**, the value of **OperationType** must be a **DQL** statement such as **SELECT**.
+        # *   If you specify **OperationClass**, the value of **OperationType** must be of the corresponding query language. For example, if you set **OperationClass** to **DQL**, the value of **OperationType** must be a **DQL** statement such as **SELECT**.
         # 
-        # *   If **OperationClass** is not specified, the value of **OperationType** can be an SQL statement of any query language.
-        # *   If **OperationClass** and **OperationType** are not specified, all types of SQL statements are returned.
+        # *   If you leave **OperationClass** empty, the value of **OperationType** can be an SQL statement of any query language.
+        # 
+        # *   If you leave **OperationClass** and **OperationType** empty, all types of SQL statements are returned.
         self.operation_type = operation_type
         # The keywords that are used to query audit logs.
         self.query_keywords = query_keywords
@@ -25042,8 +25410,10 @@ class ListDocumentsRequest(TeaModel):
         self,
         collection: str = None,
         dbinstance_id: str = None,
+        max_results: int = None,
         namespace: str = None,
         namespace_password: str = None,
+        next_token: str = None,
         owner_id: int = None,
         region_id: str = None,
     ):
@@ -25055,6 +25425,7 @@ class ListDocumentsRequest(TeaModel):
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.max_results = max_results
         # The name of the namespace. Default value: public.
         # 
         # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
@@ -25065,6 +25436,7 @@ class ListDocumentsRequest(TeaModel):
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
+        self.next_token = next_token
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
@@ -25084,10 +25456,14 @@ class ListDocumentsRequest(TeaModel):
             result['Collection'] = self.collection
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.namespace_password is not None:
             result['NamespacePassword'] = self.namespace_password
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -25100,10 +25476,14 @@ class ListDocumentsRequest(TeaModel):
             self.collection = m.get('Collection')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('NamespacePassword') is not None:
             self.namespace_password = m.get('NamespacePassword')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -25184,13 +25564,17 @@ class ListDocumentsResponseBodyItems(TeaModel):
 class ListDocumentsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         items: ListDocumentsResponseBodyItems = None,
         message: str = None,
+        next_token: str = None,
         request_id: str = None,
         status: str = None,
     ):
+        self.count = count
         self.items = items
         self.message = message
+        self.next_token = next_token
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
@@ -25208,10 +25592,14 @@ class ListDocumentsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         if self.items is not None:
             result['Items'] = self.items.to_map()
         if self.message is not None:
             result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status is not None:
@@ -25220,11 +25608,15 @@ class ListDocumentsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         if m.get('Items') is not None:
             temp_model = ListDocumentsResponseBodyItems()
             self.items = temp_model.from_map(m['Items'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
@@ -27040,14 +27432,14 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. The key must be 1 to 128 characters in length.
+        # The key of tag N. The key must be 1 to 64 characters in length.
         # 
-        # You can use `Tag.N` to query instances that have specific tags added. Tag.N consists of Tag.N.Key and Tag.N.Value.
+        # You can use `Tag.N` to query AnalyticDB for PostgreSQL instances that have specific tags added. Tag.N consists of Tag.N.Key and Tag.N.Value.
         # 
         # Valid values of N: 1 to 20.
         # 
         # *   If you specify only `Tag.N.Key`, all instances that have the tag key added are returned.
-        # *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
+        # *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error message is returned.
         # *   If you specify multiple tag key-value pairs at a time, the instances that match all the specified tag key-value pairs are returned.
         self.key = key
         # The value of tag N. The value must be 1 to 128 characters in length.
@@ -27111,7 +27503,9 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The queried tags.
+        # The tags that are added to instances.
+        # 
+        # >  You must specify at least one of the ResourceId and Tag parameters.
         self.tag = tag
 
     def validate(self):
@@ -31317,6 +31711,7 @@ class QueryContentRequest(TeaModel):
         filter: str = None,
         hybrid_search: str = None,
         hybrid_search_args: Dict[str, dict] = None,
+        include_file_url: bool = None,
         include_metadata_fields: str = None,
         include_vector: bool = None,
         metrics: str = None,
@@ -31337,20 +31732,61 @@ class QueryContentRequest(TeaModel):
         self.file_name = file_name
         self.file_url = file_url
         self.filter = filter
+        # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+        # 
+        # Valid values:
+        # 
+        # *   RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Cascaded: This algorithm performs first full-text search and then vector search.
         self.hybrid_search = hybrid_search
+        # The parameters of the two-way retrieval algorithm. The following parameters are supported:
+        # 
+        # *   When HybridSearch is set to RRF, the scores are calculated by using the `1/(k+rank_i)` formula. The constant k is a positive integer that is greater than 1.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "RRF": {
+        #         "k": 60
+        #        }
+        #     }
+        # 
+        # *   When HybridSearch is set to Weight, the scores are calculated by using the `alpha * vector_score + (1-alpha) * text_score` formula. The alpha parameter specifies the proportion of the vector search score and the full-text search score and ranges from 0 to 1. A value of 0 specifies full-text search and a value of 1 specifies vector search.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "Weight": {
+        #         "alpha": 0.5
+        #        }
+        #     }
         self.hybrid_search_args = hybrid_search_args
+        self.include_file_url = include_file_url
+        # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
         self.include_vector = include_vector
         self.metrics = metrics
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The recall window. If you specify this parameter, the context of the search result is returned. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+        # 
+        # > 
+        # 
+        # *   We recommend that you specify this parameter if the source document is segmented into large numbers of pieces and you may fail to obtain the context.
+        # 
+        # *   The context of the search result is retrieved based on the recall window after the search result is reranked.
         self.recall_window = recall_window
         # This parameter is required.
         self.region_id = region_id
         self.rerank_factor = rerank_factor
         self.top_k = top_k
+        # Specifies whether to use full-text search to implement two-way retrieval. The default value is false, which specifies that only vector search is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
@@ -31378,6 +31814,8 @@ class QueryContentRequest(TeaModel):
             result['HybridSearch'] = self.hybrid_search
         if self.hybrid_search_args is not None:
             result['HybridSearchArgs'] = self.hybrid_search_args
+        if self.include_file_url is not None:
+            result['IncludeFileUrl'] = self.include_file_url
         if self.include_metadata_fields is not None:
             result['IncludeMetadataFields'] = self.include_metadata_fields
         if self.include_vector is not None:
@@ -31420,6 +31858,8 @@ class QueryContentRequest(TeaModel):
             self.hybrid_search = m.get('HybridSearch')
         if m.get('HybridSearchArgs') is not None:
             self.hybrid_search_args = m.get('HybridSearchArgs')
+        if m.get('IncludeFileUrl') is not None:
+            self.include_file_url = m.get('IncludeFileUrl')
         if m.get('IncludeMetadataFields') is not None:
             self.include_metadata_fields = m.get('IncludeMetadataFields')
         if m.get('IncludeVector') is not None:
@@ -31456,6 +31896,7 @@ class QueryContentAdvanceRequest(TeaModel):
         filter: str = None,
         hybrid_search: str = None,
         hybrid_search_args: Dict[str, dict] = None,
+        include_file_url: bool = None,
         include_metadata_fields: str = None,
         include_vector: bool = None,
         metrics: str = None,
@@ -31476,20 +31917,61 @@ class QueryContentAdvanceRequest(TeaModel):
         self.file_name = file_name
         self.file_url_object = file_url_object
         self.filter = filter
+        # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+        # 
+        # Valid values:
+        # 
+        # *   RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Cascaded: This algorithm performs first full-text search and then vector search.
         self.hybrid_search = hybrid_search
+        # The parameters of the two-way retrieval algorithm. The following parameters are supported:
+        # 
+        # *   When HybridSearch is set to RRF, the scores are calculated by using the `1/(k+rank_i)` formula. The constant k is a positive integer that is greater than 1.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "RRF": {
+        #         "k": 60
+        #        }
+        #     }
+        # 
+        # *   When HybridSearch is set to Weight, the scores are calculated by using the `alpha * vector_score + (1-alpha) * text_score` formula. The alpha parameter specifies the proportion of the vector search score and the full-text search score and ranges from 0 to 1. A value of 0 specifies full-text search and a value of 1 specifies vector search.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "Weight": {
+        #         "alpha": 0.5
+        #        }
+        #     }
         self.hybrid_search_args = hybrid_search_args
+        self.include_file_url = include_file_url
+        # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
         self.include_vector = include_vector
         self.metrics = metrics
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The recall window. If you specify this parameter, the context of the search result is returned. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+        # 
+        # > 
+        # 
+        # *   We recommend that you specify this parameter if the source document is segmented into large numbers of pieces and you may fail to obtain the context.
+        # 
+        # *   The context of the search result is retrieved based on the recall window after the search result is reranked.
         self.recall_window = recall_window
         # This parameter is required.
         self.region_id = region_id
         self.rerank_factor = rerank_factor
         self.top_k = top_k
+        # Specifies whether to use full-text search to implement two-way retrieval. The default value is false, which specifies that only vector search is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
@@ -31517,6 +31999,8 @@ class QueryContentAdvanceRequest(TeaModel):
             result['HybridSearch'] = self.hybrid_search
         if self.hybrid_search_args is not None:
             result['HybridSearchArgs'] = self.hybrid_search_args
+        if self.include_file_url is not None:
+            result['IncludeFileUrl'] = self.include_file_url
         if self.include_metadata_fields is not None:
             result['IncludeMetadataFields'] = self.include_metadata_fields
         if self.include_vector is not None:
@@ -31559,6 +32043,8 @@ class QueryContentAdvanceRequest(TeaModel):
             self.hybrid_search = m.get('HybridSearch')
         if m.get('HybridSearchArgs') is not None:
             self.hybrid_search_args = m.get('HybridSearchArgs')
+        if m.get('IncludeFileUrl') is not None:
+            self.include_file_url = m.get('IncludeFileUrl')
         if m.get('IncludeMetadataFields') is not None:
             self.include_metadata_fields = m.get('IncludeMetadataFields')
         if m.get('IncludeVector') is not None:
@@ -31595,6 +32081,7 @@ class QueryContentShrinkRequest(TeaModel):
         filter: str = None,
         hybrid_search: str = None,
         hybrid_search_args_shrink: str = None,
+        include_file_url: bool = None,
         include_metadata_fields: str = None,
         include_vector: bool = None,
         metrics: str = None,
@@ -31615,20 +32102,61 @@ class QueryContentShrinkRequest(TeaModel):
         self.file_name = file_name
         self.file_url = file_url
         self.filter = filter
+        # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
+        # 
+        # Valid values:
+        # 
+        # *   RRF: The reciprocal rank fusion (RRF) algorithm uses a constant k to control the fusion effect. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Weight: This algorithm uses the alpha parameter to specify the proportion of the vector search score and the full-text search score and then sorts by weight. For more information, see the description of the HybridSearchArgs parameter.
+        # *   Cascaded: This algorithm performs first full-text search and then vector search.
         self.hybrid_search = hybrid_search
+        # The parameters of the two-way retrieval algorithm. The following parameters are supported:
+        # 
+        # *   When HybridSearch is set to RRF, the scores are calculated by using the `1/(k+rank_i)` formula. The constant k is a positive integer that is greater than 1.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "RRF": {
+        #         "k": 60
+        #        }
+        #     }
+        # 
+        # *   When HybridSearch is set to Weight, the scores are calculated by using the `alpha * vector_score + (1-alpha) * text_score` formula. The alpha parameter specifies the proportion of the vector search score and the full-text search score and ranges from 0 to 1. A value of 0 specifies full-text search and a value of 1 specifies vector search.
+        # 
+        # <!---->
+        # 
+        #     { 
+        #        "Weight": {
+        #         "alpha": 0.5
+        #        }
+        #     }
         self.hybrid_search_args_shrink = hybrid_search_args_shrink
+        self.include_file_url = include_file_url
+        # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
         self.include_vector = include_vector
         self.metrics = metrics
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
         self.namespace = namespace
         # This parameter is required.
         self.namespace_password = namespace_password
         self.owner_id = owner_id
+        # The recall window. If you specify this parameter, the context of the search result is returned. Format: List\\<A, B>. Valid values: -10<=A<=0 and 0<=B<=10.
+        # 
+        # > 
+        # 
+        # *   We recommend that you specify this parameter if the source document is segmented into large numbers of pieces and you may fail to obtain the context.
+        # 
+        # *   The context of the search result is retrieved based on the recall window after the search result is reranked.
         self.recall_window_shrink = recall_window_shrink
         # This parameter is required.
         self.region_id = region_id
         self.rerank_factor = rerank_factor
         self.top_k = top_k
+        # Specifies whether to use full-text search to implement two-way retrieval. The default value is false, which specifies that only vector search is used.
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
@@ -31656,6 +32184,8 @@ class QueryContentShrinkRequest(TeaModel):
             result['HybridSearch'] = self.hybrid_search
         if self.hybrid_search_args_shrink is not None:
             result['HybridSearchArgs'] = self.hybrid_search_args_shrink
+        if self.include_file_url is not None:
+            result['IncludeFileUrl'] = self.include_file_url
         if self.include_metadata_fields is not None:
             result['IncludeMetadataFields'] = self.include_metadata_fields
         if self.include_vector is not None:
@@ -31698,6 +32228,8 @@ class QueryContentShrinkRequest(TeaModel):
             self.hybrid_search = m.get('HybridSearch')
         if m.get('HybridSearchArgs') is not None:
             self.hybrid_search_args_shrink = m.get('HybridSearchArgs')
+        if m.get('IncludeFileUrl') is not None:
+            self.include_file_url = m.get('IncludeFileUrl')
         if m.get('IncludeMetadataFields') is not None:
             self.include_metadata_fields = m.get('IncludeMetadataFields')
         if m.get('IncludeVector') is not None:
@@ -34450,9 +34982,13 @@ class UpdateDBInstancePlanRequest(TeaModel):
         self.plan_config = plan_config
         # The description of the plan.
         self.plan_desc = plan_desc
-        # The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC. The end time must be later than the start time.
         # 
-        # >  This parameter is required only for **periodically executed** plans.
+        # > 
+        # 
+        # *   This parameter must be specified only for **periodically executed** plans.
+        # 
+        # *   If you do not specify this parameter, the plan stops until the plan is deleted.
         self.plan_end_date = plan_end_date
         # The ID of the plan.
         # 
@@ -34462,9 +34998,13 @@ class UpdateDBInstancePlanRequest(TeaModel):
         self.plan_id = plan_id
         # The name of the plan.
         self.plan_name = plan_name
-        # The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # >  This parameter is required only for **periodically executed** plans.
+        # > 
+        # 
+        # *   This parameter must be specified only for **periodically executed** plans.
+        # 
+        # *   If you do not specify this parameter, the current time is used.
         self.plan_start_date = plan_start_date
 
     def validate(self):
