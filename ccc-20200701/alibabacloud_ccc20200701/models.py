@@ -26569,6 +26569,654 @@ class ListCallDetailRecordsResponse(TeaModel):
         return self
 
 
+class ListCallDetailRecordsV2Request(TeaModel):
+    def __init__(
+        self,
+        access_channel_type_list: str = None,
+        agent_id: str = None,
+        broker: str = None,
+        called_number: str = None,
+        calling_number: str = None,
+        contact_disposition_list: str = None,
+        contact_id_list: str = None,
+        contact_type_list: str = None,
+        early_media_state_list: str = None,
+        end_time: int = None,
+        first_agent_id: str = None,
+        instance_id: str = None,
+        media_type: str = None,
+        number: str = None,
+        order_by_field: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        satisfaction_description_list: str = None,
+        satisfaction_rate_list: str = None,
+        satisfaction_survey_channel: str = None,
+        search_pattern: str = None,
+        skill_group_id_list: str = None,
+        sort_order: str = None,
+        start_time: int = None,
+    ):
+        self.access_channel_type_list = access_channel_type_list
+        self.agent_id = agent_id
+        self.broker = broker
+        self.called_number = called_number
+        self.calling_number = calling_number
+        self.contact_disposition_list = contact_disposition_list
+        self.contact_id_list = contact_id_list
+        self.contact_type_list = contact_type_list
+        self.early_media_state_list = early_media_state_list
+        self.end_time = end_time
+        self.first_agent_id = first_agent_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.media_type = media_type
+        self.number = number
+        self.order_by_field = order_by_field
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.satisfaction_description_list = satisfaction_description_list
+        self.satisfaction_rate_list = satisfaction_rate_list
+        self.satisfaction_survey_channel = satisfaction_survey_channel
+        self.search_pattern = search_pattern
+        self.skill_group_id_list = skill_group_id_list
+        self.sort_order = sort_order
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_channel_type_list is not None:
+            result['AccessChannelTypeList'] = self.access_channel_type_list
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.broker is not None:
+            result['Broker'] = self.broker
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
+        if self.contact_disposition_list is not None:
+            result['ContactDispositionList'] = self.contact_disposition_list
+        if self.contact_id_list is not None:
+            result['ContactIdList'] = self.contact_id_list
+        if self.contact_type_list is not None:
+            result['ContactTypeList'] = self.contact_type_list
+        if self.early_media_state_list is not None:
+            result['EarlyMediaStateList'] = self.early_media_state_list
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.first_agent_id is not None:
+            result['FirstAgentId'] = self.first_agent_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.order_by_field is not None:
+            result['OrderByField'] = self.order_by_field
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.satisfaction_description_list is not None:
+            result['SatisfactionDescriptionList'] = self.satisfaction_description_list
+        if self.satisfaction_rate_list is not None:
+            result['SatisfactionRateList'] = self.satisfaction_rate_list
+        if self.satisfaction_survey_channel is not None:
+            result['SatisfactionSurveyChannel'] = self.satisfaction_survey_channel
+        if self.search_pattern is not None:
+            result['SearchPattern'] = self.search_pattern
+        if self.skill_group_id_list is not None:
+            result['SkillGroupIdList'] = self.skill_group_id_list
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessChannelTypeList') is not None:
+            self.access_channel_type_list = m.get('AccessChannelTypeList')
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('Broker') is not None:
+            self.broker = m.get('Broker')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
+        if m.get('ContactDispositionList') is not None:
+            self.contact_disposition_list = m.get('ContactDispositionList')
+        if m.get('ContactIdList') is not None:
+            self.contact_id_list = m.get('ContactIdList')
+        if m.get('ContactTypeList') is not None:
+            self.contact_type_list = m.get('ContactTypeList')
+        if m.get('EarlyMediaStateList') is not None:
+            self.early_media_state_list = m.get('EarlyMediaStateList')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FirstAgentId') is not None:
+            self.first_agent_id = m.get('FirstAgentId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('OrderByField') is not None:
+            self.order_by_field = m.get('OrderByField')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SatisfactionDescriptionList') is not None:
+            self.satisfaction_description_list = m.get('SatisfactionDescriptionList')
+        if m.get('SatisfactionRateList') is not None:
+            self.satisfaction_rate_list = m.get('SatisfactionRateList')
+        if m.get('SatisfactionSurveyChannel') is not None:
+            self.satisfaction_survey_channel = m.get('SatisfactionSurveyChannel')
+        if m.get('SearchPattern') is not None:
+            self.search_pattern = m.get('SearchPattern')
+        if m.get('SkillGroupIdList') is not None:
+            self.skill_group_id_list = m.get('SkillGroupIdList')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        access_channel_name: str = None,
+        access_channel_type: str = None,
+        access_channel_user_id: str = None,
+        access_channel_user_name: str = None,
+        additional_broker: str = None,
+        agent_ids: str = None,
+        agent_names: str = None,
+        broker: str = None,
+        call_duration: str = None,
+        called_number: str = None,
+        callee_location: str = None,
+        caller_location: str = None,
+        calling_number: str = None,
+        client_app_name: str = None,
+        client_ip_address: str = None,
+        client_location: str = None,
+        client_user_agent: str = None,
+        contact_disposition: str = None,
+        contact_id: str = None,
+        contact_type: str = None,
+        dialing_time: int = None,
+        early_media_state: str = None,
+        early_media_text: str = None,
+        established_time: int = None,
+        first_response_time: int = None,
+        held_time: int = None,
+        instance_id: str = None,
+        ivr_time: int = None,
+        media_type: str = None,
+        messages_sent: int = None,
+        messages_sent_by_agent: int = None,
+        messages_sent_by_customer: int = None,
+        off_site_agent_ids: str = None,
+        offsite_agent_destination_numbers: str = None,
+        offsite_agent_originator_numbers: str = None,
+        queue_time: int = None,
+        recording_duration: int = None,
+        recording_ready: bool = None,
+        release_initiator: str = None,
+        release_reason: str = None,
+        release_time: int = None,
+        ring_time: int = None,
+        satisfaction_description: str = None,
+        satisfaction_index: int = None,
+        satisfaction_survey_channel: str = None,
+        satisfaction_survey_offered: bool = None,
+        skill_group_ids: str = None,
+        skill_group_names: str = None,
+        start_time: int = None,
+        talk_time: int = None,
+        transfer_count: int = None,
+        wait_time: int = None,
+    ):
+        self.access_channel_name = access_channel_name
+        self.access_channel_type = access_channel_type
+        self.access_channel_user_id = access_channel_user_id
+        self.access_channel_user_name = access_channel_user_name
+        self.additional_broker = additional_broker
+        self.agent_ids = agent_ids
+        self.agent_names = agent_names
+        self.broker = broker
+        self.call_duration = call_duration
+        self.called_number = called_number
+        self.callee_location = callee_location
+        self.caller_location = caller_location
+        self.calling_number = calling_number
+        self.client_app_name = client_app_name
+        self.client_ip_address = client_ip_address
+        self.client_location = client_location
+        self.client_user_agent = client_user_agent
+        self.contact_disposition = contact_disposition
+        self.contact_id = contact_id
+        self.contact_type = contact_type
+        self.dialing_time = dialing_time
+        self.early_media_state = early_media_state
+        self.early_media_text = early_media_text
+        self.established_time = established_time
+        self.first_response_time = first_response_time
+        self.held_time = held_time
+        self.instance_id = instance_id
+        self.ivr_time = ivr_time
+        self.media_type = media_type
+        self.messages_sent = messages_sent
+        self.messages_sent_by_agent = messages_sent_by_agent
+        self.messages_sent_by_customer = messages_sent_by_customer
+        self.off_site_agent_ids = off_site_agent_ids
+        self.offsite_agent_destination_numbers = offsite_agent_destination_numbers
+        self.offsite_agent_originator_numbers = offsite_agent_originator_numbers
+        self.queue_time = queue_time
+        self.recording_duration = recording_duration
+        self.recording_ready = recording_ready
+        self.release_initiator = release_initiator
+        self.release_reason = release_reason
+        self.release_time = release_time
+        self.ring_time = ring_time
+        self.satisfaction_description = satisfaction_description
+        self.satisfaction_index = satisfaction_index
+        self.satisfaction_survey_channel = satisfaction_survey_channel
+        self.satisfaction_survey_offered = satisfaction_survey_offered
+        self.skill_group_ids = skill_group_ids
+        self.skill_group_names = skill_group_names
+        self.start_time = start_time
+        self.talk_time = talk_time
+        self.transfer_count = transfer_count
+        self.wait_time = wait_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_channel_name is not None:
+            result['AccessChannelName'] = self.access_channel_name
+        if self.access_channel_type is not None:
+            result['AccessChannelType'] = self.access_channel_type
+        if self.access_channel_user_id is not None:
+            result['AccessChannelUserId'] = self.access_channel_user_id
+        if self.access_channel_user_name is not None:
+            result['AccessChannelUserName'] = self.access_channel_user_name
+        if self.additional_broker is not None:
+            result['AdditionalBroker'] = self.additional_broker
+        if self.agent_ids is not None:
+            result['AgentIds'] = self.agent_ids
+        if self.agent_names is not None:
+            result['AgentNames'] = self.agent_names
+        if self.broker is not None:
+            result['Broker'] = self.broker
+        if self.call_duration is not None:
+            result['CallDuration'] = self.call_duration
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.callee_location is not None:
+            result['CalleeLocation'] = self.callee_location
+        if self.caller_location is not None:
+            result['CallerLocation'] = self.caller_location
+        if self.calling_number is not None:
+            result['CallingNumber'] = self.calling_number
+        if self.client_app_name is not None:
+            result['ClientAppName'] = self.client_app_name
+        if self.client_ip_address is not None:
+            result['ClientIpAddress'] = self.client_ip_address
+        if self.client_location is not None:
+            result['ClientLocation'] = self.client_location
+        if self.client_user_agent is not None:
+            result['ClientUserAgent'] = self.client_user_agent
+        if self.contact_disposition is not None:
+            result['ContactDisposition'] = self.contact_disposition
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
+        if self.contact_type is not None:
+            result['ContactType'] = self.contact_type
+        if self.dialing_time is not None:
+            result['DialingTime'] = self.dialing_time
+        if self.early_media_state is not None:
+            result['EarlyMediaState'] = self.early_media_state
+        if self.early_media_text is not None:
+            result['EarlyMediaText'] = self.early_media_text
+        if self.established_time is not None:
+            result['EstablishedTime'] = self.established_time
+        if self.first_response_time is not None:
+            result['FirstResponseTime'] = self.first_response_time
+        if self.held_time is not None:
+            result['HeldTime'] = self.held_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ivr_time is not None:
+            result['IvrTime'] = self.ivr_time
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.messages_sent is not None:
+            result['MessagesSent'] = self.messages_sent
+        if self.messages_sent_by_agent is not None:
+            result['MessagesSentByAgent'] = self.messages_sent_by_agent
+        if self.messages_sent_by_customer is not None:
+            result['MessagesSentByCustomer'] = self.messages_sent_by_customer
+        if self.off_site_agent_ids is not None:
+            result['OffSiteAgentIds'] = self.off_site_agent_ids
+        if self.offsite_agent_destination_numbers is not None:
+            result['OffsiteAgentDestinationNumbers'] = self.offsite_agent_destination_numbers
+        if self.offsite_agent_originator_numbers is not None:
+            result['OffsiteAgentOriginatorNumbers'] = self.offsite_agent_originator_numbers
+        if self.queue_time is not None:
+            result['QueueTime'] = self.queue_time
+        if self.recording_duration is not None:
+            result['RecordingDuration'] = self.recording_duration
+        if self.recording_ready is not None:
+            result['RecordingReady'] = self.recording_ready
+        if self.release_initiator is not None:
+            result['ReleaseInitiator'] = self.release_initiator
+        if self.release_reason is not None:
+            result['ReleaseReason'] = self.release_reason
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        if self.ring_time is not None:
+            result['RingTime'] = self.ring_time
+        if self.satisfaction_description is not None:
+            result['SatisfactionDescription'] = self.satisfaction_description
+        if self.satisfaction_index is not None:
+            result['SatisfactionIndex'] = self.satisfaction_index
+        if self.satisfaction_survey_channel is not None:
+            result['SatisfactionSurveyChannel'] = self.satisfaction_survey_channel
+        if self.satisfaction_survey_offered is not None:
+            result['SatisfactionSurveyOffered'] = self.satisfaction_survey_offered
+        if self.skill_group_ids is not None:
+            result['SkillGroupIds'] = self.skill_group_ids
+        if self.skill_group_names is not None:
+            result['SkillGroupNames'] = self.skill_group_names
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.talk_time is not None:
+            result['TalkTime'] = self.talk_time
+        if self.transfer_count is not None:
+            result['TransferCount'] = self.transfer_count
+        if self.wait_time is not None:
+            result['WaitTime'] = self.wait_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessChannelName') is not None:
+            self.access_channel_name = m.get('AccessChannelName')
+        if m.get('AccessChannelType') is not None:
+            self.access_channel_type = m.get('AccessChannelType')
+        if m.get('AccessChannelUserId') is not None:
+            self.access_channel_user_id = m.get('AccessChannelUserId')
+        if m.get('AccessChannelUserName') is not None:
+            self.access_channel_user_name = m.get('AccessChannelUserName')
+        if m.get('AdditionalBroker') is not None:
+            self.additional_broker = m.get('AdditionalBroker')
+        if m.get('AgentIds') is not None:
+            self.agent_ids = m.get('AgentIds')
+        if m.get('AgentNames') is not None:
+            self.agent_names = m.get('AgentNames')
+        if m.get('Broker') is not None:
+            self.broker = m.get('Broker')
+        if m.get('CallDuration') is not None:
+            self.call_duration = m.get('CallDuration')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CalleeLocation') is not None:
+            self.callee_location = m.get('CalleeLocation')
+        if m.get('CallerLocation') is not None:
+            self.caller_location = m.get('CallerLocation')
+        if m.get('CallingNumber') is not None:
+            self.calling_number = m.get('CallingNumber')
+        if m.get('ClientAppName') is not None:
+            self.client_app_name = m.get('ClientAppName')
+        if m.get('ClientIpAddress') is not None:
+            self.client_ip_address = m.get('ClientIpAddress')
+        if m.get('ClientLocation') is not None:
+            self.client_location = m.get('ClientLocation')
+        if m.get('ClientUserAgent') is not None:
+            self.client_user_agent = m.get('ClientUserAgent')
+        if m.get('ContactDisposition') is not None:
+            self.contact_disposition = m.get('ContactDisposition')
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
+        if m.get('ContactType') is not None:
+            self.contact_type = m.get('ContactType')
+        if m.get('DialingTime') is not None:
+            self.dialing_time = m.get('DialingTime')
+        if m.get('EarlyMediaState') is not None:
+            self.early_media_state = m.get('EarlyMediaState')
+        if m.get('EarlyMediaText') is not None:
+            self.early_media_text = m.get('EarlyMediaText')
+        if m.get('EstablishedTime') is not None:
+            self.established_time = m.get('EstablishedTime')
+        if m.get('FirstResponseTime') is not None:
+            self.first_response_time = m.get('FirstResponseTime')
+        if m.get('HeldTime') is not None:
+            self.held_time = m.get('HeldTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IvrTime') is not None:
+            self.ivr_time = m.get('IvrTime')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('MessagesSent') is not None:
+            self.messages_sent = m.get('MessagesSent')
+        if m.get('MessagesSentByAgent') is not None:
+            self.messages_sent_by_agent = m.get('MessagesSentByAgent')
+        if m.get('MessagesSentByCustomer') is not None:
+            self.messages_sent_by_customer = m.get('MessagesSentByCustomer')
+        if m.get('OffSiteAgentIds') is not None:
+            self.off_site_agent_ids = m.get('OffSiteAgentIds')
+        if m.get('OffsiteAgentDestinationNumbers') is not None:
+            self.offsite_agent_destination_numbers = m.get('OffsiteAgentDestinationNumbers')
+        if m.get('OffsiteAgentOriginatorNumbers') is not None:
+            self.offsite_agent_originator_numbers = m.get('OffsiteAgentOriginatorNumbers')
+        if m.get('QueueTime') is not None:
+            self.queue_time = m.get('QueueTime')
+        if m.get('RecordingDuration') is not None:
+            self.recording_duration = m.get('RecordingDuration')
+        if m.get('RecordingReady') is not None:
+            self.recording_ready = m.get('RecordingReady')
+        if m.get('ReleaseInitiator') is not None:
+            self.release_initiator = m.get('ReleaseInitiator')
+        if m.get('ReleaseReason') is not None:
+            self.release_reason = m.get('ReleaseReason')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+        if m.get('RingTime') is not None:
+            self.ring_time = m.get('RingTime')
+        if m.get('SatisfactionDescription') is not None:
+            self.satisfaction_description = m.get('SatisfactionDescription')
+        if m.get('SatisfactionIndex') is not None:
+            self.satisfaction_index = m.get('SatisfactionIndex')
+        if m.get('SatisfactionSurveyChannel') is not None:
+            self.satisfaction_survey_channel = m.get('SatisfactionSurveyChannel')
+        if m.get('SatisfactionSurveyOffered') is not None:
+            self.satisfaction_survey_offered = m.get('SatisfactionSurveyOffered')
+        if m.get('SkillGroupIds') is not None:
+            self.skill_group_ids = m.get('SkillGroupIds')
+        if m.get('SkillGroupNames') is not None:
+            self.skill_group_names = m.get('SkillGroupNames')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TalkTime') is not None:
+            self.talk_time = m.get('TalkTime')
+        if m.get('TransferCount') is not None:
+            self.transfer_count = m.get('TransferCount')
+        if m.get('WaitTime') is not None:
+            self.wait_time = m.get('WaitTime')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListCallDetailRecordsV2ResponseBodyDataList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListCallDetailRecordsV2ResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCallDetailRecordsV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListCallDetailRecordsV2ResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCallDetailRecordsV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCallDetailRecordsV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCallDetailRecordsV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListCallTagsRequest(TeaModel):
     def __init__(
         self,

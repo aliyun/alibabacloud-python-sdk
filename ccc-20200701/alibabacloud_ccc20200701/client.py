@@ -11373,6 +11373,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_call_detail_records_with_options_async(request, runtime)
 
+    def list_call_detail_records_v2with_options(
+        self,
+        request: ccc20200701_models.ListCallDetailRecordsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCallDetailRecordsV2Response:
+        """
+        @param request: ListCallDetailRecordsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallDetailRecordsV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_channel_type_list):
+            query['AccessChannelTypeList'] = request.access_channel_type_list
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.broker):
+            query['Broker'] = request.broker
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.calling_number):
+            query['CallingNumber'] = request.calling_number
+        if not UtilClient.is_unset(request.contact_disposition_list):
+            query['ContactDispositionList'] = request.contact_disposition_list
+        if not UtilClient.is_unset(request.contact_id_list):
+            query['ContactIdList'] = request.contact_id_list
+        if not UtilClient.is_unset(request.contact_type_list):
+            query['ContactTypeList'] = request.contact_type_list
+        if not UtilClient.is_unset(request.early_media_state_list):
+            query['EarlyMediaStateList'] = request.early_media_state_list
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.first_agent_id):
+            query['FirstAgentId'] = request.first_agent_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        if not UtilClient.is_unset(request.order_by_field):
+            query['OrderByField'] = request.order_by_field
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.satisfaction_description_list):
+            query['SatisfactionDescriptionList'] = request.satisfaction_description_list
+        if not UtilClient.is_unset(request.satisfaction_rate_list):
+            query['SatisfactionRateList'] = request.satisfaction_rate_list
+        if not UtilClient.is_unset(request.satisfaction_survey_channel):
+            query['SatisfactionSurveyChannel'] = request.satisfaction_survey_channel
+        if not UtilClient.is_unset(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
+        if not UtilClient.is_unset(request.skill_group_id_list):
+            query['SkillGroupIdList'] = request.skill_group_id_list
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCallDetailRecordsV2',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCallDetailRecordsV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_call_detail_records_v2with_options_async(
+        self,
+        request: ccc20200701_models.ListCallDetailRecordsV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCallDetailRecordsV2Response:
+        """
+        @param request: ListCallDetailRecordsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallDetailRecordsV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_channel_type_list):
+            query['AccessChannelTypeList'] = request.access_channel_type_list
+        if not UtilClient.is_unset(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not UtilClient.is_unset(request.broker):
+            query['Broker'] = request.broker
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.calling_number):
+            query['CallingNumber'] = request.calling_number
+        if not UtilClient.is_unset(request.contact_disposition_list):
+            query['ContactDispositionList'] = request.contact_disposition_list
+        if not UtilClient.is_unset(request.contact_id_list):
+            query['ContactIdList'] = request.contact_id_list
+        if not UtilClient.is_unset(request.contact_type_list):
+            query['ContactTypeList'] = request.contact_type_list
+        if not UtilClient.is_unset(request.early_media_state_list):
+            query['EarlyMediaStateList'] = request.early_media_state_list
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.first_agent_id):
+            query['FirstAgentId'] = request.first_agent_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.number):
+            query['Number'] = request.number
+        if not UtilClient.is_unset(request.order_by_field):
+            query['OrderByField'] = request.order_by_field
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.satisfaction_description_list):
+            query['SatisfactionDescriptionList'] = request.satisfaction_description_list
+        if not UtilClient.is_unset(request.satisfaction_rate_list):
+            query['SatisfactionRateList'] = request.satisfaction_rate_list
+        if not UtilClient.is_unset(request.satisfaction_survey_channel):
+            query['SatisfactionSurveyChannel'] = request.satisfaction_survey_channel
+        if not UtilClient.is_unset(request.search_pattern):
+            query['SearchPattern'] = request.search_pattern
+        if not UtilClient.is_unset(request.skill_group_id_list):
+            query['SkillGroupIdList'] = request.skill_group_id_list
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCallDetailRecordsV2',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCallDetailRecordsV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_call_detail_records_v2(
+        self,
+        request: ccc20200701_models.ListCallDetailRecordsV2Request,
+    ) -> ccc20200701_models.ListCallDetailRecordsV2Response:
+        """
+        @param request: ListCallDetailRecordsV2Request
+        @return: ListCallDetailRecordsV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_call_detail_records_v2with_options(request, runtime)
+
+    async def list_call_detail_records_v2_async(
+        self,
+        request: ccc20200701_models.ListCallDetailRecordsV2Request,
+    ) -> ccc20200701_models.ListCallDetailRecordsV2Response:
+        """
+        @param request: ListCallDetailRecordsV2Request
+        @return: ListCallDetailRecordsV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_call_detail_records_v2with_options_async(request, runtime)
+
     def list_call_tags_with_options(
         self,
         request: ccc20200701_models.ListCallTagsRequest,
