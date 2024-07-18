@@ -1,3 +1,7 @@
+2024-07-18 Version: 2.4.4
+- Update API GetServiceInstance: update response param.
+
+
 2024-07-15 Version: 2.4.3
 - Update API UpdateService: add param Commodity.
 - Update API UpdateServiceInstanceAttribute: add param LicenseData.

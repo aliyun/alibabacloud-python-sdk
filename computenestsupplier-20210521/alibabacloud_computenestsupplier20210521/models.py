@@ -5063,6 +5063,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         network_config: GetServiceInstanceResponseBodyNetworkConfig = None,
         operated_service_instance_id: str = None,
         operation_end_time: str = None,
+        operation_extra_info: str = None,
         operation_start_time: str = None,
         outputs: str = None,
         parameters: str = None,
@@ -5122,6 +5123,7 @@ class GetServiceInstanceResponseBody(TeaModel):
         self.operated_service_instance_id = operated_service_instance_id
         # The end of the time range during which hosted O\\&M is implemented.
         self.operation_end_time = operation_end_time
+        self.operation_extra_info = operation_extra_info
         # The beginning of the time range during which hosted O\\&M is implemented.
         self.operation_start_time = operation_start_time
         # The outputs returned from creating the service instance.
@@ -5231,6 +5233,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             result['OperatedServiceInstanceId'] = self.operated_service_instance_id
         if self.operation_end_time is not None:
             result['OperationEndTime'] = self.operation_end_time
+        if self.operation_extra_info is not None:
+            result['OperationExtraInfo'] = self.operation_extra_info
         if self.operation_start_time is not None:
             result['OperationStartTime'] = self.operation_start_time
         if self.outputs is not None:
@@ -5304,6 +5308,8 @@ class GetServiceInstanceResponseBody(TeaModel):
             self.operated_service_instance_id = m.get('OperatedServiceInstanceId')
         if m.get('OperationEndTime') is not None:
             self.operation_end_time = m.get('OperationEndTime')
+        if m.get('OperationExtraInfo') is not None:
+            self.operation_extra_info = m.get('OperationExtraInfo')
         if m.get('OperationStartTime') is not None:
             self.operation_start_time = m.get('OperationStartTime')
         if m.get('Outputs') is not None:
@@ -11085,6 +11091,7 @@ class UpdateServiceInstanceAttributeRequestLicenseData(TeaModel):
         self,
         custom_data: str = None,
     ):
+        # The Custom Data
         self.custom_data = custom_data
 
     def validate(self):
@@ -11119,6 +11126,7 @@ class UpdateServiceInstanceAttributeRequest(TeaModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The License Data
         self.license_data = license_data
         # The region ID.
         # 
@@ -11175,6 +11183,7 @@ class UpdateServiceInstanceAttributeShrinkRequest(TeaModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The License Data
         self.license_data_shrink = license_data_shrink
         # The region ID.
         # 
