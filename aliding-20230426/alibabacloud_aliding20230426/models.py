@@ -4460,6 +4460,282 @@ class CancelScheduleConferenceResponse(TeaModel):
         return self
 
 
+class CheckAlibabaStaffHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class CheckAlibabaStaffHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: CheckAlibabaStaffHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = CheckAlibabaStaffHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class CheckAlibabaStaffShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class CheckAlibabaStaffRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class CheckAlibabaStaffRequest(TeaModel):
+    def __init__(
+        self,
+        mobile: str = None,
+        tenant_context: CheckAlibabaStaffRequestTenantContext = None,
+    ):
+        self.mobile = mobile
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('TenantContext') is not None:
+            temp_model = CheckAlibabaStaffRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class CheckAlibabaStaffShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        mobile: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        self.mobile = mobile
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class CheckAlibabaStaffResponseBody(TeaModel):
+    def __init__(
+        self,
+        is_alibaba_staff: bool = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.is_alibaba_staff = is_alibaba_staff
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_alibaba_staff is not None:
+            result['isAlibabaStaff'] = self.is_alibaba_staff
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isAlibabaStaff') is not None:
+            self.is_alibaba_staff = m.get('isAlibabaStaff')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class CheckAlibabaStaffResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckAlibabaStaffResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckAlibabaStaffResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckUserIsGroupMemberHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -70102,6 +70378,362 @@ class UpdateUserAvatarResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUserAvatarResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateVideoConferenceSettingHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class UpdateVideoConferenceSettingHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: UpdateVideoConferenceSettingHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = UpdateVideoConferenceSettingHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class UpdateVideoConferenceSettingShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class UpdateVideoConferenceSettingRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class UpdateVideoConferenceSettingRequest(TeaModel):
+    def __init__(
+        self,
+        allow_unmute_self: bool = None,
+        auto_transfer_host: bool = None,
+        forbidden_share_screen: bool = None,
+        lock_conference: bool = None,
+        mute_all: bool = None,
+        only_internal_employees_join: bool = None,
+        tenant_context: UpdateVideoConferenceSettingRequestTenantContext = None,
+        conference_id: str = None,
+    ):
+        self.allow_unmute_self = allow_unmute_self
+        self.auto_transfer_host = auto_transfer_host
+        self.forbidden_share_screen = forbidden_share_screen
+        self.lock_conference = lock_conference
+        self.mute_all = mute_all
+        self.only_internal_employees_join = only_internal_employees_join
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.conference_id = conference_id
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_unmute_self is not None:
+            result['AllowUnmuteSelf'] = self.allow_unmute_self
+        if self.auto_transfer_host is not None:
+            result['AutoTransferHost'] = self.auto_transfer_host
+        if self.forbidden_share_screen is not None:
+            result['ForbiddenShareScreen'] = self.forbidden_share_screen
+        if self.lock_conference is not None:
+            result['LockConference'] = self.lock_conference
+        if self.mute_all is not None:
+            result['MuteAll'] = self.mute_all
+        if self.only_internal_employees_join is not None:
+            result['OnlyInternalEmployeesJoin'] = self.only_internal_employees_join
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowUnmuteSelf') is not None:
+            self.allow_unmute_self = m.get('AllowUnmuteSelf')
+        if m.get('AutoTransferHost') is not None:
+            self.auto_transfer_host = m.get('AutoTransferHost')
+        if m.get('ForbiddenShareScreen') is not None:
+            self.forbidden_share_screen = m.get('ForbiddenShareScreen')
+        if m.get('LockConference') is not None:
+            self.lock_conference = m.get('LockConference')
+        if m.get('MuteAll') is not None:
+            self.mute_all = m.get('MuteAll')
+        if m.get('OnlyInternalEmployeesJoin') is not None:
+            self.only_internal_employees_join = m.get('OnlyInternalEmployeesJoin')
+        if m.get('TenantContext') is not None:
+            temp_model = UpdateVideoConferenceSettingRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        return self
+
+
+class UpdateVideoConferenceSettingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        allow_unmute_self: bool = None,
+        auto_transfer_host: bool = None,
+        forbidden_share_screen: bool = None,
+        lock_conference: bool = None,
+        mute_all: bool = None,
+        only_internal_employees_join: bool = None,
+        tenant_context_shrink: str = None,
+        conference_id: str = None,
+    ):
+        self.allow_unmute_self = allow_unmute_self
+        self.auto_transfer_host = auto_transfer_host
+        self.forbidden_share_screen = forbidden_share_screen
+        self.lock_conference = lock_conference
+        self.mute_all = mute_all
+        self.only_internal_employees_join = only_internal_employees_join
+        self.tenant_context_shrink = tenant_context_shrink
+        # This parameter is required.
+        self.conference_id = conference_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_unmute_self is not None:
+            result['AllowUnmuteSelf'] = self.allow_unmute_self
+        if self.auto_transfer_host is not None:
+            result['AutoTransferHost'] = self.auto_transfer_host
+        if self.forbidden_share_screen is not None:
+            result['ForbiddenShareScreen'] = self.forbidden_share_screen
+        if self.lock_conference is not None:
+            result['LockConference'] = self.lock_conference
+        if self.mute_all is not None:
+            result['MuteAll'] = self.mute_all
+        if self.only_internal_employees_join is not None:
+            result['OnlyInternalEmployeesJoin'] = self.only_internal_employees_join
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.conference_id is not None:
+            result['conferenceId'] = self.conference_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowUnmuteSelf') is not None:
+            self.allow_unmute_self = m.get('AllowUnmuteSelf')
+        if m.get('AutoTransferHost') is not None:
+            self.auto_transfer_host = m.get('AutoTransferHost')
+        if m.get('ForbiddenShareScreen') is not None:
+            self.forbidden_share_screen = m.get('ForbiddenShareScreen')
+        if m.get('LockConference') is not None:
+            self.lock_conference = m.get('LockConference')
+        if m.get('MuteAll') is not None:
+            self.mute_all = m.get('MuteAll')
+        if m.get('OnlyInternalEmployeesJoin') is not None:
+            self.only_internal_employees_join = m.get('OnlyInternalEmployeesJoin')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('conferenceId') is not None:
+            self.conference_id = m.get('conferenceId')
+        return self
+
+
+class UpdateVideoConferenceSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        case_result: str = None,
+        code: str = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.case_result = case_result
+        self.code = code
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.case_result is not None:
+            result['caseResult'] = self.case_result
+        if self.code is not None:
+            result['code'] = self.code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('caseResult') is not None:
+            self.case_result = m.get('caseResult')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class UpdateVideoConferenceSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateVideoConferenceSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateVideoConferenceSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

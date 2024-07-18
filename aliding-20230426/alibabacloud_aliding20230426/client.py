@@ -1919,6 +1919,140 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CancelScheduleConferenceHeaders()
         return await self.cancel_schedule_conference_with_options_async(request, headers, runtime)
 
+    def check_alibaba_staff_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CheckAlibabaStaffRequest,
+        tmp_header: aliding_20230426_models.CheckAlibabaStaffHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CheckAlibabaStaffResponse:
+        """
+        @summary 校验阿里员工
+        
+        @param tmp_req: CheckAlibabaStaffRequest
+        @param tmp_header: CheckAlibabaStaffHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAlibabaStaffResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CheckAlibabaStaffShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CheckAlibabaStaffShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckAlibabaStaff',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/checkAlibabaStaff',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CheckAlibabaStaffResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_alibaba_staff_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CheckAlibabaStaffRequest,
+        tmp_header: aliding_20230426_models.CheckAlibabaStaffHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CheckAlibabaStaffResponse:
+        """
+        @summary 校验阿里员工
+        
+        @param tmp_req: CheckAlibabaStaffRequest
+        @param tmp_header: CheckAlibabaStaffHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAlibabaStaffResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CheckAlibabaStaffShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CheckAlibabaStaffShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.mobile):
+            body['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckAlibabaStaff',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/checkAlibabaStaff',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CheckAlibabaStaffResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_alibaba_staff(
+        self,
+        request: aliding_20230426_models.CheckAlibabaStaffRequest,
+    ) -> aliding_20230426_models.CheckAlibabaStaffResponse:
+        """
+        @summary 校验阿里员工
+        
+        @param request: CheckAlibabaStaffRequest
+        @return: CheckAlibabaStaffResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CheckAlibabaStaffHeaders()
+        return self.check_alibaba_staff_with_options(request, headers, runtime)
+
+    async def check_alibaba_staff_async(
+        self,
+        request: aliding_20230426_models.CheckAlibabaStaffRequest,
+    ) -> aliding_20230426_models.CheckAlibabaStaffResponse:
+        """
+        @summary 校验阿里员工
+        
+        @param request: CheckAlibabaStaffRequest
+        @return: CheckAlibabaStaffResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CheckAlibabaStaffHeaders()
+        return await self.check_alibaba_staff_with_options_async(request, headers, runtime)
+
     def check_user_is_group_member_with_options(
         self,
         request: aliding_20230426_models.CheckUserIsGroupMemberRequest,
@@ -26846,6 +26980,164 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateUserAvatarHeaders()
         return await self.update_user_avatar_with_options_async(request, headers, runtime)
+
+    def update_video_conference_setting_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateVideoConferenceSettingRequest,
+        tmp_header: aliding_20230426_models.UpdateVideoConferenceSettingHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateVideoConferenceSettingResponse:
+        """
+        @summary 设置正在进行中的视频会议属性
+        
+        @param tmp_req: UpdateVideoConferenceSettingRequest
+        @param tmp_header: UpdateVideoConferenceSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoConferenceSettingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateVideoConferenceSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateVideoConferenceSettingShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.allow_unmute_self):
+            body['AllowUnmuteSelf'] = request.allow_unmute_self
+        if not UtilClient.is_unset(request.auto_transfer_host):
+            body['AutoTransferHost'] = request.auto_transfer_host
+        if not UtilClient.is_unset(request.forbidden_share_screen):
+            body['ForbiddenShareScreen'] = request.forbidden_share_screen
+        if not UtilClient.is_unset(request.lock_conference):
+            body['LockConference'] = request.lock_conference
+        if not UtilClient.is_unset(request.mute_all):
+            body['MuteAll'] = request.mute_all
+        if not UtilClient.is_unset(request.only_internal_employees_join):
+            body['OnlyInternalEmployeesJoin'] = request.only_internal_employees_join
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoConferenceSetting',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/updateVideoConferenceSetting',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateVideoConferenceSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_video_conference_setting_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateVideoConferenceSettingRequest,
+        tmp_header: aliding_20230426_models.UpdateVideoConferenceSettingHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateVideoConferenceSettingResponse:
+        """
+        @summary 设置正在进行中的视频会议属性
+        
+        @param tmp_req: UpdateVideoConferenceSettingRequest
+        @param tmp_header: UpdateVideoConferenceSettingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVideoConferenceSettingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateVideoConferenceSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateVideoConferenceSettingShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.allow_unmute_self):
+            body['AllowUnmuteSelf'] = request.allow_unmute_self
+        if not UtilClient.is_unset(request.auto_transfer_host):
+            body['AutoTransferHost'] = request.auto_transfer_host
+        if not UtilClient.is_unset(request.forbidden_share_screen):
+            body['ForbiddenShareScreen'] = request.forbidden_share_screen
+        if not UtilClient.is_unset(request.lock_conference):
+            body['LockConference'] = request.lock_conference
+        if not UtilClient.is_unset(request.mute_all):
+            body['MuteAll'] = request.mute_all
+        if not UtilClient.is_unset(request.only_internal_employees_join):
+            body['OnlyInternalEmployeesJoin'] = request.only_internal_employees_join
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.conference_id):
+            body['conferenceId'] = request.conference_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateVideoConferenceSetting',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/updateVideoConferenceSetting',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateVideoConferenceSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_video_conference_setting(
+        self,
+        request: aliding_20230426_models.UpdateVideoConferenceSettingRequest,
+    ) -> aliding_20230426_models.UpdateVideoConferenceSettingResponse:
+        """
+        @summary 设置正在进行中的视频会议属性
+        
+        @param request: UpdateVideoConferenceSettingRequest
+        @return: UpdateVideoConferenceSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateVideoConferenceSettingHeaders()
+        return self.update_video_conference_setting_with_options(request, headers, runtime)
+
+    async def update_video_conference_setting_async(
+        self,
+        request: aliding_20230426_models.UpdateVideoConferenceSettingRequest,
+    ) -> aliding_20230426_models.UpdateVideoConferenceSettingResponse:
+        """
+        @summary 设置正在进行中的视频会议属性
+        
+        @param request: UpdateVideoConferenceSettingRequest
+        @return: UpdateVideoConferenceSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateVideoConferenceSettingHeaders()
+        return await self.update_video_conference_setting_with_options_async(request, headers, runtime)
 
     def update_workspace_doc_members_with_options(
         self,

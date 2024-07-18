@@ -1,3 +1,8 @@
+2024-07-18 Version: 2.21.0
+- Support API CheckAlibabaStaff.
+- Support API UpdateVideoConferenceSetting.
+
+
 2024-06-20 Version: 2.20.0
 - Support API QueryMinutes.
 - Support API StartMinutes.
