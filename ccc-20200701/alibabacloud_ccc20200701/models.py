@@ -30344,6 +30344,261 @@ class ListDocumentsResponse(TeaModel):
         return self
 
 
+class ListGroupChatMessagesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        job_id: str = None,
+        next_page_token: str = None,
+        page_size: int = None,
+        sort_order: str = None,
+    ):
+        self.instance_id = instance_id
+        self.job_id = job_id
+        self.next_page_token = next_page_token
+        self.page_size = page_size
+        self.sort_order = sort_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        return self
+
+
+class ListGroupChatMessagesResponseBodyDataMessages(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        job_id: str = None,
+        recalled: bool = None,
+        sender_avatar_url: str = None,
+        sender_id: str = None,
+        sender_name: str = None,
+        sender_type: str = None,
+        timestamp: int = None,
+    ):
+        self.content = content
+        self.job_id = job_id
+        self.recalled = recalled
+        self.sender_avatar_url = sender_avatar_url
+        self.sender_id = sender_id
+        self.sender_name = sender_name
+        self.sender_type = sender_type
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.recalled is not None:
+            result['Recalled'] = self.recalled
+        if self.sender_avatar_url is not None:
+            result['SenderAvatarUrl'] = self.sender_avatar_url
+        if self.sender_id is not None:
+            result['SenderId'] = self.sender_id
+        if self.sender_name is not None:
+            result['SenderName'] = self.sender_name
+        if self.sender_type is not None:
+            result['SenderType'] = self.sender_type
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Recalled') is not None:
+            self.recalled = m.get('Recalled')
+        if m.get('SenderAvatarUrl') is not None:
+            self.sender_avatar_url = m.get('SenderAvatarUrl')
+        if m.get('SenderId') is not None:
+            self.sender_id = m.get('SenderId')
+        if m.get('SenderName') is not None:
+            self.sender_name = m.get('SenderName')
+        if m.get('SenderType') is not None:
+            self.sender_type = m.get('SenderType')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class ListGroupChatMessagesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        messages: List[ListGroupChatMessagesResponseBodyDataMessages] = None,
+        next_page_token: str = None,
+    ):
+        self.messages = messages
+        self.next_page_token = next_page_token
+
+    def validate(self):
+        if self.messages:
+            for k in self.messages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Messages'] = []
+        if self.messages is not None:
+            for k in self.messages:
+                result['Messages'].append(k.to_map() if k else None)
+        if self.next_page_token is not None:
+            result['NextPageToken'] = self.next_page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('Messages') is not None:
+            for k in m.get('Messages'):
+                temp_model = ListGroupChatMessagesResponseBodyDataMessages()
+                self.messages.append(temp_model.from_map(k))
+        if m.get('NextPageToken') is not None:
+            self.next_page_token = m.get('NextPageToken')
+        return self
+
+
+class ListGroupChatMessagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListGroupChatMessagesResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListGroupChatMessagesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListGroupChatMessagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListGroupChatMessagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListGroupChatMessagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListHistoricalAgentReportRequest(TeaModel):
     def __init__(
         self,

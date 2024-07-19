@@ -12833,6 +12833,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_documents_with_options_async(request, runtime)
 
+    def list_group_chat_messages_with_options(
+        self,
+        request: ccc20200701_models.ListGroupChatMessagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListGroupChatMessagesResponse:
+        """
+        @summary ListGroupChatMessages
+        
+        @param request: ListGroupChatMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupChatMessagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupChatMessages',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListGroupChatMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_group_chat_messages_with_options_async(
+        self,
+        request: ccc20200701_models.ListGroupChatMessagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListGroupChatMessagesResponse:
+        """
+        @summary ListGroupChatMessages
+        
+        @param request: ListGroupChatMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupChatMessagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.next_page_token):
+            query['NextPageToken'] = request.next_page_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGroupChatMessages',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListGroupChatMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_group_chat_messages(
+        self,
+        request: ccc20200701_models.ListGroupChatMessagesRequest,
+    ) -> ccc20200701_models.ListGroupChatMessagesResponse:
+        """
+        @summary ListGroupChatMessages
+        
+        @param request: ListGroupChatMessagesRequest
+        @return: ListGroupChatMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_group_chat_messages_with_options(request, runtime)
+
+    async def list_group_chat_messages_async(
+        self,
+        request: ccc20200701_models.ListGroupChatMessagesRequest,
+    ) -> ccc20200701_models.ListGroupChatMessagesResponse:
+        """
+        @summary ListGroupChatMessages
+        
+        @param request: ListGroupChatMessagesRequest
+        @return: ListGroupChatMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_group_chat_messages_with_options_async(request, runtime)
+
     def list_historical_agent_report_with_options(
         self,
         request: ccc20200701_models.ListHistoricalAgentReportRequest,

@@ -1,3 +1,7 @@
+2024-07-19 Version: 2.26.0
+- Support API ListGroupChatMessages.
+
+
 2024-07-18 Version: 2.25.0
 - Support API ListCallDetailRecordsV2.
 
