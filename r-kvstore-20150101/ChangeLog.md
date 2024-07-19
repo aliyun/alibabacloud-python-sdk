@@ -1,3 +1,16 @@
+2024-07-19 Version: 4.2.0
+- Support API DescribeActiveOperationTasks.
+- Support API ModifyActiveOperationTasks.
+- Update API CreateAccount: add param SourceBiz.
+- Update API DeleteAccount: add param SourceBiz.
+- Update API DeleteAccount: update response param.
+- Update API DescribeInstances: update response param.
+- Update API GrantAccountPrivilege: add param SourceBiz.
+- Update API ModifyAccountDescription: add param SourceBiz.
+- Update API ModifyAccountPassword: add param SourceBiz.
+- Update API ResetAccountPassword: add param SourceBiz.
+
+
 2024-06-19 Version: 4.1.0
 - Support API CreateParameterGroup.
 - Support API DeleteParameterGroup.

@@ -665,6 +665,7 @@ class CreateAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        source_biz: str = None,
     ):
         # The description of the account.
         # 
@@ -700,6 +701,7 @@ class CreateAccountRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.source_biz = source_biz
 
     def validate(self):
         pass
@@ -732,6 +734,8 @@ class CreateAccountRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
         return result
 
     def from_map(self, m: dict = None):
@@ -758,6 +762,8 @@ class CreateAccountRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
         return self
 
 
@@ -1123,6 +1129,10 @@ class CreateGlobalDistributeCacheRequest(TeaModel):
         security_token: str = None,
         seed_sub_instance_id: str = None,
     ):
+        # The time when you want to restart the instance. Default value: Immediately. Valid values:
+        # 
+        # *   **Immediately**: immediately restarts the instance.
+        # *   **MaintainTime**: restarts the instance during the maintenance window.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1595,9 +1605,9 @@ class CreateInstanceRequest(TeaModel):
         # *   **true**: uses a coupon.
         # *   **false**: does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The ID of the backup file of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId** parameter. Then, the system creates an instance based on the backup file that is specified by this parameter. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the IDs of backup files.
+        # If your instance is a cloud-native cluster instance, we recommend that you use [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679158.html) to query the backup set ID of the cluster instance, such as cb-xx. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
         # 
-        # > After you specify the **SrcDBInstanceId** parameter, you must use the **BackupId** or **RestoreTime** parameter to specify the backup file.
+        # You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,). Example: "10\\*\\*,11\\*\\*,15\\*\\*".
         self.backup_id = backup_id
         # The ID of the promotional event or business information.
         self.business_info = business_info
@@ -1610,7 +1620,10 @@ class CreateInstanceRequest(TeaModel):
         # *   **PrePaid**: subscription
         # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The backup set ID.
+        # This parameter is supported for specific new cluster instances. You can query the backup set ID by using the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679158.html) operation.
+        # 
+        # *   If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the **BackupId** parameter.
+        # *   If this parameter is not supported, set the BackupId parameter to the IDs of backup sets for all shards of the source instance, separated by commas (,). Example: "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
         self.cluster_backup_id = cluster_backup_id
         # The operation that you want to perform. Set the value to **AllocateInstancePublicConnection**.
         self.connection_string_prefix = connection_string_prefix
@@ -1623,9 +1636,19 @@ class CreateInstanceRequest(TeaModel):
         # *   **true**: performs a dry run and does not create the instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**: performs a dry run and sends the request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
-        # The database engine version of the instance. Valid values: **4.0**, **5.0**, **6.0**, and **7.0**.
+        # The engine version. Valid values for **classic instances**:
         # 
-        # > The default value is **5.0**.
+        # *   **2.8** (not recommended due to [scheduled EOFS](https://help.aliyun.com/document_detail/2674657.html))
+        # *   **4.0** (not recommended)
+        # *   **5.0**\
+        # 
+        # Valid values for **cloud-native instances**:
+        # 
+        # *   **5.0**\
+        # *   **6.0** (recommended)
+        # *   **7.0**\
+        # 
+        # >  The default value is **5.0**.
         self.engine_version = engine_version
         # Specifies whether to use the new instance as the first child instance of the distributed instance. Default value: false. Valid values:
         # 
@@ -1681,7 +1704,9 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > The private IP address must be available within the CIDR block of the vSwitch to which to connect the instance.
         self.private_ip_address = private_ip_address
-        # The number of read-only nodes in the instance. This parameter is available only if you create a read/write splitting instance that uses cloud disks. Valid values: 1 to 5.
+        # The number of read replicas in the primary zone. This parameter applies only to read/write splitting instances that use cloud disks. You can use this parameter to customize the number of read replicas. Valid values: 1 to 9.
+        # 
+        # >  The sum of the values of this parameter and SlaveReadOnlyCount cannot be greater than 9.
         self.read_only_count = read_only_count
         self.recover_config_mode = recover_config_mode
         # The ID of the region where you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
@@ -1692,9 +1717,7 @@ class CreateInstanceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time at which the specified original instance is backed up. The point in time must be within the retention period of backup files of the original instance. If you want to create an instance based on a backup file of a specified instance, you can set this parameter to specify a point in time after you set the **SrcDBInstanceId** parameter. Then, the system creates an instance based on the backup file that was created at the specified point in time for the original instance. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > After you specify the **SrcDBInstanceId** parameter, you must use the **BackupId** or **RestoreTime** parameter to specify the backup file.
+        # If data flashback is enabled for the source instance, you can use this parameter to specify a point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the point in time to create an instance. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.restore_time = restore_time
         # The secondary zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/472448.html) operation to query the most recent zone list.
         # 
@@ -1704,8 +1727,13 @@ class CreateInstanceRequest(TeaModel):
         self.security_token = security_token
         # The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks.
         self.shard_count = shard_count
+        # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed across multiple zones. The sum of the values of this parameter and ReadOnlyCount cannot be greater than 9.
+        # 
+        # > When you create a multi-zone read/write splitting instance, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
         self.slave_read_only_count = slave_read_only_count
-        # The ID of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter and use the **BackupId** or **RestoreTime** parameter to specify the backup file.
+        # If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
+        # 
+        # >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId** (recommended for cloud-native cluster instances), or **RestoreTime** parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         self.src_dbinstance_id = src_dbinstance_id
         # The tags of the instance.
         self.tag = tag
@@ -2665,28 +2693,30 @@ class CreateTairInstanceRequest(TeaModel):
     ):
         # Specifies whether to enable automatic payment. Set the value to **true**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
         # *   **true**: enables auto-renewal.
-        # *   **false**: disables auto-renewal.
+        # *   **false** (default): disables auto-renewal.
         self.auto_renew = auto_renew
-        # The subscription duration that is supported by auto-renewal. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The subscription duration that is supported by auto-renewal. Unit: month. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
-        # > This parameter is required only if the **AutoRenew** parameter is set to **true**.
+        # >  This parameter is required if the **AutoRenew** parameter is set to **true**.
         self.auto_renew_period = auto_renew_period
-        # Specifies whether to use a coupon. Default value: false. Valid values:
+        # Specifies whether to use a coupon. Valid values:
         # 
         # *   **true**: uses a coupon.
-        # *   **false**: does not use a coupon.
+        # *   **false** (default): does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The ID of the backup set of the source instance. The system uses the data stored in the backup set to create an instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the backup set ID.
+        # If your instance is a cloud-native cluster instance, we recommend that you use [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679158.html) to query the backup set ID of the cluster instance, such as cb-xx. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        # 
+        # You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,). Example: "10\\*\\*,11\\*\\*,15\\*\\*".
         self.backup_id = backup_id
         # The ID of the promotion event or the business information.
         self.business_info = business_info
-        # The billing method of the instance. Default value: PrePaid. Valid values:
+        # The billing method. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # *   **PrePaid** (default): subscription
+        # *   **PostPaid:** pay-as-you-go
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -2697,16 +2727,16 @@ class CreateTairInstanceRequest(TeaModel):
         self.cluster_backup_id = cluster_backup_id
         # The coupon code.
         self.coupon_no = coupon_no
-        # Specifies whether to perform a dry run. Default value: false. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
         # *   **true**: performs a dry run and does not create the instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**: performs a dry run and sends the request. If the request passes the dry run, the instance is created.
         self.dry_run = dry_run
-        # The engine version. Default value: **1.0**. The parameter value varies with the Tair instance type.
+        # The database engine version. Default value: **1.0**. The parameter value varies based on the Tair instance series.
         # 
-        # *   For Tair DRAM-based instances (tair_rdb) that are compatible with Redis 5.0 or 6.0, set this parameter to 5.0 or 6.0.
-        # *   For Tair persistent memory-optimized instances (tair_scm) that are compatible with Redis 6.0, set this parameter to 1.0.
-        # *   For Tair ESSD-based instances (tair_essd) that are compatible with Redis 4.0 or 6.0, set this parameter to 1.0 or 2.0.
+        # *   For Tair DRAM-based instances (tair_rdb) that are compatible with Redis 5.0 or 6.0, set this parameter to **5.0** or **6.0**.
+        # *   For Tair persistent memory-optimized instances (tair_scm) that are compatible with Redis 6.0, set this parameter to **1.0**.
+        # *   For Tair ESSD/SSD-based instances (tair_essd) that are compatible with Redis 6.0, set this parameter to **1.0** to create an ESSD-based instance, and set this parameter to **2.0** to create an SSD-based instance.
         self.engine_version = engine_version
         # Specifies whether to use the created instance as a child instance of a distributed instance.
         # 
@@ -2731,11 +2761,11 @@ class CreateTairInstanceRequest(TeaModel):
         # *   The name is 2 to 80 characters in length.
         # *   The name starts with a letter and does not contain spaces or special characters. Special characters include `@ / : = " < > { [ ] }`
         self.instance_name = instance_name
-        # The storage type of the instance. Valid values:
+        # The instance series. Valid values:
         # 
-        # *   **tair_rdb**: ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance
-        # *   **tair_scm**: ApsaraDB for Redis Enhanced Edition (Tair) persistent memory-optimized instance
-        # *   **tair_essd**: ApsaraDB for Redis Enhanced Edition (Tair) ESSD-based instance
+        # *   **tair_rdb**: Tair DRAM-based instance
+        # *   **tair_scm**: Tair persistent memory-optimized instance
+        # *   **tair_essd**: ESSD/SSD-based instance
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -2752,7 +2782,7 @@ class CreateTairInstanceRequest(TeaModel):
         # 
         # > This parameter is required only if you set the **ChargeType** parameter to **PrePaid**.
         self.period = period
-        # The port number of the instance. Valid values: **1024** to **65535**. Default value: **6379**.
+        # The service port number of the instance. Valid values: 1024 to 65535. Default value: 6379.
         self.port = port
         # The private IP address of the instance.
         # 
@@ -2789,12 +2819,12 @@ class CreateTairInstanceRequest(TeaModel):
         # *   **1** (default): You can create a [standard instance](https://help.aliyun.com/document_detail/52228.html) that contains only a single data node.
         # *   **2** to **32**: You can create a [cluster instance](https://help.aliyun.com/document_detail/52228.html) that contains the specified number of data nodes.
         # 
-        # >  When the **InstanceType** parameter is set to **tair_rdb** or **tair_scm**, this parameter can be set to **2** to **32**. Only DRAM-based and persistent memory-optimized instances support the cluster architecture.
+        # >  When the **InstanceType** parameter is set to **tair_rdb** or **tair_scm**, this parameter can be set to a value in the range of **2** to **32**. Only DRAM-based and persistent memory-optimized instances support the cluster architecture.
         self.shard_count = shard_count
-        # The data shard type of the instance. Default value: MASTER_SLAVE. Valid values:
+        # The shard type of the instance. Valid values:
         # 
-        # *   **MASTER_SLAVE**: runs in a master-replica architecture that provides high availability.
-        # *   **STAND_ALONE**: runs in a standalone architecture. If the only node fails, the system creates a new instance and switches the workloads to the new instance. This may cause data loss. You can set this parameter to this value only if the instance uses the **single-zone** deployment type. If you set this parameter to this value, you cannot create cluster or read/write splitting instances.
+        # *   **MASTER_SLAVE** (default): runs in a master-replica architecture that provides high availability.
+        # *   **STAND_ALONE**: runs in a standalone architecture. If the only node fails, the system creates a new instance and switches the workloads to the new instance. This may cause data loss. You can set the ShardType parameter to this value only if the instance uses the **single-zone** deployment mode. If you set the ShardType parameter to this value, you cannot create cluster or read/write splitting instances.
         self.shard_type = shard_type
         # The number of read replicas in the secondary zone when you create a multi-zone read/write splitting instance. The sum of the values of this parameter and ReadOnlyCount cannot be greater than 9.
         # 
@@ -2802,15 +2832,22 @@ class CreateTairInstanceRequest(TeaModel):
         self.slave_read_only_count = slave_read_only_count
         # If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
         # 
-        # >  Then, you can use the **BackupId**, **ClusterBackupId**, or **RestoreTime** parameter to specify the backup set that you want to use or the point in time. This parameter must be used in combination with one of the preceding three parameters.
+        # >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId** (recommended for cloud-native cluster instances), or **RestoreTime** parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
         self.src_dbinstance_id = src_dbinstance_id
         # The storage space of cloud disks. Valid values vary based on the instance specifications. For more information, see [ESSD-based instances](https://help.aliyun.com/document_detail/443846.html).
         # 
         # > This parameter is available and required only if the **InstanceType** parameter is set to **tair_essd**.
         self.storage = storage
-        # The storage type of the instance. Set the value to **essd_pl1**.
+        # The storage type. Example values: **essd_pl1**, **essd_pl2**, and **essd_pl3**.
         # 
-        # > This parameter is available only if the **InstanceType** parameter is set to **tair_essd**.
+        # >  This parameter is required only when you set the **InstanceType** parameter to **tair_essd** to create an ESSD-based instance.
+        # 
+        # Valid values:
+        # 
+        # *   essd_pl0
+        # *   essd_pl1
+        # *   essd_pl2
+        # *   essd_pl3
         self.storage_type = storage_type
         # The tags to add to the instance.
         self.tag = tag
@@ -3207,6 +3244,7 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        source_biz: str = None,
     ):
         # The username of the account. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
         # 
@@ -3221,6 +3259,7 @@ class DeleteAccountRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.source_biz = source_biz
 
     def validate(self):
         pass
@@ -3245,6 +3284,8 @@ class DeleteAccountRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
         return result
 
     def from_map(self, m: dict = None):
@@ -3263,6 +3304,8 @@ class DeleteAccountRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
         return self
 
 
@@ -4561,6 +4604,412 @@ class DescribeActiveOperationTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeActiveOperationTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: int = None,
+        allow_change: int = None,
+        change_level: str = None,
+        db_type: str = None,
+        ins_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_id: str = None,
+        region: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: int = None,
+        task_type: str = None,
+    ):
+        self.allow_cancel = allow_cancel
+        self.allow_change = allow_change
+        self.change_level = change_level
+        self.db_type = db_type
+        self.ins_name = ins_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product_id = product_id
+        self.region = region
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.status = status
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: str = None,
+        allow_change: str = None,
+        change_level: str = None,
+        change_level_en: str = None,
+        change_level_zh: str = None,
+        created_time: str = None,
+        current_avz: str = None,
+        db_type: str = None,
+        db_version: str = None,
+        deadline: str = None,
+        id: int = None,
+        impact: str = None,
+        impact_en: str = None,
+        impact_zh: str = None,
+        ins_comment: str = None,
+        ins_name: str = None,
+        modified_time: str = None,
+        prepare_interval: str = None,
+        region: str = None,
+        result_info: str = None,
+        start_time: str = None,
+        status: int = None,
+        sub_ins_names: List[str] = None,
+        switch_time: str = None,
+        task_params: str = None,
+        task_type: str = None,
+        task_type_en: str = None,
+        task_type_zh: str = None,
+    ):
+        self.allow_cancel = allow_cancel
+        self.allow_change = allow_change
+        self.change_level = change_level
+        self.change_level_en = change_level_en
+        self.change_level_zh = change_level_zh
+        self.created_time = created_time
+        self.current_avz = current_avz
+        self.db_type = db_type
+        self.db_version = db_version
+        self.deadline = deadline
+        self.id = id
+        self.impact = impact
+        self.impact_en = impact_en
+        self.impact_zh = impact_zh
+        self.ins_comment = ins_comment
+        self.ins_name = ins_name
+        self.modified_time = modified_time
+        self.prepare_interval = prepare_interval
+        self.region = region
+        self.result_info = result_info
+        self.start_time = start_time
+        self.status = status
+        self.sub_ins_names = sub_ins_names
+        self.switch_time = switch_time
+        self.task_params = task_params
+        self.task_type = task_type
+        self.task_type_en = task_type_en
+        self.task_type_zh = task_type_zh
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.change_level_en is not None:
+            result['ChangeLevelEn'] = self.change_level_en
+        if self.change_level_zh is not None:
+            result['ChangeLevelZh'] = self.change_level_zh
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.current_avz is not None:
+            result['CurrentAVZ'] = self.current_avz
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
+        if self.deadline is not None:
+            result['Deadline'] = self.deadline
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.impact is not None:
+            result['Impact'] = self.impact
+        if self.impact_en is not None:
+            result['ImpactEn'] = self.impact_en
+        if self.impact_zh is not None:
+            result['ImpactZh'] = self.impact_zh
+        if self.ins_comment is not None:
+            result['InsComment'] = self.ins_comment
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.prepare_interval is not None:
+            result['PrepareInterval'] = self.prepare_interval
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.result_info is not None:
+            result['ResultInfo'] = self.result_info
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_ins_names is not None:
+            result['SubInsNames'] = self.sub_ins_names
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.task_params is not None:
+            result['TaskParams'] = self.task_params
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_type_en is not None:
+            result['TaskTypeEn'] = self.task_type_en
+        if self.task_type_zh is not None:
+            result['TaskTypeZh'] = self.task_type_zh
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('ChangeLevelEn') is not None:
+            self.change_level_en = m.get('ChangeLevelEn')
+        if m.get('ChangeLevelZh') is not None:
+            self.change_level_zh = m.get('ChangeLevelZh')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CurrentAVZ') is not None:
+            self.current_avz = m.get('CurrentAVZ')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
+        if m.get('Deadline') is not None:
+            self.deadline = m.get('Deadline')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Impact') is not None:
+            self.impact = m.get('Impact')
+        if m.get('ImpactEn') is not None:
+            self.impact_en = m.get('ImpactEn')
+        if m.get('ImpactZh') is not None:
+            self.impact_zh = m.get('ImpactZh')
+        if m.get('InsComment') is not None:
+            self.ins_comment = m.get('InsComment')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('PrepareInterval') is not None:
+            self.prepare_interval = m.get('PrepareInterval')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResultInfo') is not None:
+            self.result_info = m.get('ResultInfo')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubInsNames') is not None:
+            self.sub_ins_names = m.get('SubInsNames')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('TaskParams') is not None:
+            self.task_params = m.get('TaskParams')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskTypeEn') is not None:
+            self.task_type_en = m.get('TaskTypeEn')
+        if m.get('TaskTypeZh') is not None:
+            self.task_type_zh = m.get('TaskTypeZh')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeActiveOperationTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeActiveOperationTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13773,6 +14222,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         capacity: int = None,
         charge_type: str = None,
         cloud_type: str = None,
+        computing_type: str = None,
         config: str = None,
         connection_domain: str = None,
         connection_mode: str = None,
@@ -13826,6 +14276,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
         self.charge_type = charge_type
         # This parameter is returned only when the instance is in a cloud box.
         self.cloud_type = cloud_type
+        self.computing_type = computing_type
         # The parameter configurations of the instance. For more information, see [Modify parameters of an instance](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
         # The internal endpoint of the instance.
@@ -13966,6 +14417,8 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.cloud_type is not None:
             result['CloudType'] = self.cloud_type
+        if self.computing_type is not None:
+            result['ComputingType'] = self.computing_type
         if self.config is not None:
             result['Config'] = self.config
         if self.connection_domain is not None:
@@ -14048,6 +14501,8 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('CloudType') is not None:
             self.cloud_type = m.get('CloudType')
+        if m.get('ComputingType') is not None:
+            self.computing_type = m.get('ComputingType')
         if m.get('Config') is not None:
             self.config = m.get('Config')
         if m.get('ConnectionDomain') is not None:
@@ -22096,6 +22551,7 @@ class GrantAccountPrivilegeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        source_biz: str = None,
     ):
         # The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
         # 
@@ -22117,6 +22573,7 @@ class GrantAccountPrivilegeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.source_biz = source_biz
 
     def validate(self):
         pass
@@ -22143,6 +22600,8 @@ class GrantAccountPrivilegeRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
         return result
 
     def from_map(self, m: dict = None):
@@ -22163,6 +22622,8 @@ class GrantAccountPrivilegeRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
         return self
 
 
@@ -23003,6 +23464,7 @@ class ModifyAccountDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        source_biz: str = None,
     ):
         # The description of the account.
         # 
@@ -23025,6 +23487,7 @@ class ModifyAccountDescriptionRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.source_biz = source_biz
 
     def validate(self):
         pass
@@ -23051,6 +23514,8 @@ class ModifyAccountDescriptionRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
         return result
 
     def from_map(self, m: dict = None):
@@ -23071,6 +23536,8 @@ class ModifyAccountDescriptionRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
         return self
 
 
@@ -23155,6 +23622,7 @@ class ModifyAccountPasswordRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        source_biz: str = None,
     ):
         # The username of the account for which you want to change the password. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
         # 
@@ -23179,6 +23647,7 @@ class ModifyAccountPasswordRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.source_biz = source_biz
 
     def validate(self):
         pass
@@ -23207,6 +23676,8 @@ class ModifyAccountPasswordRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
         return result
 
     def from_map(self, m: dict = None):
@@ -23229,6 +23700,8 @@ class ModifyAccountPasswordRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
         return self
 
 
@@ -23446,6 +23919,151 @@ class ModifyActiveOperationTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyActiveOperationTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        immediate_start: int = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        switch_time: str = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+        self.immediate_start = immediate_start
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        # This parameter is required.
+        self.switch_time = switch_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.immediate_start is not None:
+            result['ImmediateStart'] = self.immediate_start
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('ImmediateStart') is not None:
+            self.immediate_start = m.get('ImmediateStart')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        return self
+
+
+class ModifyActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        ids: str = None,
+        request_id: str = None,
+    ):
+        self.ids = ids
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyActiveOperationTasksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23790,6 +24408,8 @@ class ModifyDBInstanceAutoUpgradeRequest(TeaModel):
         security_token: str = None,
         value: str = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to obtain the ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
@@ -23797,6 +24417,11 @@ class ModifyDBInstanceAutoUpgradeRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # Specifies whether to enable automatic minor version update. Valid values:
+        # 
+        # *   **1**: enables automatic minor version update.
+        # *   **0**: disables automatic minor version update.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -23849,7 +24474,7 @@ class ModifyDBInstanceAutoUpgradeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -26077,16 +26702,27 @@ class ModifyInstanceSpecRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The major version to which you want to upgrade. When you change the configurations of an instance, you can upgrade the major version of the instance by setting this parameter. Valid values: **4.0** and **5.0**.
+        # The major version to which you want to upgrade the instance. When you change the configurations of an instance, you can upgrade the major version of the instance by setting this parameter. Valid values: **2.8**, **4.0**, and **5.0**. We recommend that you upgrade the major version to 5.0.
         self.major_version = major_version
+        # The node type. Valid values:
+        # 
+        # *   **MASTER_SLAVE**: high availability (master-replica)
+        # *   **STAND_ALONE**: standalone
+        # *   **double**: master-replica
+        # *   **single**: standalone
+        # 
+        # >  For cloud-native instances, set this parameter to **MASTER_SLAVE** or **STAND_ALONE**. For classic instances, set this parameter to **double** or **single**.
         self.node_type = node_type
         # The change type. This parameter is required when you change the configurations of a subscription instance. Default value: UPGRADE. Valid values:
         # 
         # *   **UPGRADE**: upgrades the configurations of a subscription instance.
         # *   **DOWNGRADE**: downgrades the configurations of a subscription instance.
         # 
-        # > *   To downgrade a subscription instance, you must set this parameter to **DOWNGRADE**.
-        # > *   If the price of an instance increases after its configurations are changed, the instance is upgraded. If the price decreases, the instance is downgraded. For example, the price of an 8 GB read/write splitting instance with five read replicas is higher than that of a 16 GB cluster instance. If you want to change a 16 GB cluster instance to an 8 GB read/write splitting instance with five read replicas, you must upgrade the instance.
+        # > 
+        # 
+        # *   To downgrade a subscription instance, you must set this parameter to **DOWNGRADE**.
+        # 
+        # *   If the price of an instance increases after its configurations are changed, the instance is upgraded. If the price decreases, the instance is downgraded. For example, the price of an 8 GB read/write splitting instance with five read replicas is higher than that of a 16 GB cluster instance. If you want to change a 16 GB cluster instance to an 8 GB read/write splitting instance with five read replicas, you must upgrade the instance.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28191,6 +28827,7 @@ class ResetAccountPasswordRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        source_biz: str = None,
     ):
         # The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
         # 
@@ -28209,6 +28846,7 @@ class ResetAccountPasswordRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.source_biz = source_biz
 
     def validate(self):
         pass
@@ -28235,6 +28873,8 @@ class ResetAccountPasswordRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.source_biz is not None:
+            result['SourceBiz'] = self.source_biz
         return result
 
     def from_map(self, m: dict = None):
@@ -28255,6 +28895,8 @@ class ResetAccountPasswordRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('SourceBiz') is not None:
+            self.source_biz = m.get('SourceBiz')
         return self
 
 
