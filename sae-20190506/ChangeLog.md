@@ -1,3 +1,74 @@
+2024-07-19 Version: 1.23.0
+- Support API CreateWebApplication.
+- Support API CreateWebCustomDomain.
+- Support API DeleteWebApplication.
+- Support API DeleteWebApplicationRevision.
+- Support API DeleteWebCustomDomain.
+- Support API DescribeWebApplication.
+- Support API DescribeWebApplicationResourceStatics.
+- Support API DescribeWebApplicationRevision.
+- Support API DescribeWebApplicationScalingConfig.
+- Support API DescribeWebApplicationTrafficConfig.
+- Support API DescribeWebCustomDomain.
+- Support API DescribeWebInstanceLogs.
+- Support API ListWebApplicationInstances.
+- Support API ListWebApplicationRevisions.
+- Support API ListWebApplications.
+- Support API ListWebCustomDomains.
+- Support API PublishWebApplicationRevision.
+- Support API StartWebApplication.
+- Support API StopWebApplication.
+- Support API UpdateWebApplication.
+- Support API UpdateWebApplicationScalingConfig.
+- Support API UpdateWebApplicationTrafficConfig.
+- Support API UpdateWebCustomDomain.
+- Update API BatchStartApplications: add param Version.
+- Update API BatchStopApplications: add param Version.
+- Update API CreateApplication: add param AppSource.
+- Update API CreateApplication: add param BaseAppId.
+- Update API CreateApplication: add param EnableEbpf.
+- Update API CreateApplication: add param MicroRegistrationConfig.
+- Update API CreateApplication: add param Php.
+- Update API CreateApplication: add param SaeVersion.
+- Update API CreateApplication: add param ServiceTags.
+- Update API CreateApplicationScalingRule: update response param.
+- Update API CreateSecret: update param SecretData.
+- Update API DeployApplication: add param Cpu.
+- Update API DeployApplication: add param Memory.
+- Update API DeployApplication: add param MicroRegistrationConfig.
+- Update API DeployApplication: add param Php.
+- Update API DeployApplication: add param Replicas.
+- Update API DeployApplication: add param SecurityGroupId.
+- Update API DeployApplication: add param ServiceTags.
+- Update API DeployApplication: add param VSwitchId.
+- Update API DescribeAppServiceDetail: add param NacosInstanceId.
+- Update API DescribeAppServiceDetail: add param NacosNamespaceId.
+- Update API DescribeAppServiceDetail: update response param.
+- Update API DescribeApplicationConfig: update response param.
+- Update API DescribeApplicationScalingRule: update response param.
+- Update API DescribeApplicationScalingRules: update response param.
+- Update API DescribeApplicationSlbs: update response param.
+- Update API DescribeConfigurationPrice: update response param.
+- Update API DescribeIngress: update response param.
+- Update API GetArmsTopNMetric: add param AppSource.
+- Update API GetArmsTopNMetric: add param CpuStrategy.
+- Update API GetAvailabilityMetric: add param AppSource.
+- Update API GetAvailabilityMetric: add param CpuStrategy.
+- Update API GetChangeOrderMetric: add param AppSource.
+- Update API GetChangeOrderMetric: add param CpuStrategy.
+- Update API GetScaleAppMetric: add param AppSource.
+- Update API GetScaleAppMetric: add param CpuStrategy.
+- Update API GetWarningEventMetric: add param AppSource.
+- Update API GetWarningEventMetric: add param CpuStrategy.
+- Update API ListApplications: add param AppSource.
+- Update API ListApplications: update response param.
+- Update API ListIngresses: update response param.
+- Update API ListJobs: update response param.
+- Update API RestartApplication: add param AutoEnableApplicationScalingRule.
+- Update API UpdateApplicationScalingRule: update response param.
+- Update API UpdateSecret: update param SecretData.
+
+
 2023-03-23 Version: 1.22.11
 - Support Create Namespace Without Micro Service Registration.
 

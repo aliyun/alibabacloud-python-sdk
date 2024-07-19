@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
+        """
+        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        
+        @param request: AbortAndRollbackChangeOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortAndRollbackChangeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -77,6 +85,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
+        """
+        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        
+        @param request: AbortAndRollbackChangeOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortAndRollbackChangeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -105,6 +121,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
+        """
+        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        
+        @param request: AbortAndRollbackChangeOrderRequest
+        @return: AbortAndRollbackChangeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.abort_and_rollback_change_order_with_options(request, headers, runtime)
@@ -113,6 +135,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.AbortAndRollbackChangeOrderRequest,
     ) -> sae_20190506_models.AbortAndRollbackChangeOrderResponse:
+        """
+        @summary ba386059-69b1-4e65-b1e5-0682d9fa\\\\*\\*\\*\
+        
+        @param request: AbortAndRollbackChangeOrderRequest
+        @return: AbortAndRollbackChangeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.abort_and_rollback_change_order_with_options_async(request, headers, runtime)
@@ -123,6 +151,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
+        """
+        @param request: AbortChangeOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortChangeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -153,6 +187,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
+        """
+        @param request: AbortChangeOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortChangeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -181,6 +221,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.AbortChangeOrderRequest,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
+        """
+        @param request: AbortChangeOrderRequest
+        @return: AbortChangeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.abort_change_order_with_options(request, headers, runtime)
@@ -189,6 +233,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.AbortChangeOrderRequest,
     ) -> sae_20190506_models.AbortChangeOrderResponse:
+        """
+        @param request: AbortChangeOrderRequest
+        @return: AbortChangeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.abort_change_order_with_options_async(request, headers, runtime)
@@ -199,12 +247,22 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
+        """
+        @summary cn-shanghai
+        
+        @param request: BatchStartApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStartApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -231,12 +289,22 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
+        """
+        @summary cn-shanghai
+        
+        @param request: BatchStartApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStartApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -261,6 +329,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.BatchStartApplicationsRequest,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
+        """
+        @summary cn-shanghai
+        
+        @param request: BatchStartApplicationsRequest
+        @return: BatchStartApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_start_applications_with_options(request, headers, runtime)
@@ -269,6 +343,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.BatchStartApplicationsRequest,
     ) -> sae_20190506_models.BatchStartApplicationsResponse:
+        """
+        @summary cn-shanghai
+        
+        @param request: BatchStartApplicationsRequest
+        @return: BatchStartApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_start_applications_with_options_async(request, headers, runtime)
@@ -279,12 +359,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
+        """
+        @param request: BatchStopApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStopApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -311,12 +399,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
+        """
+        @param request: BatchStopApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchStopApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_ids):
             query['AppIds'] = request.app_ids
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -341,6 +437,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.BatchStopApplicationsRequest,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
+        """
+        @param request: BatchStopApplicationsRequest
+        @return: BatchStopApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.batch_stop_applications_with_options(request, headers, runtime)
@@ -349,6 +449,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.BatchStopApplicationsRequest,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
+        """
+        @param request: BatchStopApplicationsRequest
+        @return: BatchStopApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.batch_stop_applications_with_options_async(request, headers, runtime)
@@ -359,6 +463,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BindSlbResponse:
+        """
+        @param request: BindSlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -397,6 +507,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BindSlbResponse:
+        """
+        @param request: BindSlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -433,6 +549,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.BindSlbRequest,
     ) -> sae_20190506_models.BindSlbResponse:
+        """
+        @param request: BindSlbRequest
+        @return: BindSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.bind_slb_with_options(request, headers, runtime)
@@ -441,6 +561,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.BindSlbRequest,
     ) -> sae_20190506_models.BindSlbResponse:
+        """
+        @param request: BindSlbRequest
+        @return: BindSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.bind_slb_with_options_async(request, headers, runtime)
@@ -451,6 +575,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
+        """
+        @param request: ConfirmPipelineBatchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmPipelineBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.confirm):
@@ -483,6 +613,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
+        """
+        @param request: ConfirmPipelineBatchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmPipelineBatchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.confirm):
@@ -513,6 +649,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ConfirmPipelineBatchRequest,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
+        """
+        @param request: ConfirmPipelineBatchRequest
+        @return: ConfirmPipelineBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.confirm_pipeline_batch_with_options(request, headers, runtime)
@@ -521,6 +661,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ConfirmPipelineBatchRequest,
     ) -> sae_20190506_models.ConfirmPipelineBatchResponse:
+        """
+        @param request: ConfirmPipelineBatchRequest
+        @return: ConfirmPipelineBatchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.confirm_pipeline_batch_with_options_async(request, headers, runtime)
@@ -531,6 +675,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationResponse:
+        """
+        @param request: CreateApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -539,6 +689,8 @@ class Client(OpenApiClient):
             query['AppDescription'] = request.app_description
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
         if not UtilClient.is_unset(request.auto_config):
             query['AutoConfig'] = request.auto_config
         if not UtilClient.is_unset(request.command):
@@ -553,6 +705,8 @@ class Client(OpenApiClient):
             query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
+        if not UtilClient.is_unset(request.enable_ebpf):
+            query['EnableEbpf'] = request.enable_ebpf
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -609,6 +763,8 @@ class Client(OpenApiClient):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
             query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.sae_version):
+            query['SaeVersion'] = request.sae_version
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
@@ -632,16 +788,24 @@ class Client(OpenApiClient):
             body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.associate_eip):
             body['AssociateEip'] = request.associate_eip
+        if not UtilClient.is_unset(request.base_app_id):
+            body['BaseAppId'] = request.base_app_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.micro_registration_config):
+            body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
             body['OssAkSecret'] = request.oss_ak_secret
         if not UtilClient.is_unset(request.oss_mount_descs):
             body['OssMountDescs'] = request.oss_mount_descs
+        if not UtilClient.is_unset(request.php):
+            body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
+        if not UtilClient.is_unset(request.service_tags):
+            body['ServiceTags'] = request.service_tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -669,6 +833,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationResponse:
+        """
+        @param request: CreateApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -677,6 +847,8 @@ class Client(OpenApiClient):
             query['AppDescription'] = request.app_description
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
         if not UtilClient.is_unset(request.auto_config):
             query['AutoConfig'] = request.auto_config
         if not UtilClient.is_unset(request.command):
@@ -691,6 +863,8 @@ class Client(OpenApiClient):
             query['Deploy'] = request.deploy
         if not UtilClient.is_unset(request.edas_container_version):
             query['EdasContainerVersion'] = request.edas_container_version
+        if not UtilClient.is_unset(request.enable_ebpf):
+            query['EnableEbpf'] = request.enable_ebpf
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -747,6 +921,8 @@ class Client(OpenApiClient):
             query['Readiness'] = request.readiness
         if not UtilClient.is_unset(request.replicas):
             query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.sae_version):
+            query['SaeVersion'] = request.sae_version
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
@@ -770,16 +946,24 @@ class Client(OpenApiClient):
             body['AcrInstanceId'] = request.acr_instance_id
         if not UtilClient.is_unset(request.associate_eip):
             body['AssociateEip'] = request.associate_eip
+        if not UtilClient.is_unset(request.base_app_id):
+            body['BaseAppId'] = request.base_app_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.micro_registration_config):
+            body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
             body['OssAkSecret'] = request.oss_ak_secret
         if not UtilClient.is_unset(request.oss_mount_descs):
             body['OssMountDescs'] = request.oss_mount_descs
+        if not UtilClient.is_unset(request.php):
+            body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
+        if not UtilClient.is_unset(request.service_tags):
+            body['ServiceTags'] = request.service_tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -805,6 +989,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateApplicationRequest,
     ) -> sae_20190506_models.CreateApplicationResponse:
+        """
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_application_with_options(request, headers, runtime)
@@ -813,6 +1001,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateApplicationRequest,
     ) -> sae_20190506_models.CreateApplicationResponse:
+        """
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_application_with_options_async(request, headers, runtime)
@@ -824,11 +1016,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        You can create up to five auto scaling policies for one application.
-        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
-        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
-        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
-        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Null
+        
+        @description The HTTP status code. Take note of the following rules:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
         
         @param request: CreateApplicationScalingRuleRequest
         @param headers: map
@@ -880,11 +1074,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        You can create up to five auto scaling policies for one application.
-        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
-        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
-        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
-        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Null
+        
+        @description The HTTP status code. Take note of the following rules:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
         
         @param request: CreateApplicationScalingRuleRequest
         @param headers: map
@@ -934,11 +1130,13 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        You can create up to five auto scaling policies for one application.
-        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
-        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
-        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
-        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Null
+        
+        @description The HTTP status code. Take note of the following rules:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
         
         @param request: CreateApplicationScalingRuleRequest
         @return: CreateApplicationScalingRuleResponse
@@ -952,11 +1150,13 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.CreateApplicationScalingRuleResponse:
         """
-        You can create up to five auto scaling policies for one application.
-        *   You can create up to 20 points in time when the scheduled auto scaling policy is triggered within one day.
-        *   You cannot manually manage application lifecycles when auto scaling policies are in effect. For example, you cannot deploy, scale, stop, or restart applications, or change the application specifications. The application deployment can be a single-batch release, phased release, or canary release. You must disable auto scaling policies before you manage application lifecycles.
-        *   You cannot manage the lifecycle of an application and create or enable an auto scaling policy for the application at the same time.
-        *   If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Null
+        
+        @description The HTTP status code. Take note of the following rules:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
         
         @param request: CreateApplicationScalingRuleRequest
         @return: CreateApplicationScalingRuleResponse
@@ -971,6 +1171,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateConfigMapResponse:
+        """
+        @summary name
+        
+        @param request: CreateConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1009,6 +1217,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateConfigMapResponse:
+        """
+        @summary name
+        
+        @param request: CreateConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1045,6 +1261,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateConfigMapRequest,
     ) -> sae_20190506_models.CreateConfigMapResponse:
+        """
+        @summary name
+        
+        @param request: CreateConfigMapRequest
+        @return: CreateConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_config_map_with_options(request, headers, runtime)
@@ -1053,6 +1275,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateConfigMapRequest,
     ) -> sae_20190506_models.CreateConfigMapResponse:
+        """
+        @summary name
+        
+        @param request: CreateConfigMapRequest
+        @return: CreateConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_config_map_with_options_async(request, headers, runtime)
@@ -1064,7 +1292,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Creates a canary release rule for a Spring Cloud or Dubbo application.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: CreateGreyTagRouteRequest
         @param headers: map
@@ -1112,7 +1342,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Creates a canary release rule for a Spring Cloud or Dubbo application.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: CreateGreyTagRouteRequest
         @param headers: map
@@ -1158,7 +1390,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateGreyTagRouteRequest,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Creates a canary release rule for a Spring Cloud or Dubbo application.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: CreateGreyTagRouteRequest
         @return: CreateGreyTagRouteResponse
@@ -1172,7 +1406,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateGreyTagRouteRequest,
     ) -> sae_20190506_models.CreateGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Creates a canary release rule for a Spring Cloud or Dubbo application.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: CreateGreyTagRouteRequest
         @return: CreateGreyTagRouteResponse
@@ -1187,6 +1423,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateIngressResponse:
+        """
+        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        
+        @param request: CreateIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_id):
@@ -1237,6 +1481,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateIngressResponse:
+        """
+        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        
+        @param request: CreateIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_id):
@@ -1285,6 +1537,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateIngressRequest,
     ) -> sae_20190506_models.CreateIngressResponse:
+        """
+        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        
+        @param request: CreateIngressRequest
+        @return: CreateIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_ingress_with_options(request, headers, runtime)
@@ -1293,6 +1551,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateIngressRequest,
     ) -> sae_20190506_models.CreateIngressResponse:
+        """
+        @summary {"appId":"395b60e4-0550-458d-9c54-a265d036\\\\*\\*\\*","containerPort":8080}
+        
+        @param request: CreateIngressRequest
+        @return: CreateIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_ingress_with_options_async(request, headers, runtime)
@@ -1303,6 +1567,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: CreateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -1441,6 +1713,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: CreateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -1577,6 +1857,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateJobRequest,
     ) -> sae_20190506_models.CreateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_job_with_options(request, headers, runtime)
@@ -1585,6 +1871,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateJobRequest,
     ) -> sae_20190506_models.CreateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_job_with_options_async(request, headers, runtime)
@@ -1595,6 +1887,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateNamespaceResponse:
+        """
+        @summary desc
+        
+        @param request: CreateNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_micro_registration):
@@ -1633,6 +1933,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateNamespaceResponse:
+        """
+        @summary desc
+        
+        @param request: CreateNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_micro_registration):
@@ -1669,6 +1977,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateNamespaceRequest,
     ) -> sae_20190506_models.CreateNamespaceResponse:
+        """
+        @summary desc
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_namespace_with_options(request, headers, runtime)
@@ -1677,31 +1991,47 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateNamespaceRequest,
     ) -> sae_20190506_models.CreateNamespaceResponse:
+        """
+        @summary desc
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_namespace_with_options_async(request, headers, runtime)
 
     def create_secret_with_options(
         self,
-        request: sae_20190506_models.CreateSecretRequest,
+        tmp_req: sae_20190506_models.CreateSecretRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateSecretResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary Null
+        
+        @param tmp_req: CreateSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecretResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateSecretShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.secret_data):
+            request.secret_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.secret_data, 'SecretData', 'json')
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.secret_data_shrink):
+            query['SecretData'] = request.secret_data_shrink
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
         if not UtilClient.is_unset(request.secret_type):
             query['SecretType'] = request.secret_type
-        body = {}
-        if not UtilClient.is_unset(request.secret_data):
-            body['SecretData'] = request.secret_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSecret',
@@ -1721,25 +2051,35 @@ class Client(OpenApiClient):
 
     async def create_secret_with_options_async(
         self,
-        request: sae_20190506_models.CreateSecretRequest,
+        tmp_req: sae_20190506_models.CreateSecretRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateSecretResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary Null
+        
+        @param tmp_req: CreateSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecretResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.CreateSecretShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.secret_data):
+            request.secret_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.secret_data, 'SecretData', 'json')
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.secret_data_shrink):
+            query['SecretData'] = request.secret_data_shrink
         if not UtilClient.is_unset(request.secret_name):
             query['SecretName'] = request.secret_name
         if not UtilClient.is_unset(request.secret_type):
             query['SecretType'] = request.secret_type
-        body = {}
-        if not UtilClient.is_unset(request.secret_data):
-            body['SecretData'] = request.secret_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='CreateSecret',
@@ -1761,6 +2101,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateSecretRequest,
     ) -> sae_20190506_models.CreateSecretResponse:
+        """
+        @summary Null
+        
+        @param request: CreateSecretRequest
+        @return: CreateSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_secret_with_options(request, headers, runtime)
@@ -1769,9 +2115,227 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.CreateSecretRequest,
     ) -> sae_20190506_models.CreateSecretResponse:
+        """
+        @summary Null
+        
+        @param request: CreateSecretRequest
+        @return: CreateSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_secret_with_options_async(request, headers, runtime)
+
+    def create_web_application_with_options(
+        self,
+        request: sae_20190506_models.CreateWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateWebApplicationResponse:
+        """
+        @summary 创建应用
+        
+        @param request: CreateWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateWebApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_web_application_with_options_async(
+        self,
+        request: sae_20190506_models.CreateWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateWebApplicationResponse:
+        """
+        @summary 创建应用
+        
+        @param request: CreateWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateWebApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_web_application(
+        self,
+        request: sae_20190506_models.CreateWebApplicationRequest,
+    ) -> sae_20190506_models.CreateWebApplicationResponse:
+        """
+        @summary 创建应用
+        
+        @param request: CreateWebApplicationRequest
+        @return: CreateWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_web_application_with_options(request, headers, runtime)
+
+    async def create_web_application_async(
+        self,
+        request: sae_20190506_models.CreateWebApplicationRequest,
+    ) -> sae_20190506_models.CreateWebApplicationResponse:
+        """
+        @summary 创建应用
+        
+        @param request: CreateWebApplicationRequest
+        @return: CreateWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_web_application_with_options_async(request, headers, runtime)
+
+    def create_web_custom_domain_with_options(
+        self,
+        request: sae_20190506_models.CreateWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateWebCustomDomainResponse:
+        """
+        @summary 新建自定义域名
+        
+        @param request: CreateWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateWebCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_web_custom_domain_with_options_async(
+        self,
+        request: sae_20190506_models.CreateWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.CreateWebCustomDomainResponse:
+        """
+        @summary 新建自定义域名
+        
+        @param request: CreateWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.CreateWebCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_web_custom_domain(
+        self,
+        request: sae_20190506_models.CreateWebCustomDomainRequest,
+    ) -> sae_20190506_models.CreateWebCustomDomainResponse:
+        """
+        @summary 新建自定义域名
+        
+        @param request: CreateWebCustomDomainRequest
+        @return: CreateWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_web_custom_domain_with_options(request, headers, runtime)
+
+    async def create_web_custom_domain_async(
+        self,
+        request: sae_20190506_models.CreateWebCustomDomainRequest,
+    ) -> sae_20190506_models.CreateWebCustomDomainResponse:
+        """
+        @summary 新建自定义域名
+        
+        @param request: CreateWebCustomDomainRequest
+        @return: CreateWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_web_custom_domain_with_options_async(request, headers, runtime)
 
     def delete_application_with_options(
         self,
@@ -1779,6 +2343,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteApplicationResponse:
+        """
+        @param request: DeleteApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1809,6 +2379,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteApplicationResponse:
+        """
+        @param request: DeleteApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1837,6 +2413,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteApplicationRequest,
     ) -> sae_20190506_models.DeleteApplicationResponse:
+        """
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_application_with_options(request, headers, runtime)
@@ -1845,6 +2425,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteApplicationRequest,
     ) -> sae_20190506_models.DeleteApplicationResponse:
+        """
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_application_with_options_async(request, headers, runtime)
@@ -1855,6 +2439,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: DeleteApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1887,6 +2479,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: DeleteApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1917,6 +2517,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: DeleteApplicationScalingRuleRequest
+        @return: DeleteApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_application_scaling_rule_with_options(request, headers, runtime)
@@ -1925,6 +2531,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DeleteApplicationScalingRuleResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: DeleteApplicationScalingRuleRequest
+        @return: DeleteApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_application_scaling_rule_with_options_async(request, headers, runtime)
@@ -1935,6 +2547,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
+        """
+        @param request: DeleteConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_map_id):
@@ -1965,6 +2583,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
+        """
+        @param request: DeleteConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_map_id):
@@ -1993,6 +2617,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteConfigMapRequest,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
+        """
+        @param request: DeleteConfigMapRequest
+        @return: DeleteConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_config_map_with_options(request, headers, runtime)
@@ -2001,6 +2629,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteConfigMapRequest,
     ) -> sae_20190506_models.DeleteConfigMapResponse:
+        """
+        @param request: DeleteConfigMapRequest
+        @return: DeleteConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_config_map_with_options_async(request, headers, runtime)
@@ -2011,6 +2643,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
+        """
+        @summary 1
+        
+        @param request: DeleteGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.grey_tag_route_id):
@@ -2041,6 +2681,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
+        """
+        @summary 1
+        
+        @param request: DeleteGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.grey_tag_route_id):
@@ -2069,6 +2717,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteGreyTagRouteRequest,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
+        """
+        @summary 1
+        
+        @param request: DeleteGreyTagRouteRequest
+        @return: DeleteGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_grey_tag_route_with_options(request, headers, runtime)
@@ -2077,6 +2731,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteGreyTagRouteRequest,
     ) -> sae_20190506_models.DeleteGreyTagRouteResponse:
+        """
+        @summary 1
+        
+        @param request: DeleteGreyTagRouteRequest
+        @return: DeleteGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_grey_tag_route_with_options_async(request, headers, runtime)
@@ -2087,6 +2747,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
+        """
+        @summary Deletes a job.
+        
+        @param request: DeleteHistoryJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHistoryJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2119,6 +2787,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
+        """
+        @summary Deletes a job.
+        
+        @param request: DeleteHistoryJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHistoryJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2149,6 +2825,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteHistoryJobRequest,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
+        """
+        @summary Deletes a job.
+        
+        @param request: DeleteHistoryJobRequest
+        @return: DeleteHistoryJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_history_job_with_options(request, headers, runtime)
@@ -2157,6 +2839,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteHistoryJobRequest,
     ) -> sae_20190506_models.DeleteHistoryJobResponse:
+        """
+        @summary Deletes a job.
+        
+        @param request: DeleteHistoryJobRequest
+        @return: DeleteHistoryJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_history_job_with_options_async(request, headers, runtime)
@@ -2167,6 +2855,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteIngressResponse:
+        """
+        @param request: DeleteIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ingress_id):
@@ -2197,6 +2891,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteIngressResponse:
+        """
+        @param request: DeleteIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ingress_id):
@@ -2225,6 +2925,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteIngressRequest,
     ) -> sae_20190506_models.DeleteIngressResponse:
+        """
+        @param request: DeleteIngressRequest
+        @return: DeleteIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_ingress_with_options(request, headers, runtime)
@@ -2233,6 +2937,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteIngressRequest,
     ) -> sae_20190506_models.DeleteIngressResponse:
+        """
+        @param request: DeleteIngressRequest
+        @return: DeleteIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_ingress_with_options_async(request, headers, runtime)
@@ -2243,6 +2951,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteJobResponse:
+        """
+        @summary Deletes a job template.
+        
+        @param request: DeleteJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2273,6 +2989,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteJobResponse:
+        """
+        @summary Deletes a job template.
+        
+        @param request: DeleteJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2301,6 +3025,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteJobRequest,
     ) -> sae_20190506_models.DeleteJobResponse:
+        """
+        @summary Deletes a job template.
+        
+        @param request: DeleteJobRequest
+        @return: DeleteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_job_with_options(request, headers, runtime)
@@ -2309,6 +3039,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteJobRequest,
     ) -> sae_20190506_models.DeleteJobResponse:
+        """
+        @summary Deletes a job template.
+        
+        @param request: DeleteJobRequest
+        @return: DeleteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_job_with_options_async(request, headers, runtime)
@@ -2319,6 +3055,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
+        """
+        @param request: DeleteNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -2351,6 +3093,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
+        """
+        @param request: DeleteNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -2381,6 +3129,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteNamespaceRequest,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
+        """
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_namespace_with_options(request, headers, runtime)
@@ -2389,6 +3141,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteNamespaceRequest,
     ) -> sae_20190506_models.DeleteNamespaceResponse:
+        """
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_namespace_with_options_async(request, headers, runtime)
@@ -2399,6 +3155,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteSecretResponse:
+        """
+        @summary Deletes a Secret.
+        
+        @param request: DeleteSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -2431,6 +3195,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeleteSecretResponse:
+        """
+        @summary Deletes a Secret.
+        
+        @param request: DeleteSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -2461,6 +3233,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteSecretRequest,
     ) -> sae_20190506_models.DeleteSecretResponse:
+        """
+        @summary Deletes a Secret.
+        
+        @param request: DeleteSecretRequest
+        @return: DeleteSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_secret_with_options(request, headers, runtime)
@@ -2469,9 +3247,343 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeleteSecretRequest,
     ) -> sae_20190506_models.DeleteSecretResponse:
+        """
+        @summary Deletes a Secret.
+        
+        @param request: DeleteSecretRequest
+        @return: DeleteSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_secret_with_options_async(request, headers, runtime)
+
+    def delete_web_application_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteWebApplicationResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteWebApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_application_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteWebApplicationResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteWebApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_application(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRequest,
+    ) -> sae_20190506_models.DeleteWebApplicationResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteWebApplicationRequest
+        @return: DeleteWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_web_application_with_options(application_id, request, headers, runtime)
+
+    async def delete_web_application_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRequest,
+    ) -> sae_20190506_models.DeleteWebApplicationResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteWebApplicationRequest
+        @return: DeleteWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_web_application_with_options_async(application_id, request, headers, runtime)
+
+    def delete_web_application_revision_with_options(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRevisionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
+        """
+        @summary 删除应用版本
+        
+        @param request: DeleteWebApplicationRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebApplicationRevisionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebApplicationRevision',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions/{OpenApiUtilClient.get_encode_param(revision_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteWebApplicationRevisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_application_revision_with_options_async(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRevisionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
+        """
+        @summary 删除应用版本
+        
+        @param request: DeleteWebApplicationRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebApplicationRevisionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebApplicationRevision',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions/{OpenApiUtilClient.get_encode_param(revision_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteWebApplicationRevisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_application_revision(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRevisionRequest,
+    ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
+        """
+        @summary 删除应用版本
+        
+        @param request: DeleteWebApplicationRevisionRequest
+        @return: DeleteWebApplicationRevisionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_web_application_revision_with_options(application_id, revision_id, request, headers, runtime)
+
+    async def delete_web_application_revision_async(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DeleteWebApplicationRevisionRequest,
+    ) -> sae_20190506_models.DeleteWebApplicationRevisionResponse:
+        """
+        @summary 删除应用版本
+        
+        @param request: DeleteWebApplicationRevisionRequest
+        @return: DeleteWebApplicationRevisionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_web_application_revision_with_options_async(application_id, revision_id, request, headers, runtime)
+
+    def delete_web_custom_domain_with_options(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DeleteWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
+        """
+        @summary 删除自定义域名
+        
+        @param request: DeleteWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteWebCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_custom_domain_with_options_async(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DeleteWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
+        """
+        @summary 删除自定义域名
+        
+        @param request: DeleteWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DeleteWebCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_custom_domain(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DeleteWebCustomDomainRequest,
+    ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
+        """
+        @summary 删除自定义域名
+        
+        @param request: DeleteWebCustomDomainRequest
+        @return: DeleteWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_web_custom_domain_with_options(domain_name, request, headers, runtime)
+
+    async def delete_web_custom_domain_async(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DeleteWebCustomDomainRequest,
+    ) -> sae_20190506_models.DeleteWebCustomDomainResponse:
+        """
+        @summary 删除自定义域名
+        
+        @param request: DeleteWebCustomDomainRequest
+        @return: DeleteWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_web_custom_domain_with_options_async(domain_name, request, headers, runtime)
 
     def deploy_application_with_options(
         self,
@@ -2479,6 +3591,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application.
+        
+        @param request: DeployApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -2495,6 +3615,8 @@ class Client(OpenApiClient):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
             query['CommandArgs'] = request.command_args
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.deploy):
@@ -2521,6 +3643,8 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
             query['MicroRegistration'] = request.micro_registration
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
@@ -2557,6 +3681,10 @@ class Client(OpenApiClient):
             query['PythonModules'] = request.python_modules
         if not UtilClient.is_unset(request.readiness):
             query['Readiness'] = request.readiness
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
         if not UtilClient.is_unset(request.termination_grace_period_seconds):
@@ -2567,6 +3695,8 @@ class Client(OpenApiClient):
             query['TomcatConfig'] = request.tomcat_config
         if not UtilClient.is_unset(request.update_strategy):
             query['UpdateStrategy'] = request.update_strategy
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.war_start_options):
             query['WarStartOptions'] = request.war_start_options
         if not UtilClient.is_unset(request.web_container):
@@ -2578,14 +3708,20 @@ class Client(OpenApiClient):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.micro_registration_config):
+            body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
             body['OssAkSecret'] = request.oss_ak_secret
         if not UtilClient.is_unset(request.oss_mount_descs):
             body['OssMountDescs'] = request.oss_mount_descs
+        if not UtilClient.is_unset(request.php):
+            body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
+        if not UtilClient.is_unset(request.service_tags):
+            body['ServiceTags'] = request.service_tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -2613,6 +3749,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application.
+        
+        @param request: DeployApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -2629,6 +3773,8 @@ class Client(OpenApiClient):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
             query['CommandArgs'] = request.command_args
+        if not UtilClient.is_unset(request.cpu):
+            query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.custom_host_alias):
             query['CustomHostAlias'] = request.custom_host_alias
         if not UtilClient.is_unset(request.deploy):
@@ -2655,6 +3801,8 @@ class Client(OpenApiClient):
             query['KafkaConfigs'] = request.kafka_configs
         if not UtilClient.is_unset(request.liveness):
             query['Liveness'] = request.liveness
+        if not UtilClient.is_unset(request.memory):
+            query['Memory'] = request.memory
         if not UtilClient.is_unset(request.micro_registration):
             query['MicroRegistration'] = request.micro_registration
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
@@ -2691,6 +3839,10 @@ class Client(OpenApiClient):
             query['PythonModules'] = request.python_modules
         if not UtilClient.is_unset(request.readiness):
             query['Readiness'] = request.readiness
+        if not UtilClient.is_unset(request.replicas):
+            query['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.sls_configs):
             query['SlsConfigs'] = request.sls_configs
         if not UtilClient.is_unset(request.termination_grace_period_seconds):
@@ -2701,6 +3853,8 @@ class Client(OpenApiClient):
             query['TomcatConfig'] = request.tomcat_config
         if not UtilClient.is_unset(request.update_strategy):
             query['UpdateStrategy'] = request.update_strategy
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.war_start_options):
             query['WarStartOptions'] = request.war_start_options
         if not UtilClient.is_unset(request.web_container):
@@ -2712,14 +3866,20 @@ class Client(OpenApiClient):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.micro_registration_config):
+            body['MicroRegistrationConfig'] = request.micro_registration_config
         if not UtilClient.is_unset(request.oss_ak_id):
             body['OssAkId'] = request.oss_ak_id
         if not UtilClient.is_unset(request.oss_ak_secret):
             body['OssAkSecret'] = request.oss_ak_secret
         if not UtilClient.is_unset(request.oss_mount_descs):
             body['OssMountDescs'] = request.oss_mount_descs
+        if not UtilClient.is_unset(request.php):
+            body['Php'] = request.php
         if not UtilClient.is_unset(request.php_config):
             body['PhpConfig'] = request.php_config
+        if not UtilClient.is_unset(request.service_tags):
+            body['ServiceTags'] = request.service_tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -2745,6 +3905,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeployApplicationRequest,
     ) -> sae_20190506_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application.
+        
+        @param request: DeployApplicationRequest
+        @return: DeployApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.deploy_application_with_options(request, headers, runtime)
@@ -2753,6 +3919,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DeployApplicationRequest,
     ) -> sae_20190506_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application.
+        
+        @param request: DeployApplicationRequest
+        @return: DeployApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.deploy_application_with_options_async(request, headers, runtime)
@@ -2763,10 +3935,22 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
+        """
+        @summary Queries the metadata details of the service of an application.
+        
+        @param request: DescribeAppServiceDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppServiceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.nacos_instance_id):
+            query['NacosInstanceId'] = request.nacos_instance_id
+        if not UtilClient.is_unset(request.nacos_namespace_id):
+            query['NacosNamespaceId'] = request.nacos_namespace_id
         if not UtilClient.is_unset(request.service_group):
             query['ServiceGroup'] = request.service_group
         if not UtilClient.is_unset(request.service_name):
@@ -2801,10 +3985,22 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
+        """
+        @summary Queries the metadata details of the service of an application.
+        
+        @param request: DescribeAppServiceDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppServiceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.nacos_instance_id):
+            query['NacosInstanceId'] = request.nacos_instance_id
+        if not UtilClient.is_unset(request.nacos_namespace_id):
+            query['NacosNamespaceId'] = request.nacos_namespace_id
         if not UtilClient.is_unset(request.service_group):
             query['ServiceGroup'] = request.service_group
         if not UtilClient.is_unset(request.service_name):
@@ -2837,6 +4033,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeAppServiceDetailRequest,
     ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
+        """
+        @summary Queries the metadata details of the service of an application.
+        
+        @param request: DescribeAppServiceDetailRequest
+        @return: DescribeAppServiceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_app_service_detail_with_options(request, headers, runtime)
@@ -2845,6 +4047,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeAppServiceDetailRequest,
     ) -> sae_20190506_models.DescribeAppServiceDetailResponse:
+        """
+        @summary Queries the metadata details of the service of an application.
+        
+        @param request: DescribeAppServiceDetailRequest
+        @return: DescribeAppServiceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_app_service_detail_with_options_async(request, headers, runtime)
@@ -2855,6 +4063,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
+        """
+        @param request: DescribeApplicationConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2887,6 +4101,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
+        """
+        @param request: DescribeApplicationConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2917,6 +4137,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationConfigRequest,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
+        """
+        @param request: DescribeApplicationConfigRequest
+        @return: DescribeApplicationConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_config_with_options(request, headers, runtime)
@@ -2925,6 +4149,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationConfigRequest,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
+        """
+        @param request: DescribeApplicationConfigRequest
+        @return: DescribeApplicationConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_config_with_options_async(request, headers, runtime)
@@ -2935,6 +4163,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
+        """
+        @param request: DescribeApplicationGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2969,6 +4203,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
+        """
+        @param request: DescribeApplicationGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3001,6 +4241,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationGroupsRequest,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
+        """
+        @param request: DescribeApplicationGroupsRequest
+        @return: DescribeApplicationGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_groups_with_options(request, headers, runtime)
@@ -3009,6 +4253,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationGroupsRequest,
     ) -> sae_20190506_models.DescribeApplicationGroupsResponse:
+        """
+        @param request: DescribeApplicationGroupsRequest
+        @return: DescribeApplicationGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_groups_with_options_async(request, headers, runtime)
@@ -3019,6 +4267,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
+        """
+        @param request: DescribeApplicationImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3051,6 +4305,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
+        """
+        @param request: DescribeApplicationImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3081,6 +4341,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationImageRequest,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
+        """
+        @param request: DescribeApplicationImageRequest
+        @return: DescribeApplicationImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_image_with_options(request, headers, runtime)
@@ -3089,6 +4353,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationImageRequest,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
+        """
+        @param request: DescribeApplicationImageRequest
+        @return: DescribeApplicationImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_image_with_options_async(request, headers, runtime)
@@ -3099,6 +4367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
+        """
+        @summary Queries application instances.
+        
+        @param request: DescribeApplicationInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3137,6 +4413,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
+        """
+        @summary Queries application instances.
+        
+        @param request: DescribeApplicationInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3173,6 +4457,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationInstancesRequest,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
+        """
+        @summary Queries application instances.
+        
+        @param request: DescribeApplicationInstancesRequest
+        @return: DescribeApplicationInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_instances_with_options(request, headers, runtime)
@@ -3181,6 +4471,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationInstancesRequest,
     ) -> sae_20190506_models.DescribeApplicationInstancesResponse:
+        """
+        @summary Queries application instances.
+        
+        @param request: DescribeApplicationInstancesRequest
+        @return: DescribeApplicationInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_instances_with_options_async(request, headers, runtime)
@@ -3191,6 +4487,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        """
+        @summary Queries a specified auto scaling policy of an application.
+        
+        @param request: DescribeApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3223,6 +4527,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        """
+        @summary Queries a specified auto scaling policy of an application.
+        
+        @param request: DescribeApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3253,6 +4565,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        """
+        @summary Queries a specified auto scaling policy of an application.
+        
+        @param request: DescribeApplicationScalingRuleRequest
+        @return: DescribeApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_scaling_rule_with_options(request, headers, runtime)
@@ -3261,6 +4579,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DescribeApplicationScalingRuleResponse:
+        """
+        @summary Queries a specified auto scaling policy of an application.
+        
+        @param request: DescribeApplicationScalingRuleRequest
+        @return: DescribeApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_scaling_rule_with_options_async(request, headers, runtime)
@@ -3271,6 +4595,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
+        """
+        @summary Queries the auto scaling policies of an application.
+        
+        @param request: DescribeApplicationScalingRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationScalingRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3301,6 +4633,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
+        """
+        @summary Queries the auto scaling policies of an application.
+        
+        @param request: DescribeApplicationScalingRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationScalingRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3329,6 +4669,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
     ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
+        """
+        @summary Queries the auto scaling policies of an application.
+        
+        @param request: DescribeApplicationScalingRulesRequest
+        @return: DescribeApplicationScalingRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_scaling_rules_with_options(request, headers, runtime)
@@ -3337,6 +4683,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationScalingRulesRequest,
     ) -> sae_20190506_models.DescribeApplicationScalingRulesResponse:
+        """
+        @summary Queries the auto scaling policies of an application.
+        
+        @param request: DescribeApplicationScalingRulesRequest
+        @return: DescribeApplicationScalingRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_scaling_rules_with_options_async(request, headers, runtime)
@@ -3347,6 +4699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: DescribeApplicationSlbsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationSlbsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3377,6 +4737,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: DescribeApplicationSlbsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationSlbsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3405,6 +4773,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationSlbsRequest,
     ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: DescribeApplicationSlbsRequest
+        @return: DescribeApplicationSlbsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_slbs_with_options(request, headers, runtime)
@@ -3413,6 +4787,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationSlbsRequest,
     ) -> sae_20190506_models.DescribeApplicationSlbsResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: DescribeApplicationSlbsRequest
+        @return: DescribeApplicationSlbsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_slbs_with_options_async(request, headers, runtime)
@@ -3423,6 +4803,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
+        """
+        @param request: DescribeApplicationStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3453,6 +4839,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
+        """
+        @param request: DescribeApplicationStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3481,6 +4873,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationStatusRequest,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
+        """
+        @param request: DescribeApplicationStatusRequest
+        @return: DescribeApplicationStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_application_status_with_options(request, headers, runtime)
@@ -3489,6 +4885,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeApplicationStatusRequest,
     ) -> sae_20190506_models.DescribeApplicationStatusResponse:
+        """
+        @param request: DescribeApplicationStatusRequest
+        @return: DescribeApplicationStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_application_status_with_options_async(request, headers, runtime)
@@ -3499,6 +4899,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
+        """
+        @param request: DescribeChangeOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChangeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -3529,6 +4935,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
+        """
+        @param request: DescribeChangeOrderRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChangeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_id):
@@ -3557,6 +4969,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeChangeOrderRequest,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
+        """
+        @param request: DescribeChangeOrderRequest
+        @return: DescribeChangeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_change_order_with_options(request, headers, runtime)
@@ -3565,6 +4981,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeChangeOrderRequest,
     ) -> sae_20190506_models.DescribeChangeOrderResponse:
+        """
+        @param request: DescribeChangeOrderRequest
+        @return: DescribeChangeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_change_order_with_options_async(request, headers, runtime)
@@ -3575,6 +4995,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeComponentsResponse:
+        """
+        @param request: DescribeComponentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3607,6 +5033,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeComponentsResponse:
+        """
+        @param request: DescribeComponentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3637,6 +5069,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeComponentsRequest,
     ) -> sae_20190506_models.DescribeComponentsResponse:
+        """
+        @param request: DescribeComponentsRequest
+        @return: DescribeComponentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_components_with_options(request, headers, runtime)
@@ -3645,6 +5081,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeComponentsRequest,
     ) -> sae_20190506_models.DescribeComponentsResponse:
+        """
+        @param request: DescribeComponentsRequest
+        @return: DescribeComponentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_components_with_options_async(request, headers, runtime)
@@ -3655,6 +5095,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
+        """
+        @param request: DescribeConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_map_id):
@@ -3685,6 +5131,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
+        """
+        @param request: DescribeConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_map_id):
@@ -3713,6 +5165,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeConfigMapRequest,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
+        """
+        @param request: DescribeConfigMapRequest
+        @return: DescribeConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_config_map_with_options(request, headers, runtime)
@@ -3721,6 +5177,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeConfigMapRequest,
     ) -> sae_20190506_models.DescribeConfigMapResponse:
+        """
+        @param request: DescribeConfigMapRequest
+        @return: DescribeConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_config_map_with_options_async(request, headers, runtime)
@@ -3731,6 +5191,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        """
+        @param request: DescribeConfigurationPriceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigurationPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu):
@@ -3765,6 +5231,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        """
+        @param request: DescribeConfigurationPriceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigurationPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu):
@@ -3797,6 +5269,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeConfigurationPriceRequest,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        """
+        @param request: DescribeConfigurationPriceRequest
+        @return: DescribeConfigurationPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_configuration_price_with_options(request, headers, runtime)
@@ -3805,6 +5281,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeConfigurationPriceRequest,
     ) -> sae_20190506_models.DescribeConfigurationPriceResponse:
+        """
+        @param request: DescribeConfigurationPriceRequest
+        @return: DescribeConfigurationPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_configuration_price_with_options_async(request, headers, runtime)
@@ -3814,6 +5294,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeEdasContainersResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdasContainersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3838,6 +5323,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeEdasContainersResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEdasContainersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3858,11 +5348,17 @@ class Client(OpenApiClient):
         )
 
     def describe_edas_containers(self) -> sae_20190506_models.DescribeEdasContainersResponse:
+        """
+        @return: DescribeEdasContainersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_edas_containers_with_options(headers, runtime)
 
     async def describe_edas_containers_async(self) -> sae_20190506_models.DescribeEdasContainersResponse:
+        """
+        @return: DescribeEdasContainersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_edas_containers_with_options_async(headers, runtime)
@@ -3873,6 +5369,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
+        """
+        @summary Queries the details of a canary release rule based on the specified rule ID.
+        
+        @param request: DescribeGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.grey_tag_route_id):
@@ -3903,6 +5407,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
+        """
+        @summary Queries the details of a canary release rule based on the specified rule ID.
+        
+        @param request: DescribeGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.grey_tag_route_id):
@@ -3931,6 +5443,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeGreyTagRouteRequest,
     ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
+        """
+        @summary Queries the details of a canary release rule based on the specified rule ID.
+        
+        @param request: DescribeGreyTagRouteRequest
+        @return: DescribeGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_grey_tag_route_with_options(request, headers, runtime)
@@ -3939,6 +5457,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeGreyTagRouteRequest,
     ) -> sae_20190506_models.DescribeGreyTagRouteResponse:
+        """
+        @summary Queries the details of a canary release rule based on the specified rule ID.
+        
+        @param request: DescribeGreyTagRouteRequest
+        @return: DescribeGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_grey_tag_route_with_options_async(request, headers, runtime)
@@ -3949,6 +5473,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeIngressResponse:
+        """
+        @param request: DescribeIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ingress_id):
@@ -3979,6 +5509,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeIngressResponse:
+        """
+        @param request: DescribeIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ingress_id):
@@ -4007,6 +5543,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeIngressRequest,
     ) -> sae_20190506_models.DescribeIngressResponse:
+        """
+        @param request: DescribeIngressRequest
+        @return: DescribeIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_ingress_with_options(request, headers, runtime)
@@ -4015,6 +5555,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeIngressRequest,
     ) -> sae_20190506_models.DescribeIngressResponse:
+        """
+        @param request: DescribeIngressRequest
+        @return: DescribeIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_ingress_with_options_async(request, headers, runtime)
@@ -4025,6 +5569,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
+        """
+        @param request: DescribeInstanceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4055,6 +5605,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
+        """
+        @param request: DescribeInstanceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4083,6 +5639,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeInstanceLogRequest,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
+        """
+        @param request: DescribeInstanceLogRequest
+        @return: DescribeInstanceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_instance_log_with_options(request, headers, runtime)
@@ -4091,6 +5651,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeInstanceLogRequest,
     ) -> sae_20190506_models.DescribeInstanceLogResponse:
+        """
+        @param request: DescribeInstanceLogRequest
+        @return: DescribeInstanceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_instance_log_with_options_async(request, headers, runtime)
@@ -4100,6 +5664,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSpecificationsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4124,6 +5693,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSpecificationsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4144,11 +5718,17 @@ class Client(OpenApiClient):
         )
 
     def describe_instance_specifications(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
+        """
+        @return: DescribeInstanceSpecificationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_instance_specifications_with_options(headers, runtime)
 
     async def describe_instance_specifications_async(self) -> sae_20190506_models.DescribeInstanceSpecificationsResponse:
+        """
+        @return: DescribeInstanceSpecificationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_instance_specifications_with_options_async(headers, runtime)
@@ -4159,6 +5739,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeJobResponse:
+        """
+        @summary Queries the configurations of a job template.
+        
+        @param request: DescribeJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4191,6 +5779,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeJobResponse:
+        """
+        @summary Queries the configurations of a job template.
+        
+        @param request: DescribeJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4221,6 +5817,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeJobRequest,
     ) -> sae_20190506_models.DescribeJobResponse:
+        """
+        @summary Queries the configurations of a job template.
+        
+        @param request: DescribeJobRequest
+        @return: DescribeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_job_with_options(request, headers, runtime)
@@ -4229,6 +5831,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeJobRequest,
     ) -> sae_20190506_models.DescribeJobResponse:
+        """
+        @summary Queries the configurations of a job template.
+        
+        @param request: DescribeJobRequest
+        @return: DescribeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_job_with_options_async(request, headers, runtime)
@@ -4239,6 +5847,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeJobHistoryResponse:
+        """
+        @summary Query the information about jobs.
+        
+        @param request: DescribeJobHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4275,6 +5891,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeJobHistoryResponse:
+        """
+        @summary Query the information about jobs.
+        
+        @param request: DescribeJobHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4309,6 +5933,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeJobHistoryRequest,
     ) -> sae_20190506_models.DescribeJobHistoryResponse:
+        """
+        @summary Query the information about jobs.
+        
+        @param request: DescribeJobHistoryRequest
+        @return: DescribeJobHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_job_history_with_options(request, headers, runtime)
@@ -4317,6 +5947,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeJobHistoryRequest,
     ) -> sae_20190506_models.DescribeJobHistoryResponse:
+        """
+        @summary Query the information about jobs.
+        
+        @param request: DescribeJobHistoryRequest
+        @return: DescribeJobHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_job_history_with_options_async(request, headers, runtime)
@@ -4327,6 +5963,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of a job.
+        
+        @param request: DescribeJobStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4359,6 +6003,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of a job.
+        
+        @param request: DescribeJobStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4389,6 +6041,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeJobStatusRequest,
     ) -> sae_20190506_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of a job.
+        
+        @param request: DescribeJobStatusRequest
+        @return: DescribeJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_job_status_with_options(request, headers, runtime)
@@ -4397,6 +6055,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeJobStatusRequest,
     ) -> sae_20190506_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of a job.
+        
+        @param request: DescribeJobStatusRequest
+        @return: DescribeJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_job_status_with_options_async(request, headers, runtime)
@@ -4407,6 +6071,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the details of a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -4439,6 +6111,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the details of a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -4469,6 +6149,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespaceRequest,
     ) -> sae_20190506_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the details of a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @return: DescribeNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_namespace_with_options(request, headers, runtime)
@@ -4477,6 +6163,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespaceRequest,
     ) -> sae_20190506_models.DescribeNamespaceResponse:
+        """
+        @summary Queries the details of a namespace.
+        
+        @param request: DescribeNamespaceRequest
+        @return: DescribeNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_namespace_with_options_async(request, headers, runtime)
@@ -4487,6 +6179,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
+        """
+        @param request: DescribeNamespaceListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contain_custom):
@@ -4519,6 +6217,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
+        """
+        @param request: DescribeNamespaceListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contain_custom):
@@ -4549,6 +6253,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespaceListRequest,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
+        """
+        @param request: DescribeNamespaceListRequest
+        @return: DescribeNamespaceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_namespace_list_with_options(request, headers, runtime)
@@ -4557,6 +6265,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespaceListRequest,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
+        """
+        @param request: DescribeNamespaceListRequest
+        @return: DescribeNamespaceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_namespace_list_with_options_async(request, headers, runtime)
@@ -4567,6 +6279,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
+        """
+        @param request: DescribeNamespaceResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -4599,6 +6317,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
+        """
+        @param request: DescribeNamespaceResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespaceResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -4629,6 +6353,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespaceResourcesRequest,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
+        """
+        @param request: DescribeNamespaceResourcesRequest
+        @return: DescribeNamespaceResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_namespace_resources_with_options(request, headers, runtime)
@@ -4637,6 +6365,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespaceResourcesRequest,
     ) -> sae_20190506_models.DescribeNamespaceResourcesResponse:
+        """
+        @param request: DescribeNamespaceResourcesRequest
+        @return: DescribeNamespaceResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_namespace_resources_with_options_async(request, headers, runtime)
@@ -4647,6 +6379,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
+        """
+        @summary Queries the details of namespaces.
+        
+        @param request: DescribeNamespacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -4679,6 +6419,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
+        """
+        @summary Queries the details of namespaces.
+        
+        @param request: DescribeNamespacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -4709,6 +6457,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespacesRequest,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
+        """
+        @summary Queries the details of namespaces.
+        
+        @param request: DescribeNamespacesRequest
+        @return: DescribeNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_namespaces_with_options(request, headers, runtime)
@@ -4717,6 +6471,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeNamespacesRequest,
     ) -> sae_20190506_models.DescribeNamespacesResponse:
+        """
+        @summary Queries the details of namespaces.
+        
+        @param request: DescribeNamespacesRequest
+        @return: DescribeNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_namespaces_with_options_async(request, headers, runtime)
@@ -4727,6 +6487,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribePipelineResponse:
+        """
+        @summary Queries the information of a batch.
+        
+        @param request: DescribePipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pipeline_id):
@@ -4757,6 +6525,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribePipelineResponse:
+        """
+        @summary Queries the information of a batch.
+        
+        @param request: DescribePipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pipeline_id):
@@ -4785,6 +6561,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribePipelineRequest,
     ) -> sae_20190506_models.DescribePipelineResponse:
+        """
+        @summary Queries the information of a batch.
+        
+        @param request: DescribePipelineRequest
+        @return: DescribePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_pipeline_with_options(request, headers, runtime)
@@ -4793,6 +6575,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribePipelineRequest,
     ) -> sae_20190506_models.DescribePipelineResponse:
+        """
+        @summary Queries the information of a batch.
+        
+        @param request: DescribePipelineRequest
+        @return: DescribePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_pipeline_with_options_async(request, headers, runtime)
@@ -4802,6 +6590,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4826,6 +6621,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4846,11 +6648,21 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> sae_20190506_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_regions_with_options(headers, runtime)
 
     async def describe_regions_async(self) -> sae_20190506_models.DescribeRegionsResponse:
+        """
+        @summary Queries available regions.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(headers, runtime)
@@ -4861,6 +6673,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeSecretResponse:
+        """
+        @summary Queries the details of a Secret instance.
+        
+        @param request: DescribeSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -4893,6 +6713,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeSecretResponse:
+        """
+        @summary Queries the details of a Secret instance.
+        
+        @param request: DescribeSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecretResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -4923,6 +6751,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeSecretRequest,
     ) -> sae_20190506_models.DescribeSecretResponse:
+        """
+        @summary Queries the details of a Secret instance.
+        
+        @param request: DescribeSecretRequest
+        @return: DescribeSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_secret_with_options(request, headers, runtime)
@@ -4931,9 +6765,791 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DescribeSecretRequest,
     ) -> sae_20190506_models.DescribeSecretResponse:
+        """
+        @summary Queries the details of a Secret instance.
+        
+        @param request: DescribeSecretRequest
+        @return: DescribeSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_secret_with_options_async(request, headers, runtime)
+
+    def describe_web_application_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationResponse:
+        """
+        @summary 获取应用信息
+        
+        @param request: DescribeWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_application_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationResponse:
+        """
+        @summary 获取应用信息
+        
+        @param request: DescribeWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_application(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationResponse:
+        """
+        @summary 获取应用信息
+        
+        @param request: DescribeWebApplicationRequest
+        @return: DescribeWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_application_with_options(application_id, request, headers, runtime)
+
+    async def describe_web_application_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationResponse:
+        """
+        @summary 获取应用信息
+        
+        @param request: DescribeWebApplicationRequest
+        @return: DescribeWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_application_with_options_async(application_id, request, headers, runtime)
+
+    def describe_web_application_resource_statics_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationResourceStaticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
+        """
+        @summary 应用资源用量统计
+        
+        @param request: DescribeWebApplicationResourceStaticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationResourceStaticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationResourceStatics',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications-observability/{OpenApiUtilClient.get_encode_param(application_id)}/resource',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationResourceStaticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_application_resource_statics_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationResourceStaticsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
+        """
+        @summary 应用资源用量统计
+        
+        @param request: DescribeWebApplicationResourceStaticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationResourceStaticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationResourceStatics',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications-observability/{OpenApiUtilClient.get_encode_param(application_id)}/resource',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationResourceStaticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_application_resource_statics(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationResourceStaticsRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
+        """
+        @summary 应用资源用量统计
+        
+        @param request: DescribeWebApplicationResourceStaticsRequest
+        @return: DescribeWebApplicationResourceStaticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_application_resource_statics_with_options(application_id, request, headers, runtime)
+
+    async def describe_web_application_resource_statics_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationResourceStaticsRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationResourceStaticsResponse:
+        """
+        @summary 应用资源用量统计
+        
+        @param request: DescribeWebApplicationResourceStaticsRequest
+        @return: DescribeWebApplicationResourceStaticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_application_resource_statics_with_options_async(application_id, request, headers, runtime)
+
+    def describe_web_application_revision_with_options(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRevisionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
+        """
+        @summary 获取应用版本
+        
+        @param request: DescribeWebApplicationRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationRevisionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationRevision',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions/{OpenApiUtilClient.get_encode_param(revision_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationRevisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_application_revision_with_options_async(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRevisionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
+        """
+        @summary 获取应用版本
+        
+        @param request: DescribeWebApplicationRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationRevisionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationRevision',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions/{OpenApiUtilClient.get_encode_param(revision_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationRevisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_application_revision(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRevisionRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
+        """
+        @summary 获取应用版本
+        
+        @param request: DescribeWebApplicationRevisionRequest
+        @return: DescribeWebApplicationRevisionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_application_revision_with_options(application_id, revision_id, request, headers, runtime)
+
+    async def describe_web_application_revision_async(
+        self,
+        application_id: str,
+        revision_id: str,
+        request: sae_20190506_models.DescribeWebApplicationRevisionRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationRevisionResponse:
+        """
+        @summary 获取应用版本
+        
+        @param request: DescribeWebApplicationRevisionRequest
+        @return: DescribeWebApplicationRevisionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_application_revision_with_options_async(application_id, revision_id, request, headers, runtime)
+
+    def describe_web_application_scaling_config_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
+        """
+        @summary 弹性配置详情
+        
+        @param request: DescribeWebApplicationScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationScalingConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-scaling/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_application_scaling_config_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
+        """
+        @summary 弹性配置详情
+        
+        @param request: DescribeWebApplicationScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationScalingConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-scaling/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_application_scaling_config(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationScalingConfigRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
+        """
+        @summary 弹性配置详情
+        
+        @param request: DescribeWebApplicationScalingConfigRequest
+        @return: DescribeWebApplicationScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_application_scaling_config_with_options(application_id, request, headers, runtime)
+
+    async def describe_web_application_scaling_config_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationScalingConfigRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationScalingConfigResponse:
+        """
+        @summary 弹性配置详情
+        
+        @param request: DescribeWebApplicationScalingConfigRequest
+        @return: DescribeWebApplicationScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_application_scaling_config_with_options_async(application_id, request, headers, runtime)
+
+    def describe_web_application_traffic_config_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationTrafficConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
+        """
+        @summary 流量配置详情
+        
+        @param request: DescribeWebApplicationTrafficConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationTrafficConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationTrafficConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-traffic/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationTrafficConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_application_traffic_config_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationTrafficConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
+        """
+        @summary 流量配置详情
+        
+        @param request: DescribeWebApplicationTrafficConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebApplicationTrafficConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebApplicationTrafficConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-traffic/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebApplicationTrafficConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_application_traffic_config(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationTrafficConfigRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
+        """
+        @summary 流量配置详情
+        
+        @param request: DescribeWebApplicationTrafficConfigRequest
+        @return: DescribeWebApplicationTrafficConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_application_traffic_config_with_options(application_id, request, headers, runtime)
+
+    async def describe_web_application_traffic_config_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.DescribeWebApplicationTrafficConfigRequest,
+    ) -> sae_20190506_models.DescribeWebApplicationTrafficConfigResponse:
+        """
+        @summary 流量配置详情
+        
+        @param request: DescribeWebApplicationTrafficConfigRequest
+        @return: DescribeWebApplicationTrafficConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_application_traffic_config_with_options_async(application_id, request, headers, runtime)
+
+    def describe_web_custom_domain_with_options(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DescribeWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
+        """
+        @summary 获取域名.
+        
+        @param request: DescribeWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_custom_domain_with_options_async(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DescribeWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
+        """
+        @summary 获取域名.
+        
+        @param request: DescribeWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_custom_domain(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DescribeWebCustomDomainRequest,
+    ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
+        """
+        @summary 获取域名.
+        
+        @param request: DescribeWebCustomDomainRequest
+        @return: DescribeWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_custom_domain_with_options(domain_name, request, headers, runtime)
+
+    async def describe_web_custom_domain_async(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.DescribeWebCustomDomainRequest,
+    ) -> sae_20190506_models.DescribeWebCustomDomainResponse:
+        """
+        @summary 获取域名.
+        
+        @param request: DescribeWebCustomDomainRequest
+        @return: DescribeWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_custom_domain_with_options_async(domain_name, request, headers, runtime)
+
+    def describe_web_instance_logs_with_options(
+        self,
+        application_id: str,
+        instance_id: str,
+        request: sae_20190506_models.DescribeWebInstanceLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
+        """
+        @summary 应用实例日志
+        
+        @param request: DescribeWebInstanceLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebInstanceLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebInstanceLogs',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications-observability/{OpenApiUtilClient.get_encode_param(application_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebInstanceLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_instance_logs_with_options_async(
+        self,
+        application_id: str,
+        instance_id: str,
+        request: sae_20190506_models.DescribeWebInstanceLogsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
+        """
+        @summary 应用实例日志
+        
+        @param request: DescribeWebInstanceLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebInstanceLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebInstanceLogs',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications-observability/{OpenApiUtilClient.get_encode_param(application_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/logs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeWebInstanceLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_instance_logs(
+        self,
+        application_id: str,
+        instance_id: str,
+        request: sae_20190506_models.DescribeWebInstanceLogsRequest,
+    ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
+        """
+        @summary 应用实例日志
+        
+        @param request: DescribeWebInstanceLogsRequest
+        @return: DescribeWebInstanceLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_web_instance_logs_with_options(application_id, instance_id, request, headers, runtime)
+
+    async def describe_web_instance_logs_async(
+        self,
+        application_id: str,
+        instance_id: str,
+        request: sae_20190506_models.DescribeWebInstanceLogsRequest,
+    ) -> sae_20190506_models.DescribeWebInstanceLogsResponse:
+        """
+        @summary 应用实例日志
+        
+        @param request: DescribeWebInstanceLogsRequest
+        @return: DescribeWebInstanceLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_web_instance_logs_with_options_async(application_id, instance_id, request, headers, runtime)
 
     def disable_application_scaling_rule_with_options(
         self,
@@ -4941,6 +7557,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
+        """
+        @param request: DisableApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4973,6 +7595,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
+        """
+        @param request: DisableApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5003,6 +7631,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DisableApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
+        """
+        @param request: DisableApplicationScalingRuleRequest
+        @return: DisableApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.disable_application_scaling_rule_with_options(request, headers, runtime)
@@ -5011,6 +7643,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.DisableApplicationScalingRuleRequest,
     ) -> sae_20190506_models.DisableApplicationScalingRuleResponse:
+        """
+        @param request: DisableApplicationScalingRuleRequest
+        @return: DisableApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.disable_application_scaling_rule_with_options_async(request, headers, runtime)
@@ -5021,6 +7657,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
+        """
+        @summary Enables an auto scaling policy for an application.
+        
+        @param request: EnableApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5053,6 +7697,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
+        """
+        @summary Enables an auto scaling policy for an application.
+        
+        @param request: EnableApplicationScalingRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableApplicationScalingRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5083,6 +7735,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.EnableApplicationScalingRuleRequest,
     ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
+        """
+        @summary Enables an auto scaling policy for an application.
+        
+        @param request: EnableApplicationScalingRuleRequest
+        @return: EnableApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.enable_application_scaling_rule_with_options(request, headers, runtime)
@@ -5091,6 +7749,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.EnableApplicationScalingRuleRequest,
     ) -> sae_20190506_models.EnableApplicationScalingRuleResponse:
+        """
+        @summary Enables an auto scaling policy for an application.
+        
+        @param request: EnableApplicationScalingRuleRequest
+        @return: EnableApplicationScalingRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.enable_application_scaling_rule_with_options_async(request, headers, runtime)
@@ -5101,6 +7765,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ExecJobResponse:
+        """
+        @param request: ExecJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5149,6 +7819,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ExecJobResponse:
+        """
+        @param request: ExecJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5195,6 +7871,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ExecJobRequest,
     ) -> sae_20190506_models.ExecJobResponse:
+        """
+        @param request: ExecJobRequest
+        @return: ExecJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.exec_job_with_options(request, headers, runtime)
@@ -5203,6 +7883,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ExecJobRequest,
     ) -> sae_20190506_models.ExecJobResponse:
+        """
+        @param request: ExecJobRequest
+        @return: ExecJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.exec_job_with_options_async(request, headers, runtime)
@@ -5213,8 +7897,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        """
+        @summary Queries the top N applications in Application Monitoring.
+        
+        @param request: GetArmsTopNMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetArmsTopNMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.limit):
@@ -5251,8 +7947,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        """
+        @summary Queries the top N applications in Application Monitoring.
+        
+        @param request: GetArmsTopNMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetArmsTopNMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.limit):
@@ -5287,6 +7995,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetArmsTopNMetricRequest,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        """
+        @summary Queries the top N applications in Application Monitoring.
+        
+        @param request: GetArmsTopNMetricRequest
+        @return: GetArmsTopNMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_arms_top_nmetric_with_options(request, headers, runtime)
@@ -5295,6 +8009,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetArmsTopNMetricRequest,
     ) -> sae_20190506_models.GetArmsTopNMetricResponse:
+        """
+        @summary Queries the top N applications in Application Monitoring.
+        
+        @param request: GetArmsTopNMetricRequest
+        @return: GetArmsTopNMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_arms_top_nmetric_with_options_async(request, headers, runtime)
@@ -5305,8 +8025,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        """
+        @summary Queries the top N applications in which abnormal instances exist. The applications are sorted by the total number of abnormal instances.
+        
+        @param request: GetAvailabilityMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvailabilityMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.region_id):
@@ -5337,8 +8069,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        """
+        @summary Queries the top N applications in which abnormal instances exist. The applications are sorted by the total number of abnormal instances.
+        
+        @param request: GetAvailabilityMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvailabilityMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.region_id):
@@ -5367,6 +8111,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetAvailabilityMetricRequest,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        """
+        @summary Queries the top N applications in which abnormal instances exist. The applications are sorted by the total number of abnormal instances.
+        
+        @param request: GetAvailabilityMetricRequest
+        @return: GetAvailabilityMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_availability_metric_with_options(request, headers, runtime)
@@ -5375,6 +8125,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetAvailabilityMetricRequest,
     ) -> sae_20190506_models.GetAvailabilityMetricResponse:
+        """
+        @summary Queries the top N applications in which abnormal instances exist. The applications are sorted by the total number of abnormal instances.
+        
+        @param request: GetAvailabilityMetricRequest
+        @return: GetAvailabilityMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_availability_metric_with_options_async(request, headers, runtime)
@@ -5385,8 +8141,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        """
+        @summary Queries top N applications in abnormal change orders.
+        
+        @param request: GetChangeOrderMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChangeOrderMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.create_time):
             query['CreateTime'] = request.create_time
         if not UtilClient.is_unset(request.limit):
@@ -5421,8 +8189,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        """
+        @summary Queries top N applications in abnormal change orders.
+        
+        @param request: GetChangeOrderMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChangeOrderMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.create_time):
             query['CreateTime'] = request.create_time
         if not UtilClient.is_unset(request.limit):
@@ -5455,6 +8235,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetChangeOrderMetricRequest,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        """
+        @summary Queries top N applications in abnormal change orders.
+        
+        @param request: GetChangeOrderMetricRequest
+        @return: GetChangeOrderMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_change_order_metric_with_options(request, headers, runtime)
@@ -5463,6 +8249,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetChangeOrderMetricRequest,
     ) -> sae_20190506_models.GetChangeOrderMetricResponse:
+        """
+        @summary Queries top N applications in abnormal change orders.
+        
+        @param request: GetChangeOrderMetricRequest
+        @return: GetChangeOrderMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_change_order_metric_with_options_async(request, headers, runtime)
@@ -5473,8 +8265,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        """
+        @summary Queries the top N applications in which auto scaling takes effect.
+        
+        @param request: GetScaleAppMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScaleAppMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.region_id):
@@ -5505,8 +8309,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        """
+        @summary Queries the top N applications in which auto scaling takes effect.
+        
+        @param request: GetScaleAppMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScaleAppMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.region_id):
@@ -5535,6 +8351,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetScaleAppMetricRequest,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        """
+        @summary Queries the top N applications in which auto scaling takes effect.
+        
+        @param request: GetScaleAppMetricRequest
+        @return: GetScaleAppMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_scale_app_metric_with_options(request, headers, runtime)
@@ -5543,6 +8365,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetScaleAppMetricRequest,
     ) -> sae_20190506_models.GetScaleAppMetricResponse:
+        """
+        @summary Queries the top N applications in which auto scaling takes effect.
+        
+        @param request: GetScaleAppMetricRequest
+        @return: GetScaleAppMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_scale_app_metric_with_options_async(request, headers, runtime)
@@ -5553,8 +8381,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        """
+        @summary Queries the top N applications in which Warning events occur.
+        
+        @param request: GetWarningEventMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWarningEventMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.limit):
@@ -5589,8 +8429,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        """
+        @summary Queries the top N applications in which Warning events occur.
+        
+        @param request: GetWarningEventMetricRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWarningEventMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
+        if not UtilClient.is_unset(request.cpu_strategy):
+            query['CpuStrategy'] = request.cpu_strategy
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.limit):
@@ -5623,6 +8475,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetWarningEventMetricRequest,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        """
+        @summary Queries the top N applications in which Warning events occur.
+        
+        @param request: GetWarningEventMetricRequest
+        @return: GetWarningEventMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_warning_event_metric_with_options(request, headers, runtime)
@@ -5631,6 +8489,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.GetWarningEventMetricRequest,
     ) -> sae_20190506_models.GetWarningEventMetricResponse:
+        """
+        @summary Queries the top N applications in which Warning events occur.
+        
+        @param request: GetWarningEventMetricRequest
+        @return: GetWarningEventMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_warning_event_metric_with_options_async(request, headers, runtime)
@@ -5641,6 +8505,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppEventsResponse:
+        """
+        @summary Queries the events that occurred in an application.
+        
+        @param request: ListAppEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5685,6 +8557,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppEventsResponse:
+        """
+        @summary Queries the events that occurred in an application.
+        
+        @param request: ListAppEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5727,6 +8607,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListAppEventsRequest,
     ) -> sae_20190506_models.ListAppEventsResponse:
+        """
+        @summary Queries the events that occurred in an application.
+        
+        @param request: ListAppEventsRequest
+        @return: ListAppEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_app_events_with_options(request, headers, runtime)
@@ -5735,6 +8621,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListAppEventsRequest,
     ) -> sae_20190506_models.ListAppEventsResponse:
+        """
+        @summary Queries the events that occurred in an application.
+        
+        @param request: ListAppEventsRequest
+        @return: ListAppEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_app_events_with_options_async(request, headers, runtime)
@@ -5745,6 +8637,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
+        """
+        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        
+        @param request: ListAppServicesPageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppServicesPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5781,6 +8681,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
+        """
+        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        
+        @param request: ListAppServicesPageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppServicesPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5815,6 +8723,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListAppServicesPageRequest,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
+        """
+        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        
+        @param request: ListAppServicesPageRequest
+        @return: ListAppServicesPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_app_services_page_with_options(request, headers, runtime)
@@ -5823,6 +8737,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListAppServicesPageRequest,
     ) -> sae_20190506_models.ListAppServicesPageResponse:
+        """
+        @summary 6dcc8c9e-d3da-478a-a066-86dcf820\\\\*\\*\\*\
+        
+        @param request: ListAppServicesPageRequest
+        @return: ListAppServicesPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_app_services_page_with_options_async(request, headers, runtime)
@@ -5833,6 +8753,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppVersionsResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: ListAppVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5863,6 +8791,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListAppVersionsResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: ListAppVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5891,6 +8827,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListAppVersionsRequest,
     ) -> sae_20190506_models.ListAppVersionsResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: ListAppVersionsRequest
+        @return: ListAppVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_app_versions_with_options(request, headers, runtime)
@@ -5899,6 +8841,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListAppVersionsRequest,
     ) -> sae_20190506_models.ListAppVersionsResponse:
+        """
+        @summary 7171a6ca-d1cd-4928-8642-7d5cfe69\\\\*\\*\\*\
+        
+        @param request: ListAppVersionsRequest
+        @return: ListAppVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_app_versions_with_options_async(request, headers, runtime)
@@ -5909,10 +8857,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListApplicationsResponse:
+        """
+        @summary The ID of the namespace.
+        
+        @param request: ListApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.field_type):
@@ -5955,10 +8913,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListApplicationsResponse:
+        """
+        @summary The ID of the namespace.
+        
+        @param request: ListApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_source):
+            query['AppSource'] = request.app_source
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.field_type):
@@ -5999,6 +8967,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListApplicationsRequest,
     ) -> sae_20190506_models.ListApplicationsResponse:
+        """
+        @summary The ID of the namespace.
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_applications_with_options(request, headers, runtime)
@@ -6007,6 +8981,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListApplicationsRequest,
     ) -> sae_20190506_models.ListApplicationsResponse:
+        """
+        @summary The ID of the namespace.
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_applications_with_options_async(request, headers, runtime)
@@ -6017,6 +8997,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
+        """
+        @param request: ListChangeOrdersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChangeOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6057,6 +9043,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
+        """
+        @param request: ListChangeOrdersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChangeOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6095,6 +9087,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListChangeOrdersRequest,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
+        """
+        @param request: ListChangeOrdersRequest
+        @return: ListChangeOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_change_orders_with_options(request, headers, runtime)
@@ -6103,6 +9099,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListChangeOrdersRequest,
     ) -> sae_20190506_models.ListChangeOrdersResponse:
+        """
+        @param request: ListChangeOrdersRequest
+        @return: ListChangeOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_change_orders_with_options_async(request, headers, runtime)
@@ -6113,6 +9113,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListConsumedServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumedServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6143,6 +9151,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListConsumedServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumedServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6171,6 +9187,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListConsumedServicesRequest,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListConsumedServicesRequest
+        @return: ListConsumedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_consumed_services_with_options(request, headers, runtime)
@@ -6179,6 +9201,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListConsumedServicesRequest,
     ) -> sae_20190506_models.ListConsumedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListConsumedServicesRequest
+        @return: ListConsumedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_consumed_services_with_options_async(request, headers, runtime)
@@ -6190,7 +9218,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Queries the details of a canary release rule based on an application ID.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: ListGreyTagRouteRequest
         @param headers: map
@@ -6228,7 +9258,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Queries the details of a canary release rule based on an application ID.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: ListGreyTagRouteRequest
         @param headers: map
@@ -6264,7 +9296,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListGreyTagRouteRequest,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Queries the details of a canary release rule based on an application ID.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: ListGreyTagRouteRequest
         @return: ListGreyTagRouteResponse
@@ -6278,7 +9312,9 @@ class Client(OpenApiClient):
         request: sae_20190506_models.ListGreyTagRouteRequest,
     ) -> sae_20190506_models.ListGreyTagRouteResponse:
         """
-        >  You can configure only one canary release rule for each application.
+        @summary Queries the details of a canary release rule based on an application ID.
+        
+        @description >  You can configure only one canary release rule for each application.
         
         @param request: ListGreyTagRouteRequest
         @return: ListGreyTagRouteResponse
@@ -6293,6 +9329,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListIngressesResponse:
+        """
+        @summary The returned message.
+        **success** is returned when the request succeeds.
+        An error code is returned when the request fails.
+        
+        @param request: ListIngressesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIngressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6325,6 +9371,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListIngressesResponse:
+        """
+        @summary The returned message.
+        **success** is returned when the request succeeds.
+        An error code is returned when the request fails.
+        
+        @param request: ListIngressesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIngressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6355,6 +9411,14 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListIngressesRequest,
     ) -> sae_20190506_models.ListIngressesResponse:
+        """
+        @summary The returned message.
+        **success** is returned when the request succeeds.
+        An error code is returned when the request fails.
+        
+        @param request: ListIngressesRequest
+        @return: ListIngressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_ingresses_with_options(request, headers, runtime)
@@ -6363,6 +9427,14 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListIngressesRequest,
     ) -> sae_20190506_models.ListIngressesResponse:
+        """
+        @summary The returned message.
+        **success** is returned when the request succeeds.
+        An error code is returned when the request fails.
+        
+        @param request: ListIngressesRequest
+        @return: ListIngressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_ingresses_with_options_async(request, headers, runtime)
@@ -6373,6 +9445,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListJobsResponse:
+        """
+        @summary Queries the information about job templates.
+        
+        @param request: ListJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -6421,6 +9501,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListJobsResponse:
+        """
+        @summary Queries the information about job templates.
+        
+        @param request: ListJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -6467,6 +9555,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListJobsRequest,
     ) -> sae_20190506_models.ListJobsResponse:
+        """
+        @summary Queries the information about job templates.
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_jobs_with_options(request, headers, runtime)
@@ -6475,6 +9569,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListJobsRequest,
     ) -> sae_20190506_models.ListJobsResponse:
+        """
+        @summary Queries the information about job templates.
+        
+        @param request: ListJobsRequest
+        @return: ListJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_jobs_with_options_async(request, headers, runtime)
@@ -6485,6 +9585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListLogConfigsResponse:
+        """
+        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        
+        @param request: ListLogConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6519,6 +9627,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListLogConfigsResponse:
+        """
+        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        
+        @param request: ListLogConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6551,6 +9667,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListLogConfigsRequest,
     ) -> sae_20190506_models.ListLogConfigsResponse:
+        """
+        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        
+        @param request: ListLogConfigsRequest
+        @return: ListLogConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_log_configs_with_options(request, headers, runtime)
@@ -6559,6 +9681,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListLogConfigsRequest,
     ) -> sae_20190506_models.ListLogConfigsResponse:
+        """
+        @summary 56f77b65-788d-442a-9885-7f20d91f\\\\*\\*\\*\
+        
+        @param request: ListLogConfigsRequest
+        @return: ListLogConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_log_configs_with_options_async(request, headers, runtime)
@@ -6569,6 +9697,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
+        """
+        @param request: ListNamespaceChangeOrdersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespaceChangeOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_status):
@@ -6609,6 +9743,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
+        """
+        @param request: ListNamespaceChangeOrdersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespaceChangeOrdersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.co_status):
@@ -6647,6 +9787,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
+        """
+        @param request: ListNamespaceChangeOrdersRequest
+        @return: ListNamespaceChangeOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_namespace_change_orders_with_options(request, headers, runtime)
@@ -6655,6 +9799,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListNamespaceChangeOrdersRequest,
     ) -> sae_20190506_models.ListNamespaceChangeOrdersResponse:
+        """
+        @param request: ListNamespaceChangeOrdersRequest
+        @return: ListNamespaceChangeOrdersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_namespace_change_orders_with_options_async(request, headers, runtime)
@@ -6665,6 +9813,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
+        """
+        @summary Queries the ConfigMap instances in a namespace.
+        
+        @param request: ListNamespacedConfigMapsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacedConfigMapsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -6695,6 +9851,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
+        """
+        @summary Queries the ConfigMap instances in a namespace.
+        
+        @param request: ListNamespacedConfigMapsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamespacedConfigMapsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -6723,6 +9887,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListNamespacedConfigMapsRequest,
     ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
+        """
+        @summary Queries the ConfigMap instances in a namespace.
+        
+        @param request: ListNamespacedConfigMapsRequest
+        @return: ListNamespacedConfigMapsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_namespaced_config_maps_with_options(request, headers, runtime)
@@ -6731,6 +9901,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListNamespacedConfigMapsRequest,
     ) -> sae_20190506_models.ListNamespacedConfigMapsResponse:
+        """
+        @summary Queries the ConfigMap instances in a namespace.
+        
+        @param request: ListNamespacedConfigMapsRequest
+        @return: ListNamespacedConfigMapsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_namespaced_config_maps_with_options_async(request, headers, runtime)
@@ -6741,6 +9917,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListPublishedServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublishedServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6771,6 +9955,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListPublishedServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublishedServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6799,6 +9991,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListPublishedServicesRequest,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListPublishedServicesRequest
+        @return: ListPublishedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_published_services_with_options(request, headers, runtime)
@@ -6807,6 +10005,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListPublishedServicesRequest,
     ) -> sae_20190506_models.ListPublishedServicesResponse:
+        """
+        @summary b2a8a925-477a-4ed7-b825-d5e22500\\\\*\\*\\*\
+        
+        @param request: ListPublishedServicesRequest
+        @return: ListPublishedServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_published_services_with_options_async(request, headers, runtime)
@@ -6817,6 +10021,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListSecretsResponse:
+        """
+        @summary Queries the information about Secrets in a namespace.
+        
+        @param request: ListSecretsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -6847,6 +10059,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListSecretsResponse:
+        """
+        @summary Queries the information about Secrets in a namespace.
+        
+        @param request: ListSecretsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
@@ -6875,6 +10095,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListSecretsRequest,
     ) -> sae_20190506_models.ListSecretsResponse:
+        """
+        @summary Queries the information about Secrets in a namespace.
+        
+        @param request: ListSecretsRequest
+        @return: ListSecretsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_secrets_with_options(request, headers, runtime)
@@ -6883,6 +10109,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListSecretsRequest,
     ) -> sae_20190506_models.ListSecretsResponse:
+        """
+        @summary Queries the information about Secrets in a namespace.
+        
+        @param request: ListSecretsRequest
+        @return: ListSecretsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_secrets_with_options_async(request, headers, runtime)
@@ -6893,6 +10125,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListTagResourcesResponse:
+        """
+        @summary Queries the mapping relationships between applications and tags.
+        
+        @param request: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -6931,6 +10171,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ListTagResourcesResponse:
+        """
+        @summary Queries the mapping relationships between applications and tags.
+        
+        @param request: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -6967,6 +10215,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListTagResourcesRequest,
     ) -> sae_20190506_models.ListTagResourcesResponse:
+        """
+        @summary Queries the mapping relationships between applications and tags.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
@@ -6975,9 +10229,515 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ListTagResourcesRequest,
     ) -> sae_20190506_models.ListTagResourcesResponse:
+        """
+        @summary Queries the mapping relationships between applications and tags.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
+
+    def list_web_application_instances_with_options(
+        self,
+        application_id: str,
+        tmp_req: sae_20190506_models.ListWebApplicationInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
+        """
+        @summary 应用实例列表
+        
+        @param tmp_req: ListWebApplicationInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebApplicationInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.ListWebApplicationInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.statuses):
+            request.statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        if not UtilClient.is_unset(tmp_req.version_ids):
+            request.version_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.version_ids, 'VersionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
+        if not UtilClient.is_unset(request.version_ids_shrink):
+            query['VersionIds'] = request.version_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebApplicationInstances',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications-observability/{OpenApiUtilClient.get_encode_param(application_id)}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebApplicationInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_application_instances_with_options_async(
+        self,
+        application_id: str,
+        tmp_req: sae_20190506_models.ListWebApplicationInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
+        """
+        @summary 应用实例列表
+        
+        @param tmp_req: ListWebApplicationInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebApplicationInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.ListWebApplicationInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.statuses):
+            request.statuses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        if not UtilClient.is_unset(tmp_req.version_ids):
+            request.version_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.version_ids, 'VersionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_ids_shrink):
+            query['InstanceIds'] = request.instance_ids_shrink
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
+        if not UtilClient.is_unset(request.version_ids_shrink):
+            query['VersionIds'] = request.version_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebApplicationInstances',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications-observability/{OpenApiUtilClient.get_encode_param(application_id)}/instances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebApplicationInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_application_instances(
+        self,
+        application_id: str,
+        request: sae_20190506_models.ListWebApplicationInstancesRequest,
+    ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
+        """
+        @summary 应用实例列表
+        
+        @param request: ListWebApplicationInstancesRequest
+        @return: ListWebApplicationInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_web_application_instances_with_options(application_id, request, headers, runtime)
+
+    async def list_web_application_instances_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.ListWebApplicationInstancesRequest,
+    ) -> sae_20190506_models.ListWebApplicationInstancesResponse:
+        """
+        @summary 应用实例列表
+        
+        @param request: ListWebApplicationInstancesRequest
+        @return: ListWebApplicationInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_web_application_instances_with_options_async(application_id, request, headers, runtime)
+
+    def list_web_application_revisions_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.ListWebApplicationRevisionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
+        """
+        @summary 版本列表
+        
+        @param request: ListWebApplicationRevisionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebApplicationRevisionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebApplicationRevisions',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebApplicationRevisionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_application_revisions_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.ListWebApplicationRevisionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
+        """
+        @summary 版本列表
+        
+        @param request: ListWebApplicationRevisionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebApplicationRevisionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebApplicationRevisions',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebApplicationRevisionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_application_revisions(
+        self,
+        application_id: str,
+        request: sae_20190506_models.ListWebApplicationRevisionsRequest,
+    ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
+        """
+        @summary 版本列表
+        
+        @param request: ListWebApplicationRevisionsRequest
+        @return: ListWebApplicationRevisionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_web_application_revisions_with_options(application_id, request, headers, runtime)
+
+    async def list_web_application_revisions_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.ListWebApplicationRevisionsRequest,
+    ) -> sae_20190506_models.ListWebApplicationRevisionsResponse:
+        """
+        @summary 版本列表
+        
+        @param request: ListWebApplicationRevisionsRequest
+        @return: ListWebApplicationRevisionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_web_application_revisions_with_options_async(application_id, request, headers, runtime)
+
+    def list_web_applications_with_options(
+        self,
+        request: sae_20190506_models.ListWebApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebApplicationsResponse:
+        """
+        @summary 应用列表
+        
+        @param request: ListWebApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebApplications',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_applications_with_options_async(
+        self,
+        request: sae_20190506_models.ListWebApplicationsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebApplicationsResponse:
+        """
+        @summary 应用列表
+        
+        @param request: ListWebApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebApplications',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_applications(
+        self,
+        request: sae_20190506_models.ListWebApplicationsRequest,
+    ) -> sae_20190506_models.ListWebApplicationsResponse:
+        """
+        @summary 应用列表
+        
+        @param request: ListWebApplicationsRequest
+        @return: ListWebApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_web_applications_with_options(request, headers, runtime)
+
+    async def list_web_applications_async(
+        self,
+        request: sae_20190506_models.ListWebApplicationsRequest,
+    ) -> sae_20190506_models.ListWebApplicationsResponse:
+        """
+        @summary 应用列表
+        
+        @param request: ListWebApplicationsRequest
+        @return: ListWebApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_web_applications_with_options_async(request, headers, runtime)
+
+    def list_web_custom_domains_with_options(
+        self,
+        request: sae_20190506_models.ListWebCustomDomainsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebCustomDomainsResponse:
+        """
+        @summary 自定义域名列表.
+        
+        @param request: ListWebCustomDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebCustomDomainsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebCustomDomains',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebCustomDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_custom_domains_with_options_async(
+        self,
+        request: sae_20190506_models.ListWebCustomDomainsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.ListWebCustomDomainsResponse:
+        """
+        @summary 自定义域名列表.
+        
+        @param request: ListWebCustomDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebCustomDomainsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWebCustomDomains',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.ListWebCustomDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_custom_domains(
+        self,
+        request: sae_20190506_models.ListWebCustomDomainsRequest,
+    ) -> sae_20190506_models.ListWebCustomDomainsResponse:
+        """
+        @summary 自定义域名列表.
+        
+        @param request: ListWebCustomDomainsRequest
+        @return: ListWebCustomDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_web_custom_domains_with_options(request, headers, runtime)
+
+    async def list_web_custom_domains_async(
+        self,
+        request: sae_20190506_models.ListWebCustomDomainsRequest,
+    ) -> sae_20190506_models.ListWebCustomDomainsResponse:
+        """
+        @summary 自定义域名列表.
+        
+        @param request: ListWebCustomDomainsRequest
+        @return: ListWebCustomDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_web_custom_domains_with_options_async(request, headers, runtime)
 
     def open_sae_service_with_options(
         self,
@@ -6985,7 +10745,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        @summary Activates the Serverless App Engine (SAE) service for free.
+        
+        @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7016,7 +10778,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        @summary Activates the Serverless App Engine (SAE) service for free.
+        
+        @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -7043,7 +10807,9 @@ class Client(OpenApiClient):
 
     def open_sae_service(self) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        @summary Activates the Serverless App Engine (SAE) service for free.
+        
+        @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
         @return: OpenSaeServiceResponse
         """
@@ -7053,7 +10819,9 @@ class Client(OpenApiClient):
 
     async def open_sae_service_async(self) -> sae_20190506_models.OpenSaeServiceResponse:
         """
-        >  Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
+        @summary Activates the Serverless App Engine (SAE) service for free.
+        
+        @description > Make sure that your account balance is greater than 0. Otherwise, the SAE service cannot be activated.
         
         @return: OpenSaeServiceResponse
         """
@@ -7061,12 +10829,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.open_sae_service_with_options_async(headers, runtime)
 
+    def publish_web_application_revision_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.PublishWebApplicationRevisionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
+        """
+        @summary 新建版本
+        
+        @param request: PublishWebApplicationRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishWebApplicationRevisionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='PublishWebApplicationRevision',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.PublishWebApplicationRevisionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_web_application_revision_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.PublishWebApplicationRevisionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
+        """
+        @summary 新建版本
+        
+        @param request: PublishWebApplicationRevisionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishWebApplicationRevisionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='PublishWebApplicationRevision',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-revisions/{OpenApiUtilClient.get_encode_param(application_id)}/revisions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.PublishWebApplicationRevisionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_web_application_revision(
+        self,
+        application_id: str,
+        request: sae_20190506_models.PublishWebApplicationRevisionRequest,
+    ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
+        """
+        @summary 新建版本
+        
+        @param request: PublishWebApplicationRevisionRequest
+        @return: PublishWebApplicationRevisionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.publish_web_application_revision_with_options(application_id, request, headers, runtime)
+
+    async def publish_web_application_revision_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.PublishWebApplicationRevisionRequest,
+    ) -> sae_20190506_models.PublishWebApplicationRevisionResponse:
+        """
+        @summary 新建版本
+        
+        @param request: PublishWebApplicationRevisionRequest
+        @return: PublishWebApplicationRevisionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.publish_web_application_revision_with_options_async(application_id, request, headers, runtime)
+
     def query_resource_statics_with_options(
         self,
         request: sae_20190506_models.QueryResourceStaticsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.QueryResourceStaticsResponse:
+        """
+        @summary Queries the resource usage of an application.
+        
+        @param request: QueryResourceStaticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResourceStaticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7097,6 +10983,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.QueryResourceStaticsResponse:
+        """
+        @summary Queries the resource usage of an application.
+        
+        @param request: QueryResourceStaticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryResourceStaticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7125,6 +11019,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.QueryResourceStaticsRequest,
     ) -> sae_20190506_models.QueryResourceStaticsResponse:
+        """
+        @summary Queries the resource usage of an application.
+        
+        @param request: QueryResourceStaticsRequest
+        @return: QueryResourceStaticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_resource_statics_with_options(request, headers, runtime)
@@ -7133,6 +11033,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.QueryResourceStaticsRequest,
     ) -> sae_20190506_models.QueryResourceStaticsResponse:
+        """
+        @summary Queries the resource usage of an application.
+        
+        @param request: QueryResourceStaticsRequest
+        @return: QueryResourceStaticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_resource_statics_with_options_async(request, headers, runtime)
@@ -7143,6 +11049,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
+        """
+        @summary Reduces capacity by instance IDs.
+        
+        @param request: ReduceApplicationCapacityByInstanceIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReduceApplicationCapacityByInstanceIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7175,6 +11089,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
+        """
+        @summary Reduces capacity by instance IDs.
+        
+        @param request: ReduceApplicationCapacityByInstanceIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReduceApplicationCapacityByInstanceIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7205,6 +11127,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
+        """
+        @summary Reduces capacity by instance IDs.
+        
+        @param request: ReduceApplicationCapacityByInstanceIdsRequest
+        @return: ReduceApplicationCapacityByInstanceIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.reduce_application_capacity_by_instance_ids_with_options(request, headers, runtime)
@@ -7213,6 +11141,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.ReduceApplicationCapacityByInstanceIdsRequest,
     ) -> sae_20190506_models.ReduceApplicationCapacityByInstanceIdsResponse:
+        """
+        @summary Reduces capacity by instance IDs.
+        
+        @param request: ReduceApplicationCapacityByInstanceIdsRequest
+        @return: ReduceApplicationCapacityByInstanceIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reduce_application_capacity_by_instance_ids_with_options_async(request, headers, runtime)
@@ -7223,6 +11157,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RescaleApplicationResponse:
+        """
+        @summary Scales an application.
+        
+        @param request: RescaleApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7261,6 +11203,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RescaleApplicationResponse:
+        """
+        @summary Scales an application.
+        
+        @param request: RescaleApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7297,6 +11247,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RescaleApplicationRequest,
     ) -> sae_20190506_models.RescaleApplicationResponse:
+        """
+        @summary Scales an application.
+        
+        @param request: RescaleApplicationRequest
+        @return: RescaleApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.rescale_application_with_options(request, headers, runtime)
@@ -7305,6 +11261,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RescaleApplicationRequest,
     ) -> sae_20190506_models.RescaleApplicationResponse:
+        """
+        @summary Scales an application.
+        
+        @param request: RescaleApplicationRequest
+        @return: RescaleApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rescale_application_with_options_async(request, headers, runtime)
@@ -7315,6 +11277,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
+        """
+        @summary Changes the instance specifications of an application.
+        
+        @param request: RescaleApplicationVerticallyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleApplicationVerticallyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7349,6 +11319,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
+        """
+        @summary Changes the instance specifications of an application.
+        
+        @param request: RescaleApplicationVerticallyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleApplicationVerticallyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7381,6 +11359,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RescaleApplicationVerticallyRequest,
     ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
+        """
+        @summary Changes the instance specifications of an application.
+        
+        @param request: RescaleApplicationVerticallyRequest
+        @return: RescaleApplicationVerticallyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.rescale_application_vertically_with_options(request, headers, runtime)
@@ -7389,6 +11373,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RescaleApplicationVerticallyRequest,
     ) -> sae_20190506_models.RescaleApplicationVerticallyResponse:
+        """
+        @summary Changes the instance specifications of an application.
+        
+        @param request: RescaleApplicationVerticallyRequest
+        @return: RescaleApplicationVerticallyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rescale_application_vertically_with_options_async(request, headers, runtime)
@@ -7399,10 +11389,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RestartApplicationResponse:
+        """
+        @summary Restarts an application.
+        
+        @param request: RestartApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
+            query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -7433,10 +11433,20 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RestartApplicationResponse:
+        """
+        @summary Restarts an application.
+        
+        @param request: RestartApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auto_enable_application_scaling_rule):
+            query['AutoEnableApplicationScalingRule'] = request.auto_enable_application_scaling_rule
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -7465,6 +11475,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RestartApplicationRequest,
     ) -> sae_20190506_models.RestartApplicationResponse:
+        """
+        @summary Restarts an application.
+        
+        @param request: RestartApplicationRequest
+        @return: RestartApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restart_application_with_options(request, headers, runtime)
@@ -7473,6 +11489,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RestartApplicationRequest,
     ) -> sae_20190506_models.RestartApplicationResponse:
+        """
+        @summary Restarts an application.
+        
+        @param request: RestartApplicationRequest
+        @return: RestartApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_application_with_options_async(request, headers, runtime)
@@ -7483,6 +11505,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RestartInstancesResponse:
+        """
+        @summary Restarts one or more instances in an application.
+        
+        @param request: RestartInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7515,6 +11545,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RestartInstancesResponse:
+        """
+        @summary Restarts one or more instances in an application.
+        
+        @param request: RestartInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7545,6 +11583,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RestartInstancesRequest,
     ) -> sae_20190506_models.RestartInstancesResponse:
+        """
+        @summary Restarts one or more instances in an application.
+        
+        @param request: RestartInstancesRequest
+        @return: RestartInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restart_instances_with_options(request, headers, runtime)
@@ -7553,6 +11597,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RestartInstancesRequest,
     ) -> sae_20190506_models.RestartInstancesResponse:
+        """
+        @summary Restarts one or more instances in an application.
+        
+        @param request: RestartInstancesRequest
+        @return: RestartInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_instances_with_options_async(request, headers, runtime)
@@ -7563,6 +11613,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back an application.
+        
+        @param request: RollbackApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7605,6 +11663,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back an application.
+        
+        @param request: RollbackApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7645,6 +11711,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RollbackApplicationRequest,
     ) -> sae_20190506_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back an application.
+        
+        @param request: RollbackApplicationRequest
+        @return: RollbackApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.rollback_application_with_options(request, headers, runtime)
@@ -7653,6 +11725,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.RollbackApplicationRequest,
     ) -> sae_20190506_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back an application.
+        
+        @param request: RollbackApplicationRequest
+        @return: RollbackApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rollback_application_with_options_async(request, headers, runtime)
@@ -7663,6 +11741,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StartApplicationResponse:
+        """
+        @summary Starts an application.
+        
+        @param request: StartApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7693,6 +11779,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StartApplicationResponse:
+        """
+        @summary Starts an application.
+        
+        @param request: StartApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7721,6 +11815,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.StartApplicationRequest,
     ) -> sae_20190506_models.StartApplicationResponse:
+        """
+        @summary Starts an application.
+        
+        @param request: StartApplicationRequest
+        @return: StartApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_application_with_options(request, headers, runtime)
@@ -7729,9 +11829,123 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.StartApplicationRequest,
     ) -> sae_20190506_models.StartApplicationResponse:
+        """
+        @summary Starts an application.
+        
+        @param request: StartApplicationRequest
+        @return: StartApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_application_with_options_async(request, headers, runtime)
+
+    def start_web_application_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StartWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.StartWebApplicationResponse:
+        """
+        @summary 启动应用
+        
+        @param request: StartWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-ops/{OpenApiUtilClient.get_encode_param(application_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.StartWebApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_web_application_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StartWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.StartWebApplicationResponse:
+        """
+        @summary 启动应用
+        
+        @param request: StartWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-ops/{OpenApiUtilClient.get_encode_param(application_id)}/start',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.StartWebApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_web_application(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StartWebApplicationRequest,
+    ) -> sae_20190506_models.StartWebApplicationResponse:
+        """
+        @summary 启动应用
+        
+        @param request: StartWebApplicationRequest
+        @return: StartWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_web_application_with_options(application_id, request, headers, runtime)
+
+    async def start_web_application_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StartWebApplicationRequest,
+    ) -> sae_20190506_models.StartWebApplicationResponse:
+        """
+        @summary 启动应用
+        
+        @param request: StartWebApplicationRequest
+        @return: StartWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_web_application_with_options_async(application_id, request, headers, runtime)
 
     def stop_application_with_options(
         self,
@@ -7739,6 +11953,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StopApplicationResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: StopApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7769,6 +11991,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.StopApplicationResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: StopApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7797,6 +12027,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.StopApplicationRequest,
     ) -> sae_20190506_models.StopApplicationResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: StopApplicationRequest
+        @return: StopApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_application_with_options(request, headers, runtime)
@@ -7805,9 +12041,123 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.StopApplicationRequest,
     ) -> sae_20190506_models.StopApplicationResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: StopApplicationRequest
+        @return: StopApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_application_with_options_async(request, headers, runtime)
+
+    def stop_web_application_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StopWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.StopWebApplicationResponse:
+        """
+        @summary 停止应用
+        
+        @param request: StopWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-ops/{OpenApiUtilClient.get_encode_param(application_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.StopWebApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_web_application_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StopWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.StopWebApplicationResponse:
+        """
+        @summary 停止应用
+        
+        @param request: StopWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-ops/{OpenApiUtilClient.get_encode_param(application_id)}/stop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.StopWebApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_web_application(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StopWebApplicationRequest,
+    ) -> sae_20190506_models.StopWebApplicationResponse:
+        """
+        @summary 停止应用
+        
+        @param request: StopWebApplicationRequest
+        @return: StopWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.stop_web_application_with_options(application_id, request, headers, runtime)
+
+    async def stop_web_application_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.StopWebApplicationRequest,
+    ) -> sae_20190506_models.StopWebApplicationResponse:
+        """
+        @summary 停止应用
+        
+        @param request: StopWebApplicationRequest
+        @return: StopWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.stop_web_application_with_options_async(application_id, request, headers, runtime)
 
     def suspend_job_with_options(
         self,
@@ -7815,6 +12165,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.SuspendJobResponse:
+        """
+        @summary Suspends a job.
+        
+        @param request: SuspendJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7847,6 +12205,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.SuspendJobResponse:
+        """
+        @summary Suspends a job.
+        
+        @param request: SuspendJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7877,6 +12243,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.SuspendJobRequest,
     ) -> sae_20190506_models.SuspendJobResponse:
+        """
+        @summary Suspends a job.
+        
+        @param request: SuspendJobRequest
+        @return: SuspendJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.suspend_job_with_options(request, headers, runtime)
@@ -7885,6 +12257,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.SuspendJobRequest,
     ) -> sae_20190506_models.SuspendJobResponse:
+        """
+        @summary Suspends a job.
+        
+        @param request: SuspendJobRequest
+        @return: SuspendJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.suspend_job_with_options_async(request, headers, runtime)
@@ -7895,6 +12273,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.TagResourcesResponse:
+        """
+        @summary cn-beijing
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7931,6 +12317,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.TagResourcesResponse:
+        """
+        @summary cn-beijing
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7965,6 +12359,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.TagResourcesRequest,
     ) -> sae_20190506_models.TagResourcesResponse:
+        """
+        @summary cn-beijing
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
@@ -7973,6 +12373,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.TagResourcesRequest,
     ) -> sae_20190506_models.TagResourcesResponse:
+        """
+        @summary cn-beijing
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
@@ -7983,6 +12389,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UnbindSlbResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: UnbindSlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8017,6 +12431,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UnbindSlbResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: UnbindSlbRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindSlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8049,6 +12471,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UnbindSlbRequest,
     ) -> sae_20190506_models.UnbindSlbResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: UnbindSlbRequest
+        @return: UnbindSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.unbind_slb_with_options(request, headers, runtime)
@@ -8057,6 +12485,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UnbindSlbRequest,
     ) -> sae_20190506_models.UnbindSlbResponse:
+        """
+        @summary 0099b7be-5f5b-4512-a7fc-56049ef1\\\\*\\*\\*\
+        
+        @param request: UnbindSlbRequest
+        @return: UnbindSlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.unbind_slb_with_options_async(request, headers, runtime)
@@ -8067,6 +12501,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_all):
@@ -8105,6 +12545,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_all):
@@ -8141,6 +12587,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UntagResourcesRequest,
     ) -> sae_20190506_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.untag_resources_with_options(request, headers, runtime)
@@ -8149,6 +12599,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UntagResourcesRequest,
     ) -> sae_20190506_models.UntagResourcesResponse:
+        """
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
@@ -8159,6 +12613,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: UpdateAppSecurityGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8191,6 +12653,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: UpdateAppSecurityGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8221,6 +12691,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateAppSecurityGroupRequest,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: UpdateAppSecurityGroupRequest
+        @return: UpdateAppSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_app_security_group_with_options(request, headers, runtime)
@@ -8229,6 +12705,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateAppSecurityGroupRequest,
     ) -> sae_20190506_models.UpdateAppSecurityGroupResponse:
+        """
+        @summary 017f39b8-dfa4-4e16-a84b-1dcee4b1\\\\*\\*\\*\
+        
+        @param request: UpdateAppSecurityGroupRequest
+        @return: UpdateAppSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_app_security_group_with_options_async(request, headers, runtime)
@@ -8239,6 +12721,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        """
+        @summary 更新应用描述信息
+        
+        @param request: UpdateApplicationDescriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_description):
@@ -8271,6 +12761,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        """
+        @summary 更新应用描述信息
+        
+        @param request: UpdateApplicationDescriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_description):
@@ -8301,6 +12799,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateApplicationDescriptionRequest,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        """
+        @summary 更新应用描述信息
+        
+        @param request: UpdateApplicationDescriptionRequest
+        @return: UpdateApplicationDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_application_description_with_options(request, headers, runtime)
@@ -8309,6 +12813,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateApplicationDescriptionRequest,
     ) -> sae_20190506_models.UpdateApplicationDescriptionResponse:
+        """
+        @summary 更新应用描述信息
+        
+        @param request: UpdateApplicationDescriptionRequest
+        @return: UpdateApplicationDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_application_description_with_options_async(request, headers, runtime)
@@ -8320,7 +12830,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
         """
-        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Updates the auto scaling policy of an application.
+        
+        @description ##
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
         
         @param request: UpdateApplicationScalingRuleRequest
         @param headers: map
@@ -8368,7 +12881,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
         """
-        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Updates the auto scaling policy of an application.
+        
+        @description ##
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
         
         @param request: UpdateApplicationScalingRuleRequest
         @param headers: map
@@ -8414,7 +12930,10 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
         """
-        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Updates the auto scaling policy of an application.
+        
+        @description ##
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
         
         @param request: UpdateApplicationScalingRuleRequest
         @return: UpdateApplicationScalingRuleResponse
@@ -8428,7 +12947,10 @@ class Client(OpenApiClient):
         request: sae_20190506_models.UpdateApplicationScalingRuleRequest,
     ) -> sae_20190506_models.UpdateApplicationScalingRuleResponse:
         """
-        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the allowlist.
+        @summary Updates the auto scaling policy of an application.
+        
+        @description ##
+        If you want to configure more than 50 instances for an application, you must submit a [ticket](https://workorder.console.aliyun.com/#/ticket/createIndex) to add your account to the whitelist.
         
         @param request: UpdateApplicationScalingRuleRequest
         @return: UpdateApplicationScalingRuleResponse
@@ -8443,6 +12965,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        """
+        @param request: UpdateApplicationVswitchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationVswitchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8475,6 +13003,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        """
+        @param request: UpdateApplicationVswitchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationVswitchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8505,6 +13039,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateApplicationVswitchesRequest,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        """
+        @param request: UpdateApplicationVswitchesRequest
+        @return: UpdateApplicationVswitchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_application_vswitches_with_options(request, headers, runtime)
@@ -8513,6 +13051,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateApplicationVswitchesRequest,
     ) -> sae_20190506_models.UpdateApplicationVswitchesResponse:
+        """
+        @param request: UpdateApplicationVswitchesRequest
+        @return: UpdateApplicationVswitchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_application_vswitches_with_options_async(request, headers, runtime)
@@ -8523,6 +13065,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
+        """
+        @summary 1
+        
+        @param request: UpdateConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_map_id):
@@ -8559,6 +13109,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
+        """
+        @summary 1
+        
+        @param request: UpdateConfigMapRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigMapResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_map_id):
@@ -8593,6 +13151,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateConfigMapRequest,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
+        """
+        @summary 1
+        
+        @param request: UpdateConfigMapRequest
+        @return: UpdateConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_config_map_with_options(request, headers, runtime)
@@ -8601,6 +13165,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateConfigMapRequest,
     ) -> sae_20190506_models.UpdateConfigMapResponse:
+        """
+        @summary 1
+        
+        @param request: UpdateConfigMapRequest
+        @return: UpdateConfigMapResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_config_map_with_options_async(request, headers, runtime)
@@ -8611,6 +13181,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
+        """
+        @summary Updates a canary release rule.
+        
+        @param request: UpdateGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alb_rules):
@@ -8649,6 +13227,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
+        """
+        @summary Updates a canary release rule.
+        
+        @param request: UpdateGreyTagRouteRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGreyTagRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alb_rules):
@@ -8685,6 +13271,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateGreyTagRouteRequest,
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
+        """
+        @summary Updates a canary release rule.
+        
+        @param request: UpdateGreyTagRouteRequest
+        @return: UpdateGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_grey_tag_route_with_options(request, headers, runtime)
@@ -8693,6 +13285,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateGreyTagRouteRequest,
     ) -> sae_20190506_models.UpdateGreyTagRouteResponse:
+        """
+        @summary Updates a canary release rule.
+        
+        @param request: UpdateGreyTagRouteRequest
+        @return: UpdateGreyTagRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_grey_tag_route_with_options_async(request, headers, runtime)
@@ -8703,6 +13301,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateIngressResponse:
+        """
+        @param request: UpdateIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_id):
@@ -8751,6 +13355,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateIngressResponse:
+        """
+        @param request: UpdateIngressRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIngressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cert_id):
@@ -8797,6 +13407,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateIngressRequest,
     ) -> sae_20190506_models.UpdateIngressResponse:
+        """
+        @param request: UpdateIngressRequest
+        @return: UpdateIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_ingress_with_options(request, headers, runtime)
@@ -8805,6 +13419,10 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateIngressRequest,
     ) -> sae_20190506_models.UpdateIngressResponse:
+        """
+        @param request: UpdateIngressRequest
+        @return: UpdateIngressResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_ingress_with_options_async(request, headers, runtime)
@@ -8815,6 +13433,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: UpdateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -8935,6 +13561,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: UpdateJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acr_assume_role_arn):
@@ -9053,6 +13687,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateJobRequest,
     ) -> sae_20190506_models.UpdateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: UpdateJobRequest
+        @return: UpdateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_job_with_options(request, headers, runtime)
@@ -9061,6 +13701,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateJobRequest,
     ) -> sae_20190506_models.UpdateJobResponse:
+        """
+        @summary Updates a job template.
+        
+        @param request: UpdateJobRequest
+        @return: UpdateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_job_with_options_async(request, headers, runtime)
@@ -9071,6 +13717,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateNamespaceResponse:
+        """
+        @summary Updates the information about a namespace.
+        
+        @param request: UpdateNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_micro_registration):
@@ -9109,6 +13763,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateNamespaceResponse:
+        """
+        @summary Updates the information about a namespace.
+        
+        @param request: UpdateNamespaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_micro_registration):
@@ -9145,6 +13807,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateNamespaceRequest,
     ) -> sae_20190506_models.UpdateNamespaceResponse:
+        """
+        @summary Updates the information about a namespace.
+        
+        @param request: UpdateNamespaceRequest
+        @return: UpdateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_namespace_with_options(request, headers, runtime)
@@ -9153,6 +13821,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateNamespaceRequest,
     ) -> sae_20190506_models.UpdateNamespaceResponse:
+        """
+        @summary Updates the information about a namespace.
+        
+        @param request: UpdateNamespaceRequest
+        @return: UpdateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_namespace_with_options_async(request, headers, runtime)
@@ -9163,6 +13837,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
+        """
+        @summary cn-beijing:test
+        
+        @param request: UpdateNamespaceVpcRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -9197,6 +13879,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
+        """
+        @summary cn-beijing:test
+        
+        @param request: UpdateNamespaceVpcRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNamespaceVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name_space_short_id):
@@ -9229,6 +13919,12 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateNamespaceVpcRequest,
     ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
+        """
+        @summary cn-beijing:test
+        
+        @param request: UpdateNamespaceVpcRequest
+        @return: UpdateNamespaceVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_namespace_vpc_with_options(request, headers, runtime)
@@ -9237,29 +13933,49 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateNamespaceVpcRequest,
     ) -> sae_20190506_models.UpdateNamespaceVpcResponse:
+        """
+        @summary cn-beijing:test
+        
+        @param request: UpdateNamespaceVpcRequest
+        @return: UpdateNamespaceVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_namespace_vpc_with_options_async(request, headers, runtime)
 
     def update_secret_with_options(
         self,
-        request: sae_20190506_models.UpdateSecretRequest,
+        tmp_req: sae_20190506_models.UpdateSecretRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateSecretResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary The HTTP status code. Valid values:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
+        
+        @param tmp_req: UpdateSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecretResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.UpdateSecretShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.secret_data):
+            request.secret_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.secret_data, 'SecretData', 'json')
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.secret_data_shrink):
+            query['SecretData'] = request.secret_data_shrink
         if not UtilClient.is_unset(request.secret_id):
             query['SecretId'] = request.secret_id
-        body = {}
-        if not UtilClient.is_unset(request.secret_data):
-            body['SecretData'] = request.secret_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSecret',
@@ -9279,23 +13995,37 @@ class Client(OpenApiClient):
 
     async def update_secret_with_options_async(
         self,
-        request: sae_20190506_models.UpdateSecretRequest,
+        tmp_req: sae_20190506_models.UpdateSecretRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.UpdateSecretResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary The HTTP status code. Valid values:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
+        
+        @param tmp_req: UpdateSecretRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSecretResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sae_20190506_models.UpdateSecretShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.secret_data):
+            request.secret_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.secret_data, 'SecretData', 'json')
         query = {}
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.secret_data_shrink):
+            query['SecretData'] = request.secret_data_shrink
         if not UtilClient.is_unset(request.secret_id):
             query['SecretId'] = request.secret_id
-        body = {}
-        if not UtilClient.is_unset(request.secret_data):
-            body['SecretData'] = request.secret_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UpdateSecret',
@@ -9317,6 +14047,16 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateSecretRequest,
     ) -> sae_20190506_models.UpdateSecretResponse:
+        """
+        @summary The HTTP status code. Valid values:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
+        
+        @param request: UpdateSecretRequest
+        @return: UpdateSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_secret_with_options(request, headers, runtime)
@@ -9325,6 +14065,456 @@ class Client(OpenApiClient):
         self,
         request: sae_20190506_models.UpdateSecretRequest,
     ) -> sae_20190506_models.UpdateSecretResponse:
+        """
+        @summary The HTTP status code. Valid values:
+        **2xx**: The call was successful.
+        **3xx**: The call was redirected.
+        **4xx**: The call failed.
+        **5xx**: A server error occurred.
+        
+        @param request: UpdateSecretRequest
+        @return: UpdateSecretResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_secret_with_options_async(request, headers, runtime)
+
+    def update_web_application_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_application_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateWebApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebApplication',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/applications/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_application(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationRequest,
+    ) -> sae_20190506_models.UpdateWebApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateWebApplicationRequest
+        @return: UpdateWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_web_application_with_options(application_id, request, headers, runtime)
+
+    async def update_web_application_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationRequest,
+    ) -> sae_20190506_models.UpdateWebApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateWebApplicationRequest
+        @return: UpdateWebApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_web_application_with_options_async(application_id, request, headers, runtime)
+
+    def update_web_application_scaling_config_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
+        """
+        @summary 更新弹性配置
+        
+        @param request: UpdateWebApplicationScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebApplicationScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebApplicationScalingConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-scaling/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebApplicationScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_application_scaling_config_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
+        """
+        @summary 更新弹性配置
+        
+        @param request: UpdateWebApplicationScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebApplicationScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebApplicationScalingConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-scaling/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebApplicationScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_application_scaling_config(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationScalingConfigRequest,
+    ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
+        """
+        @summary 更新弹性配置
+        
+        @param request: UpdateWebApplicationScalingConfigRequest
+        @return: UpdateWebApplicationScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_web_application_scaling_config_with_options(application_id, request, headers, runtime)
+
+    async def update_web_application_scaling_config_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationScalingConfigRequest,
+    ) -> sae_20190506_models.UpdateWebApplicationScalingConfigResponse:
+        """
+        @summary 更新弹性配置
+        
+        @param request: UpdateWebApplicationScalingConfigRequest
+        @return: UpdateWebApplicationScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_web_application_scaling_config_with_options_async(application_id, request, headers, runtime)
+
+    def update_web_application_traffic_config_with_options(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationTrafficConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
+        """
+        @summary 更新流量配置
+        
+        @param request: UpdateWebApplicationTrafficConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebApplicationTrafficConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebApplicationTrafficConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-traffic/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebApplicationTrafficConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_application_traffic_config_with_options_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationTrafficConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
+        """
+        @summary 更新流量配置
+        
+        @param request: UpdateWebApplicationTrafficConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebApplicationTrafficConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebApplicationTrafficConfig',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/application-traffic/{OpenApiUtilClient.get_encode_param(application_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebApplicationTrafficConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_application_traffic_config(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationTrafficConfigRequest,
+    ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
+        """
+        @summary 更新流量配置
+        
+        @param request: UpdateWebApplicationTrafficConfigRequest
+        @return: UpdateWebApplicationTrafficConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_web_application_traffic_config_with_options(application_id, request, headers, runtime)
+
+    async def update_web_application_traffic_config_async(
+        self,
+        application_id: str,
+        request: sae_20190506_models.UpdateWebApplicationTrafficConfigRequest,
+    ) -> sae_20190506_models.UpdateWebApplicationTrafficConfigResponse:
+        """
+        @summary 更新流量配置
+        
+        @param request: UpdateWebApplicationTrafficConfigRequest
+        @return: UpdateWebApplicationTrafficConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_web_application_traffic_config_with_options_async(application_id, request, headers, runtime)
+
+    def update_web_custom_domain_with_options(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.UpdateWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
+        """
+        @summary 更新自定义域名.
+        
+        @param request: UpdateWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_custom_domain_with_options_async(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.UpdateWebCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
+        """
+        @summary 更新自定义域名.
+        
+        @param request: UpdateWebCustomDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWebCustomDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWebCustomDomain',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v2/api/web/custom-domains/{OpenApiUtilClient.get_encode_param(domain_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.UpdateWebCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_custom_domain(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.UpdateWebCustomDomainRequest,
+    ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
+        """
+        @summary 更新自定义域名.
+        
+        @param request: UpdateWebCustomDomainRequest
+        @return: UpdateWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_web_custom_domain_with_options(domain_name, request, headers, runtime)
+
+    async def update_web_custom_domain_async(
+        self,
+        domain_name: str,
+        request: sae_20190506_models.UpdateWebCustomDomainRequest,
+    ) -> sae_20190506_models.UpdateWebCustomDomainResponse:
+        """
+        @summary 更新自定义域名.
+        
+        @param request: UpdateWebCustomDomainRequest
+        @return: UpdateWebCustomDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_web_custom_domain_with_options_async(domain_name, request, headers, runtime)

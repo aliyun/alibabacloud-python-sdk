@@ -1,7 +1,9474 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Any, Dict
+
+
+class AclEntryConfig(TeaModel):
+    def __init__(
+        self,
+        entry: str = None,
+    ):
+        # This parameter is required.
+        self.entry = entry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entry is not None:
+            result['entry'] = self.entry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entry') is not None:
+            self.entry = m.get('entry')
+        return self
+
+
+class AclConfig(TeaModel):
+    def __init__(
+        self,
+        acl_entries: List[AclEntryConfig] = None,
+    ):
+        # This parameter is required.
+        self.acl_entries = acl_entries
+
+    def validate(self):
+        if self.acl_entries:
+            for k in self.acl_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['aclEntries'] = []
+        if self.acl_entries is not None:
+            for k in self.acl_entries:
+                result['aclEntries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.acl_entries = []
+        if m.get('aclEntries') is not None:
+            for k in m.get('aclEntries'):
+                temp_model = AclEntryConfig()
+                self.acl_entries.append(temp_model.from_map(k))
+        return self
+
+
+class AppStackInstanceEndpoints(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        name: str = None,
+        protocol: str = None,
+    ):
+        self.address = address
+        self.name = name
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class AppStackInstanceParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class AppStackInstance(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        endpoints: List[AppStackInstanceEndpoints] = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        parameters: List[AppStackInstanceParameters] = None,
+        stack_id: str = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.endpoints = endpoints
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.parameters = parameters
+        self.stack_id = stack_id
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        if self.endpoints:
+            for k in self.endpoints:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['Endpoints'] = []
+        if self.endpoints is not None:
+            for k in self.endpoints:
+                result['Endpoints'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.endpoints = []
+        if m.get('Endpoints') is not None:
+            for k in m.get('Endpoints'):
+                temp_model = AppStackInstanceEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = AppStackInstanceParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class AppStackResource(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        instance_id: str = None,
+        product_code: str = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+        stack_id: str = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.instance_id = instance_id
+        self.product_code = product_code
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+        self.stack_id = stack_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class AppStackTaskSteps(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        duration: int = None,
+        end_time: int = None,
+        id: str = None,
+        message: str = None,
+        name: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        self.code = code
+        self.duration = duration
+        self.end_time = end_time
+        self.id = id
+        self.message = message
+        self.name = name
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class AppStackTask(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        end_time: int = None,
+        instance_id: str = None,
+        stack_id: str = None,
+        start_time: int = None,
+        status: str = None,
+        steps: List[AppStackTaskSteps] = None,
+        task_id: str = None,
+    ):
+        self.create_time = create_time
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.stack_id = stack_id
+        self.start_time = start_time
+        self.status = status
+        self.steps = steps
+        self.task_id = task_id
+
+    def validate(self):
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.stack_id is not None:
+            result['StackId'] = self.stack_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('StackId') is not None:
+            self.stack_id = m.get('StackId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = AppStackTaskSteps()
+                self.steps.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DNSOption(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CustomDNS(TeaModel):
+    def __init__(
+        self,
+        dns_options: List[DNSOption] = None,
+        name_servers: List[str] = None,
+        searches: List[str] = None,
+    ):
+        self.dns_options = dns_options
+        self.name_servers = name_servers
+        self.searches = searches
+
+    def validate(self):
+        if self.dns_options:
+            for k in self.dns_options:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['dnsOptions'] = []
+        if self.dns_options is not None:
+            for k in self.dns_options:
+                result['dnsOptions'].append(k.to_map() if k else None)
+        if self.name_servers is not None:
+            result['nameServers'] = self.name_servers
+        if self.searches is not None:
+            result['searches'] = self.searches
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.dns_options = []
+        if m.get('dnsOptions') is not None:
+            for k in m.get('dnsOptions'):
+                temp_model = DNSOption()
+                self.dns_options.append(temp_model.from_map(k))
+        if m.get('nameServers') is not None:
+            self.name_servers = m.get('nameServers')
+        if m.get('searches') is not None:
+            self.searches = m.get('searches')
+        return self
+
+
+class CustomHealthCheckConfig(TeaModel):
+    def __init__(
+        self,
+        failure_threshold: int = None,
+        http_get_url: str = None,
+        initial_delay_seconds: int = None,
+        period_seconds: int = None,
+        success_threshold: int = None,
+        timeout_seconds: int = None,
+    ):
+        self.failure_threshold = failure_threshold
+        self.http_get_url = http_get_url
+        self.initial_delay_seconds = initial_delay_seconds
+        self.period_seconds = period_seconds
+        self.success_threshold = success_threshold
+        self.timeout_seconds = timeout_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failure_threshold is not None:
+            result['failureThreshold'] = self.failure_threshold
+        if self.http_get_url is not None:
+            result['httpGetUrl'] = self.http_get_url
+        if self.initial_delay_seconds is not None:
+            result['initialDelaySeconds'] = self.initial_delay_seconds
+        if self.period_seconds is not None:
+            result['periodSeconds'] = self.period_seconds
+        if self.success_threshold is not None:
+            result['successThreshold'] = self.success_threshold
+        if self.timeout_seconds is not None:
+            result['timeoutSeconds'] = self.timeout_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failureThreshold') is not None:
+            self.failure_threshold = m.get('failureThreshold')
+        if m.get('httpGetUrl') is not None:
+            self.http_get_url = m.get('httpGetUrl')
+        if m.get('initialDelaySeconds') is not None:
+            self.initial_delay_seconds = m.get('initialDelaySeconds')
+        if m.get('periodSeconds') is not None:
+            self.period_seconds = m.get('periodSeconds')
+        if m.get('successThreshold') is not None:
+            self.success_threshold = m.get('successThreshold')
+        if m.get('timeoutSeconds') is not None:
+            self.timeout_seconds = m.get('timeoutSeconds')
+        return self
+
+
+class CustomRuntimeConfig(TeaModel):
+    def __init__(
+        self,
+        args: List[str] = None,
+        command: List[str] = None,
+    ):
+        self.args = args
+        self.command = command
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['args'] = self.args
+        if self.command is not None:
+            result['command'] = self.command
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('args') is not None:
+            self.args = m.get('args')
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        return self
+
+
+class HTTPTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        acl_config: AclConfig = None,
+        auth_config: Any = None,
+        auth_type: str = None,
+        disable_urlinternet: bool = None,
+        safe_mode: bool = None,
+    ):
+        self.acl_config = acl_config
+        self.auth_config = auth_config
+        self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
+        self.safe_mode = safe_mode
+
+    def validate(self):
+        if self.acl_config:
+            self.acl_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_config is not None:
+            result['aclConfig'] = self.acl_config.to_map()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['disableURLInternet'] = self.disable_urlinternet
+        if self.safe_mode is not None:
+            result['safeMode'] = self.safe_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aclConfig') is not None:
+            temp_model = AclConfig()
+            self.acl_config = temp_model.from_map(m['aclConfig'])
+        if m.get('authConfig') is not None:
+            self.auth_config = m.get('authConfig')
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
+        if m.get('disableURLInternet') is not None:
+            self.disable_urlinternet = m.get('disableURLInternet')
+        if m.get('safeMode') is not None:
+            self.safe_mode = m.get('safeMode')
+        return self
+
+
+class ImageConfig(TeaModel):
+    def __init__(
+        self,
+        acceleration_type: str = None,
+        image: str = None,
+        instance_id: str = None,
+    ):
+        self.acceleration_type = acceleration_type
+        self.image = image
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acceleration_type is not None:
+            result['accelerationType'] = self.acceleration_type
+        if self.image is not None:
+            result['image'] = self.image
+        if self.instance_id is not None:
+            result['instanceID'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accelerationType') is not None:
+            self.acceleration_type = m.get('accelerationType')
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        if m.get('instanceID') is not None:
+            self.instance_id = m.get('instanceID')
+        return self
+
+
+class LifecycleHook(TeaModel):
+    def __init__(
+        self,
+        handler: str = None,
+        timeout: int = None,
+    ):
+        self.handler = handler
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.handler is not None:
+            result['handler'] = self.handler
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('handler') is not None:
+            self.handler = m.get('handler')
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        return self
+
+
+class InstanceLifecycleConfig(TeaModel):
+    def __init__(
+        self,
+        pre_freeze: LifecycleHook = None,
+        pre_stop: LifecycleHook = None,
+    ):
+        self.pre_freeze = pre_freeze
+        self.pre_stop = pre_stop
+
+    def validate(self):
+        if self.pre_freeze:
+            self.pre_freeze.validate()
+        if self.pre_stop:
+            self.pre_stop.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pre_freeze is not None:
+            result['preFreeze'] = self.pre_freeze.to_map()
+        if self.pre_stop is not None:
+            result['preStop'] = self.pre_stop.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('preFreeze') is not None:
+            temp_model = LifecycleHook()
+            self.pre_freeze = temp_model.from_map(m['preFreeze'])
+        if m.get('preStop') is not None:
+            temp_model = LifecycleHook()
+            self.pre_stop = temp_model.from_map(m['preStop'])
+        return self
+
+
+class ProbeProbeHandlerHttpGetHttpHeaders(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ProbeProbeHandlerHttpGet(TeaModel):
+    def __init__(
+        self,
+        http_headers: List[ProbeProbeHandlerHttpGetHttpHeaders] = None,
+        path: str = None,
+        port: int = None,
+    ):
+        self.http_headers = http_headers
+        self.path = path
+        self.port = port
+
+    def validate(self):
+        if self.http_headers:
+            for k in self.http_headers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['httpHeaders'] = []
+        if self.http_headers is not None:
+            for k in self.http_headers:
+                result['httpHeaders'].append(k.to_map() if k else None)
+        if self.path is not None:
+            result['path'] = self.path
+        if self.port is not None:
+            result['port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.http_headers = []
+        if m.get('httpHeaders') is not None:
+            for k in m.get('httpHeaders'):
+                temp_model = ProbeProbeHandlerHttpGetHttpHeaders()
+                self.http_headers.append(temp_model.from_map(k))
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        return self
+
+
+class ProbeProbeHandlerTcpSocket(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+    ):
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        return self
+
+
+class ProbeProbeHandler(TeaModel):
+    def __init__(
+        self,
+        http_get: ProbeProbeHandlerHttpGet = None,
+        tcp_socket: ProbeProbeHandlerTcpSocket = None,
+    ):
+        self.http_get = http_get
+        self.tcp_socket = tcp_socket
+
+    def validate(self):
+        if self.http_get:
+            self.http_get.validate()
+        if self.tcp_socket:
+            self.tcp_socket.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_get is not None:
+            result['httpGet'] = self.http_get.to_map()
+        if self.tcp_socket is not None:
+            result['tcpSocket'] = self.tcp_socket.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('httpGet') is not None:
+            temp_model = ProbeProbeHandlerHttpGet()
+            self.http_get = temp_model.from_map(m['httpGet'])
+        if m.get('tcpSocket') is not None:
+            temp_model = ProbeProbeHandlerTcpSocket()
+            self.tcp_socket = temp_model.from_map(m['tcpSocket'])
+        return self
+
+
+class Probe(TeaModel):
+    def __init__(
+        self,
+        failure_threshold: int = None,
+        initial_delay_seconds: int = None,
+        period_seconds: int = None,
+        probe_handler: ProbeProbeHandler = None,
+        timeout_seconds: int = None,
+    ):
+        self.failure_threshold = failure_threshold
+        self.initial_delay_seconds = initial_delay_seconds
+        self.period_seconds = period_seconds
+        self.probe_handler = probe_handler
+        self.timeout_seconds = timeout_seconds
+
+    def validate(self):
+        if self.probe_handler:
+            self.probe_handler.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failure_threshold is not None:
+            result['failureThreshold'] = self.failure_threshold
+        if self.initial_delay_seconds is not None:
+            result['initialDelaySeconds'] = self.initial_delay_seconds
+        if self.period_seconds is not None:
+            result['periodSeconds'] = self.period_seconds
+        if self.probe_handler is not None:
+            result['probeHandler'] = self.probe_handler.to_map()
+        if self.timeout_seconds is not None:
+            result['timeoutSeconds'] = self.timeout_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failureThreshold') is not None:
+            self.failure_threshold = m.get('failureThreshold')
+        if m.get('initialDelaySeconds') is not None:
+            self.initial_delay_seconds = m.get('initialDelaySeconds')
+        if m.get('periodSeconds') is not None:
+            self.period_seconds = m.get('periodSeconds')
+        if m.get('probeHandler') is not None:
+            temp_model = ProbeProbeHandler()
+            self.probe_handler = temp_model.from_map(m['probeHandler'])
+        if m.get('timeoutSeconds') is not None:
+            self.timeout_seconds = m.get('timeoutSeconds')
+        return self
+
+
+class LogConfig(TeaModel):
+    def __init__(
+        self,
+        enable_instance_metrics: bool = None,
+        enable_request_metrics: bool = None,
+        log_begin_rule: str = None,
+        logstore: str = None,
+        project: str = None,
+        push_to_user_sls: bool = None,
+    ):
+        self.enable_instance_metrics = enable_instance_metrics
+        self.enable_request_metrics = enable_request_metrics
+        self.log_begin_rule = log_begin_rule
+        self.logstore = logstore
+        self.project = project
+        self.push_to_user_sls = push_to_user_sls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_instance_metrics is not None:
+            result['enableInstanceMetrics'] = self.enable_instance_metrics
+        if self.enable_request_metrics is not None:
+            result['enableRequestMetrics'] = self.enable_request_metrics
+        if self.log_begin_rule is not None:
+            result['logBeginRule'] = self.log_begin_rule
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.project is not None:
+            result['project'] = self.project
+        if self.push_to_user_sls is not None:
+            result['pushToUserSLS'] = self.push_to_user_sls
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableInstanceMetrics') is not None:
+            self.enable_instance_metrics = m.get('enableInstanceMetrics')
+        if m.get('enableRequestMetrics') is not None:
+            self.enable_request_metrics = m.get('enableRequestMetrics')
+        if m.get('logBeginRule') is not None:
+            self.log_begin_rule = m.get('logBeginRule')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('pushToUserSLS') is not None:
+            self.push_to_user_sls = m.get('pushToUserSLS')
+        return self
+
+
+class NASMountConfig(TeaModel):
+    def __init__(
+        self,
+        enable_tls: bool = None,
+        mount_dir: str = None,
+        server_addr: str = None,
+    ):
+        self.enable_tls = enable_tls
+        self.mount_dir = mount_dir
+        self.server_addr = server_addr
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_tls is not None:
+            result['enableTLS'] = self.enable_tls
+        if self.mount_dir is not None:
+            result['mountDir'] = self.mount_dir
+        if self.server_addr is not None:
+            result['serverAddr'] = self.server_addr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableTLS') is not None:
+            self.enable_tls = m.get('enableTLS')
+        if m.get('mountDir') is not None:
+            self.mount_dir = m.get('mountDir')
+        if m.get('serverAddr') is not None:
+            self.server_addr = m.get('serverAddr')
+        return self
+
+
+class NASConfig(TeaModel):
+    def __init__(
+        self,
+        mount_points: List[NASMountConfig] = None,
+    ):
+        self.mount_points = mount_points
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['mountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['mountPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_points = []
+        if m.get('mountPoints') is not None:
+            for k in m.get('mountPoints'):
+                temp_model = NASMountConfig()
+                self.mount_points.append(temp_model.from_map(k))
+        return self
+
+
+class OSSMountPoint(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        bucket_path: str = None,
+        mount_dir: str = None,
+        read_only: bool = None,
+    ):
+        self.bucket_name = bucket_name
+        self.bucket_path = bucket_path
+        self.mount_dir = mount_dir
+        self.read_only = read_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['bucketName'] = self.bucket_name
+        if self.bucket_path is not None:
+            result['bucketPath'] = self.bucket_path
+        if self.mount_dir is not None:
+            result['mountDir'] = self.mount_dir
+        if self.read_only is not None:
+            result['readOnly'] = self.read_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucketName') is not None:
+            self.bucket_name = m.get('bucketName')
+        if m.get('bucketPath') is not None:
+            self.bucket_path = m.get('bucketPath')
+        if m.get('mountDir') is not None:
+            self.mount_dir = m.get('mountDir')
+        if m.get('readOnly') is not None:
+            self.read_only = m.get('readOnly')
+        return self
+
+
+class OSSMountConfig(TeaModel):
+    def __init__(
+        self,
+        mount_points: List[OSSMountPoint] = None,
+    ):
+        self.mount_points = mount_points
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['mountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['mountPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_points = []
+        if m.get('mountPoints') is not None:
+            for k in m.get('mountPoints'):
+                temp_model = OSSMountPoint()
+                self.mount_points.append(temp_model.from_map(k))
+        return self
+
+
+class ScaleConfig(TeaModel):
+    def __init__(
+        self,
+        always_allocate_cpu: bool = None,
+        maximum_instance_count: int = None,
+        minimum_instance_count: int = None,
+        request_id: str = None,
+    ):
+        self.always_allocate_cpu = always_allocate_cpu
+        self.maximum_instance_count = maximum_instance_count
+        self.minimum_instance_count = minimum_instance_count
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.always_allocate_cpu is not None:
+            result['alwaysAllocateCPU'] = self.always_allocate_cpu
+        if self.maximum_instance_count is not None:
+            result['maximumInstanceCount'] = self.maximum_instance_count
+        if self.minimum_instance_count is not None:
+            result['minimumInstanceCount'] = self.minimum_instance_count
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alwaysAllocateCPU') is not None:
+            self.always_allocate_cpu = m.get('alwaysAllocateCPU')
+        if m.get('maximumInstanceCount') is not None:
+            self.maximum_instance_count = m.get('maximumInstanceCount')
+        if m.get('minimumInstanceCount') is not None:
+            self.minimum_instance_count = m.get('minimumInstanceCount')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SLSConfigCollectConfigs(TeaModel):
+    def __init__(
+        self,
+        log_path: str = None,
+        log_type: str = None,
+        logstore_name: str = None,
+        logtail_name: str = None,
+        project_name: str = None,
+    ):
+        self.log_path = log_path
+        self.log_type = log_type
+        self.logstore_name = logstore_name
+        self.logtail_name = logtail_name
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_path is not None:
+            result['logPath'] = self.log_path
+        if self.log_type is not None:
+            result['logType'] = self.log_type
+        if self.logstore_name is not None:
+            result['logstoreName'] = self.logstore_name
+        if self.logtail_name is not None:
+            result['logtailName'] = self.logtail_name
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logPath') is not None:
+            self.log_path = m.get('logPath')
+        if m.get('logType') is not None:
+            self.log_type = m.get('logType')
+        if m.get('logstoreName') is not None:
+            self.logstore_name = m.get('logstoreName')
+        if m.get('logtailName') is not None:
+            self.logtail_name = m.get('logtailName')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        return self
+
+
+class SLSConfig(TeaModel):
+    def __init__(
+        self,
+        collect_configs: List[SLSConfigCollectConfigs] = None,
+    ):
+        self.collect_configs = collect_configs
+
+    def validate(self):
+        if self.collect_configs:
+            for k in self.collect_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['collectConfigs'] = []
+        if self.collect_configs is not None:
+            for k in self.collect_configs:
+                result['collectConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.collect_configs = []
+        if m.get('collectConfigs') is not None:
+            for k in m.get('collectConfigs'):
+                temp_model = SLSConfigCollectConfigs()
+                self.collect_configs.append(temp_model.from_map(k))
+        return self
+
+
+class JaegerConfig(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+    ):
+        self.endpoint = endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        return self
+
+
+class TracingConfig(TeaModel):
+    def __init__(
+        self,
+        jaeger_config: JaegerConfig = None,
+        params: Any = None,
+        type: str = None,
+    ):
+        self.jaeger_config = jaeger_config
+        self.params = params
+        self.type = type
+
+    def validate(self):
+        if self.jaeger_config:
+            self.jaeger_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jaeger_config is not None:
+            result['jaegerConfig'] = self.jaeger_config.to_map()
+        if self.params is not None:
+            result['params'] = self.params
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('jaegerConfig') is not None:
+            temp_model = JaegerConfig()
+            self.jaeger_config = temp_model.from_map(m['jaegerConfig'])
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class Version(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        description: str = None,
+        image: str = None,
+        last_modified_time: str = None,
+        request_id: str = None,
+        version_id: str = None,
+        weight: float = None,
+    ):
+        self.created_time = created_time
+        self.description = description
+        self.image = image
+        self.last_modified_time = last_modified_time
+        self.request_id = request_id
+        self.version_id = version_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.image is not None:
+            result['image'] = self.image
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        if self.weight is not None:
+            result['weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('image') is not None:
+            self.image = m.get('image')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        if m.get('weight') is not None:
+            self.weight = m.get('weight')
+        return self
+
+
+class VPCConfig(TeaModel):
+    def __init__(
+        self,
+        anytunnel_via_eni: bool = None,
+        role: str = None,
+        security_group_id: str = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
+    ):
+        self.anytunnel_via_eni = anytunnel_via_eni
+        self.role = role
+        self.security_group_id = security_group_id
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anytunnel_via_eni is not None:
+            result['anytunnelViaENI'] = self.anytunnel_via_eni
+        if self.role is not None:
+            result['role'] = self.role
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.v_switch_ids is not None:
+            result['vSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('anytunnelViaENI') is not None:
+            self.anytunnel_via_eni = m.get('anytunnelViaENI')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('vSwitchIds') is not None:
+            self.v_switch_ids = m.get('vSwitchIds')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class Application(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        application_id: str = None,
+        application_name: str = None,
+        args: str = None,
+        ca_port: int = None,
+        code_checksum: str = None,
+        code_size: int = None,
+        command: str = None,
+        cpu: float = None,
+        created_time: str = None,
+        custom_dns: CustomDNS = None,
+        custom_domain_name: str = None,
+        custom_health_check_config: CustomHealthCheckConfig = None,
+        custom_runtime_config: CustomRuntimeConfig = None,
+        description: str = None,
+        disk_size: int = None,
+        enable_app_metric: bool = None,
+        enable_arms_advanced: bool = None,
+        environment_variables: Dict[str, str] = None,
+        gpu_memory_size: int = None,
+        handler: str = None,
+        http_trigger_config: HTTPTriggerConfig = None,
+        image_config: ImageConfig = None,
+        initialization_timeout: int = None,
+        initializer: str = None,
+        instance_concurrency: int = None,
+        instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
+        instance_type: str = None,
+        internet_access: bool = None,
+        last_modified_time: str = None,
+        layers: List[str] = None,
+        layers_arn_v2: List[str] = None,
+        liveness_probe: Probe = None,
+        log_config: LogConfig = None,
+        memory_size: int = None,
+        namespace: str = None,
+        namespace_id: str = None,
+        namespace_name: str = None,
+        nas_config: NASConfig = None,
+        oss_mount_config: OSSMountConfig = None,
+        runtime: str = None,
+        scale_config: ScaleConfig = None,
+        sls_config: SLSConfig = None,
+        startup_probe: Probe = None,
+        timeout: int = None,
+        tracing_config: TracingConfig = None,
+        url_internet: str = None,
+        url_intranet: str = None,
+        version: Version = None,
+        vpc_config: VPCConfig = None,
+    ):
+        self.request_id = request_id
+        self.application_id = application_id
+        self.application_name = application_name
+        self.args = args
+        self.ca_port = ca_port
+        self.code_checksum = code_checksum
+        self.code_size = code_size
+        self.command = command
+        self.cpu = cpu
+        self.created_time = created_time
+        self.custom_dns = custom_dns
+        self.custom_domain_name = custom_domain_name
+        self.custom_health_check_config = custom_health_check_config
+        self.custom_runtime_config = custom_runtime_config
+        self.description = description
+        self.disk_size = disk_size
+        self.enable_app_metric = enable_app_metric
+        self.enable_arms_advanced = enable_arms_advanced
+        self.environment_variables = environment_variables
+        self.gpu_memory_size = gpu_memory_size
+        self.handler = handler
+        self.http_trigger_config = http_trigger_config
+        self.image_config = image_config
+        self.initialization_timeout = initialization_timeout
+        self.initializer = initializer
+        self.instance_concurrency = instance_concurrency
+        self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
+        self.instance_type = instance_type
+        self.internet_access = internet_access
+        self.last_modified_time = last_modified_time
+        self.layers = layers
+        self.layers_arn_v2 = layers_arn_v2
+        self.liveness_probe = liveness_probe
+        self.log_config = log_config
+        self.memory_size = memory_size
+        self.namespace = namespace
+        self.namespace_id = namespace_id
+        self.namespace_name = namespace_name
+        self.nas_config = nas_config
+        self.oss_mount_config = oss_mount_config
+        self.runtime = runtime
+        self.scale_config = scale_config
+        self.sls_config = sls_config
+        self.startup_probe = startup_probe
+        self.timeout = timeout
+        self.tracing_config = tracing_config
+        self.url_internet = url_internet
+        self.url_intranet = url_intranet
+        self.version = version
+        self.vpc_config = vpc_config
+
+    def validate(self):
+        if self.custom_dns:
+            self.custom_dns.validate()
+        if self.custom_health_check_config:
+            self.custom_health_check_config.validate()
+        if self.custom_runtime_config:
+            self.custom_runtime_config.validate()
+        if self.http_trigger_config:
+            self.http_trigger_config.validate()
+        if self.image_config:
+            self.image_config.validate()
+        if self.instance_lifecycle_config:
+            self.instance_lifecycle_config.validate()
+        if self.liveness_probe:
+            self.liveness_probe.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.nas_config:
+            self.nas_config.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
+        if self.scale_config:
+            self.scale_config.validate()
+        if self.sls_config:
+            self.sls_config.validate()
+        if self.startup_probe:
+            self.startup_probe.validate()
+        if self.tracing_config:
+            self.tracing_config.validate()
+        if self.version:
+            self.version.validate()
+        if self.vpc_config:
+            self.vpc_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.application_id is not None:
+            result['applicationId'] = self.application_id
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.args is not None:
+            result['args'] = self.args
+        if self.ca_port is not None:
+            result['caPort'] = self.ca_port
+        if self.code_checksum is not None:
+            result['codeChecksum'] = self.code_checksum
+        if self.code_size is not None:
+            result['codeSize'] = self.code_size
+        if self.command is not None:
+            result['command'] = self.command
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.custom_dns is not None:
+            result['customDNS'] = self.custom_dns.to_map()
+        if self.custom_domain_name is not None:
+            result['customDomainName'] = self.custom_domain_name
+        if self.custom_health_check_config is not None:
+            result['customHealthCheckConfig'] = self.custom_health_check_config.to_map()
+        if self.custom_runtime_config is not None:
+            result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
+        if self.enable_app_metric is not None:
+            result['enableAppMetric'] = self.enable_app_metric
+        if self.enable_arms_advanced is not None:
+            result['enableArmsAdvanced'] = self.enable_arms_advanced
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.gpu_memory_size is not None:
+            result['gpuMemorySize'] = self.gpu_memory_size
+        if self.handler is not None:
+            result['handler'] = self.handler
+        if self.http_trigger_config is not None:
+            result['httpTriggerConfig'] = self.http_trigger_config.to_map()
+        if self.image_config is not None:
+            result['imageConfig'] = self.image_config.to_map()
+        if self.initialization_timeout is not None:
+            result['initializationTimeout'] = self.initialization_timeout
+        if self.initializer is not None:
+            result['initializer'] = self.initializer
+        if self.instance_concurrency is not None:
+            result['instanceConcurrency'] = self.instance_concurrency
+        if self.instance_lifecycle_config is not None:
+            result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.internet_access is not None:
+            result['internetAccess'] = self.internet_access
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.layers is not None:
+            result['layers'] = self.layers
+        if self.layers_arn_v2 is not None:
+            result['layersArnV2'] = self.layers_arn_v2
+        if self.liveness_probe is not None:
+            result['livenessProbe'] = self.liveness_probe.to_map()
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.memory_size is not None:
+            result['memorySize'] = self.memory_size
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.namespace_id is not None:
+            result['namespaceID'] = self.namespace_id
+        if self.namespace_name is not None:
+            result['namespaceName'] = self.namespace_name
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
+        if self.scale_config is not None:
+            result['scaleConfig'] = self.scale_config.to_map()
+        if self.sls_config is not None:
+            result['slsConfig'] = self.sls_config.to_map()
+        if self.startup_probe is not None:
+            result['startupProbe'] = self.startup_probe.to_map()
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.tracing_config is not None:
+            result['tracingConfig'] = self.tracing_config.to_map()
+        if self.url_internet is not None:
+            result['urlInternet'] = self.url_internet
+        if self.url_intranet is not None:
+            result['urlIntranet'] = self.url_intranet
+        if self.version is not None:
+            result['version'] = self.version.to_map()
+        if self.vpc_config is not None:
+            result['vpcConfig'] = self.vpc_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('applicationId') is not None:
+            self.application_id = m.get('applicationId')
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('args') is not None:
+            self.args = m.get('args')
+        if m.get('caPort') is not None:
+            self.ca_port = m.get('caPort')
+        if m.get('codeChecksum') is not None:
+            self.code_checksum = m.get('codeChecksum')
+        if m.get('codeSize') is not None:
+            self.code_size = m.get('codeSize')
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('customDNS') is not None:
+            temp_model = CustomDNS()
+            self.custom_dns = temp_model.from_map(m['customDNS'])
+        if m.get('customDomainName') is not None:
+            self.custom_domain_name = m.get('customDomainName')
+        if m.get('customHealthCheckConfig') is not None:
+            temp_model = CustomHealthCheckConfig()
+            self.custom_health_check_config = temp_model.from_map(m['customHealthCheckConfig'])
+        if m.get('customRuntimeConfig') is not None:
+            temp_model = CustomRuntimeConfig()
+            self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
+        if m.get('enableAppMetric') is not None:
+            self.enable_app_metric = m.get('enableAppMetric')
+        if m.get('enableArmsAdvanced') is not None:
+            self.enable_arms_advanced = m.get('enableArmsAdvanced')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('gpuMemorySize') is not None:
+            self.gpu_memory_size = m.get('gpuMemorySize')
+        if m.get('handler') is not None:
+            self.handler = m.get('handler')
+        if m.get('httpTriggerConfig') is not None:
+            temp_model = HTTPTriggerConfig()
+            self.http_trigger_config = temp_model.from_map(m['httpTriggerConfig'])
+        if m.get('imageConfig') is not None:
+            temp_model = ImageConfig()
+            self.image_config = temp_model.from_map(m['imageConfig'])
+        if m.get('initializationTimeout') is not None:
+            self.initialization_timeout = m.get('initializationTimeout')
+        if m.get('initializer') is not None:
+            self.initializer = m.get('initializer')
+        if m.get('instanceConcurrency') is not None:
+            self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('instanceLifecycleConfig') is not None:
+            temp_model = InstanceLifecycleConfig()
+            self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('internetAccess') is not None:
+            self.internet_access = m.get('internetAccess')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('layers') is not None:
+            self.layers = m.get('layers')
+        if m.get('layersArnV2') is not None:
+            self.layers_arn_v2 = m.get('layersArnV2')
+        if m.get('livenessProbe') is not None:
+            temp_model = Probe()
+            self.liveness_probe = temp_model.from_map(m['livenessProbe'])
+        if m.get('logConfig') is not None:
+            temp_model = LogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('memorySize') is not None:
+            self.memory_size = m.get('memorySize')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('namespaceID') is not None:
+            self.namespace_id = m.get('namespaceID')
+        if m.get('namespaceName') is not None:
+            self.namespace_name = m.get('namespaceName')
+        if m.get('nasConfig') is not None:
+            temp_model = NASConfig()
+            self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('ossMountConfig') is not None:
+            temp_model = OSSMountConfig()
+            self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('scaleConfig') is not None:
+            temp_model = ScaleConfig()
+            self.scale_config = temp_model.from_map(m['scaleConfig'])
+        if m.get('slsConfig') is not None:
+            temp_model = SLSConfig()
+            self.sls_config = temp_model.from_map(m['slsConfig'])
+        if m.get('startupProbe') is not None:
+            temp_model = Probe()
+            self.startup_probe = temp_model.from_map(m['startupProbe'])
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('tracingConfig') is not None:
+            temp_model = TracingConfig()
+            self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('urlInternet') is not None:
+            self.url_internet = m.get('urlInternet')
+        if m.get('urlIntranet') is not None:
+            self.url_intranet = m.get('urlIntranet')
+        if m.get('version') is not None:
+            temp_model = Version()
+            self.version = temp_model.from_map(m['version'])
+        if m.get('vpcConfig') is not None:
+            temp_model = VPCConfig()
+            self.vpc_config = temp_model.from_map(m['vpcConfig'])
+        return self
+
+
+class ApplicationStatus(TeaModel):
+    def __init__(
+        self,
+        instance_count: int = None,
+        scale_config: ScaleConfig = None,
+    ):
+        self.instance_count = instance_count
+        self.scale_config = scale_config
+
+    def validate(self):
+        if self.scale_config:
+            self.scale_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_count is not None:
+            result['instanceCount'] = self.instance_count
+        if self.scale_config is not None:
+            result['scaleConfig'] = self.scale_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceCount') is not None:
+            self.instance_count = m.get('instanceCount')
+        if m.get('scaleConfig') is not None:
+            temp_model = ScaleConfig()
+            self.scale_config = temp_model.from_map(m['scaleConfig'])
+        return self
+
+
+class ApplicationWithStatus(TeaModel):
+    def __init__(
+        self,
+        application: Application = None,
+        status: ApplicationStatus = None,
+    ):
+        self.application = application
+        self.status = status
+
+    def validate(self):
+        if self.application:
+            self.application.validate()
+        if self.status:
+            self.status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application is not None:
+            result['application'] = self.application.to_map()
+        if self.status is not None:
+            result['status'] = self.status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('application') is not None:
+            temp_model = Application()
+            self.application = temp_model.from_map(m['application'])
+        if m.get('status') is not None:
+            temp_model = ApplicationStatus()
+            self.status = temp_model.from_map(m['status'])
+        return self
+
+
+class ArmsConfig(TeaModel):
+    def __init__(
+        self,
+        agent_version: str = None,
+        app_id: str = None,
+        license_key: str = None,
+    ):
+        self.agent_version = agent_version
+        self.app_id = app_id
+        self.license_key = license_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_version is not None:
+            result['agentVersion'] = self.agent_version
+        if self.app_id is not None:
+            result['appId'] = self.app_id
+        if self.license_key is not None:
+            result['licenseKey'] = self.license_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentVersion') is not None:
+            self.agent_version = m.get('agentVersion')
+        if m.get('appId') is not None:
+            self.app_id = m.get('appId')
+        if m.get('licenseKey') is not None:
+            self.license_key = m.get('licenseKey')
+        return self
+
+
+class TomcatConfig(TeaModel):
+    def __init__(
+        self,
+        context_path: str = None,
+        max_threads: int = None,
+        port: int = None,
+        uri_encoding: str = None,
+        use_body_encoding_for_uri: bool = None,
+        version: str = None,
+    ):
+        self.context_path = context_path
+        self.max_threads = max_threads
+        self.port = port
+        self.uri_encoding = uri_encoding
+        self.use_body_encoding_for_uri = use_body_encoding_for_uri
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context_path is not None:
+            result['ContextPath'] = self.context_path
+        if self.max_threads is not None:
+            result['MaxThreads'] = self.max_threads
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.uri_encoding is not None:
+            result['UriEncoding'] = self.uri_encoding
+        if self.use_body_encoding_for_uri is not None:
+            result['UseBodyEncodingForUri'] = self.use_body_encoding_for_uri
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContextPath') is not None:
+            self.context_path = m.get('ContextPath')
+        if m.get('MaxThreads') is not None:
+            self.max_threads = m.get('MaxThreads')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('UriEncoding') is not None:
+            self.uri_encoding = m.get('UriEncoding')
+        if m.get('UseBodyEncodingForUri') is not None:
+            self.use_body_encoding_for_uri = m.get('UseBodyEncodingForUri')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class BuildPipelineBuildConfig(TeaModel):
+    def __init__(
+        self,
+        before_build_command: str = None,
+        build_type: str = None,
+        dockerfile_path: str = None,
+        run_command: str = None,
+        runtime_type: str = None,
+        runtime_version: str = None,
+        tomcat_config: TomcatConfig = None,
+        working_dir: str = None,
+    ):
+        self.before_build_command = before_build_command
+        # This parameter is required.
+        self.build_type = build_type
+        self.dockerfile_path = dockerfile_path
+        self.run_command = run_command
+        self.runtime_type = runtime_type
+        self.runtime_version = runtime_version
+        self.tomcat_config = tomcat_config
+        self.working_dir = working_dir
+
+    def validate(self):
+        if self.tomcat_config:
+            self.tomcat_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.before_build_command is not None:
+            result['BeforeBuildCommand'] = self.before_build_command
+        if self.build_type is not None:
+            result['BuildType'] = self.build_type
+        if self.dockerfile_path is not None:
+            result['DockerfilePath'] = self.dockerfile_path
+        if self.run_command is not None:
+            result['RunCommand'] = self.run_command
+        if self.runtime_type is not None:
+            result['RuntimeType'] = self.runtime_type
+        if self.runtime_version is not None:
+            result['RuntimeVersion'] = self.runtime_version
+        if self.tomcat_config is not None:
+            result['TomcatConfig'] = self.tomcat_config.to_map()
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeforeBuildCommand') is not None:
+            self.before_build_command = m.get('BeforeBuildCommand')
+        if m.get('BuildType') is not None:
+            self.build_type = m.get('BuildType')
+        if m.get('DockerfilePath') is not None:
+            self.dockerfile_path = m.get('DockerfilePath')
+        if m.get('RunCommand') is not None:
+            self.run_command = m.get('RunCommand')
+        if m.get('RuntimeType') is not None:
+            self.runtime_type = m.get('RuntimeType')
+        if m.get('RuntimeVersion') is not None:
+            self.runtime_version = m.get('RuntimeVersion')
+        if m.get('TomcatConfig') is not None:
+            temp_model = TomcatConfig()
+            self.tomcat_config = temp_model.from_map(m['TomcatConfig'])
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class BuildPipelineCodeConfig(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        branch_name: str = None,
+        commit_id: str = None,
+        commit_url: str = None,
+        organization_id: str = None,
+        provider: str = None,
+        repo_full_name: str = None,
+        repo_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+        # This parameter is required.
+        self.branch_name = branch_name
+        self.commit_id = commit_id
+        self.commit_url = commit_url
+        self.organization_id = organization_id
+        # This parameter is required.
+        self.provider = provider
+        # This parameter is required.
+        self.repo_full_name = repo_full_name
+        # This parameter is required.
+        self.repo_id = repo_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+        if self.commit_id is not None:
+            result['CommitId'] = self.commit_id
+        if self.commit_url is not None:
+            result['CommitUrl'] = self.commit_url
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.repo_full_name is not None:
+            result['RepoFullName'] = self.repo_full_name
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+        if m.get('CommitId') is not None:
+            self.commit_id = m.get('CommitId')
+        if m.get('CommitUrl') is not None:
+            self.commit_url = m.get('CommitUrl')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('RepoFullName') is not None:
+            self.repo_full_name = m.get('RepoFullName')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        return self
+
+
+class BuildPipelineDeployConfig(TeaModel):
+    def __init__(
+        self,
+        always_allocate_cpu: bool = None,
+        maximum_instance_count: int = None,
+        minimum_instance_count: int = None,
+        update_application_input: str = None,
+        update_traffic: bool = None,
+    ):
+        self.always_allocate_cpu = always_allocate_cpu
+        self.maximum_instance_count = maximum_instance_count
+        self.minimum_instance_count = minimum_instance_count
+        self.update_application_input = update_application_input
+        self.update_traffic = update_traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.always_allocate_cpu is not None:
+            result['AlwaysAllocateCPU'] = self.always_allocate_cpu
+        if self.maximum_instance_count is not None:
+            result['MaximumInstanceCount'] = self.maximum_instance_count
+        if self.minimum_instance_count is not None:
+            result['MinimumInstanceCount'] = self.minimum_instance_count
+        if self.update_application_input is not None:
+            result['UpdateApplicationInput'] = self.update_application_input
+        if self.update_traffic is not None:
+            result['UpdateTraffic'] = self.update_traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlwaysAllocateCPU') is not None:
+            self.always_allocate_cpu = m.get('AlwaysAllocateCPU')
+        if m.get('MaximumInstanceCount') is not None:
+            self.maximum_instance_count = m.get('MaximumInstanceCount')
+        if m.get('MinimumInstanceCount') is not None:
+            self.minimum_instance_count = m.get('MinimumInstanceCount')
+        if m.get('UpdateApplicationInput') is not None:
+            self.update_application_input = m.get('UpdateApplicationInput')
+        if m.get('UpdateTraffic') is not None:
+            self.update_traffic = m.get('UpdateTraffic')
+        return self
+
+
+class BuildPipelineImageConfig(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        namespace: str = None,
+        repository: str = None,
+    ):
+        self.instance_type = instance_type
+        self.namespace = namespace
+        self.repository = repository
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.repository is not None:
+            result['Repository'] = self.repository
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Repository') is not None:
+            self.repository = m.get('Repository')
+        return self
+
+
+class BuildPipelinePackageConfig(TeaModel):
+    def __init__(
+        self,
+        package_name: str = None,
+        package_type: str = None,
+        package_url: str = None,
+        package_version: str = None,
+    ):
+        self.package_name = package_name
+        self.package_type = package_type
+        self.package_url = package_url
+        self.package_version = package_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_url is not None:
+            result['PackageUrl'] = self.package_url
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageUrl') is not None:
+            self.package_url = m.get('PackageUrl')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+        return self
+
+
+class BuildPipelineTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        branch_name: str = None,
+        tag_name: str = None,
+        type: str = None,
+    ):
+        self.branch_name = branch_name
+        self.tag_name = tag_name
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class BuildPipeline(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        build_config: BuildPipelineBuildConfig = None,
+        code_config: BuildPipelineCodeConfig = None,
+        deploy_config: BuildPipelineDeployConfig = None,
+        enabled: bool = None,
+        image_config: BuildPipelineImageConfig = None,
+        package_config: BuildPipelinePackageConfig = None,
+        trigger_config: BuildPipelineTriggerConfig = None,
+    ):
+        # This parameter is required.
+        self.application_id = application_id
+        # This parameter is required.
+        self.application_name = application_name
+        # This parameter is required.
+        self.build_config = build_config
+        # This parameter is required.
+        self.code_config = code_config
+        self.deploy_config = deploy_config
+        self.enabled = enabled
+        self.image_config = image_config
+        self.package_config = package_config
+        # This parameter is required.
+        self.trigger_config = trigger_config
+
+    def validate(self):
+        if self.build_config:
+            self.build_config.validate()
+        if self.code_config:
+            self.code_config.validate()
+        if self.deploy_config:
+            self.deploy_config.validate()
+        if self.image_config:
+            self.image_config.validate()
+        if self.package_config:
+            self.package_config.validate()
+        if self.trigger_config:
+            self.trigger_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.build_config is not None:
+            result['BuildConfig'] = self.build_config.to_map()
+        if self.code_config is not None:
+            result['CodeConfig'] = self.code_config.to_map()
+        if self.deploy_config is not None:
+            result['DeployConfig'] = self.deploy_config.to_map()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.image_config is not None:
+            result['ImageConfig'] = self.image_config.to_map()
+        if self.package_config is not None:
+            result['PackageConfig'] = self.package_config.to_map()
+        if self.trigger_config is not None:
+            result['TriggerConfig'] = self.trigger_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('BuildConfig') is not None:
+            temp_model = BuildPipelineBuildConfig()
+            self.build_config = temp_model.from_map(m['BuildConfig'])
+        if m.get('CodeConfig') is not None:
+            temp_model = BuildPipelineCodeConfig()
+            self.code_config = temp_model.from_map(m['CodeConfig'])
+        if m.get('DeployConfig') is not None:
+            temp_model = BuildPipelineDeployConfig()
+            self.deploy_config = temp_model.from_map(m['DeployConfig'])
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('ImageConfig') is not None:
+            temp_model = BuildPipelineImageConfig()
+            self.image_config = temp_model.from_map(m['ImageConfig'])
+        if m.get('PackageConfig') is not None:
+            temp_model = BuildPipelinePackageConfig()
+            self.package_config = temp_model.from_map(m['PackageConfig'])
+        if m.get('TriggerConfig') is not None:
+            temp_model = BuildPipelineTriggerConfig()
+            self.trigger_config = temp_model.from_map(m['TriggerConfig'])
+        return self
+
+
+class BuildPipelineRunBuildConfigTrigger(TeaModel):
+    def __init__(
+        self,
+        branch_name: str = None,
+        tag_name: str = None,
+        type: str = None,
+    ):
+        self.branch_name = branch_name
+        self.tag_name = tag_name
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class BuildPipelineRunBuildConfig(TeaModel):
+    def __init__(
+        self,
+        before_build_command: str = None,
+        build_type: str = None,
+        dockerfile_path: str = None,
+        run_command: str = None,
+        runtime_type: str = None,
+        runtime_version: str = None,
+        tomcat_config: TomcatConfig = None,
+        trigger: BuildPipelineRunBuildConfigTrigger = None,
+        working_dir: str = None,
+    ):
+        self.before_build_command = before_build_command
+        # This parameter is required.
+        self.build_type = build_type
+        self.dockerfile_path = dockerfile_path
+        self.run_command = run_command
+        self.runtime_type = runtime_type
+        self.runtime_version = runtime_version
+        self.tomcat_config = tomcat_config
+        # This parameter is required.
+        self.trigger = trigger
+        self.working_dir = working_dir
+
+    def validate(self):
+        if self.tomcat_config:
+            self.tomcat_config.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.before_build_command is not None:
+            result['BeforeBuildCommand'] = self.before_build_command
+        if self.build_type is not None:
+            result['BuildType'] = self.build_type
+        if self.dockerfile_path is not None:
+            result['DockerfilePath'] = self.dockerfile_path
+        if self.run_command is not None:
+            result['RunCommand'] = self.run_command
+        if self.runtime_type is not None:
+            result['RuntimeType'] = self.runtime_type
+        if self.runtime_version is not None:
+            result['RuntimeVersion'] = self.runtime_version
+        if self.tomcat_config is not None:
+            result['TomcatConfig'] = self.tomcat_config.to_map()
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        if self.working_dir is not None:
+            result['WorkingDir'] = self.working_dir
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeforeBuildCommand') is not None:
+            self.before_build_command = m.get('BeforeBuildCommand')
+        if m.get('BuildType') is not None:
+            self.build_type = m.get('BuildType')
+        if m.get('DockerfilePath') is not None:
+            self.dockerfile_path = m.get('DockerfilePath')
+        if m.get('RunCommand') is not None:
+            self.run_command = m.get('RunCommand')
+        if m.get('RuntimeType') is not None:
+            self.runtime_type = m.get('RuntimeType')
+        if m.get('RuntimeVersion') is not None:
+            self.runtime_version = m.get('RuntimeVersion')
+        if m.get('TomcatConfig') is not None:
+            temp_model = TomcatConfig()
+            self.tomcat_config = temp_model.from_map(m['TomcatConfig'])
+        if m.get('Trigger') is not None:
+            temp_model = BuildPipelineRunBuildConfigTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        if m.get('WorkingDir') is not None:
+            self.working_dir = m.get('WorkingDir')
+        return self
+
+
+class BuildPipelineRunCodeConfig(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        branch_name: str = None,
+        commit_id: str = None,
+        commit_url: str = None,
+        organization_id: str = None,
+        provider: str = None,
+        repo_full_name: str = None,
+        repo_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+        # This parameter is required.
+        self.branch_name = branch_name
+        self.commit_id = commit_id
+        self.commit_url = commit_url
+        self.organization_id = organization_id
+        # This parameter is required.
+        self.provider = provider
+        # This parameter is required.
+        self.repo_full_name = repo_full_name
+        # This parameter is required.
+        self.repo_id = repo_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+        if self.commit_id is not None:
+            result['CommitId'] = self.commit_id
+        if self.commit_url is not None:
+            result['CommitUrl'] = self.commit_url
+        if self.organization_id is not None:
+            result['OrganizationId'] = self.organization_id
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.repo_full_name is not None:
+            result['RepoFullName'] = self.repo_full_name
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+        if m.get('CommitId') is not None:
+            self.commit_id = m.get('CommitId')
+        if m.get('CommitUrl') is not None:
+            self.commit_url = m.get('CommitUrl')
+        if m.get('OrganizationId') is not None:
+            self.organization_id = m.get('OrganizationId')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('RepoFullName') is not None:
+            self.repo_full_name = m.get('RepoFullName')
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+        return self
+
+
+class BuildPipelineRunDeployConfig(TeaModel):
+    def __init__(
+        self,
+        always_allocate_cpu: bool = None,
+        maximum_instance_count: int = None,
+        minimum_instance_count: int = None,
+        update_application_input: str = None,
+        update_traffic: bool = None,
+    ):
+        self.always_allocate_cpu = always_allocate_cpu
+        self.maximum_instance_count = maximum_instance_count
+        self.minimum_instance_count = minimum_instance_count
+        self.update_application_input = update_application_input
+        self.update_traffic = update_traffic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.always_allocate_cpu is not None:
+            result['AlwaysAllocateCPU'] = self.always_allocate_cpu
+        if self.maximum_instance_count is not None:
+            result['MaximumInstanceCount'] = self.maximum_instance_count
+        if self.minimum_instance_count is not None:
+            result['MinimumInstanceCount'] = self.minimum_instance_count
+        if self.update_application_input is not None:
+            result['UpdateApplicationInput'] = self.update_application_input
+        if self.update_traffic is not None:
+            result['UpdateTraffic'] = self.update_traffic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlwaysAllocateCPU') is not None:
+            self.always_allocate_cpu = m.get('AlwaysAllocateCPU')
+        if m.get('MaximumInstanceCount') is not None:
+            self.maximum_instance_count = m.get('MaximumInstanceCount')
+        if m.get('MinimumInstanceCount') is not None:
+            self.minimum_instance_count = m.get('MinimumInstanceCount')
+        if m.get('UpdateApplicationInput') is not None:
+            self.update_application_input = m.get('UpdateApplicationInput')
+        if m.get('UpdateTraffic') is not None:
+            self.update_traffic = m.get('UpdateTraffic')
+        return self
+
+
+class BuildPipelineRunImageConfig(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        namespace: str = None,
+        repository: str = None,
+    ):
+        self.instance_type = instance_type
+        self.namespace = namespace
+        self.repository = repository
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.repository is not None:
+            result['Repository'] = self.repository
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Repository') is not None:
+            self.repository = m.get('Repository')
+        return self
+
+
+class BuildPipelineRunPackageConfig(TeaModel):
+    def __init__(
+        self,
+        package_name: str = None,
+        package_type: str = None,
+        package_url: str = None,
+        package_version: str = None,
+    ):
+        self.package_name = package_name
+        self.package_type = package_type
+        self.package_url = package_url
+        self.package_version = package_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.package_type is not None:
+            result['PackageType'] = self.package_type
+        if self.package_url is not None:
+            result['PackageUrl'] = self.package_url
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('PackageType') is not None:
+            self.package_type = m.get('PackageType')
+        if m.get('PackageUrl') is not None:
+            self.package_url = m.get('PackageUrl')
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+        return self
+
+
+class BuildPipelineRunSteps(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        duration: int = None,
+        end_time: int = None,
+        id: str = None,
+        name: str = None,
+        result: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        self.description = description
+        self.duration = duration
+        self.end_time = end_time
+        self.id = id
+        self.name = name
+        self.result = result
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class BuildPipelineRunTriggerConfig(TeaModel):
+    def __init__(
+        self,
+        branch_name: str = None,
+        tag_name: str = None,
+        type: str = None,
+    ):
+        self.branch_name = branch_name
+        self.tag_name = tag_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch_name is not None:
+            result['BranchName'] = self.branch_name
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BranchName') is not None:
+            self.branch_name = m.get('BranchName')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class BuildPipelineRun(TeaModel):
+    def __init__(
+        self,
+        build_config: BuildPipelineRunBuildConfig = None,
+        build_duration: int = None,
+        code_config: BuildPipelineRunCodeConfig = None,
+        create_time: int = None,
+        deploy_config: BuildPipelineRunDeployConfig = None,
+        deploy_duration: int = None,
+        end_time: int = None,
+        image_config: BuildPipelineRunImageConfig = None,
+        package_config: BuildPipelineRunPackageConfig = None,
+        pipeline_id: str = None,
+        pipeline_run_id: str = None,
+        start_time: int = None,
+        status: str = None,
+        steps: List[BuildPipelineRunSteps] = None,
+        trigger_config: BuildPipelineRunTriggerConfig = None,
+        version_id: str = None,
+        wait_duration: int = None,
+    ):
+        self.build_config = build_config
+        self.build_duration = build_duration
+        self.code_config = code_config
+        self.create_time = create_time
+        self.deploy_config = deploy_config
+        self.deploy_duration = deploy_duration
+        self.end_time = end_time
+        self.image_config = image_config
+        self.package_config = package_config
+        self.pipeline_id = pipeline_id
+        self.pipeline_run_id = pipeline_run_id
+        self.start_time = start_time
+        self.status = status
+        self.steps = steps
+        self.trigger_config = trigger_config
+        self.version_id = version_id
+        self.wait_duration = wait_duration
+
+    def validate(self):
+        if self.build_config:
+            self.build_config.validate()
+        if self.code_config:
+            self.code_config.validate()
+        if self.deploy_config:
+            self.deploy_config.validate()
+        if self.image_config:
+            self.image_config.validate()
+        if self.package_config:
+            self.package_config.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+        if self.trigger_config:
+            self.trigger_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_config is not None:
+            result['BuildConfig'] = self.build_config.to_map()
+        if self.build_duration is not None:
+            result['BuildDuration'] = self.build_duration
+        if self.code_config is not None:
+            result['CodeConfig'] = self.code_config.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.deploy_config is not None:
+            result['DeployConfig'] = self.deploy_config.to_map()
+        if self.deploy_duration is not None:
+            result['DeployDuration'] = self.deploy_duration
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.image_config is not None:
+            result['ImageConfig'] = self.image_config.to_map()
+        if self.package_config is not None:
+            result['PackageConfig'] = self.package_config.to_map()
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.pipeline_run_id is not None:
+            result['PipelineRunId'] = self.pipeline_run_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        if self.trigger_config is not None:
+            result['TriggerConfig'] = self.trigger_config.to_map()
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        if self.wait_duration is not None:
+            result['WaitDuration'] = self.wait_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildConfig') is not None:
+            temp_model = BuildPipelineRunBuildConfig()
+            self.build_config = temp_model.from_map(m['BuildConfig'])
+        if m.get('BuildDuration') is not None:
+            self.build_duration = m.get('BuildDuration')
+        if m.get('CodeConfig') is not None:
+            temp_model = BuildPipelineRunCodeConfig()
+            self.code_config = temp_model.from_map(m['CodeConfig'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DeployConfig') is not None:
+            temp_model = BuildPipelineRunDeployConfig()
+            self.deploy_config = temp_model.from_map(m['DeployConfig'])
+        if m.get('DeployDuration') is not None:
+            self.deploy_duration = m.get('DeployDuration')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ImageConfig') is not None:
+            temp_model = BuildPipelineRunImageConfig()
+            self.image_config = temp_model.from_map(m['ImageConfig'])
+        if m.get('PackageConfig') is not None:
+            temp_model = BuildPipelineRunPackageConfig()
+            self.package_config = temp_model.from_map(m['PackageConfig'])
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('PipelineRunId') is not None:
+            self.pipeline_run_id = m.get('PipelineRunId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = BuildPipelineRunSteps()
+                self.steps.append(temp_model.from_map(k))
+        if m.get('TriggerConfig') is not None:
+            temp_model = BuildPipelineRunTriggerConfig()
+            self.trigger_config = temp_model.from_map(m['TriggerConfig'])
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        if m.get('WaitDuration') is not None:
+            self.wait_duration = m.get('WaitDuration')
+        return self
+
+
+class BuildPipelineRunLogLine(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        offset: int = None,
+    ):
+        self.content = content
+        self.offset = offset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        return self
+
+
+class CertConfig(TeaModel):
+    def __init__(
+        self,
+        cert_name: str = None,
+        certificate: str = None,
+        private_key: str = None,
+    ):
+        self.cert_name = cert_name
+        self.certificate = certificate
+        self.private_key = private_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_name is not None:
+            result['certName'] = self.cert_name
+        if self.certificate is not None:
+            result['certificate'] = self.certificate
+        if self.private_key is not None:
+            result['privateKey'] = self.private_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('certName') is not None:
+            self.cert_name = m.get('certName')
+        if m.get('certificate') is not None:
+            self.certificate = m.get('certificate')
+        if m.get('privateKey') is not None:
+            self.private_key = m.get('privateKey')
+        return self
+
+
+class MetricsCollectConfig(TeaModel):
+    def __init__(
+        self,
+        enable_push_to_user_sls: bool = None,
+        logstore_name: str = None,
+        project_name: str = None,
+    ):
+        self.enable_push_to_user_sls = enable_push_to_user_sls
+        self.logstore_name = logstore_name
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_push_to_user_sls is not None:
+            result['EnablePushToUserSLS'] = self.enable_push_to_user_sls
+        if self.logstore_name is not None:
+            result['LogstoreName'] = self.logstore_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnablePushToUserSLS') is not None:
+            self.enable_push_to_user_sls = m.get('EnablePushToUserSLS')
+        if m.get('LogstoreName') is not None:
+            self.logstore_name = m.get('LogstoreName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class ContainerResources(TeaModel):
+    def __init__(
+        self,
+        cpu: int = None,
+        memory: int = None,
+    ):
+        # This parameter is required.
+        self.cpu = cpu
+        # This parameter is required.
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class SLSCollectConfig(TeaModel):
+    def __init__(
+        self,
+        log_path: str = None,
+        log_type: str = None,
+        logstore_name: str = None,
+        logtail_name: str = None,
+        machine_group: str = None,
+        project_name: str = None,
+    ):
+        self.log_path = log_path
+        self.log_type = log_type
+        self.logstore_name = logstore_name
+        self.logtail_name = logtail_name
+        self.machine_group = machine_group
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_path is not None:
+            result['LogPath'] = self.log_path
+        if self.log_type is not None:
+            result['LogType'] = self.log_type
+        if self.logstore_name is not None:
+            result['LogstoreName'] = self.logstore_name
+        if self.logtail_name is not None:
+            result['LogtailName'] = self.logtail_name
+        if self.machine_group is not None:
+            result['MachineGroup'] = self.machine_group
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogPath') is not None:
+            self.log_path = m.get('LogPath')
+        if m.get('LogType') is not None:
+            self.log_type = m.get('LogType')
+        if m.get('LogstoreName') is not None:
+            self.logstore_name = m.get('LogstoreName')
+        if m.get('LogtailName') is not None:
+            self.logtail_name = m.get('LogtailName')
+        if m.get('MachineGroup') is not None:
+            self.machine_group = m.get('MachineGroup')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class SLSCollectConfigs(TeaModel):
+    def __init__(
+        self,
+        collect_configs: List[SLSCollectConfig] = None,
+    ):
+        self.collect_configs = collect_configs
+
+    def validate(self):
+        if self.collect_configs:
+            for k in self.collect_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CollectConfigs'] = []
+        if self.collect_configs is not None:
+            for k in self.collect_configs:
+                result['CollectConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.collect_configs = []
+        if m.get('CollectConfigs') is not None:
+            for k in m.get('CollectConfigs'):
+                temp_model = SLSCollectConfig()
+                self.collect_configs.append(temp_model.from_map(k))
+        return self
+
+
+class HTTPHeader(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class HTTPGetAction(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        http_headers: List[HTTPHeader] = None,
+        path: str = None,
+        port: int = None,
+        scheme: str = None,
+    ):
+        self.host = host
+        self.http_headers = http_headers
+        self.path = path
+        self.port = port
+        self.scheme = scheme
+
+    def validate(self):
+        if self.http_headers:
+            for k in self.http_headers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        result['HttpHeaders'] = []
+        if self.http_headers is not None:
+            for k in self.http_headers:
+                result['HttpHeaders'].append(k.to_map() if k else None)
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.scheme is not None:
+            result['Scheme'] = self.scheme
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        self.http_headers = []
+        if m.get('HttpHeaders') is not None:
+            for k in m.get('HttpHeaders'):
+                temp_model = HTTPHeader()
+                self.http_headers.append(temp_model.from_map(k))
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Scheme') is not None:
+            self.scheme = m.get('Scheme')
+        return self
+
+
+class TCPSocketAction(TeaModel):
+    def __init__(
+        self,
+        host: str = None,
+        port: int = None,
+    ):
+        self.host = host
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class ProbeHandler(TeaModel):
+    def __init__(
+        self,
+        http_get: HTTPGetAction = None,
+        tcp_socket: TCPSocketAction = None,
+    ):
+        self.http_get = http_get
+        self.tcp_socket = tcp_socket
+
+    def validate(self):
+        if self.http_get:
+            self.http_get.validate()
+        if self.tcp_socket:
+            self.tcp_socket.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_get is not None:
+            result['HttpGet'] = self.http_get.to_map()
+        if self.tcp_socket is not None:
+            result['TcpSocket'] = self.tcp_socket.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpGet') is not None:
+            temp_model = HTTPGetAction()
+            self.http_get = temp_model.from_map(m['HttpGet'])
+        if m.get('TcpSocket') is not None:
+            temp_model = TCPSocketAction()
+            self.tcp_socket = temp_model.from_map(m['TcpSocket'])
+        return self
+
+
+class StartupProbe(TeaModel):
+    def __init__(
+        self,
+        failure_threshold: int = None,
+        initial_delay_seconds: int = None,
+        period_seconds: int = None,
+        probe_handler: ProbeHandler = None,
+        timeout_seconds: int = None,
+    ):
+        self.failure_threshold = failure_threshold
+        self.initial_delay_seconds = initial_delay_seconds
+        self.period_seconds = period_seconds
+        self.probe_handler = probe_handler
+        self.timeout_seconds = timeout_seconds
+
+    def validate(self):
+        if self.probe_handler:
+            self.probe_handler.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failure_threshold is not None:
+            result['FailureThreshold'] = self.failure_threshold
+        if self.initial_delay_seconds is not None:
+            result['InitialDelaySeconds'] = self.initial_delay_seconds
+        if self.period_seconds is not None:
+            result['PeriodSeconds'] = self.period_seconds
+        if self.probe_handler is not None:
+            result['ProbeHandler'] = self.probe_handler.to_map()
+        if self.timeout_seconds is not None:
+            result['TimeoutSeconds'] = self.timeout_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailureThreshold') is not None:
+            self.failure_threshold = m.get('FailureThreshold')
+        if m.get('InitialDelaySeconds') is not None:
+            self.initial_delay_seconds = m.get('InitialDelaySeconds')
+        if m.get('PeriodSeconds') is not None:
+            self.period_seconds = m.get('PeriodSeconds')
+        if m.get('ProbeHandler') is not None:
+            temp_model = ProbeHandler()
+            self.probe_handler = temp_model.from_map(m['ProbeHandler'])
+        if m.get('TimeoutSeconds') is not None:
+            self.timeout_seconds = m.get('TimeoutSeconds')
+        return self
+
+
+class WebNASMountPoint(TeaModel):
+    def __init__(
+        self,
+        mount_dir: str = None,
+        nas_addr: str = None,
+        nas_path: str = None,
+    ):
+        self.mount_dir = mount_dir
+        self.nas_addr = nas_addr
+        self.nas_path = nas_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_dir is not None:
+            result['MountDir'] = self.mount_dir
+        if self.nas_addr is not None:
+            result['NasAddr'] = self.nas_addr
+        if self.nas_path is not None:
+            result['NasPath'] = self.nas_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountDir') is not None:
+            self.mount_dir = m.get('MountDir')
+        if m.get('NasAddr') is not None:
+            self.nas_addr = m.get('NasAddr')
+        if m.get('NasPath') is not None:
+            self.nas_path = m.get('NasPath')
+        return self
+
+
+class WebNASConfig(TeaModel):
+    def __init__(
+        self,
+        mount_points: List[WebNASMountPoint] = None,
+    ):
+        self.mount_points = mount_points
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['MountPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_points = []
+        if m.get('MountPoints') is not None:
+            for k in m.get('MountPoints'):
+                temp_model = WebNASMountPoint()
+                self.mount_points.append(temp_model.from_map(k))
+        return self
+
+
+class WebOSSMountPoint(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        bucket_path: str = None,
+        mount_dir: str = None,
+        read_only: bool = None,
+    ):
+        self.bucket_name = bucket_name
+        self.bucket_path = bucket_path
+        self.mount_dir = mount_dir
+        self.read_only = read_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.bucket_path is not None:
+            result['BucketPath'] = self.bucket_path
+        if self.mount_dir is not None:
+            result['MountDir'] = self.mount_dir
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('BucketPath') is not None:
+            self.bucket_path = m.get('BucketPath')
+        if m.get('MountDir') is not None:
+            self.mount_dir = m.get('MountDir')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        return self
+
+
+class WebOSSConfig(TeaModel):
+    def __init__(
+        self,
+        mount_points: List[WebOSSMountPoint] = None,
+    ):
+        self.mount_points = mount_points
+
+    def validate(self):
+        if self.mount_points:
+            for k in self.mount_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['MountPoints'] = []
+        if self.mount_points is not None:
+            for k in self.mount_points:
+                result['MountPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mount_points = []
+        if m.get('MountPoints') is not None:
+            for k in m.get('MountPoints'):
+                temp_model = WebOSSMountPoint()
+                self.mount_points.append(temp_model.from_map(k))
+        return self
+
+
+class Container(TeaModel):
+    def __init__(
+        self,
+        args: str = None,
+        command: str = None,
+        environment_variables: Dict[str, str] = None,
+        image: str = None,
+        metrics_collect_config: MetricsCollectConfig = None,
+        port: int = None,
+        request_concurrency: int = None,
+        request_timeout: int = None,
+        resources: ContainerResources = None,
+        slscollect_configs: SLSCollectConfigs = None,
+        startup_probe: StartupProbe = None,
+        web_nasconfig: WebNASConfig = None,
+        web_ossconfig: WebOSSConfig = None,
+    ):
+        self.args = args
+        self.command = command
+        self.environment_variables = environment_variables
+        # This parameter is required.
+        self.image = image
+        self.metrics_collect_config = metrics_collect_config
+        self.port = port
+        self.request_concurrency = request_concurrency
+        self.request_timeout = request_timeout
+        # This parameter is required.
+        self.resources = resources
+        self.slscollect_configs = slscollect_configs
+        self.startup_probe = startup_probe
+        self.web_nasconfig = web_nasconfig
+        self.web_ossconfig = web_ossconfig
+
+    def validate(self):
+        if self.metrics_collect_config:
+            self.metrics_collect_config.validate()
+        if self.resources:
+            self.resources.validate()
+        if self.slscollect_configs:
+            self.slscollect_configs.validate()
+        if self.startup_probe:
+            self.startup_probe.validate()
+        if self.web_nasconfig:
+            self.web_nasconfig.validate()
+        if self.web_ossconfig:
+            self.web_ossconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.environment_variables is not None:
+            result['EnvironmentVariables'] = self.environment_variables
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.metrics_collect_config is not None:
+            result['MetricsCollectConfig'] = self.metrics_collect_config.to_map()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.request_concurrency is not None:
+            result['RequestConcurrency'] = self.request_concurrency
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+        if self.resources is not None:
+            result['Resources'] = self.resources.to_map()
+        if self.slscollect_configs is not None:
+            result['SLSCollectConfigs'] = self.slscollect_configs.to_map()
+        if self.startup_probe is not None:
+            result['StartupProbe'] = self.startup_probe.to_map()
+        if self.web_nasconfig is not None:
+            result['WebNASConfig'] = self.web_nasconfig.to_map()
+        if self.web_ossconfig is not None:
+            result['WebOSSConfig'] = self.web_ossconfig.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('EnvironmentVariables') is not None:
+            self.environment_variables = m.get('EnvironmentVariables')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('MetricsCollectConfig') is not None:
+            temp_model = MetricsCollectConfig()
+            self.metrics_collect_config = temp_model.from_map(m['MetricsCollectConfig'])
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('RequestConcurrency') is not None:
+            self.request_concurrency = m.get('RequestConcurrency')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+        if m.get('Resources') is not None:
+            temp_model = ContainerResources()
+            self.resources = temp_model.from_map(m['Resources'])
+        if m.get('SLSCollectConfigs') is not None:
+            temp_model = SLSCollectConfigs()
+            self.slscollect_configs = temp_model.from_map(m['SLSCollectConfigs'])
+        if m.get('StartupProbe') is not None:
+            temp_model = StartupProbe()
+            self.startup_probe = temp_model.from_map(m['StartupProbe'])
+        if m.get('WebNASConfig') is not None:
+            temp_model = WebNASConfig()
+            self.web_nasconfig = temp_model.from_map(m['WebNASConfig'])
+        if m.get('WebOSSConfig') is not None:
+            temp_model = WebOSSConfig()
+            self.web_ossconfig = temp_model.from_map(m['WebOSSConfig'])
+        return self
+
+
+class InputCodeLocation(TeaModel):
+    def __init__(
+        self,
+        oss_bucket_name: str = None,
+        oss_object_name: str = None,
+        zip_file: str = None,
+    ):
+        self.oss_bucket_name = oss_bucket_name
+        self.oss_object_name = oss_object_name
+        self.zip_file = zip_file
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_bucket_name is not None:
+            result['ossBucketName'] = self.oss_bucket_name
+        if self.oss_object_name is not None:
+            result['ossObjectName'] = self.oss_object_name
+        if self.zip_file is not None:
+            result['zipFile'] = self.zip_file
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ossBucketName') is not None:
+            self.oss_bucket_name = m.get('ossBucketName')
+        if m.get('ossObjectName') is not None:
+            self.oss_object_name = m.get('ossObjectName')
+        if m.get('zipFile') is not None:
+            self.zip_file = m.get('zipFile')
+        return self
+
+
+class CreateApplicationInput(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        args: str = None,
+        ca_port: int = None,
+        code: InputCodeLocation = None,
+        command: str = None,
+        cpu: float = None,
+        custom_dns: CustomDNS = None,
+        custom_health_check_config: CustomHealthCheckConfig = None,
+        custom_runtime_config: CustomRuntimeConfig = None,
+        description: str = None,
+        disk_size: int = None,
+        environment_variables: Dict[str, str] = None,
+        gpu_memory_size: int = None,
+        handler: str = None,
+        http_trigger_config: HTTPTriggerConfig = None,
+        image_config: ImageConfig = None,
+        initialization_timeout: int = None,
+        initializer: str = None,
+        instance_concurrency: int = None,
+        instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
+        instance_type: str = None,
+        internet_access: bool = None,
+        layers: List[str] = None,
+        liveness_probe: Probe = None,
+        log_config: LogConfig = None,
+        memory_size: int = None,
+        namespace_id: str = None,
+        nas_config: NASConfig = None,
+        oss_mount_config: OSSMountConfig = None,
+        runtime: str = None,
+        scale_config: ScaleConfig = None,
+        sls_config: SLSConfig = None,
+        startup_probe: Probe = None,
+        timeout: int = None,
+        tracing_config: TracingConfig = None,
+        vpc_config: VPCConfig = None,
+    ):
+        self.application_name = application_name
+        self.args = args
+        self.ca_port = ca_port
+        self.code = code
+        self.command = command
+        self.cpu = cpu
+        self.custom_dns = custom_dns
+        self.custom_health_check_config = custom_health_check_config
+        self.custom_runtime_config = custom_runtime_config
+        self.description = description
+        self.disk_size = disk_size
+        self.environment_variables = environment_variables
+        self.gpu_memory_size = gpu_memory_size
+        self.handler = handler
+        self.http_trigger_config = http_trigger_config
+        self.image_config = image_config
+        self.initialization_timeout = initialization_timeout
+        self.initializer = initializer
+        self.instance_concurrency = instance_concurrency
+        self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
+        self.instance_type = instance_type
+        self.internet_access = internet_access
+        self.layers = layers
+        self.liveness_probe = liveness_probe
+        self.log_config = log_config
+        self.memory_size = memory_size
+        self.namespace_id = namespace_id
+        self.nas_config = nas_config
+        self.oss_mount_config = oss_mount_config
+        self.runtime = runtime
+        self.scale_config = scale_config
+        self.sls_config = sls_config
+        self.startup_probe = startup_probe
+        self.timeout = timeout
+        self.tracing_config = tracing_config
+        self.vpc_config = vpc_config
+
+    def validate(self):
+        if self.code:
+            self.code.validate()
+        if self.custom_dns:
+            self.custom_dns.validate()
+        if self.custom_health_check_config:
+            self.custom_health_check_config.validate()
+        if self.custom_runtime_config:
+            self.custom_runtime_config.validate()
+        if self.http_trigger_config:
+            self.http_trigger_config.validate()
+        if self.image_config:
+            self.image_config.validate()
+        if self.instance_lifecycle_config:
+            self.instance_lifecycle_config.validate()
+        if self.liveness_probe:
+            self.liveness_probe.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.nas_config:
+            self.nas_config.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
+        if self.scale_config:
+            self.scale_config.validate()
+        if self.sls_config:
+            self.sls_config.validate()
+        if self.startup_probe:
+            self.startup_probe.validate()
+        if self.tracing_config:
+            self.tracing_config.validate()
+        if self.vpc_config:
+            self.vpc_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.args is not None:
+            result['args'] = self.args
+        if self.ca_port is not None:
+            result['caPort'] = self.ca_port
+        if self.code is not None:
+            result['code'] = self.code.to_map()
+        if self.command is not None:
+            result['command'] = self.command
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.custom_dns is not None:
+            result['customDNS'] = self.custom_dns.to_map()
+        if self.custom_health_check_config is not None:
+            result['customHealthCheckConfig'] = self.custom_health_check_config.to_map()
+        if self.custom_runtime_config is not None:
+            result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.gpu_memory_size is not None:
+            result['gpuMemorySize'] = self.gpu_memory_size
+        if self.handler is not None:
+            result['handler'] = self.handler
+        if self.http_trigger_config is not None:
+            result['httpTriggerConfig'] = self.http_trigger_config.to_map()
+        if self.image_config is not None:
+            result['imageConfig'] = self.image_config.to_map()
+        if self.initialization_timeout is not None:
+            result['initializationTimeout'] = self.initialization_timeout
+        if self.initializer is not None:
+            result['initializer'] = self.initializer
+        if self.instance_concurrency is not None:
+            result['instanceConcurrency'] = self.instance_concurrency
+        if self.instance_lifecycle_config is not None:
+            result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.internet_access is not None:
+            result['internetAccess'] = self.internet_access
+        if self.layers is not None:
+            result['layers'] = self.layers
+        if self.liveness_probe is not None:
+            result['livenessProbe'] = self.liveness_probe.to_map()
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.memory_size is not None:
+            result['memorySize'] = self.memory_size
+        if self.namespace_id is not None:
+            result['namespaceID'] = self.namespace_id
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
+        if self.scale_config is not None:
+            result['scaleConfig'] = self.scale_config.to_map()
+        if self.sls_config is not None:
+            result['slsConfig'] = self.sls_config.to_map()
+        if self.startup_probe is not None:
+            result['startupProbe'] = self.startup_probe.to_map()
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.tracing_config is not None:
+            result['tracingConfig'] = self.tracing_config.to_map()
+        if self.vpc_config is not None:
+            result['vpcConfig'] = self.vpc_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('args') is not None:
+            self.args = m.get('args')
+        if m.get('caPort') is not None:
+            self.ca_port = m.get('caPort')
+        if m.get('code') is not None:
+            temp_model = InputCodeLocation()
+            self.code = temp_model.from_map(m['code'])
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('customDNS') is not None:
+            temp_model = CustomDNS()
+            self.custom_dns = temp_model.from_map(m['customDNS'])
+        if m.get('customHealthCheckConfig') is not None:
+            temp_model = CustomHealthCheckConfig()
+            self.custom_health_check_config = temp_model.from_map(m['customHealthCheckConfig'])
+        if m.get('customRuntimeConfig') is not None:
+            temp_model = CustomRuntimeConfig()
+            self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('gpuMemorySize') is not None:
+            self.gpu_memory_size = m.get('gpuMemorySize')
+        if m.get('handler') is not None:
+            self.handler = m.get('handler')
+        if m.get('httpTriggerConfig') is not None:
+            temp_model = HTTPTriggerConfig()
+            self.http_trigger_config = temp_model.from_map(m['httpTriggerConfig'])
+        if m.get('imageConfig') is not None:
+            temp_model = ImageConfig()
+            self.image_config = temp_model.from_map(m['imageConfig'])
+        if m.get('initializationTimeout') is not None:
+            self.initialization_timeout = m.get('initializationTimeout')
+        if m.get('initializer') is not None:
+            self.initializer = m.get('initializer')
+        if m.get('instanceConcurrency') is not None:
+            self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('instanceLifecycleConfig') is not None:
+            temp_model = InstanceLifecycleConfig()
+            self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('internetAccess') is not None:
+            self.internet_access = m.get('internetAccess')
+        if m.get('layers') is not None:
+            self.layers = m.get('layers')
+        if m.get('livenessProbe') is not None:
+            temp_model = Probe()
+            self.liveness_probe = temp_model.from_map(m['livenessProbe'])
+        if m.get('logConfig') is not None:
+            temp_model = LogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('memorySize') is not None:
+            self.memory_size = m.get('memorySize')
+        if m.get('namespaceID') is not None:
+            self.namespace_id = m.get('namespaceID')
+        if m.get('nasConfig') is not None:
+            temp_model = NASConfig()
+            self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('ossMountConfig') is not None:
+            temp_model = OSSMountConfig()
+            self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('scaleConfig') is not None:
+            temp_model = ScaleConfig()
+            self.scale_config = temp_model.from_map(m['scaleConfig'])
+        if m.get('slsConfig') is not None:
+            temp_model = SLSConfig()
+            self.sls_config = temp_model.from_map(m['slsConfig'])
+        if m.get('startupProbe') is not None:
+            temp_model = Probe()
+            self.startup_probe = temp_model.from_map(m['startupProbe'])
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('tracingConfig') is not None:
+            temp_model = TracingConfig()
+            self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('vpcConfig') is not None:
+            temp_model = VPCConfig()
+            self.vpc_config = temp_model.from_map(m['vpcConfig'])
+        return self
+
+
+class TLSConfig(TeaModel):
+    def __init__(
+        self,
+        cipher_suites: List[str] = None,
+        max_version: str = None,
+        min_version: str = None,
+    ):
+        self.cipher_suites = cipher_suites
+        self.max_version = max_version
+        self.min_version = min_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cipher_suites is not None:
+            result['cipherSuites'] = self.cipher_suites
+        if self.max_version is not None:
+            result['maxVersion'] = self.max_version
+        if self.min_version is not None:
+            result['minVersion'] = self.min_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cipherSuites') is not None:
+            self.cipher_suites = m.get('cipherSuites')
+        if m.get('maxVersion') is not None:
+            self.max_version = m.get('maxVersion')
+        if m.get('minVersion') is not None:
+            self.min_version = m.get('minVersion')
+        return self
+
+
+class WAFConfig(TeaModel):
+    def __init__(
+        self,
+        enable_waf: bool = None,
+    ):
+        self.enable_waf = enable_waf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_waf is not None:
+            result['enableWAF'] = self.enable_waf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableWAF') is not None:
+            self.enable_waf = m.get('enableWAF')
+        return self
+
+
+class CreateCustomDomainInput(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        cert_config: CertConfig = None,
+        domain_name: str = None,
+        keep_full_path: bool = None,
+        namespace_id: str = None,
+        protocol: str = None,
+        tls_config: TLSConfig = None,
+        waf_config: WAFConfig = None,
+    ):
+        self.application_name = application_name
+        self.cert_config = cert_config
+        self.domain_name = domain_name
+        self.keep_full_path = keep_full_path
+        self.namespace_id = namespace_id
+        self.protocol = protocol
+        self.tls_config = tls_config
+        self.waf_config = waf_config
+
+    def validate(self):
+        if self.cert_config:
+            self.cert_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
+        if self.waf_config:
+            self.waf_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.cert_config is not None:
+            result['certConfig'] = self.cert_config.to_map()
+        if self.domain_name is not None:
+            result['domainName'] = self.domain_name
+        if self.keep_full_path is not None:
+            result['keepFullPath'] = self.keep_full_path
+        if self.namespace_id is not None:
+            result['namespaceID'] = self.namespace_id
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
+        if self.waf_config is not None:
+            result['wafConfig'] = self.waf_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('certConfig') is not None:
+            temp_model = CertConfig()
+            self.cert_config = temp_model.from_map(m['certConfig'])
+        if m.get('domainName') is not None:
+            self.domain_name = m.get('domainName')
+        if m.get('keepFullPath') is not None:
+            self.keep_full_path = m.get('keepFullPath')
+        if m.get('namespaceID') is not None:
+            self.namespace_id = m.get('namespaceID')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
+        if m.get('wafConfig') is not None:
+            temp_model = WAFConfig()
+            self.waf_config = temp_model.from_map(m['wafConfig'])
+        return self
+
+
+class CreateSlsIndexRequest(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        project: str = None,
+    ):
+        self.logstore = logstore
+        self.project = project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.project is not None:
+            result['project'] = self.project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        return self
+
+
+class CreateSlsIndexResponse(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        log_store: str = None,
+        project: str = None,
+    ):
+        self.request_id = request_id
+        self.log_store = log_store
+        self.project = project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.log_store is not None:
+            result['logStore'] = self.log_store
+        if self.project is not None:
+            result['project'] = self.project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('logStore') is not None:
+            self.log_store = m.get('logStore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        return self
+
+
+class CreateSlsResourceResponse(TeaModel):
+    def __init__(
+        self,
+        log_store: str = None,
+        project: str = None,
+        request_id: str = None,
+    ):
+        self.log_store = log_store
+        self.project = project
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_store is not None:
+            result['logStore'] = self.log_store
+        if self.project is not None:
+            result['project'] = self.project
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logStore') is not None:
+            self.log_store = m.get('logStore')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class WebNetworkConfig(TeaModel):
+    def __init__(
+        self,
+        internet_access: bool = None,
+        security_group_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.internet_access = internet_access
+        self.security_group_id = security_group_id
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.internet_access is not None:
+            result['InternetAccess'] = self.internet_access
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InternetAccess') is not None:
+            self.internet_access = m.get('InternetAccess')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class RevisionConfig(TeaModel):
+    def __init__(
+        self,
+        containers: List[Container] = None,
+        enable_arms_metrics: bool = None,
+        web_network_config: WebNetworkConfig = None,
+    ):
+        # This parameter is required.
+        self.containers = containers
+        self.enable_arms_metrics = enable_arms_metrics
+        self.web_network_config = web_network_config
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+        if self.web_network_config:
+            self.web_network_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
+        if self.enable_arms_metrics is not None:
+            result['EnableArmsMetrics'] = self.enable_arms_metrics
+        if self.web_network_config is not None:
+            result['WebNetworkConfig'] = self.web_network_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = Container()
+                self.containers.append(temp_model.from_map(k))
+        if m.get('EnableArmsMetrics') is not None:
+            self.enable_arms_metrics = m.get('EnableArmsMetrics')
+        if m.get('WebNetworkConfig') is not None:
+            temp_model = WebNetworkConfig()
+            self.web_network_config = temp_model.from_map(m['WebNetworkConfig'])
+        return self
+
+
+class WebScalingConfig(TeaModel):
+    def __init__(
+        self,
+        maximum_instance_count: int = None,
+        minimum_instance_count: int = None,
+    ):
+        self.maximum_instance_count = maximum_instance_count
+        self.minimum_instance_count = minimum_instance_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.maximum_instance_count is not None:
+            result['MaximumInstanceCount'] = self.maximum_instance_count
+        if self.minimum_instance_count is not None:
+            result['MinimumInstanceCount'] = self.minimum_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaximumInstanceCount') is not None:
+            self.maximum_instance_count = m.get('MaximumInstanceCount')
+        if m.get('MinimumInstanceCount') is not None:
+            self.minimum_instance_count = m.get('MinimumInstanceCount')
+        return self
+
+
+class WebAclEntryConfig(TeaModel):
+    def __init__(
+        self,
+        entry: str = None,
+    ):
+        # This parameter is required.
+        self.entry = entry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entry is not None:
+            result['Entry'] = self.entry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Entry') is not None:
+            self.entry = m.get('Entry')
+        return self
+
+
+class WebAclConfig(TeaModel):
+    def __init__(
+        self,
+        web_acl_entries: List[WebAclEntryConfig] = None,
+    ):
+        # This parameter is required.
+        self.web_acl_entries = web_acl_entries
+
+    def validate(self):
+        if self.web_acl_entries:
+            for k in self.web_acl_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['WebAclEntries'] = []
+        if self.web_acl_entries is not None:
+            for k in self.web_acl_entries:
+                result['WebAclEntries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.web_acl_entries = []
+        if m.get('WebAclEntries') is not None:
+            for k in m.get('WebAclEntries'):
+                temp_model = WebAclEntryConfig()
+                self.web_acl_entries.append(temp_model.from_map(k))
+        return self
+
+
+class WebTrafficConfig(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        disable_internet_url: bool = None,
+        revisions_traffic_weight: Dict[str, float] = None,
+        web_acl_config: WebAclConfig = None,
+    ):
+        self.auth_type = auth_type
+        self.disable_internet_url = disable_internet_url
+        self.revisions_traffic_weight = revisions_traffic_weight
+        self.web_acl_config = web_acl_config
+
+    def validate(self):
+        if self.web_acl_config:
+            self.web_acl_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.disable_internet_url is not None:
+            result['DisableInternetURL'] = self.disable_internet_url
+        if self.revisions_traffic_weight is not None:
+            result['RevisionsTrafficWeight'] = self.revisions_traffic_weight
+        if self.web_acl_config is not None:
+            result['WebAclConfig'] = self.web_acl_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('DisableInternetURL') is not None:
+            self.disable_internet_url = m.get('DisableInternetURL')
+        if m.get('RevisionsTrafficWeight') is not None:
+            self.revisions_traffic_weight = m.get('RevisionsTrafficWeight')
+        if m.get('WebAclConfig') is not None:
+            temp_model = WebAclConfig()
+            self.web_acl_config = temp_model.from_map(m['WebAclConfig'])
+        return self
+
+
+class CreateWebApplicationInput(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        description: str = None,
+        revision_config: RevisionConfig = None,
+        web_network_config: WebNetworkConfig = None,
+        web_scaling_config: WebScalingConfig = None,
+        web_traffic_config: WebTrafficConfig = None,
+    ):
+        # This parameter is required.
+        self.application_name = application_name
+        self.description = description
+        # This parameter is required.
+        self.revision_config = revision_config
+        self.web_network_config = web_network_config
+        self.web_scaling_config = web_scaling_config
+        self.web_traffic_config = web_traffic_config
+
+    def validate(self):
+        if self.revision_config:
+            self.revision_config.validate()
+        if self.web_network_config:
+            self.web_network_config.validate()
+        if self.web_scaling_config:
+            self.web_scaling_config.validate()
+        if self.web_traffic_config:
+            self.web_traffic_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.revision_config is not None:
+            result['RevisionConfig'] = self.revision_config.to_map()
+        if self.web_network_config is not None:
+            result['WebNetworkConfig'] = self.web_network_config.to_map()
+        if self.web_scaling_config is not None:
+            result['WebScalingConfig'] = self.web_scaling_config.to_map()
+        if self.web_traffic_config is not None:
+            result['WebTrafficConfig'] = self.web_traffic_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RevisionConfig') is not None:
+            temp_model = RevisionConfig()
+            self.revision_config = temp_model.from_map(m['RevisionConfig'])
+        if m.get('WebNetworkConfig') is not None:
+            temp_model = WebNetworkConfig()
+            self.web_network_config = temp_model.from_map(m['WebNetworkConfig'])
+        if m.get('WebScalingConfig') is not None:
+            temp_model = WebScalingConfig()
+            self.web_scaling_config = temp_model.from_map(m['WebScalingConfig'])
+        if m.get('WebTrafficConfig') is not None:
+            temp_model = WebTrafficConfig()
+            self.web_traffic_config = temp_model.from_map(m['WebTrafficConfig'])
+        return self
+
+
+class WebCertConfig(TeaModel):
+    def __init__(
+        self,
+        cert_name: str = None,
+        certificate: str = None,
+        private_key: str = None,
+    ):
+        self.cert_name = cert_name
+        self.certificate = certificate
+        self.private_key = private_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.private_key is not None:
+            result['PrivateKey'] = self.private_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('PrivateKey') is not None:
+            self.private_key = m.get('PrivateKey')
+        return self
+
+
+class WebTLSConfig(TeaModel):
+    def __init__(
+        self,
+        cipher_suites: List[str] = None,
+        max_version: str = None,
+        min_version: str = None,
+    ):
+        self.cipher_suites = cipher_suites
+        self.max_version = max_version
+        self.min_version = min_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cipher_suites is not None:
+            result['CipherSuites'] = self.cipher_suites
+        if self.max_version is not None:
+            result['MaxVersion'] = self.max_version
+        if self.min_version is not None:
+            result['MinVersion'] = self.min_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CipherSuites') is not None:
+            self.cipher_suites = m.get('CipherSuites')
+        if m.get('MaxVersion') is not None:
+            self.max_version = m.get('MaxVersion')
+        if m.get('MinVersion') is not None:
+            self.min_version = m.get('MinVersion')
+        return self
+
+
+class WebWAFConfig(TeaModel):
+    def __init__(
+        self,
+        enable_waf: bool = None,
+    ):
+        self.enable_waf = enable_waf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_waf is not None:
+            result['EnableWAF'] = self.enable_waf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableWAF') is not None:
+            self.enable_waf = m.get('EnableWAF')
+        return self
+
+
+class CreateWebCustomDomainInput(TeaModel):
+    def __init__(
+        self,
+        default_forwarding_app_name: str = None,
+        domain_name: str = None,
+        protocol: str = None,
+        web_cert_config: WebCertConfig = None,
+        web_tlsconfig: WebTLSConfig = None,
+        web_wafconfig: WebWAFConfig = None,
+    ):
+        self.default_forwarding_app_name = default_forwarding_app_name
+        # This parameter is required.
+        self.domain_name = domain_name
+        self.protocol = protocol
+        self.web_cert_config = web_cert_config
+        self.web_tlsconfig = web_tlsconfig
+        self.web_wafconfig = web_wafconfig
+
+    def validate(self):
+        if self.web_cert_config:
+            self.web_cert_config.validate()
+        if self.web_tlsconfig:
+            self.web_tlsconfig.validate()
+        if self.web_wafconfig:
+            self.web_wafconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_forwarding_app_name is not None:
+            result['DefaultForwardingAppName'] = self.default_forwarding_app_name
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.web_cert_config is not None:
+            result['WebCertConfig'] = self.web_cert_config.to_map()
+        if self.web_tlsconfig is not None:
+            result['WebTLSConfig'] = self.web_tlsconfig.to_map()
+        if self.web_wafconfig is not None:
+            result['WebWAFConfig'] = self.web_wafconfig.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultForwardingAppName') is not None:
+            self.default_forwarding_app_name = m.get('DefaultForwardingAppName')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('WebCertConfig') is not None:
+            temp_model = WebCertConfig()
+            self.web_cert_config = temp_model.from_map(m['WebCertConfig'])
+        if m.get('WebTLSConfig') is not None:
+            temp_model = WebTLSConfig()
+            self.web_tlsconfig = temp_model.from_map(m['WebTLSConfig'])
+        if m.get('WebWAFConfig') is not None:
+            temp_model = WebWAFConfig()
+            self.web_wafconfig = temp_model.from_map(m['WebWAFConfig'])
+        return self
+
+
+class PathConfig(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        path: str = None,
+    ):
+        self.application_name = application_name
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.path is not None:
+            result['path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        return self
+
+
+class RouteConfig(TeaModel):
+    def __init__(
+        self,
+        routes: List[PathConfig] = None,
+    ):
+        self.routes = routes
+
+    def validate(self):
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['routes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.routes = []
+        if m.get('routes') is not None:
+            for k in m.get('routes'):
+                temp_model = PathConfig()
+                self.routes.append(temp_model.from_map(k))
+        return self
+
+
+class CustomDomain(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        api_version: str = None,
+        cert_config: CertConfig = None,
+        created_time: str = None,
+        domain_name: str = None,
+        keep_full_path: bool = None,
+        last_modified_time: str = None,
+        namespace_id: str = None,
+        protocol: str = None,
+        request_id: str = None,
+        route_config: RouteConfig = None,
+        subdomain_count: str = None,
+        tls_config: TLSConfig = None,
+        waf_config: WAFConfig = None,
+    ):
+        self.account_id = account_id
+        self.api_version = api_version
+        self.cert_config = cert_config
+        self.created_time = created_time
+        self.domain_name = domain_name
+        self.keep_full_path = keep_full_path
+        self.last_modified_time = last_modified_time
+        self.namespace_id = namespace_id
+        self.protocol = protocol
+        self.request_id = request_id
+        self.route_config = route_config
+        self.subdomain_count = subdomain_count
+        self.tls_config = tls_config
+        self.waf_config = waf_config
+
+    def validate(self):
+        if self.cert_config:
+            self.cert_config.validate()
+        if self.route_config:
+            self.route_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
+        if self.waf_config:
+            self.waf_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+        if self.cert_config is not None:
+            result['certConfig'] = self.cert_config.to_map()
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.domain_name is not None:
+            result['domainName'] = self.domain_name
+        if self.keep_full_path is not None:
+            result['keepFullPath'] = self.keep_full_path
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.namespace_id is not None:
+            result['namespaceID'] = self.namespace_id
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.route_config is not None:
+            result['routeConfig'] = self.route_config.to_map()
+        if self.subdomain_count is not None:
+            result['subdomainCount'] = self.subdomain_count
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
+        if self.waf_config is not None:
+            result['wafConfig'] = self.waf_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
+        if m.get('certConfig') is not None:
+            temp_model = CertConfig()
+            self.cert_config = temp_model.from_map(m['certConfig'])
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('domainName') is not None:
+            self.domain_name = m.get('domainName')
+        if m.get('keepFullPath') is not None:
+            self.keep_full_path = m.get('keepFullPath')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('namespaceID') is not None:
+            self.namespace_id = m.get('namespaceID')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('routeConfig') is not None:
+            temp_model = RouteConfig()
+            self.route_config = temp_model.from_map(m['routeConfig'])
+        if m.get('subdomainCount') is not None:
+            self.subdomain_count = m.get('subdomainCount')
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
+        if m.get('wafConfig') is not None:
+            temp_model = WAFConfig()
+            self.waf_config = temp_model.from_map(m['wafConfig'])
+        return self
+
+
+class WebLogEntry(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+    ):
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class DescribeInstanceLogsOutput(TeaModel):
+    def __init__(
+        self,
+        web_log_entrys: List[WebLogEntry] = None,
+    ):
+        self.web_log_entrys = web_log_entrys
+
+    def validate(self):
+        if self.web_log_entrys:
+            for k in self.web_log_entrys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['WebLogEntrys'] = []
+        if self.web_log_entrys is not None:
+            for k in self.web_log_entrys:
+                result['WebLogEntrys'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.web_log_entrys = []
+        if m.get('WebLogEntrys') is not None:
+            for k in m.get('WebLogEntrys'):
+                temp_model = WebLogEntry()
+                self.web_log_entrys.append(temp_model.from_map(k))
+        return self
+
+
+class WebStaticsInfo(TeaModel):
+    def __init__(
+        self,
+        cpu_usage: int = None,
+        internet_traffic_out: int = None,
+        invocations: int = None,
+        memory_usage: int = None,
+    ):
+        self.cpu_usage = cpu_usage
+        self.internet_traffic_out = internet_traffic_out
+        self.invocations = invocations
+        self.memory_usage = memory_usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_usage is not None:
+            result['CpuUsage'] = self.cpu_usage
+        if self.internet_traffic_out is not None:
+            result['InternetTrafficOut'] = self.internet_traffic_out
+        if self.invocations is not None:
+            result['Invocations'] = self.invocations
+        if self.memory_usage is not None:
+            result['MemoryUsage'] = self.memory_usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuUsage') is not None:
+            self.cpu_usage = m.get('CpuUsage')
+        if m.get('InternetTrafficOut') is not None:
+            self.internet_traffic_out = m.get('InternetTrafficOut')
+        if m.get('Invocations') is not None:
+            self.invocations = m.get('Invocations')
+        if m.get('MemoryUsage') is not None:
+            self.memory_usage = m.get('MemoryUsage')
+        return self
+
+
+class DescribeWebAppStaticsOutput(TeaModel):
+    def __init__(
+        self,
+        length: int = None,
+        web_app_statics: List[WebStaticsInfo] = None,
+    ):
+        self.length = length
+        self.web_app_statics = web_app_statics
+
+    def validate(self):
+        if self.web_app_statics:
+            for k in self.web_app_statics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.length is not None:
+            result['Length'] = self.length
+        result['WebAppStatics'] = []
+        if self.web_app_statics is not None:
+            for k in self.web_app_statics:
+                result['WebAppStatics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        self.web_app_statics = []
+        if m.get('WebAppStatics') is not None:
+            for k in m.get('WebAppStatics'):
+                temp_model = WebStaticsInfo()
+                self.web_app_statics.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWebStaticsQueryOutput(TeaModel):
+    def __init__(
+        self,
+        length: int = None,
+        web_statics: List[WebStaticsInfo] = None,
+    ):
+        self.length = length
+        self.web_statics = web_statics
+
+    def validate(self):
+        if self.web_statics:
+            for k in self.web_statics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.length is not None:
+            result['Length'] = self.length
+        result['WebStatics'] = []
+        if self.web_statics is not None:
+            for k in self.web_statics:
+                result['WebStatics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Length') is not None:
+            self.length = m.get('Length')
+        self.web_statics = []
+        if m.get('WebStatics') is not None:
+            for k in m.get('WebStatics'):
+                temp_model = WebStaticsInfo()
+                self.web_statics.append(temp_model.from_map(k))
+        return self
+
+
+class ExecAction(TeaModel):
+    def __init__(
+        self,
+        command: List[str] = None,
+    ):
+        self.command = command
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['command'] = self.command
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        return self
+
+
+class ExternalErrorSAEWeb(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GRPCAction(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        service: str = None,
+    ):
+        self.port = port
+        self.service = service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['port'] = self.port
+        if self.service is not None:
+            result['service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('service') is not None:
+            self.service = m.get('service')
+        return self
+
+
+class GetApplicationLogsInput(TeaModel):
+    def __init__(
+        self,
+        backward_line: int = None,
+        end_time: int = None,
+        forward_line: int = None,
+        instance_id: str = None,
+        is_tail: bool = None,
+        match: str = None,
+        message: str = None,
+        offset: int = None,
+        pack_id: str = None,
+        pack_meta: str = None,
+        start_time: int = None,
+        timestamp: str = None,
+        version_id: str = None,
+    ):
+        self.backward_line = backward_line
+        # This parameter is required.
+        self.end_time = end_time
+        self.forward_line = forward_line
+        self.instance_id = instance_id
+        self.is_tail = is_tail
+        self.match = match
+        self.message = message
+        self.offset = offset
+        self.pack_id = pack_id
+        self.pack_meta = pack_meta
+        # This parameter is required.
+        self.start_time = start_time
+        self.timestamp = timestamp
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backward_line is not None:
+            result['backwardLine'] = self.backward_line
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.forward_line is not None:
+            result['forwardLine'] = self.forward_line
+        if self.instance_id is not None:
+            result['instanceID'] = self.instance_id
+        if self.is_tail is not None:
+            result['isTail'] = self.is_tail
+        if self.match is not None:
+            result['match'] = self.match
+        if self.message is not None:
+            result['message'] = self.message
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.pack_id is not None:
+            result['packID'] = self.pack_id
+        if self.pack_meta is not None:
+            result['packMeta'] = self.pack_meta
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.version_id is not None:
+            result['versionID'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backwardLine') is not None:
+            self.backward_line = m.get('backwardLine')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('forwardLine') is not None:
+            self.forward_line = m.get('forwardLine')
+        if m.get('instanceID') is not None:
+            self.instance_id = m.get('instanceID')
+        if m.get('isTail') is not None:
+            self.is_tail = m.get('isTail')
+        if m.get('match') is not None:
+            self.match = m.get('match')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('packID') is not None:
+            self.pack_id = m.get('packID')
+        if m.get('packMeta') is not None:
+            self.pack_meta = m.get('packMeta')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('versionID') is not None:
+            self.version_id = m.get('versionID')
+        return self
+
+
+class LogEntry(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        message: str = None,
+        offset: int = None,
+        pack_id: str = None,
+        pack_meta: str = None,
+        qualifier: str = None,
+        timestamp: int = None,
+        version_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.message = message
+        self.offset = offset
+        self.pack_id = pack_id
+        self.pack_meta = pack_meta
+        self.qualifier = qualifier
+        self.timestamp = timestamp
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceID'] = self.instance_id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.pack_id is not None:
+            result['packID'] = self.pack_id
+        if self.pack_meta is not None:
+            result['packMeta'] = self.pack_meta
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.version_id is not None:
+            result['versionID'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceID') is not None:
+            self.instance_id = m.get('instanceID')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('packID') is not None:
+            self.pack_id = m.get('packID')
+        if m.get('packMeta') is not None:
+            self.pack_meta = m.get('packMeta')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('versionID') is not None:
+            self.version_id = m.get('versionID')
+        return self
+
+
+class GetApplicationLogsOutput(TeaModel):
+    def __init__(
+        self,
+        log_entrys: List[LogEntry] = None,
+        next_offset: int = None,
+        request_id: str = None,
+    ):
+        self.log_entrys = log_entrys
+        self.next_offset = next_offset
+        self.request_id = request_id
+
+    def validate(self):
+        if self.log_entrys:
+            for k in self.log_entrys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['logEntrys'] = []
+        if self.log_entrys is not None:
+            for k in self.log_entrys:
+                result['logEntrys'].append(k.to_map() if k else None)
+        if self.next_offset is not None:
+            result['nextOffset'] = self.next_offset
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.log_entrys = []
+        if m.get('logEntrys') is not None:
+            for k in m.get('logEntrys'):
+                temp_model = LogEntry()
+                self.log_entrys.append(temp_model.from_map(k))
+        if m.get('nextOffset') is not None:
+            self.next_offset = m.get('nextOffset')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetInstanceLogsInput(TeaModel):
+    def __init__(
+        self,
+        backward_line: int = None,
+        end_time: int = None,
+        forward_line: int = None,
+        is_tail: bool = None,
+        match: str = None,
+        message: str = None,
+        offset: int = None,
+        pack_id: str = None,
+        pack_meta: str = None,
+        start_time: int = None,
+        timestamp: str = None,
+        version_id: str = None,
+    ):
+        self.backward_line = backward_line
+        # This parameter is required.
+        self.end_time = end_time
+        self.forward_line = forward_line
+        self.is_tail = is_tail
+        self.match = match
+        self.message = message
+        self.offset = offset
+        self.pack_id = pack_id
+        self.pack_meta = pack_meta
+        # This parameter is required.
+        self.start_time = start_time
+        self.timestamp = timestamp
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backward_line is not None:
+            result['backwardLine'] = self.backward_line
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.forward_line is not None:
+            result['forwardLine'] = self.forward_line
+        if self.is_tail is not None:
+            result['isTail'] = self.is_tail
+        if self.match is not None:
+            result['match'] = self.match
+        if self.message is not None:
+            result['message'] = self.message
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.pack_id is not None:
+            result['packID'] = self.pack_id
+        if self.pack_meta is not None:
+            result['packMeta'] = self.pack_meta
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.version_id is not None:
+            result['versionID'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backwardLine') is not None:
+            self.backward_line = m.get('backwardLine')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('forwardLine') is not None:
+            self.forward_line = m.get('forwardLine')
+        if m.get('isTail') is not None:
+            self.is_tail = m.get('isTail')
+        if m.get('match') is not None:
+            self.match = m.get('match')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('packID') is not None:
+            self.pack_id = m.get('packID')
+        if m.get('packMeta') is not None:
+            self.pack_meta = m.get('packMeta')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('versionID') is not None:
+            self.version_id = m.get('versionID')
+        return self
+
+
+class GetInstanceLogsOutput(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetPerRequestLogsInput(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        error_type: str = None,
+        forward_line: int = None,
+        instance_id: str = None,
+        is_cold_start: bool = None,
+        request_id: str = None,
+        start_time: int = None,
+        timestamp: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.error_type = error_type
+        self.forward_line = forward_line
+        self.instance_id = instance_id
+        self.is_cold_start = is_cold_start
+        # This parameter is required.
+        self.request_id = request_id
+        # This parameter is required.
+        self.start_time = start_time
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.error_type is not None:
+            result['errorType'] = self.error_type
+        if self.forward_line is not None:
+            result['forwardLine'] = self.forward_line
+        if self.instance_id is not None:
+            result['instanceID'] = self.instance_id
+        if self.is_cold_start is not None:
+            result['isColdStart'] = self.is_cold_start
+        if self.request_id is not None:
+            result['requestID'] = self.request_id
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('errorType') is not None:
+            self.error_type = m.get('errorType')
+        if m.get('forwardLine') is not None:
+            self.forward_line = m.get('forwardLine')
+        if m.get('instanceID') is not None:
+            self.instance_id = m.get('instanceID')
+        if m.get('isColdStart') is not None:
+            self.is_cold_start = m.get('isColdStart')
+        if m.get('requestID') is not None:
+            self.request_id = m.get('requestID')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        return self
+
+
+class GetPerRequestLogsOutput(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetQuotaOutput(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        instance_limit: int = None,
+        instance_used: int = None,
+    ):
+        self.request_id = request_id
+        self.instance_limit = instance_limit
+        self.instance_used = instance_used
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.instance_limit is not None:
+            result['instanceLimit'] = self.instance_limit
+        if self.instance_used is not None:
+            result['instanceUsed'] = self.instance_used
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('instanceLimit') is not None:
+            self.instance_limit = m.get('instanceLimit')
+        if m.get('instanceUsed') is not None:
+            self.instance_used = m.get('instanceUsed')
+        return self
+
+
+class InstanceExecAuthorizationInputOptions(TeaModel):
+    def __init__(
+        self,
+        command: List[str] = None,
+        stderr: bool = None,
+        stdin: bool = None,
+        stdout: bool = None,
+        tty: bool = None,
+    ):
+        self.command = command
+        self.stderr = stderr
+        self.stdin = stdin
+        self.stdout = stdout
+        self.tty = tty
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['command'] = self.command
+        if self.stderr is not None:
+            result['stderr'] = self.stderr
+        if self.stdin is not None:
+            result['stdin'] = self.stdin
+        if self.stdout is not None:
+            result['stdout'] = self.stdout
+        if self.tty is not None:
+            result['tty'] = self.tty
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        if m.get('stderr') is not None:
+            self.stderr = m.get('stderr')
+        if m.get('stdin') is not None:
+            self.stdin = m.get('stdin')
+        if m.get('stdout') is not None:
+            self.stdout = m.get('stdout')
+        if m.get('tty') is not None:
+            self.tty = m.get('tty')
+        return self
+
+
+class InstanceExecAuthorizationInput(TeaModel):
+    def __init__(
+        self,
+        options: InstanceExecAuthorizationInputOptions = None,
+    ):
+        self.options = options
+
+    def validate(self):
+        if self.options:
+            self.options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.options is not None:
+            result['options'] = self.options.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('options') is not None:
+            temp_model = InstanceExecAuthorizationInputOptions()
+            self.options = temp_model.from_map(m['options'])
+        return self
+
+
+class InstanceExecAuthorizationOutput(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        account_id: str = None,
+        authorization: str = None,
+        date: str = None,
+        endpoint: str = None,
+        request_id: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.account_id = account_id
+        self.authorization = authorization
+        self.date = date
+        self.endpoint = endpoint
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['accessKeyId'] = self.access_key_id
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        if self.authorization is not None:
+            result['authorization'] = self.authorization
+        if self.date is not None:
+            result['date'] = self.date
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessKeyId') is not None:
+            self.access_key_id = m.get('accessKeyId')
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        if m.get('authorization') is not None:
+            self.authorization = m.get('authorization')
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class InstanceInfo(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        instance_id: str = None,
+        status: str = None,
+        version_id: str = None,
+    ):
+        self.image_url = image_url
+        self.instance_id = instance_id
+        self.status = status
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('imageUrl') is not None:
+            self.image_url = m.get('imageUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
+class InstanceMetricInfo(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        cpu_percent: float = None,
+        cpu_quota_percent: float = None,
+        instance_id: str = None,
+        memory_limit_mb: float = None,
+        memory_usage_mb: float = None,
+        timestamp: int = None,
+    ):
+        self.application_id = application_id
+        self.cpu_percent = cpu_percent
+        self.cpu_quota_percent = cpu_quota_percent
+        self.instance_id = instance_id
+        self.memory_limit_mb = memory_limit_mb
+        self.memory_usage_mb = memory_usage_mb
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['applicationID'] = self.application_id
+        if self.cpu_percent is not None:
+            result['cpuPercent'] = self.cpu_percent
+        if self.cpu_quota_percent is not None:
+            result['cpuQuotaPercent'] = self.cpu_quota_percent
+        if self.instance_id is not None:
+            result['instanceID'] = self.instance_id
+        if self.memory_limit_mb is not None:
+            result['memoryLimitMB'] = self.memory_limit_mb
+        if self.memory_usage_mb is not None:
+            result['memoryUsageMB'] = self.memory_usage_mb
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationID') is not None:
+            self.application_id = m.get('applicationID')
+        if m.get('cpuPercent') is not None:
+            self.cpu_percent = m.get('cpuPercent')
+        if m.get('cpuQuotaPercent') is not None:
+            self.cpu_quota_percent = m.get('cpuQuotaPercent')
+        if m.get('instanceID') is not None:
+            self.instance_id = m.get('instanceID')
+        if m.get('memoryLimitMB') is not None:
+            self.memory_limit_mb = m.get('memoryLimitMB')
+        if m.get('memoryUsageMB') is not None:
+            self.memory_usage_mb = m.get('memoryUsageMB')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        return self
+
+
+class ListApplicationVersionsOutput(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        versions: List[Version] = None,
+    ):
+        self.direction = direction
+        self.next_token = next_token
+        self.request_id = request_id
+        self.versions = versions
+
+    def validate(self):
+        if self.versions:
+            for k in self.versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['versions'] = []
+        if self.versions is not None:
+            for k in self.versions:
+                result['versions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('direction') is not None:
+            self.direction = m.get('direction')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.versions = []
+        if m.get('versions') is not None:
+            for k in m.get('versions'):
+                temp_model = Version()
+                self.versions.append(temp_model.from_map(k))
+        return self
+
+
+class ListApplicationsOutput(TeaModel):
+    def __init__(
+        self,
+        applications: List[Application] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.applications = applications
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['applications'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('applications') is not None:
+            for k in m.get('applications'):
+                temp_model = Application()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListApplicationsWithStatusOutput(TeaModel):
+    def __init__(
+        self,
+        applications: List[ApplicationWithStatus] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.applications = applications
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['applications'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('applications') is not None:
+            for k in m.get('applications'):
+                temp_model = ApplicationWithStatus()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListCustomDomainOutput(TeaModel):
+    def __init__(
+        self,
+        custom_domains: List[CustomDomain] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.custom_domains = custom_domains
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.custom_domains:
+            for k in self.custom_domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['customDomains'] = []
+        if self.custom_domains is not None:
+            for k in self.custom_domains:
+                result['customDomains'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_domains = []
+        if m.get('customDomains') is not None:
+            for k in m.get('customDomains'):
+                temp_model = CustomDomain()
+                self.custom_domains.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListInstancesMetricsOutput(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        metrics_list: List[InstanceMetricInfo] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.metrics_list = metrics_list
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.metrics_list:
+            for k in self.metrics_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['metricsList'] = []
+        if self.metrics_list is not None:
+            for k in self.metrics_list:
+                result['metricsList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.metrics_list = []
+        if m.get('metricsList') is not None:
+            for k in m.get('metricsList'):
+                temp_model = InstanceMetricInfo()
+                self.metrics_list.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class VersionStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListInstancesOutput(TeaModel):
+    def __init__(
+        self,
+        current_error: str = None,
+        instances: List[InstanceInfo] = None,
+        request_id: str = None,
+        version_status: Dict[str, VersionStatus] = None,
+    ):
+        self.current_error = current_error
+        self.instances = instances
+        self.request_id = request_id
+        self.version_status = version_status
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+        if self.version_status:
+            for v in self.version_status.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_error is not None:
+            result['currentError'] = self.current_error
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['versionStatus'] = {}
+        if self.version_status is not None:
+            for k, v in self.version_status.items():
+                result['versionStatus'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentError') is not None:
+            self.current_error = m.get('currentError')
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = InstanceInfo()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.version_status = {}
+        if m.get('versionStatus') is not None:
+            for k, v in m.get('versionStatus').items():
+                temp_model = VersionStatus()
+                self.version_status[k] = temp_model.from_map(v)
+        return self
+
+
+class MetricInfo(TeaModel):
+    def __init__(
+        self,
+        average: float = None,
+        count: float = None,
+        maximum: float = None,
+        minimum: float = None,
+        sum: float = None,
+        timestamp: int = None,
+        value: float = None,
+    ):
+        self.average = average
+        self.count = count
+        self.maximum = maximum
+        self.minimum = minimum
+        self.sum = sum
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average is not None:
+            result['Average'] = self.average
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.maximum is not None:
+            result['Maximum'] = self.maximum
+        if self.minimum is not None:
+            result['Minimum'] = self.minimum
+        if self.sum is not None:
+            result['Sum'] = self.sum
+        if self.timestamp is not None:
+            result['timestamp'] = self.timestamp
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Average') is not None:
+            self.average = m.get('Average')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Maximum') is not None:
+            self.maximum = m.get('Maximum')
+        if m.get('Minimum') is not None:
+            self.minimum = m.get('Minimum')
+        if m.get('Sum') is not None:
+            self.sum = m.get('Sum')
+        if m.get('timestamp') is not None:
+            self.timestamp = m.get('timestamp')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListMetricsOutput(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        metrics: Dict[str, List[MetricInfo]] = None,
+    ):
+        self.request_id = request_id
+        self.metrics = metrics
+
+    def validate(self):
+        if self.metrics:
+            for v in self.metrics.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['metrics'] = {}
+        if self.metrics is not None:
+            for k, v in self.metrics.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['metrics'][k] = l1
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.metrics = {}
+        if m.get('metrics') is not None:
+            for k, v in m.get('metrics').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = MetricInfo()
+                    l1.append(temp_model.from_map(k1))
+                self.metrics['k'] = l1
+        return self
+
+
+class StaticsInfo(TeaModel):
+    def __init__(
+        self,
+        active_cpuusage: int = None,
+        cost: float = None,
+        disk_usage: int = None,
+        function_name: str = None,
+        gpu_usage: int = None,
+        idle_cpuusage: int = None,
+        instance_traffic_out: int = None,
+        invocations: int = None,
+        invoke_cdnout: int = None,
+        invoke_internet_out: int = None,
+        memory_usage: int = None,
+        region: str = None,
+        service_name: str = None,
+    ):
+        self.active_cpuusage = active_cpuusage
+        self.cost = cost
+        self.disk_usage = disk_usage
+        self.function_name = function_name
+        self.gpu_usage = gpu_usage
+        self.idle_cpuusage = idle_cpuusage
+        self.instance_traffic_out = instance_traffic_out
+        self.invocations = invocations
+        self.invoke_cdnout = invoke_cdnout
+        self.invoke_internet_out = invoke_internet_out
+        self.memory_usage = memory_usage
+        self.region = region
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_cpuusage is not None:
+            result['activeCPUUsage'] = self.active_cpuusage
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.disk_usage is not None:
+            result['diskUsage'] = self.disk_usage
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.gpu_usage is not None:
+            result['gpuUsage'] = self.gpu_usage
+        if self.idle_cpuusage is not None:
+            result['idleCPUUsage'] = self.idle_cpuusage
+        if self.instance_traffic_out is not None:
+            result['instanceTrafficOut'] = self.instance_traffic_out
+        if self.invocations is not None:
+            result['invocations'] = self.invocations
+        if self.invoke_cdnout is not None:
+            result['invokeCDNOut'] = self.invoke_cdnout
+        if self.invoke_internet_out is not None:
+            result['invokeInternetOut'] = self.invoke_internet_out
+        if self.memory_usage is not None:
+            result['memoryUsage'] = self.memory_usage
+        if self.region is not None:
+            result['region'] = self.region
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('activeCPUUsage') is not None:
+            self.active_cpuusage = m.get('activeCPUUsage')
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('diskUsage') is not None:
+            self.disk_usage = m.get('diskUsage')
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('gpuUsage') is not None:
+            self.gpu_usage = m.get('gpuUsage')
+        if m.get('idleCPUUsage') is not None:
+            self.idle_cpuusage = m.get('idleCPUUsage')
+        if m.get('instanceTrafficOut') is not None:
+            self.instance_traffic_out = m.get('instanceTrafficOut')
+        if m.get('invocations') is not None:
+            self.invocations = m.get('invocations')
+        if m.get('invokeCDNOut') is not None:
+            self.invoke_cdnout = m.get('invokeCDNOut')
+        if m.get('invokeInternetOut') is not None:
+            self.invoke_internet_out = m.get('invokeInternetOut')
+        if m.get('memoryUsage') is not None:
+            self.memory_usage = m.get('memoryUsage')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
+        return self
+
+
+class ListStaticsQueryResponse(TeaModel):
+    def __init__(
+        self,
+        length: int = None,
+        sort: str = None,
+        statics: List[StaticsInfo] = None,
+    ):
+        self.length = length
+        self.sort = sort
+        self.statics = statics
+
+    def validate(self):
+        if self.statics:
+            for k in self.statics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.length is not None:
+            result['length'] = self.length
+        if self.sort is not None:
+            result['sort'] = self.sort
+        result['statics'] = []
+        if self.statics is not None:
+            for k in self.statics:
+                result['statics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('length') is not None:
+            self.length = m.get('length')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
+        self.statics = []
+        if m.get('statics') is not None:
+            for k in m.get('statics'):
+                temp_model = StaticsInfo()
+                self.statics.append(temp_model.from_map(k))
+        return self
+
+
+class WebInstanceInfo(TeaModel):
+    def __init__(
+        self,
+        image_url: str = None,
+        instance_id: str = None,
+        status: str = None,
+        version_id: str = None,
+    ):
+        self.image_url = image_url
+        self.instance_id = instance_id
+        self.status = status
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
+        return self
+
+
+class WebVersionStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListWebInstancesOutput(TeaModel):
+    def __init__(
+        self,
+        current_error: str = None,
+        web_instances: List[WebInstanceInfo] = None,
+        web_version_status: Dict[str, WebVersionStatus] = None,
+    ):
+        self.current_error = current_error
+        self.web_instances = web_instances
+        self.web_version_status = web_version_status
+
+    def validate(self):
+        if self.web_instances:
+            for k in self.web_instances:
+                if k:
+                    k.validate()
+        if self.web_version_status:
+            for v in self.web_version_status.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_error is not None:
+            result['CurrentError'] = self.current_error
+        result['WebInstances'] = []
+        if self.web_instances is not None:
+            for k in self.web_instances:
+                result['WebInstances'].append(k.to_map() if k else None)
+        result['WebVersionStatus'] = {}
+        if self.web_version_status is not None:
+            for k, v in self.web_version_status.items():
+                result['WebVersionStatus'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentError') is not None:
+            self.current_error = m.get('CurrentError')
+        self.web_instances = []
+        if m.get('WebInstances') is not None:
+            for k in m.get('WebInstances'):
+                temp_model = WebInstanceInfo()
+                self.web_instances.append(temp_model.from_map(k))
+        self.web_version_status = {}
+        if m.get('WebVersionStatus') is not None:
+            for k, v in m.get('WebVersionStatus').items():
+                temp_model = WebVersionStatus()
+                self.web_version_status[k] = temp_model.from_map(v)
+        return self
+
+
+class ListWebApplicationInstancesBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListWebInstancesOutput = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListWebInstancesOutput()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class Revision(TeaModel):
+    def __init__(
+        self,
+        created_time: str = None,
+        description: str = None,
+        revision_config: RevisionConfig = None,
+        revision_id: str = None,
+        weight: float = None,
+    ):
+        self.created_time = created_time
+        self.description = description
+        self.revision_config = revision_config
+        self.revision_id = revision_id
+        self.weight = weight
+
+    def validate(self):
+        if self.revision_config:
+            self.revision_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.revision_config is not None:
+            result['RevisionConfig'] = self.revision_config.to_map()
+        if self.revision_id is not None:
+            result['RevisionId'] = self.revision_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RevisionConfig') is not None:
+            temp_model = RevisionConfig()
+            self.revision_config = temp_model.from_map(m['RevisionConfig'])
+        if m.get('RevisionId') is not None:
+            self.revision_id = m.get('RevisionId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ListWebApplicationRevisionsOutput(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        revisions: List[Revision] = None,
+    ):
+        self.next_token = next_token
+        self.revisions = revisions
+
+    def validate(self):
+        if self.revisions:
+            for k in self.revisions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Revisions'] = []
+        if self.revisions is not None:
+            for k in self.revisions:
+                result['Revisions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.revisions = []
+        if m.get('Revisions') is not None:
+            for k in m.get('Revisions'):
+                temp_model = Revision()
+                self.revisions.append(temp_model.from_map(k))
+        return self
+
+
+class ListWebApplicationRevisionsBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListWebApplicationRevisionsOutput = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListWebApplicationRevisionsOutput()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplication(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        created_time: str = None,
+        description: str = None,
+        internet_url: str = None,
+        intranet_url: str = None,
+        last_modified_time: str = None,
+        namespace_id: str = None,
+        revision_config: RevisionConfig = None,
+        vpc_id: str = None,
+        web_scaling_config: WebScalingConfig = None,
+        web_traffic_config: WebTrafficConfig = None,
+    ):
+        # This parameter is required.
+        self.application_id = application_id
+        # This parameter is required.
+        self.application_name = application_name
+        self.created_time = created_time
+        self.description = description
+        self.internet_url = internet_url
+        self.intranet_url = intranet_url
+        self.last_modified_time = last_modified_time
+        self.namespace_id = namespace_id
+        self.revision_config = revision_config
+        self.vpc_id = vpc_id
+        self.web_scaling_config = web_scaling_config
+        self.web_traffic_config = web_traffic_config
+
+    def validate(self):
+        if self.revision_config:
+            self.revision_config.validate()
+        if self.web_scaling_config:
+            self.web_scaling_config.validate()
+        if self.web_traffic_config:
+            self.web_traffic_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.internet_url is not None:
+            result['InternetURL'] = self.internet_url
+        if self.intranet_url is not None:
+            result['IntranetURL'] = self.intranet_url
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.revision_config is not None:
+            result['RevisionConfig'] = self.revision_config.to_map()
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.web_scaling_config is not None:
+            result['WebScalingConfig'] = self.web_scaling_config.to_map()
+        if self.web_traffic_config is not None:
+            result['WebTrafficConfig'] = self.web_traffic_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InternetURL') is not None:
+            self.internet_url = m.get('InternetURL')
+        if m.get('IntranetURL') is not None:
+            self.intranet_url = m.get('IntranetURL')
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('RevisionConfig') is not None:
+            temp_model = RevisionConfig()
+            self.revision_config = temp_model.from_map(m['RevisionConfig'])
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WebScalingConfig') is not None:
+            temp_model = WebScalingConfig()
+            self.web_scaling_config = temp_model.from_map(m['WebScalingConfig'])
+        if m.get('WebTrafficConfig') is not None:
+            temp_model = WebTrafficConfig()
+            self.web_traffic_config = temp_model.from_map(m['WebTrafficConfig'])
+        return self
+
+
+class WebApplicationWithInstanceCount(TeaModel):
+    def __init__(
+        self,
+        instance_count: int = None,
+        web_application: WebApplication = None,
+    ):
+        self.instance_count = instance_count
+        self.web_application = web_application
+
+    def validate(self):
+        if self.web_application:
+            self.web_application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.web_application is not None:
+            result['WebApplication'] = self.web_application.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('WebApplication') is not None:
+            temp_model = WebApplication()
+            self.web_application = temp_model.from_map(m['WebApplication'])
+        return self
+
+
+class ListWebApplicationsOutput(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        web_application_with_instance_count: List[WebApplicationWithInstanceCount] = None,
+    ):
+        self.next_token = next_token
+        self.web_application_with_instance_count = web_application_with_instance_count
+
+    def validate(self):
+        if self.web_application_with_instance_count:
+            for k in self.web_application_with_instance_count:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['WebApplicationWithInstanceCount'] = []
+        if self.web_application_with_instance_count is not None:
+            for k in self.web_application_with_instance_count:
+                result['WebApplicationWithInstanceCount'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.web_application_with_instance_count = []
+        if m.get('WebApplicationWithInstanceCount') is not None:
+            for k in m.get('WebApplicationWithInstanceCount'):
+                temp_model = WebApplicationWithInstanceCount()
+                self.web_application_with_instance_count.append(temp_model.from_map(k))
+        return self
+
+
+class ListWebApplicationsBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListWebApplicationsOutput = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListWebApplicationsOutput()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebCustomDomain(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        created_time: str = None,
+        default_forwarding_app_name: str = None,
+        domain_name: str = None,
+        last_modified_time: str = None,
+        namespace_id: str = None,
+        protocol: str = None,
+        web_cert_config: WebCertConfig = None,
+        web_tlsconfig: WebTLSConfig = None,
+        web_wafconfig: WebWAFConfig = None,
+    ):
+        self.account_id = account_id
+        self.created_time = created_time
+        self.default_forwarding_app_name = default_forwarding_app_name
+        self.domain_name = domain_name
+        self.last_modified_time = last_modified_time
+        self.namespace_id = namespace_id
+        self.protocol = protocol
+        self.web_cert_config = web_cert_config
+        self.web_tlsconfig = web_tlsconfig
+        self.web_wafconfig = web_wafconfig
+
+    def validate(self):
+        if self.web_cert_config:
+            self.web_cert_config.validate()
+        if self.web_tlsconfig:
+            self.web_tlsconfig.validate()
+        if self.web_wafconfig:
+            self.web_wafconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.default_forwarding_app_name is not None:
+            result['DefaultForwardingAppName'] = self.default_forwarding_app_name
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.web_cert_config is not None:
+            result['WebCertConfig'] = self.web_cert_config.to_map()
+        if self.web_tlsconfig is not None:
+            result['WebTLSConfig'] = self.web_tlsconfig.to_map()
+        if self.web_wafconfig is not None:
+            result['WebWAFConfig'] = self.web_wafconfig.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DefaultForwardingAppName') is not None:
+            self.default_forwarding_app_name = m.get('DefaultForwardingAppName')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('WebCertConfig') is not None:
+            temp_model = WebCertConfig()
+            self.web_cert_config = temp_model.from_map(m['WebCertConfig'])
+        if m.get('WebTLSConfig') is not None:
+            temp_model = WebTLSConfig()
+            self.web_tlsconfig = temp_model.from_map(m['WebTLSConfig'])
+        if m.get('WebWAFConfig') is not None:
+            temp_model = WebWAFConfig()
+            self.web_wafconfig = temp_model.from_map(m['WebWAFConfig'])
+        return self
+
+
+class ListWebCustomDomainOutput(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        web_custom_domains: List[WebCustomDomain] = None,
+    ):
+        self.next_token = next_token
+        self.web_custom_domains = web_custom_domains
+
+    def validate(self):
+        if self.web_custom_domains:
+            for k in self.web_custom_domains:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['WebCustomDomains'] = []
+        if self.web_custom_domains is not None:
+            for k in self.web_custom_domains:
+                result['WebCustomDomains'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.web_custom_domains = []
+        if m.get('WebCustomDomains') is not None:
+            for k in m.get('WebCustomDomains'):
+                temp_model = WebCustomDomain()
+                self.web_custom_domains.append(temp_model.from_map(k))
+        return self
+
+
+class ListWebCustomDomainBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListWebCustomDomainOutput = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListWebCustomDomainOutput()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PermissionAssistantApi(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        id: int = None,
+        name: str = None,
+        resource_type: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.id = id
+        self.name = name
+        self.resource_type = resource_type
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class PolicyItem(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        operator: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.operator = operator
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class PriceEstimateFeature(TeaModel):
+    def __init__(
+        self,
+        app_type: str = None,
+        cpu_core: float = None,
+        cpu_strategy: str = None,
+        env_type: str = None,
+        high_load_instance_count: int = None,
+        high_load_qps: float = None,
+        high_load_seconds: int = None,
+        instance_qps: float = None,
+        internet_outbound_gi_b: float = None,
+        low_load_instance_count: int = None,
+        low_load_qps: float = None,
+        low_load_seconds: int = None,
+        max_instance_count: int = None,
+        memory_gi_b: float = None,
+        min_instance_count: int = None,
+        none_load_instance_count: int = None,
+        none_load_seconds: int = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_type = app_type
+        # This parameter is required.
+        self.cpu_core = cpu_core
+        # This parameter is required.
+        self.cpu_strategy = cpu_strategy
+        # This parameter is required.
+        self.env_type = env_type
+        self.high_load_instance_count = high_load_instance_count
+        self.high_load_qps = high_load_qps
+        self.high_load_seconds = high_load_seconds
+        self.instance_qps = instance_qps
+        self.internet_outbound_gi_b = internet_outbound_gi_b
+        self.low_load_instance_count = low_load_instance_count
+        self.low_load_qps = low_load_qps
+        self.low_load_seconds = low_load_seconds
+        self.max_instance_count = max_instance_count
+        # This parameter is required.
+        self.memory_gi_b = memory_gi_b
+        self.min_instance_count = min_instance_count
+        self.none_load_instance_count = none_load_instance_count
+        self.none_load_seconds = none_load_seconds
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.cpu_core is not None:
+            result['CpuCore'] = self.cpu_core
+        if self.cpu_strategy is not None:
+            result['CpuStrategy'] = self.cpu_strategy
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.high_load_instance_count is not None:
+            result['HighLoadInstanceCount'] = self.high_load_instance_count
+        if self.high_load_qps is not None:
+            result['HighLoadQps'] = self.high_load_qps
+        if self.high_load_seconds is not None:
+            result['HighLoadSeconds'] = self.high_load_seconds
+        if self.instance_qps is not None:
+            result['InstanceQps'] = self.instance_qps
+        if self.internet_outbound_gi_b is not None:
+            result['InternetOutboundGiB'] = self.internet_outbound_gi_b
+        if self.low_load_instance_count is not None:
+            result['LowLoadInstanceCount'] = self.low_load_instance_count
+        if self.low_load_qps is not None:
+            result['LowLoadQps'] = self.low_load_qps
+        if self.low_load_seconds is not None:
+            result['LowLoadSeconds'] = self.low_load_seconds
+        if self.max_instance_count is not None:
+            result['MaxInstanceCount'] = self.max_instance_count
+        if self.memory_gi_b is not None:
+            result['MemoryGiB'] = self.memory_gi_b
+        if self.min_instance_count is not None:
+            result['MinInstanceCount'] = self.min_instance_count
+        if self.none_load_instance_count is not None:
+            result['NoneLoadInstanceCount'] = self.none_load_instance_count
+        if self.none_load_seconds is not None:
+            result['NoneLoadSeconds'] = self.none_load_seconds
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('CpuCore') is not None:
+            self.cpu_core = m.get('CpuCore')
+        if m.get('CpuStrategy') is not None:
+            self.cpu_strategy = m.get('CpuStrategy')
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('HighLoadInstanceCount') is not None:
+            self.high_load_instance_count = m.get('HighLoadInstanceCount')
+        if m.get('HighLoadQps') is not None:
+            self.high_load_qps = m.get('HighLoadQps')
+        if m.get('HighLoadSeconds') is not None:
+            self.high_load_seconds = m.get('HighLoadSeconds')
+        if m.get('InstanceQps') is not None:
+            self.instance_qps = m.get('InstanceQps')
+        if m.get('InternetOutboundGiB') is not None:
+            self.internet_outbound_gi_b = m.get('InternetOutboundGiB')
+        if m.get('LowLoadInstanceCount') is not None:
+            self.low_load_instance_count = m.get('LowLoadInstanceCount')
+        if m.get('LowLoadQps') is not None:
+            self.low_load_qps = m.get('LowLoadQps')
+        if m.get('LowLoadSeconds') is not None:
+            self.low_load_seconds = m.get('LowLoadSeconds')
+        if m.get('MaxInstanceCount') is not None:
+            self.max_instance_count = m.get('MaxInstanceCount')
+        if m.get('MemoryGiB') is not None:
+            self.memory_gi_b = m.get('MemoryGiB')
+        if m.get('MinInstanceCount') is not None:
+            self.min_instance_count = m.get('MinInstanceCount')
+        if m.get('NoneLoadInstanceCount') is not None:
+            self.none_load_instance_count = m.get('NoneLoadInstanceCount')
+        if m.get('NoneLoadSeconds') is not None:
+            self.none_load_seconds = m.get('NoneLoadSeconds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class PriceEstimateOutputAppsUsages(TeaModel):
+    def __init__(
+        self,
+        amount: float = None,
+        id: str = None,
+        unit: str = None,
+    ):
+        self.amount = amount
+        self.id = id
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class PriceEstimateOutputApps(TeaModel):
+    def __init__(
+        self,
+        feature: PriceEstimateFeature = None,
+        id: int = None,
+        usages: List[PriceEstimateOutputAppsUsages] = None,
+    ):
+        self.feature = feature
+        self.id = id
+        self.usages = usages
+
+    def validate(self):
+        if self.feature:
+            self.feature.validate()
+        if self.usages:
+            for k in self.usages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feature is not None:
+            result['Feature'] = self.feature.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        result['Usages'] = []
+        if self.usages is not None:
+            for k in self.usages:
+                result['Usages'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Feature') is not None:
+            temp_model = PriceEstimateFeature()
+            self.feature = temp_model.from_map(m['Feature'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.usages = []
+        if m.get('Usages') is not None:
+            for k in m.get('Usages'):
+                temp_model = PriceEstimateOutputAppsUsages()
+                self.usages.append(temp_model.from_map(k))
+        return self
+
+
+class PriceEstimateOutputItemsSteps(TeaModel):
+    def __init__(
+        self,
+        begin: int = None,
+        end: int = None,
+        price: float = None,
+        region_ids: List[str] = None,
+        unit: str = None,
+    ):
+        self.begin = begin
+        self.end = end
+        self.price = price
+        self.region_ids = region_ids
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin is not None:
+            result['Begin'] = self.begin
+        if self.end is not None:
+            result['End'] = self.end
+        if self.price is not None:
+            result['Price'] = self.price
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Begin') is not None:
+            self.begin = m.get('Begin')
+        if m.get('End') is not None:
+            self.end = m.get('End')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class PriceEstimateOutputItems(TeaModel):
+    def __init__(
+        self,
+        amount: float = None,
+        count: int = None,
+        id: str = None,
+        price: float = None,
+        steps: List[PriceEstimateOutputItemsSteps] = None,
+        type: str = None,
+        unit: str = None,
+    ):
+        self.amount = amount
+        self.count = count
+        self.id = id
+        self.price = price
+        self.steps = steps
+        self.type = type
+        self.unit = unit
+
+    def validate(self):
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.price is not None:
+            result['Price'] = self.price
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = PriceEstimateOutputItemsSteps()
+                self.steps.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class PriceEstimateOutput(TeaModel):
+    def __init__(
+        self,
+        apps: List[PriceEstimateOutputApps] = None,
+        items: List[PriceEstimateOutputItems] = None,
+        total_price: float = None,
+    ):
+        self.apps = apps
+        self.items = items
+        self.total_price = total_price
+
+    def validate(self):
+        if self.apps:
+            for k in self.apps:
+                if k:
+                    k.validate()
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Apps'] = []
+        if self.apps is not None:
+            for k in self.apps:
+                result['Apps'].append(k.to_map() if k else None)
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.total_price is not None:
+            result['TotalPrice'] = self.total_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.apps = []
+        if m.get('Apps') is not None:
+            for k in m.get('Apps'):
+                temp_model = PriceEstimateOutputApps()
+                self.apps.append(temp_model.from_map(k))
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = PriceEstimateOutputItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('TotalPrice') is not None:
+            self.total_price = m.get('TotalPrice')
+        return self
+
+
+class PublishApplicationVersionInput(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+    ):
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        return self
+
+
+class PublishWebApplicationRevisionInput(TeaModel):
+    def __init__(
+        self,
+        containers: List[Container] = None,
+        description: str = None,
+        enable_arms_metrics: bool = None,
+        take_effect: bool = None,
+    ):
+        # This parameter is required.
+        self.containers = containers
+        self.description = description
+        self.enable_arms_metrics = enable_arms_metrics
+        self.take_effect = take_effect
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enable_arms_metrics is not None:
+            result['EnableArmsMetrics'] = self.enable_arms_metrics
+        if self.take_effect is not None:
+            result['TakeEffect'] = self.take_effect
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = Container()
+                self.containers.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnableArmsMetrics') is not None:
+            self.enable_arms_metrics = m.get('EnableArmsMetrics')
+        if m.get('TakeEffect') is not None:
+            self.take_effect = m.get('TakeEffect')
+        return self
+
+
+class RoutePolicy(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        policy_items: List[PolicyItem] = None,
+    ):
+        self.condition = condition
+        self.policy_items = policy_items
+
+    def validate(self):
+        if self.policy_items:
+            for k in self.policy_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['condition'] = self.condition
+        result['policyItems'] = []
+        if self.policy_items is not None:
+            for k in self.policy_items:
+                result['policyItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('condition') is not None:
+            self.condition = m.get('condition')
+        self.policy_items = []
+        if m.get('policyItems') is not None:
+            for k in m.get('policyItems'):
+                temp_model = PolicyItem()
+                self.policy_items.append(temp_model.from_map(k))
+        return self
+
+
+class SourceCodeAccountOrganizations(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.avatar_url = avatar_url
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class SourceCodeAccount(TeaModel):
+    def __init__(
+        self,
+        avatar_url: str = None,
+        id: str = None,
+        name: str = None,
+        organizations: List[SourceCodeAccountOrganizations] = None,
+    ):
+        self.avatar_url = avatar_url
+        self.id = id
+        self.name = name
+        self.organizations = organizations
+
+    def validate(self):
+        if self.organizations:
+            for k in self.organizations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Organizations'] = []
+        if self.organizations is not None:
+            for k in self.organizations:
+                result['Organizations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.organizations = []
+        if m.get('Organizations') is not None:
+            for k in m.get('Organizations'):
+                temp_model = SourceCodeAccountOrganizations()
+                self.organizations.append(temp_model.from_map(k))
+        return self
+
+
+class SourceCodeRepo(TeaModel):
+    def __init__(
+        self,
+        full_name: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.full_name = full_name
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.full_name is not None:
+            result['FullName'] = self.full_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FullName') is not None:
+            self.full_name = m.get('FullName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class SourceCodeRepoBranch(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        name: str = None,
+    ):
+        self.commit_id = commit_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['CommitId'] = self.commit_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommitId') is not None:
+            self.commit_id = m.get('CommitId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class SubmenuItems(TeaModel):
+    def __init__(
+        self,
+        default_selected: bool = None,
+        item_desc: str = None,
+        item_type: str = None,
+        relating_items: List[str] = None,
+    ):
+        self.default_selected = default_selected
+        self.item_desc = item_desc
+        self.item_type = item_type
+        self.relating_items = relating_items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_selected is not None:
+            result['DefaultSelected'] = self.default_selected
+        if self.item_desc is not None:
+            result['ItemDesc'] = self.item_desc
+        if self.item_type is not None:
+            result['ItemType'] = self.item_type
+        if self.relating_items is not None:
+            result['RelatingItems'] = self.relating_items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultSelected') is not None:
+            self.default_selected = m.get('DefaultSelected')
+        if m.get('ItemDesc') is not None:
+            self.item_desc = m.get('ItemDesc')
+        if m.get('ItemType') is not None:
+            self.item_type = m.get('ItemType')
+        if m.get('RelatingItems') is not None:
+            self.relating_items = m.get('RelatingItems')
+        return self
+
+
+class Submenu(TeaModel):
+    def __init__(
+        self,
+        items: List[SubmenuItems] = None,
+        submenu_desc: str = None,
+        submenu_type: str = None,
+        submenus: List['Submenu'] = None,
+    ):
+        self.items = items
+        self.submenu_desc = submenu_desc
+        self.submenu_type = submenu_type
+        self.submenus = submenus
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+        if self.submenus:
+            for k in self.submenus:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.submenu_desc is not None:
+            result['SubmenuDesc'] = self.submenu_desc
+        if self.submenu_type is not None:
+            result['SubmenuType'] = self.submenu_type
+        result['Submenus'] = []
+        if self.submenus is not None:
+            for k in self.submenus:
+                result['Submenus'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = SubmenuItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('SubmenuDesc') is not None:
+            self.submenu_desc = m.get('SubmenuDesc')
+        if m.get('SubmenuType') is not None:
+            self.submenu_type = m.get('SubmenuType')
+        self.submenus = []
+        if m.get('Submenus') is not None:
+            for k in m.get('Submenus'):
+                temp_model = Submenu()
+                self.submenus.append(temp_model.from_map(k))
+        return self
+
+
+class TrafficConfig(TeaModel):
+    def __init__(
+        self,
+        additional_version_weight: Dict[str, float] = None,
+        created_time: str = None,
+        last_modified_time: str = None,
+        request_id: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
+        version_id: str = None,
+    ):
+        self.additional_version_weight = additional_version_weight
+        self.created_time = created_time
+        self.last_modified_time = last_modified_time
+        self.request_id = request_id
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
+        self.version_id = version_id
+
+    def validate(self):
+        if self.route_policy:
+            self.route_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_version_weight is not None:
+            result['additionalVersionWeight'] = self.additional_version_weight
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('additionalVersionWeight') is not None:
+            self.additional_version_weight = m.get('additionalVersionWeight')
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
+class UpdateApplicationInput(TeaModel):
+    def __init__(
+        self,
+        args: str = None,
+        ca_port: int = None,
+        code: InputCodeLocation = None,
+        command: str = None,
+        cpu: float = None,
+        custom_dns: CustomDNS = None,
+        custom_health_check_config: CustomHealthCheckConfig = None,
+        custom_runtime_config: CustomRuntimeConfig = None,
+        description: str = None,
+        disk_size: int = None,
+        effective_immediately: bool = None,
+        enable_app_metric: bool = None,
+        environment_variables: Dict[str, str] = None,
+        gpu_memory_size: int = None,
+        handler: str = None,
+        http_trigger_config: HTTPTriggerConfig = None,
+        image_config: ImageConfig = None,
+        initialization_timeout: int = None,
+        initializer: str = None,
+        instance_concurrency: int = None,
+        instance_lifecycle_config: InstanceLifecycleConfig = None,
+        instance_soft_concurrency: int = None,
+        instance_type: str = None,
+        internet_access: bool = None,
+        layers: List[str] = None,
+        liveness_probe: Probe = None,
+        log_config: LogConfig = None,
+        memory_size: int = None,
+        nas_config: NASConfig = None,
+        oss_mount_config: OSSMountConfig = None,
+        runtime: str = None,
+        scale_config: ScaleConfig = None,
+        sls_config: SLSConfig = None,
+        startup_probe: Probe = None,
+        timeout: int = None,
+        tracing_config: TracingConfig = None,
+        vpc_config: VPCConfig = None,
+    ):
+        self.args = args
+        self.ca_port = ca_port
+        self.code = code
+        self.command = command
+        self.cpu = cpu
+        self.custom_dns = custom_dns
+        self.custom_health_check_config = custom_health_check_config
+        self.custom_runtime_config = custom_runtime_config
+        self.description = description
+        self.disk_size = disk_size
+        self.effective_immediately = effective_immediately
+        self.enable_app_metric = enable_app_metric
+        self.environment_variables = environment_variables
+        self.gpu_memory_size = gpu_memory_size
+        self.handler = handler
+        self.http_trigger_config = http_trigger_config
+        self.image_config = image_config
+        self.initialization_timeout = initialization_timeout
+        self.initializer = initializer
+        self.instance_concurrency = instance_concurrency
+        self.instance_lifecycle_config = instance_lifecycle_config
+        self.instance_soft_concurrency = instance_soft_concurrency
+        self.instance_type = instance_type
+        self.internet_access = internet_access
+        self.layers = layers
+        self.liveness_probe = liveness_probe
+        self.log_config = log_config
+        self.memory_size = memory_size
+        self.nas_config = nas_config
+        self.oss_mount_config = oss_mount_config
+        self.runtime = runtime
+        self.scale_config = scale_config
+        self.sls_config = sls_config
+        self.startup_probe = startup_probe
+        self.timeout = timeout
+        self.tracing_config = tracing_config
+        self.vpc_config = vpc_config
+
+    def validate(self):
+        if self.code:
+            self.code.validate()
+        if self.custom_dns:
+            self.custom_dns.validate()
+        if self.custom_health_check_config:
+            self.custom_health_check_config.validate()
+        if self.custom_runtime_config:
+            self.custom_runtime_config.validate()
+        if self.http_trigger_config:
+            self.http_trigger_config.validate()
+        if self.image_config:
+            self.image_config.validate()
+        if self.instance_lifecycle_config:
+            self.instance_lifecycle_config.validate()
+        if self.liveness_probe:
+            self.liveness_probe.validate()
+        if self.log_config:
+            self.log_config.validate()
+        if self.nas_config:
+            self.nas_config.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
+        if self.scale_config:
+            self.scale_config.validate()
+        if self.sls_config:
+            self.sls_config.validate()
+        if self.startup_probe:
+            self.startup_probe.validate()
+        if self.tracing_config:
+            self.tracing_config.validate()
+        if self.vpc_config:
+            self.vpc_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['args'] = self.args
+        if self.ca_port is not None:
+            result['caPort'] = self.ca_port
+        if self.code is not None:
+            result['code'] = self.code.to_map()
+        if self.command is not None:
+            result['command'] = self.command
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.custom_dns is not None:
+            result['customDNS'] = self.custom_dns.to_map()
+        if self.custom_health_check_config is not None:
+            result['customHealthCheckConfig'] = self.custom_health_check_config.to_map()
+        if self.custom_runtime_config is not None:
+            result['customRuntimeConfig'] = self.custom_runtime_config.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
+        if self.effective_immediately is not None:
+            result['effectiveImmediately'] = self.effective_immediately
+        if self.enable_app_metric is not None:
+            result['enableAppMetric'] = self.enable_app_metric
+        if self.environment_variables is not None:
+            result['environmentVariables'] = self.environment_variables
+        if self.gpu_memory_size is not None:
+            result['gpuMemorySize'] = self.gpu_memory_size
+        if self.handler is not None:
+            result['handler'] = self.handler
+        if self.http_trigger_config is not None:
+            result['httpTriggerConfig'] = self.http_trigger_config.to_map()
+        if self.image_config is not None:
+            result['imageConfig'] = self.image_config.to_map()
+        if self.initialization_timeout is not None:
+            result['initializationTimeout'] = self.initialization_timeout
+        if self.initializer is not None:
+            result['initializer'] = self.initializer
+        if self.instance_concurrency is not None:
+            result['instanceConcurrency'] = self.instance_concurrency
+        if self.instance_lifecycle_config is not None:
+            result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
+        if self.instance_soft_concurrency is not None:
+            result['instanceSoftConcurrency'] = self.instance_soft_concurrency
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.internet_access is not None:
+            result['internetAccess'] = self.internet_access
+        if self.layers is not None:
+            result['layers'] = self.layers
+        if self.liveness_probe is not None:
+            result['livenessProbe'] = self.liveness_probe.to_map()
+        if self.log_config is not None:
+            result['logConfig'] = self.log_config.to_map()
+        if self.memory_size is not None:
+            result['memorySize'] = self.memory_size
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.runtime is not None:
+            result['runtime'] = self.runtime
+        if self.scale_config is not None:
+            result['scaleConfig'] = self.scale_config.to_map()
+        if self.sls_config is not None:
+            result['slsConfig'] = self.sls_config.to_map()
+        if self.startup_probe is not None:
+            result['startupProbe'] = self.startup_probe.to_map()
+        if self.timeout is not None:
+            result['timeout'] = self.timeout
+        if self.tracing_config is not None:
+            result['tracingConfig'] = self.tracing_config.to_map()
+        if self.vpc_config is not None:
+            result['vpcConfig'] = self.vpc_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('args') is not None:
+            self.args = m.get('args')
+        if m.get('caPort') is not None:
+            self.ca_port = m.get('caPort')
+        if m.get('code') is not None:
+            temp_model = InputCodeLocation()
+            self.code = temp_model.from_map(m['code'])
+        if m.get('command') is not None:
+            self.command = m.get('command')
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('customDNS') is not None:
+            temp_model = CustomDNS()
+            self.custom_dns = temp_model.from_map(m['customDNS'])
+        if m.get('customHealthCheckConfig') is not None:
+            temp_model = CustomHealthCheckConfig()
+            self.custom_health_check_config = temp_model.from_map(m['customHealthCheckConfig'])
+        if m.get('customRuntimeConfig') is not None:
+            temp_model = CustomRuntimeConfig()
+            self.custom_runtime_config = temp_model.from_map(m['customRuntimeConfig'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
+        if m.get('effectiveImmediately') is not None:
+            self.effective_immediately = m.get('effectiveImmediately')
+        if m.get('enableAppMetric') is not None:
+            self.enable_app_metric = m.get('enableAppMetric')
+        if m.get('environmentVariables') is not None:
+            self.environment_variables = m.get('environmentVariables')
+        if m.get('gpuMemorySize') is not None:
+            self.gpu_memory_size = m.get('gpuMemorySize')
+        if m.get('handler') is not None:
+            self.handler = m.get('handler')
+        if m.get('httpTriggerConfig') is not None:
+            temp_model = HTTPTriggerConfig()
+            self.http_trigger_config = temp_model.from_map(m['httpTriggerConfig'])
+        if m.get('imageConfig') is not None:
+            temp_model = ImageConfig()
+            self.image_config = temp_model.from_map(m['imageConfig'])
+        if m.get('initializationTimeout') is not None:
+            self.initialization_timeout = m.get('initializationTimeout')
+        if m.get('initializer') is not None:
+            self.initializer = m.get('initializer')
+        if m.get('instanceConcurrency') is not None:
+            self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('instanceLifecycleConfig') is not None:
+            temp_model = InstanceLifecycleConfig()
+            self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
+        if m.get('instanceSoftConcurrency') is not None:
+            self.instance_soft_concurrency = m.get('instanceSoftConcurrency')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('internetAccess') is not None:
+            self.internet_access = m.get('internetAccess')
+        if m.get('layers') is not None:
+            self.layers = m.get('layers')
+        if m.get('livenessProbe') is not None:
+            temp_model = Probe()
+            self.liveness_probe = temp_model.from_map(m['livenessProbe'])
+        if m.get('logConfig') is not None:
+            temp_model = LogConfig()
+            self.log_config = temp_model.from_map(m['logConfig'])
+        if m.get('memorySize') is not None:
+            self.memory_size = m.get('memorySize')
+        if m.get('nasConfig') is not None:
+            temp_model = NASConfig()
+            self.nas_config = temp_model.from_map(m['nasConfig'])
+        if m.get('ossMountConfig') is not None:
+            temp_model = OSSMountConfig()
+            self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('runtime') is not None:
+            self.runtime = m.get('runtime')
+        if m.get('scaleConfig') is not None:
+            temp_model = ScaleConfig()
+            self.scale_config = temp_model.from_map(m['scaleConfig'])
+        if m.get('slsConfig') is not None:
+            temp_model = SLSConfig()
+            self.sls_config = temp_model.from_map(m['slsConfig'])
+        if m.get('startupProbe') is not None:
+            temp_model = Probe()
+            self.startup_probe = temp_model.from_map(m['startupProbe'])
+        if m.get('timeout') is not None:
+            self.timeout = m.get('timeout')
+        if m.get('tracingConfig') is not None:
+            temp_model = TracingConfig()
+            self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('vpcConfig') is not None:
+            temp_model = VPCConfig()
+            self.vpc_config = temp_model.from_map(m['vpcConfig'])
+        return self
+
+
+class UpdateApplicationScaleConfigInput(TeaModel):
+    def __init__(
+        self,
+        always_allocate_cpu: bool = None,
+        maximum_instance_count: int = None,
+        minimum_instance_count: int = None,
+    ):
+        self.always_allocate_cpu = always_allocate_cpu
+        self.maximum_instance_count = maximum_instance_count
+        self.minimum_instance_count = minimum_instance_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.always_allocate_cpu is not None:
+            result['alwaysAllocateCPU'] = self.always_allocate_cpu
+        if self.maximum_instance_count is not None:
+            result['maximumInstanceCount'] = self.maximum_instance_count
+        if self.minimum_instance_count is not None:
+            result['minimumInstanceCount'] = self.minimum_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alwaysAllocateCPU') is not None:
+            self.always_allocate_cpu = m.get('alwaysAllocateCPU')
+        if m.get('maximumInstanceCount') is not None:
+            self.maximum_instance_count = m.get('maximumInstanceCount')
+        if m.get('minimumInstanceCount') is not None:
+            self.minimum_instance_count = m.get('minimumInstanceCount')
+        return self
+
+
+class UpdateApplicationTrafficConfigInput(TeaModel):
+    def __init__(
+        self,
+        additional_version_weight: Dict[str, float] = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
+        version_id: str = None,
+    ):
+        self.additional_version_weight = additional_version_weight
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
+        self.version_id = version_id
+
+    def validate(self):
+        if self.route_policy:
+            self.route_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_version_weight is not None:
+            result['additionalVersionWeight'] = self.additional_version_weight
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('additionalVersionWeight') is not None:
+            self.additional_version_weight = m.get('additionalVersionWeight')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        return self
+
+
+class UpdateAttributesInput(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        http_trigger_config: HTTPTriggerConfig = None,
+        version_id: str = None,
+    ):
+        self.description = description
+        self.http_trigger_config = http_trigger_config
+        self.version_id = version_id
+
+    def validate(self):
+        if self.http_trigger_config:
+            self.http_trigger_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.http_trigger_config is not None:
+            result['httpTriggerConfig'] = self.http_trigger_config.to_map()
+        if self.version_id is not None:
+            result['versionID'] = self.version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('httpTriggerConfig') is not None:
+            temp_model = HTTPTriggerConfig()
+            self.http_trigger_config = temp_model.from_map(m['httpTriggerConfig'])
+        if m.get('versionID') is not None:
+            self.version_id = m.get('versionID')
+        return self
+
+
+class UpdateCustomDomainInput(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        application_name: str = None,
+        cert_config: CertConfig = None,
+        keep_full_path: bool = None,
+        namespace_id: str = None,
+        protocol: str = None,
+        tls_config: TLSConfig = None,
+        waf_config: WAFConfig = None,
+    ):
+        self.application_id = application_id
+        self.application_name = application_name
+        self.cert_config = cert_config
+        self.keep_full_path = keep_full_path
+        self.namespace_id = namespace_id
+        self.protocol = protocol
+        self.tls_config = tls_config
+        self.waf_config = waf_config
+
+    def validate(self):
+        if self.cert_config:
+            self.cert_config.validate()
+        if self.tls_config:
+            self.tls_config.validate()
+        if self.waf_config:
+            self.waf_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['applicationID'] = self.application_id
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.cert_config is not None:
+            result['certConfig'] = self.cert_config.to_map()
+        if self.keep_full_path is not None:
+            result['keepFullPath'] = self.keep_full_path
+        if self.namespace_id is not None:
+            result['namespaceID'] = self.namespace_id
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.tls_config is not None:
+            result['tlsConfig'] = self.tls_config.to_map()
+        if self.waf_config is not None:
+            result['wafConfig'] = self.waf_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationID') is not None:
+            self.application_id = m.get('applicationID')
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('certConfig') is not None:
+            temp_model = CertConfig()
+            self.cert_config = temp_model.from_map(m['certConfig'])
+        if m.get('keepFullPath') is not None:
+            self.keep_full_path = m.get('keepFullPath')
+        if m.get('namespaceID') is not None:
+            self.namespace_id = m.get('namespaceID')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('tlsConfig') is not None:
+            temp_model = TLSConfig()
+            self.tls_config = temp_model.from_map(m['tlsConfig'])
+        if m.get('wafConfig') is not None:
+            temp_model = WAFConfig()
+            self.waf_config = temp_model.from_map(m['wafConfig'])
+        return self
+
+
+class UpdateWebApplicationInput(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        web_network_config: WebNetworkConfig = None,
+    ):
+        self.description = description
+        self.web_network_config = web_network_config
+
+    def validate(self):
+        if self.web_network_config:
+            self.web_network_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.web_network_config is not None:
+            result['WebNetworkConfig'] = self.web_network_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('WebNetworkConfig') is not None:
+            temp_model = WebNetworkConfig()
+            self.web_network_config = temp_model.from_map(m['WebNetworkConfig'])
+        return self
+
+
+class UpdateWebApplicationScalingConfigInput(TeaModel):
+    def __init__(
+        self,
+        maximum_instance_count: int = None,
+        minimum_instance_count: int = None,
+    ):
+        # This parameter is required.
+        self.maximum_instance_count = maximum_instance_count
+        # This parameter is required.
+        self.minimum_instance_count = minimum_instance_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.maximum_instance_count is not None:
+            result['MaximumInstanceCount'] = self.maximum_instance_count
+        if self.minimum_instance_count is not None:
+            result['MinimumInstanceCount'] = self.minimum_instance_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaximumInstanceCount') is not None:
+            self.maximum_instance_count = m.get('MaximumInstanceCount')
+        if m.get('MinimumInstanceCount') is not None:
+            self.minimum_instance_count = m.get('MinimumInstanceCount')
+        return self
+
+
+class UpdateWebApplicationTrafficConfigInput(TeaModel):
+    def __init__(
+        self,
+        auth_type: str = None,
+        disable_urlinternet: bool = None,
+        revisions_traffic_weight: Dict[str, float] = None,
+        web_acl_config: WebAclConfig = None,
+    ):
+        self.auth_type = auth_type
+        self.disable_urlinternet = disable_urlinternet
+        self.revisions_traffic_weight = revisions_traffic_weight
+        self.web_acl_config = web_acl_config
+
+    def validate(self):
+        if self.web_acl_config:
+            self.web_acl_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+        if self.disable_urlinternet is not None:
+            result['DisableURLInternet'] = self.disable_urlinternet
+        if self.revisions_traffic_weight is not None:
+            result['RevisionsTrafficWeight'] = self.revisions_traffic_weight
+        if self.web_acl_config is not None:
+            result['WebAclConfig'] = self.web_acl_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+        if m.get('DisableURLInternet') is not None:
+            self.disable_urlinternet = m.get('DisableURLInternet')
+        if m.get('RevisionsTrafficWeight') is not None:
+            self.revisions_traffic_weight = m.get('RevisionsTrafficWeight')
+        if m.get('WebAclConfig') is not None:
+            temp_model = WebAclConfig()
+            self.web_acl_config = temp_model.from_map(m['WebAclConfig'])
+        return self
+
+
+class UpdateWebCustomDomainInput(TeaModel):
+    def __init__(
+        self,
+        default_forwarding_app_name: str = None,
+        protocol: str = None,
+        web_cert_config: WebCertConfig = None,
+        web_tlsconfig: WebTLSConfig = None,
+        web_wafconfig: WebWAFConfig = None,
+    ):
+        self.default_forwarding_app_name = default_forwarding_app_name
+        self.protocol = protocol
+        self.web_cert_config = web_cert_config
+        self.web_tlsconfig = web_tlsconfig
+        self.web_wafconfig = web_wafconfig
+
+    def validate(self):
+        if self.web_cert_config:
+            self.web_cert_config.validate()
+        if self.web_tlsconfig:
+            self.web_tlsconfig.validate()
+        if self.web_wafconfig:
+            self.web_wafconfig.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_forwarding_app_name is not None:
+            result['DefaultForwardingAppName'] = self.default_forwarding_app_name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.web_cert_config is not None:
+            result['WebCertConfig'] = self.web_cert_config.to_map()
+        if self.web_tlsconfig is not None:
+            result['WebTLSConfig'] = self.web_tlsconfig.to_map()
+        if self.web_wafconfig is not None:
+            result['WebWAFConfig'] = self.web_wafconfig.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultForwardingAppName') is not None:
+            self.default_forwarding_app_name = m.get('DefaultForwardingAppName')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('WebCertConfig') is not None:
+            temp_model = WebCertConfig()
+            self.web_cert_config = temp_model.from_map(m['WebCertConfig'])
+        if m.get('WebTLSConfig') is not None:
+            temp_model = WebTLSConfig()
+            self.web_tlsconfig = temp_model.from_map(m['WebTLSConfig'])
+        if m.get('WebWAFConfig') is not None:
+            temp_model = WebWAFConfig()
+            self.web_wafconfig = temp_model.from_map(m['WebWAFConfig'])
+        return self
+
+
+class WebApplicationBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: WebApplication = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = WebApplication()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplicationInstanceLogsBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeInstanceLogsOutput = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeInstanceLogsOutput()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplicationResourceStaticsBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeWebAppStaticsOutput = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeWebAppStaticsOutput()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplicationRevisionBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Revision = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = Revision()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplicationScalingConfigBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: WebScalingConfig = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = WebScalingConfig()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplicationStatus(TeaModel):
+    def __init__(
+        self,
+        instance_count: int = None,
+        web_scaling_config: WebScalingConfig = None,
+    ):
+        self.instance_count = instance_count
+        self.web_scaling_config = web_scaling_config
+
+    def validate(self):
+        if self.web_scaling_config:
+            self.web_scaling_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.web_scaling_config is not None:
+            result['WebScalingConfig'] = self.web_scaling_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('WebScalingConfig') is not None:
+            temp_model = WebScalingConfig()
+            self.web_scaling_config = temp_model.from_map(m['WebScalingConfig'])
+        return self
+
+
+class WebApplicationTrafficConfigBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: WebTrafficConfig = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = WebTrafficConfig()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class WebApplicationWithStatus(TeaModel):
+    def __init__(
+        self,
+        status: WebApplicationStatus = None,
+        web_application: WebApplication = None,
+    ):
+        self.status = status
+        self.web_application = web_application
+
+    def validate(self):
+        if self.status:
+            self.status.validate()
+        if self.web_application:
+            self.web_application.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status.to_map()
+        if self.web_application is not None:
+            result['WebApplication'] = self.web_application.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            temp_model = WebApplicationStatus()
+            self.status = temp_model.from_map(m['Status'])
+        if m.get('WebApplication') is not None:
+            temp_model = WebApplication()
+            self.web_application = temp_model.from_map(m['WebApplication'])
+        return self
+
+
+class WebCustomDomainBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: WebCustomDomain = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = WebCustomDomain()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
 
 
 class AbortAndRollbackChangeOrderRequest(TeaModel):
@@ -9,7 +9476,9 @@ class AbortAndRollbackChangeOrderRequest(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # ba386059-69b1-4e65-b1e5-0682d9fa\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -37,7 +9506,10 @@ class AbortAndRollbackChangeOrderResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -71,30 +9543,26 @@ class AbortAndRollbackChangeOrderResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the change order was terminated or the application was rolled back. Valid values:
+        # 
+        # *   **true**: The change order was terminated or the application was rolled back.
+        # *   **false**: The change order could not be terminated or the application could not be rolled back.
+        self.code = code
+        # The ID of the change order.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The details of the change order.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the change order was terminated or the application was rolled back. Valid values:
-        # 
-        # *   **true**: The change order was terminated or the application was rolled back.
-        # *   **false**: The change order could not be terminated or the application could not be rolled back.
-        self.success = success
         # The ID of the trace. It is used to query the details of a request.
+        self.message = message
+        # The returned message.
+        self.request_id = request_id
+        self.success = success
+        # The details of the change order.
         self.trace_id = trace_id
 
     def validate(self):
@@ -155,9 +9623,6 @@ class AbortAndRollbackChangeOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -192,7 +9657,9 @@ class AbortChangeOrderRequest(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # be2e1c76-682b-4897-98d3-1d8d6478\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -220,7 +9687,10 @@ class AbortChangeOrderResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -254,30 +9724,26 @@ class AbortChangeOrderResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the change order was terminated. Valid values:
+        # 
+        # *   **true**: The change order was terminated.
+        # *   **false**: The change order could not be terminated.
+        self.code = code
+        # The ID of the change order.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned data.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the change order was terminated. Valid values:
-        # 
-        # *   **true**: The change order was terminated.
-        # *   **false**: The change order could not be terminated.
-        self.success = success
         # The ID of the trace.
+        self.message = message
+        # The returned message.
+        self.request_id = request_id
+        self.success = success
+        # The returned data.
         self.trace_id = trace_id
 
     def validate(self):
@@ -338,9 +9804,6 @@ class AbortChangeOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -375,11 +9838,18 @@ class BatchStartApplicationsRequest(TeaModel):
         self,
         app_ids: str = None,
         namespace_id: str = None,
+        version: str = None,
     ):
-        # ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*\
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
         self.app_ids = app_ids
-        # cn-shanghai
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
+        self.version = version
 
     def validate(self):
         pass
@@ -394,6 +9864,8 @@ class BatchStartApplicationsRequest(TeaModel):
             result['AppIds'] = self.app_ids
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -402,6 +9874,8 @@ class BatchStartApplicationsRequest(TeaModel):
             self.app_ids = m.get('AppIds')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -410,7 +9884,12 @@ class BatchStartApplicationsResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -444,33 +9923,23 @@ class BatchStartApplicationsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The returned data.
-        self.data = data
         # The error code.
         # 
         # *   If the request is successful, this parameter is not returned.****\
         # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
-        self.error_code = error_code
-        # The returned message.
-        # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
+        self.data = data
         # Indicates whether the specified applications are successfully started. Valid values:
         # 
         # *   **true**\
         # *   **false**\
-        self.success = success
+        self.error_code = error_code
+        # The returned data.
+        self.message = message
         # The ID of the trace. It is used to query the details of a request.
+        self.request_id = request_id
+        self.success = success
+        # The ID of the change order.
         self.trace_id = trace_id
 
     def validate(self):
@@ -531,9 +10000,6 @@ class BatchStartApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -568,11 +10034,15 @@ class BatchStopApplicationsRequest(TeaModel):
         self,
         app_ids: str = None,
         namespace_id: str = None,
+        version: str = None,
     ):
-        # ebf491f0-c1a5-45e2-b2c4-710dbe2a\*\*\*\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\*\*\*\*\
+        # The ID of the request.
         self.app_ids = app_ids
-        # cn-shanghai
+        # ebf491f0-c1a5-45e2-b2c4-710dbe2a\\*\\*\\*\\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
+        self.version = version
 
     def validate(self):
         pass
@@ -587,6 +10057,8 @@ class BatchStopApplicationsRequest(TeaModel):
             result['AppIds'] = self.app_ids
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -595,6 +10067,8 @@ class BatchStopApplicationsRequest(TeaModel):
             self.app_ids = m.get('AppIds')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -603,7 +10077,10 @@ class BatchStopApplicationsResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -637,33 +10114,29 @@ class BatchStopApplicationsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the specified applications are stopped. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.code = code
+        # The ID of the change order.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned data.
-        self.data = data
-        # The error code.
-        # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The ID of the trace. It can be used to query the details of a request.
+        self.message = message
         # The returned message.
         # 
         # *   **success** is returned when the request succeeds.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the specified applications are stopped. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The returned data.
         self.trace_id = trace_id
 
     def validate(self):
@@ -724,9 +10197,6 @@ class BatchStopApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -765,15 +10235,17 @@ class BindSlbRequest(TeaModel):
         intranet: str = None,
         intranet_slb_id: str = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # \[{"port":80,"targetPort":8080,"protocol":"TCP"}]
+        # [{"port":80,"targetPort":8080,"protocol":"TCP"}]
         self.internet = internet
-        # lb-bp1tg0k6d9nqaw7l1\*\*\*\*\
+        # lb-bp1tg0k6d9nqaw7l1\\*\\*\\*\\*\
         self.internet_slb_id = internet_slb_id
-        # \[{"port":80,"targetPort":8080,"protocol":"TCP"}]
+        # [{"port":80,"targetPort":8080,"protocol":"TCP"}]
         self.intranet = intranet
-        # lb-bp1tg0k6d9nqaw7l1\*\*\*\*\
+        # lb-bp1tg0k6d9nqaw7l1\\*\\*\\*\\*\
         self.intranet_slb_id = intranet_slb_id
 
     def validate(self):
@@ -935,9 +10407,6 @@ class BindSlbResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -974,8 +10443,12 @@ class ConfirmPipelineBatchRequest(TeaModel):
         pipeline_id: str = None,
     ):
         # true
+        # 
+        # This parameter is required.
         self.confirm = confirm
-        # e2e-vds-feh-\*\*\*\
+        # e2e-vds-feh-\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -1125,9 +10598,6 @@ class ConfirmPipelineBatchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1164,8 +10634,10 @@ class CreateApplicationRequest(TeaModel):
         acr_instance_id: str = None,
         app_description: str = None,
         app_name: str = None,
+        app_source: str = None,
         associate_eip: bool = None,
         auto_config: bool = None,
+        base_app_id: str = None,
         command: str = None,
         command_args: str = None,
         config_map_mount_desc: str = None,
@@ -1173,6 +10645,7 @@ class CreateApplicationRequest(TeaModel):
         custom_host_alias: str = None,
         deploy: bool = None,
         edas_container_version: str = None,
+        enable_ebpf: str = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -1183,6 +10656,7 @@ class CreateApplicationRequest(TeaModel):
         liveness: str = None,
         memory: int = None,
         micro_registration: str = None,
+        micro_registration_config: str = None,
         mount_desc: str = None,
         mount_host: str = None,
         namespace_id: str = None,
@@ -1194,6 +10668,7 @@ class CreateApplicationRequest(TeaModel):
         package_type: str = None,
         package_url: str = None,
         package_version: str = None,
+        php: str = None,
         php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
@@ -1205,7 +10680,9 @@ class CreateApplicationRequest(TeaModel):
         python_modules: str = None,
         readiness: str = None,
         replicas: int = None,
+        sae_version: str = None,
         security_group_id: str = None,
+        service_tags: str = None,
         sls_configs: str = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
@@ -1215,91 +10692,104 @@ class CreateApplicationRequest(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
-        # acs:ram::123456789012\*\*\*\*:role/adminrole
+        # acs:ram::123456789012\\*\\*\\*\\*:role/adminrole
         self.acr_assume_role_arn = acr_assume_role_arn
         # cri-xxxxxx
         self.acr_instance_id = acr_instance_id
         # This is a test description.
         self.app_description = app_description
         # test
+        # 
+        # This parameter is required.
         self.app_name = app_name
+        self.app_source = app_source
         # true
         self.associate_eip = associate_eip
         # true
         self.auto_config = auto_config
+        self.base_app_id = base_app_id
         # sleep
         self.command = command
         # 1d
         self.command_args = command_args
-        # \[{"configMapId":16,"key":"test","mountPath":"/tmp"}]
+        # [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
         self.config_map_mount_desc = config_map_mount_desc
         # 1000
         self.cpu = cpu
-        # \[{"hostName":"samplehost","ip":"127.0.0.1"}]
+        # [{"hostName":"samplehost","ip":"127.0.0.1"}]
         self.custom_host_alias = custom_host_alias
         # true
         self.deploy = deploy
         # 3.5.3
         self.edas_container_version = edas_container_version
-        # \[{"name":"envtmp","value":"0"}]
+        self.enable_ebpf = enable_ebpf
+        # [{"name":"envtmp","value":"0"}]
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
         # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
         self.image_url = image_url
         # custom-args
         self.jar_start_args = jar_start_args
-        # \-Xms4G -Xmx4G
+        # \\-Xms4G -Xmx4G
         self.jar_start_options = jar_start_options
         # Open JDK 8
         self.jdk = jdk
         self.kafka_configs = kafka_configs
-        # {"exec":{"command":\["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
+        # {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
         self.liveness = liveness
         # 1024
         self.memory = memory
         self.micro_registration = micro_registration
-        # \[{mountPath: "/tmp", nasPath: "/"}]
+        self.micro_registration_config = micro_registration_config
+        # [{mountPath: "/tmp", nasPath: "/"}]
         self.mount_desc = mount_desc
         # example.com
         self.mount_host = mount_host
         # cn-beijing:test
         self.namespace_id = namespace_id
         self.nas_configs = nas_configs
-        # KSAK\*\*\*\*\
+        # KSAK\\*\\*\\*\\*\
         self.nas_id = nas_id
         # xxxxxx
         self.oss_ak_id = oss_ak_id
         # xxxxxx
         self.oss_ak_secret = oss_ak_secret
-        # \[{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
+        # [{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
         self.oss_mount_descs = oss_mount_descs
         # FatJar
+        # 
+        # This parameter is required.
         self.package_type = package_type
-        # http://myoss.oss-cn-\*\*\*\*.aliyuncs.com/my-buc/2019-06-30/\*\*\*\*.jar
+        # http://myoss.oss-cn-\\*\\*\\*\\*.aliyuncs.com/my-buc/2019-06-30/\\*\\*\\*\\*.jar
         self.package_url = package_url
         # 1.0.0
         self.package_version = package_version
+        self.php = php
         # /usr/local/etc/php/conf.d/arms.ini
         self.php_arms_config_location = php_arms_config_location
         # k1=v1
         self.php_config = php_config
         # /usr/local/etc/php/php.ini
         self.php_config_location = php_config_location
-        # {"exec":{"command":\["cat","/etc/group"]}}
+        # {"exec":{"command":["cat","/etc/group"]}}
         self.post_start = post_start
-        # {"exec":{"command":\["cat","/etc/group"]}}
+        # {"exec":{"command":["cat","/etc/group"]}}
         self.pre_stop = pre_stop
         self.programming_language = programming_language
         self.pvtz_discovery_svc = pvtz_discovery_svc
         self.python = python
         self.python_modules = python_modules
-        # {"exec":{"command":\["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
+        # {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
         self.readiness = readiness
         # 1
+        # 
+        # This parameter is required.
         self.replicas = replicas
-        # sg-wz969ngg2e49q5i4\*\*\*\*\
+        self.sae_version = sae_version
+        # sg-wz969ngg2e49q5i4\\*\\*\\*\\*\
         self.security_group_id = security_group_id
-        # \[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
+        self.service_tags = service_tags
+        # [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
         self.sls_configs = sls_configs
         # 30
         self.termination_grace_period_seconds = termination_grace_period_seconds
@@ -1307,11 +10797,11 @@ class CreateApplicationRequest(TeaModel):
         self.timezone = timezone
         # {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
         self.tomcat_config = tomcat_config
-        # vsw-bp12mw1f8k3jgygk9\*\*\*\*\
+        # vsw-bp12mw1f8k3jgygk9\\*\\*\\*\\*\
         self.v_switch_id = v_switch_id
-        # vpc-bp1aevy8sofi8mh1q\*\*\*\*\
+        # vpc-bp1aevy8sofi8mh1q\\*\\*\\*\\*\
         self.vpc_id = vpc_id
-        # CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
+        # CATALINA_OPTS=\\\\"$CATALINA_OPTS $Options\\\\" catalina.sh run
         self.war_start_options = war_start_options
         # apache-tomcat-7.0.91
         self.web_container = web_container
@@ -1333,10 +10823,14 @@ class CreateApplicationRequest(TeaModel):
             result['AppDescription'] = self.app_description
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
         if self.associate_eip is not None:
             result['AssociateEip'] = self.associate_eip
         if self.auto_config is not None:
             result['AutoConfig'] = self.auto_config
+        if self.base_app_id is not None:
+            result['BaseAppId'] = self.base_app_id
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -1351,6 +10845,8 @@ class CreateApplicationRequest(TeaModel):
             result['Deploy'] = self.deploy
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.enable_ebpf is not None:
+            result['EnableEbpf'] = self.enable_ebpf
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -1371,6 +10867,8 @@ class CreateApplicationRequest(TeaModel):
             result['Memory'] = self.memory
         if self.micro_registration is not None:
             result['MicroRegistration'] = self.micro_registration
+        if self.micro_registration_config is not None:
+            result['MicroRegistrationConfig'] = self.micro_registration_config
         if self.mount_desc is not None:
             result['MountDesc'] = self.mount_desc
         if self.mount_host is not None:
@@ -1393,6 +10891,8 @@ class CreateApplicationRequest(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
+        if self.php is not None:
+            result['Php'] = self.php
         if self.php_arms_config_location is not None:
             result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
@@ -1415,8 +10915,12 @@ class CreateApplicationRequest(TeaModel):
             result['Readiness'] = self.readiness
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.sae_version is not None:
+            result['SaeVersion'] = self.sae_version
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.service_tags is not None:
+            result['ServiceTags'] = self.service_tags
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
         if self.termination_grace_period_seconds is not None:
@@ -1445,10 +10949,14 @@ class CreateApplicationRequest(TeaModel):
             self.app_description = m.get('AppDescription')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
         if m.get('AssociateEip') is not None:
             self.associate_eip = m.get('AssociateEip')
         if m.get('AutoConfig') is not None:
             self.auto_config = m.get('AutoConfig')
+        if m.get('BaseAppId') is not None:
+            self.base_app_id = m.get('BaseAppId')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -1463,6 +10971,8 @@ class CreateApplicationRequest(TeaModel):
             self.deploy = m.get('Deploy')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EnableEbpf') is not None:
+            self.enable_ebpf = m.get('EnableEbpf')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -1483,6 +10993,8 @@ class CreateApplicationRequest(TeaModel):
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
             self.micro_registration = m.get('MicroRegistration')
+        if m.get('MicroRegistrationConfig') is not None:
+            self.micro_registration_config = m.get('MicroRegistrationConfig')
         if m.get('MountDesc') is not None:
             self.mount_desc = m.get('MountDesc')
         if m.get('MountHost') is not None:
@@ -1505,6 +11017,8 @@ class CreateApplicationRequest(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
+        if m.get('Php') is not None:
+            self.php = m.get('Php')
         if m.get('PhpArmsConfigLocation') is not None:
             self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
@@ -1527,8 +11041,12 @@ class CreateApplicationRequest(TeaModel):
             self.readiness = m.get('Readiness')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('SaeVersion') is not None:
+            self.sae_version = m.get('SaeVersion')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('ServiceTags') is not None:
+            self.service_tags = m.get('ServiceTags')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
         if m.get('TerminationGracePeriodSeconds') is not None:
@@ -1678,9 +11196,6 @@ class CreateApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1722,21 +11237,16 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         scaling_rule_timer: str = None,
         scaling_rule_type: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # This parameter is required.
         self.app_id = app_id
-        # \-1
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # 3
         self.min_ready_instances = min_ready_instances
-        # true
         self.scaling_rule_enable = scaling_rule_enable
-        # {"maxReplicas":3,"minReplicas":1,"metrics":\[{"metricType":"CPU","metricTargetAverageUtilization":20},{"metricType":"MEMORY","metricTargetAverageUtilization":30},{"metricType":"tcpActiveConn","metricTargetAverageUtilization":20},{"metricType":"SLB_QPS","MetricTargetAverageUtilization":25,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"},{"metricType":"SLB_RT","MetricTargetAverageUtilization":35,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"}],"scaleUpRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":0},"scaleDownRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":300}}
         self.scaling_rule_metric = scaling_rule_metric
-        # timer-0800-2100
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
-        # {"beginDate":null,"endDate":null,"period":"\* \* \*","schedules":\[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
         self.scaling_rule_timer = scaling_rule_timer
-        # timing
+        # This parameter is required.
         self.scaling_rule_type = scaling_rule_type
 
     def validate(self):
@@ -1792,23 +11302,17 @@ class CreateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         self,
         metric_target_average_utilization: int = None,
         metric_type: str = None,
+        slb_id: str = None,
+        slb_logstore: str = None,
+        slb_project: str = None,
+        vport: str = None,
     ):
-        # The limit on the metric.
-        # 
-        # *   The limit on the CPU utilization. Unit: percentage.
-        # *   The limit on the memory usage. Unit: percentage.
-        # *   The limit on the average number of active TCP connections per second.
-        # *   The limit on the QPS of the Internet-facing SLB instance.
-        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
-        # The metric that is used to trigger the auto scaling policy. Valid values:
-        # 
-        # *   **CPU**: the CPU utilization.
-        # *   **MEMORY**: the memory usage.
-        # *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
-        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
-        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
+        self.slb_id = slb_id
+        self.slb_logstore = slb_logstore
+        self.slb_project = slb_project
+        self.vport = vport
 
     def validate(self):
         pass
@@ -1823,6 +11327,14 @@ class CreateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
             result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
+        if self.slb_id is not None:
+            result['SlbId'] = self.slb_id
+        if self.slb_logstore is not None:
+            result['SlbLogstore'] = self.slb_logstore
+        if self.slb_project is not None:
+            result['SlbProject'] = self.slb_project
+        if self.vport is not None:
+            result['Vport'] = self.vport
         return result
 
     def from_map(self, m: dict = None):
@@ -1831,6 +11343,14 @@ class CreateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
             self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
+        if m.get('SlbId') is not None:
+            self.slb_id = m.get('SlbId')
+        if m.get('SlbLogstore') is not None:
+            self.slb_logstore = m.get('SlbLogstore')
+        if m.get('SlbProject') is not None:
+            self.slb_project = m.get('SlbProject')
+        if m.get('Vport') is not None:
+            self.vport = m.get('Vport')
         return self
 
 
@@ -1841,11 +11361,8 @@ class CreateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
         metrics: List[CreateApplicationScalingRuleResponseBodyDataMetricMetrics] = None,
         min_replicas: int = None,
     ):
-        # The maximum number of instances.
         self.max_replicas = max_replicas
-        # The list of metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
-        # The minimum number of instances.
         self.min_replicas = min_replicas
 
     def validate(self):
@@ -1888,11 +11405,13 @@ class CreateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
     def __init__(
         self,
         at_time: str = None,
+        max_replicas: int = None,
+        min_replicas: int = None,
         target_replicas: int = None,
     ):
-        # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
-        # The expected number of instances.
+        self.max_replicas = max_replicas
+        self.min_replicas = min_replicas
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -1906,6 +11425,10 @@ class CreateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         result = dict()
         if self.at_time is not None:
             result['AtTime'] = self.at_time
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
         if self.target_replicas is not None:
             result['TargetReplicas'] = self.target_replicas
         return result
@@ -1914,6 +11437,10 @@ class CreateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         m = m or dict()
         if m.get('AtTime') is not None:
             self.at_time = m.get('AtTime')
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
         if m.get('TargetReplicas') is not None:
             self.target_replicas = m.get('TargetReplicas')
         return self
@@ -1927,33 +11454,9 @@ class CreateApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         period: str = None,
         schedules: List[CreateApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
     ):
-        # The start date of the validity period of the scheduled auto scaling policy.
-        # 
-        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
-        # The end date of the validity period of the scheduled auto scaling policy.
-        # 
-        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
         self.end_date = end_date
-        # The days on which the scheduled auto scaling policy takes effect. Valid values:
-        # 
-        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
-        # 
-        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
-        # 
-        #     *   **Sun**: Sunday
-        #     *   **Mon**: Monday
-        #     *   **Tue**: Tuesday
-        #     *   **Wed**: Wednesday
-        #     *   **Thu**: Thursday
-        #     *   **Fri**: Friday
-        #     *   **Sat**: Saturday
-        # 
-        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
-        # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -2009,30 +11512,14 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
         timer: CreateApplicationScalingRuleResponseBodyDataTimer = None,
         update_time: int = None,
     ):
-        # The ID of the application.
         self.app_id = app_id
-        # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
-        # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
-        # The details of the metric-based auto scaling policy.
         self.metric = metric
-        # Indicates whether the auto scaling policy is enabled. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
         self.scale_rule_enabled = scale_rule_enabled
-        # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
-        # The type of the auto scaling policy. Valid values:
-        # 
-        # *   **timing**: the scheduled auto scaling policy.
-        # *   **metric**: the metric-based auto scaling policy.
-        # *   **mix**: the hybrid auto scaling policy.
         self.scale_rule_type = scale_rule_type
-        # The details of the scheduled auto scaling policy.
         self.timer = timer
-        # The time when the auto scaling policy was updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -2104,14 +11591,11 @@ class CreateApplicationScalingRuleResponseBody(TeaModel):
         trace_id: str = None,
     ):
         self.code = code
-        # The returned data.
         self.data = data
         self.error_code = error_code
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -2172,9 +11656,6 @@ class CreateApplicationScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2212,11 +11693,16 @@ class CreateConfigMapRequest(TeaModel):
         name: str = None,
         namespace_id: str = None,
     ):
+        # This parameter is required.
         self.data = data
         self.description = description
-        # name
-        self.name = name
         # cn-hangzhou
+        # 
+        # This parameter is required.
+        self.name = name
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -2256,7 +11742,10 @@ class CreateConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: int = None,
     ):
-        # The ID of the ConfigMap instance that was created.
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -2290,30 +11779,26 @@ class CreateConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the ConfigMap instance was created. Valid values:
+        # 
+        # *   **true**: The instance was created.
+        # *   **false**: The call failed to be created.
+        self.code = code
+        # The ID of the ConfigMap instance that was created.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the call was successful.
         # *   **3xx**: indicates that the call was redirected.
         # *   **4xx**: indicates that the call failed.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned result.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned information.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the ConfigMap instance was created. Valid values:
-        # 
-        # *   **true**: The instance was created.
-        # *   **false**: The call failed to be created.
-        self.success = success
         # The ID of the trace. The ID is used to query the details of a request.
+        self.message = message
+        # The returned information.
+        self.request_id = request_id
+        self.success = success
+        # The returned result.
         self.trace_id = trace_id
 
     def validate(self):
@@ -2374,9 +11859,6 @@ class CreateConfigMapResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2417,15 +11899,19 @@ class CreateGreyTagRouteRequest(TeaModel):
         sc_rules: str = None,
     ):
         self.alb_rules = alb_rules
-        # 7802c49a-67bc-4167-8369-9a9c003c\*\*\*\*\
-        self.app_id = app_id
-        # Canary Release - Regions
-        self.description = description
-        # \[{"condition":"OR","group":"DUBBO","items":\[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
-        self.dubbo_rules = dubbo_rules
         # dubbo-echo
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # [{"condition":"OR","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
+        self.description = description
+        # The ID of the request.
+        self.dubbo_rules = dubbo_rules
+        # Canary Release - Regions
+        # 
+        # This parameter is required.
         self.name = name
-        # \[{"condition":"OR","items":\[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
+        # [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
         self.sc_rules = sc_rules
 
     def validate(self):
@@ -2473,7 +11959,10 @@ class CreateGreyTagRouteResponseBodyData(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
-        # The ID of the canary release rule. The ID is globally unique.
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -2507,30 +11996,26 @@ class CreateGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The information failed to be queried.
+        self.code = code
+        # The ID of the canary release rule. The ID is globally unique.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: The call was successful.
         # *   **3xx**: The call was redirected.
         # *   **4xx**: The call failed.
         # *   **5xx**: A server error occurred.
-        self.code = code
-        # The information about the canary release rule.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned information.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the information of the change order was queried. Valid values:
-        # 
-        # *   **true**: The information was queried.
-        # *   **false**: The information failed to be queried.
-        self.success = success
         # The trace ID that is used to query the details of the request.
+        self.message = message
+        # The returned information.
+        self.request_id = request_id
+        self.success = success
+        # The information about the canary release rule.
         self.trace_id = trace_id
 
     def validate(self):
@@ -2591,9 +12076,6 @@ class CreateGreyTagRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2637,24 +12119,20 @@ class CreateIngressRequest(TeaModel):
         rules: str = None,
         slb_id: str = None,
     ):
-        # 188077086902\*\*\*\*\_176993d\*\*\*\*\_181437\*\*\*\*\_108724\*\*\*\*\
         self.cert_id = cert_id
         self.cert_ids = cert_ids
-        # {"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080}
+        # This parameter is required.
         self.default_rule = default_rule
-        # ingress-for-sae-test
         self.description = description
-        # 80
+        # This parameter is required.
         self.listener_port = listener_port
-        # HTTP
         self.listener_protocol = listener_protocol
-        # clb
         self.load_balance_type = load_balance_type
-        # cn-beijing:sae-test
+        # This parameter is required.
         self.namespace_id = namespace_id
-        # \[{"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2\*\*\*\*","containerPort":8080,"domain":"sae.site","path":"/path2"}]
+        # This parameter is required.
         self.rules = rules
-        # lb-uf6hucc7inlqrtcq5\*\*\*\*\
+        # This parameter is required.
         self.slb_id = slb_id
 
     def validate(self):
@@ -2718,7 +12196,6 @@ class CreateIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
-        # The ID of the routing rule.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -2752,30 +12229,12 @@ class CreateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request failed.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The returned data.
         self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the routing rule was created. Valid values:
-        # 
-        # *   **true**: indicates that the rule was created.
-        # *   **false**: indicates that the rule could not be created.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -2836,9 +12295,6 @@ class CreateIngressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2926,59 +12382,232 @@ class CreateJobRequest(TeaModel):
         web_container: str = None,
         workload: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) required for a RAM role to obtain images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
+        # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        # The description of the template. The description cannot exceed 1,024 characters in length.
         self.app_description = app_description
+        # The name of the job template. The name can contain digits, letters, and hyphens (-). The name must start with a letter and cannot exceed 36 characters in length.
+        # 
+        # This parameter is required.
         self.app_name = app_name
+        # Specifies whether to automatically configure the network environment. Take note of the following rules:
+        # 
+        # *   **true**: The network environment is automatically configured by SAE when the application is created. In this case, the values of the **NamespaceId**, **VpcId**, **vSwitchId**, and **SecurityGroupId** parameters are ignored.
+        # *   **false**: The network environment is manually configured based on your settings when the application is created.
         self.auto_config = auto_config
+        # The number of times the job is retried.
         self.backoff_limit = backoff_limit
+        # The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+        # 
+        #     command:
+        #           - echo
+        #           - abc
+        #           - >
+        #           - file0
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
+        # The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. You can specify the name in one of the following formats:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
         self.command_args = command_args
+        # The concurrency policy of the job. Take note of the following rules:
+        # 
+        # *   **Forbid**: Prohibits concurrent running. If the previous job is not completed, no new job is created.
+        # *   **Allow**: Allows concurrent running.
+        # *   **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
         self.concurrency_policy = concurrency_policy
+        # The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
+        # *   **key**: the key.
+        # 
+        # > You can use the `sae-sys-configmap-all` key to mount all keys.
+        # 
+        # *   **mountPath**: the mount path in the container.
         self.config_map_mount_desc = config_map_mount_desc
+        # The CPU specifications that are required for each instance. Unit: millicores. You cannot set this parameter to 0. Valid values:
+        # 
+        # *   500
+        # *   1000
+        # *   2000
+        # *   4000
+        # *   8000
+        # *   16000
+        # *   32000
         self.cpu = cpu
+        # The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
+        # 
+        # *   **hostName**: the domain name or hostname.
+        # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
         self.enable_image_accl = enable_image_accl
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
+        # 
+        # *   Customize
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable.
+        # 
+        # *   Reference ConfigMap
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+        #     *   **configMapId**: the ConfigMap ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
+        # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
+        # The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_options = jar_start_options
+        # The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+        # 
+        # *   **Open JDK 8**\
+        # *   **Open JDK 7**\
+        # *   **Dragonwell 11**\
+        # *   **Dragonwell 8**\
+        # *   **openjdk-8u191-jdk-alpine3.9**\
+        # *   **openjdk-7u201-jdk-alpine3.9**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.jdk = jdk
+        # The size of memory required by each instance. Unit: MB. You cannot set this parameter to 0. The values of this parameter correspond to the values of the Cpu parameter:
+        # 
+        # *   Set the value to 1024 when Cpu is set to 500 or 1000.
+        # *   Set the value to 2048 when Cpu is set to 500, 1000 or 2000.
+        # *   Set the value to 4096 when Cpu is set to 1000, 2000, or 4000.
+        # *   Set the value to 8192 when Cpu is set to 2000, 4000, or 8000.
+        # *   Set the value to 12288 when Cpu is set to 12000.
+        # *   Set the value to 16384 when Cpu is set to 4000, 8000, or 16000.
+        # *   Set the value to 24576 when Cpu is set to 12000.
+        # *   Set the value to 32768 when Cpu is set to 16000.
+        # *   Set the value to 65536 when Cpu is set to 8000, 16000, or 32000.
+        # *   Set the value to 131072 when Cpu is set to 32000.
         self.memory = memory
+        # The configurations for mounting the NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **MountDesc** parameter in the requests. If you want to unmount the NAS file system, you must set the **MountDesc** values in the subsequent requests to an empty string ("").
         self.mount_desc = mount_desc
+        # The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
         self.mount_host = mount_host
+        # The ID of the Serverless App Engine (SAE) namespace. The ID can contain only lowercase letters and hyphens (-). It must start with a lowercase letter.
         self.namespace_id = namespace_id
+        # The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
+        # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
+        # The AccessKey secret that is used to read data from and write data to OSS buckets.
         self.oss_ak_secret = oss_ak_secret
+        # Information of the Object Storage Service (OSS) bucket mounted to the application. The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **bucketName**: the name of the OSS bucket.
+        # 
+        # *   **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+        # 
+        # *   **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+        # 
+        # *   **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+        # 
+        #     *   **true**: The container path only has read permission on the OSS directory.
+        #     *   **false**: The application has read and write permissions.
         self.oss_mount_descs = oss_mount_descs
+        # The type of the deployment package. Take note of the following rules:
+        # 
+        # *   If you deploy the application by using a Java Archive (JAR) package, you can set this parameter to **FatJar**, **War**, or **Image**.
+        # *   If you deploy the application by using a PHP package, you can set this parameter to one of the following values:
+        # 
+        # **PhpZip** **IMAGE_PHP_5_4** **IMAGE_PHP_5_4_ALPINE** **IMAGE_PHP_5_5** **IMAGE_PHP_5_5_ALPINE** **IMAGE_PHP_5_6** **IMAGE_PHP_5_6_ALPINE** **IMAGE_PHP_7_0** **IMAGE_PHP_7_0_ALPINE** **IMAGE_PHP_7_1** **IMAGE_PHP_7_1_ALPINE** **IMAGE_PHP_7_2** **IMAGE_PHP_7_2_ALPINE** **IMAGE_PHP_7_3** **IMAGE_PHP_7_3_ALPINE**\
+        # 
+        # *   If you deploy the application by using a **Python** package, you can set this parameter to **PythonZip** or **Image**:
+        # 
+        # This parameter is required.
         self.package_type = package_type
+        # The address of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
         self.package_url = package_url
+        # The version of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
         self.package_version = package_version
+        # The details of the PHP configuration file.
         self.php_config = php_config
+        # The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
         self.php_config_location = php_config_location
+        # The script that is run immediately after the container is started. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
         self.post_start = post_start
+        # The script that is run before the container is stopped. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
         self.pre_stop = pre_stop
+        # The programming language. Valid values: **java**, **php**, **python**, and **shell**.
         self.programming_language = programming_language
+        # The Python environment. Set the value to **PYTHON 3.9.15**.
         self.python = python
+        # The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
         self.python_modules = python_modules
+        # The ID of the job that you reference.
         self.ref_app_id = ref_app_id
+        # The number of concurrent instances.
+        # 
+        # This parameter is required.
         self.replicas = replicas
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # Specifies whether to enable job sharding.
         self.slice = slice
+        # The parameters of job sharding.
         self.slice_envs = slice_envs
+        # The logging configurations of Log Service.
+        # 
+        # *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # 
+        # The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **projectName**: the name of the Log Service project.
+        # *   **logDir**: the path in which logs are stored.
+        # *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+        # *   **logstoreName**: the name of the Logstore in Log Service.
+        # *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+        # 
+        # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
+        # 
+        # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
+        # The timeout period. Unit: seconds.
         self.timeout = timeout
+        # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
+        # The Tomcat configuration. If you want to cancel this configuration, set this parameter to "" or "{}". The following variables are included in the configuration: Take note of the following rules:
+        # 
+        # *   **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+        # *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+        # *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312.************ If you do not specify this parameter, the default value **ISO-8859-1** is used.
+        # *   **useBodyEncoding**: specifies whether to use the encoding scheme specified in the request body for URI query parameters. Default value: true.
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
+        # The vSwitch to which the elastic network interface (ENI) of the application instance is connected. The vSwitch must be located in the VPC specified by the VpcId parameter. The SAE namespace is bound with this vSwitch. The default value is the ID of the vSwitch that is bound to the namespace.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC) that corresponds to the SAE namespace. In SAE, once correspondence is configured between a namespace and a VPC, the namespace cannot correspond to other VPCs. When the SAE application is created within the namespace, the application is bound with the VPC. Multiple namespaces can correspond to the same VPC. The default value is the ID of the VPC that is bound to the namespace.
         self.vpc_id = vpc_id
+        # The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
+        # The version of the Tomcat container on which the deployment package depends. Valid values:
+        # 
+        # *   **apache-tomcat-7.0.91**\
+        # *   **apache-tomcat-8.5.42**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.web_container = web_container
+        # Set the value to `job`.
+        # 
+        # This parameter is required.
         self.workload = workload
 
     def validate(self):
@@ -3219,7 +12848,9 @@ class CreateJobResponseBodyData(TeaModel):
         app_id: str = None,
         change_order_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -3257,12 +12888,33 @@ class CreateJobResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Take note of the following rules:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response.
         self.data = data
+        # The error code returned if the request failed. Take note of the following rules:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The additional information that is returned. Take note of the following rules:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application deployment is successful. Take note of the following rules:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3323,9 +12975,6 @@ class CreateJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3365,12 +13014,20 @@ class CreateNamespaceRequest(TeaModel):
         namespace_name: str = None,
     ):
         self.enable_micro_registration = enable_micro_registration
+        # The returned message.
         self.name_space_short_id = name_space_short_id
-        # desc
+        # The name of the namespace.
         self.namespace_description = namespace_description
-        # cn-beijing:test
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.namespace_id = namespace_id
-        # name
+        # cn-beijing:test
+        # 
+        # This parameter is required.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -3420,14 +13077,15 @@ class CreateNamespaceResponseBodyData(TeaModel):
         region_id: str = None,
     ):
         self.enable_micro_registration = enable_micro_registration
+        # desc
         self.name_space_short_id = name_space_short_id
-        # The description of the namespace.
+        # The information of the namespace.
         self.namespace_description = namespace_description
-        # The ID of the namespace.
+        # The ID of the request.
         self.namespace_id = namespace_id
-        # The name of the namespace.
+        # cn-beijing:test
         self.namespace_name = namespace_name
-        # The region where the namespace resides.
+        # name
         self.region_id = region_id
 
     def validate(self):
@@ -3481,28 +13139,17 @@ class CreateNamespaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # The ID of the trace. It can be used to query the details of a request.
         self.code = code
-        # The information of the namespace.
+        # The region where the namespace resides.
         self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-        self.error_code = error_code
-        # The returned message.
-        self.message = message
         # The ID of the request.
+        self.error_code = error_code
+        # name
+        self.message = message
+        # The description of the namespace.
         self.request_id = request_id
-        # Indicates whether the namespace was created. Valid values:
-        # 
-        # *   **true**: indicates that the namespace was created.
-        # *   **false**: indicates that the namespace could not be created.
+        # The information of the namespace.
         self.success = success
         # The ID of the trace. It can be used to query the details of a request.
         self.trace_id = trace_id
@@ -3565,9 +13212,6 @@ class CreateNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3597,17 +13241,100 @@ class CreateNamespaceResponse(TeaModel):
         return self
 
 
+class CreateSecretRequestSecretData(TeaModel):
+    def __init__(
+        self,
+        secret_data: str = None,
+    ):
+        # This parameter is required.
+        self.secret_data = secret_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecretData') is not None:
+            self.secret_data = m.get('SecretData')
+        return self
+
+
 class CreateSecretRequest(TeaModel):
     def __init__(
         self,
         namespace_id: str = None,
-        secret_data: str = None,
+        secret_data: CreateSecretRequestSecretData = None,
         secret_name: str = None,
         secret_type: str = None,
     ):
+        # This parameter is required.
         self.namespace_id = namespace_id
+        # This parameter is required.
         self.secret_data = secret_data
+        # This parameter is required.
         self.secret_name = secret_name
+        # This parameter is required.
+        self.secret_type = secret_type
+
+    def validate(self):
+        if self.secret_data:
+            self.secret_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data.to_map()
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+        if self.secret_type is not None:
+            result['SecretType'] = self.secret_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SecretData') is not None:
+            temp_model = CreateSecretRequestSecretData()
+            self.secret_data = temp_model.from_map(m['SecretData'])
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
+        if m.get('SecretType') is not None:
+            self.secret_type = m.get('SecretType')
+        return self
+
+
+class CreateSecretShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        secret_data_shrink: str = None,
+        secret_name: str = None,
+        secret_type: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.secret_data_shrink = secret_data_shrink
+        # This parameter is required.
+        self.secret_name = secret_name
+        # This parameter is required.
         self.secret_type = secret_type
 
     def validate(self):
@@ -3621,8 +13348,8 @@ class CreateSecretRequest(TeaModel):
         result = dict()
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
-        if self.secret_data is not None:
-            result['SecretData'] = self.secret_data
+        if self.secret_data_shrink is not None:
+            result['SecretData'] = self.secret_data_shrink
         if self.secret_name is not None:
             result['SecretName'] = self.secret_name
         if self.secret_type is not None:
@@ -3634,7 +13361,7 @@ class CreateSecretRequest(TeaModel):
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('SecretData') is not None:
-            self.secret_data = m.get('SecretData')
+            self.secret_data_shrink = m.get('SecretData')
         if m.get('SecretName') is not None:
             self.secret_name = m.get('SecretName')
         if m.get('SecretType') is not None:
@@ -3746,9 +13473,6 @@ class CreateSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3778,12 +13502,170 @@ class CreateSecretResponse(TeaModel):
         return self
 
 
+class CreateWebApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: CreateWebApplicationInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = CreateWebApplicationInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWebApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWebCustomDomainRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: CreateWebCustomDomainInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = CreateWebCustomDomainInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateWebCustomDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebCustomDomainBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebCustomDomainBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteApplicationRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
     ):
-        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -3811,7 +13693,10 @@ class DeleteApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order that is used to query the task execution status.
+        # The error code that is returned if the request fails.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information about the values of this parameter, see the "**Error codes**" section of this topic.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -3845,33 +13730,29 @@ class DeleteApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the application is deleted. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.code = code
+        # The ID of the change order that is used to query the task execution status.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: The request is successful.
         # *   **3xx**: A redirection message is returned.
         # *   **4xx**: The request is invalid.
         # *   **5xx**: A server error occurred.
-        self.code = code
-        # The returned results.
-        self.data = data
-        # The error code that is returned if the request fails.
-        # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information about the values of this parameter, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The trace ID that is used to query details of the request.
+        self.message = message
         # The returned message.
         # 
         # *   If the request is successful, **success** is returned.
         # *   If an error occurred, the error code is returned.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the application is deleted. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
         self.success = success
-        # The trace ID that is used to query details of the request.
+        # The returned results.
         self.trace_id = trace_id
 
     def validate(self):
@@ -3932,9 +13813,6 @@ class DeleteApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3970,9 +13848,13 @@ class DeleteApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # timer-0800-2100
+        # The ID of the trace. The ID is used to query the details of a request.
+        # 
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -4012,10 +13894,8 @@ class DeleteApplicationScalingRuleResponseBody(TeaModel):
         self.code = code
         self.error_code = error_code
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4070,9 +13950,6 @@ class DeleteApplicationScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4108,6 +13985,8 @@ class DeleteConfigMapRequest(TeaModel):
         config_map_id: int = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -4256,9 +14135,6 @@ class DeleteConfigMapResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4293,7 +14169,9 @@ class DeleteGreyTagRouteRequest(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
-        # 1
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -4321,7 +14199,10 @@ class DeleteGreyTagRouteResponseBodyData(TeaModel):
         self,
         grey_tag_route_id: int = None,
     ):
-        # The ID of the canary release rule. The ID is globally unique.
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -4355,33 +14236,29 @@ class DeleteGreyTagRouteResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the information of the change order was queried. Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The information failed to be queried.
+        self.code = code
+        # The ID of the canary release rule. The ID is globally unique.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: The call was successful.
         # *   **3xx**: The call was redirected.
         # *   **4xx**: The call failed.
         # *   **5xx**: A server error occurred.
-        self.code = code
-        # The information about the canary release rule.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The trace ID that is used to query the details of the request.
+        self.message = message
         # The returned information. Valid values:
         # 
         # *   success: If the call is successful, **success** is returned.
         # *   An error code: If the call fails, an error code is returned.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the information of the change order was queried. Valid values:
-        # 
-        # *   **true**: The information was queried.
-        # *   **false**: The information failed to be queried.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The information about the canary release rule.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4442,9 +14319,6 @@ class DeleteGreyTagRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4480,7 +14354,13 @@ class DeleteHistoryJobRequest(TeaModel):
         app_id: str = None,
         job_id: str = None,
     ):
+        # The ID of the job template to which the job that you want to delete belongs.
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # The ID of the job.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -4518,12 +14398,33 @@ class DeleteHistoryJobResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned information. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the job was deleted. Valid values:
+        # 
+        # *   **true**: The job was deleted.
+        # *   **false**: The job failed to be deleted.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4582,9 +14483,6 @@ class DeleteHistoryJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4620,6 +14518,8 @@ class DeleteIngressRequest(TeaModel):
         ingress_id: int = None,
     ):
         # 87
+        # 
+        # This parameter is required.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -4765,9 +14665,6 @@ class DeleteIngressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4802,6 +14699,9 @@ class DeleteJobRequest(TeaModel):
         self,
         app_id: str = None,
     ):
+        # The ID of the job template that you want to delete.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -4835,12 +14735,33 @@ class DeleteJobResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error code that is returned. Take note of the following rules:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request is successful.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The additional information that is returned. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application is deleted. Valid values:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: no
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -4899,9 +14820,6 @@ class DeleteJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5051,9 +14969,6 @@ class DeleteNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5089,7 +15004,13 @@ class DeleteSecretRequest(TeaModel):
         namespace_id: str = None,
         secret_id: int = None,
     ):
+        # The ID of the namespace in which the Secret resides. By default, the namespace ID is the same as the region ID.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
+        # The ID of the Secret to be deleted. You can call the [ListSecrets](https://help.aliyun.com/document_detail/466929.html) operation to view the Secret IDs.
+        # 
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -5121,6 +15042,7 @@ class DeleteSecretResponseBodyData(TeaModel):
         self,
         secret_id: int = None,
     ):
+        # The ID of the deleted Secret.
         self.secret_id = secret_id
 
     def validate(self):
@@ -5154,12 +15076,33 @@ class DeleteSecretResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response.
         self.data = data
+        # The error code returned. Valid values:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The additional information that is returned. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the Secret is successfully deleted. Valid values:
+        # 
+        # *   **true**: The instance was deleted.
+        # *   **false**: The instance failed to be deleted.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -5220,9 +15163,6 @@ class DeleteSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5252,6 +15192,213 @@ class DeleteSecretResponse(TeaModel):
         return self
 
 
+class DeleteWebApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DeleteWebApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWebApplicationRevisionRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DeleteWebApplicationRevisionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationRevisionBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationRevisionBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteWebCustomDomainRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DeleteWebCustomDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebCustomDomainBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebCustomDomainBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeployApplicationRequest(TeaModel):
     def __init__(
         self,
@@ -5265,6 +15412,7 @@ class DeployApplicationRequest(TeaModel):
         command: str = None,
         command_args: str = None,
         config_map_mount_desc: str = None,
+        cpu: int = None,
         custom_host_alias: str = None,
         deploy: str = None,
         edas_container_version: str = None,
@@ -5278,7 +15426,9 @@ class DeployApplicationRequest(TeaModel):
         jdk: str = None,
         kafka_configs: str = None,
         liveness: str = None,
+        memory: int = None,
         micro_registration: str = None,
+        micro_registration_config: str = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: str = None,
@@ -5291,6 +15441,7 @@ class DeployApplicationRequest(TeaModel):
         package_type: str = None,
         package_url: str = None,
         package_version: str = None,
+        php: str = None,
         php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
@@ -5300,108 +15451,290 @@ class DeployApplicationRequest(TeaModel):
         python: str = None,
         python_modules: str = None,
         readiness: str = None,
+        replicas: int = None,
+        security_group_id: str = None,
+        service_tags: str = None,
         sls_configs: str = None,
         termination_grace_period_seconds: int = None,
         timezone: str = None,
         tomcat_config: str = None,
         update_strategy: str = None,
+        v_switch_id: str = None,
         war_start_options: str = None,
         web_container: str = None,
     ):
-        # acs:ram::123456789012\*\*\*\*:role/adminrole
+        # The Alibaba Cloud Resource Name (ARN) required for a RAM role to obtain images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
-        # cri-xxxxxx
+        # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # true
+        # Specifies whether to associate an EIP with the node pool. Take note of the following rules:
+        # 
+        # *   **true**: The EIP is associated with the application instance.
+        # *   **false**: The EIP is not associated with the application instance.
         self.associate_eip = associate_eip
-        # true
+        # Specifies whether to automatically enable an auto scaling policy for the application. Take note of the following rules:
+        # 
+        # *   **true**: turns on Logon-free Sharing
+        # *   **false**: turns off Logon-free Sharing
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
-        # 10
+        # The interval between batches during a batch release. Unit: minutes.
         self.batch_wait_time = batch_wait_time
-        # Start Applications
+        # The description of the change order.
         self.change_order_desc = change_order_desc
-        # sleep
+        # The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
+        # 
+        #     command:
+        #           - echo
+        #           - abc
+        #           - >
+        #           - file0
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
-        # 1d
+        # The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. You can specify the name in one of the following formats:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
         self.command_args = command_args
-        # \[{"configMapId":16,"key":"test","mountPath":"/tmp"}]
+        # The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
+        # *   **key**: the key.
+        # 
+        # > You can use `sae-sys-configmap-all` to mount all keys.
+        # 
+        # *   **mountPath**: the mount path in the container.
         self.config_map_mount_desc = config_map_mount_desc
-        # \[{"hostName":"samplehost","ip":"127.0.0.1"}]
+        self.cpu = cpu
+        # The custom mappings between hostnames and IP addresses in the container. Take note of the following rules:
+        # 
+        # *   **hostName**: the domain name or hostname.
+        # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication** operation to manage a running application, the application is immediately redeployed.
+        # 
+        # *   **true** (default): specifies that the system immediately deploys the application, enables new configurations, and pulls application instances.
+        # *   **false**: specifies that the system only enables the new configurations.
         self.deploy = deploy
-        # 3.5.3
+        # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
-        # false
+        # Indicates whether access to Application High Availability Service (AHAS) is enabled. Take note of the following rules:
+        # 
+        # *   **true**: Access to AHAS is enabled.
+        # *   **false**: Access to AHAS is disabled.
         self.enable_ahas = enable_ahas
-        # false
+        # Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
+        # 
+        # *   **true**: The canary release rules are enabled.
+        # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
-        # \[{"name":"envtmp","value":"0"}]
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
+        # 
+        # *   Customize
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable.
+        # 
+        # *   Reference ConfigMap
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+        #     *   **configMapId**: the ConfigMap ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
-        # registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
+        # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
-        # \-Xms4G -Xmx4G
+        # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
-        # custom-option
+        # The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_options = jar_start_options
-        # Open JDK 8
+        # The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+        # 
+        # *   **Open JDK 8**\
+        # *   **Open JDK 7**\
+        # *   **Dragonwell 11**\
+        # *   **Dragonwell 8**\
+        # *   **openjdk-8u191-jdk-alpine3.9**\
+        # *   **openjdk-7u201-jdk-alpine3.9**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.jdk = jdk
+        # The logging configurations of Message Queue for Apache Kafka. Take note of the following rules:
+        # 
+        # *   **kafkaEndpoint**: the endpoint of the Message Queue for Apache Kafka API.
+        # *   **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
+        # *   **kafkaConfigs**: One or more logging configurations of Message Queue for Apache Kafka. For information about sample values and parameters, see the request parameter **KafkaLogfileConfig** in this topic.
         self.kafka_configs = kafka_configs
-        # {"exec":{"command":\["sleep","5s"]},"initialDelaySeconds":10,"timeoutSeconds":11}
+        # The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
+        # 
+        # *   Example of **exec**: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
+        # *   Sample code of the **httpGet** method: `{"httpGet":{"path":"/","port":18091,"scheme":"HTTP","isContainKeyWord":true,"keyWord":"SAE"},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+        # *   Sample code of the **tcpSocket** method: `{"tcpSocket":{"port":18091},"initialDelaySeconds":11,"periodSeconds":10,"timeoutSeconds":1}`
+        # 
+        # > You can use only one method to perform the health check.
+        # 
+        # The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **exec.command**: the health check command.
+        # *   **httpGet.path**: the request path.
+        # *   **httpGet.scheme**: the protocol that is used to perform the health check. Valid values: **HTTP** and **HTTPS**.
+        # *   **httpGet.isContainKeyWord**: indicates whether the response contains keywords. Valid values: **true** and **false**. If this field is not returned, the advanced settings are not used.
+        # *   **httpGet.keyWord**: the custom keyword. This parameter is available only if the **isContainKeyWord** field is returned.
+        # *   **tcpSocket.port**: the port that is used to check the status of TCP connections.
+        # *   **initialDelaySeconds**: the delay of the health check. Default value: 10. Unit: seconds.
+        # *   **periodSeconds**: the interval at which health checks are performed. Default value: 30. Unit: seconds.
+        # *   **timeoutSeconds**: the timeout period of the health check. Default value: 1. Unit: seconds. If you set this parameter to 0 or leave this parameter empty, the timeout period is automatically set to 1 second.
         self.liveness = liveness
+        self.memory = memory
+        # The Nacos registry. Valid values:
+        # 
+        # *   **0**: SAE built-in Nacos registry
+        # *   **1**: self-managed Nacos registry
+        # *   **2** : MSE Nacos registry
         self.micro_registration = micro_registration
-        # \-1
+        self.micro_registration_config = micro_registration_config
+        # The percentage of the minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+        # *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+        # 
+        # > When both **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of **MinReadyInstanceRatio**** takes precedence. For example, if **MinReadyInstances** is set to **5, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # 1
+        # The minimum number of available instances. Special values:
+        # 
+        # *   If you set the value to **0**, business interruptions occur when the application is updated.
+        # *   If you set the value to \\*\\*-1\\*\\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
         self.min_ready_instances = min_ready_instances
-        # \[{mountPath: "/tmp", nasPath: "/"}]
+        # The configurations for mounting the NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **MountDesc** parameter in the requests. If you want to unmount the NAS file system, you must set the **MountDesc** values in the subsequent requests to an empty string ("").
         self.mount_desc = mount_desc
-        # 10d3b4bc9\*\*\*\*.com
+        # The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
         self.mount_host = mount_host
+        # The configurations of mounting the NAS file system. Take note of the following rules:
+        # 
+        # *   **mountPath**: the mount path of the container.
+        # *   **readOnly**: If you set the value to **false**, the application has the read and write permissions.
+        # *   **nasId**: the ID of the NAS file system.
+        # *   **mountDomain**: the domain name of the mount target. For more information, see [DescribeMountTargets](https://help.aliyun.com/document_detail/62626.html).
+        # *   **nasPath**: the directory in the NAS file system.
         self.nas_configs = nas_configs
-        # 10d3b4\*\*\*\*\
+        # The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
-        # xxxxxx
+        # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
         self.oss_ak_id = oss_ak_id
-        # xxxxxx
+        # The AccessKey secret that is used to read data from and write data to OSS buckets.
         self.oss_ak_secret = oss_ak_secret
-        # \[{"bucketName": "oss-bucket", "bucketPath": "data/user.data", "mountPath": "/usr/data/user.data", "readOnly": true}]
+        # Information of the Object Storage Service (OSS) bucket mounted to the application. The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **bucketName**: the name of the OSS bucket.
+        # 
+        # *   **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+        # 
+        # *   **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+        # 
+        # *   **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+        # 
+        #     *   **true**: The container path only has read permission on the OSS directory.
+        #     *   **false**: The application has read and write permissions.
         self.oss_mount_descs = oss_mount_descs
         self.package_type = package_type
-        # http://myoss.oss-cn-hangzhou.aliyuncs.com/my-buc/2019-06-30/\*\*\*\*.jar
+        # The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
         self.package_url = package_url
-        # 1.0.1
+        # The version of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PythonZip**.
         self.package_version = package_version
-        # /usr/local/etc/php/conf.d/arms.ini
+        self.php = php
+        # The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file. SAE automatically generates the corresponding configuration file. No manual operations are required.
         self.php_arms_config_location = php_arms_config_location
-        # k1=v1
+        # The details of the PHP configuration file.
         self.php_config = php_config
-        # /usr/local/etc/php/php.ini
+        # The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
         self.php_config_location = php_config_location
-        # {"exec":{"command":\["sh","-c","echo hello"]}}
+        # The script that is run immediately after the container is started. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
         self.post_start = post_start
-        # {"exec":{"command":\["sh","-c","echo hello"]}}
+        # The script that is run before the container is stopped. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
         self.pre_stop = pre_stop
+        # The configurations of Kubernetes Service-based service registration and discovery. Take note of the following rules:
+        # 
+        # *   **serviceName**: the name of the Alibaba Cloud service. Format: `<Custom content>-<Namespace ID>`. `-<Namespace ID>` is automatically specified based on the namespace in which an application resides and cannot be changed. For example, if you select the default namespace in the China (Beijing) region, `-cn-beijing-default` is automatically specified.
+        # *   **namespaceId**: the namespace ID.
+        # *   **portAndProtocol**: the port number and protocol. Valid values of the port number: 1 to 65535. Valid values of the protocol: **TCP** and **UDP**.
+        # *   **enable**: enables the Kubernetes Service-based registration and discovery feature.
         self.pvtz_discovery_svc = pvtz_discovery_svc
+        # The Python environment. Set the value to **PYTHON 3.9.15**.
         self.python = python
+        # The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
         self.python_modules = python_modules
-        # {"exec":{"command":\["sleep","6s"]},"initialDelaySeconds":15,"timeoutSeconds":12}
+        # The details of the health check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. Containers that fail health checks cannot receive traffic from Server Load Balancer (SLB) instances. You can use the **exec**, **httpGet**, or **tcpSocket** method to perform health checks. For more information, see the description of the **Liveness** parameter.
+        # 
+        # > You can use only one method to perform the health check.
         self.readiness = readiness
-        # \[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
+        self.replicas = replicas
+        self.security_group_id = security_group_id
+        self.service_tags = service_tags
+        # The logging configurations of Log Service.
+        # 
+        # *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # 
+        # The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **projectName**: the name of the Log Service project.
+        # *   **logDir**: the path in which logs are stored.
+        # *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+        # *   **logstoreName**: the name of the Logstore in Log Service.
+        # *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+        # 
+        # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
+        # 
+        # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
-        # 10
+        # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
-        # Asia/Shanghai
+        # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
+        # The Tomcat configuration. If you want to cancel this configuration, set this parameter to "" or "{}". The following variables are included in the configuration: Take note of the following rules:
+        # 
+        # *   **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+        # *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+        # *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: UTF-8, ISO-8859-1, GBK, and GB2312.************ If you do not specify this parameter, the default value **ISO-8859-1** is used.
+        # *   **useBodyEncoding**: specifies whether to use the encoding scheme specified in the request body for URI query parameters. Default value: true.
         self.tomcat_config = tomcat_config
-        # {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
+        # The deployment policy. If the minimum number of available instances is 1, the value of the **UpdateStrategy** parameter is an empty string (""). If the minimum number of available instances is greater than 1, the following strategies can be configured:
+        # 
+        # *   The application is deployed on an instance. The remaining instances are automatically classified into two release batches whose interval is set to 1. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`.
+        # *   The application is deployed on an instance. The remaining instances are manually classified into two release batches. In this case, the parameter is set to `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`.
+        # *   All instances are automatically classified into two release batches. The application is deployed on the instances of the two batches in parallel. In this case, the parameter is set to `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+        # 
+        # The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **type**: the type of the release policy. Valid values: **GrayBatchUpdate** and **BatchUpdate**.
+        # 
+        # *   **batchUpdate**: the phased release policy.
+        # 
+        #     *   **batch**: the number of release batches.
+        #     *   **releaseType**: the processing method for the batches. Valid values: **auto** and **manual**.
+        #     *   **batchWaitTime**: the interval between release batches. Unit: seconds.
+        # 
+        # *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
         self.update_strategy = update_strategy
-        # CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
+        self.v_switch_id = v_switch_id
+        # The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
-        # apache-tomcat-7.0.91
+        # The version of the Tomcat container on which the deployment package depends. Valid values:
+        # 
+        # *   **apache-tomcat-7.0.91**\
+        # *   **apache-tomcat-8.5.42**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -5433,6 +15766,8 @@ class DeployApplicationRequest(TeaModel):
             result['CommandArgs'] = self.command_args
         if self.config_map_mount_desc is not None:
             result['ConfigMapMountDesc'] = self.config_map_mount_desc
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
         if self.custom_host_alias is not None:
             result['CustomHostAlias'] = self.custom_host_alias
         if self.deploy is not None:
@@ -5459,8 +15794,12 @@ class DeployApplicationRequest(TeaModel):
             result['KafkaConfigs'] = self.kafka_configs
         if self.liveness is not None:
             result['Liveness'] = self.liveness
+        if self.memory is not None:
+            result['Memory'] = self.memory
         if self.micro_registration is not None:
             result['MicroRegistration'] = self.micro_registration
+        if self.micro_registration_config is not None:
+            result['MicroRegistrationConfig'] = self.micro_registration_config
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -5485,6 +15824,8 @@ class DeployApplicationRequest(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
+        if self.php is not None:
+            result['Php'] = self.php
         if self.php_arms_config_location is not None:
             result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
@@ -5503,6 +15844,12 @@ class DeployApplicationRequest(TeaModel):
             result['PythonModules'] = self.python_modules
         if self.readiness is not None:
             result['Readiness'] = self.readiness
+        if self.replicas is not None:
+            result['Replicas'] = self.replicas
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.service_tags is not None:
+            result['ServiceTags'] = self.service_tags
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
         if self.termination_grace_period_seconds is not None:
@@ -5513,6 +15860,8 @@ class DeployApplicationRequest(TeaModel):
             result['TomcatConfig'] = self.tomcat_config
         if self.update_strategy is not None:
             result['UpdateStrategy'] = self.update_strategy
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.war_start_options is not None:
             result['WarStartOptions'] = self.war_start_options
         if self.web_container is not None:
@@ -5541,6 +15890,8 @@ class DeployApplicationRequest(TeaModel):
             self.command_args = m.get('CommandArgs')
         if m.get('ConfigMapMountDesc') is not None:
             self.config_map_mount_desc = m.get('ConfigMapMountDesc')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
         if m.get('CustomHostAlias') is not None:
             self.custom_host_alias = m.get('CustomHostAlias')
         if m.get('Deploy') is not None:
@@ -5567,8 +15918,12 @@ class DeployApplicationRequest(TeaModel):
             self.kafka_configs = m.get('KafkaConfigs')
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
             self.micro_registration = m.get('MicroRegistration')
+        if m.get('MicroRegistrationConfig') is not None:
+            self.micro_registration_config = m.get('MicroRegistrationConfig')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -5593,6 +15948,8 @@ class DeployApplicationRequest(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
+        if m.get('Php') is not None:
+            self.php = m.get('Php')
         if m.get('PhpArmsConfigLocation') is not None:
             self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
@@ -5611,6 +15968,12 @@ class DeployApplicationRequest(TeaModel):
             self.python_modules = m.get('PythonModules')
         if m.get('Readiness') is not None:
             self.readiness = m.get('Readiness')
+        if m.get('Replicas') is not None:
+            self.replicas = m.get('Replicas')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('ServiceTags') is not None:
+            self.service_tags = m.get('ServiceTags')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
         if m.get('TerminationGracePeriodSeconds') is not None:
@@ -5621,6 +15984,8 @@ class DeployApplicationRequest(TeaModel):
             self.tomcat_config = m.get('TomcatConfig')
         if m.get('UpdateStrategy') is not None:
             self.update_strategy = m.get('UpdateStrategy')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('WarStartOptions') is not None:
             self.war_start_options = m.get('WarStartOptions')
         if m.get('WebContainer') is not None:
@@ -5635,11 +16000,11 @@ class DeployApplicationResponseBodyData(TeaModel):
         change_order_id: str = None,
         is_need_approval: bool = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
         # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
-        # Specifies whether approval is required when a RAM user performs release. Valid values:
+        # Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
@@ -5684,30 +16049,33 @@ class DeployApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The response.
         self.data = data
-        # The error code returned when the method fails to be called.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information that is returned. Take note of the following rules:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the application deployment is successful. Valid values:
+        # Indicates whether the application deployment is successful. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -5768,9 +16136,6 @@ class DeployApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5804,13 +16169,19 @@ class DescribeAppServiceDetailRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        nacos_instance_id: str = None,
+        nacos_namespace_id: str = None,
         service_group: str = None,
         service_name: str = None,
         service_type: str = None,
         service_version: str = None,
     ):
-        # 6dcc8c9e-d3da-478a-a066-86dcf820\*\*\*\*\
+        # 6dcc8c9e-d3da-478a-a066-86dcf820\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        self.nacos_instance_id = nacos_instance_id
+        self.nacos_namespace_id = nacos_namespace_id
         # springCloud
         self.service_group = service_group
         # edas.service.provider
@@ -5831,6 +16202,10 @@ class DescribeAppServiceDetailRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.nacos_instance_id is not None:
+            result['NacosInstanceId'] = self.nacos_instance_id
+        if self.nacos_namespace_id is not None:
+            result['NacosNamespaceId'] = self.nacos_namespace_id
         if self.service_group is not None:
             result['ServiceGroup'] = self.service_group
         if self.service_name is not None:
@@ -5845,6 +16220,10 @@ class DescribeAppServiceDetailRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('NacosInstanceId') is not None:
+            self.nacos_instance_id = m.get('NacosInstanceId')
+        if m.get('NacosNamespaceId') is not None:
+            self.nacos_namespace_id = m.get('NacosNamespaceId')
         if m.get('ServiceGroup') is not None:
             self.service_group = m.get('ServiceGroup')
         if m.get('ServiceName') is not None:
@@ -6011,6 +16390,9 @@ class DescribeAppServiceDetailResponseBodyData(TeaModel):
         metadata: Dict[str, Any] = None,
         methods: List[DescribeAppServiceDetailResponseBodyDataMethods] = None,
         service_name: str = None,
+        service_ports: List[int] = None,
+        service_protocol: str = None,
+        service_tags: List[str] = None,
         service_type: str = None,
         spring_application_name: str = None,
         version: str = None,
@@ -6027,6 +16409,9 @@ class DescribeAppServiceDetailResponseBodyData(TeaModel):
         self.methods = methods
         # The name of the service.
         self.service_name = service_name
+        self.service_ports = service_ports
+        self.service_protocol = service_protocol
+        self.service_tags = service_tags
         # The type of the service. Valid values:
         # 
         # *   **dubbo**\
@@ -6063,6 +16448,12 @@ class DescribeAppServiceDetailResponseBodyData(TeaModel):
                 result['Methods'].append(k.to_map() if k else None)
         if self.service_name is not None:
             result['ServiceName'] = self.service_name
+        if self.service_ports is not None:
+            result['ServicePorts'] = self.service_ports
+        if self.service_protocol is not None:
+            result['ServiceProtocol'] = self.service_protocol
+        if self.service_tags is not None:
+            result['ServiceTags'] = self.service_tags
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
         if self.spring_application_name is not None:
@@ -6088,6 +16479,12 @@ class DescribeAppServiceDetailResponseBodyData(TeaModel):
                 self.methods.append(temp_model.from_map(k))
         if m.get('ServiceName') is not None:
             self.service_name = m.get('ServiceName')
+        if m.get('ServicePorts') is not None:
+            self.service_ports = m.get('ServicePorts')
+        if m.get('ServiceProtocol') is not None:
+            self.service_protocol = m.get('ServiceProtocol')
+        if m.get('ServiceTags') is not None:
+            self.service_tags = m.get('ServiceTags')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
         if m.get('SpringApplicationName') is not None:
@@ -6192,9 +16589,6 @@ class DescribeAppServiceDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6230,9 +16624,11 @@ class DescribeApplicationConfigRequest(TeaModel):
         app_id: str = None,
         version_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # 0026ff7f-2b57-4127-bdd0-9bf202bb\*\*\*\*\
+        # 0026ff7f-2b57-4127-bdd0-9bf202bb\\*\\*\\*\\*\
         self.version_id = version_id
 
     def validate(self):
@@ -6438,6 +16834,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
+        app_source: str = None,
         associate_eip: bool = None,
         batch_wait_time: int = None,
         command: str = None,
@@ -6463,6 +16860,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         mount_desc: List[DescribeApplicationConfigResponseBodyDataMountDesc] = None,
         mount_host: str = None,
         mse_application_id: str = None,
+        mse_application_name: str = None,
         namespace_id: str = None,
         nas_configs: str = None,
         nas_id: str = None,
@@ -6472,6 +16870,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         package_type: str = None,
         package_url: str = None,
         package_version: str = None,
+        php: str = None,
         php_arms_config_location: str = None,
         php_config: str = None,
         php_config_location: str = None,
@@ -6485,6 +16884,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         region_id: str = None,
         replicas: int = None,
         security_group_id: str = None,
+        service_tags: Dict[str, str] = None,
         sls_configs: str = None,
         tags: List[DescribeApplicationConfigResponseBodyDataTags] = None,
         termination_grace_period_seconds: int = None,
@@ -6496,7 +16896,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](~~190675~~) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](~~223585~~).
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/190675.html) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
         # The ID of the Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
@@ -6506,6 +16906,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        self.app_source = app_source
         # Indicates whether an elastic IP address (EIP) is associated with the application instance. Valid values:
         # 
         # *   **true**: The EIP is associated with the application instance.
@@ -6659,6 +17060,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.mount_host = mount_host
         # The ID of the microservice application.
         self.mse_application_id = mse_application_id
+        self.mse_application_name = mse_application_name
         # The ID of the namespace.
         self.namespace_id = namespace_id
         self.nas_configs = nas_configs
@@ -6677,25 +17079,26 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   If you deploy the application by using a PHP package, you can set this parameter to one of the following values:
         # 
         #     *   **PhpZip**\
-        #     *   **IMAGE_PHP\_5\_4**\
-        #     *   **IMAGE_PHP\_5\_4\_ALPINE**\
-        #     *   **IMAGE_PHP\_5\_5**\
-        #     *   **IMAGE_PHP\_5\_5\_ALPINE**\
-        #     *   **IMAGE_PHP\_5\_6**\
-        #     *   **IMAGE_PHP\_5\_6\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_0**\
-        #     *   **IMAGE_PHP\_7\_0\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_1**\
-        #     *   **IMAGE_PHP\_7\_1\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_2**\
-        #     *   **IMAGE_PHP\_7\_2\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_3**\
-        #     *   **IMAGE_PHP\_7\_3\_ALPINE**\
+        #     *   **IMAGE_PHP_5_4**\
+        #     *   **IMAGE_PHP_5_4_ALPINE**\
+        #     *   **IMAGE_PHP_5_5**\
+        #     *   **IMAGE_PHP_5_5_ALPINE**\
+        #     *   **IMAGE_PHP_5_6**\
+        #     *   **IMAGE_PHP_5_6_ALPINE**\
+        #     *   **IMAGE_PHP_7_0**\
+        #     *   **IMAGE_PHP_7_0_ALPINE**\
+        #     *   **IMAGE_PHP_7_1**\
+        #     *   **IMAGE_PHP_7_1_ALPINE**\
+        #     *   **IMAGE_PHP_7_2**\
+        #     *   **IMAGE_PHP_7_2_ALPINE**\
+        #     *   **IMAGE_PHP_7_3**\
+        #     *   **IMAGE_PHP_7_3_ALPINE**\
         self.package_type = package_type
         # The URL of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar** or **War**.
         self.package_url = package_url
         # The version of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar** or **War**.
         self.package_version = package_version
+        self.php = php
         # The path on which the PHP configuration file for application monitoring is mounted. Make sure that the PHP server loads the configuration file.
         # 
         # SAE automatically generates the corresponding configuration file. No manual operations are required.
@@ -6727,6 +17130,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.replicas = replicas
         # The ID of the security group.
         self.security_group_id = security_group_id
+        self.service_tags = service_tags
         # The logging configurations of Log Service.
         # 
         # *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
@@ -6822,6 +17226,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
         if self.associate_eip is not None:
             result['AssociateEip'] = self.associate_eip
         if self.batch_wait_time is not None:
@@ -6876,6 +17282,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['MountHost'] = self.mount_host
         if self.mse_application_id is not None:
             result['MseApplicationId'] = self.mse_application_id
+        if self.mse_application_name is not None:
+            result['MseApplicationName'] = self.mse_application_name
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.nas_configs is not None:
@@ -6896,6 +17304,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['PackageUrl'] = self.package_url
         if self.package_version is not None:
             result['PackageVersion'] = self.package_version
+        if self.php is not None:
+            result['Php'] = self.php
         if self.php_arms_config_location is not None:
             result['PhpArmsConfigLocation'] = self.php_arms_config_location
         if self.php_config is not None:
@@ -6922,6 +17332,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Replicas'] = self.replicas
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.service_tags is not None:
+            result['ServiceTags'] = self.service_tags
         if self.sls_configs is not None:
             result['SlsConfigs'] = self.sls_configs
         result['Tags'] = []
@@ -6958,6 +17370,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
         if m.get('AssociateEip') is not None:
             self.associate_eip = m.get('AssociateEip')
         if m.get('BatchWaitTime') is not None:
@@ -7014,6 +17428,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.mount_host = m.get('MountHost')
         if m.get('MseApplicationId') is not None:
             self.mse_application_id = m.get('MseApplicationId')
+        if m.get('MseApplicationName') is not None:
+            self.mse_application_name = m.get('MseApplicationName')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('NasConfigs') is not None:
@@ -7035,6 +17451,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.package_url = m.get('PackageUrl')
         if m.get('PackageVersion') is not None:
             self.package_version = m.get('PackageVersion')
+        if m.get('Php') is not None:
+            self.php = m.get('Php')
         if m.get('PhpArmsConfigLocation') is not None:
             self.php_arms_config_location = m.get('PhpArmsConfigLocation')
         if m.get('PhpConfig') is not None:
@@ -7061,6 +17479,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.replicas = m.get('Replicas')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('ServiceTags') is not None:
+            self.service_tags = m.get('ServiceTags')
         if m.get('SlsConfigs') is not None:
             self.sls_configs = m.get('SlsConfigs')
         self.tags = []
@@ -7182,9 +17602,6 @@ class DescribeApplicationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7221,7 +17638,9 @@ class DescribeApplicationGroupsRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # 1
         self.current_page = current_page
@@ -7291,20 +17710,20 @@ class DescribeApplicationGroupsResponseBodyData(TeaModel):
         # *   When you use a PHP package, the following values are valid:
         # 
         #     *   **PhpZip**\
-        #     *   **IMAGE_PHP\_5\_4**\
-        #     *   **IMAGE_PHP\_5\_4\_ALPINE**\
-        #     *   **IMAGE_PHP\_5\_5**\
-        #     *   **IMAGE_PHP\_5\_5\_ALPINE**\
-        #     *   **IMAGE_PHP\_5\_6**\
-        #     *   **IMAGE_PHP\_5\_6\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_0**\
-        #     *   **IMAGE_PHP\_7\_0\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_1**\
-        #     *   **IMAGE_PHP\_7\_1\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_2**\
-        #     *   **IMAGE_PHP\_7\_2\_ALPINE**\
-        #     *   **IMAGE_PHP\_7\_3**\
-        #     *   **IMAGE_PHP\_7\_3\_ALPINE**\
+        #     *   **IMAGE_PHP_5_4**\
+        #     *   **IMAGE_PHP_5_4_ALPINE**\
+        #     *   **IMAGE_PHP_5_5**\
+        #     *   **IMAGE_PHP_5_5_ALPINE**\
+        #     *   **IMAGE_PHP_5_6**\
+        #     *   **IMAGE_PHP_5_6_ALPINE**\
+        #     *   **IMAGE_PHP_7_0**\
+        #     *   **IMAGE_PHP_7_0_ALPINE**\
+        #     *   **IMAGE_PHP_7_1**\
+        #     *   **IMAGE_PHP_7_1_ALPINE**\
+        #     *   **IMAGE_PHP_7_2**\
+        #     *   **IMAGE_PHP_7_2_ALPINE**\
+        #     *   **IMAGE_PHP_7_3**\
+        #     *   **IMAGE_PHP_7_3_ALPINE**\
         self.package_type = package_type
         # The address of the deployment package. This parameter is required when the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**.
         self.package_url = package_url
@@ -7482,9 +17901,6 @@ class DescribeApplicationGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7520,9 +17936,13 @@ class DescribeApplicationImageRequest(TeaModel):
         app_id: str = None,
         image_url: str = None,
     ):
-        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # registry-vpc.cn-hangzhou.aliyuncs.com/demo/demo:latest
+        # 
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -7724,9 +18144,6 @@ class DescribeApplicationImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7765,11 +18182,15 @@ class DescribeApplicationInstancesRequest(TeaModel):
         page_size: int = None,
         reverse: bool = None,
     ):
-        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
+        # d700e680-aa4d-4ec1-afc2-6566b5ff\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # 1
         self.current_page = current_page
-        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
+        # b2a8a925-477a-4ed7-b825-d5e22500\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # 10
         self.page_size = page_size
@@ -8098,9 +18519,6 @@ class DescribeApplicationInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8136,9 +18554,13 @@ class DescribeApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # a0d2e04c-159d-40a8-b240-d2f2c263\*\*\*\*\
+        # a0d2e04c-159d-40a8-b240-d2f2c263\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # test
+        # 
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -8170,6 +18592,10 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         self,
         metric_target_average_utilization: int = None,
         metric_type: str = None,
+        slb_id: str = None,
+        slb_logstore: str = None,
+        slb_project: str = None,
+        vport: str = None,
     ):
         # The limit on the metric.
         # 
@@ -8187,6 +18613,10 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
         # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
+        self.slb_id = slb_id
+        self.slb_logstore = slb_logstore
+        self.slb_project = slb_project
+        self.vport = vport
 
     def validate(self):
         pass
@@ -8201,6 +18631,14 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
             result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
+        if self.slb_id is not None:
+            result['SlbId'] = self.slb_id
+        if self.slb_logstore is not None:
+            result['SlbLogstore'] = self.slb_logstore
+        if self.slb_project is not None:
+            result['SlbProject'] = self.slb_project
+        if self.vport is not None:
+            result['Vport'] = self.vport
         return result
 
     def from_map(self, m: dict = None):
@@ -8209,6 +18647,14 @@ class DescribeApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
             self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
+        if m.get('SlbId') is not None:
+            self.slb_id = m.get('SlbId')
+        if m.get('SlbLogstore') is not None:
+            self.slb_logstore = m.get('SlbLogstore')
+        if m.get('SlbProject') is not None:
+            self.slb_project = m.get('SlbProject')
+        if m.get('Vport') is not None:
+            self.vport = m.get('Vport')
         return self
 
 
@@ -8570,10 +19016,14 @@ class DescribeApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
     def __init__(
         self,
         at_time: str = None,
+        max_replicas: int = None,
+        min_replicas: int = None,
         target_replicas: int = None,
     ):
         # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        self.max_replicas = max_replicas
+        self.min_replicas = min_replicas
         # The expected number of instances.
         self.target_replicas = target_replicas
 
@@ -8588,6 +19038,10 @@ class DescribeApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         result = dict()
         if self.at_time is not None:
             result['AtTime'] = self.at_time
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
         if self.target_replicas is not None:
             result['TargetReplicas'] = self.target_replicas
         return result
@@ -8596,6 +19050,10 @@ class DescribeApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         m = m or dict()
         if m.get('AtTime') is not None:
             self.at_time = m.get('AtTime')
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
         if m.get('TargetReplicas') is not None:
             self.target_replicas = m.get('TargetReplicas')
         return self
@@ -8621,9 +19079,9 @@ class DescribeApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         self.end_date = end_date
         # The days on which the scheduled auto scaling policy takes effect. Valid values:
         # 
-        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # *   **\\* \\* \\***: The scheduled auto scaling policy takes effect at a specified time every day.
         # 
-        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # *   **\\* \\* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
         # 
         #     *   **Sun**: Sunday
         #     *   **Mon**: Monday
@@ -8633,7 +19091,7 @@ class DescribeApplicationScalingRuleResponseBodyDataTimer(TeaModel):
         #     *   **Fri**: Friday
         #     *   **Sat**: Saturday
         # 
-        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
+        # *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
         # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
@@ -8685,6 +19143,8 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         create_time: int = None,
         last_disable_time: int = None,
         metric: DescribeApplicationScalingRuleResponseBodyDataMetric = None,
+        min_ready_instance_ratio: int = None,
+        min_ready_instances: int = None,
         scale_rule_enabled: bool = None,
         scale_rule_name: str = None,
         scale_rule_type: str = None,
@@ -8699,6 +19159,8 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
         self.metric = metric
+        self.min_ready_instance_ratio = min_ready_instance_ratio
+        self.min_ready_instances = min_ready_instances
         # Indicates whether the auto scaling policy is enabled. Valid values:
         # 
         # *   **true**: enabled
@@ -8737,6 +19199,10 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
             result['LastDisableTime'] = self.last_disable_time
         if self.metric is not None:
             result['Metric'] = self.metric.to_map()
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
+        if self.min_ready_instances is not None:
+            result['MinReadyInstances'] = self.min_ready_instances
         if self.scale_rule_enabled is not None:
             result['ScaleRuleEnabled'] = self.scale_rule_enabled
         if self.scale_rule_name is not None:
@@ -8760,6 +19226,10 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         if m.get('Metric') is not None:
             temp_model = DescribeApplicationScalingRuleResponseBodyDataMetric()
             self.metric = temp_model.from_map(m['Metric'])
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
+        if m.get('MinReadyInstances') is not None:
+            self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('ScaleRuleEnabled') is not None:
             self.scale_rule_enabled = m.get('ScaleRuleEnabled')
         if m.get('ScaleRuleName') is not None:
@@ -8854,9 +19324,6 @@ class DescribeApplicationScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8891,7 +19358,9 @@ class DescribeApplicationScalingRulesRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -8919,6 +19388,10 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         self,
         metric_target_average_utilization: int = None,
         metric_type: str = None,
+        slb_id: str = None,
+        slb_logstore: str = None,
+        slb_project: str = None,
+        vport: str = None,
     ):
         # The limit on the metric.
         # 
@@ -8936,6 +19409,10 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
         # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
         # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
         self.metric_type = metric_type
+        self.slb_id = slb_id
+        self.slb_logstore = slb_logstore
+        self.slb_project = slb_project
+        self.vport = vport
 
     def validate(self):
         pass
@@ -8950,6 +19427,14 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
             result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
+        if self.slb_id is not None:
+            result['SlbId'] = self.slb_id
+        if self.slb_logstore is not None:
+            result['SlbLogstore'] = self.slb_logstore
+        if self.slb_project is not None:
+            result['SlbProject'] = self.slb_project
+        if self.vport is not None:
+            result['Vport'] = self.vport
         return result
 
     def from_map(self, m: dict = None):
@@ -8958,6 +19443,14 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetr
             self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
+        if m.get('SlbId') is not None:
+            self.slb_id = m.get('SlbId')
+        if m.get('SlbLogstore') is not None:
+            self.slb_logstore = m.get('SlbLogstore')
+        if m.get('SlbProject') is not None:
+            self.slb_project = m.get('SlbProject')
+        if m.get('Vport') is not None:
+            self.vport = m.get('Vport')
         return self
 
 
@@ -9398,9 +19891,9 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         self.end_date = end_date
         # The days on which the scheduled auto scaling policy takes effect. Valid values:
         # 
-        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # *   **\\* \\* \\***: The scheduled auto scaling policy takes effect at a specified time every day.
         # 
-        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # *   **\\* \\* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
         # 
         #     *   **Sun**: Sunday
         #     *   **Mon**: Monday
@@ -9410,7 +19903,7 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTime
         #     *   **Fri**: Friday
         #     *   **Sat**: Saturday
         # 
-        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
+        # *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
         self.period = period
         # The points in time when the auto scaling policy is triggered within one day.
         self.schedules = schedules
@@ -9462,6 +19955,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         create_time: int = None,
         last_disable_time: int = None,
         metric: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric = None,
+        min_ready_instance_ratio: int = None,
+        min_ready_instances: int = None,
         scale_rule_enabled: bool = None,
         scale_rule_name: str = None,
         scale_rule_type: str = None,
@@ -9476,6 +19971,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
         self.metric = metric
+        self.min_ready_instance_ratio = min_ready_instance_ratio
+        self.min_ready_instances = min_ready_instances
         # Indicates whether the auto scaling policy is enabled. Valid values:
         # 
         # *   **true**: enabled
@@ -9514,6 +20011,10 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
             result['LastDisableTime'] = self.last_disable_time
         if self.metric is not None:
             result['Metric'] = self.metric.to_map()
+        if self.min_ready_instance_ratio is not None:
+            result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
+        if self.min_ready_instances is not None:
+            result['MinReadyInstances'] = self.min_ready_instances
         if self.scale_rule_enabled is not None:
             result['ScaleRuleEnabled'] = self.scale_rule_enabled
         if self.scale_rule_name is not None:
@@ -9537,6 +20038,10 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         if m.get('Metric') is not None:
             temp_model = DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric()
             self.metric = temp_model.from_map(m['Metric'])
+        if m.get('MinReadyInstanceRatio') is not None:
+            self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
+        if m.get('MinReadyInstances') is not None:
+            self.min_ready_instances = m.get('MinReadyInstances')
         if m.get('ScaleRuleEnabled') is not None:
             self.scale_rule_enabled = m.get('ScaleRuleEnabled')
         if m.get('ScaleRuleName') is not None:
@@ -9688,9 +20193,6 @@ class DescribeApplicationScalingRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9725,7 +20227,9 @@ class DescribeApplicationSlbsRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -9751,18 +20255,28 @@ class DescribeApplicationSlbsRequest(TeaModel):
 class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
     def __init__(
         self,
+        cookie: str = None,
+        cookie_timeout: int = None,
+        https_ca_cert_id: str = None,
         https_cert_id: str = None,
         port: int = None,
         protocol: str = None,
+        sticky_session: bool = None,
+        sticky_session_type: str = None,
         target_port: int = None,
     ):
-        # The ID of the SSL certificate issued by Alibaba Cloud.
-        self.https_cert_id = https_cert_id
-        # The port specified for the SLB listener.
-        self.port = port
+        self.cookie = cookie
+        self.cookie_timeout = cookie_timeout
+        self.https_ca_cert_id = https_ca_cert_id
         # The supported protocol.
-        self.protocol = protocol
+        self.https_cert_id = https_cert_id
+        # The ID of the internal-facing SLB instance.
+        self.port = port
         # The container port.
+        self.protocol = protocol
+        self.sticky_session = sticky_session
+        self.sticky_session_type = sticky_session_type
+        # The port specified for the SLB listener.
         self.target_port = target_port
 
     def validate(self):
@@ -9774,24 +20288,44 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
             return _map
 
         result = dict()
+        if self.cookie is not None:
+            result['Cookie'] = self.cookie
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.https_ca_cert_id is not None:
+            result['HttpsCaCertId'] = self.https_ca_cert_id
         if self.https_cert_id is not None:
             result['HttpsCertId'] = self.https_cert_id
         if self.port is not None:
             result['Port'] = self.port
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
         if self.target_port is not None:
             result['TargetPort'] = self.target_port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cookie') is not None:
+            self.cookie = m.get('Cookie')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HttpsCaCertId') is not None:
+            self.https_ca_cert_id = m.get('HttpsCaCertId')
         if m.get('HttpsCertId') is not None:
             self.https_cert_id = m.get('HttpsCertId')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('StickySessionType') is not None:
+            self.sticky_session_type = m.get('StickySessionType')
         if m.get('TargetPort') is not None:
             self.target_port = m.get('TargetPort')
         return self
@@ -9800,18 +20334,28 @@ class DescribeApplicationSlbsResponseBodyDataInternet(TeaModel):
 class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
     def __init__(
         self,
+        cookie: str = None,
+        cookie_timeout: int = None,
+        https_ca_cert_id: str = None,
         https_cert_id: str = None,
         port: int = None,
         protocol: str = None,
+        sticky_session: bool = None,
+        sticky_session_type: str = None,
         target_port: int = None,
     ):
-        # The ID of the SSL certificate issued by Alibaba Cloud.
-        self.https_cert_id = https_cert_id
-        # The port specified for the SLB listener.
-        self.port = port
+        self.cookie = cookie
+        self.cookie_timeout = cookie_timeout
+        self.https_ca_cert_id = https_ca_cert_id
         # The supported protocol.
-        self.protocol = protocol
+        self.https_cert_id = https_cert_id
+        # The IP address of the Internet-facing SLB instance.
+        self.port = port
         # The container port.
+        self.protocol = protocol
+        self.sticky_session = sticky_session
+        self.sticky_session_type = sticky_session_type
+        # The port specified for the SLB listener.
         self.target_port = target_port
 
     def validate(self):
@@ -9823,24 +20367,44 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(TeaModel):
             return _map
 
         result = dict()
+        if self.cookie is not None:
+            result['Cookie'] = self.cookie
+        if self.cookie_timeout is not None:
+            result['CookieTimeout'] = self.cookie_timeout
+        if self.https_ca_cert_id is not None:
+            result['HttpsCaCertId'] = self.https_ca_cert_id
         if self.https_cert_id is not None:
             result['HttpsCertId'] = self.https_cert_id
         if self.port is not None:
             result['Port'] = self.port
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.sticky_session is not None:
+            result['StickySession'] = self.sticky_session
+        if self.sticky_session_type is not None:
+            result['StickySessionType'] = self.sticky_session_type
         if self.target_port is not None:
             result['TargetPort'] = self.target_port
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Cookie') is not None:
+            self.cookie = m.get('Cookie')
+        if m.get('CookieTimeout') is not None:
+            self.cookie_timeout = m.get('CookieTimeout')
+        if m.get('HttpsCaCertId') is not None:
+            self.https_ca_cert_id = m.get('HttpsCaCertId')
         if m.get('HttpsCertId') is not None:
             self.https_cert_id = m.get('HttpsCertId')
         if m.get('Port') is not None:
             self.port = m.get('Port')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('StickySession') is not None:
+            self.sticky_session = m.get('StickySession')
+        if m.get('StickySessionType') is not None:
+            self.sticky_session_type = m.get('StickySessionType')
         if m.get('TargetPort') is not None:
             self.target_port = m.get('TargetPort')
         return self
@@ -9858,19 +20422,22 @@ class DescribeApplicationSlbsResponseBodyData(TeaModel):
         intranet_slb_expired: bool = None,
         intranet_slb_id: str = None,
     ):
-        # Configurations of Internet-facing SLB instances.
+        # The ID of the SSL certificate issued by Alibaba Cloud.
         self.internet = internet
-        # The IP address of the Internet-facing SLB instance.
+        # The ID of the Internet-facing SLB instance.
         self.internet_ip = internet_ip
         self.internet_slb_expired = internet_slb_expired
-        # The ID of the Internet-facing SLB instance.
+        # Configurations of Internet-facing SLB instances.
         self.internet_slb_id = internet_slb_id
-        # Configurations of internal-facing SLB instances.
+        # The ID of the SSL certificate issued by Alibaba Cloud.
         self.intranet = intranet
-        # The IP address of the internal-facing SLB instance.
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.intranet_ip = intranet_ip
         self.intranet_slb_expired = intranet_slb_expired
-        # The ID of the internal-facing SLB instance.
+        # The IP address of the internal-facing SLB instance.
         self.intranet_slb_id = intranet_slb_id
 
     def validate(self):
@@ -9949,33 +20516,29 @@ class DescribeApplicationSlbsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the information about the SLB instances that are associated with an application was obtained successfully. Valid values:
+        # 
+        # *   **true**: indicates that the information was obtained successfully.
+        # *   **false**: indicates that the information failed to be obtained.
+        self.code = code
+        # Configurations of internal-facing SLB instances.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned data.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The ID of the trace. It can be used to query the details of a request.
+        self.message = message
         # The returned message.
         # 
         # *   **success** is returned when the request succeeds.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the information about the SLB instances that are associated with an application was obtained successfully. Valid values:
-        # 
-        # *   **true**: indicates that the information was obtained successfully.
-        # *   **false**: indicates that the information failed to be obtained.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The returned data.
         self.trace_id = trace_id
 
     def validate(self):
@@ -10036,9 +20599,6 @@ class DescribeApplicationSlbsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10073,7 +20633,9 @@ class DescribeApplicationStatusRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -10326,9 +20888,6 @@ class DescribeApplicationStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10363,7 +20922,9 @@ class DescribeChangeOrderRequest(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # 76fa5c0-9ebb-4bb4-b383-1f885447\*\*\*\*\
+        # 76fa5c0-9ebb-4bb4-b383-1f885447\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -10761,9 +21322,6 @@ class DescribeChangeOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10799,9 +21357,11 @@ class DescribeComponentsRequest(TeaModel):
         app_id: str = None,
         type: str = None,
     ):
-        # d700e680-aa4d-4ec1-afc2-6566b5ff\*\*\*\*\
-        self.app_id = app_id
         # TOMCAT
+        self.app_id = app_id
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -10836,16 +21396,19 @@ class DescribeComponentsResponseBodyData(TeaModel):
         expired: bool = None,
         type: str = None,
     ):
-        # The description of the component.
-        self.component_description = component_description
-        # The ID of the component.
-        self.component_key = component_key
         # Indicates whether the component is expired. Valid values:
         # 
         # *   **true**: The component is expired.
         # *   **false**: The component is not expired.
+        self.component_description = component_description
+        # The description of the component.
+        self.component_key = component_key
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.expired = expired
-        # The component type.
+        # The ID of the component.
         self.type = type
 
     def validate(self):
@@ -10891,30 +21454,26 @@ class DescribeComponentsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the component version was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the component version was obtained.
+        # *   **false**: indicates that the component version could not be obtained.
+        self.code = code
+        # The component type.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The details of the component.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the component version was obtained. Valid values:
-        # 
-        # *   **true**: indicates that the component version was obtained.
-        # *   **false**: indicates that the component version could not be obtained.
-        self.success = success
         # The ID of the trace. It is used to query the details of a request.
+        self.message = message
+        # The returned message.
+        self.request_id = request_id
+        self.success = success
+        # The details of the component.
         self.trace_id = trace_id
 
     def validate(self):
@@ -10981,9 +21540,6 @@ class DescribeComponentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11018,7 +21574,9 @@ class DescribeConfigMapRequest(TeaModel):
         self,
         config_map_id: int = None,
     ):
-        # 1
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -11047,9 +21605,9 @@ class DescribeConfigMapResponseBodyDataRelateApps(TeaModel):
         app_id: str = None,
         app_name: str = None,
     ):
-        # The ID of the application.
+        # The ID of the ConfigMap instance.
         self.app_id = app_id
-        # The name of the application.
+        # The ID of the application.
         self.app_name = app_name
 
     def validate(self):
@@ -11088,25 +21646,28 @@ class DescribeConfigMapResponseBodyData(TeaModel):
         relate_apps: List[DescribeConfigMapResponseBodyDataRelateApps] = None,
         update_time: int = None,
     ):
-        # The ID of the ConfigMap instance.
+        # The name of the ConfigMap instance.
         self.config_map_id = config_map_id
-        # The time when the instance was created.
+        # The application that is associated with the instance.
         self.create_time = create_time
+        # The ID of the namespace to which the instance belongs.
+        self.data = data
+        # The time when the instance was created.
+        self.description = description
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        self.name = name
+        # The description of the instance.
+        self.namespace_id = namespace_id
+        # The name of the application.
+        self.relate_apps = relate_apps
         # The data of ConfigMap key-value pairs. Format:
         # 
         # {"k1":"v1", "k2":"v2"}
         # 
-        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](~~171326~~).
-        self.data = data
-        # The description of the instance.
-        self.description = description
-        # The name of the ConfigMap instance.
-        self.name = name
-        # The ID of the namespace to which the instance belongs.
-        self.namespace_id = namespace_id
-        # The application that is associated with the instance.
-        self.relate_apps = relate_apps
-        # The time when the instance was last modified.
+        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](https://help.aliyun.com/document_detail/171326.html).
         self.update_time = update_time
 
     def validate(self):
@@ -11176,33 +21737,29 @@ class DescribeConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the details of the ConfigMap instance were obtained. Valid values:
+        # 
+        # *   **true**: The details were obtained.
+        # *   **false**: The details failed to be obtained.
+        self.code = code
+        # The time when the instance was last modified.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the call was successful.
         # *   **3xx**: indicates that the call was redirected.
         # *   **4xx**: indicates that the call failed.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned result.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The ID of the trace. The ID is used to query the details of a request.
+        self.message = message
         # The returned information. Valid values:
         # 
         # *   If the call is successful, **success** is returned.
         # *   If the call fails, an error code is returned.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the details of the ConfigMap instance were obtained. Valid values:
-        # 
-        # *   **true**: The details were obtained.
-        # *   **false**: The details failed to be obtained.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The returned result.
         self.trace_id = trace_id
 
     def validate(self):
@@ -11263,9 +21820,6 @@ class DescribeConfigMapResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11302,7 +21856,9 @@ class DescribeConfigurationPriceRequest(TeaModel):
         memory: int = None,
         workload: str = None,
     ):
+        # This parameter is required.
         self.cpu = cpu
+        # This parameter is required.
         self.memory = memory
         self.workload = workload
 
@@ -11367,6 +21923,128 @@ class DescribeConfigurationPriceResponseBodyDataBagUsage(TeaModel):
         return self
 
 
+class DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder(TeaModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        original_amount: float = None,
+        rule_ids: List[str] = None,
+        trade_amount: float = None,
+    ):
+        self.discount_amount = discount_amount
+        self.original_amount = original_amount
+        self.rule_ids = rule_ids
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        rule_desc_id: float = None,
+    ):
+        self.name = name
+        self.rule_desc_id = rule_desc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_desc_id is not None:
+            result['RuleDescId'] = self.rule_desc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleDescId') is not None:
+            self.rule_desc_id = m.get('RuleDescId')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataCpuMemPrice(TeaModel):
+    def __init__(
+        self,
+        order: DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder = None,
+        rules: List[DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules] = None,
+    ):
+        self.order = order
+        self.rules = rules
+
+    def validate(self):
+        if self.order:
+            self.order.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder()
+            self.order = temp_model.from_map(m['Order'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeConfigurationPriceResponseBodyDataOrder(TeaModel):
     def __init__(
         self,
@@ -11412,6 +22090,128 @@ class DescribeConfigurationPriceResponseBodyDataOrder(TeaModel):
         return self
 
 
+class DescribeConfigurationPriceResponseBodyDataRequestPriceOrder(TeaModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        original_amount: float = None,
+        rule_ids: List[str] = None,
+        trade_amount: float = None,
+    ):
+        self.discount_amount = discount_amount
+        self.original_amount = original_amount
+        self.rule_ids = rule_ids
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataRequestPriceRules(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        rule_desc_id: int = None,
+    ):
+        self.name = name
+        self.rule_desc_id = rule_desc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_desc_id is not None:
+            result['RuleDescId'] = self.rule_desc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleDescId') is not None:
+            self.rule_desc_id = m.get('RuleDescId')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataRequestPrice(TeaModel):
+    def __init__(
+        self,
+        order: DescribeConfigurationPriceResponseBodyDataRequestPriceOrder = None,
+        rules: List[DescribeConfigurationPriceResponseBodyDataRequestPriceRules] = None,
+    ):
+        self.order = order
+        self.rules = rules
+
+    def validate(self):
+        if self.order:
+            self.order.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataRequestPriceOrder()
+            self.order = temp_model.from_map(m['Order'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeConfigurationPriceResponseBodyDataRequestPriceRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeConfigurationPriceResponseBodyDataRules(TeaModel):
     def __init__(
         self,
@@ -11445,20 +22245,94 @@ class DescribeConfigurationPriceResponseBodyDataRules(TeaModel):
         return self
 
 
-class DescribeConfigurationPriceResponseBodyData(TeaModel):
+class DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder(TeaModel):
     def __init__(
         self,
-        bag_usage: DescribeConfigurationPriceResponseBodyDataBagUsage = None,
-        order: DescribeConfigurationPriceResponseBodyDataOrder = None,
-        rules: List[DescribeConfigurationPriceResponseBodyDataRules] = None,
+        discount_amount: float = None,
+        original_amount: float = None,
+        rule_ids: List[str] = None,
+        trade_amount: float = None,
     ):
-        self.bag_usage = bag_usage
+        self.discount_amount = discount_amount
+        self.original_amount = original_amount
+        self.rule_ids = rule_ids
+        self.trade_amount = trade_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataTrafficPriceRules(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        rule_desc_id: float = None,
+    ):
+        self.name = name
+        self.rule_desc_id = rule_desc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rule_desc_id is not None:
+            result['RuleDescId'] = self.rule_desc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RuleDescId') is not None:
+            self.rule_desc_id = m.get('RuleDescId')
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyDataTrafficPrice(TeaModel):
+    def __init__(
+        self,
+        order: DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder = None,
+        rules: List[DescribeConfigurationPriceResponseBodyDataTrafficPriceRules] = None,
+    ):
         self.order = order
         self.rules = rules
 
     def validate(self):
-        if self.bag_usage:
-            self.bag_usage.validate()
         if self.order:
             self.order.validate()
         if self.rules:
@@ -11472,8 +22346,6 @@ class DescribeConfigurationPriceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
-        if self.bag_usage is not None:
-            result['BagUsage'] = self.bag_usage.to_map()
         if self.order is not None:
             result['Order'] = self.order.to_map()
         result['Rules'] = []
@@ -11484,17 +22356,94 @@ class DescribeConfigurationPriceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Order') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder()
+            self.order = temp_model.from_map(m['Order'])
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeConfigurationPriceResponseBodyDataTrafficPriceRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeConfigurationPriceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        bag_usage: DescribeConfigurationPriceResponseBodyDataBagUsage = None,
+        cpu_mem_price: DescribeConfigurationPriceResponseBodyDataCpuMemPrice = None,
+        order: DescribeConfigurationPriceResponseBodyDataOrder = None,
+        request_price: DescribeConfigurationPriceResponseBodyDataRequestPrice = None,
+        rules: List[DescribeConfigurationPriceResponseBodyDataRules] = None,
+        traffic_price: DescribeConfigurationPriceResponseBodyDataTrafficPrice = None,
+    ):
+        self.bag_usage = bag_usage
+        self.cpu_mem_price = cpu_mem_price
+        self.order = order
+        self.request_price = request_price
+        self.rules = rules
+        self.traffic_price = traffic_price
+
+    def validate(self):
+        if self.bag_usage:
+            self.bag_usage.validate()
+        if self.cpu_mem_price:
+            self.cpu_mem_price.validate()
+        if self.order:
+            self.order.validate()
+        if self.request_price:
+            self.request_price.validate()
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.traffic_price:
+            self.traffic_price.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bag_usage is not None:
+            result['BagUsage'] = self.bag_usage.to_map()
+        if self.cpu_mem_price is not None:
+            result['CpuMemPrice'] = self.cpu_mem_price.to_map()
+        if self.order is not None:
+            result['Order'] = self.order.to_map()
+        if self.request_price is not None:
+            result['RequestPrice'] = self.request_price.to_map()
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.traffic_price is not None:
+            result['TrafficPrice'] = self.traffic_price.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
         if m.get('BagUsage') is not None:
             temp_model = DescribeConfigurationPriceResponseBodyDataBagUsage()
             self.bag_usage = temp_model.from_map(m['BagUsage'])
+        if m.get('CpuMemPrice') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataCpuMemPrice()
+            self.cpu_mem_price = temp_model.from_map(m['CpuMemPrice'])
         if m.get('Order') is not None:
             temp_model = DescribeConfigurationPriceResponseBodyDataOrder()
             self.order = temp_model.from_map(m['Order'])
+        if m.get('RequestPrice') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataRequestPrice()
+            self.request_price = temp_model.from_map(m['RequestPrice'])
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
                 temp_model = DescribeConfigurationPriceResponseBodyDataRules()
                 self.rules.append(temp_model.from_map(k))
+        if m.get('TrafficPrice') is not None:
+            temp_model = DescribeConfigurationPriceResponseBodyDataTrafficPrice()
+            self.traffic_price = temp_model.from_map(m['TrafficPrice'])
         return self
 
 
@@ -11575,9 +22524,6 @@ class DescribeConfigurationPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11746,9 +22692,6 @@ class DescribeEdasContainersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11784,6 +22727,8 @@ class DescribeGreyTagRouteRequest(TeaModel):
         grey_tag_route_id: int = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):
@@ -12414,9 +23359,6 @@ class DescribeGreyTagRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12451,7 +23393,9 @@ class DescribeIngressRequest(TeaModel):
         self,
         ingress_id: int = None,
     ):
-        # 87
+        # The returned data.
+        # 
+        # This parameter is required.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -12482,12 +23426,12 @@ class DescribeIngressResponseBodyDataDefaultRule(TeaModel):
         backend_protocol: str = None,
         container_port: int = None,
     ):
-        # The ID of the application specified in the default rule.
+        # The domain name of the application.
         self.app_id = app_id
-        # The name of the application specified in the default rule.
+        # The container port of the application specified in the forwarding rule.
         self.app_name = app_name
         self.backend_protocol = backend_protocol
-        # The container port of the application specified in the default rule.
+        # The name of the application specified in the forwarding rule.
         self.container_port = container_port
 
     def validate(self):
@@ -12531,18 +23475,29 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
         container_port: int = None,
         domain: str = None,
         path: str = None,
+        rewrite_path: str = None,
     ):
-        # The ID of the application specified in the forwarding rule.
+        # The protocol used to forward requests. Valid values:
+        # 
+        # *   **HTTP**: used when the application needs to identify the transmitted data.
+        # *   **HTTPS**: used when the application requires encrypted data transmission.
         self.app_id = app_id
-        # The name of the application specified in the forwarding rule.
+        # The path of the URL.
         self.app_name = app_name
         self.backend_protocol = backend_protocol
-        # The container port of the application specified in the forwarding rule.
+        # The ID of the routing rule.
         self.container_port = container_port
-        # The domain name of the application.
+        # The type of the SLB instance based on the processing capabilities. Valid values:
+        # 
+        # *   **clb**: the Classic Load Balancer (CLB) instance.
+        # *   **alb**: the Application Load Balancer (ALB) instance.
         self.domain = domain
-        # The path of the URL.
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.path = path
+        self.rewrite_path = rewrite_path
 
     def validate(self):
         pass
@@ -12565,6 +23520,8 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
             result['Domain'] = self.domain
         if self.path is not None:
             result['Path'] = self.path
+        if self.rewrite_path is not None:
+            result['RewritePath'] = self.rewrite_path
         return result
 
     def from_map(self, m: dict = None):
@@ -12581,6 +23538,8 @@ class DescribeIngressResponseBodyDataRules(TeaModel):
             self.domain = m.get('Domain')
         if m.get('Path') is not None:
             self.path = m.get('Path')
+        if m.get('RewritePath') is not None:
+            self.rewrite_path = m.get('RewritePath')
         return self
 
 
@@ -12601,39 +23560,40 @@ class DescribeIngressResponseBodyData(TeaModel):
         slb_id: str = None,
         slb_type: str = None,
     ):
-        # The ID of the certificate.
+        # The name of the application specified in the default rule.
         self.cert_id = cert_id
         self.cert_ids = cert_ids
-        # The default rule.
+        # The forwarding rules.
         self.default_rule = default_rule
         # The name of the routing rule.
         self.description = description
-        # The ID of the routing rule.
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.id = id
-        # The port specified for the SLB listener.
+        # The default rule.
         self.listener_port = listener_port
-        # The protocol used to forward requests. Valid values:
-        # 
-        # *   **HTTP**: used when the application needs to identify the transmitted data.
-        # *   **HTTPS**: used when the application requires encrypted data transmission.
         self.listener_protocol = listener_protocol
-        # The type of the SLB instance based on the processing capabilities. Valid values:
+        # Indicates whether the configurations of the routing rule were queried successfully. Valid values:
         # 
-        # *   **clb**: the Classic Load Balancer (CLB) instance.
-        # *   **alb**: the Application Load Balancer (ALB) instance.
+        # *   **true**: indicates that the query was successful.
+        # *   **false**: indicates that the query failed.
         self.load_balance_type = load_balance_type
-        # The name of the routing rule.
+        # The ID of the application specified in the default rule.
         self.name = name
-        # The ID of the namespace.
+        # The ID of the certificate.
         self.namespace_id = namespace_id
-        # The forwarding rules.
+        # The ID of the application specified in the forwarding rule.
         self.rules = rules
-        # The ID of the SLB instance.
-        self.slb_id = slb_id
         # The type of the SLB instance based on the IP address. Valid values:
         # 
         # *   **internet**: the Internet-facing SLB instance.
         # *   **intranet**: the internal-facing SLB instance.
+        self.slb_id = slb_id
+        # The container port of the application specified in the default rule.
         self.slb_type = slb_type
 
     def validate(self):
@@ -12726,30 +23686,16 @@ class DescribeIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The returned data.
+        # The port specified for the SLB listener.
         self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The ID of the namespace.
         self.message = message
-        # The ID of the request.
+        # The ID of the SLB instance.
         self.request_id = request_id
-        # Indicates whether the configurations of the routing rule were queried successfully. Valid values:
-        # 
-        # *   **true**: indicates that the query was successful.
-        # *   **false**: indicates that the query failed.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The name of the routing rule.
         self.trace_id = trace_id
 
     def validate(self):
@@ -12810,9 +23756,6 @@ class DescribeIngressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12847,7 +23790,9 @@ class DescribeInstanceLogRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
-        # \*\*\*\*\*\*-d700e680-aa4d-4ec1-afc2-6566b5ff4d7a-85d44d4bfc-\*\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12881,33 +23826,32 @@ class DescribeInstanceLogResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the log of the instance was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the log was obtained.
+        # *   **false**: indicates that the log could not be obtained.
+        self.code = code
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The log of the instance.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The ID of the trace.
+        self.message = message
         # The returned message.
         # 
         # *   **success** is returned when the request succeeds.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the log of the instance was obtained. Valid values:
-        # 
-        # *   **true**: indicates that the log was obtained.
-        # *   **false**: indicates that the log could not be obtained.
         self.success = success
-        # The ID of the trace.
+        # The log of the instance.
         self.trace_id = trace_id
 
     def validate(self):
@@ -12966,9 +23910,6 @@ class DescribeInstanceLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13168,9 +24109,6 @@ class DescribeInstanceSpecificationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13206,7 +24144,11 @@ class DescribeJobRequest(TeaModel):
         app_id: str = None,
         job_id: str = None,
     ):
+        # The application ID.
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -13241,10 +24183,13 @@ class DescribeJobResponseBodyDataConfigMapMountDesc(TeaModel):
         key: str = None,
         mount_path: str = None,
     ):
-        # ConfigMap ID。
+        # The ConfigMap ID.
         self.config_map_id = config_map_id
+        # The ConfigMap name.
         self.config_map_name = config_map_name
+        # The key-value pair that is stored in the ConfigMap.
         self.key = key
+        # The path on which the NAS file system is mounted.
         self.mount_path = mount_path
 
     def validate(self):
@@ -13285,7 +24230,9 @@ class DescribeJobResponseBodyDataMountDesc(TeaModel):
         mount_path: str = None,
         nas_path: str = None,
     ):
+        # The path on which the NAS file system is mounted.
         self.mount_path = mount_path
+        # The directory in the NAS file system.
         self.nas_path = nas_path
 
     def validate(self):
@@ -13320,9 +24267,16 @@ class DescribeJobResponseBodyDataOssMountDescs(TeaModel):
         mount_path: str = None,
         read_only: bool = None,
     ):
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The directory or object in OSS. If the specified directory or object does not exist, an error is returned.
         self.bucket_path = bucket_path
+        # The path of the container in SAE. The parameter value that you specified overwrites the original value. If the specified path does not exist, SAE automatically creates the path.
         self.mount_path = mount_path
+        # Indicates whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+        # 
+        # *   **true**: The application has the read-only permission.
+        # *   **false**: The application has read and write permissions.
         self.read_only = read_only
 
     def validate(self):
@@ -13363,7 +24317,9 @@ class DescribeJobResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -13453,67 +24409,232 @@ class DescribeJobResponseBodyData(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Pull images across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/190675.html) and [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
+        # The ID of the Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        # The description of the application.
         self.app_description = app_description
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The number of times that the job was retried.
         self.backoff_limit = backoff_limit
+        # The command that is used to start the image. The command must be an existing executable object in the container. Example:
+        # 
+        #     command:
+        #           - echo
+        #           - abc
+        #           - >
+        #           - file0
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
+        # The arguments of the image startup command. This parameter contains the arguments that are required for **Command**. Format:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding **Command** example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. If this parameter does not exist in the Command parameter, you do not need to configure it.
         self.command_args = command_args
+        # The concurrency policy of the job. Valid values:
+        # 
+        # *   **Forbid**: Concurrent running is prohibited. If the previous job is not completed, no new job is created.
+        # *   **Allow**: Concurrent running is allowed.
+        # *   **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
         self.concurrency_policy = concurrency_policy
+        # The details of the ConfigMap.
         self.config_map_mount_desc = config_map_mount_desc
+        # The CPU specifications required for each instance. Unit: millicore. This parameter cannot be set to 0. Valid values:
+        # 
+        # *   **500**\
+        # *   **1000**\
+        # *   **2000**\
+        # *   **4000**\
+        # *   **8000**\
+        # *   **16000**\
+        # *   **32000**\
         self.cpu = cpu
+        # The custom mapping between the hostname and IP address in the container. Valid values:
+        # 
+        # *   **hostName**: the domain name or hostname.
+        # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # 
+        # *   Custom configuration
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable.
+        # 
+        # *   Reference a ConfigMap
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. To reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+        #     *   **configMapId**: the ID of the ConfigMap.
+        #     *   **key**: the key. If you want to reference all keys, you do not need to configure this parameter.
         self.envs = envs
+        # The ID of the corresponding secret.
         self.image_pull_secrets = image_pull_secrets
+        # The URL of the image. This parameter is returned only if **PackageType** is set to **Image**.
         self.image_url = image_url
+        # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
+        # The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_options = jar_start_options
+        # The version of the Java Development Kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+        # 
+        # *   **Open JDK 8**\
+        # *   **Open JDK 7**\
+        # *   **Dragonwell 11**\
+        # *   **Dragonwell 8**\
+        # *   **openjdk-8u191-jdk-alpine3.9**\
+        # *   **openjdk-7u201-jdk-alpine3.9**\
+        # 
+        # This parameter is not returned if **PackageType** is set to **Image**.
         self.jdk = jdk
+        # The size of memory that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+        # 
+        # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
+        # *   This parameter is set to **2048** if the Cpu parameter is set to 500, 1000, or 2000.
+        # *   This parameter is set to **4096** if the Cpu parameter is set to 1000, 2000, or 4000.
+        # *   This parameter is set to **8192** if the Cpu parameter is set to 2000, 4000, or 8000.
+        # *   This parameter is set to **12288** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **16384** if the Cpu parameter is set to 4000, 8000, or 16000.
+        # *   This parameter is set to **24567** if the Cpu parameter is set to 12000.
+        # *   This parameter is set to **32768** if the Cpu parameter is set to 16000.
+        # *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
+        # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
         self.memory = memory
+        # The details of the mounted NAS file system.
         self.mount_desc = mount_desc
+        # The mount target of the NAS file system in the VPC in which the application is deployed. If you do not need to modify this configuration during the deployment, configure **MountHost** only in the first request. If you need to remove this configuration, leave **MountHost** empty in the request.
         self.mount_host = mount_host
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The configurations for mounting the NAS file system.
         self.nas_configs = nas_configs
-        # NAS ID。
+        # The ID of the NAS file system.
         self.nas_id = nas_id
+        # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS).
         self.oss_ak_id = oss_ak_id
+        # The AccessKey secret that is used to read data from and write data to OSS.
         self.oss_ak_secret = oss_ak_secret
+        # The description of mounted OSS buckets.
         self.oss_mount_descs = oss_mount_descs
+        # The type of the deployment package. Valid values:
+        # 
+        # *   If you deploy the application by using a Java Archive (JAR) package, this parameter is set to **FatJar**, **War**, or **Image**.
+        # 
+        # *   If you deploy the application by using a PHP package, this parameter is set to one of the following values:
+        # 
+        #     *   **PhpZip**\
+        #     *   **IMAGE_PHP_5_4**\
+        #     *   **IMAGE_PHP_5_4_ALPINE**\
+        #     *   **IMAGE_PHP_5_5**\
+        #     *   **IMAGE_PHP_5_5_ALPINE**\
+        #     *   **IMAGE_PHP_5_6**\
+        #     *   **IMAGE_PHP_5_6_ALPINE**\
+        #     *   **IMAGE_PHP_7_0**\
+        #     *   **IMAGE_PHP_7_0_ALPINE**\
+        #     *   **IMAGE_PHP_7_1**\
+        #     *   **IMAGE_PHP_7_1_ALPINE**\
+        #     *   **IMAGE_PHP_7_2**\
+        #     *   **IMAGE_PHP_7_2_ALPINE**\
+        #     *   **IMAGE_PHP_7_3**\
+        #     *   **IMAGE_PHP_7_3_ALPINE**\
+        # 
+        # *   If you deploy the application by using a Pythhon package, this parameter is set to **PythonZip** or **Image**.
         self.package_type = package_type
+        # The URL of the deployment package. This parameter is returned only if **PackageType** is set to **FatJar** or **War**.
         self.package_url = package_url
+        # The version of the deployment package. This parameter is required only if **PackageType** is set to **FatJar** or **War**.
         self.package_version = package_version
+        # The details of the PHP configuration file.
         self.php_config = php_config
+        # The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
         self.php_config_location = php_config_location
+        # The script that is run immediately after the container is started. Example: `{"exec":{"command":["cat","/etc/group"\\]}}`
         self.post_start = post_start
+        # The script that is run before the container is stopped. Example: `{"exec":{"command":["cat","/etc/group"\\]}}`
         self.pre_stop = pre_stop
+        # The programming language that is used to create the application. Valid values:
+        # 
+        # *   **java**: Java
+        # *   **php**: PHP
+        # *   **python**: Python
+        # *   **other**: other programming languages, such as C++, Go, .NET, and Node.js.
         self.programming_language = programming_language
+        # The Internet request URLs of one-time jobs.
         self.public_web_hook_urls = public_web_hook_urls
+        # The Python environment. PYTHON 3.9.15 is supported.
         self.python = python
+        # The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If no software package is configured, you can specify dependencies based on your business requirements.
         self.python_modules = python_modules
+        # The ID of the job template that you reference.
         self.ref_app_id = ref_app_id
+        # The IDs of the referenced job templates.
         self.refed_app_ids = refed_app_ids
+        # The region ID.
         self.region_id = region_id
+        # The number of application instances.
         self.replicas = replicas
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # Indicates whether job sharding is enabled.
         self.slice = slice
+        # The parameters of job sharding.
         self.slice_envs = slice_envs
+        # The logging configurations of Log Service.
+        # 
+        # *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # 
+        # Parameter description:
+        # 
+        # *   **projectName**: the name of the Log Service project.
+        # *   **logDir**: the path in which logs are stored.
+        # *   **logType**: the log type. **stdout**: the standard output (stdout) log of the container. Only one stdout value for this parameter can be specified. If this parameter is not configured, file logs are collected.
+        # *   **logstoreName**: the name of the Logstore in Log Service.
+        # *   **logtailName**: the name of the Logtail in Log Service. If this parameter is not configured, a new Logtail is created.
+        # 
+        # If you do not need to modify the logging configurations when you deploy the application, configure **SlsConfigs** only in the first request. If you no longer need to use Log Service, leave **SlsConfigs** empty in the request.
         self.sls_configs = sls_configs
+        # Indicates whether the job template is suspended.
         self.suspend = suspend
+        # The tags.
         self.tags = tags
+        # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
+        # The timeout period for the job. Unit: seconds.
         self.timeout = timeout
+        # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
+        # The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. Parameter description:
+        # 
+        # *   **port**: the port number. Valid values: 1024 to 65535. The root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If this parameter is not configured, the default value 8080 is used.
+        # *   **contextPath**: the path. Default value: /. The value indicates the root directory.
+        # *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and **GB2312**. If this parameter is not configured, the default value **ISO-8859-1** is used.
+        # *   **useBodyEncoding**: indicates whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
-        # vSwitch ID。
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The internal request URLs for one-time jobs.
         self.vpc_web_hook_urls = vpc_web_hook_urls
+        # The option settings in the WAR package. The settings are used to start the application container. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
         self.war_start_options = war_start_options
+        # The version of the Tomcat container on which the deployment package depends. The following versions are supported:
+        # 
+        # *   **apache-tomcat-7.0.91**\
+        # *   **apache-tomcat-8.5.42**\
+        # 
+        # This parameter is not returned if **PackageType** is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -13814,12 +24935,30 @@ class DescribeJobResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The information about the application.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   If the call is successful, **ErrorCode** is not returned.
+        # *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the configurations of an application were obtained. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -13880,9 +25019,6 @@ class DescribeJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13920,9 +25056,20 @@ class DescribeJobHistoryRequest(TeaModel):
         page_size: int = None,
         state: str = None,
     ):
+        # The ID of the job template.
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # The number of the page to return.
         self.current_page = current_page
+        # The number of entries to return on each page. Valid values: 0 to 10000.
         self.page_size = page_size
+        # The status of the job. Valid values:
+        # 
+        # *   **0**: The job is not executed.
+        # *   **1**: The job is executed.
+        # *   **2**: The job fails to be executed.
+        # *   **3**: The job is being executed.
         self.state = state
 
     def validate(self):
@@ -13969,13 +25116,26 @@ class DescribeJobHistoryResponseBodyDataJobs(TeaModel):
         state: str = None,
         succeeded: int = None,
     ):
+        # The number of running instances.
         self.active = active
+        # The time when the job was executed.
         self.completion_time = completion_time
+        # The number of instances that failed to run.
         self.failed = failed
+        # The job ID.
         self.job_id = job_id
+        # The message returned if exceptions occur during job running.
         self.message = message
+        # The time when the job was created.
         self.start_time = start_time
+        # The status of the job. Valid values:
+        # 
+        # *   **0**: The job was not executed.
+        # *   **1**: The job was executed.
+        # *   **2**: The job failed to be executed.
+        # *   **3**: The job is being executed.
         self.state = state
+        # The number of instances that are successfully run.
         self.succeeded = succeeded
 
     def validate(self):
@@ -14034,9 +25194,13 @@ class DescribeJobHistoryResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The jobs.
         self.jobs = jobs
+        # The number of entries to return on each page. Valid values: 0 to 10000.
         self.page_size = page_size
+        # The total number of jobs.
         self.total_size = total_size
 
     def validate(self):
@@ -14090,12 +25254,33 @@ class DescribeJobHistoryResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code returned. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The message returned. Take note of the following rules:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14156,9 +25341,6 @@ class DescribeJobHistoryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14194,7 +25376,11 @@ class DescribeJobStatusRequest(TeaModel):
         app_id: str = None,
         job_id: str = None,
     ):
+        # The ID of the job template.
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):
@@ -14233,13 +25419,29 @@ class DescribeJobStatusResponseBodyData(TeaModel):
         state: str = None,
         succeeded: int = None,
     ):
+        # The number of running instances.
         self.active = active
+        # The time when the job was executed.
         self.completion_time = completion_time
+        # The number of instances that failed to run.
         self.failed = failed
+        # The job ID.
         self.job_id = job_id
+        # The returned message. Take note of the following rules:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The time when the job was created.
         self.start_time = start_time
+        # The status of the job. Valid values:
+        # 
+        # *   **0**: The job is not executed.
+        # *   **1**: The job was executed.
+        # *   **2**: The job failed to be executed.
+        # *   **3**: The job is being executed.
         self.state = state
+        # The number of instances that are successfully run.
         self.succeeded = succeeded
 
     def validate(self):
@@ -14301,12 +25503,33 @@ class DescribeJobStatusResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   **ErrorCode** is not returned if the request succeeds.
+        # *   **ErrorCode** is returned if the request fails. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message. Take note of the following rules:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14367,9 +25590,6 @@ class DescribeJobStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14405,8 +25625,9 @@ class DescribeNamespaceRequest(TeaModel):
         name_space_short_id: str = None,
         namespace_id: str = None,
     ):
+        # The short ID of the namespace. You do not need to specify a region ID. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
         self.name_space_short_id = name_space_short_id
-        # cn-beijing:test
+        # The ID of the namespace. The information about the default namespace cannot be queried or modified. The default namespace cannot be deleted.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -14443,15 +25664,20 @@ class DescribeNamespaceResponseBodyData(TeaModel):
         namespace_name: str = None,
         region_id: str = None,
     ):
+        # Indicates whether the SAE built-in registry is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable_micro_registration = enable_micro_registration
+        # The short ID of the namespace.
         self.name_space_short_id = name_space_short_id
         # The description of the namespace.
         self.namespace_description = namespace_description
-        # The ID of the namespace. The information of the default namespace cannot be queried or modified. The default namespace cannot be deleted.
+        # The ID of the namespace. The information about the default namespace cannot be queried or modified. The default namespace cannot be deleted.
         self.namespace_id = namespace_id
         # The name of the namespace.
         self.namespace_name = namespace_name
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -14507,31 +25733,31 @@ class DescribeNamespaceResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The information of the namespace.
+        # The information about the namespace.
         self.data = data
-        # The error code.
+        # The error code returned. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information that is returned. Valid values:
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the information of the namespace was queried successfully. Valid values:
+        # Indicates whether the information about the namespace was queried successfully. Valid values:
         # 
-        # *   **true**: indicates that the query was successful.
-        # *   **false**: indicates that the query failed.
+        # *   **true**: The information was queried.
+        # *   **false**: The image failed to be found.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -14592,9 +25818,6 @@ class DescribeNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14866,9 +26089,6 @@ class DescribeNamespaceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15200,9 +26420,6 @@ class DescribeNamespaceResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15239,8 +26456,12 @@ class DescribeNamespacesRequest(TeaModel):
         page_size: int = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # 10
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -15504,9 +26725,6 @@ class DescribeNamespacesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15541,7 +26759,9 @@ class DescribePipelineRequest(TeaModel):
         self,
         pipeline_id: str = None,
     ):
-        # 917660ba-5092-44ca-b8e0-80012c96\*\*\*\*\
+        # The ID of the batch. You can call the [DescribeChangeOrder](https://help.aliyun.com/document_detail/126617.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -15591,7 +26811,7 @@ class DescribePipelineResponseBodyDataStageListTaskList(TeaModel):
         # Indicates whether a running task can be manually skipped. Valid values:
         # 
         # *   **true**: The running task can be skipped.
-        # *   **false**: The running task cannot be skipped.
+        # *   **false**: The zone does not allow you to change the network type of an ApsaraDB for Redis instance from classic network to VPC.
         self.show_manual_ignore = show_manual_ignore
         # The ID of the stage.
         self.stage_id = stage_id
@@ -15599,7 +26819,7 @@ class DescribePipelineResponseBodyDataStageListTaskList(TeaModel):
         # 
         # *   **0**: The task is prepared for execution.
         # *   **1**: The task is being executed.
-        # *   **2**: The task was executed.
+        # *   **2**: successful
         # *   **3**: The task could not be executed.
         # *   **5**: The task is pending retry.
         # *   **6**: The task was terminated.
@@ -15682,8 +26902,8 @@ class DescribePipelineResponseBodyDataStageList(TeaModel):
         # The status of the batch processing stage. Valid values:
         # 
         # *   **0**: The batch is prepared for this processing stage.
-        # *   **1**: The processing stage is in progress.
-        # *   **2**: The processing stage was complete.
+        # *   **1**: The task is being executed.
+        # *   **2**: successful
         # *   **3**: The processing failed in this stage.
         # *   **6**: The processing stage was terminated.
         self.status = status
@@ -15759,9 +26979,9 @@ class DescribePipelineResponseBodyData(TeaModel):
         # The batch status. Valid values:
         # 
         # *   **0**: The batch is prepared for processing.
-        # *   **1**: The batch is being processed.
-        # *   **2**: The batch was processed.
-        # *   **3**: The batch could not be processed.
+        # *   **1**: The task is being executed.
+        # *   **2**: successful
+        # *   **3**: The processing failed in this stage.
         # *   **6**: The batch processing was terminated.
         # *   **10**: The batch could not be processed due to a system exception.
         self.pipeline_status = pipeline_status
@@ -15842,28 +27062,28 @@ class DescribePipelineResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
         # The batch information.
         self.data = data
-        # The error code.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the batch information was obtained. Valid values:
         # 
-        # *   **true**: indicates that the information was obtained.
-        # *   **false**: indicates that the information could not be obtained.
+        # *   **true**: The information was queried.
+        # *   **false**: The image failed to be found.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -15924,9 +27144,6 @@ class DescribePipelineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16167,9 +27384,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16205,7 +27419,13 @@ class DescribeSecretRequest(TeaModel):
         namespace_id: str = None,
         secret_id: int = None,
     ):
+        # The ID of the namespace in which the Secret instance resides. By default, the namespace ID is the same as the region ID.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
+        # The ID of the Secret instance to be queried. You can call the [ListSecrets](https://help.aliyun.com/document_detail/466929.html) operation to view the IDs of Secrete instances.
+        # 
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -16238,7 +27458,9 @@ class DescribeSecretResponseBodyDataRelateApps(TeaModel):
         app_id: str = None,
         app_name: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The name of the application.
         self.app_name = app_name
 
     def validate(self):
@@ -16277,13 +27499,21 @@ class DescribeSecretResponseBodyData(TeaModel):
         secret_type: str = None,
         update_time: int = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The ID of the namespace.
         self.namespace_id = namespace_id
+        # The associated application.
         self.relate_apps = relate_apps
+        # Secret key-value pair data.
         self.secret_data = secret_data
+        # The ID of the Secret instance.
         self.secret_id = secret_id
+        # The name of the Secret instance.
         self.secret_name = secret_name
+        # The type of the Secret instance.
         self.secret_type = secret_type
+        # The time when the task was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -16353,12 +27583,33 @@ class DescribeSecretResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response.
         self.data = data
+        # The error code returned. Valid values:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The additional information that is returned. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the details of the Secret instance are successfully queried. Valid values:
+        # 
+        # *   **true**: The information was queried.
+        # *   **false**: The image failed to be found.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -16419,9 +27670,6 @@ class DescribeSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16451,15 +27699,520 @@ class DescribeSecretResponse(TeaModel):
         return self
 
 
+class DescribeWebApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeWebApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebApplicationResourceStaticsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        namespace_id: str = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeWebApplicationResourceStaticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationResourceStaticsBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationResourceStaticsBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebApplicationRevisionRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeWebApplicationRevisionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationRevisionBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationRevisionBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebApplicationScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeWebApplicationScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationScalingConfigBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationScalingConfigBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebApplicationTrafficConfigRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeWebApplicationTrafficConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationTrafficConfigBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationTrafficConfigBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebCustomDomainRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeWebCustomDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebCustomDomainBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebCustomDomainBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebInstanceLogsRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DescribeWebInstanceLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationInstanceLogsBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationInstanceLogsBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
-        self.app_id = app_id
         # timer-0800-2100
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -16499,10 +28252,9 @@ class DisableApplicationScalingRuleResponseBody(TeaModel):
         self.code = code
         self.error_code = error_code
         self.message = message
-        # The ID of the request.
+        # The ID of the trace. The ID is used to query the details of a request.
         self.request_id = request_id
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -16557,9 +28309,6 @@ class DisableApplicationScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16595,9 +28344,13 @@ class EnableApplicationScalingRuleRequest(TeaModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # The application ID.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # timer-0800-2100
+        # The name of the auto scaling policy.
+        # 
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
 
     def validate(self):
@@ -16634,13 +28387,31 @@ class EnableApplicationScalingRuleResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Take note of the following rules:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The error code returned if the request failed. Take note of the following rules:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The additional information that is returned. Take note of the following rules:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        # Specifies whether the instances are successfully restarted. Take note of the following rules:
+        # 
+        # *   **true**\
+        # *   **false**: The restart failed.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -16695,9 +28466,6 @@ class EnableApplicationScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16741,6 +28509,7 @@ class ExecJobRequest(TeaModel):
         time: str = None,
         war_start_options: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.command = command
         self.command_args = command_args
@@ -16930,9 +28699,6 @@ class ExecJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16965,16 +28731,25 @@ class ExecJobResponse(TeaModel):
 class GetArmsTopNMetricRequest(TeaModel):
     def __init__(
         self,
+        app_source: str = None,
+        cpu_strategy: str = None,
         end_time: int = None,
         limit: int = None,
         order_by: str = None,
         region_id: str = None,
         start_time: int = None,
     ):
+        self.app_source = app_source
+        self.cpu_strategy = cpu_strategy
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.limit = limit
+        # This parameter is required.
         self.order_by = order_by
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16986,6 +28761,10 @@ class GetArmsTopNMetricRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
+        if self.cpu_strategy is not None:
+            result['CpuStrategy'] = self.cpu_strategy
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -17000,6 +28779,10 @@ class GetArmsTopNMetricRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
+        if m.get('CpuStrategy') is not None:
+            self.cpu_strategy = m.get('CpuStrategy')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -17023,11 +28806,17 @@ class GetArmsTopNMetricResponseBodyData(TeaModel):
         region_id: str = None,
         rt: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The total number of requests.
         self.count = count
+        # The number of errors.
         self.error = error
+        # The name of the application.
         self.name = name
+        # The ID of the namespace.
         self.region_id = region_id
+        # The average response time. Unit: milliseconds.
         self.rt = rt
 
     def validate(self):
@@ -17079,10 +28868,26 @@ class GetArmsTopNMetricResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The following limits are imposed on the ID:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The details of applications.
         self.data = data
+        # The additional information that is returned. The following limits are imposed on the ID:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -17141,9 +28946,6 @@ class GetArmsTopNMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17176,10 +28978,27 @@ class GetArmsTopNMetricResponse(TeaModel):
 class GetAvailabilityMetricRequest(TeaModel):
     def __init__(
         self,
+        app_source: str = None,
+        cpu_strategy: str = None,
         limit: int = None,
         region_id: str = None,
     ):
+        # The SAE application type. Valid values:
+        # 
+        # *   **micro_service**\
+        # *   **web**\
+        # *   **job**\
+        self.app_source = app_source
+        # The CPU allocation policy. Valid values:
+        # 
+        # *   **request**: CPU cores are allocated only when a request is initiated.
+        # *   **always**: Fixed CPU cores are always allocated.
+        self.cpu_strategy = cpu_strategy
+        # The number of entries to return. Valid values: 0 to 100.
+        # 
+        # This parameter is required.
         self.limit = limit
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -17191,6 +29010,10 @@ class GetAvailabilityMetricRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
+        if self.cpu_strategy is not None:
+            result['CpuStrategy'] = self.cpu_strategy
         if self.limit is not None:
             result['Limit'] = self.limit
         if self.region_id is not None:
@@ -17199,6 +29022,10 @@ class GetAvailabilityMetricRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
+        if m.get('CpuStrategy') is not None:
+            self.cpu_strategy = m.get('CpuStrategy')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
         if m.get('RegionId') is not None:
@@ -17217,12 +29044,22 @@ class GetAvailabilityMetricResponseBodyData(TeaModel):
         region_id: str = None,
         runnings: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # Indicates whether an auto scaling policy is enabled. Valid values:
+        # 
+        # *   **1**: An auto scaling policy is enabled.
+        # *   **0**: No auto scaling policy is enabled.
         self.enable_autoscale = enable_autoscale
+        # The number of abnormal instances.
         self.error_instances = error_instances
+        # The expected number of instances.
         self.instances = instances
+        # The application name.
         self.name = name
+        # The namespace ID.
         self.region_id = region_id
+        # The current number of instances.
         self.runnings = runnings
 
     def validate(self):
@@ -17278,10 +29115,26 @@ class GetAvailabilityMetricResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The following limits are imposed on the ID:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The data entries returned.
         self.data = data
+        # The additional information that is returned. The following limits are imposed on the ID:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -17340,9 +29193,6 @@ class GetAvailabilityMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17375,13 +29225,20 @@ class GetAvailabilityMetricResponse(TeaModel):
 class GetChangeOrderMetricRequest(TeaModel):
     def __init__(
         self,
+        app_source: str = None,
+        cpu_strategy: str = None,
         create_time: str = None,
         limit: int = None,
         order_by: str = None,
         region_id: str = None,
     ):
+        self.app_source = app_source
+        self.cpu_strategy = cpu_strategy
+        # This parameter is required.
         self.create_time = create_time
+        # This parameter is required.
         self.limit = limit
+        # This parameter is required.
         self.order_by = order_by
         self.region_id = region_id
 
@@ -17394,6 +29251,10 @@ class GetChangeOrderMetricRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
+        if self.cpu_strategy is not None:
+            result['CpuStrategy'] = self.cpu_strategy
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.limit is not None:
@@ -17406,6 +29267,10 @@ class GetChangeOrderMetricRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
+        if m.get('CpuStrategy') is not None:
+            self.cpu_strategy = m.get('CpuStrategy')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Limit') is not None:
@@ -17427,11 +29292,17 @@ class GetChangeOrderMetricResponseBodyData(TeaModel):
         region_id: str = None,
         total: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The number of abnormal change orders.
         self.error = error
+        # The percentage of change failures.
         self.error_percent = error_percent
+        # The name of the application.
         self.name = name
+        # The ID of the namespace.
         self.region_id = region_id
+        # The total number of change orders.
         self.total = total
 
     def validate(self):
@@ -17483,10 +29354,26 @@ class GetChangeOrderMetricResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The following limits are imposed on the ID:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The details of applications.
         self.data = data
+        # The additional information that is returned. The following limits are imposed on the ID:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -17545,9 +29432,6 @@ class GetChangeOrderMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17580,10 +29464,27 @@ class GetChangeOrderMetricResponse(TeaModel):
 class GetScaleAppMetricRequest(TeaModel):
     def __init__(
         self,
+        app_source: str = None,
+        cpu_strategy: str = None,
         limit: int = None,
         region_id: str = None,
     ):
+        # The SAE application type. Valid values:
+        # 
+        # *   **micro_service**\
+        # *   **web**\
+        # *   **job**\
+        self.app_source = app_source
+        # The CPU allocation policy. Valid values:
+        # 
+        # *   **request**: CPU cores are allocated only when a request is initiated.
+        # *   **always**: Fixed CPU cores are always allocated.
+        self.cpu_strategy = cpu_strategy
+        # The number of entries to return. Valid values: 0 to 100.
+        # 
+        # This parameter is required.
         self.limit = limit
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -17595,6 +29496,10 @@ class GetScaleAppMetricRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
+        if self.cpu_strategy is not None:
+            result['CpuStrategy'] = self.cpu_strategy
         if self.limit is not None:
             result['Limit'] = self.limit
         if self.region_id is not None:
@@ -17603,6 +29508,10 @@ class GetScaleAppMetricRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
+        if m.get('CpuStrategy') is not None:
+            self.cpu_strategy = m.get('CpuStrategy')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
         if m.get('RegionId') is not None:
@@ -17619,10 +29528,15 @@ class GetScaleAppMetricResponseBodyData(TeaModel):
         region_id: str = None,
         runnings: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The application name.
         self.name = name
+        # The namespace ID.
         self.region_id = region_id
+        # The current number of instances.
         self.runnings = runnings
 
     def validate(self):
@@ -17670,10 +29584,26 @@ class GetScaleAppMetricResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The following limits are imposed on the ID:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The details of applications.
         self.data = data
+        # The additional information that is returned. The following limits are imposed on the ID:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -17732,9 +29662,6 @@ class GetScaleAppMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17767,14 +29694,22 @@ class GetScaleAppMetricResponse(TeaModel):
 class GetWarningEventMetricRequest(TeaModel):
     def __init__(
         self,
+        app_source: str = None,
+        cpu_strategy: str = None,
         end_time: int = None,
         limit: int = None,
         region_id: str = None,
         start_time: int = None,
     ):
+        self.app_source = app_source
+        self.cpu_strategy = cpu_strategy
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.limit = limit
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -17786,6 +29721,10 @@ class GetWarningEventMetricRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
+        if self.cpu_strategy is not None:
+            result['CpuStrategy'] = self.cpu_strategy
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.limit is not None:
@@ -17798,6 +29737,10 @@ class GetWarningEventMetricRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
+        if m.get('CpuStrategy') is not None:
+            self.cpu_strategy = m.get('CpuStrategy')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Limit') is not None:
@@ -17817,9 +29760,13 @@ class GetWarningEventMetricResponseBodyData(TeaModel):
         region_id: str = None,
         warning_count: int = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The name of the application.
         self.name = name
+        # The ID of the namespace.
         self.region_id = region_id
+        # The number of Warning events.
         self.warning_count = warning_count
 
     def validate(self):
@@ -17863,10 +29810,26 @@ class GetWarningEventMetricResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The following limits are imposed on the ID:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The details of applications.
         self.data = data
+        # The additional information that is returned. The following limits are imposed on the ID:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+        # 
+        # *   **true**: The namespaces were obtained.
+        # *   **false**: no
         self.success = success
 
     def validate(self):
@@ -17925,9 +29888,6 @@ class GetWarningEventMetricResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17969,21 +29929,32 @@ class ListAppEventsRequest(TeaModel):
         page_size: int = None,
         reason: str = None,
     ):
-        # f7730764-d88f-4b9a-8d8e-cd8efbfe\*\*\*\*\
+        # The application ID.
         self.app_id = app_id
-        # 1
+        # The page number of the page to return.
         self.current_page = current_page
-        # Warning
+        # The type of the event. Valid values:
+        # 
+        # *   **Warning**: an alert.
+        # *   **Normal**: a normal event.
         self.event_type = event_type
-        # cn-beijing
+        # The namespace ID.
+        # 
+        # This parameter is required.
         self.namespace = namespace
-        # Pod
+        # The type of the object. Valid values:
+        # 
+        # *   **Deployment**: an application.
+        # *   **Pod**: an application instance.
+        # *   **Service**: a Server Load Balancer (SLB) instance.
+        # *   **HorizontalPodAutoscaler**: an auto scaling policy.
+        # *   **CloneSet**: an application.
         self.object_kind = object_kind
-        # errew-b86bf540-b4dc-47d8-a42f-b4997c14bd8f-5595cbddd6-x\*\*\*\*\
+        # The name of the object. Fuzzy search by prefix is supported.
         self.object_name = object_name
-        # 10
+        # The number of entries to return on each page. Valid values: 0 to 10000.
         self.page_size = page_size
-        # Started
+        # The cause of the event. Fuzzy search by prefix is supported.
         self.reason = reason
 
     def validate(self):
@@ -18045,19 +30016,19 @@ class ListAppEventsResponseBodyDataAppEventEntity(TeaModel):
         object_name: str = None,
         reason: str = None,
     ):
-        # The type of the event.
+        # The type of the event. Valid values:
         self.event_type = event_type
-        # The timestamp of the first occurrence of an event.
+        # The timestamp of the first occurrence of the event.
         self.first_timestamp = first_timestamp
-        # The timestamp of the last occurrence of an event.
+        # The timestamp of the last occurrence of the event.
         self.last_timestamp = last_timestamp
-        # The description of the event.
+        # The information about the event.
         self.message = message
         # The type of the object.
         self.object_kind = object_kind
         # The name of the object.
         self.object_name = object_name
-        # The reason why the event occurred.
+        # The cause of the event.
         self.reason = reason
 
     def validate(self):
@@ -18112,13 +30083,13 @@ class ListAppEventsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of events.
+        # The events.
         self.app_event_entity = app_event_entity
         # The number of the returned page.
         self.current_page = current_page
-        # The number of entries returned on each page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of events that occurred in the application.
+        # The total number of events that occurred in an application.
         self.total_size = total_size
 
     def validate(self):
@@ -18173,26 +30144,26 @@ class ListAppEventsResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The details of events.
+        # The events.
         self.data = data
-        # The error code.
+        # The error code returned if the call failed. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the events that occurred in an application were obtained. Valid values:
+        # Indicates whether the events that occurred in the application were queried. Valid values:
         # 
-        # *   **true**: indicates that the events were obtained.
-        # *   **false**: indicates that the events could not be obtained.
+        # *   **true**: The events were queried.
+        # *   **false**: The events failed to be queried.
         self.success = success
 
     def validate(self):
@@ -18249,9 +30220,6 @@ class ListAppEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18289,13 +30257,17 @@ class ListAppServicesPageRequest(TeaModel):
         page_size: int = None,
         service_type: str = None,
     ):
-        # 6dcc8c9e-d3da-478a-a066-86dcf820\*\*\*\*\
-        self.app_id = app_id
         # 1
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The ID of the request.
         self.page_number = page_number
-        # 9999
+        # The returned information.
         self.page_size = page_size
-        # springCloud
+        # 9999
+        # 
+        # This parameter is required.
         self.service_type = service_type
 
     def validate(self):
@@ -18340,17 +30312,25 @@ class ListAppServicesPageResponseBodyDataResult(TeaModel):
         service_name: str = None,
         version: str = None,
     ):
-        # The ID of the application.
-        self.edas_app_id = edas_app_id
-        # The name of the application.
-        self.edas_app_name = edas_app_name
         # The group to which the service belongs. You can create a custom group.
-        self.group = group
+        self.edas_app_id = edas_app_id
         # The total number of instances.
-        self.instance_num = instance_num
+        self.edas_app_name = edas_app_name
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the call was successful.
+        # *   **3xx**: indicates that the call was redirected.
+        # *   **4xx**: indicates that the call failed.
+        # *   **5xx**: indicates that a server error occurred.
+        self.group = group
         # The name of the service.
+        self.instance_num = instance_num
+        # The returned error code. Valid values:
+        # 
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.service_name = service_name
-        # The version of the service. You can create a custom version.
+        # The ID of the application.
         self.version = version
 
     def validate(self):
@@ -18402,15 +30382,15 @@ class ListAppServicesPageResponseBodyData(TeaModel):
         result: List[ListAppServicesPageResponseBodyDataResult] = None,
         total_size: str = None,
     ):
-        # The page number of the current page.
-        self.current_page = current_page
         # The page number of the returned page.
-        self.page_number = page_number
-        # The number of entries returned per page. Valid values: 0 to 9999.
-        self.page_size = page_size
+        self.current_page = current_page
         # The returned result.
+        self.page_number = page_number
+        # The name of the application.
+        self.page_size = page_size
+        # The version of the service. You can create a custom version.
         self.result = result
-        # The total number of pages returned.
+        # The number of entries returned per page. Valid values: 0 to 9999.
         self.total_size = total_size
 
     def validate(self):
@@ -18468,30 +30448,20 @@ class ListAppServicesPageResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the call was successful.
-        # *   **3xx**: indicates that the call was redirected.
-        # *   **4xx**: indicates that the call failed.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The details of microservices.
+        # The total number of pages returned.
         self.data = data
-        # The returned error code. Valid values:
-        # 
-        # - If the call is successful, the **ErrorCode** parameter is not returned.
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
-        self.error_code = error_code
-        # The returned information.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
         # Indicates whether the microservice list was obtained. Valid values:
         # 
         # *   **true**: The list was obtained.
         # *   **false**: The list failed to be obtained.
-        self.success = success
+        self.error_code = error_code
+        # The details of microservices.
+        self.message = message
         # The ID of the trace. The ID is used to query the details of a request.
+        self.request_id = request_id
+        self.success = success
+        # The page number of the current page.
         self.trace_id = trace_id
 
     def validate(self):
@@ -18558,9 +30528,6 @@ class ListAppServicesPageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18595,7 +30562,9 @@ class ListAppVersionsRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # The returned message.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -18627,20 +30596,19 @@ class ListAppVersionsResponseBodyData(TeaModel):
         type: str = None,
         war_url: str = None,
     ):
-        # The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **url**.
-        self.build_package_url = build_package_url
-        # The time when the application was created.
-        self.create_time = create_time
-        # The ID of the version.
-        self.id = id
-        # The deployment method of the application. Valid values:
-        # 
-        # *   **image**: indicates that the application was deployed by using an image.
-        # *   **upload**: indicates that the application was deployed by uploading a WAR or JAR package.
-        # *   **url**: indicates that the application was deployed by specifying the URL of a WAR or JAR package.
-        self.type = type
         # *   The address of the image. This parameter is returned when the **Type** parameter is set to **image**.
         # *   The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **upload**.
+        self.build_package_url = build_package_url
+        # The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **url**.
+        self.create_time = create_time
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        self.id = id
+        # The time when the application was created.
+        self.type = type
+        # The ID of the version.
         self.war_url = war_url
 
     def validate(self):
@@ -18689,28 +30657,28 @@ class ListAppVersionsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the historical versions of the application were obtained. Valid values:
+        # 
+        # *   **true**: indicates that the historical versions of the application were obtained.
+        # *   **false**: indicates that the historical versions of the application could not be obtained.
+        self.code = code
+        # The deployment method of the application. Valid values:
+        # 
+        # *   **image**: indicates that the application was deployed by using an image.
+        # *   **upload**: indicates that the application was deployed by uploading a WAR or JAR package.
+        # *   **url**: indicates that the application was deployed by specifying the URL of a WAR or JAR package.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The information about the versions.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        self.message = message
         # The ID of the request.
+        self.message = message
+        # The information about the versions.
         self.request_id = request_id
-        # Indicates whether the historical versions of the application were obtained. Valid values:
-        # 
-        # *   **true**: indicates that the historical versions of the application were obtained.
-        # *   **false**: indicates that the historical versions of the application could not be obtained.
         self.success = success
 
     def validate(self):
@@ -18773,9 +30741,6 @@ class ListAppVersionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18809,6 +30774,7 @@ class ListApplicationsRequest(TeaModel):
     def __init__(
         self,
         app_name: str = None,
+        app_source: str = None,
         current_page: int = None,
         field_type: str = None,
         field_value: str = None,
@@ -18818,23 +30784,32 @@ class ListApplicationsRequest(TeaModel):
         reverse: bool = None,
         tags: str = None,
     ):
-        # demo-app
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.app_name = app_name
-        # 1
+        self.app_source = app_source
+        # The number of the returned page.
         self.current_page = current_page
-        # appName
+        # true
         self.field_type = field_type
-        # demo-app
+        # The ID of the region.
         self.field_value = field_value
-        # cn-beijing:demo
+        # 1
         self.namespace_id = namespace_id
         # runnings
         self.order_by = order_by
-        # 20
+        # Indicates whether the application is being deleted. Valid values:
+        # 
+        # *   **true**: The application is being deleted.
+        # *   **false**: The application is not being deleted.
         self.page_size = page_size
-        # true
+        # The returned message.
         self.reverse = reverse
-        # \[{"key":"key","value":"value"}]
+        # The list of applications.
         self.tags = tags
 
     def validate(self):
@@ -18848,6 +30823,8 @@ class ListApplicationsRequest(TeaModel):
         result = dict()
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_source is not None:
+            result['AppSource'] = self.app_source
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.field_type is not None:
@@ -18870,6 +30847,8 @@ class ListApplicationsRequest(TeaModel):
         m = m or dict()
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppSource') is not None:
+            self.app_source = m.get('AppSource')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('FieldType') is not None:
@@ -18889,15 +30868,173 @@ class ListApplicationsRequest(TeaModel):
         return self
 
 
+class ListApplicationsResponseBodyDataApplicationsChildrenTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListApplicationsResponseBodyDataApplicationsChildren(TeaModel):
+    def __init__(
+        self,
+        app_deleting_status: bool = None,
+        app_description: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        base_app_id: str = None,
+        cpu: int = None,
+        instances: int = None,
+        mem: int = None,
+        mse_enabled: bool = None,
+        namespace_id: str = None,
+        programming_language: str = None,
+        region_id: str = None,
+        running_instances: int = None,
+        scale_rule_enabled: bool = None,
+        scale_rule_type: str = None,
+        tags: List[ListApplicationsResponseBodyDataApplicationsChildrenTags] = None,
+    ):
+        self.app_deleting_status = app_deleting_status
+        self.app_description = app_description
+        self.app_id = app_id
+        self.app_name = app_name
+        self.base_app_id = base_app_id
+        self.cpu = cpu
+        self.instances = instances
+        self.mem = mem
+        self.mse_enabled = mse_enabled
+        self.namespace_id = namespace_id
+        self.programming_language = programming_language
+        self.region_id = region_id
+        self.running_instances = running_instances
+        self.scale_rule_enabled = scale_rule_enabled
+        self.scale_rule_type = scale_rule_type
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_deleting_status is not None:
+            result['AppDeletingStatus'] = self.app_deleting_status
+        if self.app_description is not None:
+            result['AppDescription'] = self.app_description
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.base_app_id is not None:
+            result['BaseAppId'] = self.base_app_id
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.instances is not None:
+            result['Instances'] = self.instances
+        if self.mem is not None:
+            result['Mem'] = self.mem
+        if self.mse_enabled is not None:
+            result['MseEnabled'] = self.mse_enabled
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.programming_language is not None:
+            result['ProgrammingLanguage'] = self.programming_language
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.running_instances is not None:
+            result['RunningInstances'] = self.running_instances
+        if self.scale_rule_enabled is not None:
+            result['ScaleRuleEnabled'] = self.scale_rule_enabled
+        if self.scale_rule_type is not None:
+            result['ScaleRuleType'] = self.scale_rule_type
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppDeletingStatus') is not None:
+            self.app_deleting_status = m.get('AppDeletingStatus')
+        if m.get('AppDescription') is not None:
+            self.app_description = m.get('AppDescription')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('BaseAppId') is not None:
+            self.base_app_id = m.get('BaseAppId')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Instances') is not None:
+            self.instances = m.get('Instances')
+        if m.get('Mem') is not None:
+            self.mem = m.get('Mem')
+        if m.get('MseEnabled') is not None:
+            self.mse_enabled = m.get('MseEnabled')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('ProgrammingLanguage') is not None:
+            self.programming_language = m.get('ProgrammingLanguage')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RunningInstances') is not None:
+            self.running_instances = m.get('RunningInstances')
+        if m.get('ScaleRuleEnabled') is not None:
+            self.scale_rule_enabled = m.get('ScaleRuleEnabled')
+        if m.get('ScaleRuleType') is not None:
+            self.scale_rule_type = m.get('ScaleRuleType')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListApplicationsResponseBodyDataApplicationsChildrenTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
 class ListApplicationsResponseBodyDataApplicationsTags(TeaModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # appName
         self.key = key
-        # The value of the tag.
+        # The key of the tag.
         self.value = value
 
     def validate(self):
@@ -18931,35 +31068,50 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
         app_description: str = None,
         app_id: str = None,
         app_name: str = None,
+        base_app_id: str = None,
+        children: List[ListApplicationsResponseBodyDataApplicationsChildren] = None,
+        cpu: int = None,
         instances: int = None,
+        mem: int = None,
+        mse_enabled: bool = None,
+        mse_namespace_id: str = None,
         namespace_id: str = None,
+        programming_language: str = None,
         region_id: str = None,
         running_instances: int = None,
         tags: List[ListApplicationsResponseBodyDataApplicationsTags] = None,
     ):
-        # Indicates whether the application is being deleted. Valid values:
-        # 
-        # *   **true**: The application is being deleted.
-        # *   **false**: The application is not being deleted.
+        # demo-app
         self.app_deleting_status = app_deleting_status
-        # The description of the application.
+        # [{"key":"key","value":"value"}]
         self.app_description = app_description
-        # The ID of the application.
+        # The total number of applications.
         self.app_id = app_id
-        # The name of the application.
+        # The ID of the application.
         self.app_name = app_name
-        # The number of application instances.
+        self.base_app_id = base_app_id
+        self.children = children
+        self.cpu = cpu
+        # The total number of applications.
         self.instances = instances
-        # The ID of the namespace.
+        self.mem = mem
+        self.mse_enabled = mse_enabled
+        self.mse_namespace_id = mse_namespace_id
+        # demo-app
         self.namespace_id = namespace_id
-        # The ID of the region.
-        self.region_id = region_id
+        self.programming_language = programming_language
         # The number of running instances.
+        self.region_id = region_id
+        # The value of the tag.
         self.running_instances = running_instances
-        # The tags of the application.
+        # cn-beijing:demo
         self.tags = tags
 
     def validate(self):
+        if self.children:
+            for k in self.children:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -18979,10 +31131,26 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.base_app_id is not None:
+            result['BaseAppId'] = self.base_app_id
+        result['Children'] = []
+        if self.children is not None:
+            for k in self.children:
+                result['Children'].append(k.to_map() if k else None)
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
         if self.instances is not None:
             result['Instances'] = self.instances
+        if self.mem is not None:
+            result['Mem'] = self.mem
+        if self.mse_enabled is not None:
+            result['MseEnabled'] = self.mse_enabled
+        if self.mse_namespace_id is not None:
+            result['MseNamespaceId'] = self.mse_namespace_id
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.programming_language is not None:
+            result['ProgrammingLanguage'] = self.programming_language
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.running_instances is not None:
@@ -19003,10 +31171,27 @@ class ListApplicationsResponseBodyDataApplications(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('BaseAppId') is not None:
+            self.base_app_id = m.get('BaseAppId')
+        self.children = []
+        if m.get('Children') is not None:
+            for k in m.get('Children'):
+                temp_model = ListApplicationsResponseBodyDataApplicationsChildren()
+                self.children.append(temp_model.from_map(k))
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
         if m.get('Instances') is not None:
             self.instances = m.get('Instances')
+        if m.get('Mem') is not None:
+            self.mem = m.get('Mem')
+        if m.get('MseEnabled') is not None:
+            self.mse_enabled = m.get('MseEnabled')
+        if m.get('MseNamespaceId') is not None:
+            self.mse_namespace_id = m.get('MseNamespaceId')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('ProgrammingLanguage') is not None:
+            self.programming_language = m.get('ProgrammingLanguage')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RunningInstances') is not None:
@@ -19027,13 +31212,13 @@ class ListApplicationsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of applications.
+        # The description of the application.
         self.applications = applications
-        # The number of the returned page.
+        # The number of application instances.
         self.current_page = current_page
-        # The number of entries returned on each page.
+        # The tags of the application.
         self.page_size = page_size
-        # The total number of applications.
+        # The information about applications.
         self.total_size = total_size
 
     def validate(self):
@@ -19089,34 +31274,23 @@ class ListApplicationsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # Queries applications.
         self.code = code
-        # The number of the returned page.
+        # 20
         self.current_page = current_page
-        # The information about applications.
+        # The number of the returned page.
         self.data = data
-        # The error code. 
-        # 
-        # - The **ErrorCode** parameter is not returned when the request succeeds.
-        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-        self.error_code = error_code
-        # The returned message.
-        self.message = message
         # The number of entries returned on each page.
+        self.error_code = error_code
+        # 20
+        self.message = message
+        # cn-beijing:demo
         self.page_size = page_size
-        # The ID of the request.
+        # The number of entries returned on each page.
         self.request_id = request_id
-        # Indicates whether the list of applications was obtained. Valid values:
-        # 
-        # *   **true**: indicates that the list was obtained.
-        # *   **false**: indicates that the list could not be obtained.
+        # 1
         self.success = success
-        # The total number of applications.
+        # demo-app
         self.total_size = total_size
 
     def validate(self):
@@ -19185,9 +31359,6 @@ class ListApplicationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19227,17 +31398,19 @@ class ListChangeOrdersRequest(TeaModel):
         key: str = None,
         page_size: int = None,
     ):
-        # 145341c-9708-4967-b3ec-24933767\*\*\*\*\
-        self.app_id = app_id
-        # 2
-        self.co_status = co_status
-        # CoCreateApp
-        self.co_type = co_type
         # 1
-        self.current_page = current_page
-        # test
-        self.key = key
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The ID of the request.
+        self.co_status = co_status
+        # 2
+        self.co_type = co_type
         # 20
+        self.current_page = current_page
+        # CoCreateApp
+        self.key = key
+        # test
         self.page_size = page_size
 
     def validate(self):
@@ -19298,19 +31471,23 @@ class ListChangeOrdersResponseBodyDataChangeOrderList(TeaModel):
         status: int = None,
         user_id: str = None,
     ):
-        # The ID of the application.
+        # The number of entries returned on each page.
         self.app_id = app_id
-        # The number of release batches.
+        # The ID of the user who created the change order.
         self.batch_count = batch_count
+        # The ID of the group.
+        self.batch_type = batch_type
         # The mode in which the release batches are determined. Valid values:
         # 
         # *   **auto**: SAE automatically determines the release batches.
         # *   **manual**: You must manually determine the release batches.
-        self.batch_type = batch_type
-        # The ID of the change order.
         self.change_order_id = change_order_id
-        # The change type, which corresponds to the **CoTypeCode** parameter.
+        # The ID of the application.
         self.co_type = co_type
+        # The ID of the change order.
+        self.co_type_code = co_type_code
+        # The ID of the user.
+        self.create_time = create_time
         # The code of the change type. Valid values:
         # 
         # *   **CoBindSlb**: associates an SLB instance with the application.
@@ -19333,33 +31510,18 @@ class ListChangeOrdersResponseBodyDataChangeOrderList(TeaModel):
         # *   **CoRestartInstances**: restarts the instances.
         # *   **CoDeleteInstances**: deletes the instances.
         # *   **CoScaleInAppWithInstances**: reduces the number of the specified application instances.
-        self.co_type_code = co_type_code
-        # The time when the change order was created.
-        self.create_time = create_time
-        # The ID of the user who created the change order.
         self.create_user_id = create_user_id
-        # The description about the application.
+        # The change type, which corresponds to the **CoTypeCode** parameter.
         self.description = description
-        # The time when the change order was completed.
+        # The time when the change order was created.
         self.finish_time = finish_time
-        # The ID of the group.
+        # The description about the application.
         self.group_id = group_id
-        # The source of the change order.
+        # The number of release batches.
         self.source = source
-        # The status of the change order. Valid values:
-        # 
-        # *   **0**: The change order is being prepared.
-        # *   **1**: The change order is being executed.
-        # *   **2**: The change order was executed.
-        # *   **3**: The change order could not be executed.
-        # *   **6**: The change order was terminated.
-        # *   **8**: The execution process is pending. You must manually determine the release batch.
-        # *   **9**: The execution process is pending. SAE will automatically determine the release batch.
-        # *   **10**: The change order could not be executed due to a system exception.
-        # *   **11**: The change order is pending approval.
-        # *   **12**: The change order is approved and is pending execution.
+        # The time when the change order was completed.
         self.status = status
-        # The ID of the user.
+        # The source of the change order.
         self.user_id = user_id
 
     def validate(self):
@@ -19442,13 +31604,27 @@ class ListChangeOrdersResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of change orders.
+        # The status of the change order. Valid values:
+        # 
+        # *   **0**: The change order is being prepared.
+        # *   **1**: The change order is being executed.
+        # *   **2**: The change order was executed.
+        # *   **3**: The change order could not be executed.
+        # *   **6**: The change order was terminated.
+        # *   **8**: The execution process is pending. You must manually determine the release batch.
+        # *   **9**: The execution process is pending. SAE will automatically determine the release batch.
+        # *   **10**: The change order could not be executed due to a system exception.
+        # *   **11**: The change order is pending approval.
+        # *   **12**: The change order is approved and is pending execution.
         self.change_order_list = change_order_list
-        # The number of the returned page.
-        self.current_page = current_page
-        # The number of entries returned on each page.
-        self.page_size = page_size
         # The total number of change orders.
+        self.current_page = current_page
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        self.page_size = page_size
+        # The list of change orders.
         self.total_size = total_size
 
     def validate(self):
@@ -19502,30 +31678,26 @@ class ListChangeOrdersResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the list of change orders was obtained. Valid values:
+        # 
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
+        self.code = code
+        # The number of the returned page.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The information about change orders.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the list of change orders was obtained. Valid values:
-        # 
-        # *   **true**: indicates that the list was obtained.
-        # *   **false**: indicates that the list could not be obtained.
-        self.success = success
         # The ID of the trace. It is used to query the details of a request.
+        self.message = message
+        # The returned message.
+        self.request_id = request_id
+        self.success = success
+        # The information about change orders.
         self.trace_id = trace_id
 
     def validate(self):
@@ -19586,9 +31758,6 @@ class ListChangeOrdersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19623,7 +31792,9 @@ class ListConsumedServicesRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -19657,19 +31828,22 @@ class ListConsumedServicesResponseBodyData(TeaModel):
         type: str = None,
         version: str = None,
     ):
-        # The ID of the application.
-        self.app_id = app_id
         # A reserved parameter.
-        self.group_2ip = group_2ip
-        # The service group that corresponds to the published service.
-        self.groups = groups
+        self.app_id = app_id
         # The subscription address of the service.
-        self.ips = ips
-        # The name of the published service.
-        self.name = name
-        # The type of the published service.
-        self.type = type
+        self.group_2ip = group_2ip
         # The version of the published service
+        self.groups = groups
+        # The name of the published service.
+        self.ips = ips
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        self.name = name
+        # The service group that corresponds to the published service.
+        self.type = type
+        # The ID of the application.
         self.version = version
 
     def validate(self):
@@ -19727,33 +31901,29 @@ class ListConsumedServicesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the microservice list was obtained. Valid values:
+        # 
+        # *   **true**: The list was obtained.
+        # *   **false**: The list failed to be obtained.
+        self.code = code
+        # The type of the published service.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the call was successful.
         # *   **3xx**: indicates that the call was redirected.
         # *   **4xx**: indicates that the call failed.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The details of the microservices.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The ID of the trace. The ID is used to query the details of a request.
+        self.message = message
         # The returned information. Valid values:
         # 
         # *   If the call is successful, **success** is returned.
         # *   If the call fails, an error code is returned.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the microservice list was obtained. Valid values:
-        # 
-        # *   **true**: The list was obtained.
-        # *   **false**: The list failed to be obtained.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The details of the microservices.
         self.trace_id = trace_id
 
     def validate(self):
@@ -19820,9 +31990,6 @@ class ListConsumedServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19857,7 +32024,9 @@ class ListGreyTagRouteRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -20541,9 +32710,6 @@ class ListGreyTagRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20579,9 +32745,11 @@ class ListIngressesRequest(TeaModel):
         app_id: str = None,
         namespace_id: str = None,
     ):
-        # bbf3a590-6d13-46fe-8ca9-c947a20b\*\*\*\*\
+        # The list of routing rules.
         self.app_id = app_id
-        # cn-beijing
+        # The returned data.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -20618,40 +32786,52 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
         listener_port: str = None,
         listener_protocol: str = None,
         load_balance_type: str = None,
+        mse_gateway_id: str = None,
+        mse_gateway_port: str = None,
+        mse_gateway_protocol: str = None,
         name: str = None,
         namespace_id: str = None,
         slb_id: str = None,
         slb_type: str = None,
     ):
-        # The ID of the certificate.
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.cert_id = cert_id
         self.cert_ids = cert_ids
-        # The name of the routing rule.
-        self.description = description
         # The ID of the routing rule.
-        self.id = id
-        # The port specified for the SLB listener.
-        self.listener_port = listener_port
-        # The protocol used to forward requests. Valid values:
+        self.description = description
+        # Indicates whether the list of routing rules was obtained. Valid values:
         # 
-        # *   **HTTP**: used when the application needs to identify the transmitted data.
-        # *   **HTTPS**: used when the application requires encrypted data transmission.
-        self.listener_protocol = listener_protocol
+        # *   **true**: indicates that the list was obtained.
+        # *   **false**: indicates that the list could not be obtained.
+        self.id = id
         # The type of the SLB instance based on the processing capabilities. Valid values:
         # 
         # *   **clb**: the Classic Load Balancer (CLB) instance.
         # *   **alb**: the Application Load Balancer (ALB) instance.
+        self.listener_port = listener_port
+        self.listener_protocol = listener_protocol
         self.load_balance_type = load_balance_type
-        # The name of the routing rule.
-        self.name = name
-        # The ID of the namespace.
-        self.namespace_id = namespace_id
-        # The ID of the SLB instance.
-        self.slb_id = slb_id
-        # The type of the SLB instance based on the IP address. Valid values:
+        self.mse_gateway_id = mse_gateway_id
+        self.mse_gateway_port = mse_gateway_port
+        self.mse_gateway_protocol = mse_gateway_protocol
+        # The HTTP status code. Valid values:
         # 
-        # *   **internet**: the Internet-facing SLB instance.
-        # *   **intranet**: the internal-facing SLB instance.
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
+        self.name = name
+        # The name of the routing rule.
+        self.namespace_id = namespace_id
+        # The ID of the certificate.
+        self.slb_id = slb_id
+        # The protocol used to forward requests. Valid values:
+        # 
+        # *   **HTTP**: used when the application needs to identify the transmitted data.
+        # *   **HTTPS**: used when the application requires encrypted data transmission.
         self.slb_type = slb_type
 
     def validate(self):
@@ -20677,6 +32857,12 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
             result['ListenerProtocol'] = self.listener_protocol
         if self.load_balance_type is not None:
             result['LoadBalanceType'] = self.load_balance_type
+        if self.mse_gateway_id is not None:
+            result['MseGatewayId'] = self.mse_gateway_id
+        if self.mse_gateway_port is not None:
+            result['MseGatewayPort'] = self.mse_gateway_port
+        if self.mse_gateway_protocol is not None:
+            result['MseGatewayProtocol'] = self.mse_gateway_protocol
         if self.name is not None:
             result['Name'] = self.name
         if self.namespace_id is not None:
@@ -20703,6 +32889,12 @@ class ListIngressesResponseBodyDataIngressList(TeaModel):
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('LoadBalanceType') is not None:
             self.load_balance_type = m.get('LoadBalanceType')
+        if m.get('MseGatewayId') is not None:
+            self.mse_gateway_id = m.get('MseGatewayId')
+        if m.get('MseGatewayPort') is not None:
+            self.mse_gateway_port = m.get('MseGatewayPort')
+        if m.get('MseGatewayProtocol') is not None:
+            self.mse_gateway_protocol = m.get('MseGatewayProtocol')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NamespaceId') is not None:
@@ -20719,7 +32911,10 @@ class ListIngressesResponseBodyData(TeaModel):
         self,
         ingress_list: List[ListIngressesResponseBodyDataIngressList] = None,
     ):
-        # The list of routing rules.
+        # The type of the SLB instance based on the IP address. Valid values:
+        # 
+        # *   **internet**: the Internet-facing SLB instance.
+        # *   **intranet**: the internal-facing SLB instance.
         self.ingress_list = ingress_list
 
     def validate(self):
@@ -20761,33 +32956,16 @@ class ListIngressesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The returned data.
+        # The port specified for the SLB listener.
         self.data = data
-        # The error code. 
-        # 
-        # - The **ErrorCode** parameter is not returned when the request succeeds.
-        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # The ID of the namespace.
         self.message = message
-        # The ID of the request.
+        # The ID of the SLB instance.
         self.request_id = request_id
-        # Indicates whether the list of routing rules was obtained. Valid values:
-        # 
-        # *   **true**: indicates that the list was obtained.
-        # *   **false**: indicates that the list could not be obtained.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The name of the routing rule.
         self.trace_id = trace_id
 
     def validate(self):
@@ -20848,9 +33026,6 @@ class ListIngressesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20894,15 +33069,37 @@ class ListJobsRequest(TeaModel):
         tags: str = None,
         workload: str = None,
     ):
+        # The name of the job template.
         self.app_name = app_name
+        # The number of the page to return. The parameter value is a positive integer that is greater than or equal to 1.
         self.current_page = current_page
+        # The dimension by which applications are filtered. Valid values:
+        # 
+        # *   **appName**: Applications are filtered by job template name.
+        # *   **appIds**: Applications are filtered by job template ID.
         self.field_type = field_type
+        # Enter the name and ID of the job template.
         self.field_value = field_value
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # Specifies how applications are sorted. Valid values:
+        # 
+        # *   **running**: The applications are sorted based on the number of running instances.
+        # *   **instances**: The applications are sorted based on the number of destination instances.
         self.order_by = order_by
+        # The number of entries to return on each page. Valid value: 0 to 200.
         self.page_size = page_size
+        # Specifies whether to sort the field names that are passed by **OrderBy** in ascending order. Valid values:
+        # 
+        # *   **true**: in ascending order
+        # *   **false**: in descending order
         self.reverse = reverse
+        # The tags that are displayed in a JSON string. Valid values:
+        # 
+        # *   **key**: the tag key
+        # *   **value**: the tag value
         self.tags = tags
+        # Set the value to `job`.
         self.workload = workload
 
     def validate(self):
@@ -20967,7 +33164,9 @@ class ListJobsResponseBodyDataApplicationsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -21008,6 +33207,7 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         last_job_state: str = None,
         last_start_time: int = None,
         mem: int = None,
+        message: str = None,
         namespace_id: str = None,
         region_id: str = None,
         succeeded: int = None,
@@ -21015,21 +33215,44 @@ class ListJobsResponseBodyDataApplications(TeaModel):
         tags: List[ListJobsResponseBodyDataApplicationsTags] = None,
         trigger_config: str = None,
     ):
+        # The number of running instances.
         self.active = active
+        # The description of the job template.
         self.app_description = app_description
+        # The ID of the job template.
         self.app_id = app_id
+        # The name of the job template.
         self.app_name = app_name
+        # The time when the job was last completed.
         self.completion_time = completion_time
         self.cpu = cpu
+        # The number of instances that failed to run.
         self.failed = failed
+        # Indicates whether the latest change order was executed. Valid values:
+        # 
+        # *   **0**: The latest change order failed to be executed.
+        # *   **1**: The latest change order was executed.
         self.last_changeorder_state = last_changeorder_state
+        # The running status of the latest job. Valid values:
+        # 
+        # *   **0**: The job is not executed.
+        # *   **1**: The job was executed.
+        # *   **2**: The job failed to be executed.
+        # *   **3**: The job is being executed.
         self.last_job_state = last_job_state
+        # The time when the job was last started.
         self.last_start_time = last_start_time
         self.mem = mem
+        self.message = message
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The region ID.
         self.region_id = region_id
+        # The number of instances that were successfully run.
         self.succeeded = succeeded
+        # Indicates whether the job template is suspended.
         self.suspend = suspend
+        # The tag of the job template.
         self.tags = tags
         self.trigger_config = trigger_config
 
@@ -21067,6 +33290,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             result['LastStartTime'] = self.last_start_time
         if self.mem is not None:
             result['Mem'] = self.mem
+        if self.message is not None:
+            result['Message'] = self.message
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
         if self.region_id is not None:
@@ -21107,6 +33332,8 @@ class ListJobsResponseBodyDataApplications(TeaModel):
             self.last_start_time = m.get('LastStartTime')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('RegionId') is not None:
@@ -21133,9 +33360,13 @@ class ListJobsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The job templates.
         self.applications = applications
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total number of job templates.
         self.total_size = total_size
 
     def validate(self):
@@ -21191,14 +33422,34 @@ class ListJobsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The page number of the returned page.
         self.current_page = current_page
+        # The job templates.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   If the call is successful, **ErrorCode** is not returned.
+        # *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message.
         self.message = message
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the applications were obtained. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The total number of job templates.
         self.total_size = total_size
 
     def validate(self):
@@ -21267,9 +33518,6 @@ class ListJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21306,11 +33554,17 @@ class ListLogConfigsRequest(TeaModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # 56f77b65-788d-442a-9885-7f20d91f\*\*\*\*\
-        self.app_id = app_id
-        # 1
-        self.current_page = current_page
         # 10
+        # 
+        # This parameter is required.
+        self.app_id = app_id
+        # The ID of the request.
+        # 
+        # This parameter is required.
+        self.current_page = current_page
+        # 1
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -21353,21 +33607,21 @@ class ListLogConfigsResponseBodyDataLogConfigs(TeaModel):
         sls_project: str = None,
         store_type: str = None,
     ):
-        # The name of the Log Service configuration.
-        self.config_name = config_name
-        # The time when the configuration was created.
-        self.create_time = create_time
         # The path of logs.
-        self.log_dir = log_dir
-        # The type of the log. Set this value to **file_log**.
-        self.log_type = log_type
-        # The ID of the region.
-        self.region_id = region_id
-        # The name of the Logstore in Log Service.
-        self.sls_log_store = sls_log_store
-        # The ID of the Log Service project.
-        self.sls_project = sls_project
+        self.config_name = config_name
         # The storage type of logs.
+        self.create_time = create_time
+        # The name of the Logstore in Log Service.
+        self.log_dir = log_dir
+        # The ID of the region.
+        self.log_type = log_type
+        # The number of the returned page.
+        self.region_id = region_id
+        # The time when the configuration was created.
+        self.sls_log_store = sls_log_store
+        # The type of the log. Set this value to **file_log**.
+        self.sls_project = sls_project
+        # The ID of the Log Service project.
         self.store_type = store_type
 
     def validate(self):
@@ -21426,13 +33680,16 @@ class ListLogConfigsResponseBodyData(TeaModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The number of the returned page.
-        self.current_page = current_page
-        # The details of logging configurations.
-        self.log_configs = log_configs
-        # The number of entries returned on each page.
-        self.page_size = page_size
         # The total number of returned entries.
+        self.current_page = current_page
+        # The name of the Log Service configuration.
+        self.log_configs = log_configs
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        self.page_size = page_size
+        # The number of entries returned on each page.
         self.total_size = total_size
 
     def validate(self):
@@ -21486,33 +33743,29 @@ class ListLogConfigsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the logging configurations of an application were obtained. Valid values:
+        # 
+        # *   **true**: indicates that the configurations were obtained.
+        # *   **false**: indicates that the configurations could not be obtained.
+        self.code = code
+        # The details of logging configurations.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The logging configurations.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The ID of the trace. It can be used to query the details of a request.
+        self.message = message
         # The returned message.
         # 
         # *   **success** is returned when the request succeeds.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the logging configurations of an application were obtained. Valid values:
-        # 
-        # *   **true**: indicates that the configurations were obtained.
-        # *   **false**: indicates that the configurations could not be obtained.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The logging configurations.
         self.trace_id = trace_id
 
     def validate(self):
@@ -21573,9 +33826,6 @@ class ListLogConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21624,6 +33874,8 @@ class ListNamespaceChangeOrdersRequest(TeaModel):
         # test
         self.key = key
         # cn-shanghai:test
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
         # 20
         self.page_size = page_size
@@ -21959,9 +34211,6 @@ class ListNamespaceChangeOrdersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21997,6 +34246,8 @@ class ListNamespacedConfigMapsRequest(TeaModel):
         namespace_id: str = None,
     ):
         # cn-hangzhou
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -22074,7 +34325,7 @@ class ListNamespacedConfigMapsResponseBodyDataConfigMaps(TeaModel):
         # 
         # {"k1":"v1", "k2":"v2"}
         # 
-        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](~~171326~~).
+        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](https://help.aliyun.com/document_detail/171326.html).
         self.data = data
         # The description of the instance.
         self.description = description
@@ -22277,9 +34528,6 @@ class ListNamespacedConfigMapsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22314,7 +34562,9 @@ class ListPublishedServicesRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -22348,19 +34598,22 @@ class ListPublishedServicesResponseBodyData(TeaModel):
         type: str = None,
         version: str = None,
     ):
-        # The ID of the application.
-        self.app_id = app_id
         # The reserved parameter. This parameter does not take effect.
-        self.group_2ip = group_2ip
-        # The service group that corresponds to the consumed service.
-        self.groups = groups
+        self.app_id = app_id
         # The subscription address of the service.
-        self.ips = ips
-        # The name of the published service.
-        self.name = name
-        # The type of the published service.
-        self.type = type
+        self.group_2ip = group_2ip
         # The version of the published services.
+        self.groups = groups
+        # The name of the published service.
+        self.ips = ips
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        self.name = name
+        # The service group that corresponds to the consumed service.
+        self.type = type
+        # The ID of the application.
         self.version = version
 
     def validate(self):
@@ -22418,33 +34671,29 @@ class ListPublishedServicesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the microservice list was obtained. Valid values:
+        # 
+        # *   **true**: The list was obtained.
+        # *   **false**: The list failed to be obtained.
+        self.code = code
+        # The type of the published service.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the call was successful.
         # *   **3xx**: indicates that the call was redirected.
         # *   **4xx**: indicates that the call failed.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The details of the microservices.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The ID of the trace. It is used to query the details of a request.
+        self.message = message
         # The returned information. Valid values:
         # 
         # *   If the call is successful, **success** is returned.
         # *   If the call fails, an error code is returned.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the microservice list was obtained. Valid values:
-        # 
-        # *   **true**: The list was obtained.
-        # *   **false**: The list failed to be obtained.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The details of the microservices.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22511,9 +34760,6 @@ class ListPublishedServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22548,6 +34794,9 @@ class ListSecretsRequest(TeaModel):
         self,
         namespace_id: str = None,
     ):
+        # The ID of the namespace in which the Secrets reside. By default, the namespace ID is the same as the region ID.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -22576,7 +34825,9 @@ class ListSecretsResponseBodyDataSecretsRelateApps(TeaModel):
         app_id: str = None,
         app_name: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
 
     def validate(self):
@@ -22614,12 +34865,21 @@ class ListSecretsResponseBodyDataSecrets(TeaModel):
         secret_type: str = None,
         update_time: int = None,
     ):
+        # The time when the Secret was created.
         self.create_time = create_time
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The associated applications.
         self.relate_apps = relate_apps
+        # The Secret ID.
         self.secret_id = secret_id
+        # The Secret name.
         self.secret_name = secret_name
+        # The Secret type.
+        # 
+        # Set the value to **kubernetes.io/dockerconfigjson**. The value indicates the secret for the username and password of the image repository and is used for authentication when images are pulled during application deployment.
         self.secret_type = secret_type
+        # The time when the Secret was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -22679,6 +34939,7 @@ class ListSecretsResponseBodyData(TeaModel):
         self,
         secrets: List[ListSecretsResponseBodyDataSecrets] = None,
     ):
+        # The Secrets.
         self.secrets = secrets
 
     def validate(self):
@@ -22720,12 +34981,33 @@ class ListSecretsResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message. Take note of the following rules:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -22786,9 +35068,6 @@ class ListSecretsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22830,12 +35109,16 @@ class ListTagResourcesRequest(TeaModel):
         # A2RN
         self.next_token = next_token
         # cn-beijing
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
+        # ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
         self.resource_ids = resource_ids
         # application
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
-        # \[{"key":"k1","value":"v1"}]
+        # [{"key":"k1","value":"v1"}]
         self.tags = tags
 
     def validate(self):
@@ -23061,9 +35344,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23089,6 +35369,435 @@ class ListTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWebApplicationInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_ids: List[str] = None,
+        limit: str = None,
+        namespace_id: str = None,
+        start_time: int = None,
+        statuses: List[str] = None,
+        version_ids: List[str] = None,
+    ):
+        self.end_time = end_time
+        self.instance_ids = instance_ids
+        self.limit = limit
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        self.start_time = start_time
+        self.statuses = statuses
+        self.version_ids = version_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statuses is not None:
+            result['Statuses'] = self.statuses
+        if self.version_ids is not None:
+            result['VersionIds'] = self.version_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Statuses') is not None:
+            self.statuses = m.get('Statuses')
+        if m.get('VersionIds') is not None:
+            self.version_ids = m.get('VersionIds')
+        return self
+
+
+class ListWebApplicationInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_ids_shrink: str = None,
+        limit: str = None,
+        namespace_id: str = None,
+        start_time: int = None,
+        statuses_shrink: str = None,
+        version_ids_shrink: str = None,
+    ):
+        self.end_time = end_time
+        self.instance_ids_shrink = instance_ids_shrink
+        self.limit = limit
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        self.start_time = start_time
+        self.statuses_shrink = statuses_shrink
+        self.version_ids_shrink = version_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.statuses_shrink is not None:
+            result['Statuses'] = self.statuses_shrink
+        if self.version_ids_shrink is not None:
+            result['VersionIds'] = self.version_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Statuses') is not None:
+            self.statuses_shrink = m.get('Statuses')
+        if m.get('VersionIds') is not None:
+            self.version_ids_shrink = m.get('VersionIds')
+        return self
+
+
+class ListWebApplicationInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWebApplicationInstancesBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWebApplicationInstancesBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWebApplicationRevisionsRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        namespace_id: str = None,
+        next_token: str = None,
+    ):
+        self.limit = limit
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListWebApplicationRevisionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWebApplicationRevisionsBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWebApplicationRevisionsBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWebApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        namespace_id: str = None,
+        next_token: str = None,
+        prefix: str = None,
+    ):
+        self.limit = limit
+        self.namespace_id = namespace_id
+        self.next_token = next_token
+        self.prefix = prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        return self
+
+
+class ListWebApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWebApplicationsBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWebApplicationsBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWebCustomDomainsRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        limit: int = None,
+        namespace_id: str = None,
+        next_token: str = None,
+        prefix: str = None,
+    ):
+        self.application_id = application_id
+        self.limit = limit
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        self.next_token = next_token
+        self.prefix = prefix
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        return self
+
+
+class ListWebCustomDomainsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWebCustomDomainBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWebCustomDomainBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23140,9 +35849,6 @@ class OpenSaeServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23172,12 +35878,92 @@ class OpenSaeServiceResponse(TeaModel):
         return self
 
 
+class PublishWebApplicationRevisionRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: PublishWebApplicationRevisionInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = PublishWebApplicationRevisionInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PublishWebApplicationRevisionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationRevisionBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationRevisionBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryResourceStaticsRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -23408,9 +36194,6 @@ class QueryResourceStaticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23446,9 +36229,13 @@ class ReduceApplicationCapacityByInstanceIdsRequest(TeaModel):
         app_id: str = None,
         instance_ids: str = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # b2a8a925-477a-4ed7-b825-d5e22500\*\*\*\*\
+        # The ID of the instance. Separate multiple instances with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -23480,7 +36267,7 @@ class ReduceApplicationCapacityByInstanceIdsResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The ID of the change process.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -23516,31 +36303,31 @@ class ReduceApplicationCapacityByInstanceIdsResponseBody(TeaModel):
     ):
         # The HTTP status code.
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The information of the change order.
+        # The information about the change process.
         self.data = data
-        # The error code.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information that is returned. Take note of the following rules:
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether information of the change order is successfully queried. Valid values:
+        # Indicates whether the information of the change order was queried. Take note of the following rules:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   **true**: The information was queried.
+        # *   **false**: The image failed to be found.
         self.success = success
-        # The ID of the trace. It can be used to query details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -23601,9 +36388,6 @@ class ReduceApplicationCapacityByInstanceIdsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23642,15 +36426,32 @@ class RescaleApplicationRequest(TeaModel):
         min_ready_instances: int = None,
         replicas: int = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # true
+        # Specifies whether to automatically enable an auto scaling policy for the application. Take note of the following rules:
+        # 
+        # *   **true**: turns on Logon-free Sharing
+        # *   **false**: turns off Logon-free Sharing
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
-        # \-1
+        # The percentage of the minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+        # *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+        # 
+        # > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of MinReadyInstanceRatio** takes precedence.**** For example, if **MinReadyInstances** is set to **5, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # 1
+        # The minimum number of available instances. Special values:
+        # 
+        # *   If you set the value to **0**, business interruptions occur when the application is updated.
+        # *   If you set the value to \\*\\*-1\\*\\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
         self.min_ready_instances = min_ready_instances
-        # 5
+        # The expected number of instances.
+        # 
+        # This parameter is required.
         self.replicas = replicas
 
     def validate(self):
@@ -23727,25 +36528,25 @@ class RescaleApplicationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The response.
         self.data = data
-        # The error code.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the application is successfully scaled. Valid values:
+        # Indicates whether the application is successfully scaled. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
@@ -23805,9 +36606,6 @@ class RescaleApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23844,11 +36642,17 @@ class RescaleApplicationVerticallyRequest(TeaModel):
         cpu: str = None,
         memory: str = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # The application ID.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # 1000
+        # The destination CPU specification. Unit: millicore.
+        # 
+        # This parameter is required.
         self.cpu = cpu
-        # 2048
+        # The destination memory size. Unit: MB.
+        # 
+        # This parameter is required.
         self.memory = memory
 
     def validate(self):
@@ -23918,30 +36722,30 @@ class RescaleApplicationVerticallyResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The response.
         self.data = data
-        # The error code.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the instance specifications are changed. Valid values:
+        # Indicates whether the instance specifications are changed. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
         self.success = success
-        # The ID of the trace. It can be used to query details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24002,9 +36806,6 @@ class RescaleApplicationVerticallyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24038,14 +36839,28 @@ class RestartApplicationRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        auto_enable_application_scaling_rule: bool = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # \-1
+        self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
+        # The percentage of the minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+        # *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+        # 
+        # > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of \\*\\*MinReadyInstanceRatio** takes precedence.**** For example, if **MinReadyInstances** is set to **5\\*\\*, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # 1
+        # The minimum number of available instances. Special values:
+        # 
+        # *   If you set the value to **0**, business interruptions occur when the application is updated.
+        # *   If you set the value to \\*\\*-1\\*\\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
         self.min_ready_instances = min_ready_instances
 
     def validate(self):
@@ -24059,6 +36874,8 @@ class RestartApplicationRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.auto_enable_application_scaling_rule is not None:
+            result['AutoEnableApplicationScalingRule'] = self.auto_enable_application_scaling_rule
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -24069,6 +36886,8 @@ class RestartApplicationRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AutoEnableApplicationScalingRule') is not None:
+            self.auto_enable_application_scaling_rule = m.get('AutoEnableApplicationScalingRule')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -24081,7 +36900,7 @@ class RestartApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The ID of the change process.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -24115,33 +36934,33 @@ class RestartApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The response.
         self.data = data
-        # The error code.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information that is returned. Take note of the following rules:
         # 
-        # *   If the request is successful, **success** is returned.
-        # *   An error message is returned when the request fails.
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the instance is successfully restarted. Valid values:
+        # Indicates whether the instance is successfully restarted. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24202,9 +37021,6 @@ class RestartApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24240,9 +37056,13 @@ class RestartInstancesRequest(TeaModel):
         app_id: str = None,
         instance_ids: str = None,
     ):
-        # 1daa7236-3844-4f36-b39a-605b0cc0\*\*\*\*\
+        # The application ID.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # mysae-1daa7236-3844-4f36-b39a-605b0cc0caa6-\*\*\*\*\*\
+        # The ID of the instance to be restarted. Separate multiple instance IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -24308,33 +37128,33 @@ class RestartInstancesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
         # The details of the application.
         self.data = data
-        # The error code.
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information that is returned. Take note of the following rules:
         # 
-        # *   If the request is successful, **success** is returned.
-        # *   An error code is returned when the request fails.
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Specifies whether the instances are successfully restarted. Valid values:
+        # Specifies whether the instances are successfully restarted. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24395,9 +37215,6 @@ class RestartInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24438,19 +37255,60 @@ class RollbackApplicationRequest(TeaModel):
         update_strategy: str = None,
         version_id: str = None,
     ):
-        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
+        # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # true
+        # Specifies whether to automatically enable an auto scaling policy for the application. Take note of the following rules:
+        # 
+        # *   **true**: turns on Logon-free Sharing
+        # *   **false**: turns off Logon-free Sharing
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
-        # 10
+        # The wait time between batches. Unit: seconds.
         self.batch_wait_time = batch_wait_time
-        # \-1
+        # The percentage of the minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
+        # *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if the percentage is set to **50**% and five instances are available, the minimum number of available instances is 3.
+        # 
+        # > When both **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of **MinReadyInstanceRatio** takes precedence.** For example, if **MinReadyInstances** is set to **5, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # 1
+        # The minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **0**, business interruptions occur when the application is updated.
+        # *   If you set the value to \\*\\*-1\\*\\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
         self.min_ready_instances = min_ready_instances
-        # {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
+        # The deployment policy. If the minimum number of available instances is 1, the value of the **UpdateStrategy** parameter is an empty string (""). If the minimum number of available instances is larger than 1, specify this parameter based on your requirements. Examples:
+        # 
+        # *   Perform canary release for one instance and release the remaining instances in two batches automatically with a one-minute interval between the deployment of each instance:
+        # 
+        #     `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}`
+        # 
+        # *   Perform canary release for one instance and release the remaining instances in two batches manually:
+        # 
+        #     `{"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"manual"},"grayUpdate":{"gray":1}}`
+        # 
+        # *   Release the instances in two batches automatically with no interval between the deployment of each instance:
+        # 
+        #     `{"type":"BatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":0}}`
+        # 
+        # The following table describes the parameters that are used in the preceding statements.
+        # 
+        # *   **type**: the type of the release policy. Valid values: **GrayBatchUpdate** and **BatchUpdate**.
+        # 
+        # *   **batchUpdate**: the phased release policy.
+        # 
+        #     *   **batch**: the number of release batches.
+        #     *   **releaseType**: the processing method for the batches. Valid values: **auto** and **manual**.
+        #     *   **batchWaitTime**: the interval between release batches. Unit: seconds.
+        # 
+        # *   **grayUpdate**: the number of release batches in the phased release after a canary release. This parameter is returned only if the **type** parameter is set to **GrayBatchUpdate**.
         self.update_strategy = update_strategy
-        # 0026ff7f-2b57-4127-bdd0-9bf202bb9\*\*\*\*\
+        # The ID of the application version. Call the [ListAppVersions](https://help.aliyun.com/document_detail/162054.html) operation to obtain the version ID.
+        # 
+        # This parameter is required.
         self.version_id = version_id
 
     def validate(self):
@@ -24503,9 +37361,9 @@ class RollbackApplicationResponseBodyData(TeaModel):
         change_order_id: str = None,
         is_need_approval: bool = None,
     ):
-        # The ID of the change order.
+        # The ID of the change process.
         self.change_order_id = change_order_id
-        # Specifies whether approval is required when a RAM user performs release. Valid values:
+        # Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
@@ -24546,30 +37404,30 @@ class RollbackApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The response.
         self.data = data
-        # The error code. Valid values:
+        # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the application is successfully rolled back. Valid values:
+        # Indicates whether the application is successfully rolled back. Take note of the following rules:
         # 
         # *   **true**\
         # *   **false**\
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24630,9 +37488,6 @@ class RollbackApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24667,7 +37522,9 @@ class StartApplicationRequest(TeaModel):
         self,
         app_id: str = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # The application ID.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -24731,31 +37588,31 @@ class StartApplicationResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The error code.
+        # The error code returned. Take note of the following rules:
         # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
+        # *   If the call is successful, **ErrorCode** is not returned.
+        # *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The returned message. Take note of the following rules:
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the application is started. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -24816,9 +37673,6 @@ class StartApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24848,12 +37702,86 @@ class StartApplicationResponse(TeaModel):
         return self
 
 
+class StartWebApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class StartWebApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopApplicationRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # The returned message.
+        # 
+        # *   **success** is returned when the request succeeds.
+        # *   An error code is returned when the request fails.
+        # 
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -24881,7 +37809,12 @@ class StopApplicationResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order.
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: indicates that the request was successful.
+        # *   **3xx**: indicates that the request was redirected.
+        # *   **4xx**: indicates that the request was invalid.
+        # *   **5xx**: indicates that a server error occurred.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -24915,33 +37848,23 @@ class StopApplicationResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The returned data.
-        self.data = data
         # The error code.
         # 
         # *   If the request is successful, this parameter is not returned.****\
         # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
-        self.error_code = error_code
-        # The returned message.
-        # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
+        self.data = data
         # Indicates whether the specified application is stopped. Valid values:
         # 
         # *   **true**\
         # *   **false**\
-        self.success = success
+        self.error_code = error_code
+        # The returned data.
+        self.message = message
         # The ID of the trace. It can be used to query the details of a request.
+        self.request_id = request_id
+        self.success = success
+        # The ID of the change order.
         self.trace_id = trace_id
 
     def validate(self):
@@ -25002,9 +37925,6 @@ class StopApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25034,13 +37954,88 @@ class StopApplicationResponse(TeaModel):
         return self
 
 
+class StopWebApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class StopWebApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SuspendJobRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         suspend: bool = None,
     ):
+        # The ID of the job template.
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # Specifies whether to suspend the job template.
+        # 
+        # This parameter is required.
         self.suspend = suspend
 
     def validate(self):
@@ -25078,12 +38073,33 @@ class SuspendJobResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # Whether the execution is successful.
         self.data = data
+        # The error code returned. Valid values:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The additional information that is returned. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the job was executed. Valid values:
+        # 
+        # *   **true**: The job was executed.
+        # *   **false**: The job failed to be executed.
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -25142,9 +38158,6 @@ class SuspendJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25182,13 +38195,17 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: str = None,
     ):
-        # cn-beijing
-        self.region_id = region_id
-        # \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
-        self.resource_ids = resource_ids
         # application
+        self.region_id = region_id
+        # The ID of the request.
+        # 
+        # This parameter is required.
+        self.resource_ids = resource_ids
+        # [{"key":"k1","value":"v1"}]
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
-        # \[{"key":"k1","value":"v1"}]
+        # ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
         self.tags = tags
 
     def validate(self):
@@ -25234,30 +38251,29 @@ class TagResourcesResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether tags were added to the specified resources successfully. Valid values:
+        # 
+        # *   **true**: indicates that tags were added to the specified resources successfully.
+        # *   **false**: indicates that tags could not be added to the specified resources.
+        self.code = code
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # Indicates that the operation was successful.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether tags were added to the specified resources successfully. Valid values:
-        # 
-        # *   **true**: indicates that tags were added to the specified resources successfully.
-        # *   **false**: indicates that tags could not be added to the specified resources.
-        self.success = success
         # The ID of the trace. It can be used to query the details of a request.
+        self.message = message
+        # The returned message.
+        self.request_id = request_id
+        self.success = success
+        # Indicates that the operation was successful.
         self.trace_id = trace_id
 
     def validate(self):
@@ -25316,9 +38332,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25355,11 +38368,13 @@ class UnbindSlbRequest(TeaModel):
         internet: bool = None,
         intranet: bool = None,
     ):
-        # 0099b7be-5f5b-4512-a7fc-56049ef1\*\*\*\*\
+        # true
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # true
         self.internet = internet
-        # true
+        # The ID of the request.
         self.intranet = intranet
 
     def validate(self):
@@ -25395,7 +38410,10 @@ class UnbindSlbResponseBodyData(TeaModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order. It can be used to query the task status.
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -25429,33 +38447,29 @@ class UnbindSlbResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the internal-facing or Internet-facing SLB instance was disassociated successfully. Valid values:
+        # 
+        # *   **true**: The SLB instance was disassociated successfully.
+        # *   **false**: The SLB instance could not be disassociated.
+        self.code = code
+        # The ID of the change order. It can be used to query the task status.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned data.
-        self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The ID of the trace. It can be used to query the details of a request.
+        self.message = message
         # The returned message.
         # 
         # *   **success** is returned when the request succeeds.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the internal-facing or Internet-facing SLB instance was disassociated successfully. Valid values:
-        # 
-        # *   **true**: The SLB instance was disassociated successfully.
-        # *   **false**: The SLB instance could not be disassociated.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The returned data.
         self.trace_id = trace_id
 
     def validate(self):
@@ -25516,9 +38530,6 @@ class UnbindSlbResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25560,12 +38571,18 @@ class UntagResourcesRequest(TeaModel):
         # false
         self.delete_all = delete_all
         # cn-beijing
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # \["d42921c4-5433-4abd-8075-0e536f8b\*\*\*\*"]
+        # ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # application
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
-        # \["k1","k2"]
+        # ["k1","k2"]
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -25697,9 +38714,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25735,9 +38749,13 @@ class UpdateAppSecurityGroupRequest(TeaModel):
         app_id: str = None,
         security_group_id: str = None,
     ):
-        # 017f39b8-dfa4-4e16-a84b-1dcee4b1\*\*\*\*\
+        # sg-wz969ngg2e49q5i4\\*\\*\\*\\*\
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # sg-wz969ngg2e49q5i4\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -25774,31 +38792,30 @@ class UpdateAppSecurityGroupResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the security group of the application is successfully updated. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        self.code = code
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The error code.
-        # 
-        # *   If the request is successful, this parameter is not returned.****\
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The ID of the trace. It can be used to query details of a request.
+        self.message = message
         # The returned message.
         # 
         # *   If the request is successful, **success** is returned.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the security group of the application is successfully updated. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
         self.success = success
-        # The ID of the trace. It can be used to query details of a request.
+        # The error code.
+        # 
+        # *   If the request is successful, this parameter is not returned.****\
+        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
         self.trace_id = trace_id
 
     def validate(self):
@@ -25853,9 +38870,6 @@ class UpdateAppSecurityGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25891,7 +38905,9 @@ class UpdateApplicationDescriptionRequest(TeaModel):
         app_description: str = None,
         app_id: str = None,
     ):
+        # This parameter is required.
         self.app_description = app_description
+        # This parameter is required.
         self.app_id = app_id
 
     def validate(self):
@@ -25987,9 +39003,6 @@ class UpdateApplicationDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26029,17 +39042,109 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         scaling_rule_name: str = None,
         scaling_rule_timer: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\*\*\*\*\
+        # The application ID.
+        # 
+        # This parameter is required.
         self.app_id = app_id
-        # \-1
+        # The percentage of the minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. This is the default value.
+        # *   If you set the value to a number **from 0 to 100**, the minimum number of available instances is calculated by using the following formula: Current number of instances × (Value of MinReadyInstanceRatio × 100%). The value is the nearest integer rounded up from the calculated result. For example, if you set this parameter to **50**, and five instances are available, the minimum number of available instances is 3.
+        # 
+        # > When **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of \\*\\*MinReadyInstanceRatio** takes precedence.**** For example, if **MinReadyInstances** is set to **5\\*\\*, and **MinReadyInstanceRatio** is set to **50**, the minimum number of available instances is set to the nearest integer rounded up from the calculated result of the following formula: Current number of instances × **50%**.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # 3
+        # The minimum number of available instances. Take note of the following rules:
+        # 
+        # *   If you set the value to **0**, business interruptions occur when the auto-scaling policy is updated.
+        # *   If you set the value to \\*\\*-1\\*\\*, the minimum number of available instances is automatically set to a system-recommended value. The value is the nearest integer to which the calculated result of the following formula is rounded up: Current number of instances × 25%. For example, if five instances are available, the minimum number of available instances is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # 
+        # > Make sure that at least one instance is available during application deployment and rollback to prevent business interruptions.
         self.min_ready_instances = min_ready_instances
-        # {"maxReplicas":3,"minReplicas":1,"metrics":\[{"metricType":"CPU","metricTargetAverageUtilization":20},{"metricType":"MEMORY","metricTargetAverageUtilization":30},{"metricType":"tcpActiveConn","metricTargetAverageUtilization":20},{"metricType":"SLB_QPS","MetricTargetAverageUtilization":25,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"},{"metricType":"SLB_RT","MetricTargetAverageUtilization":35,"SlbProject":"aliyun-fc-cn-hangzhou-d95881d9-5d3c-5f26-a6b8-\*\*\*\*\*\*\*\*\*\*\*\*","SlbLogstore":"function-log","Vport":"80"}],"scaleUpRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":0},"scaleDownRules":{"step":"100","disabled":false,"stabilizationWindowSeconds":300}}
+        # The configurations of the metric-based auto scaling policy. This parameter is required if you set the ScalingRuleType parameter to metric.
+        # 
+        # Parameter description:
+        # 
+        # *   **maxReplicas**: the maximum number of instances in the application.
+        # 
+        # *   **minReplicas**: the minimum number of instances in the application.
+        # 
+        # *   **metricType**: the metric that is used to trigger the auto scaling policy.
+        # 
+        #     *   **CPU**: the CPU utilization.
+        #     *   **MEMORY**: the memory usage.
+        #     *   **tcpActiveConn**: the average number of active TCP connections in an application instance within 30 seconds.
+        #     *   **SLB_QPS**: the average queries per second (QPS) of the Internet-facing Server Load Balancer (SLB) instance associated with an application instance within 15 seconds.
+        #     *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+        # 
+        # *   **metricTargetAverageUtilization**: the limit on the metric specified by the **metricType** parameter.
+        # 
+        #     *   The limit on the CPU utilization. Unit: percentage.
+        #     *   The limit on the memory usage. Unit: percentage.
+        #     *   The limit on the average number of active TCP connections per second.
+        #     *   The limit on the QPS of the Internet-facing SLB instance.
+        #     *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+        # 
+        # *   **SlbProject**: the Log Service project.
+        # 
+        # *   **SlbLogstore**: the Log Service Logstore.
+        # 
+        # *   **Vport**: the listener port for the SLB instance. HTTP and HTTPS are supported.
+        # 
+        # *   **scaleUpRules**: the scale-out rule.
+        # 
+        # *   **scaleDownRules**: the scale-in rule.
+        # 
+        # *   **step**: the scale-out or scale-in step size. The maximum number of instances that can be added or removed per unit time.
+        # 
+        # *   **disabled**: specifies whether to disable the application scale-in. If you set this parameter to true, the application instances are never scaled in. This prevents business risks during peak hours.
+        # 
+        #     *   **true**: disables the application scale-in.
+        #     *   **false**: enables the application scale-in. Default value: false.
+        # 
+        # *   **stabilizationWindowSeconds**: the cooldown period during which the system is stable and does not perform scale-out or scale-in operations. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+        # 
+        # > You can specify one or more metrics as the trigger conditions of the auto scaling policy. If you specify multiple metrics, the application is scaled out when the value of a metric is greater than or equal to the limit. The number of application instances after the scale-out cannot exceed the configured maximum number of application instances. If the values of all the metrics are less than the limits, the application is scaled in. The number of instances after the scale-in cannot be less than the configured minimum number of application instances.
         self.scaling_rule_metric = scaling_rule_metric
-        # timer-0800-2100
+        # The name of the auto scaling policy. The name must start with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-). The name cannot exceed 32 characters in length.
+        # 
+        # > You cannot change the names of created policies.
+        # 
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
-        # {"beginDate":null,"endDate":null,"period":"\* \* \*","schedules":\[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
+        # The configurations of the scheduled auto scaling policy. This parameter is required when you set the ScalingRuleType parameter to timing or when you want to create a scheduled auto scaling policy by using an SDK.
+        # 
+        # Parameter description:
+        # 
+        # *   **beginDate** and **endDate**: specify the validity period of the scheduled auto scaling policy. **beginDate** specifies the start date and **endDate** specifies the end date. Take note of the following rules:
+        # 
+        #     *   If you set the two parameters to **null**, the scheduled auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+        #     *   If you set the two parameters to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if you set **beginDate** to **2021-03-25** and **endDate** to **2021-04-25**, the auto scaling policy is valid for one month.
+        # 
+        # *   **period**: specifies the frequency at which the scheduled auto scaling policy is executed. Valid values:
+        # 
+        #     *   **\\* \\* \\***: The scheduled auto scaling policy is executed at a specified point in time every day.
+        # 
+        #     *   **\\* \\* Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more specified days of each week. GMT+8 is used. Valid values:
+        # 
+        #         *   **Sun**\
+        #         *   **Mon**\
+        #         *   **Tue**\
+        #         *   **Wed**\
+        #         *   **Thu**\
+        #         *   **Fri**\
+        #         *   **Sat**\
+        # 
+        #     *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
+        # 
+        # *   **schedules**: specifies the points in time at which the auto scaling policy is triggered and the number of application instances that are retained during the corresponding period of time. You can specify up to 20 points in time. Parameter description:
+        # 
+        #     *   **atTime**: the point in time at which the policy is triggered. Format: **Hour:Minute**. Example: **08:00**.
+        # 
+        #     *   **targetReplicas**: specifies the number of application instances that you want to maintain by using this policy. You can also set the value to the minimum number of available instances required for each application release. Valid values: 1 to 50.
+        # 
+        #         **\
+        # 
+        #         **Note**Make sure that at least **one** instance is available during the application deployment and rollback to prevent your business from being interrupted. If you set the value to **0**, business interruptions occur when the application is updated.
         self.scaling_rule_timer = scaling_rule_timer
 
     def validate(self):
@@ -26087,6 +39192,10 @@ class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         self,
         metric_target_average_utilization: int = None,
         metric_type: str = None,
+        slb_id: str = None,
+        slb_logstore: str = None,
+        slb_project: str = None,
+        vport: str = None,
     ):
         # The limit on the metric.
         # 
@@ -26100,10 +39209,14 @@ class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
         # 
         # *   **CPU**: the CPU utilization.
         # *   **MEMORY**: the memory usage.
-        # *   **tcpActiveConn**: the average number of active TCP connections for an instance in 30 seconds.
-        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance in 15 seconds.
-        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance in 15 seconds.
+        # *   **tcpActiveConn**: the average number of active TCP connections of an application instance within 30 seconds.
+        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance within 15 seconds.
+        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
         self.metric_type = metric_type
+        self.slb_id = slb_id
+        self.slb_logstore = slb_logstore
+        self.slb_project = slb_project
+        self.vport = vport
 
     def validate(self):
         pass
@@ -26118,6 +39231,14 @@ class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
             result['MetricTargetAverageUtilization'] = self.metric_target_average_utilization
         if self.metric_type is not None:
             result['MetricType'] = self.metric_type
+        if self.slb_id is not None:
+            result['SlbId'] = self.slb_id
+        if self.slb_logstore is not None:
+            result['SlbLogstore'] = self.slb_logstore
+        if self.slb_project is not None:
+            result['SlbProject'] = self.slb_project
+        if self.vport is not None:
+            result['Vport'] = self.vport
         return result
 
     def from_map(self, m: dict = None):
@@ -26126,6 +39247,14 @@ class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(TeaModel):
             self.metric_target_average_utilization = m.get('MetricTargetAverageUtilization')
         if m.get('MetricType') is not None:
             self.metric_type = m.get('MetricType')
+        if m.get('SlbId') is not None:
+            self.slb_id = m.get('SlbId')
+        if m.get('SlbLogstore') is not None:
+            self.slb_logstore = m.get('SlbLogstore')
+        if m.get('SlbProject') is not None:
+            self.slb_project = m.get('SlbProject')
+        if m.get('Vport') is not None:
+            self.vport = m.get('Vport')
         return self
 
 
@@ -26138,7 +39267,7 @@ class UpdateApplicationScalingRuleResponseBodyDataMetric(TeaModel):
     ):
         # The maximum number of instances.
         self.max_replicas = max_replicas
-        # The list of metrics that are used to trigger the auto scaling policy.
+        # The metrics that are used to trigger the auto scaling policy.
         self.metrics = metrics
         # The minimum number of instances.
         self.min_replicas = min_replicas
@@ -26183,10 +39312,14 @@ class UpdateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
     def __init__(
         self,
         at_time: str = None,
+        max_replicas: int = None,
+        min_replicas: int = None,
         target_replicas: int = None,
     ):
         # The point in time. Format: **Hour:Minute**.
         self.at_time = at_time
+        self.max_replicas = max_replicas
+        self.min_replicas = min_replicas
         # The expected number of instances.
         self.target_replicas = target_replicas
 
@@ -26201,6 +39334,10 @@ class UpdateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         result = dict()
         if self.at_time is not None:
             result['AtTime'] = self.at_time
+        if self.max_replicas is not None:
+            result['MaxReplicas'] = self.max_replicas
+        if self.min_replicas is not None:
+            result['MinReplicas'] = self.min_replicas
         if self.target_replicas is not None:
             result['TargetReplicas'] = self.target_replicas
         return result
@@ -26209,6 +39346,10 @@ class UpdateApplicationScalingRuleResponseBodyDataTimerSchedules(TeaModel):
         m = m or dict()
         if m.get('AtTime') is not None:
             self.at_time = m.get('AtTime')
+        if m.get('MaxReplicas') is not None:
+            self.max_replicas = m.get('MaxReplicas')
+        if m.get('MinReplicas') is not None:
+            self.min_replicas = m.get('MinReplicas')
         if m.get('TargetReplicas') is not None:
             self.target_replicas = m.get('TargetReplicas')
         return self
@@ -26224,31 +39365,31 @@ class UpdateApplicationScalingRuleResponseBodyDataTimer(TeaModel):
     ):
         # The start date of the validity period of the scheduled auto scaling policy. Parameter description:
         # 
-        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
+        # *   If **BeginDate** and **EndDate** are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
         self.begin_date = begin_date
-        # The end date of the validity period of the scheduled auto scaling policy. Parameter description:
+        # The end date of the validity period of the scheduled auto scaling policy. Take note of the following rules:
         # 
-        # *   If both the **BeginDate** and **EndDate** parameters are set to **null**, the auto scaling policy can always be triggered. The default value for these parameters is null.
-        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is 2021-03-25 and **EndDate** is 2021-04-25, the auto scaling policy is valid for one month.
+        # *   If **BeginDate** and **EndDate** are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
+        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
         self.end_date = end_date
-        # The days on which the scheduled auto scaling policy takes effect. Valid values:
+        # The frequency at which the scheduled auto scaling policy is executed. Valid values:
         # 
-        # *   **\* \* \***: The scheduled auto scaling policy takes effect at a specified time every day.
+        # *   **\\* \\* \\***: The scheduled auto scaling policy is executed at a specified point in time every day.
         # 
-        # *   **\* \* Fri,Mon**: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a week. The specified time is in the GMT+8 time zone. Valid values:
+        # *   **\\* \\* Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each week. GMT+8 is used. Valid values:
         # 
-        #     *   **Sun**: Sunday
-        #     *   **Mon**: Monday
-        #     *   **Tue**: Tuesday
-        #     *   **Wed**: Wednesday
-        #     *   **Thu**: Thursday
-        #     *   **Fri**: Friday
-        #     *   **Sat**: Saturday
+        #     *   **Sun**\
+        #     *   **Mon**\
+        #     *   **Tue**\
+        #     *   **Wed**\
+        #     *   **Thu**\
+        #     *   **Fri**\
+        #     *   **Sat**\
         # 
-        # *   **1,2,3,28,31 \* \***: The scheduled auto scaling policy takes effect at a specified time on one or multiple days of a month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy takes effect on the specified days other than the 31st day.
+        # *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
         self.period = period
-        # The points in time when the auto scaling policy is triggered within one day.
+        # The points in time at which the auto scaling policy is triggered within one day.
         self.schedules = schedules
 
     def validate(self):
@@ -26304,7 +39445,7 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         timer: UpdateApplicationScalingRuleResponseBodyDataTimer = None,
         update_time: int = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
         # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
@@ -26312,18 +39453,18 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
         self.metric = metric
-        # Indicates whether the auto scaling policy is enabled. Valid values:
+        # Specifies whether to enable the auto scaling policy. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**: The auto scaling policy is enabled.
+        # *   **false**: The auto scaling policy is disabled.
         self.scale_rule_enabled = scale_rule_enabled
         # The name of the auto scaling policy.
         self.scale_rule_name = scale_rule_name
         # The type of the auto scaling policy. Valid values:
         # 
-        # *   **timing**: the scheduled auto scaling policy.
-        # *   **metric**: the metric-based auto scaling policy.
-        # *   **mix**: the hybrid auto scaling policy.
+        # *   **timing**: a scheduled auto scaling policy
+        # *   **metric**: a metric-based auto scaling policy
+        # *   **mix**: a hybrid auto scaling policy
         self.scale_rule_type = scale_rule_type
         # The details of the scheduled auto scaling policy.
         self.timer = timer
@@ -26398,15 +39539,33 @@ class UpdateApplicationScalingRuleResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
+        # The error code returned. Take note of the following rules:
+        # 
+        # *   If the call is successful, **ErrorCode** is not returned.
+        # *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
+        # The returned message. Take note of the following rules:
+        # 
+        # *   If the call is successful, **success** is returned.
+        # *   If the call fails, an error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # Specifies whether the instances are successfully restarted. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -26467,9 +39626,6 @@ class UpdateApplicationScalingRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26505,7 +39661,9 @@ class UpdateApplicationVswitchesRequest(TeaModel):
         app_id: str = None,
         v_switch_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -26601,9 +39759,6 @@ class UpdateApplicationVswitchesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26640,8 +39795,11 @@ class UpdateConfigMapRequest(TeaModel):
         data: str = None,
         description: str = None,
     ):
-        # 1
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.config_map_id = config_map_id
+        # This parameter is required.
         self.data = data
         self.description = description
 
@@ -26678,7 +39836,10 @@ class UpdateConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: str = None,
     ):
-        # The ID of the ConfigMap instance.
+        # The returned error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -26712,30 +39873,26 @@ class UpdateConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the ConfigMap instance was updated. Valid values:
+        # 
+        # *   **true**: The instance was updated.
+        # *   **false**: The instance failed to be updated.
+        self.code = code
+        # The ID of the ConfigMap instance.
+        self.data = data
         # The HTTP status code. Valid values:
         # 
         # *   **2xx:**: indicates that the call was successful.
         # *   **3xx**: indicates that the call was redirected.
         # *   **4xx**: indicates that the call failed.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The returned result.
-        self.data = data
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned information.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the ConfigMap instance was updated. Valid values:
-        # 
-        # *   **true**: The instance was updated.
-        # *   **false**: The instance failed to be updated.
-        self.success = success
         # The ID of the trace. The ID is used to query the details of a request.
+        self.message = message
+        # The returned information.
+        self.request_id = request_id
+        self.success = success
+        # The returned result.
         self.trace_id = trace_id
 
     def validate(self):
@@ -26796,9 +39953,6 @@ class UpdateConfigMapResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26840,11 +39994,13 @@ class UpdateGreyTagRouteRequest(TeaModel):
         self.alb_rules = alb_rules
         # Canary Release - Regions
         self.description = description
-        # \[{"condition":"OR","group":"DUBBO","items":\[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
+        # [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
         self.dubbo_rules = dubbo_rules
         # 1
+        # 
+        # This parameter is required.
         self.grey_tag_route_id = grey_tag_route_id
-        # \[{"condition":"OR","items":\[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
+        # [{"condition":"OR","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
         self.sc_rules = sc_rules
 
     def validate(self):
@@ -27006,9 +40162,6 @@ class UpdateGreyTagRouteResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27051,22 +40204,15 @@ class UpdateIngressRequest(TeaModel):
         load_balance_type: str = None,
         rules: str = None,
     ):
-        # 188077086902\*\*\*\*\_176993d\*\*\*\*\_181437\*\*\*\*\_108724\*\*\*\*\
         self.cert_id = cert_id
         self.cert_ids = cert_ids
-        # {"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080}
         self.default_rule = default_rule
-        # ingress-sae-test
         self.description = description
-        # 87
+        # This parameter is required.
         self.ingress_id = ingress_id
-        # 443
         self.listener_port = listener_port
-        # HTTP
         self.listener_protocol = listener_protocol
-        # clb
         self.load_balance_type = load_balance_type
-        # \[{"appId":"395b60e4-0550-458d-9c54-a265d036\*\*\*\*","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2\*\*\*\*","containerPort":8080,"domain":"sae.site","path":"/path2"}]
         self.rules = rules
 
     def validate(self):
@@ -27126,7 +40272,6 @@ class UpdateIngressResponseBodyData(TeaModel):
         self,
         ingress_id: int = None,
     ):
-        # The ID of the routing rule.
         self.ingress_id = ingress_id
 
     def validate(self):
@@ -27160,30 +40305,12 @@ class UpdateIngressResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
         self.code = code
-        # The returned data.
         self.data = data
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
-        # The returned message.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the configurations of the routing rule were updated. Valid values:
-        # 
-        # *   **true**: The configurations were updated.
-        # *   **false**: The configurations could not be updated.
         self.success = success
-        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -27244,9 +40371,6 @@ class UpdateIngressResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27325,50 +40449,179 @@ class UpdateJobRequest(TeaModel):
         war_start_options: str = None,
         web_container: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used to pull images across accounts. For more information, see [Grant permissions across Alibaba Cloud accounts by using a RAM role](https://help.aliyun.com/document_detail/223585.html).
         self.acr_assume_role_arn = acr_assume_role_arn
+        # The ID of Container Registry Enterprise Edition instance N. This parameter is required when the **ImageUrl** parameter is set to the URL of an image in an ACR Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # The number of times the job is retried.
         self.backoff_limit = backoff_limit
+        # The command that is used to start the image. The command must be an existing executable object in the container. Example:
+        # 
+        #     command:
+        #           - echo
+        #           - abc
+        #           - >
+        #           - file0
+        # 
+        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
         self.command = command
+        # The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. The name must meet the following format requirements:
+        # 
+        # `["a","b"]`
+        # 
+        # In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
         self.command_args = command_args
+        # The concurrency policy of the job. Valid values:
+        # 
+        # *   **Forbid**: Prohibits concurrent running. If the previous job is not completed, no new job is created.
+        # *   **Allow**: Allows concurrent running.
+        # *   **Replace**: If the previous job is not completed when the time to create a new job is reached, the new job replaces the previous job.
         self.concurrency_policy = concurrency_policy
+        # The description of the **ConfigMap** instance mounted to the application. Use configurations created on the Configuration Items page to configure containers. The following parameters are involved:
+        # 
+        # *   **congfigMapId**: the ID of the ConfigMap instance. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID.
+        # *   **key**: the key.
+        # 
+        # > You can use the `sae-sys-configmap-all` key to mount all keys.
+        # 
+        # *   **mountPath**: the mount path.
         self.config_map_mount_desc = config_map_mount_desc
+        # The custom mappings between hostnames and IP addresses in the container. Valid values:
+        # 
+        # *   **hostName**: the domain name or hostname.
+        # *   **ip**: the IP address.
         self.custom_host_alias = custom_host_alias
+        # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
         self.enable_image_accl = enable_image_accl
+        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # 
+        # *   Configure custom environment variables
+        # 
+        #     *   **name**: the name of the environment variable.
+        #     *   **value**: the value of the environment variable.
+        # 
+        # *   Reference ConfigMap
+        # 
+        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
+        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
+        #     *   **configMapId**: the ConfigMap ID.
+        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
         self.envs = envs
+        # The ID of the corresponding Secret.
         self.image_pull_secrets = image_pull_secrets
+        # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
         self.image_url = image_url
+        # The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_args = jar_start_args
+        # The option settings in the JAR package. The settings are used to start the application container. The default startup command for application deployment is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
         self.jar_start_options = jar_start_options
+        # The version of the Java development kit (JDK) on which the deployment package of the application depends. The following versions are supported:
+        # 
+        # *   **Open JDK 8**\
+        # *   **Open JDK 7**\
+        # *   **Dragonwell 11**\
+        # *   **Dragonwell 8**\
+        # *   **openjdk-8u191-jdk-alpine3.9**\
+        # *   **openjdk-7u201-jdk-alpine3.9**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.jdk = jdk
+        # The configurations for mounting the NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **MountDesc** only in the first request. If you no longer need to use NAS, leave **MountDesc** empty in the request.
         self.mount_desc = mount_desc
+        # The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
         self.mount_host = mount_host
+        # The ID of the Apsara File Storage NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **NasId** only in the first request. If you no longer need to use NAS, leave **NasId** empty in the request.
         self.nas_id = nas_id
+        # The AccessKey ID that is used to read data from and write data to OSS.
         self.oss_ak_id = oss_ak_id
+        # The AccessKey secret that is used to read data from and write data to OSS.
         self.oss_ak_secret = oss_ak_secret
+        # The information about the mounted Object Storage Service (OSS) bucket. The following parameters are involved:
+        # 
+        # *   **bucketName**: the name of the OSS bucket.
+        # 
+        # *   **bucketPath**: the directory or object in OSS. If the specified directory or object does not exist, an error is returned.
+        # 
+        # *   **mountPath**: the directory of the container in SAE. If the path already exists, the newly specified path overwrites the previous one. If the path does not exist, it is created.
+        # 
+        # *   **readOnly**: specifies whether to only allow the container path to read data from the OSS directory. Valid values:
+        # 
+        #     *   **true**: The container path only has read permission on the OSS directory.
+        #     *   **false**: The application has read and write permissions.
         self.oss_mount_descs = oss_mount_descs
+        # The address of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
         self.package_url = package_url
+        # The version of the deployment package. This parameter is required if you set **PackageType** to **FatJar**, **War**, or **PythonZip**.
         self.package_version = package_version
+        # The ID of Container Registry Enterprise Edition instance N.
         self.php = php
+        # The details of the PHP configuration file.
         self.php_config = php_config
+        # The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
         self.php_config_location = php_config_location
+        # The script to be run after the container is started. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
         self.post_start = post_start
+        # The script that is run before the container is stopped. Example: `{"exec":{"command":["sh","-c","echo hello"\\]}}`
         self.pre_stop = pre_stop
+        # The programming language. Valid values: **java**, **php**, **python**, and **shell**.
         self.programming_language = programming_language
+        # The Python environment. Set the value to **PYTHON 3.9.15**.
         self.python = python
+        # The configurations for installing custom module dependencies. By default, the dependencies defined by the requirements.txt file in the root directory are installed. If the package does not contain this file and you do not configure custom dependencies in the package, specify the dependencies that you want to install in the text box.
         self.python_modules = python_modules
+        # The ID of the job that you reference.
         self.ref_app_id = ref_app_id
+        # The number of concurrent instances.
         self.replicas = replicas
+        # Specifies whether to enable job sharding.
         self.slice = slice
+        # The parameters of job sharding.
         self.slice_envs = slice_envs
+        # The configurations of Log Service.
+        # 
+        # *   To use Log Service resources that are automatically created by SAE, set this parameter to `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+        # *   To use custom Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # 
+        # The following parameters are involved:
+        # 
+        # *   **projectName**: the name of the Log Service project.
+        # *   **logDir**: the path in which logs are stored.
+        # *   **logType**: the log type. **stdout**: the standard output log of the container. You can specify only one stdout value for this parameter. If you leave this parameter empty, file logs are collected.
+        # *   **logstoreName**: the name of the Logstore in Log Service.
+        # *   **logtailName**: the name of the Logtail configuration in Log Service. If you do not configure this parameter, a new Logtail configuration is created.
+        # 
+        # If you do not need to modify the logging configurations when you deploy the application, configure the **SlsConfigs** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use Log Service, leave the **SlsConfigs** parameter empty in the request.
+        # 
+        # > A Log Service project that is automatically created by SAE when you create an application is deleted when the application is deleted. Therefore, when you create an application, you cannot select a Log Service project that is automatically created by SAE for log collection.
         self.sls_configs = sls_configs
+        # The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
         self.termination_grace_period_seconds = termination_grace_period_seconds
+        # The timeout period. Unit: seconds.
         self.timeout = timeout
+        # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
+        # The Tomcat configuration. If you want to delete the configuration, set this parameter to {} or leave this parameter empty. Valid values:
+        # 
+        # *   **port**: the port number. The port number ranges from 1024 to 65535. Though the admin permissions are configured for the container, the root permissions are required to perform operations on ports whose number is smaller than 1024. Enter a value that ranges from 1025 to 65535 because the container has only the admin permissions. If you do not specify this parameter, the default port number 8080 is used.
+        # *   **contextPath**: the path. Default value: /. This value indicates the root directory.
+        # *   **maxThreads**: the maximum number of connections in the connection pool. Default value: 400.
+        # *   **uriEncoding**: the URI encoding scheme in the Tomcat container. Valid values: **UTF-8**, **ISO-8859-1**, **GBK**, and GB2312. If you do not specify this parameter, the default value **ISO-8859-1** is used.
+        # *   **useBodyEncoding**: specifies whether to use the encoding scheme that is specified by **BodyEncoding for URL**. Default value: **true**.
         self.tomcat_config = tomcat_config
         self.trigger_config = trigger_config
+        # The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
+        # The version of the Tomcat container on which the deployment package depends. The following versions are supported:
+        # 
+        # *   **apache-tomcat-7.0.91**\
+        # *   **apache-tomcat-8.5.42**\
+        # 
+        # This parameter is not returned if the **PackageType** parameter is set to **Image**.
         self.web_container = web_container
 
     def validate(self):
@@ -27573,7 +40826,9 @@ class UpdateJobResponseBodyData(TeaModel):
         app_id: str = None,
         change_order_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The ID of the change order. It can be used to query the task status.
         self.change_order_id = change_order_id
 
     def validate(self):
@@ -27611,12 +40866,33 @@ class UpdateJobResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response.
         self.data = data
+        # The error code returned. Valid values:
+        # 
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
+        # The additional information that is returned. Valid values:
+        # 
+        # *   success: If the call is successful, **success** is returned.
+        # *   An error code: If the call fails, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application deployment is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -27677,9 +40953,6 @@ class UpdateJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27719,12 +40992,15 @@ class UpdateNamespaceRequest(TeaModel):
         namespace_name: str = None,
     ):
         self.enable_micro_registration = enable_micro_registration
+        # The short ID of the namespace. You do not need to specify a region ID. We recommend that you configure this parameter. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
         self.name_space_short_id = name_space_short_id
-        # desc
+        # The description of the namespace. The description cannot exceed 100 characters in length.
         self.namespace_description = namespace_description
-        # cn-beijing:test
+        # The long ID of the namespace. If you configure this parameter, the long ID take effects and the value of the NameSpaceShortId parameter is ignored. To ensure compatibility, we recommend that you specify a short namespace ID. A long namespace ID follows the `<RegionId>:<NamespaceId>` format. The `NamespaceId` variable can contain only lowercase letters and digits. Example: `cn-beijing:test`. The value of the NamespaceId variable cannot exceed 32 characters in length. For more information about **RegionId**, you can call the [DescribeRegions](https://help.aliyun.com/document_detail/126213.html) operation to obtain the IDs of regions supported by SAE.
         self.namespace_id = namespace_id
-        # name
+        # The name of the namespace. The name cannot exceed 64 characters in length.
+        # 
+        # This parameter is required.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -27774,6 +41050,7 @@ class UpdateNamespaceResponseBodyData(TeaModel):
         region_id: str = None,
     ):
         self.enable_micro_registration = enable_micro_registration
+        # The short ID of the namespace.
         self.name_space_short_id = name_space_short_id
         # The description of the namespace.
         self.namespace_description = namespace_description
@@ -27837,28 +41114,28 @@ class UpdateNamespaceResponseBody(TeaModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
         # The information of the namespace.
         self.data = data
-        # The error code.
+        # The error code returned. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # *   The **ErrorCode** parameter is not returned if the request succeeds.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the information of the namespace was updated. Valid values:
+        # Indicates whether the information about the namespace was updated. Valid values:
         # 
-        # *   **true**: indicates that the information was updated.
-        # *   **false**: indicates that the information could not be updated.
+        # *   **true**: The instance was updated.
+        # *   **false**: The instance failed to be updated.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -27919,9 +41196,6 @@ class UpdateNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27959,9 +41233,11 @@ class UpdateNamespaceVpcRequest(TeaModel):
         vpc_id: str = None,
     ):
         self.name_space_short_id = name_space_short_id
-        # cn-beijing:test
+        # vpc-2ze0i263cnn311nvj\\*\\*\\*\\*\
         self.namespace_id = namespace_id
-        # vpc-2ze0i263cnn311nvj\*\*\*\*\
+        # The ID of the request.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -28002,31 +41278,30 @@ class UpdateNamespaceVpcResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Indicates whether the VPC information was updated. Valid values:
+        # 
+        # *   **true**: indicates that the information was updated.
+        # *   **false**: indicates that the information could not be updated.
+        self.code = code
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: indicates that the request was successful.
         # *   **3xx**: indicates that the request was redirected.
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
-        self.code = code
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The ID of the trace. It can be used to query the details of a request.
+        self.message = message
         # The returned message.
         # 
         # *   **success** is returned when the request succeeds.
         # *   An error code is returned when the request fails.
-        self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the VPC information was updated. Valid values:
-        # 
-        # *   **true**: indicates that the information was updated.
-        # *   **false**: indicates that the information could not be updated.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The error code.
+        # 
+        # *   The **ErrorCode** parameter is not returned when the request succeeds.
+        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.trace_id = trace_id
 
     def validate(self):
@@ -28081,9 +41356,6 @@ class UpdateNamespaceVpcResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28113,15 +41385,90 @@ class UpdateNamespaceVpcResponse(TeaModel):
         return self
 
 
+class UpdateSecretRequestSecretData(TeaModel):
+    def __init__(
+        self,
+        secret_data: str = None,
+    ):
+        # This parameter is required.
+        self.secret_data = secret_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecretData') is not None:
+            self.secret_data = m.get('SecretData')
+        return self
+
+
 class UpdateSecretRequest(TeaModel):
     def __init__(
         self,
         namespace_id: str = None,
-        secret_data: str = None,
+        secret_data: UpdateSecretRequestSecretData = None,
         secret_id: int = None,
     ):
+        # This parameter is required.
         self.namespace_id = namespace_id
+        # This parameter is required.
         self.secret_data = secret_data
+        # This parameter is required.
+        self.secret_id = secret_id
+
+    def validate(self):
+        if self.secret_data:
+            self.secret_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.secret_data is not None:
+            result['SecretData'] = self.secret_data.to_map()
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('SecretData') is not None:
+            temp_model = UpdateSecretRequestSecretData()
+            self.secret_data = temp_model.from_map(m['SecretData'])
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class UpdateSecretShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        secret_data_shrink: str = None,
+        secret_id: int = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.secret_data_shrink = secret_data_shrink
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -28135,8 +41482,8 @@ class UpdateSecretRequest(TeaModel):
         result = dict()
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
-        if self.secret_data is not None:
-            result['SecretData'] = self.secret_data
+        if self.secret_data_shrink is not None:
+            result['SecretData'] = self.secret_data_shrink
         if self.secret_id is not None:
             result['SecretId'] = self.secret_id
         return result
@@ -28146,7 +41493,7 @@ class UpdateSecretRequest(TeaModel):
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
         if m.get('SecretData') is not None:
-            self.secret_data = m.get('SecretData')
+            self.secret_data_shrink = m.get('SecretData')
         if m.get('SecretId') is not None:
             self.secret_id = m.get('SecretId')
         return self
@@ -28256,9 +41603,6 @@ class UpdateSecretResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28284,6 +41628,318 @@ class UpdateSecretResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateSecretResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: UpdateWebApplicationInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = UpdateWebApplicationInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebApplicationScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: UpdateWebApplicationScalingConfigInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = UpdateWebApplicationScalingConfigInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebApplicationScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationScalingConfigBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationScalingConfigBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebApplicationTrafficConfigRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: UpdateWebApplicationTrafficConfigInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = UpdateWebApplicationTrafficConfigInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebApplicationTrafficConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebApplicationTrafficConfigBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebApplicationTrafficConfigBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebCustomDomainRequest(TeaModel):
+    def __init__(
+        self,
+        namespace_id: str = None,
+        body: UpdateWebCustomDomainInput = None,
+    ):
+        # This parameter is required.
+        self.namespace_id = namespace_id
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('body') is not None:
+            temp_model = UpdateWebCustomDomainInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWebCustomDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WebCustomDomainBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WebCustomDomainBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
