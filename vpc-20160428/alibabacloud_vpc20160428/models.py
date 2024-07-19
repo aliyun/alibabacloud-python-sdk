@@ -1173,7 +1173,7 @@ class AddPublicIpAddressPoolCidrBlockResponseBody(TeaModel):
         cidr_block: str = None,
         request_id: str = None,
     ):
-        # The CIDR blocks.
+        # The CIDR block.
         self.cidr_block = cidr_block
         # The request ID.
         self.request_id = request_id
@@ -9169,6 +9169,7 @@ class CreateFailoverTestJobRequest(TeaModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         job_duration: int = None,
         job_type: str = None,
         name: str = None,
@@ -9181,6 +9182,7 @@ class CreateFailoverTestJobRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        self.dry_run = dry_run
         # This parameter is required.
         self.job_duration = job_duration
         # This parameter is required.
@@ -9208,6 +9210,8 @@ class CreateFailoverTestJobRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.job_duration is not None:
             result['JobDuration'] = self.job_duration
         if self.job_type is not None:
@@ -9234,6 +9238,8 @@ class CreateFailoverTestJobRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('JobDuration') is not None:
             self.job_duration = m.get('JobDuration')
         if m.get('JobType') is not None:
@@ -15093,45 +15099,49 @@ class CreateRouteEntriesRequestRouteEntries(TeaModel):
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
-        # The description of the custom route entry. You can specify up to 50 descriptions.
+        # The description of the custom route. You can specify at most 50 descriptions.
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block of the custom route entry. Both IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks. Make sure that the destination CIDR block meets the following requirements:
+        # The destination CIDR block of the custom route. IPv4 CIDR blocks, IPv6 CIDR blocks, and prefix lists are supported. You can enter up to 50 destination CIDR blocks. Make sure that the following requirements are met:
         # 
-        # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
-        # *   The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+        # *   The destination CIDR block cannot point to 100.64.0.0/10 or belong to 100.64.0.0/10.
+        # *   The destination CIDR block of each route in the route table is unique.
         # 
         # This parameter is required.
         self.dst_cidr_block = dst_cidr_block
-        # The IP version. You can specify up to 50 IP versions. Valid values:
+        # The IP version. Valid values: You can specify at most 50 IP versions. Valid values:
         # 
         # *   **4**: IPv4
         # *   **6**: IPv6
         self.ip_version = ip_version
-        # The name of the custom route entry that you want to add. You can specify up to 50 names.
+        # The name of the custom route that you want to add. You can specify at most 50 names.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
-        # The next hop ID of the custom route entry. You can specify up to 50 next hop IDs.
+        # The ID of the next hop for the custom route. You can specify at most 50 instance IDs.
         # 
         # This parameter is required.
         self.next_hop = next_hop
-        # The type of next hop. You can specify up to 50 next hop types. Valid values:
+        # The type of next hop. You can specify at most 50 next hop types. Valid values:
         # 
-        # *   **Instance** (default): an Elastic Compute Service (ECS) instance
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
-        # *   **RouterInterface**: a router interface.
-        # *   **NetworkInterface**: an elastic network interface (ENI).
-        # *   **VpnGateway**: a VPN gateway.
-        # *   **IPv6Gateway**: an IPv6 gateway.
-        # *   **NatGateway**: a NAT gateway.
-        # *   **Attachment**: a transit router.
-        # *   **VpcPeer**: a VPC peering connection.
+        # *   **Instance**: Elastic Compute Service (ECS) instance. This is the default value.
+        # *   **HaVip**: high-availability virtual IP address (HAVIP).
+        # *   **RouterInterface**: router interface.
+        # *   **NetworkInterface**: elastic network interface (ENI).
+        # *   **VpnGateway**: VPN gateway.
+        # *   **IPv6Gateway**: IPv6 gateway.
+        # *   **NatGateway**: NAT gateway.
+        # *   **Attachment**: transit router.
+        # *   **VpcPeer**: VPC peering connection.
+        # *   **Ipv4Gateway**: IPv4 gateway.
+        # *   **GatewayEndpoint**: gateway endpoint.
+        # *   **CenBasic**: CEN does not support transfer routers.
+        # *   **Ecr**: Express Connect Router (ECR).
         # 
         # This parameter is required.
         self.next_hop_type = next_hop_type
-        # The ID of the route table to which you want to add a custom route entry. You can specify up to 50 route table IDs.
+        # The ID of the route table to which you want to add custom route s. You can specify at most 50 route table IDs.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
@@ -15198,7 +15208,7 @@ class CreateRouteEntriesRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The route entries.
+        # The routes.
         # 
         # This parameter is required.
         self.route_entries = route_entries
@@ -15496,6 +15506,9 @@ class CreateRouteEntryRequest(TeaModel):
         # *   **NatGateway**: a NAT gateway.
         # *   **Attachment**: a transit router.
         # *   **VpcPeer**: a VPC peering connection.
+        # *   **Ipv4Gateway**: an IPv4 gateway.
+        # *   **GatewayEndpoint**: a gateway endpoint.
+        # *   **Ecr**: a Express Connect Router (ECR).
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22140,19 +22153,19 @@ class CreateVpnGatewayRequest(TeaModel):
         vpc_id: str = None,
         vpn_type: str = None,
     ):
-        # Specifies whether to enable automatic payment for the VPN gateway. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         # 
-        # >  We recommend that you enable automatic payment. If you disable automatic payment, you must manually pay the bill for creating the VPN gateway.
+        # > To create a VPN gateway, we recommend that you enable automatic payment. If you disable automatic payment, you must manually pay the bill to create the VPN gateway.
         self.auto_pay = auto_pay
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         # 
         # *   If you want to create a public VPN gateway, valid values are **10**, **100**, **200**, **500**, and **1000**.
         # *   If you want to create a private VPN gateway, valid values are **200** and **1000**.
         # 
-        # >  The maximum bandwidth supported by VPN gateways in some regions is 200 Mbit/s. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
+        # >  The maximum bandwidth supported by VPN gateways in some regions is 500 Mbit/s. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
@@ -22170,12 +22183,12 @@ class CreateVpnGatewayRequest(TeaModel):
         # 
         # For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # Specifies whether to enable the IPsec-VPN feature. Valid values:
+        # Specifies whether to enable IPsec-VPN for the VPN gateway. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
         self.enable_ipsec = enable_ipsec
-        # Specifies whether to enable the SSL-VPN feature for the VPN gateway. Valid values:
+        # Specifies whether to enable SSL-VPN. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -69175,9 +69188,18 @@ class GetPublicIpAddressPoolServiceStatusRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the IP address pool.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -69229,7 +69251,12 @@ class GetPublicIpAddressPoolServiceStatusResponseBody(TeaModel):
         enabled: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the IP address pool feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** You can call OpenPublicIpAddressPoolService to enable the IP address pool feature.
         self.enabled = enabled
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75845,6 +75872,10 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         # *   **CloudBox** Only cloud box users can select this type.
         # *   **Default** (default)
         self.biz_type = biz_type
+        # The status of the IP address pool.
+        # 
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.business_status = business_status
         # The time when the IP address pool was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
@@ -98965,6 +98996,7 @@ class UpdateFailoverTestJobRequest(TeaModel):
         self,
         client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         job_duration: int = None,
         job_id: str = None,
         name: str = None,
@@ -98976,6 +99008,7 @@ class UpdateFailoverTestJobRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        self.dry_run = dry_run
         self.job_duration = job_duration
         # This parameter is required.
         self.job_id = job_id
@@ -98999,6 +99032,8 @@ class UpdateFailoverTestJobRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.job_duration is not None:
             result['JobDuration'] = self.job_duration
         if self.job_id is not None:
@@ -99023,6 +99058,8 @@ class UpdateFailoverTestJobRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('JobDuration') is not None:
             self.job_duration = m.get('JobDuration')
         if m.get('JobId') is not None:

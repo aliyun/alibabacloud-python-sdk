@@ -7387,6 +7387,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.job_duration):
             query['JobDuration'] = request.job_duration
         if not UtilClient.is_unset(request.job_type):
@@ -7444,6 +7446,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.job_duration):
             query['JobDuration'] = request.job_duration
         if not UtilClient.is_unset(request.job_type):
@@ -35587,7 +35591,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
         """
-        @summary 查询IP地址池功能的开通状态。
+        @summary Queries whether the IP address pool feature is enabled.
         
         @param request: GetPublicIpAddressPoolServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35634,7 +35638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
         """
-        @summary 查询IP地址池功能的开通状态。
+        @summary Queries whether the IP address pool feature is enabled.
         
         @param request: GetPublicIpAddressPoolServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35680,7 +35684,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.GetPublicIpAddressPoolServiceStatusRequest,
     ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
         """
-        @summary 查询IP地址池功能的开通状态。
+        @summary Queries whether the IP address pool feature is enabled.
         
         @param request: GetPublicIpAddressPoolServiceStatusRequest
         @return: GetPublicIpAddressPoolServiceStatusResponse
@@ -35693,7 +35697,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.GetPublicIpAddressPoolServiceStatusRequest,
     ) -> vpc_20160428_models.GetPublicIpAddressPoolServiceStatusResponse:
         """
-        @summary 查询IP地址池功能的开通状态。
+        @summary Queries whether the IP address pool feature is enabled.
         
         @param request: GetPublicIpAddressPoolServiceStatusRequest
         @return: GetPublicIpAddressPoolServiceStatusResponse
@@ -38513,7 +38517,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPublicIpAddressPoolsResponse:
         """
-        @summary Queries the information about the available IP address pools.
+        @summary Queries available IP address pools.
         
         @param request: ListPublicIpAddressPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38576,7 +38580,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ListPublicIpAddressPoolsResponse:
         """
-        @summary Queries the information about the available IP address pools.
+        @summary Queries available IP address pools.
         
         @param request: ListPublicIpAddressPoolsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38638,7 +38642,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListPublicIpAddressPoolsRequest,
     ) -> vpc_20160428_models.ListPublicIpAddressPoolsResponse:
         """
-        @summary Queries the information about the available IP address pools.
+        @summary Queries available IP address pools.
         
         @param request: ListPublicIpAddressPoolsRequest
         @return: ListPublicIpAddressPoolsResponse
@@ -38651,7 +38655,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ListPublicIpAddressPoolsRequest,
     ) -> vpc_20160428_models.ListPublicIpAddressPoolsResponse:
         """
-        @summary Queries the information about the available IP address pools.
+        @summary Queries available IP address pools.
         
         @param request: ListPublicIpAddressPoolsRequest
         @return: ListPublicIpAddressPoolsResponse
@@ -53305,6 +53309,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.job_duration):
             query['JobDuration'] = request.job_duration
         if not UtilClient.is_unset(request.job_id):
@@ -53360,6 +53366,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.job_duration):
             query['JobDuration'] = request.job_duration
         if not UtilClient.is_unset(request.job_id):

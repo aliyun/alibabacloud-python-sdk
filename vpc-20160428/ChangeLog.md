@@ -1,3 +1,11 @@
+2024-07-19 Version: 6.7.1
+- Update API CreateFailoverTestJob: add param DryRun.
+- Update API CreateFailoverTestJob: update param ResourceType.
+- Update API DescribeFailoverTestJob: update response param.
+- Update API DescribeFailoverTestJobs: update response param.
+- Update API UpdateFailoverTestJob: add param DryRun.
+
+
 2024-06-28 Version: 6.7.0
 - Support API GetPublicIpAddressPoolServiceStatus.
 - Support API OpenPublicIpAddressPoolService.
