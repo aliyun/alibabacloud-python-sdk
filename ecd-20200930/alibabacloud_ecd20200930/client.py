@@ -5072,6 +5072,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
         if not UtilClient.is_unset(request.domain_list):
             query['DomainList'] = request.domain_list
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -5215,6 +5219,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
         if not UtilClient.is_unset(request.domain_list):
             query['DomainList'] = request.domain_list
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -7836,6 +7844,8 @@ class Client(OpenApiClient):
             query['FromDesktopGroup'] = request.from_desktop_group
         if not UtilClient.is_unset(request.gpu_count):
             query['GpuCount'] = request.gpu_count
+        if not UtilClient.is_unset(request.gpu_driver_type):
+            query['GpuDriverType'] = request.gpu_driver_type
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.max_results):
@@ -7909,6 +7919,8 @@ class Client(OpenApiClient):
             query['FromDesktopGroup'] = request.from_desktop_group
         if not UtilClient.is_unset(request.gpu_count):
             query['GpuCount'] = request.gpu_count
+        if not UtilClient.is_unset(request.gpu_driver_type):
+            query['GpuDriverType'] = request.gpu_driver_type
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.max_results):
@@ -9698,6 +9710,8 @@ class Client(OpenApiClient):
             query['DesktopTypeId'] = request.desktop_type_id
         if not UtilClient.is_unset(request.gpu_count):
             query['GpuCount'] = request.gpu_count
+        if not UtilClient.is_unset(request.gpu_driver_type):
+            query['GpuDriverType'] = request.gpu_driver_type
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.memory_size):
@@ -9753,6 +9767,8 @@ class Client(OpenApiClient):
             query['DesktopTypeId'] = request.desktop_type_id
         if not UtilClient.is_unset(request.gpu_count):
             query['GpuCount'] = request.gpu_count
+        if not UtilClient.is_unset(request.gpu_driver_type):
+            query['GpuDriverType'] = request.gpu_driver_type
         if not UtilClient.is_unset(request.instance_type_family):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not UtilClient.is_unset(request.memory_size):
@@ -20790,6 +20806,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
         if not UtilClient.is_unset(request.domain_list):
             query['DomainList'] = request.domain_list
         if not UtilClient.is_unset(request.domain_resolve_rule):
@@ -20937,6 +20957,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.device_redirects):
+            query['DeviceRedirects'] = request.device_redirects
+        if not UtilClient.is_unset(request.device_rules):
+            query['DeviceRules'] = request.device_rules
         if not UtilClient.is_unset(request.domain_list):
             query['DomainList'] = request.domain_list
         if not UtilClient.is_unset(request.domain_resolve_rule):

@@ -1,3 +1,13 @@
+2024-07-19 Version: 4.0.2
+- Update API CreatePolicyGroup: add param DeviceRedirects.
+- Update API CreatePolicyGroup: add param DeviceRules.
+- Update API DescribeBundles: add param GpuDriverType.
+- Update API DescribeDesktopTypes: add param GpuDriverType.
+- Update API DescribePolicyGroups: update response param.
+- Update API ModifyPolicyGroup: add param DeviceRedirects.
+- Update API ModifyPolicyGroup: add param DeviceRules.
+
+
 2024-07-10 Version: 4.0.1
 - Update API DescribeOfficeSites: add param SecurityProtection.
 - Update API DescribeOfficeSites: update response param.

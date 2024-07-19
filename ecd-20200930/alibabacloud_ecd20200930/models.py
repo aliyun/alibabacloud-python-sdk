@@ -8768,6 +8768,96 @@ class CreatePolicyGroupRequestClientType(TeaModel):
         return self
 
 
+class CreatePolicyGroupRequestDeviceRedirects(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        redirect_type: str = None,
+    ):
+        self.device_type = device_type
+        self.redirect_type = redirect_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.redirect_type is not None:
+            result['RedirectType'] = self.redirect_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('RedirectType') is not None:
+            self.redirect_type = m.get('RedirectType')
+        return self
+
+
+class CreatePolicyGroupRequestDeviceRules(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        device_pid: str = None,
+        device_type: str = None,
+        device_vid: str = None,
+        opt_command: str = None,
+        redirect_type: str = None,
+    ):
+        self.device_name = device_name
+        self.device_pid = device_pid
+        self.device_type = device_type
+        self.device_vid = device_vid
+        self.opt_command = opt_command
+        self.redirect_type = redirect_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_pid is not None:
+            result['DevicePid'] = self.device_pid
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_vid is not None:
+            result['DeviceVid'] = self.device_vid
+        if self.opt_command is not None:
+            result['OptCommand'] = self.opt_command
+        if self.redirect_type is not None:
+            result['RedirectType'] = self.redirect_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DevicePid') is not None:
+            self.device_pid = m.get('DevicePid')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVid') is not None:
+            self.device_vid = m.get('DeviceVid')
+        if m.get('OptCommand') is not None:
+            self.opt_command = m.get('OptCommand')
+        if m.get('RedirectType') is not None:
+            self.redirect_type = m.get('RedirectType')
+        return self
+
+
 class CreatePolicyGroupRequestDomainResolveRule(TeaModel):
     def __init__(
         self,
@@ -8944,6 +9034,8 @@ class CreatePolicyGroupRequest(TeaModel):
         camera_redirect: str = None,
         client_type: List[CreatePolicyGroupRequestClientType] = None,
         clipboard: str = None,
+        device_redirects: List[CreatePolicyGroupRequestDeviceRedirects] = None,
+        device_rules: List[CreatePolicyGroupRequestDeviceRules] = None,
         domain_list: str = None,
         domain_resolve_rule: List[CreatePolicyGroupRequestDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
@@ -9076,6 +9168,8 @@ class CreatePolicyGroupRequest(TeaModel):
         # 
         #     <!-- -->
         self.clipboard = clipboard
+        self.device_redirects = device_redirects
+        self.device_rules = device_rules
         # Access control for domain names. The wildcard character (\\*) is supported for domain names. Separate multiple domain names with commas (,). Valid values:
         # 
         # *   off
@@ -9552,6 +9646,14 @@ class CreatePolicyGroupRequest(TeaModel):
             for k in self.client_type:
                 if k:
                     k.validate()
+        if self.device_redirects:
+            for k in self.device_redirects:
+                if k:
+                    k.validate()
+        if self.device_rules:
+            for k in self.device_rules:
+                if k:
+                    k.validate()
         if self.domain_resolve_rule:
             for k in self.domain_resolve_rule:
                 if k:
@@ -9587,6 +9689,14 @@ class CreatePolicyGroupRequest(TeaModel):
                 result['ClientType'].append(k.to_map() if k else None)
         if self.clipboard is not None:
             result['Clipboard'] = self.clipboard
+        result['DeviceRedirects'] = []
+        if self.device_redirects is not None:
+            for k in self.device_redirects:
+                result['DeviceRedirects'].append(k.to_map() if k else None)
+        result['DeviceRules'] = []
+        if self.device_rules is not None:
+            for k in self.device_rules:
+                result['DeviceRules'].append(k.to_map() if k else None)
         if self.domain_list is not None:
             result['DomainList'] = self.domain_list
         result['DomainResolveRule'] = []
@@ -9712,6 +9822,16 @@ class CreatePolicyGroupRequest(TeaModel):
                 self.client_type.append(temp_model.from_map(k))
         if m.get('Clipboard') is not None:
             self.clipboard = m.get('Clipboard')
+        self.device_redirects = []
+        if m.get('DeviceRedirects') is not None:
+            for k in m.get('DeviceRedirects'):
+                temp_model = CreatePolicyGroupRequestDeviceRedirects()
+                self.device_redirects.append(temp_model.from_map(k))
+        self.device_rules = []
+        if m.get('DeviceRules') is not None:
+            for k in m.get('DeviceRules'):
+                temp_model = CreatePolicyGroupRequestDeviceRules()
+                self.device_rules.append(temp_model.from_map(k))
         if m.get('DomainList') is not None:
             self.domain_list = m.get('DomainList')
         self.domain_resolve_rule = []
@@ -12976,6 +13096,7 @@ class DescribeBundlesRequest(TeaModel):
         fota_channel: str = None,
         from_desktop_group: bool = None,
         gpu_count: float = None,
+        gpu_driver_type: str = None,
         image_id: List[str] = None,
         max_results: int = None,
         memory_size: int = None,
@@ -13047,6 +13168,7 @@ class DescribeBundlesRequest(TeaModel):
         self.from_desktop_group = from_desktop_group
         # The number of GPUs contained in the cloud computer instance type.
         self.gpu_count = gpu_count
+        self.gpu_driver_type = gpu_driver_type
         # The image ID.
         self.image_id = image_id
         # The number of entries to return on each page.
@@ -13130,6 +13252,8 @@ class DescribeBundlesRequest(TeaModel):
             result['FromDesktopGroup'] = self.from_desktop_group
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
+        if self.gpu_driver_type is not None:
+            result['GpuDriverType'] = self.gpu_driver_type
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.max_results is not None:
@@ -13174,6 +13298,8 @@ class DescribeBundlesRequest(TeaModel):
             self.from_desktop_group = m.get('FromDesktopGroup')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
+        if m.get('GpuDriverType') is not None:
+            self.gpu_driver_type = m.get('GpuDriverType')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('MaxResults') is not None:
@@ -18182,6 +18308,7 @@ class DescribeDesktopTypesRequest(TeaModel):
         desktop_id_for_modify: str = None,
         desktop_type_id: str = None,
         gpu_count: float = None,
+        gpu_driver_type: str = None,
         instance_type_family: str = None,
         memory_size: int = None,
         order_type: str = None,
@@ -18363,6 +18490,7 @@ class DescribeDesktopTypesRequest(TeaModel):
         self.desktop_type_id = desktop_type_id
         # The number of GPUs.
         self.gpu_count = gpu_count
+        self.gpu_driver_type = gpu_driver_type
         # The name of the instance family.
         # 
         # >  If the values of the `InstanceTypeFamily` and `DesktopTypeId` parameters are empty, all instance families of cloud computers are queried.
@@ -18455,6 +18583,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             result['DesktopTypeId'] = self.desktop_type_id
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
+        if self.gpu_driver_type is not None:
+            result['GpuDriverType'] = self.gpu_driver_type
         if self.instance_type_family is not None:
             result['InstanceTypeFamily'] = self.instance_type_family
         if self.memory_size is not None:
@@ -18479,6 +18609,8 @@ class DescribeDesktopTypesRequest(TeaModel):
             self.desktop_type_id = m.get('DesktopTypeId')
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')
+        if m.get('GpuDriverType') is not None:
+            self.gpu_driver_type = m.get('GpuDriverType')
         if m.get('InstanceTypeFamily') is not None:
             self.instance_type_family = m.get('InstanceTypeFamily')
         if m.get('MemorySize') is not None:
@@ -26445,6 +26577,96 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes(TeaModel):
         return self
 
 
+class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        redirect_type: str = None,
+    ):
+        self.device_type = device_type
+        self.redirect_type = redirect_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.redirect_type is not None:
+            result['RedirectType'] = self.redirect_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('RedirectType') is not None:
+            self.redirect_type = m.get('RedirectType')
+        return self
+
+
+class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        device_pid: str = None,
+        device_type: str = None,
+        device_vid: str = None,
+        opt_command: str = None,
+        redirect_type: str = None,
+    ):
+        self.device_name = device_name
+        self.device_pid = device_pid
+        self.device_type = device_type
+        self.device_vid = device_vid
+        self.opt_command = opt_command
+        self.redirect_type = redirect_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_pid is not None:
+            result['DevicePid'] = self.device_pid
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_vid is not None:
+            result['DeviceVid'] = self.device_vid
+        if self.opt_command is not None:
+            result['OptCommand'] = self.opt_command
+        if self.redirect_type is not None:
+            result['RedirectType'] = self.redirect_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DevicePid') is not None:
+            self.device_pid = m.get('DevicePid')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVid') is not None:
+            self.device_vid = m.get('DeviceVid')
+        if m.get('OptCommand') is not None:
+            self.opt_command = m.get('OptCommand')
+        if m.get('RedirectType') is not None:
+            self.redirect_type = m.get('RedirectType')
+        return self
+
+
 class DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule(TeaModel):
     def __init__(
         self,
@@ -26639,6 +26861,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         cpu_rate_limit: int = None,
         cpu_sample_duration: int = None,
         cpu_single_rate_limit: int = None,
+        device_redirects: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects] = None,
+        device_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules] = None,
         display_mode: str = None,
         domain_list: str = None,
         domain_resolve_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule] = None,
@@ -26753,6 +26977,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.cpu_sample_duration = cpu_sample_duration
         # The usage of a single CPU. Valid values: 70 to 100.
         self.cpu_single_rate_limit = cpu_single_rate_limit
+        self.device_redirects = device_redirects
+        self.device_rules = device_rules
         self.display_mode = display_mode
         # Indicates whether the access control for domain names is enabled. The domain names can contain wildcard characters (\\*). Multiple domain names are separated by commas (,). Valid values:
         # 
@@ -27012,6 +27238,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             for k in self.client_types:
                 if k:
                     k.validate()
+        if self.device_redirects:
+            for k in self.device_redirects:
+                if k:
+                    k.validate()
+        if self.device_rules:
+            for k in self.device_rules:
+                if k:
+                    k.validate()
         if self.domain_resolve_rule:
             for k in self.domain_resolve_rule:
                 if k:
@@ -27065,6 +27299,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['CpuSampleDuration'] = self.cpu_sample_duration
         if self.cpu_single_rate_limit is not None:
             result['CpuSingleRateLimit'] = self.cpu_single_rate_limit
+        result['DeviceRedirects'] = []
+        if self.device_redirects is not None:
+            for k in self.device_redirects:
+                result['DeviceRedirects'].append(k.to_map() if k else None)
+        result['DeviceRules'] = []
+        if self.device_rules is not None:
+            for k in self.device_rules:
+                result['DeviceRules'].append(k.to_map() if k else None)
         if self.display_mode is not None:
             result['DisplayMode'] = self.display_mode
         if self.domain_list is not None:
@@ -27248,6 +27490,16 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.cpu_sample_duration = m.get('CpuSampleDuration')
         if m.get('CpuSingleRateLimit') is not None:
             self.cpu_single_rate_limit = m.get('CpuSingleRateLimit')
+        self.device_redirects = []
+        if m.get('DeviceRedirects') is not None:
+            for k in m.get('DeviceRedirects'):
+                temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects()
+                self.device_redirects.append(temp_model.from_map(k))
+        self.device_rules = []
+        if m.get('DeviceRules') is not None:
+            for k in m.get('DeviceRules'):
+                temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules()
+                self.device_rules.append(temp_model.from_map(k))
         if m.get('DisplayMode') is not None:
             self.display_mode = m.get('DisplayMode')
         if m.get('DomainList') is not None:
@@ -42995,6 +43247,96 @@ class ModifyPolicyGroupRequestClientType(TeaModel):
         return self
 
 
+class ModifyPolicyGroupRequestDeviceRedirects(TeaModel):
+    def __init__(
+        self,
+        device_type: str = None,
+        redirect_type: str = None,
+    ):
+        self.device_type = device_type
+        self.redirect_type = redirect_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.redirect_type is not None:
+            result['RedirectType'] = self.redirect_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('RedirectType') is not None:
+            self.redirect_type = m.get('RedirectType')
+        return self
+
+
+class ModifyPolicyGroupRequestDeviceRules(TeaModel):
+    def __init__(
+        self,
+        device_name: str = None,
+        device_pid: str = None,
+        device_type: str = None,
+        device_vid: str = None,
+        opt_command: str = None,
+        redirect_type: str = None,
+    ):
+        self.device_name = device_name
+        self.device_pid = device_pid
+        self.device_type = device_type
+        self.device_vid = device_vid
+        self.opt_command = opt_command
+        self.redirect_type = redirect_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_name is not None:
+            result['DeviceName'] = self.device_name
+        if self.device_pid is not None:
+            result['DevicePid'] = self.device_pid
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.device_vid is not None:
+            result['DeviceVid'] = self.device_vid
+        if self.opt_command is not None:
+            result['OptCommand'] = self.opt_command
+        if self.redirect_type is not None:
+            result['RedirectType'] = self.redirect_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceName') is not None:
+            self.device_name = m.get('DeviceName')
+        if m.get('DevicePid') is not None:
+            self.device_pid = m.get('DevicePid')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('DeviceVid') is not None:
+            self.device_vid = m.get('DeviceVid')
+        if m.get('OptCommand') is not None:
+            self.opt_command = m.get('OptCommand')
+        if m.get('RedirectType') is not None:
+            self.redirect_type = m.get('RedirectType')
+        return self
+
+
 class ModifyPolicyGroupRequestDomainResolveRule(TeaModel):
     def __init__(
         self,
@@ -43271,6 +43613,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         camera_redirect: str = None,
         client_type: List[ModifyPolicyGroupRequestClientType] = None,
         clipboard: str = None,
+        device_redirects: List[ModifyPolicyGroupRequestDeviceRedirects] = None,
+        device_rules: List[ModifyPolicyGroupRequestDeviceRules] = None,
         domain_list: str = None,
         domain_resolve_rule: List[ModifyPolicyGroupRequestDomainResolveRule] = None,
         domain_resolve_rule_type: str = None,
@@ -43352,6 +43696,8 @@ class ModifyPolicyGroupRequest(TeaModel):
         # *   readwrite: specifies two-way transfer. You can copy data between your computer and cloud desktops.
         # *   off: specifies that the two-way transfer is disabled. You cannot copy data between your computer and cloud desktops.
         self.clipboard = clipboard
+        self.device_redirects = device_redirects
+        self.device_rules = device_rules
         # The domain blacklist or whitelist. Wildcard domains are supported. Separate domain names with commas (,). Valid values:
         # 
         # *   [black:],example1.com,example2.com: the domain name blacklist.
@@ -43557,6 +43903,14 @@ class ModifyPolicyGroupRequest(TeaModel):
             for k in self.client_type:
                 if k:
                     k.validate()
+        if self.device_redirects:
+            for k in self.device_redirects:
+                if k:
+                    k.validate()
+        if self.device_rules:
+            for k in self.device_rules:
+                if k:
+                    k.validate()
         if self.domain_resolve_rule:
             for k in self.domain_resolve_rule:
                 if k:
@@ -43600,6 +43954,14 @@ class ModifyPolicyGroupRequest(TeaModel):
                 result['ClientType'].append(k.to_map() if k else None)
         if self.clipboard is not None:
             result['Clipboard'] = self.clipboard
+        result['DeviceRedirects'] = []
+        if self.device_redirects is not None:
+            for k in self.device_redirects:
+                result['DeviceRedirects'].append(k.to_map() if k else None)
+        result['DeviceRules'] = []
+        if self.device_rules is not None:
+            for k in self.device_rules:
+                result['DeviceRules'].append(k.to_map() if k else None)
         if self.domain_list is not None:
             result['DomainList'] = self.domain_list
         result['DomainResolveRule'] = []
@@ -43735,6 +44097,16 @@ class ModifyPolicyGroupRequest(TeaModel):
                 self.client_type.append(temp_model.from_map(k))
         if m.get('Clipboard') is not None:
             self.clipboard = m.get('Clipboard')
+        self.device_redirects = []
+        if m.get('DeviceRedirects') is not None:
+            for k in m.get('DeviceRedirects'):
+                temp_model = ModifyPolicyGroupRequestDeviceRedirects()
+                self.device_redirects.append(temp_model.from_map(k))
+        self.device_rules = []
+        if m.get('DeviceRules') is not None:
+            for k in m.get('DeviceRules'):
+                temp_model = ModifyPolicyGroupRequestDeviceRules()
+                self.device_rules.append(temp_model.from_map(k))
         if m.get('DomainList') is not None:
             self.domain_list = m.get('DomainList')
         self.domain_resolve_rule = []
