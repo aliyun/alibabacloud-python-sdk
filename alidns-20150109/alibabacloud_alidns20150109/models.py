@@ -29703,12 +29703,14 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
         pdns_id: int = None,
         service_type: str = None,
         state: str = None,
+        statistic_switch_status: str = None,
         stopped_service: str = None,
     ):
         self.available_service = available_service
         self.pdns_id = pdns_id
         self.service_type = service_type
         self.state = state
+        self.statistic_switch_status = statistic_switch_status
         self.stopped_service = stopped_service
 
     def validate(self):
@@ -29728,6 +29730,8 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
             result['ServiceType'] = self.service_type
         if self.state is not None:
             result['State'] = self.state
+        if self.statistic_switch_status is not None:
+            result['StatisticSwitchStatus'] = self.statistic_switch_status
         if self.stopped_service is not None:
             result['StoppedService'] = self.stopped_service
         return result
@@ -29742,6 +29746,8 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
             self.service_type = m.get('ServiceType')
         if m.get('State') is not None:
             self.state = m.get('State')
+        if m.get('StatisticSwitchStatus') is not None:
+            self.statistic_switch_status = m.get('StatisticSwitchStatus')
         if m.get('StoppedService') is not None:
             self.stopped_service = m.get('StoppedService')
         return self
@@ -32157,6 +32163,7 @@ class GetTxtRecordForVerifyResponseBody(TeaModel):
     def __init__(
         self,
         domain_name: str = None,
+        parent_domain_name: str = None,
         rr: str = None,
         request_id: str = None,
         value: str = None,
@@ -32165,6 +32172,7 @@ class GetTxtRecordForVerifyResponseBody(TeaModel):
         # 
         # >  If you do not specify this parameter, it is not returned.
         self.domain_name = domain_name
+        self.parent_domain_name = parent_domain_name
         # The hostname.
         self.rr = rr
         # The request ID.
@@ -32185,6 +32193,8 @@ class GetTxtRecordForVerifyResponseBody(TeaModel):
         result = dict()
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.parent_domain_name is not None:
+            result['ParentDomainName'] = self.parent_domain_name
         if self.rr is not None:
             result['RR'] = self.rr
         if self.request_id is not None:
@@ -32197,6 +32207,8 @@ class GetTxtRecordForVerifyResponseBody(TeaModel):
         m = m or dict()
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('ParentDomainName') is not None:
+            self.parent_domain_name = m.get('ParentDomainName')
         if m.get('RR') is not None:
             self.rr = m.get('RR')
         if m.get('RequestId') is not None:
@@ -45711,7 +45723,7 @@ class UpdateDnsGtmInstanceGlobalConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

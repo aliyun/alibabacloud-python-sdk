@@ -1,3 +1,8 @@
+2024-07-19 Version: 3.5.1
+- Update API DescribePdnsUserInfo: update response param.
+- Update API GetTxtRecordForVerify: update response param.
+
+
 2024-05-28 Version: 3.5.0
 - Support API CreateCloudGtmAddress.
 - Support API CreateCloudGtmAddressPool.
