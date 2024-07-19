@@ -1,3 +1,8 @@
+2024-07-19 Version: 4.4.0
+- Support API ExportOAS.
+- Update API DescribeBackendInfo: update param BackendId.
+
+
 2024-06-13 Version: 4.3.1
 - Update API DescribeAuthorizedApps: update response param.
 

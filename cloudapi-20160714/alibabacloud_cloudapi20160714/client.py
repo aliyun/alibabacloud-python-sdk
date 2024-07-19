@@ -1967,7 +1967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateBackendResponse:
         """
-        @summary 创建后端服务
+        @summary Creates a backend service in API Gateway.
         
         @param request: CreateBackendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2014,7 +2014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateBackendResponse:
         """
-        @summary 创建后端服务
+        @summary Creates a backend service in API Gateway.
         
         @param request: CreateBackendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2060,7 +2060,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateBackendRequest,
     ) -> cloud_api20160714_models.CreateBackendResponse:
         """
-        @summary 创建后端服务
+        @summary Creates a backend service in API Gateway.
         
         @param request: CreateBackendRequest
         @return: CreateBackendResponse
@@ -2073,7 +2073,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateBackendRequest,
     ) -> cloud_api20160714_models.CreateBackendResponse:
         """
-        @summary 创建后端服务
+        @summary Creates a backend service in API Gateway.
         
         @param request: CreateBackendRequest
         @return: CreateBackendResponse
@@ -13359,7 +13359,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
         """
-        @summary 查询实例信息
+        @summary Queries the details of instances in a region. The instances include shared instances and dedicated instances.
         
         @param request: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13402,7 +13402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
         """
-        @summary 查询实例信息
+        @summary Queries the details of instances in a region. The instances include shared instances and dedicated instances.
         
         @param request: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13444,7 +13444,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstancesRequest,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
         """
-        @summary 查询实例信息
+        @summary Queries the details of instances in a region. The instances include shared instances and dedicated instances.
         
         @param request: DescribeInstancesRequest
         @return: DescribeInstancesResponse
@@ -13457,7 +13457,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstancesRequest,
     ) -> cloud_api20160714_models.DescribeInstancesResponse:
         """
-        @summary 查询实例信息
+        @summary Queries the details of instances in a region. The instances include shared instances and dedicated instances.
         
         @param request: DescribeInstancesRequest
         @return: DescribeInstancesResponse
@@ -16756,6 +16756,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.enable_instance_access_control_with_options_async(request, runtime)
+
+    def export_oaswith_options(
+        self,
+        tmp_req: cloud_api20160714_models.ExportOASRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ExportOASResponse:
+        """
+        @summary 导出OAS
+        
+        @param tmp_req: ExportOASRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportOASResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.ExportOASShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.api_id_list):
+            request.api_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_id_list, 'ApiIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id_list_shrink):
+            query['ApiIdList'] = request.api_id_list_shrink
+        if not UtilClient.is_unset(request.data_format):
+            query['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.oas_version):
+            query['OasVersion'] = request.oas_version
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        if not UtilClient.is_unset(request.with_xextensions):
+            query['WithXExtensions'] = request.with_xextensions
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportOAS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ExportOASResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_oaswith_options_async(
+        self,
+        tmp_req: cloud_api20160714_models.ExportOASRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.ExportOASResponse:
+        """
+        @summary 导出OAS
+        
+        @param tmp_req: ExportOASRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportOASResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cloud_api20160714_models.ExportOASShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.api_id_list):
+            request.api_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_id_list, 'ApiIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_id_list_shrink):
+            query['ApiIdList'] = request.api_id_list_shrink
+        if not UtilClient.is_unset(request.data_format):
+            query['DataFormat'] = request.data_format
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.oas_version):
+            query['OasVersion'] = request.oas_version
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        if not UtilClient.is_unset(request.with_xextensions):
+            query['WithXExtensions'] = request.with_xextensions
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportOAS',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.ExportOASResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_oas(
+        self,
+        request: cloud_api20160714_models.ExportOASRequest,
+    ) -> cloud_api20160714_models.ExportOASResponse:
+        """
+        @summary 导出OAS
+        
+        @param request: ExportOASRequest
+        @return: ExportOASResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_oaswith_options(request, runtime)
+
+    async def export_oas_async(
+        self,
+        request: cloud_api20160714_models.ExportOASRequest,
+    ) -> cloud_api20160714_models.ExportOASResponse:
+        """
+        @summary 导出OAS
+        
+        @param request: ExportOASRequest
+        @return: ExportOASResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_oaswith_options_async(request, runtime)
 
     def import_oaswith_options(
         self,
