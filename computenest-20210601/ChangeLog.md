@@ -1,3 +1,13 @@
+2024-07-19 Version: 3.2.0
+- Support API GenerateServicePolicy.
+- Support API GetServiceEstimateCost.
+- Support API GetServiceProvisions.
+- Support API ListTagKeys.
+- Support API ListTagValues.
+- Support API TagResources.
+- Support API UnTagResources.
+
+
 2024-07-01 Version: 3.1.1
 - Update API CreateServiceInstance: add param ResourceAutoPay.
 
