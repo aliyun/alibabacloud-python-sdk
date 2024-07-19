@@ -1,3 +1,24 @@
+2024-07-19 Version: 2.1.0
+- Support API CancelSpecReviewTask.
+- Support API CreateSnapshot.
+- Support API DeleteDict.
+- Support API DeleteEndpoint.
+- Support API DeleteSnapshot.
+- Support API GetSnapshotSetting.
+- Support API GetSpecReviewTask.
+- Support API ListDicts.
+- Support API ListEndpoints.
+- Support API ListIndices.
+- Support API ListSnapshotRepositories.
+- Support API ListSnapshots.
+- Support API ListSpecReviewTasks.
+- Support API UpdateDict.
+- Support API UpdateEndpoint.
+- Support API UpdateSnapshotSetting.
+- Update API GetApp: update response param.
+- Update API ListApps: update response param.
+
+
 2024-05-23 Version: 2.0.0
 - Support API CreateEndpoint.
 - Update API CreateApp: add param body.
