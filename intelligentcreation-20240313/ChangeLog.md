@@ -1,3 +1,6 @@
+2024-07-19 Version: 2.1.1
+- Generated python 2024-03-13 for IntelligentCreation.
+
 2024-07-19 Version: 2.1.0
 - Support API AddTextFeedback.
 - Support API CheckSession.
