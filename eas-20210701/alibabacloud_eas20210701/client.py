@@ -66,6 +66,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CloneServiceResponse:
+        """
+        @summary Clones a service.
+        
+        @param request: CloneServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneServiceResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -95,6 +103,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CloneServiceResponse:
+        """
+        @summary Clones a service.
+        
+        @param request: CloneServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneServiceResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -122,6 +138,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CloneServiceRequest,
     ) -> eas_20210701_models.CloneServiceResponse:
+        """
+        @summary Clones a service.
+        
+        @param request: CloneServiceRequest
+        @return: CloneServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.clone_service_with_options(cluster_id, service_name, request, headers, runtime)
@@ -132,6 +154,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CloneServiceRequest,
     ) -> eas_20210701_models.CloneServiceResponse:
+        """
+        @summary Clones a service.
+        
+        @param request: CloneServiceRequest
+        @return: CloneServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.clone_service_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -143,6 +171,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CommitServiceResponse:
+        """
+        @summary Commits the Worker0 container in the custom container service and deploys the container as a new image.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommitServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -169,6 +204,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CommitServiceResponse:
+        """
+        @summary Commits the Worker0 container in the custom container service and deploys the container as a new image.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommitServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -193,6 +235,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.CommitServiceResponse:
+        """
+        @summary Commits the Worker0 container in the custom container service and deploys the container as a new image.
+        
+        @return: CommitServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.commit_service_with_options(cluster_id, service_name, headers, runtime)
@@ -202,6 +249,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.CommitServiceResponse:
+        """
+        @summary Commits the Worker0 container in the custom container service and deploys the container as a new image.
+        
+        @return: CommitServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.commit_service_with_options_async(cluster_id, service_name, headers, runtime)
@@ -212,6 +264,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateAppServiceResponse:
+        """
+        @summary Creates an application service.
+        
+        @param request: CreateAppServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.quota_id):
@@ -258,6 +318,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateAppServiceResponse:
+        """
+        @summary Creates an application service.
+        
+        @param request: CreateAppServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.quota_id):
@@ -302,6 +370,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateAppServiceRequest,
     ) -> eas_20210701_models.CreateAppServiceResponse:
+        """
+        @summary Creates an application service.
+        
+        @param request: CreateAppServiceRequest
+        @return: CreateAppServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_app_service_with_options(request, headers, runtime)
@@ -310,6 +384,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateAppServiceRequest,
     ) -> eas_20210701_models.CreateAppServiceResponse:
+        """
+        @summary Creates an application service.
+        
+        @param request: CreateAppServiceRequest
+        @return: CreateAppServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_app_service_with_options_async(request, headers, runtime)
@@ -320,6 +400,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
+        """
+        @summary Creates a stress testing task.
+        
+        @param request: CreateBenchmarkTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBenchmarkTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -347,6 +435,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
+        """
+        @summary Creates a stress testing task.
+        
+        @param request: CreateBenchmarkTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBenchmarkTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -372,6 +468,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateBenchmarkTaskRequest,
     ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
+        """
+        @summary Creates a stress testing task.
+        
+        @param request: CreateBenchmarkTaskRequest
+        @return: CreateBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_benchmark_task_with_options(request, headers, runtime)
@@ -380,6 +482,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateBenchmarkTaskRequest,
     ) -> eas_20210701_models.CreateBenchmarkTaskResponse:
+        """
+        @summary Creates a stress testing task.
+        
+        @param request: CreateBenchmarkTaskRequest
+        @return: CreateBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_benchmark_task_with_options_async(request, headers, runtime)
@@ -390,6 +498,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayResponse:
+        """
+        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        
+        @param request: CreateGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_name):
@@ -430,6 +546,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayResponse:
+        """
+        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        
+        @param request: CreateGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_name):
@@ -468,6 +592,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateGatewayRequest,
     ) -> eas_20210701_models.CreateGatewayResponse:
+        """
+        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        
+        @param request: CreateGatewayRequest
+        @return: CreateGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_gateway_with_options(request, headers, runtime)
@@ -476,6 +606,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateGatewayRequest,
     ) -> eas_20210701_models.CreateGatewayResponse:
+        """
+        @summary Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+        
+        @param request: CreateGatewayRequest
+        @return: CreateGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_gateway_with_options_async(request, headers, runtime)
@@ -488,6 +624,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Creates an internal endpoint of a private gateway.
+        
+        @param request: CreateGatewayIntranetLinkedVpcRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayIntranetLinkedVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
@@ -522,6 +666,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Creates an internal endpoint of a private gateway.
+        
+        @param request: CreateGatewayIntranetLinkedVpcRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayIntranetLinkedVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
@@ -554,6 +706,12 @@ class Client(OpenApiClient):
         gateway_id: str,
         request: eas_20210701_models.CreateGatewayIntranetLinkedVpcRequest,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Creates an internal endpoint of a private gateway.
+        
+        @param request: CreateGatewayIntranetLinkedVpcRequest
+        @return: CreateGatewayIntranetLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_gateway_intranet_linked_vpc_with_options(cluster_id, gateway_id, request, headers, runtime)
@@ -564,6 +722,12 @@ class Client(OpenApiClient):
         gateway_id: str,
         request: eas_20210701_models.CreateGatewayIntranetLinkedVpcRequest,
     ) -> eas_20210701_models.CreateGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Creates an internal endpoint of a private gateway.
+        
+        @param request: CreateGatewayIntranetLinkedVpcRequest
+        @return: CreateGatewayIntranetLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, request, headers, runtime)
@@ -575,7 +739,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        @summary Creates a resource group.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
         
         @param request: CreateResourceRequest
         @param headers: map
@@ -627,7 +793,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        @summary Creates a resource group.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
         
         @param request: CreateResourceRequest
         @param headers: map
@@ -677,7 +845,9 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateResourceRequest,
     ) -> eas_20210701_models.CreateResourceResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        @summary Creates a resource group.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
         
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
@@ -691,7 +861,9 @@ class Client(OpenApiClient):
         request: eas_20210701_models.CreateResourceRequest,
     ) -> eas_20210701_models.CreateResourceResponse:
         """
-        *Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
+        @summary Creates a resource group.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
         
         @param request: CreateResourceRequest
         @return: CreateResourceResponse
@@ -708,6 +880,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceInstancesResponse:
+        """
+        @summary Creates instances in a dedicated resource group.
+        
+        @param request: CreateResourceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renewal):
@@ -752,6 +932,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceInstancesResponse:
+        """
+        @summary Creates instances in a dedicated resource group.
+        
+        @param request: CreateResourceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renewal):
@@ -794,6 +982,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.CreateResourceInstancesRequest,
     ) -> eas_20210701_models.CreateResourceInstancesResponse:
+        """
+        @summary Creates instances in a dedicated resource group.
+        
+        @param request: CreateResourceInstancesRequest
+        @return: CreateResourceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -804,6 +998,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.CreateResourceInstancesRequest,
     ) -> eas_20210701_models.CreateResourceInstancesResponse:
+        """
+        @summary Creates instances in a dedicated resource group.
+        
+        @param request: CreateResourceInstancesRequest
+        @return: CreateResourceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -816,6 +1016,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceLogResponse:
+        """
+        @summary Enables the LogShipper feature of Log Service for a resource group.
+        
+        @param request: CreateResourceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_store):
@@ -850,6 +1058,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateResourceLogResponse:
+        """
+        @summary Enables the LogShipper feature of Log Service for a resource group.
+        
+        @param request: CreateResourceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_store):
@@ -882,6 +1098,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.CreateResourceLogRequest,
     ) -> eas_20210701_models.CreateResourceLogResponse:
+        """
+        @summary Enables the LogShipper feature of Log Service for a resource group.
+        
+        @param request: CreateResourceLogRequest
+        @return: CreateResourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_log_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -892,6 +1114,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.CreateResourceLogRequest,
     ) -> eas_20210701_models.CreateResourceLogResponse:
+        """
+        @summary Enables the LogShipper feature of Log Service for a resource group.
+        
+        @param request: CreateResourceLogRequest
+        @return: CreateResourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_log_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -902,6 +1130,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceResponse:
+        """
+        @summary Creates a model service in Elastic Algorithm Service (EAS).
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+        
+        @param tmp_req: CreateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eas_20210701_models.CreateServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -941,6 +1179,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceResponse:
+        """
+        @summary Creates a model service in Elastic Algorithm Service (EAS).
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+        
+        @param tmp_req: CreateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eas_20210701_models.CreateServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -978,6 +1226,14 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateServiceRequest,
     ) -> eas_20210701_models.CreateServiceResponse:
+        """
+        @summary Creates a model service in Elastic Algorithm Service (EAS).
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+        
+        @param request: CreateServiceRequest
+        @return: CreateServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_with_options(request, headers, runtime)
@@ -986,6 +1242,14 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.CreateServiceRequest,
     ) -> eas_20210701_models.CreateServiceResponse:
+        """
+        @summary Creates a model service in Elastic Algorithm Service (EAS).
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+        
+        @param request: CreateServiceRequest
+        @return: CreateServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_with_options_async(request, headers, runtime)
@@ -998,6 +1262,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
+        """
+        @summary Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+        
+        @param request: CreateServiceAutoScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceAutoScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.behavior):
@@ -1036,6 +1308,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
+        """
+        @summary Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+        
+        @param request: CreateServiceAutoScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceAutoScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.behavior):
@@ -1072,6 +1352,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CreateServiceAutoScalerRequest,
     ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
+        """
+        @summary Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+        
+        @param request: CreateServiceAutoScalerRequest
+        @return: CreateServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
@@ -1082,6 +1368,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CreateServiceAutoScalerRequest,
     ) -> eas_20210701_models.CreateServiceAutoScalerResponse:
+        """
+        @summary Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+        
+        @param request: CreateServiceAutoScalerRequest
+        @return: CreateServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -1094,6 +1386,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        """
+        @summary Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+        
+        @param request: CreateServiceCronScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceCronScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
@@ -1128,6 +1428,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        """
+        @summary Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+        
+        @param request: CreateServiceCronScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceCronScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
@@ -1160,6 +1468,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CreateServiceCronScalerRequest,
     ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        """
+        @summary Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+        
+        @param request: CreateServiceCronScalerRequest
+        @return: CreateServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
@@ -1170,6 +1484,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CreateServiceCronScalerRequest,
     ) -> eas_20210701_models.CreateServiceCronScalerResponse:
+        """
+        @summary Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+        
+        @param request: CreateServiceCronScalerRequest
+        @return: CreateServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -1182,6 +1502,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceMirrorResponse:
+        """
+        @summary Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+        
+        @param request: CreateServiceMirrorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceMirrorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ratio):
@@ -1216,6 +1544,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CreateServiceMirrorResponse:
+        """
+        @summary Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+        
+        @param request: CreateServiceMirrorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceMirrorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ratio):
@@ -1248,6 +1584,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CreateServiceMirrorRequest,
     ) -> eas_20210701_models.CreateServiceMirrorResponse:
+        """
+        @summary Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+        
+        @param request: CreateServiceMirrorRequest
+        @return: CreateServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
@@ -1258,6 +1600,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.CreateServiceMirrorRequest,
     ) -> eas_20210701_models.CreateServiceMirrorResponse:
+        """
+        @summary Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+        
+        @param request: CreateServiceMirrorRequest
+        @return: CreateServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -1269,6 +1617,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
+        """
+        @summary Deletes a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1295,6 +1650,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
+        """
+        @summary Deletes a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1319,6 +1681,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
+        """
+        @summary Deletes a stress testing task.
+        
+        @return: DeleteBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
@@ -1328,6 +1695,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.DeleteBenchmarkTaskResponse:
+        """
+        @summary Deletes a stress testing task.
+        
+        @return: DeleteBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
@@ -1339,6 +1711,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1365,6 +1744,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1389,6 +1775,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         gateway_id: str,
     ) -> eas_20210701_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a private gateway.
+        
+        @return: DeleteGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_gateway_with_options(cluster_id, gateway_id, headers, runtime)
@@ -1398,6 +1789,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         gateway_id: str,
     ) -> eas_20210701_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a private gateway.
+        
+        @return: DeleteGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_gateway_with_options_async(cluster_id, gateway_id, headers, runtime)
@@ -1410,6 +1806,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse:
+        """
+        @summary 删除网关内网访问端点
+        
+        @param request: DeleteGatewayIntranetLinkedVpcRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayIntranetLinkedVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
@@ -1444,6 +1848,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse:
+        """
+        @summary 删除网关内网访问端点
+        
+        @param request: DeleteGatewayIntranetLinkedVpcRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayIntranetLinkedVpcResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
@@ -1476,6 +1888,12 @@ class Client(OpenApiClient):
         gateway_id: str,
         request: eas_20210701_models.DeleteGatewayIntranetLinkedVpcRequest,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse:
+        """
+        @summary 删除网关内网访问端点
+        
+        @param request: DeleteGatewayIntranetLinkedVpcRequest
+        @return: DeleteGatewayIntranetLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_gateway_intranet_linked_vpc_with_options(cluster_id, gateway_id, request, headers, runtime)
@@ -1486,6 +1904,12 @@ class Client(OpenApiClient):
         gateway_id: str,
         request: eas_20210701_models.DeleteGatewayIntranetLinkedVpcRequest,
     ) -> eas_20210701_models.DeleteGatewayIntranetLinkedVpcResponse:
+        """
+        @summary 删除网关内网访问端点
+        
+        @param request: DeleteGatewayIntranetLinkedVpcRequest
+        @return: DeleteGatewayIntranetLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, request, headers, runtime)
@@ -1497,6 +1921,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceResponse:
+        """
+        @summary Deletes a resource group that contains no resources or instances.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1523,6 +1954,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceResponse:
+        """
+        @summary Deletes a resource group that contains no resources or instances.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1547,6 +1985,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DeleteResourceResponse:
+        """
+        @summary Deletes a resource group that contains no resources or instances.
+        
+        @return: DeleteResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_with_options(cluster_id, resource_id, headers, runtime)
@@ -1556,6 +1999,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DeleteResourceResponse:
+        """
+        @summary Deletes a resource group that contains no resources or instances.
+        
+        @return: DeleteResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_with_options_async(cluster_id, resource_id, headers, runtime)
@@ -1567,6 +2015,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceDLinkResponse:
+        """
+        @summary Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceDLinkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1593,6 +2048,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceDLinkResponse:
+        """
+        @summary Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceDLinkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1617,6 +2079,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DeleteResourceDLinkResponse:
+        """
+        @summary Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
+        
+        @return: DeleteResourceDLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
@@ -1626,6 +2093,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DeleteResourceDLinkResponse:
+        """
+        @summary Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
+        
+        @return: DeleteResourceDLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
@@ -1638,6 +2110,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceInstancesResponse:
+        """
+        @summary Deletes instances in a dedicated resource group. You can delete only pay-as-you-go instances as a regular user.
+        
+        @param request: DeleteResourceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_failed):
@@ -1672,6 +2152,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceInstancesResponse:
+        """
+        @summary Deletes instances in a dedicated resource group. You can delete only pay-as-you-go instances as a regular user.
+        
+        @param request: DeleteResourceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all_failed):
@@ -1704,6 +2192,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.DeleteResourceInstancesRequest,
     ) -> eas_20210701_models.DeleteResourceInstancesResponse:
+        """
+        @summary Deletes instances in a dedicated resource group. You can delete only pay-as-you-go instances as a regular user.
+        
+        @param request: DeleteResourceInstancesRequest
+        @return: DeleteResourceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -1714,6 +2208,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.DeleteResourceInstancesRequest,
     ) -> eas_20210701_models.DeleteResourceInstancesResponse:
+        """
+        @summary Deletes instances in a dedicated resource group. You can delete only pay-as-you-go instances as a regular user.
+        
+        @param request: DeleteResourceInstancesRequest
+        @return: DeleteResourceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -1725,6 +2225,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceLogResponse:
+        """
+        @summary Disables the LogShipper feature of Log Service for a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceLogResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1751,6 +2258,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteResourceLogResponse:
+        """
+        @summary Disables the LogShipper feature of Log Service for a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceLogResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1775,6 +2289,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DeleteResourceLogResponse:
+        """
+        @summary Disables the LogShipper feature of Log Service for a dedicated resource group.
+        
+        @return: DeleteResourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_log_with_options(cluster_id, resource_id, headers, runtime)
@@ -1784,6 +2303,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DeleteResourceLogResponse:
+        """
+        @summary Disables the LogShipper feature of Log Service for a dedicated resource group.
+        
+        @return: DeleteResourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
@@ -1795,6 +2319,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceResponse:
+        """
+        @summary Deletes a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1821,6 +2352,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceResponse:
+        """
+        @summary Deletes a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1845,6 +2383,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceResponse:
+        """
+        @summary Deletes a service.
+        
+        @return: DeleteServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_service_with_options(cluster_id, service_name, headers, runtime)
@@ -1854,6 +2397,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceResponse:
+        """
+        @summary Deletes a service.
+        
+        @return: DeleteServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_with_options_async(cluster_id, service_name, headers, runtime)
@@ -1865,6 +2413,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
+        """
+        @summary Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceAutoScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1891,6 +2446,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
+        """
+        @summary Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceAutoScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1915,6 +2477,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
+        """
+        @summary Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
+        
+        @return: DeleteServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
@@ -1924,6 +2491,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceAutoScalerResponse:
+        """
+        @summary Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
+        
+        @return: DeleteServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
@@ -1935,6 +2507,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        """
+        @summary Disables the Cronscaler feature for a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceCronScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1961,6 +2540,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        """
+        @summary Disables the Cronscaler feature for a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceCronScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1985,6 +2571,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        """
+        @summary Disables the Cronscaler feature for a service.
+        
+        @return: DeleteServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
@@ -1994,6 +2585,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceCronScalerResponse:
+        """
+        @summary Disables the Cronscaler feature for a service.
+        
+        @return: DeleteServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
@@ -2006,6 +2602,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceInstancesResponse:
+        """
+        @summary Restarts the instances of a service.
+        
+        @param request: DeleteServiceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.container):
@@ -2042,6 +2646,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceInstancesResponse:
+        """
+        @summary Restarts the instances of a service.
+        
+        @param request: DeleteServiceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.container):
@@ -2076,6 +2688,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DeleteServiceInstancesRequest,
     ) -> eas_20210701_models.DeleteServiceInstancesResponse:
+        """
+        @summary Restarts the instances of a service.
+        
+        @param request: DeleteServiceInstancesRequest
+        @return: DeleteServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_service_instances_with_options(cluster_id, service_name, request, headers, runtime)
@@ -2086,6 +2704,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DeleteServiceInstancesRequest,
     ) -> eas_20210701_models.DeleteServiceInstancesResponse:
+        """
+        @summary Restarts the instances of a service.
+        
+        @param request: DeleteServiceInstancesRequest
+        @return: DeleteServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_instances_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -2098,6 +2722,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        """
+        @summary Deletes existing service tags.
+        
+        @param tmp_req: DeleteServiceLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceLabelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eas_20210701_models.DeleteServiceLabelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2134,6 +2766,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        """
+        @summary Deletes existing service tags.
+        
+        @param tmp_req: DeleteServiceLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceLabelResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eas_20210701_models.DeleteServiceLabelShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2168,6 +2808,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DeleteServiceLabelRequest,
     ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        """
+        @summary Deletes existing service tags.
+        
+        @param request: DeleteServiceLabelRequest
+        @return: DeleteServiceLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_service_label_with_options(cluster_id, service_name, request, headers, runtime)
@@ -2178,6 +2824,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DeleteServiceLabelRequest,
     ) -> eas_20210701_models.DeleteServiceLabelResponse:
+        """
+        @summary Deletes existing service tags.
+        
+        @param request: DeleteServiceLabelRequest
+        @return: DeleteServiceLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_label_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -2189,6 +2841,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceMirrorResponse:
+        """
+        @summary Disables the traffic mirroring feature for a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceMirrorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2215,6 +2874,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DeleteServiceMirrorResponse:
+        """
+        @summary Disables the traffic mirroring feature for a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceMirrorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2239,6 +2905,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceMirrorResponse:
+        """
+        @summary Disables the traffic mirroring feature for a service.
+        
+        @return: DeleteServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_service_mirror_with_options(cluster_id, service_name, headers, runtime)
@@ -2248,6 +2919,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DeleteServiceMirrorResponse:
+        """
+        @summary Disables the traffic mirroring feature for a service.
+        
+        @return: DeleteServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
@@ -2259,6 +2935,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
+        """
+        @summary Queries details about the configurations of a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2285,6 +2968,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
+        """
+        @summary Queries details about the configurations of a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2309,6 +2999,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
+        """
+        @summary Queries details about the configurations of a stress testing task.
+        
+        @return: DescribeBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
@@ -2318,6 +3013,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.DescribeBenchmarkTaskResponse:
+        """
+        @summary Queries details about the configurations of a stress testing task.
+        
+        @return: DescribeBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
@@ -2330,6 +3030,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
+        """
+        @summary Queries the report of a stress testing task.
+        
+        @param request: DescribeBenchmarkTaskReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBenchmarkTaskReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.report_type):
@@ -2362,6 +3070,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
+        """
+        @summary Queries the report of a stress testing task.
+        
+        @param request: DescribeBenchmarkTaskReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBenchmarkTaskReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.report_type):
@@ -2392,6 +3108,12 @@ class Client(OpenApiClient):
         task_name: str,
         request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
+        """
+        @summary Queries the report of a stress testing task.
+        
+        @param request: DescribeBenchmarkTaskReportRequest
+        @return: DescribeBenchmarkTaskReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_benchmark_task_report_with_options(cluster_id, task_name, request, headers, runtime)
@@ -2402,6 +3124,12 @@ class Client(OpenApiClient):
         task_name: str,
         request: eas_20210701_models.DescribeBenchmarkTaskReportRequest,
     ) -> eas_20210701_models.DescribeBenchmarkTaskReportResponse:
+        """
+        @summary Queries the report of a stress testing task.
+        
+        @param request: DescribeBenchmarkTaskReportRequest
+        @return: DescribeBenchmarkTaskReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_benchmark_task_report_with_options_async(cluster_id, task_name, request, headers, runtime)
@@ -2413,6 +3141,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeGatewayResponse:
+        """
+        @summary Queries the details of a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGatewayResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2439,6 +3174,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeGatewayResponse:
+        """
+        @summary Queries the details of a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGatewayResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2463,6 +3205,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         gateway_id: str,
     ) -> eas_20210701_models.DescribeGatewayResponse:
+        """
+        @summary Queries the details of a private gateway.
+        
+        @return: DescribeGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_gateway_with_options(cluster_id, gateway_id, headers, runtime)
@@ -2472,6 +3219,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         gateway_id: str,
     ) -> eas_20210701_models.DescribeGatewayResponse:
+        """
+        @summary Queries the details of a private gateway.
+        
+        @return: DescribeGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_gateway_with_options_async(cluster_id, gateway_id, headers, runtime)
@@ -2483,6 +3235,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeGroupResponse:
+        """
+        @summary Queries the information about a service group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2509,6 +3268,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeGroupResponse:
+        """
+        @summary Queries the information about a service group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2533,6 +3299,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         group_name: str,
     ) -> eas_20210701_models.DescribeGroupResponse:
+        """
+        @summary Queries the information about a service group.
+        
+        @return: DescribeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_group_with_options(cluster_id, group_name, headers, runtime)
@@ -2542,6 +3313,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         group_name: str,
     ) -> eas_20210701_models.DescribeGroupResponse:
+        """
+        @summary Queries the information about a service group.
+        
+        @return: DescribeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_group_with_options_async(cluster_id, group_name, headers, runtime)
@@ -2553,6 +3329,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceResponse:
+        """
+        @summary Queries the information about a resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2579,6 +3362,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceResponse:
+        """
+        @summary Queries the information about a resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2603,6 +3393,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DescribeResourceResponse:
+        """
+        @summary Queries the information about a resource group.
+        
+        @return: DescribeResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_resource_with_options(cluster_id, resource_id, headers, runtime)
@@ -2612,6 +3407,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DescribeResourceResponse:
+        """
+        @summary Queries the information about a resource group.
+        
+        @return: DescribeResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_resource_with_options_async(cluster_id, resource_id, headers, runtime)
@@ -2623,6 +3423,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceDLinkResponse:
+        """
+        @summary Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceDLinkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2649,6 +3456,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceDLinkResponse:
+        """
+        @summary Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceDLinkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2673,6 +3487,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DescribeResourceDLinkResponse:
+        """
+        @summary Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
+        
+        @return: DescribeResourceDLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_resource_dlink_with_options(cluster_id, resource_id, headers, runtime)
@@ -2682,6 +3501,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DescribeResourceDLinkResponse:
+        """
+        @summary Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
+        
+        @return: DescribeResourceDLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_resource_dlink_with_options_async(cluster_id, resource_id, headers, runtime)
@@ -2693,6 +3517,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceLogResponse:
+        """
+        @summary Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceLogResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2719,6 +3550,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeResourceLogResponse:
+        """
+        @summary Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceLogResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2743,6 +3581,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DescribeResourceLogResponse:
+        """
+        @summary Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
+        
+        @return: DescribeResourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_resource_log_with_options(cluster_id, resource_id, headers, runtime)
@@ -2752,6 +3595,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         resource_id: str,
     ) -> eas_20210701_models.DescribeResourceLogResponse:
+        """
+        @summary Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
+        
+        @return: DescribeResourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_resource_log_with_options_async(cluster_id, resource_id, headers, runtime)
@@ -2763,6 +3611,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceResponse:
+        """
+        @summary Queries the details about a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2789,6 +3644,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceResponse:
+        """
+        @summary Queries the details about a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2813,6 +3675,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceResponse:
+        """
+        @summary Queries the details about a service.
+        
+        @return: DescribeServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_with_options(cluster_id, service_name, headers, runtime)
@@ -2822,6 +3689,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceResponse:
+        """
+        @summary Queries the details about a service.
+        
+        @return: DescribeServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_with_options_async(cluster_id, service_name, headers, runtime)
@@ -2833,6 +3705,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
+        """
+        @summary Queries information about the Autoscaler configurations of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceAutoScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2859,6 +3738,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
+        """
+        @summary Queries information about the Autoscaler configurations of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceAutoScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2883,6 +3769,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
+        """
+        @summary Queries information about the Autoscaler configurations of a service.
+        
+        @return: DescribeServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_auto_scaler_with_options(cluster_id, service_name, headers, runtime)
@@ -2892,6 +3783,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceAutoScalerResponse:
+        """
+        @summary Queries information about the Autoscaler configurations of a service.
+        
+        @return: DescribeServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_auto_scaler_with_options_async(cluster_id, service_name, headers, runtime)
@@ -2903,6 +3799,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        """
+        @summary Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceCronScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2929,6 +3832,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        """
+        @summary Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceCronScalerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2953,6 +3863,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        """
+        @summary Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
+        
+        @return: DescribeServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_cron_scaler_with_options(cluster_id, service_name, headers, runtime)
@@ -2962,6 +3877,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceCronScalerResponse:
+        """
+        @summary Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
+        
+        @return: DescribeServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_cron_scaler_with_options_async(cluster_id, service_name, headers, runtime)
@@ -2973,6 +3893,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceDiagnosisResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2999,6 +3926,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceDiagnosisResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3023,6 +3957,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of a service.
+        
+        @return: DescribeServiceDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_diagnosis_with_options(cluster_id, service_name, headers, runtime)
@@ -3032,6 +3971,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of a service.
+        
+        @return: DescribeServiceDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_diagnosis_with_options_async(cluster_id, service_name, headers, runtime)
@@ -3044,6 +3988,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceEventResponse:
+        """
+        @summary Queries information about recent service deployment events.
+        
+        @param request: DescribeServiceEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceEventResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3086,6 +4038,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceEventResponse:
+        """
+        @summary Queries information about recent service deployment events.
+        
+        @param request: DescribeServiceEventRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceEventResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3126,6 +4086,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DescribeServiceEventRequest,
     ) -> eas_20210701_models.DescribeServiceEventResponse:
+        """
+        @summary Queries information about recent service deployment events.
+        
+        @param request: DescribeServiceEventRequest
+        @return: DescribeServiceEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_event_with_options(cluster_id, service_name, request, headers, runtime)
@@ -3136,6 +4102,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DescribeServiceEventRequest,
     ) -> eas_20210701_models.DescribeServiceEventResponse:
+        """
+        @summary Queries information about recent service deployment events.
+        
+        @param request: DescribeServiceEventRequest
+        @return: DescribeServiceEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_event_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -3148,6 +4120,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceInstanceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceInstanceDiagnosisResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3175,6 +4154,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceInstanceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceInstanceDiagnosisResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3200,6 +4186,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
     ) -> eas_20210701_models.DescribeServiceInstanceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
+        
+        @return: DescribeServiceInstanceDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_instance_diagnosis_with_options(cluster_id, service_name, instance_name, headers, runtime)
@@ -3210,6 +4201,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
     ) -> eas_20210701_models.DescribeServiceInstanceDiagnosisResponse:
+        """
+        @summary Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
+        
+        @return: DescribeServiceInstanceDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_instance_diagnosis_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
@@ -3222,6 +4218,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceLogResponse:
+        """
+        @summary Queries the information about the logs of a service.
+        
+        @param request: DescribeServiceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.container_name):
@@ -3270,6 +4274,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceLogResponse:
+        """
+        @summary Queries the information about the logs of a service.
+        
+        @param request: DescribeServiceLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.container_name):
@@ -3316,6 +4328,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DescribeServiceLogRequest,
     ) -> eas_20210701_models.DescribeServiceLogResponse:
+        """
+        @summary Queries the information about the logs of a service.
+        
+        @param request: DescribeServiceLogRequest
+        @return: DescribeServiceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_log_with_options(cluster_id, service_name, request, headers, runtime)
@@ -3326,6 +4344,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DescribeServiceLogRequest,
     ) -> eas_20210701_models.DescribeServiceLogResponse:
+        """
+        @summary Queries the information about the logs of a service.
+        
+        @param request: DescribeServiceLogRequest
+        @return: DescribeServiceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_log_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -3337,6 +4361,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceMirrorResponse:
+        """
+        @summary Queries details about the traffic mirroring settings of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMirrorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3363,6 +4394,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeServiceMirrorResponse:
+        """
+        @summary Queries details about the traffic mirroring settings of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceMirrorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3387,6 +4425,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceMirrorResponse:
+        """
+        @summary Queries details about the traffic mirroring settings of a service.
+        
+        @return: DescribeServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_service_mirror_with_options(cluster_id, service_name, headers, runtime)
@@ -3396,6 +4439,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.DescribeServiceMirrorResponse:
+        """
+        @summary Queries details about the traffic mirroring settings of a service.
+        
+        @return: DescribeServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_service_mirror_with_options_async(cluster_id, service_name, headers, runtime)
@@ -3406,6 +4454,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        """
+        @summary Queries the historical prices of preemptible instances. For more information about preemptible instances, see Create and use preemptible instances.
+        
+        @param request: DescribeSpotDiscountHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSpotDiscountHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_type):
@@ -3438,6 +4494,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        """
+        @summary Queries the historical prices of preemptible instances. For more information about preemptible instances, see Create and use preemptible instances.
+        
+        @param request: DescribeSpotDiscountHistoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSpotDiscountHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_type):
@@ -3468,6 +4532,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
     ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        """
+        @summary Queries the historical prices of preemptible instances. For more information about preemptible instances, see Create and use preemptible instances.
+        
+        @param request: DescribeSpotDiscountHistoryRequest
+        @return: DescribeSpotDiscountHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_spot_discount_history_with_options(request, headers, runtime)
@@ -3476,6 +4546,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.DescribeSpotDiscountHistoryRequest,
     ) -> eas_20210701_models.DescribeSpotDiscountHistoryResponse:
+        """
+        @summary Queries the historical prices of preemptible instances. For more information about preemptible instances, see Create and use preemptible instances.
+        
+        @param request: DescribeSpotDiscountHistoryRequest
+        @return: DescribeSpotDiscountHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_spot_discount_history_with_options_async(request, headers, runtime)
@@ -3488,6 +4564,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DevelopServiceResponse:
+        """
+        @summary Switches a container service to development mode or exits development mode.
+        
+        @param request: DevelopServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DevelopServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.exit):
@@ -3520,6 +4604,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.DevelopServiceResponse:
+        """
+        @summary Switches a container service to development mode or exits development mode.
+        
+        @param request: DevelopServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DevelopServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.exit):
@@ -3550,6 +4642,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DevelopServiceRequest,
     ) -> eas_20210701_models.DevelopServiceResponse:
+        """
+        @summary Switches a container service to development mode or exits development mode.
+        
+        @param request: DevelopServiceRequest
+        @return: DevelopServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.develop_service_with_options(cluster_id, service_name, request, headers, runtime)
@@ -3560,6 +4658,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.DevelopServiceRequest,
     ) -> eas_20210701_models.DevelopServiceResponse:
+        """
+        @summary Switches a container service to development mode or exits development mode.
+        
+        @param request: DevelopServiceRequest
+        @return: DevelopServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.develop_service_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -3570,6 +4674,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        """
+        @summary Queries a list of stress testing tasks that are created by the current user.
+        
+        @param request: ListBenchmarkTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBenchmarkTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -3606,6 +4718,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        """
+        @summary Queries a list of stress testing tasks that are created by the current user.
+        
+        @param request: ListBenchmarkTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBenchmarkTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -3640,6 +4760,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListBenchmarkTaskRequest,
     ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        """
+        @summary Queries a list of stress testing tasks that are created by the current user.
+        
+        @param request: ListBenchmarkTaskRequest
+        @return: ListBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_benchmark_task_with_options(request, headers, runtime)
@@ -3648,6 +4774,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListBenchmarkTaskRequest,
     ) -> eas_20210701_models.ListBenchmarkTaskResponse:
+        """
+        @summary Queries a list of stress testing tasks that are created by the current user.
+        
+        @param request: ListBenchmarkTaskRequest
+        @return: ListBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_benchmark_task_with_options_async(request, headers, runtime)
@@ -3659,6 +4791,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Queries a list of the internal endpoints of a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIntranetLinkedVpcResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3685,6 +4824,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Queries a list of the internal endpoints of a private gateway.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIntranetLinkedVpcResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3709,6 +4855,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         gateway_id: str,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Queries a list of the internal endpoints of a private gateway.
+        
+        @return: ListGatewayIntranetLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_gateway_intranet_linked_vpc_with_options(cluster_id, gateway_id, headers, runtime)
@@ -3718,6 +4869,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         gateway_id: str,
     ) -> eas_20210701_models.ListGatewayIntranetLinkedVpcResponse:
+        """
+        @summary Queries a list of the internal endpoints of a private gateway.
+        
+        @return: ListGatewayIntranetLinkedVpcResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_gateway_intranet_linked_vpc_with_options_async(cluster_id, gateway_id, headers, runtime)
@@ -3728,6 +4884,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGroupsResponse:
+        """
+        @summary Queries created service groups.
+        
+        @param request: ListGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -3764,6 +4928,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListGroupsResponse:
+        """
+        @summary Queries created service groups.
+        
+        @param request: ListGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -3798,6 +4970,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListGroupsRequest,
     ) -> eas_20210701_models.ListGroupsResponse:
+        """
+        @summary Queries created service groups.
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_groups_with_options(request, headers, runtime)
@@ -3806,6 +4984,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListGroupsRequest,
     ) -> eas_20210701_models.ListGroupsResponse:
+        """
+        @summary Queries created service groups.
+        
+        @param request: ListGroupsRequest
+        @return: ListGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_groups_with_options_async(request, headers, runtime)
@@ -3819,6 +5003,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
+        """
+        @summary Queries a list of workers in a resource group.
+        
+        @param request: ListResourceInstanceWorkerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceInstanceWorkerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3854,6 +5046,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
+        """
+        @summary Queries a list of workers in a resource group.
+        
+        @param request: ListResourceInstanceWorkerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceInstanceWorkerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3887,6 +5087,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: eas_20210701_models.ListResourceInstanceWorkerRequest,
     ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
+        """
+        @summary Queries a list of workers in a resource group.
+        
+        @param request: ListResourceInstanceWorkerRequest
+        @return: ListResourceInstanceWorkerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resource_instance_worker_with_options(cluster_id, resource_id, instance_name, request, headers, runtime)
@@ -3898,6 +5104,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: eas_20210701_models.ListResourceInstanceWorkerRequest,
     ) -> eas_20210701_models.ListResourceInstanceWorkerResponse:
+        """
+        @summary Queries a list of workers in a resource group.
+        
+        @param request: ListResourceInstanceWorkerRequest
+        @return: ListResourceInstanceWorkerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resource_instance_worker_with_options_async(cluster_id, resource_id, instance_name, request, headers, runtime)
@@ -3910,6 +5122,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstancesResponse:
+        """
+        @summary Queries a list of instances in a dedicated resource group.
+        
+        @param request: ListResourceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -3960,6 +5180,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceInstancesResponse:
+        """
+        @summary Queries a list of instances in a dedicated resource group.
+        
+        @param request: ListResourceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -4008,6 +5236,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.ListResourceInstancesRequest,
     ) -> eas_20210701_models.ListResourceInstancesResponse:
+        """
+        @summary Queries a list of instances in a dedicated resource group.
+        
+        @param request: ListResourceInstancesRequest
+        @return: ListResourceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resource_instances_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -4018,6 +5252,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.ListResourceInstancesRequest,
     ) -> eas_20210701_models.ListResourceInstancesResponse:
+        """
+        @summary Queries a list of instances in a dedicated resource group.
+        
+        @param request: ListResourceInstancesRequest
+        @return: ListResourceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resource_instances_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -4030,6 +5270,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceServicesResponse:
+        """
+        @summary Queries a list of services that are deployed in the dedicated resource group.
+        
+        @param request: ListResourceServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4064,6 +5312,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceServicesResponse:
+        """
+        @summary Queries a list of services that are deployed in the dedicated resource group.
+        
+        @param request: ListResourceServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4096,6 +5352,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.ListResourceServicesRequest,
     ) -> eas_20210701_models.ListResourceServicesResponse:
+        """
+        @summary Queries a list of services that are deployed in the dedicated resource group.
+        
+        @param request: ListResourceServicesRequest
+        @return: ListResourceServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resource_services_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -4106,6 +5368,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.ListResourceServicesRequest,
     ) -> eas_20210701_models.ListResourceServicesResponse:
+        """
+        @summary Queries a list of services that are deployed in the dedicated resource group.
+        
+        @param request: ListResourceServicesRequest
+        @return: ListResourceServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resource_services_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -4116,6 +5384,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourcesResponse:
+        """
+        @summary Queries a list of dedicated resource groups for the current user.
+        
+        @param request: ListResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4154,6 +5430,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourcesResponse:
+        """
+        @summary Queries a list of dedicated resource groups for the current user.
+        
+        @param request: ListResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4190,6 +5474,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListResourcesRequest,
     ) -> eas_20210701_models.ListResourcesResponse:
+        """
+        @summary Queries a list of dedicated resource groups for the current user.
+        
+        @param request: ListResourcesRequest
+        @return: ListResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resources_with_options(request, headers, runtime)
@@ -4198,6 +5488,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListResourcesRequest,
     ) -> eas_20210701_models.ListResourcesResponse:
+        """
+        @summary Queries a list of dedicated resource groups for the current user.
+        
+        @param request: ListResourcesRequest
+        @return: ListResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resources_with_options_async(request, headers, runtime)
@@ -4210,6 +5506,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceContainersResponse:
+        """
+        @summary Queries the containers of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceContainersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4237,6 +5540,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceContainersResponse:
+        """
+        @summary Queries the containers of a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceContainersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4262,6 +5572,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
     ) -> eas_20210701_models.ListServiceContainersResponse:
+        """
+        @summary Queries the containers of a service.
+        
+        @return: ListServiceContainersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_service_containers_with_options(cluster_id, service_name, instance_name, headers, runtime)
@@ -4272,6 +5587,11 @@ class Client(OpenApiClient):
         service_name: str,
         instance_name: str,
     ) -> eas_20210701_models.ListServiceContainersResponse:
+        """
+        @summary Queries the containers of a service.
+        
+        @return: ListServiceContainersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_service_containers_with_options_async(cluster_id, service_name, instance_name, headers, runtime)
@@ -4284,6 +5604,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceInstancesResponse:
+        """
+        @summary Queries instances of a service.
+        
+        @param request: ListServiceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -4340,6 +5668,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceInstancesResponse:
+        """
+        @summary Queries instances of a service.
+        
+        @param request: ListServiceInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -4394,6 +5730,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.ListServiceInstancesRequest,
     ) -> eas_20210701_models.ListServiceInstancesResponse:
+        """
+        @summary Queries instances of a service.
+        
+        @param request: ListServiceInstancesRequest
+        @return: ListServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_service_instances_with_options(cluster_id, service_name, request, headers, runtime)
@@ -4404,6 +5746,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.ListServiceInstancesRequest,
     ) -> eas_20210701_models.ListServiceInstancesResponse:
+        """
+        @summary Queries instances of a service.
+        
+        @param request: ListServiceInstancesRequest
+        @return: ListServiceInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_service_instances_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -4416,6 +5764,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceVersionsResponse:
+        """
+        @summary Queries the information about the historical versions of a service.
+        
+        @param request: ListServiceVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4450,6 +5806,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServiceVersionsResponse:
+        """
+        @summary Queries the information about the historical versions of a service.
+        
+        @param request: ListServiceVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4482,6 +5846,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.ListServiceVersionsRequest,
     ) -> eas_20210701_models.ListServiceVersionsResponse:
+        """
+        @summary Queries the information about the historical versions of a service.
+        
+        @param request: ListServiceVersionsRequest
+        @return: ListServiceVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_service_versions_with_options(cluster_id, service_name, request, headers, runtime)
@@ -4492,6 +5862,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.ListServiceVersionsRequest,
     ) -> eas_20210701_models.ListServiceVersionsResponse:
+        """
+        @summary Queries the information about the historical versions of a service.
+        
+        @param request: ListServiceVersionsRequest
+        @return: ListServiceVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_service_versions_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -4502,6 +5878,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServicesResponse:
+        """
+        @summary Queries a list of services that are created by the current user.
+        
+        @param tmp_req: ListServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eas_20210701_models.ListServicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4564,6 +5948,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListServicesResponse:
+        """
+        @summary Queries a list of services that are created by the current user.
+        
+        @param tmp_req: ListServicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = eas_20210701_models.ListServicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4624,6 +6016,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListServicesRequest,
     ) -> eas_20210701_models.ListServicesResponse:
+        """
+        @summary Queries a list of services that are created by the current user.
+        
+        @param request: ListServicesRequest
+        @return: ListServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_services_with_options(request, headers, runtime)
@@ -4632,6 +6030,12 @@ class Client(OpenApiClient):
         self,
         request: eas_20210701_models.ListServicesRequest,
     ) -> eas_20210701_models.ListServicesResponse:
+        """
+        @summary Queries a list of services that are created by the current user.
+        
+        @param request: ListServicesRequest
+        @return: ListServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_services_with_options_async(request, headers, runtime)
@@ -4644,6 +6048,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReleaseServiceResponse:
+        """
+        @summary Performs canary release or blue-green release of a service.
+        
+        @param request: ReleaseServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseServiceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.traffic_state):
@@ -4678,6 +6090,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ReleaseServiceResponse:
+        """
+        @summary Performs canary release or blue-green release of a service.
+        
+        @param request: ReleaseServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseServiceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.traffic_state):
@@ -4710,6 +6130,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.ReleaseServiceRequest,
     ) -> eas_20210701_models.ReleaseServiceResponse:
+        """
+        @summary Performs canary release or blue-green release of a service.
+        
+        @param request: ReleaseServiceRequest
+        @return: ReleaseServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.release_service_with_options(cluster_id, service_name, request, headers, runtime)
@@ -4720,6 +6146,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.ReleaseServiceRequest,
     ) -> eas_20210701_models.ReleaseServiceResponse:
+        """
+        @summary Performs canary release or blue-green release of a service.
+        
+        @param request: ReleaseServiceRequest
+        @return: ReleaseServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.release_service_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -4731,6 +6163,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.RestartServiceResponse:
+        """
+        @summary Restarts a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4757,6 +6196,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.RestartServiceResponse:
+        """
+        @summary Restarts a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4781,6 +6227,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.RestartServiceResponse:
+        """
+        @summary Restarts a service.
+        
+        @return: RestartServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restart_service_with_options(cluster_id, service_name, headers, runtime)
@@ -4790,6 +6241,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.RestartServiceResponse:
+        """
+        @summary Restarts a service.
+        
+        @return: RestartServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_service_with_options_async(cluster_id, service_name, headers, runtime)
@@ -4801,6 +6257,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartBenchmarkTaskResponse:
+        """
+        @summary Starts a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4827,6 +6290,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartBenchmarkTaskResponse:
+        """
+        @summary Starts a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4851,6 +6321,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.StartBenchmarkTaskResponse:
+        """
+        @summary Starts a stress testing task.
+        
+        @return: StartBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
@@ -4860,6 +6335,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.StartBenchmarkTaskResponse:
+        """
+        @summary Starts a stress testing task.
+        
+        @return: StartBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
@@ -4871,6 +6351,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartServiceResponse:
+        """
+        @summary Starts a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4897,6 +6384,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StartServiceResponse:
+        """
+        @summary Starts a service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4921,6 +6415,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.StartServiceResponse:
+        """
+        @summary Starts a service.
+        
+        @return: StartServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_service_with_options(cluster_id, service_name, headers, runtime)
@@ -4930,6 +6429,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.StartServiceResponse:
+        """
+        @summary Starts a service.
+        
+        @return: StartServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_service_with_options_async(cluster_id, service_name, headers, runtime)
@@ -4941,6 +6445,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopBenchmarkTaskResponse:
+        """
+        @summary Stops a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4967,6 +6478,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopBenchmarkTaskResponse:
+        """
+        @summary Stops a stress testing task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopBenchmarkTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4991,6 +6509,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.StopBenchmarkTaskResponse:
+        """
+        @summary Stops a stress testing task.
+        
+        @return: StopBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_benchmark_task_with_options(cluster_id, task_name, headers, runtime)
@@ -5000,6 +6523,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         task_name: str,
     ) -> eas_20210701_models.StopBenchmarkTaskResponse:
+        """
+        @summary Stops a stress testing task.
+        
+        @return: StopBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_benchmark_task_with_options_async(cluster_id, task_name, headers, runtime)
@@ -5011,6 +6539,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopServiceResponse:
+        """
+        @summary Stops a running service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5037,6 +6572,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.StopServiceResponse:
+        """
+        @summary Stops a running service.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopServiceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5061,6 +6603,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.StopServiceResponse:
+        """
+        @summary Stops a running service.
+        
+        @return: StopServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_service_with_options(cluster_id, service_name, headers, runtime)
@@ -5070,6 +6617,11 @@ class Client(OpenApiClient):
         cluster_id: str,
         service_name: str,
     ) -> eas_20210701_models.StopServiceResponse:
+        """
+        @summary Stops a running service.
+        
+        @return: StopServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_service_with_options_async(cluster_id, service_name, headers, runtime)
@@ -5082,6 +6634,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateAppServiceResponse:
+        """
+        @summary Updates an application service.
+        
+        @param request: UpdateAppServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.quota_id):
@@ -5128,6 +6688,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateAppServiceResponse:
+        """
+        @summary Updates an application service.
+        
+        @param request: UpdateAppServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.quota_id):
@@ -5172,6 +6740,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateAppServiceRequest,
     ) -> eas_20210701_models.UpdateAppServiceResponse:
+        """
+        @summary Updates an application service.
+        
+        @param request: UpdateAppServiceRequest
+        @return: UpdateAppServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_app_service_with_options(cluster_id, service_name, request, headers, runtime)
@@ -5182,6 +6756,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateAppServiceRequest,
     ) -> eas_20210701_models.UpdateAppServiceResponse:
+        """
+        @summary Updates an application service.
+        
+        @param request: UpdateAppServiceRequest
+        @return: UpdateAppServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_app_service_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -5194,6 +6774,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
+        """
+        @summary Updates a stress testing task.
+        
+        @param request: UpdateBenchmarkTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBenchmarkTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5223,6 +6811,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
+        """
+        @summary Updates a stress testing task.
+        
+        @param request: UpdateBenchmarkTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBenchmarkTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5250,6 +6846,12 @@ class Client(OpenApiClient):
         task_name: str,
         request: eas_20210701_models.UpdateBenchmarkTaskRequest,
     ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
+        """
+        @summary Updates a stress testing task.
+        
+        @param request: UpdateBenchmarkTaskRequest
+        @return: UpdateBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_benchmark_task_with_options(cluster_id, task_name, request, headers, runtime)
@@ -5260,6 +6862,12 @@ class Client(OpenApiClient):
         task_name: str,
         request: eas_20210701_models.UpdateBenchmarkTaskRequest,
     ) -> eas_20210701_models.UpdateBenchmarkTaskResponse:
+        """
+        @summary Updates a stress testing task.
+        
+        @param request: UpdateBenchmarkTaskRequest
+        @return: UpdateBenchmarkTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_benchmark_task_with_options_async(cluster_id, task_name, request, headers, runtime)
@@ -5272,6 +6880,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateGatewayResponse:
+        """
+        @summary Update a private gateway.
+        
+        @param request: UpdateGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enable_internet):
@@ -5310,6 +6926,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateGatewayResponse:
+        """
+        @summary Update a private gateway.
+        
+        @param request: UpdateGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.enable_internet):
@@ -5346,6 +6970,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: eas_20210701_models.UpdateGatewayRequest,
     ) -> eas_20210701_models.UpdateGatewayResponse:
+        """
+        @summary Update a private gateway.
+        
+        @param request: UpdateGatewayRequest
+        @return: UpdateGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_gateway_with_options(gateway_id, cluster_id, request, headers, runtime)
@@ -5356,6 +6986,12 @@ class Client(OpenApiClient):
         cluster_id: str,
         request: eas_20210701_models.UpdateGatewayRequest,
     ) -> eas_20210701_models.UpdateGatewayResponse:
+        """
+        @summary Update a private gateway.
+        
+        @param request: UpdateGatewayRequest
+        @return: UpdateGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_gateway_with_options_async(gateway_id, cluster_id, request, headers, runtime)
@@ -5368,6 +7004,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceResponse:
+        """
+        @summary Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+        
+        @param request: UpdateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_name):
@@ -5402,6 +7046,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceResponse:
+        """
+        @summary Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+        
+        @param request: UpdateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_name):
@@ -5434,6 +7086,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.UpdateResourceRequest,
     ) -> eas_20210701_models.UpdateResourceResponse:
+        """
+        @summary Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+        
+        @param request: UpdateResourceRequest
+        @return: UpdateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_resource_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -5444,6 +7102,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.UpdateResourceRequest,
     ) -> eas_20210701_models.UpdateResourceResponse:
+        """
+        @summary Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+        
+        @param request: UpdateResourceRequest
+        @return: UpdateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_resource_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -5456,6 +7120,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceDLinkResponse:
+        """
+        @summary Updates the configurations of a virtual private cloud (VPC) direct connection for a dedicated resource group.
+        
+        @param request: UpdateResourceDLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceDLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.destination_cidrs):
@@ -5494,6 +7166,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceDLinkResponse:
+        """
+        @summary Updates the configurations of a virtual private cloud (VPC) direct connection for a dedicated resource group.
+        
+        @param request: UpdateResourceDLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceDLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.destination_cidrs):
@@ -5530,6 +7210,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.UpdateResourceDLinkRequest,
     ) -> eas_20210701_models.UpdateResourceDLinkResponse:
+        """
+        @summary Updates the configurations of a virtual private cloud (VPC) direct connection for a dedicated resource group.
+        
+        @param request: UpdateResourceDLinkRequest
+        @return: UpdateResourceDLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_resource_dlink_with_options(cluster_id, resource_id, request, headers, runtime)
@@ -5540,6 +7226,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: eas_20210701_models.UpdateResourceDLinkRequest,
     ) -> eas_20210701_models.UpdateResourceDLinkResponse:
+        """
+        @summary Updates the configurations of a virtual private cloud (VPC) direct connection for a dedicated resource group.
+        
+        @param request: UpdateResourceDLinkRequest
+        @return: UpdateResourceDLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_resource_dlink_with_options_async(cluster_id, resource_id, request, headers, runtime)
@@ -5553,6 +7245,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceInstanceResponse:
+        """
+        @summary Updates the service scheduling status of an instance in a dedicated resource group.
+        
+        @param request: UpdateResourceInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -5586,6 +7286,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateResourceInstanceResponse:
+        """
+        @summary Updates the service scheduling status of an instance in a dedicated resource group.
+        
+        @param request: UpdateResourceInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action):
@@ -5617,6 +7325,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: eas_20210701_models.UpdateResourceInstanceRequest,
     ) -> eas_20210701_models.UpdateResourceInstanceResponse:
+        """
+        @summary Updates the service scheduling status of an instance in a dedicated resource group.
+        
+        @param request: UpdateResourceInstanceRequest
+        @return: UpdateResourceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_resource_instance_with_options(cluster_id, resource_id, instance_id, request, headers, runtime)
@@ -5628,6 +7342,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: eas_20210701_models.UpdateResourceInstanceRequest,
     ) -> eas_20210701_models.UpdateResourceInstanceResponse:
+        """
+        @summary Updates the service scheduling status of an instance in a dedicated resource group.
+        
+        @param request: UpdateResourceInstanceRequest
+        @return: UpdateResourceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_resource_instance_with_options_async(cluster_id, resource_id, instance_id, request, headers, runtime)
@@ -5640,6 +7360,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceResponse:
+        """
+        @summary Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+        
+        @param request: UpdateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.update_type):
@@ -5673,6 +7401,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceResponse:
+        """
+        @summary Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+        
+        @param request: UpdateServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.update_type):
@@ -5704,6 +7440,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceRequest,
     ) -> eas_20210701_models.UpdateServiceResponse:
+        """
+        @summary Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+        
+        @param request: UpdateServiceRequest
+        @return: UpdateServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_with_options(cluster_id, service_name, request, headers, runtime)
@@ -5714,6 +7456,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceRequest,
     ) -> eas_20210701_models.UpdateServiceResponse:
+        """
+        @summary Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+        
+        @param request: UpdateServiceRequest
+        @return: UpdateServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -5726,6 +7474,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
+        """
+        @summary Updates the Autoscaler configurations of a service.
+        
+        @param request: UpdateServiceAutoScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceAutoScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.behavior):
@@ -5764,6 +7520,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
+        """
+        @summary Updates the Autoscaler configurations of a service.
+        
+        @param request: UpdateServiceAutoScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceAutoScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.behavior):
@@ -5800,6 +7564,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceAutoScalerRequest,
     ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
+        """
+        @summary Updates the Autoscaler configurations of a service.
+        
+        @param request: UpdateServiceAutoScalerRequest
+        @return: UpdateServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_auto_scaler_with_options(cluster_id, service_name, request, headers, runtime)
@@ -5810,6 +7580,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceAutoScalerRequest,
     ) -> eas_20210701_models.UpdateServiceAutoScalerResponse:
+        """
+        @summary Updates the Autoscaler configurations of a service.
+        
+        @param request: UpdateServiceAutoScalerRequest
+        @return: UpdateServiceAutoScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_auto_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -5822,6 +7598,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        """
+        @summary Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+        
+        @param request: UpdateServiceCronScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceCronScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
@@ -5856,6 +7640,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        """
+        @summary Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+        
+        @param request: UpdateServiceCronScalerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceCronScalerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exclude_dates):
@@ -5888,6 +7680,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceCronScalerRequest,
     ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        """
+        @summary Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+        
+        @param request: UpdateServiceCronScalerRequest
+        @return: UpdateServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_cron_scaler_with_options(cluster_id, service_name, request, headers, runtime)
@@ -5898,6 +7696,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceCronScalerRequest,
     ) -> eas_20210701_models.UpdateServiceCronScalerResponse:
+        """
+        @summary Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+        
+        @param request: UpdateServiceCronScalerRequest
+        @return: UpdateServiceCronScalerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_cron_scaler_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -5911,6 +7715,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceInstanceResponse:
+        """
+        @summary Updates attributes of service instances. Only isolation can be performed for service instances.
+        
+        @param request: UpdateServiceInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.isolate):
@@ -5944,6 +7756,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceInstanceResponse:
+        """
+        @summary Updates attributes of service instances. Only isolation can be performed for service instances.
+        
+        @param request: UpdateServiceInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.isolate):
@@ -5975,6 +7795,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: eas_20210701_models.UpdateServiceInstanceRequest,
     ) -> eas_20210701_models.UpdateServiceInstanceResponse:
+        """
+        @summary Updates attributes of service instances. Only isolation can be performed for service instances.
+        
+        @param request: UpdateServiceInstanceRequest
+        @return: UpdateServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_instance_with_options(cluster_id, service_name, instance_name, request, headers, runtime)
@@ -5986,6 +7812,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: eas_20210701_models.UpdateServiceInstanceRequest,
     ) -> eas_20210701_models.UpdateServiceInstanceResponse:
+        """
+        @summary Updates attributes of service instances. Only isolation can be performed for service instances.
+        
+        @param request: UpdateServiceInstanceRequest
+        @return: UpdateServiceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_instance_with_options_async(cluster_id, service_name, instance_name, request, headers, runtime)
@@ -5998,6 +7830,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        """
+        @summary Adds service tags or updates existing service tags.
+        
+        @param request: UpdateServiceLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.labels):
@@ -6030,6 +7870,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        """
+        @summary Adds service tags or updates existing service tags.
+        
+        @param request: UpdateServiceLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.labels):
@@ -6060,6 +7908,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceLabelRequest,
     ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        """
+        @summary Adds service tags or updates existing service tags.
+        
+        @param request: UpdateServiceLabelRequest
+        @return: UpdateServiceLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_label_with_options(cluster_id, service_name, request, headers, runtime)
@@ -6070,6 +7924,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceLabelRequest,
     ) -> eas_20210701_models.UpdateServiceLabelResponse:
+        """
+        @summary Adds service tags or updates existing service tags.
+        
+        @param request: UpdateServiceLabelRequest
+        @return: UpdateServiceLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_label_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -6082,6 +7942,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceMirrorResponse:
+        """
+        @summary Updates the traffic mirroring configurations of a service.
+        
+        @param request: UpdateServiceMirrorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceMirrorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ratio):
@@ -6116,6 +7984,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceMirrorResponse:
+        """
+        @summary Updates the traffic mirroring configurations of a service.
+        
+        @param request: UpdateServiceMirrorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceMirrorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ratio):
@@ -6148,6 +8024,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceMirrorRequest,
     ) -> eas_20210701_models.UpdateServiceMirrorResponse:
+        """
+        @summary Updates the traffic mirroring configurations of a service.
+        
+        @param request: UpdateServiceMirrorRequest
+        @return: UpdateServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_mirror_with_options(cluster_id, service_name, request, headers, runtime)
@@ -6158,6 +8040,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceMirrorRequest,
     ) -> eas_20210701_models.UpdateServiceMirrorResponse:
+        """
+        @summary Updates the traffic mirroring configurations of a service.
+        
+        @param request: UpdateServiceMirrorRequest
+        @return: UpdateServiceMirrorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -6170,6 +8058,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
+        """
+        @summary Updates the safety lock of a service to minimize misoperations on the service.
+        
+        @param request: UpdateServiceSafetyLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceSafetyLockResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lock):
@@ -6202,6 +8098,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
+        """
+        @summary Updates the safety lock of a service to minimize misoperations on the service.
+        
+        @param request: UpdateServiceSafetyLockRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceSafetyLockResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.lock):
@@ -6232,6 +8136,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceSafetyLockRequest,
     ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
+        """
+        @summary Updates the safety lock of a service to minimize misoperations on the service.
+        
+        @param request: UpdateServiceSafetyLockRequest
+        @return: UpdateServiceSafetyLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_safety_lock_with_options(cluster_id, service_name, request, headers, runtime)
@@ -6242,6 +8152,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceSafetyLockRequest,
     ) -> eas_20210701_models.UpdateServiceSafetyLockResponse:
+        """
+        @summary Updates the safety lock of a service to minimize misoperations on the service.
+        
+        @param request: UpdateServiceSafetyLockRequest
+        @return: UpdateServiceSafetyLockResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_safety_lock_with_options_async(cluster_id, service_name, request, headers, runtime)
@@ -6254,6 +8170,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        """
+        @summary Updates the version of a service or rolls back the service to a specific version.
+        
+        @param request: UpdateServiceVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.version):
@@ -6286,6 +8210,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        """
+        @summary Updates the version of a service or rolls back the service to a specific version.
+        
+        @param request: UpdateServiceVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.version):
@@ -6316,6 +8248,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceVersionRequest,
     ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        """
+        @summary Updates the version of a service or rolls back the service to a specific version.
+        
+        @param request: UpdateServiceVersionRequest
+        @return: UpdateServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_service_version_with_options(cluster_id, service_name, request, headers, runtime)
@@ -6326,6 +8264,12 @@ class Client(OpenApiClient):
         service_name: str,
         request: eas_20210701_models.UpdateServiceVersionRequest,
     ) -> eas_20210701_models.UpdateServiceVersionResponse:
+        """
+        @summary Updates the version of a service or rolls back the service to a specific version.
+        
+        @param request: UpdateServiceVersionRequest
+        @return: UpdateServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_service_version_with_options_async(cluster_id, service_name, request, headers, runtime)

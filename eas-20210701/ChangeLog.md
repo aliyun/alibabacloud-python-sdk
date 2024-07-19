@@ -1,3 +1,13 @@
+2024-07-19 Version: 4.2.1
+- Update API CreateResourceLog: update param body.
+- Update API DescribeServiceCronScaler: update param ClusterId.
+- Update API DescribeServiceCronScaler: update param ServiceName.
+- Update API DescribeSpotDiscountHistory: update param InstanceType.
+- Update API ListServiceContainers: update param ClusterId.
+- Update API ListServiceContainers: update param ServiceName.
+- Update API ListServiceContainers: update param InstanceName.
+
+
 2024-04-18 Version: 4.2.0
 - Support API DescribeSpotDiscountHistory.
 

@@ -164,6 +164,8 @@ class Instance(TeaModel):
     def __init__(
         self,
         current_amount: float = None,
+        external_ip: str = None,
+        external_instance_port: int = None,
         host_ip: str = None,
         host_name: str = None,
         inner_ip: str = None,
@@ -180,12 +182,16 @@ class Instance(TeaModel):
         restart_count: int = None,
         role: str = None,
         start_at: str = None,
+        start_time: str = None,
         status: str = None,
         tenant_host_ip: str = None,
         tenant_instance_ip: str = None,
         total_processes: int = None,
+        zone: str = None,
     ):
         self.current_amount = current_amount
+        self.external_ip = external_ip
+        self.external_instance_port = external_instance_port
         self.host_ip = host_ip
         self.host_name = host_name
         self.inner_ip = inner_ip
@@ -202,10 +208,12 @@ class Instance(TeaModel):
         self.restart_count = restart_count
         self.role = role
         self.start_at = start_at
+        self.start_time = start_time
         self.status = status
         self.tenant_host_ip = tenant_host_ip
         self.tenant_instance_ip = tenant_instance_ip
         self.total_processes = total_processes
+        self.zone = zone
 
     def validate(self):
         pass
@@ -218,6 +226,10 @@ class Instance(TeaModel):
         result = dict()
         if self.current_amount is not None:
             result['CurrentAmount'] = self.current_amount
+        if self.external_ip is not None:
+            result['ExternalIP'] = self.external_ip
+        if self.external_instance_port is not None:
+            result['ExternalInstancePort'] = self.external_instance_port
         if self.host_ip is not None:
             result['HostIP'] = self.host_ip
         if self.host_name is not None:
@@ -250,6 +262,8 @@ class Instance(TeaModel):
             result['Role'] = self.role
         if self.start_at is not None:
             result['StartAt'] = self.start_at
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.status is not None:
             result['Status'] = self.status
         if self.tenant_host_ip is not None:
@@ -258,12 +272,18 @@ class Instance(TeaModel):
             result['TenantInstanceIP'] = self.tenant_instance_ip
         if self.total_processes is not None:
             result['TotalProcesses'] = self.total_processes
+        if self.zone is not None:
+            result['Zone'] = self.zone
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CurrentAmount') is not None:
             self.current_amount = m.get('CurrentAmount')
+        if m.get('ExternalIP') is not None:
+            self.external_ip = m.get('ExternalIP')
+        if m.get('ExternalInstancePort') is not None:
+            self.external_instance_port = m.get('ExternalInstancePort')
         if m.get('HostIP') is not None:
             self.host_ip = m.get('HostIP')
         if m.get('HostName') is not None:
@@ -296,6 +316,8 @@ class Instance(TeaModel):
             self.role = m.get('Role')
         if m.get('StartAt') is not None:
             self.start_at = m.get('StartAt')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TenantHostIP') is not None:
@@ -304,6 +326,8 @@ class Instance(TeaModel):
             self.tenant_instance_ip = m.get('TenantInstanceIP')
         if m.get('TotalProcesses') is not None:
             self.total_processes = m.get('TotalProcesses')
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
         return self
 
 
@@ -324,6 +348,7 @@ class Resource(TeaModel):
         resource_type: str = None,
         status: str = None,
         update_time: str = None,
+        vendor: str = None,
     ):
         self.cluster_id = cluster_id
         self.cpu_count = cpu_count
@@ -339,6 +364,7 @@ class Resource(TeaModel):
         self.resource_type = resource_type
         self.status = status
         self.update_time = update_time
+        self.vendor = vendor
 
     def validate(self):
         pass
@@ -377,6 +403,8 @@ class Resource(TeaModel):
             result['Status'] = self.status
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        if self.vendor is not None:
+            result['Vendor'] = self.vendor
         return result
 
     def from_map(self, m: dict = None):
@@ -409,6 +437,8 @@ class Resource(TeaModel):
             self.status = m.get('Status')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        if m.get('Vendor') is not None:
+            self.vendor = m.get('Vendor')
         return self
 
 
@@ -989,6 +1019,7 @@ class CloneServiceRequest(TeaModel):
         self,
         body: str = None,
     ):
+        # The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
         self.body = body
 
     def validate(self):
@@ -1021,12 +1052,17 @@ class CloneServiceResponseBody(TeaModel):
         service_name: str = None,
         status: str = None,
     ):
+        # The public endpoint of the service.
         self.internet_endpoint = internet_endpoint
+        # The private endpoint of the service.
         self.intranet_endpoint = intranet_endpoint
         # Id of the request
         self.request_id = request_id
+        # The service ID.
         self.service_id = service_id
+        # The service name.
         self.service_name = service_name
+        # The service status.
         self.status = status
 
     def validate(self):
@@ -1116,7 +1152,9 @@ class CommitServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1211,27 +1249,35 @@ class CreateAppServiceRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.app_type = app_type
         # The application version.
         self.app_version = app_version
         # The additional configurations that are required for service deployment.
         self.config = config
         # The number of instances.
+        # 
+        # This parameter is required.
         self.replicas = replicas
         # The service name.
+        # 
+        # This parameter is required.
         self.service_name = service_name
         # The service specifications. Valid values:
         # 
-        # *   llama\_7b_fp16
-        # *   llama\_7b_int8
-        # *   llama\_13b_fp16
-        # *   llama\_7b_int8
-        # *   chatglm\_6b_fp16
-        # *   chatglm\_6b_int8
-        # *   chatglm2\_6b_fp16
-        # *   baichuan\_7b_int8
-        # *   baichuan\_13b_fp16
-        # *   baichuan\_7b_fp16
+        # *   llama_7b_fp16
+        # *   llama_7b_int8
+        # *   llama_13b_fp16
+        # *   llama_7b_int8
+        # *   chatglm_6b_fp16
+        # *   chatglm_6b_int8
+        # *   chatglm2_6b_fp16
+        # *   baichuan_7b_int8
+        # *   baichuan_13b_fp16
+        # *   baichuan_7b_fp16
+        # 
+        # This parameter is required.
         self.service_spec = service_spec
 
     def validate(self):
@@ -1545,6 +1591,8 @@ class CreateGatewayRequest(TeaModel):
         # Specifies whether to enable internal network access. Default value: true.
         self.enable_intranet = enable_intranet
         # The instance type used for the private gateway.
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The private gateway alias.
         self.name = name
@@ -1801,9 +1849,24 @@ class CreateResourceRequestSelfManagedResourceOptionsNodeTolerations(TeaModel):
         operator: str = None,
         value: str = None,
     ):
+        # The result.
+        # 
+        # Valid values:
+        # 
+        # *   PreferNoSchedule
+        # *   NoSchedule
+        # *   NoExecute
         self.effect = effect
+        # The key name.
         self.key = key
+        # The relationship between key names and key values.
+        # 
+        # Valid values:
+        # 
+        # *   Equal
+        # *   Exists
         self.operator = operator
+        # The key value.
         self.value = value
 
     def validate(self):
@@ -1846,9 +1909,13 @@ class CreateResourceRequestSelfManagedResourceOptions(TeaModel):
         node_tolerations: List[CreateResourceRequestSelfManagedResourceOptionsNodeTolerations] = None,
         role_name: str = None,
     ):
+        # The ID of the self-managed cluster.
         self.external_cluster_id = external_cluster_id
+        # The tag key-value pairs for nodes.
         self.node_match_labels = node_match_labels
+        # Tolerations for nodes.
         self.node_tolerations = node_tolerations
+        # The name of the RAM user to which the permissions on Elastic Algorithm Service of Platform for AI (PAI-EAS) are granted.
         self.role_name = role_name
 
     def validate(self):
@@ -1903,24 +1970,38 @@ class CreateResourceRequest(TeaModel):
         system_disk_size: int = None,
         zone: str = None,
     ):
-        # Specifies whether to enable auto-renewal. Valid values: false (default)
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
+        # *   false (default)
         # *   true
         self.auto_renewal = auto_renewal
-        # The billing method of the instance. Valid values:
+        # The billing method. Valid values:
         # 
         # *   PrePaid: the subscription billing method.
         # *   PostPaid: the pay-as-you-go billing method.
+        # 
+        # >  This parameter is required when the ResourceType parameter is set to Dedicated.
         self.charge_type = charge_type
         # The number of ECS instances.
+        # 
+        # >  This parameter is required when the ResourceType parameter is set to Dedicated.
         self.ecs_instance_count = ecs_instance_count
         # The type of the Elastic Compute Service (ECS) instance.
+        # 
+        # >  This parameter is required when the ResourceType parameter is set to Dedicated.
         self.ecs_instance_type = ecs_instance_type
+        # The type of the resource group. Valid values:
+        # 
+        # *   Dedicated: the dedicated resource group.
+        # *   SelfManaged: the self-managed resource group.
+        # 
+        # >  If you use a self-managed resource group, you must configure a whitelist.
         self.resource_type = resource_type
+        # The configurations of the self-managed resource group.
         self.self_managed_resource_options = self_managed_resource_options
         # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
-        # The zone to which the instance belongs.
+        # The ID of the zone in which the instance resides.
         self.zone = zone
 
     def validate(self):
@@ -1983,11 +2064,17 @@ class CreateResourceResponseBody(TeaModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
+        # The ID of the cluster to which the resource group belongs.
         self.cluster_id = cluster_id
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The user ID (UID) of the resource group owner.
         self.owner_uid = owner_uid
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_id = resource_id
+        # The name of the resource group.
         self.resource_name = resource_name
 
     def validate(self):
@@ -2082,12 +2169,31 @@ class CreateResourceInstancesRequest(TeaModel):
         user_data: str = None,
         zone: str = None,
     ):
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # *   false (default)
+        # *   true
         self.auto_renewal = auto_renewal
+        # The billing method of the instance. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
+        # 
+        # This parameter is required.
         self.charge_type = charge_type
+        # The number of instances that you want to create. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.ecs_instance_count = ecs_instance_count
+        # The type of the Elastic Compute Service (ECS) instance.
+        # 
+        # This parameter is required.
         self.ecs_instance_type = ecs_instance_type
+        # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
         self.system_disk_size = system_disk_size
+        # The user-defined information. This parameter is not in use.
         self.user_data = user_data
+        # The zone to which the instance belongs.
         self.zone = zone
 
     def validate(self):
@@ -2141,8 +2247,11 @@ class CreateResourceInstancesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2220,7 +2329,13 @@ class CreateResourceLogRequest(TeaModel):
         log_store: str = None,
         project_name: str = None,
     ):
+        # The Logstore of Log Service. For more information about how to query a Logstore, see [ListLogStores](https://help.aliyun.com/document_detail/426970.html).
+        # 
+        # This parameter is required.
         self.log_store = log_store
+        # The Log Service project that is associated with the resource group. For more information about how to query the project, see [ListProject](https://help.aliyun.com/document_detail/74955.html).
+        # 
+        # This parameter is required.
         self.project_name = project_name
 
     def validate(self):
@@ -2253,7 +2368,9 @@ class CreateResourceLogResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2349,8 +2466,11 @@ class CreateServiceRequest(TeaModel):
         # 
         #     <!-- -->
         self.develop = develop
+        # The custom label.
         self.labels = labels
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The request body. For more information about the key request parameters, see **Table 1. Request body parameters** and **Table 2. Metadata parameters**. For more information about all related parameters, see [Parameters of model services](https://help.aliyun.com/document_detail/450525.html).
         self.body = body
 
     def validate(self):
@@ -2413,8 +2533,11 @@ class CreateServiceShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.develop = develop
+        # The custom label.
         self.labels_shrink = labels_shrink
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The request body. For more information about the key request parameters, see **Table 1. Request body parameters** and **Table 2. Metadata parameters**. For more information about all related parameters, see [Parameters of model services](https://help.aliyun.com/document_detail/450525.html).
         self.body = body
 
     def validate(self):
@@ -2460,12 +2583,19 @@ class CreateServiceResponseBody(TeaModel):
         service_name: str = None,
         status: str = None,
     ):
+        # The public endpoint of the created service.
         self.internet_endpoint = internet_endpoint
+        # The internal endpoint of the created service.
         self.intranet_endpoint = intranet_endpoint
+        # The region ID of the created service.
         self.region = region
+        # The request ID.
         self.request_id = request_id
+        # The ID of the created service.
         self.service_id = service_id
+        # The name of the created service.
         self.service_name = service_name
+        # The service state.
         self.status = status
 
     def validate(self):
@@ -2561,7 +2691,7 @@ class CreateServiceAutoScalerRequestBehaviorOnZero(TeaModel):
     ):
         # The time window that is required before the number of instances is reduced to 0. The number of instances can be reduced to 0 only if no request is available or no traffic exists in the specified time window. Default value: 600.
         self.scale_down_grace_period_seconds = scale_down_grace_period_seconds
-        # The number of instances that you want to create at a time if the number of instances is scaled out from 0. Default value: 1.
+        # The number of instances that you want to create at a time if the number of instances is 0. Default value: 1.
         self.scale_up_activation_replicas = scale_up_activation_replicas
 
     def validate(self):
@@ -2703,15 +2833,21 @@ class CreateServiceAutoScalerRequestScaleStrategies(TeaModel):
     ):
         # The name of the metric for triggering auto scaling. Valid values:
         # 
-        # *   QPS: the queries per second (QPS) for an individual instance.
-        # *   CPU: the CPU utilization.
+        # *   qps: the queries per second (qps) for an individual instance.
+        # *   cpu: the cpu utilization.
+        # * gpu[util]: gpu utilization.
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
         self.service = service
         # The threshold of the metric that triggers auto scaling.
         # 
-        # *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
-        # *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+        # *   If you set metricName to qps, scale-out is triggered when the average qps for a single instance is greater than this threshold.
+        # *   If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+        # *   If you set metricName to gpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+        # 
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -2752,11 +2888,17 @@ class CreateServiceAutoScalerRequest(TeaModel):
     ):
         # The Autoscaler operation.
         self.behavior = behavior
-        # The maximum number of instances. The value must be greater than that of the min parameter.
+        # The maximum number of instances in the service. The value of max must be greater than the value of min.
+        # 
+        # This parameter is required.
         self.max = max
-        # The minimum number of instances. The value must be greater than 0.
+        # The minimum number of instances in the service.
+        # 
+        # This parameter is required.
         self.min = min
-        # The Autoscaler strategies.
+        # The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+        # 
+        # This parameter is required.
         self.scale_strategies = scale_strategies
 
     def validate(self):
@@ -2808,7 +2950,9 @@ class CreateServiceAutoScalerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2883,8 +3027,15 @@ class CreateServiceCronScalerRequestScaleJobs(TeaModel):
         schedule: str = None,
         target_size: int = None,
     ):
+        # The name of the CronHPA job.
         self.name = name
+        # The cron expression that is used to configure the execution time of the CronHPA job. For more information about how to configure cron expressions, see **Description of special characters** in this topic.
+        # 
+        # This parameter is required.
         self.schedule = schedule
+        # The number of instances that you want to configure for the CronHPA job.
+        # 
+        # This parameter is required.
         self.target_size = target_size
 
     def validate(self):
@@ -2921,7 +3072,11 @@ class CreateServiceCronScalerRequest(TeaModel):
         exclude_dates: List[str] = None,
         scale_jobs: List[CreateServiceCronScalerRequestScaleJobs] = None,
     ):
+        # The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
         self.exclude_dates = exclude_dates
+        # The description of the CronHPA job.
+        # 
+        # This parameter is required.
         self.scale_jobs = scale_jobs
 
     def validate(self):
@@ -2962,7 +3117,9 @@ class CreateServiceCronScalerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3036,7 +3193,9 @@ class CreateServiceMirrorRequest(TeaModel):
         ratio: int = None,
         target: List[str] = None,
     ):
+        # The percentage of the traffic that is mirrored to the destination service. Valid values: 0 to 100.
         self.ratio = ratio
+        # The instances.
         self.target = target
 
     def validate(self):
@@ -3069,7 +3228,9 @@ class CreateServiceMirrorResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3420,7 +3581,9 @@ class DeleteResourceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3494,7 +3657,9 @@ class DeleteResourceDLinkResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3568,7 +3733,12 @@ class DeleteResourceInstancesRequest(TeaModel):
         all_failed: bool = None,
         instance_list: str = None,
     ):
+        # Specifies whether to delete all the instances that fail to be created. Valid values:
+        # 
+        # *   true
+        # *   false
         self.all_failed = all_failed
+        # The instances. Separate multiple instances with commas (,), such as `instanceId1,instanceId2`. For more information about how to query the instances, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
         self.instance_list = instance_list
 
     def validate(self):
@@ -3601,7 +3771,9 @@ class DeleteResourceInstancesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3751,7 +3923,9 @@ class DeleteServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3825,7 +3999,9 @@ class DeleteServiceAutoScalerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3899,7 +4075,9 @@ class DeleteServiceCronScalerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3976,6 +4154,9 @@ class DeleteServiceInstancesRequest(TeaModel):
     ):
         # The name of the container whose process needs to be restarted. This parameter takes effect only if the SoftRestart parameter is set to true.
         self.container = container
+        # The instances that you want to restart. Separate multiple instance names with commas (,). For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+        # 
+        # This parameter is required.
         self.instance_list = instance_list
         # Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
         self.soft_restart = soft_restart
@@ -4014,7 +4195,9 @@ class DeleteServiceInstancesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4088,6 +4271,8 @@ class DeleteServiceLabelRequest(TeaModel):
         keys: List[str] = None,
     ):
         # The service tags that you want to delete.
+        # 
+        # This parameter is required.
         self.keys = keys
 
     def validate(self):
@@ -4116,6 +4301,8 @@ class DeleteServiceLabelShrinkRequest(TeaModel):
         keys_shrink: str = None,
     ):
         # The service tags that you want to delete.
+        # 
+        # This parameter is required.
         self.keys_shrink = keys_shrink
 
     def validate(self):
@@ -4220,7 +4407,9 @@ class DeleteServiceMirrorResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4520,6 +4709,7 @@ class DescribeBenchmarkTaskReportRequest(TeaModel):
         self,
         report_type: str = None,
     ):
+        # The report type of the stress testing task. Valid values: RAW and Report.
         self.report_type = report_type
 
     def validate(self):
@@ -4549,8 +4739,11 @@ class DescribeBenchmarkTaskReportResponseBody(TeaModel):
         report_url: str = None,
         request_id: str = None,
     ):
+        # If the value of ReportType is set to RAW, the details about the stress testing report are returned.
         self.data = data
+        # If the value of ReportType is set to Report, the URL of the stress testing report is returned.
         self.report_url = report_url
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4631,7 +4824,7 @@ class DescribeGatewayResponseBodyInternetAclPolicyList(TeaModel):
     ):
         # The description.
         self.comment = comment
-        # The accessible CIDR block.
+        # The Classless Inter-Domain Routing (CIDR) block that is allowed to access the private gateway.
         self.entry = entry
         # The state of the private gateway.
         # 
@@ -4693,27 +4886,12 @@ class DescribeGatewayResponseBodyIntranetLinkedVpcList(TeaModel):
     ):
         # The IP address.
         self.ip = ip
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The state of the private gateway.
-        # 
-        # Valid values:
+        # The state of the private gateway. Valid values:
         # 
         # *   Creating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -4777,32 +4955,41 @@ class DescribeGatewayResponseBody(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The UID of the account that is used to create the private gateway.
         self.caller_uid = caller_uid
-        # 网关创建时间
+        # The time when the private gateway was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The ID of the self-managed cluster.
         self.external_cluster_id = external_cluster_id
-        # 网关ID
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
+        # The private gateway alias.
         self.gateway_name = gateway_name
-        # 网关创建的实例种类
+        # The instance type used for the private gateway.
         self.instance_type = instance_type
         # The Internet access control policies.
         self.internet_acl_policy_list = internet_acl_policy_list
-        # 网关内部域名
+        # The public endpoint.
         self.internet_domain = internet_domain
+        # Indicates whether Internet access is enabled.
         self.internet_enabled = internet_enabled
-        # 网关外部域名
+        # The internal endpoint.
         self.intranet_domain = intranet_domain
+        # Indicates whether internal network access is enabled.
         self.intranet_enabled = intranet_enabled
+        # The internal endpoints.
         self.intranet_linked_vpc_list = intranet_linked_vpc_list
-        # 创建网关的用户ID
+        # The user ID (UID) of the Alibaba Cloud account that is used to create the private gateway.
         self.parent_uid = parent_uid
-        # 网关所在地域
+        # The region ID of the private gateway.
+        # 
+        # This parameter is required.
         self.region = region
+        # The request ID.
         self.request_id = request_id
-        # 网关现在的状态
+        # The state of the private gateway.
         self.status = status
-        # 网关最后一次的更新时间
+        # The time when the private gateway was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -5034,10 +5221,10 @@ class DescribeResourceResponseBody(TeaModel):
         self.resource_id = resource_id
         # The name of the EAS resource.
         self.resource_name = resource_name
-        # The type of the resource. Valid values:
+        # The type of the resource group. Valid values:
         # 
-        # - Dedicated
-        # - SelfManaged
+        # *   Dedicated: the dedicated resource group.
+        # *   SelfManaged: the self-managed resource group.
         self.resource_type = resource_type
         # The state of the resource group.
         self.status = status
@@ -5175,12 +5362,17 @@ class DescribeResourceDLinkResponseBody(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The IDs of the secondary vSwitches that are directly connected.
         self.aux_vswitch_list = aux_vswitch_list
-        # The CIDR blocks of the clients that you want to connect to. The CIDR blocks are added to the back-to-origin route of the server.
+        # The CIDR blocks of the clients that you want to connect to. After this parameter is specified, the CIDR blocks are added to the back-to-origin route of the server. Either this parameter or the VSwitchIdList parameter can be used to determine CIDR blocks.
         self.destination_cidrs = destination_cidrs
+        # The request ID.
         self.request_id = request_id
+        # The ID of the security group that is directly connected.
         self.security_group_id = security_group_id
+        # The ID of the primary vSwitch that is directly connected.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC that is directly connected.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5273,10 +5465,15 @@ class DescribeResourceLogResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The Logstore of Log Service.
         self.log_store = log_store
+        # The returned message.
         self.message = message
+        # The Log Service project that is associated with the resource group.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The state of the resource group.
         self.status = status
 
     def validate(self):
@@ -5404,8 +5601,14 @@ class DescribeServiceAutoScalerResponseBodyCurrentMetrics(TeaModel):
         service: str = None,
         value: float = None,
     ):
+        # The metric name. Valid values:
+        # 
+        # *   QPS
+        # *   CPU
         self.metric_name = metric_name
+        # The service for which the metric is specified.
         self.service = service
+        # The metric value.
         self.value = value
 
     def validate(self):
@@ -5443,8 +5646,17 @@ class DescribeServiceAutoScalerResponseBodyScaleStrategies(TeaModel):
         service: str = None,
         threshold: float = None,
     ):
+        # The metric name. Valid values:
+        # 
+        # *   QPS: the queries per second (QPS) for an individual instance.
+        # *   CPU: the CPU utilization.
         self.metric_name = metric_name
+        # The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
         self.service = service
+        # The threshold of the metric that triggers auto scaling.
+        # 
+        # *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+        # *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -5486,12 +5698,19 @@ class DescribeServiceAutoScalerResponseBody(TeaModel):
         scale_strategies: List[DescribeServiceAutoScalerResponseBodyScaleStrategies] = None,
         service_name: str = None,
     ):
+        # The additional information about the Autoscaler policy, such as the interval of triggering Autoscaler.
         self.behavior = behavior
+        # The metrics.
         self.current_metrics = current_metrics
+        # The maximum number of instances in the service.
         self.max_replica = max_replica
+        # The minimum number of instances in the service.
         self.min_replica = min_replica
+        # The request ID.
         self.request_id = request_id
+        # The auto scaling policies.
         self.scale_strategies = scale_strategies
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -5607,12 +5826,19 @@ class DescribeServiceCronScalerResponseBodyScaleJobs(TeaModel):
         state: str = None,
         target_size: int = None,
     ):
+        # The time when the most recent CronHPA job was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The time when the most recent CronHPA job ran. The time is displayed in UTC.
         self.last_probe_time = last_probe_time
+        # The returned message.
         self.message = message
+        # The name of the CronHPA job.
         self.name = name
+        # The cron expression that is used to configure the execution time of the CronHPA job.
         self.schedule = schedule
+        # The status of the most recent CronHPA job.
         self.state = state
+        # The number of instances that you expect to configure for the CronHPA job.
         self.target_size = target_size
 
     def validate(self):
@@ -5667,9 +5893,13 @@ class DescribeServiceCronScalerResponseBody(TeaModel):
         scale_jobs: List[DescribeServiceCronScalerResponseBodyScaleJobs] = None,
         service_name: str = None,
     ):
+        # The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
         self.exclude_dates = exclude_dates
+        # The request ID.
         self.request_id = request_id
+        # The CronHPA jobs.
         self.scale_jobs = scale_jobs
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -5760,8 +5990,11 @@ class DescribeServiceDiagnosisResponseBodyDiagnosisList(TeaModel):
         causes: List[str] = None,
         error: str = None,
     ):
+        # The suggestions about how to handle the errors.
         self.advices = advices
+        # The causes of the errors.
         self.causes = causes
+        # The error message.
         self.error = error
 
     def validate(self):
@@ -5798,7 +6031,9 @@ class DescribeServiceDiagnosisResponseBody(TeaModel):
         diagnosis_list: List[DescribeServiceDiagnosisResponseBodyDiagnosisList] = None,
         request_id: str = None,
     ):
+        # The diagnostics list.
         self.diagnosis_list = diagnosis_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5884,11 +6119,20 @@ class DescribeServiceEventRequest(TeaModel):
         page_size: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. By default, the current point in time is the end of the time range to query.
         self.end_time = end_time
+        # The event type. Valid values:
+        # 
+        # *   Normal
+        # *   Warning
         self.event_type = event_type
+        # The instance name. For more information about how to obtain the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
         self.instance_name = instance_name
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The beginning of the time range to query. The time must be in UTC. The default value is seven days ago.
         self.start_time = start_time
 
     def validate(self):
@@ -5939,9 +6183,16 @@ class DescribeServiceEventResponseBodyEvents(TeaModel):
         time: str = None,
         type: str = None,
     ):
+        # The returned message. The message is formatted and returned in the JSON format.
         self.message = message
+        # The cause of the event. The information about the change in the service status is returned.
         self.reason = reason
+        # The time when the event occurred. The time must be in UTC.
         self.time = time
+        # The event type. Valid values:
+        # 
+        # *   Normal
+        # *   Warning
         self.type = type
 
     def validate(self):
@@ -5985,10 +6236,15 @@ class DescribeServiceEventResponseBody(TeaModel):
         total_count: int = None,
         total_page_num: int = None,
     ):
+        # The events.
         self.events = events
+        # The page number.
         self.page_num = page_num
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -6083,8 +6339,11 @@ class DescribeServiceInstanceDiagnosisResponseBodyDiagnosis(TeaModel):
         causes: List[str] = None,
         error: str = None,
     ):
+        # The solutions to the errors.
         self.advices = advices
+        # The causes of the errors.
         self.causes = causes
+        # The error message.
         self.error = error
 
     def validate(self):
@@ -6121,7 +6380,9 @@ class DescribeServiceInstanceDiagnosisResponseBody(TeaModel):
         diagnosis: DescribeServiceInstanceDiagnosisResponseBodyDiagnosis = None,
         request_id: str = None,
     ):
+        # The diagnostics information.
         self.diagnosis = diagnosis
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6204,14 +6465,41 @@ class DescribeServiceLogRequest(TeaModel):
         previous: bool = None,
         start_time: str = None,
     ):
+        # The name of the container that runs the service.
         self.container_name = container_name
+        # The end of the time range to query. The time must be in UTC.
         self.end_time = end_time
+        # The name of the instance that runs the service. For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
         self.instance_name = instance_name
+        # The IP address of the instance whose logs you want to query. For more information about how to query the IP address of an instance, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
         self.ip = ip
+        # The keyword that you use to query the logs of the service.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 500.
         self.page_size = page_size
+        # Specifies whether to query the logs that are generated before the instance last restarts. This parameter is available only if the instance restarts.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.previous = previous
+        # The beginning of the time range to query. The time must be in Coordinated Universal Time (UTC).
         self.start_time = start_time
 
     def validate(self):
@@ -6275,10 +6563,15 @@ class DescribeServiceLogResponseBody(TeaModel):
         total_count: int = None,
         total_page_num: int = None,
     ):
+        # The returned logs.
         self.logs = logs
+        # The page number.
         self.page_num = page_num
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages returned.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -6366,9 +6659,13 @@ class DescribeServiceMirrorResponseBody(TeaModel):
         service_name: str = None,
         target: str = None,
     ):
+        # The percentage of traffic that you want to mirror. Valid values: 0 to 100.
         self.ratio = ratio
+        # The request ID.
         self.request_id = request_id
+        # The service name.
         self.service_name = service_name
+        # The destination services to which you want to mirror traffic.
         self.target = target
 
     def validate(self):
@@ -6450,7 +6747,11 @@ class DescribeSpotDiscountHistoryRequest(TeaModel):
         instance_type: str = None,
         is_protect: bool = None,
     ):
+        # The type of the Elastic Compute Service (ECS) instance.
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
+        # Specifies whether the preemptible instance has a protection period. During the 1-hour protection period of the preemptible instance, the preemptible instance will not be released.
         self.is_protect = is_protect
 
     def validate(self):
@@ -6485,9 +6786,13 @@ class DescribeSpotDiscountHistoryResponseBodySpotDiscounts(TeaModel):
         timestamp: str = None,
         zone_id: str = None,
     ):
+        # The type of the ECS instance.
         self.instance_type = instance_type
+        # The discount for the preemptible instance. For example, 0.1 represents a 90% discount.
         self.spot_discount = spot_discount
+        # The time when the discount is available. The time must be in UTC.
         self.timestamp = timestamp
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6528,7 +6833,9 @@ class DescribeSpotDiscountHistoryResponseBody(TeaModel):
         request_id: str = None,
         spot_discounts: List[DescribeSpotDiscountHistoryResponseBodySpotDiscounts] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The discount for the preemptible instance.
         self.spot_discounts = spot_discounts
 
     def validate(self):
@@ -6611,8 +6918,8 @@ class DevelopServiceRequest(TeaModel):
     ):
         # Specifies whether to exit development mode. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # *   true: exits development mode.
+        # *   false (default): enters development mode.
         self.exit = exit
 
     def validate(self):
@@ -6641,7 +6948,9 @@ class DevelopServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6717,13 +7026,13 @@ class ListBenchmarkTaskRequest(TeaModel):
         page_size: str = None,
         service_name: str = None,
     ):
-        # The keyword used to query required stress testing tasks. If this parameter is specified, the system returns stress testing tasks based on the names of the stress testing tasks in the matched Elastic Algorithm service (EAS).
+        # The keyword used to query required stress testing tasks. If this parameter is specified, the system returns stress testing tasks based on the names of the stress testing tasks in the matched Elastic Algorithm Service (EAS).
         self.filter = filter
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](~~412109~~).
+        # The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.service_name = service_name
 
     def validate(self):
@@ -6771,14 +7080,97 @@ class ListBenchmarkTaskResponseBodyTasks(TeaModel):
         task_name: str = None,
         update_time: str = None,
     ):
+        # The number of instances that are available for stress testing.
         self.available_agent = available_agent
+        # The time when the stress testing task was created.
         self.create_time = create_time
+        # The returned message.
         self.message = message
+        # The region ID of the stress testing task.
         self.region = region
+        # The name of the service on which you want to perform a stress testing.
         self.service_name = service_name
+        # The state of the stress testing task.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Starting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DeleteFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopping
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Error
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Updating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Deleting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CreateFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
+        # The ID of the stress testing task.
         self.task_id = task_id
+        # The name of the stress testing task.
         self.task_name = task_name
+        # The time when the stress testing task was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -6848,7 +7240,7 @@ class ListBenchmarkTaskResponseBody(TeaModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The time when the stress testing task was updated.
+        # The stress testing tasks.
         self.tasks = tasks
         # The total number of entries returned.
         self.total_count = total_count
@@ -7119,9 +7511,13 @@ class ListGroupsRequest(TeaModel):
         page_size: str = None,
         workspace_id: str = None,
     ):
+        # The name of the filter that is used to filter out unwanted service groups. Fuzzy match is supported.
         self.filter = filter
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7165,10 +7561,15 @@ class ListGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The service groups.
         self.groups = groups
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7410,15 +7811,202 @@ class ListResourceInstancesRequest(TeaModel):
         page_size: int = None,
         sort: str = None,
     ):
+        # The billing method of the instance. Valid values:
+        # 
+        # *   PrePaid: subscription.
+        # *   PostPaid: pay-as-you-go.
         self.charge_type = charge_type
+        # The keyword used to query instances. Instances can be queried by instance ID or instance IP address.
         self.filter = filter
+        # The IP address of the instance.
         self.instance_ip = instance_ip
+        # The instance ID. For more information about how to query the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance state.
+        # 
+        # Valid values:
+        # 
+        # *   Ready-SchedulingDisabled
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance is available but unschedulable
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Ready
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance
+        # 
+        #     <!-- -->
+        # 
+        #     is running
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   NotReady
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance is unready.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopped
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance has stopped.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   NotReady-SchedulingDisabled
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instance is unavailable and unschedulable
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Attaching
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance
+        # 
+        #     <!-- -->
+        # 
+        #     is starting
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Deleting
+        # 
+        #     <!-- -->
+        # 
+        #     : The instance is being deleted.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CreateFailed: The instance failed to be created.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.instance_status = instance_status
+        # The sorting order.
+        # 
+        # Valid values:
+        # 
+        # *   asc: The instances are sorted in ascending order.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   desc
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted in descending order.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.order = order
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The field that you use to sort the query results.
+        # 
+        # Valid values:
+        # 
+        # *   CreateTime
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted based on the time when the instances were created.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   MemoryUsed
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instances are sorted based on the memory usage of the instances
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   GpuUsed
+        # 
+        #     <!-- -->
+        # 
+        #     : The instances are sorted based on the
+        # 
+        #     <!-- -->
+        # 
+        #     GPU usage of the instances.
+        # 
+        #     <!-- -->
+        # 
+        # *   ExpireTime: The instances are sorted based on the time when the instances expired.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   CpuUsed
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The instances are sorted based on the CPU utilization of the instances.
+        # 
+        #     <!-- -->
         self.sort = sort
 
     def validate(self):
@@ -7486,10 +8074,15 @@ class ListResourceInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The instances.
         self.instances = instances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7730,10 +8323,14 @@ class ListResourcesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The ID of the resource group. You can call the [CreateResource](~~412111~~) operation to query the ID of the resource group.
+        # The ID of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the ID of the resource group.
         self.resource_id = resource_id
-        # The name of the resource group. You can call the [CreateResource](~~412111~~) operation to query the name of the resource group.
+        # The name of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the name of the resource group.
         self.resource_name = resource_name
+        # The type of the resource group. Valid values:
+        # 
+        # *   Dedicated: the dedicated resource group.
+        # *   SelfManaged: the self-managed resource group.
         self.resource_type = resource_type
 
     def validate(self):
@@ -7886,7 +8483,9 @@ class ListServiceContainersResponseBody(TeaModel):
     ):
         # The containers of the service.
         self.containers = containers
+        # The request ID.
         self.request_id = request_id
+        # The service name.
         self.service_name = service_name
 
     def validate(self):
@@ -7983,39 +8582,145 @@ class ListServiceInstancesRequest(TeaModel):
         role: str = None,
         sort: str = None,
     ):
+        # The keyword used to query instances. Instances can be queried based on instance name, instance IP address, IP address of the server where the instance resides, and instance type.
         self.filter = filter
+        # The IP address of the server where the instance resides.
         self.host_ip = host_ip
+        # The IP address of the instance.
         self.instance_ip = instance_ip
+        # The instance name.
         self.instance_name = instance_name
+        # The instance state.
         self.instance_status = instance_status
+        # The instance type.
         self.instance_type = instance_type
+        # Specifies whether the instance is a preemptible instance.
         self.is_spot = is_spot
         # The sorting order.
         # 
         # Valid values:
         # 
-        # *   asc: The instances are sorted in ascending order.
+        # *   asc
+        # 
+        #     <!-- -->
+        # 
+        #     :
         # 
         #     <!-- -->
         # 
         #     <!-- -->
         # 
-        #     <!-- -->
+        #     The instances are sorted in ascending order.
         # 
         # *   desc
         # 
         #     <!-- -->
         # 
-        #     : The instances are sorted in descending order.
+        #     :
         # 
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        #     The instances are sorted in descending order.
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The type of the resource group to which the instance belongs.
+        # 
+        # Valid values:
+        # 
+        # *   PublicResource
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DedicatedResource
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.resource_type = resource_type
+        # The service role.
+        # 
+        # Valid values:
+        # 
+        # *   DataSet
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     dataset service
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   SDProxy
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     Stable-Diffusion proxy service
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Standard
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     standard service
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   Queue
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     queue service
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.role = role
+        # The field that you use to sort the query results.
+        # 
+        # *   Set the value to StartTime.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     The value specifies that the query results are sorted based on the time when the instances were created
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.sort = sort
 
     def validate(self):
@@ -8095,10 +8800,15 @@ class ListServiceInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The instances.
         self.instances = instances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8192,7 +8902,9 @@ class ListServiceVersionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -8237,17 +8949,17 @@ class ListServiceVersionsResponseBodyVersions(TeaModel):
         # *   false: The image is unavailable.
         # *   unknown: The availability of the image is unknown.
         self.image_available = image_available
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
         # The returned message.
         self.message = message
         # The service deployment configurations. This parameter is returned only if the service is deployed by using a custom image.
         self.service_config = service_config
-        # Indicates whether EAS is enabled. Valid values:
+        # Indicates whether Elastic Algorithm service (EAS) is activated. Valid values:
         # 
-        # *   true: EAS is enabled.
-        # *   false: EAS is not enabled.
-        # *   unknown: The enabling status of EAS is unknown.
+        # *   true: EAS is activated.
+        # *   false: EAS is not activated.
+        # *   unknown: The activation of EAS is unknown.
         self.service_runnable = service_runnable
 
     def validate(self):
@@ -8299,11 +9011,15 @@ class ListServiceVersionsResponseBody(TeaModel):
         total_count: int = None,
         versions: List[ListServiceVersionsResponseBodyVersions] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
-        # The versions of the service.
+        # The historical versions of the service.
         self.versions = versions
 
     def validate(self):
@@ -8410,76 +9126,223 @@ class ListServicesRequest(TeaModel):
         sort: str = None,
         workspace_id: str = None,
     ):
-        # {
-        #   "RequestId": "40325405-579C-4D82-9624-EC2B1779848E",
-        #   "Services": [
-        #     {
-        #       "ServiceId": "200516454695942578",
-        #       "ServiceName": "vipserver",
-        #       "ParentUid": "1628454689805075",
-        #       "CallerUid": "eas",
-        #       "CurrentVersion": 1,
-        #       "Cpu": 1,
-        #       "Gpu": 0,
-        #       "Memory": 900,
-        #       "Image": "registry.cn-zhangjiakou.aliyuncs.com/eas/ndisearch_v1_inner_zhangbei:v0.0.3-20200302145109",
-        #       "Resource": "seccontent_inner_2080ti_5",
-        #       "Namespace": "vipserver",
-        #       "CreateTime": "2019-10-25T10:37:53Z",
-        #       "UpdateTime": "2019-10-30T16:50:59Z",
-        #       "TotalInstance": 1,
-        #       "RunningInstance": 1,
-        #       "PendingInstance": 0,
-        #       "LatestVersion": 1,
-        #       "Status": "Running",
-        #       "Reason": "RUNNING",
-        #       "Message": "Service is now scaling",
-        #       "AccessToken": "",
-        #       "Weight": 0
-        #     },
-        #     {
-        #       "ServiceId": 97097,
-        #       "ServiceName": "a1",
-        #       "CallerUid": "eas",
-        #       "CurrentVersion": 1,
-        #       "Cpu": 1,
-        #       "Gpu": 0,
-        #       "Memory": 900,
-        #       "Image": "registry.cn-hangzhou.aliyuncs.com/eas/pi_imemb_tb:v0.0.1-20191023130701",
-        #       "Resource": "seccontent_inner_b",
-        #       "Namespace": "a1",
-        #       "CreateTime": "2020-05-26T18:03:11Z",
-        #       "UpdateTime": "2020-05-26T18:03:11Z",
-        #       "TotalInstance": 1,
-        #       "RunningInstance": 0,
-        #       "PendingInstance": 1,
-        #       "LatestVersion": 1,
-        #       "Status": "Failed",
-        #       "Reason": "FAILED",
-        #       "Message": "the server could not find the requested resource (post services.meta.k8s.io)",
-        #       "AccessToken": "regression_test_token",
-        #       "Weight": 0
-        #     }
-        #   ],
-        #   "PageNumber": 1,
-        #   "PageSize": 2,
-        #   "TotalCount": 2
-        # }
+        # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
+        # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
+        # The tag that is used to filter services.
         self.label = label
+        # The sorting order. Valid values:
+        # 
+        # *   desc (default): The query results are sorted in descending order.
+        # *   asc: The query results are sorted in ascending order.
         self.order = order
-        # 376577
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The ID of the primary service that corresponds to the Band member service.
         self.parent_service_uid = parent_service_uid
+        # The quota ID.
         self.quota_id = quota_id
+        # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
+        # The service name.
         self.service_name = service_name
+        # The service state.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopped
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Failed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Complete
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Cloning
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopping
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Updating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Waiting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   HotUpdate
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Committing
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Starting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DeleteFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Developing
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Scaling
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Deleted
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Pending
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Deleting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.service_status = service_status
+        # The service type. Valid values:
+        # 
+        # *   Async
+        # *   Standard
+        # *   Offline Task
+        # *   Proxima
+        # 
+        # Valid values:
+        # 
+        # *   Async
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Standard
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   OfflineTask
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Proxima
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.service_type = service_type
+        # The user ID (UID) of the service.
         self.service_uid = service_uid
+        # The sort field. By default, the query results are sorted by the timestamp type in descending order.
         self.sort = sort
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8577,76 +9440,223 @@ class ListServicesShrinkRequest(TeaModel):
         sort: str = None,
         workspace_id: str = None,
     ):
-        # {
-        #   "RequestId": "40325405-579C-4D82-9624-EC2B1779848E",
-        #   "Services": [
-        #     {
-        #       "ServiceId": "200516454695942578",
-        #       "ServiceName": "vipserver",
-        #       "ParentUid": "1628454689805075",
-        #       "CallerUid": "eas",
-        #       "CurrentVersion": 1,
-        #       "Cpu": 1,
-        #       "Gpu": 0,
-        #       "Memory": 900,
-        #       "Image": "registry.cn-zhangjiakou.aliyuncs.com/eas/ndisearch_v1_inner_zhangbei:v0.0.3-20200302145109",
-        #       "Resource": "seccontent_inner_2080ti_5",
-        #       "Namespace": "vipserver",
-        #       "CreateTime": "2019-10-25T10:37:53Z",
-        #       "UpdateTime": "2019-10-30T16:50:59Z",
-        #       "TotalInstance": 1,
-        #       "RunningInstance": 1,
-        #       "PendingInstance": 0,
-        #       "LatestVersion": 1,
-        #       "Status": "Running",
-        #       "Reason": "RUNNING",
-        #       "Message": "Service is now scaling",
-        #       "AccessToken": "",
-        #       "Weight": 0
-        #     },
-        #     {
-        #       "ServiceId": 97097,
-        #       "ServiceName": "a1",
-        #       "CallerUid": "eas",
-        #       "CurrentVersion": 1,
-        #       "Cpu": 1,
-        #       "Gpu": 0,
-        #       "Memory": 900,
-        #       "Image": "registry.cn-hangzhou.aliyuncs.com/eas/pi_imemb_tb:v0.0.1-20191023130701",
-        #       "Resource": "seccontent_inner_b",
-        #       "Namespace": "a1",
-        #       "CreateTime": "2020-05-26T18:03:11Z",
-        #       "UpdateTime": "2020-05-26T18:03:11Z",
-        #       "TotalInstance": 1,
-        #       "RunningInstance": 0,
-        #       "PendingInstance": 1,
-        #       "LatestVersion": 1,
-        #       "Status": "Failed",
-        #       "Reason": "FAILED",
-        #       "Message": "the server could not find the requested resource (post services.meta.k8s.io)",
-        #       "AccessToken": "regression_test_token",
-        #       "Weight": 0
-        #     }
-        #   ],
-        #   "PageNumber": 1,
-        #   "PageSize": 2,
-        #   "TotalCount": 2
-        # }
+        # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
+        # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
+        # The tag that is used to filter services.
         self.label_shrink = label_shrink
+        # The sorting order. Valid values:
+        # 
+        # *   desc (default): The query results are sorted in descending order.
+        # *   asc: The query results are sorted in ascending order.
         self.order = order
-        # 376577
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The ID of the primary service that corresponds to the Band member service.
         self.parent_service_uid = parent_service_uid
+        # The quota ID.
         self.quota_id = quota_id
+        # The name or ID of the resource group to which the service belongs.
         self.resource_name = resource_name
+        # The service name.
         self.service_name = service_name
+        # The service state.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopped
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Failed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Complete
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Cloning
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Stopping
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Updating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Waiting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   HotUpdate
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Committing
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Starting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   DeleteFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Running
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Developing
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Scaling
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Deleted
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Pending
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Deleting
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.service_status = service_status
+        # The service type. Valid values:
+        # 
+        # *   Async
+        # *   Standard
+        # *   Offline Task
+        # *   Proxima
+        # 
+        # Valid values:
+        # 
+        # *   Async
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Standard
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   OfflineTask
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Proxima
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.service_type = service_type
+        # The user ID (UID) of the service.
         self.service_uid = service_uid
+        # The sort field. By default, the query results are sorted by the timestamp type in descending order.
         self.sort = sort
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8734,10 +9744,15 @@ class ListServicesResponseBody(TeaModel):
         services: List[Service] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The services.
         self.services = services
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -8831,7 +9846,12 @@ class ReleaseServiceRequest(TeaModel):
         traffic_state: str = None,
         weight: int = None,
     ):
+        # The traffic state. Valid values:
+        # 
+        # *   standalone: independent traffic.
+        # *   grouping: grouped traffic.
         self.traffic_state = traffic_state
+        # The weight of the canary release. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -8864,7 +9884,9 @@ class ReleaseServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9090,7 +10112,9 @@ class StartServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9240,7 +10264,9 @@ class StopServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9343,16 +10369,16 @@ class UpdateAppServiceRequest(TeaModel):
         self.replicas = replicas
         # The service specifications. Valid values:
         # 
-        # *   llama\_7b_fp16
-        # *   llama\_7b_int8
-        # *   llama\_13b_fp16
-        # *   llama\_7b_int8
-        # *   chatglm\_6b_fp16
-        # *   chatglm\_6b_int8
-        # *   chatglm2\_6b_fp16
-        # *   baichuan\_7b_int8
-        # *   baichuan\_13b_fp16
-        # *   baichuan\_7b_fp16
+        # *   llama_7b_fp16
+        # *   llama_7b_int8
+        # *   llama_13b_fp16
+        # *   llama_7b_int8
+        # *   chatglm_6b_fp16
+        # *   chatglm_6b_int8
+        # *   chatglm2_6b_fp16
+        # *   baichuan_7b_int8
+        # *   baichuan_13b_fp16
+        # *   baichuan_7b_fp16
         self.service_spec = service_spec
 
     def validate(self):
@@ -9407,6 +10433,7 @@ class UpdateAppServiceResponseBody(TeaModel):
     ):
         # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9479,7 +10506,7 @@ class UpdateBenchmarkTaskRequest(TeaModel):
         self,
         body: str = None,
     ):
-        # The request body. The body includes the parameters that are set to create a stress testing task.
+        # The request body. The body includes the parameters that are set to create a stress testing task. For more information, see **Table 1. Fields in the base parameter**.
         self.body = body
 
     def validate(self):
@@ -9737,20 +10764,19 @@ class UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations(TeaModel):
         value: str = None,
     ):
         # The effect.
-        # 
         # Valid values:
         # - PreferNoSchedule
         # - NoSchedule
         # - NoExecute
         self.effect = effect
-        # The name of the key.
+        # The key name.
         self.key = key
         # Relationship between key names and key values.
         # Valid values:
         # - Equal
         # - Exists
         self.operator = operator
-        # The name of the value.
+        # The key value.
         self.value = value
 
     def validate(self):
@@ -9791,7 +10817,7 @@ class UpdateResourceRequestSelfManagedResourceOptions(TeaModel):
         node_match_labels: Dict[str, str] = None,
         node_tolerations: List[UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations] = None,
     ):
-        # The key-value pairs for matched nodes.
+        # Tag tag key-value pairs for nodes.
         self.node_match_labels = node_match_labels
         # Tolerations for nodes.
         self.node_tolerations = node_tolerations
@@ -9836,7 +10862,7 @@ class UpdateResourceRequest(TeaModel):
     ):
         # The new name of the resource group after the update. The name can be up to 27 characters in length.
         self.resource_name = resource_name
-        # The configurable options for self managed resource group.
+        # The configuration items of the self-managed resource group.
         self.self_managed_resource_options = self_managed_resource_options
 
     def validate(self):
@@ -9959,8 +10985,12 @@ class UpdateResourceDLinkRequest(TeaModel):
         # The CIDR blocks of the clients that you want to connect to. After this parameter is specified, the CIDR blocks are added to the back-to-origin route of the server. Either this parameter or the VSwitchIdList parameter can be used to determine CIDR blocks.
         self.destination_cidrs = destination_cidrs
         # The ID of the security group to which the Elastic Compute Service (ECS) instance belongs.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
         # The ID of the peer primary vSwitch. After this parameter is specified, an elastic network interface (ENI) is created in the VSwitch.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The vSwitches of the clients that you want to connect to. After this parameter is specified, the CIDR blocks of these vSwitches are added to the back-to-origin route of the server.
         self.v_switch_id_list = v_switch_id_list
@@ -10078,6 +11108,13 @@ class UpdateResourceInstanceRequest(TeaModel):
         self,
         action: str = None,
     ):
+        # The operation that updates the scheduling state of the instance in a dedicated resource group. Valid values:
+        # 
+        # *   Uncordon: allows scheduling the service to this instance.
+        # *   Cordon: prohibits scheduling the service to this instance.
+        # *   Drain: evicts the service that has been scheduled to this instance.
+        # 
+        # This parameter is required.
         self.action = action
 
     def validate(self):
@@ -10107,8 +11144,11 @@ class UpdateResourceInstanceResponseBody(TeaModel):
         request_id: str = None,
         resource_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group.
         self.resource_id = resource_id
 
     def validate(self):
@@ -10191,6 +11231,7 @@ class UpdateServiceRequest(TeaModel):
         # *   merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
         # *   replace: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"c":"d"}` after the service update.
         self.update_type = update_type
+        # The request body. The body includes the request parameters that you want to update. For more information about the request parameters, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
         self.body = body
 
     def validate(self):
@@ -10223,7 +11264,9 @@ class UpdateServiceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10297,7 +11340,9 @@ class UpdateServiceAutoScalerRequestBehaviorOnZero(TeaModel):
         scale_down_grace_period_seconds: int = None,
         scale_up_activation_replicas: int = None,
     ):
+        # The time window that is required before the number of instances is reduced to 0. Default value: 600. The number of instances can be reduced to 0 only if no request is available or no traffic exists in the specified time window.
         self.scale_down_grace_period_seconds = scale_down_grace_period_seconds
+        # The number of instances that you want to create at a time if the number of instances is scaled out from 0. Default value: 1.
         self.scale_up_activation_replicas = scale_up_activation_replicas
 
     def validate(self):
@@ -10329,6 +11374,7 @@ class UpdateServiceAutoScalerRequestBehaviorScaleDown(TeaModel):
         self,
         stabilization_window_seconds: int = None,
     ):
+        # The time window that is required before the scale-in operation is performed. Default value: 300. The scale-in operation can be performed only if the specified metric drops below the threshold in the specified time window.
         self.stabilization_window_seconds = stabilization_window_seconds
 
     def validate(self):
@@ -10356,6 +11402,7 @@ class UpdateServiceAutoScalerRequestBehaviorScaleUp(TeaModel):
         self,
         stabilization_window_seconds: int = None,
     ):
+        # The time window that is required before the scale-out operation is performed. Default value: 0. The scale-out operation can be performed only if the specified metric exceeds the specified threshold in the specified time window.
         self.stabilization_window_seconds = stabilization_window_seconds
 
     def validate(self):
@@ -10385,8 +11432,11 @@ class UpdateServiceAutoScalerRequestBehavior(TeaModel):
         scale_down: UpdateServiceAutoScalerRequestBehaviorScaleDown = None,
         scale_up: UpdateServiceAutoScalerRequestBehaviorScaleUp = None,
     ):
+        # The operation that reduces the number of instances to 0.
         self.on_zero = on_zero
+        # The scale-in operation.
         self.scale_down = scale_down
+        # The scale-out operation.
         self.scale_up = scale_up
 
     def validate(self):
@@ -10432,8 +11482,21 @@ class UpdateServiceAutoScalerRequestScaleStrategies(TeaModel):
         service: str = None,
         threshold: float = None,
     ):
+        # The name of the metric for triggering auto scaling. Valid values:
+        # 
+        # *   qps: the queries per second (QPS) for an individual instance.
+        # *   cpu: the CPU utilization.
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
+        # The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
         self.service = service
+        # The threshold of the metric that triggers auto scaling.
+        # 
+        # *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+        # *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+        # 
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -10472,9 +11535,19 @@ class UpdateServiceAutoScalerRequest(TeaModel):
         min: int = None,
         scale_strategies: List[UpdateServiceAutoScalerRequestScaleStrategies] = None,
     ):
+        # The Autoscaler operation.
         self.behavior = behavior
+        # The maximum number of instances. The value must be greater than that of the min parameter.
+        # 
+        # This parameter is required.
         self.max = max
+        # The minimum number of instances. The value must be greater than 0.
+        # 
+        # This parameter is required.
         self.min = min
+        # The auto scaling policies.
+        # 
+        # This parameter is required.
         self.scale_strategies = scale_strategies
 
     def validate(self):
@@ -10526,7 +11599,9 @@ class UpdateServiceAutoScalerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10601,8 +11676,15 @@ class UpdateServiceCronScalerRequestScaleJobs(TeaModel):
         schedule: str = None,
         target_size: int = None,
     ):
+        # The name of the CronHPA job.
         self.name = name
+        # The cron expression that is used to configure the execution time of the CronHPA job. For more information about how to configure cron expressions, see **Description of special characters** in this topic.
+        # 
+        # This parameter is required.
         self.schedule = schedule
+        # The number of instances that you want to configure for the CronHPA job.
+        # 
+        # This parameter is required.
         self.target_size = target_size
 
     def validate(self):
@@ -10639,7 +11721,11 @@ class UpdateServiceCronScalerRequest(TeaModel):
         exclude_dates: List[str] = None,
         scale_jobs: List[UpdateServiceCronScalerRequestScaleJobs] = None,
     ):
+        # The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
         self.exclude_dates = exclude_dates
+        # The description of the CronHPA job.
+        # 
+        # This parameter is required.
         self.scale_jobs = scale_jobs
 
     def validate(self):
@@ -10680,7 +11766,9 @@ class UpdateServiceCronScalerResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10861,6 +11949,8 @@ class UpdateServiceLabelRequest(TeaModel):
         labels: Dict[str, str] = None,
     ):
         # The custom service tags.
+        # 
+        # This parameter is required.
         self.labels = labels
 
     def validate(self):
@@ -10965,7 +12055,9 @@ class UpdateServiceMirrorRequest(TeaModel):
         ratio: int = None,
         target: List[str] = None,
     ):
+        # The percentage of traffic that you want to mirror. Valid values: 0 to 100.
         self.ratio = ratio
+        # The service instances.
         self.target = target
 
     def validate(self):
@@ -10998,7 +12090,9 @@ class UpdateServiceMirrorResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11074,34 +12168,10 @@ class UpdateServiceSafetyLockRequest(TeaModel):
         # The lock scope. Valid values:
         # 
         # *   all: locks all operations.
-        # *   dangerous: locks high-risk operations such as delete and stop operations.
+        # *   dangerous: locks dangerous operations such as delete and stop operations.
         # *   none: locks no operations.
         # 
-        # Enumerated values:
-        # 
-        # *   all
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   dangerous
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   none
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # This parameter is required.
         self.lock = lock
 
     def validate(self):
@@ -11130,7 +12200,9 @@ class UpdateServiceSafetyLockResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11203,6 +12275,9 @@ class UpdateServiceVersionRequest(TeaModel):
         self,
         version: int = None,
     ):
+        # The destination version of the service. The value must be of the INT type. The value must be greater than 0 and smaller than the current version of the service.
+        # 
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -11231,7 +12306,9 @@ class UpdateServiceVersionResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
