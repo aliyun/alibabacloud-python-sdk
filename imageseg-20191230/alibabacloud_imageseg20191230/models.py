@@ -10,7 +10,9 @@ class ChangeSkyRequest(TeaModel):
         image_url: str = None,
         replace_image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.replace_image_url = replace_image_url
 
     def validate(self):
@@ -43,7 +45,9 @@ class ChangeSkyAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         replace_image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.replace_image_urlobject = replace_image_urlobject
 
     def validate(self):
@@ -144,9 +148,6 @@ class ChangeSkyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -181,6 +182,7 @@ class GetAsyncJobResultRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -301,9 +303,6 @@ class GetAsyncJobResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -338,6 +337,7 @@ class ParseFaceRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -365,6 +365,7 @@ class ParseFaceAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -508,9 +509,6 @@ class ParseFaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -546,7 +544,9 @@ class RefineMaskRequest(TeaModel):
         image_url: str = None,
         mask_image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.mask_image_url = mask_image_url
 
     def validate(self):
@@ -579,7 +579,9 @@ class RefineMaskAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         mask_image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.mask_image_urlobject = mask_image_urlobject
 
     def validate(self):
@@ -715,9 +717,6 @@ class RefineMaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -753,6 +752,7 @@ class SegmentBodyRequest(TeaModel):
         image_url: str = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.return_form = return_form
 
@@ -786,6 +786,7 @@ class SegmentBodyAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.return_form = return_form
 
@@ -887,9 +888,6 @@ class SegmentBodyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -924,10 +922,13 @@ class SegmentClothRequest(TeaModel):
         self,
         cloth_class: List[str] = None,
         image_url: str = None,
+        out_mode: int = None,
         return_form: str = None,
     ):
         self.cloth_class = cloth_class
+        # This parameter is required.
         self.image_url = image_url
+        self.out_mode = out_mode
         self.return_form = return_form
 
     def validate(self):
@@ -943,6 +944,8 @@ class SegmentClothRequest(TeaModel):
             result['ClothClass'] = self.cloth_class
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
+        if self.out_mode is not None:
+            result['OutMode'] = self.out_mode
         if self.return_form is not None:
             result['ReturnForm'] = self.return_form
         return result
@@ -953,6 +956,8 @@ class SegmentClothRequest(TeaModel):
             self.cloth_class = m.get('ClothClass')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
+        if m.get('OutMode') is not None:
+            self.out_mode = m.get('OutMode')
         if m.get('ReturnForm') is not None:
             self.return_form = m.get('ReturnForm')
         return self
@@ -963,10 +968,13 @@ class SegmentClothAdvanceRequest(TeaModel):
         self,
         cloth_class: List[str] = None,
         image_urlobject: BinaryIO = None,
+        out_mode: int = None,
         return_form: str = None,
     ):
         self.cloth_class = cloth_class
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        self.out_mode = out_mode
         self.return_form = return_form
 
     def validate(self):
@@ -982,6 +990,8 @@ class SegmentClothAdvanceRequest(TeaModel):
             result['ClothClass'] = self.cloth_class
         if self.image_urlobject is not None:
             result['ImageURL'] = self.image_urlobject
+        if self.out_mode is not None:
+            result['OutMode'] = self.out_mode
         if self.return_form is not None:
             result['ReturnForm'] = self.return_form
         return result
@@ -992,6 +1002,8 @@ class SegmentClothAdvanceRequest(TeaModel):
             self.cloth_class = m.get('ClothClass')
         if m.get('ImageURL') is not None:
             self.image_urlobject = m.get('ImageURL')
+        if m.get('OutMode') is not None:
+            self.out_mode = m.get('OutMode')
         if m.get('ReturnForm') is not None:
             self.return_form = m.get('ReturnForm')
         return self
@@ -1112,9 +1124,6 @@ class SegmentClothResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1150,6 +1159,7 @@ class SegmentCommodityRequest(TeaModel):
         image_url: str = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.return_form = return_form
 
@@ -1183,6 +1193,7 @@ class SegmentCommodityAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.return_form = return_form
 
@@ -1284,9 +1295,6 @@ class SegmentCommodityResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1322,6 +1330,7 @@ class SegmentCommonImageRequest(TeaModel):
         image_url: str = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.return_form = return_form
 
@@ -1355,6 +1364,7 @@ class SegmentCommonImageAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.return_form = return_form
 
@@ -1456,9 +1466,6 @@ class SegmentCommonImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1494,6 +1501,7 @@ class SegmentFoodRequest(TeaModel):
         image_url: str = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.return_form = return_form
 
@@ -1527,6 +1535,7 @@ class SegmentFoodAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.return_form = return_form
 
@@ -1628,9 +1637,6 @@ class SegmentFoodResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1665,6 +1671,7 @@ class SegmentHDBodyRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -1692,6 +1699,7 @@ class SegmentHDBodyAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -1788,9 +1796,6 @@ class SegmentHDBodyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1825,6 +1830,7 @@ class SegmentHDCommonImageRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -1852,6 +1858,7 @@ class SegmentHDCommonImageAdvanceRequest(TeaModel):
         self,
         image_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_url_object = image_url_object
 
     def validate(self):
@@ -1954,9 +1961,6 @@ class SegmentHDCommonImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1991,6 +1995,7 @@ class SegmentHDSkyRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -2018,6 +2023,7 @@ class SegmentHDSkyAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -2114,9 +2120,6 @@ class SegmentHDSkyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2151,6 +2154,7 @@ class SegmentHairRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -2178,6 +2182,7 @@ class SegmentHairAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -2333,9 +2338,6 @@ class SegmentHairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2371,6 +2373,7 @@ class SegmentHeadRequest(TeaModel):
         image_url: str = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.return_form = return_form
 
@@ -2404,6 +2407,7 @@ class SegmentHeadAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         return_form: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.return_form = return_form
 
@@ -2564,9 +2568,6 @@ class SegmentHeadResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2601,6 +2602,7 @@ class SegmentSceneRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -2628,6 +2630,7 @@ class SegmentSceneAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -2724,9 +2727,6 @@ class SegmentSceneResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2761,6 +2761,7 @@ class SegmentSkinRequest(TeaModel):
         self,
         url: str = None,
     ):
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -2788,6 +2789,7 @@ class SegmentSkinAdvanceRequest(TeaModel):
         self,
         urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.urlobject = urlobject
 
     def validate(self):
@@ -2884,9 +2886,6 @@ class SegmentSkinResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2921,6 +2920,7 @@ class SegmentSkyRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -2948,6 +2948,7 @@ class SegmentSkyAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -3044,9 +3045,6 @@ class SegmentSkyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

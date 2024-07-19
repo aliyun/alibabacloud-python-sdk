@@ -1,3 +1,7 @@
+2024-07-19 Version: 3.0.1
+- Update API SegmentCloth: add param OutMode.
+
+
 2023-12-06 Version: 3.0.0
 - Generated python 2019-12-30 for imageseg.
 

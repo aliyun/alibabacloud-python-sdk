@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -52,6 +52,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.ChangeSkyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.ChangeSkyResponse:
+        """
+        @param request: ChangeSkyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeSkyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -82,6 +87,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.ChangeSkyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.ChangeSkyResponse:
+        """
+        @param request: ChangeSkyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeSkyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -111,6 +121,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.ChangeSkyRequest,
     ) -> imageseg_20191230_models.ChangeSkyResponse:
+        """
+        @param request: ChangeSkyRequest
+        @return: ChangeSkyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_sky_with_options(request, runtime)
 
@@ -118,6 +132,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.ChangeSkyRequest,
     ) -> imageseg_20191230_models.ChangeSkyResponse:
+        """
+        @param request: ChangeSkyRequest
+        @return: ChangeSkyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_sky_with_options_async(request, runtime)
 
@@ -132,7 +150,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -152,12 +170,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -227,7 +246,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -247,12 +266,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -316,6 +336,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncJobResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -344,6 +369,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncJobResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -371,6 +401,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.GetAsyncJobResultRequest,
     ) -> imageseg_20191230_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @return: GetAsyncJobResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_async_job_result_with_options(request, runtime)
 
@@ -378,6 +412,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.GetAsyncJobResultRequest,
     ) -> imageseg_20191230_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @return: GetAsyncJobResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_async_job_result_with_options_async(request, runtime)
 
@@ -386,6 +424,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.ParseFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.ParseFaceResponse:
+        """
+        @param request: ParseFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ParseFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -414,6 +457,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.ParseFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.ParseFaceResponse:
+        """
+        @param request: ParseFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ParseFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -441,6 +489,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.ParseFaceRequest,
     ) -> imageseg_20191230_models.ParseFaceResponse:
+        """
+        @param request: ParseFaceRequest
+        @return: ParseFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.parse_face_with_options(request, runtime)
 
@@ -448,6 +500,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.ParseFaceRequest,
     ) -> imageseg_20191230_models.ParseFaceResponse:
+        """
+        @param request: ParseFaceRequest
+        @return: ParseFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.parse_face_with_options_async(request, runtime)
 
@@ -462,7 +518,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -482,12 +538,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -533,7 +590,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -553,12 +610,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -598,6 +656,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.RefineMaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.RefineMaskResponse:
+        """
+        @param request: RefineMaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefineMaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_url):
@@ -628,6 +691,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.RefineMaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.RefineMaskResponse:
+        """
+        @param request: RefineMaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefineMaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_url):
@@ -657,6 +725,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.RefineMaskRequest,
     ) -> imageseg_20191230_models.RefineMaskResponse:
+        """
+        @param request: RefineMaskRequest
+        @return: RefineMaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refine_mask_with_options(request, runtime)
 
@@ -664,6 +736,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.RefineMaskRequest,
     ) -> imageseg_20191230_models.RefineMaskResponse:
+        """
+        @param request: RefineMaskRequest
+        @return: RefineMaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refine_mask_with_options_async(request, runtime)
 
@@ -678,7 +754,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -698,12 +774,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -773,7 +850,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -793,12 +870,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -862,6 +940,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentBodyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentBodyResponse:
+        """
+        @param request: SegmentBodyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentBodyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -892,6 +975,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentBodyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentBodyResponse:
+        """
+        @param request: SegmentBodyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentBodyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -921,6 +1009,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentBodyRequest,
     ) -> imageseg_20191230_models.SegmentBodyResponse:
+        """
+        @param request: SegmentBodyRequest
+        @return: SegmentBodyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_body_with_options(request, runtime)
 
@@ -928,6 +1020,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentBodyRequest,
     ) -> imageseg_20191230_models.SegmentBodyResponse:
+        """
+        @param request: SegmentBodyRequest
+        @return: SegmentBodyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_body_with_options_async(request, runtime)
 
@@ -942,7 +1038,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -962,12 +1058,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1013,7 +1110,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1033,12 +1130,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1078,12 +1176,19 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentClothRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentClothResponse:
+        """
+        @param request: SegmentClothRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentClothResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cloth_class):
             query['ClothClass'] = request.cloth_class
         if not UtilClient.is_unset(request.image_url):
             query['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.out_mode):
+            query['OutMode'] = request.out_mode
         if not UtilClient.is_unset(request.return_form):
             query['ReturnForm'] = request.return_form
         req = open_api_models.OpenApiRequest(
@@ -1110,12 +1215,19 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentClothRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentClothResponse:
+        """
+        @param request: SegmentClothRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentClothResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cloth_class):
             query['ClothClass'] = request.cloth_class
         if not UtilClient.is_unset(request.image_url):
             query['ImageURL'] = request.image_url
+        if not UtilClient.is_unset(request.out_mode):
+            query['OutMode'] = request.out_mode
         if not UtilClient.is_unset(request.return_form):
             query['ReturnForm'] = request.return_form
         req = open_api_models.OpenApiRequest(
@@ -1141,6 +1253,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentClothRequest,
     ) -> imageseg_20191230_models.SegmentClothResponse:
+        """
+        @param request: SegmentClothRequest
+        @return: SegmentClothResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_cloth_with_options(request, runtime)
 
@@ -1148,6 +1264,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentClothRequest,
     ) -> imageseg_20191230_models.SegmentClothResponse:
+        """
+        @param request: SegmentClothRequest
+        @return: SegmentClothResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_cloth_with_options_async(request, runtime)
 
@@ -1162,7 +1282,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1182,12 +1302,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1233,7 +1354,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1253,12 +1374,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1298,6 +1420,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentCommodityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentCommodityResponse:
+        """
+        @param request: SegmentCommodityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentCommodityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1328,6 +1455,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentCommodityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentCommodityResponse:
+        """
+        @param request: SegmentCommodityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentCommodityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1357,6 +1489,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentCommodityRequest,
     ) -> imageseg_20191230_models.SegmentCommodityResponse:
+        """
+        @param request: SegmentCommodityRequest
+        @return: SegmentCommodityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_commodity_with_options(request, runtime)
 
@@ -1364,6 +1500,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentCommodityRequest,
     ) -> imageseg_20191230_models.SegmentCommodityResponse:
+        """
+        @param request: SegmentCommodityRequest
+        @return: SegmentCommodityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_commodity_with_options_async(request, runtime)
 
@@ -1378,7 +1518,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1398,12 +1538,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1449,7 +1590,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1469,12 +1610,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1514,6 +1656,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentCommonImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentCommonImageResponse:
+        """
+        @param request: SegmentCommonImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentCommonImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1544,6 +1691,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentCommonImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentCommonImageResponse:
+        """
+        @param request: SegmentCommonImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentCommonImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1573,6 +1725,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentCommonImageRequest,
     ) -> imageseg_20191230_models.SegmentCommonImageResponse:
+        """
+        @param request: SegmentCommonImageRequest
+        @return: SegmentCommonImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_common_image_with_options(request, runtime)
 
@@ -1580,6 +1736,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentCommonImageRequest,
     ) -> imageseg_20191230_models.SegmentCommonImageResponse:
+        """
+        @param request: SegmentCommonImageRequest
+        @return: SegmentCommonImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_common_image_with_options_async(request, runtime)
 
@@ -1594,7 +1754,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1614,12 +1774,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1665,7 +1826,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1685,12 +1846,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1730,6 +1892,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentFoodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentFoodResponse:
+        """
+        @param request: SegmentFoodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentFoodResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1760,6 +1927,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentFoodRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentFoodResponse:
+        """
+        @param request: SegmentFoodRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentFoodResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1789,6 +1961,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentFoodRequest,
     ) -> imageseg_20191230_models.SegmentFoodResponse:
+        """
+        @param request: SegmentFoodRequest
+        @return: SegmentFoodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_food_with_options(request, runtime)
 
@@ -1796,6 +1972,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentFoodRequest,
     ) -> imageseg_20191230_models.SegmentFoodResponse:
+        """
+        @param request: SegmentFoodRequest
+        @return: SegmentFoodResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_food_with_options_async(request, runtime)
 
@@ -1810,7 +1990,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1830,12 +2010,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1881,7 +2062,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1901,12 +2082,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1946,6 +2128,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHDBodyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHDBodyResponse:
+        """
+        @param request: SegmentHDBodyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHDBodyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -1974,6 +2161,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHDBodyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHDBodyResponse:
+        """
+        @param request: SegmentHDBodyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHDBodyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2001,6 +2193,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHDBodyRequest,
     ) -> imageseg_20191230_models.SegmentHDBodyResponse:
+        """
+        @param request: SegmentHDBodyRequest
+        @return: SegmentHDBodyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_hdbody_with_options(request, runtime)
 
@@ -2008,6 +2204,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHDBodyRequest,
     ) -> imageseg_20191230_models.SegmentHDBodyResponse:
+        """
+        @param request: SegmentHDBodyRequest
+        @return: SegmentHDBodyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_hdbody_with_options_async(request, runtime)
 
@@ -2022,7 +2222,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2042,12 +2242,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2093,7 +2294,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2113,12 +2314,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2158,6 +2360,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHDCommonImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHDCommonImageResponse:
+        """
+        @param request: SegmentHDCommonImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHDCommonImageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2186,6 +2393,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHDCommonImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHDCommonImageResponse:
+        """
+        @param request: SegmentHDCommonImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHDCommonImageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2213,6 +2425,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHDCommonImageRequest,
     ) -> imageseg_20191230_models.SegmentHDCommonImageResponse:
+        """
+        @param request: SegmentHDCommonImageRequest
+        @return: SegmentHDCommonImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_hdcommon_image_with_options(request, runtime)
 
@@ -2220,6 +2436,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHDCommonImageRequest,
     ) -> imageseg_20191230_models.SegmentHDCommonImageResponse:
+        """
+        @param request: SegmentHDCommonImageRequest
+        @return: SegmentHDCommonImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_hdcommon_image_with_options_async(request, runtime)
 
@@ -2234,7 +2454,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2254,12 +2474,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2305,7 +2526,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2325,12 +2546,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2370,6 +2592,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHDSkyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHDSkyResponse:
+        """
+        @param request: SegmentHDSkyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHDSkyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2398,6 +2625,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHDSkyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHDSkyResponse:
+        """
+        @param request: SegmentHDSkyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHDSkyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2425,6 +2657,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHDSkyRequest,
     ) -> imageseg_20191230_models.SegmentHDSkyResponse:
+        """
+        @param request: SegmentHDSkyRequest
+        @return: SegmentHDSkyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_hdsky_with_options(request, runtime)
 
@@ -2432,6 +2668,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHDSkyRequest,
     ) -> imageseg_20191230_models.SegmentHDSkyResponse:
+        """
+        @param request: SegmentHDSkyRequest
+        @return: SegmentHDSkyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_hdsky_with_options_async(request, runtime)
 
@@ -2446,7 +2686,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2466,12 +2706,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2517,7 +2758,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2537,12 +2778,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2582,6 +2824,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHairResponse:
+        """
+        @param request: SegmentHairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2610,6 +2857,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHairResponse:
+        """
+        @param request: SegmentHairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2637,6 +2889,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHairRequest,
     ) -> imageseg_20191230_models.SegmentHairResponse:
+        """
+        @param request: SegmentHairRequest
+        @return: SegmentHairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_hair_with_options(request, runtime)
 
@@ -2644,6 +2900,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHairRequest,
     ) -> imageseg_20191230_models.SegmentHairResponse:
+        """
+        @param request: SegmentHairRequest
+        @return: SegmentHairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_hair_with_options_async(request, runtime)
 
@@ -2658,7 +2918,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2678,12 +2938,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2729,7 +2990,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2749,12 +3010,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2794,6 +3056,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHeadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHeadResponse:
+        """
+        @param request: SegmentHeadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHeadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2824,6 +3091,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentHeadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentHeadResponse:
+        """
+        @param request: SegmentHeadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentHeadResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -2853,6 +3125,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHeadRequest,
     ) -> imageseg_20191230_models.SegmentHeadResponse:
+        """
+        @param request: SegmentHeadRequest
+        @return: SegmentHeadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_head_with_options(request, runtime)
 
@@ -2860,6 +3136,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentHeadRequest,
     ) -> imageseg_20191230_models.SegmentHeadResponse:
+        """
+        @param request: SegmentHeadRequest
+        @return: SegmentHeadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_head_with_options_async(request, runtime)
 
@@ -2874,7 +3154,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2894,12 +3174,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2945,7 +3226,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2965,12 +3246,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3010,6 +3292,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentSceneResponse:
+        """
+        @param request: SegmentSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentSceneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -3038,6 +3325,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentSceneResponse:
+        """
+        @param request: SegmentSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentSceneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -3065,6 +3357,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentSceneRequest,
     ) -> imageseg_20191230_models.SegmentSceneResponse:
+        """
+        @param request: SegmentSceneRequest
+        @return: SegmentSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_scene_with_options(request, runtime)
 
@@ -3072,6 +3368,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentSceneRequest,
     ) -> imageseg_20191230_models.SegmentSceneResponse:
+        """
+        @param request: SegmentSceneRequest
+        @return: SegmentSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_scene_with_options_async(request, runtime)
 
@@ -3086,7 +3386,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3106,12 +3406,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3157,7 +3458,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3177,12 +3478,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3222,6 +3524,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentSkinRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentSkinResponse:
+        """
+        @param request: SegmentSkinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentSkinResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.url):
@@ -3250,6 +3557,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentSkinRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentSkinResponse:
+        """
+        @param request: SegmentSkinRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentSkinResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.url):
@@ -3277,6 +3589,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentSkinRequest,
     ) -> imageseg_20191230_models.SegmentSkinResponse:
+        """
+        @param request: SegmentSkinRequest
+        @return: SegmentSkinResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_skin_with_options(request, runtime)
 
@@ -3284,6 +3600,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentSkinRequest,
     ) -> imageseg_20191230_models.SegmentSkinResponse:
+        """
+        @param request: SegmentSkinRequest
+        @return: SegmentSkinResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_skin_with_options_async(request, runtime)
 
@@ -3298,7 +3618,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3318,12 +3638,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3369,7 +3690,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3389,12 +3710,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3434,6 +3756,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentSkyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentSkyResponse:
+        """
+        @param request: SegmentSkyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentSkyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -3462,6 +3789,11 @@ class Client(OpenApiClient):
         request: imageseg_20191230_models.SegmentSkyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imageseg_20191230_models.SegmentSkyResponse:
+        """
+        @param request: SegmentSkyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SegmentSkyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_url):
@@ -3489,6 +3821,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentSkyRequest,
     ) -> imageseg_20191230_models.SegmentSkyResponse:
+        """
+        @param request: SegmentSkyRequest
+        @return: SegmentSkyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.segment_sky_with_options(request, runtime)
 
@@ -3496,6 +3832,10 @@ class Client(OpenApiClient):
         self,
         request: imageseg_20191230_models.SegmentSkyRequest,
     ) -> imageseg_20191230_models.SegmentSkyResponse:
+        """
+        @param request: SegmentSkyRequest
+        @return: SegmentSkyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.segment_sky_with_options_async(request, runtime)
 
@@ -3510,7 +3850,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3530,12 +3870,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3581,7 +3922,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3601,12 +3942,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
