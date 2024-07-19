@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_gpdb20160503.
 
-Created on 18/07/2024
+Created on 19/07/2024
 
 @author: Alibaba Cloud SDK
 """

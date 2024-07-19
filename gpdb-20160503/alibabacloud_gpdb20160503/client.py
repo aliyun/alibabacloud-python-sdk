@@ -2686,6 +2686,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_sample_data_with_options_async(request, runtime)
 
+    def create_secret_with_options(
+        self,
+        request: gpdb_20160503_models.CreateSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateSecretResponse:
+        """
+        @summary 创建实例的用户凭证
+        
+        @param request: CreateSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.test_connection):
+            query['TestConnection'] = request.test_connection
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecret',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_secret_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateSecretResponse:
+        """
+        @summary 创建实例的用户凭证
+        
+        @param request: CreateSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        if not UtilClient.is_unset(request.test_connection):
+            query['TestConnection'] = request.test_connection
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSecret',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_secret(
+        self,
+        request: gpdb_20160503_models.CreateSecretRequest,
+    ) -> gpdb_20160503_models.CreateSecretResponse:
+        """
+        @summary 创建实例的用户凭证
+        
+        @param request: CreateSecretRequest
+        @return: CreateSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_secret_with_options(request, runtime)
+
+    async def create_secret_async(
+        self,
+        request: gpdb_20160503_models.CreateSecretRequest,
+    ) -> gpdb_20160503_models.CreateSecretResponse:
+        """
+        @summary 创建实例的用户凭证
+        
+        @param request: CreateSecretRequest
+        @return: CreateSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_secret_with_options_async(request, runtime)
+
     def create_service_linked_role_with_options(
         self,
         request: gpdb_20160503_models.CreateServiceLinkedRoleRequest,
@@ -4721,6 +4845,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
+
+    def delete_secret_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteSecretResponse:
+        """
+        @summary 删除实例的用户凭证
+        
+        @param request: DeleteSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecret',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_secret_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteSecretRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteSecretResponse:
+        """
+        @summary 删除实例的用户凭证
+        
+        @param request: DeleteSecretRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecretResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSecret',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_secret(
+        self,
+        request: gpdb_20160503_models.DeleteSecretRequest,
+    ) -> gpdb_20160503_models.DeleteSecretResponse:
+        """
+        @summary 删除实例的用户凭证
+        
+        @param request: DeleteSecretRequest
+        @return: DeleteSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_secret_with_options(request, runtime)
+
+    async def delete_secret_async(
+        self,
+        request: gpdb_20160503_models.DeleteSecretRequest,
+    ) -> gpdb_20160503_models.DeleteSecretResponse:
+        """
+        @summary 删除实例的用户凭证
+        
+        @param request: DeleteSecretRequest
+        @return: DeleteSecretResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_secret_with_options_async(request, runtime)
 
     def delete_streaming_data_service_with_options(
         self,
@@ -11910,6 +12146,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_support_features_with_options_async(request, runtime)
 
+    def describe_table_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeTableResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: DescribeTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.table):
+            query['Table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTable',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_table_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeTableResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: DescribeTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.table):
+            query['Table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTable',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_table(
+        self,
+        request: gpdb_20160503_models.DescribeTableRequest,
+    ) -> gpdb_20160503_models.DescribeTableResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: DescribeTableRequest
+        @return: DescribeTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_table_with_options(request, runtime)
+
+    async def describe_table_async(
+        self,
+        request: gpdb_20160503_models.DescribeTableRequest,
+    ) -> gpdb_20160503_models.DescribeTableResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: DescribeTableRequest
+        @return: DescribeTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_table_with_options_async(request, runtime)
+
     def describe_tags_with_options(
         self,
         request: gpdb_20160503_models.DescribeTagsRequest,
@@ -12934,6 +13290,266 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_dbresource_group_with_options_async(request, runtime)
 
+    def execute_statement_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.ExecuteStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ExecuteStatementResponse:
+        """
+        @summary 运行SQL语句
+        
+        @param tmp_req: ExecuteStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteStatementResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ExecuteStatementShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.sqls):
+            request.sqls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sqls, 'Sqls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.run_type):
+            query['RunType'] = request.run_type
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.statement_name):
+            query['StatementName'] = request.statement_name
+        body = {}
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.sql):
+            body['Sql'] = request.sql
+        if not UtilClient.is_unset(request.sqls_shrink):
+            body['Sqls'] = request.sqls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteStatement',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ExecuteStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_statement_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.ExecuteStatementRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ExecuteStatementResponse:
+        """
+        @summary 运行SQL语句
+        
+        @param tmp_req: ExecuteStatementRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteStatementResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ExecuteStatementShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.sqls):
+            request.sqls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sqls, 'Sqls', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.run_type):
+            query['RunType'] = request.run_type
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.statement_name):
+            query['StatementName'] = request.statement_name
+        body = {}
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.sql):
+            body['Sql'] = request.sql
+        if not UtilClient.is_unset(request.sqls_shrink):
+            body['Sqls'] = request.sqls_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteStatement',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ExecuteStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_statement(
+        self,
+        request: gpdb_20160503_models.ExecuteStatementRequest,
+    ) -> gpdb_20160503_models.ExecuteStatementResponse:
+        """
+        @summary 运行SQL语句
+        
+        @param request: ExecuteStatementRequest
+        @return: ExecuteStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.execute_statement_with_options(request, runtime)
+
+    async def execute_statement_async(
+        self,
+        request: gpdb_20160503_models.ExecuteStatementRequest,
+    ) -> gpdb_20160503_models.ExecuteStatementResponse:
+        """
+        @summary 运行SQL语句
+        
+        @param request: ExecuteStatementRequest
+        @return: ExecuteStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.execute_statement_with_options_async(request, runtime)
+
+    def get_secret_value_with_options(
+        self,
+        request: gpdb_20160503_models.GetSecretValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetSecretValueResponse:
+        """
+        @summary 查看实例的用户凭证里数据
+        
+        @param request: GetSecretValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretValueResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSecretValue',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.GetSecretValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_secret_value_with_options_async(
+        self,
+        request: gpdb_20160503_models.GetSecretValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetSecretValueResponse:
+        """
+        @summary 查看实例的用户凭证里数据
+        
+        @param request: GetSecretValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSecretValueResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.secret_name):
+            query['SecretName'] = request.secret_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSecretValue',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.GetSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_secret_value(
+        self,
+        request: gpdb_20160503_models.GetSecretValueRequest,
+    ) -> gpdb_20160503_models.GetSecretValueResponse:
+        """
+        @summary 查看实例的用户凭证里数据
+        
+        @param request: GetSecretValueRequest
+        @return: GetSecretValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_secret_value_with_options(request, runtime)
+
+    async def get_secret_value_async(
+        self,
+        request: gpdb_20160503_models.GetSecretValueRequest,
+    ) -> gpdb_20160503_models.GetSecretValueResponse:
+        """
+        @summary 查看实例的用户凭证里数据
+        
+        @param request: GetSecretValueRequest
+        @return: GetSecretValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_secret_value_with_options_async(request, runtime)
+
     def get_upload_document_job_with_options(
         self,
         request: gpdb_20160503_models.GetUploadDocumentJobRequest,
@@ -13666,6 +14282,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_collections_with_options_async(request, runtime)
 
+    def list_databases_with_options(
+        self,
+        request: gpdb_20160503_models.ListDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListDatabasesResponse:
+        """
+        @summary 查看所有库
+        
+        @param request: ListDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_databases_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListDatabasesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListDatabasesResponse:
+        """
+        @summary 查看所有库
+        
+        @param request: ListDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDatabasesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDatabases',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_databases(
+        self,
+        request: gpdb_20160503_models.ListDatabasesRequest,
+    ) -> gpdb_20160503_models.ListDatabasesResponse:
+        """
+        @summary 查看所有库
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_databases_with_options(request, runtime)
+
+    async def list_databases_async(
+        self,
+        request: gpdb_20160503_models.ListDatabasesRequest,
+    ) -> gpdb_20160503_models.ListDatabasesResponse:
+        """
+        @summary 查看所有库
+        
+        @param request: ListDatabasesRequest
+        @return: ListDatabasesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_databases_with_options_async(request, runtime)
+
     def list_document_collections_with_options(
         self,
         request: gpdb_20160503_models.ListDocumentCollectionsRequest,
@@ -14346,6 +15082,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
 
+    def list_schemas_with_options(
+        self,
+        request: gpdb_20160503_models.ListSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListSchemasResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: ListSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_pattern):
+            query['SchemaPattern'] = request.schema_pattern
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSchemas',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_schemas_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListSchemasResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: ListSchemasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchemasResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_pattern):
+            query['SchemaPattern'] = request.schema_pattern
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSchemas',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_schemas(
+        self,
+        request: gpdb_20160503_models.ListSchemasRequest,
+    ) -> gpdb_20160503_models.ListSchemasResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: ListSchemasRequest
+        @return: ListSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_schemas_with_options(request, runtime)
+
+    async def list_schemas_async(
+        self,
+        request: gpdb_20160503_models.ListSchemasRequest,
+    ) -> gpdb_20160503_models.ListSchemasResponse:
+        """
+        @summary 查看所有的schema
+        
+        @param request: ListSchemasRequest
+        @return: ListSchemasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_schemas_with_options_async(request, runtime)
+
+    def list_secrets_with_options(
+        self,
+        request: gpdb_20160503_models.ListSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListSecretsResponse:
+        """
+        @summary 查询实例的用户凭证列表
+        
+        @param request: ListSecretsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecrets',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListSecretsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_secrets_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListSecretsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListSecretsResponse:
+        """
+        @summary 查询实例的用户凭证列表
+        
+        @param request: ListSecretsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecretsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSecrets',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListSecretsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_secrets(
+        self,
+        request: gpdb_20160503_models.ListSecretsRequest,
+    ) -> gpdb_20160503_models.ListSecretsResponse:
+        """
+        @summary 查询实例的用户凭证列表
+        
+        @param request: ListSecretsRequest
+        @return: ListSecretsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_secrets_with_options(request, runtime)
+
+    async def list_secrets_async(
+        self,
+        request: gpdb_20160503_models.ListSecretsRequest,
+    ) -> gpdb_20160503_models.ListSecretsResponse:
+        """
+        @summary 查询实例的用户凭证列表
+        
+        @param request: ListSecretsRequest
+        @return: ListSecretsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_secrets_with_options_async(request, runtime)
+
     def list_streaming_data_services_with_options(
         self,
         request: gpdb_20160503_models.ListStreamingDataServicesRequest,
@@ -14669,6 +15633,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_streaming_jobs_with_options_async(request, runtime)
+
+    def list_tables_with_options(
+        self,
+        request: gpdb_20160503_models.ListTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListTablesResponse:
+        """
+        @summary 查看所有表
+        
+        @param request: ListTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.table_pattern):
+            query['TablePattern'] = request.table_pattern
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tables_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListTablesResponse:
+        """
+        @summary 查看所有表
+        
+        @param request: ListTablesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTablesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema):
+            query['Schema'] = request.schema
+        if not UtilClient.is_unset(request.secret_arn):
+            query['SecretArn'] = request.secret_arn
+        if not UtilClient.is_unset(request.table_pattern):
+            query['TablePattern'] = request.table_pattern
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTables',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tables(
+        self,
+        request: gpdb_20160503_models.ListTablesRequest,
+    ) -> gpdb_20160503_models.ListTablesResponse:
+        """
+        @summary 查看所有表
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tables_with_options(request, runtime)
+
+    async def list_tables_async(
+        self,
+        request: gpdb_20160503_models.ListTablesRequest,
+    ) -> gpdb_20160503_models.ListTablesResponse:
+        """
+        @summary 查看所有表
+        
+        @param request: ListTablesRequest
+        @return: ListTablesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tables_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
