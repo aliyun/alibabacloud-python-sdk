@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.EnrollAccountResponse:
         """
-        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        @summary Enrolls an account. You can create a new account or manage an existing account in the account factory.
+        
+        @description You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
         Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
         
         @param request: EnrollAccountRequest
@@ -99,7 +101,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.EnrollAccountResponse:
         """
-        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        @summary Enrolls an account. You can create a new account or manage an existing account in the account factory.
+        
+        @description You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
         Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
         
         @param request: EnrollAccountRequest
@@ -150,7 +154,9 @@ class Client(OpenApiClient):
         request: governance_20210120_models.EnrollAccountRequest,
     ) -> governance_20210120_models.EnrollAccountResponse:
         """
-        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        @summary Enrolls an account. You can create a new account or manage an existing account in the account factory.
+        
+        @description You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
         Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
         
         @param request: EnrollAccountRequest
@@ -164,7 +170,9 @@ class Client(OpenApiClient):
         request: governance_20210120_models.EnrollAccountRequest,
     ) -> governance_20210120_models.EnrollAccountResponse:
         """
-        You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+        @summary Enrolls an account. You can create a new account or manage an existing account in the account factory.
+        
+        @description You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
         Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
         
         @param request: EnrollAccountRequest
@@ -178,6 +186,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.GetAccountFactoryBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.GetAccountFactoryBaselineResponse:
+        """
+        @summary Obtains the details of an account factory baseline.
+        
+        @param request: GetAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountFactoryBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -208,6 +223,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.GetAccountFactoryBaselineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.GetAccountFactoryBaselineResponse:
+        """
+        @summary Obtains the details of an account factory baseline.
+        
+        @param request: GetAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountFactoryBaselineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.baseline_id):
@@ -237,6 +259,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.GetAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.GetAccountFactoryBaselineResponse:
+        """
+        @summary Obtains the details of an account factory baseline.
+        
+        @param request: GetAccountFactoryBaselineRequest
+        @return: GetAccountFactoryBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_factory_baseline_with_options(request, runtime)
 
@@ -244,6 +272,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.GetAccountFactoryBaselineRequest,
     ) -> governance_20210120_models.GetAccountFactoryBaselineResponse:
+        """
+        @summary Obtains the details of an account factory baseline.
+        
+        @param request: GetAccountFactoryBaselineRequest
+        @return: GetAccountFactoryBaselineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_factory_baseline_with_options_async(request, runtime)
 
@@ -252,6 +286,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.GetEnrolledAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.GetEnrolledAccountResponse:
+        """
+        @summary Queries the details about an account that is enrolled in the account factory.
+        
+        @param request: GetEnrolledAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnrolledAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_uid):
@@ -282,6 +323,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.GetEnrolledAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.GetEnrolledAccountResponse:
+        """
+        @summary Queries the details about an account that is enrolled in the account factory.
+        
+        @param request: GetEnrolledAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEnrolledAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_uid):
@@ -311,6 +359,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.GetEnrolledAccountRequest,
     ) -> governance_20210120_models.GetEnrolledAccountResponse:
+        """
+        @summary Queries the details about an account that is enrolled in the account factory.
+        
+        @param request: GetEnrolledAccountRequest
+        @return: GetEnrolledAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_enrolled_account_with_options(request, runtime)
 
@@ -318,6 +372,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.GetEnrolledAccountRequest,
     ) -> governance_20210120_models.GetEnrolledAccountResponse:
+        """
+        @summary Queries the details about an account that is enrolled in the account factory.
+        
+        @param request: GetEnrolledAccountRequest
+        @return: GetEnrolledAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_enrolled_account_with_options_async(request, runtime)
 
@@ -326,6 +386,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListAccountFactoryBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListAccountFactoryBaselinesResponse:
+        """
+        @summary Obtains a list of baselines in the account factory.
+        
+        @param request: ListAccountFactoryBaselinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountFactoryBaselinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -358,6 +425,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListAccountFactoryBaselinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListAccountFactoryBaselinesResponse:
+        """
+        @summary Obtains a list of baselines in the account factory.
+        
+        @param request: ListAccountFactoryBaselinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountFactoryBaselinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -389,6 +463,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.ListAccountFactoryBaselinesRequest,
     ) -> governance_20210120_models.ListAccountFactoryBaselinesResponse:
+        """
+        @summary Obtains a list of baselines in the account factory.
+        
+        @param request: ListAccountFactoryBaselinesRequest
+        @return: ListAccountFactoryBaselinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_account_factory_baselines_with_options(request, runtime)
 
@@ -396,6 +476,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.ListAccountFactoryBaselinesRequest,
     ) -> governance_20210120_models.ListAccountFactoryBaselinesResponse:
+        """
+        @summary Obtains a list of baselines in the account factory.
+        
+        @param request: ListAccountFactoryBaselinesRequest
+        @return: ListAccountFactoryBaselinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_account_factory_baselines_with_options_async(request, runtime)
 
@@ -404,6 +490,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEnrolledAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEnrolledAccountsResponse:
+        """
+        @summary Queries a list of accounts that are enrolled in the account factory.
+        
+        @param request: ListEnrolledAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnrolledAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -436,6 +529,13 @@ class Client(OpenApiClient):
         request: governance_20210120_models.ListEnrolledAccountsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> governance_20210120_models.ListEnrolledAccountsResponse:
+        """
+        @summary Queries a list of accounts that are enrolled in the account factory.
+        
+        @param request: ListEnrolledAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEnrolledAccountsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -467,6 +567,12 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.ListEnrolledAccountsRequest,
     ) -> governance_20210120_models.ListEnrolledAccountsResponse:
+        """
+        @summary Queries a list of accounts that are enrolled in the account factory.
+        
+        @param request: ListEnrolledAccountsRequest
+        @return: ListEnrolledAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_enrolled_accounts_with_options(request, runtime)
 
@@ -474,5 +580,11 @@ class Client(OpenApiClient):
         self,
         request: governance_20210120_models.ListEnrolledAccountsRequest,
     ) -> governance_20210120_models.ListEnrolledAccountsResponse:
+        """
+        @summary Queries a list of accounts that are enrolled in the account factory.
+        
+        @param request: ListEnrolledAccountsRequest
+        @return: ListEnrolledAccountsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_enrolled_accounts_with_options_async(request, runtime)

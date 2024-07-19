@@ -463,6 +463,8 @@ class GetEnrolledAccountRequest(TeaModel):
         region_id: str = None,
     ):
         # The account ID.
+        # 
+        # This parameter is required.
         self.account_uid = account_uid
         # The region ID.
         self.region_id = region_id
@@ -499,9 +501,16 @@ class GetEnrolledAccountResponseBodyBaselineItems(TeaModel):
         skip: bool = None,
         version: str = None,
     ):
+        # The configurations of the baseline item.
         self.config = config
+        # The name of the baseline item.
         self.name = name
+        # Indicates whether baseline item is skipped. Valid values:
+        # 
+        # *   false
+        # *   true
         self.skip = skip
+        # The version of the baseline item.
         self.version = version
 
     def validate(self):
@@ -544,11 +553,11 @@ class GetEnrolledAccountResponseBodyErrorInfo(TeaModel):
         recommend: str = None,
         request_id: str = None,
     ):
-        # The error code returned.
+        # The error code.
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The suggestions that are used to resolve the issue.
+        # The recommended solution.
         self.recommend = recommend
         # The request ID.
         self.request_id = request_id
@@ -597,7 +606,10 @@ class GetEnrolledAccountResponseBodyInputsBaselineItems(TeaModel):
         self.config = config
         # The name of the baseline item.
         self.name = name
-        # Indicates whether to skip the baseline item.
+        # Indicates whether baseline item is skipped. Valid values:
+        # 
+        # *   false
+        # *   true
         self.skip = skip
         # The version of the baseline item.
         self.version = version
@@ -644,17 +656,17 @@ class GetEnrolledAccountResponseBodyInputs(TeaModel):
         folder_id: str = None,
         payer_account_uid: int = None,
     ):
-        # The prefix for the account name of the member.
+        # The prefix of the account name.
         self.account_name_prefix = account_name_prefix
         # The account ID.
         self.account_uid = account_uid
-        # An array that contains baseline items.
+        # The baseline items.
         self.baseline_items = baseline_items
         # The display name of the account.
         self.display_name = display_name
         # The ID of the parent folder.
         self.folder_id = folder_id
-        # The ID of the billing account.
+        # The ID of the settlement account.
         self.payer_account_uid = payer_account_uid
 
     def validate(self):
@@ -713,12 +725,12 @@ class GetEnrolledAccountResponseBodyProgress(TeaModel):
     ):
         # The name of the baseline item.
         self.name = name
-        # The status of applying the account baseline to the account. Valid values:
+        # The status of applying the baseline to the account. Valid values:
         # 
-        # *   Pending: The account is waiting to be created.
-        # *   Running: The account baseline is being applied to the account.
-        # *   Finished: The account baseline is applied to the account.
-        # *   Failed: The account baseline failed to be applied to the account.
+        # *   Pending: The baseline is pending to be applied to the account.
+        # *   Running: The baseline is being applied to the account.
+        # *   Finished: : The baseline is applied to the account.
+        # *   Failed: : The baseline fails to be applied to the account.
         self.status = status
 
     def validate(self):
@@ -766,37 +778,43 @@ class GetEnrolledAccountResponseBody(TeaModel):
     ):
         # The account ID.
         self.account_uid = account_uid
-        # The ID of the baseline that was applied to the account.
+        # The ID of the baseline that is implemented.
         self.baseline_id = baseline_id
+        # An array that contains baseline items.
         self.baseline_items = baseline_items
-        # The time at which the account was created.
+        # The time when the account was created.
         self.create_time = create_time
         # The display name of the account.
         self.display_name = display_name
-        # The error message returned.
+        # The error message.
+        # 
+        # >  This parameter is returned if the value of `Status` is `Failed` or `ScheduleFailed`.
         self.error_info = error_info
         # The ID of the parent folder.
         self.folder_id = folder_id
-        # Indicates whether the account was initialized.
+        # Indicates whether the initialization is complete. Valid values:
+        # 
+        # *   false
+        # *   true
         self.initialized = initialized
-        # The input parameters that are used when you enrolled the account.
+        # The input parameters that are used when the account was registered.
         self.inputs = inputs
-        # The ID of the master account to which the account belongs.
+        # The ID of the management account of the resource directory to which the account belongs.
         self.master_account_uid = master_account_uid
-        # The ID of the billing account.
+        # The ID of the settlement account.
         self.payer_account_uid = payer_account_uid
-        # The progress of applying the account baseline to the account.
+        # The progress of the applying the baseline to the account.
         self.progress = progress
         # The request ID.
         self.request_id = request_id
-        # The creation status of the account. Valid values:
+        # The status of the account. Valid values:
         # 
-        # *   Pending: The account is waiting to be created.
+        # *   Pending: The account is pending to be created.
         # *   Running: The account is being created.
         # *   Finished: The account is created.
-        # *   Failed: The account failed to be created.
+        # *   Failed: The account fails to be created.
         # *   Scheduling: The account is being scheduled.
-        # *   ScheduleFailed: The account failed to be scheduled.
+        # *   ScheduleFailed: The account fails to be scheduled.
         self.status = status
         # The time when the information about the account was updated.
         self.update_time = update_time
