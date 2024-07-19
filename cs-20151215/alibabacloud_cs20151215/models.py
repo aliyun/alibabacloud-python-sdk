@@ -1085,6 +1085,7 @@ class NodepoolScalingGroup(TeaModel):
         period_unit: str = None,
         platform: str = None,
         private_pool_options: NodepoolScalingGroupPrivatePoolOptions = None,
+        ram_role_name: str = None,
         rds_instances: List[str] = None,
         scaling_policy: str = None,
         security_group_id: str = None,
@@ -1129,6 +1130,7 @@ class NodepoolScalingGroup(TeaModel):
         self.period_unit = period_unit
         self.platform = platform
         self.private_pool_options = private_pool_options
+        self.ram_role_name = ram_role_name
         self.rds_instances = rds_instances
         self.scaling_policy = scaling_policy
         self.security_group_id = security_group_id
@@ -1218,6 +1220,8 @@ class NodepoolScalingGroup(TeaModel):
             result['platform'] = self.platform
         if self.private_pool_options is not None:
             result['private_pool_options'] = self.private_pool_options.to_map()
+        if self.ram_role_name is not None:
+            result['ram_role_name'] = self.ram_role_name
         if self.rds_instances is not None:
             result['rds_instances'] = self.rds_instances
         if self.scaling_policy is not None:
@@ -1312,6 +1316,8 @@ class NodepoolScalingGroup(TeaModel):
         if m.get('private_pool_options') is not None:
             temp_model = NodepoolScalingGroupPrivatePoolOptions()
             self.private_pool_options = temp_model.from_map(m['private_pool_options'])
+        if m.get('ram_role_name') is not None:
+            self.ram_role_name = m.get('ram_role_name')
         if m.get('rds_instances') is not None:
             self.rds_instances = m.get('rds_instances')
         if m.get('scaling_policy') is not None:
