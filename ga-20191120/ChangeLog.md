@@ -1,3 +1,14 @@
+2024-07-20 Version: 2.1.8
+- Update API CreateEndpointGroup: add param EndpointProtocolVersion.
+- Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
+- Update API CreateListener: update param EndpointGroupConfigurations.
+- Update API DescribeEndpointGroup: update response param.
+- Update API ListEndpointGroupIpAddressCidrBlocks: add param AcceleratorId.
+- Update API ListEndpointGroups: update response param.
+- Update API UpdateEndpointGroup: add param EndpointProtocolVersion.
+- Update API UpdateEndpointGroups: update param EndpointGroupConfigurations.
+
+
 2024-04-22 Version: 2.1.7
 - Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
 - Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
