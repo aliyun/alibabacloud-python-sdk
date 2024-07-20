@@ -461,6 +461,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_index_with_options_async(workspace_id, request, headers, runtime)
 
+    def delete_file_with_options(
+        self,
+        file_id: str,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteFileResponse:
+        """
+        @summary 删除文档
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/file/{OpenApiUtilClient.get_encode_param(file_id)}/',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_with_options_async(
+        self,
+        file_id: str,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteFileResponse:
+        """
+        @summary 删除文档
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteFile',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/file/{OpenApiUtilClient.get_encode_param(file_id)}/',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_file(
+        self,
+        file_id: str,
+        workspace_id: str,
+    ) -> bailian_20231229_models.DeleteFileResponse:
+        """
+        @summary 删除文档
+        
+        @return: DeleteFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_file_with_options(file_id, workspace_id, headers, runtime)
+
+    async def delete_file_async(
+        self,
+        file_id: str,
+        workspace_id: str,
+    ) -> bailian_20231229_models.DeleteFileResponse:
+        """
+        @summary 删除文档
+        
+        @return: DeleteFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_file_with_options_async(file_id, workspace_id, headers, runtime)
+
     def delete_index_with_options(
         self,
         workspace_id: str,
