@@ -1,3 +1,7 @@
+2024-07-21 Version: 4.1.0
+- Support API DownloadCdsFile.
+
+
 2024-07-19 Version: 4.0.2
 - Update API CreatePolicyGroup: add param DeviceRedirects.
 - Update API CreatePolicyGroup: add param DeviceRules.

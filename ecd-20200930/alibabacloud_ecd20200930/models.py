@@ -32562,6 +32562,209 @@ class DissociateNetworkPackageResponse(TeaModel):
         return self
 
 
+class DownloadCdsFileRequest(TeaModel):
+    def __init__(
+        self,
+        cds_id: str = None,
+        end_user_id: str = None,
+        file_id: str = None,
+        group_id: str = None,
+        region_id: str = None,
+    ):
+        self.cds_id = cds_id
+        self.end_user_id = end_user_id
+        self.file_id = file_id
+        self.group_id = group_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cds_id is not None:
+            result['CdsId'] = self.cds_id
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdsId') is not None:
+            self.cds_id = m.get('CdsId')
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DownloadCdsFileResponseBodyDownloadFileModel(TeaModel):
+    def __init__(
+        self,
+        download_type: str = None,
+        download_url: str = None,
+        expiration_second: str = None,
+        expiration_time: str = None,
+        file_id: str = None,
+        size: int = None,
+        stream_url: str = None,
+    ):
+        self.download_type = download_type
+        self.download_url = download_url
+        self.expiration_second = expiration_second
+        self.expiration_time = expiration_time
+        self.file_id = file_id
+        self.size = size
+        self.stream_url = stream_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_type is not None:
+            result['DownloadType'] = self.download_type
+        if self.download_url is not None:
+            result['DownloadUrl'] = self.download_url
+        if self.expiration_second is not None:
+            result['ExpirationSecond'] = self.expiration_second
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.stream_url is not None:
+            result['StreamUrl'] = self.stream_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadType') is not None:
+            self.download_type = m.get('DownloadType')
+        if m.get('DownloadUrl') is not None:
+            self.download_url = m.get('DownloadUrl')
+        if m.get('ExpirationSecond') is not None:
+            self.expiration_second = m.get('ExpirationSecond')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('StreamUrl') is not None:
+            self.stream_url = m.get('StreamUrl')
+        return self
+
+
+class DownloadCdsFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        download_file_model: DownloadCdsFileResponseBodyDownloadFileModel = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.download_file_model = download_file_model
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.download_file_model:
+            self.download_file_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_file_model is not None:
+            result['DownloadFileModel'] = self.download_file_model.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadFileModel') is not None:
+            temp_model = DownloadCdsFileResponseBodyDownloadFileModel()
+            self.download_file_model = temp_model.from_map(m['DownloadFileModel'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DownloadCdsFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DownloadCdsFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DownloadCdsFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExportClientEventsRequest(TeaModel):
     def __init__(
         self,

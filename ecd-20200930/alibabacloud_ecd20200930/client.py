@@ -14434,6 +14434,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.dissociate_network_package_with_options_async(request, runtime)
 
+    def download_cds_file_with_options(
+        self,
+        request: ecd_20200930_models.DownloadCdsFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DownloadCdsFileResponse:
+        """
+        @summary CDS文件下载
+        
+        @param request: DownloadCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadCdsFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadCdsFile',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DownloadCdsFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_cds_file_with_options_async(
+        self,
+        request: ecd_20200930_models.DownloadCdsFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecd_20200930_models.DownloadCdsFileResponse:
+        """
+        @summary CDS文件下载
+        
+        @param request: DownloadCdsFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadCdsFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not UtilClient.is_unset(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.file_id):
+            query['FileId'] = request.file_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadCdsFile',
+            version='2020-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecd_20200930_models.DownloadCdsFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_cds_file(
+        self,
+        request: ecd_20200930_models.DownloadCdsFileRequest,
+    ) -> ecd_20200930_models.DownloadCdsFileResponse:
+        """
+        @summary CDS文件下载
+        
+        @param request: DownloadCdsFileRequest
+        @return: DownloadCdsFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_cds_file_with_options(request, runtime)
+
+    async def download_cds_file_async(
+        self,
+        request: ecd_20200930_models.DownloadCdsFileRequest,
+    ) -> ecd_20200930_models.DownloadCdsFileResponse:
+        """
+        @summary CDS文件下载
+        
+        @param request: DownloadCdsFileRequest
+        @return: DownloadCdsFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_cds_file_with_options_async(request, runtime)
+
     def export_client_events_with_options(
         self,
         request: ecd_20200930_models.ExportClientEventsRequest,
