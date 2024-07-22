@@ -2511,8 +2511,6 @@ class CancelAutoSnapshotPolicyRequest(TeaModel):
         # This parameter is required.
         self.desktop_id = desktop_id
         # The ID of the automatic snapshot policy.
-        # 
-        # This parameter is required.
         self.policy_id = policy_id
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 
@@ -7356,6 +7354,7 @@ class CreateDesktopsRequest(TeaModel):
         policy_group_id: str = None,
         promotion_id: str = None,
         region_id: str = None,
+        snapshot_policy_id: str = None,
         tag: List[CreateDesktopsRequestTag] = None,
         user_assign_mode: str = None,
         user_commands: List[CreateDesktopsRequestUserCommands] = None,
@@ -7476,6 +7475,7 @@ class CreateDesktopsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.snapshot_policy_id = snapshot_policy_id
         # The tags that you want to add to the cloud desktop.
         self.tag = tag
         # How the cloud computers are assigned.
@@ -7585,6 +7585,8 @@ class CreateDesktopsRequest(TeaModel):
             result['PromotionId'] = self.promotion_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.snapshot_policy_id is not None:
+            result['SnapshotPolicyId'] = self.snapshot_policy_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -7656,6 +7658,8 @@ class CreateDesktopsRequest(TeaModel):
             self.promotion_id = m.get('PromotionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SnapshotPolicyId') is not None:
+            self.snapshot_policy_id = m.get('SnapshotPolicyId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):

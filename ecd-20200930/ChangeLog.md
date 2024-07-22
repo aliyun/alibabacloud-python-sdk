@@ -1,3 +1,9 @@
+2024-07-22 Version: 4.1.1
+- Update API CancelAutoSnapshotPolicy: update param PolicyId.
+- Update API CreateDesktops: add param SnapshotPolicyId.
+- Update API DescribeAutoSnapshotPolicy: update param MaxResults.
+
+
 2024-07-21 Version: 4.1.0
 - Support API DownloadCdsFile.
 

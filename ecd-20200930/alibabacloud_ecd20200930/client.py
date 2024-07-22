@@ -4406,6 +4406,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_policy_id):
+            query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_assign_mode):
@@ -4503,6 +4505,8 @@ class Client(OpenApiClient):
             query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.snapshot_policy_id):
+            query['SnapshotPolicyId'] = request.snapshot_policy_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_assign_mode):
