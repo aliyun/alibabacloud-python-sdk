@@ -47,6 +47,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AccessPageGetAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AccessPageGetAclResponse:
+        """
+        @summary 获取访问管理页配置
+        
+        @param request: AccessPageGetAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccessPageGetAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -75,6 +82,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AccessPageGetAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AccessPageGetAclResponse:
+        """
+        @summary 获取访问管理页配置
+        
+        @param request: AccessPageGetAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccessPageGetAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -102,6 +116,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AccessPageGetAclRequest,
     ) -> appstream_center_20210901_models.AccessPageGetAclResponse:
+        """
+        @summary 获取访问管理页配置
+        
+        @param request: AccessPageGetAclRequest
+        @return: AccessPageGetAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.access_page_get_acl_with_options(request, runtime)
 
@@ -109,6 +129,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AccessPageGetAclRequest,
     ) -> appstream_center_20210901_models.AccessPageGetAclResponse:
+        """
+        @summary 获取访问管理页配置
+        
+        @param request: AccessPageGetAclRequest
+        @return: AccessPageGetAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.access_page_get_acl_with_options_async(request, runtime)
 
@@ -117,6 +143,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AccessPageSetAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
+        """
+        @summary 更新访问管理
+        
+        @param request: AccessPageSetAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccessPageSetAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_mode):
@@ -153,6 +186,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AccessPageSetAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
+        """
+        @summary 更新访问管理
+        
+        @param request: AccessPageSetAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccessPageSetAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_mode):
@@ -188,6 +228,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AccessPageSetAclRequest,
     ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
+        """
+        @summary 更新访问管理
+        
+        @param request: AccessPageSetAclRequest
+        @return: AccessPageSetAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.access_page_set_acl_with_options(request, runtime)
 
@@ -195,6 +241,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AccessPageSetAclRequest,
     ) -> appstream_center_20210901_models.AccessPageSetAclResponse:
+        """
+        @summary 更新访问管理
+        
+        @param request: AccessPageSetAclRequest
+        @return: AccessPageSetAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.access_page_set_acl_with_options_async(request, runtime)
 
@@ -203,6 +255,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
+        """
+        @summary 同意Ota升级
+        
+        @param request: ApproveOtaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveOtaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -239,6 +298,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
+        """
+        @summary 同意Ota升级
+        
+        @param request: ApproveOtaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveOtaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -274,6 +340,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
+        """
+        @summary 同意Ota升级
+        
+        @param request: ApproveOtaTaskRequest
+        @return: ApproveOtaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_ota_task_with_options(request, runtime)
 
@@ -281,6 +353,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ApproveOtaTaskRequest,
     ) -> appstream_center_20210901_models.ApproveOtaTaskResponse:
+        """
+        @summary 同意Ota升级
+        
+        @param request: ApproveOtaTaskRequest
+        @return: ApproveOtaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_ota_task_with_options_async(request, runtime)
 
@@ -289,6 +367,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
+        """
+        @summary 会话包收费查询
+        
+        @param request: AskSessionPackagePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AskSessionPackagePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -331,6 +416,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
+        """
+        @summary 会话包收费查询
+        
+        @param request: AskSessionPackagePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AskSessionPackagePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
@@ -372,6 +464,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
     ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
+        """
+        @summary 会话包收费查询
+        
+        @param request: AskSessionPackagePriceRequest
+        @return: AskSessionPackagePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.ask_session_package_price_with_options(request, runtime)
 
@@ -379,6 +477,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AskSessionPackagePriceRequest,
     ) -> appstream_center_20210901_models.AskSessionPackagePriceResponse:
+        """
+        @summary 会话包收费查询
+        
+        @param request: AskSessionPackagePriceRequest
+        @return: AskSessionPackagePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.ask_session_package_price_with_options_async(request, runtime)
 
@@ -387,6 +491,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AskSessionPackageRenewPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AskSessionPackageRenewPriceResponse:
+        """
+        @summary 会话包续费询价
+        
+        @param request: AskSessionPackageRenewPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AskSessionPackageRenewPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.period):
@@ -419,6 +530,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AskSessionPackageRenewPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AskSessionPackageRenewPriceResponse:
+        """
+        @summary 会话包续费询价
+        
+        @param request: AskSessionPackageRenewPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AskSessionPackageRenewPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.period):
@@ -450,6 +568,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AskSessionPackageRenewPriceRequest,
     ) -> appstream_center_20210901_models.AskSessionPackageRenewPriceResponse:
+        """
+        @summary 会话包续费询价
+        
+        @param request: AskSessionPackageRenewPriceRequest
+        @return: AskSessionPackageRenewPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.ask_session_package_renew_price_with_options(request, runtime)
 
@@ -457,6 +581,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AskSessionPackageRenewPriceRequest,
     ) -> appstream_center_20210901_models.AskSessionPackageRenewPriceResponse:
+        """
+        @summary 会话包续费询价
+        
+        @param request: AskSessionPackageRenewPriceRequest
+        @return: AskSessionPackageRenewPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.ask_session_package_renew_price_with_options_async(request, runtime)
 
@@ -465,6 +595,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AuthorizeInstanceGroupResponse:
+        """
+        @summary 授权用户
+        
+        @param request: AuthorizeInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -499,6 +636,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.AuthorizeInstanceGroupResponse:
+        """
+        @summary 授权用户
+        
+        @param request: AuthorizeInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -532,6 +676,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
     ) -> appstream_center_20210901_models.AuthorizeInstanceGroupResponse:
+        """
+        @summary 授权用户
+        
+        @param request: AuthorizeInstanceGroupRequest
+        @return: AuthorizeInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.authorize_instance_group_with_options(request, runtime)
 
@@ -539,6 +689,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.AuthorizeInstanceGroupRequest,
     ) -> appstream_center_20210901_models.AuthorizeInstanceGroupResponse:
+        """
+        @summary 授权用户
+        
+        @param request: AuthorizeInstanceGroupRequest
+        @return: AuthorizeInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.authorize_instance_group_with_options_async(request, runtime)
 
@@ -547,8 +703,17 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.BuySessionPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.BuySessionPackageResponse:
+        """
+        @summary 配置会话包
+        
+        @param request: BuySessionPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuySessionPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.max_sessions):
@@ -593,8 +758,17 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.BuySessionPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.BuySessionPackageResponse:
+        """
+        @summary 配置会话包
+        
+        @param request: BuySessionPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BuySessionPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.max_sessions):
@@ -638,6 +812,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.BuySessionPackageRequest,
     ) -> appstream_center_20210901_models.BuySessionPackageResponse:
+        """
+        @summary 配置会话包
+        
+        @param request: BuySessionPackageRequest
+        @return: BuySessionPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.buy_session_package_with_options(request, runtime)
 
@@ -645,6 +825,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.BuySessionPackageRequest,
     ) -> appstream_center_20210901_models.BuySessionPackageResponse:
+        """
+        @summary 配置会话包
+        
+        @param request: BuySessionPackageRequest
+        @return: BuySessionPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.buy_session_package_with_options_async(request, runtime)
 
@@ -653,6 +839,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CancelOtaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CancelOtaTaskResponse:
+        """
+        @summary 取消Ota升级
+        
+        @param request: CancelOtaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOtaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -683,6 +876,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CancelOtaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CancelOtaTaskResponse:
+        """
+        @summary 取消Ota升级
+        
+        @param request: CancelOtaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelOtaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -712,6 +912,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CancelOtaTaskRequest,
     ) -> appstream_center_20210901_models.CancelOtaTaskResponse:
+        """
+        @summary 取消Ota升级
+        
+        @param request: CancelOtaTaskRequest
+        @return: CancelOtaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_ota_task_with_options(request, runtime)
 
@@ -719,6 +925,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CancelOtaTaskRequest,
     ) -> appstream_center_20210901_models.CancelOtaTaskResponse:
+        """
+        @summary 取消Ota升级
+        
+        @param request: CancelOtaTaskRequest
+        @return: CancelOtaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_ota_task_with_options_async(request, runtime)
 
@@ -727,6 +939,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateAccessPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateAccessPageResponse:
+        """
+        @summary 创建访问页面
+        
+        @param request: CreateAccessPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_name):
@@ -765,6 +984,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateAccessPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateAccessPageResponse:
+        """
+        @summary 创建访问页面
+        
+        @param request: CreateAccessPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccessPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_name):
@@ -802,6 +1028,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateAccessPageRequest,
     ) -> appstream_center_20210901_models.CreateAccessPageResponse:
+        """
+        @summary 创建访问页面
+        
+        @param request: CreateAccessPageRequest
+        @return: CreateAccessPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_access_page_with_options(request, runtime)
 
@@ -809,6 +1041,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateAccessPageRequest,
     ) -> appstream_center_20210901_models.CreateAccessPageResponse:
+        """
+        @summary 创建访问页面
+        
+        @param request: CreateAccessPageRequest
+        @return: CreateAccessPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_access_page_with_options_async(request, runtime)
 
@@ -817,6 +1055,13 @@ class Client(OpenApiClient):
         tmp_req: appstream_center_20210901_models.CreateAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
+        """
+        @summary 创建云应用交付组
+        
+        @param tmp_req: CreateAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppInstanceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.CreateAppInstanceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -830,8 +1075,15 @@ class Client(OpenApiClient):
             request.security_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
         if not UtilClient.is_unset(tmp_req.storage_policy):
             request.storage_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.user_define_policy):
+            request.user_define_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_define_policy, 'UserDefinePolicy', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
             request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.video_policy):
+            request.video_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_policy, 'VideoPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.user_define_policy_shrink):
+            query['UserDefinePolicy'] = request.user_define_policy_shrink
         body = {}
         if not UtilClient.is_unset(request.app_center_image_id):
             body['AppCenterImageId'] = request.app_center_image_id
@@ -873,7 +1125,10 @@ class Client(OpenApiClient):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
             body['Users'] = request.users
+        if not UtilClient.is_unset(request.video_policy_shrink):
+            body['VideoPolicy'] = request.video_policy_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -897,6 +1152,13 @@ class Client(OpenApiClient):
         tmp_req: appstream_center_20210901_models.CreateAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
+        """
+        @summary 创建云应用交付组
+        
+        @param tmp_req: CreateAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppInstanceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.CreateAppInstanceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -910,8 +1172,15 @@ class Client(OpenApiClient):
             request.security_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.security_policy, 'SecurityPolicy', 'json')
         if not UtilClient.is_unset(tmp_req.storage_policy):
             request.storage_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.storage_policy, 'StoragePolicy', 'json')
+        if not UtilClient.is_unset(tmp_req.user_define_policy):
+            request.user_define_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_define_policy, 'UserDefinePolicy', 'json')
         if not UtilClient.is_unset(tmp_req.user_info):
             request.user_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_info, 'UserInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.video_policy):
+            request.video_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_policy, 'VideoPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.user_define_policy_shrink):
+            query['UserDefinePolicy'] = request.user_define_policy_shrink
         body = {}
         if not UtilClient.is_unset(request.app_center_image_id):
             body['AppCenterImageId'] = request.app_center_image_id
@@ -953,7 +1222,10 @@ class Client(OpenApiClient):
             body['UserInfo'] = request.user_info_shrink
         if not UtilClient.is_unset(request.users):
             body['Users'] = request.users
+        if not UtilClient.is_unset(request.video_policy_shrink):
+            body['VideoPolicy'] = request.video_policy_shrink
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -976,6 +1248,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
+        """
+        @summary 创建云应用交付组
+        
+        @param request: CreateAppInstanceGroupRequest
+        @return: CreateAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_app_instance_group_with_options(request, runtime)
 
@@ -983,6 +1261,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateAppInstanceGroupResponse:
+        """
+        @summary 创建云应用交付组
+        
+        @param request: CreateAppInstanceGroupRequest
+        @return: CreateAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_app_instance_group_with_options_async(request, runtime)
 
@@ -991,6 +1275,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        """
+        @summary CreateImageFromAppInstanceGroup
+        
+        @param request: CreateImageFromAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageFromAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_center_image_name):
@@ -1023,6 +1314,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        """
+        @summary CreateImageFromAppInstanceGroup
+        
+        @param request: CreateImageFromAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageFromAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_center_image_name):
@@ -1054,6 +1352,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        """
+        @summary CreateImageFromAppInstanceGroup
+        
+        @param request: CreateImageFromAppInstanceGroupRequest
+        @return: CreateImageFromAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_from_app_instance_group_with_options(request, runtime)
 
@@ -1061,6 +1365,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateImageFromAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.CreateImageFromAppInstanceGroupResponse:
+        """
+        @summary CreateImageFromAppInstanceGroup
+        
+        @param request: CreateImageFromAppInstanceGroupRequest
+        @return: CreateImageFromAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_from_app_instance_group_with_options_async(request, runtime)
 
@@ -1069,6 +1379,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.clipboard):
@@ -1121,6 +1438,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.clipboard):
@@ -1172,6 +1496,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateProjectRequest,
     ) -> appstream_center_20210901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_project_with_options(request, runtime)
 
@@ -1179,6 +1509,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.CreateProjectRequest,
     ) -> appstream_center_20210901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
 
@@ -1187,6 +1523,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAccessPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
+        """
+        @summary 删除访问页面
+        
+        @param request: DeleteAccessPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -1215,6 +1558,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAccessPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
+        """
+        @summary 删除访问页面
+        
+        @param request: DeleteAccessPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -1242,6 +1592,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteAccessPageRequest,
     ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
+        """
+        @summary 删除访问页面
+        
+        @param request: DeleteAccessPageRequest
+        @return: DeleteAccessPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_page_with_options(request, runtime)
 
@@ -1249,6 +1605,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteAccessPageRequest,
     ) -> appstream_center_20210901_models.DeleteAccessPageResponse:
+        """
+        @summary 删除访问页面
+        
+        @param request: DeleteAccessPageRequest
+        @return: DeleteAccessPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_page_with_options_async(request, runtime)
 
@@ -1257,6 +1619,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
+        """
+        @summary 实例组释放接口
+        
+        @param request: DeleteAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1287,6 +1656,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
+        """
+        @summary 实例组释放接口
+        
+        @param request: DeleteAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1316,6 +1692,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
+        """
+        @summary 实例组释放接口
+        
+        @param request: DeleteAppInstanceGroupRequest
+        @return: DeleteAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_app_instance_group_with_options(request, runtime)
 
@@ -1323,6 +1705,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstanceGroupResponse:
+        """
+        @summary 实例组释放接口
+        
+        @param request: DeleteAppInstanceGroupRequest
+        @return: DeleteAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instance_group_with_options_async(request, runtime)
 
@@ -1331,6 +1719,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAppInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1363,6 +1758,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteAppInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1394,6 +1796,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteAppInstancesRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteAppInstancesRequest
+        @return: DeleteAppInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_app_instances_with_options(request, runtime)
 
@@ -1401,6 +1809,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteAppInstancesRequest,
     ) -> appstream_center_20210901_models.DeleteAppInstancesResponse:
+        """
+        @summary 删除实例
+        
+        @param request: DeleteAppInstancesRequest
+        @return: DeleteAppInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_instances_with_options_async(request, runtime)
 
@@ -1409,6 +1823,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -1437,6 +1858,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.DeleteProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -1464,6 +1892,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteProjectRequest,
     ) -> appstream_center_20210901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_project_with_options(request, runtime)
 
@@ -1471,6 +1905,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.DeleteProjectRequest,
     ) -> appstream_center_20210901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_project_with_options_async(request, runtime)
 
@@ -1479,6 +1919,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetAccessPageSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
+        """
+        @summary 访客进入访问页面的匿名api
+        
+        @param request: GetAccessPageSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessPageSessionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -1511,6 +1958,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetAccessPageSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
+        """
+        @summary 访客进入访问页面的匿名api
+        
+        @param request: GetAccessPageSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccessPageSessionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -1542,6 +1996,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetAccessPageSessionRequest,
     ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
+        """
+        @summary 访客进入访问页面的匿名api
+        
+        @param request: GetAccessPageSessionRequest
+        @return: GetAccessPageSessionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_access_page_session_with_options(request, runtime)
 
@@ -1549,6 +2009,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetAccessPageSessionRequest,
     ) -> appstream_center_20210901_models.GetAccessPageSessionResponse:
+        """
+        @summary 访客进入访问页面的匿名api
+        
+        @param request: GetAccessPageSessionRequest
+        @return: GetAccessPageSessionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_access_page_session_with_options_async(request, runtime)
 
@@ -1557,6 +2023,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        """
+        @summary 获取交付组详情
+        
+        @param request: GetAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1587,6 +2060,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        """
+        @summary 获取交付组详情
+        
+        @param request: GetAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1616,6 +2096,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        """
+        @summary 获取交付组详情
+        
+        @param request: GetAppInstanceGroupRequest
+        @return: GetAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_app_instance_group_with_options(request, runtime)
 
@@ -1623,6 +2109,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.GetAppInstanceGroupResponse:
+        """
+        @summary 获取交付组详情
+        
+        @param request: GetAppInstanceGroupRequest
+        @return: GetAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_app_instance_group_with_options_async(request, runtime)
 
@@ -1631,6 +2123,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetConnectionTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        """
+        @summary 获取连接ticket，Open API
+        
+        @param request: GetConnectionTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConnectionTicketResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1677,6 +2176,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetConnectionTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        """
+        @summary 获取连接ticket，Open API
+        
+        @param request: GetConnectionTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConnectionTicketResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1722,6 +2228,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetConnectionTicketRequest,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        """
+        @summary 获取连接ticket，Open API
+        
+        @param request: GetConnectionTicketRequest
+        @return: GetConnectionTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_connection_ticket_with_options(request, runtime)
 
@@ -1729,6 +2241,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetConnectionTicketRequest,
     ) -> appstream_center_20210901_models.GetConnectionTicketResponse:
+        """
+        @summary 获取连接ticket，Open API
+        
+        @param request: GetConnectionTicketRequest
+        @return: GetConnectionTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_connection_ticket_with_options_async(request, runtime)
 
@@ -1737,6 +2255,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        """
+        @summary GetDebugAppInstance
+        
+        @param request: GetDebugAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDebugAppInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1767,6 +2292,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        """
+        @summary GetDebugAppInstance
+        
+        @param request: GetDebugAppInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDebugAppInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -1796,6 +2328,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        """
+        @summary GetDebugAppInstance
+        
+        @param request: GetDebugAppInstanceRequest
+        @return: GetDebugAppInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_debug_app_instance_with_options(request, runtime)
 
@@ -1803,6 +2341,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetDebugAppInstanceRequest,
     ) -> appstream_center_20210901_models.GetDebugAppInstanceResponse:
+        """
+        @summary GetDebugAppInstance
+        
+        @param request: GetDebugAppInstanceRequest
+        @return: GetDebugAppInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_debug_app_instance_with_options_async(request, runtime)
 
@@ -1811,6 +2355,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
+        """
+        @summary 获取ota任务明细
+        
+        @param request: GetOtaTaskByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOtaTaskByTaskIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -1839,6 +2390,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
+        """
+        @summary 获取ota任务明细
+        
+        @param request: GetOtaTaskByTaskIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOtaTaskByTaskIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -1866,6 +2424,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
+        """
+        @summary 获取ota任务明细
+        
+        @param request: GetOtaTaskByTaskIdRequest
+        @return: GetOtaTaskByTaskIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ota_task_by_task_id_with_options(request, runtime)
 
@@ -1873,6 +2437,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetOtaTaskByTaskIdRequest,
     ) -> appstream_center_20210901_models.GetOtaTaskByTaskIdResponse:
+        """
+        @summary 获取ota任务明细
+        
+        @param request: GetOtaTaskByTaskIdRequest
+        @return: GetOtaTaskByTaskIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ota_task_by_task_id_with_options_async(request, runtime)
 
@@ -1881,6 +2451,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetProjectPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetProjectPoliciesResponse:
+        """
+        @summary 获取策略配置
+        
+        @param request: GetProjectPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -1909,6 +2486,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetProjectPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetProjectPoliciesResponse:
+        """
+        @summary 获取策略配置
+        
+        @param request: GetProjectPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -1936,6 +2520,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetProjectPoliciesRequest,
     ) -> appstream_center_20210901_models.GetProjectPoliciesResponse:
+        """
+        @summary 获取策略配置
+        
+        @param request: GetProjectPoliciesRequest
+        @return: GetProjectPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_project_policies_with_options(request, runtime)
 
@@ -1943,6 +2533,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetProjectPoliciesRequest,
     ) -> appstream_center_20210901_models.GetProjectPoliciesResponse:
+        """
+        @summary 获取策略配置
+        
+        @param request: GetProjectPoliciesRequest
+        @return: GetProjectPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_project_policies_with_options_async(request, runtime)
 
@@ -1951,6 +2547,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetResourcePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourcePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourcePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -1993,6 +2596,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetResourcePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourcePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourcePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -2034,6 +2644,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetResourcePriceRequest,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourcePriceRequest
+        @return: GetResourcePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_price_with_options(request, runtime)
 
@@ -2041,6 +2657,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetResourcePriceRequest,
     ) -> appstream_center_20210901_models.GetResourcePriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourcePriceRequest
+        @return: GetResourcePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_price_with_options_async(request, runtime)
 
@@ -2049,6 +2671,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetResourceRenewPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourceRenewPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceRenewPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2083,6 +2712,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.GetResourceRenewPriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourceRenewPriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceRenewPriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2116,6 +2752,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetResourceRenewPriceRequest,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourceRenewPriceRequest
+        @return: GetResourceRenewPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_renew_price_with_options(request, runtime)
 
@@ -2123,6 +2765,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.GetResourceRenewPriceRequest,
     ) -> appstream_center_20210901_models.GetResourceRenewPriceResponse:
+        """
+        @summary 云应用资源询价接口
+        
+        @param request: GetResourceRenewPriceRequest
+        @return: GetResourceRenewPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_renew_price_with_options_async(request, runtime)
 
@@ -2131,6 +2779,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAccessPagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAccessPagesResponse:
+        """
+        @summary 访问页面分页查询
+        
+        @param request: ListAccessPagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessPagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -2169,6 +2824,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAccessPagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAccessPagesResponse:
+        """
+        @summary 访问页面分页查询
+        
+        @param request: ListAccessPagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccessPagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -2206,6 +2868,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListAccessPagesRequest,
     ) -> appstream_center_20210901_models.ListAccessPagesResponse:
+        """
+        @summary 访问页面分页查询
+        
+        @param request: ListAccessPagesRequest
+        @return: ListAccessPagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_access_pages_with_options(request, runtime)
 
@@ -2213,6 +2881,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListAccessPagesRequest,
     ) -> appstream_center_20210901_models.ListAccessPagesResponse:
+        """
+        @summary 访问页面分页查询
+        
+        @param request: ListAccessPagesRequest
+        @return: ListAccessPagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_access_pages_with_options_async(request, runtime)
 
@@ -2221,6 +2895,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
+        """
+        @summary 列表展示云应用交付组
+        
+        @param request: ListAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_center_image_id):
@@ -2239,6 +2920,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
@@ -2267,6 +2950,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
+        """
+        @summary 列表展示云应用交付组
+        
+        @param request: ListAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_center_image_id):
@@ -2285,6 +2975,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
@@ -2312,6 +3004,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
+        """
+        @summary 列表展示云应用交付组
+        
+        @param request: ListAppInstanceGroupRequest
+        @return: ListAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_app_instance_group_with_options(request, runtime)
 
@@ -2319,6 +3017,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.ListAppInstanceGroupResponse:
+        """
+        @summary 列表展示云应用交付组
+        
+        @param request: ListAppInstanceGroupRequest
+        @return: ListAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_app_instance_group_with_options_async(request, runtime)
 
@@ -2327,6 +3031,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        """
+        @summary 查询交付组内实例列表
+        
+        @param request: ListAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2369,6 +3080,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListAppInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        """
+        @summary 查询交付组内实例列表
+        
+        @param request: ListAppInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2410,6 +3128,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListAppInstancesRequest,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        """
+        @summary 查询交付组内实例列表
+        
+        @param request: ListAppInstancesRequest
+        @return: ListAppInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_app_instances_with_options(request, runtime)
 
@@ -2417,6 +3141,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListAppInstancesRequest,
     ) -> appstream_center_20210901_models.ListAppInstancesResponse:
+        """
+        @summary 查询交付组内实例列表
+        
+        @param request: ListAppInstancesRequest
+        @return: ListAppInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_app_instances_with_options_async(request, runtime)
 
@@ -2425,6 +3155,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
+        """
+        @summary 获取资源规格
+        
+        @param request: ListNodeInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_region_id):
@@ -2465,6 +3202,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
+        """
+        @summary 获取资源规格
+        
+        @param request: ListNodeInstanceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeInstanceTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_region_id):
@@ -2504,6 +3248,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
+        """
+        @summary 获取资源规格
+        
+        @param request: ListNodeInstanceTypeRequest
+        @return: ListNodeInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_node_instance_type_with_options(request, runtime)
 
@@ -2511,6 +3261,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListNodeInstanceTypeRequest,
     ) -> appstream_center_20210901_models.ListNodeInstanceTypeResponse:
+        """
+        @summary 获取资源规格
+        
+        @param request: ListNodeInstanceTypeRequest
+        @return: ListNodeInstanceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_node_instance_type_with_options_async(request, runtime)
 
@@ -2519,6 +3275,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListOtaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
+        """
+        @summary 升级历史记录
+        
+        @param request: ListOtaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOtaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2553,6 +3316,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListOtaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
+        """
+        @summary 升级历史记录
+        
+        @param request: ListOtaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOtaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2586,6 +3356,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListOtaTaskRequest,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
+        """
+        @summary 升级历史记录
+        
+        @param request: ListOtaTaskRequest
+        @return: ListOtaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ota_task_with_options(request, runtime)
 
@@ -2593,6 +3369,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListOtaTaskRequest,
     ) -> appstream_center_20210901_models.ListOtaTaskResponse:
+        """
+        @summary 升级历史记录
+        
+        @param request: ListOtaTaskRequest
+        @return: ListOtaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ota_task_with_options_async(request, runtime)
 
@@ -2601,6 +3383,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2639,6 +3428,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2676,6 +3472,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListProjectsRequest,
     ) -> appstream_center_20210901_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_projects_with_options(request, runtime)
 
@@ -2683,14 +3485,34 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListProjectsRequest,
     ) -> appstream_center_20210901_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
     def list_regions_with_options(
         self,
+        request: appstream_center_20210901_models.ListRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListRegionsResponse:
-        req = open_api_models.OpenApiRequest()
+        """
+        @summary 云应用支持的地域列表
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListRegions',
             version='2021-09-01',
@@ -2709,9 +3531,23 @@ class Client(OpenApiClient):
 
     async def list_regions_with_options_async(
         self,
+        request: appstream_center_20210901_models.ListRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListRegionsResponse:
-        req = open_api_models.OpenApiRequest()
+        """
+        @summary 云应用支持的地域列表
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='ListRegions',
             version='2021-09-01',
@@ -2728,19 +3564,44 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_regions(self) -> appstream_center_20210901_models.ListRegionsResponse:
+    def list_regions(
+        self,
+        request: appstream_center_20210901_models.ListRegionsRequest,
+    ) -> appstream_center_20210901_models.ListRegionsResponse:
+        """
+        @summary 云应用支持的地域列表
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return self.list_regions_with_options(runtime)
+        return self.list_regions_with_options(request, runtime)
 
-    async def list_regions_async(self) -> appstream_center_20210901_models.ListRegionsResponse:
+    async def list_regions_async(
+        self,
+        request: appstream_center_20210901_models.ListRegionsRequest,
+    ) -> appstream_center_20210901_models.ListRegionsResponse:
+        """
+        @summary 云应用支持的地域列表
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
-        return await self.list_regions_with_options_async(runtime)
+        return await self.list_regions_with_options_async(request, runtime)
 
     def list_session_packages_with_options(
         self,
         request: appstream_center_20210901_models.ListSessionPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
+        """
+        @summary 项目的会话包列表
+        
+        @param request: ListSessionPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2781,6 +3642,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ListSessionPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
+        """
+        @summary 项目的会话包列表
+        
+        @param request: ListSessionPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionPackagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -2820,6 +3688,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListSessionPackagesRequest,
     ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
+        """
+        @summary 项目的会话包列表
+        
+        @param request: ListSessionPackagesRequest
+        @return: ListSessionPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_session_packages_with_options(request, runtime)
 
@@ -2827,6 +3701,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ListSessionPackagesRequest,
     ) -> appstream_center_20210901_models.ListSessionPackagesResponse:
+        """
+        @summary 项目的会话包列表
+        
+        @param request: ListSessionPackagesRequest
+        @return: ListSessionPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_session_packages_with_options_async(request, runtime)
 
@@ -2834,6 +3714,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListTenantConfigResponse:
+        """
+        @param request: ListTenantConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTenantConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListTenantConfig',
@@ -2855,6 +3740,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ListTenantConfigResponse:
+        """
+        @param request: ListTenantConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTenantConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListTenantConfig',
@@ -2873,10 +3763,16 @@ class Client(OpenApiClient):
         )
 
     def list_tenant_config(self) -> appstream_center_20210901_models.ListTenantConfigResponse:
+        """
+        @return: ListTenantConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tenant_config_with_options(runtime)
 
     async def list_tenant_config_async(self) -> appstream_center_20210901_models.ListTenantConfigResponse:
+        """
+        @return: ListTenantConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tenant_config_with_options_async(runtime)
 
@@ -2885,6 +3781,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
+        """
+        @summary 注销交付下所有会话
+        
+        @param request: LogOffAllSessionsInAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogOffAllSessionsInAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2915,6 +3818,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
+        """
+        @summary 注销交付下所有会话
+        
+        @param request: LogOffAllSessionsInAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogOffAllSessionsInAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -2944,6 +3854,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
+        """
+        @summary 注销交付下所有会话
+        
+        @param request: LogOffAllSessionsInAppInstanceGroupRequest
+        @return: LogOffAllSessionsInAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.log_off_all_sessions_in_app_instance_group_with_options(request, runtime)
 
@@ -2951,6 +3867,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupResponse:
+        """
+        @summary 注销交付下所有会话
+        
+        @param request: LogOffAllSessionsInAppInstanceGroupRequest
+        @return: LogOffAllSessionsInAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.log_off_all_sessions_in_app_instance_group_with_options_async(request, runtime)
 
@@ -2959,6 +3881,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.MigrateSessionPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.MigrateSessionPackageResponse:
+        """
+        @summary 会话包 迁移/分配
+        
+        @param request: MigrateSessionPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateSessionPackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dest_project_id):
@@ -2991,6 +3920,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.MigrateSessionPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.MigrateSessionPackageResponse:
+        """
+        @summary 会话包 迁移/分配
+        
+        @param request: MigrateSessionPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MigrateSessionPackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dest_project_id):
@@ -3022,6 +3958,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.MigrateSessionPackageRequest,
     ) -> appstream_center_20210901_models.MigrateSessionPackageResponse:
+        """
+        @summary 会话包 迁移/分配
+        
+        @param request: MigrateSessionPackageRequest
+        @return: MigrateSessionPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.migrate_session_package_with_options(request, runtime)
 
@@ -3029,6 +3971,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.MigrateSessionPackageRequest,
     ) -> appstream_center_20210901_models.MigrateSessionPackageResponse:
+        """
+        @summary 会话包 迁移/分配
+        
+        @param request: MigrateSessionPackageRequest
+        @return: MigrateSessionPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.migrate_session_package_with_options_async(request, runtime)
 
@@ -3037,6 +3985,13 @@ class Client(OpenApiClient):
         tmp_req: appstream_center_20210901_models.ModifyAppInstanceGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
+        """
+        @summary 修改云应用交付组
+        
+        @param tmp_req: ModifyAppInstanceGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppInstanceGroupAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.ModifyAppInstanceGroupAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3095,6 +4050,13 @@ class Client(OpenApiClient):
         tmp_req: appstream_center_20210901_models.ModifyAppInstanceGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
+        """
+        @summary 修改云应用交付组
+        
+        @param tmp_req: ModifyAppInstanceGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppInstanceGroupAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.ModifyAppInstanceGroupAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3152,6 +4114,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyAppInstanceGroupAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
+        """
+        @summary 修改云应用交付组
+        
+        @param request: ModifyAppInstanceGroupAttributeRequest
+        @return: ModifyAppInstanceGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_app_instance_group_attribute_with_options(request, runtime)
 
@@ -3159,14 +4127,137 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyAppInstanceGroupAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyAppInstanceGroupAttributeResponse:
+        """
+        @summary 修改云应用交付组
+        
+        @param request: ModifyAppInstanceGroupAttributeRequest
+        @return: ModifyAppInstanceGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_instance_group_attribute_with_options_async(request, runtime)
+
+    def modify_app_policy_with_options(
+        self,
+        tmp_req: appstream_center_20210901_models.ModifyAppPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
+        """
+        @summary 修改策略信息
+        
+        @param tmp_req: ModifyAppPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.ModifyAppPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.video_policy):
+            request.video_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_policy, 'VideoPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_policy_id):
+            query['AppPolicyId'] = request.app_policy_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.video_policy_shrink):
+            query['VideoPolicy'] = request.video_policy_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppPolicy',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ModifyAppPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_policy_with_options_async(
+        self,
+        tmp_req: appstream_center_20210901_models.ModifyAppPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
+        """
+        @summary 修改策略信息
+        
+        @param tmp_req: ModifyAppPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = appstream_center_20210901_models.ModifyAppPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.video_policy):
+            request.video_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_policy, 'VideoPolicy', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_policy_id):
+            query['AppPolicyId'] = request.app_policy_id
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.video_policy_shrink):
+            query['VideoPolicy'] = request.video_policy_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppPolicy',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ModifyAppPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_policy(
+        self,
+        request: appstream_center_20210901_models.ModifyAppPolicyRequest,
+    ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
+        """
+        @summary 修改策略信息
+        
+        @param request: ModifyAppPolicyRequest
+        @return: ModifyAppPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_policy_with_options(request, runtime)
+
+    async def modify_app_policy_async(
+        self,
+        request: appstream_center_20210901_models.ModifyAppPolicyRequest,
+    ) -> appstream_center_20210901_models.ModifyAppPolicyResponse:
+        """
+        @summary 修改策略信息
+        
+        @param request: ModifyAppPolicyRequest
+        @return: ModifyAppPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_policy_with_options_async(request, runtime)
 
     def modify_node_pool_attribute_with_options(
         self,
         tmp_req: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
+        """
+        @param tmp_req: ModifyNodePoolAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodePoolAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.ModifyNodePoolAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3207,6 +4298,11 @@ class Client(OpenApiClient):
         tmp_req: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
+        """
+        @param tmp_req: ModifyNodePoolAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNodePoolAttributeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = appstream_center_20210901_models.ModifyNodePoolAttributeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3246,6 +4342,10 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
+        """
+        @param request: ModifyNodePoolAttributeRequest
+        @return: ModifyNodePoolAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_node_pool_attribute_with_options(request, runtime)
 
@@ -3253,6 +4353,10 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
+        """
+        @param request: ModifyNodePoolAttributeRequest
+        @return: ModifyNodePoolAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_node_pool_attribute_with_options_async(request, runtime)
 
@@ -3261,6 +4365,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyProjectPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyProjectPolicyResponse:
+        """
+        @summary 修改项目策略
+        
+        @param request: ModifyProjectPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyProjectPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.clipboard):
@@ -3305,6 +4416,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyProjectPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyProjectPolicyResponse:
+        """
+        @summary 修改项目策略
+        
+        @param request: ModifyProjectPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyProjectPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.clipboard):
@@ -3348,6 +4466,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyProjectPolicyRequest,
     ) -> appstream_center_20210901_models.ModifyProjectPolicyResponse:
+        """
+        @summary 修改项目策略
+        
+        @param request: ModifyProjectPolicyRequest
+        @return: ModifyProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_project_policy_with_options(request, runtime)
 
@@ -3355,6 +4479,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyProjectPolicyRequest,
     ) -> appstream_center_20210901_models.ModifyProjectPolicyResponse:
+        """
+        @summary 修改项目策略
+        
+        @param request: ModifyProjectPolicyRequest
+        @return: ModifyProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_project_policy_with_options_async(request, runtime)
 
@@ -3363,6 +4493,11 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyTenantConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
+        """
+        @param request: ModifyTenantConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_expire_remind):
@@ -3391,6 +4526,11 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyTenantConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
+        """
+        @param request: ModifyTenantConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_expire_remind):
@@ -3418,6 +4558,10 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyTenantConfigRequest,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
+        """
+        @param request: ModifyTenantConfigRequest
+        @return: ModifyTenantConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_config_with_options(request, runtime)
 
@@ -3425,6 +4569,10 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.ModifyTenantConfigRequest,
     ) -> appstream_center_20210901_models.ModifyTenantConfigResponse:
+        """
+        @param request: ModifyTenantConfigRequest
+        @return: ModifyTenantConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_config_with_options_async(request, runtime)
 
@@ -3433,6 +4581,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
+        """
+        @summary 获取授权用户列表
+        
+        @param request: PageListAppInstanceGroupUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageListAppInstanceGroupUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -3467,6 +4622,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
+        """
+        @summary 获取授权用户列表
+        
+        @param request: PageListAppInstanceGroupUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PageListAppInstanceGroupUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -3500,6 +4662,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
+        """
+        @summary 获取授权用户列表
+        
+        @param request: PageListAppInstanceGroupUserRequest
+        @return: PageListAppInstanceGroupUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.page_list_app_instance_group_user_with_options(request, runtime)
 
@@ -3507,6 +4675,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
     ) -> appstream_center_20210901_models.PageListAppInstanceGroupUserResponse:
+        """
+        @summary 获取授权用户列表
+        
+        @param request: PageListAppInstanceGroupUserRequest
+        @return: PageListAppInstanceGroupUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.page_list_app_instance_group_user_with_options_async(request, runtime)
 
@@ -3515,6 +4689,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RefreshAccessUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RefreshAccessUrlResponse:
+        """
+        @summary 刷新访问url
+        
+        @param request: RefreshAccessUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAccessUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -3543,6 +4724,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RefreshAccessUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RefreshAccessUrlResponse:
+        """
+        @summary 刷新访问url
+        
+        @param request: RefreshAccessUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshAccessUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -3570,6 +4758,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.RefreshAccessUrlRequest,
     ) -> appstream_center_20210901_models.RefreshAccessUrlResponse:
+        """
+        @summary 刷新访问url
+        
+        @param request: RefreshAccessUrlRequest
+        @return: RefreshAccessUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_access_url_with_options(request, runtime)
 
@@ -3577,6 +4771,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.RefreshAccessUrlRequest,
     ) -> appstream_center_20210901_models.RefreshAccessUrlResponse:
+        """
+        @summary 刷新访问url
+        
+        @param request: RefreshAccessUrlRequest
+        @return: RefreshAccessUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_access_url_with_options_async(request, runtime)
 
@@ -3585,6 +4785,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
+        """
+        @summary 资源续费接口
+        
+        @param request: RenewAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -3623,6 +4830,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
+        """
+        @summary 资源续费接口
+        
+        @param request: RenewAppInstanceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewAppInstanceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -3660,6 +4874,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
+        """
+        @summary 资源续费接口
+        
+        @param request: RenewAppInstanceGroupRequest
+        @return: RenewAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_app_instance_group_with_options(request, runtime)
 
@@ -3667,6 +4887,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.RenewAppInstanceGroupRequest,
     ) -> appstream_center_20210901_models.RenewAppInstanceGroupResponse:
+        """
+        @summary 资源续费接口
+        
+        @param request: RenewAppInstanceGroupRequest
+        @return: RenewAppInstanceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_app_instance_group_with_options_async(request, runtime)
 
@@ -3675,6 +4901,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewSessionPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewSessionPackageResponse:
+        """
+        @summary 会话包续费
+        
+        @param request: RenewSessionPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewSessionPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.period):
@@ -3707,6 +4940,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.RenewSessionPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.RenewSessionPackageResponse:
+        """
+        @summary 会话包续费
+        
+        @param request: RenewSessionPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewSessionPackageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.period):
@@ -3738,6 +4978,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.RenewSessionPackageRequest,
     ) -> appstream_center_20210901_models.RenewSessionPackageResponse:
+        """
+        @summary 会话包续费
+        
+        @param request: RenewSessionPackageRequest
+        @return: RenewSessionPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_session_package_with_options(request, runtime)
 
@@ -3745,6 +4991,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.RenewSessionPackageRequest,
     ) -> appstream_center_20210901_models.RenewSessionPackageResponse:
+        """
+        @summary 会话包续费
+        
+        @param request: RenewSessionPackageRequest
+        @return: RenewSessionPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_session_package_with_options_async(request, runtime)
 
@@ -3753,6 +5005,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UnbindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UnbindResponse:
+        """
+        @summary 解除用户绑定
+        
+        @param request: UnbindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -3789,6 +5048,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UnbindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UnbindResponse:
+        """
+        @summary 解除用户绑定
+        
+        @param request: UnbindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
@@ -3824,6 +5090,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.UnbindRequest,
     ) -> appstream_center_20210901_models.UnbindResponse:
+        """
+        @summary 解除用户绑定
+        
+        @param request: UnbindRequest
+        @return: UnbindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_with_options(request, runtime)
 
@@ -3831,6 +5103,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.UnbindRequest,
     ) -> appstream_center_20210901_models.UnbindResponse:
+        """
+        @summary 解除用户绑定
+        
+        @param request: UnbindRequest
+        @return: UnbindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_with_options_async(request, runtime)
 
@@ -3839,6 +5117,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateAccessPageStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateAccessPageStateResponse:
+        """
+        @summary 更新访问页面状态
+        
+        @param request: UpdateAccessPageStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccessPageStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -3869,6 +5154,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateAccessPageStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateAccessPageStateResponse:
+        """
+        @summary 更新访问页面状态
+        
+        @param request: UpdateAccessPageStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccessPageStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_page_id):
@@ -3898,6 +5190,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.UpdateAccessPageStateRequest,
     ) -> appstream_center_20210901_models.UpdateAccessPageStateResponse:
+        """
+        @summary 更新访问页面状态
+        
+        @param request: UpdateAccessPageStateRequest
+        @return: UpdateAccessPageStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_access_page_state_with_options(request, runtime)
 
@@ -3905,6 +5203,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.UpdateAccessPageStateRequest,
     ) -> appstream_center_20210901_models.UpdateAccessPageStateResponse:
+        """
+        @summary 更新访问页面状态
+        
+        @param request: UpdateAccessPageStateRequest
+        @return: UpdateAccessPageStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_access_page_state_with_options_async(request, runtime)
 
@@ -3913,6 +5217,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
+        """
+        @summary 更新镜像
+        
+        @param request: UpdateAppInstanceGroupImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppInstanceGroupImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_center_image_id):
@@ -3947,6 +5258,13 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
+        """
+        @summary 更新镜像
+        
+        @param request: UpdateAppInstanceGroupImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppInstanceGroupImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_center_image_id):
@@ -3980,6 +5298,12 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
+        """
+        @summary 更新镜像
+        
+        @param request: UpdateAppInstanceGroupImageRequest
+        @return: UpdateAppInstanceGroupImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_app_instance_group_image_with_options(request, runtime)
 
@@ -3987,5 +5311,11 @@ class Client(OpenApiClient):
         self,
         request: appstream_center_20210901_models.UpdateAppInstanceGroupImageRequest,
     ) -> appstream_center_20210901_models.UpdateAppInstanceGroupImageResponse:
+        """
+        @summary 更新镜像
+        
+        @param request: UpdateAppInstanceGroupImageRequest
+        @return: UpdateAppInstanceGroupImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_app_instance_group_image_with_options_async(request, runtime)

@@ -154,9 +154,6 @@ class AccessPageGetAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -195,9 +192,12 @@ class AccessPageSetAclRequest(TeaModel):
         effect_time: int = None,
         unit: str = None,
     ):
+        # This parameter is required.
         self.access_mode = access_mode
+        # This parameter is required.
         self.access_page_id = access_page_id
         self.access_page_name = access_page_name
+        # This parameter is required.
         self.effect_time = effect_time
         self.unit = unit
 
@@ -294,9 +294,6 @@ class AccessPageSetAclResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -335,10 +332,17 @@ class ApproveOtaTaskRequest(TeaModel):
         start_time: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.biz_region_id = biz_region_id
+        # This parameter is required.
         self.ota_type = ota_type
+        # This parameter is required.
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -428,9 +432,6 @@ class ApproveOtaTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -476,9 +477,12 @@ class AskSessionPackagePriceRequest(TeaModel):
         self.max_sessions = max_sessions
         self.period = period
         self.period_unit = period_unit
+        # This parameter is required.
         self.region = region
         self.session_package_type = session_package_type
+        # This parameter is required.
         self.session_spec = session_spec
+        # This parameter is required.
         self.session_type = session_type
 
     def validate(self):
@@ -656,9 +660,6 @@ class AskSessionPackagePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -695,8 +696,11 @@ class AskSessionPackageRenewPriceRequest(TeaModel):
         period_unit: str = None,
         session_package_id: str = None,
     ):
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
+        # This parameter is required.
         self.session_package_id = session_package_id
 
     def validate(self):
@@ -854,9 +858,6 @@ class AskSessionPackageRenewPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -894,8 +895,10 @@ class AuthorizeInstanceGroupRequest(TeaModel):
         product_type: str = None,
         un_authorize_user_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.authorize_user_ids = authorize_user_ids
+        # This parameter is required.
         self.product_type = product_type
         self.un_authorize_user_ids = un_authorize_user_ids
 
@@ -970,9 +973,6 @@ class AuthorizeInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1005,6 +1005,7 @@ class AuthorizeInstanceGroupResponse(TeaModel):
 class BuySessionPackageRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         charge_type: str = None,
         max_sessions: int = None,
         period: int = None,
@@ -1016,15 +1017,19 @@ class BuySessionPackageRequest(TeaModel):
         session_spec: str = None,
         session_type: str = None,
     ):
+        self.auto_pay = auto_pay
         self.charge_type = charge_type
         self.max_sessions = max_sessions
         self.period = period
         self.period_unit = period_unit
         self.project_id = project_id
+        # This parameter is required.
         self.region = region
         self.session_package_name = session_package_name
         self.session_package_type = session_package_type
+        # This parameter is required.
         self.session_spec = session_spec
+        # This parameter is required.
         self.session_type = session_type
 
     def validate(self):
@@ -1036,6 +1041,8 @@ class BuySessionPackageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.max_sessions is not None:
@@ -1060,6 +1067,8 @@ class BuySessionPackageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('MaxSessions') is not None:
@@ -1146,9 +1155,6 @@ class BuySessionPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1184,7 +1190,9 @@ class CancelOtaTaskRequest(TeaModel):
         app_instance_group_id: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -1262,9 +1270,6 @@ class CancelOtaTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1304,9 +1309,11 @@ class CreateAccessPageRequest(TeaModel):
         project_name: str = None,
         unit: str = None,
     ):
+        # This parameter is required.
         self.access_page_name = access_page_name
         self.cloud_env_id = cloud_env_id
         self.effect_time = effect_time
+        # This parameter is required.
         self.project_id = project_id
         self.project_name = project_name
         self.unit = unit
@@ -1414,9 +1421,6 @@ class CreateAccessPageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1855,6 +1859,33 @@ class CreateAppInstanceGroupRequestStoragePolicy(TeaModel):
         return self
 
 
+class CreateAppInstanceGroupRequestUserDefinePolicy(TeaModel):
+    def __init__(
+        self,
+        custom_config: str = None,
+    ):
+        self.custom_config = custom_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_config is not None:
+            result['CustomConfig'] = self.custom_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomConfig') is not None:
+            self.custom_config = m.get('CustomConfig')
+        return self
+
+
 class CreateAppInstanceGroupRequestUserInfo(TeaModel):
     def __init__(
         self,
@@ -1882,6 +1913,63 @@ class CreateAppInstanceGroupRequestUserInfo(TeaModel):
         return self
 
 
+class CreateAppInstanceGroupRequestVideoPolicy(TeaModel):
+    def __init__(
+        self,
+        frame_rate: int = None,
+        session_resolution_height: int = None,
+        session_resolution_width: int = None,
+        streaming_mode: str = None,
+        terminal_resolution_adaptive: bool = None,
+        webrtc: bool = None,
+    ):
+        self.frame_rate = frame_rate
+        self.session_resolution_height = session_resolution_height
+        self.session_resolution_width = session_resolution_width
+        self.streaming_mode = streaming_mode
+        self.terminal_resolution_adaptive = terminal_resolution_adaptive
+        self.webrtc = webrtc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        if self.session_resolution_height is not None:
+            result['SessionResolutionHeight'] = self.session_resolution_height
+        if self.session_resolution_width is not None:
+            result['SessionResolutionWidth'] = self.session_resolution_width
+        if self.streaming_mode is not None:
+            result['StreamingMode'] = self.streaming_mode
+        if self.terminal_resolution_adaptive is not None:
+            result['TerminalResolutionAdaptive'] = self.terminal_resolution_adaptive
+        if self.webrtc is not None:
+            result['Webrtc'] = self.webrtc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        if m.get('SessionResolutionHeight') is not None:
+            self.session_resolution_height = m.get('SessionResolutionHeight')
+        if m.get('SessionResolutionWidth') is not None:
+            self.session_resolution_width = m.get('SessionResolutionWidth')
+        if m.get('StreamingMode') is not None:
+            self.streaming_mode = m.get('StreamingMode')
+        if m.get('TerminalResolutionAdaptive') is not None:
+            self.terminal_resolution_adaptive = m.get('TerminalResolutionAdaptive')
+        if m.get('Webrtc') is not None:
+            self.webrtc = m.get('Webrtc')
+        return self
+
+
 class CreateAppInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1903,29 +1991,42 @@ class CreateAppInstanceGroupRequest(TeaModel):
         security_policy: CreateAppInstanceGroupRequestSecurityPolicy = None,
         session_timeout: int = None,
         storage_policy: CreateAppInstanceGroupRequestStoragePolicy = None,
+        user_define_policy: CreateAppInstanceGroupRequestUserDefinePolicy = None,
         user_info: CreateAppInstanceGroupRequestUserInfo = None,
         users: List[str] = None,
+        video_policy: CreateAppInstanceGroupRequestVideoPolicy = None,
     ):
+        # This parameter is required.
         self.app_center_image_id = app_center_image_id
+        # This parameter is required.
         self.app_instance_group_name = app_instance_group_name
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        # This parameter is required.
         self.biz_region_id = biz_region_id
+        # This parameter is required.
         self.charge_resource_mode = charge_resource_mode
+        # This parameter is required.
         self.charge_type = charge_type
         self.network = network
         self.node_pool = node_pool
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
         self.pre_open_app_id = pre_open_app_id
+        # This parameter is required.
         self.product_type = product_type
         self.promotion_id = promotion_id
         self.runtime_policy = runtime_policy
         self.security_policy = security_policy
+        # This parameter is required.
         self.session_timeout = session_timeout
         self.storage_policy = storage_policy
+        self.user_define_policy = user_define_policy
         self.user_info = user_info
         self.users = users
+        self.video_policy = video_policy
 
     def validate(self):
         if self.network:
@@ -1938,8 +2039,12 @@ class CreateAppInstanceGroupRequest(TeaModel):
             self.security_policy.validate()
         if self.storage_policy:
             self.storage_policy.validate()
+        if self.user_define_policy:
+            self.user_define_policy.validate()
         if self.user_info:
             self.user_info.validate()
+        if self.video_policy:
+            self.video_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1983,10 +2088,14 @@ class CreateAppInstanceGroupRequest(TeaModel):
             result['SessionTimeout'] = self.session_timeout
         if self.storage_policy is not None:
             result['StoragePolicy'] = self.storage_policy.to_map()
+        if self.user_define_policy is not None:
+            result['UserDefinePolicy'] = self.user_define_policy.to_map()
         if self.user_info is not None:
             result['UserInfo'] = self.user_info.to_map()
         if self.users is not None:
             result['Users'] = self.users
+        if self.video_policy is not None:
+            result['VideoPolicy'] = self.video_policy.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -2032,11 +2141,17 @@ class CreateAppInstanceGroupRequest(TeaModel):
         if m.get('StoragePolicy') is not None:
             temp_model = CreateAppInstanceGroupRequestStoragePolicy()
             self.storage_policy = temp_model.from_map(m['StoragePolicy'])
+        if m.get('UserDefinePolicy') is not None:
+            temp_model = CreateAppInstanceGroupRequestUserDefinePolicy()
+            self.user_define_policy = temp_model.from_map(m['UserDefinePolicy'])
         if m.get('UserInfo') is not None:
             temp_model = CreateAppInstanceGroupRequestUserInfo()
             self.user_info = temp_model.from_map(m['UserInfo'])
         if m.get('Users') is not None:
             self.users = m.get('Users')
+        if m.get('VideoPolicy') is not None:
+            temp_model = CreateAppInstanceGroupRequestVideoPolicy()
+            self.video_policy = temp_model.from_map(m['VideoPolicy'])
         return self
 
 
@@ -2061,29 +2176,42 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
         security_policy_shrink: str = None,
         session_timeout: int = None,
         storage_policy_shrink: str = None,
+        user_define_policy_shrink: str = None,
         user_info_shrink: str = None,
         users: List[str] = None,
+        video_policy_shrink: str = None,
     ):
+        # This parameter is required.
         self.app_center_image_id = app_center_image_id
+        # This parameter is required.
         self.app_instance_group_name = app_instance_group_name
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
+        # This parameter is required.
         self.biz_region_id = biz_region_id
+        # This parameter is required.
         self.charge_resource_mode = charge_resource_mode
+        # This parameter is required.
         self.charge_type = charge_type
         self.network_shrink = network_shrink
         self.node_pool_shrink = node_pool_shrink
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
         self.pre_open_app_id = pre_open_app_id
+        # This parameter is required.
         self.product_type = product_type
         self.promotion_id = promotion_id
         self.runtime_policy_shrink = runtime_policy_shrink
         self.security_policy_shrink = security_policy_shrink
+        # This parameter is required.
         self.session_timeout = session_timeout
         self.storage_policy_shrink = storage_policy_shrink
+        self.user_define_policy_shrink = user_define_policy_shrink
         self.user_info_shrink = user_info_shrink
         self.users = users
+        self.video_policy_shrink = video_policy_shrink
 
     def validate(self):
         pass
@@ -2130,10 +2258,14 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             result['SessionTimeout'] = self.session_timeout
         if self.storage_policy_shrink is not None:
             result['StoragePolicy'] = self.storage_policy_shrink
+        if self.user_define_policy_shrink is not None:
+            result['UserDefinePolicy'] = self.user_define_policy_shrink
         if self.user_info_shrink is not None:
             result['UserInfo'] = self.user_info_shrink
         if self.users is not None:
             result['Users'] = self.users
+        if self.video_policy_shrink is not None:
+            result['VideoPolicy'] = self.video_policy_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -2174,10 +2306,14 @@ class CreateAppInstanceGroupShrinkRequest(TeaModel):
             self.session_timeout = m.get('SessionTimeout')
         if m.get('StoragePolicy') is not None:
             self.storage_policy_shrink = m.get('StoragePolicy')
+        if m.get('UserDefinePolicy') is not None:
+            self.user_define_policy_shrink = m.get('UserDefinePolicy')
         if m.get('UserInfo') is not None:
             self.user_info_shrink = m.get('UserInfo')
         if m.get('Users') is not None:
             self.users = m.get('Users')
+        if m.get('VideoPolicy') is not None:
+            self.video_policy_shrink = m.get('VideoPolicy')
         return self
 
 
@@ -2267,9 +2403,6 @@ class CreateAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2306,8 +2439,11 @@ class CreateImageFromAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_center_image_name = app_center_image_name
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -2383,9 +2519,6 @@ class CreateImageFromAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2589,9 +2722,6 @@ class CreateProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2706,9 +2836,6 @@ class DeleteAccessPageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2744,7 +2871,9 @@ class DeleteAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -2810,9 +2939,6 @@ class DeleteAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2849,8 +2975,11 @@ class DeleteAppInstancesRequest(TeaModel):
         app_instance_ids: List[str] = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.app_instance_ids = app_instance_ids
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -2979,9 +3108,6 @@ class DeleteAppInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3101,9 +3227,6 @@ class DeleteProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3140,7 +3263,9 @@ class GetAccessPageSessionRequest(TeaModel):
         access_page_token: str = None,
         external_user_id: str = None,
     ):
+        # This parameter is required.
         self.access_page_id = access_page_id
+        # This parameter is required.
         self.access_page_token = access_page_token
         self.external_user_id = external_user_id
 
@@ -3272,9 +3397,6 @@ class GetAccessPageSessionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3310,7 +3432,9 @@ class GetAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -3925,9 +4049,6 @@ class GetAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3978,7 +4099,9 @@ class GetConnectionTicketRequest(TeaModel):
         self.app_start_param = app_start_param
         self.app_version = app_version
         self.biz_region_id = biz_region_id
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.product_type = product_type
         self.task_id = task_id
 
@@ -4131,9 +4254,6 @@ class GetConnectionTicketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4169,7 +4289,9 @@ class GetDebugAppInstanceRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -4271,9 +4393,6 @@ class GetDebugAppInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4308,6 +4427,7 @@ class GetOtaTaskByTaskIdRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -4345,6 +4465,7 @@ class GetOtaTaskByTaskIdResponseBody(TeaModel):
         self.ota_version = ota_version
         self.release_note = release_note
         self.request_id = request_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.task_start_time = task_start_time
 
     def validate(self):
@@ -4399,9 +4520,6 @@ class GetOtaTaskByTaskIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4616,9 +4734,6 @@ class GetProjectPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4660,13 +4775,19 @@ class GetResourcePriceRequest(TeaModel):
         period_unit: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.amount = amount
         self.app_instance_type = app_instance_type
+        # This parameter is required.
         self.biz_region_id = biz_region_id
+        # This parameter is required.
         self.charge_type = charge_type
         self.node_instance_type = node_instance_type
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -5171,9 +5292,6 @@ class GetResourcePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5211,9 +5329,13 @@ class GetResourceRenewPriceRequest(TeaModel):
         period_unit: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -5482,9 +5604,6 @@ class GetResourceRenewPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5759,9 +5878,6 @@ class ListAccessPagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5802,6 +5918,7 @@ class ListAppInstanceGroupRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         product_type: str = None,
+        region_id: str = None,
         status: List[str] = None,
     ):
         self.app_center_image_id = app_center_image_id
@@ -5811,7 +5928,9 @@ class ListAppInstanceGroupRequest(TeaModel):
         self.node_instance_type = node_instance_type
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.product_type = product_type
+        self.region_id = region_id
         self.status = status
 
     def validate(self):
@@ -5839,6 +5958,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -5861,6 +5982,8 @@ class ListAppInstanceGroupRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -6470,9 +6593,6 @@ class ListAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6513,6 +6633,7 @@ class ListAppInstancesRequest(TeaModel):
         page_size: int = None,
         status: List[str] = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
         self.app_instance_id_list = app_instance_id_list
@@ -6740,9 +6861,6 @@ class ListAppInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6783,15 +6901,18 @@ class ListNodeInstanceTypeRequest(TeaModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](~~426036~~)。
+        # 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](https://help.aliyun.com/document_detail/426036.html)。
         self.biz_region_id = biz_region_id
         # 语言类型。
         self.language = language
         self.node_instance_type = node_instance_type
         # 支持的操作系统类型。
         self.os_type = os_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -6856,11 +6977,11 @@ class ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels(TeaModel):
         self.gpu_memory = gpu_memory
         # 最大并发会话数，即单个资源可同时连接的会话数。如果同时连接的会话数过多，可能导致应用的使用体验下降。取值范围因资源规格不同而不同。各资源规格对应的取值范围分别是：
         # 
-        # - appstreaming.general.4c8g：1\~2；
-        # - appstreaming.general.8c16g：1\~4；
-        # - appstreaming.vgpu.8c16g.4g：1\~4；
-        # - appstreaming.vgpu.8c31g.16g：1\~4；
-        # - appstreaming.vgpu.14c93g.12g：1\~6；
+        # - appstreaming.general.4c8g：1\\~2；
+        # - appstreaming.general.8c16g：1\\~4；
+        # - appstreaming.vgpu.8c16g.4g：1\\~4；
+        # - appstreaming.vgpu.8c31g.16g：1\\~4；
+        # - appstreaming.vgpu.14c93g.12g：1\\~6；
         self.max_capacity = max_capacity
         self.memory = memory
         self.node_instance_type = node_instance_type
@@ -6987,9 +7108,6 @@ class ListNodeInstanceTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7027,9 +7145,13 @@ class ListOtaTaskRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.ota_type = ota_type
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -7075,6 +7197,7 @@ class ListOtaTaskResponseBodyTaskList(TeaModel):
         self.ota_version = ota_version
         self.task_display_status = task_display_status
         self.task_id = task_id
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.task_start_time = task_start_time
 
     def validate(self):
@@ -7180,9 +7303,6 @@ class ListOtaTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7457,9 +7577,6 @@ class ListProjectsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7486,6 +7603,33 @@ class ListProjectsResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ListProjectsResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        product_type: str = None,
+    ):
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
         return self
 
 
@@ -7569,9 +7713,6 @@ class ListRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7935,9 +8076,6 @@ class ListSessionPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8041,9 +8179,6 @@ class ListTenantConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8079,7 +8214,9 @@ class LogOffAllSessionsInAppInstanceGroupRequest(TeaModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -8157,9 +8294,6 @@ class LogOffAllSessionsInAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8197,6 +8331,7 @@ class MigrateSessionPackageRequest(TeaModel):
         source_project_id: str = None,
     ):
         self.dest_project_id = dest_project_id
+        # This parameter is required.
         self.session_package_id = session_package_id
         self.source_project_id = source_project_id
 
@@ -8285,9 +8420,6 @@ class MigrateSessionPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8492,12 +8624,14 @@ class ModifyAppInstanceGroupAttributeRequest(TeaModel):
         session_timeout: int = None,
         storage_policy: ModifyAppInstanceGroupAttributeRequestStoragePolicy = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_group_name = app_instance_group_name
         self.network = network
         self.node_pool = node_pool
         self.pre_open_app_id = pre_open_app_id
         self.pre_open_mode = pre_open_mode
+        # This parameter is required.
         self.product_type = product_type
         self.security_policy = security_policy
         self.session_timeout = session_timeout
@@ -8584,12 +8718,14 @@ class ModifyAppInstanceGroupAttributeShrinkRequest(TeaModel):
         session_timeout: int = None,
         storage_policy_shrink: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_group_name = app_instance_group_name
         self.network_shrink = network_shrink
         self.node_pool_shrink = node_pool_shrink
         self.pre_open_app_id = pre_open_app_id
         self.pre_open_mode = pre_open_mode
+        # This parameter is required.
         self.product_type = product_type
         self.security_policy_shrink = security_policy_shrink
         self.session_timeout = session_timeout
@@ -8702,9 +8838,6 @@ class ModifyAppInstanceGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8730,6 +8863,221 @@ class ModifyAppInstanceGroupAttributeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAppInstanceGroupAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppPolicyRequestVideoPolicy(TeaModel):
+    def __init__(
+        self,
+        frame_rate: int = None,
+        session_resolution_height: int = None,
+        session_resolution_width: int = None,
+        streaming_mode: str = None,
+        terminal_resolution_adaptive: bool = None,
+        visual_quality_strategy: str = None,
+        webrtc: bool = None,
+    ):
+        self.frame_rate = frame_rate
+        self.session_resolution_height = session_resolution_height
+        self.session_resolution_width = session_resolution_width
+        self.streaming_mode = streaming_mode
+        self.terminal_resolution_adaptive = terminal_resolution_adaptive
+        self.visual_quality_strategy = visual_quality_strategy
+        self.webrtc = webrtc
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.frame_rate is not None:
+            result['FrameRate'] = self.frame_rate
+        if self.session_resolution_height is not None:
+            result['SessionResolutionHeight'] = self.session_resolution_height
+        if self.session_resolution_width is not None:
+            result['SessionResolutionWidth'] = self.session_resolution_width
+        if self.streaming_mode is not None:
+            result['StreamingMode'] = self.streaming_mode
+        if self.terminal_resolution_adaptive is not None:
+            result['TerminalResolutionAdaptive'] = self.terminal_resolution_adaptive
+        if self.visual_quality_strategy is not None:
+            result['VisualQualityStrategy'] = self.visual_quality_strategy
+        if self.webrtc is not None:
+            result['Webrtc'] = self.webrtc
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FrameRate') is not None:
+            self.frame_rate = m.get('FrameRate')
+        if m.get('SessionResolutionHeight') is not None:
+            self.session_resolution_height = m.get('SessionResolutionHeight')
+        if m.get('SessionResolutionWidth') is not None:
+            self.session_resolution_width = m.get('SessionResolutionWidth')
+        if m.get('StreamingMode') is not None:
+            self.streaming_mode = m.get('StreamingMode')
+        if m.get('TerminalResolutionAdaptive') is not None:
+            self.terminal_resolution_adaptive = m.get('TerminalResolutionAdaptive')
+        if m.get('VisualQualityStrategy') is not None:
+            self.visual_quality_strategy = m.get('VisualQualityStrategy')
+        if m.get('Webrtc') is not None:
+            self.webrtc = m.get('Webrtc')
+        return self
+
+
+class ModifyAppPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        app_policy_id: str = None,
+        product_type: str = None,
+        video_policy: ModifyAppPolicyRequestVideoPolicy = None,
+    ):
+        # This parameter is required.
+        self.app_policy_id = app_policy_id
+        # This parameter is required.
+        self.product_type = product_type
+        self.video_policy = video_policy
+
+    def validate(self):
+        if self.video_policy:
+            self.video_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_policy_id is not None:
+            result['AppPolicyId'] = self.app_policy_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.video_policy is not None:
+            result['VideoPolicy'] = self.video_policy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppPolicyId') is not None:
+            self.app_policy_id = m.get('AppPolicyId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('VideoPolicy') is not None:
+            temp_model = ModifyAppPolicyRequestVideoPolicy()
+            self.video_policy = temp_model.from_map(m['VideoPolicy'])
+        return self
+
+
+class ModifyAppPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_policy_id: str = None,
+        product_type: str = None,
+        video_policy_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_policy_id = app_policy_id
+        # This parameter is required.
+        self.product_type = product_type
+        self.video_policy_shrink = video_policy_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_policy_id is not None:
+            result['AppPolicyId'] = self.app_policy_id
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.video_policy_shrink is not None:
+            result['VideoPolicy'] = self.video_policy_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppPolicyId') is not None:
+            self.app_policy_id = m.get('AppPolicyId')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('VideoPolicy') is not None:
+            self.video_policy_shrink = m.get('VideoPolicy')
+        return self
+
+
+class ModifyAppPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9087,9 +9435,6 @@ class ModifyNodePoolAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9257,9 +9602,6 @@ class ModifyProjectPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9355,9 +9697,6 @@ class ModifyTenantConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9395,9 +9734,11 @@ class PageListAppInstanceGroupUserRequest(TeaModel):
         page_size: int = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -9477,9 +9818,6 @@ class PageListAppInstanceGroupUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9600,9 +9938,6 @@ class RefreshAccessUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9642,10 +9977,14 @@ class RenewAppInstanceGroupRequest(TeaModel):
         product_type: str = None,
         promotion_id: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.auto_pay = auto_pay
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
+        # This parameter is required.
         self.product_type = product_type
         self.promotion_id = promotion_id
 
@@ -9746,9 +10085,6 @@ class RenewAppInstanceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9785,8 +10121,11 @@ class RenewSessionPackageRequest(TeaModel):
         period_unit: str = None,
         session_package_id: str = None,
     ):
+        # This parameter is required.
         self.period = period
+        # This parameter is required.
         self.period_unit = period_unit
+        # This parameter is required.
         self.session_package_id = session_package_id
 
     def validate(self):
@@ -9880,9 +10219,6 @@ class RenewSessionPackageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9921,10 +10257,13 @@ class UnbindRequest(TeaModel):
         end_user_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         self.app_instance_id = app_instance_id
         self.app_instance_persistent_id = app_instance_persistent_id
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -10002,9 +10341,6 @@ class UnbindResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10124,9 +10460,6 @@ class UpdateAccessPageStateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10164,9 +10497,13 @@ class UpdateAppInstanceGroupImageRequest(TeaModel):
         biz_region_id: str = None,
         product_type: str = None,
     ):
+        # This parameter is required.
         self.app_center_image_id = app_center_image_id
+        # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
+        # This parameter is required.
         self.biz_region_id = biz_region_id
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -10252,9 +10589,6 @@ class UpdateAppInstanceGroupImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

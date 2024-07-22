@@ -1,3 +1,12 @@
+2024-07-22 Version: 2.0.0
+- Support API ModifyAppPolicy.
+- Update API BuySessionPackage: add param AutoPay.
+- Update API CreateAppInstanceGroup: add param UserDefinePolicy.
+- Update API CreateAppInstanceGroup: add param VideoPolicy.
+- Update API ListAppInstanceGroup: add param RegionId.
+- Update API ListRegions: add param ProductType.
+
+
 2024-01-15 Version: 1.1.0
 - Generated python 2021-09-01 for appstream-center.
 
