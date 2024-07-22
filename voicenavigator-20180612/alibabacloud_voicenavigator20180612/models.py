@@ -16,6 +16,7 @@ class AssociateChatbotInstanceRequest(TeaModel):
     ):
         self.chatbot_instance_id = chatbot_instance_id
         self.chatbot_name = chatbot_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.nlu_service_params_json = nlu_service_params_json
         self.nlu_service_type = nlu_service_type
@@ -146,12 +147,17 @@ class AuditTTSVoiceRequest(TeaModel):
         self.access_key = access_key
         self.app_key = app_key
         self.engine = engine
+        # This parameter is required.
         self.instance_id = instance_id
         self.pitch_rate = pitch_rate
         self.secret_key = secret_key
+        # This parameter is required.
         self.speech_rate = speech_rate
+        # This parameter is required.
         self.text = text
+        # This parameter is required.
         self.voice = voice
+        # This parameter is required.
         self.volume = volume
 
     def validate(self):
@@ -295,9 +301,12 @@ class BeginDialogueRequest(TeaModel):
         instance_owner_id: int = None,
     ):
         self.called_number = called_number
+        # This parameter is required.
         self.calling_number = calling_number
+        # This parameter is required.
         self.conversation_id = conversation_id
         self.initial_context = initial_context
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
 
@@ -443,7 +452,9 @@ class CollectedNumberRequest(TeaModel):
         number: str = None,
     ):
         self.additional_context = additional_context
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
         self.number = number
@@ -582,7 +593,9 @@ class CreateDownloadUrlRequest(TeaModel):
         download_task_id: str = None,
         file_id: str = None,
     ):
+        # This parameter is required.
         self.download_task_id = download_task_id
+        # This parameter is required.
         self.file_id = file_id
 
     def validate(self):
@@ -717,8 +730,10 @@ class CreateInstanceRequest(TeaModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
+        # This parameter is required.
         self.concurrency = concurrency
         self.description = description
+        # This parameter is required.
         self.name = name
         self.nlu_service_params_json = nlu_service_params_json
         self.union_instance_id = union_instance_id
@@ -848,9 +863,12 @@ class DebugBeginDialogueRequest(TeaModel):
         instance_id: str = None,
     ):
         self.called_number = called_number
+        # This parameter is required.
         self.calling_number = calling_number
+        # This parameter is required.
         self.conversation_id = conversation_id
         self.initial_context = initial_context
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -988,7 +1006,9 @@ class DebugCollectedNumberRequest(TeaModel):
         instance_id: str = None,
         number: str = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.number = number
 
@@ -1121,8 +1141,11 @@ class DebugDialogueRequest(TeaModel):
         utterance: str = None,
     ):
         self.additional_context = additional_context
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.utterance = utterance
 
     def validate(self):
@@ -1254,6 +1277,7 @@ class DeleteInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1350,7 +1374,9 @@ class DescribeConversationRequest(TeaModel):
         conversation_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1499,7 +1525,9 @@ class DescribeConversationContextRequest(TeaModel):
         conversation_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1606,7 +1634,9 @@ class DescribeExportProgressRequest(TeaModel):
         export_task_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.export_task_id = export_task_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1718,6 +1748,7 @@ class DescribeInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1885,6 +1916,7 @@ class DescribeNavigationConfigRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2168,7 +2200,9 @@ class DescribeRecordingRequest(TeaModel):
         instance_id: str = None,
         need_voice_slice_recording: bool = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.need_voice_slice_recording = need_voice_slice_recording
 
@@ -2296,7 +2330,9 @@ class DescribeStatisticalDataRequest(TeaModel):
     ):
         self.begin_time_left_range = begin_time_left_range
         self.begin_time_right_range = begin_time_right_range
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.time_unit = time_unit
 
     def validate(self):
@@ -2518,6 +2554,7 @@ class DescribeTTSConfigRequest(TeaModel):
         instance_id: str = None,
         instance_owner_id: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
 
@@ -2548,6 +2585,7 @@ class DescribeTTSConfigRequest(TeaModel):
 class DescribeTTSConfigResponseBody(TeaModel):
     def __init__(
         self,
+        ali_customized_voice: str = None,
         app_key: str = None,
         engine: str = None,
         engine_xunfei: str = None,
@@ -2558,6 +2596,7 @@ class DescribeTTSConfigResponseBody(TeaModel):
         voice: str = None,
         volume: int = None,
     ):
+        self.ali_customized_voice = ali_customized_voice
         self.app_key = app_key
         self.engine = engine
         self.engine_xunfei = engine_xunfei
@@ -2577,6 +2616,8 @@ class DescribeTTSConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.ali_customized_voice is not None:
+            result['AliCustomizedVoice'] = self.ali_customized_voice
         if self.app_key is not None:
             result['AppKey'] = self.app_key
         if self.engine is not None:
@@ -2599,6 +2640,8 @@ class DescribeTTSConfigResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliCustomizedVoice') is not None:
+            self.ali_customized_voice = m.get('AliCustomizedVoice')
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
         if m.get('Engine') is not None:
@@ -2676,10 +2719,13 @@ class DialogueRequest(TeaModel):
         self.additional_context = additional_context
         self.called_number = called_number
         self.calling_number = calling_number
+        # This parameter is required.
         self.conversation_id = conversation_id
         self.emotion = emotion
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
+        # This parameter is required.
         self.utterance = utterance
 
     def validate(self):
@@ -2827,6 +2873,7 @@ class DisableInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2928,6 +2975,7 @@ class EnableInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3032,8 +3080,10 @@ class EndDialogueRequest(TeaModel):
         instance_id: str = None,
         instance_owner_id: int = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
         self.hang_up_params = hang_up_params
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
 
@@ -3152,6 +3202,7 @@ class ExportConversationDetailsRequest(TeaModel):
         self.begin_time_left_range = begin_time_left_range
         self.begin_time_right_range = begin_time_right_range
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.options = options
         self.result = result
@@ -3291,8 +3342,11 @@ class ExportStatisticalDataRequest(TeaModel):
     ):
         self.begin_time_left_range = begin_time_left_range
         self.begin_time_right_range = begin_time_right_range
+        # This parameter is required.
         self.export_type = export_type
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.time_unit = time_unit
 
     def validate(self):
@@ -3922,6 +3976,7 @@ class GetRealTimeConcurrencyRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4043,6 +4098,7 @@ class ListChatbotInstancesRequest(TeaModel):
         self.instance_id = instance_id
         self.nlu_service_params_json = nlu_service_params_json
         self.nlu_service_type = nlu_service_type
+        # This parameter is required.
         self.page_number = page_number
         self.page_size = page_size
         self.union_source = union_source
@@ -4256,7 +4312,9 @@ class ListConversationDetailsRequest(TeaModel):
         conversation_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4446,9 +4504,12 @@ class ListConversationsRequest(TeaModel):
         self.begin_time_left_range = begin_time_left_range
         self.begin_time_right_range = begin_time_right_range
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
         self.is_sand_box = is_sand_box
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.query = query
         self.result = result
@@ -4720,7 +4781,9 @@ class ListDownloadTasksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -5021,7 +5084,9 @@ class ListInstancesRequest(TeaModel):
         self.name = name
         self.nlu_service_type_list_json_string = nlu_service_type_list_json_string
         self.number = number
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.status = status
         self.union_instance_id = union_instance_id
@@ -5470,9 +5535,12 @@ class ModifyGreetingConfigRequest(TeaModel):
         intent_trigger: str = None,
         source_type: str = None,
     ):
+        # This parameter is required.
         self.greeting_words = greeting_words
+        # This parameter is required.
         self.instance_id = instance_id
         self.intent_trigger = intent_trigger
+        # This parameter is required.
         self.source_type = source_type
 
     def validate(self):
@@ -5583,8 +5651,10 @@ class ModifyInstanceRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.concurrency = concurrency
         self.description = description
+        # This parameter is required.
         self.instance_id = instance_id
         self.name = name
 
@@ -5701,14 +5771,21 @@ class ModifySilenceTimeoutConfigRequest(TeaModel):
         threshold: int = None,
         timeout: int = None,
     ):
+        # This parameter is required.
         self.final_action = final_action
         self.final_action_params = final_action_params
+        # This parameter is required.
         self.final_prompt = final_prompt
+        # This parameter is required.
         self.instance_id = instance_id
         self.intent_trigger = intent_trigger
+        # This parameter is required.
         self.prompt = prompt
+        # This parameter is required.
         self.source_type = source_type
+        # This parameter is required.
         self.threshold = threshold
+        # This parameter is required.
         self.timeout = timeout
 
     def validate(self):
@@ -5834,6 +5911,7 @@ class ModifySilenceTimeoutConfigResponse(TeaModel):
 class ModifyTTSConfigRequest(TeaModel):
     def __init__(
         self,
+        ali_customized_voice: str = None,
         app_key: str = None,
         engine: str = None,
         engine_xunfei: str = None,
@@ -5843,9 +5921,11 @@ class ModifyTTSConfigRequest(TeaModel):
         voice: str = None,
         volume: str = None,
     ):
+        self.ali_customized_voice = ali_customized_voice
         self.app_key = app_key
         self.engine = engine
         self.engine_xunfei = engine_xunfei
+        # This parameter is required.
         self.instance_id = instance_id
         self.nls_service_type = nls_service_type
         self.speech_rate = speech_rate
@@ -5861,6 +5941,8 @@ class ModifyTTSConfigRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ali_customized_voice is not None:
+            result['AliCustomizedVoice'] = self.ali_customized_voice
         if self.app_key is not None:
             result['AppKey'] = self.app_key
         if self.engine is not None:
@@ -5881,6 +5963,8 @@ class ModifyTTSConfigRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliCustomizedVoice') is not None:
+            self.ali_customized_voice = m.get('AliCustomizedVoice')
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
         if m.get('Engine') is not None:
@@ -5978,11 +6062,16 @@ class ModifyUnrecognizingConfigRequest(TeaModel):
         prompt: str = None,
         threshold: int = None,
     ):
+        # This parameter is required.
         self.final_action = final_action
         self.final_action_params = final_action_params
+        # This parameter is required.
         self.final_prompt = final_prompt
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.prompt = prompt
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -6106,8 +6195,11 @@ class QueryConversationsRequest(TeaModel):
         self.begin_time_left_range = begin_time_left_range
         self.begin_time_right_range = begin_time_right_range
         self.calling_number = calling_number
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -6332,13 +6424,20 @@ class SaveRecordingRequest(TeaModel):
         type: str = None,
         voice_slice_recording_list: str = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_path = file_path
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.type = type
         self.voice_slice_recording_list = voice_slice_recording_list
 
@@ -6470,8 +6569,10 @@ class SilenceTimeoutRequest(TeaModel):
         instance_id: str = None,
         instance_owner_id: int = None,
     ):
+        # This parameter is required.
         self.conversation_id = conversation_id
         self.initial_context = initial_context
+        # This parameter is required.
         self.instance_id = instance_id
         self.instance_owner_id = instance_owner_id
 

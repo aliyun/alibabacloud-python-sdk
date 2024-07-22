@@ -1,3 +1,13 @@
+2024-07-22 Version: 1.0.6
+- Update API DescribeTTSConfig: update response param.
+- Update API ExportConversationDetails: update response param.
+- Update API ListConversations: update param PageNumber.
+- Update API ListConversations: update param PageSize.
+- Update API ModifyTTSConfig: add param AliCustomizedVoice.
+- Update API QueryConversations: update param PageNumber.
+- Update API QueryConversations: update param PageSize.
+
+
 2024-04-22 Version: 1.0.5
 - Update API ListConversations: update response param.
 

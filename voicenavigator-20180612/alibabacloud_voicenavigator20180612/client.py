@@ -46,6 +46,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.AssociateChatbotInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.AssociateChatbotInstanceResponse:
+        """
+        @param request: AssociateChatbotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateChatbotInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chatbot_instance_id):
@@ -84,6 +89,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.AssociateChatbotInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.AssociateChatbotInstanceResponse:
+        """
+        @param request: AssociateChatbotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateChatbotInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.chatbot_instance_id):
@@ -121,6 +131,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.AssociateChatbotInstanceRequest,
     ) -> voice_navigator_20180612_models.AssociateChatbotInstanceResponse:
+        """
+        @param request: AssociateChatbotInstanceRequest
+        @return: AssociateChatbotInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_chatbot_instance_with_options(request, runtime)
 
@@ -128,6 +142,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.AssociateChatbotInstanceRequest,
     ) -> voice_navigator_20180612_models.AssociateChatbotInstanceResponse:
+        """
+        @param request: AssociateChatbotInstanceRequest
+        @return: AssociateChatbotInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_chatbot_instance_with_options_async(request, runtime)
 
@@ -136,6 +154,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.AuditTTSVoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.AuditTTSVoiceResponse:
+        """
+        @param request: AuditTTSVoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuditTTSVoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_key):
@@ -182,6 +205,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.AuditTTSVoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.AuditTTSVoiceResponse:
+        """
+        @param request: AuditTTSVoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuditTTSVoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_key):
@@ -227,6 +255,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.AuditTTSVoiceRequest,
     ) -> voice_navigator_20180612_models.AuditTTSVoiceResponse:
+        """
+        @param request: AuditTTSVoiceRequest
+        @return: AuditTTSVoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.audit_ttsvoice_with_options(request, runtime)
 
@@ -234,6 +266,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.AuditTTSVoiceRequest,
     ) -> voice_navigator_20180612_models.AuditTTSVoiceResponse:
+        """
+        @param request: AuditTTSVoiceRequest
+        @return: AuditTTSVoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.audit_ttsvoice_with_options_async(request, runtime)
 
@@ -242,6 +278,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.BeginDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.BeginDialogueResponse:
+        """
+        @param request: BeginDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BeginDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -280,6 +321,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.BeginDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.BeginDialogueResponse:
+        """
+        @param request: BeginDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BeginDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -317,6 +363,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.BeginDialogueRequest,
     ) -> voice_navigator_20180612_models.BeginDialogueResponse:
+        """
+        @param request: BeginDialogueRequest
+        @return: BeginDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.begin_dialogue_with_options(request, runtime)
 
@@ -324,6 +374,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.BeginDialogueRequest,
     ) -> voice_navigator_20180612_models.BeginDialogueResponse:
+        """
+        @param request: BeginDialogueRequest
+        @return: BeginDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.begin_dialogue_with_options_async(request, runtime)
 
@@ -332,6 +386,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.CollectedNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.CollectedNumberResponse:
+        """
+        @param request: CollectedNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CollectedNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_context):
@@ -368,6 +427,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.CollectedNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.CollectedNumberResponse:
+        """
+        @param request: CollectedNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CollectedNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_context):
@@ -403,6 +467,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.CollectedNumberRequest,
     ) -> voice_navigator_20180612_models.CollectedNumberResponse:
+        """
+        @param request: CollectedNumberRequest
+        @return: CollectedNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.collected_number_with_options(request, runtime)
 
@@ -410,6 +478,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.CollectedNumberRequest,
     ) -> voice_navigator_20180612_models.CollectedNumberResponse:
+        """
+        @param request: CollectedNumberRequest
+        @return: CollectedNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.collected_number_with_options_async(request, runtime)
 
@@ -418,6 +490,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.CreateDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.CreateDownloadUrlResponse:
+        """
+        @param request: CreateDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -444,6 +521,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.CreateDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.CreateDownloadUrlResponse:
+        """
+        @param request: CreateDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDownloadUrlResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -469,6 +551,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.CreateDownloadUrlRequest,
     ) -> voice_navigator_20180612_models.CreateDownloadUrlResponse:
+        """
+        @param request: CreateDownloadUrlRequest
+        @return: CreateDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_download_url_with_options(request, runtime)
 
@@ -476,6 +562,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.CreateDownloadUrlRequest,
     ) -> voice_navigator_20180612_models.CreateDownloadUrlResponse:
+        """
+        @param request: CreateDownloadUrlRequest
+        @return: CreateDownloadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_download_url_with_options_async(request, runtime)
 
@@ -484,6 +574,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrency):
@@ -522,6 +617,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrency):
@@ -559,6 +659,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.CreateInstanceRequest,
     ) -> voice_navigator_20180612_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -566,6 +670,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.CreateInstanceRequest,
     ) -> voice_navigator_20180612_models.CreateInstanceResponse:
+        """
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -574,6 +682,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DebugBeginDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DebugBeginDialogueResponse:
+        """
+        @param request: DebugBeginDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugBeginDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -610,6 +723,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DebugBeginDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DebugBeginDialogueResponse:
+        """
+        @param request: DebugBeginDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugBeginDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.called_number):
@@ -645,6 +763,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DebugBeginDialogueRequest,
     ) -> voice_navigator_20180612_models.DebugBeginDialogueResponse:
+        """
+        @param request: DebugBeginDialogueRequest
+        @return: DebugBeginDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.debug_begin_dialogue_with_options(request, runtime)
 
@@ -652,6 +774,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DebugBeginDialogueRequest,
     ) -> voice_navigator_20180612_models.DebugBeginDialogueResponse:
+        """
+        @param request: DebugBeginDialogueRequest
+        @return: DebugBeginDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.debug_begin_dialogue_with_options_async(request, runtime)
 
@@ -660,6 +786,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DebugCollectedNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DebugCollectedNumberResponse:
+        """
+        @param request: DebugCollectedNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugCollectedNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -692,6 +823,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DebugCollectedNumberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DebugCollectedNumberResponse:
+        """
+        @param request: DebugCollectedNumberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugCollectedNumberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -723,6 +859,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DebugCollectedNumberRequest,
     ) -> voice_navigator_20180612_models.DebugCollectedNumberResponse:
+        """
+        @param request: DebugCollectedNumberRequest
+        @return: DebugCollectedNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.debug_collected_number_with_options(request, runtime)
 
@@ -730,6 +870,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DebugCollectedNumberRequest,
     ) -> voice_navigator_20180612_models.DebugCollectedNumberResponse:
+        """
+        @param request: DebugCollectedNumberRequest
+        @return: DebugCollectedNumberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.debug_collected_number_with_options_async(request, runtime)
 
@@ -738,6 +882,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DebugDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DebugDialogueResponse:
+        """
+        @param request: DebugDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_context):
@@ -772,6 +921,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DebugDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DebugDialogueResponse:
+        """
+        @param request: DebugDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DebugDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_context):
@@ -805,6 +959,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DebugDialogueRequest,
     ) -> voice_navigator_20180612_models.DebugDialogueResponse:
+        """
+        @param request: DebugDialogueRequest
+        @return: DebugDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.debug_dialogue_with_options(request, runtime)
 
@@ -812,6 +970,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DebugDialogueRequest,
     ) -> voice_navigator_20180612_models.DebugDialogueResponse:
+        """
+        @param request: DebugDialogueRequest
+        @return: DebugDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.debug_dialogue_with_options_async(request, runtime)
 
@@ -820,6 +982,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -848,6 +1015,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -875,6 +1047,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DeleteInstanceRequest,
     ) -> voice_navigator_20180612_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_instance_with_options(request, runtime)
 
@@ -882,6 +1058,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DeleteInstanceRequest,
     ) -> voice_navigator_20180612_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
 
@@ -890,6 +1070,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeConversationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeConversationResponse:
+        """
+        @param request: DescribeConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConversationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -916,6 +1101,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeConversationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeConversationResponse:
+        """
+        @param request: DescribeConversationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConversationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -941,6 +1131,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeConversationRequest,
     ) -> voice_navigator_20180612_models.DescribeConversationResponse:
+        """
+        @param request: DescribeConversationRequest
+        @return: DescribeConversationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_conversation_with_options(request, runtime)
 
@@ -948,6 +1142,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeConversationRequest,
     ) -> voice_navigator_20180612_models.DescribeConversationResponse:
+        """
+        @param request: DescribeConversationRequest
+        @return: DescribeConversationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_conversation_with_options_async(request, runtime)
 
@@ -956,6 +1154,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeConversationContextRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeConversationContextResponse:
+        """
+        @param request: DescribeConversationContextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConversationContextResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -982,6 +1185,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeConversationContextRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeConversationContextResponse:
+        """
+        @param request: DescribeConversationContextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConversationContextResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1007,6 +1215,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeConversationContextRequest,
     ) -> voice_navigator_20180612_models.DescribeConversationContextResponse:
+        """
+        @param request: DescribeConversationContextRequest
+        @return: DescribeConversationContextResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_conversation_context_with_options(request, runtime)
 
@@ -1014,6 +1226,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeConversationContextRequest,
     ) -> voice_navigator_20180612_models.DescribeConversationContextResponse:
+        """
+        @param request: DescribeConversationContextRequest
+        @return: DescribeConversationContextResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_conversation_context_with_options_async(request, runtime)
 
@@ -1022,6 +1238,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeExportProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeExportProgressResponse:
+        """
+        @param request: DescribeExportProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExportProgressResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1048,6 +1269,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeExportProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeExportProgressResponse:
+        """
+        @param request: DescribeExportProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExportProgressResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1073,6 +1299,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeExportProgressRequest,
     ) -> voice_navigator_20180612_models.DescribeExportProgressResponse:
+        """
+        @param request: DescribeExportProgressRequest
+        @return: DescribeExportProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_export_progress_with_options(request, runtime)
 
@@ -1080,6 +1310,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeExportProgressRequest,
     ) -> voice_navigator_20180612_models.DescribeExportProgressResponse:
+        """
+        @param request: DescribeExportProgressRequest
+        @return: DescribeExportProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_export_progress_with_options_async(request, runtime)
 
@@ -1088,6 +1322,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1114,6 +1353,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1139,6 +1383,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeInstanceRequest,
     ) -> voice_navigator_20180612_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_with_options(request, runtime)
 
@@ -1146,6 +1394,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeInstanceRequest,
     ) -> voice_navigator_20180612_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
@@ -1154,6 +1406,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeNavigationConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeNavigationConfigResponse:
+        """
+        @param request: DescribeNavigationConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNavigationConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1180,6 +1437,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeNavigationConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeNavigationConfigResponse:
+        """
+        @param request: DescribeNavigationConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNavigationConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1205,6 +1467,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeNavigationConfigRequest,
     ) -> voice_navigator_20180612_models.DescribeNavigationConfigResponse:
+        """
+        @param request: DescribeNavigationConfigRequest
+        @return: DescribeNavigationConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_navigation_config_with_options(request, runtime)
 
@@ -1212,6 +1478,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeNavigationConfigRequest,
     ) -> voice_navigator_20180612_models.DescribeNavigationConfigResponse:
+        """
+        @param request: DescribeNavigationConfigRequest
+        @return: DescribeNavigationConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_navigation_config_with_options_async(request, runtime)
 
@@ -1220,6 +1490,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeRecordingResponse:
+        """
+        @param request: DescribeRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1246,6 +1521,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeRecordingResponse:
+        """
+        @param request: DescribeRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1271,6 +1551,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeRecordingRequest,
     ) -> voice_navigator_20180612_models.DescribeRecordingResponse:
+        """
+        @param request: DescribeRecordingRequest
+        @return: DescribeRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_recording_with_options(request, runtime)
 
@@ -1278,6 +1562,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeRecordingRequest,
     ) -> voice_navigator_20180612_models.DescribeRecordingResponse:
+        """
+        @param request: DescribeRecordingRequest
+        @return: DescribeRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_recording_with_options_async(request, runtime)
 
@@ -1286,6 +1574,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeStatisticalDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeStatisticalDataResponse:
+        """
+        @param request: DescribeStatisticalDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStatisticalDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1312,6 +1605,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeStatisticalDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeStatisticalDataResponse:
+        """
+        @param request: DescribeStatisticalDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStatisticalDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1337,6 +1635,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeStatisticalDataRequest,
     ) -> voice_navigator_20180612_models.DescribeStatisticalDataResponse:
+        """
+        @param request: DescribeStatisticalDataRequest
+        @return: DescribeStatisticalDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_statistical_data_with_options(request, runtime)
 
@@ -1344,6 +1646,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeStatisticalDataRequest,
     ) -> voice_navigator_20180612_models.DescribeStatisticalDataResponse:
+        """
+        @param request: DescribeStatisticalDataRequest
+        @return: DescribeStatisticalDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_statistical_data_with_options_async(request, runtime)
 
@@ -1352,6 +1658,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeTTSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeTTSConfigResponse:
+        """
+        @param request: DescribeTTSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTTSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1378,6 +1689,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DescribeTTSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DescribeTTSConfigResponse:
+        """
+        @param request: DescribeTTSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTTSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1403,6 +1719,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeTTSConfigRequest,
     ) -> voice_navigator_20180612_models.DescribeTTSConfigResponse:
+        """
+        @param request: DescribeTTSConfigRequest
+        @return: DescribeTTSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ttsconfig_with_options(request, runtime)
 
@@ -1410,6 +1730,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DescribeTTSConfigRequest,
     ) -> voice_navigator_20180612_models.DescribeTTSConfigResponse:
+        """
+        @param request: DescribeTTSConfigRequest
+        @return: DescribeTTSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ttsconfig_with_options_async(request, runtime)
 
@@ -1418,6 +1742,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DialogueResponse:
+        """
+        @param request: DialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_context):
@@ -1460,6 +1789,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DialogueResponse:
+        """
+        @param request: DialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.additional_context):
@@ -1501,6 +1835,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DialogueRequest,
     ) -> voice_navigator_20180612_models.DialogueResponse:
+        """
+        @param request: DialogueRequest
+        @return: DialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dialogue_with_options(request, runtime)
 
@@ -1508,6 +1846,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DialogueRequest,
     ) -> voice_navigator_20180612_models.DialogueResponse:
+        """
+        @param request: DialogueRequest
+        @return: DialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dialogue_with_options_async(request, runtime)
 
@@ -1516,6 +1858,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DisableInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DisableInstanceResponse:
+        """
+        @param request: DisableInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1544,6 +1891,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.DisableInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.DisableInstanceResponse:
+        """
+        @param request: DisableInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1571,6 +1923,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DisableInstanceRequest,
     ) -> voice_navigator_20180612_models.DisableInstanceResponse:
+        """
+        @param request: DisableInstanceRequest
+        @return: DisableInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_instance_with_options(request, runtime)
 
@@ -1578,6 +1934,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.DisableInstanceRequest,
     ) -> voice_navigator_20180612_models.DisableInstanceResponse:
+        """
+        @param request: DisableInstanceRequest
+        @return: DisableInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_instance_with_options_async(request, runtime)
 
@@ -1586,6 +1946,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.EnableInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.EnableInstanceResponse:
+        """
+        @param request: EnableInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1614,6 +1979,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.EnableInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.EnableInstanceResponse:
+        """
+        @param request: EnableInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1641,6 +2011,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.EnableInstanceRequest,
     ) -> voice_navigator_20180612_models.EnableInstanceResponse:
+        """
+        @param request: EnableInstanceRequest
+        @return: EnableInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_instance_with_options(request, runtime)
 
@@ -1648,6 +2022,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.EnableInstanceRequest,
     ) -> voice_navigator_20180612_models.EnableInstanceResponse:
+        """
+        @param request: EnableInstanceRequest
+        @return: EnableInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_instance_with_options_async(request, runtime)
 
@@ -1656,6 +2034,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.EndDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.EndDialogueResponse:
+        """
+        @param request: EndDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -1690,6 +2073,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.EndDialogueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.EndDialogueResponse:
+        """
+        @param request: EndDialogueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EndDialogueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -1723,6 +2111,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.EndDialogueRequest,
     ) -> voice_navigator_20180612_models.EndDialogueResponse:
+        """
+        @param request: EndDialogueRequest
+        @return: EndDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.end_dialogue_with_options(request, runtime)
 
@@ -1730,6 +2122,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.EndDialogueRequest,
     ) -> voice_navigator_20180612_models.EndDialogueResponse:
+        """
+        @param request: EndDialogueRequest
+        @return: EndDialogueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.end_dialogue_with_options_async(request, runtime)
 
@@ -1738,6 +2134,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ExportConversationDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ExportConversationDetailsResponse:
+        """
+        @param request: ExportConversationDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportConversationDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time_left_range):
@@ -1780,6 +2181,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ExportConversationDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ExportConversationDetailsResponse:
+        """
+        @param request: ExportConversationDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportConversationDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time_left_range):
@@ -1821,6 +2227,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ExportConversationDetailsRequest,
     ) -> voice_navigator_20180612_models.ExportConversationDetailsResponse:
+        """
+        @param request: ExportConversationDetailsRequest
+        @return: ExportConversationDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_conversation_details_with_options(request, runtime)
 
@@ -1828,6 +2238,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ExportConversationDetailsRequest,
     ) -> voice_navigator_20180612_models.ExportConversationDetailsResponse:
+        """
+        @param request: ExportConversationDetailsRequest
+        @return: ExportConversationDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_conversation_details_with_options_async(request, runtime)
 
@@ -1836,6 +2250,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ExportStatisticalDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ExportStatisticalDataResponse:
+        """
+        @param request: ExportStatisticalDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportStatisticalDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time_left_range):
@@ -1872,6 +2291,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ExportStatisticalDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ExportStatisticalDataResponse:
+        """
+        @param request: ExportStatisticalDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportStatisticalDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time_left_range):
@@ -1907,6 +2331,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ExportStatisticalDataRequest,
     ) -> voice_navigator_20180612_models.ExportStatisticalDataResponse:
+        """
+        @param request: ExportStatisticalDataRequest
+        @return: ExportStatisticalDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_statistical_data_with_options(request, runtime)
 
@@ -1914,6 +2342,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ExportStatisticalDataRequest,
     ) -> voice_navigator_20180612_models.ExportStatisticalDataResponse:
+        """
+        @param request: ExportStatisticalDataRequest
+        @return: ExportStatisticalDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_statistical_data_with_options_async(request, runtime)
 
@@ -1922,6 +2354,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.GenerateUploadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.GenerateUploadUrlResponse:
+        """
+        @param request: GenerateUploadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.caller_bid):
@@ -1996,6 +2433,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.GenerateUploadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.GenerateUploadUrlResponse:
+        """
+        @param request: GenerateUploadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUploadUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.caller_bid):
@@ -2069,6 +2511,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.GenerateUploadUrlRequest,
     ) -> voice_navigator_20180612_models.GenerateUploadUrlResponse:
+        """
+        @param request: GenerateUploadUrlRequest
+        @return: GenerateUploadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_upload_url_with_options(request, runtime)
 
@@ -2076,6 +2522,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.GenerateUploadUrlRequest,
     ) -> voice_navigator_20180612_models.GenerateUploadUrlResponse:
+        """
+        @param request: GenerateUploadUrlRequest
+        @return: GenerateUploadUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_upload_url_with_options_async(request, runtime)
 
@@ -2084,6 +2534,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.GetAsrConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.GetAsrConfigResponse:
+        """
+        @param request: GetAsrConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsrConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_level):
@@ -2114,6 +2569,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.GetAsrConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.GetAsrConfigResponse:
+        """
+        @param request: GetAsrConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsrConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.config_level):
@@ -2143,6 +2603,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.GetAsrConfigRequest,
     ) -> voice_navigator_20180612_models.GetAsrConfigResponse:
+        """
+        @param request: GetAsrConfigRequest
+        @return: GetAsrConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_asr_config_with_options(request, runtime)
 
@@ -2150,6 +2614,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.GetAsrConfigRequest,
     ) -> voice_navigator_20180612_models.GetAsrConfigResponse:
+        """
+        @param request: GetAsrConfigRequest
+        @return: GetAsrConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_asr_config_with_options_async(request, runtime)
 
@@ -2158,6 +2626,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.GetRealTimeConcurrencyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.GetRealTimeConcurrencyResponse:
+        """
+        @param request: GetRealTimeConcurrencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRealTimeConcurrencyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2184,6 +2657,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.GetRealTimeConcurrencyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.GetRealTimeConcurrencyResponse:
+        """
+        @param request: GetRealTimeConcurrencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRealTimeConcurrencyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2209,6 +2687,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.GetRealTimeConcurrencyRequest,
     ) -> voice_navigator_20180612_models.GetRealTimeConcurrencyResponse:
+        """
+        @param request: GetRealTimeConcurrencyRequest
+        @return: GetRealTimeConcurrencyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_real_time_concurrency_with_options(request, runtime)
 
@@ -2216,6 +2698,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.GetRealTimeConcurrencyRequest,
     ) -> voice_navigator_20180612_models.GetRealTimeConcurrencyResponse:
+        """
+        @param request: GetRealTimeConcurrencyRequest
+        @return: GetRealTimeConcurrencyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_real_time_concurrency_with_options_async(request, runtime)
 
@@ -2224,6 +2710,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListChatbotInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListChatbotInstancesResponse:
+        """
+        @param request: ListChatbotInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatbotInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2250,6 +2741,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListChatbotInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListChatbotInstancesResponse:
+        """
+        @param request: ListChatbotInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListChatbotInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2275,6 +2771,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListChatbotInstancesRequest,
     ) -> voice_navigator_20180612_models.ListChatbotInstancesResponse:
+        """
+        @param request: ListChatbotInstancesRequest
+        @return: ListChatbotInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_chatbot_instances_with_options(request, runtime)
 
@@ -2282,6 +2782,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListChatbotInstancesRequest,
     ) -> voice_navigator_20180612_models.ListChatbotInstancesResponse:
+        """
+        @param request: ListChatbotInstancesRequest
+        @return: ListChatbotInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_chatbot_instances_with_options_async(request, runtime)
 
@@ -2290,6 +2794,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListConversationDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListConversationDetailsResponse:
+        """
+        @param request: ListConversationDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConversationDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2316,6 +2825,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListConversationDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListConversationDetailsResponse:
+        """
+        @param request: ListConversationDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConversationDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2341,6 +2855,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListConversationDetailsRequest,
     ) -> voice_navigator_20180612_models.ListConversationDetailsResponse:
+        """
+        @param request: ListConversationDetailsRequest
+        @return: ListConversationDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_conversation_details_with_options(request, runtime)
 
@@ -2348,6 +2866,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListConversationDetailsRequest,
     ) -> voice_navigator_20180612_models.ListConversationDetailsResponse:
+        """
+        @param request: ListConversationDetailsRequest
+        @return: ListConversationDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_conversation_details_with_options_async(request, runtime)
 
@@ -2356,6 +2878,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListConversationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListConversationsResponse:
+        """
+        @param request: ListConversationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConversationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2382,6 +2909,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListConversationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListConversationsResponse:
+        """
+        @param request: ListConversationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConversationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2407,6 +2939,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListConversationsRequest,
     ) -> voice_navigator_20180612_models.ListConversationsResponse:
+        """
+        @param request: ListConversationsRequest
+        @return: ListConversationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_conversations_with_options(request, runtime)
 
@@ -2414,6 +2950,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListConversationsRequest,
     ) -> voice_navigator_20180612_models.ListConversationsResponse:
+        """
+        @param request: ListConversationsRequest
+        @return: ListConversationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_conversations_with_options_async(request, runtime)
 
@@ -2422,6 +2962,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListDownloadTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListDownloadTasksResponse:
+        """
+        @param request: ListDownloadTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDownloadTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2448,6 +2993,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListDownloadTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListDownloadTasksResponse:
+        """
+        @param request: ListDownloadTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDownloadTasksResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2473,6 +3023,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListDownloadTasksRequest,
     ) -> voice_navigator_20180612_models.ListDownloadTasksResponse:
+        """
+        @param request: ListDownloadTasksRequest
+        @return: ListDownloadTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_download_tasks_with_options(request, runtime)
 
@@ -2480,6 +3034,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListDownloadTasksRequest,
     ) -> voice_navigator_20180612_models.ListDownloadTasksResponse:
+        """
+        @param request: ListDownloadTasksRequest
+        @return: ListDownloadTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_download_tasks_with_options_async(request, runtime)
 
@@ -2488,6 +3046,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2514,6 +3077,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2539,6 +3107,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListInstancesRequest,
     ) -> voice_navigator_20180612_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_with_options(request, runtime)
 
@@ -2546,6 +3118,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ListInstancesRequest,
     ) -> voice_navigator_20180612_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
@@ -2554,6 +3130,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyAsrConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyAsrConfigResponse:
+        """
+        @param request: ModifyAsrConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAsrConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asr_acoustic_model_id):
@@ -2592,6 +3173,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyAsrConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyAsrConfigResponse:
+        """
+        @param request: ModifyAsrConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAsrConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.asr_acoustic_model_id):
@@ -2629,6 +3215,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyAsrConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyAsrConfigResponse:
+        """
+        @param request: ModifyAsrConfigRequest
+        @return: ModifyAsrConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_asr_config_with_options(request, runtime)
 
@@ -2636,6 +3226,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyAsrConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyAsrConfigResponse:
+        """
+        @param request: ModifyAsrConfigRequest
+        @return: ModifyAsrConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_asr_config_with_options_async(request, runtime)
 
@@ -2644,6 +3238,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyGreetingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyGreetingConfigResponse:
+        """
+        @param request: ModifyGreetingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGreetingConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.greeting_words):
@@ -2678,6 +3277,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyGreetingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyGreetingConfigResponse:
+        """
+        @param request: ModifyGreetingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGreetingConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.greeting_words):
@@ -2711,6 +3315,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyGreetingConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyGreetingConfigResponse:
+        """
+        @param request: ModifyGreetingConfigRequest
+        @return: ModifyGreetingConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_greeting_config_with_options(request, runtime)
 
@@ -2718,6 +3326,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyGreetingConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyGreetingConfigResponse:
+        """
+        @param request: ModifyGreetingConfigRequest
+        @return: ModifyGreetingConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_greeting_config_with_options_async(request, runtime)
 
@@ -2726,6 +3338,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrency):
@@ -2760,6 +3377,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.concurrency):
@@ -2793,6 +3415,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyInstanceRequest,
     ) -> voice_navigator_20180612_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_with_options(request, runtime)
 
@@ -2800,6 +3426,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyInstanceRequest,
     ) -> voice_navigator_20180612_models.ModifyInstanceResponse:
+        """
+        @param request: ModifyInstanceRequest
+        @return: ModifyInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_with_options_async(request, runtime)
 
@@ -2808,6 +3438,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifySilenceTimeoutConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifySilenceTimeoutConfigResponse:
+        """
+        @param request: ModifySilenceTimeoutConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySilenceTimeoutConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.final_action):
@@ -2852,6 +3487,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifySilenceTimeoutConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifySilenceTimeoutConfigResponse:
+        """
+        @param request: ModifySilenceTimeoutConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySilenceTimeoutConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.final_action):
@@ -2895,6 +3535,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifySilenceTimeoutConfigRequest,
     ) -> voice_navigator_20180612_models.ModifySilenceTimeoutConfigResponse:
+        """
+        @param request: ModifySilenceTimeoutConfigRequest
+        @return: ModifySilenceTimeoutConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_silence_timeout_config_with_options(request, runtime)
 
@@ -2902,6 +3546,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifySilenceTimeoutConfigRequest,
     ) -> voice_navigator_20180612_models.ModifySilenceTimeoutConfigResponse:
+        """
+        @param request: ModifySilenceTimeoutConfigRequest
+        @return: ModifySilenceTimeoutConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_silence_timeout_config_with_options_async(request, runtime)
 
@@ -2910,8 +3558,15 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyTTSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyTTSConfigResponse:
+        """
+        @param request: ModifyTTSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTTSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ali_customized_voice):
+            query['AliCustomizedVoice'] = request.ali_customized_voice
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
         if not UtilClient.is_unset(request.engine):
@@ -2952,8 +3607,15 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyTTSConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyTTSConfigResponse:
+        """
+        @param request: ModifyTTSConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTTSConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ali_customized_voice):
+            query['AliCustomizedVoice'] = request.ali_customized_voice
         if not UtilClient.is_unset(request.app_key):
             query['AppKey'] = request.app_key
         if not UtilClient.is_unset(request.engine):
@@ -2993,6 +3655,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyTTSConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyTTSConfigResponse:
+        """
+        @param request: ModifyTTSConfigRequest
+        @return: ModifyTTSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_ttsconfig_with_options(request, runtime)
 
@@ -3000,6 +3666,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyTTSConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyTTSConfigResponse:
+        """
+        @param request: ModifyTTSConfigRequest
+        @return: ModifyTTSConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_ttsconfig_with_options_async(request, runtime)
 
@@ -3008,6 +3678,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyUnrecognizingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyUnrecognizingConfigResponse:
+        """
+        @param request: ModifyUnrecognizingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUnrecognizingConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.final_action):
@@ -3046,6 +3721,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.ModifyUnrecognizingConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.ModifyUnrecognizingConfigResponse:
+        """
+        @param request: ModifyUnrecognizingConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUnrecognizingConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.final_action):
@@ -3083,6 +3763,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyUnrecognizingConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyUnrecognizingConfigResponse:
+        """
+        @param request: ModifyUnrecognizingConfigRequest
+        @return: ModifyUnrecognizingConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_unrecognizing_config_with_options(request, runtime)
 
@@ -3090,6 +3774,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.ModifyUnrecognizingConfigRequest,
     ) -> voice_navigator_20180612_models.ModifyUnrecognizingConfigResponse:
+        """
+        @param request: ModifyUnrecognizingConfigRequest
+        @return: ModifyUnrecognizingConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_unrecognizing_config_with_options_async(request, runtime)
 
@@ -3098,6 +3786,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.QueryConversationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.QueryConversationsResponse:
+        """
+        @param request: QueryConversationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConversationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3124,6 +3817,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.QueryConversationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.QueryConversationsResponse:
+        """
+        @param request: QueryConversationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConversationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3149,6 +3847,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.QueryConversationsRequest,
     ) -> voice_navigator_20180612_models.QueryConversationsResponse:
+        """
+        @param request: QueryConversationsRequest
+        @return: QueryConversationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_conversations_with_options(request, runtime)
 
@@ -3156,6 +3858,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.QueryConversationsRequest,
     ) -> voice_navigator_20180612_models.QueryConversationsResponse:
+        """
+        @param request: QueryConversationsRequest
+        @return: QueryConversationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_conversations_with_options_async(request, runtime)
 
@@ -3164,6 +3870,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.SaveRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.SaveRecordingResponse:
+        """
+        @param request: SaveRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -3208,6 +3919,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.SaveRecordingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.SaveRecordingResponse:
+        """
+        @param request: SaveRecordingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveRecordingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -3251,6 +3967,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.SaveRecordingRequest,
     ) -> voice_navigator_20180612_models.SaveRecordingResponse:
+        """
+        @param request: SaveRecordingRequest
+        @return: SaveRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_recording_with_options(request, runtime)
 
@@ -3258,6 +3978,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.SaveRecordingRequest,
     ) -> voice_navigator_20180612_models.SaveRecordingResponse:
+        """
+        @param request: SaveRecordingRequest
+        @return: SaveRecordingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_recording_with_options_async(request, runtime)
 
@@ -3266,6 +3990,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.SilenceTimeoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.SilenceTimeoutResponse:
+        """
+        @param request: SilenceTimeoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SilenceTimeoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -3300,6 +4029,11 @@ class Client(OpenApiClient):
         request: voice_navigator_20180612_models.SilenceTimeoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> voice_navigator_20180612_models.SilenceTimeoutResponse:
+        """
+        @param request: SilenceTimeoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SilenceTimeoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.conversation_id):
@@ -3333,6 +4067,10 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.SilenceTimeoutRequest,
     ) -> voice_navigator_20180612_models.SilenceTimeoutResponse:
+        """
+        @param request: SilenceTimeoutRequest
+        @return: SilenceTimeoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.silence_timeout_with_options(request, runtime)
 
@@ -3340,5 +4078,9 @@ class Client(OpenApiClient):
         self,
         request: voice_navigator_20180612_models.SilenceTimeoutRequest,
     ) -> voice_navigator_20180612_models.SilenceTimeoutResponse:
+        """
+        @param request: SilenceTimeoutRequest
+        @return: SilenceTimeoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.silence_timeout_with_options_async(request, runtime)
