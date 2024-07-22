@@ -188,6 +188,133 @@ class AddServiceSharedAccountsResponse(TeaModel):
         return self
 
 
+class ApproveServiceUsageRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        comments: str = None,
+        region_id: str = None,
+        service_id: str = None,
+        type: int = None,
+        user_ali_uid: int = None,
+    ):
+        self.client_token = client_token
+        self.comments = comments
+        self.region_id = region_id
+        # This parameter is required.
+        self.service_id = service_id
+        self.type = type
+        # This parameter is required.
+        self.user_ali_uid = user_ali_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_ali_uid is not None:
+            result['UserAliUid'] = self.user_ali_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserAliUid') is not None:
+            self.user_ali_uid = m.get('UserAliUid')
+        return self
+
+
+class ApproveServiceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ApproveServiceUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApproveServiceUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApproveServiceUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ContinueDeployServiceInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -1844,6 +1971,116 @@ class CreateServiceInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateServiceInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateServiceUsageRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        service_id: str = None,
+    ):
+        self.client_token = client_token
+        # The region ID.
+        self.region_id = region_id
+        # This parameter is required.
+        self.service_id = service_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class CreateServiceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateServiceUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateServiceUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateServiceUsageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7045,6 +7282,82 @@ class ListArtifactsResponse(TeaModel):
         return self
 
 
+class ListServiceCategoriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        categories: List[str] = None,
+        request_id: str = None,
+    ):
+        # The category list of the service.
+        self.categories = categories
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.categories is not None:
+            result['Categories'] = self.categories
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Categories') is not None:
+            self.categories = m.get('Categories')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListServiceCategoriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListServiceCategoriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListServiceCategoriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServiceInstancesRequestFilter(TeaModel):
     def __init__(
         self,
@@ -9190,6 +9503,127 @@ class RegisterServiceResponse(TeaModel):
         return self
 
 
+class RejectServiceUsageRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        comments: str = None,
+        service_id: str = None,
+        type: int = None,
+        user_ali_uid: int = None,
+    ):
+        self.client_token = client_token
+        self.comments = comments
+        # This parameter is required.
+        self.service_id = service_id
+        self.type = type
+        # This parameter is required.
+        self.user_ali_uid = user_ali_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.comments is not None:
+            result['Comments'] = self.comments
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_ali_uid is not None:
+            result['UserAliUid'] = self.user_ali_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Comments') is not None:
+            self.comments = m.get('Comments')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserAliUid') is not None:
+            self.user_ali_uid = m.get('UserAliUid')
+        return self
+
+
+class RejectServiceUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RejectServiceUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RejectServiceUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RejectServiceUsageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseArtifactRequest(TeaModel):
     def __init__(
         self,
@@ -10059,7 +10493,9 @@ class UpdateServiceRequestCommodityComponentsMappings(TeaModel):
         mappings: str = None,
         template_name: str = None,
     ):
+        # This parameter is not publicly accessible.
         self.mappings = mappings
+        # This parameter is not publicly accessible.
         self.template_name = template_name
 
     def validate(self):
@@ -10094,9 +10530,18 @@ class UpdateServiceRequestCommodityMeteringEntityExtraInfos(TeaModel):
         promql: str = None,
         type: str = None,
     ):
+        # The ID of the entity.
         self.entity_id = entity_id
+        # Metric Name, filled in when Type is ComputeNestBill or ComputeNestPrometheus
         self.metric_name = metric_name
+        # Custom prometheus query
         self.promql = promql
+        # Type, value：
+        # 
+        # * **Custom**\
+        # * **ComputeNestBill**\
+        # * **ComputeNestPrometheus**\
+        # * **ComputeNestTime**\
         self.type = type
 
     def validate(self):
@@ -10138,8 +10583,11 @@ class UpdateServiceRequestCommodityMeteringEntityMappings(TeaModel):
         specification_name: str = None,
         template_name: str = None,
     ):
+        # The ID of the entity.
         self.entity_ids = entity_ids
+        # The package name.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -10177,8 +10625,11 @@ class UpdateServiceRequestCommoditySpecificationMappings(TeaModel):
         specification_name: str = None,
         template_name: str = None,
     ):
+        # Specification code.
         self.specification_code = specification_code
+        # The package name.
         self.specification_name = specification_name
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -10218,10 +10669,15 @@ class UpdateServiceRequestCommodity(TeaModel):
         saas_boost_config: str = None,
         specification_mappings: List[UpdateServiceRequestCommoditySpecificationMappings] = None,
     ):
+        # This parameter is not publicly accessible.
         self.components_mappings = components_mappings
+        # Metering Item Configuration Information (Cloud Marketplace - Pay-As-You-Go Use)
         self.metering_entity_extra_infos = metering_entity_extra_infos
+        # Product Specifications and Template/specification mapping Relationships (Cloud Marketplace - Pay-As-You-Go Use)
         self.metering_entity_mappings = metering_entity_mappings
+        # Saas boost config information
         self.saas_boost_config = saas_boost_config
+        # Product Specifications and Template/specification mapping Relationships (Cloud Marketplace - Subscription/Permanent Use)
         self.specification_mappings = specification_mappings
 
     def validate(self):
@@ -10473,6 +10929,7 @@ class UpdateServiceRequest(TeaModel):
         self.approval_type = approval_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Bind Commodity Information
         self.commodity = commodity
         # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata
@@ -10822,6 +11279,7 @@ class UpdateServiceShrinkRequest(TeaModel):
         self.approval_type = approval_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Bind Commodity Information
         self.commodity_shrink = commodity_shrink
         # The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
         self.deploy_metadata = deploy_metadata

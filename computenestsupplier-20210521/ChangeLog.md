@@ -1,3 +1,10 @@
+2024-07-22 Version: 2.5.0
+- Support API ApproveServiceUsage.
+- Support API CreateServiceUsage.
+- Support API ListServiceCategories.
+- Support API RejectServiceUsage.
+
+
 2024-07-18 Version: 2.4.4
 - Update API GetServiceInstance: update response param.
 
