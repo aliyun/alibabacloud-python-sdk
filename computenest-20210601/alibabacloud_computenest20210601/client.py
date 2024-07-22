@@ -41,6 +41,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def cancel_service_usage_with_options(
+        self,
+        request: compute_nest_20210601_models.CancelServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CancelServiceUsageResponse:
+        """
+        @summary 用户取消服务使用请求
+        
+        @param request: CancelServiceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelServiceUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.need_delete):
+            query['NeedDelete'] = request.need_delete
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelServiceUsage',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CancelServiceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_service_usage_with_options_async(
+        self,
+        request: compute_nest_20210601_models.CancelServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CancelServiceUsageResponse:
+        """
+        @summary 用户取消服务使用请求
+        
+        @param request: CancelServiceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelServiceUsageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.need_delete):
+            query['NeedDelete'] = request.need_delete
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelServiceUsage',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CancelServiceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_service_usage(
+        self,
+        request: compute_nest_20210601_models.CancelServiceUsageRequest,
+    ) -> compute_nest_20210601_models.CancelServiceUsageResponse:
+        """
+        @summary 用户取消服务使用请求
+        
+        @param request: CancelServiceUsageRequest
+        @return: CancelServiceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_service_usage_with_options(request, runtime)
+
+    async def cancel_service_usage_async(
+        self,
+        request: compute_nest_20210601_models.CancelServiceUsageRequest,
+    ) -> compute_nest_20210601_models.CancelServiceUsageResponse:
+        """
+        @summary 用户取消服务使用请求
+        
+        @param request: CancelServiceUsageRequest
+        @return: CancelServiceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_service_usage_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: compute_nest_20210601_models.ChangeResourceGroupRequest,
@@ -448,6 +552,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_instance_with_options_async(request, runtime)
+
+    def create_service_usage_with_options(
+        self,
+        tmp_req: compute_nest_20210601_models.CreateServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CreateServiceUsageResponse:
+        """
+        @summary 用户创建服务使用请求
+        
+        @param tmp_req: CreateServiceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceUsageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.CreateServiceUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_information):
+            request.user_information_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_information, 'UserInformation', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_information_shrink):
+            query['UserInformation'] = request.user_information_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceUsage',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CreateServiceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_usage_with_options_async(
+        self,
+        tmp_req: compute_nest_20210601_models.CreateServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CreateServiceUsageResponse:
+        """
+        @summary 用户创建服务使用请求
+        
+        @param tmp_req: CreateServiceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceUsageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.CreateServiceUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_information):
+            request.user_information_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_information, 'UserInformation', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_information_shrink):
+            query['UserInformation'] = request.user_information_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateServiceUsage',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CreateServiceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_usage(
+        self,
+        request: compute_nest_20210601_models.CreateServiceUsageRequest,
+    ) -> compute_nest_20210601_models.CreateServiceUsageResponse:
+        """
+        @summary 用户创建服务使用请求
+        
+        @param request: CreateServiceUsageRequest
+        @return: CreateServiceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_service_usage_with_options(request, runtime)
+
+    async def create_service_usage_async(
+        self,
+        request: compute_nest_20210601_models.CreateServiceUsageRequest,
+    ) -> compute_nest_20210601_models.CreateServiceUsageResponse:
+        """
+        @summary 用户创建服务使用请求
+        
+        @param request: CreateServiceUsageRequest
+        @return: CreateServiceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_service_usage_with_options_async(request, runtime)
 
     def delete_service_instances_with_options(
         self,
@@ -1181,6 +1397,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_service_template_parameter_constraints_with_options_async(request, runtime)
 
+    def list_service_categories_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceCategoriesResponse:
+        """
+        @summary 查询服务类别
+        
+        @param request: ListServiceCategoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceCategoriesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListServiceCategories',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceCategoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_categories_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceCategoriesResponse:
+        """
+        @summary 查询服务类别
+        
+        @param request: ListServiceCategoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceCategoriesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListServiceCategories',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceCategoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_categories(self) -> compute_nest_20210601_models.ListServiceCategoriesResponse:
+        """
+        @summary 查询服务类别
+        
+        @return: ListServiceCategoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_categories_with_options(runtime)
+
+    async def list_service_categories_async(self) -> compute_nest_20210601_models.ListServiceCategoriesResponse:
+        """
+        @summary 查询服务类别
+        
+        @return: ListServiceCategoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_categories_with_options_async(runtime)
+
     def list_service_instance_logs_with_options(
         self,
         request: compute_nest_20210601_models.ListServiceInstanceLogsRequest,
@@ -1544,6 +1834,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_instances_with_options_async(request, runtime)
+
+    def list_service_usages_with_options(
+        self,
+        request: compute_nest_20210601_models.ListServiceUsagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceUsagesResponse:
+        """
+        @summary 用户查询服务使用申请接口
+        
+        @param request: ListServiceUsagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceUsagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceUsages',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceUsagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_usages_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListServiceUsagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceUsagesResponse:
+        """
+        @summary 用户查询服务使用申请接口
+        
+        @param request: ListServiceUsagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceUsagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceUsages',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceUsagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_usages(
+        self,
+        request: compute_nest_20210601_models.ListServiceUsagesRequest,
+    ) -> compute_nest_20210601_models.ListServiceUsagesResponse:
+        """
+        @summary 用户查询服务使用申请接口
+        
+        @param request: ListServiceUsagesRequest
+        @return: ListServiceUsagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_usages_with_options(request, runtime)
+
+    async def list_service_usages_async(
+        self,
+        request: compute_nest_20210601_models.ListServiceUsagesRequest,
+    ) -> compute_nest_20210601_models.ListServiceUsagesResponse:
+        """
+        @summary 用户查询服务使用申请接口
+        
+        @param request: ListServiceUsagesRequest
+        @return: ListServiceUsagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_usages_with_options_async(request, runtime)
 
     def list_tag_keys_with_options(
         self,
@@ -2380,3 +2774,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_service_instance_spec_with_options_async(request, runtime)
+
+    def update_service_usage_with_options(
+        self,
+        tmp_req: compute_nest_20210601_models.UpdateServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpdateServiceUsageResponse:
+        """
+        @summary 用户更新服务使用请求
+        
+        @param tmp_req: UpdateServiceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceUsageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.UpdateServiceUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_information):
+            request.user_information_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_information, 'UserInformation', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_information_shrink):
+            query['UserInformation'] = request.user_information_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceUsage',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpdateServiceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_usage_with_options_async(
+        self,
+        tmp_req: compute_nest_20210601_models.UpdateServiceUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpdateServiceUsageResponse:
+        """
+        @summary 用户更新服务使用请求
+        
+        @param tmp_req: UpdateServiceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceUsageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.UpdateServiceUsageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_information):
+            request.user_information_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_information, 'UserInformation', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.user_information_shrink):
+            query['UserInformation'] = request.user_information_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceUsage',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpdateServiceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_usage(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceUsageRequest,
+    ) -> compute_nest_20210601_models.UpdateServiceUsageResponse:
+        """
+        @summary 用户更新服务使用请求
+        
+        @param request: UpdateServiceUsageRequest
+        @return: UpdateServiceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_service_usage_with_options(request, runtime)
+
+    async def update_service_usage_async(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceUsageRequest,
+    ) -> compute_nest_20210601_models.UpdateServiceUsageResponse:
+        """
+        @summary 用户更新服务使用请求
+        
+        @param request: UpdateServiceUsageRequest
+        @return: UpdateServiceUsageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_service_usage_with_options_async(request, runtime)
