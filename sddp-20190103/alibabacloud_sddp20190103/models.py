@@ -6157,6 +6157,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         path: str = None,
         product_code: str = None,
         product_id: int = None,
+        region_id: str = None,
         region_name: str = None,
         rule_list: List[DescribeDataObjectsResponseBodyItemsRuleList] = None,
         sensitive_count: int = None,
@@ -6176,6 +6177,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         self.path = path
         self.product_code = product_code
         self.product_id = product_id
+        self.region_id = region_id
         self.region_name = region_name
         self.rule_list = rule_list
         self.sensitive_count = sensitive_count
@@ -6227,6 +6229,8 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.region_name is not None:
             result['RegionName'] = self.region_name
         result['RuleList'] = []
@@ -6272,6 +6276,8 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RegionName') is not None:
             self.region_name = m.get('RegionName')
         self.rule_list = []
