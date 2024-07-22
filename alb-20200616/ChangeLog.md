@@ -1,3 +1,7 @@
+2024-07-22 Version: 1.2.1
+- Update API GetLoadBalancerAttribute: update response param.
+
+
 2024-06-18 Version: 1.2.0
 - Support API LoadBalancerJoinSecurityGroup.
 - Support API LoadBalancerLeaveSecurityGroup.
