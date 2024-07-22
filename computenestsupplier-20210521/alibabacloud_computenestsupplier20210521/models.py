@@ -8079,6 +8079,268 @@ class ListServiceInstancesResponse(TeaModel):
         return self
 
 
+class ListServiceSharedAccountsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: List[str] = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListServiceSharedAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        filter: List[ListServiceSharedAccountsRequestFilter] = None,
+        max_results: int = None,
+        next_token: str = None,
+        permission: str = None,
+        region_id: str = None,
+        service_id: str = None,
+    ):
+        self.filter = filter
+        self.max_results = max_results
+        self.next_token = next_token
+        self.permission = permission
+        # This parameter is required.
+        self.region_id = region_id
+        self.service_id = service_id
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.permission is not None:
+            result['Permission'] = self.permission
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = ListServiceSharedAccountsRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Permission') is not None:
+            self.permission = m.get('Permission')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        return self
+
+
+class ListServiceSharedAccountsResponseBodyShareAccount(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        logo: str = None,
+        name: str = None,
+        permission: str = None,
+        service_id: str = None,
+        update_time: str = None,
+        user_ali_uid: str = None,
+    ):
+        self.create_time = create_time
+        self.logo = logo
+        self.name = name
+        self.permission = permission
+        self.service_id = service_id
+        self.update_time = update_time
+        self.user_ali_uid = user_ali_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.logo is not None:
+            result['Logo'] = self.logo
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.permission is not None:
+            result['Permission'] = self.permission
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_ali_uid is not None:
+            result['UserAliUid'] = self.user_ali_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Logo') is not None:
+            self.logo = m.get('Logo')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Permission') is not None:
+            self.permission = m.get('Permission')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserAliUid') is not None:
+            self.user_ali_uid = m.get('UserAliUid')
+        return self
+
+
+class ListServiceSharedAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        share_account: List[ListServiceSharedAccountsResponseBodyShareAccount] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.share_account = share_account
+        self.total_count = total_count
+
+    def validate(self):
+        if self.share_account:
+            for k in self.share_account:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ShareAccount'] = []
+        if self.share_account is not None:
+            for k in self.share_account:
+                result['ShareAccount'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.share_account = []
+        if m.get('ShareAccount') is not None:
+            for k in m.get('ShareAccount'):
+                temp_model = ListServiceSharedAccountsResponseBodyShareAccount()
+                self.share_account.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListServiceSharedAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListServiceSharedAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListServiceSharedAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServiceUsagesRequestFilter(TeaModel):
     def __init__(
         self,
@@ -9782,6 +10044,128 @@ class ReleaseArtifactResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReleaseArtifactResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RemoveServiceSharedAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        service_id: str = None,
+        type: str = None,
+        user_ali_uids: List[int] = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.service_id = service_id
+        self.type = type
+        # This parameter is required.
+        self.user_ali_uids = user_ali_uids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_ali_uids is not None:
+            result['UserAliUids'] = self.user_ali_uids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserAliUids') is not None:
+            self.user_ali_uids = m.get('UserAliUids')
+        return self
+
+
+class RemoveServiceSharedAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveServiceSharedAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveServiceSharedAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveServiceSharedAccountsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

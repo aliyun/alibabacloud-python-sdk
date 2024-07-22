@@ -2799,6 +2799,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_service_instances_with_options_async(request, runtime)
 
+    def list_service_shared_accounts_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceSharedAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
+        """
+        @param request: ListServiceSharedAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceSharedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.permission):
+            query['Permission'] = request.permission
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceSharedAccounts',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_shared_accounts_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceSharedAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
+        """
+        @param request: ListServiceSharedAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceSharedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.permission):
+            query['Permission'] = request.permission
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceSharedAccounts',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_shared_accounts(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceSharedAccountsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
+        """
+        @param request: ListServiceSharedAccountsRequest
+        @return: ListServiceSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_shared_accounts_with_options(request, runtime)
+
+    async def list_service_shared_accounts_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceSharedAccountsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListServiceSharedAccountsResponse:
+        """
+        @param request: ListServiceSharedAccountsRequest
+        @return: ListServiceSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_shared_accounts_with_options_async(request, runtime)
+
     def list_service_usages_with_options(
         self,
         request: compute_nest_supplier_20210521_models.ListServiceUsagesRequest,
@@ -3542,6 +3650,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.release_artifact_with_options_async(request, runtime)
+
+    def remove_service_shared_accounts_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
+        """
+        @param request: RemoveServiceSharedAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveServiceSharedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_ali_uids):
+            query['UserAliUids'] = request.user_ali_uids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveServiceSharedAccounts',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_service_shared_accounts_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
+        """
+        @param request: RemoveServiceSharedAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveServiceSharedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_ali_uids):
+            query['UserAliUids'] = request.user_ali_uids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveServiceSharedAccounts',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_service_shared_accounts(
+        self,
+        request: compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsRequest,
+    ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
+        """
+        @param request: RemoveServiceSharedAccountsRequest
+        @return: RemoveServiceSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_service_shared_accounts_with_options(request, runtime)
+
+    async def remove_service_shared_accounts_async(
+        self,
+        request: compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsRequest,
+    ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
+        """
+        @param request: RemoveServiceSharedAccountsRequest
+        @return: RemoveServiceSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_service_shared_accounts_with_options_async(request, runtime)
 
     def restart_service_instance_with_options(
         self,

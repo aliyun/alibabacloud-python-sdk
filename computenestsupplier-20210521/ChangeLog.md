@@ -1,3 +1,8 @@
+2024-07-22 Version: 2.6.0
+- Support API ListServiceSharedAccounts.
+- Support API RemoveServiceSharedAccounts.
+
+
 2024-07-22 Version: 2.5.0
 - Support API ApproveServiceUsage.
 - Support API CreateServiceUsage.
