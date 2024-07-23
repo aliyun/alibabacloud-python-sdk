@@ -1847,8 +1847,6 @@ class SqlStatementWithContext(TeaModel):
         self,
         additional_dependencies: List[str] = None,
         batch_mode: bool = None,
-        catalog: str = None,
-        database: str = None,
         flink_configuration: Dict[str, Any] = None,
         statement: str = None,
         version_name: str = None,
@@ -1856,8 +1854,6 @@ class SqlStatementWithContext(TeaModel):
         self.additional_dependencies = additional_dependencies
         # This parameter is required.
         self.batch_mode = batch_mode
-        self.catalog = catalog
-        self.database = database
         self.flink_configuration = flink_configuration
         # This parameter is required.
         self.statement = statement
@@ -1876,10 +1872,6 @@ class SqlStatementWithContext(TeaModel):
             result['additionalDependencies'] = self.additional_dependencies
         if self.batch_mode is not None:
             result['batchMode'] = self.batch_mode
-        if self.catalog is not None:
-            result['catalog'] = self.catalog
-        if self.database is not None:
-            result['database'] = self.database
         if self.flink_configuration is not None:
             result['flinkConfiguration'] = self.flink_configuration
         if self.statement is not None:
@@ -1894,10 +1886,6 @@ class SqlStatementWithContext(TeaModel):
             self.additional_dependencies = m.get('additionalDependencies')
         if m.get('batchMode') is not None:
             self.batch_mode = m.get('batchMode')
-        if m.get('catalog') is not None:
-            self.catalog = m.get('catalog')
-        if m.get('database') is not None:
-            self.database = m.get('database')
         if m.get('flinkConfiguration') is not None:
             self.flink_configuration = m.get('flinkConfiguration')
         if m.get('statement') is not None:
@@ -2034,6 +2022,8 @@ class CreateDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2066,6 +2056,8 @@ class CreateDeploymentRequest(TeaModel):
         self,
         body: Deployment = None,
     ):
+        # The content of the deployment.
+        # 
         # This parameter is required.
         self.body = body
 
@@ -2101,11 +2093,20 @@ class CreateDeploymentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the deployment that you created was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2198,6 +2199,8 @@ class CreateMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2230,6 +2233,7 @@ class CreateMemberRequest(TeaModel):
         self,
         body: Member = None,
     ):
+        # The mappings between the ID and permissions of the member.
         self.body = body
 
     def validate(self):
@@ -2264,11 +2268,20 @@ class CreateMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, a null value was returned.
+        # *   If the value of success was true, the authorization information was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2361,6 +2374,8 @@ class CreateSavepointHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2395,9 +2410,16 @@ class CreateSavepointRequest(TeaModel):
         description: str = None,
         native_format: bool = None,
     ):
+        # The deployment ID.
+        # 
         # This parameter is required.
         self.deployment_id = deployment_id
+        # The description of the savepoint.
         self.description = description
+        # Specifies whether to use the native format mode. Valid values:
+        # 
+        # *   true: The native format mode is used.
+        # *   false: The native format mode is not used.
         self.native_format = native_format
 
     def validate(self):
@@ -2438,11 +2460,20 @@ class CreateSavepointResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the savepoint that was created was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2535,6 +2566,8 @@ class CreateVariableHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2567,6 +2600,8 @@ class CreateVariableRequest(TeaModel):
         self,
         body: Variable = None,
     ):
+        # The parameter that is used to create the variable.
+        # 
         # This parameter is required.
         self.body = body
 
@@ -2602,11 +2637,20 @@ class CreateVariableResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the variable that you created was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2699,6 +2743,8 @@ class DeleteDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2735,10 +2781,17 @@ class DeleteDeploymentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2825,6 +2878,8 @@ class DeleteJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2861,10 +2916,17 @@ class DeleteJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2951,6 +3013,8 @@ class DeleteMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -2987,10 +3051,17 @@ class DeleteMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3077,6 +3148,8 @@ class DeleteSavepointHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -3113,10 +3186,17 @@ class DeleteSavepointResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3203,6 +3283,8 @@ class DeleteVariableHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -3239,10 +3321,17 @@ class DeleteVariableResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3329,6 +3418,8 @@ class FlinkApiProxyHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -3364,12 +3455,23 @@ class FlinkApiProxyRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The path of the Flink UI.
+        # 
         # This parameter is required.
         self.flink_api_path = flink_api_path
+        # The name of the namespace.
+        # 
         # This parameter is required.
         self.namespace = namespace
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   jobs
+        # *   sessionclusters
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -3415,11 +3517,20 @@ class FlinkApiProxyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the result of the proxy request was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3510,6 +3621,8 @@ class GenerateResourcePlanWithFlinkConfAsyncHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -3542,6 +3655,7 @@ class GenerateResourcePlanWithFlinkConfAsyncRequest(TeaModel):
         self,
         body: Dict[str, Any] = None,
     ):
+        # The Flink configuration that is used to generate a resource plan.
         self.body = body
 
     def validate(self):
@@ -3569,6 +3683,7 @@ class GenerateResourcePlanWithFlinkConfAsyncResponseBodyData(TeaModel):
         self,
         ticket_id: str = None,
     ):
+        # The ID of the ticket for you to query the asynchronous generation result.
         self.ticket_id = ticket_id
 
     def validate(self):
@@ -3601,11 +3716,20 @@ class GenerateResourcePlanWithFlinkConfAsyncResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the asynchronous generation result was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3698,6 +3822,8 @@ class GetDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -3735,11 +3861,20 @@ class GetDeploymentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the details of the deployment were returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3832,6 +3967,8 @@ class GetGenerateResourcePlanResultHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -3869,11 +4006,20 @@ class GetGenerateResourcePlanResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the asynchronous generation result was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3966,6 +4112,8 @@ class GetJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -4003,11 +4151,20 @@ class GetJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the details of the job was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -4093,6 +4250,146 @@ class GetJobResponse(TeaModel):
         return self
 
 
+class GetLatestJobStartLogHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # The workspace ID.
+        # 
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetLatestJobStartLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # If the value of success was false, the latest logs of the deployment were returned. If the value of success was true, a null value was returned.
+        self.data = data
+        # If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+        self.error_code = error_code
+        # If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+        self.error_message = error_message
+        # The status code returned. The value was fixed to 200.
+        self.http_code = http_code
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetLatestJobStartLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLatestJobStartLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLatestJobStartLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMemberHeaders(TeaModel):
     def __init__(
         self,
@@ -4100,6 +4397,8 @@ class GetMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -4137,11 +4436,20 @@ class GetMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was false, a null value was returned.
+        # *   If the value of success was true, the authorization information was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -4234,6 +4542,8 @@ class GetSavepointHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -4271,11 +4581,20 @@ class GetSavepointResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the savepoint information was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -4368,6 +4687,8 @@ class ListDeploymentTargetsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -4401,7 +4722,9 @@ class ListDeploymentTargetsRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -4441,14 +4764,26 @@ class ListDeploymentTargetsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # *   If the value of success was true, a list of clusters in which the deployment is deployed was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -4559,6 +4894,8 @@ class ListDeploymentsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -4599,14 +4936,36 @@ class ListDeploymentsRequest(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The ID of the user who creates the deployment.
         self.creator = creator
+        # The execution mode of the deployment.
+        # 
+        # Valid values:
+        # 
+        # *   BATCH
+        # *   STREAMING
         self.execution_mode = execution_mode
+        # The tag key.
         self.label_key = label_key
+        # The tag value. Separate multiple values with semicolon (;).
         self.label_value_array = label_value_array
+        # The ID of the user who modifies the deployment.
         self.modifier = modifier
+        # The name of the deployment.
         self.name = name
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The latest status of the deployment.
+        # 
+        # Valid values:
+        # 
+        # *   CANCELLED
+        # *   FAILED
+        # *   RUNNING
+        # *   TRANSITIONING
+        # *   FINISHED
         self.status = status
 
     def validate(self):
@@ -4674,14 +5033,26 @@ class ListDeploymentsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # *   If the value of success was true, the list of all deployments was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -4997,6 +5368,8 @@ class ListEngineVersionMetadataHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -5034,11 +5407,20 @@ class ListEngineVersionMetadataResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the engine versions that are supported by Realtime Compute for Apache Flink were returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -5131,6 +5513,8 @@ class ListJobsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -5166,10 +5550,21 @@ class ListJobsRequest(TeaModel):
         page_size: int = None,
         sort_name: str = None,
     ):
+        # The deployment ID.
+        # 
         # This parameter is required.
         self.deployment_id = deployment_id
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The collation.
+        # 
+        # Valid values:
+        # 
+        # *   gmt_create
+        # *   job_id
+        # *   status
         self.sort_name = sort_name
 
     def validate(self):
@@ -5217,14 +5612,26 @@ class ListJobsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # *   If the value of success was true, all jobs that meet the condition were returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -5335,6 +5742,8 @@ class ListMembersHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -5368,7 +5777,9 @@ class ListMembersRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -5408,14 +5819,26 @@ class ListMembersResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # *   If the value of success was false, a null value was returned.
+        # *   If the value of success was true, the authorization information was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -5526,6 +5949,8 @@ class ListSavepointsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -5561,9 +5986,13 @@ class ListSavepointsRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The deployment ID. This parameter is optional.
         self.deployment_id = deployment_id
+        # The job ID. This parameter is optional.
         self.job_id = job_id
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -5611,14 +6040,26 @@ class ListSavepointsResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # *   If the value of success was true, a list of savepoints was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -5729,6 +6170,8 @@ class ListVariablesHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -5762,7 +6205,9 @@ class ListVariablesRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -5802,14 +6247,26 @@ class ListVariablesResponseBody(TeaModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # *   If the value of success was true, a list of variables was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -6084,6 +6541,8 @@ class StartJobWithParamsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -6116,6 +6575,7 @@ class StartJobWithParamsRequest(TeaModel):
         self,
         body: JobStartParameters = None,
     ):
+        # The parameter that is used to start the job.
         self.body = body
 
     def validate(self):
@@ -6150,11 +6610,17 @@ class StartJobWithParamsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the job of the deployment returned.
         self.data = data
+        # If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -6247,6 +6713,8 @@ class StopJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -6279,6 +6747,8 @@ class StopJobRequest(TeaModel):
         self,
         body: StopJobRequestBody = None,
     ):
+        # The parameter that is used to stop the job.
+        # 
         # This parameter is required.
         self.body = body
 
@@ -6314,11 +6784,20 @@ class StopJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the job that you stopped was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -6411,6 +6890,8 @@ class UpdateDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -6443,6 +6924,8 @@ class UpdateDeploymentRequest(TeaModel):
         self,
         body: Deployment = None,
     ):
+        # The information about the deployment that you want to update.
+        # 
         # This parameter is required.
         self.body = body
 
@@ -6478,11 +6961,20 @@ class UpdateDeploymentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the information about the deployment after the update was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -6575,6 +7067,8 @@ class UpdateMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -6607,6 +7101,7 @@ class UpdateMemberRequest(TeaModel):
         self,
         body: Member = None,
     ):
+        # The permission information about the member.
         self.body = body
 
     def validate(self):
@@ -6641,11 +7136,19 @@ class UpdateMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # If the value of success was true, the member that was created was returned. If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -6727,6 +7230,180 @@ class UpdateMemberResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValidateSqlStatementHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # The workspace ID.
+        # 
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ValidateSqlStatementRequest(TeaModel):
+    def __init__(
+        self,
+        body: SqlStatementWithContext = None,
+    ):
+        # The content of the code that you want to verify.
+        # 
+        # This parameter is required.
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SqlStatementWithContext()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValidateSqlStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SqlStatementValidationResult = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The returned data, which represents the details of SQL validation results.
+        self.data = data
+        # If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+        self.error_code = error_code
+        # If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+        self.error_message = error_message
+        # The status code returned. The value was fixed to 200.
+        self.http_code = http_code
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SqlStatementValidationResult()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ValidateSqlStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ValidateSqlStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ValidateSqlStatementResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -49,7 +49,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateDeploymentResponse:
         """
-        @summary create a deployment
+        @summary Creates a deployment.
         
         @param request: CreateDeploymentRequest
         @param headers: CreateDeploymentHeaders
@@ -90,7 +90,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateDeploymentResponse:
         """
-        @summary create a deployment
+        @summary Creates a deployment.
         
         @param request: CreateDeploymentRequest
         @param headers: CreateDeploymentHeaders
@@ -129,7 +129,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateDeploymentRequest,
     ) -> ververica_20220718_models.CreateDeploymentResponse:
         """
-        @summary create a deployment
+        @summary Creates a deployment.
         
         @param request: CreateDeploymentRequest
         @return: CreateDeploymentResponse
@@ -144,7 +144,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateDeploymentRequest,
     ) -> ververica_20220718_models.CreateDeploymentResponse:
         """
-        @summary create a deployment
+        @summary Creates a deployment.
         
         @param request: CreateDeploymentRequest
         @return: CreateDeploymentResponse
@@ -161,7 +161,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateMemberResponse:
         """
-        @summary 调用CreateMember创建成员。
+        @summary Adds a user to a namespace as a member and grants permissions to the user.
         
         @param request: CreateMemberRequest
         @param headers: CreateMemberHeaders
@@ -202,7 +202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateMemberResponse:
         """
-        @summary 调用CreateMember创建成员。
+        @summary Adds a user to a namespace as a member and grants permissions to the user.
         
         @param request: CreateMemberRequest
         @param headers: CreateMemberHeaders
@@ -241,7 +241,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateMemberRequest,
     ) -> ververica_20220718_models.CreateMemberResponse:
         """
-        @summary 调用CreateMember创建成员。
+        @summary Adds a user to a namespace as a member and grants permissions to the user.
         
         @param request: CreateMemberRequest
         @return: CreateMemberResponse
@@ -256,7 +256,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateMemberRequest,
     ) -> ververica_20220718_models.CreateMemberResponse:
         """
-        @summary 调用CreateMember创建成员。
+        @summary Adds a user to a namespace as a member and grants permissions to the user.
         
         @param request: CreateMemberRequest
         @return: CreateMemberResponse
@@ -273,7 +273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateSavepointResponse:
         """
-        @summary 调用CreateSavepoint触发一次savepoint。
+        @summary Creates a savepoint.
         
         @param request: CreateSavepointRequest
         @param headers: CreateSavepointHeaders
@@ -321,7 +321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateSavepointResponse:
         """
-        @summary 调用CreateSavepoint触发一次savepoint。
+        @summary Creates a savepoint.
         
         @param request: CreateSavepointRequest
         @param headers: CreateSavepointHeaders
@@ -367,7 +367,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateSavepointRequest,
     ) -> ververica_20220718_models.CreateSavepointResponse:
         """
-        @summary 调用CreateSavepoint触发一次savepoint。
+        @summary Creates a savepoint.
         
         @param request: CreateSavepointRequest
         @return: CreateSavepointResponse
@@ -382,7 +382,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateSavepointRequest,
     ) -> ververica_20220718_models.CreateSavepointResponse:
         """
-        @summary 调用CreateSavepoint触发一次savepoint。
+        @summary Creates a savepoint.
         
         @param request: CreateSavepointRequest
         @return: CreateSavepointResponse
@@ -399,7 +399,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateVariableResponse:
         """
-        @summary 调用CreateVariable创建变量。
+        @summary Creates a variable.
         
         @param request: CreateVariableRequest
         @param headers: CreateVariableHeaders
@@ -440,7 +440,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.CreateVariableResponse:
         """
-        @summary 调用CreateVariable创建变量。
+        @summary Creates a variable.
         
         @param request: CreateVariableRequest
         @param headers: CreateVariableHeaders
@@ -479,7 +479,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateVariableRequest,
     ) -> ververica_20220718_models.CreateVariableResponse:
         """
-        @summary 调用CreateVariable创建变量。
+        @summary Creates a variable.
         
         @param request: CreateVariableRequest
         @return: CreateVariableResponse
@@ -494,7 +494,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.CreateVariableRequest,
     ) -> ververica_20220718_models.CreateVariableResponse:
         """
-        @summary 调用CreateVariable创建变量。
+        @summary Creates a variable.
         
         @param request: CreateVariableRequest
         @return: CreateVariableResponse
@@ -511,7 +511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteDeploymentResponse:
         """
-        @summary delete deployment
+        @summary Deletes a deployment based on the deployment ID.
         
         @param headers: DeleteDeploymentHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -549,7 +549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteDeploymentResponse:
         """
-        @summary delete deployment
+        @summary Deletes a deployment based on the deployment ID.
         
         @param headers: DeleteDeploymentHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -585,7 +585,7 @@ class Client(OpenApiClient):
         deployment_id: str,
     ) -> ververica_20220718_models.DeleteDeploymentResponse:
         """
-        @summary delete deployment
+        @summary Deletes a deployment based on the deployment ID.
         
         @return: DeleteDeploymentResponse
         """
@@ -599,7 +599,7 @@ class Client(OpenApiClient):
         deployment_id: str,
     ) -> ververica_20220718_models.DeleteDeploymentResponse:
         """
-        @summary delete deployment
+        @summary Deletes a deployment based on the deployment ID.
         
         @return: DeleteDeploymentResponse
         """
@@ -615,7 +615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteJobResponse:
         """
-        @summary delete job
+        @summary Deletes the information about a job that is not in the running state in a deployment.
         
         @param headers: DeleteJobHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -653,7 +653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteJobResponse:
         """
-        @summary delete job
+        @summary Deletes the information about a job that is not in the running state in a deployment.
         
         @param headers: DeleteJobHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -689,7 +689,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> ververica_20220718_models.DeleteJobResponse:
         """
-        @summary delete job
+        @summary Deletes the information about a job that is not in the running state in a deployment.
         
         @return: DeleteJobResponse
         """
@@ -703,7 +703,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> ververica_20220718_models.DeleteJobResponse:
         """
-        @summary delete job
+        @summary Deletes the information about a job that is not in the running state in a deployment.
         
         @return: DeleteJobResponse
         """
@@ -719,7 +719,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteMemberResponse:
         """
-        @summary 调用DeleteMember删除成员。
+        @summary Revokes the permissions from a member.
         
         @param headers: DeleteMemberHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -757,7 +757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteMemberResponse:
         """
-        @summary 调用DeleteMember删除成员。
+        @summary Revokes the permissions from a member.
         
         @param headers: DeleteMemberHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -793,7 +793,7 @@ class Client(OpenApiClient):
         member: str,
     ) -> ververica_20220718_models.DeleteMemberResponse:
         """
-        @summary 调用DeleteMember删除成员。
+        @summary Revokes the permissions from a member.
         
         @return: DeleteMemberResponse
         """
@@ -807,7 +807,7 @@ class Client(OpenApiClient):
         member: str,
     ) -> ververica_20220718_models.DeleteMemberResponse:
         """
-        @summary 调用DeleteMember删除成员。
+        @summary Revokes the permissions from a member.
         
         @return: DeleteMemberResponse
         """
@@ -823,7 +823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteSavepointResponse:
         """
-        @summary 调用DeleteSavepoint删除savepoint。
+        @summary Deletes a savepoint.
         
         @param headers: DeleteSavepointHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -861,7 +861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteSavepointResponse:
         """
-        @summary 调用DeleteSavepoint删除savepoint。
+        @summary Deletes a savepoint.
         
         @param headers: DeleteSavepointHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -897,7 +897,7 @@ class Client(OpenApiClient):
         savepoint_id: str,
     ) -> ververica_20220718_models.DeleteSavepointResponse:
         """
-        @summary 调用DeleteSavepoint删除savepoint。
+        @summary Deletes a savepoint.
         
         @return: DeleteSavepointResponse
         """
@@ -911,7 +911,7 @@ class Client(OpenApiClient):
         savepoint_id: str,
     ) -> ververica_20220718_models.DeleteSavepointResponse:
         """
-        @summary 调用DeleteSavepoint删除savepoint。
+        @summary Deletes a savepoint.
         
         @return: DeleteSavepointResponse
         """
@@ -927,7 +927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteVariableResponse:
         """
-        @summary deleta variable
+        @summary Deletes a variable.
         
         @param headers: DeleteVariableHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -965,7 +965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.DeleteVariableResponse:
         """
-        @summary deleta variable
+        @summary Deletes a variable.
         
         @param headers: DeleteVariableHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1001,7 +1001,7 @@ class Client(OpenApiClient):
         name: str,
     ) -> ververica_20220718_models.DeleteVariableResponse:
         """
-        @summary deleta variable
+        @summary Deletes a variable.
         
         @return: DeleteVariableResponse
         """
@@ -1015,7 +1015,7 @@ class Client(OpenApiClient):
         name: str,
     ) -> ververica_20220718_models.DeleteVariableResponse:
         """
-        @summary deleta variable
+        @summary Deletes a variable.
         
         @return: DeleteVariableResponse
         """
@@ -1030,7 +1030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.FlinkApiProxyResponse:
         """
-        @summary 调用FlinkApiProxy代理Flink请求。
+        @summary Provides a Flink request proxy.
         
         @param request: FlinkApiProxyRequest
         @param headers: FlinkApiProxyHeaders
@@ -1079,7 +1079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.FlinkApiProxyResponse:
         """
-        @summary 调用FlinkApiProxy代理Flink请求。
+        @summary Provides a Flink request proxy.
         
         @param request: FlinkApiProxyRequest
         @param headers: FlinkApiProxyHeaders
@@ -1126,7 +1126,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.FlinkApiProxyRequest,
     ) -> ververica_20220718_models.FlinkApiProxyResponse:
         """
-        @summary 调用FlinkApiProxy代理Flink请求。
+        @summary Provides a Flink request proxy.
         
         @param request: FlinkApiProxyRequest
         @return: FlinkApiProxyResponse
@@ -1140,7 +1140,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.FlinkApiProxyRequest,
     ) -> ververica_20220718_models.FlinkApiProxyResponse:
         """
-        @summary 调用FlinkApiProxy代理Flink请求。
+        @summary Provides a Flink request proxy.
         
         @param request: FlinkApiProxyRequest
         @return: FlinkApiProxyResponse
@@ -1158,7 +1158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse:
         """
-        @summary generate resource plan with flink conf async.
+        @summary Submits a ticket that applies for asynchronous generation of the fine-grained resources. This operation returns the ID of the ticket for you to query the asynchronous generation result.
         
         @param request: GenerateResourcePlanWithFlinkConfAsyncRequest
         @param headers: GenerateResourcePlanWithFlinkConfAsyncHeaders
@@ -1200,7 +1200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse:
         """
-        @summary generate resource plan with flink conf async.
+        @summary Submits a ticket that applies for asynchronous generation of the fine-grained resources. This operation returns the ID of the ticket for you to query the asynchronous generation result.
         
         @param request: GenerateResourcePlanWithFlinkConfAsyncRequest
         @param headers: GenerateResourcePlanWithFlinkConfAsyncHeaders
@@ -1240,7 +1240,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncRequest,
     ) -> ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse:
         """
-        @summary generate resource plan with flink conf async.
+        @summary Submits a ticket that applies for asynchronous generation of the fine-grained resources. This operation returns the ID of the ticket for you to query the asynchronous generation result.
         
         @param request: GenerateResourcePlanWithFlinkConfAsyncRequest
         @return: GenerateResourcePlanWithFlinkConfAsyncResponse
@@ -1256,7 +1256,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncRequest,
     ) -> ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncResponse:
         """
-        @summary generate resource plan with flink conf async.
+        @summary Submits a ticket that applies for asynchronous generation of the fine-grained resources. This operation returns the ID of the ticket for you to query the asynchronous generation result.
         
         @param request: GenerateResourcePlanWithFlinkConfAsyncRequest
         @return: GenerateResourcePlanWithFlinkConfAsyncResponse
@@ -1273,7 +1273,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetDeploymentResponse:
         """
-        @summary get a deployment
+        @summary Obtains the details of a deployment.
         
         @param headers: GetDeploymentHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1311,7 +1311,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetDeploymentResponse:
         """
-        @summary get a deployment
+        @summary Obtains the details of a deployment.
         
         @param headers: GetDeploymentHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1347,7 +1347,7 @@ class Client(OpenApiClient):
         deployment_id: str,
     ) -> ververica_20220718_models.GetDeploymentResponse:
         """
-        @summary get a deployment
+        @summary Obtains the details of a deployment.
         
         @return: GetDeploymentResponse
         """
@@ -1361,7 +1361,7 @@ class Client(OpenApiClient):
         deployment_id: str,
     ) -> ververica_20220718_models.GetDeploymentResponse:
         """
-        @summary get a deployment
+        @summary Obtains the details of a deployment.
         
         @return: GetDeploymentResponse
         """
@@ -1377,7 +1377,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetGenerateResourcePlanResultResponse:
         """
-        @summary 获取生成ResourcePlan异步操作的结果。
+        @summary Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
         
         @param headers: GetGenerateResourcePlanResultHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1415,7 +1415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetGenerateResourcePlanResultResponse:
         """
-        @summary 获取生成ResourcePlan异步操作的结果。
+        @summary Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
         
         @param headers: GetGenerateResourcePlanResultHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1451,7 +1451,7 @@ class Client(OpenApiClient):
         ticket_id: str,
     ) -> ververica_20220718_models.GetGenerateResourcePlanResultResponse:
         """
-        @summary 获取生成ResourcePlan异步操作的结果。
+        @summary Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
         
         @return: GetGenerateResourcePlanResultResponse
         """
@@ -1465,7 +1465,7 @@ class Client(OpenApiClient):
         ticket_id: str,
     ) -> ververica_20220718_models.GetGenerateResourcePlanResultResponse:
         """
-        @summary 获取生成ResourcePlan异步操作的结果。
+        @summary Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
         
         @return: GetGenerateResourcePlanResultResponse
         """
@@ -1481,7 +1481,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetJobResponse:
         """
-        @summary get job
+        @summary Obtains the details of a job.
         
         @param headers: GetJobHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1519,7 +1519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetJobResponse:
         """
-        @summary get job
+        @summary Obtains the details of a job.
         
         @param headers: GetJobHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1555,7 +1555,7 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> ververica_20220718_models.GetJobResponse:
         """
-        @summary get job
+        @summary Obtains the details of a job.
         
         @return: GetJobResponse
         """
@@ -1569,13 +1569,117 @@ class Client(OpenApiClient):
         job_id: str,
     ) -> ververica_20220718_models.GetJobResponse:
         """
-        @summary get job
+        @summary Obtains the details of a job.
         
         @return: GetJobResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.GetJobHeaders()
         return await self.get_job_with_options_async(namespace, job_id, headers, runtime)
+
+    def get_latest_job_start_log_with_options(
+        self,
+        namespace: str,
+        deployment_id: str,
+        headers: ververica_20220718_models.GetLatestJobStartLogHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetLatestJobStartLogResponse:
+        """
+        @summary Obtains the latest startup logs of a job.
+        
+        @param headers: GetLatestJobStartLogHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLatestJobStartLogResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetLatestJobStartLog',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/{OpenApiUtilClient.get_encode_param(deployment_id)}/latest_jobmanager_start_log',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetLatestJobStartLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_latest_job_start_log_with_options_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+        headers: ververica_20220718_models.GetLatestJobStartLogHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetLatestJobStartLogResponse:
+        """
+        @summary Obtains the latest startup logs of a job.
+        
+        @param headers: GetLatestJobStartLogHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLatestJobStartLogResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetLatestJobStartLog',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployments/{OpenApiUtilClient.get_encode_param(deployment_id)}/latest_jobmanager_start_log',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetLatestJobStartLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_latest_job_start_log(
+        self,
+        namespace: str,
+        deployment_id: str,
+    ) -> ververica_20220718_models.GetLatestJobStartLogResponse:
+        """
+        @summary Obtains the latest startup logs of a job.
+        
+        @return: GetLatestJobStartLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetLatestJobStartLogHeaders()
+        return self.get_latest_job_start_log_with_options(namespace, deployment_id, headers, runtime)
+
+    async def get_latest_job_start_log_async(
+        self,
+        namespace: str,
+        deployment_id: str,
+    ) -> ververica_20220718_models.GetLatestJobStartLogResponse:
+        """
+        @summary Obtains the latest startup logs of a job.
+        
+        @return: GetLatestJobStartLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetLatestJobStartLogHeaders()
+        return await self.get_latest_job_start_log_with_options_async(namespace, deployment_id, headers, runtime)
 
     def get_member_with_options(
         self,
@@ -1585,7 +1689,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetMemberResponse:
         """
-        @summary 调用GetMember获取成员。
+        @summary Queries the permissions of a member.
         
         @param headers: GetMemberHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1623,7 +1727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetMemberResponse:
         """
-        @summary 调用GetMember获取成员。
+        @summary Queries the permissions of a member.
         
         @param headers: GetMemberHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1659,7 +1763,7 @@ class Client(OpenApiClient):
         member: str,
     ) -> ververica_20220718_models.GetMemberResponse:
         """
-        @summary 调用GetMember获取成员。
+        @summary Queries the permissions of a member.
         
         @return: GetMemberResponse
         """
@@ -1673,7 +1777,7 @@ class Client(OpenApiClient):
         member: str,
     ) -> ververica_20220718_models.GetMemberResponse:
         """
-        @summary 调用GetMember获取成员。
+        @summary Queries the permissions of a member.
         
         @return: GetMemberResponse
         """
@@ -1689,7 +1793,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetSavepointResponse:
         """
-        @summary 调用GetSavepoint获取savepoint信息。
+        @summary Queries details of a savepoint and checkpoint.
         
         @param headers: GetSavepointHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1727,7 +1831,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.GetSavepointResponse:
         """
-        @summary 调用GetSavepoint获取savepoint信息。
+        @summary Queries details of a savepoint and checkpoint.
         
         @param headers: GetSavepointHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -1763,7 +1867,7 @@ class Client(OpenApiClient):
         savepoint_id: str,
     ) -> ververica_20220718_models.GetSavepointResponse:
         """
-        @summary 调用GetSavepoint获取savepoint信息。
+        @summary Queries details of a savepoint and checkpoint.
         
         @return: GetSavepointResponse
         """
@@ -1777,7 +1881,7 @@ class Client(OpenApiClient):
         savepoint_id: str,
     ) -> ververica_20220718_models.GetSavepointResponse:
         """
-        @summary 调用GetSavepoint获取savepoint信息。
+        @summary Queries details of a savepoint and checkpoint.
         
         @return: GetSavepointResponse
         """
@@ -1793,7 +1897,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListDeploymentTargetsResponse:
         """
-        @summary list deployment targets
+        @summary Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
         
         @param request: ListDeploymentTargetsRequest
         @param headers: ListDeploymentTargetsHeaders
@@ -1839,7 +1943,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListDeploymentTargetsResponse:
         """
-        @summary list deployment targets
+        @summary Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
         
         @param request: ListDeploymentTargetsRequest
         @param headers: ListDeploymentTargetsHeaders
@@ -1883,7 +1987,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListDeploymentTargetsRequest,
     ) -> ververica_20220718_models.ListDeploymentTargetsResponse:
         """
-        @summary list deployment targets
+        @summary Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
         
         @param request: ListDeploymentTargetsRequest
         @return: ListDeploymentTargetsResponse
@@ -1898,7 +2002,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListDeploymentTargetsRequest,
     ) -> ververica_20220718_models.ListDeploymentTargetsResponse:
         """
-        @summary list deployment targets
+        @summary Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
         
         @param request: ListDeploymentTargetsRequest
         @return: ListDeploymentTargetsResponse
@@ -1915,7 +2019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListDeploymentsResponse:
         """
-        @summary list deployments
+        @summary Obtains information about all deployments.
         
         @param request: ListDeploymentsRequest
         @param headers: ListDeploymentsHeaders
@@ -1975,7 +2079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListDeploymentsResponse:
         """
-        @summary list deployments
+        @summary Obtains information about all deployments.
         
         @param request: ListDeploymentsRequest
         @param headers: ListDeploymentsHeaders
@@ -2033,7 +2137,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListDeploymentsRequest,
     ) -> ververica_20220718_models.ListDeploymentsResponse:
         """
-        @summary list deployments
+        @summary Obtains information about all deployments.
         
         @param request: ListDeploymentsRequest
         @return: ListDeploymentsResponse
@@ -2048,7 +2152,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListDeploymentsRequest,
     ) -> ververica_20220718_models.ListDeploymentsResponse:
         """
-        @summary list deployments
+        @summary Obtains information about all deployments.
         
         @param request: ListDeploymentsRequest
         @return: ListDeploymentsResponse
@@ -2183,7 +2287,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListEngineVersionMetadataResponse:
         """
-        @summary 获取系统支持的引擎版本信息。
+        @summary Obtains a list of engine versions that are supported by Realtime Compute for Apache Flink.
         
         @param headers: ListEngineVersionMetadataHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -2219,7 +2323,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListEngineVersionMetadataResponse:
         """
-        @summary 获取系统支持的引擎版本信息。
+        @summary Obtains a list of engine versions that are supported by Realtime Compute for Apache Flink.
         
         @param headers: ListEngineVersionMetadataHeaders
         @param runtime: runtime options for this request RuntimeOptions
@@ -2251,7 +2355,7 @@ class Client(OpenApiClient):
 
     def list_engine_version_metadata(self) -> ververica_20220718_models.ListEngineVersionMetadataResponse:
         """
-        @summary 获取系统支持的引擎版本信息。
+        @summary Obtains a list of engine versions that are supported by Realtime Compute for Apache Flink.
         
         @return: ListEngineVersionMetadataResponse
         """
@@ -2261,7 +2365,7 @@ class Client(OpenApiClient):
 
     async def list_engine_version_metadata_async(self) -> ververica_20220718_models.ListEngineVersionMetadataResponse:
         """
-        @summary 获取系统支持的引擎版本信息。
+        @summary Obtains a list of engine versions that are supported by Realtime Compute for Apache Flink.
         
         @return: ListEngineVersionMetadataResponse
         """
@@ -2277,7 +2381,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListJobsResponse:
         """
-        @summary list jobs
+        @summary Queries the information about all jobs in a deployment.
         
         @param request: ListJobsRequest
         @param headers: ListJobsHeaders
@@ -2327,7 +2431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListJobsResponse:
         """
-        @summary list jobs
+        @summary Queries the information about all jobs in a deployment.
         
         @param request: ListJobsRequest
         @param headers: ListJobsHeaders
@@ -2375,7 +2479,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListJobsRequest,
     ) -> ververica_20220718_models.ListJobsResponse:
         """
-        @summary list jobs
+        @summary Queries the information about all jobs in a deployment.
         
         @param request: ListJobsRequest
         @return: ListJobsResponse
@@ -2390,7 +2494,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListJobsRequest,
     ) -> ververica_20220718_models.ListJobsResponse:
         """
-        @summary list jobs
+        @summary Queries the information about all jobs in a deployment.
         
         @param request: ListJobsRequest
         @return: ListJobsResponse
@@ -2407,7 +2511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListMembersResponse:
         """
-        @summary 调用ListMembers接口获取成员列表。
+        @summary Queries the mappings between the ID and permissions of a member in a specific namespace.
         
         @param request: ListMembersRequest
         @param headers: ListMembersHeaders
@@ -2453,7 +2557,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListMembersResponse:
         """
-        @summary 调用ListMembers接口获取成员列表。
+        @summary Queries the mappings between the ID and permissions of a member in a specific namespace.
         
         @param request: ListMembersRequest
         @param headers: ListMembersHeaders
@@ -2497,7 +2601,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListMembersRequest,
     ) -> ververica_20220718_models.ListMembersResponse:
         """
-        @summary 调用ListMembers接口获取成员列表。
+        @summary Queries the mappings between the ID and permissions of a member in a specific namespace.
         
         @param request: ListMembersRequest
         @return: ListMembersResponse
@@ -2512,7 +2616,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListMembersRequest,
     ) -> ververica_20220718_models.ListMembersResponse:
         """
-        @summary 调用ListMembers接口获取成员列表。
+        @summary Queries the mappings between the ID and permissions of a member in a specific namespace.
         
         @param request: ListMembersRequest
         @return: ListMembersResponse
@@ -2529,7 +2633,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListSavepointsResponse:
         """
-        @summary 调用ListSavepoints获取满足查询条件的savepoint列表。
+        @summary Obtains a list of savepoints or checkpoints.
         
         @param request: ListSavepointsRequest
         @param headers: ListSavepointsHeaders
@@ -2579,7 +2683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListSavepointsResponse:
         """
-        @summary 调用ListSavepoints获取满足查询条件的savepoint列表。
+        @summary Obtains a list of savepoints or checkpoints.
         
         @param request: ListSavepointsRequest
         @param headers: ListSavepointsHeaders
@@ -2627,7 +2731,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListSavepointsRequest,
     ) -> ververica_20220718_models.ListSavepointsResponse:
         """
-        @summary 调用ListSavepoints获取满足查询条件的savepoint列表。
+        @summary Obtains a list of savepoints or checkpoints.
         
         @param request: ListSavepointsRequest
         @return: ListSavepointsResponse
@@ -2642,7 +2746,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListSavepointsRequest,
     ) -> ververica_20220718_models.ListSavepointsResponse:
         """
-        @summary 调用ListSavepoints获取满足查询条件的savepoint列表。
+        @summary Obtains a list of savepoints or checkpoints.
         
         @param request: ListSavepointsRequest
         @return: ListSavepointsResponse
@@ -2659,7 +2763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListVariablesResponse:
         """
-        @summary list variables
+        @summary Obtains a list of variables.
         
         @param request: ListVariablesRequest
         @param headers: ListVariablesHeaders
@@ -2705,7 +2809,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.ListVariablesResponse:
         """
-        @summary list variables
+        @summary Obtains a list of variables.
         
         @param request: ListVariablesRequest
         @param headers: ListVariablesHeaders
@@ -2749,7 +2853,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListVariablesRequest,
     ) -> ververica_20220718_models.ListVariablesResponse:
         """
-        @summary list variables
+        @summary Obtains a list of variables.
         
         @param request: ListVariablesRequest
         @return: ListVariablesResponse
@@ -2764,7 +2868,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.ListVariablesRequest,
     ) -> ververica_20220718_models.ListVariablesResponse:
         """
-        @summary list variables
+        @summary Obtains a list of variables.
         
         @param request: ListVariablesRequest
         @return: ListVariablesResponse
@@ -2905,7 +3009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.StartJobWithParamsResponse:
         """
-        @summary 启动作业实例。
+        @summary Starts a job.
         
         @param request: StartJobWithParamsRequest
         @param headers: StartJobWithParamsHeaders
@@ -2946,7 +3050,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.StartJobWithParamsResponse:
         """
-        @summary 启动作业实例。
+        @summary Starts a job.
         
         @param request: StartJobWithParamsRequest
         @param headers: StartJobWithParamsHeaders
@@ -2985,7 +3089,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.StartJobWithParamsRequest,
     ) -> ververica_20220718_models.StartJobWithParamsResponse:
         """
-        @summary 启动作业实例。
+        @summary Starts a job.
         
         @param request: StartJobWithParamsRequest
         @return: StartJobWithParamsResponse
@@ -3000,7 +3104,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.StartJobWithParamsRequest,
     ) -> ververica_20220718_models.StartJobWithParamsResponse:
         """
-        @summary 启动作业实例。
+        @summary Starts a job.
         
         @param request: StartJobWithParamsRequest
         @return: StartJobWithParamsResponse
@@ -3018,7 +3122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.StopJobResponse:
         """
-        @summary 调用StopJob停止实例。
+        @summary Stops a job.
         
         @param request: StopJobRequest
         @param headers: StopJobHeaders
@@ -3060,7 +3164,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.StopJobResponse:
         """
-        @summary 调用StopJob停止实例。
+        @summary Stops a job.
         
         @param request: StopJobRequest
         @param headers: StopJobHeaders
@@ -3100,7 +3204,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.StopJobRequest,
     ) -> ververica_20220718_models.StopJobResponse:
         """
-        @summary 调用StopJob停止实例。
+        @summary Stops a job.
         
         @param request: StopJobRequest
         @return: StopJobResponse
@@ -3116,7 +3220,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.StopJobRequest,
     ) -> ververica_20220718_models.StopJobResponse:
         """
-        @summary 调用StopJob停止实例。
+        @summary Stops a job.
         
         @param request: StopJobRequest
         @return: StopJobResponse
@@ -3134,7 +3238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.UpdateDeploymentResponse:
         """
-        @summary update a deployment using patch
+        @summary Updates information about a deployment.
         
         @param request: UpdateDeploymentRequest
         @param headers: UpdateDeploymentHeaders
@@ -3176,7 +3280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.UpdateDeploymentResponse:
         """
-        @summary update a deployment using patch
+        @summary Updates information about a deployment.
         
         @param request: UpdateDeploymentRequest
         @param headers: UpdateDeploymentHeaders
@@ -3216,7 +3320,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.UpdateDeploymentRequest,
     ) -> ververica_20220718_models.UpdateDeploymentResponse:
         """
-        @summary update a deployment using patch
+        @summary Updates information about a deployment.
         
         @param request: UpdateDeploymentRequest
         @return: UpdateDeploymentResponse
@@ -3232,7 +3336,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.UpdateDeploymentRequest,
     ) -> ververica_20220718_models.UpdateDeploymentResponse:
         """
-        @summary update a deployment using patch
+        @summary Updates information about a deployment.
         
         @param request: UpdateDeploymentRequest
         @return: UpdateDeploymentResponse
@@ -3249,7 +3353,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.UpdateMemberResponse:
         """
-        @summary 调用UpdateMember更新成员。
+        @summary Updates the permissions of one or more members in a specific namespace.
         
         @param request: UpdateMemberRequest
         @param headers: UpdateMemberHeaders
@@ -3290,7 +3394,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ververica_20220718_models.UpdateMemberResponse:
         """
-        @summary 调用UpdateMember更新成员。
+        @summary Updates the permissions of one or more members in a specific namespace.
         
         @param request: UpdateMemberRequest
         @param headers: UpdateMemberHeaders
@@ -3329,7 +3433,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.UpdateMemberRequest,
     ) -> ververica_20220718_models.UpdateMemberResponse:
         """
-        @summary 调用UpdateMember更新成员。
+        @summary Updates the permissions of one or more members in a specific namespace.
         
         @param request: UpdateMemberRequest
         @return: UpdateMemberResponse
@@ -3344,7 +3448,7 @@ class Client(OpenApiClient):
         request: ververica_20220718_models.UpdateMemberRequest,
     ) -> ververica_20220718_models.UpdateMemberResponse:
         """
-        @summary 调用UpdateMember更新成员。
+        @summary Updates the permissions of one or more members in a specific namespace.
         
         @param request: UpdateMemberRequest
         @return: UpdateMemberResponse
@@ -3352,3 +3456,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.UpdateMemberHeaders()
         return await self.update_member_with_options_async(namespace, request, headers, runtime)
+
+    def validate_sql_statement_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateSqlStatementRequest,
+        headers: ververica_20220718_models.ValidateSqlStatementHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ValidateSqlStatementResponse:
+        """
+        @summary Verifies the code of an SQL deployment.
+        
+        @param request: ValidateSqlStatementRequest
+        @param headers: ValidateSqlStatementHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ValidateSqlStatement',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sql-statement/validate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ValidateSqlStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_sql_statement_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateSqlStatementRequest,
+        headers: ververica_20220718_models.ValidateSqlStatementHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ValidateSqlStatementResponse:
+        """
+        @summary Verifies the code of an SQL deployment.
+        
+        @param request: ValidateSqlStatementRequest
+        @param headers: ValidateSqlStatementHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ValidateSqlStatement',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sql-statement/validate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ValidateSqlStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_sql_statement(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateSqlStatementRequest,
+    ) -> ververica_20220718_models.ValidateSqlStatementResponse:
+        """
+        @summary Verifies the code of an SQL deployment.
+        
+        @param request: ValidateSqlStatementRequest
+        @return: ValidateSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ValidateSqlStatementHeaders()
+        return self.validate_sql_statement_with_options(namespace, request, headers, runtime)
+
+    async def validate_sql_statement_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ValidateSqlStatementRequest,
+    ) -> ververica_20220718_models.ValidateSqlStatementResponse:
+        """
+        @summary Verifies the code of an SQL deployment.
+        
+        @param request: ValidateSqlStatementRequest
+        @return: ValidateSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ValidateSqlStatementHeaders()
+        return await self.validate_sql_statement_with_options_async(namespace, request, headers, runtime)
