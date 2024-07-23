@@ -1,3 +1,13 @@
+2024-07-23 Version: 5.0.0
+- Update API SubmitCopyrightJob: update param Level.
+- Update API SubmitImageCopyright: update param Output.
+- Update API SubmitImageCopyright: update param Params.
+- Update API SubmitTraceAbJob: update param Level.
+- Update API SubmitTraceM3u8Job: update param MediaId.
+- Update API SubmitTraceM3u8Job: update param Output.
+- Update API SubmitTraceM3u8Job: update param Trace.
+
+
 2024-07-11 Version: 4.2.0
 - Support API SubmitImageCopyright.
 
