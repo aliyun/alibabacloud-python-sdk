@@ -1,3 +1,13 @@
+2024-07-23 Version: 3.0.0
+- Update API GetBatchMediaProducingJob: delete param Signature.
+- Update API GetBatchMediaProducingJob: delete param SignatureMehtod.
+- Update API GetBatchMediaProducingJob: delete param SignatureNonce.
+- Update API GetBatchMediaProducingJob: delete param SignatureType.
+- Update API GetBatchMediaProducingJob: delete param SignatureVersion.
+- Update API GetBatchMediaProducingJob: update response param.
+- Update API ListDNADB: update response param.
+
+
 2024-06-26 Version: 2.7.0
 - Support API GetStorageList.
 

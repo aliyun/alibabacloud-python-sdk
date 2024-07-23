@@ -6010,16 +6010,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.signature):
-            query['Signature'] = request.signature
-        if not UtilClient.is_unset(request.signature_mehtod):
-            query['SignatureMehtod'] = request.signature_mehtod
-        if not UtilClient.is_unset(request.signature_nonce):
-            query['SignatureNonce'] = request.signature_nonce
-        if not UtilClient.is_unset(request.signature_type):
-            query['SignatureType'] = request.signature_type
-        if not UtilClient.is_unset(request.signature_version):
-            query['SignatureVersion'] = request.signature_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6055,16 +6045,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.signature):
-            query['Signature'] = request.signature
-        if not UtilClient.is_unset(request.signature_mehtod):
-            query['SignatureMehtod'] = request.signature_mehtod
-        if not UtilClient.is_unset(request.signature_nonce):
-            query['SignatureNonce'] = request.signature_nonce
-        if not UtilClient.is_unset(request.signature_type):
-            query['SignatureType'] = request.signature_type
-        if not UtilClient.is_unset(request.signature_version):
-            query['SignatureVersion'] = request.signature_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14764,7 +14744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaResponse:
         """
-        @summary 媒资搜索
+        @summary Queries information about media assets based on the request parameters.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14811,7 +14793,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaResponse:
         """
-        @summary 媒资搜索
+        @summary Queries information about media assets based on the request parameters.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14857,7 +14841,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaRequest,
     ) -> ice20201109_models.SearchMediaResponse:
         """
-        @summary 媒资搜索
+        @summary Queries information about media assets based on the request parameters.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaRequest
         @return: SearchMediaResponse
@@ -14870,7 +14856,9 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaRequest,
     ) -> ice20201109_models.SearchMediaResponse:
         """
-        @summary 媒资搜索
+        @summary Queries information about media assets based on the request parameters.
+        
+        @description If you have questions about how to use the media asset search feature in Intelligent Media Services (IMS), contact technical support in the DingTalk group (ID 30415005038).
         
         @param request: SearchMediaRequest
         @return: SearchMediaResponse
