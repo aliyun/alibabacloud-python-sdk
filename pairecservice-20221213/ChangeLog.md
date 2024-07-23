@@ -1,3 +1,13 @@
+2024-07-23 Version: 2.1.0
+- Support API ApplyEngineConfig.
+- Support API CloneEngineConfig.
+- Support API CreateEngineConfig.
+- Support API DeleteEngineConfig.
+- Support API GetEngineConfig.
+- Support API ListEngineConfigs.
+- Support API UpdateEngineConfig.
+
+
 2024-07-17 Version: 2.0.1
 - Update API GetTrafficControlTarget: update response param.
 - Update API GetTrafficControlTask: update response param.

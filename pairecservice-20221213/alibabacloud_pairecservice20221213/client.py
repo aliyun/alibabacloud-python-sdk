@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def apply_engine_config_with_options(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.ApplyEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ApplyEngineConfigResponse:
+        """
+        @summary 应用/发布指定的推荐引擎配置
+        
+        @param request: ApplyEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}/action/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ApplyEngineConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_engine_config_with_options_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.ApplyEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ApplyEngineConfigResponse:
+        """
+        @summary 应用/发布指定的推荐引擎配置
+        
+        @param request: ApplyEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}/action/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ApplyEngineConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_engine_config(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.ApplyEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.ApplyEngineConfigResponse:
+        """
+        @summary 应用/发布指定的推荐引擎配置
+        
+        @param request: ApplyEngineConfigRequest
+        @return: ApplyEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.apply_engine_config_with_options(engine_config_id, request, headers, runtime)
+
+    async def apply_engine_config_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.ApplyEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.ApplyEngineConfigResponse:
+        """
+        @summary 应用/发布指定的推荐引擎配置
+        
+        @param request: ApplyEngineConfigRequest
+        @return: ApplyEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.apply_engine_config_with_options_async(engine_config_id, request, headers, runtime)
+
     def backflow_feature_consistency_check_job_data_with_options(
         self,
         request: pai_rec_service_20221213_models.BackflowFeatureConsistencyCheckJobDataRequest,
@@ -292,6 +400,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.check_instance_resources_with_options_async(instance_id, request, headers, runtime)
+
+    def clone_engine_config_with_options(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.CloneEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CloneEngineConfigResponse:
+        """
+        @summary 克隆指定的推荐引擎配置
+        
+        @param request: CloneEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.environment):
+            body['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}/action/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CloneEngineConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_engine_config_with_options_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.CloneEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CloneEngineConfigResponse:
+        """
+        @summary 克隆指定的推荐引擎配置
+        
+        @param request: CloneEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.environment):
+            body['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloneEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}/action/clone',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CloneEngineConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_engine_config(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.CloneEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.CloneEngineConfigResponse:
+        """
+        @summary 克隆指定的推荐引擎配置
+        
+        @param request: CloneEngineConfigRequest
+        @return: CloneEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.clone_engine_config_with_options(engine_config_id, request, headers, runtime)
+
+    async def clone_engine_config_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.CloneEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.CloneEngineConfigResponse:
+        """
+        @summary 克隆指定的推荐引擎配置
+        
+        @param request: CloneEngineConfigRequest
+        @return: CloneEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.clone_engine_config_with_options_async(engine_config_id, request, headers, runtime)
 
     def clone_experiment_with_options(
         self,
@@ -1364,6 +1588,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_crowd_with_options_async(request, headers, runtime)
+
+    def create_engine_config_with_options(
+        self,
+        request: pai_rec_service_20221213_models.CreateEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateEngineConfigResponse:
+        """
+        @summary 创建引擎配置
+        
+        @param request: CreateEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.environment):
+            body['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateEngineConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_engine_config_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateEngineConfigResponse:
+        """
+        @summary 创建引擎配置
+        
+        @param request: CreateEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.environment):
+            body['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateEngineConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_engine_config(
+        self,
+        request: pai_rec_service_20221213_models.CreateEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.CreateEngineConfigResponse:
+        """
+        @summary 创建引擎配置
+        
+        @param request: CreateEngineConfigRequest
+        @return: CreateEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_engine_config_with_options(request, headers, runtime)
+
+    async def create_engine_config_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.CreateEngineConfigResponse:
+        """
+        @summary 创建引擎配置
+        
+        @param request: CreateEngineConfigRequest
+        @return: CreateEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_engine_config_with_options_async(request, headers, runtime)
 
     def create_experiment_with_options(
         self,
@@ -3925,6 +4265,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_crowd_with_options_async(crowd_id, request, headers, runtime)
 
+    def delete_engine_config_with_options(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.DeleteEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteEngineConfigResponse:
+        """
+        @summary 删除指定推荐引擎配置。
+        
+        @param request: DeleteEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteEngineConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_engine_config_with_options_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.DeleteEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteEngineConfigResponse:
+        """
+        @summary 删除指定推荐引擎配置。
+        
+        @param request: DeleteEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteEngineConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_engine_config(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.DeleteEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.DeleteEngineConfigResponse:
+        """
+        @summary 删除指定推荐引擎配置。
+        
+        @param request: DeleteEngineConfigRequest
+        @return: DeleteEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_engine_config_with_options(engine_config_id, request, headers, runtime)
+
+    async def delete_engine_config_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.DeleteEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.DeleteEngineConfigResponse:
+        """
+        @summary 删除指定推荐引擎配置。
+        
+        @param request: DeleteEngineConfigRequest
+        @return: DeleteEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_engine_config_with_options_async(engine_config_id, request, headers, runtime)
+
     def delete_experiment_with_options(
         self,
         experiment_id: str,
@@ -5862,6 +6310,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_calculation_job_with_options_async(calculation_job_id, request, headers, runtime)
+
+    def get_engine_config_with_options(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.GetEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetEngineConfigResponse:
+        """
+        @summary 获取引擎配置详细信息。
+        
+        @param request: GetEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetEngineConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_engine_config_with_options_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.GetEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetEngineConfigResponse:
+        """
+        @summary 获取引擎配置详细信息。
+        
+        @param request: GetEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetEngineConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_engine_config(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.GetEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.GetEngineConfigResponse:
+        """
+        @summary 获取引擎配置详细信息。
+        
+        @param request: GetEngineConfigRequest
+        @return: GetEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_engine_config_with_options(engine_config_id, request, headers, runtime)
+
+    async def get_engine_config_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.GetEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.GetEngineConfigResponse:
+        """
+        @summary 获取引擎配置详细信息。
+        
+        @param request: GetEngineConfigRequest
+        @return: GetEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_engine_config_with_options_async(engine_config_id, request, headers, runtime)
 
     def get_experiment_with_options(
         self,
@@ -8164,6 +8720,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_crowds_with_options_async(request, headers, runtime)
+
+    def list_engine_configs_with_options(
+        self,
+        request: pai_rec_service_20221213_models.ListEngineConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListEngineConfigsResponse:
+        """
+        @summary 获取引擎配置列表。
+        
+        @param request: ListEngineConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEngineConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment):
+            query['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEngineConfigs',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListEngineConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_engine_configs_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.ListEngineConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListEngineConfigsResponse:
+        """
+        @summary 获取引擎配置列表。
+        
+        @param request: ListEngineConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEngineConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.environment):
+            query['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEngineConfigs',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListEngineConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_engine_configs(
+        self,
+        request: pai_rec_service_20221213_models.ListEngineConfigsRequest,
+    ) -> pai_rec_service_20221213_models.ListEngineConfigsResponse:
+        """
+        @summary 获取引擎配置列表。
+        
+        @param request: ListEngineConfigsRequest
+        @return: ListEngineConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_engine_configs_with_options(request, headers, runtime)
+
+    async def list_engine_configs_async(
+        self,
+        request: pai_rec_service_20221213_models.ListEngineConfigsRequest,
+    ) -> pai_rec_service_20221213_models.ListEngineConfigsResponse:
+        """
+        @summary 获取引擎配置列表。
+        
+        @param request: ListEngineConfigsRequest
+        @return: ListEngineConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_engine_configs_with_options_async(request, headers, runtime)
 
     def list_experiment_groups_with_options(
         self,
@@ -12588,6 +13272,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_crowd_with_options_async(crowd_id, request, headers, runtime)
+
+    def update_engine_config_with_options(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.UpdateEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateEngineConfigResponse:
+        """
+        @summary 更新引擎配置。
+        
+        @param request: UpdateEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.environment):
+            body['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateEngineConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_engine_config_with_options_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.UpdateEngineConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateEngineConfigResponse:
+        """
+        @summary 更新引擎配置。
+        
+        @param request: UpdateEngineConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEngineConfigResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config_value):
+            body['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.environment):
+            body['Environment'] = request.environment
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEngineConfig',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/engineconfigs/{OpenApiUtilClient.get_encode_param(engine_config_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateEngineConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_engine_config(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.UpdateEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.UpdateEngineConfigResponse:
+        """
+        @summary 更新引擎配置。
+        
+        @param request: UpdateEngineConfigRequest
+        @return: UpdateEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_engine_config_with_options(engine_config_id, request, headers, runtime)
+
+    async def update_engine_config_async(
+        self,
+        engine_config_id: str,
+        request: pai_rec_service_20221213_models.UpdateEngineConfigRequest,
+    ) -> pai_rec_service_20221213_models.UpdateEngineConfigResponse:
+        """
+        @summary 更新引擎配置。
+        
+        @param request: UpdateEngineConfigRequest
+        @return: UpdateEngineConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_engine_config_with_options_async(engine_config_id, request, headers, runtime)
 
     def update_experiment_with_options(
         self,
