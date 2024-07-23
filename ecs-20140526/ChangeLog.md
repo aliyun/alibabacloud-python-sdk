@@ -1,3 +1,34 @@
+2024-07-23 Version: 4.1.9
+- Update API CopyImage: update param KMSKeyId.
+- Update API CopySnapshot: add param ClientToken.
+- Update API CopySnapshot: update param KMSKeyId.
+- Update API CreateDisk: update param KMSKeyId.
+- Update API CreateInstance: update param DataDisk.
+- Update API CreateLaunchTemplate: add param AutoRenew.
+- Update API CreateLaunchTemplate: add param AutoRenewPeriod.
+- Update API CreateLaunchTemplate: add param PeriodUnit.
+- Update API CreateLaunchTemplateVersion: add param AutoRenew.
+- Update API CreateLaunchTemplateVersion: add param AutoRenewPeriod.
+- Update API CreateLaunchTemplateVersion: add param PeriodUnit.
+- Update API CreateNetworkInterface: add param EnhancedNetwork.
+- Update API CreateNetworkInterface: update param SecurityGroupIds.
+- Update API CreateSnapshotGroup: add param ClientToken.
+- Update API DescribeInstanceTypes: update response param.
+- Update API DescribeLaunchTemplateVersions: update response param.
+- Update API DescribeNetworkInterfaceAttribute: update response param.
+- Update API DescribePrice: update response param.
+- Update API DescribeSnapshots: update response param.
+- Update API ModifyInstanceAttribute: update param SecurityGroupIds.
+- Update API ModifyInstanceVpcAttribute: update param SecurityGroupId.
+- Update API ModifyNetworkInterfaceAttribute: add param EnhancedNetwork.
+- Update API ModifyNetworkInterfaceAttribute: update param SecurityGroupId.
+- Update API ReplaceSystemDisk: update param KMSKeyId.
+- Update API RunInstances: update param DataDisk.
+- Update API RunInstances: update param NetworkInterface.
+- Update API RunInstances: update param SecurityGroupIds.
+- Update API RunInstances: update param SystemDisk.
+
+
 2024-05-22 Version: 4.1.8
 - Update API DescribeSnapshots: update response param.
 
