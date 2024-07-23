@@ -4471,6 +4471,7 @@ class CreateDBInstanceRequest(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        auto_create_proxy: bool = None,
         auto_pay: bool = None,
         auto_renew: str = None,
         babelfish_config: str = None,
@@ -4535,6 +4536,7 @@ class CreateDBInstanceRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
+        self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
         # *   **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
@@ -4917,6 +4919,8 @@ class CreateDBInstanceRequest(TeaModel):
         result = dict()
         if self.amount is not None:
             result['Amount'] = self.amount
+        if self.auto_create_proxy is not None:
+            result['AutoCreateProxy'] = self.auto_create_proxy
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -5035,6 +5039,8 @@ class CreateDBInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+        if m.get('AutoCreateProxy') is not None:
+            self.auto_create_proxy = m.get('AutoCreateProxy')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -5200,6 +5206,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        auto_create_proxy: bool = None,
         auto_pay: bool = None,
         auto_renew: str = None,
         babelfish_config: str = None,
@@ -5264,6 +5271,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
+        self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
         # *   **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
@@ -5644,6 +5652,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.amount is not None:
             result['Amount'] = self.amount
+        if self.auto_create_proxy is not None:
+            result['AutoCreateProxy'] = self.auto_create_proxy
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -5762,6 +5772,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+        if m.get('AutoCreateProxy') is not None:
+            self.auto_create_proxy = m.get('AutoCreateProxy')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
@@ -10624,6 +10636,7 @@ class CreatePostgresExtensionsResponse(TeaModel):
 class CreateReadOnlyDBInstanceRequest(TeaModel):
     def __init__(
         self,
+        auto_create_proxy: bool = None,
         auto_pay: bool = None,
         auto_renew: str = None,
         bpe_enabled: str = None,
@@ -10660,6 +10673,7 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
         # 1.  **true**: enables the feature. Make sure that your account balance is sufficient.
@@ -10810,6 +10824,8 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_create_proxy is not None:
+            result['AutoCreateProxy'] = self.auto_create_proxy
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
@@ -10884,6 +10900,8 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoCreateProxy') is not None:
+            self.auto_create_proxy = m.get('AutoCreateProxy')
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:

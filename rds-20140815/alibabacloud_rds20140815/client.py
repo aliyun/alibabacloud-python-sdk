@@ -3620,6 +3620,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_create_proxy):
+            query['AutoCreateProxy'] = request.auto_create_proxy
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -3785,6 +3787,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_create_proxy):
+            query['AutoCreateProxy'] = request.auto_create_proxy
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -6856,6 +6860,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_create_proxy):
+            query['AutoCreateProxy'] = request.auto_create_proxy
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
@@ -6969,6 +6975,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_create_proxy):
+            query['AutoCreateProxy'] = request.auto_create_proxy
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):

@@ -1,3 +1,8 @@
+2024-07-23 Version: 6.0.1
+- Update API CreateDBInstance: add param AutoCreateProxy.
+- Update API CreateReadOnlyDBInstance: add param AutoCreateProxy.
+
+
 2024-07-23 Version: 6.0.0
 - Update API DescribePrice: update response param.
 
