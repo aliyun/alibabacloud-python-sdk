@@ -14989,11 +14989,21 @@ class DescribeCloudDriveGroupsRequest(TeaModel):
 class DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos(TeaModel):
     def __init__(
         self,
+        email: str = None,
         end_user_id: str = None,
+        job_number: str = None,
         nick_name: str = None,
+        phone: str = None,
+        real_nick_name: str = None,
+        remark: str = None,
     ):
+        self.email = email
         self.end_user_id = end_user_id
+        self.job_number = job_number
         self.nick_name = nick_name
+        self.phone = phone
+        self.real_nick_name = real_nick_name
+        self.remark = remark
 
     def validate(self):
         pass
@@ -15004,18 +15014,38 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos(TeaMode
             return _map
 
         result = dict()
+        if self.email is not None:
+            result['Email'] = self.email
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.job_number is not None:
+            result['JobNumber'] = self.job_number
         if self.nick_name is not None:
             result['NickName'] = self.nick_name
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.real_nick_name is not None:
+            result['RealNickName'] = self.real_nick_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('JobNumber') is not None:
+            self.job_number = m.get('JobNumber')
         if m.get('NickName') is not None:
             self.nick_name = m.get('NickName')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('RealNickName') is not None:
+            self.real_nick_name = m.get('RealNickName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 

@@ -1,3 +1,7 @@
+2024-07-23 Version: 4.1.2
+- Update API DescribeCloudDriveGroups: update response param.
+
+
 2024-07-22 Version: 4.1.1
 - Update API CancelAutoSnapshotPolicy: update param PolicyId.
 - Update API CreateDesktops: add param SnapshotPolicyId.
