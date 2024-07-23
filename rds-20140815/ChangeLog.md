@@ -1,3 +1,7 @@
+2024-07-23 Version: 6.0.0
+- Update API DescribePrice: update response param.
+
+
 2024-07-03 Version: 5.1.0
 - Support API CreateDBInstanceSecurityGroupRule.
 - Support API DeleteDBInstanceSecurityGroupRule.

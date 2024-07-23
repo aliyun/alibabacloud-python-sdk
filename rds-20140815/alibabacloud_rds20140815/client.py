@@ -4522,7 +4522,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 创建实例主机安全组规则
+        @summary Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: CreateDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4573,7 +4578,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 创建实例主机安全组规则
+        @summary Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: CreateDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4623,7 +4633,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 创建实例主机安全组规则
+        @summary Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: CreateDBInstanceSecurityGroupRuleRequest
         @return: CreateDBInstanceSecurityGroupRuleResponse
@@ -4636,7 +4651,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.CreateDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 创建实例主机安全组规则
+        @summary Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: CreateDBInstanceSecurityGroupRuleRequest
         @return: CreateDBInstanceSecurityGroupRuleResponse
@@ -8674,7 +8694,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 删除实例主机安全组规则
+        @summary Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DeleteDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8723,7 +8748,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 删除实例主机安全组规则
+        @summary Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DeleteDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8771,7 +8801,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 删除实例主机安全组规则
+        @summary Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DeleteDBInstanceSecurityGroupRuleRequest
         @return: DeleteDBInstanceSecurityGroupRuleResponse
@@ -8784,7 +8819,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.DeleteDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 删除实例主机安全组规则
+        @summary Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DeleteDBInstanceSecurityGroupRuleRequest
         @return: DeleteDBInstanceSecurityGroupRuleResponse
@@ -10890,7 +10930,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -10961,7 +11001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -11031,7 +11071,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeActiveOperationTasksRequest,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -11050,7 +11090,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeActiveOperationTasksRequest,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -16738,7 +16778,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 描述实例主机安全组规则
+        @summary Queries the security group rules that are configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DescribeDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16781,7 +16826,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 描述实例主机安全组规则
+        @summary Queries the security group rules that are configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DescribeDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16823,7 +16873,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 描述实例主机安全组规则
+        @summary Queries the security group rules that are configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DescribeDBInstanceSecurityGroupRuleRequest
         @return: DescribeDBInstanceSecurityGroupRuleResponse
@@ -16836,7 +16891,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.DescribeDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 描述实例主机安全组规则
+        @summary Queries the security group rules that are configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: DescribeDBInstanceSecurityGroupRuleRequest
         @return: DescribeDBInstanceSecurityGroupRuleResponse
@@ -26657,13 +26717,11 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        RDS MySQL
-        *\
-        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        RDS SQL Server
-        *\
-        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        RDS MariaDB
+        MySQL
+        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        SQL Server
+        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
@@ -26725,13 +26783,11 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        RDS MySQL
-        *\
-        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        RDS SQL Server
-        *\
-        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        RDS MariaDB
+        MySQL
+        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        SQL Server
+        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
@@ -26792,13 +26848,11 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        RDS MySQL
-        *\
-        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        RDS SQL Server
-        *\
-        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        RDS MariaDB
+        MySQL
+        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        SQL Server
+        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
@@ -26818,13 +26872,11 @@ class Client(OpenApiClient):
         @summary Queries the statistics on slow query logs.
         
         @description ### [](#)Supported database engines
-        RDS MySQL
-        *\
-        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
-        RDS SQL Server
-        *\
-        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
-        RDS MariaDB
+        MySQL
+        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        SQL Server
+        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        MariaDB
         ### [](#)Precautions
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
@@ -34574,7 +34626,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 修改实例主机安全组规则
+        @summary Modifies a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: ModifyDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34627,7 +34684,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 修改实例主机安全组规则
+        @summary Modifies a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: ModifyDBInstanceSecurityGroupRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34679,7 +34741,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 修改实例主机安全组规则
+        @summary Modifies a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: ModifyDBInstanceSecurityGroupRuleRequest
         @return: ModifyDBInstanceSecurityGroupRuleResponse
@@ -34692,7 +34759,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyDBInstanceSecurityGroupRuleRequest,
     ) -> rds_20140815_models.ModifyDBInstanceSecurityGroupRuleResponse:
         """
-        @summary 修改实例主机安全组规则
+        @summary Modifies a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+        
+        @description ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
         
         @param request: ModifyDBInstanceSecurityGroupRuleRequest
         @return: ModifyDBInstanceSecurityGroupRuleResponse

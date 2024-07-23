@@ -755,7 +755,7 @@ class AttachWhitelistTemplateToInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.ins_name = ins_name
-        # The region ID.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group. For more information about resource groups, see Resource groups.
         self.resource_group_id = resource_group_id
@@ -4609,7 +4609,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **Atomicity** (default): atomicity. The instances are all created together. If one instance cannot be created, none of the instances are created.
         # *   **Partial**: non-atomicity. Each instance is independently created. The failure in creating an instance does not affect the creation of the other instances.
         self.create_strategy = create_strategy
-        # The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The instance type of the instance. You can specify an instance type of the standard or YiTian product type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # To create a serverless instance, set this parameter to one of the following values:
         # 
@@ -5338,7 +5338,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **Atomicity** (default): atomicity. The instances are all created together. If one instance cannot be created, none of the instances are created.
         # *   **Partial**: non-atomicity. Each instance is independently created. The failure in creating an instance does not affect the creation of the other instances.
         self.create_strategy = create_strategy
-        # The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # The instance type of the instance. You can specify an instance type of the standard or YiTian product type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # To create a serverless instance, set this parameter to one of the following values:
         # 
@@ -6994,16 +6994,28 @@ class CreateDBInstanceSecurityGroupRuleRequest(TeaModel):
         resource_owner_id: int = None,
         source_cidr_ip: str = None,
     ):
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description of the security group rule.
         self.description = description
+        # The type of the transport layer protocol. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+        # 
+        # Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+        # 
         # This parameter is required.
         self.port_range = port_range
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -7065,8 +7077,11 @@ class CreateDBInstanceSecurityGroupRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The information about the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12771,14 +12786,20 @@ class DeleteDBInstanceSecurityGroupRuleRequest(TeaModel):
         resource_owner_id: int = None,
         security_group_rule_ids: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the ID of the security group rule.
+        # 
         # This parameter is required.
         self.security_group_rule_ids = security_group_rule_ids
 
@@ -12837,8 +12858,11 @@ class DeleteDBInstanceSecurityGroupRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The information about the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18910,7 +18934,7 @@ class DescribeBackupsRequest(TeaModel):
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -19148,7 +19172,14 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The encryption information about the backup set.
         self.encryption = encryption
+        # The type of the database engine. Valid values:
+        # 
+        # *   MySQL
+        # *   SQLServer
+        # *   PostgreSQL
+        # *   MariaDB
         self.engine = engine
+        # The version of the database engine.
         self.engine_version = engine_version
         # The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
         self.host_instance_id = host_instance_id
@@ -19341,7 +19372,7 @@ class DescribeBackupsResponseBody(TeaModel):
         total_ecs_snapshot_size: int = None,
         total_record_count: str = None,
     ):
-        # The queried backup sets.
+        # The returned backup sets.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -19450,7 +19481,7 @@ class DescribeBinlogFilesRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -19462,11 +19493,11 @@ class DescribeBinlogFilesRequest(TeaModel):
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Valid values: any non-zero positive integer.
+        # The page number. Pages start from 1.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: **30** to **100**.
         # 
@@ -23364,6 +23395,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
     ):
         # The instance IDs.
         self.dbinstance_ids = dbinstance_ids
+        # The recovery model. Valid values: Simple and Full.
         self.recovery_model = recovery_model
 
     def validate(self):
@@ -24279,7 +24311,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         items: DescribeDBInstanceAttributeResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The details of the instance.
+        # The details of instances.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -28874,6 +28906,8 @@ class DescribeDBInstanceSecurityGroupRuleRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
@@ -28925,9 +28959,13 @@ class DescribeDBInstanceSecurityGroupRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The details of the security group rule.
         self.data = data
+        # The information about the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -44827,6 +44865,7 @@ class DescribeParametersResponseBodyRunningParametersDBInstanceParameter(TeaMode
         parameter_value: str = None,
         parameter_value_range: str = None,
     ):
+        # The default value of the parameter.
         self.parameter_default_value = parameter_default_value
         # The description of the parameter.
         self.parameter_description = parameter_description
@@ -44834,6 +44873,7 @@ class DescribeParametersResponseBodyRunningParametersDBInstanceParameter(TeaMode
         self.parameter_name = parameter_name
         # The value of the parameter.
         self.parameter_value = parameter_value
+        # The valid values of the parameter.
         self.parameter_value_range = parameter_value_range
 
     def validate(self):
@@ -44929,7 +44969,7 @@ class DescribeParametersResponseBody(TeaModel):
         self.param_group_info = param_group_info
         # The ID of the request.
         self.request_id = request_id
-        # The list of parameters that are in use.
+        # The parameters that are in use.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -46089,7 +46129,7 @@ class DescribePriceResponseBodyPriceInfo(TeaModel):
         coupons: DescribePriceResponseBodyPriceInfoCoupons = None,
         currency: str = None,
         discount_price: float = None,
-        order_lines: str = None,
+        order_lines: Any = None,
         original_price: float = None,
         rule_ids: DescribePriceResponseBodyPriceInfoRuleIds = None,
         trade_max_rcuamount: float = None,
@@ -51283,11 +51323,11 @@ class DescribeSlowLogsRequest(TeaModel):
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Valid values: any non-zero positive integer.
+        # The page number. Pages start from 1.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30** to **100**. Default value: **30**.
+        # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -62244,20 +62284,37 @@ class ModifyDBInstanceSecurityGroupRuleRequest(TeaModel):
         security_group_rule_id: str = None,
         source_cidr_ip: str = None,
     ):
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description of the security group rule.
+        # 
         # This parameter is required.
         self.description = description
+        # The type of the transport layer protocol. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+        # 
+        # Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+        # 
         # This parameter is required.
         self.port_range = port_range
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the ID of the security group rule.
+        # 
         # This parameter is required.
         self.security_group_rule_id = security_group_rule_id
+        # The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
+        # 
         # This parameter is required.
         self.source_cidr_ip = source_cidr_ip
 
@@ -62324,8 +62381,11 @@ class ModifyDBInstanceSecurityGroupRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned.
         self.code = code
+        # The information about the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62571,6 +62631,10 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # *   **Immediate** (default)
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # 
+        # <!---->
+        # 
+        # *   ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
         # 
@@ -62847,6 +62911,10 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # *   **Immediate** (default)
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # 
+        # <!---->
+        # 
+        # *   ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
         # 
@@ -66600,11 +66668,8 @@ class ModifyParameterRequest(TeaModel):
         self.owner_id = owner_id
         # The parameter template ID.
         # 
-        # > 
-        # 
-        # *   If you specify this parameter, you do not need to specify **Parameters**.
-        # 
-        # *   If the parameter template can be applied only after the instance is restarted, you must specify **Forcerestart**.
+        # > *   If you specify this parameter, you do not need to specify **Parameters**.
+        # > *   If the parameter template can be applied only after the instance is restarted, you must specify **Forcerestart**.
         self.parameter_group_id = parameter_group_id
         # The JSON strings of parameters and their values. All the parameter values are of the string type. Format: {"Parameter name 1":"Parameter value 1","Parameter name 2":"Parameter value 2"...}. You can call the DescribeParameterTemplates operation to query parameter names and values.
         # 
@@ -66794,12 +66859,9 @@ class ModifyParameterGroupRequest(TeaModel):
         self.parameter_group_name = parameter_group_name
         # A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
         # 
-        # > 
-        # 
-        # *   If **ModifyMode** is set to **Individual** and this parameter is specified, the new parameters overwrite the parameters in the original parameter template.
-        # 
-        # *   If you set **ModifyMode** to **Collectivity** and specify this parameter, the new parameters are added to the original parameter template, or the parameters in the original parameter template are modified.
-        # *   If you do not specify this parameter, the parameters in the original parameter template remain unchanged.
+        # > *   If **ModifyMode** is set to **Individual** and this parameter is specified, the new parameters overwrite the parameters in the original parameter template.
+        # > *   If you set **ModifyMode** to **Collectivity** and specify this parameter, the new parameters are added to the original parameter template, or the parameters in the original parameter template are modified.
+        # > *   If you do not specify this parameter, the parameters in the original parameter template remain unchanged.
         self.parameters = parameters
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
@@ -69117,11 +69179,11 @@ class QueryNotifyRequest(TeaModel):
         # 
         # This parameter is required.
         self.from_ = from_
-        # The number of the page to return. Valid values: any **non-zero** positive integer.
+        # The page number. Pages start from page 1. Default value: 1.****\
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # *   **30**\
         # *   **50**\
@@ -70775,7 +70837,7 @@ class RenewInstanceRequest(TeaModel):
         # *   **True**: enables automatic payment. Make sure that your Alibaba Cloud account has adequate balance.
         # *   **False** (default): disables automatic payment. You have to manually pay the order in the console.
         # 
-        # >  For more information about how to manually renew an instance in the console, see the following topic:
+        # >  For more information about how to manually pay the order in the console, see the following topics:
         # 
         # *   [Manually renew an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96050.html)
         # 
