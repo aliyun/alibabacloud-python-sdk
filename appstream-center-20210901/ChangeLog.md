@@ -1,3 +1,6 @@
+2024-07-23 Version: 2.0.1
+- Generated python 2021-09-01 for appstream-center.
+
 2024-07-22 Version: 2.0.0
 - Support API ModifyAppPolicy.
 - Update API BuySessionPackage: add param AutoPay.
