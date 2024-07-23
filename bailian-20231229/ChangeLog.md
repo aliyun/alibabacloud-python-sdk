@@ -1,3 +1,8 @@
+2024-07-23 Version: 1.4.1
+- Update API Retrieve: add param SearchFilters.
+- Update API Retrieve: update param RerankTopN.
+
+
 2024-07-20 Version: 1.4.0
 - Support API DeleteFile.
 

@@ -2564,6 +2564,7 @@ class RetrieveRequest(TeaModel):
         rerank_top_n: int = None,
         rewrite: List[RetrieveRequestRewrite] = None,
         save_retriever_history: bool = None,
+        search_filters: List[Dict[str, str]] = None,
         sparse_similarity_top_k: int = None,
     ):
         self.dense_similarity_top_k = dense_similarity_top_k
@@ -2577,6 +2578,7 @@ class RetrieveRequest(TeaModel):
         self.rerank_top_n = rerank_top_n
         self.rewrite = rewrite
         self.save_retriever_history = save_retriever_history
+        self.search_filters = search_filters
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):
@@ -2619,6 +2621,8 @@ class RetrieveRequest(TeaModel):
                 result['Rewrite'].append(k.to_map() if k else None)
         if self.save_retriever_history is not None:
             result['SaveRetrieverHistory'] = self.save_retriever_history
+        if self.search_filters is not None:
+            result['SearchFilters'] = self.search_filters
         if self.sparse_similarity_top_k is not None:
             result['SparseSimilarityTopK'] = self.sparse_similarity_top_k
         return result
@@ -2651,6 +2655,8 @@ class RetrieveRequest(TeaModel):
                 self.rewrite.append(temp_model.from_map(k))
         if m.get('SaveRetrieverHistory') is not None:
             self.save_retriever_history = m.get('SaveRetrieverHistory')
+        if m.get('SearchFilters') is not None:
+            self.search_filters = m.get('SearchFilters')
         if m.get('SparseSimilarityTopK') is not None:
             self.sparse_similarity_top_k = m.get('SparseSimilarityTopK')
         return self
@@ -2669,6 +2675,7 @@ class RetrieveShrinkRequest(TeaModel):
         rerank_top_n: int = None,
         rewrite_shrink: str = None,
         save_retriever_history: bool = None,
+        search_filters_shrink: str = None,
         sparse_similarity_top_k: int = None,
     ):
         self.dense_similarity_top_k = dense_similarity_top_k
@@ -2682,6 +2689,7 @@ class RetrieveShrinkRequest(TeaModel):
         self.rerank_top_n = rerank_top_n
         self.rewrite_shrink = rewrite_shrink
         self.save_retriever_history = save_retriever_history
+        self.search_filters_shrink = search_filters_shrink
         self.sparse_similarity_top_k = sparse_similarity_top_k
 
     def validate(self):
@@ -2713,6 +2721,8 @@ class RetrieveShrinkRequest(TeaModel):
             result['Rewrite'] = self.rewrite_shrink
         if self.save_retriever_history is not None:
             result['SaveRetrieverHistory'] = self.save_retriever_history
+        if self.search_filters_shrink is not None:
+            result['SearchFilters'] = self.search_filters_shrink
         if self.sparse_similarity_top_k is not None:
             result['SparseSimilarityTopK'] = self.sparse_similarity_top_k
         return result
@@ -2739,6 +2749,8 @@ class RetrieveShrinkRequest(TeaModel):
             self.rewrite_shrink = m.get('Rewrite')
         if m.get('SaveRetrieverHistory') is not None:
             self.save_retriever_history = m.get('SaveRetrieverHistory')
+        if m.get('SearchFilters') is not None:
+            self.search_filters_shrink = m.get('SearchFilters')
         if m.get('SparseSimilarityTopK') is not None:
             self.sparse_similarity_top_k = m.get('SparseSimilarityTopK')
         return self

@@ -1375,6 +1375,8 @@ class Client(OpenApiClient):
             request.rerank_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rerank, 'Rerank', 'json')
         if not UtilClient.is_unset(tmp_req.rewrite):
             request.rewrite_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rewrite, 'Rewrite', 'json')
+        if not UtilClient.is_unset(tmp_req.search_filters):
+            request.search_filters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_filters, 'SearchFilters', 'json')
         query = {}
         if not UtilClient.is_unset(request.dense_similarity_top_k):
             query['DenseSimilarityTopK'] = request.dense_similarity_top_k
@@ -1396,6 +1398,8 @@ class Client(OpenApiClient):
             query['Rewrite'] = request.rewrite_shrink
         if not UtilClient.is_unset(request.save_retriever_history):
             query['SaveRetrieverHistory'] = request.save_retriever_history
+        if not UtilClient.is_unset(request.search_filters_shrink):
+            query['SearchFilters'] = request.search_filters_shrink
         if not UtilClient.is_unset(request.sparse_similarity_top_k):
             query['SparseSimilarityTopK'] = request.sparse_similarity_top_k
         req = open_api_models.OpenApiRequest(
@@ -1440,6 +1444,8 @@ class Client(OpenApiClient):
             request.rerank_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rerank, 'Rerank', 'json')
         if not UtilClient.is_unset(tmp_req.rewrite):
             request.rewrite_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rewrite, 'Rewrite', 'json')
+        if not UtilClient.is_unset(tmp_req.search_filters):
+            request.search_filters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_filters, 'SearchFilters', 'json')
         query = {}
         if not UtilClient.is_unset(request.dense_similarity_top_k):
             query['DenseSimilarityTopK'] = request.dense_similarity_top_k
@@ -1461,6 +1467,8 @@ class Client(OpenApiClient):
             query['Rewrite'] = request.rewrite_shrink
         if not UtilClient.is_unset(request.save_retriever_history):
             query['SaveRetrieverHistory'] = request.save_retriever_history
+        if not UtilClient.is_unset(request.search_filters_shrink):
+            query['SearchFilters'] = request.search_filters_shrink
         if not UtilClient.is_unset(request.sparse_similarity_top_k):
             query['SparseSimilarityTopK'] = request.sparse_similarity_top_k
         req = open_api_models.OpenApiRequest(
