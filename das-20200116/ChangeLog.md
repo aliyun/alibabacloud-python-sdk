@@ -1,3 +1,7 @@
+2024-07-23 Version: 2.4.4
+- Update API DescribeSqlLogConfig: update response param.
+
+
 2024-07-03 Version: 2.4.3
 - Update API DescribeSqlLogTask: update response param.
 

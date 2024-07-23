@@ -4067,13 +4067,13 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo(TeaModel):
         self.bytes = bytes
         # The number of elements in the key.
         self.count = count
-        # The name of the database.
+        # The database name.
         self.db = db
         # The data type of the key.
         self.encoding = encoding
-        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The name of the key.
+        # The key name.
         self.key = key
         # The ID of the data node on the instance.
         self.node_id = node_id
@@ -4179,13 +4179,13 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo(TeaModel):
         self.bytes = bytes
         # The number of elements in the key.
         self.count = count
-        # The name of the database.
+        # The database name.
         self.db = db
         # The data type of the key.
         self.encoding = encoding
-        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The name of the key.
+        # The key name.
         self.key = key
         # The ID of the data node on the instance.
         self.node_id = node_id
@@ -4283,9 +4283,23 @@ class DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel(Te
         total_bytes: int = None,
         total_keys: int = None,
     ):
+        # The time when the cache analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.analysis_ts = analysis_ts
+        # The expiration level. Valid values:
+        # 
+        # *   **0**: The key never expires.
+        # *   **1**: The key has expired.
+        # *   **2**: The key has expired for 0 to 1 hour.
+        # *   **3**: The key has expired for 1 to 3 hours.
+        # *   **4**: The key has expired for 3 to 12 hours.
+        # *   **5**: The key has expired for 12 to 24 hours.
+        # *   **6**: The key has expired for one to two days.
+        # *   **7**: The key has expired for three to seven days.
+        # *   **8**: The key has expired for more than seven days.
         self.level = level
+        # The number of bytes occupied by the keys that have expired.
         self.total_bytes = total_bytes
+        # The total number of the keys that have expired.
         self.total_keys = total_keys
 
     def validate(self):
@@ -4462,13 +4476,13 @@ class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo(TeaModel
         self.bytes = bytes
         # The number of elements in the key.
         self.count = count
-        # The name of the database.
+        # The database name.
         self.db = db
         # The data type of the key.
         self.encoding = encoding
-        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The name of the key.
+        # The key name.
         self.key = key
         # The ID of the data node on the instance.
         self.node_id = node_id
@@ -4574,13 +4588,13 @@ class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo(TeaModel):
         self.bytes = bytes
         # The number of elements in the key.
         self.count = count
-        # The name of the database.
+        # The database name.
         self.db = db
         # The data type of the key.
         self.encoding = encoding
-        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The name of the key.
+        # The key name.
         self.key = key
         # The ID of the data node on the instance.
         self.node_id = node_id
@@ -4689,6 +4703,7 @@ class DescribeCacheAnalysisJobResponseBodyData(TeaModel):
         self.big_keys = big_keys
         # The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
         self.big_keys_of_num = big_keys_of_num
+        # The statistics of the keys that have expired.
         self.expiry_keys_level_count = expiry_keys_level_count
         # The instance ID.
         self.instance_id = instance_id
@@ -4802,7 +4817,7 @@ class DescribeCacheAnalysisJobResponseBody(TeaModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The details of the task.
+        # The details of the cache analysis task.
         self.data = data
         # The message that is returned for the request.
         # 
@@ -7805,8 +7820,10 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
         request_stop_time: int = None,
         retention: int = None,
         sql_log_enable: bool = None,
+        sql_log_source: str = None,
         sql_log_state: str = None,
         sql_log_visible_time: int = None,
+        support_migration: bool = None,
         support_version: str = None,
         version: str = None,
     ):
@@ -7856,6 +7873,7 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
         # *   **true**\
         # *   **false**\
         self.sql_log_enable = sql_log_enable
+        self.sql_log_source = sql_log_source
         # The state of data migration. Valid values:
         # 
         # *   **FINISH**: The historical data is migrated.
@@ -7864,6 +7882,7 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
         self.sql_log_state = sql_log_state
         # The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.sql_log_visible_time = sql_log_visible_time
+        self.support_migration = support_migration
         # The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
         # 
         # *   **SQL_LOG_V0**: DAS Enterprise Edition V0.
@@ -7918,10 +7937,14 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
             result['Retention'] = self.retention
         if self.sql_log_enable is not None:
             result['SqlLogEnable'] = self.sql_log_enable
+        if self.sql_log_source is not None:
+            result['SqlLogSource'] = self.sql_log_source
         if self.sql_log_state is not None:
             result['SqlLogState'] = self.sql_log_state
         if self.sql_log_visible_time is not None:
             result['SqlLogVisibleTime'] = self.sql_log_visible_time
+        if self.support_migration is not None:
+            result['SupportMigration'] = self.support_migration
         if self.support_version is not None:
             result['SupportVersion'] = self.support_version
         if self.version is not None:
@@ -7956,10 +7979,14 @@ class DescribeSqlLogConfigResponseBodyData(TeaModel):
             self.retention = m.get('Retention')
         if m.get('SqlLogEnable') is not None:
             self.sql_log_enable = m.get('SqlLogEnable')
+        if m.get('SqlLogSource') is not None:
+            self.sql_log_source = m.get('SqlLogSource')
         if m.get('SqlLogState') is not None:
             self.sql_log_state = m.get('SqlLogState')
         if m.get('SqlLogVisibleTime') is not None:
             self.sql_log_visible_time = m.get('SqlLogVisibleTime')
+        if m.get('SupportMigration') is not None:
+            self.support_migration = m.get('SupportMigration')
         if m.get('SupportVersion') is not None:
             self.support_version = m.get('SupportVersion')
         if m.get('Version') is not None:
