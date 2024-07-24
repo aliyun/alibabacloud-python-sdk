@@ -10140,7 +10140,7 @@ class GetResultResponseBodyDataResultInfoRecording(TeaModel):
         return self
 
 
-class GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule(TeaModel):
+class GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule(TeaModel):
     def __init__(
         self,
         rid: int = None,
@@ -10159,17 +10159,52 @@ class GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRig
 
         result = dict()
         if self.rid is not None:
-            result['Rid'] = self.rid
+            result['rid'] = self.rid
         if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
+            result['ruleName'] = self.rule_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Rid') is not None:
-            self.rid = m.get('Rid')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
+        if m.get('rid') is not None:
+            self.rid = m.get('rid')
+        if m.get('ruleName') is not None:
+            self.rule_name = m.get('ruleName')
+        return self
+
+
+class GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule(TeaModel):
+    def __init__(
+        self,
+        review_right_rule: List[GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule] = None,
+    ):
+        self.review_right_rule = review_right_rule
+
+    def validate(self):
+        if self.review_right_rule:
+            for k in self.review_right_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReviewRightRule'] = []
+        if self.review_right_rule is not None:
+            for k in self.review_right_rule:
+                result['ReviewRightRule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.review_right_rule = []
+        if m.get('ReviewRightRule') is not None:
+            for k in m.get('ReviewRightRule'):
+                temp_model = GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule()
+                self.review_right_rule.append(temp_model.from_map(k))
         return self
 
 
@@ -11678,7 +11713,7 @@ class GetResultToReviewResponseBodyDataManualScoreInfoList(TeaModel):
         return self
 
 
-class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule(TeaModel):
+class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule(TeaModel):
     def __init__(
         self,
         rid: int = None,
@@ -11697,17 +11732,52 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRight
 
         result = dict()
         if self.rid is not None:
-            result['Rid'] = self.rid
+            result['rid'] = self.rid
         if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
+            result['ruleName'] = self.rule_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Rid') is not None:
-            self.rid = m.get('Rid')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
+        if m.get('rid') is not None:
+            self.rid = m.get('rid')
+        if m.get('ruleName') is not None:
+            self.rule_name = m.get('ruleName')
+        return self
+
+
+class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule(TeaModel):
+    def __init__(
+        self,
+        review_right_rule: List[GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule] = None,
+    ):
+        self.review_right_rule = review_right_rule
+
+    def validate(self):
+        if self.review_right_rule:
+            for k in self.review_right_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReviewRightRule'] = []
+        if self.review_right_rule is not None:
+            for k in self.review_right_rule:
+                result['ReviewRightRule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.review_right_rule = []
+        if m.get('ReviewRightRule') is not None:
+            for k in m.get('ReviewRightRule'):
+                temp_model = GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule()
+                self.review_right_rule.append(temp_model.from_map(k))
         return self
 
 

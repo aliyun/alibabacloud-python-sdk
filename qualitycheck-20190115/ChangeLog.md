@@ -1,3 +1,8 @@
+2024-07-24 Version: 7.0.0
+- Update API GetResult: update response param.
+- Update API GetResultToReview: update response param.
+
+
 2024-07-18 Version: 6.0.0
 - Delete API AddThesaurusForApi.
 - Delete API DelThesaurusForApi.
