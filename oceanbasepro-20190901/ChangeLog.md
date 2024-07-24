@@ -1,3 +1,6 @@
+2024-07-24 Version: 6.0.2
+- Generated python 2019-09-01 for OceanBasePro.
+
 2024-07-24 Version: 6.1.0
 - Support API DescribeSQLTuningAdvices.
 - Update API CreateInstance: update param InstanceClass.
