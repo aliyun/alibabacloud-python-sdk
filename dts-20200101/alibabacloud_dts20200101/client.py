@@ -5652,6 +5652,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dts_etl_job_version_info_with_options_async(request, runtime)
 
+    def describe_dts_job_config_with_options(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        """
+        @summary 查询DTS任务配置
+        
+        @param request: DescribeDtsJobConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDtsJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.for_acceleration):
+            query['ForAcceleration'] = request.for_acceleration
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsJobConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dts_job_config_with_options_async(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        """
+        @summary 查询DTS任务配置
+        
+        @param request: DescribeDtsJobConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDtsJobConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.for_acceleration):
+            query['ForAcceleration'] = request.for_acceleration
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDtsJobConfig',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.DescribeDtsJobConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dts_job_config(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        """
+        @summary 查询DTS任务配置
+        
+        @param request: DescribeDtsJobConfigRequest
+        @return: DescribeDtsJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dts_job_config_with_options(request, runtime)
+
+    async def describe_dts_job_config_async(
+        self,
+        request: dts_20200101_models.DescribeDtsJobConfigRequest,
+    ) -> dts_20200101_models.DescribeDtsJobConfigResponse:
+        """
+        @summary 查询DTS任务配置
+        
+        @param request: DescribeDtsJobConfigRequest
+        @return: DescribeDtsJobConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dts_job_config_with_options_async(request, runtime)
+
     def describe_dts_job_detail_with_options(
         self,
         request: dts_20200101_models.DescribeDtsJobDetailRequest,
