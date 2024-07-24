@@ -2601,6 +2601,10 @@ class CleanClusterUserPermissionsRequest(TeaModel):
         self,
         force: bool = None,
     ):
+        # Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+        # 
+        # *   **false** (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+        # *   **true**: forcefully deletes the kubeconfig files without checking cluster access records.
         self.force = force
 
     def validate(self):
@@ -2662,7 +2666,14 @@ class CleanUserPermissionsRequest(TeaModel):
         cluster_ids: List[str] = None,
         force: bool = None,
     ):
+        # The cluster IDs.
+        # 
+        # *   If cluster IDs are specified, only the kubeconfig files of the specified clusters and the relevant RBAC permissions are deleted and revoked.
         self.cluster_ids = cluster_ids
+        # Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+        # 
+        # *   **false** (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+        # *   **true**: forcefully deletes the kubeconfig files without checking cluster access records.
         self.force = force
 
     def validate(self):
@@ -2695,7 +2706,14 @@ class CleanUserPermissionsShrinkRequest(TeaModel):
         cluster_ids_shrink: str = None,
         force: bool = None,
     ):
+        # The cluster IDs.
+        # 
+        # *   If cluster IDs are specified, only the kubeconfig files of the specified clusters and the relevant RBAC permissions are deleted and revoked.
         self.cluster_ids_shrink = cluster_ids_shrink
+        # Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+        # 
+        # *   **false** (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+        # *   **true**: forcefully deletes the kubeconfig files without checking cluster access records.
         self.force = force
 
     def validate(self):
@@ -2728,7 +2746,9 @@ class CleanUserPermissionsResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # 请求ID。
         self.request_id = request_id
+        # 任务ID
         self.task_id = task_id
 
     def validate(self):
@@ -9557,7 +9577,6 @@ class DescribeClusterNodePoolDetailResponseBodyKubernetesConfig(TeaModel):
         self.runtime_version = runtime_version
         # The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
         self.taints = taints
-        # 扩容后的节点是否可调度。
         self.unschedulable = unschedulable
         # The user data of the node pool. For more information, see [Generate user data](https://help.aliyun.com/document_detail/49121.html).
         self.user_data = user_data
@@ -9636,7 +9655,6 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy(TeaMod
         self,
         restart_node: bool = None,
     ):
-        # 是否允许重启节点。
         self.restart_node = restart_node
 
     def validate(self):
@@ -9664,7 +9682,6 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy(TeaMo
         self,
         auto_upgrade_kubelet: bool = None,
     ):
-        # 是否允许自动升级kubelet。
         self.auto_upgrade_kubelet = auto_upgrade_kubelet
 
     def validate(self):
@@ -9693,9 +9710,7 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy(TeaMod
         restart_node: bool = None,
         vul_level: str = None,
     ):
-        # 是否允许重启节点。
         self.restart_node = restart_node
-        # 允许自动修复的漏洞级别，以逗号分隔。
         self.vul_level = vul_level
 
     def validate(self):
@@ -9793,15 +9808,10 @@ class DescribeClusterNodePoolDetailResponseBodyManagement(TeaModel):
         # *   `true`: Auto repair is enabled.
         # *   `false`: Auto repair is disabled.
         self.auto_repair = auto_repair
-        # 自动修复节点策略。
         self.auto_repair_policy = auto_repair_policy
-        # 是否自动升级。
         self.auto_upgrade = auto_upgrade
-        # 自动升级策略。
         self.auto_upgrade_policy = auto_upgrade_policy
-        # 是否自动修复CVE。
         self.auto_vul_fix = auto_vul_fix
-        # 自动修复CVE策略。
         self.auto_vul_fix_policy = auto_vul_fix_policy
         # Indicates whether the managed node pool feature is enabled. Valid values:
         # 
@@ -9875,7 +9885,6 @@ class DescribeClusterNodePoolDetailResponseBodyNodeConfig(TeaModel):
         self,
         kubelet_configuration: KubeletConfig = None,
     ):
-        # Kubelet参数配置。
         self.kubelet_configuration = kubelet_configuration
 
     def validate(self):
@@ -10024,9 +10033,9 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit(TeaMod
         instance_type: str = None,
         price_limit: str = None,
     ):
-        # The instance type of preemptible instances.
+        # The instance type of the preemptible instances.
         self.instance_type = instance_type
-        # The price limit of a preemptible instance.
+        # The price cap of a preemptible instance of the type.
         # 
         # Unit: USD/hour.
         self.price_limit = price_limit
@@ -10116,7 +10125,6 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # 
         # If you specify `PeriodUnit=Month`, the valid values are 1, 2, 3, 6, and 12.
         self.auto_renew_period = auto_renew_period
-        # 【已废弃】请使用参数security_hardening_os替代。
         self.cis_enabled = cis_enabled
         # Indicates whether pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when `multi_az_policy` is set to `COST_OPTIMIZED`. Valid values:
         # 
@@ -10131,13 +10139,13 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.desired_size = desired_size
         # The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK.
         self.image_id = image_id
-        # 操作系统镜像类型。
         self.image_type = image_type
         # The billing method of the nodes in the node pool. Valid values:
         # 
         # *   `PrePaid`: the subscription billing method.
         # *   `PostPaid`: the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
+        # 实例属性
         self.instance_patterns = instance_patterns
         # A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
         self.instance_types = instance_types
@@ -10147,7 +10155,6 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The name of the key pair. You must set this parameter or the `login_password` parameter. You must set `key_pair` if the node pool is a managed node pool.
         self.key_pair = key_pair
-        # 弹出的ECS实例是否使用以非root用户登录。
         self.login_as_non_root = login_as_non_root
         # The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
@@ -10190,6 +10197,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.private_pool_options = private_pool_options
         # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
         self.ram_policy = ram_policy
+        # Worker RAM角色名称。
         self.ram_role_name = ram_role_name
         # After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
         self.rds_instances = rds_instances
@@ -10204,14 +10212,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the node pool is added.
         self.security_group_ids = security_group_ids
-        # 阿里云OS安全加固。取值：
-        # 
-        # - `true`：开启阿里云OS安全加固。
-        # - `false`：不开启阿里云OS安全加固。
-        # 
-        # 默认值：`false`。
         self.security_hardening_os = security_hardening_os
-        # 是否开启等保加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启等保加固。阿里云为Alibaba Cloud Linux 2和Alibaba Cloud Linux 3等保2.0三级版镜像提供等保合规的基线检查标准和扫描程序。
         self.soc_enabled = soc_enabled
         # The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
@@ -10230,34 +10231,38 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(TeaModel):
         # 
         # For more information, see [Preemptible instances](https://help.aliyun.com/document_detail/157759.html).
         self.spot_strategy = spot_strategy
-        # 节点系统盘是否开启Burst（性能突发），磁盘类型为cloud_auto时配置。
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
-        # 系统盘的多磁盘类型。当无法使用高优先级的磁盘类型时，自动尝试下一优先级的磁盘类型创建系统盘。取值：
-        # - `cloud`：普通云盘。
-        # - `cloud_efficiency`：高效云盘。
-        # - `cloud_ssd`：SSD云盘。
-        # - `cloud_essd`：ESSD云盘。
-        # - `cloud_auto`：ESSD AutoPL 云盘。
-        # - `cloud_essd_entry`：ESSD Entry 云盘。
+        # The system disk types. The system attempts to create system disks from a disk type with a lower priority when the disk type with a higher priority is unavailable. Valid values: Valid values:
         # 
-        # 默认值：`cloud_efficiency`
+        # *   `cloud`: basic disk
+        # *   `cloud_efficiency`: ultra disk
+        # *   `cloud_ssd`: standard SSD
+        # *   `cloud_essd`: ESSD
+        # *   `cloud_auto`: ESSD AutoPL disk
+        # *   `cloud_essd_entry`: ESSD Entry disk
+        # 
+        # Default value: `cloud_efficiency`.
         self.system_disk_categories = system_disk_categories
-        # The type of system disk. Valid values:
+        # The system disk type. Valid values:
         # 
-        # *   `cloud_efficiency`: ultra disk.
-        # *   `cloud_ssd`: standard SSD.
+        # *   `cloud`: basic disk
+        # *   `cloud_efficiency`: ultra disk
+        # *   `cloud_ssd`: standard SSD
+        # *   `cloud_essd`: Enterprise SSD (ESSD)
+        # *   `cloud_auto`: ESSD AutoPL disk
+        # *   `cloud_essd_entry`: ESSD Entry disk
+        # 
+        # Default value: `cloud_efficiency`.
         self.system_disk_category = system_disk_category
-        # 系统盘采用的加密算法。取值范围：aes-256。
         self.system_disk_encrypt_algorithm = system_disk_encrypt_algorithm
-        # 是否加密系统盘。取值：
-        # - `true`：加密。
-        # - `false`：不加密。
+        # Specifies whether to encrypt the system disk. Valid values: Valid values:
+        # 
+        # *   `true`: encrypts the system disk.
+        # *   `false`: does not encrypt the system disk.
         self.system_disk_encrypted = system_disk_encrypted
-        # 系统盘使用的KMS密钥ID。
         self.system_disk_kms_key_id = system_disk_kms_key_id
         # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs (ESSDs).
         self.system_disk_performance_level = system_disk_performance_level
-        # 节点系统盘预配置的读写IOPS，磁盘类型为cloud_auto时配置。
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
         # The system disk size of a node. Unit: GiB.
         # 
@@ -10659,11 +10664,10 @@ class DescribeClusterNodePoolDetailResponseBody(TeaModel):
         self.management = management
         # The maximum number of nodes that are supported by the edge node pool. The value of this parameter must be equal to or greater than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools whose types are ess or default edge node pools.
         self.max_nodes = max_nodes
-        # 节点配置
         self.node_config = node_config
         # The configuration of the node pool.
         self.nodepool_info = nodepool_info
-        # The configuration of the scaling group.
+        # The configurations of the scaling group.
         self.scaling_group = scaling_group
         # The status details about the node pool.
         self.status = status
@@ -12682,6 +12686,7 @@ class DescribeClusterResourcesRequest(TeaModel):
         self,
         with_addon_resources: bool = None,
     ):
+        # Specifies whether to query the resources created by cluster components at the same time.
         self.with_addon_resources = with_addon_resources
 
     def validate(self):
@@ -12750,8 +12755,11 @@ class DescribeClusterResourcesResponseBodyAssociatedObject(TeaModel):
         namespace: str = None,
         name: str = None,
     ):
+        # The Kubernetes object type.
         self.kind = kind
+        # The namespace in which the Kubernetes object resides.
         self.namespace = namespace
+        # The Kubernetes object name.
         self.name = name
 
     def validate(self):
@@ -12788,7 +12796,9 @@ class DescribeClusterResourcesResponseBodyDeleteBehavior(TeaModel):
         delete_by_default: bool = None,
         changeable: bool = None,
     ):
+        # Specifies whether to delete the resource by default when the cluster is deleted.
         self.delete_by_default = delete_by_default
+        # Specifies whether the default behavior returned in delete_by_default can be changed.
         self.changeable = changeable
 
     def validate(self):
@@ -12837,30 +12847,39 @@ class DescribeClusterResourcesResponseBody(TeaModel):
         self.created = created
         # The resource ID.
         self.instance_id = instance_id
-        # The information about the resource. For more information about how to query the source information about a resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+        # The resource information. For more information about how to query the source information about the resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
         self.resource_info = resource_info
         # The resource type.
         self.resource_type = resource_type
         # The resource status. Valid values:
         # 
-        # *   `CREATE_COMPLETE`: The resource is created.
-        # *   `CREATE_FAILED`: The resource failed to be created.
-        # *   `CREATE_IN_PROGRESS`: The resource is being created.
-        # *   `DELETE_FAILED`: The resource failed to be deleted.
-        # *   `DELETE_IN_PROGRESS`: The resource is being deleted.
-        # *   `ROLLBACK_COMPLETE`: The resource is rolled back.
-        # *   `ROLLBACK_FAILED`: The resource failed to be rolled back.
-        # *   `ROLLBACK_IN_PROGRESS`: The resource is being rolled back.
+        # *   `CREATE_COMPLETE`: the resource is created.
+        # *   `CREATE_FAILED`: the resource failed to be created.
+        # *   `CREATE_IN_PROGRESS`: the resource is being created.
+        # *   `DELETE_FAILED`: the resource failed to be deleted.
+        # *   `DELETE_IN_PROGRESS`: the resource is being deleted.
+        # *   `ROLLBACK_COMPLETE`: the resource is rolled back.
+        # *   `ROLLBACK_FAILED`: the resource failed to be rolled back.
+        # *   `ROLLBACK_IN_PROGRESS`: the resource is being rolled back.
         self.state = state
-        # Indicates whether the resource is created by Container Service for Kubernetes (ACK). Valid values:
+        # Specifies whether the resource is created by Container Service for Kubernetes (ACK). Valid values:
         # 
-        # *   1: The resource is created by ACK.
-        # *   0: The resource is an existing resource.
+        # *   1: the resource is created by ACK.
+        # *   0: the resource is an existing resource.
         self.auto_create = auto_create
+        # The dependent resources.
         self.dependencies = dependencies
+        # The Kubernetes object with which the resource is associated.
         self.associated_object = associated_object
+        # The deletion behavior of the resource when the cluster is deleted.
         self.delete_behavior = delete_behavior
+        # The type of the resource creator. Valid values:
+        # 
+        # *   user: the resource is created by the user.
+        # *   system: the resource is created by the ACK management system.
+        # *   addon: the resource is created by a cluster component.
         self.creator_type = creator_type
+        # The additional information about the resource.
         self.extra_info = extra_info
 
     def validate(self):
@@ -20872,7 +20891,15 @@ class ListClusterKubeconfigStatesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number.
+        # 
+        # *   Valid values: ≥ 1.
+        # *   Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # *   Valid values: 10 to 50.
+        # *   Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -20906,8 +20933,11 @@ class ListClusterKubeconfigStatesResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -20950,13 +20980,33 @@ class ListClusterKubeconfigStatesResponseBodyStates(TeaModel):
         cert_state: str = None,
         revokable: bool = None,
     ):
+        # The display name of the account.
         self.account_display_name = account_display_name
+        # The ID of an Alibaba Cloud account, RAM user, or RAM role.
         self.account_id = account_id
+        # The name of the account.
         self.account_name = account_name
+        # The status of the account. Valid values:
+        # 
+        # *   Active: The account is active.
+        # *   InActive: The account is locked.
+        # *   Deleted: The account is deleted.
         self.account_state = account_state
+        # The type of the account. Valid values:
+        # 
+        # *   RootAccount: Alibaba Cloud account.
+        # *   RamUser: RAM user.
+        # *   RamRole: RAM role.
         self.account_type = account_type
+        # Expiration time of the certificate.
         self.cert_expire_time = cert_expire_time
+        # The status of the certificate.
+        # 
+        # *   Unexpired: The certificate is not expired.
+        # *   Expired: The certificate is expired.
+        # *   Unknown: The status of the certificate is unknown.
         self.cert_state = cert_state
+        # Indicates whether the certificate can be revoked.
         self.revokable = revokable
 
     def validate(self):
@@ -21013,7 +21063,9 @@ class ListClusterKubeconfigStatesResponseBody(TeaModel):
         page: ListClusterKubeconfigStatesResponseBodyPage = None,
         states: List[ListClusterKubeconfigStatesResponseBodyStates] = None,
     ):
+        # The pagination information.
         self.page = page
+        # The status of the kubeconfig files associated with the cluster.
         self.states = states
 
     def validate(self):
@@ -21601,7 +21653,15 @@ class ListUserKubeConfigStatesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number.
+        # 
+        # *   Valid values: ≥ 1.
+        # *   Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # *   Value values: 1 to 100.
+        # *   Default value: 50.
         self.page_size = page_size
 
     def validate(self):
@@ -21635,8 +21695,11 @@ class ListUserKubeConfigStatesResponseBodyPage(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -21676,10 +21739,36 @@ class ListUserKubeConfigStatesResponseBodyStates(TeaModel):
         cluster_name: str = None,
         cluster_state: str = None,
     ):
+        # The expiration date of the certificate used in a kubeconfig file. Format: the UTC time in the RFC3339 format.
         self.cert_expire_time = cert_expire_time
+        # The current status of the certificate used in a kubeconfig file. Valid values:
+        # 
+        # *   Expired: The certificate is expired.
+        # *   Unexpired: The certificate is not expired.
+        # *   Unissued: The certificate is not issued.
+        # *   Unknown: The status of the certificate is unknown.
+        # *   Removed: The certificate is removed. An issue record is found for the certificate.
         self.cert_state = cert_state
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster name.
+        # 
+        # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
         self.cluster_name = cluster_name
+        # The status of the cluster. Valid values:
+        # 
+        # *   `initial`: The cluster is being created.
+        # *   `failed`: The cluster failed to be created.
+        # *   `running`: The cluster is running.
+        # *   `updating`: The cluster is being upgraded.
+        # *   `updating_failed`: The cluster failed to be updated.
+        # *   `scaling`: The cluster is being scaled.
+        # *   `waiting`: The cluster is waiting for connection requests.
+        # *   `disconnected`: The cluster is disconnected.
+        # *   `stopped`: The cluster is stopped.
+        # *   `deleting`: The cluster is being deleted.
+        # *   `deleted`: The cluster is deleted.
+        # *   `delete_failed`: The cluster failed to be deleted.
         self.cluster_state = cluster_state
 
     def validate(self):
@@ -21724,7 +21813,9 @@ class ListUserKubeConfigStatesResponseBody(TeaModel):
         page: ListUserKubeConfigStatesResponseBodyPage = None,
         states: List[ListUserKubeConfigStatesResponseBodyStates] = None,
     ):
+        # The pagination information.
         self.page = page
+        # The status of the kubeconfig files.
         self.states = states
 
     def validate(self):
@@ -26849,7 +26940,16 @@ class UpdateClusterAuditLogConfigRequest(TeaModel):
         disable: bool = None,
         sls_project_name: str = None,
     ):
+        # Enable or disable the audit log feature.
+        # 
+        # *   false: enables the audit log feature or updates the audit log configuration.
+        # *   true: disables the audit log feature.
         self.disable = disable
+        # The [SLS project](https://help.aliyun.com/zh/sls/product-overview/project?spm=a2c4g.11186623.0.i3) to which the [Logstore](https://help.aliyun.com/zh/sls/product-overview/logstore?spm=a2c4g.11186623.0.0.48287ce0jAUWWM) belongs.
+        # 
+        # *   Default value: k8s-log-{clusterid}.
+        # *   After the cluster audit log feature is enabled, a Logstore is created in the specified SLS project to store the cluster audit logs.
+        # *   If you want to change the project after the cluster audit log feature is enabled, you can use this parameter to specify another SLS project. You can perform this operation only in ACK managed clusters.
         self.sls_project_name = sls_project_name
 
     def validate(self):
@@ -26883,8 +26983,11 @@ class UpdateClusterAuditLogConfigResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -27828,17 +27931,59 @@ class UpgradeClusterAddonsRequest(TeaModel):
         return self
 
 
+class UpgradeClusterAddonsResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
 class UpgradeClusterAddonsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: UpgradeClusterAddonsResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27850,6 +27995,8 @@ class UpgradeClusterAddonsResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -27858,6 +28005,9 @@ class UpgradeClusterAddonsResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpgradeClusterAddonsResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

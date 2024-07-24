@@ -1,3 +1,7 @@
+2024-07-24 Version: 4.5.2
+- Update API UpgradeClusterAddons: update response param.
+
+
 2024-07-19 Version: 4.5.1
 - Generated python 2015-12-15 for CS.
 
