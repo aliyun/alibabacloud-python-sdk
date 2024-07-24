@@ -602,6 +602,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         auto_renew: bool = None,
         biz_region_id: str = None,
         charge_type: str = None,
+        gpu_acceleration: bool = None,
         image_id: str = None,
         instance_group_name: str = None,
         instance_group_spec: str = None,
@@ -618,6 +619,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         # This parameter is required.
         self.biz_region_id = biz_region_id
         self.charge_type = charge_type
+        self.gpu_acceleration = gpu_acceleration
         # This parameter is required.
         self.image_id = image_id
         self.instance_group_name = instance_group_name
@@ -650,6 +652,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.gpu_acceleration is not None:
+            result['GpuAcceleration'] = self.gpu_acceleration
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_group_name is not None:
@@ -682,6 +686,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('GpuAcceleration') is not None:
+            self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceGroupName') is not None:
@@ -2006,6 +2012,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         office_site_id: str = None,
         policy_group_id: str = None,
         region_id: str = None,
+        rendering_type: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
         sale_mode: str = None,
@@ -2033,6 +2040,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.office_site_id = office_site_id
         self.policy_group_id = policy_group_id
         self.region_id = region_id
+        self.rendering_type = rendering_type
         self.resolution_height = resolution_height
         self.resolution_width = resolution_width
         self.sale_mode = sale_mode
@@ -2095,6 +2103,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['PolicyGroupId'] = self.policy_group_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rendering_type is not None:
+            result['RenderingType'] = self.rendering_type
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
@@ -2154,6 +2164,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RenderingType') is not None:
+            self.rendering_type = m.get('RenderingType')
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
@@ -2349,6 +2361,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         persistent_app_instance_id: str = None,
         rate: int = None,
         region_id: str = None,
+        rendering_type: str = None,
     ):
         self.android_instance_group_id = android_instance_group_id
         self.android_instance_id = android_instance_id
@@ -2366,6 +2379,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.persistent_app_instance_id = persistent_app_instance_id
         self.rate = rate
         self.region_id = region_id
+        self.rendering_type = rendering_type
 
     def validate(self):
         pass
@@ -2408,6 +2422,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['Rate'] = self.rate
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.rendering_type is not None:
+            result['RenderingType'] = self.rendering_type
         return result
 
     def from_map(self, m: dict = None):
@@ -2444,6 +2460,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.rate = m.get('Rate')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RenderingType') is not None:
+            self.rendering_type = m.get('RenderingType')
         return self
 
 
@@ -3154,6 +3172,8 @@ class DescribeImageListResponseBodyData(TeaModel):
         image_region_list: List[str] = None,
         image_type: str = None,
         language: str = None,
+        release_time: str = None,
+        rendering_type: str = None,
         status: str = None,
         system_type: str = None,
     ):
@@ -3167,6 +3187,8 @@ class DescribeImageListResponseBodyData(TeaModel):
         self.image_region_list = image_region_list
         self.image_type = image_type
         self.language = language
+        self.release_time = release_time
+        self.rendering_type = rendering_type
         self.status = status
         self.system_type = system_type
 
@@ -3204,6 +3226,10 @@ class DescribeImageListResponseBodyData(TeaModel):
             result['ImageType'] = self.image_type
         if self.language is not None:
             result['Language'] = self.language
+        if self.release_time is not None:
+            result['ReleaseTime'] = self.release_time
+        if self.rendering_type is not None:
+            result['RenderingType'] = self.rendering_type
         if self.status is not None:
             result['Status'] = self.status
         if self.system_type is not None:
@@ -3235,6 +3261,10 @@ class DescribeImageListResponseBodyData(TeaModel):
             self.image_type = m.get('ImageType')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('ReleaseTime') is not None:
+            self.release_time = m.get('ReleaseTime')
+        if m.get('RenderingType') is not None:
+            self.rendering_type = m.get('RenderingType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SystemType') is not None:
@@ -7308,9 +7338,11 @@ class UpgradeAndroidInstanceGroupRequest(TeaModel):
 class UpgradeAndroidInstanceGroupResponseBody(TeaModel):
     def __init__(
         self,
+        instance_ids: str = None,
         order_id: str = None,
         request_id: str = None,
     ):
+        self.instance_ids = instance_ids
         self.order_id = order_id
         self.request_id = request_id
 
@@ -7323,6 +7355,8 @@ class UpgradeAndroidInstanceGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.request_id is not None:
@@ -7331,6 +7365,8 @@ class UpgradeAndroidInstanceGroupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:

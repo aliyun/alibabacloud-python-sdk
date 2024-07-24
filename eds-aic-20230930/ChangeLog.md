@@ -1,3 +1,11 @@
+2024-07-24 Version: 1.3.1
+- Update API CreateAndroidInstanceGroup: add param GpuAcceleration.
+- Update API DescribeAndroidInstanceGroups: update response param.
+- Update API DescribeAndroidInstances: update response param.
+- Update API DescribeImageList: update response param.
+- Update API UpgradeAndroidInstanceGroup: update response param.
+
+
 2024-07-03 Version: 1.3.0
 - Support API DescribeTasks.
 - Update API CreateAndroidInstanceGroup: add param Amount.
