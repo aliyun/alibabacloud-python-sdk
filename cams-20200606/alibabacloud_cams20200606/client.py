@@ -56,19 +56,25 @@ class Client(OpenApiClient):
         @return: AddChatappPhoneNumberResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cc):
-            body['Cc'] = request.cc
+            query['Cc'] = request.cc
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.pre_validate_id):
-            body['PreValidateId'] = request.pre_validate_id
+            query['PreValidateId'] = request.pre_validate_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.verified_name):
-            body['VerifiedName'] = request.verified_name
+            query['VerifiedName'] = request.verified_name
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddChatappPhoneNumber',
@@ -101,19 +107,25 @@ class Client(OpenApiClient):
         @return: AddChatappPhoneNumberResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cc):
-            body['Cc'] = request.cc
+            query['Cc'] = request.cc
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.pre_validate_id):
-            body['PreValidateId'] = request.pre_validate_id
+            query['PreValidateId'] = request.pre_validate_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.verified_name):
-            body['VerifiedName'] = request.verified_name
+            query['VerifiedName'] = request.verified_name
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddChatappPhoneNumber',
@@ -468,11 +480,17 @@ class Client(OpenApiClient):
         @return: ChatappBindWabaResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.waba_id):
-            body['WabaId'] = request.waba_id
+            query['WabaId'] = request.waba_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChatappBindWaba',
@@ -505,11 +523,17 @@ class Client(OpenApiClient):
         @return: ChatappBindWabaResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.waba_id):
-            body['WabaId'] = request.waba_id
+            query['WabaId'] = request.waba_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChatappBindWaba',
@@ -1004,13 +1028,19 @@ class Client(OpenApiClient):
         @return: ChatappPhoneNumberRegisterResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChatappPhoneNumberRegister',
@@ -1043,13 +1073,19 @@ class Client(OpenApiClient):
         @return: ChatappPhoneNumberRegisterResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChatappPhoneNumberRegister',
@@ -1115,6 +1151,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1152,6 +1194,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1216,15 +1264,21 @@ class Client(OpenApiClient):
         @return: ChatappVerifyAndRegisterResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.verify_code):
-            body['VerifyCode'] = request.verify_code
+            query['VerifyCode'] = request.verify_code
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChatappVerifyAndRegister',
@@ -1257,15 +1311,21 @@ class Client(OpenApiClient):
         @return: ChatappVerifyAndRegisterResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.verify_code):
-            body['VerifyCode'] = request.verify_code
+            query['VerifyCode'] = request.verify_code
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ChatappVerifyAndRegister',
@@ -1842,6 +1902,12 @@ class Client(OpenApiClient):
             query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_name):
@@ -1892,6 +1958,12 @@ class Client(OpenApiClient):
             query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.language):
             query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.template_code):
             query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_name):
@@ -2876,17 +2948,23 @@ class Client(OpenApiClient):
         @return: GetChatappVerifyCodeResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not UtilClient.is_unset(request.locale):
-            body['Locale'] = request.locale
+            query['Locale'] = request.locale
         if not UtilClient.is_unset(request.method):
-            body['Method'] = request.method
+            query['Method'] = request.method
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetChatappVerifyCode',
@@ -2919,17 +2997,23 @@ class Client(OpenApiClient):
         @return: GetChatappVerifyCodeResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not UtilClient.is_unset(request.locale):
-            body['Locale'] = request.locale
+            query['Locale'] = request.locale
         if not UtilClient.is_unset(request.method):
-            body['Method'] = request.method
+            query['Method'] = request.method
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
-            body['PhoneNumber'] = request.phone_number
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetChatappVerifyCode',
@@ -2995,8 +3079,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3034,8 +3124,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5127,10 +5223,16 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.email):
             query['Email'] = request.email
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.profile_picture_url):
             query['ProfilePictureUrl'] = request.profile_picture_url
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.vertical):
             query['Vertical'] = request.vertical
         if not UtilClient.is_unset(request.websites_shrink):
@@ -5184,10 +5286,16 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.email):
             query['Email'] = request.email
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
         if not UtilClient.is_unset(request.profile_picture_url):
             query['ProfilePictureUrl'] = request.profile_picture_url
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.vertical):
             query['Vertical'] = request.vertical
         if not UtilClient.is_unset(request.websites_shrink):
@@ -5599,8 +5707,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5638,8 +5752,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5707,6 +5827,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.waba_id):
             query['WabaId'] = request.waba_id
         req = open_api_models.OpenApiRequest(
@@ -5746,6 +5872,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.waba_id):
             query['WabaId'] = request.waba_id
         req = open_api_models.OpenApiRequest(
@@ -6471,8 +6603,14 @@ class Client(OpenApiClient):
             query['CatalogVisible'] = request.catalog_visible
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6514,8 +6652,14 @@ class Client(OpenApiClient):
             query['CatalogVisible'] = request.catalog_visible
         if not UtilClient.is_unset(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.phone_number):
             query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

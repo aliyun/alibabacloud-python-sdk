@@ -9,26 +9,23 @@ class AddChatappPhoneNumberRequest(TeaModel):
         self,
         cc: str = None,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         pre_validate_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         verified_name: str = None,
     ):
-        # The country code.
-        # 
         # This parameter is required.
         self.cc = cc
-        # The space ID of the user within the independent software vendor (ISV) account.
-        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The phone number without a country code.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
-        # The ID of the pre-registered phone number.
         self.pre_validate_id = pre_validate_id
-        # The display name of the phone number.
-        # 
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # This parameter is required.
         self.verified_name = verified_name
 
@@ -45,10 +42,16 @@ class AddChatappPhoneNumberRequest(TeaModel):
             result['Cc'] = self.cc
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.pre_validate_id is not None:
             result['PreValidateId'] = self.pre_validate_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.verified_name is not None:
             result['VerifiedName'] = self.verified_name
         return result
@@ -59,10 +62,16 @@ class AddChatappPhoneNumberRequest(TeaModel):
             self.cc = m.get('Cc')
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('PreValidateId') is not None:
             self.pre_validate_id = m.get('PreValidateId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VerifiedName') is not None:
             self.verified_name = m.get('VerifiedName')
         return self
@@ -75,6 +84,7 @@ class AddChatappPhoneNumberResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
@@ -87,6 +97,7 @@ class AddChatappPhoneNumberResponseBody(TeaModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -105,6 +116,8 @@ class AddChatappPhoneNumberResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -117,6 +130,8 @@ class AddChatappPhoneNumberResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -1247,10 +1262,14 @@ class BeeBotChatResponse(TeaModel):
 class ChatappBindWabaRequest(TeaModel):
     def __init__(
         self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         waba_id: str = None,
     ):
-        # The ID of the WhatsApp Business account.
-        # 
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # This parameter is required.
         self.waba_id = waba_id
 
@@ -1263,12 +1282,24 @@ class ChatappBindWabaRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.waba_id is not None:
             result['WabaId'] = self.waba_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('WabaId') is not None:
             self.waba_id = m.get('WabaId')
         return self
@@ -1317,6 +1348,7 @@ class ChatappBindWabaResponseBody(TeaModel):
         data: ChatappBindWabaResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -1330,6 +1362,7 @@ class ChatappBindWabaResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -1351,6 +1384,8 @@ class ChatappBindWabaResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -1366,6 +1401,8 @@ class ChatappBindWabaResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2055,16 +2092,18 @@ class ChatappPhoneNumberRegisterRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user under the independent software vendor (ISV) account.
-        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -2077,16 +2116,28 @@ class ChatappPhoneNumberRegisterRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -2097,6 +2148,7 @@ class ChatappPhoneNumberRegisterResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -2108,6 +2160,7 @@ class ChatappPhoneNumberRegisterResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -2126,6 +2179,8 @@ class ChatappPhoneNumberRegisterResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -2138,6 +2193,8 @@ class ChatappPhoneNumberRegisterResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2186,11 +2243,17 @@ class ChatappSyncPhoneNumberRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -2203,12 +2266,24 @@ class ChatappSyncPhoneNumberRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -2325,6 +2400,7 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
         message: str = None,
         phone_numbers: List[ChatappSyncPhoneNumberResponseBodyPhoneNumbers] = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -2338,6 +2414,7 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
         self.phone_numbers = phone_numbers
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.phone_numbers:
@@ -2363,6 +2440,8 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
                 result['PhoneNumbers'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -2380,6 +2459,8 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
                 self.phone_numbers.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -2428,19 +2509,19 @@ class ChatappVerifyAndRegisterRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         verify_code: str = None,
     ):
-        # The space ID of the user under the independent software vendor (ISV) account.
-        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
-        # The verification code.
-        # 
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # This parameter is required.
         self.verify_code = verify_code
 
@@ -2455,8 +2536,14 @@ class ChatappVerifyAndRegisterRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.verify_code is not None:
             result['VerifyCode'] = self.verify_code
         return result
@@ -2465,8 +2552,14 @@ class ChatappVerifyAndRegisterRequest(TeaModel):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('VerifyCode') is not None:
             self.verify_code = m.get('VerifyCode')
         return self
@@ -2479,6 +2572,7 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -2490,6 +2584,7 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -2508,6 +2603,8 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -2520,6 +2617,8 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -4070,6 +4169,9 @@ class DeleteChatappTemplateRequest(TeaModel):
         cust_waba_id: str = None,
         isv_code: str = None,
         language: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         template_code: str = None,
         template_name: str = None,
         template_type: str = None,
@@ -4083,6 +4185,9 @@ class DeleteChatappTemplateRequest(TeaModel):
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
         self.language = language
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The code of the message template.
         self.template_code = template_code
         self.template_name = template_name
@@ -4105,6 +4210,12 @@ class DeleteChatappTemplateRequest(TeaModel):
             result['IsvCode'] = self.isv_code
         if self.language is not None:
             result['Language'] = self.language
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         if self.template_name is not None:
@@ -4123,6 +4234,12 @@ class DeleteChatappTemplateRequest(TeaModel):
             self.isv_code = m.get('IsvCode')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         if m.get('TemplateName') is not None:
@@ -4139,6 +4256,7 @@ class DeleteChatappTemplateResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -4150,6 +4268,7 @@ class DeleteChatappTemplateResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -4168,6 +4287,8 @@ class DeleteChatappTemplateResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -4180,6 +4301,8 @@ class DeleteChatappTemplateResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -6376,24 +6499,22 @@ class GetChatappVerifyCodeRequest(TeaModel):
         cust_space_id: str = None,
         locale: str = None,
         method: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
-        # The space ID of the user under the independent software vendor (ISV) account.
-        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The language.
-        # 
         # This parameter is required.
         self.locale = locale
-        # The method to obtain the verification code. Valid values: SMS and VOICE.
-        # 
         # This parameter is required.
         self.method = method
-        # The phone number.
-        # 
+        self.owner_id = owner_id
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -6410,8 +6531,14 @@ class GetChatappVerifyCodeRequest(TeaModel):
             result['Locale'] = self.locale
         if self.method is not None:
             result['Method'] = self.method
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6422,8 +6549,14 @@ class GetChatappVerifyCodeRequest(TeaModel):
             self.locale = m.get('Locale')
         if m.get('Method') is not None:
             self.method = m.get('Method')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -6434,6 +6567,7 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -6445,6 +6579,7 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -6463,6 +6598,8 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -6475,6 +6612,8 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -6523,16 +6662,22 @@ class GetCommerceSettingRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the user within the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
         # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -6545,16 +6690,28 @@ class GetCommerceSettingRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -6596,11 +6753,14 @@ class GetCommerceSettingResponseBodyData(TeaModel):
 class GetCommerceSettingResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: GetCommerceSettingResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
@@ -6612,6 +6772,7 @@ class GetCommerceSettingResponseBody(TeaModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -6623,6 +6784,8 @@ class GetCommerceSettingResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
@@ -6631,10 +6794,14 @@ class GetCommerceSettingResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
@@ -6644,6 +6811,8 @@ class GetCommerceSettingResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -8633,6 +8802,7 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         audit_status: str = None,
         category: str = None,
         language: str = None,
+        last_update_time: int = None,
         reason: str = None,
         template_code: str = None,
         template_name: str = None,
@@ -8665,6 +8835,7 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         self.category = category
         # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
+        self.last_update_time = last_update_time
         # The reason for the review failure.
         self.reason = reason
         # The code of the message template.
@@ -8689,6 +8860,8 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
             result['Category'] = self.category
         if self.language is not None:
             result['Language'] = self.language
+        if self.last_update_time is not None:
+            result['LastUpdateTime'] = self.last_update_time
         if self.reason is not None:
             result['Reason'] = self.reason
         if self.template_code is not None:
@@ -8707,6 +8880,8 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
             self.category = m.get('Category')
         if m.get('Language') is not None:
             self.language = m.get('Language')
+        if m.get('LastUpdateTime') is not None:
+            self.last_update_time = m.get('LastUpdateTime')
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
         if m.get('TemplateCode') is not None:
@@ -11018,8 +11193,11 @@ class ModifyPhoneBusinessProfileRequest(TeaModel):
         cust_space_id: str = None,
         description: str = None,
         email: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         profile_picture_url: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         vertical: str = None,
         websites: List[str] = None,
     ):
@@ -11034,6 +11212,7 @@ class ModifyPhoneBusinessProfileRequest(TeaModel):
         self.description = description
         # The description.
         self.email = email
+        self.owner_id = owner_id
         # You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         # 
         # This parameter is required.
@@ -11042,6 +11221,8 @@ class ModifyPhoneBusinessProfileRequest(TeaModel):
         # 
         # > Enum: {OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, RESTAURANT}
         self.profile_picture_url = profile_picture_url
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # Sichuan
         self.vertical = vertical
         # The email address.
@@ -11066,10 +11247,16 @@ class ModifyPhoneBusinessProfileRequest(TeaModel):
             result['Description'] = self.description
         if self.email is not None:
             result['Email'] = self.email
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.profile_picture_url is not None:
             result['ProfilePictureUrl'] = self.profile_picture_url
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.vertical is not None:
             result['Vertical'] = self.vertical
         if self.websites is not None:
@@ -11088,10 +11275,16 @@ class ModifyPhoneBusinessProfileRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('ProfilePictureUrl') is not None:
             self.profile_picture_url = m.get('ProfilePictureUrl')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Vertical') is not None:
             self.vertical = m.get('Vertical')
         if m.get('Websites') is not None:
@@ -11107,8 +11300,11 @@ class ModifyPhoneBusinessProfileShrinkRequest(TeaModel):
         cust_space_id: str = None,
         description: str = None,
         email: str = None,
+        owner_id: int = None,
         phone_number: str = None,
         profile_picture_url: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         vertical: str = None,
         websites_shrink: str = None,
     ):
@@ -11123,6 +11319,7 @@ class ModifyPhoneBusinessProfileShrinkRequest(TeaModel):
         self.description = description
         # The description.
         self.email = email
+        self.owner_id = owner_id
         # You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         # 
         # This parameter is required.
@@ -11131,6 +11328,8 @@ class ModifyPhoneBusinessProfileShrinkRequest(TeaModel):
         # 
         # > Enum: {OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, RESTAURANT}
         self.profile_picture_url = profile_picture_url
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # Sichuan
         self.vertical = vertical
         # The email address.
@@ -11155,10 +11354,16 @@ class ModifyPhoneBusinessProfileShrinkRequest(TeaModel):
             result['Description'] = self.description
         if self.email is not None:
             result['Email'] = self.email
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
         if self.profile_picture_url is not None:
             result['ProfilePictureUrl'] = self.profile_picture_url
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.vertical is not None:
             result['Vertical'] = self.vertical
         if self.websites_shrink is not None:
@@ -11177,10 +11382,16 @@ class ModifyPhoneBusinessProfileShrinkRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Email') is not None:
             self.email = m.get('Email')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
         if m.get('ProfilePictureUrl') is not None:
             self.profile_picture_url = m.get('ProfilePictureUrl')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('Vertical') is not None:
             self.vertical = m.get('Vertical')
         if m.get('Websites') is not None:
@@ -11195,6 +11406,7 @@ class ModifyPhoneBusinessProfileResponseBody(TeaModel):
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The URL of the website.
@@ -11203,6 +11415,7 @@ class ModifyPhoneBusinessProfileResponseBody(TeaModel):
         self.message = message
         # The websites.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -11221,6 +11434,8 @@ class ModifyPhoneBusinessProfileResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -11233,6 +11448,8 @@ class ModifyPhoneBusinessProfileResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -11910,16 +12127,22 @@ class QueryPhoneBusinessProfileRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
         # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -11932,16 +12155,28 @@ class QueryPhoneBusinessProfileRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -12022,6 +12257,7 @@ class QueryPhoneBusinessProfileResponseBody(TeaModel):
         data: QueryPhoneBusinessProfileResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -12035,6 +12271,7 @@ class QueryPhoneBusinessProfileResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -12056,6 +12293,8 @@ class QueryPhoneBusinessProfileResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -12071,6 +12310,8 @@ class QueryPhoneBusinessProfileResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -12119,12 +12360,18 @@ class QueryWabaBusinessInfoRequest(TeaModel):
     def __init__(
         self,
         cust_space_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
         waba_id: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
         # The ID of the WABA.
         # 
         # This parameter is required.
@@ -12141,6 +12388,12 @@ class QueryWabaBusinessInfoRequest(TeaModel):
         result = dict()
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         if self.waba_id is not None:
             result['WabaId'] = self.waba_id
         return result
@@ -12149,6 +12402,12 @@ class QueryWabaBusinessInfoRequest(TeaModel):
         m = m or dict()
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('WabaId') is not None:
             self.waba_id = m.get('WabaId')
         return self
@@ -12211,6 +12470,7 @@ class QueryWabaBusinessInfoResponseBody(TeaModel):
         data: QueryWabaBusinessInfoResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
@@ -12224,6 +12484,7 @@ class QueryWabaBusinessInfoResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -12245,6 +12506,8 @@ class QueryWabaBusinessInfoResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -12260,6 +12523,8 @@ class QueryWabaBusinessInfoResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -14062,7 +14327,10 @@ class UpdateCommerceSettingRequest(TeaModel):
         cart_enable: bool = None,
         catalog_visible: bool = None,
         cust_space_id: str = None,
+        owner_id: int = None,
         phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # Specifies whether to display the shopping cart button.
         # 
@@ -14076,10 +14344,13 @@ class UpdateCommerceSettingRequest(TeaModel):
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
         # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -14096,8 +14367,14 @@ class UpdateCommerceSettingRequest(TeaModel):
             result['CatalogVisible'] = self.catalog_visible
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -14108,18 +14385,27 @@ class UpdateCommerceSettingRequest(TeaModel):
             self.catalog_visible = m.get('CatalogVisible')
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
 class UpdateCommerceSettingResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
@@ -14129,6 +14415,7 @@ class UpdateCommerceSettingResponseBody(TeaModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         pass
@@ -14139,22 +14426,30 @@ class UpdateCommerceSettingResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
