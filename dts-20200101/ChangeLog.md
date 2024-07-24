@@ -1,3 +1,6 @@
+2024-07-24 Version: 5.7.1
+- Generated python 2020-01-01 for Dts.
+
 2024-07-24 Version: 5.7.0
 - Support API DescribeDtsJobConfig.
 - Update API DescribeDtsJobs: add param DestProductType.
