@@ -1988,6 +1988,10 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):
@@ -2692,6 +2696,10 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):
@@ -4525,6 +4533,10 @@ class DeleteAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):
@@ -6386,6 +6398,10 @@ class DescribeAccountsRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
         self.owner_id = owner_id
 
@@ -6446,6 +6462,10 @@ class DescribeAccountsResponseBodyAccountListDBAccount(TeaModel):
         # *   **Normal**: standard account.
         # *   **Super**: privileged account.
         self.account_type = account_type
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB**: the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
         # The ID of the Resource Access Management (RAM) user.
         self.ram_users = ram_users
@@ -9234,6 +9254,10 @@ class DescribeClusterNetInfoRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):
@@ -9266,7 +9290,14 @@ class DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts(TeaModel):
         port: str = None,
         protocol: str = None,
     ):
+        # The port.
         self.port = port
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **http**\
+        # *   **https**\
+        # *   **mysql**\
         self.protocol = protocol
 
     def validate(self):
@@ -9342,18 +9373,18 @@ class DescribeClusterNetInfoResponseBodyItemsAddress(TeaModel):
     ):
         # The endpoint of the cluster.
         # 
-        # *   If the network type of the cluster is VPC, the VPC endpoint of the cluster is returned.
-        # *   If the network type of the cluster is Public, the public endpoint of the cluster is returned.
+        # *   If NetType is set to VPC, the VPC endpoint of the cluster is returned.
+        # *   If NetType is set to Public, the public endpoint of the cluster is returned.
         self.connection_string = connection_string
         # The prefix of the endpoint.
         # 
-        # *   If the network type of the cluster is VPC, the prefix of the private endpoint is returned.
-        # *   If the network type of the cluster is Public, the prefix of the public endpoint is returned.
+        # *   If NetType is set to VPC, the prefix of the VPC endpoint is returned.
+        # *   If NetType is set to Public, the prefix of the public endpoint is returned.
         self.connection_string_prefix = connection_string_prefix
         # The IP address of the endpoint.
         # 
-        # *   If the network type of the cluster is VPC, the IP address of the private endpoint is returned.
-        # *   If the network type of the cluster is Public, the IP address of the public endpoint is returned.
+        # *   If NetType is set to VPC, the private IP address of the cluster is returned.
+        # *   If NetType is set to Public, the public IP address of the cluster is returned.
         self.ipaddress = ipaddress
         # The network type of the cluster. Valid values:
         # 
@@ -9362,14 +9393,15 @@ class DescribeClusterNetInfoResponseBodyItemsAddress(TeaModel):
         self.net_type = net_type
         # The port number that is used to connect to the cluster. **3306** is returned.
         self.port = port
+        # The ports.
         self.ports = ports
         # The VPC ID.
         # 
-        # > If NetType is set to Public, an empty string is returned for this parameter.
+        # >  If NetType is set to Public, an empty string is returned.
         self.vpcid = vpcid
         # The vSwitch ID of the cluster.
         # 
-        # > If NetType is set to Public, an empty string is returned for this parameter.
+        # >  If NetType is set to Public, an empty string is returned.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -9466,7 +9498,7 @@ class DescribeClusterNetInfoResponseBody(TeaModel):
     ):
         # The network type of the cluster. Only the Virtual Private Cloud (VPC) network type is supported. **VPC** is returned.
         self.cluster_network_type = cluster_network_type
-        # The network information about the cluster.
+        # The queried network information about the cluster.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -10720,7 +10752,12 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The cache size of the ClickHouse wide table engine. Unit: GB. If a value of -1 is returned, the ClickHouse wide table engine is disabled. If a value other than -1 is returned, this parameter indicates the disk cache size.
         self.clickhouse_engine_cache_size = clickhouse_engine_cache_size
+        # Indicates whether the ClickHouse wide table engine is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.clickhouse_engine_enabled = clickhouse_engine_enabled
         # The billing method of the cluster. Valid values:
         # 
@@ -10777,6 +10814,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # 
         # *   This parameter is not returned for pay-as-you-go clusters.
         self.expired = expired
+        # The ID of the key that is used to encrypt disk data.
+        # 
+        # >  This parameter is returned only when disk encryption is enabled.
         self.kms_id = kms_id
         # The lock mode of the cluster. Valid values:
         # 
@@ -10801,13 +10841,20 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.pay_type = pay_type
         # The port number that is used to connect to the cluster.
         self.port = port
+        # A reserved parameter.
         self.product_form = product_form
+        # The edition of the cluster. Valid values:
+        # 
+        # *   **BasicVersion**: Basic Edition.
+        # *   **EnterpriseVersion**: Enterprise Edition.
         self.product_version = product_version
         # The region ID of the cluster.
         self.region_id = region_id
         # The amount of remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.reserved_acu = reserved_acu
+        # A reserved parameter.
         self.reserved_node_count = reserved_node_count
+        # A reserved parameter.
         self.reserved_node_size = reserved_node_size
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -10815,7 +10862,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.storage_resource = storage_resource
         # The total amount of storage resources in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
         self.storage_resource_total = storage_resource_total
-        # A reserved parameter.
+        # Reserved parameters.
         self.supported_features = supported_features
         # The tags that are added to the cluster.
         self.tags = tags
@@ -17469,6 +17516,7 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -17480,6 +17528,7 @@ class DescribeRegionsRequest(TeaModel):
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -17498,6 +17547,8 @@ class DescribeRegionsRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -17512,6 +17563,8 @@ class DescribeRegionsRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -25486,6 +25539,10 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):
@@ -27993,6 +28050,10 @@ class ReleaseClusterPublicConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):
@@ -28024,7 +28085,7 @@ class ReleaseClusterPublicConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28277,6 +28338,10 @@ class ResetAccountPasswordRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database engine of the cluster. Valid values:
+        # 
+        # *   **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # *   **Clickhouse**: the wide table engine.
         self.engine = engine
 
     def validate(self):

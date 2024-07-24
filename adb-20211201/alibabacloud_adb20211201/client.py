@@ -7453,6 +7453,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7498,6 +7500,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -14325,6 +14329,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ReleaseClusterPublicConnectionResponse:
         """
+        @summary Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ReleaseClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleaseClusterPublicConnectionResponse
@@ -14360,6 +14368,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ReleaseClusterPublicConnectionResponse:
         """
+        @summary Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ReleaseClusterPublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleaseClusterPublicConnectionResponse
@@ -14394,6 +14406,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ReleaseClusterPublicConnectionRequest,
     ) -> adb_20211201_models.ReleaseClusterPublicConnectionResponse:
         """
+        @summary Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ReleaseClusterPublicConnectionRequest
         @return: ReleaseClusterPublicConnectionResponse
         """
@@ -14405,6 +14421,10 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ReleaseClusterPublicConnectionRequest,
     ) -> adb_20211201_models.ReleaseClusterPublicConnectionResponse:
         """
+        @summary Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        
+        @description For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+        
         @param request: ReleaseClusterPublicConnectionRequest
         @return: ReleaseClusterPublicConnectionResponse
         """

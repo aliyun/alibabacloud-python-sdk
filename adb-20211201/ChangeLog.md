@@ -1,3 +1,9 @@
+2024-07-24 Version: 1.3.7
+- Update API DescribeRegions: add param RegionId.
+- Update API GetTable: update param DbName.
+- Update API GetTable: update param TableName.
+
+
 2024-07-01 Version: 2.0.0
 - Support API CreatePerformanceView.
 - Support API DeletePerformanceView.
