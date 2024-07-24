@@ -10773,7 +10773,7 @@ class DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems(Te
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The connection string.
+        # The endpoint.
         self.connection_string = connection_string
         # The IP address of the endpoint.
         self.ipaddress = ipaddress
@@ -10855,8 +10855,12 @@ class DescribeDBClusterMigrationResponseBodyDBClusterEndpointList(TeaModel):
         # 
         # *   **Cluster**: the default cluster endpoint
         # *   **Primary**: the primary endpoint
-        # *   **Custom**: the custom cluster endpoint
+        # *   **Custom**: the custom endpoint
         self.endpoint_type = endpoint_type
+        # The read/write mode. Valid values:
+        # 
+        # *   ReadWrite: receives and forwards read and write requests (automatic read-write splitting).
+        # *   ReadOnly (default): receives and forwards read requests only.
         self.read_write_mode = read_write_mode
 
     def validate(self):
@@ -10910,7 +10914,7 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems(TeaModel
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The connection string.
+        # The endpoint.
         self.connection_string = connection_string
         # The IP address of the endpoint.
         self.ipaddress = ipaddress
@@ -10986,6 +10990,7 @@ class DescribeDBClusterMigrationResponseBodyRdsEndpointList(TeaModel):
     ):
         # Details about the endpoints.
         self.address_items = address_items
+        # The type of the source database.
         self.custins_type = custins_type
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
@@ -11376,10 +11381,10 @@ class DescribeDBClusterParametersRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The kernel parameter. Valid values:
+        # The type of the parameter information to query. Valid values:
         # 
-        # *   **Normal**: the kernel parameters.
-        # *   **MigrationFromRDS**: compares the current parameters with the parameters of the source RDS instance.
+        # *   **Normal**: the information about the cluster parameters
+        # *   **MigrationFromRDS**: a comparison of parameters between the source RDS instance and the destination PolarDB cluster
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11443,19 +11448,35 @@ class DescribeDBClusterParametersResponseBodyParametersParameters(TeaModel):
         rds_parameter_optional: str = None,
         rds_parameter_value: str = None,
     ):
-        # Indicates whether the source parameters and current parameters have the same value.
+        # Indicates whether the source and current parameters have the same value.
         self.is_equal = is_equal
+        # Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
+        # 
+        # *   **1**: The parameter is a primary parameter of the destination cluster.
+        # *   **0**: The parameter is not a primary parameter of the destination cluster.
         self.is_instance_polar_dbkey = is_instance_polar_dbkey
+        # Indicate whether the parameter is a primary parameter of the source instance. Valid values:
+        # 
+        # *   **1**: The parameter is a primary parameter of the source instance.
+        # *   **0**: The parameter is not a primary parameter of the source instance.
         self.is_instance_rds_key = is_instance_rds_key
+        # Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
+        # 
+        # *   **1**: The parameter is a primary parameter of the destination cluster.
+        # *   **0**: The parameter is not a primary parameter of the destination cluster.
         self.is_polar_dbkey = is_polar_dbkey
+        # Indicate whether the parameter is a primary parameter of the source instance. Valid values:
+        # 
+        # *   **1**: The parameter is a primary parameter of the source instance.
+        # *   **0**: The parameter is not a primary parameter of the source instance.
         self.is_rds_key = is_rds_key
-        # The description of the parameter of the current cluster.
+        # The description of the parameter of the destination cluster.
         self.dist_parameter_description = dist_parameter_description
-        # The name of the parameter of the current cluster.
+        # The name of the parameter of the destination cluster.
         self.dist_parameter_name = dist_parameter_name
-        # The valid values of the parameter of the current cluster.
+        # The valid values of the parameter of the destination cluster.
         self.dist_parameter_optional = dist_parameter_optional
-        # The value of the parameter of the current cluster.
+        # The value of the parameter of the destination cluster.
         self.dist_parameter_value = dist_parameter_value
         # The description of the parameter of the source instance.
         self.rds_parameter_description = rds_parameter_description
@@ -11597,7 +11618,7 @@ class DescribeDBClusterParametersResponseBodyRunningParametersParameter(TeaModel
         self.default_parameter_value = default_parameter_value
         # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
         self.factor = factor
-        # Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
+        # Indicates whether a cluster restart is required for the parameter modification to take effect. Valid values:
         # 
         # *   **false**\
         # *   **true**\
@@ -11609,8 +11630,8 @@ class DescribeDBClusterParametersResponseBodyRunningParametersParameter(TeaModel
         self.is_modifiable = is_modifiable
         # Indicates whether the parameter is a global parameter. Valid values:
         # 
-        # *   **0**: yes. The modified parameter value is synchronized to other nodes.
-        # *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
+        # *   **0**: The parameter is a global parameter. The modified parameter value is synchronized to other nodes.
+        # *   **1**: The parameter is not a global parameter. You can specify the nodes to which the modified parameter value can be synchronized.
         self.is_node_available = is_node_available
         # The dependencies of the parameter.
         self.param_rely_rule = param_rely_rule
@@ -11739,7 +11760,7 @@ class DescribeDBClusterParametersResponseBody(TeaModel):
     ):
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The database engine that the cluster runs. Valid values:
+        # The database engine that the clusters runs. Valid values:
         # 
         # *   **MySQL**\
         # *   **PostgreSQL**\
@@ -11747,22 +11768,24 @@ class DescribeDBClusterParametersResponseBody(TeaModel):
         self.dbtype = dbtype
         # The version of the database engine. 
         # 
-        # - Valid values for the MySQL database engine:    - **5.6**\
+        # - Valid values for the MySQL database engine:   
+        #   - **5.6**\
         #   - **5.7**\
         #   - **8.0**\
-        # - Valid value for the PostgreSQL database engine:    - **11**\
+        # - Valid value for the PostgreSQL database engine:    
+        #   - **11**\
         #   - **14**\
-        # - Valid value for the Oracle database engine: **11**\
+        # - Valid value for the Oracle database engine:  **11**\
         self.dbversion = dbversion
         # The cluster engine.
         self.engine = engine
         # The number of parameters.
         self.parameter_numbers = parameter_numbers
-        # A comparison between the current parameters of the PolarDB cluster and the parameters of the source RDS instance before migration.
+        # A comparison of parameters between the source RDS instance and the destination PolarDB cluster.
         self.parameters = parameters
         # The ID of the request.
         self.request_id = request_id
-        # The parameters that are in use.
+        # The parameters of the PolarDB cluster.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -11877,6 +11900,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The interval at which performance data is collected. Valid values: 5, 30, 60, 600, 1800, 3600, 86400, in seconds.
         self.interval = interval
         # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         # 
@@ -12794,10 +12818,10 @@ class DescribeDBClusterVersionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specify to return the latest version information or a list of upgradeable versions.Valid values:
+        # Specifies whether to query the information about the latest versions or the versions to which the cluster can be updated. Valid values:
         # 
-        # - AVAILABLE_VERSION
-        # - LATEST_VERSION
+        # *   LATEST_VERSION: the information about the latest versions.
+        # *   AVAILABLE_VERSION: the information about the versions to which the cluster can be updated.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12852,17 +12876,18 @@ class DescribeDBClusterVersionResponseBodyDBRevisionVersionList(TeaModel):
         revision_version_code: str = None,
         revision_version_name: str = None,
     ):
-        # The release notes for the revision version.
+        # The release notes for the database engine revision version.
         self.release_note = release_note
-        # The release status of the revision version. Valid values:
+        # The release status of the database engine revision version. Valid values:
         # 
-        # *   **Stable**: The revision version is stable.
-        # *   **Old**: The revision version is outdated. We recommend that you do not update the cluster to this version.
-        # *   **HighRisk**: The revision version has critical defects. We recommend that you do not update the cluster to this version.
+        # *   **Stable**: The database engine revision version is stable.
+        # *   **Old**: The database engine revision version is outdated. We recommend that you do not update the database engine to this revision version.
+        # *   **HighRisk**: The database engine revision version has critical defects. We recommend that you do not update the database engine to this revision version.
+        # *   **Beta**: The database engine revision version is a Beta version.
         self.release_type = release_type
-        # The code of the revision version of the database engine to which the cluster can be upgraded.
+        # The code of the database engine revision version. You can use the code to specify the database engine revision version.
         self.revision_version_code = revision_version_code
-        # The revision version of the database engine.
+        # The database engine revision version number.
         self.revision_version_name = revision_version_name
 
     def validate(self):
@@ -12905,9 +12930,16 @@ class DescribeDBClusterVersionResponseBodyProxyRevisionVersionList(TeaModel):
         revision_version_code: str = None,
         revision_version_name: str = None,
     ):
+        # The release notes for the PolarProxy revision version.
         self.release_note = release_note
+        # The release type. Valid values:
+        # 
+        # *   **LTS**: a long-term version
+        # *   **BETA**: a preview version
         self.release_type = release_type
+        # The PolarProxy revision version code. You can use this code to specify the PolarProxy revision version.
         self.revision_version_code = revision_version_code
+        # The PolarProxy revision version number.
         self.revision_version_name = revision_version_name
 
     def validate(self):
@@ -13004,6 +13036,12 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         self.proxy_latest_version = proxy_latest_version
         # The revision version of the database engine.
         self.proxy_revision_version = proxy_revision_version
+        # The release status of the PolarProxy version. Valid values:
+        # 
+        # *   **Stable**: The PolarProxy revision version is stable.
+        # *   **Old**: The PolarProxy revision version is outdated. We recommend that you do not update the PolarProxy to this revision version.
+        # *   **HighRisk**: The PolarProxy revision version has critical defects. We recommend that you do not update the PolarProxy to this revision version.
+        # *   **Beta**: The PolarProxy revision version is a Beta version.
         self.proxy_revision_version_list = proxy_revision_version_list
         # The status of PolarProxy. Valid values:
         # 
@@ -13407,14 +13445,14 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(TeaModel):
         # *   **ON**\
         # *   **OFF**\
         self.imci_switch = imci_switch
-        # The region ID of the node.
+        # The region ID of the cluster.
         self.region_id = region_id
         # Indicates whether the serverless feature is enabled for the node.
         # 
         # *   **ON** indicates that the serverless feature is enabled.
         # *   No value is returned if the serverless feature is disabled.
         self.serverless = serverless
-        # The zone ID of node.
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -13590,6 +13628,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         engine: str = None,
         expire_time: str = None,
         expired: str = None,
+        hot_standby_cluster: str = None,
         lock_mode: str = None,
         memory_size: str = None,
         pay_type: str = None,
@@ -13638,7 +13677,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.dbcluster_network_type = dbcluster_network_type
         # The state of the cluster.
         self.dbcluster_status = dbcluster_status
-        # The node specifications.
+        # The specifications of the node.
         self.dbnode_class = dbnode_class
         # The number of nodes.
         self.dbnode_number = dbnode_number
@@ -13668,6 +13707,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # 
         # >  A specific value is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
+        self.hot_standby_cluster = hot_standby_cluster
         # The lock state of the cluster. Valid values:
         # 
         # *   **Unlock**: The cluster is unlocked.
@@ -13685,9 +13725,9 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.region_id = region_id
         # The memory size for distributed operations. Unit: MB.
         self.remote_memory_size = remote_memory_size
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. No value is returned for a common cluster.
+        # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates the cluster is a serverless cluster. No value is returned for a common cluster.
         self.serverless_type = serverless_type
         # The storage billing method of the cluster. Valid values:
         # 
@@ -13696,6 +13736,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.storage_pay_type = storage_pay_type
         # The storage that is billed based on the subscription billing method. Unit: bytes.
         self.storage_space = storage_space
+        # The storage type.
         self.storage_type = storage_type
         # The used storage. Unit: bytes.
         self.storage_used = storage_used
@@ -13764,6 +13805,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             result['ExpireTime'] = self.expire_time
         if self.expired is not None:
             result['Expired'] = self.expired
+        if self.hot_standby_cluster is not None:
+            result['HotStandbyCluster'] = self.hot_standby_cluster
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
         if self.memory_size is not None:
@@ -13837,6 +13880,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             self.expire_time = m.get('ExpireTime')
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
+        if m.get('HotStandbyCluster') is not None:
+            self.hot_standby_cluster = m.get('HotStandbyCluster')
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
         if m.get('MemorySize') is not None:
@@ -14948,6 +14993,15 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The interval at which performance data is collected. Valid values:
+        # 
+        # *   5
+        # *   30
+        # *   60
+        # *   600
+        # *   1800
+        # *   3600
+        # *   86400
         self.interval = interval
         # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         # 
@@ -14959,6 +15013,7 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        # The special metric. Set the value to tair, which indicates the PolarTair architecture.
         self.type = type
 
     def validate(self):
@@ -15624,6 +15679,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The interval at which performance data is collected. Valid values: 5, 30, 60, 600, 1800, 3600, 86400, in seconds.
         self.interval = interval
         # The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         # 
@@ -15633,6 +15689,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        # Special metric. Set the value to tair, which indicates the PolarTair architecture.
         self.type = type
 
     def validate(self):
@@ -16938,11 +16995,11 @@ class DescribeGlobalDatabaseNetworkResponseBodyConnections(TeaModel):
         net_type: str = None,
         port: str = None,
     ):
-        # The URL of the endpoint.
+        # The endpoint URL of the database service.
         self.connection_string = connection_string
-        # The network type of the endpoint.
+        # The network type for the database connection.
         self.net_type = net_type
-        # The port number of the endpoint.
+        # The port number for the database connection.
         self.port = port
 
     def validate(self):
@@ -16988,38 +17045,36 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes(TeaModel):
     ):
         # The time when the node was created.
         self.creation_time = creation_time
-        # The specifications of the node in the cluster.
+        # The specifications of the node.
         self.dbnode_class = dbnode_class
-        # The ID of the node.
+        # The node ID.
         self.dbnode_id = dbnode_id
         # The role of the node. Valid values:
         # 
-        # *   **Writer**: The node is the primary node.
-        # *   **Reader**: The node is a read-only node.
+        # *   **Writer**: the primary node
+        # *   **Reader**: a read-only node
         self.dbnode_role = dbnode_role
         # The status of the node. Valid values:
         # 
-        # *   **Creating**: The cluster is being created.
-        # *   **Running**: The cluster is running.
-        # *   **Deleting**: The cluster is being deleted.
-        # *   **Rebooting**: The cluster is restarting.
-        # *   **DBNodeCreating**: PolarProxy is being added.
-        # *   **DBNodeDeleting**: PolarProxy is being deleted.
-        # *   **ClassChanging**: The specifications of PolarProxy are being changed.
+        # *   **Creating**: The node is being created.
+        # *   **Running**: The node is running.
+        # *   **Deleting**: The node is being deleted.
+        # *   **Rebooting**: The node is restarting.
+        # *   **ClassChanging**: The specifications of the node are being changed.
         # *   **NetAddressCreating**: The network connection is being created.
         # *   **NetAddressDeleting**: The network connection is being deleted.
         # *   **NetAddressModifying**: The network connection is being modified.
-        # *   **MinorVersionUpgrading**: The minor version is being updated.
-        # *   **Maintaining**: The cluster is being maintained.
+        # *   **MinorVersionUpgrading**: The minor version of the node is being updated.
+        # *   **Maintaining**: The node is being maintained.
         # *   **Switching**: A failover is being performed.
         self.dbnode_status = dbnode_status
-        # The priority of failover. Each node is assigned a failover priority. If a failover occurs, a node can be selected as the primary node based on the priority. A larger value indicates a higher priority. Valid values: 1 to 15.
+        # The failover priority. Each node is assigned a failover priority. The failover priority determines which node is selected as the primary node when a failover occurs. A larger value indicates a higher priority. Valid values: 1 to 15.
         self.failover_priority = failover_priority
-        # The maximum number of concurrent connections to the cluster.
+        # The maximum number of concurrent connections.
         self.max_connections = max_connections
         # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
-        # The zone ID of the cluster.
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -17095,47 +17150,50 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
     ):
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the cluster in the GDN.
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The status of the cluster in the GDN. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
+        # The status of the cluster. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The specifications of the node in the cluster.
+        # The node specifications of the cluster.
         self.dbnode_class = dbnode_class
-        # The details of the node.
+        # The nodes of the cluster.
         self.dbnodes = dbnodes
-        # The type of the database engine. Only MySQL is supported.
+        # The database engine type of the cluster. Only MySQL is supported.
         self.dbtype = dbtype
         # The version of the database engine. Only version 8.0 is supported.
         self.dbversion = dbversion
         # The expiration time of the cluster.
         # 
-        # > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
+        # >  A specific value is returned only for subscription (**Prepaid**) clusters. No value is returned for pay-as-you-go (**Postpaid**) clusters.
         self.expire_time = expire_time
-        # Indicates whether the cluster is expired. Valid values:
+        # Indicates whether the cluster has expired. Valid values:
         # 
-        # *   **true**\
+        # *   **true** (default)
         # *   **false**\
         # 
-        # > This parameter is returned only for subscription (**Prepaid**) clusters.
+        # >  This parameter is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
         # The billing method of the cluster. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go
+        # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The ID of the region in which the cluster resides.
+        # The region ID of the cluster.
         self.region_id = region_id
-        # The latency of cross-region data replication between the primary cluster and secondary clusters. Unit: seconds.
+        # The cross-region data replication latency between the primary cluster and secondary clusters. Unit: seconds.
         self.replica_lag = replica_lag
         # The role of the cluster. Valid values:
         # 
         # *   **Primary**: the primary cluster
-        # *   **standby**: the secondary cluster
+        # *   **standby**: a secondary cluster
         # 
-        # > A GDN consists of one primary cluster and up to four secondary clusters.
+        # >  A GDN consists of one primary cluster and up to four secondary clusters.
         self.role = role
+        # Indicates whether the cluster is a serverless cluster. The value is fixed at AgileServerless.
+        # 
+        # >  This parameter is returned only for serverless clusters.
         self.serverless_type = serverless_type
-        # The storage space that is occupied by the cluster. Unit: bytes.
+        # The storage usage of the cluster. Unit: bytes.
         self.storage_used = storage_used
 
     def validate(self):
@@ -17243,7 +17301,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         self.create_time = create_time
         # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The clusters that are included in the GDN.
+        # The clusters in the GDN.
         self.dbclusters = dbclusters
         # The type of the database engine. Only MySQL is supported.
         self.dbtype = dbtype
@@ -23414,6 +23472,10 @@ class FailoverDBClusterRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to fail back to the original primary zone after a failover. Valid values:
+        # 
+        # *   true
+        # *   false
         self.roll_back_for_disaster = roll_back_for_disaster
         # The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query node information, such as node IDs.
         # 
@@ -24310,6 +24372,7 @@ class ModifyAccountPasswordRequest(TeaModel):
         self.new_account_password = new_account_password
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The password type.
         self.password_type = password_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
