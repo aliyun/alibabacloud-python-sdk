@@ -1,3 +1,6 @@
+2024-07-24 Version: 2.10.2
+- Generated python 2019-01-01 for HBase.
+
 2024-07-11 Version: 2.10.1
 - Update API DescribeInstance: update response param.
 - Update API DescribeMultiZoneCluster: update response param.
