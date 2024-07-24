@@ -151,7 +151,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
         """
-        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to close sessions between the ApsaraDB for OceanBase and the application in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeSessionList.
         
         @param request: BatchKillSessionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -190,7 +190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
         """
-        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to close sessions between the ApsaraDB for OceanBase and the application in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeSessionList.
         
         @param request: BatchKillSessionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -228,7 +228,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.BatchKillSessionListRequest,
     ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
         """
-        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to close sessions between the ApsaraDB for OceanBase and the application in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeSessionList.
         
         @param request: BatchKillSessionListRequest
         @return: BatchKillSessionListResponse
@@ -241,7 +241,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.BatchKillSessionListRequest,
     ) -> ocean_base_pro_20190901_models.BatchKillSessionListResponse:
         """
-        @summary 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to close sessions between the ApsaraDB for OceanBase and the application in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeSessionList.
         
         @param request: BatchKillSessionListRequest
         @return: BatchKillSessionListResponse
@@ -8017,6 +8017,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlsamples_with_options_async(request, runtime)
 
+    def describe_sqltuning_advices_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse:
+        """
+        @summary 获取单个 SQL 的调优建议，包括计划推荐和索引推荐
+        
+        @param request: DescribeSQLTuningAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLTuningAdvicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accept_language):
+            body['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            body['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLTuningAdvices',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqltuning_advices_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse:
+        """
+        @summary 获取单个 SQL 的调优建议，包括计划推荐和索引推荐
+        
+        @param request: DescribeSQLTuningAdvicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLTuningAdvicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accept_language):
+            body['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sql_id):
+            body['SqlId'] = request.sql_id
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQLTuningAdvices',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqltuning_advices(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse:
+        """
+        @summary 获取单个 SQL 的调优建议，包括计划推荐和索引推荐
+        
+        @param request: DescribeSQLTuningAdvicesRequest
+        @return: DescribeSQLTuningAdvicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sqltuning_advices_with_options(request, runtime)
+
+    async def describe_sqltuning_advices_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeSQLTuningAdvicesResponse:
+        """
+        @summary 获取单个 SQL 的调优建议，包括计划推荐和索引推荐
+        
+        @param request: DescribeSQLTuningAdvicesRequest
+        @return: DescribeSQLTuningAdvicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sqltuning_advices_with_options_async(request, runtime)
+
     def describe_sample_sql_raw_texts_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsRequest,
@@ -8243,7 +8363,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
         """
-        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to query sessions between the ApsaraDB for OceanBase and the application.
         
         @param request: DescribeSessionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8280,7 +8400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
         """
-        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to query sessions between the ApsaraDB for OceanBase and the application.
         
         @param request: DescribeSessionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8316,7 +8436,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSessionListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
         """
-        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to query sessions between the ApsaraDB for OceanBase and the application.
         
         @param request: DescribeSessionListRequest
         @return: DescribeSessionListResponse
@@ -8329,7 +8449,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSessionListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSessionListResponse:
         """
-        @summary 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+        @summary You can call this operation to query sessions between the ApsaraDB for OceanBase and the application.
         
         @param request: DescribeSessionListRequest
         @return: DescribeSessionListResponse

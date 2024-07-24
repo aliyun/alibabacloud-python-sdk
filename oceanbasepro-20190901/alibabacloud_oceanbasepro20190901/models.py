@@ -499,10 +499,17 @@ class BatchKillSessionListRequest(TeaModel):
         session_list: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of sessions, which is concatenated with commas.
+        # >The session information is obtained from the result returned by the DescribeSessionList API.
+        # 
         # This parameter is required.
         self.session_list = session_list
+        # The ID of the tenant.
+        # 
         # This parameter is required.
         self.tenant_id = tenant_id
 
@@ -539,6 +546,7 @@ class BatchKillSessionListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29266,6 +29274,494 @@ class DescribeSQLSamplesResponse(TeaModel):
         return self
 
 
+class DescribeSQLTuningAdvicesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        db_name: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        sql_id: str = None,
+        start_time: str = None,
+        tenant_id: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.db_name = db_name
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        # SqlId
+        # 
+        # This parameter is required.
+        self.sql_id = sql_id
+        # This parameter is required.
+        self.start_time = start_time
+        # This parameter is required.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeSQLTuningAdvicesResponseBodyDataColumns(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        max_value: str = None,
+        min_value: str = None,
+        ndv: float = None,
+    ):
+        self.column_name = column_name
+        self.max_value = max_value
+        self.min_value = min_value
+        # NDV
+        self.ndv = ndv
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.max_value is not None:
+            result['MaxValue'] = self.max_value
+        if self.min_value is not None:
+            result['MinValue'] = self.min_value
+        if self.ndv is not None:
+            result['Ndv'] = self.ndv
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('MaxValue') is not None:
+            self.max_value = m.get('MaxValue')
+        if m.get('MinValue') is not None:
+            self.min_value = m.get('MinValue')
+        if m.get('Ndv') is not None:
+            self.ndv = m.get('Ndv')
+        return self
+
+
+class DescribeSQLTuningAdvicesResponseBodyDataPlan(TeaModel):
+    def __init__(
+        self,
+        avg_application_wait_time: float = None,
+        avg_buffer_gets: float = None,
+        avg_concurrency_wait_time: float = None,
+        avg_cpu_time: float = None,
+        avg_disk_reads: float = None,
+        avg_disk_writes: float = None,
+        avg_elapsed_time: float = None,
+        avg_row_processed: float = None,
+        avg_user_io_wait_time: float = None,
+        collect_time_us: int = None,
+        delayed_large_query_percentage: float = None,
+        exec_ps: float = None,
+        executions: int = None,
+        first_load_time: str = None,
+        first_load_time_us: int = None,
+        hit_diagnosis: bool = None,
+        hit_percentage: float = None,
+        large_query_percentage: float = None,
+        merged_version: int = None,
+        ob_db_id: int = None,
+        ob_server_id: int = None,
+        outline_data: str = None,
+        outline_id: int = None,
+        plan_hash: str = None,
+        plan_id: int = None,
+        plan_size: int = None,
+        plan_type: str = None,
+        schema_version: int = None,
+        server_sn: str = None,
+        table_scan: bool = None,
+        timeout_percentage: float = None,
+        uid: str = None,
+    ):
+        self.avg_application_wait_time = avg_application_wait_time
+        self.avg_buffer_gets = avg_buffer_gets
+        self.avg_concurrency_wait_time = avg_concurrency_wait_time
+        self.avg_cpu_time = avg_cpu_time
+        self.avg_disk_reads = avg_disk_reads
+        self.avg_disk_writes = avg_disk_writes
+        self.avg_elapsed_time = avg_elapsed_time
+        self.avg_row_processed = avg_row_processed
+        self.avg_user_io_wait_time = avg_user_io_wait_time
+        self.collect_time_us = collect_time_us
+        self.delayed_large_query_percentage = delayed_large_query_percentage
+        self.exec_ps = exec_ps
+        self.executions = executions
+        self.first_load_time = first_load_time
+        self.first_load_time_us = first_load_time_us
+        self.hit_diagnosis = hit_diagnosis
+        self.hit_percentage = hit_percentage
+        self.large_query_percentage = large_query_percentage
+        self.merged_version = merged_version
+        self.ob_db_id = ob_db_id
+        # server  ID。
+        self.ob_server_id = ob_server_id
+        self.outline_data = outline_data
+        # Outline ID。
+        self.outline_id = outline_id
+        self.plan_hash = plan_hash
+        self.plan_id = plan_id
+        self.plan_size = plan_size
+        self.plan_type = plan_type
+        self.schema_version = schema_version
+        self.server_sn = server_sn
+        self.table_scan = table_scan
+        self.timeout_percentage = timeout_percentage
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_application_wait_time is not None:
+            result['AvgApplicationWaitTime'] = self.avg_application_wait_time
+        if self.avg_buffer_gets is not None:
+            result['AvgBufferGets'] = self.avg_buffer_gets
+        if self.avg_concurrency_wait_time is not None:
+            result['AvgConcurrencyWaitTime'] = self.avg_concurrency_wait_time
+        if self.avg_cpu_time is not None:
+            result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_disk_reads is not None:
+            result['AvgDiskReads'] = self.avg_disk_reads
+        if self.avg_disk_writes is not None:
+            result['AvgDiskWrites'] = self.avg_disk_writes
+        if self.avg_elapsed_time is not None:
+            result['AvgElapsedTime'] = self.avg_elapsed_time
+        if self.avg_row_processed is not None:
+            result['AvgRowProcessed'] = self.avg_row_processed
+        if self.avg_user_io_wait_time is not None:
+            result['AvgUserIoWaitTime'] = self.avg_user_io_wait_time
+        if self.collect_time_us is not None:
+            result['CollectTimeUs'] = self.collect_time_us
+        if self.delayed_large_query_percentage is not None:
+            result['DelayedLargeQueryPercentage'] = self.delayed_large_query_percentage
+        if self.exec_ps is not None:
+            result['ExecPs'] = self.exec_ps
+        if self.executions is not None:
+            result['Executions'] = self.executions
+        if self.first_load_time is not None:
+            result['FirstLoadTime'] = self.first_load_time
+        if self.first_load_time_us is not None:
+            result['FirstLoadTimeUs'] = self.first_load_time_us
+        if self.hit_diagnosis is not None:
+            result['HitDiagnosis'] = self.hit_diagnosis
+        if self.hit_percentage is not None:
+            result['HitPercentage'] = self.hit_percentage
+        if self.large_query_percentage is not None:
+            result['LargeQueryPercentage'] = self.large_query_percentage
+        if self.merged_version is not None:
+            result['MergedVersion'] = self.merged_version
+        if self.ob_db_id is not None:
+            result['ObDbId'] = self.ob_db_id
+        if self.ob_server_id is not None:
+            result['ObServerId'] = self.ob_server_id
+        if self.outline_data is not None:
+            result['OutlineData'] = self.outline_data
+        if self.outline_id is not None:
+            result['OutlineId'] = self.outline_id
+        if self.plan_hash is not None:
+            result['PlanHash'] = self.plan_hash
+        if self.plan_id is not None:
+            result['PlanId'] = self.plan_id
+        if self.plan_size is not None:
+            result['PlanSize'] = self.plan_size
+        if self.plan_type is not None:
+            result['PlanType'] = self.plan_type
+        if self.schema_version is not None:
+            result['SchemaVersion'] = self.schema_version
+        if self.server_sn is not None:
+            result['ServerSn'] = self.server_sn
+        if self.table_scan is not None:
+            result['TableScan'] = self.table_scan
+        if self.timeout_percentage is not None:
+            result['TimeoutPercentage'] = self.timeout_percentage
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgApplicationWaitTime') is not None:
+            self.avg_application_wait_time = m.get('AvgApplicationWaitTime')
+        if m.get('AvgBufferGets') is not None:
+            self.avg_buffer_gets = m.get('AvgBufferGets')
+        if m.get('AvgConcurrencyWaitTime') is not None:
+            self.avg_concurrency_wait_time = m.get('AvgConcurrencyWaitTime')
+        if m.get('AvgCpuTime') is not None:
+            self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDiskReads') is not None:
+            self.avg_disk_reads = m.get('AvgDiskReads')
+        if m.get('AvgDiskWrites') is not None:
+            self.avg_disk_writes = m.get('AvgDiskWrites')
+        if m.get('AvgElapsedTime') is not None:
+            self.avg_elapsed_time = m.get('AvgElapsedTime')
+        if m.get('AvgRowProcessed') is not None:
+            self.avg_row_processed = m.get('AvgRowProcessed')
+        if m.get('AvgUserIoWaitTime') is not None:
+            self.avg_user_io_wait_time = m.get('AvgUserIoWaitTime')
+        if m.get('CollectTimeUs') is not None:
+            self.collect_time_us = m.get('CollectTimeUs')
+        if m.get('DelayedLargeQueryPercentage') is not None:
+            self.delayed_large_query_percentage = m.get('DelayedLargeQueryPercentage')
+        if m.get('ExecPs') is not None:
+            self.exec_ps = m.get('ExecPs')
+        if m.get('Executions') is not None:
+            self.executions = m.get('Executions')
+        if m.get('FirstLoadTime') is not None:
+            self.first_load_time = m.get('FirstLoadTime')
+        if m.get('FirstLoadTimeUs') is not None:
+            self.first_load_time_us = m.get('FirstLoadTimeUs')
+        if m.get('HitDiagnosis') is not None:
+            self.hit_diagnosis = m.get('HitDiagnosis')
+        if m.get('HitPercentage') is not None:
+            self.hit_percentage = m.get('HitPercentage')
+        if m.get('LargeQueryPercentage') is not None:
+            self.large_query_percentage = m.get('LargeQueryPercentage')
+        if m.get('MergedVersion') is not None:
+            self.merged_version = m.get('MergedVersion')
+        if m.get('ObDbId') is not None:
+            self.ob_db_id = m.get('ObDbId')
+        if m.get('ObServerId') is not None:
+            self.ob_server_id = m.get('ObServerId')
+        if m.get('OutlineData') is not None:
+            self.outline_data = m.get('OutlineData')
+        if m.get('OutlineId') is not None:
+            self.outline_id = m.get('OutlineId')
+        if m.get('PlanHash') is not None:
+            self.plan_hash = m.get('PlanHash')
+        if m.get('PlanId') is not None:
+            self.plan_id = m.get('PlanId')
+        if m.get('PlanSize') is not None:
+            self.plan_size = m.get('PlanSize')
+        if m.get('PlanType') is not None:
+            self.plan_type = m.get('PlanType')
+        if m.get('SchemaVersion') is not None:
+            self.schema_version = m.get('SchemaVersion')
+        if m.get('ServerSn') is not None:
+            self.server_sn = m.get('ServerSn')
+        if m.get('TableScan') is not None:
+            self.table_scan = m.get('TableScan')
+        if m.get('TimeoutPercentage') is not None:
+            self.timeout_percentage = m.get('TimeoutPercentage')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class DescribeSQLTuningAdvicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        column_names: str = None,
+        columns: List[DescribeSQLTuningAdvicesResponseBodyDataColumns] = None,
+        db_name: str = None,
+        locality_type: str = None,
+        plan: DescribeSQLTuningAdvicesResponseBodyDataPlan = None,
+        table: str = None,
+        type: str = None,
+    ):
+        self.column_names = column_names
+        self.columns = columns
+        self.db_name = db_name
+        self.locality_type = locality_type
+        self.plan = plan
+        self.table = table
+        self.type = type
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+        if self.plan:
+            self.plan.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_names is not None:
+            result['ColumnNames'] = self.column_names
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.locality_type is not None:
+            result['LocalityType'] = self.locality_type
+        if self.plan is not None:
+            result['Plan'] = self.plan.to_map()
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnNames') is not None:
+            self.column_names = m.get('ColumnNames')
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = DescribeSQLTuningAdvicesResponseBodyDataColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('LocalityType') is not None:
+            self.locality_type = m.get('LocalityType')
+        if m.get('Plan') is not None:
+            temp_model = DescribeSQLTuningAdvicesResponseBodyDataPlan()
+            self.plan = temp_model.from_map(m['Plan'])
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSQLTuningAdvicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeSQLTuningAdvicesResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeSQLTuningAdvicesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeSQLTuningAdvicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSQLTuningAdvicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSQLTuningAdvicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSampleSqlRawTextsRequest(TeaModel):
     def __init__(
         self,
@@ -29603,8 +30099,12 @@ class DescribeSessionListRequest(TeaModel):
         instance_id: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the tenant.
+        # 
         # This parameter is required.
         self.tenant_id = tenant_id
 
@@ -29638,7 +30138,9 @@ class DescribeSessionListResponseBodyData(TeaModel):
         host: str = None,
         session_id: str = None,
     ):
+        # The address of the client, with the format ip:port.
         self.host = host
+        # The session ID of the proxy service.
         self.session_id = session_id
 
     def validate(self):
@@ -29671,7 +30173,9 @@ class DescribeSessionListResponseBody(TeaModel):
         data: List[DescribeSessionListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The object information.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

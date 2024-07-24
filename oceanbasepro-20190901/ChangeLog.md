@@ -1,3 +1,8 @@
+2024-07-24 Version: 6.1.0
+- Support API DescribeSQLTuningAdvices.
+- Update API CreateInstance: update param InstanceClass.
+
+
 2024-07-04 Version: 6.0.0
 - Update API DescribeInstanceTopology: update response param.
 
