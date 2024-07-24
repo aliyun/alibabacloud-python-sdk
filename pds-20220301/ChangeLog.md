@@ -1,3 +1,8 @@
+2024-07-24 Version: 3.0.2
+- Update API GetDownloadUrl: update param body.
+- Update API SearchFile: update param body.
+
+
 2024-06-05 Version: 3.0.1
 - Update API Batch: update param body.
 - Update API Batch: update response param.

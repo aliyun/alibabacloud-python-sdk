@@ -4821,6 +4821,8 @@ class Client(OpenApiClient):
             body['file_id'] = request.file_id
         if not UtilClient.is_unset(request.file_name):
             body['file_name'] = request.file_name
+        if not UtilClient.is_unset(request.response_content_type):
+            body['response_content_type'] = request.response_content_type
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         req = open_api_models.OpenApiRequest(
@@ -4867,6 +4869,8 @@ class Client(OpenApiClient):
             body['file_id'] = request.file_id
         if not UtilClient.is_unset(request.file_name):
             body['file_name'] = request.file_name
+        if not UtilClient.is_unset(request.response_content_type):
+            body['response_content_type'] = request.response_content_type
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         req = open_api_models.OpenApiRequest(
@@ -10889,6 +10893,8 @@ class Client(OpenApiClient):
             body['order_by'] = request.order_by
         if not UtilClient.is_unset(request.query):
             body['query'] = request.query
+        if not UtilClient.is_unset(request.recursive):
+            body['recursive'] = request.recursive
         if not UtilClient.is_unset(request.return_total_count):
             body['return_total_count'] = request.return_total_count
         req = open_api_models.OpenApiRequest(
@@ -10939,6 +10945,8 @@ class Client(OpenApiClient):
             body['order_by'] = request.order_by
         if not UtilClient.is_unset(request.query):
             body['query'] = request.query
+        if not UtilClient.is_unset(request.recursive):
+            body['recursive'] = request.recursive
         if not UtilClient.is_unset(request.return_total_count):
             body['return_total_count'] = request.return_total_count
         req = open_api_models.OpenApiRequest(

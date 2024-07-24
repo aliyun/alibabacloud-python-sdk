@@ -1725,39 +1725,6 @@ class AppAccessStrategy(TeaModel):
         return self
 
 
-class ArchiveFilesConfig(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        version: str = None,
-    ):
-        self.enable = enable
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
 class ArchiveFilesConfigResponse(TeaModel):
     def __init__(
         self,
@@ -1788,209 +1755,6 @@ class ArchiveFilesConfigResponse(TeaModel):
             self.enabled = m.get('enabled')
         if m.get('version') is not None:
             self.version = m.get('version')
-        return self
-
-
-class AsyncTask(TeaModel):
-    def __init__(
-        self,
-        async_task_id: str = None,
-        category: str = None,
-        consumed_process: int = None,
-        created_at: str = None,
-        error_code: str = None,
-        error_message: str = None,
-        finished_at: str = None,
-        started_at: str = None,
-        state: str = None,
-        task_type: str = None,
-        total_process: int = None,
-        user_id: str = None,
-    ):
-        self.async_task_id = async_task_id
-        self.category = category
-        self.consumed_process = consumed_process
-        self.created_at = created_at
-        self.error_code = error_code
-        self.error_message = error_message
-        self.finished_at = finished_at
-        self.started_at = started_at
-        self.state = state
-        self.task_type = task_type
-        self.total_process = total_process
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.async_task_id is not None:
-            result['async_task_id'] = self.async_task_id
-        if self.category is not None:
-            result['category'] = self.category
-        if self.consumed_process is not None:
-            result['consumed_process'] = self.consumed_process
-        if self.created_at is not None:
-            result['created_at'] = self.created_at
-        if self.error_code is not None:
-            result['error_code'] = self.error_code
-        if self.error_message is not None:
-            result['error_message'] = self.error_message
-        if self.finished_at is not None:
-            result['finished_at'] = self.finished_at
-        if self.started_at is not None:
-            result['started_at'] = self.started_at
-        if self.state is not None:
-            result['state'] = self.state
-        if self.task_type is not None:
-            result['task_type'] = self.task_type
-        if self.total_process is not None:
-            result['total_process'] = self.total_process
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('async_task_id') is not None:
-            self.async_task_id = m.get('async_task_id')
-        if m.get('category') is not None:
-            self.category = m.get('category')
-        if m.get('consumed_process') is not None:
-            self.consumed_process = m.get('consumed_process')
-        if m.get('created_at') is not None:
-            self.created_at = m.get('created_at')
-        if m.get('error_code') is not None:
-            self.error_code = m.get('error_code')
-        if m.get('error_message') is not None:
-            self.error_message = m.get('error_message')
-        if m.get('finished_at') is not None:
-            self.finished_at = m.get('finished_at')
-        if m.get('started_at') is not None:
-            self.started_at = m.get('started_at')
-        if m.get('state') is not None:
-            self.state = m.get('state')
-        if m.get('task_type') is not None:
-            self.task_type = m.get('task_type')
-        if m.get('total_process') is not None:
-            self.total_process = m.get('total_process')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
-class AudioPreviewPlayInfoMeta(TeaModel):
-    def __init__(
-        self,
-        duration: float = None,
-    ):
-        self.duration = duration
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['duration'] = self.duration
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('duration') is not None:
-            self.duration = m.get('duration')
-        return self
-
-
-class AudioPreviewPlayInfoOfflineAudioList(TeaModel):
-    def __init__(
-        self,
-        status: str = None,
-        template_id: str = None,
-        url: str = None,
-    ):
-        self.status = status
-        self.template_id = template_id
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.status is not None:
-            result['status'] = self.status
-        if self.template_id is not None:
-            result['template_id'] = self.template_id
-        if self.url is not None:
-            result['url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        if m.get('template_id') is not None:
-            self.template_id = m.get('template_id')
-        if m.get('url') is not None:
-            self.url = m.get('url')
-        return self
-
-
-class AudioPreviewPlayInfo(TeaModel):
-    def __init__(
-        self,
-        meta: AudioPreviewPlayInfoMeta = None,
-        offline_audio_list: List[AudioPreviewPlayInfoOfflineAudioList] = None,
-    ):
-        self.meta = meta
-        self.offline_audio_list = offline_audio_list
-
-    def validate(self):
-        if self.meta:
-            self.meta.validate()
-        if self.offline_audio_list:
-            for k in self.offline_audio_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.meta is not None:
-            result['meta'] = self.meta.to_map()
-        result['offline_audio_list'] = []
-        if self.offline_audio_list is not None:
-            for k in self.offline_audio_list:
-                result['offline_audio_list'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('meta') is not None:
-            temp_model = AudioPreviewPlayInfoMeta()
-            self.meta = temp_model.from_map(m['meta'])
-        self.offline_audio_list = []
-        if m.get('offline_audio_list') is not None:
-            for k in m.get('offline_audio_list'):
-                temp_model = AudioPreviewPlayInfoOfflineAudioList()
-                self.offline_audio_list.append(temp_model.from_map(k))
         return self
 
 
@@ -2458,51 +2222,6 @@ class AuditLog(TeaModel):
             self.object_id = m.get('object_id')
         if m.get('object_name') is not None:
             self.object_name = m.get('object_name')
-        return self
-
-
-class AuthenticationInfo(TeaModel):
-    def __init__(
-        self,
-        authentication_display_name: str = None,
-        authentication_type: str = None,
-        extra: str = None,
-        identity: str = None,
-    ):
-        self.authentication_display_name = authentication_display_name
-        self.authentication_type = authentication_type
-        self.extra = extra
-        self.identity = identity
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.authentication_display_name is not None:
-            result['authentication_display_name'] = self.authentication_display_name
-        if self.authentication_type is not None:
-            result['authentication_type'] = self.authentication_type
-        if self.extra is not None:
-            result['extra'] = self.extra
-        if self.identity is not None:
-            result['identity'] = self.identity
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('authentication_display_name') is not None:
-            self.authentication_display_name = m.get('authentication_display_name')
-        if m.get('authentication_type') is not None:
-            self.authentication_type = m.get('authentication_type')
-        if m.get('extra') is not None:
-            self.extra = m.get('extra')
-        if m.get('identity') is not None:
-            self.identity = m.get('identity')
         return self
 
 
@@ -3401,294 +3120,6 @@ class BaseGroupResponse(TeaModel):
         return self
 
 
-class BasePunishLogResponsePunisheeContentHash(TeaModel):
-    def __init__(
-        self,
-        hash_hex_str: str = None,
-        hash_name: str = None,
-        size: int = None,
-    ):
-        self.hash_hex_str = hash_hex_str
-        self.hash_name = hash_name
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hash_hex_str is not None:
-            result['hash_hex_str'] = self.hash_hex_str
-        if self.hash_name is not None:
-            result['hash_name'] = self.hash_name
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('hash_hex_str') is not None:
-            self.hash_hex_str = m.get('hash_hex_str')
-        if m.get('hash_name') is not None:
-            self.hash_name = m.get('hash_name')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        return self
-
-
-class BasePunishLogResponsePunishee(TeaModel):
-    def __init__(
-        self,
-        content_hash: BasePunishLogResponsePunisheeContentHash = None,
-        drive_id: str = None,
-        face_group_id: str = None,
-        file_id: str = None,
-        revision_id: str = None,
-        share_id: str = None,
-        user_id: str = None,
-    ):
-        self.content_hash = content_hash
-        self.drive_id = drive_id
-        self.face_group_id = face_group_id
-        self.file_id = file_id
-        self.revision_id = revision_id
-        self.share_id = share_id
-        self.user_id = user_id
-
-    def validate(self):
-        if self.content_hash:
-            self.content_hash.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content_hash is not None:
-            result['content_hash'] = self.content_hash.to_map()
-        if self.drive_id is not None:
-            result['drive_id'] = self.drive_id
-        if self.face_group_id is not None:
-            result['face_group_id'] = self.face_group_id
-        if self.file_id is not None:
-            result['file_id'] = self.file_id
-        if self.revision_id is not None:
-            result['revision_id'] = self.revision_id
-        if self.share_id is not None:
-            result['share_id'] = self.share_id
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('content_hash') is not None:
-            temp_model = BasePunishLogResponsePunisheeContentHash()
-            self.content_hash = temp_model.from_map(m['content_hash'])
-        if m.get('drive_id') is not None:
-            self.drive_id = m.get('drive_id')
-        if m.get('face_group_id') is not None:
-            self.face_group_id = m.get('face_group_id')
-        if m.get('file_id') is not None:
-            self.file_id = m.get('file_id')
-        if m.get('revision_id') is not None:
-            self.revision_id = m.get('revision_id')
-        if m.get('share_id') is not None:
-            self.share_id = m.get('share_id')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
-class PunishRule(TeaModel):
-    def __init__(
-        self,
-        action_code: str = None,
-        ends_at: str = None,
-        impermanent: bool = None,
-        starts_at: str = None,
-    ):
-        self.action_code = action_code
-        self.ends_at = ends_at
-        self.impermanent = impermanent
-        self.starts_at = starts_at
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.action_code is not None:
-            result['action_code'] = self.action_code
-        if self.ends_at is not None:
-            result['ends_at'] = self.ends_at
-        if self.impermanent is not None:
-            result['impermanent'] = self.impermanent
-        if self.starts_at is not None:
-            result['starts_at'] = self.starts_at
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('action_code') is not None:
-            self.action_code = m.get('action_code')
-        if m.get('ends_at') is not None:
-            self.ends_at = m.get('ends_at')
-        if m.get('impermanent') is not None:
-            self.impermanent = m.get('impermanent')
-        if m.get('starts_at') is not None:
-            self.starts_at = m.get('starts_at')
-        return self
-
-
-class BasePunishLogResponsePunishmentDetail(TeaModel):
-    def __init__(
-        self,
-        action_code: str = None,
-        investigation_status: int = None,
-        method: str = None,
-        punish_reason: str = None,
-        punishments: List[PunishRule] = None,
-        source: str = None,
-    ):
-        self.action_code = action_code
-        self.investigation_status = investigation_status
-        self.method = method
-        self.punish_reason = punish_reason
-        self.punishments = punishments
-        self.source = source
-
-    def validate(self):
-        if self.punishments:
-            for k in self.punishments:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.action_code is not None:
-            result['action_code'] = self.action_code
-        if self.investigation_status is not None:
-            result['investigation_status'] = self.investigation_status
-        if self.method is not None:
-            result['method'] = self.method
-        if self.punish_reason is not None:
-            result['punish_reason'] = self.punish_reason
-        result['punishments'] = []
-        if self.punishments is not None:
-            for k in self.punishments:
-                result['punishments'].append(k.to_map() if k else None)
-        if self.source is not None:
-            result['source'] = self.source
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('action_code') is not None:
-            self.action_code = m.get('action_code')
-        if m.get('investigation_status') is not None:
-            self.investigation_status = m.get('investigation_status')
-        if m.get('method') is not None:
-            self.method = m.get('method')
-        if m.get('punish_reason') is not None:
-            self.punish_reason = m.get('punish_reason')
-        self.punishments = []
-        if m.get('punishments') is not None:
-            for k in m.get('punishments'):
-                temp_model = PunishRule()
-                self.punishments.append(temp_model.from_map(k))
-        if m.get('source') is not None:
-            self.source = m.get('source')
-        return self
-
-
-class BasePunishLogResponse(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        error_message: str = None,
-        punished_at: str = None,
-        punishee: BasePunishLogResponsePunishee = None,
-        punishment_detail: BasePunishLogResponsePunishmentDetail = None,
-        punishment_id: str = None,
-        punishment_operation: str = None,
-        status: str = None,
-    ):
-        self.error_code = error_code
-        self.error_message = error_message
-        self.punished_at = punished_at
-        self.punishee = punishee
-        self.punishment_detail = punishment_detail
-        self.punishment_id = punishment_id
-        self.punishment_operation = punishment_operation
-        self.status = status
-
-    def validate(self):
-        if self.punishee:
-            self.punishee.validate()
-        if self.punishment_detail:
-            self.punishment_detail.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['error_code'] = self.error_code
-        if self.error_message is not None:
-            result['error_message'] = self.error_message
-        if self.punished_at is not None:
-            result['punished_at'] = self.punished_at
-        if self.punishee is not None:
-            result['punishee'] = self.punishee.to_map()
-        if self.punishment_detail is not None:
-            result['punishment_detail'] = self.punishment_detail.to_map()
-        if self.punishment_id is not None:
-            result['punishment_id'] = self.punishment_id
-        if self.punishment_operation is not None:
-            result['punishment_operation'] = self.punishment_operation
-        if self.status is not None:
-            result['status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('error_code') is not None:
-            self.error_code = m.get('error_code')
-        if m.get('error_message') is not None:
-            self.error_message = m.get('error_message')
-        if m.get('punished_at') is not None:
-            self.punished_at = m.get('punished_at')
-        if m.get('punishee') is not None:
-            temp_model = BasePunishLogResponsePunishee()
-            self.punishee = temp_model.from_map(m['punishee'])
-        if m.get('punishment_detail') is not None:
-            temp_model = BasePunishLogResponsePunishmentDetail()
-            self.punishment_detail = temp_model.from_map(m['punishment_detail'])
-        if m.get('punishment_id') is not None:
-            self.punishment_id = m.get('punishment_id')
-        if m.get('punishment_operation') is not None:
-            self.punishment_operation = m.get('punishment_operation')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        return self
-
-
 class BaseRoleMemberResponse(TeaModel):
     def __init__(
         self,
@@ -3766,74 +3197,6 @@ class BaseRoleMemberResponse(TeaModel):
             self.is_admin = m.get('is_admin')
         if m.get('subdomain_id') is not None:
             self.subdomain_id = m.get('subdomain_id')
-        return self
-
-
-class BaseUserPunishRuleResponseResults(TeaModel):
-    def __init__(
-        self,
-        success: bool = None,
-        user_id: str = None,
-    ):
-        self.success = success
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.success is not None:
-            result['success'] = self.success
-        if self.user_id is not None:
-            result['user_id'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('success') is not None:
-            self.success = m.get('success')
-        if m.get('user_id') is not None:
-            self.user_id = m.get('user_id')
-        return self
-
-
-class BaseUserPunishRuleResponse(TeaModel):
-    def __init__(
-        self,
-        results: List[BaseUserPunishRuleResponseResults] = None,
-    ):
-        self.results = results
-
-    def validate(self):
-        if self.results:
-            for k in self.results:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['results'] = []
-        if self.results is not None:
-            for k in self.results:
-                result['results'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.results = []
-        if m.get('results') is not None:
-            for k in m.get('results'):
-                temp_model = BaseUserPunishRuleResponseResults()
-                self.results.append(temp_model.from_map(k))
         return self
 
 
@@ -4007,45 +3370,6 @@ class BaseUserResponse(TeaModel):
             self.user_id = m.get('user_id')
         if m.get('user_name') is not None:
             self.user_name = m.get('user_name')
-        return self
-
-
-class BenefitMeta(TeaModel):
-    def __init__(
-        self,
-        config: str = None,
-        enabled: bool = None,
-        quota: int = None,
-    ):
-        self.config = config
-        self.enabled = enabled
-        self.quota = quota
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config is not None:
-            result['config'] = self.config
-        if self.enabled is not None:
-            result['enabled'] = self.enabled
-        if self.quota is not None:
-            result['quota'] = self.quota
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('config') is not None:
-            self.config = m.get('config')
-        if m.get('enabled') is not None:
-            self.enabled = m.get('enabled')
-        if m.get('quota') is not None:
-            self.quota = m.get('quota')
         return self
 
 
@@ -4291,80 +3615,6 @@ class ClearRecycleBinItem(TeaModel):
             self.drive_id = m.get('drive_id')
         if m.get('task_id') is not None:
             self.task_id = m.get('task_id')
-        return self
-
-
-class Condition(TeaModel):
-    def __init__(
-        self,
-        int_equals: List[int] = None,
-        int_not_equals: List[int] = None,
-        string_equals: List[str] = None,
-        string_not_equals: List[str] = None,
-    ):
-        self.int_equals = int_equals
-        self.int_not_equals = int_not_equals
-        self.string_equals = string_equals
-        self.string_not_equals = string_not_equals
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.int_equals is not None:
-            result['int_equals'] = self.int_equals
-        if self.int_not_equals is not None:
-            result['int_not_equals'] = self.int_not_equals
-        if self.string_equals is not None:
-            result['string_equals'] = self.string_equals
-        if self.string_not_equals is not None:
-            result['string_not_equals'] = self.string_not_equals
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('int_equals') is not None:
-            self.int_equals = m.get('int_equals')
-        if m.get('int_not_equals') is not None:
-            self.int_not_equals = m.get('int_not_equals')
-        if m.get('string_equals') is not None:
-            self.string_equals = m.get('string_equals')
-        if m.get('string_not_equals') is not None:
-            self.string_not_equals = m.get('string_not_equals')
-        return self
-
-
-class CsiCondition(TeaModel):
-    def __init__(
-        self,
-        file_data_punish: Condition = None,
-    ):
-        self.file_data_punish = file_data_punish
-
-    def validate(self):
-        if self.file_data_punish:
-            self.file_data_punish.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.file_data_punish is not None:
-            result['file_data_punish'] = self.file_data_punish.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('file_data_punish') is not None:
-            temp_model = Condition()
-            self.file_data_punish = temp_model.from_map(m['file_data_punish'])
         return self
 
 
@@ -5068,6 +4318,45 @@ class CustomSideLinkConfig(TeaModel):
             self.link = m.get('link')
         if m.get('text') is not None:
             self.text = m.get('text')
+        return self
+
+
+class DataBoxPrivileges(TeaModel):
+    def __init__(
+        self,
+        feature_attr_id: str = None,
+        feature_id: str = None,
+        quota: int = None,
+    ):
+        self.feature_attr_id = feature_attr_id
+        self.feature_id = feature_id
+        self.quota = quota
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.feature_attr_id is not None:
+            result['feature_attr_id'] = self.feature_attr_id
+        if self.feature_id is not None:
+            result['feature_id'] = self.feature_id
+        if self.quota is not None:
+            result['quota'] = self.quota
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('feature_attr_id') is not None:
+            self.feature_attr_id = m.get('feature_attr_id')
+        if m.get('feature_id') is not None:
+            self.feature_id = m.get('feature_id')
+        if m.get('quota') is not None:
+            self.quota = m.get('quota')
         return self
 
 
@@ -6281,39 +5570,6 @@ class Group(TeaModel):
         return self
 
 
-class IdentityBenefitPkg(TeaModel):
-    def __init__(
-        self,
-        benefit_pkg_id: str = None,
-        name: str = None,
-    ):
-        self.benefit_pkg_id = benefit_pkg_id
-        self.name = name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.benefit_pkg_id is not None:
-            result['benefit_pkg_id'] = self.benefit_pkg_id
-        if self.name is not None:
-            result['name'] = self.name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('benefit_pkg_id') is not None:
-            self.benefit_pkg_id = m.get('benefit_pkg_id')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        return self
-
-
 class IdentityToBenefitPkgMapping(TeaModel):
     def __init__(
         self,
@@ -6619,6 +5875,39 @@ class JWTPayload(TeaModel):
         return self
 
 
+class KnowledgeFileItem(TeaModel):
+    def __init__(
+        self,
+        drive_id: str = None,
+        file_id: str = None,
+    ):
+        self.drive_id = drive_id
+        self.file_id = file_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        return self
+
+
 class LocationDateCluster(TeaModel):
     def __init__(
         self,
@@ -6867,6 +6156,122 @@ class OfficePreviewConfig(TeaModel):
         m = m or dict()
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+        return self
+
+
+class PersonalRightsInfoResponse(TeaModel):
+    def __init__(
+        self,
+        expires_time: str = None,
+        history_latest_rights: 'PersonalRightsInfoResponse' = None,
+        icon: str = None,
+        is_expires: bool = None,
+        name: str = None,
+        other_rights: 'PersonalRightsInfoResponse' = None,
+        privileges: DataBoxPrivileges = None,
+        spu_id: str = None,
+        title: str = None,
+    ):
+        self.expires_time = expires_time
+        self.history_latest_rights = history_latest_rights
+        self.icon = icon
+        self.is_expires = is_expires
+        self.name = name
+        self.other_rights = other_rights
+        self.privileges = privileges
+        self.spu_id = spu_id
+        self.title = title
+
+    def validate(self):
+        if self.history_latest_rights:
+            self.history_latest_rights.validate()
+        if self.other_rights:
+            self.other_rights.validate()
+        if self.privileges:
+            self.privileges.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expires_time is not None:
+            result['expires_time'] = self.expires_time
+        if self.history_latest_rights is not None:
+            result['history_latest_rights'] = self.history_latest_rights.to_map()
+        if self.icon is not None:
+            result['icon'] = self.icon
+        if self.is_expires is not None:
+            result['is_expires'] = self.is_expires
+        if self.name is not None:
+            result['name'] = self.name
+        if self.other_rights is not None:
+            result['other_rights'] = self.other_rights.to_map()
+        if self.privileges is not None:
+            result['privileges'] = self.privileges.to_map()
+        if self.spu_id is not None:
+            result['spu_id'] = self.spu_id
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expires_time') is not None:
+            self.expires_time = m.get('expires_time')
+        if m.get('history_latest_rights') is not None:
+            temp_model = PersonalRightsInfoResponse()
+            self.history_latest_rights = temp_model.from_map(m['history_latest_rights'])
+        if m.get('icon') is not None:
+            self.icon = m.get('icon')
+        if m.get('is_expires') is not None:
+            self.is_expires = m.get('is_expires')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('other_rights') is not None:
+            temp_model = PersonalRightsInfoResponse()
+            self.other_rights = temp_model.from_map(m['other_rights'])
+        if m.get('privileges') is not None:
+            temp_model = DataBoxPrivileges()
+            self.privileges = temp_model.from_map(m['privileges'])
+        if m.get('spu_id') is not None:
+            self.spu_id = m.get('spu_id')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class PersonalSpaceInfo(TeaModel):
+    def __init__(
+        self,
+        total_size: int = None,
+        used_size: int = None,
+    ):
+        self.total_size = total_size
+        self.used_size = used_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('total_size') is not None:
+            self.total_size = m.get('total_size')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
         return self
 
 
@@ -7600,75 +7005,6 @@ class SimpleStreamInfo(TeaModel):
         return self
 
 
-class Store(TeaModel):
-    def __init__(
-        self,
-        base_path: str = None,
-        bucket: str = None,
-        endpoint: str = None,
-        location: str = None,
-        ownership: str = None,
-        role_arn: str = None,
-        store_id: str = None,
-        type: str = None,
-    ):
-        self.base_path = base_path
-        self.bucket = bucket
-        self.endpoint = endpoint
-        self.location = location
-        self.ownership = ownership
-        self.role_arn = role_arn
-        self.store_id = store_id
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.base_path is not None:
-            result['base_path'] = self.base_path
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        if self.endpoint is not None:
-            result['endpoint'] = self.endpoint
-        if self.location is not None:
-            result['location'] = self.location
-        if self.ownership is not None:
-            result['ownership'] = self.ownership
-        if self.role_arn is not None:
-            result['role_arn'] = self.role_arn
-        if self.store_id is not None:
-            result['store_id'] = self.store_id
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('base_path') is not None:
-            self.base_path = m.get('base_path')
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        if m.get('endpoint') is not None:
-            self.endpoint = m.get('endpoint')
-        if m.get('location') is not None:
-            self.location = m.get('location')
-        if m.get('ownership') is not None:
-            self.ownership = m.get('ownership')
-        if m.get('role_arn') is not None:
-            self.role_arn = m.get('role_arn')
-        if m.get('store_id') is not None:
-            self.store_id = m.get('store_id')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
 class Story(TeaModel):
     def __init__(
         self,
@@ -7773,65 +7109,6 @@ class Story(TeaModel):
             self.story_type = m.get('story_type')
         if m.get('updated_at') is not None:
             self.updated_at = m.get('updated_at')
-        return self
-
-
-class StreamUploadInfo(TeaModel):
-    def __init__(
-        self,
-        location: str = None,
-        part_info_list: List[UploadPartInfo] = None,
-        pre_rapid_upload: bool = None,
-        rapid_upload: bool = None,
-        upload_id: str = None,
-    ):
-        self.location = location
-        self.part_info_list = part_info_list
-        self.pre_rapid_upload = pre_rapid_upload
-        self.rapid_upload = rapid_upload
-        self.upload_id = upload_id
-
-    def validate(self):
-        if self.part_info_list:
-            for k in self.part_info_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.location is not None:
-            result['location'] = self.location
-        result['part_info_list'] = []
-        if self.part_info_list is not None:
-            for k in self.part_info_list:
-                result['part_info_list'].append(k.to_map() if k else None)
-        if self.pre_rapid_upload is not None:
-            result['pre_rapid_upload'] = self.pre_rapid_upload
-        if self.rapid_upload is not None:
-            result['rapid_upload'] = self.rapid_upload
-        if self.upload_id is not None:
-            result['upload_id'] = self.upload_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('location') is not None:
-            self.location = m.get('location')
-        self.part_info_list = []
-        if m.get('part_info_list') is not None:
-            for k in m.get('part_info_list'):
-                temp_model = UploadPartInfo()
-                self.part_info_list.append(temp_model.from_map(k))
-        if m.get('pre_rapid_upload') is not None:
-            self.pre_rapid_upload = m.get('pre_rapid_upload')
-        if m.get('rapid_upload') is not None:
-            self.rapid_upload = m.get('rapid_upload')
-        if m.get('upload_id') is not None:
-            self.upload_id = m.get('upload_id')
         return self
 
 
@@ -7982,135 +7259,6 @@ class Token(TeaModel):
             self.user_id = m.get('user_id')
         if m.get('user_name') is not None:
             self.user_name = m.get('user_name')
-        return self
-
-
-class UCDataRefFileInfo(TeaModel):
-    def __init__(
-        self,
-        drive_id: str = None,
-        file_id: str = None,
-        revision_id: str = None,
-    ):
-        self.drive_id = drive_id
-        self.file_id = file_id
-        self.revision_id = revision_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.drive_id is not None:
-            result['drive_id'] = self.drive_id
-        if self.file_id is not None:
-            result['file_id'] = self.file_id
-        if self.revision_id is not None:
-            result['revision_id'] = self.revision_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('drive_id') is not None:
-            self.drive_id = m.get('drive_id')
-        if m.get('file_id') is not None:
-            self.file_id = m.get('file_id')
-        if m.get('revision_id') is not None:
-            self.revision_id = m.get('revision_id')
-        return self
-
-
-class UCObjectInfo(TeaModel):
-    def __init__(
-        self,
-        bucket: str = None,
-        md_5: str = None,
-        object_key: str = None,
-        region: str = None,
-        sha_1: str = None,
-        size: int = None,
-    ):
-        self.bucket = bucket
-        self.md_5 = md_5
-        self.object_key = object_key
-        self.region = region
-        self.sha_1 = sha_1
-        self.size = size
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bucket is not None:
-            result['bucket'] = self.bucket
-        if self.md_5 is not None:
-            result['md5'] = self.md_5
-        if self.object_key is not None:
-            result['object_key'] = self.object_key
-        if self.region is not None:
-            result['region'] = self.region
-        if self.sha_1 is not None:
-            result['sha1'] = self.sha_1
-        if self.size is not None:
-            result['size'] = self.size
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('bucket') is not None:
-            self.bucket = m.get('bucket')
-        if m.get('md5') is not None:
-            self.md_5 = m.get('md5')
-        if m.get('object_key') is not None:
-            self.object_key = m.get('object_key')
-        if m.get('region') is not None:
-            self.region = m.get('region')
-        if m.get('sha1') is not None:
-            self.sha_1 = m.get('sha1')
-        if m.get('size') is not None:
-            self.size = m.get('size')
-        return self
-
-
-class UncompressConfig(TeaModel):
-    def __init__(
-        self,
-        enable: bool = None,
-        version: str = None,
-    ):
-        self.enable = enable
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.enable is not None:
-            result['enable'] = self.enable
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('enable') is not None:
-            self.enable = m.get('enable')
-        if m.get('version') is not None:
-            self.version = m.get('version')
         return self
 
 
@@ -8619,13 +7767,13 @@ class UserExtraItem(TeaModel):
 class UserTag(TeaModel):
     def __init__(
         self,
-        value: str = None,
         key: str = None,
+        value: str = None,
     ):
         # This parameter is required.
-        self.value = value
-        # This parameter is required.
         self.key = key
+        # This parameter is required.
+        self.value = value
 
     def validate(self):
         pass
@@ -8636,18 +7784,18 @@ class UserTag(TeaModel):
             return _map
 
         result = dict()
-        if self.value is not None:
-            result['Value'] = self.value
         if self.key is not None:
             result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         if m.get('key') is not None:
             self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -9299,51 +8447,6 @@ class ViewFile(TeaModel):
             self.upload_id = m.get('upload_id')
         if m.get('view_id') is not None:
             self.view_id = m.get('view_id')
-        return self
-
-
-class WatermarkConfig(TeaModel):
-    def __init__(
-        self,
-        display_access_user_name: bool = None,
-        display_share_link_creator_name: bool = None,
-        enable_doc_preview: bool = None,
-        enable_on_preview: bool = None,
-    ):
-        self.display_access_user_name = display_access_user_name
-        self.display_share_link_creator_name = display_share_link_creator_name
-        self.enable_doc_preview = enable_doc_preview
-        self.enable_on_preview = enable_on_preview
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.display_access_user_name is not None:
-            result['display_access_user_name'] = self.display_access_user_name
-        if self.display_share_link_creator_name is not None:
-            result['display_shareLink_creator_name'] = self.display_share_link_creator_name
-        if self.enable_doc_preview is not None:
-            result['enable_doc_preview'] = self.enable_doc_preview
-        if self.enable_on_preview is not None:
-            result['enable_on_preview'] = self.enable_on_preview
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('display_access_user_name') is not None:
-            self.display_access_user_name = m.get('display_access_user_name')
-        if m.get('display_shareLink_creator_name') is not None:
-            self.display_share_link_creator_name = m.get('display_shareLink_creator_name')
-        if m.get('enable_doc_preview') is not None:
-            self.enable_doc_preview = m.get('enable_doc_preview')
-        if m.get('enable_on_preview') is not None:
-            self.enable_on_preview = m.get('enable_on_preview')
         return self
 
 
@@ -10043,50 +9146,6 @@ class BatchRequest(TeaModel):
         # *   membership: a group member.
         # *   share_link: a share.
         # *   async_task: an asynchronous task.
-        # 
-        # <!---->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         # 
         # This parameter is required.
         self.resource = resource
@@ -14838,6 +13897,7 @@ class GetDownloadUrlRequest(TeaModel):
         expire_sec: int = None,
         file_id: str = None,
         file_name: str = None,
+        response_content_type: str = None,
         share_id: str = None,
     ):
         # The drive ID.
@@ -14850,6 +13910,7 @@ class GetDownloadUrlRequest(TeaModel):
         self.file_id = file_id
         # The name of the file. The name can be up to 1,024 characters in length.
         self.file_name = file_name
+        self.response_content_type = response_content_type
         # The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
         self.share_id = share_id
 
@@ -14870,6 +13931,8 @@ class GetDownloadUrlRequest(TeaModel):
             result['file_id'] = self.file_id
         if self.file_name is not None:
             result['file_name'] = self.file_name
+        if self.response_content_type is not None:
+            result['response_content_type'] = self.response_content_type
         if self.share_id is not None:
             result['share_id'] = self.share_id
         return result
@@ -14884,6 +13947,8 @@ class GetDownloadUrlRequest(TeaModel):
             self.file_id = m.get('file_id')
         if m.get('file_name') is not None:
             self.file_name = m.get('file_name')
+        if m.get('response_content_type') is not None:
+            self.response_content_type = m.get('response_content_type')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         return self
@@ -21978,6 +21043,7 @@ class SearchFileRequest(TeaModel):
         marker: str = None,
         order_by: str = None,
         query: str = None,
+        recursive: bool = None,
         return_total_count: bool = None,
     ):
         # The drive ID.
@@ -22012,6 +21078,7 @@ class SearchFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.query = query
+        self.recursive = recursive
         # Specifies whether to return the total number of retrieved files.
         self.return_total_count = return_total_count
 
@@ -22036,6 +21103,8 @@ class SearchFileRequest(TeaModel):
             result['order_by'] = self.order_by
         if self.query is not None:
             result['query'] = self.query
+        if self.recursive is not None:
+            result['recursive'] = self.recursive
         if self.return_total_count is not None:
             result['return_total_count'] = self.return_total_count
         return result
@@ -22054,6 +21123,8 @@ class SearchFileRequest(TeaModel):
             self.order_by = m.get('order_by')
         if m.get('query') is not None:
             self.query = m.get('query')
+        if m.get('recursive') is not None:
+            self.recursive = m.get('recursive')
         if m.get('return_total_count') is not None:
             self.return_total_count = m.get('return_total_count')
         return self
