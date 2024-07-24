@@ -19363,6 +19363,74 @@ class GetClusterAddonInstanceResponse(TeaModel):
         return self
 
 
+class GetClusterAuditProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        sls_project_name: str = None,
+    ):
+        self.sls_project_name = sls_project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls_project_name is not None:
+            result['sls_project_name'] = self.sls_project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sls_project_name') is not None:
+            self.sls_project_name = m.get('sls_project_name')
+        return self
+
+
+class GetClusterAuditProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetClusterAuditProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetClusterAuditProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetClusterCheckResponseBody(TeaModel):
     def __init__(
         self,

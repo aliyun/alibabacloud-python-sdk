@@ -1,3 +1,7 @@
+2024-07-24 Version: 4.6.0
+- Support API GetClusterAuditProject.
+
+
 2024-07-24 Version: 4.5.2
 - Update API UpgradeClusterAddons: update response param.
 

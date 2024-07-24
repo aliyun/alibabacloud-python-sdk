@@ -9108,6 +9108,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_cluster_addon_instance_with_options_async(cluster_id, instance_name, headers, runtime)
 
+    def get_cluster_audit_project_with_options(
+        self,
+        clusterid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GetClusterAuditProjectResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterAuditProjectResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetClusterAuditProject',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/audit',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.GetClusterAuditProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_audit_project_with_options_async(
+        self,
+        clusterid: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.GetClusterAuditProjectResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterAuditProjectResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetClusterAuditProject',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/clusters/{OpenApiUtilClient.get_encode_param(clusterid)}/audit',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.GetClusterAuditProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_audit_project(
+        self,
+        clusterid: str,
+    ) -> cs20151215_models.GetClusterAuditProjectResponse:
+        """
+        @return: GetClusterAuditProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_cluster_audit_project_with_options(clusterid, headers, runtime)
+
+    async def get_cluster_audit_project_async(
+        self,
+        clusterid: str,
+    ) -> cs20151215_models.GetClusterAuditProjectResponse:
+        """
+        @return: GetClusterAuditProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_cluster_audit_project_with_options_async(clusterid, headers, runtime)
+
     def get_cluster_check_with_options(
         self,
         cluster_id: str,
