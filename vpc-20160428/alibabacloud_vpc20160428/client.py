@@ -2055,6 +2055,10 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.ipv_6address_id):
@@ -2112,6 +2116,10 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.ipv_6address_id):
@@ -18525,6 +18533,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6gateway_id):
             query['Ipv6GatewayId'] = request.ipv_6gateway_id
         if not UtilClient.is_unset(request.owner_account):
@@ -18578,6 +18590,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6gateway_id):
             query['Ipv6GatewayId'] = request.ipv_6gateway_id
         if not UtilClient.is_unset(request.owner_account):
@@ -18665,6 +18681,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6address_id):
             query['Ipv6AddressId'] = request.ipv_6address_id
         if not UtilClient.is_unset(request.ipv_6internet_bandwidth_id):
@@ -18716,6 +18736,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6address_id):
             query['Ipv6AddressId'] = request.ipv_6address_id
         if not UtilClient.is_unset(request.ipv_6internet_bandwidth_id):
@@ -21433,6 +21457,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -21484,6 +21512,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -21987,6 +22019,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force_delete):
@@ -22044,6 +22078,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.force_delete):
@@ -28405,6 +28441,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -28456,6 +28494,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -43237,8 +43277,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6address_id):
             query['Ipv6AddressId'] = request.ipv_6address_id
         if not UtilClient.is_unset(request.name):
@@ -43288,8 +43332,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6address_id):
             query['Ipv6AddressId'] = request.ipv_6address_id
         if not UtilClient.is_unset(request.name):
@@ -43365,8 +43413,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6gateway_id):
             query['Ipv6GatewayId'] = request.ipv_6gateway_id
         if not UtilClient.is_unset(request.name):
@@ -43416,8 +43468,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6gateway_id):
             query['Ipv6GatewayId'] = request.ipv_6gateway_id
         if not UtilClient.is_unset(request.name):
@@ -43499,6 +43555,10 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6address_id):
             query['Ipv6AddressId'] = request.ipv_6address_id
         if not UtilClient.is_unset(request.ipv_6internet_bandwidth_id):
@@ -43554,6 +43614,10 @@ class Client(OpenApiClient):
             query['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.ipv_6address_id):
             query['Ipv6AddressId'] = request.ipv_6address_id
         if not UtilClient.is_unset(request.ipv_6internet_bandwidth_id):
@@ -46032,6 +46096,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -46084,6 +46152,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

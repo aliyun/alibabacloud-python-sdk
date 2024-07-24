@@ -1,3 +1,26 @@
+2024-07-24 Version: 6.7.2
+- Update API AllocateIpv6InternetBandwidth: add param DryRun.
+- Update API AllocateIpv6InternetBandwidth: update param ClientToken.
+- Update API DeleteIpv6Gateway: add param ClientToken.
+- Update API DeleteIpv6Gateway: add param DryRun.
+- Update API DeleteIpv6InternetBandwidth: add param ClientToken.
+- Update API DeleteIpv6InternetBandwidth: add param DryRun.
+- Update API DeleteVSwitchCidrReservation: add param ClientToken.
+- Update API DeleteVSwitchCidrReservation: add param DryRun.
+- Update API DeleteVpc: add param ClientToken.
+- Update API DeleteVpc: update response param.
+- Update API DescribePublicIpAddress: add param IpVersion.
+- Update API ModifyFullNatEntryAttribute: update response param.
+- Update API ModifyIpv6AddressAttribute: add param ClientToken.
+- Update API ModifyIpv6AddressAttribute: add param DryRun.
+- Update API ModifyIpv6GatewayAttribute: add param ClientToken.
+- Update API ModifyIpv6GatewayAttribute: add param DryRun.
+- Update API ModifyIpv6InternetBandwidth: add param DryRun.
+- Update API ModifyIpv6InternetBandwidth: update param ClientToken.
+- Update API ModifyVSwitchCidrReservationAttribute: add param ClientToken.
+- Update API ModifyVSwitchCidrReservationAttribute: add param DryRun.
+
+
 2024-07-19 Version: 6.7.1
 - Update API CreateFailoverTestJob: add param DryRun.
 - Update API CreateFailoverTestJob: update param ResourceType.

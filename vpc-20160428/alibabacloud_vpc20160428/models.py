@@ -2582,6 +2582,7 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         self,
         bandwidth: int = None,
         client_token: str = None,
+        dry_run: bool = None,
         internet_charge_type: str = None,
         ipv_6address_id: str = None,
         ipv_6gateway_id: str = None,
@@ -2601,6 +2602,7 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # The metering method of the Internet bandwidth for the IPv6 address. Valid values:
         # 
         # *   **PayByTraffic**: pay-by-data-transfer
@@ -2636,6 +2638,8 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.internet_charge_type is not None:
             result['InternetChargeType'] = self.internet_charge_type
         if self.ipv_6address_id is not None:
@@ -2660,6 +2664,8 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('InternetChargeType') is not None:
             self.internet_charge_type = m.get('InternetChargeType')
         if m.get('Ipv6AddressId') is not None:
@@ -26284,6 +26290,8 @@ class DeleteIpv6EgressOnlyRuleResponse(TeaModel):
 class DeleteIpv6GatewayRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         ipv_6gateway_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -26291,6 +26299,8 @@ class DeleteIpv6GatewayRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.client_token = client_token
+        self.dry_run = dry_run
         # The ID of the IPv6 gateway that you want to delete.
         # 
         # This parameter is required.
@@ -26313,6 +26323,10 @@ class DeleteIpv6GatewayRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.ipv_6gateway_id is not None:
             result['Ipv6GatewayId'] = self.ipv_6gateway_id
         if self.owner_account is not None:
@@ -26329,6 +26343,10 @@ class DeleteIpv6GatewayRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Ipv6GatewayId') is not None:
             self.ipv_6gateway_id = m.get('Ipv6GatewayId')
         if m.get('OwnerAccount') is not None:
@@ -26416,6 +26434,8 @@ class DeleteIpv6GatewayResponse(TeaModel):
 class DeleteIpv6InternetBandwidthRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         ipv_6address_id: str = None,
         ipv_6internet_bandwidth_id: str = None,
         owner_account: str = None,
@@ -26424,6 +26444,8 @@ class DeleteIpv6InternetBandwidthRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.client_token = client_token
+        self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 
         # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
@@ -26450,6 +26472,10 @@ class DeleteIpv6InternetBandwidthRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.ipv_6address_id is not None:
             result['Ipv6AddressId'] = self.ipv_6address_id
         if self.ipv_6internet_bandwidth_id is not None:
@@ -26468,6 +26494,10 @@ class DeleteIpv6InternetBandwidthRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Ipv6AddressId') is not None:
             self.ipv_6address_id = m.get('Ipv6AddressId')
         if m.get('Ipv6InternetBandwidthId') is not None:
@@ -29451,6 +29481,8 @@ class DeleteVSwitchResponse(TeaModel):
 class DeleteVSwitchCidrReservationRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -29458,6 +29490,8 @@ class DeleteVSwitchCidrReservationRequest(TeaModel):
         resource_owner_id: int = None,
         v_switch_cidr_reservation_id: str = None,
     ):
+        self.client_token = client_token
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the vSwitch is deployed.
@@ -29482,6 +29516,10 @@ class DeleteVSwitchCidrReservationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -29498,6 +29536,10 @@ class DeleteVSwitchCidrReservationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -30045,6 +30087,7 @@ class DeleteVirtualBorderRouterResponse(TeaModel):
 class DeleteVpcRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         dry_run: bool = None,
         force_delete: bool = None,
         owner_account: str = None,
@@ -30054,6 +30097,7 @@ class DeleteVpcRequest(TeaModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
         # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -30091,6 +30135,8 @@ class DeleteVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.force_delete is not None:
@@ -30111,6 +30157,8 @@ class DeleteVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('ForceDelete') is not None:
@@ -47902,6 +47950,7 @@ class DescribePhysicalConnectionsResponse(TeaModel):
 class DescribePublicIpAddressRequest(TeaModel):
     def __init__(
         self,
+        ip_version: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -47910,6 +47959,7 @@ class DescribePublicIpAddressRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.ip_version = ip_version
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number. Default value: **1**.
@@ -47934,6 +47984,8 @@ class DescribePublicIpAddressRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -47952,6 +48004,8 @@ class DescribePublicIpAddressRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -83933,7 +83987,9 @@ class ModifyIPv6TranslatorEntryResponse(TeaModel):
 class ModifyIpv6AddressAttributeRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         ipv_6address_id: str = None,
         name: str = None,
         owner_account: str = None,
@@ -83942,10 +83998,12 @@ class ModifyIpv6AddressAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.client_token = client_token
         # The description of the IPv6 address.
         # 
         # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
+        self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 
         # This parameter is required.
@@ -83972,8 +84030,12 @@ class ModifyIpv6AddressAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.ipv_6address_id is not None:
             result['Ipv6AddressId'] = self.ipv_6address_id
         if self.name is not None:
@@ -83992,8 +84054,12 @@ class ModifyIpv6AddressAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Ipv6AddressId') is not None:
             self.ipv_6address_id = m.get('Ipv6AddressId')
         if m.get('Name') is not None:
@@ -84083,7 +84149,9 @@ class ModifyIpv6AddressAttributeResponse(TeaModel):
 class ModifyIpv6GatewayAttributeRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         description: str = None,
+        dry_run: bool = None,
         ipv_6gateway_id: str = None,
         name: str = None,
         owner_account: str = None,
@@ -84092,8 +84160,10 @@ class ModifyIpv6GatewayAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.client_token = client_token
         # The description of the IPv6 gateway.
         self.description = description
+        self.dry_run = dry_run
         # The ID of the IPv6 gateway that you want to modify.
         # 
         # This parameter is required.
@@ -84120,8 +84190,12 @@ class ModifyIpv6GatewayAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.ipv_6gateway_id is not None:
             result['Ipv6GatewayId'] = self.ipv_6gateway_id
         if self.name is not None:
@@ -84140,8 +84214,12 @@ class ModifyIpv6GatewayAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Ipv6GatewayId') is not None:
             self.ipv_6gateway_id = m.get('Ipv6GatewayId')
         if m.get('Name') is not None:
@@ -84233,6 +84311,7 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         self,
         bandwidth: int = None,
         client_token: str = None,
+        dry_run: bool = None,
         ipv_6address_id: str = None,
         ipv_6internet_bandwidth_id: str = None,
         owner_account: str = None,
@@ -84254,6 +84333,7 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 
         # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
@@ -84282,6 +84362,8 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
             result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.ipv_6address_id is not None:
             result['Ipv6AddressId'] = self.ipv_6address_id
         if self.ipv_6internet_bandwidth_id is not None:
@@ -84304,6 +84386,8 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
             self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('Ipv6AddressId') is not None:
             self.ipv_6address_id = m.get('Ipv6AddressId')
         if m.get('Ipv6InternetBandwidthId') is not None:
@@ -88190,6 +88274,8 @@ class ModifyVSwitchAttributeResponse(TeaModel):
 class ModifyVSwitchCidrReservationAttributeRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -88199,6 +88285,8 @@ class ModifyVSwitchCidrReservationAttributeRequest(TeaModel):
         v_switch_cidr_reservation_id: str = None,
         v_switch_cidr_reservation_name: str = None,
     ):
+        self.client_token = client_token
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the vSwitch is deployed.
@@ -88231,6 +88319,10 @@ class ModifyVSwitchCidrReservationAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -88251,6 +88343,10 @@ class ModifyVSwitchCidrReservationAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
