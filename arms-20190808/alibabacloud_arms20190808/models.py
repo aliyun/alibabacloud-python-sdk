@@ -1977,6 +1977,33 @@ class QueryDataResponse(TeaModel):
         return self
 
 
+class DataBonreeSDKConfigModuleConfigValue(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
 class AddAliClusterIdsToPrometheusGlobalViewRequest(TeaModel):
     def __init__(
         self,
@@ -2302,15 +2329,15 @@ class AddIntegrationRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
-        # The ID of an Alibaba Cloud Container Service for Kubernetes cluster.
+        # The ID of the Container Service for Kubernetes (ACK) cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The software abbreviation that is supported by ARMS. Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
+        # The abbreviation of the software that is supported by Application Real-Time Monitoring Service (ARMS). Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
         # 
         # This parameter is required.
         self.integration = integration
-        # The region ID of the instance.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -2351,11 +2378,11 @@ class AddIntegrationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 状态码。200为成功，其他状态码为异常。
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
-        # Indicates whether the integration was successful.
+        # Indicates whether the call was successful.
         self.data = data
-        # 返回结果的提示信息。
+        # The prompt information of the returned result.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -2918,10 +2945,16 @@ class AddPrometheusInstanceRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
+        # The name of the Prometheus instance for Remote Write.
+        # 
         # This parameter is required.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The type of the Prometheus instance. Only Prometheus instances for Remote Write is supported. Set the value to RW.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -2962,12 +2995,15 @@ class AddPrometheusInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned struct. { "RequestId": the request ID, "Data": "{ "clusterType": the cluster type, "remoteWriteUrl": the public URL for remote write, "internetGrafanaUrl": the internal URL for Grafana, "authToken": indicates whether authentication is enabled, "internetPushGatewayUrl": the internal URL for Pushgateway, "clusterId": the cluster ID, "internetRemoteReadUrl": the internal URL for remote read, "remoteReadUrl": the public URL for remote read, "grafanaUrl": the public URL for Grafana, "pushGatewayUrl": the public URL for Pushgateway, "internetRemoteWriteUrl": the internal URL for remote write}" }
+        # The struct returned. { "RequestId": the request ID, "Data": "{ "clusterType": the cluster type, "remoteWriteUrl": the public URL for remote write, "internetGrafanaUrl": the internal URL for Grafana, "authToken": indicates whether authentication is enabled, "internetPushGatewayUrl": the internal URL for Pushgateway, "clusterId": the cluster ID, "internetRemoteReadUrl": the internal URL for remote read, "remoteReadUrl": the public URL for remote read, "grafanaUrl": the public URL for Grafana, "pushGatewayUrl": the public URL for Pushgateway, "internetRemoteWriteUrl": the internal URL for remote write}" }
         self.data = data
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3238,7 +3274,7 @@ class AddPrometheusRemoteWriteRequest(TeaModel):
         region_id: str = None,
         remote_write_yaml: str = None,
     ):
-        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # The ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -3290,9 +3326,9 @@ class AddPrometheusRemoteWriteResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The name of the remote write configuration item. If the request fails, an error message is returned.
+        # The name of the remote write configuration item that was added, or the exception information.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -3435,9 +3471,11 @@ class AddRecordingRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The status of the response.
         self.data = data
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -3525,15 +3563,26 @@ class AddTagToFlinkClusterRequest(TeaModel):
         resource_group_id: str = None,
         target_user_id: str = None,
     ):
+        # The ID of the Prometheus instance.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the Flink workspace.
+        # 
         # This parameter is required.
         self.flink_work_space_id = flink_work_space_id
+        # The name of the Flink workspace.
+        # 
         # This parameter is required.
         self.flink_work_space_name = flink_work_space_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the Alibaba Cloud account to which the Flink workspace belongs.
+        # 
         # This parameter is required.
         self.target_user_id = target_user_id
 
@@ -3585,10 +3634,19 @@ class AddTagToFlinkClusterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # Indicates whether the business logic was executed. Valid values:
+        # 
+        # *   true
+        # *   false
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4485,6 +4543,8 @@ class ChangeAlarmSeverityRequest(TeaModel):
         self.handler_id = handler_id
         # This parameter is required.
         self.region_id = region_id
+        # The severity level of the alert. Valid values: P1, P2, P3, and P4. P4 indicates the lowest severity, whereas P1 indicates the highest severity.
+        # 
         # This parameter is required.
         self.severity = severity
 
@@ -4624,7 +4684,7 @@ class ChangeResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The region ID of the resource.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -4802,11 +4862,12 @@ class CheckCommercialStatusRequest(TeaModel):
     ):
         # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
-        # Sub-services:
-        # - apm: Application Monitoring
-        # - rum: Real User Monitoring
-        # - prometheus: Managed Service for Prometheus
-        # - xtrace: Managed Service for OpenTelemetry
+        # The ARMS sub-service. Valid values:
+        # 
+        # *   apm: Application Monitoring
+        # *   rum: RUM
+        # *   prometheus: Managed Service for Prometheus
+        # *   xtrace: Managed Service for OpenTelemetry
         # 
         # This parameter is required.
         self.service = service
@@ -5034,9 +5095,14 @@ class ClaimAlarmRequest(TeaModel):
         handler_id: int = None,
         region_id: str = None,
     ):
+        # The alert ID.
+        # 
         # This parameter is required.
         self.alarm_id = alarm_id
+        # The ID of the handler.
         self.handler_id = handler_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -5077,10 +5143,18 @@ class ClaimAlarmResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.result = result
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -5168,11 +5242,17 @@ class CloseAlarmRequest(TeaModel):
         region_id: str = None,
         solution: str = None,
     ):
+        # The alert ID.
+        # 
         # This parameter is required.
         self.alarm_id = alarm_id
+        # The ID of the handler.
         self.handler_id = handler_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The solution to the alert.
         self.solution = solution
 
     def validate(self):
@@ -5216,10 +5296,21 @@ class CloseAlarmResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -6241,13 +6332,16 @@ class CreateEnvServiceMonitorRequest(TeaModel):
         environment_id: str = None,
         region_id: str = None,
     ):
-        # The language. Valid values: zh and en. Default value: zh.
+        # The language. Valid values:
+        # 
+        # *   zh (default): Chinese
+        # *   en: English
         self.aliyun_lang = aliyun_lang
-        # The YAML configuration string of the ServiceMonitor.
+        # The YAML configuration file of the ServiceMonitor.
         # 
         # This parameter is required.
         self.config_yaml = config_yaml
-        # Specifies whether to perform only a dry run, without performing the actual request.
+        # Specifies whether to perform only a dry run, without performing the actual request. The system checks whether the format is valid and whether targets are matched.
         self.dry_run = dry_run
         # The ID of the environment instance.
         # 
@@ -6490,34 +6584,8 @@ class CreateEnvironmentRequest(TeaModel):
         # The language. Default value: zh.
         # 
         # Valid values:
-        # 
-        # *   en
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     English
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   zh
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     Chinese
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # *   en: English
+        # *   zh: Chinese
         self.aliyun_lang = aliyun_lang
         # The ID of the resource bound to the environment, such as the container ID or VPC ID. For a Cloud environment, specify the region ID.
         # 
@@ -6529,8 +6597,8 @@ class CreateEnvironmentRequest(TeaModel):
         self.environment_name = environment_name
         # The subtype of the environment. Valid values:
         # 
-        # *   CS: ACK
-        # *   ECS: ECS
+        # *   CS: Container Service for Kubernetes (ACK) or Distributed Cloud Container Platform for Kubernetes (ACK One)
+        # *   ECS: Elastic Compute Service (ECS)
         # *   Cloud: cloud service
         # 
         # This parameter is required.
@@ -6548,8 +6616,9 @@ class CreateEnvironmentRequest(TeaModel):
         # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
         # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
-        # 环境绑定的grafana工作区id。传空时，表示使用默认的共享grafana。
+        # The ID of the Grafana workspace associated with the environment. If this parameter is left empty, the default shared Grafana workspace is used.
         self.grafana_workspace_id = grafana_workspace_id
+        # Whether to initialize the environment.
         self.init_environment = init_environment
         # Specifies whether agents or exporters are managed. Valid values:
         # 
@@ -6740,7 +6809,9 @@ class CreateGrafanaWorkspaceRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6780,18 +6851,27 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[CreateGrafanaWorkspaceRequestTags] = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The description of the workspace
         self.description = description
         # This parameter is required.
         self.grafana_version = grafana_version
         # This parameter is required.
         self.grafana_workspace_edition = grafana_workspace_edition
+        # The name of the Grafana workspace.
+        # 
         # This parameter is required.
         self.grafana_workspace_name = grafana_workspace_name
+        # The password of the workspace. The password must be 8 to 30 characters in length. It must include at least three of the following characters types: uppercase letter, lowercase letter, digit, and special character. Special characters include () \\" ~ ! @ # $ % ^ & \\* - _ + =.
         self.password = password
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -6867,18 +6947,27 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tags_shrink: str = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The description of the workspace
         self.description = description
         # This parameter is required.
         self.grafana_version = grafana_version
         # This parameter is required.
         self.grafana_workspace_edition = grafana_workspace_edition
+        # The name of the Grafana workspace.
+        # 
         # This parameter is required.
         self.grafana_workspace_name = grafana_workspace_name
+        # The password of the workspace. The password must be 8 to 30 characters in length. It must include at least three of the following characters types: uppercase letter, lowercase letter, digit, and special character. Special characters include () \\" ~ ! @ # $ % ^ & \\* - _ + =.
         self.password = password
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -6943,11 +7032,19 @@ class CreateGrafanaWorkspaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
+        # The ID of the trace.
         self.trace_id = trace_id
 
     def validate(self):
@@ -7402,14 +7499,12 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   RUNNING (default)
         # *   STOPPED
         self.alert_status = alert_status
-        # The following alert rule types are available:
-        # 
-        # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
-        # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
-        # *   RUM_MONITORING_ALERT_RULE: alert rule for RUM Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
-        # *   XTRACE_MONITORING_ALERT_RULE: alert rule for Managed Service for OpenTelemetry
-        # *   EBPF_MONITORING_ALERT_RULE: alert rule for Application Monitoring eBPF Edition
+        # *   APPLICATION_MONITORING_ALERT_RULE
+        # *   BROWSER_MONITORING_ALERT_RULE
+        # *   XTRACE_MONITORING_ALERT_RULE
+        # *   RUM_MONITORING_ALERT_RULE
+        # *   EBPF_MONITORING_ALERT_RULE
+        # *   PROMETHEUS_MONITORING_ALERT_RULE
         # 
         # This parameter is required.
         self.alert_type = alert_type
@@ -7420,6 +7515,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # *   `true`: enables the health check feature.
         # *   `false`: disables the automatic backup feature.
         self.auto_add_new_application = auto_add_new_application
+        # Application monitoring alarm rules - Alarm application automatically adds configuration. auto Add Match Type: Matching method: regular match (REGULAR)/regular non-match (NOT_REGULAR) auto Add Match Exp: regular expression
         self.auto_add_target_config = auto_add_target_config
         # The ID of the monitored cluster.
         self.cluster_id = cluster_id
@@ -7429,7 +7525,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # - Fill with one: 1
         # - Fill with null: 2 (default, does not trigger an alarm)
         self.data_config = data_config
-        # The duration of the Prometheus alert rule. Unit: minutes.
+        # The duration of the Prometheus alert rule, in minutes, in the range of [0,1440].
         self.duration = duration
         # The filter conditions of the Application Monitoring or Browser Monitoring alert rule. Format:
         # 
@@ -7478,7 +7574,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.notify_strategy = notify_strategy
         # The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
-        # It is determined when creating the underlying rules of Prometheus. The background will verify whether the product exists, which is used to distinguish cloud product filtering queries.
+        # When creating a Prometheus alert rule, the backend will verify whether this product exists, which is used to distinguish cloud product filtering queries.
         self.product = product
         # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
@@ -8387,6 +8483,7 @@ class CreateOrUpdateContactRequest(TeaModel):
         # 
         # This parameter is required.
         self.contact_name = contact_name
+        # The ID of the alert contact that is shown to the enterprise when the contact is mentioned with the at sign (@) by a third-party instant messaging (IM) tool.
         self.corp_user_id = corp_user_id
         # The webhook URL of the DingTalk chatbot.
         self.ding_robot_url = ding_robot_url
@@ -9082,6 +9179,7 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
         # 
         # *   `dingding`: DingTalk chatbot
         # *   `wechat`: WeCom chatbot
+        # *   `feishu`: Lark chatbot.
         self.type = type
 
     def validate(self):
@@ -9410,6 +9508,7 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         # *   `true`: The system sends a notification.
         # *   `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
+        # Specifies whether to enable the notification policy. Valid values: enable and disable.
         self.state = state
 
     def validate(self):
@@ -9580,7 +9679,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRule
         self,
         matching_conditions: List[CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyMatchingRulesMatchingConditions] = None,
     ):
-        # An array of alert event matching condition objects.
+        # The matching conditions.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -9619,18 +9718,20 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNo
         notify_object_name: str = None,
         notify_object_type: str = None,
     ):
-        # 通知对象为联系人时的单独的联系方式
+        # The notification methods specified for a contact.
         self.notify_channels = notify_channels
         # The ID of the notification contact.
         self.notify_object_id = notify_object_id
-        # The name of the notification contact.
+        # The name of the notification object.
         self.notify_object_name = notify_object_name
-        # The type of the notification contact. Valid values: 
+        # The type of the notification object. Valid values:
         # 
-        # - CONTACT: an individual contact
-        # - CONTACT_GROUP: a contact group
-        # - DING_ROBOT: an instant messaging (IM) robot
-        # - CONTACT_SCHEDULE: a person on duty based on an established schedule
+        # *   CONTACT: individual contact
+        # *   CONTACT_GROUP: contact group
+        # *   ARMS_CONTACT: individual ARMS contact
+        # *   ARMS_CONTACT_GROUP: ARMS contact group
+        # *   DING_ROBOT_GROUP: DingTalk, Lark, or WeCom IM chatbot
+        # *   CONTACT_SCHEDULE: user on duty defined by a schedule
         self.notify_object_type = notify_object_type
 
     def validate(self):
@@ -9829,7 +9930,6 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         send_recover_message: bool = None,
         state: str = None,
     ):
-        # 极简模式
         self.directed_mode = directed_mode
         # The ID of the escalation policy.
         self.escalation_policy_id = escalation_policy_id
@@ -9859,6 +9959,7 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         # - `true`: The system sends a notification.
         # - `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
+        # Indicates whether the notification policy is enabled. Valid values: enable and disable.
         self.state = state
 
     def validate(self):
@@ -10058,6 +10159,7 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
         self.name = name
         # The ID of the region.
         self.region_id = region_id
+        # Specifies whether to enable the silence policy. Valid values: enable and disable.
         self.state = state
 
     def validate(self):
@@ -10150,7 +10252,7 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules(TeaModel
         self,
         matching_conditions: List[CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRulesMatchingConditions] = None,
     ):
-        # A list of matching conditions.
+        # The matching conditions.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -10195,6 +10297,7 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicy(TeaModel):
         self.matching_rules = matching_rules
         # The name of the silence policy.
         self.name = name
+        # Indicates whether the silence policy is enabled. Valid values: enable and disable.
         self.state = state
 
     def validate(self):
@@ -10245,7 +10348,7 @@ class CreateOrUpdateSilencePolicyResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # A list of silence policies.
+        # The silence policy.
         self.silence_policy = silence_policy
 
     def validate(self):
@@ -11055,23 +11158,25 @@ class CreatePrometheusInstanceRequest(TeaModel):
     ):
         # Does it require all child instances to be verified successfully before creating a GlobalView instance. The default is false, which means partial success is possible.
         self.all_sub_clusters_success = all_sub_clusters_success
-        # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
+        # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
         # The ID of the ACK cluster. This parameter is required if you set the ClusterType parameter to aliyun-cs.
         self.cluster_id = cluster_id
         # The name of the created cluster. This parameter is required if you set the ClusterType parameter to remote-write or ecs.
         self.cluster_name = cluster_name
-        # The type of the cluster to which the Prometheus instance belongs. Valid values: 
-        # * remote-write: Prometheus instance for remote write.
-        # * ecs(Not supported): Prometheus instance for ECS.
-        # * cloud-monitor(Not supported): Prometheus instance for Alibaba Cloud services in China.
-        # * cloud-product(Not supported): Prometheus instance for Alibaba Cloud services outside China.
-        # * global-view: Prometheus instance for GlobalView.
-        # * aliyun-cs(Not supported): Prometheus instance for Container Service for Kubernetes (ACK).
+        # The type of the Prometheus instance. Valid values:
+        # 
+        # *   remote-write: Prometheus instance for Remote Write
+        # *   ecs (unavailable): Prometheus instance for ECS
+        # *   global-view: Prometheus instance for GlobalView
+        # *   aliyun-cs: Prometheus instance for Container Service
+        # *   cloud-product (unavailable): Prometheus instance for Alibaba Cloud services
+        # *   cloud-monitor (unavailable): Prometheus instance for Hybrid Cloud Monitoring
+        # *   flink (unavailable): Prometheus instance for Flink
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # Data storage duration (in days).
+        # The data storage duration. Unit: days.
         self.duration = duration
         # The ID of the Grafana dedicated instance. This parameter is available if you set the ClusterType parameter to ecs.
         self.grafana_instance_id = grafana_instance_id
@@ -11468,15 +11573,22 @@ class CreateRetcodeAppRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
-        # The name of the application that is monitored by Browser Monitoring.
+        # The name of the application.
         # 
         # This parameter is required.
         self.retcode_app_name = retcode_app_name
-        # The site type.
+        # The type of the application. Valid values:
+        # 
+        # *   `web`: web application
+        # *   `weex`: Weex mobile app
+        # *   `mini_dd`: DingTalk mini program
+        # *   `mini_alipay`: Alipay mini program
+        # *   `mini_wx`: WeChat mini program
+        # *   `mini_common`: mini program on other platforms
         # 
         # This parameter is required.
         self.retcode_app_type = retcode_app_type
-        # The list of tags.
+        # The tags that you want to add to the task.
         self.tags = tags
 
     def validate(self):
@@ -11603,13 +11715,11 @@ class CreateRetcodeAppResponseBodyRetcodeAppDataBean(TeaModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # PID.
+        # The process identifier (PID) of the application.
         self.pid = pid
         # The ID of the resource group.
-        # 
-        # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tags of the task.
         self.tags = tags
 
     def validate(self):
@@ -11662,14 +11772,14 @@ class CreateRetcodeAppResponseBody(TeaModel):
         self.data = data
         # The message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return detail.
+        # The information of the Browser Monitoring task.
         self.retcode_app_data_bean = retcode_app_data_bean
         # Indicates whether the call was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -11761,7 +11871,9 @@ class CreateRumAppRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -11794,6 +11906,7 @@ class CreateRumAppRequest(TeaModel):
         app_group: str = None,
         app_name: str = None,
         description: str = None,
+        nick_name: str = None,
         package_name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -11801,17 +11914,31 @@ class CreateRumAppRequest(TeaModel):
         source: str = None,
         tag: List[CreateRumAppRequestTag] = None,
     ):
+        # The name of the application group.
         self.app_group = app_group
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The description of the application.
         self.description = description
+        # The nick name.
+        self.nick_name = nick_name
+        # The name of the Android application package. This parameter is required if you create an Android application.
         self.package_name = package_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The application type. Valid values: web, miniapp, ios, and android.
+        # 
         # This parameter is required.
         self.site_type = site_type
+        # The source. This is a reserved parameter.
         self.source = source
+        # The list of tags. You can specify a maximum of 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -11832,6 +11959,8 @@ class CreateRumAppRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.description is not None:
             result['Description'] = self.description
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
         if self.package_name is not None:
             result['PackageName'] = self.package_name
         if self.region_id is not None:
@@ -11856,6 +11985,8 @@ class CreateRumAppRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
         if m.get('PackageName') is not None:
             self.package_name = m.get('PackageName')
         if m.get('RegionId') is not None:
@@ -11874,26 +12005,46 @@ class CreateRumAppRequest(TeaModel):
         return self
 
 
-class CreateRumAppResponseBody(TeaModel):
+class CreateRumAppShrinkRequest(TeaModel):
     def __init__(
         self,
-        code: int = None,
-        data: str = None,
-        http_status_code: int = None,
-        message: str = None,
-        request_id: str = None,
+        app_group: str = None,
+        app_name: str = None,
+        description: str = None,
+        nick_name: str = None,
+        package_name: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
-        success: bool = None,
+        site_type: str = None,
+        source: str = None,
+        tag_shrink: str = None,
     ):
-        self.code = code
-        self.data = data
-        self.http_status_code = http_status_code
-        # Id of the request
-        self.message = message
-        # Id of the request
-        self.request_id = request_id
+        # The name of the application group.
+        self.app_group = app_group
+        # The application name.
+        # 
+        # This parameter is required.
+        self.app_name = app_name
+        # The description of the application.
+        self.description = description
+        # The nick name.
+        self.nick_name = nick_name
+        # The name of the Android application package. This parameter is required if you create an Android application.
+        self.package_name = package_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        self.success = success
+        # The application type. Valid values: web, miniapp, ios, and android.
+        # 
+        # This parameter is required.
+        self.site_type = site_type
+        # The source. This is a reserved parameter.
+        self.source = source
+        # The list of tags. You can specify a maximum of 20 tags.
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -11904,10 +12055,138 @@ class CreateRumAppResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.site_type is not None:
+            result['SiteType'] = self.site_type
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SiteType') is not None:
+            self.site_type = m.get('SiteType')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
+        return self
+
+
+class CreateRumAppResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cdn_domain: str = None,
+        endpoint: str = None,
+        pid: str = None,
+    ):
+        # The SDK Domain.
+        self.cdn_domain = cdn_domain
+        # The endpoint of the event target.
+        self.endpoint = endpoint
+        # The application ID.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cdn_domain is not None:
+            result['CdnDomain'] = self.cdn_domain
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CdnDomain') is not None:
+            self.cdn_domain = m.get('CdnDomain')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        return self
+
+
+class CreateRumAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateRumAppResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        resource_group_id: str = None,
+        success: bool = None,
+    ):
+        # The HTTP status code. 2XX indicates that the request was successful. 3XX indicates that the request was redirected. 4XX indicates that a request error occurred. 5XX indicates that a server error occurred.
+        self.code = code
+        # The application ID and domain names. This parameter is returned if the application is created. Multiple domain names are separated with commas (,).
+        self.data = data
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
-            result['Data'] = self.data
+            result['Data'] = self.data.to_map()
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
@@ -11925,7 +12204,8 @@ class CreateRumAppResponseBody(TeaModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
-            self.data = m.get('Data')
+            temp_model = CreateRumAppResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
@@ -11992,14 +12272,23 @@ class CreateRumUploadFileUrlRequest(TeaModel):
         uuid: str = None,
         version_id: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The type of the file. You can set this parameter to "application/zip", "text/plain", or an empty string.
         self.content_type = content_type
+        # The file name.
         self.file_name = file_name
+        # The application ID.
         self.pid = pid
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.sourcemap_type = sourcemap_type
+        # The file ID.
         self.uuid = uuid
+        # The version number of the file.
         self.version_id = version_id
 
     def validate(self):
@@ -12060,12 +12349,20 @@ class CreateRumUploadFileUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The file upload URL.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -13503,10 +13800,20 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts(TeaModel):
         ip_type: int = None,
         ips: List[str] = None,
     ):
+        # The domain name
+        # 
         # This parameter is required.
         self.domain = domain
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4.
+        # *   2: IPv6.
+        # 
         # This parameter is required.
         self.ip_type = ip_type
+        # The list of IP addresses.
+        # 
         # This parameter is required.
         self.ips = ips
 
@@ -13544,8 +13851,15 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         hosts: List[CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts] = None,
         select_type: int = None,
     ):
+        # The list of hosts.
+        # 
         # This parameter is required.
         self.hosts = hosts
+        # The selection mode. Valid values:
+        # 
+        # *   0: random
+        # *   1: polling
+        # 
         # This parameter is required.
         self.select_type = select_type
 
@@ -13628,9 +13942,13 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the security group to which the client belongs. The security group specifies the inbound and outbound rules of the client for the VPC. You need to allow the security group to which the client belongs to access the security group to which the VPC belongs. Otherwise, the client cannot access resources in the VPC.
         self.secure_group_id = secure_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -13677,13 +13995,31 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         trace_client_type: int = None,
         xtrace_region: str = None,
     ):
+        # The custom host settings.
         self.custom_host = custom_host
         self.custom_prometheus_setting = custom_prometheus_setting
+        # The information about the virtual private cloud (VPC). If the destination URL is an Alibaba Cloud internal endpoint, you need to configure a VPC.
         self.custom_vpcsetting = custom_vpcsetting
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4.
+        # *   2: IPv6.
         self.ip_type = ip_type
+        # Specifies whether to enable tracing.
         self.is_open_trace = is_open_trace
+        # Specifies whether to evenly distribute monitoring samples. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.monitor_samples = monitor_samples
+        # The type of the client for tracing. Valid values:
+        # 
+        # *   0: ARMS agent
+        # *   1: OpenTelemetry
+        # *   2: Jaeger
         self.trace_client_type = trace_client_type
+        # The region to which trace data is reported.
         self.xtrace_region = xtrace_region
 
     def validate(self):
@@ -13783,7 +14119,9 @@ class CreateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody(TeaModel):
         content: str = None,
         type: str = None,
     ):
+        # The content of the request body. Format: JSON string. The parameter is required if the Type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
         self.content = content
+        # The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
         self.type = type
 
     def validate(self):
@@ -13822,14 +14160,22 @@ class CreateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # Specifies whether to verify the certificate. Default value: no.
         self.check_cert = check_cert
+        # The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
         self.connect_timeout = connect_timeout
+        # The request method. Valid values: GET and POST.
         self.method = method
         self.protocol_alpn_protocol = protocol_alpn_protocol
+        # The HTTP request body.
         self.request_body = request_body
+        # The HTTP request header.
         self.request_headers = request_headers
+        # The URL or request path for synthetic monitoring.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # The timeout period. Unit: milliseconds. Default value: 10000. Minimum value: 1000. Maximum value: 300000.
         self.timeout = timeout
 
     def validate(self):
@@ -13904,24 +14250,58 @@ class CreateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
         verify_way: int = None,
         white_list: str = None,
     ):
+        # Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
         self.connection_timeout = connection_timeout
+        # The content of the custom request header.
         self.custom_header_content = custom_header_content
+        # The kernel type. Valid values:
+        # 
+        # *   1: curl
+        # *   0: WinInet
+        # 
+        # Default value: 1
         self.download_kernel = download_kernel
+        # Specifies whether to ignore CA certificate authentication errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_auth_error = ignore_certificate_auth_error
+        # Specifies whether to ignore certificate revocation errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
+        # Specifies whether to ignore certificate invalidity. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
+        # Specifies whether to ignore certificate status errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_status_error = ignore_certificate_status_error
+        # Specifies whether to ignore certificate incredibility. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
+        # Specifies whether to ignore certificate usage errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_using_error = ignore_certificate_using_error
+        # Specifies whether to ignore host invalidity. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_invalid_host_error = ignore_invalid_host_error
+        # The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
         self.monitor_timeout = monitor_timeout
+        # The QUIC protocol type. Valid values:
+        # 
+        # *   1: HTTP/1
+        # *   2: HTTP/2
+        # *   3: HTTP/3
+        # 
+        # Default value: 1
         self.quick_protocol = quick_protocol
+        # Specifies whether to support redirection. Valid values: 0: no. 1: yes. Default value: 1.
         self.redirection = redirection
+        # The URL that is used to download the file.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
         self.transmission_size = transmission_size
+        # The keyword that is used in verification.
         self.validate_keywords = validate_keywords
+        # The verification method. Valid values:
+        # 
+        # *   0: no verification
+        # *   1: string verification
+        # *   2: MD5 verification
         self.verify_way = verify_way
+        # The whitelisted objects that are used to avoid DNS hijacking. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.white_list = white_list
 
     def validate(self):
@@ -14021,11 +14401,24 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # The IP version of the DNS server.
+        # 
+        # *   0 (default value): IPv4.
+        # *   1: IPv6.
+        # *   2: A version is automatically selected.
         self.dns_server_ip_type = dns_server_ip_type
+        # The IP address of the DNS server. Default value: 114.114.114.114.
         self.ns_server = ns_server
+        # The DNS query method. Valid values:
+        # 
+        # *   0 (default value): recursive
+        # *   1: iterative
         self.query_method = query_method
+        # The destination domain name.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # The timeout period for the DNS synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 45000. Default value: 5000.
         self.timeout = timeout
 
     def validate(self):
@@ -14077,15 +14470,25 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetICMP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
+        # The interval at which ICMP packets are sent. Unit: milliseconds. Minimum value: 200. Maximum value: 2000. Default value: 200.
         self.interval = interval
+        # The number of ICMP packets that are sent. Minimum value: 1. Maximum value: 50. Default value: 4.
         self.package_num = package_num
+        # The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024, 1080, and 1450.
         self.package_size = package_size
+        # Specifies whether to split ICMP packets. Default value: true.
         self.split_package = split_package
+        # The destination IP address or domain name.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # The timeout period for the ICMP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
+        # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
+        # The maximum number of hops for the tracert command. Minimum value: 1. Maximum value: 128. Default value: 20.
         self.tracert_num_max = tracert_num_max
+        # The timeout period of the tracert command. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -14151,13 +14554,21 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetTCP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
+        # The number of TCP connections that are established. Minimum value: 1. Maximum value: 16. Default value: 4.
         self.connect_times = connect_times
+        # The interval at which TCP connections are established. Unit: milliseconds. Minimum value: 200. Maximum value: 10000. Default value: 200.
         self.interval = interval
+        # The IP address of the destination host.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
+        # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
+        # The maximum number of hops for the tracert command. Minimum value: 1. Maximum value: 128. Default value: 20.
         self.tracert_num_max = tracert_num_max
+        # The timeout period of the tracert command. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -14215,12 +14626,25 @@ class CreateTimingSyntheticTaskRequestMonitorConfStream(TeaModel):
         target_url: str = None,
         white_list: str = None,
     ):
+        # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
+        # The player. Default value: 12. Valid values:
+        # 
+        # *   12: VLC
+        # *   2: Flash Player
         self.player_type = player_type
+        # The address type of the resource. Valid values:
+        # 
+        # *   1: resource URL
+        # *   0 (default value): page URL
         self.stream_address_type = stream_address_type
+        # The monitoring duration. Unit: seconds. Maximum and default value: 60.
         self.stream_monitor_timeout = stream_monitor_timeout
+        # Specifies whether the resource is a video or audio. Valid values: 0: video. 1: audio.
         self.stream_type = stream_type
+        # The resource URL of the streaming media.
         self.target_url = target_url
+        # The whitelisted objects that are used to avoid DNS hijacking. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.white_list = white_list
 
     def validate(self):
@@ -14290,25 +14714,59 @@ class CreateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         verify_string_whitelist: str = None,
         wait_completion_time: int = None,
     ):
+        # Specifies whether to automatically scroll up and down the screen to load a page.
+        # 
+        # *   0 (default value): no
+        # *   1: yes
         self.automatic_scrolling = automatic_scrolling
+        # Specifies whether to create a custom header.
+        # 
+        # *   0 (default value): No custom header is created.
+        # *   1: A custom header is created for the first packet.
+        # *   2: A custom header is created for all packets.
         self.custom_header = custom_header
+        # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
+        # If the IP address or CNAME record resolved from a domain name is not included in the DNS whitelist, you cannot access the domain name, or an IP address that belongs to a different domain name is returned. If the IP address or CNAME record is included in the DNS whitelist, DNS hijacking does not occur.
+        # 
+        # Format: \\<domain name>:\\<objects>. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.dnshijack_whitelist = dnshijack_whitelist
+        # Specifies whether to disable caching.
+        # 
+        # *   0: no
+        # *   1 (default value): yes
         self.disable_cache = disable_cache
+        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. Valid values: 0: no. 1: yes. Default value: 0.
         self.disable_compression = disable_compression
+        # The elements not to be loaded in the page loading process.
         self.element_blacklist = element_blacklist
+        # Specifies whether to exclude invalid IP addresses. Valid values: 0: yes. 1: no. Default value: 0.
         self.filter_invalid_ip = filter_invalid_ip
+        # The total number of elements on the page.
         self.flow_hijack_jump_times = flow_hijack_jump_times
+        # The keyword that is used to identify hijacking. Asterisks (\\*) are allowed.
         self.flow_hijack_logo = flow_hijack_logo
+        # Specifies whether to ignore certificate errors during certificate verification in the SSL handshake process and continue browsing. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_error = ignore_certificate_error
+        # The monitoring timeout period. Unit: milliseconds. This parameter is optional. Default value: 20000.
         self.monitor_timeout = monitor_timeout
+        # Elements that are not included in the whitelist and appear on the page are tampered with. These elements can be pop-up ads, floating ads, and page redirection.
+        # 
+        # Format: \\<domain name>:\\<elements>. The elements can be wildcard masks. Separate multiple elements with vertical bars (|). Example: www.aliyun.com:|/cc/bb/a.gif|/vv/bb/cc.jpg. It indicates that all elements that belong to the www.aliyun.com domain name except the basic documents, /cc/bb/a.gif, and /vv/bb/cc.jpg are tampered with.
         self.page_tamper = page_tamper
+        # Specifies whether to continue browsing after redirection. Valid values: 0: no. 1: yes. Default value: 1.
         self.redirection = redirection
+        # The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
         self.slow_element_threshold = slow_element_threshold
+        # The URL of the website.
+        # 
         # This parameter is required.
         self.target_url = target_url
+        # An arbitrary string in the source code of the page for verification. If the source code returned by the client contains a string that is in the blacklist, the 650 error code is reported, which indicates that the string fails to be verified. Separate multiple strings with vertical bars (|).
         self.verify_string_blacklist = verify_string_blacklist
+        # An arbitrary string in the source code of the page for verification. If the source code returned by the client contains a string that is not in the whitelist, the 650 error code is reported, which indicates that the string fails to be verified. Separate multiple strings with vertical bars (|).
         self.verify_string_whitelist = verify_string_whitelist
+        # The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
         self.wait_completion_time = wait_completion_time
 
     def validate(self):
@@ -14414,12 +14872,19 @@ class CreateTimingSyntheticTaskRequestMonitorConf(TeaModel):
         stream: CreateTimingSyntheticTaskRequestMonitorConfStream = None,
         website: CreateTimingSyntheticTaskRequestMonitorConfWebsite = None,
     ):
+        # The parameters of the HTTP(S) synthetic test.
         self.api_http = api_http
+        # The parameters of file downloading.
         self.file_download = file_download
+        # The parameters of the DNS synthetic test. This parameter is required if the TaskType parameter is set to 3.
         self.net_dns = net_dns
+        # The parameters of the ICMP synthetic test. This parameter is required if the TaskType parameter is set to 1.
         self.net_icmp = net_icmp
+        # The parameters of the TCP synthetic test. This parameter is required if the TaskType parameter is set to 2.
         self.net_tcp = net_tcp
+        # The parameters of the streaming-media synthetic test.
         self.stream = stream
+        # The parameters of the website speed measurement.
         self.website = website
 
     def validate(self):
@@ -14578,22 +15043,33 @@ class CreateTimingSyntheticTaskRequest(TeaModel):
         task_type: int = None,
     ):
         self.available_assertions = available_assertions
+        # The general settings.
         self.common_setting = common_setting
         self.custom_period = custom_period
         # This parameter is required.
         self.frequency = frequency
         # This parameter is required.
         self.monitor_category = monitor_category
+        # The monitoring configurations.
+        # 
         # This parameter is required.
         self.monitor_conf = monitor_conf
         # This parameter is required.
         self.monitors = monitors
+        # The name of the task.
+        # 
         # This parameter is required.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags = tags
+        # The type of the task. Valid values:
+        # 
+        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -14713,22 +15189,33 @@ class CreateTimingSyntheticTaskShrinkRequest(TeaModel):
         task_type: int = None,
     ):
         self.available_assertions_shrink = available_assertions_shrink
+        # The general settings.
         self.common_setting_shrink = common_setting_shrink
         self.custom_period_shrink = custom_period_shrink
         # This parameter is required.
         self.frequency = frequency
         # This parameter is required.
         self.monitor_category = monitor_category
+        # The monitoring configurations.
+        # 
         # This parameter is required.
         self.monitor_conf_shrink = monitor_conf_shrink
         # This parameter is required.
         self.monitors_shrink = monitors_shrink
+        # The name of the task.
+        # 
         # This parameter is required.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tags_shrink = tags_shrink
+        # The type of the task. Valid values:
+        # 
+        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -15212,6 +15699,7 @@ class DeleteAddonReleaseRequest(TeaModel):
         region_id: str = None,
         release_name: str = None,
     ):
+        # The name of the add-on.
         self.addon_name = addon_name
         # Environment ID.
         # 
@@ -16392,11 +16880,11 @@ class DeleteEnvCustomJobRequest(TeaModel):
         environment_id: str = None,
         region_id: str = None,
     ):
-        # Custom job name.
+        # The name of the custom job.
         # 
         # This parameter is required.
         self.custom_job_name = custom_job_name
-        # Environment ID.
+        # The ID of the environment instance.
         # 
         # This parameter is required.
         self.environment_id = environment_id
@@ -16443,11 +16931,11 @@ class DeleteEnvCustomJobResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned result.
+        # The result of the operation.
         self.data = data
         # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16531,15 +17019,15 @@ class DeleteEnvPodMonitorRequest(TeaModel):
         pod_monitor_name: str = None,
         region_id: str = None,
     ):
-        # Environment instance ID.
+        # The ID of the environment instance.
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The namespace where podMonitor is located
+        # The namespace where the PodMonitor is located.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # PodMonitor name.
+        # The name of the PodMonitor.
         # 
         # This parameter is required.
         self.pod_monitor_name = pod_monitor_name
@@ -16588,13 +17076,13 @@ class DeleteEnvPodMonitorResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The result of the operation.
         self.data = data
         # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16678,19 +17166,19 @@ class DeleteEnvServiceMonitorRequest(TeaModel):
         region_id: str = None,
         service_monitor_name: str = None,
     ):
-        # Environment instance ID.
+        # The ID of the environment instance.
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The name of the namespace.
+        # The namespace where the ServiceMonitor is located.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # ServiceMonitor name.
+        # The name of the ServiceMonitor.
         # 
         # This parameter is required.
         self.service_monitor_name = service_monitor_name
@@ -16735,13 +17223,13 @@ class DeleteEnvServiceMonitorResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code or error code.
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
-        # The returned data.
+        # The result of the operation.
         self.data = data
         # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16824,7 +17312,7 @@ class DeleteEnvironmentRequest(TeaModel):
         environment_id: str = None,
         region_id: str = None,
     ):
-        # cascade delete Prometheus instance.
+        # Specifies whether to delete the related Prometheus instance.
         self.delete_prom_instance = delete_prom_instance
         # The ID of the environment instance.
         # 
@@ -18476,7 +18964,7 @@ class DeletePrometheusRemoteWriteRequest(TeaModel):
         region_id: str = None,
         remote_write_names: str = None,
     ):
-        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # The ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -18528,7 +19016,7 @@ class DeletePrometheusRemoteWriteResponseBody(TeaModel):
     ):
         # The status code or error code.
         self.code = code
-        # The remote write configuration items. If the request fails, an error message is returned.
+        # The number of remote write configuration items that are deleted, or an error message.
         self.data = data
         # The message returned.
         self.message = message
@@ -18676,21 +19164,22 @@ class DeleteRetcodeAppResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码。200为成功，其他状态码为异常。
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
         # Indicates whether the Browser Monitoring task was deleted. Valid values:
         # 
         # *   `true`
         # *   `false`
         self.data = data
-        # 附加信息。取值说明如下：请求正常，返回success。请求异常，返回具体异常信息。
+        # Additional information. The value description is as follows:
+        # - If the request is normal, return success.
+        # - If the request is abnormal, return specific abnormal information.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # 操作是否成功：
-        # 
-        # - `true`：操作成功
-        # - `false`：操作失败
+        # Whether the operation was successful:
+        # - `true`: The operation was successful
+        # - `false`: The operation failed
         self.success = success
 
     def validate(self):
@@ -18824,10 +19313,12 @@ class DeleteRumAppResponseBody(TeaModel):
     ):
         self.code = code
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
         self.resource_group_id = resource_group_id
+        # Indicates whether the application is deleted.
         self.result = result
         self.success = success
 
@@ -18925,11 +19416,17 @@ class DeleteRumUploadFileRequest(TeaModel):
         uuid: str = None,
         version_id: str = None,
     ):
+        # The file name, with the extension.
         self.file_name = file_name
+        # The application ID.
         self.pid = pid
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The file ID.
         self.uuid = uuid
+        # The version number of the file.
         self.version_id = version_id
 
     def validate(self):
@@ -18978,12 +19475,20 @@ class DeleteRumUploadFileResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # Indicates whether the file is deleted. If the file is deleted, "success" is returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -19299,8 +19804,14 @@ class DeleteSourceMapRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The ID of the SourceMap file.
+        # 
         # This parameter is required.
         self.fid_list = fid_list
+        # The process ID (PID) of the application.
+        # 
+        # Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the **Browser Monitoring** page, click the name of an application. The URL in the browser address bar contains the PID of this application in the format of `pid=xxx`. As the browser is encoded, the PID needs to be modified. Assume that the PID contained is `xxx%4074xxx`. You need to **replace** \\*\\*%40 with @\\*\\* and change the PID to `xxx@74xxx`.
+        # 
         # This parameter is required.
         self.pid = pid
         # This parameter is required.
@@ -19341,8 +19852,14 @@ class DeleteSourceMapShrinkRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The ID of the SourceMap file.
+        # 
         # This parameter is required.
         self.fid_list_shrink = fid_list_shrink
+        # The process ID (PID) of the application.
+        # 
+        # Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the **Browser Monitoring** page, click the name of an application. The URL in the browser address bar contains the PID of this application in the format of `pid=xxx`. As the browser is encoded, the PID needs to be modified. Assume that the PID contained is `xxx%4074xxx`. You need to **replace** \\*\\*%40 with @\\*\\* and change the PID to `xxx@74xxx`.
+        # 
         # This parameter is required.
         self.pid = pid
         # This parameter is required.
@@ -20176,7 +20693,7 @@ class DescribeAddonReleaseResponseBodyDataReleaseConditions(TeaModel):
         self.first_transition_time = first_transition_time
         # The last transition time.
         self.last_transition_time = last_transition_time
-        # The detailed information.
+        # The returned message.
         self.message = message
         # The reason for the failure.
         self.reason = reason
@@ -20268,7 +20785,7 @@ class DescribeAddonReleaseResponseBodyDataRelease(TeaModel):
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Whether or not it is a managed component.
+        # Indicates whether the component is fully managed.
         self.managed = managed
         # The region ID.
         self.region_id = region_id
@@ -21647,7 +22164,7 @@ class DescribeEnvCustomJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.custom_job_name = custom_job_name
-        # Specifies whether to return the encrypted YAML string.
+        # Specifies whether to return an encrypted YAML string.
         self.encrypt_yaml = encrypt_yaml
         # The ID of the environment instance.
         # 
@@ -21699,7 +22216,7 @@ class DescribeEnvCustomJobResponseBodyData(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # If the request parameter EncryptYaml is set to true, a Base64-encoded YAML string is returned. Otherwise, a plaintext YAML string is returned.
+        # If the **encryptYaml** parameter is set to `true`, a Base64-encoded YAML string is returned. Otherwise, a plaintext YAML string is returned.
         self.config_yaml = config_yaml
         # The name of the custom job.
         self.custom_job_name = custom_job_name
@@ -21707,7 +22224,10 @@ class DescribeEnvCustomJobResponseBodyData(TeaModel):
         self.environment_id = environment_id
         # The region ID.
         self.region_id = region_id
-        # The status of the custom job. Valid values: run and stop.
+        # The status. Valid values:
+        # 
+        # *   run
+        # *   stop
         self.status = status
 
     def validate(self):
@@ -21850,7 +22370,7 @@ class DescribeEnvPodMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The namespace where the PodMonitor is located.
+        # The namespace where the PodMonitor resides.
         # 
         # This parameter is required.
         self.namespace = namespace
@@ -21905,7 +22425,7 @@ class DescribeEnvPodMonitorResponseBodyData(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The YAML configuration string of the PodMonitor.
+        # The YAML string of the PodMonitor.
         self.config_yaml = config_yaml
         # The ID of the environment instance.
         self.environment_id = environment_id
@@ -21915,7 +22435,10 @@ class DescribeEnvPodMonitorResponseBodyData(TeaModel):
         self.pod_monitor_name = pod_monitor_name
         # The region ID.
         self.region_id = region_id
-        # The status of the PodMonitor. Valid values: run and stop.
+        # The status. Valid values:
+        # 
+        # *   run
+        # *   stop
         self.status = status
 
     def validate(self):
@@ -22062,7 +22585,7 @@ class DescribeEnvServiceMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The namespace where the ServiceMonitor is located.
+        # The namespace where the ServiceMonitor resides.
         # 
         # This parameter is required.
         self.namespace = namespace
@@ -22117,7 +22640,7 @@ class DescribeEnvServiceMonitorResponseBodyData(TeaModel):
         service_monitor_name: str = None,
         status: str = None,
     ):
-        # The YAML configuration string of the ServiceMonitor.
+        # The YAML configuration file of the ServiceMonitor.
         self.config_yaml = config_yaml
         # The ID of the environment instance.
         self.environment_id = environment_id
@@ -22127,7 +22650,10 @@ class DescribeEnvServiceMonitorResponseBodyData(TeaModel):
         self.region_id = region_id
         # The name of the ServiceMonitor.
         self.service_monitor_name = service_monitor_name
-        # The status of the ServiceMonitor. Valid values: run and stop.
+        # The status. Valid values:
+        # 
+        # *   run
+        # *   stop
         self.status = status
 
     def validate(self):
@@ -22307,9 +22833,9 @@ class DescribeEnvironmentResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -22362,9 +22888,11 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         prometheus_instance_name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
         tags: List[DescribeEnvironmentResponseBodyDataTags] = None,
         user_id: str = None,
         vpc_id: str = None,
+        vswitch_id: str = None,
     ):
         # The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
         self.bind_resource_id = bind_resource_id
@@ -22452,7 +22980,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.grafana_folder_uid = grafana_folder_uid
         # The URL of the Grafana directory.
         self.grafana_folder_url = grafana_folder_url
-        # grafana工作区id
+        # The ID of the Grafana workspace.
         self.grafana_workspace_id = grafana_workspace_id
         # managed type:
         # - none: unmanaged. The default value for ACK clusters.
@@ -22467,12 +22995,16 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The security group ID bound to the environment.
+        self.security_group_id = security_group_id
         # The tags.
         self.tags = tags
         # The user ID.
         self.user_id = user_id
         # The VPC ID.
         self.vpc_id = vpc_id
+        # The switch ID bound to the environment.
+        self.vswitch_id = vswitch_id
 
     def validate(self):
         if self.tags:
@@ -22532,6 +23064,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -22540,6 +23074,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             result['UserId'] = self.user_id
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
         return result
 
     def from_map(self, m: dict = None):
@@ -22590,6 +23126,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -22599,6 +23137,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             self.user_id = m.get('UserId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
         return self
 
 
@@ -23784,6 +24324,7 @@ class DescribeTraceLicenseKeyRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -23812,7 +24353,9 @@ class DescribeTraceLicenseKeyResponseBody(TeaModel):
         license_key: str = None,
         request_id: str = None,
     ):
+        # The license key for the application.
         self.license_key = license_key
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24178,6 +24721,134 @@ class DescribeWebhookContactsResponse(TeaModel):
         return self
 
 
+class DoInsightsActionRequest(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        module: str = None,
+    ):
+        # This parameter is required.
+        self.data = data
+        # This parameter is required.
+        self.module = module
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.module is not None:
+            result['Module'] = self.module
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
+        return self
+
+
+class DoInsightsActionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DoInsightsActionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DoInsightsActionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DoInsightsActionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableMetricRequest(TeaModel):
     def __init__(
         self,
@@ -24189,7 +24860,7 @@ class EnableMetricRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Enable metric name.
+        # The metric name.
         self.drop_metric = drop_metric
         # The region ID.
         # 
@@ -24233,12 +24904,7 @@ class EnableMetricResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned for the request. Valid values:
-        # 
-        # *   2XX: The request is successful.
-        # *   3XX: A redirection message is returned.
-        # *   4XX: The request is invalid.
-        # *   5XX: A server error occurs.
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The returned struct.
         self.data = data
@@ -24246,10 +24912,7 @@ class EnableMetricResponseBody(TeaModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # *   `true`: The call was successful.
-        # *   `false`: The call failed.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -24611,18 +25274,18 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems(
         self.aggregate = aggregate
         # The metric of the alert condition.
         self.metric_key = metric_key
-        # Indicates the last N minutes.
+        # The last N minutes.
         self.n = n
-        # The comparison operator that was used to compare the metric value with the threshold. Valid values:
+        # The operator that is used to compare the metric value with the threshold. Valid values:
         # 
         # *   CURRENT_GTE: greater than or equal to
         # *   CURRENT_LTE: less than or equal to
-        # *   PREVIOUS_UP: the increase percentage compared with the last period
-        # *   PREVIOUS_DOWN: the decrease percentage compared with the last period
-        # *   HOH_UP: the increase percentage compared with the last hour
-        # *   HOH_DOWN: the decrease percentage compared with the last hour
-        # *   DOD_UP: the increase percentage compared with the last day
-        # *   DOD_DOWN: the decrease percentage compared with the last day
+        # *   PREVIOUS_UP: increase in percentage compared with the previous period
+        # *   PREVIOUS_DOWN: decrease in percentage compared with the previous period
+        # *   HOH_UP: increase in percentage compared with the same period in the previous hour
+        # *   HOH_DOWN: decrease in percentage compared with the same period in the previous hour
+        # *   DOD_UP: increase in percentage compared with the same period in the previous day
+        # *   DOD_DOWN: decrease in percentage compared with the same period in the previous day
         self.operator = operator
         # The threshold of the alert condition.
         self.value = value
@@ -24673,8 +25336,8 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent(TeaModel):
         self.alert_rule_items = alert_rule_items
         # The relationship between multiple alert conditions specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
         # 
-        # *   OR: meets any of the specified conditions.
-        # *   AND: meets all the specified conditions.
+        # *   OR: The alert rule is triggered if one of the conditions is met.
+        # *   AND: The alert rule is triggered if all the conditions are met.
         self.condition = condition
 
     def validate(self):
@@ -24760,9 +25423,9 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFiltersCustomSLSFilters(TeaMode
         # *   \\=: equal to
         # *   not: not equal to
         self.opt = opt
-        # Indicates whether this filter condition was displayed on the frontend.
+        # Indicates whether this filter condition is displayed on the frontend.
         self.show = show
-        # Indicates the log type of Browser Monitoring. This field was not included in other filter conditions.
+        # The log type of Browser Monitoring. This field is not included in other filter conditions.
         self.t = t
         # The value of the filter condition.
         self.value = value
@@ -24855,7 +25518,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesFilters(TeaModel):
     ):
         # The custom filter condition of the Browser Monitoring alert rule.
         self.custom_slsfilters = custom_slsfilters
-        # The information of the aggregation dimension.
+        # The information about the aggregation dimension.
         self.custom_slsgroup_by_dimensions = custom_slsgroup_by_dimensions
         # The details of the custom filter condition.
         self.custom_slswheres = custom_slswheres
@@ -25010,18 +25673,18 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         updated_time: int = None,
         user_id: str = None,
     ):
-        # The alert check type of the Prometheus alert rule. Valid values:
+        # The alert check type of the Prometheus alert rule.
         # 
-        # *   STATIC: static threshold value
-        # *   CUSTOM: custom PromQL statement
+        # *   STATIC: static threshold
+        # *   CUSTOM: custom PromQL
         self.alert_check_type = alert_check_type
-        # The ID of the alert contact group to which the alert rule belongs. Valid values:
+        # The alert contact group ID of the Prometheus alert rule.
         # 
         # *   \\-1: custom PromQL
         # *   1: Kubernetes load
         # *   15: Kubernetes node
         self.alert_group = alert_group
-        # The ID of the alert rule.
+        # The alert rule ID.
         self.alert_id = alert_id
         # The name of the alert rule.
         self.alert_name = alert_name
@@ -25033,20 +25696,20 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         # *   STOPPED
         # *   PAUSED
         # 
-        # > The **PAUSED** status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
+        # >  The PAUSED state indicates that the alert rule is abnormal and has been suspended. This may be because the specified threshold value is excessively large, or the associated cluster has been deleted.
         self.alert_status = alert_status
-        # The type of the alert rule.
+        # The type of the alert rule. Valid values:
         # 
         # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
         # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: Prometheus alert rule
         self.alert_type = alert_type
         # The annotations of the Prometheus alert rule.
         self.annotations = annotations
-        # Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
+        # Indicates whether the alert rule is applied to new applications that are created in Application Monitoring or Browser Monitoring. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # *   `true`: yes
+        # *   `false`: no
         self.auto_add_new_application = auto_add_new_application
         # The cluster ID of the Prometheus alert rule.
         self.cluster_id = cluster_id
@@ -25056,7 +25719,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         self.duration = duration
         # The extended fields.
         # 
-        # > For existing Application Monitoring alert rules, the fields contained information such as contacts, alert template, and notification content.
+        # >  For existing Application Monitoring alert rules, the fields contain information such as contacts, alert template, and notification content.
         self.extend = extend
         # The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
         self.filters = filters
@@ -25076,17 +25739,17 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         self.metrics_type = metrics_type
         # The name of the notification policy.
         self.notify_strategy = notify_strategy
-        # The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
+        # The process ID (PID) of the application to which the Application Monitoring or Browser Monitoring alert rule is applied.
         self.pids = pids
         # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
         # The region ID.
         self.region_id = region_id
-        # The list of tags.
+        # The tags of the alert rule.
         self.tags = tags
         # The time when the alert rule was updated. The value is a timestamp. Unit: milliseconds.
         self.updated_time = updated_time
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -25245,7 +25908,7 @@ class GetAlertRulesResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
-        # The list of alert rules.
+        # The alert rules.
         self.alert_rules = alert_rules
         # The number of pages returned.
         self.page = page
@@ -25300,7 +25963,7 @@ class GetAlertRulesResponseBody(TeaModel):
         page_bean: GetAlertRulesResponseBodyPageBean = None,
         request_id: str = None,
     ):
-        # The pages returned.
+        # The returned pages.
         self.page_bean = page_bean
         # The request ID.
         self.request_id = request_id
@@ -25619,15 +26282,15 @@ class GetAppJVMConfigRequest(TeaModel):
     ):
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
-        # The ID of the application.
-        # 
+        # The IDof the application.
+        #  
         # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
         self.pid = pid
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time of the call method.
+        # The start of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -25672,17 +26335,17 @@ class GetAppJVMConfigResponseBodyJvmInfoList(TeaModel):
         proc_id: str = None,
         vm_args: str = None,
     ):
-        # Agent version.
+        # The version of the agent.
         self.agent_version = agent_version
-        # The name of the elastic container instance.
+        # The hostname.
         self.host_name = host_name
-        # Ip address.
+        # The IP address.
         self.ip = ip
-        # The PID.
+        # The application ID.
         self.pid = pid
-        # Process Id.
+        # The process ID.
         self.proc_id = proc_id
-        # Java VM config.
+        # The VM parameters.
         self.vm_args = vm_args
 
     def validate(self):
@@ -25734,18 +26397,15 @@ class GetAppJVMConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        # The response code. Valid values: 2XX: The request is successful. 3XX: A redirection message is returned. 4XX: The request is invalid. 5XX: A server error occurs.
         self.code = code
-        # Java VM info list.
+        # The list of JVM information.
         self.jvm_info_list = jvm_info_list
-        # The returned message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -25839,11 +26499,11 @@ class GetAuthTokenRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cluster.
+        # The ID of the ACK cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -25881,18 +26541,17 @@ class GetAuthTokenResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
         # The returned authentication token.
         self.data = data
-        # The returned message.
+        # Additional Information.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
+        # Whether the query was successful:
+        # - true: Success
+        # - false: Failure
         self.success = success
 
     def validate(self):
@@ -26151,15 +26810,15 @@ class GetCloudClusterAllUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 状态码。200为成功，其他状态码为异常。
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
         # An array object.
         self.data = data
-        # 详细信息。
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # 操作是否成功：true：操作成功                                 false：操作失败
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -26295,12 +26954,17 @@ class GetClusterAllUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
         # The response parameters in the JSON format.
         self.data = data
+        # The prompt information of the returned result.
         self.message = message
         # The request ID.
         self.request_id = request_id
+        # Whether the query is successful:
+        # - true: success
+        # - false: failure
         self.success = success
 
     def validate(self):
@@ -26386,8 +27050,21 @@ class GetCommercialStatusRequest(TeaModel):
         commodity_code: str = None,
         region_id: str = None,
     ):
+        # The product code.
+        # 
+        # *   arms_app_post
+        # *   arms_web_post
+        # *   arms_promethues_public_cn
+        # *   prometheus_pay_public_cn
+        # *   xtrace
+        # *   arms_serverless_public_cn
+        # *   arms_rumserverless_public_cn
+        # *   prometheus_serverless_public_cn
+        # *   xtrace_serverless_public_cn
+        # 
         # This parameter is required.
         self.commodity_code = commodity_code
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -26425,12 +27102,25 @@ class GetCommercialStatusResponseBodyUserAndCommodityStatus(TeaModel):
         lable: str = None,
         status: str = None,
     ):
+        # Indicates whether you are using the Basic Edition.
         self.basic = basic
+        # The billing method.
         self.charge_type = charge_type
+        # Indicates whether the service is activated.
         self.enable = enable
+        # The additional information.
         self.extra_info = extra_info
+        # The number of days during which the service is free of charge.
         self.free_days = free_days
+        # The tags.
         self.lable = lable
+        # The commercialization status.
+        # 
+        # Valid values:
+        # 
+        # *   Normal: The service is activated.
+        # *   Abnormal: An exception occurs during activation.
+        # *   Free: The service is not activated.
         self.status = status
 
     def validate(self):
@@ -26483,8 +27173,9 @@ class GetCommercialStatusResponseBody(TeaModel):
         request_id: str = None,
         user_and_commodity_status: GetCommercialStatusResponseBodyUserAndCommodityStatus = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The commercialization status of the service.
         self.user_and_commodity_status = user_and_commodity_status
 
     def validate(self):
@@ -26616,12 +27307,17 @@ class GetExploreUrlResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
         # Response parameters
         self.data = data
+        # The prompt information of the returned result.
         self.message = message
         # The request ID.
         self.request_id = request_id
+        # Whether the operation was successful:
+        # - true: the operation was successful
+        # - false: the operation failed
         self.success = success
 
     def validate(self):
@@ -26708,9 +27404,14 @@ class GetGrafanaWorkspaceRequest(TeaModel):
         grafana_workspace_id: str = None,
         region_id: str = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
+        # The region ID. Default value: cn-hangzhou.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -26752,12 +27453,25 @@ class GetGrafanaWorkspaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   `2XX`: The request is successful.
+        # *   `3XX`: A redirection message is returned.
+        # *   `4XX`: The request is invalid.
+        # *   `5XX`: A server error occurs.
         self.code = code
+        # The information about the Grafana workspace.
         self.data = data
+        # The error message returned when the request parameters are invalid.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -26850,10 +27564,16 @@ class GetIntegrationStateRequest(TeaModel):
         integration: str = None,
         region_id: str = None,
     ):
+        # The ID of the Container Service for Kubernetes (ACK) cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The abbreviation of the software that is supported by ARMS. Valid values (case-insensitive): `ASM`, `IoT`, and `Flink`.
+        # 
         # This parameter is required.
         self.integration = integration
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -26893,11 +27613,16 @@ class GetIntegrationStateResponseBody(TeaModel):
         request_id: str = None,
         state: bool = None,
     ):
-        # 状态码。200为成功，其他状态码为异常。
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
-        # 返回结果的提示信息。
+        # The prompt information of the returned result.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The integration state of Prometheus dashboards and collection rules. Valid values:
+        # 
+        # *   `true`: The Prometheus dashboards and collection rules that monitor the software are integrated.
+        # *   `false`: The Prometheus dashboards and collection rules that monitor the software are not integrated.
         self.state = state
 
     def validate(self):
@@ -26982,11 +27707,11 @@ class GetManagedPrometheusStatusRequest(TeaModel):
         resource_group_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
+        # The cluster ID. This parameter is required if the ClusterType parameter is set to ask.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The type of the monitoring object. Valid values: ask , acs , one and ecs.
+        # The type of the cluster. Valid values: ask and ecs.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
@@ -26994,9 +27719,9 @@ class GetManagedPrometheusStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the Prometheus instance belongs.
+        # The resource group id of the Prometheus instance.
         self.resource_group_id = resource_group_id
-        # This parameter is required if the ClusterType parameter is set to ecs.
+        # The ID of the virtual private cloud (VPC). This parameter is required if the ClusterType parameter is set to ecs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -27044,14 +27769,14 @@ class GetManagedPrometheusStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code or error code.
+        # The HTTP status code.
         self.code = code
-        # The status of the Prometheus instance.
+        # The installation status of the Prometheus agent.
         # 
-        # *   Installing: The Prometheus instance is created and the Prometheus agent has no registration information.
-        # *   Succeed: The Prometheus instance is created and the Prometheus agent is registered.
-        # *   Failure: The Prometheus instance failed to be created or the Prometheus agent failed to be registered.
-        # *   Unknown: No status of the Prometheus instance is available.
+        # *   Installing: The Prometheus agent is installed and no registration information is available.
+        # *   Succeed: The Prometheus agent is installed and registered.
+        # *   Failure: The Prometheus agent failed to be installed or registered.
+        # *   Unknown: The installation status of the Prometheus agent is unknown.
         self.data = data
         # The returned message.
         self.message = message
@@ -28525,12 +29250,11 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 权限类型：
-        # readWrite、readOnly、httpReadOnly
+        # Permission type: read Write, read Only, http Read Only
         self.access_type = access_type
-        # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
+        # The number of days for which data is automatically archived after the storage duration expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
-        # Authorization token.
+        # The authorization token.
         self.auth_token = auth_token
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
@@ -28545,28 +29269,28 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
-        # Http API internet address.
+        # The public URL for the HTTP API.
         self.http_api_inter_url = http_api_inter_url
-        # Http API intranet address.
+        # The internal URL for the HTTP API.
         self.http_api_intra_url = http_api_intra_url
         # The billing method. Valid values:
         # 
         # *   PREPAY: subscription
         # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
-        # Push gateway internet address.
+        # The public URL for Pushgateway.
         self.push_gateway_inter_url = push_gateway_inter_url
-        # Push gateway intranet address.
+        # The internal URL for Pushgateway.
         self.push_gateway_intra_url = push_gateway_intra_url
         # The region ID.
         self.region_id = region_id
-        # Remote read internet address.
+        # The public URL for remote read.
         self.remote_read_inter_url = remote_read_inter_url
-        # Remote read intranet address.
+        # The internal URL for remote read.
         self.remote_read_intra_url = remote_read_intra_url
-        # Remote write internet address.
+        # The public URL for remote write.
         self.remote_write_inter_url = remote_write_inter_url
-        # Remote write intranet address.
+        # The internal URL for remote write.
         self.remote_write_intra_url = remote_write_intra_url
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -28725,7 +29449,7 @@ class GetPrometheusInstanceResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The returned message.
+        # The response parameters.
         self.data = data
         # The message returned.
         self.message = message
@@ -28815,15 +29539,15 @@ class GetPrometheusIntegrationRequest(TeaModel):
         integration_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # The ID of the Prometheus instance. Valid values: aliyun-cs and ecs.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The exporter ID.
+        # The ID of the exporter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of the integration.
+        # The integration type. Valid values: kafka, mysql, redis, snmp, emr, nubela, and tidb.
         # 
         # This parameter is required.
         self.integration_type = integration_type
@@ -28897,17 +29621,17 @@ class GetPrometheusIntegrationResponseBodyData(TeaModel):
         self.describe = describe
         # The type of the exporter.
         self.exporter_type = exporter_type
-        # The exporter ID.
+        # The ID of the exporter.
         self.instance_id = instance_id
         # The name of the exporter.
         self.instance_name = instance_name
-        # The type of the integration.
+        # The integration type. Valid values: kafka, mysql, redis, snmp, emr, nubela, and tidb.
         self.integration_type = integration_type
         # The namespace.
         self.namespace = namespace
         # Indicates whether an upgrade is required.
         self.need_upgrade = need_upgrade
-        # The configurations of the exporter. The value is a JSON string.
+        # The parameters of the exporter. Format: JSON string.
         self.param = param
         # Indicates whether the description is displayed.
         self.show_describe = show_describe
@@ -29014,11 +29738,11 @@ class GetPrometheusIntegrationResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The struct returned.
+        # The returned struct.
         self.data = data
         # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29164,7 +29888,7 @@ class GetPrometheusMonitoringResponseBodyData(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # Prometheus Instance ID.
+        # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
         # The monitoring configuration. The value is a YAML string.
         self.config_yaml = config_yaml
@@ -29911,14 +30635,26 @@ class GetRetcodeDataByQueryRequest(TeaModel):
         region_id: str = None,
         to: int = None,
     ):
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.from_ = from_
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
+        # 
         # This parameter is required.
         self.pid = pid
+        # The query statement that conforms to the query syntax of a Log Service Logstore.
+        # 
         # This parameter is required.
         self.query = query
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
         # This parameter is required.
         self.to = to
 
@@ -29967,10 +30703,23 @@ class GetRetcodeDataByQueryResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   2XX: The request was successful.
+        # *   3XX: A redirection message was returned.
+        # *   4XX: The request was invalid.
+        # *   5XX: A server error occurred.
         self.code = code
+        # The Browser Monitoring data returned.
         self.data = data
+        # The error message returned if the call fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -30355,8 +31104,12 @@ class GetRumAppInfoRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The group to which the application belongs.
         self.app_group = app_group
+        # The application ID.
         self.pid = pid
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -30388,6 +31141,47 @@ class GetRumAppInfoRequest(TeaModel):
         return self
 
 
+class GetRumAppInfoResponseBodyDataBonreeSDKConfig(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        module_config: Dict[str, DataBonreeSDKConfigModuleConfigValue] = None,
+    ):
+        self.enable = enable
+        self.module_config = module_config
+
+    def validate(self):
+        if self.module_config:
+            for v in self.module_config.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        result['moduleConfig'] = {}
+        if self.module_config is not None:
+            for k, v in self.module_config.items():
+                result['moduleConfig'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        self.module_config = {}
+        if m.get('moduleConfig') is not None:
+            for k, v in m.get('moduleConfig').items():
+                temp_model = DataBonreeSDKConfigModuleConfigValue()
+                self.module_config[k] = temp_model.from_map(v)
+        return self
+
+
 class GetRumAppInfoResponseBodyDataServiceDomainConfigs(TeaModel):
     def __init__(
         self,
@@ -30396,9 +31190,15 @@ class GetRumAppInfoResponseBodyDataServiceDomainConfigs(TeaModel):
         propagator_types: List[str] = None,
         tracing: bool = None,
     ):
+        # Describe.
         self.description = description
+        # Domain name or IP.
         self.domain = domain
+        # Trace transparent transmission protocol list, must be transmitted when link tracking is enabled.
         self.propagator_types = propagator_types
+        # Whether to enable link tracking (need to enable the observable link Open Telemetry version), value:
+        # - `true`: Enable link tracking (after enabling, the relevant header will be inserted into the domain name request).
+        # - `false`: Do not enable link tracking.
         self.tracing = tracing
 
     def validate(self):
@@ -30439,7 +31239,9 @@ class GetRumAppInfoResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -30469,7 +31271,10 @@ class GetRumAppInfoResponseBodyDataTags(TeaModel):
 class GetRumAppInfoResponseBodyData(TeaModel):
     def __init__(
         self,
+        app_group: str = None,
         app_type: str = None,
+        bonree_sdkconfig: GetRumAppInfoResponseBodyDataBonreeSDKConfig = None,
+        cdn_domain: str = None,
         create_time: str = None,
         description: str = None,
         endpoint: str = None,
@@ -30487,25 +31292,47 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         tags: List[GetRumAppInfoResponseBodyDataTags] = None,
         type: str = None,
     ):
+        self.app_group = app_group
+        # The application type. Valid values: web, miniapp, ios, and android.
         self.app_type = app_type
+        self.bonree_sdkconfig = bonree_sdkconfig
+        self.cdn_domain = cdn_domain
+        # The time when the application was created. The value is a timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # The description of the application.
         self.description = description
+        # The endpoint that is used to report application data.
         self.endpoint = endpoint
+        # Indicates whether the application is subscribed. Valid values: true and false.
         self.is_subscription = is_subscription
+        # The application name.
         self.name = name
+        # The alias of the application.
         self.nick_name = nick_name
+        # The name of the application package.
         self.package_name = package_name
+        # The application ID.
         self.pid = pid
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Service domain name configuration list (currently only supports mobile applications).
         self.service_domain_configs = service_domain_configs
+        # The name of the Simple Log Service Logstore that stores application data.
         self.sls_logstore = sls_logstore
+        # The name of the Simple Log Service project that stores application data.
         self.sls_project = sls_project
+        # The status of the application. Valid values: created, running, and stopped.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The type of the application. Valid value: RUM.
         self.type = type
 
     def validate(self):
+        if self.bonree_sdkconfig:
+            self.bonree_sdkconfig.validate()
         if self.service_domain_configs:
             for k in self.service_domain_configs:
                 if k:
@@ -30521,8 +31348,14 @@ class GetRumAppInfoResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
         if self.app_type is not None:
             result['AppType'] = self.app_type
+        if self.bonree_sdkconfig is not None:
+            result['BonreeSDKConfig'] = self.bonree_sdkconfig.to_map()
+        if self.cdn_domain is not None:
+            result['CdnDomain'] = self.cdn_domain
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -30563,8 +31396,15 @@ class GetRumAppInfoResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+        if m.get('BonreeSDKConfig') is not None:
+            temp_model = GetRumAppInfoResponseBodyDataBonreeSDKConfig()
+            self.bonree_sdkconfig = temp_model.from_map(m['BonreeSDKConfig'])
+        if m.get('CdnDomain') is not None:
+            self.cdn_domain = m.get('CdnDomain')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -30616,12 +31456,20 @@ class GetRumAppInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The details of the application.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request failed.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -30713,7 +31561,9 @@ class GetRumAppsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -30750,12 +31600,19 @@ class GetRumAppsRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[GetRumAppsRequestTags] = None,
     ):
+        # The group to which the application belongs.
         self.app_group = app_group
+        # The application ID.
         self.app_id = app_id
+        # The name of the application. You can specify only one application name in each request.
         self.app_name = app_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -30806,6 +31663,71 @@ class GetRumAppsRequest(TeaModel):
         return self
 
 
+class GetRumAppsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_group: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags_shrink: str = None,
+    ):
+        # The group to which the application belongs.
+        self.app_group = app_group
+        # The application ID.
+        self.app_id = app_id
+        # The name of the application. You can specify only one application name in each request.
+        self.app_name = app_name
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The tags.
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_group is not None:
+            result['AppGroup'] = self.app_group
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppGroup') is not None:
+            self.app_group = m.get('AppGroup')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
 class GetRumAppsResponseBodyAppListServiceDomainConfigs(TeaModel):
     def __init__(
         self,
@@ -30814,9 +31736,15 @@ class GetRumAppsResponseBodyAppListServiceDomainConfigs(TeaModel):
         propagator_types: List[str] = None,
         tracing: str = None,
     ):
+        # Description.
         self.description = description
+        # Domain name or IP.
         self.domain = domain
+        # Trace transparent transmission protocol list, which must be transmitted when link tracing is enabled.
         self.propagator_types = propagator_types
+        # Whether to enable link tracking (need to enable the observable link Open Telemetry version), value:
+        # - `true`: Enable link tracking (after enabling, the relevant header will be inserted into the domain name request).
+        # - `false`: Do not enable link tracking.
         self.tracing = tracing
 
     def validate(self):
@@ -30857,7 +31785,9 @@ class GetRumAppsResponseBodyAppListTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -30905,22 +31835,39 @@ class GetRumAppsResponseBodyAppList(TeaModel):
         tags: List[GetRumAppsResponseBodyAppListTags] = None,
         type: str = None,
     ):
+        # The application type. Valid values: web, miniapp, ios, and android.
         self.app_type = app_type
+        # The time when the application was created. The value is a timestamp.
         self.create_time = create_time
+        # The description of the application.
         self.description = description
+        # The endpoint that is used to report application data.
         self.endpoint = endpoint
+        # Indicates whether the application is subscribed. Valid values: true and false.
         self.is_subscription = is_subscription
+        # The application name.
         self.name = name
+        # The alias of the application.
         self.nick_name = nick_name
+        # The package name of the Android application.
         self.package_name = package_name
+        # The application ID.
         self.pid = pid
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Service domain name configuration list. Currently only supports mobile applications.
         self.service_domain_configs = service_domain_configs
+        # The name of the Simple Log Service Logstore that stores application data.
         self.sls_logstore = sls_logstore
+        # The name of the Simple Log Service project that stores application data.
         self.sls_project = sls_project
+        # The status of the application. Valid values: created, running, and stopped.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The type of the application. Valid value: RUM.
         self.type = type
 
     def validate(self):
@@ -31034,12 +31981,20 @@ class GetRumAppsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The queried applications.
         self.app_list = app_list
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request failed.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -31277,6 +32232,7 @@ class GetRumDataForPageResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -31469,6 +32425,7 @@ class GetRumExceptionStackResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -31557,6 +32514,331 @@ class GetRumExceptionStackResponse(TeaModel):
         return self
 
 
+class GetRumOcuStatisticDataRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_type: str = None,
+        value: Any = None,
+    ):
+        self.key = key
+        self.op_type = op_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetRumOcuStatisticDataRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        filter: List[GetRumOcuStatisticDataRequestFilter] = None,
+        group: List[str] = None,
+        page: int = None,
+        page_size: int = None,
+        query_type: str = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.filter = filter
+        self.group = group
+        self.page = page
+        self.page_size = page_size
+        self.query_type = query_type
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.group is not None:
+            result['Group'] = self.group
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = GetRumOcuStatisticDataRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('Group') is not None:
+            self.group = m.get('Group')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetRumOcuStatisticDataShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        filter_shrink: str = None,
+        group_shrink: str = None,
+        page: int = None,
+        page_size: int = None,
+        query_type: str = None,
+        region_id: str = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.filter_shrink = filter_shrink
+        self.group_shrink = group_shrink
+        self.page = page
+        self.page_size = page_size
+        self.query_type = query_type
+        self.region_id = region_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.filter_shrink is not None:
+            result['Filter'] = self.filter_shrink
+        if self.group_shrink is not None:
+            result['Group'] = self.group_shrink
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Filter') is not None:
+            self.filter_shrink = m.get('Filter')
+        if m.get('Group') is not None:
+            self.group_shrink = m.get('Group')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetRumOcuStatisticDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        items: List[Dict[str, Any]] = None,
+        page: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.complete = complete
+        self.items = items
+        self.page = page
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['Complete'] = self.complete
+        if self.items is not None:
+            result['Items'] = self.items
+        if self.page is not None:
+            result['Page'] = self.page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Complete') is not None:
+            self.complete = m.get('Complete')
+        if m.get('Items') is not None:
+            self.items = m.get('Items')
+        if m.get('Page') is not None:
+            self.page = m.get('Page')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetRumOcuStatisticDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetRumOcuStatisticDataResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetRumOcuStatisticDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetRumOcuStatisticDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetRumOcuStatisticDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetRumOcuStatisticDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRumUploadFilesRequest(TeaModel):
     def __init__(
         self,
@@ -31564,8 +32846,12 @@ class GetRumUploadFilesRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
+        # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.app_type = app_type
+        # The application ID.
         self.pid = pid
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -31606,10 +32892,15 @@ class GetRumUploadFilesResponseBodyData(TeaModel):
         uuid: str = None,
         version_id: str = None,
     ):
+        # The file name.
         self.file_name = file_name
+        # The time when the file was last modified. The value is a timestamp.
         self.last_modified_time = last_modified_time
+        # The size of the file. Unit: bytes.
         self.size = size
+        # The file ID.
         self.uuid = uuid
+        # The version number of the file.
         self.version_id = version_id
 
     def validate(self):
@@ -31658,12 +32949,20 @@ class GetRumUploadFilesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The queried files.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request failed.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -31765,12 +33064,25 @@ class GetSourceMapInfoRequest(TeaModel):
         order_field: str = None,
         region_id: str = None,
     ):
+        # The order in which the files are sorted. Valid values:
+        # 
+        # *   true: ascending order
+        # *   false: descending order
         self.ascending_sequence = ascending_sequence
+        # The version of the SourceMap file.
         self.edition = edition
+        # The ID of the SourceMap file.
+        # 
         # This parameter is required.
         self.id = id
+        # The keyword in the file name. The files are searched by keyword.
         self.keyword = keyword
+        # The criterion by which the files are sorted. Valid values:
+        # 
+        # *   version: The files are sorted by version.
+        # *   uploadTime: The files are sorted by upload time.
         self.order_field = order_field
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -31822,10 +33134,15 @@ class GetSourceMapInfoResponseBodySourceMapList(TeaModel):
         upload_time: str = None,
         version: str = None,
     ):
+        # The ID of the SourceMap file.
         self.fid = fid
+        # The name of the SourceMap file.
         self.file_name = file_name
+        # The size of the file. Unit: KB.
         self.size = size
+        # The timestamp that indicates when the file was uploaded.
         self.upload_time = upload_time
+        # The version of the file.
         self.version = version
 
     def validate(self):
@@ -31870,7 +33187,9 @@ class GetSourceMapInfoResponseBody(TeaModel):
         request_id: str = None,
         source_map_list: List[GetSourceMapInfoResponseBodySourceMapList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The details of the SourceMap file.
         self.source_map_list = source_map_list
 
     def validate(self):
@@ -34425,8 +35744,11 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomPrometheusSetting
         prometheus_cluster_region: str = None,
         prometheus_labels: Dict[str, str] = None,
     ):
+        # A reserved parameter.
         self.prometheus_cluster_id = prometheus_cluster_id
+        # A reserved parameter.
         self.prometheus_cluster_region = prometheus_cluster_region
+        # A reserved parameter.
         self.prometheus_labels = prometheus_labels
 
     def validate(self):
@@ -34465,9 +35787,13 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomVPCSetting(TeaMod
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # Security group ID. This security group is where the dial-up client is located. The security group limits the inbound and outbound rules of the dial-up client in the VPC. You need to set the inbound rules of the security group where your VPC is located to allow the security group where the dial-up client is located to access. Otherwise, the dial-up client cannot smoothly access the resources in your VPC.
         self.secure_group_id = secure_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -34516,7 +35842,9 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
     ):
         # The custom host.
         self.custom_host = custom_host
+        # The reserved parameters.
         self.custom_prometheus_setting = custom_prometheus_setting
+        # User VPC information. If the dial-up is to the Alibaba Cloud intranet address, you need to configure the VPC information.
         self.custom_vpcsetting = custom_vpcsetting
         # The IP version. Valid values:
         # 
@@ -34524,20 +35852,20 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
         # *   1: IPv4
         # *   2: IPv6
         self.ip_type = ip_type
-        # 是否开启链路追踪。
+        # Whether to enable tracing.
         self.is_open_trace = is_open_trace
         # Specifies whether to evenly distribute monitoring samples. Valid values:
         # 
         # *   0: No
         # *   1: Yes
         self.monitor_samples = monitor_samples
-        # 链路追踪客户端类型：
+        # Tracing client type:
         # 
-        # - 0：ARMS Agent
-        # - 1：OpenTelemetry
-        # - 2：Jaeger
+        # - 0: ARMS Agent
+        # - 1: Open Telemetry
+        # - 2: Jaeger
         self.trace_client_type = trace_client_type
-        # 链路数据上报region。
+        # Tracing data reporting region.
         self.xtrace_region = xtrace_region
 
     def validate(self):
@@ -34678,6 +36006,7 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # Whether to verify the certificate. The default is no.
         self.check_cert = check_cert
         # The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
         self.connect_timeout = connect_timeout
@@ -34686,6 +36015,15 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP(TeaModel):
         # *   POST
         # *   GET
         self.method = method
+        # The ALPN protocol version. You can configure this parameter when you perform an HTTPS synthetic test on a WAP mobile client. Valid values:
+        # 
+        # 0: default
+        # 
+        # 1: HTTP/1.1
+        # 
+        # 2: HTTP/2
+        # 
+        # 3: disables the ALPN protocol
         self.protocol_alpn_protocol = protocol_alpn_protocol
         # The HTTP request body.
         self.request_body = request_body
@@ -34805,15 +36143,15 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload(TeaModel):
         self.target_url = target_url
         # The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
         self.transmission_size = transmission_size
-        # 验证关键词。
+        # Verify keywords.
         self.validate_keywords = validate_keywords
-        # 验证方式。
+        # Verification method.
         # 
-        # - 0：不验证 
-        # - 1：验证字符串 
-        # - 2：MD5验证
+        # - 0: No verification
+        # - 1: Verification string
+        # - 2: MD5 verification
         self.verify_way = verify_way
-        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+        # DNS hijacking whitelist. Matching rules support IP, IP wildcard, subnet mask and CNAME. You can fill in multiple matching rules, and multiple matching rules are separated by vertical bars (|). For example: `www.aliyun.com:203.0.3.55|203.3.44.67`, which means that all IPs except 203.0.3.55 and 203.3.44.67 under the www.aliyun.com domain name are hijacked.
         self.white_list = white_list
 
     def validate(self):
@@ -35125,25 +36463,28 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfStream(TeaModel):
         target_url: str = None,
         white_list: str = None,
     ):
-        # 自定义header，JSON Map格式。
+        # Custom header, JSON Map format.
         self.custom_header_content = custom_header_content
-        # 播放器，不传默认12。
+        # Player, default is 12 if not specified.
         # 
-        # - 12：VLC
-        # - 2：FlashPlayer
+        # - 12: VLC
+        # - 2: Flash Player
         self.player_type = player_type
-        # 资源地址类型：
+        # Resource address type:
         # 
-        # - 1：资源地址。
-        # - 0：页面地址。不传默认0。
+        # - 1: Resource address.
+        # - 0: Page address. If not passed, the default value is 0.
         self.stream_address_type = stream_address_type
-        # 监测时长，单位秒，最长支持60s，不传默认60。
+        # Monitoring duration, in seconds, supports up to 60 seconds. If not specified, the default value is 60 seconds.
         self.stream_monitor_timeout = stream_monitor_timeout
-        # 音视频标志：0-视频，1-音频。
+        # Audio and video flag:
+        # 
+        # - 0: video
+        # - 1: audio
         self.stream_type = stream_type
-        # 流媒体资源地址。
+        # Streaming media resource address.
         self.target_url = target_url
-        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+        # DNS hijacking whitelist. Matching rules support IP, IP wildcard, subnet mask and CNAME. You can fill in multiple matching rules, and multiple matching rules are separated by vertical bars (|). For example: `www.aliyun.com:203.0.3.55|203.3.44.67`, which means that all IPs except 203.0.3.55 and 203.3.44.67 under the www.aliyun.com domain name are hijacked.
         self.white_list = white_list
 
     def validate(self):
@@ -35219,32 +36560,34 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite(TeaModel):
         self.custom_header = custom_header
         # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
-        # 域名（例如www.aliyun.com）解析时，解析出的IP地址或者CNAME不在DNS劫持白名单内，用户就会访问失败或者返回一个非Aliyun的目标IP；若解析结果中的IP或者CNAME在DNS白名单内，则会被认定为没有发生DNS劫持。
+        # When resolving a domain name (such as www.aliyun.com), if the resolved IP address or CNAME is not in the DNS hijacking whitelist, the user will fail to access or return a non-Aliyun target IP; if the IP or CNAME in the resolution result is in the DNS whitelist, it will be deemed that no DNS hijacking has occurred.
         # 
-        # 填写格式：域名:匹配规则。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+        # Fill in the format: `domain name: matching rule`. Matching rules support IP, IP wildcard, subnet mask and CNAME. You can fill in multiple matching rules, and multiple matching rules are separated by vertical bars (|). 
+        # 
+        # For example: `www.aliyun.com:203.0.3.55|203.3.44.67`, which means that all IPs except 203.0.3.55 and 203.3.44.67 under the www.aliyun.com domain name are hijacked.
         self.dnshijack_whitelist = dnshijack_whitelist
         # Specifies whether to disable the cache. 0: No. 1: Yes. Default value: 1.
         self.disable_cache = disable_cache
         # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. 0: No. 1: Yes. Default value: 0.
         self.disable_compression = disable_compression
-        # 在页面加载过程中如果出现元素黑名单中配置的元素，不会请求加载该元素 。
+        # If an element configured in the element blacklist appears during page loading, no request will be made to load the element.
         self.element_blacklist = element_blacklist
         # Specifies whether to exclude invalid IP addresses.
         # 
         # *   1: No
         # *   0: Yes
         self.filter_invalid_ip = filter_invalid_ip
-        # 识别元素：设置浏览页面元素总个数。
+        # Identify elements: Set the total number of elements to browse the page.
         self.flow_hijack_jump_times = flow_hijack_jump_times
-        # 劫持标识：设置匹配的关键信息。填写劫持判断关键字或关键元素，允许带星号（*）。
+        # Hijacking flag: Set the key information for matching. Fill in the hijacking judgment keyword or key element, and asterisks (*) are allowed.
         self.flow_hijack_logo = flow_hijack_logo
         # Specifies whether to ignore SSL certificate errors during browsing. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_error = ignore_certificate_error
         # The monitoring timeout period. Unit: milliseconds. Default value: 20000. Minimum value: 5000. Maximum value: 300000.
         self.monitor_timeout = monitor_timeout
-        # 监测页面出现了域名设置之外的元素都属于页面被篡改。常见的表现形式为弹出广告、浮动广告、跳转等。
+        # If any element other than the domain name setting appears on the monitoring page, it means that the page has been tampered. Common manifestations include pop-up ads, floating ads, jumps, etc.
         # 
-        # 填写格式：域名:元素。元素支持填写通配符，可以填写多个元素，多个元素以竖线（|）隔开。例如：www.aliyun.com:|/cc/bb/a.gif|/vv/bb/cc.jpg，表示www.aliyun.com域名下除基础文档、/cc/bb/a.gif和/vv/bb/cc.jpg之外的其他元素都属于页面被篡改。
+        # Fill in the format: `domain name: element`. Elements support wildcards, and multiple elements can be filled in. Multiple elements are separated by vertical bars (|). For example: `www.aliyun.com:|/cc/bb/a.gif|/vv/bb/cc.jpg`, which means that all elements except the basic document, /cc/bb/a.gif and /vv/bb/cc.jpg under the www.aliyun.com domain name are considered to be tampered with.
         self.page_tamper = page_tamper
         # Specifies whether to continue browsing after redirection. 0: No, 1:Yes. Default value: 1.
         self.redirection = redirection
@@ -35252,9 +36595,9 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite(TeaModel):
         self.slow_element_threshold = slow_element_threshold
         # The destination URL.
         self.target_url = target_url
-        # 验证字符串即监测页面源代码中的某个任意字符串。若客户端返回的源码中包含任一黑名单中的字符串则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+        # The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any string in the blacklist, an error 650 &quot;Verification string failed&quot; will be reported. Multiple strings are separated by vertical bars (|).
         self.verify_string_blacklist = verify_string_blacklist
-        # 验证字符串即监测页面源代码中的某个任意字符串。客户端返回的源码必须包含所有白名单中的字符串，否则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+        # The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist, otherwise an error 650 &quot;Verification string failed&quot; will be reported. Multiple strings are separated by a vertical bar (|).
         self.verify_string_whitelist = verify_string_whitelist
         # The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
         self.wait_completion_time = wait_completion_time
@@ -35362,7 +36705,7 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConf(TeaModel):
         stream: GetTimingSyntheticTaskResponseBodyDataMonitorConfStream = None,
         website: GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite = None,
     ):
-        # The HTTP(S) synthetic test parameters.
+        # The parameters of the HTTP(S) synthetic test.
         self.api_http = api_http
         # The file download parameters.
         self.file_download = file_download
@@ -35372,7 +36715,7 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConf(TeaModel):
         self.net_icmp = net_icmp
         # The TCP synthetic tests parameters. This parameter is required if the TaskType parameter is set to 2.
         self.net_tcp = net_tcp
-        # 流媒体拨测配置。
+        # Streaming media dial test configuration.
         self.stream = stream
         # The website-speed measurement parameters.
         self.website = website
@@ -35684,7 +37027,7 @@ class GetTimingSyntheticTaskResponseBody(TeaModel):
     ):
         # The status code returned. The status code 200 indicates that the request was successful.
         self.code = code
-        # The struct returned.
+        # The returned struct.
         self.data = data
         # The message returned.
         self.message = message
@@ -35976,67 +37319,28 @@ class GetTraceResponseBodySpans(TeaModel):
         self.rpc_id = rpc_id
         # The type of the remote procedure call (RPC) mode.
         # 
-        # - 0 http
-        # - 25 http_client
-        # - 1 hsf_client
-        # - 2 hsf
-        # - 40 local
-        # - 41 async
-        # - 52 DB2
-        # - 53 Informix
-        # - 54 SequoiaDB
-        # - 55 Gbase
-        # - 56 GaussDB
-        # - 57 KingBase
-        # - 58 infuxdb
-        # - 59 clickhouse
-        # - 60 mysql
-        # - 61 mysql
-        # - 62 oracle
-        # - 63 postgresql
-        # - 64 mongodb
-        # - 65 ppas
-        # - 66 sqlserver
-        # - 67 mariadb
-        # - 68 dmdb
-        # - 69 oceanbase
-        # - 70 redis
-        # - 71 memcached
-        # - 72 elasticsearch
-        # - 73 kudu
-        # - 4 tddl
-        # - 5 tair
-        # - 13 mq_client
-        # - 252 mq
-        # - 23 kafka_client
-        # - 256 kafka
-        # - 3 notify_client
-        # - 254 notify
-        # - 7 dubbo_client
-        # - 8 dubbo
-        # - 11 dsf_client
-        # - 12 dsf
-        # - 9 grpc
-        # - 10 grpc_client
-        # - 16 thrift
-        # - 17 thrift_client
-        # - 18 sofa
-        # - 19 sofa_client
-        # - -1 unknown
-        # - 98 user_method
-        # - 100 root
-        # - 101 client
-        # - 102 server
-        # - 103 producer
-        # - 104 consumer
-        # - 105 db
-        # - 106 xtrace_other
-        # - 1301 schedulerx
-        # - 1302 XXL_Job
-        # - 1303 Spring_Scheduled
-        # - 1304 Quartz
-        # - 1305 ElasticJob
-        # - 1308 Jdk_Timer
+        # *   0: HTTP entry
+        # *   25: HTTP call
+        # *   1: High-speed Service Framework (HSF) call
+        # *   2: HSF provision
+        # *   40: on-premises API call
+        # *   60: MySQL call
+        # *   62: Oracle call
+        # *   63: PostgreSQL call
+        # *   70: Redis call
+        # *   4: Taobao Distributed Data Layer (TDDL) call
+        # *   5: Tair call
+        # *   13: MetaQ message sending
+        # *   252: MetaQ message receiving
+        # *   3: notification sending
+        # *   254: notification receiving
+        # *   7: Apache Dubbo call
+        # *   8: Apache Dubbo provision
+        # *   19: SOFARPC call
+        # *   18: SOFARPC provision
+        # *   11: Distributed Service Framework (DSF) call
+        # *   12: DSF provision
+        # *   \\-1: unknown call
         self.rpc_type = rpc_type
         # The IP address of the host where the application resides.
         self.service_ip = service_ip
@@ -36234,9 +37538,9 @@ class GetTraceAppRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # 标签的键（key）。
         self.key = key
-        # The tag value.
+        # 标签的值（value）。
         self.value = value
 
     def validate(self):
@@ -36278,7 +37582,7 @@ class GetTraceAppRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of tags.
+        # 标签。
         self.tags = tags
 
     def validate(self):
@@ -36375,11 +37679,13 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        # Cluster ID, used only in K8s scenarios.
         self.cluster_id = cluster_id
         # The timestamp generated when the task was created.
         self.create_time = create_time
         # The aliases of the application.
         self.labels = labels
+        # Coding Language.
         self.language = language
         # The process identifier (PID) of the application.
         self.pid = pid
@@ -36573,6 +37879,10 @@ class GetTraceAppConfigRequest(TeaModel):
         self,
         pid: str = None,
     ):
+        # The process ID (PID) of the application.
+        # 
+        # Log on to the ARMS console. In the left-side navigation pane, choose **Application Monitoring** > **Application List**. On the Application List page, click the name of an application. The URL in the address bar contains the PID of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with an at sign (@) to obtain xxx@74xxx.
+        # 
         # This parameter is required.
         self.pid = pid
 
@@ -36605,10 +37915,27 @@ class GetTraceAppConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
+        # 
+        # Valid values:
+        # 
+        # *   2xx: The request was successful.
+        # *   3xx: The request was redirected.
+        # *   4xx: A request error occurred.
+        # *   5xx: A server error occurred.
         self.code = code
+        # The custom settings of the application, which is a JSON string. For more information, see **Additional description of response parameters**.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -36895,7 +38222,7 @@ class InitEnvironmentRequest(TeaModel):
     ):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # Whether to create a Token in order to enhance the security of data retrieval.
+        # Specifies whether to create a token to improve data security.
         self.create_auth_token = create_auth_token
         # The ID of the environment instance.
         # 
@@ -37135,7 +38462,7 @@ class InstallAddonResponseBodyDataConditions(TeaModel):
         self.first_transition_time = first_transition_time
         # The last transition time.
         self.last_transition_time = last_transition_time
-        # The detailed information.
+        # The returned message.
         self.message = message
         # The reason for the failure.
         self.reason = reason
@@ -37227,7 +38554,7 @@ class InstallAddonResponseBodyData(TeaModel):
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Whether or not it is a managed component.
+        # Indicates whether the component is fully managed.
         self.managed = managed
         # The region ID.
         self.region_id = region_id
@@ -37454,11 +38781,18 @@ class InstallCmsExporterRequest(TeaModel):
         enable_tag: bool = None,
         region_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The cloud services that you want to monitor. The CmsArgs parameter is the startup parameter of the cms-exporter collector. Separate multiple cloud services with number signs (`#`).
         self.cms_args = cms_args
+        # The recently monitored cloud services. Separate multiple cloud services with number signs (`#`).
         self.direct_args = direct_args
+        # Specifies whether to collect the aliyun tags attached to each cloud service. Default value: false.
         self.enable_tag = enable_tag
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -37504,7 +38838,9 @@ class InstallCmsExporterResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the call was successful.
         self.data = data
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -37780,65 +39116,31 @@ class InstallManagedPrometheusRequest(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the ACK cluster.
+        # The ID of the ASK cluster.
         self.cluster_id = cluster_id
-        # The name of the ECS instance. If you set the ClusterType parameter to ecs, you must configure this parameter.
+        # The name of the cluster. This parameter is required if the ClusterType parameter is set to ecs.
         self.cluster_name = cluster_name
-        # The cluster type.
-        # 
-        # Valid values:
-        # 
-        # *   ecs
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   one
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ask
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   pro
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of the cluster. Valid values: ask and ecs.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # The ID of the Grafana workspace used by the ASK cluster or ECS instance. If you set the value to free or leave the parameter empty, a shared Grafana workspace is used.
+        # The ID of the Grafana workspace in which the cluster resides. If you set this parameter to free or leave this parameter empty, the cluster is deployed in a shared Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
-        # This parameter is not supported.
+        # The parameter is not supported.
         self.kube_config = kube_config
         # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the Prometheus instance belongs.
+        # Prometheus实例的资源组ID。
         self.resource_group_id = resource_group_id
-        # The security group of the ASK cluster or ECS instance.
+        # The ID of the security group to which the cluster belongs.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The vSwitch used by the ASK cluster or ECS instance.
+        # The ID of the vSwitch that is used by the cluster.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+        # The virtual private cloud (VPC) where the cluster resides.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -37910,13 +39212,13 @@ class InstallManagedPrometheusResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The response content. The status of the Prometheus instance is returned.
+        # The response content. In most cases, the installation status of the Prometheus agent is returned.
         self.data = data
-        # The error message returned if the Prometheus instance fails to be created.
+        # The error message returned if the Prometheus agent failed to be installed.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the Prometheus instance was created.
+        # Indicates whether the Prometheus agent was installed.
         self.success = success
 
     def validate(self):
@@ -38383,9 +39685,9 @@ class ListAddonReleasesRequest(TeaModel):
         environment_id: str = None,
         region_id: str = None,
     ):
-        # Name of Addon.
+        # The name of the add-on.
         self.addon_name = addon_name
-        # Environment instance ID.
+        # The environment ID.
         # 
         # This parameter is required.
         self.environment_id = environment_id
@@ -38430,17 +39732,17 @@ class ListAddonReleasesResponseBodyDataReleasesConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # First transition time.
+        # The first transition time.
         self.first_transition_time = first_transition_time
-        # Last transition time.
+        # The last transition time.
         self.last_transition_time = last_transition_time
-        # Details.
+        # The detailed information.
         self.message = message
-        # Reason of failure.
+        # The reason for the failure.
         self.reason = reason
-        # Condition status.
+        # The status of the phase.
         self.status = status
-        # Condition type.
+        # The type of the phase.
         self.type = type
 
     def validate(self):
@@ -38506,42 +39808,42 @@ class ListAddonReleasesResponseBodyDataReleases(TeaModel):
         user_id: str = None,
         version: str = None,
     ):
-        # Name of Addon.
+        # The name of the add-on.
         self.addon_name = addon_name
-        # Number of alarm groups.
+        # The number of alert rules.
         self.alert_rule_count = alert_rule_count
-        # Condition list.
+        # The installation phase.
         self.conditions = conditions
-        # Created time.
+        # The time when the add-on was created.
         self.create_time = create_time
-        # Number of dashboard.
+        # The number of dashboards.
         self.dashboard_count = dashboard_count
-        # Environment instance ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Number of Exporter.
+        # The number of exporters.
         self.exporter_count = exporter_count
-        # Whether there is configuration.
+        # Indicates whether the configuration is available.
         self.have_config = have_config
-        # User ID of the installation.
+        # The user ID.
         self.install_user_id = install_user_id
-        # Language.
+        # The language.
         self.language = language
         self.managed = managed
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # Release ID.
+        # The release ID after installation.
         self.release_id = release_id
-        # Name of Release.
+        # The name of the release.
         self.release_name = release_name
-        # Scene.
+        # The scenario.
         self.scene = scene
-        # Status of Release.
+        # The status.
         self.status = status
-        # Update time.
+        # The time when the add-on was updated.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Version of Addon.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):
@@ -38650,9 +39952,9 @@ class ListAddonReleasesResponseBodyData(TeaModel):
         releases: List[ListAddonReleasesResponseBodyDataReleases] = None,
         total: int = None,
     ):
-        # Release list.
+        # The queried add-ons.
         self.releases = releases
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -38696,18 +39998,15 @@ class ListAddonReleasesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code: 200 indicates success.
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned struct.
+        # The result of the operation.
         self.data = data
         # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # 
-        # *   `true`: The request was successful.
-        # *   `false`: The request failed.
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -38852,11 +40151,11 @@ class ListAddonsResponseBodyDataDashboards(TeaModel):
         name: str = None,
         url: str = None,
     ):
-        # Description of the dashboard.
+        # The description of the dashboard.
         self.description = description
-        # Name of the dashboard.
+        # The name of the dashboard.
         self.name = name
-        # URL of the dashboard.
+        # The URL of the dashboard.
         self.url = url
 
     def validate(self):
@@ -38895,9 +40194,9 @@ class ListAddonsResponseBodyDataEnvironmentsDependencies(TeaModel):
         services: List[str] = None,
     ):
         self.cluster_types = cluster_types
-        # Name of the Feature.
+        # The feature on which the environment depends.
         self.features = features
-        # Service list.
+        # The services.
         self.services = services
 
     def validate(self):
@@ -38933,7 +40232,7 @@ class ListAddonsResponseBodyDataEnvironmentsPoliciesMetricCheckRule(TeaModel):
         self,
         prom_ql: List[str] = None,
     ):
-        # PromQL list.
+        # The PromQL statements.
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -38964,13 +40263,13 @@ class ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols(TeaModel):
         label: str = None,
         name: str = None,
     ):
-        # Description of the Protocol.
+        # The description of the protocol.
         self.description = description
-        # Icon address.
+        # The URL of the protocol icon.
         self.icon = icon
-        # Label of the Protocol.
+        # The tag of the protocol.
         self.label = label
-        # Name of the Protocol.
+        # The name of the protocol.
         self.name = name
 
     def validate(self):
@@ -39016,19 +40315,19 @@ class ListAddonsResponseBodyDataEnvironmentsPolicies(TeaModel):
         protocols: List[ListAddonsResponseBodyDataEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # Default alert status.
+        # The default alert status.
         self.alert_default_status = alert_default_status
-        # Default install status.
+        # The default installation status.
         self.default_install = default_install
-        # Whether to enable a service account.
+        # Indicates whether a service account is enabled.
         self.enable_service_account = enable_service_account
-        # Metric check rule PromQL.
+        # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Whether to restart after integration.
+        # Indicates whether a restart is required after the installation.
         self.need_restart_after_integration = need_restart_after_integration
-        # Protocol list.
+        # The supported protocols.
         self.protocols = protocols
-        # Target Addon name.
+        # The target name of the add-on.
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -39096,17 +40395,17 @@ class ListAddonsResponseBodyDataEnvironments(TeaModel):
         name: str = None,
         policies: ListAddonsResponseBodyDataEnvironmentsPolicies = None,
     ):
-        # Dependency list.
+        # The dependencies of the environment.
         self.dependencies = dependencies
-        # Description of environment.
+        # The description of the environment.
         self.description = description
-        # Whether to enable it.
+        # Indicates whether the feature is enabled.
         self.enable = enable
-        # Label of the environment.
+        # The tag of the environment.
         self.label = label
-        # Name of the environment.
+        # The name of the environment.
         self.name = name
-        # Policies list.
+        # The control policies in the environment.
         self.policies = policies
 
     def validate(self):
@@ -39172,33 +40471,33 @@ class ListAddonsResponseBodyData(TeaModel):
         version: str = None,
         weight: str = None,
     ):
-        # Ailas of the Addon.
+        # The alias of the add-on.
         self.alias = alias
-        # Categories list.
+        # The tags of the add-on.
         self.categories = categories
-        # Dashboard list.
+        # The dashboards.
         self.dashboards = dashboards
-        # Description of the Addon.
+        # The description of the add-on.
         self.description = description
-        # Environment list.
+        # The supported environments.
         self.environments = environments
-        # Icon address.
+        # The URL of the icon.
         self.icon = icon
-        # Keyword list.
+        # The collection of keywords.
         self.keywords = keywords
-        # Language.
+        # The language.
         self.language = language
-        # Last installation time.
+        # The time when the instance was last created.
         self.latest_release_create_time = latest_release_create_time
-        # Name of the Addon.
+        # The name of the add-on.
         self.name = name
-        # Whether to install it only once.
+        # Indicates whether the add-on can be installed only once.
         self.once = once
-        # Scene of the Addon.
+        # The scenario.
         self.scene = scene
-        # Version of the Addon.
+        # The version of the agent.
         self.version = version
-        # Weight of the Addon.
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -39301,7 +40600,7 @@ class ListAddonsResponseBody(TeaModel):
     ):
         # Status code: 200 indicates success.
         self.code = code
-        # The returned struct.
+        # The queried add-ons.
         self.data = data
         # The returned message.
         self.message = message
@@ -39420,6 +40719,7 @@ class ListAlertEventsRequest(TeaModel):
         # 
         # This parameter is required.
         self.page = page
+        # Whether to display the associated notification policies.
         self.show_notification_policies = show_notification_policies
         # The number of entries to return on each page.
         # 
@@ -39541,7 +40841,9 @@ class ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The ID of the notification policy.
         self.id = id
+        # The name of the notification policy.
         self.name = name
 
     def validate(self):
@@ -39588,15 +40890,15 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         status: str = None,
         trigger_count: int = None,
     ):
-        # The list of associated alerts.
+        # The associated alerts.
         self.alarms = alarms
         # The name of the alert.
         self.alert_name = alert_name
-        # The list of annotations.
+        # The annotations.
         self.annotations = annotations
         # The description of the alert event.
         self.description = description
-        # The end time of the alert event.
+        # The end time.
         self.end_time = end_time
         # The URL of the alert event.
         self.generator_url = generator_url
@@ -39606,12 +40908,13 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         self.integration_name = integration_name
         # The type of the alert integration.
         self.integration_type = integration_type
-        # The list of tags.
+        # The tags.
         self.labels = labels
+        # The information about the notification policy.
         self.notification_policies = notification_policies
         # The time when the alert event was received.
         self.receive_time = receive_time
-        # The severity level of the alert. Valid value:
+        # The severity level of the alert. Valid values:
         # 
         # *   critical: P1
         # *   error: P2
@@ -39619,7 +40922,7 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         # *   page: P4
         # *   default: P6
         self.severity = severity
-        # The start time of the alert event.
+        # The start time.
         self.start_time = start_time
         # The status of the alert event. Valid values:
         # 
@@ -39627,6 +40930,7 @@ class ListAlertEventsResponseBodyPageBeanEvents(TeaModel):
         # *   Silenced
         # *   Resolved
         self.status = status
+        # The number of times the alert is triggered.
         self.trigger_count = trigger_count
 
     def validate(self):
@@ -39734,7 +41038,7 @@ class ListAlertEventsResponseBodyPageBean(TeaModel):
         size: int = None,
         total: int = None,
     ):
-        # The list of information about historical alert events.
+        # The queried historical alert events.
         self.events = events
         # The number of the page returned.
         self.page = page
@@ -39789,7 +41093,7 @@ class ListAlertEventsResponseBody(TeaModel):
         page_bean: ListAlertEventsResponseBodyPageBean = None,
         request_id: str = None,
     ):
-        # The struct returned.
+        # The returned struct.
         self.page_bean = page_bean
         # The ID of the request.
         self.request_id = request_id
@@ -41111,10 +42415,10 @@ class ListDashboardsResponseBodyDashboardVosI18nChild(TeaModel):
         self.https_url = https_url
         # The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
         self.id = id
-        # Indicates whether the exporter was provided by ARMS. Valid values:
+        # Indicates whether the exporter is provided by ARMS.
         # 
-        # *   `true`: The exporter is provided by ARMS.
-        # *   `false`: The exporter is not provided by ARMS.
+        # *   `true:` The exporter is provided by ARMS.
+        # *   `false:`: The exporter is not provided by ARMS.
         self.is_arms_exporter = is_arms_exporter
         # The category of the Grafana dashboard. Valid values: BASIC, THIRD, LIMIT, and CUSTOM.
         self.kind = kind
@@ -41122,11 +42426,11 @@ class ListDashboardsResponseBodyDashboardVosI18nChild(TeaModel):
         self.language = language
         # The name of the Grafana dashboard. This parameter is different from the **Title** parameter as this parameter cannot be changed.
         self.name = name
-        # Indicates whether the Grafana dashboard has a new version that was available for upgrade.
+        # Indicates whether the Grafana dashboard has a new version that is available for upgrade.
         self.need_update = need_update
         # The tags of the Grafana dashboard.
         self.tags = tags
-        # The timestamp when the Grafana dashboard was created.
+        # The time when the Grafana dashboard was created. The value is a timestamp.
         self.time = time
         # The title of the Grafana dashboard.
         self.title = title
@@ -41135,7 +42439,7 @@ class ListDashboardsResponseBodyDashboardVosI18nChild(TeaModel):
         # *   `dash-db`: a dashboard
         # *   `dash-folder`: a folder that can include a dashboard
         self.type = type
-        # The unique identifier of a dashboard when multiple Grafana dashboards were installed. It is a unique business ID displayed on the page.
+        # The unique identifier of the Grafana dashboard.
         self.uid = uid
         # The complete URL of the Grafana dashboard.
         self.url = url
@@ -41273,26 +42577,26 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         self.http_url = http_url
         # The URL of the Grafana dashboard.
         self.https_url = https_url
-        # The information about the Grafana dashboards.
+        # The information about the Grafana dashboard.
         self.i_18n_child = i_18n_child
         # The ID of the Grafana dashboard. The value is unique only when you install the Grafana dashboard.
         self.id = id
-        # Indicates whether the exporter was provided by ARMS. Valid values:
+        # Indicates whether the exporter is provided by Application Real-Time Monitoring Service (ARMS).
         # 
-        # *   `true`: The exporter is provided by ARMS.
-        # *   `false`: The exporter is not provided by ARMS.
+        # *   `true:` The exporter is provided by ARMS.
+        # *   `false:`: The exporter is not provided by ARMS.
         self.is_arms_exporter = is_arms_exporter
-        # The type of the dashboard. Valid values: BASIC, THIRD, LIMIT, and CUSTOM. BASIC indicates a basic dashboard. THIRD indicates a third-party dashboard. LIMIT indicates a time-limited free dashboard. CUSTOM indicates a custom dashboard.
+        # The category of the Grafana dashboard. Valid values: BASIC, THIRD, LIMIT, and CUSTOM.
         self.kind = kind
         # The language of the Grafana dashboard.
         self.language = language
         # The name of the Grafana dashboard. This parameter is different from the **Title** parameter as this parameter cannot be changed.
         self.name = name
-        # Indicates whether the Grafana dashboard has a new version that was available for upgrade.
+        # Indicates whether the Grafana dashboard has a new version that is available for upgrade.
         self.need_update = need_update
         # The tags of the Grafana dashboard.
         self.tags = tags
-        # The timestamp generated when the Grafana dashboard was created. Unit: seconds
+        # The time when the Grafana dashboard was created. The value is a timestamp. Unit: seconds.
         self.time = time
         # The title of the Grafana dashboard.
         self.title = title
@@ -41301,7 +42605,7 @@ class ListDashboardsResponseBodyDashboardVos(TeaModel):
         # *   `dash-db`: a dashboard
         # *   `dash-folder`: a folder that can include a dashboard
         self.type = type
-        # The unique identifier of a dashboard when multiple Grafana dashboards were installed. It is a unique business ID displayed on the page.
+        # The unique identifier of the Grafana dashboard.
         self.uid = uid
         # The complete URL of the Grafana dashboard.
         self.url = url
@@ -41409,9 +42713,9 @@ class ListDashboardsResponseBody(TeaModel):
     ):
         # The information about the Grafana dashboard.
         self.dashboard_vos = dashboard_vos
-        # The environment ID.
+        # The ID of the environment instance.
         self.environment_id = environment_id
-        # Whether to enable Grafana service.
+        # Indicates whether Managed Service for Grafana is activated.
         self.grafana_service_opened = grafana_service_opened
         # Whether or not to turn on Prometheus service.
         self.prometheus_service_opened = prometheus_service_opened
@@ -41962,11 +43266,11 @@ class ListEnvCustomJobsResponseBodyData(TeaModel):
         scrape_configs: List[ListEnvCustomJobsResponseBodyDataScrapeConfigs] = None,
         status: str = None,
     ):
-        # The name of the component to which the custom job belongs.
+        # The name of the add-on to which the custom job belongs.
         self.addon_name = addon_name
-        # The instance name of the component.
+        # The instance name of the add-on.
         self.addon_release_name = addon_release_name
-        # The version of the component.
+        # The version of the add-on.
         self.addon_version = addon_version
         # If the request parameter EncryptYaml is set to true, a Base64-encoded YAML string is returned. Otherwise, a plaintext YAML string is returned.
         self.config_yaml = config_yaml
@@ -42255,11 +43559,11 @@ class ListEnvPodMonitorsResponseBodyData(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The name of the component to which the PodMonitor belongs.
+        # The name of the add-on to which the PodMonitor belongs.
         self.addon_name = addon_name
-        # The instance name of the component.
+        # The instance name of the add-on.
         self.addon_release_name = addon_release_name
-        # The version of the component.
+        # The version of the add-on.
         self.addon_version = addon_version
         # The YAML configuration string.
         self.config_yaml = config_yaml
@@ -42555,11 +43859,11 @@ class ListEnvServiceMonitorsResponseBodyData(TeaModel):
         service_monitor_name: str = None,
         status: str = None,
     ):
-        # The name of the component to which the ServiceMonitor belongs.
+        # The name of the add-on to which the ServiceMonitor belongs.
         self.addon_name = addon_name
-        # The instance name of the component.
+        # The instance name of the add-on.
         self.addon_release_name = addon_release_name
-        # The version of the component.
+        # The version of the add-on.
         self.addon_version = addon_version
         # The YAML configuration string.
         self.config_yaml = config_yaml
@@ -43016,6 +44320,7 @@ class ListEnvironmentFeaturesRequest(TeaModel):
         environment_id: str = None,
         region_id: str = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
         # This parameter is required.
         self.environment_id = environment_id
@@ -43064,16 +44369,36 @@ class ListEnvironmentFeaturesResponseBodyData(TeaModel):
         status: str = None,
         version: str = None,
     ):
+        # The alias of the feature.
         self.alias = alias
+        # The feature configuration.
         self.config = config
+        # The description of the feature.
         self.description = description
+        # The ID of the environment instance.
         self.environment_id = environment_id
+        # The URL of the icon.
         self.icon = icon
+        # The language. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
         self.language = language
+        # The latest version number.
         self.latest_version = latest_version
         self.managed = managed
+        # The name of the feature.
         self.name = name
+        # The status of the feature. Valid values:
+        # 
+        # *   Installing: The agent is being installed.
+        # *   Success: The agent is installed.
+        # *   Failed: The agent failed to be installed.
+        # *   UnInstall: The agent is uninstalled.
+        # *   Uninstalling: The agent is being uninstalled.
+        # *   UnInstallFailed: The agent failed to be uninstalled.
         self.status = status
+        # The version of the feature.
         self.version = version
 
     def validate(self):
@@ -43146,6 +44471,7 @@ class ListEnvironmentFeaturesResponseBody(TeaModel):
         success: bool = None,
     ):
         self.code = code
+        # The returned struct.
         self.data = data
         self.message = message
         # Id of the request
@@ -43327,10 +44653,15 @@ class ListEnvironmentsRequest(TeaModel):
         # 
         #     <!-- -->
         self.environment_type = environment_type
-        # The payable resource plan. Valid values:
+        # The payable resource plan.
         # 
         # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
         # *   Otherwise, leave the parameter empty.
+        # 
+        # Valid values:
+        # 
+        # *   CS_Pro: Container Monitoring Pro
+        # *   CS_Basic: Container Monitoring Basic
         self.fee_package = fee_package
         # The region ID.
         self.region_id = region_id
@@ -43446,10 +44777,15 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.environment_type = environment_type
-        # The payable resource plan. Valid values:
+        # The payable resource plan.
         # 
         # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
         # *   Otherwise, leave the parameter empty.
+        # 
+        # Valid values:
+        # 
+        # *   CS_Pro: Container Monitoring Pro
+        # *   CS_Basic: Container Monitoring Basic
         self.fee_package = fee_package
         # The region ID.
         self.region_id = region_id
@@ -43684,14 +45020,14 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         # The type of the environment instance. Valid values:
         # 
         # *   CS: Container Service
-        # *   ECS: Elastic Compute Service (ECS)
+        # *   ECS: Elastic Compute Service
         # *   Cloud: cloud service
         self.environment_type = environment_type
         # The parameters of the feature.
         self.features = features
-        # The payable resource plan. Valid values:
+        # The payable resource plan.
         # 
-        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
         # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The unique ID of the Grafana data source.
@@ -43712,15 +45048,15 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         self.prometheus_id = prometheus_id
         # The ID of the Prometheus instance.
         self.prometheus_instance_id = prometheus_instance_id
-        # The ID of the region where the Message Queue for RabbitMQ instance resides.
+        # The region ID.
         self.region_id = region_id
         # The number of installed add-ons.
         self.release_count = release_count
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The tags of the environment resource.
         self.tags = tags
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -43867,7 +45203,7 @@ class ListEnvironmentsResponseBodyData(TeaModel):
         environments: List[ListEnvironmentsResponseBodyDataEnvironments] = None,
         total: int = None,
     ):
-        # The parameters of the environment instance.
+        # The queried environments.
         self.environments = environments
         # The total number of returned entries.
         self.total = total
@@ -44486,6 +45822,7 @@ class ListGrafanaWorkspaceRequest(TeaModel):
         self.aliyun_lang = aliyun_lang
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.tags = tags
 
@@ -44540,6 +45877,7 @@ class ListGrafanaWorkspaceShrinkRequest(TeaModel):
         self.aliyun_lang = aliyun_lang
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.tags_shrink = tags_shrink
 
@@ -44759,7 +46097,7 @@ class ListInsightsEventsResponseBodyInsightsEvents(TeaModel):
         title: str = None,
         type: str = None,
     ):
-        # The time at which the event occurred. The value is a timestamp.
+        # The time when the event occurred. The value is a timestamp.
         self.date = date
         # The description of the alert event.
         self.desc = desc
@@ -44767,7 +46105,7 @@ class ListInsightsEventsResponseBodyInsightsEvents(TeaModel):
         self.level = level
         # The ID of the application associated with the event.
         self.pid = pid
-        # 问题标识。
+        # The problem identifier.
         self.problem_id = problem_id
         # The title of the event.
         self.title = title
@@ -45321,7 +46659,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule(
         group_wait: int = None,
         grouping_fields: List[str] = None,
     ):
-        # The time interval of grouping. Unit: seconds. Default value: 30.
+        # The time interval for grouping. Unit: seconds. Default value: 30.
         self.group_interval = group_interval
         # The waiting time for grouping. Unit: seconds. Default value: 5.
         self.group_wait = group_wait
@@ -45670,9 +47008,9 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         self.matching_rules = matching_rules
         # The name of the notification policy.
         self.name = name
-        # The notification rules.
+        # The notification rule.
         self.notify_rule = notify_rule
-        # The notification templates.
+        # The notification template.
         self.notify_template = notify_template
         # Indicates whether the system resends notifications for a long-lasting unresolved alert. Valid values:
         # 
@@ -45686,6 +47024,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         # *   `true` (default): The system sends a notification.
         # *   `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
+        # Indicates whether the notification policy is enabled. Valid values: enable and disable.
         self.state = state
 
     def validate(self):
@@ -47036,9 +48375,9 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -47092,54 +48431,55 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Auth Token string.
+        # The authorization token.
         self.auth_token = auth_token
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
         # The name of the Prometheus instance.
         self.cluster_name = cluster_name
-        # The type of the cluster. Valid values: remote-write: Prometheus instance for remote write.
+        # The instance type. Valid values:
         # 
-        # *   ecs: Prometheus instances for ECS.
-        # *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland.
-        # *   cloud-product: Prometheus instance for Alibaba Cloud services outside China.
-        # *   global-view: Prometheus instance for GlobalView.
-        # *   aliyun-cs: Prometheus instance for Container Service.
+        # *   remote-write: Prometheus instance for Remote Write
+        # *   ecs: Prometheus instances for ECS
+        # *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
+        # *   cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
+        # *   global-view: global aggregation instance
+        # *   aliyun-cs: Prometheus instance for Container Service
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
-        # HTTP Api internet url.
+        # The public URL for the HTTP API.
         self.http_api_inter_url = http_api_inter_url
-        # HTTP Api intranet url.
+        # The internal URL for the HTTP API.
         self.http_api_intra_url = http_api_intra_url
         # The billing method. Valid values:
         # 
-        # *   PREPAY: subscription.
-        # *   POSTPAY: pay-as-you-go.
+        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
-        # Push Gateway internet url.
+        # The public URL for Pushgateway.
         self.push_gateway_inter_url = push_gateway_inter_url
-        # Push Gateway intranet url.
+        # The internal URL for Pushgateway.
         self.push_gateway_intra_url = push_gateway_intra_url
-        # The region ID of the Prometheus instance.
+        # The region ID.
         self.region_id = region_id
-        # Remote Read internet url.
+        # The public URL for remote read.
         self.remote_read_inter_url = remote_read_inter_url
-        # Remote Read intranet url.
+        # The internal URL for remote read.
         self.remote_read_intra_url = remote_read_intra_url
-        # Remote Write internet url.
+        # The public URL for remote write.
         self.remote_write_inter_url = remote_write_inter_url
-        # Remote Write intranet url.
+        # The internal URL for remote write.
         self.remote_write_intra_url = remote_write_intra_url
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
         # The ID of the security group.
         self.security_group_id = security_group_id
-        # The child instances of the Prometheus instance for GlobalView instance. The value is a JSON string.
+        # The child instances of the global aggregation instance. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The ID of the user.
         self.user_id = user_id
@@ -47310,7 +48650,7 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBody(TeaModel):
     ):
         # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
-        # The struct returned.
+        # The returned struct.
         self.data = data
         # The returned message.
         self.message = message
@@ -47400,7 +48740,8 @@ class ListPrometheusInstancesRequest(TeaModel):
         show_global_view: bool = None,
     ):
         # Optional instance types (if left blank, all types of instances will be queried):
-        # - cloud-product-prometheus 
+        # 
+        # - cloud-product-prometheus
         # - ManagedKubernetes
         # - satellite
         # - Ask
@@ -47411,11 +48752,11 @@ class ListPrometheusInstancesRequest(TeaModel):
         # - cloud-monitor-direct
         # - Edge Kubernetes
         self.cluster_type = cluster_type
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to query global aggregation instances. Valid values:
+        # Specifies whether to obtain global aggregation instances. Valid values:
         # 
         # *   true
         # *   false
@@ -47459,7 +48800,7 @@ class ListPrometheusInstancesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The status code.
         self.code = code
         # The Prometheus instances in the region in the JSON format.
         self.data = data
@@ -47552,7 +48893,7 @@ class ListPrometheusIntegrationRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The integration type.
+        # The integration type. Valid values: kafka, mysql, redis, snmp, emr, nubela, and tidb.
         # 
         # This parameter is required.
         self.integration_type = integration_type
@@ -47623,11 +48964,11 @@ class ListPrometheusIntegrationResponseBodyData(TeaModel):
         self.describe = describe
         # The type of the exporter.
         self.exporter_type = exporter_type
-        # The exporter ID.
+        # The ID of the exporter.
         self.instance_id = instance_id
         # The name of the exporter.
         self.instance_name = instance_name
-        # The integration type.
+        # The integration type. Valid values: kafka, mysql, redis, snmp, emr, nubela, and tidb.
         self.integration_type = integration_type
         # The namespace.
         self.namespace = namespace
@@ -47641,7 +48982,7 @@ class ListPrometheusIntegrationResponseBodyData(TeaModel):
         self.show_describe = show_describe
         # Indicates whether the exporter logs are displayed.
         self.show_log = show_log
-        # The state of the exporter.
+        # The status of the exporter.
         self.status = status
         # The monitored IP address.
         self.target = target
@@ -47750,7 +49091,7 @@ class ListPrometheusIntegrationResponseBody(TeaModel):
         self.data = data
         # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47849,7 +49190,7 @@ class ListPrometheusMonitoringRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the monitoring configuration. Valid values for a Prometheus instance for Container Service: serviceMonitor, podMonitor, customJob, and probe. Valid values for a Prometheus instance for ECS: customJob and probe.
+        # The type of the monitoring configuration. Valid values for a Prometheus instance for Container Service: ServiceMonitor, PodMonitor, CustomJob, and Probe. Valid values for a Prometheus instance for ECS: CustomJob and Probe.
         self.type = type
 
     def validate(self):
@@ -47889,7 +49230,7 @@ class ListPrometheusMonitoringResponseBodyData(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # Prometheus Instance ID.
+        # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
         # The monitoring configuration. The value is a YAML string.
         self.config_yaml = config_yaml
@@ -48040,11 +49381,11 @@ class ListPrometheusRemoteWritesRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
+        # The ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -48124,15 +49465,15 @@ class ListPrometheusRemoteWritesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        # The HTTP status code that is returned. The HTTP status code 200 indicates that the call was successful. Otherwise, the call fails.
         self.code = code
         # The remote write configuration items returned.
         self.data = data
         # The message returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the call was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -48262,13 +49603,13 @@ class ListRetcodeAppsRequest(TeaModel):
         resource_group_id: str = None,
         tags: List[ListRetcodeAppsRequestTags] = None,
     ):
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tags that you want to add to the task.
         self.tags = tags
 
     def validate(self):
@@ -48359,7 +49700,7 @@ class ListRetcodeAppsResponseBodyRetcodeApps(TeaModel):
         self.app_name = app_name
         # The alias of the application monitored by Browser Monitoring.
         self.nick_name = nick_name
-        # The PID of the application.
+        # The process identifier (PID) of the application.
         self.pid = pid
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -48372,7 +49713,7 @@ class ListRetcodeAppsResponseBodyRetcodeApps(TeaModel):
         # *   `mini_wx`: WeChat mini program
         # *   `mini_common`: mini program on other platforms
         self.retcode_app_type = retcode_app_type
-        # The tags.
+        # The tags of the task.
         self.tags = tags
 
     def validate(self):
@@ -48433,7 +49774,7 @@ class ListRetcodeAppsResponseBody(TeaModel):
         request_id: str = None,
         retcode_apps: List[ListRetcodeAppsResponseBodyRetcodeApps] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The list of applications monitored by Browser Monitoring.
         self.retcode_apps = retcode_apps
@@ -48861,7 +50202,7 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules(TeaMod
         self,
         matching_conditions: List[ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRulesMatchingConditions] = None,
     ):
-        # An array of matching condition objects.
+        # The matching conditions.
         self.matching_conditions = matching_conditions
 
     def validate(self):
@@ -48902,10 +50243,11 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePolicies(TeaModel):
     ):
         # The ID of the silence policy.
         self.id = id
-        # An array of matching rule objects.
+        # The matching rules.
         self.matching_rules = matching_rules
         # The name of the silence policy.
         self.name = name
+        # Indicates whether the silence policy is enabled. Valid values: enable and disable.
         self.state = state
 
     def validate(self):
@@ -48958,7 +50300,7 @@ class ListSilencePoliciesResponseBodyPageBean(TeaModel):
     ):
         # The number of the page returned.
         self.page = page
-        # An array of silence policy objects.
+        # The queried silence policies.
         self.silence_policies = silence_policies
         # The number of entries returned per page.
         self.size = size
@@ -49011,7 +50353,7 @@ class ListSilencePoliciesResponseBody(TeaModel):
         page_bean: ListSilencePoliciesResponseBodyPageBean = None,
         request_id: str = None,
     ):
-        # The objects that were returned.
+        # The returned pages.
         self.page_bean = page_bean
         # The request ID.
         self.request_id = request_id
@@ -49385,6 +50727,7 @@ class ListSyntheticDetailResponseBodyData(TeaModel):
         task_create_time: int = None,
         total: int = None,
     ):
+        # The list of results.
         self.items = items
         self.page = page
         self.page_size = page_size
@@ -49436,6 +50779,7 @@ class ListSyntheticDetailResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # The returned struct.
         self.data = data
         self.message = message
         # Id of the request
@@ -49744,8 +51088,15 @@ class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts(
         ip_type: int = None,
         ips: List[str] = None,
     ):
+        # The destination domain name.
         self.domain = domain
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4.
+        # *   2: IPv6.
         self.ip_type = ip_type
+        # The IP address.
         self.ips = ips
 
     def validate(self):
@@ -49782,7 +51133,12 @@ class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHost(TeaMo
         hosts: List[ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomHostHosts] = None,
         select_type: int = None,
     ):
+        # The custom host settings.
         self.hosts = hosts
+        # The selection mode. Valid values:
+        # 
+        # *   0: random
+        # *   1: polling
         self.select_type = select_type
 
     def validate(self):
@@ -49824,8 +51180,11 @@ class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomPrometheus
         prometheus_cluster_region: str = None,
         prometheus_labels: Dict[str, str] = None,
     ):
+        # A reserved field.
         self.prometheus_cluster_id = prometheus_cluster_id
+        # A reserved field.
         self.prometheus_cluster_region = prometheus_cluster_region
+        # A reserved field.
         self.prometheus_labels = prometheus_labels
 
     def validate(self):
@@ -49864,9 +51223,13 @@ class ListTimingSyntheticTasksResponseBodyDataItemsCommonSettingCustomVPCSetting
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the security group to which the client belongs. The security group specifies the inbound and outbound rules of the client for the VPC. You need to allow the security group to which the client belongs to access the security group to which the VPC belongs. Otherwise, the client cannot access resources in the VPC.
         self.secure_group_id = secure_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -49913,13 +51276,32 @@ class ListTimingSyntheticTasksResponseBodyDataItemsCommonSetting(TeaModel):
         trace_client_type: int = None,
         xtrace_region: str = None,
     ):
+        # The custom host settings.
         self.custom_host = custom_host
+        # A reserved field.
         self.custom_prometheus_setting = custom_prometheus_setting
+        # The information about the virtual private cloud (VPC). If the destination URL is an Alibaba Cloud internal endpoint, you need to configure a VPC.
         self.custom_vpcsetting = custom_vpcsetting
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4.
+        # *   2: IPv6.
         self.ip_type = ip_type
+        # Indicates whether tracing is enabled.
         self.is_open_trace = is_open_trace
+        # Indicates whether monitoring samples are evenly distributed. Valid values:
+        # 
+        # *   0: No
+        # *   1: Yes
         self.monitor_samples = monitor_samples
+        # The type of the client for tracing. Valid values:
+        # 
+        # *   0: ARMS agent
+        # *   1: OpenTelemetry
+        # *   2: Jaeger
         self.trace_client_type = trace_client_type
+        # The region to which trace data is reported.
         self.xtrace_region = xtrace_region
 
     def validate(self):
@@ -50031,6 +51413,7 @@ class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
         task_type: int = None,
         url: str = None,
     ):
+        # The general settings.
         self.common_setting = common_setting
         # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
@@ -50339,8 +51722,8 @@ class ListTraceAppsRequest(TeaModel):
     ):
         # The type of the application that is associated with the alert rule. Valid values:
         # 
-        # *   `TRACE`: Application Monitoring
-        # *   `EBPF`: Application Monitoring eBPF Edition
+        # - TRACE: Application Monitoring
+        # - EBPF: Application Monitoring eBPF Edition
         self.app_type = app_type
         # The region ID.
         self.region = region
@@ -50462,7 +51845,7 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
         self.cluster_id = cluster_id
         # The time when the monitoring task was created. The value is a timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # The tags of the application.
+        # The labels of the application.
         self.labels = labels
         # The language.
         self.language = language
@@ -50479,7 +51862,7 @@ class ListTraceAppsResponseBodyTraceApps(TeaModel):
         # *   `true`: yes
         # *   `false`: no
         self.show = show
-        # The source of the application.
+        # The application source.
         self.source = source
         # The tags.
         self.tags = tags
@@ -50618,7 +52001,7 @@ class ListTraceAppsResponseBody(TeaModel):
         # *   `true`: The call was successful.
         # *   `false`: The call failed.
         self.success = success
-        # The queried application monitoring tasks.
+        # The list of Application Monitoring tasks.
         self.trace_apps = trace_apps
 
     def validate(self):
@@ -50762,11 +52145,11 @@ class ManageGetRecordingRuleResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # 状态码。200为成功，其他状态码为异常。
         self.code = code
         # The returned message.
         self.data = data
-        # The returned message.
+        # 返回信息。
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
@@ -50852,15 +52235,15 @@ class ManageRecordingRuleRequest(TeaModel):
         region_id: str = None,
         rule_yaml: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The user ID.
+        # The ID of the user.
         # 
         # This parameter is required.
         self.query_user_id = query_user_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -50915,7 +52298,7 @@ class ManageRecordingRuleResponseBody(TeaModel):
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID. You can use the ID to troubleshoot issues.
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51027,7 +52410,10 @@ class OpenArmsDefaultSLRResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   `true`: The call was successful.
+        # *   `false`: The call failed.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -51233,7 +52619,7 @@ class OpenVClusterRequest(TeaModel):
         self.cluster_type = cluster_type
         # The length of the cluster ID. Default value: 10.
         self.length = length
-        # The name of the cloud service. This parameter is required if you set ClusterType to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA. You cannot specify multiple service names.
+        # The name of the cloud service. This parameter must be specified when ClusterType is set to `cloud-product-prometheus`. Valid values: influxdb, mongodb, and DLA. You cannot specify multiple service names.
         self.product = product
         # Specifies whether to create or query a virtual cluster. This parameter provides backward compatibility.
         self.recreate_switch = recreate_switch
@@ -51284,9 +52670,9 @@ class OpenVClusterResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The cluster ID. The value is a string.
+        # The cluster ID.
         self.data = data
-        # The request ID. You can use the ID to find logs and troubleshoot issues.
+        # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51391,7 +52777,7 @@ class OpenXtraceDefaultSLRResponseBody(TeaModel):
         request_id: str = None,
     ):
         # Indicates whether the request was successful. Valid values:
-        # 
+        #  
         # *   `true`
         # *   `false`
         self.data = data
@@ -51840,7 +53226,7 @@ class QueryAppTopologyResponseBody(TeaModel):
         self.code = code
         # The returned struct.
         self.data = data
-        # The returned message.
+        # The error message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -51934,8 +53320,11 @@ class QueryCommercialUsageRequestAdvancedFilters(TeaModel):
         op_type: str = None,
         value: str = None,
     ):
+        # The key of the filter condition.
         self.key = key
+        # The operator. Valid values: eq and in.
         self.op_type = op_type
+        # The value of the filter condition.
         self.value = value
 
     def validate(self):
@@ -51980,18 +53369,54 @@ class QueryCommercialUsageRequest(TeaModel):
         query_type: str = None,
         start_time: int = None,
     ):
+        # The filter conditions.
         self.advanced_filters = advanced_filters
+        # The dimensions of the metric that you want to query. Valid values:
+        # 
+        # *   dataType: data type
+        # *   productType: product type
+        # *   instanceId: instance ID
+        # *   instanceName: instance name
+        # *   instanceType: instance type
         self.dimensions = dimensions
+        # The end of the time range to query. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The time interval between data slices. Unit: seconds. Minimum value: 3600.
         self.interval_in_sec = interval_in_sec
+        # The measures of the metric that you want to query.
         self.measures = measures
+        # The name of the metric. Valid value: USAGEFEE.STAT.
+        # 
         # This parameter is required.
         self.metric = metric
+        # The order in which data is sorted. Valid value:
+        # 
+        # *   `ASC`: ascending order
+        # *   `DESC`: descending order
         self.order = order
+        # The dimension by which data is sorted.
+        # 
+        # Valid value:
+        # 
+        # *   dataType
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.order_by = order_by
+        # The data type. Valid values:
+        # 
+        # *   instantQuery: non-time series
+        # *   timeSeriesQuery: time series
+        # 
         # This parameter is required.
         self.query_type = query_type
+        # The start of the time range to query. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -52065,7 +53490,12 @@ class QueryCommercialUsageResponseBodyData(TeaModel):
         complete: bool = None,
         items: List[Dict[str, Any]] = None,
     ):
+        # Indicates whether a multi-region query is complete. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.complete = complete
+        # The returned struct.
         self.items = items
 
     def validate(self):
@@ -52101,10 +53531,18 @@ class QueryCommercialUsageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status. Valid values: 2XX: The request is successful. 3XX: A redirection message is returned. 4XX: The request is invalid. 5XX: A server error occurs.
         self.code = code
+        # The returned struct.
         self.data = data
+        # The error message returned if the request failed.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -53329,29 +54767,27 @@ class SaveTraceAppConfigRequestSettings(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The values of the settings that you want to modify. For information about the supported settings, see the following items:
+        # The key of the settings that you want to modify. For more information about the supported settings, see the following sections.
         # 
         # *   Trace sampling settings
-        # *   Main switch settings
+        # *   Agent switch settings
         # *   Threshold settings
         # *   Advanced settings
         # *   Thread settings
         # *   Memory snapshot settings
         # *   URL convergence settings
         # *   Business log association settings
-        # *   Business monitoring settings
         self.key = key
-        # The values of the settings that you want to modify. For information about the supported settings, see the following items:
+        # The value of the settings that you want to modify. For more information about the supported settings, see the following sections.
         # 
         # *   Trace sampling settings
-        # *   Main switch settings
+        # *   Agent switch settings
         # *   Threshold settings
         # *   Advanced settings
         # *   Thread settings
         # *   Memory snapshot settings
         # *   URL convergence settings
         # *   Business log association settings
-        # *   Business monitoring settings
         self.value = value
 
     def validate(self):
@@ -53384,9 +54820,9 @@ class SaveTraceAppConfigRequest(TeaModel):
         pid: str = None,
         settings: List[SaveTraceAppConfigRequestSettings] = None,
     ):
-        # The ID of the application.
+        # The process ID (PID) of the application.
         # 
-        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\\*\\*\\*\\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\\*\\*\\*\\*.
+        # Log on to the ARMS console. In the left-side navigation pane, choose **Application Monitoring** > **Application List**. On the Application List page, click the name of an application. The URL in the address bar contains the PID of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with an at sign (@) to obtain xxx@74xxx.
         # 
         # This parameter is required.
         self.pid = pid
@@ -53434,7 +54870,7 @@ class SaveTraceAppConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        # The HTTP status code. 2XX indicates that the request was successful. 3XX indicates that the request was redirected. 4XX indicates that a request error occurred. 5XX indicates that a server error occurred.
         self.code = code
         # Indicates whether the call was successful.
         self.data = data
@@ -53444,8 +54880,8 @@ class SaveTraceAppConfigResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -55723,19 +57159,19 @@ class SearchRetcodeAppByPageRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can obtain the resource group ID in the **Resource Management** console.
         self.resource_group_id = resource_group_id
-        # The ID of the application.
+        # The application ID.
         # 
         # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the browser address bar contains the pid of this application in the format of `pid=xxx`. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is `xxx%4074xxx`, you must replace **%40** with the at sign (@). The actual PID is `xxx@74xxx`.
         self.retcode_app_id = retcode_app_id
-        # The name of the application that is monitored by Browser Monitoring.
+        # The name of the application.
         self.retcode_app_name = retcode_app_name
-        # The tags.
+        # The tag.
         self.tags = tags
 
     def validate(self):
@@ -55849,9 +57285,9 @@ class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps(TeaModel):
         self.create_time = create_time
         # The alias of the application.
         self.nick_name = nick_name
-        # The PID of the application.
+        # The process identifier (PID) of the application.
         self.pid = pid
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -55864,7 +57300,7 @@ class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps(TeaModel):
         # *   `mini_wx`: WeChat mini program
         # *   `mini_common`: mini program on other platforms
         self.retcode_app_type = retcode_app_type
-        # The tags.
+        # The tag.
         self.tags = tags
         # The type of the monitoring task. Valid values:
         # 
@@ -55873,7 +57309,7 @@ class SearchRetcodeAppByPageResponseBodyPageBeanRetcodeApps(TeaModel):
         self.type = type
         # The time when the task was updated.
         self.update_time = update_time
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -55960,7 +57396,7 @@ class SearchRetcodeAppByPageResponseBodyPageBean(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The Browser Monitoring tasks that are returned.
+        # The browser monitoring tasks that are returned.
         self.retcode_apps = retcode_apps
         # The total number of returned entries.
         self.total_count = total_count
@@ -56013,7 +57449,7 @@ class SearchRetcodeAppByPageResponseBody(TeaModel):
     ):
         # The returned page information.
         self.page_bean = page_bean
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57202,13 +58638,12 @@ class SearchTracesByPageRequestTags(TeaModel):
         # *   traceId: the ID of the trace.
         # *   serverApp: the name of the server application.
         # *   clientApp: the name of the client application.
-        # *   service: the name of the API operation.
+        # *   service: the name of the interface.
         # *   rpc: the type of the call.
         # *   msOfSpan: the duration exceeds a specific value.
         # *   clientIp: the IP address of the client.
         # *   serverIp: the IP address of the server.
         # *   isError: specifies whether the call is abnormal.
-        # *   hasTprof: contains only thread profiling.
         self.key = key
         # The value of the tag.
         self.value = value
@@ -57293,7 +58728,7 @@ class SearchTracesByPageRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -60070,19 +61505,22 @@ class UpdateEnvPodMonitorRequest(TeaModel):
         pod_monitor_name: str = None,
         region_id: str = None,
     ):
-        # The language. Valid values: zh and en. Default value: zh.
+        # The language. Valid values:
+        # 
+        # *   zh (default value): Chinese
+        # *   en: English
         self.aliyun_lang = aliyun_lang
-        # The YAML configuration string.
+        # The YAML configuration file of the ServiceMonitor.
         # 
         # This parameter is required.
         self.config_yaml = config_yaml
-        # Specifies whether to perform only a dry run, without performing the actual request.
+        # Checks whether the format is valid and whether targets are matched.
         self.dry_run = dry_run
         # The environment ID.
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The namespace where the PodMonitor is located.
+        # The namespace where the PodMonitor resides.
         # 
         # This parameter is required.
         self.namespace = namespace
@@ -60182,7 +61620,9 @@ class UpdateEnvPodMonitorResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The response code.
+        # 
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The returned struct.
         self.data = data
@@ -60488,11 +61928,12 @@ class UpdateEnvironmentRequest(TeaModel):
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The environment name.
+        # The name of the environment instance.
         self.environment_name = environment_name
-        # Fee package.
-        # * When the EnvironmentType is CS: it can be specified as CS_Basic (default) or CS-Pro.
-        # * When the EnvironmentType is a different value, please enter a null value.
+        # The payable resource plan. Valid values:
+        # 
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The region ID.
         # 
@@ -60634,11 +62075,18 @@ class UpdateGrafanaWorkspaceRequest(TeaModel):
         grafana_workspace_name: str = None,
         region_id: str = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The description of the workspace.
         self.description = description
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
+        # The workspace name.
         self.grafana_workspace_name = grafana_workspace_name
+        # The region ID. Default value: `cn-hangzhou`.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -60688,12 +62136,28 @@ class UpdateGrafanaWorkspaceResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   `2XX`: The request is successful.
+        # *   `3XX`: A redirection message is returned.
+        # *   `4XX`: The request is invalid.
+        # *   `5XX`: A server error occurs.
         self.code = code
+        # Indicates whether the update is successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.data = data
+        # The error message returned for the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -60785,11 +62249,18 @@ class UpdateGrafanaWorkspaceVersionRequest(TeaModel):
         grafana_workspace_id: str = None,
         region_id: str = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The Grafana version.
+        # 
         # This parameter is required.
         self.grafana_version = grafana_version
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.grafana_workspace_id = grafana_workspace_id
+        # The region ID. Default value: cn-hangzhou.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -60835,12 +62306,28 @@ class UpdateGrafanaWorkspaceVersionResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The HTTP status code returned for the request. Valid values:
+        # 
+        # *   `2XX`: The request is successful.
+        # *   `3XX`: A redirection message is returned.
+        # *   `4XX`: The request is invalid.
+        # *   `5XX`: A server error occurs.
         self.code = code
+        # Indicates whether the update is successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.data = data
+        # The error message returned for the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
+        # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -61293,8 +62780,11 @@ class UpdateMetricDropRequest(TeaModel):
         metric_drop: str = None,
         region_id: str = None,
     ):
+        # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
+        # The list of discarded metrics. Specify one metric name in each line.
         self.metric_drop = metric_drop
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -61334,11 +62824,18 @@ class UpdateMetricDropResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status. Valid values: 2XX: The request is successful. 3XX: A redirection message is returned. 4XX: The request is invalid. 5XX: A server error occurs.
         self.code = code
+        # Indicates whether the request was successful.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -62109,19 +63606,19 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         resource_group_id: str = None,
         storage_duration: int = None,
     ):
-        # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
+        # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
         # The ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Storage duration (days).
+        # The data storage duration. Unit: days.
         self.storage_duration = storage_duration
 
     def validate(self):
@@ -62168,13 +63665,13 @@ class UpdatePrometheusInstanceResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The returned status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
-        # The returned result.
+        # The result of the operation.
         self.data = data
         # The message returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -62454,7 +63951,7 @@ class UpdatePrometheusMonitoringRequest(TeaModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The monitoring configuration. Specify a YAML string.
+        # The monitoring configuration. The value is a YAML string.
         # 
         # This parameter is required.
         self.config_yaml = config_yaml
@@ -62620,7 +64117,7 @@ class UpdatePrometheusMonitoringStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The status of the monitoring configuration. Valid values: run and stop.
+        # The status of the monitoring configuration. Valid values: run and stop. The status of Probe cannot be modified.
         # 
         # This parameter is required.
         self.status = status
@@ -62919,6 +64416,7 @@ class UpdateRumAppRequest(TeaModel):
     def __init__(
         self,
         auto_restart: bool = None,
+        bonree_sdkconfig_json: str = None,
         description: str = None,
         is_subscribe: bool = None,
         nickname: str = None,
@@ -62928,16 +64426,28 @@ class UpdateRumAppRequest(TeaModel):
         service_domain_operation_json: str = None,
         stop: bool = None,
     ):
+        # Specifies whether to restart the application the next day. Valid values: true and false.
         self.auto_restart = auto_restart
+        self.bonree_sdkconfig_json = bonree_sdkconfig_json
+        # The description of the application.
         self.description = description
+        # Specifies whether you want to subscribe to the application. Valid values: true and false.
         self.is_subscribe = is_subscribe
+        # The alias of the application.
         self.nickname = nickname
+        # The application ID.
+        # 
         # This parameter is required.
         self.pid = pid
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether to restart the application. Valid values: true and false.
         self.restart = restart
+        # Set the application service domain name, support creation, modification, and deletion of service domain name configuration.
         self.service_domain_operation_json = service_domain_operation_json
+        # Specifies whether to stop the application. Valid values: true and false.
         self.stop = stop
 
     def validate(self):
@@ -62951,6 +64461,8 @@ class UpdateRumAppRequest(TeaModel):
         result = dict()
         if self.auto_restart is not None:
             result['AutoRestart'] = self.auto_restart
+        if self.bonree_sdkconfig_json is not None:
+            result['BonreeSDKConfigJson'] = self.bonree_sdkconfig_json
         if self.description is not None:
             result['Description'] = self.description
         if self.is_subscribe is not None:
@@ -62973,6 +64485,8 @@ class UpdateRumAppRequest(TeaModel):
         m = m or dict()
         if m.get('AutoRestart') is not None:
             self.auto_restart = m.get('AutoRestart')
+        if m.get('BonreeSDKConfigJson') is not None:
+            self.bonree_sdkconfig_json = m.get('BonreeSDKConfigJson')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('IsSubscribe') is not None:
@@ -63000,9 +64514,13 @@ class UpdateRumAppResponseBodyData(TeaModel):
         limited: bool = None,
         usage: int = None,
     ):
+        # The user configurations. This is a reserved parameter.
         self.config = config
+        # The QPS limit. Unit: bytes.
         self.limit = limit
+        # Indicates whether the request is throttled due to the QPS limit. Valid values: true and false.
         self.limited = limited
+        # The usage. Unit: bytes.
         self.usage = usage
 
     def validate(self):
@@ -63047,12 +64565,20 @@ class UpdateRumAppResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The details of the returned results.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request failed.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -63149,13 +64675,21 @@ class UpdateRumFileStatusRequest(TeaModel):
         uuid: str = None,
         version_id: str = None,
     ):
+        # The file name.
         self.file_name = file_name
+        # The application ID.
         self.pid = pid
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The size of the file. Unit: bytes.
         self.size = size
+        # The status of the file. Valid values: SUCCESS and INIT.
         self.status = status
+        # The unique ID of the file. If you do not set this parameter, the system automatically sets a UUID for you.
         self.uuid = uuid
+        # The version number of the file.
         self.version_id = version_id
 
     def validate(self):
@@ -63207,7 +64741,7 @@ class UpdateRumFileStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63374,7 +64908,10 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
     ):
         # The list of hosts.
         self.hosts = hosts
-        # The selection mode. 0: Random. 1: Polling.
+        # The selection mode. Valid values:
+        # 
+        # *   0: random
+        # *   1: polling
         self.select_type = select_type
 
     def validate(self):
@@ -63456,9 +64993,13 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomVPCSetting(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the security group to which the client belongs. The security group specifies the inbound and outbound rules of the client for the VPC. You need to allow the security group to which the client belongs to access the security group to which the VPC belongs. Otherwise, the client cannot access resources in the VPC.
         self.secure_group_id = secure_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -63505,9 +65046,10 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         trace_client_type: int = None,
         xtrace_region: str = None,
     ):
-        # The custom host.
+        # The custom host settings.
         self.custom_host = custom_host
         self.custom_prometheus_setting = custom_prometheus_setting
+        # The information about the virtual private cloud (VPC). If the destination URL is an Alibaba Cloud internal endpoint, you need to configure a VPC.
         self.custom_vpcsetting = custom_vpcsetting
         # The IP version. Valid values:
         # 
@@ -63515,20 +65057,20 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         # *   1: IPv4
         # *   2: IPv6
         self.ip_type = ip_type
-        # 是否开启链路追踪。
+        # Specifies whether to enable tracing.
         self.is_open_trace = is_open_trace
         # Specifies whether to evenly distribute monitoring samples. Valid values:
         # 
-        # *   0: No
-        # *   1: Yes
+        # *   0: no.
+        # *   1: yes.
         self.monitor_samples = monitor_samples
-        # 链路追踪客户端类型：
+        # The type of the client for tracing. Valid values:
         # 
-        # - 0：ARMS Agent
-        # - 1：OpenTelemetry
-        # - 2：Jaeger
+        # *   0: ARMS agent
+        # *   1: OpenTelemetry
+        # *   2: Jaeger
         self.trace_client_type = trace_client_type
-        # 链路数据上报region。
+        # The region to which trace data is reported.
         self.xtrace_region = xtrace_region
 
     def validate(self):
@@ -63628,7 +65170,7 @@ class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody(TeaModel):
         content: str = None,
         type: str = None,
     ):
-        # The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
+        # The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html.
         self.content = content
         # The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
         self.type = type
@@ -63669,6 +65211,7 @@ class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # Specifies whether to verify the certificate. Default value: No.
         self.check_cert = check_cert
         # The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
         self.connect_timeout = connect_timeout
@@ -63759,52 +65302,52 @@ class UpdateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
         verify_way: int = None,
         white_list: str = None,
     ):
-        # The connection timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
+        # Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
         self.connection_timeout = connection_timeout
-        # The content of the custom request header.
+        # The content of the custom request header. Format: JSON map.
         self.custom_header_content = custom_header_content
-        # The kernel type.
+        # The kernel type. Valid values:
         # 
         # *   1: curl
         # *   0: WinInet
         self.download_kernel = download_kernel
-        # Specifies whether to ignore CA certificate authentication errors. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore CA certificate authentication errors. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_auth_error = ignore_certificate_auth_error
-        # Specifies whether to ignore certificate revocation errors. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate revocation errors. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
-        # Specifies whether to ignore certificate invalidity. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate invalidity. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
         # Specifies whether to ignore certificate status errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_status_error = ignore_certificate_status_error
-        # Specifies whether to ignore certificate incredibility. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate incredibility. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
-        # Specifies whether to ignore certificate usage errors. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate usage errors. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_using_error = ignore_certificate_using_error
-        # Specifies whether to ignore host invalidity. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore host invalidity. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_invalid_host_error = ignore_invalid_host_error
         # The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
         self.monitor_timeout = monitor_timeout
-        # The QUIC protocol type.
+        # The QUIC protocol type. Valid values:
         # 
-        # *   1: http1
-        # *   2: http2
-        # *   3: http3
+        # *   1: HTTP/1
+        # *   2: HTTP/2
+        # *   3: HTTP/3
         self.quick_protocol = quick_protocol
-        # Specifies whether to support redirection. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to support redirection. Valid values: 0: No. 1: Yes. Default value: 1.
         self.redirection = redirection
-        # The file download URL.
+        # The URL that is used to download the file.
         self.target_url = target_url
         # The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
         self.transmission_size = transmission_size
-        # 验证关键词。
+        # The keyword that is used in verification.
         self.validate_keywords = validate_keywords
-        # 验证方式。
+        # The verification method. Valid values:
         # 
-        # - 0：不验证 
-        # - 1：验证字符串 
-        # - 2：MD5验证
+        # *   0: no verification
+        # *   1: string verification
+        # *   2: MD5 verification
         self.verify_way = verify_way
-        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+        # The whitelisted objects that are used to avoid DNS hijacking. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.white_list = white_list
 
     def validate(self):
@@ -63905,15 +65448,15 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
-        # Specifies whether to use dig to display the data. 0: No. 1: Yes.
+        # Specifies whether to use the dig command to display the data. Valid values: 0: No. 1: Yes.
         self.dig = dig
-        # The IP version of the DNS server. 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
+        # The IP version of the DNS server. Valid values: 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
         self.dns_server_ip_type = dns_server_ip_type
         # The IP address of the DNS server. Default value: 114.114.114.114.
         self.ns_server = ns_server
-        # The DNS query. 0: recursive, 1: iterative. Default value: 0.
+        # The DNS query method. Valid values: 0: recursive. 1: iterative. Default value: 0.
         self.query_method = query_method
-        # The destination domain name.
+        # The domain name.
         self.target_url = target_url
         # The timeout period for the DNS synthetic test. Unit: milliseconds. The minimum value is 1000 and the maximum value is 45000. Default value: 5000.
         self.timeout = timeout
@@ -63975,19 +65518,19 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetICMP(TeaModel):
         self.interval = interval
         # The number of ICMP packets that are sent. Minimum value: 1. Maximum value: 50. Default value: 4.
         self.package_num = package_num
-        # The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024.
+        # The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024, 1080, and 1450.
         self.package_size = package_size
         # Specifies whether to split ICMP packets. Default value: true.
         self.split_package = split_package
-        # The destination host IP address or domain name. Port numbers, protocol headers, or request paths are not supported.
+        # The IP address or domain name of the destination host. The value cannot contain port numbers, protocol headers, or request paths.
         self.target_url = target_url
-        # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
+        # The timeout period for the ICMP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
         # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
-        # The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 64.
+        # The maximum number of hops for the tracert command. Minimum value: 1. Maximum value: 128. Default value: 20.
         self.tracert_num_max = tracert_num_max
-        # The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
+        # The timeout period of the tracert command. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -64053,19 +65596,19 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetTCP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
-        # The number of TCP connections that are established in a test. Minimum value: 1. Maximum value: 16. Default value: 4.
+        # The number of TCP connections that are established. Minimum value: 1. Maximum value: 16. Default value: 4.
         self.connect_times = connect_times
         # The interval at which TCP connections are established. Unit: milliseconds. Minimum value: 200. Maximum value: 10000. Default value: 200.
         self.interval = interval
-        # The destination host IP address.
+        # The IP address of the destination host.
         self.target_url = target_url
         # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
         # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
-        # The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 20.
+        # The maximum number of hops for the tracert command. Minimum value: 1. Maximum value: 128. Default value: 20.
         self.tracert_num_max = tracert_num_max
-        # The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
+        # The timeout period of the tracert command. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -64123,25 +65666,25 @@ class UpdateTimingSyntheticTaskRequestMonitorConfStream(TeaModel):
         target_url: str = None,
         white_list: str = None,
     ):
-        # 自定义header，JSON Map格式。
+        # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
-        # 播放器，不传默认12。
+        # The player. Default value: 12. Valid values:
         # 
-        # - 12：VLC
-        # - 2：FlashPlayer
+        # *   12: VLC
+        # *   2: Flash Player
         self.player_type = player_type
-        # 资源地址类型：
+        # The address type of the resource. Valid values:
         # 
-        # - 1：资源地址。
-        # - 0：页面地址。不传默认0。
+        # *   1: resource URL
+        # *   0: page URL Default value: 0.
         self.stream_address_type = stream_address_type
-        # 监测时长，单位秒，最长支持60s，不传默认60。
+        # The monitoring duration. Unit: seconds. Maximum and default value: 60.
         self.stream_monitor_timeout = stream_monitor_timeout
-        # 音视频标志：0-视频，1-音频。
+        # Specifies whether the resource is a video or audio. Valid values: 0: video. 1: audio.
         self.stream_type = stream_type
-        # 流媒体地址。
+        # The resource URL of the streaming media.
         self.target_url = target_url
-        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+        # The whitelisted objects that are used to avoid DNS hijacking. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.white_list = white_list
 
     def validate(self):
@@ -64211,46 +65754,46 @@ class UpdateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         verify_string_whitelist: str = None,
         wait_completion_time: int = None,
     ):
-        # Specifies whether to automatically scroll up and down the screen to load a page. 0: No. 1: Yes. Default value: 0.
+        # Specifies whether to automatically scroll up and down the screen to load a page. Valid values: 0: No. 1: Yes. Default value: 0.
         self.automatic_scrolling = automatic_scrolling
-        # Specifies whether to create a custom header. 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
+        # Specifies whether to create a custom header. Valid values: 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
         self.custom_header = custom_header
         # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
-        # 域名（例如www.aliyun.com）解析时，解析出的IP地址或者CNAME不在DNS劫持白名单内，用户就会访问失败或者返回一个非Aliyun的目标IP；若解析结果中的IP或者CNAME在DNS白名单内，则会被认定为没有发生DNS劫持。
+        # If the IP address or CNAME record resolved from a domain name is not included in the DNS whitelist, you cannot access the domain name, or an IP address that belongs to a different domain name is returned. If the IP address or CNAME record is included in the DNS whitelist, DNS hijacking does not occur.
         # 
-        # 填写格式：域名:匹配规则。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
+        # Format: \\<domain name>:\\<objects>. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.dnshijack_whitelist = dnshijack_whitelist
-        # Specifies whether to disable the cache. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to disable the cache. Valid values: 0: No. 1: Yes. Default value: 1.
         self.disable_cache = disable_cache
-        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. 0: No. 1: Yes. Default value: 0.
+        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. Valid values: 0: No. 1: Yes. Default value: 0.
         self.disable_compression = disable_compression
-        # 在页面加载过程中如果出现元素黑名单中配置的元素，不会请求加载该元素 。
+        # The elements not to be loaded in the page loading process.
         self.element_blacklist = element_blacklist
-        # Specifies whether to filter invalid IP addresses.
+        # Specifies whether to exclude invalid IP addresses. Valid values:
         # 
         # *   1: No
         # *   0: Yes
         self.filter_invalid_ip = filter_invalid_ip
-        # 识别元素：设置浏览页面元素总个数。
+        # The total number of elements on the page.
         self.flow_hijack_jump_times = flow_hijack_jump_times
-        # 劫持标识：设置匹配的关键信息。填写劫持判断关键字或关键元素，允许带星号（*）。
+        # The keyword that is used to identify hijacking. Asterisks (\\*) are allowed.
         self.flow_hijack_logo = flow_hijack_logo
-        # Specifies whether to ignore SSL certificate errors during browsing. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore SSL certificate errors during browsing. Valid values: 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_error = ignore_certificate_error
         # The monitoring timeout period. Unit: milliseconds. Minimum value: 5000. Maximum value: 300000. Default value: 40000.
         self.monitor_timeout = monitor_timeout
-        # 监测页面出现了域名设置之外的元素都属于页面被篡改。常见的表现形式为弹出广告、浮动广告、跳转等。
+        # Elements that are not included in the whitelist and appear on the page are manipulated. These elements can be pop-up ads, floating ads, and page redirection.
         self.page_tamper = page_tamper
-        # Specifies whether to continue browsing after redirection. 0: No, 1:Yes. Default value: 1.
+        # Specifies whether to continue browsing after redirection. Valid values: 0: No. 1:Yes. Default value: 1.
         self.redirection = redirection
         # The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
         self.slow_element_threshold = slow_element_threshold
-        # The destination URL.
+        # The URL of the website.
         self.target_url = target_url
-        # 验证字符串即监测页面源代码中的某个任意字符串。若客户端返回的源码中包含任一黑名单中的字符串则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+        # An arbitrary string in the source code of the page for verification. If the source code returned by the client contains a string that is in the blacklist, the 650 error code is reported, which indicates that the string fails to be verified. Separate multiple strings with vertical bars (|).
         self.verify_string_blacklist = verify_string_blacklist
-        # 验证字符串即监测页面源代码中的某个任意字符串。客户端返回的源码必须包含所有白名单中的字符串，否则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
+        # An arbitrary string in the source code of the page for verification. If the source code returned by the client contains a string that is not in the whitelist, the 650 error code is reported, which indicates that the string fails to be verified. Separate multiple strings with vertical bars (|).
         self.verify_string_whitelist = verify_string_whitelist
         # The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
         self.wait_completion_time = wait_completion_time
@@ -64358,19 +65901,19 @@ class UpdateTimingSyntheticTaskRequestMonitorConf(TeaModel):
         stream: UpdateTimingSyntheticTaskRequestMonitorConfStream = None,
         website: UpdateTimingSyntheticTaskRequestMonitorConfWebsite = None,
     ):
-        # The HTTP(S) synthetic test parameters.
+        # The parameters of the HTTP(S) synthetic test.
         self.api_http = api_http
-        # The file download parameters.
+        # The parameters of file downloading.
         self.file_download = file_download
-        # The DNS synthetic test parameters.
+        # The parameters of the DNS synthetic test.
         self.net_dns = net_dns
-        # The ICMP synthetic test parameters.
+        # The parameters of the ICMP synthetic test.
         self.net_icmp = net_icmp
-        # The TCP synthetic tests parameters. This parameter is required if the TaskType parameter is set to 2.
+        # The parameters of the TCP synthetic test. This parameter is required if the TaskType parameter is set to 2.
         self.net_tcp = net_tcp
-        # 流媒体拨测配置。
+        # The parameters of the streaming-media synthetic test.
         self.stream = stream
-        # The website-speed measurement parameters.
+        # The parameters of the website speed measurement.
         self.website = website
 
     def validate(self):
@@ -65063,23 +66606,23 @@ class UpgradeAddonReleaseRequest(TeaModel):
         release_name: str = None,
         values: str = None,
     ):
-        # Version of Addon.
+        # The version of the add-on.
         # 
         # This parameter is required.
         self.addon_version = addon_version
-        # Whether to pre-check this request.
+        # Specifies whether to perform only a dry run, without performing the actual request.
         self.dry_run = dry_run
-        # Environment ID.
+        # The environment ID.
         # 
         # This parameter is required.
         self.environment_id = environment_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The name of Release.
+        # The name of the release.
         # 
         # This parameter is required.
         self.release_name = release_name
-        # Metadata information.
+        # The metadata information.
         # 
         # This parameter is required.
         self.values = values
@@ -65133,15 +66676,15 @@ class UpgradeAddonReleaseResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. 200 indicates success.
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # Return a message.
+        # The returned message.
         self.data = data
-        # The information returned when the request parameter is incorrect.
+        # The error message returned if the request parameters are invalid.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # Whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -65385,9 +66928,7 @@ class UploadRequest(TeaModel):
     ):
         # The version of the SourceMap file.
         self.edition = edition
-        # The content of the SourceMap file.
-        # 
-        # This parameter is required.
+        # The string of the SourceMap file.
         self.file = file
         # The name of the SourceMap file.
         # 

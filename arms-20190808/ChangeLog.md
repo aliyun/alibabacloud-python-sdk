@@ -1,3 +1,18 @@
+2024-07-24 Version: 5.0.0
+- Support API DoInsightsAction.
+- Support API GetRumOcuStatisticData.
+- Update API CreateRumApp: add param NickName.
+- Update API CreateRumApp: update param Tag.
+- Update API CreateRumApp: update param Tag.
+- Update API CreateRumApp: update response param.
+- Update API DescribeEnvironment: update response param.
+- Update API GetRumAppInfo: update response param.
+- Update API GetRumApps: update param Tags.
+- Update API GetRumApps: update param Tags.
+- Update API UpdateRumApp: add param BonreeSDKConfigJson.
+- Update API Upload: update param File.
+
+
 2024-06-21 Version: 4.11.1
 - Generated python 2019-08-08 for ARMS.
 
