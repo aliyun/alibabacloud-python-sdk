@@ -3035,7 +3035,6 @@ class File(TeaModel):
         file_create_time: str = None,
         file_hash: str = None,
         file_modified_time: str = None,
-        file_status: str = None,
         filename: str = None,
         format_long_name: str = None,
         format_name: str = None,
@@ -3060,6 +3059,7 @@ class File(TeaModel):
         ossversion_id: str = None,
         object_acl: str = None,
         object_id: str = None,
+        object_status: str = None,
         object_type: str = None,
         orientation: int = None,
         owner_id: str = None,
@@ -3119,7 +3119,6 @@ class File(TeaModel):
         self.file_create_time = file_create_time
         self.file_hash = file_hash
         self.file_modified_time = file_modified_time
-        self.file_status = file_status
         self.filename = filename
         self.format_long_name = format_long_name
         self.format_name = format_name
@@ -3144,6 +3143,7 @@ class File(TeaModel):
         self.ossversion_id = ossversion_id
         self.object_acl = object_acl
         self.object_id = object_id
+        self.object_status = object_status
         self.object_type = object_type
         self.orientation = orientation
         self.owner_id = owner_id
@@ -3300,8 +3300,6 @@ class File(TeaModel):
             result['FileHash'] = self.file_hash
         if self.file_modified_time is not None:
             result['FileModifiedTime'] = self.file_modified_time
-        if self.file_status is not None:
-            result['FileStatus'] = self.file_status
         if self.filename is not None:
             result['Filename'] = self.filename
         if self.format_long_name is not None:
@@ -3354,6 +3352,8 @@ class File(TeaModel):
             result['ObjectACL'] = self.object_acl
         if self.object_id is not None:
             result['ObjectId'] = self.object_id
+        if self.object_status is not None:
+            result['ObjectStatus'] = self.object_status
         if self.object_type is not None:
             result['ObjectType'] = self.object_type
         if self.orientation is not None:
@@ -3498,8 +3498,6 @@ class File(TeaModel):
             self.file_hash = m.get('FileHash')
         if m.get('FileModifiedTime') is not None:
             self.file_modified_time = m.get('FileModifiedTime')
-        if m.get('FileStatus') is not None:
-            self.file_status = m.get('FileStatus')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
         if m.get('FormatLongName') is not None:
@@ -3555,6 +3553,8 @@ class File(TeaModel):
             self.object_acl = m.get('ObjectACL')
         if m.get('ObjectId') is not None:
             self.object_id = m.get('ObjectId')
+        if m.get('ObjectStatus') is not None:
+            self.object_status = m.get('ObjectStatus')
         if m.get('ObjectType') is not None:
             self.object_type = m.get('ObjectType')
         if m.get('Orientation') is not None:
@@ -4413,41 +4413,6 @@ class OctreeOption(TeaModel):
             self.octree_resolution = m.get('OctreeResolution')
         if m.get('PointResolution') is not None:
             self.point_resolution = m.get('PointResolution')
-        return self
-
-
-class PresetReference(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        type: str = None,
-    ):
-        # This parameter is required.
-        self.name = name
-        # This parameter is required.
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
         return self
 
 
