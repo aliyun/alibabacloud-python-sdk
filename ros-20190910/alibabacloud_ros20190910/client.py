@@ -405,6 +405,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.continue_create_stack_with_options_async(request, runtime)
 
+    def create_aitask_with_options(
+        self,
+        request: ros20190910_models.CreateAITaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CreateAITaskResponse:
+        """
+        @summary 创建AI任务
+        
+        @param request: CreateAITaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAITaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        body = {}
+        if not UtilClient.is_unset(request.template):
+            body['Template'] = request.template
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAITask',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CreateAITaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aitask_with_options_async(
+        self,
+        request: ros20190910_models.CreateAITaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CreateAITaskResponse:
+        """
+        @summary 创建AI任务
+        
+        @param request: CreateAITaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAITaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        body = {}
+        if not UtilClient.is_unset(request.template):
+            body['Template'] = request.template
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAITask',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CreateAITaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aitask(
+        self,
+        request: ros20190910_models.CreateAITaskRequest,
+    ) -> ros20190910_models.CreateAITaskResponse:
+        """
+        @summary 创建AI任务
+        
+        @param request: CreateAITaskRequest
+        @return: CreateAITaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aitask_with_options(request, runtime)
+
+    async def create_aitask_async(
+        self,
+        request: ros20190910_models.CreateAITaskRequest,
+    ) -> ros20190910_models.CreateAITaskResponse:
+        """
+        @summary 创建AI任务
+        
+        @param request: CreateAITaskRequest
+        @return: CreateAITaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aitask_with_options_async(request, runtime)
+
     def create_change_set_with_options(
         self,
         request: ros20190910_models.CreateChangeSetRequest,
@@ -3417,6 +3529,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_template_policy_with_options_async(request, runtime)
 
+    def get_aitask_with_options(
+        self,
+        request: ros20190910_models.GetAITaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetAITaskResponse:
+        """
+        @summary 查询指定AI任务信息
+        
+        @param request: GetAITaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAITaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_option):
+            query['OutputOption'] = request.output_option
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAITask',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetAITaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aitask_with_options_async(
+        self,
+        request: ros20190910_models.GetAITaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetAITaskResponse:
+        """
+        @summary 查询指定AI任务信息
+        
+        @param request: GetAITaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAITaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.output_option):
+            query['OutputOption'] = request.output_option
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAITask',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetAITaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aitask(
+        self,
+        request: ros20190910_models.GetAITaskRequest,
+    ) -> ros20190910_models.GetAITaskResponse:
+        """
+        @summary 查询指定AI任务信息
+        
+        @param request: GetAITaskRequest
+        @return: GetAITaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_aitask_with_options(request, runtime)
+
+    async def get_aitask_async(
+        self,
+        request: ros20190910_models.GetAITaskRequest,
+    ) -> ros20190910_models.GetAITaskResponse:
+        """
+        @summary 查询指定AI任务信息
+        
+        @param request: GetAITaskRequest
+        @return: GetAITaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aitask_with_options_async(request, runtime)
+
     def get_change_set_with_options(
         self,
         request: ros20190910_models.GetChangeSetRequest,
@@ -5904,6 +6116,218 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_summary_with_options_async(request, runtime)
+
+    def list_aitask_events_with_options(
+        self,
+        request: ros20190910_models.ListAITaskEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListAITaskEventsResponse:
+        """
+        @summary 获取指定AITask事件列表
+        
+        @param request: ListAITaskEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAITaskEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAITaskEvents',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListAITaskEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aitask_events_with_options_async(
+        self,
+        request: ros20190910_models.ListAITaskEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListAITaskEventsResponse:
+        """
+        @summary 获取指定AITask事件列表
+        
+        @param request: ListAITaskEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAITaskEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAITaskEvents',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListAITaskEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aitask_events(
+        self,
+        request: ros20190910_models.ListAITaskEventsRequest,
+    ) -> ros20190910_models.ListAITaskEventsResponse:
+        """
+        @summary 获取指定AITask事件列表
+        
+        @param request: ListAITaskEventsRequest
+        @return: ListAITaskEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aitask_events_with_options(request, runtime)
+
+    async def list_aitask_events_async(
+        self,
+        request: ros20190910_models.ListAITaskEventsRequest,
+    ) -> ros20190910_models.ListAITaskEventsResponse:
+        """
+        @summary 获取指定AITask事件列表
+        
+        @param request: ListAITaskEventsRequest
+        @return: ListAITaskEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aitask_events_with_options_async(request, runtime)
+
+    def list_aitasks_with_options(
+        self,
+        request: ros20190910_models.ListAITasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListAITasksResponse:
+        """
+        @summary 查询AI任务列表
+        
+        @param request: ListAITasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAITasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAITasks',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListAITasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aitasks_with_options_async(
+        self,
+        request: ros20190910_models.ListAITasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListAITasksResponse:
+        """
+        @summary 查询AI任务列表
+        
+        @param request: ListAITasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAITasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAITasks',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListAITasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aitasks(
+        self,
+        request: ros20190910_models.ListAITasksRequest,
+    ) -> ros20190910_models.ListAITasksResponse:
+        """
+        @summary 查询AI任务列表
+        
+        @param request: ListAITasksRequest
+        @return: ListAITasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aitasks_with_options(request, runtime)
+
+    async def list_aitasks_async(
+        self,
+        request: ros20190910_models.ListAITasksRequest,
+    ) -> ros20190910_models.ListAITasksResponse:
+        """
+        @summary 查询AI任务列表
+        
+        @param request: ListAITasksRequest
+        @return: ListAITasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aitasks_with_options_async(request, runtime)
 
     def list_change_sets_with_options(
         self,
