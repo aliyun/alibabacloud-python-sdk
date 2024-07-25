@@ -18034,6 +18034,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_transcode_job_with_options_async(request, runtime)
 
+    def submit_media_ai_analysis_job_with_options(
+        self,
+        request: ice20201109_models.SubmitMediaAiAnalysisJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
+        """
+        @summary 提交媒资结构化分析任务
+        
+        @param request: SubmitMediaAiAnalysisJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaAiAnalysisJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.analysis_params):
+            query['AnalysisParams'] = request.analysis_params
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitMediaAiAnalysisJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitMediaAiAnalysisJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_media_ai_analysis_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitMediaAiAnalysisJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
+        """
+        @summary 提交媒资结构化分析任务
+        
+        @param request: SubmitMediaAiAnalysisJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaAiAnalysisJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.analysis_params):
+            query['AnalysisParams'] = request.analysis_params
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitMediaAiAnalysisJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitMediaAiAnalysisJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_media_ai_analysis_job(
+        self,
+        request: ice20201109_models.SubmitMediaAiAnalysisJobRequest,
+    ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
+        """
+        @summary 提交媒资结构化分析任务
+        
+        @param request: SubmitMediaAiAnalysisJobRequest
+        @return: SubmitMediaAiAnalysisJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_media_ai_analysis_job_with_options(request, runtime)
+
+    async def submit_media_ai_analysis_job_async(
+        self,
+        request: ice20201109_models.SubmitMediaAiAnalysisJobRequest,
+    ) -> ice20201109_models.SubmitMediaAiAnalysisJobResponse:
+        """
+        @summary 提交媒资结构化分析任务
+        
+        @param request: SubmitMediaAiAnalysisJobRequest
+        @return: SubmitMediaAiAnalysisJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_media_ai_analysis_job_with_options_async(request, runtime)
+
     def submit_media_censor_job_with_options(
         self,
         tmp_req: ice20201109_models.SubmitMediaCensorJobRequest,

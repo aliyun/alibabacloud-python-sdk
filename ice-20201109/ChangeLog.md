@@ -1,3 +1,7 @@
+2024-07-25 Version: 3.1.0
+- Support API SubmitMediaAiAnalysisJob.
+
+
 2024-07-23 Version: 3.0.0
 - Update API GetBatchMediaProducingJob: delete param Signature.
 - Update API GetBatchMediaProducingJob: delete param SignatureMehtod.
