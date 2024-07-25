@@ -5172,6 +5172,7 @@ class ListInstancesRequest(TeaModel):
         self,
         accelerator_type: str = None,
         accessibility: str = None,
+        create_user_id: str = None,
         instance_id: str = None,
         instance_name: str = None,
         labels: Dict[str, Any] = None,
@@ -5186,6 +5187,7 @@ class ListInstancesRequest(TeaModel):
     ):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
+        self.create_user_id = create_user_id
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.labels = labels
@@ -5211,6 +5213,8 @@ class ListInstancesRequest(TeaModel):
             result['AcceleratorType'] = self.accelerator_type
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -5241,6 +5245,8 @@ class ListInstancesRequest(TeaModel):
             self.accelerator_type = m.get('AcceleratorType')
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
@@ -5271,6 +5277,7 @@ class ListInstancesShrinkRequest(TeaModel):
         self,
         accelerator_type: str = None,
         accessibility: str = None,
+        create_user_id: str = None,
         instance_id: str = None,
         instance_name: str = None,
         labels_shrink: str = None,
@@ -5285,6 +5292,7 @@ class ListInstancesShrinkRequest(TeaModel):
     ):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
+        self.create_user_id = create_user_id
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.labels_shrink = labels_shrink
@@ -5310,6 +5318,8 @@ class ListInstancesShrinkRequest(TeaModel):
             result['AcceleratorType'] = self.accelerator_type
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
@@ -5340,6 +5350,8 @@ class ListInstancesShrinkRequest(TeaModel):
             self.accelerator_type = m.get('AcceleratorType')
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:

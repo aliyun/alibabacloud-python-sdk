@@ -1,3 +1,7 @@
+2024-07-25 Version: 1.4.4
+- Update API ListInstances: add param CreateUserId.
+
+
 2024-07-09 Version: 1.4.3
 - Update API CreateInstance: update param body.
 - Update API GetInstance: update response param.
