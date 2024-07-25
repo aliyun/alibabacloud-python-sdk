@@ -1577,7 +1577,7 @@ class Client(OpenApiClient):
 
     def list_instances_with_options(
         self,
-        request: rocket_mq20220801_models.ListInstancesRequest,
+        tmp_req: rocket_mq20220801_models.ListInstancesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
@@ -1586,12 +1586,16 @@ class Client(OpenApiClient):
         
         @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
-        @param request: ListInstancesRequest
+        @param tmp_req: ListInstancesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rocket_mq20220801_models.ListInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.series_codes):
+            request.series_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.series_codes, 'seriesCodes', 'simple')
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
@@ -1601,6 +1605,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.series_codes_shrink):
+            query['seriesCodes'] = request.series_codes_shrink
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
@@ -1625,7 +1631,7 @@ class Client(OpenApiClient):
 
     async def list_instances_with_options_async(
         self,
-        request: rocket_mq20220801_models.ListInstancesRequest,
+        tmp_req: rocket_mq20220801_models.ListInstancesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
@@ -1634,12 +1640,16 @@ class Client(OpenApiClient):
         
         @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
-        @param request: ListInstancesRequest
+        @param tmp_req: ListInstancesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstancesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rocket_mq20220801_models.ListInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.series_codes):
+            request.series_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.series_codes, 'seriesCodes', 'simple')
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['filter'] = request.filter
@@ -1649,6 +1659,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.series_codes_shrink):
+            query['seriesCodes'] = request.series_codes_shrink
         if not UtilClient.is_unset(request.tags):
             query['tags'] = request.tags
         req = open_api_models.OpenApiRequest(

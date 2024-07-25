@@ -1,3 +1,7 @@
+2024-07-25 Version: 1.4.5
+- Update API ListInstances: add param seriesCodes.
+
+
 2024-07-03 Version: 1.4.4
 - Update API CreateInstance: update param body.
 
