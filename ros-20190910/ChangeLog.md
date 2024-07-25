@@ -5,6 +5,13 @@
 - Support API ListAITasks.
 
 
+2024-07-25 Version: 3.4.0
+- Support API CreateAITask.
+- Support API GetAITask.
+- Support API ListAITaskEvents.
+- Support API ListAITasks.
+
+
 2024-07-18 Version: 3.3.17
 - Update API GetTemplateParameterConstraints: update response param.
 
