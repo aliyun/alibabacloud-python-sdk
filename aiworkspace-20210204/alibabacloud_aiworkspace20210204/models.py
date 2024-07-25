@@ -4405,6 +4405,7 @@ class GetDatasetResponseBody(TeaModel):
         options: str = None,
         owner_id: str = None,
         property: str = None,
+        provider: str = None,
         provider_type: str = None,
         request_id: str = None,
         source_id: str = None,
@@ -4425,6 +4426,7 @@ class GetDatasetResponseBody(TeaModel):
         self.options = options
         self.owner_id = owner_id
         self.property = property
+        self.provider = provider
         self.provider_type = provider_type
         self.request_id = request_id
         self.source_id = source_id
@@ -4471,6 +4473,8 @@ class GetDatasetResponseBody(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.property is not None:
             result['Property'] = self.property
+        if self.provider is not None:
+            result['Provider'] = self.provider
         if self.provider_type is not None:
             result['ProviderType'] = self.provider_type
         if self.request_id is not None:
@@ -4516,6 +4520,8 @@ class GetDatasetResponseBody(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('Property') is not None:
             self.property = m.get('Property')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
         if m.get('ProviderType') is not None:
             self.provider_type = m.get('ProviderType')
         if m.get('RequestId') is not None:

@@ -1,3 +1,7 @@
+2024-07-25 Version: 3.0.7
+- Update API GetDataset: update response param.
+
+
 2024-07-03 Version: 3.0.6
 - Update API CreateModelVersion: update param body.
 - Update API GetModelVersion: update response param.
