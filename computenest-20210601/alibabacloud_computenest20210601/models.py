@@ -1,7 +1,407 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class CommodityValueResultOrder(TeaModel):
+    def __init__(
+        self,
+        currency: str = None,
+        trade_amount: str = None,
+        discount_amount: str = None,
+        original_amount: str = None,
+    ):
+        self.currency = currency
+        self.trade_amount = trade_amount
+        self.discount_amount = discount_amount
+        self.original_amount = original_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.currency is not None:
+            result['Currency'] = self.currency
+        if self.trade_amount is not None:
+            result['TradeAmount'] = self.trade_amount
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Currency') is not None:
+            self.currency = m.get('Currency')
+        if m.get('TradeAmount') is not None:
+            self.trade_amount = m.get('TradeAmount')
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+        return self
+
+
+class CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs(TeaModel):
+    def __init__(
+        self,
+        type: int = None,
+        name: str = None,
+        code: str = None,
+        value: str = None,
+        unit: str = None,
+    ):
+        self.type = type
+        self.name = name
+        self.code = code
+        self.value = value
+        self.unit = unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.unit is not None:
+            result['Unit'] = self.unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
+        return self
+
+
+class CommodityValueResultSubOrdersSubOrderModuleInstance(TeaModel):
+    def __init__(
+        self,
+        module_id: int = None,
+        module_name: str = None,
+        module_code: str = None,
+        total_product_fee: float = None,
+        discount_fee: float = None,
+        pay_fee: float = None,
+        price_unit: str = None,
+        is_pricing_module: bool = None,
+        need_order_pay: bool = None,
+        price_type: str = None,
+        module_attrs: List[CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs] = None,
+    ):
+        self.module_id = module_id
+        self.module_name = module_name
+        self.module_code = module_code
+        self.total_product_fee = total_product_fee
+        self.discount_fee = discount_fee
+        self.pay_fee = pay_fee
+        self.price_unit = price_unit
+        self.is_pricing_module = is_pricing_module
+        self.need_order_pay = need_order_pay
+        self.price_type = price_type
+        self.module_attrs = module_attrs
+
+    def validate(self):
+        if self.module_attrs:
+            for k in self.module_attrs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.module_id is not None:
+            result['ModuleId'] = self.module_id
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+        if self.total_product_fee is not None:
+            result['TotalProductFee'] = self.total_product_fee
+        if self.discount_fee is not None:
+            result['DiscountFee'] = self.discount_fee
+        if self.pay_fee is not None:
+            result['PayFee'] = self.pay_fee
+        if self.price_unit is not None:
+            result['PriceUnit'] = self.price_unit
+        if self.is_pricing_module is not None:
+            result['IsPricingModule'] = self.is_pricing_module
+        if self.need_order_pay is not None:
+            result['NeedOrderPay'] = self.need_order_pay
+        if self.price_type is not None:
+            result['PriceType'] = self.price_type
+        result['ModuleAttrs'] = []
+        if self.module_attrs is not None:
+            for k in self.module_attrs:
+                result['ModuleAttrs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModuleId') is not None:
+            self.module_id = m.get('ModuleId')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+        if m.get('TotalProductFee') is not None:
+            self.total_product_fee = m.get('TotalProductFee')
+        if m.get('DiscountFee') is not None:
+            self.discount_fee = m.get('DiscountFee')
+        if m.get('PayFee') is not None:
+            self.pay_fee = m.get('PayFee')
+        if m.get('PriceUnit') is not None:
+            self.price_unit = m.get('PriceUnit')
+        if m.get('IsPricingModule') is not None:
+            self.is_pricing_module = m.get('IsPricingModule')
+        if m.get('NeedOrderPay') is not None:
+            self.need_order_pay = m.get('NeedOrderPay')
+        if m.get('PriceType') is not None:
+            self.price_type = m.get('PriceType')
+        self.module_attrs = []
+        if m.get('ModuleAttrs') is not None:
+            for k in m.get('ModuleAttrs'):
+                temp_model = CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs()
+                self.module_attrs.append(temp_model.from_map(k))
+        return self
+
+
+class CommodityValueResultSubOrdersSubOrder(TeaModel):
+    def __init__(
+        self,
+        module_instance: List[CommodityValueResultSubOrdersSubOrderModuleInstance] = None,
+    ):
+        self.module_instance = module_instance
+
+    def validate(self):
+        if self.module_instance:
+            for k in self.module_instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ModuleInstance'] = []
+        if self.module_instance is not None:
+            for k in self.module_instance:
+                result['ModuleInstance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.module_instance = []
+        if m.get('ModuleInstance') is not None:
+            for k in m.get('ModuleInstance'):
+                temp_model = CommodityValueResultSubOrdersSubOrderModuleInstance()
+                self.module_instance.append(temp_model.from_map(k))
+        return self
+
+
+class CommodityValueResultSubOrders(TeaModel):
+    def __init__(
+        self,
+        sub_order: List[CommodityValueResultSubOrdersSubOrder] = None,
+    ):
+        self.sub_order = sub_order
+
+    def validate(self):
+        if self.sub_order:
+            for k in self.sub_order:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SubOrder'] = []
+        if self.sub_order is not None:
+            for k in self.sub_order:
+                result['SubOrder'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.sub_order = []
+        if m.get('SubOrder') is not None:
+            for k in m.get('SubOrder'):
+                temp_model = CommodityValueResultSubOrdersSubOrder()
+                self.sub_order.append(temp_model.from_map(k))
+        return self
+
+
+class CommodityValueResultCoupons(TeaModel):
+    def __init__(
+        self,
+        can_prom_fee: float = None,
+        coupon_desc: str = None,
+        coupon_name: str = None,
+        coupon_option_no: str = None,
+        selected: bool = None,
+    ):
+        self.can_prom_fee = can_prom_fee
+        self.coupon_desc = coupon_desc
+        self.coupon_name = coupon_name
+        self.coupon_option_no = coupon_option_no
+        self.selected = selected
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_prom_fee is not None:
+            result['CanPromFee'] = self.can_prom_fee
+        if self.coupon_desc is not None:
+            result['CouponDesc'] = self.coupon_desc
+        if self.coupon_name is not None:
+            result['CouponName'] = self.coupon_name
+        if self.coupon_option_no is not None:
+            result['CouponOptionNo'] = self.coupon_option_no
+        if self.selected is not None:
+            result['Selected'] = self.selected
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanPromFee') is not None:
+            self.can_prom_fee = m.get('CanPromFee')
+        if m.get('CouponDesc') is not None:
+            self.coupon_desc = m.get('CouponDesc')
+        if m.get('CouponName') is not None:
+            self.coupon_name = m.get('CouponName')
+        if m.get('CouponOptionNo') is not None:
+            self.coupon_option_no = m.get('CouponOptionNo')
+        if m.get('Selected') is not None:
+            self.selected = m.get('Selected')
+        return self
+
+
+class CommodityValueResult(TeaModel):
+    def __init__(
+        self,
+        order: CommodityValueResultOrder = None,
+        inquiry_type: str = None,
+        sub_orders: CommodityValueResultSubOrders = None,
+        coupons: List[CommodityValueResultCoupons] = None,
+    ):
+        self.order = order
+        self.inquiry_type = inquiry_type
+        self.sub_orders = sub_orders
+        self.coupons = coupons
+
+    def validate(self):
+        if self.order:
+            self.order.validate()
+        if self.sub_orders:
+            self.sub_orders.validate()
+        if self.coupons:
+            for k in self.coupons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order.to_map()
+        if self.inquiry_type is not None:
+            result['InquiryType'] = self.inquiry_type
+        if self.sub_orders is not None:
+            result['SubOrders'] = self.sub_orders.to_map()
+        result['Coupons'] = []
+        if self.coupons is not None:
+            for k in self.coupons:
+                result['Coupons'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            temp_model = CommodityValueResultOrder()
+            self.order = temp_model.from_map(m['Order'])
+        if m.get('InquiryType') is not None:
+            self.inquiry_type = m.get('InquiryType')
+        if m.get('SubOrders') is not None:
+            temp_model = CommodityValueResultSubOrders()
+            self.sub_orders = temp_model.from_map(m['SubOrders'])
+        self.coupons = []
+        if m.get('Coupons') is not None:
+            for k in m.get('Coupons'):
+                temp_model = CommodityValueResultCoupons()
+                self.coupons.append(temp_model.from_map(k))
+        return self
+
+
+class CommodityValue(TeaModel):
+    def __init__(
+        self,
+        result: CommodityValueResult = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            temp_model = CommodityValueResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
 
 
 class CancelServiceUsageRequest(TeaModel):
@@ -443,6 +843,7 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        coupon_id: str = None,
         pay_period: int = None,
         pay_period_unit: str = None,
     ):
@@ -456,6 +857,7 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
         # *   **true**\
         # *   **false**\
         self.auto_renew = auto_renew
+        self.coupon_id = coupon_id
         # The subscription duration.
         self.pay_period = pay_period
         # The unit of the subscription duration. Valid values:
@@ -478,6 +880,8 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
         if self.pay_period is not None:
             result['PayPeriod'] = self.pay_period
         if self.pay_period_unit is not None:
@@ -490,6 +894,8 @@ class CreateServiceInstanceRequestCommodity(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
         if m.get('PayPeriod') is not None:
             self.pay_period = m.get('PayPeriod')
         if m.get('PayPeriodUnit') is not None:
@@ -781,6 +1187,7 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
         self,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        coupon_id: str = None,
         pay_period: int = None,
         pay_period_unit: str = None,
     ):
@@ -794,6 +1201,7 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
         # *   **true**\
         # *   **false**\
         self.auto_renew = auto_renew
+        self.coupon_id = coupon_id
         # The subscription duration.
         self.pay_period = pay_period
         # The unit of the subscription duration. Valid values:
@@ -816,6 +1224,8 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
         if self.pay_period is not None:
             result['PayPeriod'] = self.pay_period
         if self.pay_period_unit is not None:
@@ -828,6 +1238,8 @@ class CreateServiceInstanceShrinkRequestCommodity(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
         if m.get('PayPeriod') is not None:
             self.pay_period = m.get('PayPeriod')
         if m.get('PayPeriodUnit') is not None:
@@ -1692,9 +2104,11 @@ class GenerateServicePolicyResponse(TeaModel):
 class GetServiceEstimateCostRequestCommodity(TeaModel):
     def __init__(
         self,
+        coupon_id: str = None,
         pay_period: int = None,
         pay_period_unit: str = None,
     ):
+        self.coupon_id = coupon_id
         # The subscription duration.
         self.pay_period = pay_period
         # The unit of the subscription duration. Valid values:
@@ -1713,6 +2127,8 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
             return _map
 
         result = dict()
+        if self.coupon_id is not None:
+            result['CouponId'] = self.coupon_id
         if self.pay_period is not None:
             result['PayPeriod'] = self.pay_period
         if self.pay_period_unit is not None:
@@ -1721,6 +2137,8 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CouponId') is not None:
+            self.coupon_id = m.get('CouponId')
         if m.get('PayPeriod') is not None:
             self.pay_period = m.get('PayPeriod')
         if m.get('PayPeriodUnit') is not None:
@@ -1949,7 +2367,7 @@ class GetServiceEstimateCostShrinkRequest(TeaModel):
 class GetServiceEstimateCostResponseBody(TeaModel):
     def __init__(
         self,
-        commodity: Dict[str, Any] = None,
+        commodity: Dict[str, CommodityValue] = None,
         request_id: str = None,
         resources: Dict[str, Any] = None,
     ):
@@ -1961,7 +2379,10 @@ class GetServiceEstimateCostResponseBody(TeaModel):
         self.resources = resources
 
     def validate(self):
-        pass
+        if self.commodity:
+            for v in self.commodity.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1969,8 +2390,10 @@ class GetServiceEstimateCostResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['Commodity'] = {}
         if self.commodity is not None:
-            result['Commodity'] = self.commodity
+            for k, v in self.commodity.items():
+                result['Commodity'][k] = v.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resources is not None:
@@ -1979,8 +2402,11 @@ class GetServiceEstimateCostResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.commodity = {}
         if m.get('Commodity') is not None:
-            self.commodity = m.get('Commodity')
+            for k, v in m.get('Commodity').items():
+                temp_model = CommodityValue()
+                self.commodity[k] = temp_model.from_map(v)
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Resources') is not None:
@@ -3882,9 +4308,43 @@ class ListServiceCategoriesResponse(TeaModel):
         return self
 
 
+class ListServiceInstanceLogsRequestFilter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: List[str] = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListServiceInstanceLogsRequest(TeaModel):
     def __init__(
         self,
+        filter: List[ListServiceInstanceLogsRequestFilter] = None,
         log_source: str = None,
         logstore: str = None,
         max_results: int = None,
@@ -3892,6 +4352,7 @@ class ListServiceInstanceLogsRequest(TeaModel):
         region_id: str = None,
         service_instance_id: str = None,
     ):
+        self.filter = filter
         # The log source. Valid values:
         # 
         # *   computeNest (default): logs of the deployment and upgrade of the service instance.
@@ -3916,7 +4377,10 @@ class ListServiceInstanceLogsRequest(TeaModel):
         self.service_instance_id = service_instance_id
 
     def validate(self):
-        pass
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3924,6 +4388,10 @@ class ListServiceInstanceLogsRequest(TeaModel):
             return _map
 
         result = dict()
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
         if self.log_source is not None:
             result['LogSource'] = self.log_source
         if self.logstore is not None:
@@ -3940,6 +4408,11 @@ class ListServiceInstanceLogsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = ListServiceInstanceLogsRequestFilter()
+                self.filter.append(temp_model.from_map(k))
         if m.get('LogSource') is not None:
             self.log_source = m.get('LogSource')
         if m.get('Logstore') is not None:
@@ -5489,9 +5962,19 @@ class ListTagKeysRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource type. Valid values:
+        # 
+        # *   service: service
+        # *   serviceinstance: service instance
+        # *   artifact: artifact
+        # *   dataset: dataset
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -5530,8 +6013,11 @@ class ListTagKeysResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # Details of the tag keys.
         self.keys = keys
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5611,11 +6097,25 @@ class ListTagValuesRequest(TeaModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The tag key.
+        # 
+        # >  This parameter is required.
+        # 
         # This parameter is required.
         self.key = key
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource type. Valid values:
+        # 
+        # *   service: service
+        # *   serviceinstance: service instance
+        # *   artifact: artifact
+        # *   dataset: dataset
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -5658,8 +6158,11 @@ class ListTagValuesResponseBody(TeaModel):
         request_id: str = None,
         values: List[str] = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The information of the tag values.
         self.values = values
 
     def validate(self):
@@ -6088,7 +6591,9 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -6123,12 +6628,24 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs. You can specify up to 50 resource IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   service: service
+        # *   serviceinstance: service instance
+        # *   artifact: artifact
+        # *   dataset: dataset
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag key and value.
         self.tag = tag
 
     def validate(self):
@@ -6176,6 +6693,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6248,13 +6766,35 @@ class UnTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resource. Valid values:
+        # 
+        # *   true: All tags are removed from the resource.
+        # *   false (default): The specified tags are removed from the resource.
         self.all = all
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
+        # 
+        # You can remove tags from up to 50 resources at a time.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   service: service
+        # *   serviceinstance: service instance
+        # *   artifact: artifact
+        # *   dataset: dataset
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag keys.
+        # 
+        # You can specify a maximum of 20 tag keys.
+        # 
+        # > If you set the `All` parameter to `true`, you do not need to specify tag keys.
         self.tag_key = tag_key
 
     def validate(self):
@@ -6298,6 +6838,7 @@ class UnTagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -1,3 +1,10 @@
+2024-07-25 Version: 3.3.1
+- Update API CreateServiceInstance: update param Commodity.
+- Update API GetServiceEstimateCost: update param Commodity.
+- Update API GetServiceEstimateCost: update response param.
+- Update API ListServiceInstanceLogs: add param Filter.
+
+
 2024-07-22 Version: 3.3.0
 - Support API CancelServiceUsage.
 - Support API CreateServiceUsage.

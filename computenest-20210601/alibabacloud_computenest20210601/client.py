@@ -1485,6 +1485,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.log_source):
             query['LogSource'] = request.log_source
         if not UtilClient.is_unset(request.logstore):
@@ -1530,6 +1532,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.log_source):
             query['LogSource'] = request.log_source
         if not UtilClient.is_unset(request.logstore):
