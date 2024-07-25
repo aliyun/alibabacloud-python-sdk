@@ -410,7 +410,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary 更新指定消费组消费数据时Shard的checkpoint。
+        @summary Updates the data consumption progress.
+        
+        @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
         
         @param request: ConsumerGroupUpdateCheckPointRequest
         @param headers: map
@@ -462,7 +468,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary 更新指定消费组消费数据时Shard的checkpoint。
+        @summary Updates the data consumption progress.
+        
+        @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
         
         @param request: ConsumerGroupUpdateCheckPointRequest
         @param headers: map
@@ -512,7 +524,13 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ConsumerGroupUpdateCheckPointRequest,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary 更新指定消费组消费数据时Shard的checkpoint。
+        @summary Updates the data consumption progress.
+        
+        @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
         
         @param request: ConsumerGroupUpdateCheckPointRequest
         @return: ConsumerGroupUpdateCheckPointResponse
@@ -529,7 +547,13 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ConsumerGroupUpdateCheckPointRequest,
     ) -> sls_20201230_models.ConsumerGroupUpdateCheckPointResponse:
         """
-        @summary 更新指定消费组消费数据时Shard的checkpoint。
+        @summary Updates the data consumption progress.
+        
+        @description    If you do not specify a consumer, you must set **forceSuccess** to **true**. Otherwise, the checkpoint cannot be updated.
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+        The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+        The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
         
         @param request: ConsumerGroupUpdateCheckPointRequest
         @return: ConsumerGroupUpdateCheckPointResponse
@@ -4054,6 +4078,8 @@ class Client(OpenApiClient):
         """
         @summary 通过调用DeleteCollectionPolicy删除配置的日志采集规则
         
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        
         @param request: DeleteCollectionPolicyRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4095,6 +4121,8 @@ class Client(OpenApiClient):
         """
         @summary 通过调用DeleteCollectionPolicy删除配置的日志采集规则
         
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        
         @param request: DeleteCollectionPolicyRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4134,6 +4162,8 @@ class Client(OpenApiClient):
         """
         @summary 通过调用DeleteCollectionPolicy删除配置的日志采集规则
         
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+        
         @param request: DeleteCollectionPolicyRequest
         @return: DeleteCollectionPolicyResponse
         """
@@ -4148,6 +4178,8 @@ class Client(OpenApiClient):
     ) -> sls_20201230_models.DeleteCollectionPolicyResponse:
         """
         @summary 通过调用DeleteCollectionPolicy删除配置的日志采集规则
+        
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
         
         @param request: DeleteCollectionPolicyRequest
         @return: DeleteCollectionPolicyResponse
@@ -6887,7 +6919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAnnotationLabelResponse:
         """
-        @summary Queries a tag table by using a label id.
+        @summary Queries a tag table by using a label ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6919,7 +6951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAnnotationLabelResponse:
         """
-        @summary Queries a tag table by using a label id.
+        @summary Queries a tag table by using a label ID.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6949,7 +6981,7 @@ class Client(OpenApiClient):
         label_id: str,
     ) -> sls_20201230_models.GetAnnotationLabelResponse:
         """
-        @summary Queries a tag table by using a label id.
+        @summary Queries a tag table by using a label ID.
         
         @return: GetAnnotationLabelResponse
         """
@@ -6962,7 +6994,7 @@ class Client(OpenApiClient):
         label_id: str,
     ) -> sls_20201230_models.GetAnnotationLabelResponse:
         """
-        @summary Queries a tag table by using a label id.
+        @summary Queries a tag table by using a label ID.
         
         @return: GetAnnotationLabelResponse
         """
@@ -11118,7 +11150,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListAnnotationDataResponse:
         """
-        @summary Queries data in a dataset.
+        @summary Queries data in datasets.
         
         @param request: ListAnnotationDataRequest
         @param headers: map
@@ -11159,7 +11191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListAnnotationDataResponse:
         """
-        @summary Queries data in a dataset.
+        @summary Queries data in datasets.
         
         @param request: ListAnnotationDataRequest
         @param headers: map
@@ -11198,7 +11230,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListAnnotationDataRequest,
     ) -> sls_20201230_models.ListAnnotationDataResponse:
         """
-        @summary Queries data in a dataset.
+        @summary Queries data in datasets.
         
         @param request: ListAnnotationDataRequest
         @return: ListAnnotationDataResponse
@@ -11213,7 +11245,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.ListAnnotationDataRequest,
     ) -> sls_20201230_models.ListAnnotationDataResponse:
         """
-        @summary Queries data in a dataset.
+        @summary Queries data in datasets.
         
         @param request: ListAnnotationDataRequest
         @return: ListAnnotationDataResponse
@@ -14695,7 +14727,7 @@ class Client(OpenApiClient):
             action='QueryMLServiceResults',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/ml/v2/service/{service_name}/analysis',
+            pathname=f'/ml/service/{service_name}/analysis',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -14738,7 +14770,7 @@ class Client(OpenApiClient):
             action='QueryMLServiceResults',
             version='2020-12-30',
             protocol='HTTPS',
-            pathname=f'/ml/v2/service/{service_name}/analysis',
+            pathname=f'/ml/service/{service_name}/analysis',
             method='POST',
             auth_type='AK',
             style='ROA',

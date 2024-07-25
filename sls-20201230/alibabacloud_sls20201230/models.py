@@ -4427,12 +4427,22 @@ class ConsumerGroupUpdateCheckPointRequest(TeaModel):
         consumer: str = None,
         force_success: bool = None,
     ):
+        # The value of the checkpoint.
+        # 
         # This parameter is required.
         self.checkpoint = checkpoint
+        # The ID of the shard.
+        # 
         # This parameter is required.
         self.shard = shard
+        # The consumer.
+        # 
         # This parameter is required.
         self.consumer = consumer
+        # Specifies whether to enable forceful updates. Valid values:
+        # 
+        # *   true
+        # *   false
         self.force_success = force_success
 
     def validate(self):

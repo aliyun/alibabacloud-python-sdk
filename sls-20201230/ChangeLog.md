@@ -1,3 +1,6 @@
+2024-07-25 Version: 5.2.3
+- Generated python 2020-12-30 for Sls.
+
 2024-07-05 Version: 5.2.2
 - Update API ConsumerGroupUpdateCheckPoint: update param body.
 - Update API CreateIndex: update param body.
