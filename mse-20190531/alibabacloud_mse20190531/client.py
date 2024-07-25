@@ -3668,7 +3668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
         """
-        @summary 创建网关路由流控规则
+        @summary Creates a throttling rule for a gateway.
         
         @param request: CreateGatewayFlowRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3725,7 +3725,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
         """
-        @summary 创建网关路由流控规则
+        @summary Creates a throttling rule for a gateway.
         
         @param request: CreateGatewayFlowRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3781,7 +3781,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayFlowRuleRequest,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
         """
-        @summary 创建网关路由流控规则
+        @summary Creates a throttling rule for a gateway.
         
         @param request: CreateGatewayFlowRuleRequest
         @return: CreateGatewayFlowRuleResponse
@@ -3794,7 +3794,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayFlowRuleRequest,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
         """
-        @summary 创建网关路由流控规则
+        @summary Creates a throttling rule for a gateway.
         
         @param request: CreateGatewayFlowRuleRequest
         @return: CreateGatewayFlowRuleResponse
@@ -4953,6 +4953,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_or_update_swimming_lane_group_with_options_async(request, runtime)
+
+    def create_plugin_config_with_options(
+        self,
+        tmp_req: mse_20190531_models.CreatePluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreatePluginConfigResponse:
+        """
+        @summary 创建插件配置
+        
+        @param tmp_req: CreatePluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePluginConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreatePluginConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id_list):
+            request.resource_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id_list, 'ResourceIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.config_level):
+            query['ConfigLevel'] = request.config_level
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.resource_id_list_shrink):
+            query['ResourceIdList'] = request.resource_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreatePluginConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_plugin_config_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.CreatePluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreatePluginConfigResponse:
+        """
+        @summary 创建插件配置
+        
+        @param tmp_req: CreatePluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePluginConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.CreatePluginConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_id_list):
+            request.resource_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_id_list, 'ResourceIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.config_level):
+            query['ConfigLevel'] = request.config_level
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.plugin_id):
+            query['PluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.resource_id_list_shrink):
+            query['ResourceIdList'] = request.resource_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreatePluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreatePluginConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_plugin_config(
+        self,
+        request: mse_20190531_models.CreatePluginConfigRequest,
+    ) -> mse_20190531_models.CreatePluginConfigResponse:
+        """
+        @summary 创建插件配置
+        
+        @param request: CreatePluginConfigRequest
+        @return: CreatePluginConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_plugin_config_with_options(request, runtime)
+
+    async def create_plugin_config_async(
+        self,
+        request: mse_20190531_models.CreatePluginConfigRequest,
+    ) -> mse_20190531_models.CreatePluginConfigResponse:
+        """
+        @summary 创建插件配置
+        
+        @param request: CreatePluginConfigRequest
+        @return: CreatePluginConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_plugin_config_with_options_async(request, runtime)
 
     def create_znode_with_options(
         self,
@@ -7594,6 +7722,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
+    def delete_plugin_config_with_options(
+        self,
+        request: mse_20190531_models.DeletePluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeletePluginConfigResponse:
+        """
+        @summary 删除插件配置
+        
+        @param request: DeletePluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePluginConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.plugin_config_id):
+            query['PluginConfigId'] = request.plugin_config_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeletePluginConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_plugin_config_with_options_async(
+        self,
+        request: mse_20190531_models.DeletePluginConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeletePluginConfigResponse:
+        """
+        @summary 删除插件配置
+        
+        @param request: DeletePluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePluginConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.plugin_config_id):
+            query['PluginConfigId'] = request.plugin_config_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeletePluginConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeletePluginConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_plugin_config(
+        self,
+        request: mse_20190531_models.DeletePluginConfigRequest,
+    ) -> mse_20190531_models.DeletePluginConfigResponse:
+        """
+        @summary 删除插件配置
+        
+        @param request: DeletePluginConfigRequest
+        @return: DeletePluginConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_plugin_config_with_options(request, runtime)
+
+    async def delete_plugin_config_async(
+        self,
+        request: mse_20190531_models.DeletePluginConfigRequest,
+    ) -> mse_20190531_models.DeletePluginConfigResponse:
+        """
+        @summary 删除插件配置
+        
+        @param request: DeletePluginConfigRequest
+        @return: DeletePluginConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_plugin_config_with_options_async(request, runtime)
+
     def delete_security_group_rule_with_options(
         self,
         request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
@@ -8126,13 +8358,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_znode_with_options_async(request, runtime)
 
+    def enable_http_2with_options(
+        self,
+        request: mse_20190531_models.EnableHttp2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.EnableHttp2Response:
+        """
+        @summary Enables HTTP/2 for negotiation between the server and client. The modification takes effect in one to two minutes.
+        
+        @param request: EnableHttp2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHttp2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable_http_2):
+            query['EnableHttp2'] = request.enable_http_2
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableHttp2',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.EnableHttp2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_http_2with_options_async(
+        self,
+        request: mse_20190531_models.EnableHttp2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.EnableHttp2Response:
+        """
+        @summary Enables HTTP/2 for negotiation between the server and client. The modification takes effect in one to two minutes.
+        
+        @param request: EnableHttp2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHttp2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.enable_http_2):
+            query['EnableHttp2'] = request.enable_http_2
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableHttp2',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.EnableHttp2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_http_2(
+        self,
+        request: mse_20190531_models.EnableHttp2Request,
+    ) -> mse_20190531_models.EnableHttp2Response:
+        """
+        @summary Enables HTTP/2 for negotiation between the server and client. The modification takes effect in one to two minutes.
+        
+        @param request: EnableHttp2Request
+        @return: EnableHttp2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_http_2with_options(request, runtime)
+
+    async def enable_http_2_async(
+        self,
+        request: mse_20190531_models.EnableHttp2Request,
+    ) -> mse_20190531_models.EnableHttp2Response:
+        """
+        @summary Enables HTTP/2 for negotiation between the server and client. The modification takes effect in one to two minutes.
+        
+        @param request: EnableHttp2Request
+        @return: EnableHttp2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_http_2with_options_async(request, runtime)
+
     def enable_proxy_protocol_with_options(
         self,
         request: mse_20190531_models.EnableProxyProtocolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.EnableProxyProtocolResponse:
         """
-        @summary Proxy Protocol开关
+        @summary Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
         
         @param request: EnableProxyProtocolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8171,7 +8507,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.EnableProxyProtocolResponse:
         """
-        @summary Proxy Protocol开关
+        @summary Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
         
         @param request: EnableProxyProtocolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8209,7 +8545,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.EnableProxyProtocolRequest,
     ) -> mse_20190531_models.EnableProxyProtocolResponse:
         """
-        @summary Proxy Protocol开关
+        @summary Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
         
         @param request: EnableProxyProtocolRequest
         @return: EnableProxyProtocolResponse
@@ -8222,7 +8558,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.EnableProxyProtocolRequest,
     ) -> mse_20190531_models.EnableProxyProtocolResponse:
         """
-        @summary Proxy Protocol开关
+        @summary Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
         
         @param request: EnableProxyProtocolRequest
         @return: EnableProxyProtocolResponse
@@ -15832,7 +16168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayZoneResponse:
         """
-        @summary 获取网关可用区列表
+        @summary Obtains a list of zones where a gateway is available.
         
         @param request: ListGatewayZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15867,7 +16203,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayZoneResponse:
         """
-        @summary 获取网关可用区列表
+        @summary Obtains a list of zones where a gateway is available.
         
         @param request: ListGatewayZoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15901,7 +16237,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayZoneRequest,
     ) -> mse_20190531_models.ListGatewayZoneResponse:
         """
-        @summary 获取网关可用区列表
+        @summary Obtains a list of zones where a gateway is available.
         
         @param request: ListGatewayZoneRequest
         @return: ListGatewayZoneResponse
@@ -15914,7 +16250,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayZoneRequest,
     ) -> mse_20190531_models.ListGatewayZoneResponse:
         """
-        @summary 获取网关可用区列表
+        @summary Obtains a list of zones where a gateway is available.
         
         @param request: ListGatewayZoneRequest
         @return: ListGatewayZoneResponse
@@ -18249,6 +18585,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.order_cluster_health_check_risk_notice_with_options_async(request, runtime)
+
+    def preserve_header_format_with_options(
+        self,
+        request: mse_20190531_models.PreserveHeaderFormatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.PreserveHeaderFormatResponse:
+        """
+        @summary Specifies whether to convert all letters of a header into lowercase letters. For requests and responses, HTTP/1.1 headers are not case-sensitive. By default, all letters of headers are converted into lowercase letters.
+        
+        @param request: PreserveHeaderFormatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreserveHeaderFormatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.preserve_header_format):
+            query['PreserveHeaderFormat'] = request.preserve_header_format
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreserveHeaderFormat',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.PreserveHeaderFormatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preserve_header_format_with_options_async(
+        self,
+        request: mse_20190531_models.PreserveHeaderFormatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.PreserveHeaderFormatResponse:
+        """
+        @summary Specifies whether to convert all letters of a header into lowercase letters. For requests and responses, HTTP/1.1 headers are not case-sensitive. By default, all letters of headers are converted into lowercase letters.
+        
+        @param request: PreserveHeaderFormatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreserveHeaderFormatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.preserve_header_format):
+            query['PreserveHeaderFormat'] = request.preserve_header_format
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PreserveHeaderFormat',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.PreserveHeaderFormatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preserve_header_format(
+        self,
+        request: mse_20190531_models.PreserveHeaderFormatRequest,
+    ) -> mse_20190531_models.PreserveHeaderFormatResponse:
+        """
+        @summary Specifies whether to convert all letters of a header into lowercase letters. For requests and responses, HTTP/1.1 headers are not case-sensitive. By default, all letters of headers are converted into lowercase letters.
+        
+        @param request: PreserveHeaderFormatRequest
+        @return: PreserveHeaderFormatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.preserve_header_format_with_options(request, runtime)
+
+    async def preserve_header_format_async(
+        self,
+        request: mse_20190531_models.PreserveHeaderFormatRequest,
+    ) -> mse_20190531_models.PreserveHeaderFormatResponse:
+        """
+        @summary Specifies whether to convert all letters of a header into lowercase letters. For requests and responses, HTTP/1.1 headers are not case-sensitive. By default, all letters of headers are converted into lowercase letters.
+        
+        @param request: PreserveHeaderFormatRequest
+        @return: PreserveHeaderFormatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.preserve_header_format_with_options_async(request, runtime)
 
     def pull_services_with_options(
         self,
@@ -24360,7 +24800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
         """
-        @summary 更新路由waf状态
+        @summary Updates the WAF status of a route.
         
         @param request: UpdateGatewayRouteWafStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24401,7 +24841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
         """
-        @summary 更新路由waf状态
+        @summary Updates the WAF status of a route.
         
         @param request: UpdateGatewayRouteWafStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24441,7 +24881,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
         """
-        @summary 更新路由waf状态
+        @summary Updates the WAF status of a route.
         
         @param request: UpdateGatewayRouteWafStatusRequest
         @return: UpdateGatewayRouteWafStatusResponse
@@ -24454,7 +24894,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
         """
-        @summary 更新路由waf状态
+        @summary Updates the WAF status of a route.
         
         @param request: UpdateGatewayRouteWafStatusRequest
         @return: UpdateGatewayRouteWafStatusResponse

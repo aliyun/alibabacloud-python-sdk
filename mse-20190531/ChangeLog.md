@@ -1,3 +1,11 @@
+2024-07-25 Version: 6.9.0
+- Support API CreatePluginConfig.
+- Support API DeletePluginConfig.
+- Support API EnableHttp2.
+- Support API PreserveHeaderFormat.
+- Update API GetKubernetesSource: update response param.
+
+
 2024-06-27 Version: 6.8.2
 - Update API AddMigrationTask: add param SyncType.
 - Update API AddMigrationTask: update response param.

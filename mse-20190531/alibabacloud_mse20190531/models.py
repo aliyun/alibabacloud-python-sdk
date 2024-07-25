@@ -1920,34 +1920,18 @@ class AddGatewayRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
-        # The billing method.
+        # The billing method you specify when you purchase an ordinary instance.
         # 
         # Valid values:
         # 
-        # *   PREPAY
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the subscription billing method
-        # 
-        #     <!-- -->
-        # 
-        # *   POSTPAY
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the pay-as-you-go billing method
-        # 
-        #     <!-- -->
+        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go
         self.charge_type = charge_type
+        # The network type of the purchased Classic Load Balancer (CLB) instance that is billed based on LCUs.
+        # 
+        # *   pubnet: Internet
+        # *   privatenet: private network
+        # *   privatepubnet: Internet and private network
         self.clb_network_type = clb_network_type
         # Specifies whether to activate Tracing Analysis.
         self.enable_hardware_acceleration = enable_hardware_acceleration
@@ -1957,20 +1941,27 @@ class AddGatewayRequest(TeaModel):
         self.enable_xtrace = enable_xtrace
         # Specifies whether to enable hardware acceleration.
         self.enterprise_security_group = enterprise_security_group
-        # The ID of the secondary vSwitch.
+        # The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
+        # 
+        # *   slb.s1.small
+        # *   slb.s2.smal
+        # *   slb.s2.medium
+        # *   slb.s3.small
+        # *   slb.s3.medium
+        # *   slb.s3.large
         self.internet_slb_spec = internet_slb_spec
         # The MSE instance type. Valid values:
         # 
-        # *   mse_pro: ordinary instance.
-        # *   mse_serverless: serverless instance.
+        # *   mse_pro: ordinary instance
+        # *   mse_serverless: serverless instance
         self.mser_version = mser_version
         # The ID of the region.
         self.name = name
-        # The network type of the Network Load Balancer (NLB) instance when the serverless NLB instance is purchased. Valid values:
+        # The network type of the Network Load Balancer (NLB) instance you specify when you purchase a serverless instance.
         # 
-        # *   pubnet
-        # *   privatenet
-        # *   privatepubnet
+        # *   pubnet: Internet
+        # *   privatenet: private network
+        # *   privatepubnet: Internet and private network
         self.nlb_network_type = nlb_network_type
         # The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
         # 
@@ -1983,7 +1974,7 @@ class AddGatewayRequest(TeaModel):
         # 
         # This parameter is required.
         self.region = region
-        # The number of nodes.
+        # The number of nodes you specify when you purchase an ordinary instance.
         self.replica = replica
         # The extended field.
         self.request_pars = request_pars
@@ -2001,7 +1992,7 @@ class AddGatewayRequest(TeaModel):
         # *   slb.s3.medium
         # *   slb.s3.large
         self.slb_spec = slb_spec
-        # The node specifications. Valid values:
+        # The node specifications you specify when you purchase an ordinary instance. Valid values:
         # 
         # *   MSE_GTW_16_32_200_c(16C32G)
         # *   MSE_GTW_2_4_200_c(2C4G)
@@ -2215,34 +2206,18 @@ class AddGatewayShrinkRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
-        # The billing method.
+        # The billing method you specify when you purchase an ordinary instance.
         # 
         # Valid values:
         # 
-        # *   PREPAY
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the subscription billing method
-        # 
-        #     <!-- -->
-        # 
-        # *   POSTPAY
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     the pay-as-you-go billing method
-        # 
-        #     <!-- -->
+        # *   PREPAY: subscription
+        # *   POSTPAY: pay-as-you-go
         self.charge_type = charge_type
+        # The network type of the purchased Classic Load Balancer (CLB) instance that is billed based on LCUs.
+        # 
+        # *   pubnet: Internet
+        # *   privatenet: private network
+        # *   privatepubnet: Internet and private network
         self.clb_network_type = clb_network_type
         # Specifies whether to activate Tracing Analysis.
         self.enable_hardware_acceleration = enable_hardware_acceleration
@@ -2252,20 +2227,27 @@ class AddGatewayShrinkRequest(TeaModel):
         self.enable_xtrace = enable_xtrace
         # Specifies whether to enable hardware acceleration.
         self.enterprise_security_group = enterprise_security_group
-        # The ID of the secondary vSwitch.
+        # The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
+        # 
+        # *   slb.s1.small
+        # *   slb.s2.smal
+        # *   slb.s2.medium
+        # *   slb.s3.small
+        # *   slb.s3.medium
+        # *   slb.s3.large
         self.internet_slb_spec = internet_slb_spec
         # The MSE instance type. Valid values:
         # 
-        # *   mse_pro: ordinary instance.
-        # *   mse_serverless: serverless instance.
+        # *   mse_pro: ordinary instance
+        # *   mse_serverless: serverless instance
         self.mser_version = mser_version
         # The ID of the region.
         self.name = name
-        # The network type of the Network Load Balancer (NLB) instance when the serverless NLB instance is purchased. Valid values:
+        # The network type of the Network Load Balancer (NLB) instance you specify when you purchase a serverless instance.
         # 
-        # *   pubnet
-        # *   privatenet
-        # *   privatepubnet
+        # *   pubnet: Internet
+        # *   privatenet: private network
+        # *   privatepubnet: Internet and private network
         self.nlb_network_type = nlb_network_type
         # The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
         # 
@@ -2278,7 +2260,7 @@ class AddGatewayShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region = region
-        # The number of nodes.
+        # The number of nodes you specify when you purchase an ordinary instance.
         self.replica = replica
         # The extended field.
         self.request_pars = request_pars
@@ -2296,7 +2278,7 @@ class AddGatewayShrinkRequest(TeaModel):
         # *   slb.s3.medium
         # *   slb.s3.large
         self.slb_spec = slb_spec
-        # The node specifications. Valid values:
+        # The node specifications you specify when you purchase an ordinary instance. Valid values:
         # 
         # *   MSE_GTW_16_32_200_c(16C32G)
         # *   MSE_GTW_2_4_200_c(2C4G)
@@ -8276,6 +8258,15 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource = resource
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   0: custom interface
+        # *   1: web
+        # *   2: RPC
+        # *   3: route
+        # *   4: SQL
         self.resource_type = resource_type
         # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
         self.retry_timeout_ms = retry_timeout_ms
@@ -9375,29 +9366,8 @@ class CreateFlowRuleRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   0
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     fast failure
-        # 
-        #     <!-- -->
-        # 
-        # *   2
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     in queue
-        # 
-        #     <!-- -->
+        # *   0: fast failure
+        # *   2: in queue
         self.control_behavior = control_behavior
         # Specifies whether to enable the rule.
         # 
@@ -9974,22 +9944,52 @@ class CreateGatewayFlowRuleRequest(TeaModel):
         route_name: str = None,
         threshold: int = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The type of the web fallback behavior.
+        # 
+        # 0: returns the specified content.
+        # 
+        # 1: redirects to the specified page.
+        # 
         # This parameter is required.
         self.behavior_type = behavior_type
+        # The encoding format.
+        # 
+        # 0: normal text
+        # 
+        # 1: JSON
         self.body_encoding = body_encoding
+        # Specifies whether to enable the throttling rule.
+        # 
+        # 0: disables the throttling rule.
+        # 
+        # 1: enables the throttling rule.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The HTTP text to be returned.
         self.response_content_body = response_content_body
+        # The address to be redirected to.
         self.response_redirect_url = response_redirect_url
+        # The HTTP status code.
         self.response_status_code = response_status_code
+        # The ID of the route.
+        # 
         # This parameter is required.
         self.route_id = route_id
+        # The name of the routing rule.
+        # 
         # This parameter is required.
         self.route_name = route_name
+        # The overall queries per second (QPS) threshold.
+        # 
         # This parameter is required.
         self.threshold = threshold
 
@@ -10063,7 +10063,9 @@ class CreateGatewayFlowRuleResponseBody(TeaModel):
         data: int = None,
         request_id: str = None,
     ):
+        # The ID of the rule.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12992,6 +12994,214 @@ class CreateOrUpdateSwimmingLaneGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateOrUpdateSwimmingLaneGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePluginConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        config: str = None,
+        config_level: int = None,
+        enable: bool = None,
+        gateway_unique_id: str = None,
+        plugin_id: int = None,
+        resource_id_list: List[int] = None,
+    ):
+        self.accept_language = accept_language
+        self.config = config
+        # This parameter is required.
+        self.config_level = config_level
+        # This parameter is required.
+        self.enable = enable
+        # This parameter is required.
+        self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
+        self.plugin_id = plugin_id
+        self.resource_id_list = resource_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_level is not None:
+            result['ConfigLevel'] = self.config_level
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.resource_id_list is not None:
+            result['ResourceIdList'] = self.resource_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigLevel') is not None:
+            self.config_level = m.get('ConfigLevel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('ResourceIdList') is not None:
+            self.resource_id_list = m.get('ResourceIdList')
+        return self
+
+
+class CreatePluginConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        config: str = None,
+        config_level: int = None,
+        enable: bool = None,
+        gateway_unique_id: str = None,
+        plugin_id: int = None,
+        resource_id_list_shrink: str = None,
+    ):
+        self.accept_language = accept_language
+        self.config = config
+        # This parameter is required.
+        self.config_level = config_level
+        # This parameter is required.
+        self.enable = enable
+        # This parameter is required.
+        self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
+        self.plugin_id = plugin_id
+        self.resource_id_list_shrink = resource_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.config_level is not None:
+            result['ConfigLevel'] = self.config_level
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.plugin_id is not None:
+            result['PluginId'] = self.plugin_id
+        if self.resource_id_list_shrink is not None:
+            result['ResourceIdList'] = self.resource_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('ConfigLevel') is not None:
+            self.config_level = m.get('ConfigLevel')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('PluginId') is not None:
+            self.plugin_id = m.get('PluginId')
+        if m.get('ResourceIdList') is not None:
+            self.resource_id_list_shrink = m.get('ResourceIdList')
+        return self
+
+
+class CreatePluginConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        plugin_config_id: int = None,
+        request_id: str = None,
+    ):
+        self.plugin_config_id = plugin_config_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.plugin_config_id is not None:
+            result['PluginConfigID'] = self.plugin_config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PluginConfigID') is not None:
+            self.plugin_config_id = m.get('PluginConfigID')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreatePluginConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePluginConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePluginConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17487,6 +17697,115 @@ class DeleteNamespaceResponse(TeaModel):
         return self
 
 
+class DeletePluginConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        gateway_unique_id: str = None,
+        plugin_config_id: int = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
+        self.plugin_config_id = plugin_config_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.plugin_config_id is not None:
+            result['PluginConfigId'] = self.plugin_config_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('PluginConfigId') is not None:
+            self.plugin_config_id = m.get('PluginConfigId')
+        return self
+
+
+class DeletePluginConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeletePluginConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePluginConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePluginConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSecurityGroupRuleRequest(TeaModel):
     def __init__(
         self,
@@ -18396,6 +18715,185 @@ class DeleteZnodeResponse(TeaModel):
         return self
 
 
+class EnableHttp2Request(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        enable_http_2: bool = None,
+        gateway_unique_id: str = None,
+    ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+        self.accept_language = accept_language
+        # Specifies whether to enable HTTP/2 for negotiation between the server and client. This parameter applies to requests. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # This parameter is required.
+        self.enable_http_2 = enable_http_2
+        # The unique ID of the gateway.
+        # 
+        # This parameter is required.
+        self.gateway_unique_id = gateway_unique_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.enable_http_2 is not None:
+            result['EnableHttp2'] = self.enable_http_2
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('EnableHttp2') is not None:
+            self.enable_http_2 = m.get('EnableHttp2')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        return self
+
+
+class EnableHttp2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The status code. A value of 200 is returned if the request is successful.
+        self.code = code
+        # Indicates whether HTTP/2 is enabled.
+        self.data = data
+        # The dynamic part in the error message.
+        self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
+        # 
+        # >  The request parameter **DtsJobId** is invalid if **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **DtsJobId** is returned for **DynamicMessage**.
+        self.dynamic_message = dynamic_message
+        # The status code.
+        self.error_code = error_code
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The message returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class EnableHttp2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableHttp2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableHttp2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableProxyProtocolRequest(TeaModel):
     def __init__(
         self,
@@ -18403,9 +18901,17 @@ class EnableProxyProtocolRequest(TeaModel):
         enable_proxy_protocol: bool = None,
         gateway_unique_id: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
+        # 
         # This parameter is required.
         self.enable_proxy_protocol = enable_proxy_protocol
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
 
@@ -18450,14 +18956,28 @@ class EnableProxyProtocolResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 is returned if the request is successful.
         self.code = code
+        # Indicates whether the request was successful. Valid values:
         self.data = data
+        # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
+        # 
+        # >  For example, if the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the **DtsJobId** parameter in the request is invalid.
         self.dynamic_message = dynamic_message
+        # The status code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -28671,7 +29191,7 @@ class GetServiceListenersRequest(TeaModel):
         self.accept_language = accept_language
         # The ID of the MSE instance to which the service belongs.
         # 
-        # > You must specify InstanceId or ClusterId.
+        # >  You must specify InstanceId or ClusterId.
         self.cluster_id = cluster_id
         # The name of the cluster to which the service belongs.
         # 
@@ -31035,7 +31555,7 @@ class ListAnsServiceClustersRequest(TeaModel):
         self.accept_language = accept_language
         # The ID of the MSE cluster.
         # 
-        # > The MSE cluster is different from the cluster of the Nacos service.
+        # >  The MSE cluster is different from the cluster of the Nacos service.
         self.cluster_id = cluster_id
         # The alias of the cluster.
         self.cluster_name = cluster_name
@@ -43760,6 +44280,7 @@ class ListGatewayZoneRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
 
     def validate(self):
@@ -43788,7 +44309,9 @@ class ListGatewayZoneResponseBodyData(TeaModel):
         local_name: str = None,
         zone_id: str = None,
     ):
+        # The local name of the zone.
         self.local_name = local_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -43828,14 +44351,26 @@ class ListGatewayZoneResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The queried zones.
         self.data = data
+        # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace %s in **ErrMessage**.
         self.dynamic_message = dynamic_message
+        # The status code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`: The request was successful.
+        # *   `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -44519,11 +45054,13 @@ class ListListenersByConfigResponseBodyListeners(TeaModel):
     ):
         # The IP address.
         self.ip = ip
+        # The label of the listener.
         self.labels = labels
         # The verification string.
         self.md_5 = md_5
         # The status.
         self.status = status
+        # The current version of the listener. Valid values: gray and normal.
         self.version = version
 
     def validate(self):
@@ -49260,6 +49797,185 @@ class OrderClusterHealthCheckRiskNoticeResponse(TeaModel):
         return self
 
 
+class PreserveHeaderFormatRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        gateway_unique_id: str = None,
+        preserve_header_format: bool = None,
+    ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+        self.accept_language = accept_language
+        # The unique ID of the gateway.
+        # 
+        # This parameter is required.
+        self.gateway_unique_id = gateway_unique_id
+        # Specifies whether the request header is case-sensitive. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # This parameter is required.
+        self.preserve_header_format = preserve_header_format
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.preserve_header_format is not None:
+            result['PreserveHeaderFormat'] = self.preserve_header_format
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('PreserveHeaderFormat') is not None:
+            self.preserve_header_format = m.get('PreserveHeaderFormat')
+        return self
+
+
+class PreserveHeaderFormatResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: bool = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The status code. A value of 200 is returned if the request is successful.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The dynamic part in the error message.
+        self.dynamic_code = dynamic_code
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
+        # 
+        # >  The request parameter **DtsJobId** is invalid if **The Value of Input Parameter %s is not valid** is returned for **ErrMessage** and **DtsJobId** is returned for **DynamicMessage**.
+        self.dynamic_message = dynamic_message
+        # The status code.
+        self.error_code = error_code
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The message returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PreserveHeaderFormatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PreserveHeaderFormatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PreserveHeaderFormatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PullServicesRequest(TeaModel):
     def __init__(
         self,
@@ -52502,6 +53218,7 @@ class QueryConfigResponseBodyData(TeaModel):
         tick_time: str = None,
         user_name: str = None,
     ):
+        # Indicates whether Simple Authentication and Security Layer (SASL) forced identity authentication is enabled for the ZooKeeper instance.
         self.auth_enabled = auth_enabled
         # A reserved parameter.
         self.autopurge_purge_interval = autopurge_purge_interval
@@ -52763,7 +53480,7 @@ class QueryConfigResponseBody(TeaModel):
     ):
         # The status code returned.
         self.code = code
-        # The details of the data.
+        # The data returned.
         self.data = data
         # The HTTP status code returned.
         self.http_status_code = http_status_code
@@ -64044,7 +64761,7 @@ class UpdateGatewayRouteWafStatusResponseBodyDataRouteServices(TeaModel):
         self.service_id = service_id
         # The name of the service.
         self.service_name = service_name
-        # The source type.
+        # The source type of the service.
         self.source_type = source_type
         # The version of the service.
         self.version = version
