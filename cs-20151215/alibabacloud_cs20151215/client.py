@@ -12980,6 +12980,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.resume_upgrade_cluster_with_options_async(cluster_id, headers, runtime)
 
+    def revoke_k8s_cluster_kube_config_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
+        """
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeK8sClusterKubeConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RevokeK8sClusterKubeConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/certs',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.RevokeK8sClusterKubeConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_k8s_cluster_kube_config_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
+        """
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeK8sClusterKubeConfigResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='RevokeK8sClusterKubeConfig',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/k8s/{OpenApiUtilClient.get_encode_param(cluster_id)}/certs',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.RevokeK8sClusterKubeConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_k8s_cluster_kube_config(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
+        """
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        
+        @return: RevokeK8sClusterKubeConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.revoke_k8s_cluster_kube_config_with_options(cluster_id, headers, runtime)
+
+    async def revoke_k8s_cluster_kube_config_async(
+        self,
+        cluster_id: str,
+    ) -> cs20151215_models.RevokeK8sClusterKubeConfigResponse:
+        """
+        @summary You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+        
+        @return: RevokeK8sClusterKubeConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.revoke_k8s_cluster_kube_config_with_options_async(cluster_id, headers, runtime)
+
     def run_cluster_check_with_options(
         self,
         cluster_id: str,

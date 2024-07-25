@@ -1,3 +1,7 @@
+2024-07-25 Version: 4.7.0
+- Support API RevokeK8sClusterKubeConfig.
+
+
 2024-07-24 Version: 4.6.0
 - Support API GetClusterAuditProject.
 
