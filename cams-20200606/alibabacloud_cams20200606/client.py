@@ -3181,6 +3181,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_commerce_setting_with_options_async(request, runtime)
 
+    def get_conversational_automation_with_options(
+        self,
+        request: cams_20200606_models.GetConversationalAutomationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetConversationalAutomationResponse:
+        """
+        @summary 获取号码欢迎消息设置信息
+        
+        @param request: GetConversationalAutomationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversationalAutomationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversationalAutomation',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetConversationalAutomationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_conversational_automation_with_options_async(
+        self,
+        request: cams_20200606_models.GetConversationalAutomationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetConversationalAutomationResponse:
+        """
+        @summary 获取号码欢迎消息设置信息
+        
+        @param request: GetConversationalAutomationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConversationalAutomationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConversationalAutomation',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetConversationalAutomationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_conversational_automation(
+        self,
+        request: cams_20200606_models.GetConversationalAutomationRequest,
+    ) -> cams_20200606_models.GetConversationalAutomationResponse:
+        """
+        @summary 获取号码欢迎消息设置信息
+        
+        @param request: GetConversationalAutomationRequest
+        @return: GetConversationalAutomationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_conversational_automation_with_options(request, runtime)
+
+    async def get_conversational_automation_async(
+        self,
+        request: cams_20200606_models.GetConversationalAutomationRequest,
+    ) -> cams_20200606_models.GetConversationalAutomationResponse:
+        """
+        @summary 获取号码欢迎消息设置信息
+        
+        @param request: GetConversationalAutomationRequest
+        @return: GetConversationalAutomationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_conversational_automation_with_options_async(request, runtime)
+
     def get_flow_with_options(
         self,
         request: cams_20200606_models.GetFlowRequest,
@@ -4160,6 +4272,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_whatsapp_connection_catalog_with_options_async(request, runtime)
+
+    def get_whatsapp_health_status_with_options(
+        self,
+        request: cams_20200606_models.GetWhatsappHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetWhatsappHealthStatusResponse:
+        """
+        @summary 获取whatsapp节点信息发送消息健康度
+        
+        @param request: GetWhatsappHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWhatsappHealthStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWhatsappHealthStatus',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetWhatsappHealthStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_whatsapp_health_status_with_options_async(
+        self,
+        request: cams_20200606_models.GetWhatsappHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetWhatsappHealthStatusResponse:
+        """
+        @summary 获取whatsapp节点信息发送消息健康度
+        
+        @param request: GetWhatsappHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWhatsappHealthStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.waba_id):
+            query['WabaId'] = request.waba_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWhatsappHealthStatus',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetWhatsappHealthStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_whatsapp_health_status(
+        self,
+        request: cams_20200606_models.GetWhatsappHealthStatusRequest,
+    ) -> cams_20200606_models.GetWhatsappHealthStatusResponse:
+        """
+        @summary 获取whatsapp节点信息发送消息健康度
+        
+        @param request: GetWhatsappHealthStatusRequest
+        @return: GetWhatsappHealthStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_whatsapp_health_status_with_options(request, runtime)
+
+    async def get_whatsapp_health_status_async(
+        self,
+        request: cams_20200606_models.GetWhatsappHealthStatusRequest,
+    ) -> cams_20200606_models.GetWhatsappHealthStatusResponse:
+        """
+        @summary 获取whatsapp节点信息发送消息健康度
+        
+        @param request: GetWhatsappHealthStatusRequest
+        @return: GetWhatsappHealthStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_whatsapp_health_status_with_options_async(request, runtime)
 
     def isv_get_app_id_with_options(
         self,
@@ -6708,6 +6948,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_commerce_setting_with_options_async(request, runtime)
+
+    def update_conversational_automation_with_options(
+        self,
+        tmp_req: cams_20200606_models.UpdateConversationalAutomationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateConversationalAutomationResponse:
+        """
+        @summary 更新号码欢迎消息、命令等属性
+        
+        @param tmp_req: UpdateConversationalAutomationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConversationalAutomationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.UpdateConversationalAutomationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.commands):
+            request.commands_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.commands, 'Commands', 'json')
+        if not UtilClient.is_unset(tmp_req.prompts):
+            request.prompts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.prompts, 'Prompts', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.commands_shrink):
+            query['Commands'] = request.commands_shrink
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.enable_welcome_message):
+            query['EnableWelcomeMessage'] = request.enable_welcome_message
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.prompts_shrink):
+            query['Prompts'] = request.prompts_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConversationalAutomation',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateConversationalAutomationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_conversational_automation_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.UpdateConversationalAutomationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateConversationalAutomationResponse:
+        """
+        @summary 更新号码欢迎消息、命令等属性
+        
+        @param tmp_req: UpdateConversationalAutomationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConversationalAutomationResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.UpdateConversationalAutomationShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.commands):
+            request.commands_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.commands, 'Commands', 'json')
+        if not UtilClient.is_unset(tmp_req.prompts):
+            request.prompts_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.prompts, 'Prompts', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.commands_shrink):
+            query['Commands'] = request.commands_shrink
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.enable_welcome_message):
+            query['EnableWelcomeMessage'] = request.enable_welcome_message
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.prompts_shrink):
+            query['Prompts'] = request.prompts_shrink
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateConversationalAutomation',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateConversationalAutomationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_conversational_automation(
+        self,
+        request: cams_20200606_models.UpdateConversationalAutomationRequest,
+    ) -> cams_20200606_models.UpdateConversationalAutomationResponse:
+        """
+        @summary 更新号码欢迎消息、命令等属性
+        
+        @param request: UpdateConversationalAutomationRequest
+        @return: UpdateConversationalAutomationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_conversational_automation_with_options(request, runtime)
+
+    async def update_conversational_automation_async(
+        self,
+        request: cams_20200606_models.UpdateConversationalAutomationRequest,
+    ) -> cams_20200606_models.UpdateConversationalAutomationResponse:
+        """
+        @summary 更新号码欢迎消息、命令等属性
+        
+        @param request: UpdateConversationalAutomationRequest
+        @return: UpdateConversationalAutomationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_conversational_automation_with_options_async(request, runtime)
 
     def update_flow_jsonasset_with_options(
         self,

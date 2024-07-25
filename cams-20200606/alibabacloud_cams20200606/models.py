@@ -6857,6 +6857,245 @@ class GetCommerceSettingResponse(TeaModel):
         return self
 
 
+class GetConversationalAutomationRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        owner_id: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GetConversationalAutomationResponseBodyDataCommands(TeaModel):
+    def __init__(
+        self,
+        command_description: str = None,
+        command_name: str = None,
+    ):
+        self.command_description = command_description
+        self.command_name = command_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_description is not None:
+            result['CommandDescription'] = self.command_description
+        if self.command_name is not None:
+            result['CommandName'] = self.command_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandDescription') is not None:
+            self.command_description = m.get('CommandDescription')
+        if m.get('CommandName') is not None:
+            self.command_name = m.get('CommandName')
+        return self
+
+
+class GetConversationalAutomationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        commands: List[GetConversationalAutomationResponseBodyDataCommands] = None,
+        enable_welcome_message: bool = None,
+        phone_number: str = None,
+        prompts: List[str] = None,
+    ):
+        self.commands = commands
+        self.enable_welcome_message = enable_welcome_message
+        self.phone_number = phone_number
+        self.prompts = prompts
+
+    def validate(self):
+        if self.commands:
+            for k in self.commands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Commands'] = []
+        if self.commands is not None:
+            for k in self.commands:
+                result['Commands'].append(k.to_map() if k else None)
+        if self.enable_welcome_message is not None:
+            result['EnableWelcomeMessage'] = self.enable_welcome_message
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.prompts is not None:
+            result['Prompts'] = self.prompts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.commands = []
+        if m.get('Commands') is not None:
+            for k in m.get('Commands'):
+                temp_model = GetConversationalAutomationResponseBodyDataCommands()
+                self.commands.append(temp_model.from_map(k))
+        if m.get('EnableWelcomeMessage') is not None:
+            self.enable_welcome_message = m.get('EnableWelcomeMessage')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Prompts') is not None:
+            self.prompts = m.get('Prompts')
+        return self
+
+
+class GetConversationalAutomationResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetConversationalAutomationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetConversationalAutomationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetConversationalAutomationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetConversationalAutomationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetConversationalAutomationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetFlowRequest(TeaModel):
     def __init__(
         self,
@@ -8421,6 +8660,341 @@ class GetWhatsappConnectionCatalogResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetWhatsappConnectionCatalogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWhatsappHealthStatusRequest(TeaModel):
+    def __init__(
+        self,
+        cust_space_id: str = None,
+        language: str = None,
+        node_type: str = None,
+        owner_id: int = None,
+        phone_number: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        template_code: str = None,
+        waba_id: str = None,
+    ):
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.language = language
+        # This parameter is required.
+        self.node_type = node_type
+        self.owner_id = owner_id
+        self.phone_number = phone_number
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.template_code = template_code
+        # WabaId
+        self.waba_id = waba_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class GetWhatsappHealthStatusResponseBodyDataEntitiesErrors(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_description: str = None,
+        possible_solution: str = None,
+    ):
+        self.error_code = error_code
+        self.error_description = error_description
+        self.possible_solution = possible_solution
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_description is not None:
+            result['ErrorDescription'] = self.error_description
+        if self.possible_solution is not None:
+            result['PossibleSolution'] = self.possible_solution
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorDescription') is not None:
+            self.error_description = m.get('ErrorDescription')
+        if m.get('PossibleSolution') is not None:
+            self.possible_solution = m.get('PossibleSolution')
+        return self
+
+
+class GetWhatsappHealthStatusResponseBodyDataEntities(TeaModel):
+    def __init__(
+        self,
+        business_id: str = None,
+        can_send_message: str = None,
+        entity_type: str = None,
+        errors: List[GetWhatsappHealthStatusResponseBodyDataEntitiesErrors] = None,
+        language: str = None,
+        phone_number: str = None,
+        template_code: str = None,
+        waba_id: str = None,
+    ):
+        self.business_id = business_id
+        self.can_send_message = can_send_message
+        self.entity_type = entity_type
+        self.errors = errors
+        self.language = language
+        self.phone_number = phone_number
+        self.template_code = template_code
+        self.waba_id = waba_id
+
+    def validate(self):
+        if self.errors:
+            for k in self.errors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.can_send_message is not None:
+            result['CanSendMessage'] = self.can_send_message
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        result['Errors'] = []
+        if self.errors is not None:
+            for k in self.errors:
+                result['Errors'].append(k.to_map() if k else None)
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.waba_id is not None:
+            result['WabaId'] = self.waba_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('CanSendMessage') is not None:
+            self.can_send_message = m.get('CanSendMessage')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        self.errors = []
+        if m.get('Errors') is not None:
+            for k in m.get('Errors'):
+                temp_model = GetWhatsappHealthStatusResponseBodyDataEntitiesErrors()
+                self.errors.append(temp_model.from_map(k))
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('WabaId') is not None:
+            self.waba_id = m.get('WabaId')
+        return self
+
+
+class GetWhatsappHealthStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        can_send_message: str = None,
+        entities: List[GetWhatsappHealthStatusResponseBodyDataEntities] = None,
+    ):
+        self.can_send_message = can_send_message
+        self.entities = entities
+
+    def validate(self):
+        if self.entities:
+            for k in self.entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_send_message is not None:
+            result['CanSendMessage'] = self.can_send_message
+        result['Entities'] = []
+        if self.entities is not None:
+            for k in self.entities:
+                result['Entities'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanSendMessage') is not None:
+            self.can_send_message = m.get('CanSendMessage')
+        self.entities = []
+        if m.get('Entities') is not None:
+            for k in m.get('Entities'):
+                temp_model = GetWhatsappHealthStatusResponseBodyDataEntities()
+                self.entities.append(temp_model.from_map(k))
+        return self
+
+
+class GetWhatsappHealthStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetWhatsappHealthStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetWhatsappHealthStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetWhatsappHealthStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWhatsappHealthStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWhatsappHealthStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14490,6 +15064,281 @@ class UpdateCommerceSettingResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateCommerceSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateConversationalAutomationRequestCommands(TeaModel):
+    def __init__(
+        self,
+        command_description: str = None,
+        command_name: str = None,
+    ):
+        self.command_description = command_description
+        self.command_name = command_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_description is not None:
+            result['CommandDescription'] = self.command_description
+        if self.command_name is not None:
+            result['CommandName'] = self.command_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandDescription') is not None:
+            self.command_description = m.get('CommandDescription')
+        if m.get('CommandName') is not None:
+            self.command_name = m.get('CommandName')
+        return self
+
+
+class UpdateConversationalAutomationRequest(TeaModel):
+    def __init__(
+        self,
+        commands: List[UpdateConversationalAutomationRequestCommands] = None,
+        cust_space_id: str = None,
+        enable_welcome_message: bool = None,
+        owner_id: int = None,
+        phone_number: str = None,
+        prompts: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.commands = commands
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.enable_welcome_message = enable_welcome_message
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.phone_number = phone_number
+        self.prompts = prompts
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        if self.commands:
+            for k in self.commands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Commands'] = []
+        if self.commands is not None:
+            for k in self.commands:
+                result['Commands'].append(k.to_map() if k else None)
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.enable_welcome_message is not None:
+            result['EnableWelcomeMessage'] = self.enable_welcome_message
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.prompts is not None:
+            result['Prompts'] = self.prompts
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.commands = []
+        if m.get('Commands') is not None:
+            for k in m.get('Commands'):
+                temp_model = UpdateConversationalAutomationRequestCommands()
+                self.commands.append(temp_model.from_map(k))
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('EnableWelcomeMessage') is not None:
+            self.enable_welcome_message = m.get('EnableWelcomeMessage')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Prompts') is not None:
+            self.prompts = m.get('Prompts')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UpdateConversationalAutomationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        commands_shrink: str = None,
+        cust_space_id: str = None,
+        enable_welcome_message: bool = None,
+        owner_id: int = None,
+        phone_number: str = None,
+        prompts_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.commands_shrink = commands_shrink
+        # This parameter is required.
+        self.cust_space_id = cust_space_id
+        self.enable_welcome_message = enable_welcome_message
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.phone_number = phone_number
+        self.prompts_shrink = prompts_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commands_shrink is not None:
+            result['Commands'] = self.commands_shrink
+        if self.cust_space_id is not None:
+            result['CustSpaceId'] = self.cust_space_id
+        if self.enable_welcome_message is not None:
+            result['EnableWelcomeMessage'] = self.enable_welcome_message
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number is not None:
+            result['PhoneNumber'] = self.phone_number
+        if self.prompts_shrink is not None:
+            result['Prompts'] = self.prompts_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Commands') is not None:
+            self.commands_shrink = m.get('Commands')
+        if m.get('CustSpaceId') is not None:
+            self.cust_space_id = m.get('CustSpaceId')
+        if m.get('EnableWelcomeMessage') is not None:
+            self.enable_welcome_message = m.get('EnableWelcomeMessage')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumber') is not None:
+            self.phone_number = m.get('PhoneNumber')
+        if m.get('Prompts') is not None:
+            self.prompts_shrink = m.get('Prompts')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class UpdateConversationalAutomationResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateConversationalAutomationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateConversationalAutomationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateConversationalAutomationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

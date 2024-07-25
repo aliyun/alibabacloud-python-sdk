@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_cams20200606.
 
-Created on 24/07/2024
+Created on 25/07/2024
 
 @author: Alibaba Cloud SDK
 """

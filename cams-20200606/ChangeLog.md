@@ -1,3 +1,9 @@
+2024-07-25 Version: 1.5.0
+- Support API GetConversationalAutomation.
+- Support API GetWhatsappHealthStatus.
+- Support API UpdateConversationalAutomation.
+
+
 2024-07-24 Version: 1.4.5
 - Update API AddChatappPhoneNumber: add param AccessKeyId.
 - Update API AddChatappPhoneNumber: add param OwnerId.
