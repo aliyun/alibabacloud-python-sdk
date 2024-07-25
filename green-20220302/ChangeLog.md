@@ -1,3 +1,8 @@
+2024-07-25 Version: 2.2.10
+- Update API DescribeUrlModerationResult: update response param.
+- Update API ImageModeration: update response param.
+
+
 2024-07-12 Version: 2.2.9
 - Generated python 2022-03-02 for Green.
 

@@ -10,7 +10,9 @@ class DescribeFileModerationResultRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -43,7 +45,9 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
         confidence: float = None,
         label: str = None,
     ):
+        # Confidence score, 0 to 100, reserved to 2 decimal places.
         self.confidence = confidence
+        # The details of the labels.
         self.label = label
 
     def validate(self):
@@ -78,9 +82,13 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation(
         x: int = None,
         y: int = None,
     ):
+        # The H value of the coordinate point.
         self.h = h
+        # The W value of the coordinate point.
         self.w = w
+        # The X value of the coordinate point.
         self.x = x
+        # The Y value of the coordinate point.
         self.y = y
 
     def validate(self):
@@ -123,9 +131,13 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel
         location: DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation = None,
         service: str = None,
     ):
+        # Description.
         self.description = description
+        # Label information.
         self.label_result = label_result
+        # Location information.
         self.location = location
+        # The moderation service.
         self.service = service
 
     def validate(self):
@@ -182,12 +194,19 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         text: str = None,
         text_segment: str = None,
     ):
+        # Description
         self.description = description
+        # The details of the labels.
         self.labels = labels
+        # The risk details that are hit.
         self.risk_tips = risk_tips
+        # The risk words that are hit.
         self.risk_words = risk_words
+        # The moderation service.
         self.service = service
+        # Text content.
         self.text = text
+        # Text segmentation information.
         self.text_segment = text_segment
 
     def validate(self):
@@ -243,10 +262,15 @@ class DescribeFileModerationResultResponseBodyDataPageResult(TeaModel):
         text_result: List[DescribeFileModerationResultResponseBodyDataPageResultTextResult] = None,
         text_url: str = None,
     ):
+        # Image detection results.
         self.image_result = image_result
+        # The image url.
         self.image_url = image_url
+        # The page number.
         self.page_num = page_num
+        # Text detection results.
         self.text_result = text_result
+        # the text url.
         self.text_url = text_url
 
     def validate(self):
@@ -310,9 +334,13 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
         page_result: List[DescribeFileModerationResultResponseBodyDataPageResult] = None,
         url: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # Optional, document type.
         self.doc_type = doc_type
+        # The pagination information.
         self.page_result = page_result
+        # The URL of the moderation object.
         self.url = url
 
     def validate(self):
@@ -363,10 +391,13 @@ class DescribeFileModerationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -449,6 +480,7 @@ class DescribeImageModerationResultRequest(TeaModel):
         self,
         req_id: str = None,
     ):
+        # The reqId field returned by the Image Async Moderation API.
         self.req_id = req_id
 
     def validate(self):
@@ -477,7 +509,9 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         confidence: float = None,
         label: str = None,
     ):
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
+        # The labels returned after the image moderation.
         self.label = label
 
     def validate(self):
@@ -514,11 +548,17 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         result: List[DescribeImageModerationResultResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # Image frame information.
         self.frame = frame
+        # Number of result frames
         self.frame_num = frame_num
+        # The reqId field returned by the Image Async Moderation API.
         self.req_id = req_id
+        # The results of image moderation parameters such as the label parameter and the confidence parameter.
         self.result = result
+        # Risk Level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -577,9 +617,13 @@ class DescribeImageModerationResultResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -663,7 +707,9 @@ class DescribeImageResultExtRequest(TeaModel):
         info_type: str = None,
         req_id: str = None,
     ):
+        # The content of the information to be obtained. Multiple values are separated by commas.
         self.info_type = info_type
+        # The reqId field returned by the Url Async Moderation API.
         self.req_id = req_id
 
     def validate(self):
@@ -697,11 +743,11 @@ class DescribeImageResultExtResponseBodyDataCustomImage(TeaModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
-        # 图片ID。
+        # The image ID.
         self.image_id = image_id
-        # 图库ID。
+        # The image library ID.
         self.lib_id = lib_id
-        # 图库名。
+        # The image library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -737,7 +783,7 @@ class DescribeImageResultExtResponseBodyDataPublicFigure(TeaModel):
         self,
         figure_id: str = None,
     ):
-        # 人物ID。
+        # Identified person coding information.
         self.figure_id = figure_id
 
     def validate(self):
@@ -767,8 +813,11 @@ class DescribeImageResultExtResponseBodyDataTextInImageCustomTexts(TeaModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
+        # Custom words, multiple words separated by commas.
         self.key_words = key_words
+        # Custom library ID.
         self.lib_id = lib_id
+        # Custom library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -806,8 +855,11 @@ class DescribeImageResultExtResponseBodyDataTextInImage(TeaModel):
         ocr_datas: List[str] = None,
         risk_words: List[str] = None,
     ):
+        # When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
         self.custom_texts = custom_texts
+        # Returns the text information in the recognized image.
         self.ocr_datas = ocr_datas
+        # The risk words that are hit. Multiple words are separated by commas (,).
         self.risk_words = risk_words
 
     def validate(self):
@@ -853,8 +905,11 @@ class DescribeImageResultExtResponseBodyData(TeaModel):
         public_figure: List[DescribeImageResultExtResponseBodyDataPublicFigure] = None,
         text_in_image: DescribeImageResultExtResponseBodyDataTextInImage = None,
     ):
+        # If a custom image library is hit, information about the hit custom image library is returned.
         self.custom_image = custom_image
+        # Person information list.
         self.public_figure = public_figure
+        # Returns the text information in the hit image.
         self.text_in_image = text_in_image
 
     def validate(self):
@@ -913,9 +968,13 @@ class DescribeImageResultExtResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1005,13 +1064,21 @@ class DescribeUploadTokenResponseBodyData(TeaModel):
         oss_internet_end_point: str = None,
         security_token: str = None,
     ):
+        # The AccessKey ID.
         self.access_key_id = access_key_id
+        # The AccessKey secret.
         self.access_key_secret = access_key_secret
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The time when the file sharing link expires.
         self.expiration = expiration
+        # The file prefix.
         self.file_name_prefix = file_name_prefix
+        # the oss intranet point.
         self.oss_internal_end_point = oss_internal_end_point
+        # the oss internet point.
         self.oss_internet_end_point = oss_internet_end_point
+        # The security token.
         self.security_token = security_token
 
     def validate(self):
@@ -1070,9 +1137,13 @@ class DescribeUploadTokenResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1155,6 +1226,7 @@ class DescribeUrlModerationResultRequest(TeaModel):
         self,
         req_id: str = None,
     ):
+        # The reqId field returned by the Url Async Moderation API.
         self.req_id = req_id
 
     def validate(self):
@@ -1182,9 +1254,13 @@ class DescribeUrlModerationResultResponseBodyDataExtraInfo(TeaModel):
         self,
         icp_no: str = None,
         icp_type: str = None,
+        site_type: str = None,
     ):
+        # ICP record number.
         self.icp_no = icp_no
+        # ICP filing type.
         self.icp_type = icp_type
+        self.site_type = site_type
 
     def validate(self):
         pass
@@ -1199,6 +1275,8 @@ class DescribeUrlModerationResultResponseBodyDataExtraInfo(TeaModel):
             result['IcpNo'] = self.icp_no
         if self.icp_type is not None:
             result['IcpType'] = self.icp_type
+        if self.site_type is not None:
+            result['SiteType'] = self.site_type
         return result
 
     def from_map(self, m: dict = None):
@@ -1207,6 +1285,8 @@ class DescribeUrlModerationResultResponseBodyDataExtraInfo(TeaModel):
             self.icp_no = m.get('IcpNo')
         if m.get('IcpType') is not None:
             self.icp_type = m.get('IcpType')
+        if m.get('SiteType') is not None:
+            self.site_type = m.get('SiteType')
         return self
 
 
@@ -1216,7 +1296,9 @@ class DescribeUrlModerationResultResponseBodyDataResult(TeaModel):
         confidence: float = None,
         label: str = None,
     ):
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
+        # The labels returned after the url async moderation.
         self.label = label
 
     def validate(self):
@@ -1251,9 +1333,13 @@ class DescribeUrlModerationResultResponseBodyData(TeaModel):
         req_id: str = None,
         result: List[DescribeUrlModerationResultResponseBodyDataResult] = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # Supplementary information.
         self.extra_info = extra_info
+        # The reqId field returned by the Url Async Moderation API.
         self.req_id = req_id
+        # The results of url async moderation parameters such as the label parameter and the confidence parameter.
         self.result = result
 
     def validate(self):
@@ -1307,9 +1393,13 @@ class DescribeUrlModerationResultResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1393,7 +1483,9 @@ class FileModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -1425,6 +1517,7 @@ class FileModerationResponseBodyData(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -1455,10 +1548,13 @@ class FileModerationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1542,7 +1638,9 @@ class ImageAsyncModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -1575,7 +1673,9 @@ class ImageAsyncModerationResponseBodyData(TeaModel):
         data_id: str = None,
         req_id: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The reqId field returned by the Image Async Moderation API. You can use this field to query the detection results.
         self.req_id = req_id
 
     def validate(self):
@@ -1610,9 +1710,13 @@ class ImageAsyncModerationResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1696,7 +1800,9 @@ class ImageModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -1730,8 +1836,11 @@ class ImageModerationResponseBodyDataExtCustomImage(TeaModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
+        # The image ID.
         self.image_id = image_id
+        # The image library ID.
         self.lib_id = lib_id
+        # The image library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -1770,9 +1879,13 @@ class ImageModerationResponseBodyDataExtLogoDataLocation(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # The height of the text area, in pixels.
         self.h = h
+        # The width of the text area, in pixels.
         self.w = w
+        # The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
         self.x = x
+        # The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
         self.y = y
 
     def validate(self):
@@ -1814,8 +1927,11 @@ class ImageModerationResponseBodyDataExtLogoDataLogo(TeaModel):
         label: str = None,
         name: str = None,
     ):
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
+        # Logo category.
         self.label = label
+        # Logo name.
         self.name = name
 
     def validate(self):
@@ -1852,7 +1968,9 @@ class ImageModerationResponseBodyDataExtLogoData(TeaModel):
         location: ImageModerationResponseBodyDataExtLogoDataLocation = None,
         logo: List[ImageModerationResponseBodyDataExtLogoDataLogo] = None,
     ):
+        # Location information.
         self.location = location
+        # Logo information.
         self.logo = logo
 
     def validate(self):
@@ -1898,9 +2016,13 @@ class ImageModerationResponseBodyDataExtOcrResultLocation(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # The height of the text area, in pixels.
         self.h = h
+        # The width of the text area, in pixels.
         self.w = w
+        # The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
         self.x = x
+        # The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
         self.y = y
 
     def validate(self):
@@ -1941,7 +2063,9 @@ class ImageModerationResponseBodyDataExtOcrResult(TeaModel):
         location: ImageModerationResponseBodyDataExtOcrResultLocation = None,
         text: str = None,
     ):
+        # Location information.
         self.location = location
+        # The text information in the recognized image.
         self.text = text
 
     def validate(self):
@@ -1970,112 +2094,7 @@ class ImageModerationResponseBodyDataExtOcrResult(TeaModel):
         return self
 
 
-class ImageModerationResponseBodyDataExtPublicFigure(TeaModel):
-    def __init__(
-        self,
-        figure_id: str = None,
-        figure_name: str = None,
-    ):
-        self.figure_id = figure_id
-        self.figure_name = figure_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.figure_id is not None:
-            result['FigureId'] = self.figure_id
-        if self.figure_name is not None:
-            result['FigureName'] = self.figure_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('FigureId') is not None:
-            self.figure_id = m.get('FigureId')
-        if m.get('FigureName') is not None:
-            self.figure_name = m.get('FigureName')
-        return self
-
-
-class ImageModerationResponseBodyDataExtRecognition(TeaModel):
-    def __init__(
-        self,
-        classification: str = None,
-        confidence: float = None,
-    ):
-        self.classification = classification
-        self.confidence = confidence
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.classification is not None:
-            result['Classification'] = self.classification
-        if self.confidence is not None:
-            result['Confidence'] = self.confidence
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Classification') is not None:
-            self.classification = m.get('Classification')
-        if m.get('Confidence') is not None:
-            self.confidence = m.get('Confidence')
-        return self
-
-
-class ImageModerationResponseBodyDataExtTextInImageCustomText(TeaModel):
-    def __init__(
-        self,
-        key_words: str = None,
-        lib_id: str = None,
-        lib_name: str = None,
-    ):
-        self.key_words = key_words
-        self.lib_id = lib_id
-        self.lib_name = lib_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.key_words is not None:
-            result['KeyWords'] = self.key_words
-        if self.lib_id is not None:
-            result['LibId'] = self.lib_id
-        if self.lib_name is not None:
-            result['LibName'] = self.lib_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('KeyWords') is not None:
-            self.key_words = m.get('KeyWords')
-        if m.get('LibId') is not None:
-            self.lib_id = m.get('LibId')
-        if m.get('LibName') is not None:
-            self.lib_name = m.get('LibName')
-        return self
-
-
-class ImageModerationResponseBodyDataExtTextInImageOcrResultLocation(TeaModel):
+class ImageModerationResponseBodyDataExtPublicFigureLocation(TeaModel):
     def __init__(
         self,
         h: int = None,
@@ -2120,13 +2139,190 @@ class ImageModerationResponseBodyDataExtTextInImageOcrResultLocation(TeaModel):
         return self
 
 
+class ImageModerationResponseBodyDataExtPublicFigure(TeaModel):
+    def __init__(
+        self,
+        figure_id: str = None,
+        figure_name: str = None,
+        location: List[ImageModerationResponseBodyDataExtPublicFigureLocation] = None,
+    ):
+        # Identified person coding information.
+        self.figure_id = figure_id
+        # Identified person name information.
+        self.figure_name = figure_name
+        self.location = location
+
+    def validate(self):
+        if self.location:
+            for k in self.location:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.figure_id is not None:
+            result['FigureId'] = self.figure_id
+        if self.figure_name is not None:
+            result['FigureName'] = self.figure_name
+        result['Location'] = []
+        if self.location is not None:
+            for k in self.location:
+                result['Location'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FigureId') is not None:
+            self.figure_id = m.get('FigureId')
+        if m.get('FigureName') is not None:
+            self.figure_name = m.get('FigureName')
+        self.location = []
+        if m.get('Location') is not None:
+            for k in m.get('Location'):
+                temp_model = ImageModerationResponseBodyDataExtPublicFigureLocation()
+                self.location.append(temp_model.from_map(k))
+        return self
+
+
+class ImageModerationResponseBodyDataExtRecognition(TeaModel):
+    def __init__(
+        self,
+        classification: str = None,
+        confidence: float = None,
+    ):
+        # The category of image recognition.
+        self.classification = classification
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+        self.confidence = confidence
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.classification is not None:
+            result['Classification'] = self.classification
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Classification') is not None:
+            self.classification = m.get('Classification')
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        return self
+
+
+class ImageModerationResponseBodyDataExtTextInImageCustomText(TeaModel):
+    def __init__(
+        self,
+        key_words: str = None,
+        lib_id: str = None,
+        lib_name: str = None,
+    ):
+        # Custom words, multiple words separated by commas.
+        self.key_words = key_words
+        # Custom library ID.
+        self.lib_id = lib_id
+        # Custom library name.
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+        if self.lib_id is not None:
+            result['LibId'] = self.lib_id
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+        if m.get('LibId') is not None:
+            self.lib_id = m.get('LibId')
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
+        return self
+
+
+class ImageModerationResponseBodyDataExtTextInImageOcrResultLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        # The height of the text area, in pixels.
+        self.h = h
+        # The width of the text area, in pixels.
+        self.w = w
+        # The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+        self.x = x
+        # The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
 class ImageModerationResponseBodyDataExtTextInImageOcrResult(TeaModel):
     def __init__(
         self,
         location: ImageModerationResponseBodyDataExtTextInImageOcrResultLocation = None,
         text: str = None,
     ):
+        # Location information.
         self.location = location
+        # The text information in the recognized image.
         self.text = text
 
     def validate(self):
@@ -2162,8 +2358,11 @@ class ImageModerationResponseBodyDataExtTextInImage(TeaModel):
         ocr_result: List[ImageModerationResponseBodyDataExtTextInImageOcrResult] = None,
         risk_word: List[str] = None,
     ):
+        # When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
         self.custom_text = custom_text
+        # Returns the text information in the recognized image.
         self.ocr_result = ocr_result
+        # The risk words that are hit. Multiple words are separated by commas (,).
         self.risk_word = risk_word
 
     def validate(self):
@@ -2221,11 +2420,17 @@ class ImageModerationResponseBodyDataExt(TeaModel):
         recognition: List[ImageModerationResponseBodyDataExtRecognition] = None,
         text_in_image: ImageModerationResponseBodyDataExtTextInImage = None,
     ):
+        # If a custom image library is hit, information about the hit custom image library is returned.
         self.custom_image = custom_image
+        # Logo information.
         self.logo_data = logo_data
+        # Returns the text information in the recognized image.
         self.ocr_result = ocr_result
+        # Person information list.
         self.public_figure = public_figure
+        # The result of image recognition.
         self.recognition = recognition
+        # Returns the text information in the hit image.
         self.text_in_image = text_in_image
 
     def validate(self):
@@ -2321,7 +2526,9 @@ class ImageModerationResponseBodyDataResult(TeaModel):
         confidence: float = None,
         label: str = None,
     ):
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
+        # The labels returned after the image moderation.
         self.label = label
 
     def validate(self):
@@ -2356,9 +2563,13 @@ class ImageModerationResponseBodyData(TeaModel):
         result: List[ImageModerationResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # Auxiliary reference information.
         self.ext = ext
+        # The results of image moderation parameters such as the label parameter and the confidence parameter.
         self.result = result
+        # Risk Level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -2412,9 +2623,13 @@ class ImageModerationResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2498,7 +2713,9 @@ class TextModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -2533,9 +2750,13 @@ class TextModerationResponseBodyData(TeaModel):
         labels: str = None,
         reason: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The device ID.
         self.device_id = device_id
+        # Labels.
         self.labels = labels
+        # The JSON string used to locate the cause.
         self.reason = reason
 
     def validate(self):
@@ -2578,9 +2799,13 @@ class TextModerationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The moderation results.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2664,7 +2889,9 @@ class TextModerationPlusRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -2698,8 +2925,11 @@ class TextModerationPlusResponseBodyDataAdvice(TeaModel):
         hit_label: str = None,
         hit_lib_name: str = None,
     ):
+        # Answer
         self.answer = answer
+        # Hit Label
         self.hit_label = hit_label
+        # Hit Library Name
         self.hit_lib_name = hit_lib_name
 
     def validate(self):
@@ -2736,7 +2966,9 @@ class TextModerationPlusResponseBodyDataResultCustomizedHit(TeaModel):
         key_words: str = None,
         lib_name: str = None,
     ):
+        # Hit keywords, comma separated.
         self.key_words = key_words
+        # Library Name
         self.lib_name = lib_name
 
     def validate(self):
@@ -2771,9 +3003,13 @@ class TextModerationPlusResponseBodyDataResult(TeaModel):
         label: str = None,
         risk_words: str = None,
     ):
+        # Confidence score, 0 to 100, reserved to 2 decimal places.
         self.confidence = confidence
+        # Custom keyword hits
         self.customized_hit = customized_hit
+        # Labels.
         self.label = label
+        # Risk words
         self.risk_words = risk_words
 
     def validate(self):
@@ -2824,9 +3060,13 @@ class TextModerationPlusResponseBodyData(TeaModel):
         risk_level: str = None,
         score: float = None,
     ):
+        # Advice
         self.advice = advice
+        # The moderation results.
         self.result = result
+        # Risk Level
         self.risk_level = risk_level
+        # Score.
         self.score = score
 
     def validate(self):
@@ -2886,10 +3126,13 @@ class TextModerationPlusResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2973,7 +3216,9 @@ class UrlAsyncModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -3006,7 +3251,9 @@ class UrlAsyncModerationResponseBodyData(TeaModel):
         data_id: str = None,
         req_id: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The reqId field returned by the Url Async Moderation API.
         self.req_id = req_id
 
     def validate(self):
@@ -3041,8 +3288,11 @@ class UrlAsyncModerationResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.msg = msg
         # Id of the request
         self.request_id = request_id
@@ -3128,7 +3378,9 @@ class VideoModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -3161,7 +3413,9 @@ class VideoModerationResponseBodyData(TeaModel):
         data_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -3196,10 +3450,13 @@ class VideoModerationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3283,7 +3540,9 @@ class VideoModerationCancelRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -3317,9 +3576,11 @@ class VideoModerationCancelResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3397,7 +3658,9 @@ class VideoModerationResultRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -3430,7 +3693,9 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(TeaModel):
         label: str = None,
         label_sum: int = None,
     ):
+        # Voice label.
         self.label = label
+        # The number of times that the label is matched.
         self.label_sum = label_sum
 
     def validate(self):
@@ -3472,16 +3737,27 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
         text: str = None,
         url: str = None,
     ):
+        # The end time of the text after voice-to-text conversion. Unit: seconds.
         self.end_time = end_time
+        # The end timestamp of the segment. Unit: milliseconds.
         self.end_timestamp = end_timestamp
+        # A reserved parameter.
         self.extend = extend
+        # The details of the labels.
         self.labels = labels
+        # Subcategory labels. Multiple labels are separated by commas (,).
         self.risk_tips = risk_tips
+        # The risk words that are hit. Multiple words are separated by commas (,).
         self.risk_words = risk_words
+        # Risk score, default range 0-99.
         self.score = score
+        # The start time of the text after voice-to-text conversion. Unit: seconds.
         self.start_time = start_time
+        # The start timestamp of the segment. Unit: milliseconds.
         self.start_timestamp = start_timestamp
+        # The text converted from voice.
         self.text = text
+        # If the moderation object is a voice stream, this parameter indicates the temporary access URL of the voice stream to which the text entry corresponds. The validity period of the URL is 30 minutes. You must prepare another URL to store the audio stream at the earliest opportunity.
         self.url = url
 
     def validate(self):
@@ -3550,7 +3826,9 @@ class VideoModerationResultResponseBodyDataAudioResult(TeaModel):
         audio_summarys: List[VideoModerationResultResponseBodyDataAudioResultAudioSummarys] = None,
         slice_details: List[VideoModerationResultResponseBodyDataAudioResultSliceDetails] = None,
     ):
+        # Summary of voice labels.
         self.audio_summarys = audio_summarys
+        # The details about the text in the moderated voice. The value is a JSON array that contains one or more elements. Each element corresponds to a text entry.
         self.slice_details = slice_details
 
     def validate(self):
@@ -3600,7 +3878,9 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(TeaModel):
         label: str = None,
         label_sum: int = None,
     ):
+        # The label against which a captured frame is matched.
         self.label = label
+        # The number of times that the label is matched.
         self.label_sum = label_sum
 
     def validate(self):
@@ -3633,7 +3913,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage(T
         image_id: str = None,
         lib_id: str = None,
     ):
+        # The ID of the hit custom image.
         self.image_id = image_id
+        # The custom image library ID of the hit.
         self.lib_id = lib_id
 
     def validate(self):
@@ -3665,6 +3947,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(
         self,
         figure_id: str = None,
     ):
+        # Identified person coding information.
         self.figure_id = figure_id
 
     def validate(self):
@@ -3693,7 +3976,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(TeaMod
         confidence: float = None,
         label: str = None,
     ):
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
+        # The label returned after a frame is moderated. Multiple risk labels and the corresponding scores of confidence levels may be returned for a frame.
         self.label = label
 
     def validate(self):
@@ -3729,10 +4014,15 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(TeaModel):
         service: str = None,
         text_in_image: Dict[str, Any] = None,
     ):
+        # If a custom image library is hit, information about the hit custom image library is returned.
         self.custom_image = custom_image
+        # If the video contains a specific person, the recognized person code is returned.
         self.public_figure = public_figure
+        # The results of frame moderation parameters such as the label parameter and the confidence parameter.
         self.result = result
+        # The moderation service that is called.
         self.service = service
+        # Returns the text information in the hit image.
         self.text_in_image = text_in_image
 
     def validate(self):
@@ -3805,9 +4095,13 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(TeaModel):
         temp_url: str = None,
         timestamp: int = None,
     ):
+        # The interval between the start of the video file and the captured frame. Unit: seconds.
         self.offset = offset
+        # The results of frame moderation parameters such as the label parameter and the confidence parameter.
         self.results = results
+        # The temporary URL of a captured frame. This URL is valid for 30 minutes.
         self.temp_url = temp_url
+        # The absolute timestamp. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -3857,8 +4151,11 @@ class VideoModerationResultResponseBodyDataFrameResult(TeaModel):
         frame_summarys: List[VideoModerationResultResponseBodyDataFrameResultFrameSummarys] = None,
         frames: List[VideoModerationResultResponseBodyDataFrameResultFrames] = None,
     ):
+        # The number of captured frames that are returned for the video file.
         self.frame_num = frame_num
+        # The summary of the labels against which captured frames are matched.
         self.frame_summarys = frame_summarys
+        # The information about the frames that match the labels.
         self.frames = frames
 
     def validate(self):
@@ -3915,10 +4212,15 @@ class VideoModerationResultResponseBodyData(TeaModel):
         live_id: str = None,
         task_id: str = None,
     ):
+        # The voice moderation results. The moderation results contain a structure.
         self.audio_result = audio_result
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The image moderation results. If the call is successful, the HTTP status code 200 and moderation results are returned. The moderation results contain a structure.
         self.frame_result = frame_result
+        # The unique ID of the live stream.
         self.live_id = live_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -3970,10 +4272,13 @@ class VideoModerationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4057,7 +4362,9 @@ class VoiceModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -4090,7 +4397,9 @@ class VoiceModerationResponseBodyData(TeaModel):
         data_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -4125,10 +4434,13 @@ class VoiceModerationResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4212,7 +4524,9 @@ class VoiceModerationCancelRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -4246,9 +4560,11 @@ class VoiceModerationCancelResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4326,7 +4642,9 @@ class VoiceModerationResultRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service.
         self.service = service
+        # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -4369,17 +4687,29 @@ class VoiceModerationResultResponseBodyDataSliceDetails(TeaModel):
         text: str = None,
         url: str = None,
     ):
+        # The end time of the text after audio-to-text conversion. Unit: seconds.
         self.end_time = end_time
+        # The end timestamp of the segment. Unit: milliseconds.
         self.end_timestamp = end_timestamp
+        # A reserved parameter.
         self.extend = extend
+        # The details of the labels.
         self.labels = labels
+        # Reserved field.
         self.origin_algo_result = origin_algo_result
+        # The risk details that are hit.
         self.risk_tips = risk_tips
+        # The risk words that are hit.
         self.risk_words = risk_words
+        # Risk score, default range 0-99.
         self.score = score
+        # The start time of the text after audio-to-text conversion. Unit: seconds.
         self.start_time = start_time
+        # The start timestamp of the segment. Unit: milliseconds.
         self.start_timestamp = start_timestamp
+        # The text converted from voice.
         self.text = text
+        # The temporary access address of the audio segment. The validity period of the URL is 30 minutes. You must prepare another URL to store the audio segment at the earliest opportunity.
         self.url = url
 
     def validate(self):
@@ -4455,10 +4785,15 @@ class VoiceModerationResultResponseBodyData(TeaModel):
         task_id: str = None,
         url: str = None,
     ):
+        # The ID of the moderated object.
         self.data_id = data_id
+        # The unique ID of the live stream.
         self.live_id = live_id
+        # The details about the audio segments.
         self.slice_details = slice_details
+        # The task ID.
         self.task_id = task_id
+        # The URL of the moderation object.
         self.url = url
 
     def validate(self):
@@ -4513,10 +4848,13 @@ class VoiceModerationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message that is returned in response to the request.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
