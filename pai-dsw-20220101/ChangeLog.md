@@ -1,3 +1,8 @@
+2024-07-26 Version: 1.5.0
+- Support API DeleteInstanceLabels.
+- Support API UpdateInstanceLabels.
+
+
 2024-07-25 Version: 1.4.4
 - Update API ListInstances: add param CreateUserId.
 

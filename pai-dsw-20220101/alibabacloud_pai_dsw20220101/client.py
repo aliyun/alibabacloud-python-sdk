@@ -737,6 +737,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, headers, runtime)
 
+    def delete_instance_labels_with_options(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.DeleteInstanceLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
+        """
+        @summary 删除DSW实例的标签
+        
+        @param request: DeleteInstanceLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceLabels',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_labels_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.DeleteInstanceLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
+        """
+        @summary 删除DSW实例的标签
+        
+        @param request: DeleteInstanceLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.label_keys):
+            query['LabelKeys'] = request.label_keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceLabels',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.DeleteInstanceLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_labels(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.DeleteInstanceLabelsRequest,
+    ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
+        """
+        @summary 删除DSW实例的标签
+        
+        @param request: DeleteInstanceLabelsRequest
+        @return: DeleteInstanceLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instance_labels_with_options(instance_id, request, headers, runtime)
+
+    async def delete_instance_labels_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.DeleteInstanceLabelsRequest,
+    ) -> pai_dsw_20220101_models.DeleteInstanceLabelsResponse:
+        """
+        @summary 删除DSW实例的标签
+        
+        @param request: DeleteInstanceLabelsRequest
+        @return: DeleteInstanceLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instance_labels_with_options_async(instance_id, request, headers, runtime)
+
     def delete_instance_shutdown_timer_with_options(
         self,
         instance_id: str,
@@ -2916,3 +3024,111 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
+
+    def update_instance_labels_with_options(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.UpdateInstanceLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
+        """
+        @summary 修改DSW实例的标签
+        
+        @param request: UpdateInstanceLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceLabels',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/labels',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_labels_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.UpdateInstanceLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
+        """
+        @summary 修改DSW实例的标签
+        
+        @param request: UpdateInstanceLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceLabels',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/labels',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dsw_20220101_models.UpdateInstanceLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_labels(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.UpdateInstanceLabelsRequest,
+    ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
+        """
+        @summary 修改DSW实例的标签
+        
+        @param request: UpdateInstanceLabelsRequest
+        @return: UpdateInstanceLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_instance_labels_with_options(instance_id, request, headers, runtime)
+
+    async def update_instance_labels_async(
+        self,
+        instance_id: str,
+        request: pai_dsw_20220101_models.UpdateInstanceLabelsRequest,
+    ) -> pai_dsw_20220101_models.UpdateInstanceLabelsResponse:
+        """
+        @summary 修改DSW实例的标签
+        
+        @param request: UpdateInstanceLabelsRequest
+        @return: UpdateInstanceLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_instance_labels_with_options_async(instance_id, request, headers, runtime)
