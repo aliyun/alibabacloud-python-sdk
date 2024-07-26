@@ -1723,6 +1723,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_service_instance_resources_with_options_async(request, runtime)
 
+    def list_service_instance_upgrade_history_with_options(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryResponse:
+        """
+        @summary 查看服务实例升级历史
+        
+        @param request: ListServiceInstanceUpgradeHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceUpgradeHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceInstanceUpgradeHistory',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_instance_upgrade_history_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryResponse:
+        """
+        @summary 查看服务实例升级历史
+        
+        @param request: ListServiceInstanceUpgradeHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceInstanceUpgradeHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceInstanceUpgradeHistory',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_instance_upgrade_history(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryRequest,
+    ) -> compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryResponse:
+        """
+        @summary 查看服务实例升级历史
+        
+        @param request: ListServiceInstanceUpgradeHistoryRequest
+        @return: ListServiceInstanceUpgradeHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_instance_upgrade_history_with_options(request, runtime)
+
+    async def list_service_instance_upgrade_history_async(
+        self,
+        request: compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryRequest,
+    ) -> compute_nest_20210601_models.ListServiceInstanceUpgradeHistoryResponse:
+        """
+        @summary 查看服务实例升级历史
+        
+        @param request: ListServiceInstanceUpgradeHistoryRequest
+        @return: ListServiceInstanceUpgradeHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_instance_upgrade_history_with_options_async(request, runtime)
+
     def list_service_instances_with_options(
         self,
         request: compute_nest_20210601_models.ListServiceInstancesRequest,
@@ -2243,6 +2351,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.restart_service_instance_with_options_async(request, runtime)
 
+    def rollback_service_instance_with_options(
+        self,
+        request: compute_nest_20210601_models.RollbackServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.RollbackServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_service_instance_with_options_async(
+        self,
+        request: compute_nest_20210601_models.RollbackServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackServiceInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.RollbackServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_service_instance(
+        self,
+        request: compute_nest_20210601_models.RollbackServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @return: RollbackServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rollback_service_instance_with_options(request, runtime)
+
+    async def rollback_service_instance_async(
+        self,
+        request: compute_nest_20210601_models.RollbackServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.RollbackServiceInstanceResponse:
+        """
+        @summary 回滚服务实例
+        
+        @param request: RollbackServiceInstanceRequest
+        @return: RollbackServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rollback_service_instance_with_options_async(request, runtime)
+
     def start_service_instance_with_options(
         self,
         request: compute_nest_20210601_models.StartServiceInstanceRequest,
@@ -2655,6 +2867,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
 
+    def update_service_instance_attributes_with_options(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceInstanceAttributesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceAttributesResponse:
+        """
+        @summary 更新服务实例属性
+        
+        @param request: UpdateServiceInstanceAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceInstanceAttributesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_operation):
+            query['EnableOperation'] = request.enable_operation
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceInstanceAttributes',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpdateServiceInstanceAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_instance_attributes_with_options_async(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceInstanceAttributesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceAttributesResponse:
+        """
+        @summary 更新服务实例属性
+        
+        @param request: UpdateServiceInstanceAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceInstanceAttributesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable_operation):
+            query['EnableOperation'] = request.enable_operation
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateServiceInstanceAttributes',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpdateServiceInstanceAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_instance_attributes(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceInstanceAttributesRequest,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceAttributesResponse:
+        """
+        @summary 更新服务实例属性
+        
+        @param request: UpdateServiceInstanceAttributesRequest
+        @return: UpdateServiceInstanceAttributesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_service_instance_attributes_with_options(request, runtime)
+
+    async def update_service_instance_attributes_async(
+        self,
+        request: compute_nest_20210601_models.UpdateServiceInstanceAttributesRequest,
+    ) -> compute_nest_20210601_models.UpdateServiceInstanceAttributesResponse:
+        """
+        @summary 更新服务实例属性
+        
+        @param request: UpdateServiceInstanceAttributesRequest
+        @return: UpdateServiceInstanceAttributesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_service_instance_attributes_with_options_async(request, runtime)
+
     def update_service_instance_spec_with_options(
         self,
         tmp_req: compute_nest_20210601_models.UpdateServiceInstanceSpecRequest,
@@ -2890,3 +3206,119 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_service_usage_with_options_async(request, runtime)
+
+    def upgrade_service_instance_with_options(
+        self,
+        tmp_req: compute_nest_20210601_models.UpgradeServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpgradeServiceInstanceResponse:
+        """
+        @param tmp_req: UpgradeServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeServiceInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.UpgradeServiceInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpgradeServiceInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_service_instance_with_options_async(
+        self,
+        tmp_req: compute_nest_20210601_models.UpgradeServiceInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.UpgradeServiceInstanceResponse:
+        """
+        @param tmp_req: UpgradeServiceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeServiceInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_20210601_models.UpgradeServiceInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeServiceInstance',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.UpgradeServiceInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_service_instance(
+        self,
+        request: compute_nest_20210601_models.UpgradeServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.UpgradeServiceInstanceResponse:
+        """
+        @param request: UpgradeServiceInstanceRequest
+        @return: UpgradeServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_service_instance_with_options(request, runtime)
+
+    async def upgrade_service_instance_async(
+        self,
+        request: compute_nest_20210601_models.UpgradeServiceInstanceRequest,
+    ) -> compute_nest_20210601_models.UpgradeServiceInstanceResponse:
+        """
+        @param request: UpgradeServiceInstanceRequest
+        @return: UpgradeServiceInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_service_instance_with_options_async(request, runtime)
