@@ -9124,10 +9124,12 @@ class ListHttpApisRequest(TeaModel):
         keyword: str = None,
         page_number: int = None,
         page_size: int = None,
+        published_only: bool = None,
     ):
         self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
+        self.published_only = published_only
 
     def validate(self):
         pass
@@ -9144,6 +9146,8 @@ class ListHttpApisRequest(TeaModel):
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.published_only is not None:
+            result['publishedOnly'] = self.published_only
         return result
 
     def from_map(self, m: dict = None):
@@ -9154,6 +9158,8 @@ class ListHttpApisRequest(TeaModel):
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('publishedOnly') is not None:
+            self.published_only = m.get('publishedOnly')
         return self
 
 

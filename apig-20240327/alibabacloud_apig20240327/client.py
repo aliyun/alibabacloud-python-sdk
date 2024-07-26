@@ -3327,6 +3327,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.published_only):
+            query['publishedOnly'] = request.published_only
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3369,6 +3371,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.published_only):
+            query['publishedOnly'] = request.published_only
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
