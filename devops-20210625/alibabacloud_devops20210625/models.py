@@ -811,6 +811,101 @@ class AddWebhookResponse(TeaModel):
         return self
 
 
+class CancelExecutionReleaseStageRequest(TeaModel):
+    def __init__(
+        self,
+        organization_id: str = None,
+    ):
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class CancelExecutionReleaseStageResponseBody(TeaModel):
+    def __init__(
+        self,
+        success: bool = None,
+    ):
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CancelExecutionReleaseStageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelExecutionReleaseStageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelExecutionReleaseStageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloseMergeRequestRequest(TeaModel):
     def __init__(
         self,
@@ -15475,6 +15570,119 @@ class EnableDeployKeyResponse(TeaModel):
         return self
 
 
+class ExecuteChangeRequestReleaseStageRequest(TeaModel):
+    def __init__(
+        self,
+        params: Dict[str, Any] = None,
+        organization_id: str = None,
+    ):
+        self.params = params
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.params is not None:
+            result['params'] = self.params
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class ExecuteChangeRequestReleaseStageResponseBody(TeaModel):
+    def __init__(
+        self,
+        object: int = None,
+        pipeline_id: int = None,
+        pipeline_run_id: int = None,
+    ):
+        self.object = object
+        self.pipeline_id = pipeline_id
+        self.pipeline_run_id = pipeline_run_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object is not None:
+            result['object'] = self.object
+        if self.pipeline_id is not None:
+            result['pipelineId'] = self.pipeline_id
+        if self.pipeline_run_id is not None:
+            result['pipelineRunId'] = self.pipeline_run_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('object') is not None:
+            self.object = m.get('object')
+        if m.get('pipelineId') is not None:
+            self.pipeline_id = m.get('pipelineId')
+        if m.get('pipelineRunId') is not None:
+            self.pipeline_run_id = m.get('pipelineRunId')
+        return self
+
+
+class ExecuteChangeRequestReleaseStageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteChangeRequestReleaseStageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteChangeRequestReleaseStageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExportInsightCustomValueRequest(TeaModel):
     def __init__(
         self,
@@ -25359,6 +25567,491 @@ class GetPushRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPushRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetReleaseStagePipelineRunRequest(TeaModel):
+    def __init__(
+        self,
+        organization_id: str = None,
+    ):
+        self.organization_id = organization_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData(TeaModel):
+    def __init__(
+        self,
+        branch: str = None,
+        commit: str = None,
+        repo: str = None,
+    ):
+        self.branch = branch
+        self.commit = commit
+        self.repo = repo
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.branch is not None:
+            result['branch'] = self.branch
+        if self.commit is not None:
+            result['commit'] = self.commit
+        if self.repo is not None:
+            result['repo'] = self.repo
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('branch') is not None:
+            self.branch = m.get('branch')
+        if m.get('commit') is not None:
+            self.commit = m.get('commit')
+        if m.get('repo') is not None:
+            self.repo = m.get('repo')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRunSources(TeaModel):
+    def __init__(
+        self,
+        data: GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData = None,
+        sign: str = None,
+        type: str = None,
+    ):
+        self.data = data
+        self.sign = sign
+        self.type = type
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.sign is not None:
+            result['sign'] = self.sign
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('sign') is not None:
+            self.sign = m.get('sign')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions(TeaModel):
+    def __init__(
+        self,
+        disable: bool = None,
+        params: Any = None,
+        type: str = None,
+    ):
+        self.disable = disable
+        self.params = params
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable is not None:
+            result['disable'] = self.disable
+        if self.params is not None:
+            result['params'] = self.params
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs(TeaModel):
+    def __init__(
+        self,
+        actions: List[GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions] = None,
+        end_time: int = None,
+        id: int = None,
+        name: str = None,
+        params: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        self.actions = actions
+        self.end_time = end_time
+        self.id = id
+        self.name = name
+        self.params = params
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        if self.actions:
+            for k in self.actions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['actions'] = []
+        if self.actions is not None:
+            for k in self.actions:
+                result['actions'].append(k.to_map() if k else None)
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.params is not None:
+            result['params'] = self.params
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.actions = []
+        if m.get('actions') is not None:
+            for k in m.get('actions'):
+                temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions()
+                self.actions.append(temp_model.from_map(k))
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('params') is not None:
+            self.params = m.get('params')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo(TeaModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        jobs: List[GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs] = None,
+        name: str = None,
+        start_time: int = None,
+        status: str = None,
+    ):
+        self.end_time = end_time
+        self.jobs = jobs
+        self.name = name
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        result['jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['jobs'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['name'] = self.name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        self.jobs = []
+        if m.get('jobs') is not None:
+            for k in m.get('jobs'):
+                temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRunStages(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        stage_info: GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo = None,
+    ):
+        self.name = name
+        self.stage_info = stage_info
+
+    def validate(self):
+        if self.stage_info:
+            self.stage_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.stage_info is not None:
+            result['stageInfo'] = self.stage_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('stageInfo') is not None:
+            temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo()
+            self.stage_info = temp_model.from_map(m['stageInfo'])
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBodyPipelineRun(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        creator_account_id: str = None,
+        modifier_account_id: str = None,
+        pipeline_id: int = None,
+        pipeline_run_id: int = None,
+        sources: List[GetReleaseStagePipelineRunResponseBodyPipelineRunSources] = None,
+        stage_group: List[List[str]] = None,
+        stages: List[GetReleaseStagePipelineRunResponseBodyPipelineRunStages] = None,
+        status: str = None,
+        trigger_mode: int = None,
+        update_time: int = None,
+    ):
+        self.create_time = create_time
+        self.creator_account_id = creator_account_id
+        self.modifier_account_id = modifier_account_id
+        self.pipeline_id = pipeline_id
+        self.pipeline_run_id = pipeline_run_id
+        self.sources = sources
+        self.stage_group = stage_group
+        self.stages = stages
+        self.status = status
+        self.trigger_mode = trigger_mode
+        self.update_time = update_time
+
+    def validate(self):
+        if self.sources:
+            for k in self.sources:
+                if k:
+                    k.validate()
+        if self.stages:
+            for k in self.stages:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.creator_account_id is not None:
+            result['creatorAccountId'] = self.creator_account_id
+        if self.modifier_account_id is not None:
+            result['modifierAccountId'] = self.modifier_account_id
+        if self.pipeline_id is not None:
+            result['pipelineId'] = self.pipeline_id
+        if self.pipeline_run_id is not None:
+            result['pipelineRunId'] = self.pipeline_run_id
+        result['sources'] = []
+        if self.sources is not None:
+            for k in self.sources:
+                result['sources'].append(k.to_map() if k else None)
+        if self.stage_group is not None:
+            result['stageGroup'] = self.stage_group
+        result['stages'] = []
+        if self.stages is not None:
+            for k in self.stages:
+                result['stages'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['status'] = self.status
+        if self.trigger_mode is not None:
+            result['triggerMode'] = self.trigger_mode
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('creatorAccountId') is not None:
+            self.creator_account_id = m.get('creatorAccountId')
+        if m.get('modifierAccountId') is not None:
+            self.modifier_account_id = m.get('modifierAccountId')
+        if m.get('pipelineId') is not None:
+            self.pipeline_id = m.get('pipelineId')
+        if m.get('pipelineRunId') is not None:
+            self.pipeline_run_id = m.get('pipelineRunId')
+        self.sources = []
+        if m.get('sources') is not None:
+            for k in m.get('sources'):
+                temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRunSources()
+                self.sources.append(temp_model.from_map(k))
+        if m.get('stageGroup') is not None:
+            self.stage_group = m.get('stageGroup')
+        self.stages = []
+        if m.get('stages') is not None:
+            for k in m.get('stages'):
+                temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRunStages()
+                self.stages.append(temp_model.from_map(k))
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('triggerMode') is not None:
+            self.trigger_mode = m.get('triggerMode')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class GetReleaseStagePipelineRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        pipeline_run: GetReleaseStagePipelineRunResponseBodyPipelineRun = None,
+    ):
+        self.pipeline_run = pipeline_run
+
+    def validate(self):
+        if self.pipeline_run:
+            self.pipeline_run.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pipeline_run is not None:
+            result['pipelineRun'] = self.pipeline_run.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pipelineRun') is not None:
+            temp_model = GetReleaseStagePipelineRunResponseBodyPipelineRun()
+            self.pipeline_run = temp_model.from_map(m['pipelineRun'])
+        return self
+
+
+class GetReleaseStagePipelineRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetReleaseStagePipelineRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetReleaseStagePipelineRunResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

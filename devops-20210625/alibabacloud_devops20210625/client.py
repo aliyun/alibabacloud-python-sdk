@@ -553,6 +553,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_webhook_with_options_async(repository_id, request, headers, runtime)
 
+    def cancel_execution_release_stage_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.CancelExecutionReleaseStageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CancelExecutionReleaseStageResponse:
+        """
+        @summary 取消执行研发阶段流水线
+        
+        @param request: CancelExecutionReleaseStageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelExecutionReleaseStageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelExecutionReleaseStage',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3Acancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CancelExecutionReleaseStageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_execution_release_stage_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.CancelExecutionReleaseStageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.CancelExecutionReleaseStageResponse:
+        """
+        @summary 取消执行研发阶段流水线
+        
+        @param request: CancelExecutionReleaseStageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelExecutionReleaseStageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelExecutionReleaseStage',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3Acancel',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.CancelExecutionReleaseStageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_execution_release_stage(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.CancelExecutionReleaseStageRequest,
+    ) -> devops_20210625_models.CancelExecutionReleaseStageResponse:
+        """
+        @summary 取消执行研发阶段流水线
+        
+        @param request: CancelExecutionReleaseStageRequest
+        @return: CancelExecutionReleaseStageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.cancel_execution_release_stage_with_options(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
+    async def cancel_execution_release_stage_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.CancelExecutionReleaseStageRequest,
+    ) -> devops_20210625_models.CancelExecutionReleaseStageResponse:
+        """
+        @summary 取消执行研发阶段流水线
+        
+        @param request: CancelExecutionReleaseStageRequest
+        @return: CancelExecutionReleaseStageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.cancel_execution_release_stage_with_options_async(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
     def close_merge_request_with_options(
         self,
         repository_id: str,
@@ -8489,6 +8609,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.enable_deploy_key_with_options_async(repository_id, key_id, request, headers, runtime)
 
+    def execute_change_request_release_stage_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ExecuteChangeRequestReleaseStageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExecuteChangeRequestReleaseStageResponse:
+        """
+        @summary 执行研发阶段流水线
+        
+        @param request: ExecuteChangeRequestReleaseStageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteChangeRequestReleaseStageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteChangeRequestReleaseStage',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}%3Aexecute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExecuteChangeRequestReleaseStageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_change_request_release_stage_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ExecuteChangeRequestReleaseStageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExecuteChangeRequestReleaseStageResponse:
+        """
+        @summary 执行研发阶段流水线
+        
+        @param request: ExecuteChangeRequestReleaseStageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteChangeRequestReleaseStageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        body = {}
+        if not UtilClient.is_unset(request.params):
+            body['params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteChangeRequestReleaseStage',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}%3Aexecute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExecuteChangeRequestReleaseStageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_change_request_release_stage(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ExecuteChangeRequestReleaseStageRequest,
+    ) -> devops_20210625_models.ExecuteChangeRequestReleaseStageResponse:
+        """
+        @summary 执行研发阶段流水线
+        
+        @param request: ExecuteChangeRequestReleaseStageRequest
+        @return: ExecuteChangeRequestReleaseStageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_change_request_release_stage_with_options(app_name, release_workflow_sn, release_stage_sn, request, headers, runtime)
+
+    async def execute_change_request_release_stage_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        request: devops_20210625_models.ExecuteChangeRequestReleaseStageRequest,
+    ) -> devops_20210625_models.ExecuteChangeRequestReleaseStageResponse:
+        """
+        @summary 执行研发阶段流水线
+        
+        @param request: ExecuteChangeRequestReleaseStageRequest
+        @return: ExecuteChangeRequestReleaseStageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_change_request_release_stage_with_options_async(app_name, release_workflow_sn, release_stage_sn, request, headers, runtime)
+
     def export_insight_custom_value_with_options(
         self,
         organization_id: str,
@@ -12664,6 +12908,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
+
+    def get_release_stage_pipeline_run_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.GetReleaseStagePipelineRunRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetReleaseStagePipelineRunResponse:
+        """
+        @summary 获取研发阶段流水线运行实例
+        
+        @param request: GetReleaseStagePipelineRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReleaseStagePipelineRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetReleaseStagePipelineRun',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3AgetPipelineRun',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetReleaseStagePipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_release_stage_pipeline_run_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.GetReleaseStagePipelineRunRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.GetReleaseStagePipelineRunResponse:
+        """
+        @summary 获取研发阶段流水线运行实例
+        
+        @param request: GetReleaseStagePipelineRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetReleaseStagePipelineRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetReleaseStagePipelineRun',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3AgetPipelineRun',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.GetReleaseStagePipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_release_stage_pipeline_run(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.GetReleaseStagePipelineRunRequest,
+    ) -> devops_20210625_models.GetReleaseStagePipelineRunResponse:
+        """
+        @summary 获取研发阶段流水线运行实例
+        
+        @param request: GetReleaseStagePipelineRunRequest
+        @return: GetReleaseStagePipelineRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_release_stage_pipeline_run_with_options(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
+    async def get_release_stage_pipeline_run_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.GetReleaseStagePipelineRunRequest,
+    ) -> devops_20210625_models.GetReleaseStagePipelineRunResponse:
+        """
+        @summary 获取研发阶段流水线运行实例
+        
+        @param request: GetReleaseStagePipelineRunRequest
+        @return: GetReleaseStagePipelineRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_release_stage_pipeline_run_with_options_async(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
 
     def get_repository_with_options(
         self,

@@ -1,3 +1,9 @@
+2024-07-26 Version: 4.22.0
+- Support API CancelExecutionReleaseStage.
+- Support API ExecuteChangeRequestReleaseStage.
+- Support API GetReleaseStagePipelineRun.
+
+
 2024-07-22 Version: 4.21.1
 - Generated python 2021-06-25 for devops.
 
