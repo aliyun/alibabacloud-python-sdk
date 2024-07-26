@@ -1144,6 +1144,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.car_rule):
             request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
+        if not UtilClient.is_unset(tmp_req.default_standard):
+            request.default_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_standard, 'default_standard', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -1167,6 +1169,8 @@ class Client(OpenApiClient):
             body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
+        if not UtilClient.is_unset(request.default_standard_shrink):
+            body['default_standard'] = request.default_standard_shrink
         if not UtilClient.is_unset(request.depart_id):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
@@ -1275,6 +1279,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.car_rule):
             request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
+        if not UtilClient.is_unset(tmp_req.default_standard):
+            request.default_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_standard, 'default_standard', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -1298,6 +1304,8 @@ class Client(OpenApiClient):
             body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
+        if not UtilClient.is_unset(request.default_standard_shrink):
+            body['default_standard'] = request.default_standard_shrink
         if not UtilClient.is_unset(request.depart_id):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
@@ -1986,6 +1994,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.car_rule):
             request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
+        if not UtilClient.is_unset(tmp_req.default_standard):
+            request.default_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_standard, 'default_standard', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -2009,6 +2019,8 @@ class Client(OpenApiClient):
             body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
+        if not UtilClient.is_unset(request.default_standard_shrink):
+            body['default_standard'] = request.default_standard_shrink
         if not UtilClient.is_unset(request.depart_id):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
@@ -2113,6 +2125,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.car_rule):
             request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
+        if not UtilClient.is_unset(tmp_req.default_standard):
+            request.default_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.default_standard, 'default_standard', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -2136,6 +2150,8 @@ class Client(OpenApiClient):
             body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
+        if not UtilClient.is_unset(request.default_standard_shrink):
+            body['default_standard'] = request.default_standard_shrink
         if not UtilClient.is_unset(request.depart_id):
             body['depart_id'] = request.depart_id
         if not UtilClient.is_unset(request.depart_name):
@@ -3735,6 +3751,8 @@ class Client(OpenApiClient):
             body['scope'] = request.scope
         if not UtilClient.is_unset(request.third_corp_id):
             body['third_corp_id'] = request.third_corp_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3790,6 +3808,8 @@ class Client(OpenApiClient):
             body['scope'] = request.scope
         if not UtilClient.is_unset(request.third_corp_id):
             body['third_corp_id'] = request.third_corp_id
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

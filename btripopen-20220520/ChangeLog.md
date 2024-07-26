@@ -1,3 +1,16 @@
+2024-07-26 Version: 4.1.1
+- Update API ApplyAdd: add param default_standard.
+- Update API ApplyAdd: update param itinerary_list.
+- Update API ApplyAdd: update param itinerary_set_list.
+- Update API ApplyModify: add param default_standard.
+- Update API ApplyModify: update param itinerary_list.
+- Update API ApplyModify: update param itinerary_set_list.
+- Update API CarApplyQuery: update response param.
+- Update API ChannelCorpCreate: add param user_id.
+- Update API ChannelCorpCreate: update response param.
+- Update API IeFlightBillSettlementQuery: update response param.
+
+
 2024-07-11 Version: 4.1.0
 - Support API ChannelCorpCreate.
 - Support API HotelOrderChangeApply.
