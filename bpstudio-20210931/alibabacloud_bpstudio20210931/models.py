@@ -244,10 +244,16 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the new resource group.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource for which you want to change the resource group. Valid values: APPLICATION and TEMPLATE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -433,11 +439,15 @@ class CreateApplicationRequest(TeaModel):
         # The name of the application.
         # 
         # *   The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-listapplication) operation to query the existing applications.
-        # *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the resource group to which the application you want to create belongs.
         self.resource_group_id = resource_group_id
         # The ID of the template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
         self.variables = variables
@@ -521,11 +531,15 @@ class CreateApplicationShrinkRequest(TeaModel):
         # The name of the application.
         # 
         # *   The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-listapplication) operation to query the existing applications.
-        # *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the resource group to which the application you want to create belongs.
         self.resource_group_id = resource_group_id
         # The ID of the template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
         self.variables_shrink = variables_shrink
@@ -675,6 +689,8 @@ class DeleteApplicationRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -794,6 +810,8 @@ class DeployApplicationRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -940,7 +958,7 @@ class ExecuteOperationASyncRequest(TeaModel):
         # 
         # Example of enumerating more than one set of parameters:
         # 
-        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
         # 
         #     <!-- -->
         # 
@@ -948,7 +966,7 @@ class ExecuteOperationASyncRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
         # 
         #     <!-- -->
         self.attributes = attributes
@@ -963,10 +981,14 @@ class ExecuteOperationASyncRequest(TeaModel):
         # - Ecs Tag: addTags
         # - Deletion of ecs: ecsDelete
         # - Paid type for ecs: modifyPayType
+        # 
+        # This parameter is required.
         self.operation = operation
         # Resource group ID, which is used to verify the permissions of the resource group
         self.resource_group_id = resource_group_id
         # The type of the service. If you want to perform operations on an Elastic Compute Service (ECS) instance, set ServiceType to ecs.
+        # 
+        # This parameter is required.
         self.service_type = service_type
 
     def validate(self):
@@ -1031,7 +1053,7 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         # 
         # Example of enumerating more than one set of parameters:
         # 
-        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+        # *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
         # 
         #     <!-- -->
         # 
@@ -1039,7 +1061,7 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         # 
-        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+        #     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
         # 
         #     <!-- -->
         self.attributes_shrink = attributes_shrink
@@ -1054,10 +1076,14 @@ class ExecuteOperationASyncShrinkRequest(TeaModel):
         # - Ecs Tag: addTags
         # - Deletion of ecs: ecsDelete
         # - Paid type for ecs: modifyPayType
+        # 
+        # This parameter is required.
         self.operation = operation
         # Resource group ID, which is used to verify the permissions of the resource group
         self.resource_group_id = resource_group_id
         # The type of the service. If you want to perform operations on an Elastic Compute Service (ECS) instance, set ServiceType to ecs.
+        # 
+        # This parameter is required.
         self.service_type = service_type
 
     def validate(self):
@@ -1203,8 +1229,10 @@ class ExecuteOperationSyncRequest(TeaModel):
         self.application_id = application_id
         self.attributes = attributes
         self.client_token = client_token
+        # This parameter is required.
         self.operation = operation
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.service_type = service_type
 
     def validate(self):
@@ -1260,8 +1288,10 @@ class ExecuteOperationSyncShrinkRequest(TeaModel):
         self.application_id = application_id
         self.attributes_shrink = attributes_shrink
         self.client_token = client_token
+        # This parameter is required.
         self.operation = operation
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.service_type = service_type
 
     def validate(self):
@@ -1397,6 +1427,8 @@ class GetApplicationRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # Queries the basic information, verification results, billing results, and deployment results of an application.
         self.resource_group_id = resource_group_id
@@ -1539,8 +1571,8 @@ class GetApplicationResponseBodyDataPriceList(TeaModel):
         self.resource_code = resource_code
         # The instance type. This parameter indicates the information about the instance type. For example, 192.168.0.0/16 may be returned for a Virtual Private Cloud (VPC) instance, ecs.g5.large may be returned for an Elastic Compute Service (ECS) instance, and slb.s1.small may be returned for a Server Load Balancer (SLB) instance. If the resource does not have a specific type, an empty value is returned.
         self.specification = specification
-        # The creation mode. Valid values:\
-        # 1: creates a new instance.\
+        # The creation mode. Valid values:\\
+        # 1: creates a new instance.\\
         # 2: imports an instance.
         self.type = type
 
@@ -1923,6 +1955,8 @@ class GetExecuteOperationResultRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the operation.
+        # 
+        # This parameter is required.
         self.operation_id = operation_id
         # The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
         self.resource_group_id = resource_group_id
@@ -2336,6 +2370,8 @@ class GetTemplateRequest(TeaModel):
         # ResourceGroup ID
         self.resource_group_id = resource_group_id
         # Template ID
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -2896,8 +2932,12 @@ class ListApplicationRequest(TeaModel):
         # Keywords in the app name
         self.keyword = keyword
         # The pagination size of the resulting value cannot be less than the minimum value of 1 and cannot be greater than the maximum value of 50.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The pagination page number of the resulting value cannot be less than the minimum value of 1 and cannot be greater than the maximum value of 10000.
+        # 
+        # This parameter is required.
         self.next_token = next_token
         # 1 update time,<br>2 creation time
         self.order_type = order_type
@@ -3323,10 +3363,16 @@ class ListTagResourcesRequest(TeaModel):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify a maximum number of 50 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags. A maximum of 20 tags are supported.
         self.tag = tag
@@ -3547,8 +3593,12 @@ class ListTemplateRequest(TeaModel):
         # The keyword that is used to search for templates.
         self.keyword = keyword
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.max_results = max_results
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.next_token = next_token
         # The criterion by which the returned templates are sorted. Valid values:
         # 
@@ -3563,6 +3613,8 @@ class ListTemplateRequest(TeaModel):
         # The tag that you want to use to query templates.
         self.tag_list = tag_list
         # The type of the templates to be returned. Valid values: public and private
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3799,6 +3851,8 @@ class ReleaseApplicationRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -3931,6 +3985,8 @@ class ValidateApplicationRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -4063,6 +4119,8 @@ class ValuateApplicationRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The operation that you want to perform. Set the value to ValuateApplication.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the resource group to which the application you want to query belongs.
         self.client_token = client_token
@@ -4242,12 +4300,16 @@ class ValuateTemplateRequest(TeaModel):
         # The region ID.
         self.area_id = area_id
         # The client token that is used to ensure the idempotence of the request.
+        # 
+        # This parameter is required.
         self.client_token = client_token
         # The instances to be replaced.
         self.instances = instances
         # The ID of the resource group to which the application belongs.
         self.resource_group_id = resource_group_id
         # The template ID.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
         self.variables = variables
@@ -4313,12 +4375,16 @@ class ValuateTemplateShrinkRequest(TeaModel):
         # The region ID.
         self.area_id = area_id
         # The client token that is used to ensure the idempotence of the request.
+        # 
+        # This parameter is required.
         self.client_token = client_token
         # The instances to be replaced.
         self.instances_shrink = instances_shrink
         # The ID of the resource group to which the application belongs.
         self.resource_group_id = resource_group_id
         # The template ID.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
         self.variables_shrink = variables_shrink
@@ -4392,9 +4458,9 @@ class ValuateTemplateResponseBodyDataResourceListPriceList(TeaModel):
         self.resource_id = resource_id
         # The price at which the transaction is made.
         self.trade_price = trade_price
-        # Indicates whether the instance is newly created. Valid values:\
-        # 1: The instance is newly created.\
-        # 2: The instance already exists.\
+        # Indicates whether the instance is newly created. Valid values:\\
+        # 1: The instance is newly created.\\
+        # 2: The instance already exists.\\
         # 0: The price of the instance is not included.
         self.type = type
 

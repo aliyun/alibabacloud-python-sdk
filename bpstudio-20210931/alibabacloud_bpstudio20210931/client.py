@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailBackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
+        """
+        @summary 容灾应用切回
+        
+        @param request: AppFailBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppFailBackResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -74,6 +81,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailBackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
+        """
+        @summary 容灾应用切回
+        
+        @param request: AppFailBackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppFailBackResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -101,6 +115,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.AppFailBackRequest,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
+        """
+        @summary 容灾应用切回
+        
+        @param request: AppFailBackRequest
+        @return: AppFailBackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.app_fail_back_with_options(request, runtime)
 
@@ -108,6 +128,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.AppFailBackRequest,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
+        """
+        @summary 容灾应用切回
+        
+        @param request: AppFailBackRequest
+        @return: AppFailBackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.app_fail_back_with_options_async(request, runtime)
 
@@ -116,6 +142,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailOverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
+        """
+        @summary 容灾应用切换
+        
+        @param request: AppFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppFailOverResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -146,6 +179,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailOverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
+        """
+        @summary 容灾应用切换
+        
+        @param request: AppFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AppFailOverResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -175,6 +215,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.AppFailOverRequest,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
+        """
+        @summary 容灾应用切换
+        
+        @param request: AppFailOverRequest
+        @return: AppFailOverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.app_fail_over_with_options(request, runtime)
 
@@ -182,6 +228,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.AppFailOverRequest,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
+        """
+        @summary 容灾应用切换
+        
+        @param request: AppFailOverRequest
+        @return: AppFailOverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.app_fail_over_with_options_async(request, runtime)
 
@@ -190,6 +242,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an application or template belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -222,6 +281,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ChangeResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an application or template belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -253,6 +319,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ChangeResourceGroupRequest,
     ) -> bpstudio_20210931_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an application or template belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_resource_group_with_options(request, runtime)
 
@@ -260,6 +332,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ChangeResourceGroupRequest,
     ) -> bpstudio_20210931_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which an application or template belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
@@ -268,6 +346,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.CreateApplicationResponse:
+        """
+        @summary Creates an application based on an official template or private template in Cloud Architect Design Tool (CADT). Before you call this operation, make sure that you understand the billing methods and prices of Alibaba Cloud services to be used in the application.
+        
+        @param tmp_req: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -318,6 +403,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.CreateApplicationResponse:
+        """
+        @summary Creates an application based on an official template or private template in Cloud Architect Design Tool (CADT). Before you call this operation, make sure that you understand the billing methods and prices of Alibaba Cloud services to be used in the application.
+        
+        @param tmp_req: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.CreateApplicationShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -367,6 +459,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.CreateApplicationRequest,
     ) -> bpstudio_20210931_models.CreateApplicationResponse:
+        """
+        @summary Creates an application based on an official template or private template in Cloud Architect Design Tool (CADT). Before you call this operation, make sure that you understand the billing methods and prices of Alibaba Cloud services to be used in the application.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_application_with_options(request, runtime)
 
@@ -374,6 +472,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.CreateApplicationRequest,
     ) -> bpstudio_20210931_models.CreateApplicationResponse:
+        """
+        @summary Creates an application based on an official template or private template in Cloud Architect Design Tool (CADT). Before you call this operation, make sure that you understand the billing methods and prices of Alibaba Cloud services to be used in the application.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
 
@@ -383,7 +487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
+        @summary Deletes an application.
+        
+        @description Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -420,7 +526,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
+        @summary Deletes an application.
+        
+        @description Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -456,7 +564,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeleteApplicationRequest,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
+        @summary Deletes an application.
+        
+        @description Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @return: DeleteApplicationResponse
@@ -469,7 +579,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeleteApplicationRequest,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
+        @summary Deletes an application.
+        
+        @description Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @return: DeleteApplicationResponse
@@ -482,6 +594,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeployApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application after the payment.
+        
+        @param request: DeployApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_id):
@@ -516,6 +635,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeployApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application after the payment.
+        
+        @param request: DeployApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeployApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_id):
@@ -549,6 +675,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.DeployApplicationRequest,
     ) -> bpstudio_20210931_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application after the payment.
+        
+        @param request: DeployApplicationRequest
+        @return: DeployApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deploy_application_with_options(request, runtime)
 
@@ -556,6 +688,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.DeployApplicationRequest,
     ) -> bpstudio_20210931_models.DeployApplicationResponse:
+        """
+        @summary Deploys an application after the payment.
+        
+        @param request: DeployApplicationRequest
+        @return: DeployApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deploy_application_with_options_async(request, runtime)
 
@@ -564,6 +702,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.ExecuteOperationASyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ExecuteOperationASyncResponse:
+        """
+        @summary Asynchronous execution of product operation functions.
+        
+        @param tmp_req: ExecuteOperationASyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteOperationASyncResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.ExecuteOperationASyncShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -606,6 +751,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.ExecuteOperationASyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ExecuteOperationASyncResponse:
+        """
+        @summary Asynchronous execution of product operation functions.
+        
+        @param tmp_req: ExecuteOperationASyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteOperationASyncResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.ExecuteOperationASyncShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -647,6 +799,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ExecuteOperationASyncRequest,
     ) -> bpstudio_20210931_models.ExecuteOperationASyncResponse:
+        """
+        @summary Asynchronous execution of product operation functions.
+        
+        @param request: ExecuteOperationASyncRequest
+        @return: ExecuteOperationASyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_operation_async_with_options(request, runtime)
 
@@ -654,6 +812,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ExecuteOperationASyncRequest,
     ) -> bpstudio_20210931_models.ExecuteOperationASyncResponse:
+        """
+        @summary Asynchronous execution of product operation functions.
+        
+        @param request: ExecuteOperationASyncRequest
+        @return: ExecuteOperationASyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_operation_async_with_options_async(request, runtime)
 
@@ -662,6 +826,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.ExecuteOperationSyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ExecuteOperationSyncResponse:
+        """
+        @summary 维护应用下资源API（同步操作）
+        
+        @param tmp_req: ExecuteOperationSyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteOperationSyncResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.ExecuteOperationSyncShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -704,6 +875,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.ExecuteOperationSyncRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ExecuteOperationSyncResponse:
+        """
+        @summary 维护应用下资源API（同步操作）
+        
+        @param tmp_req: ExecuteOperationSyncRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteOperationSyncResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.ExecuteOperationSyncShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -745,6 +923,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ExecuteOperationSyncRequest,
     ) -> bpstudio_20210931_models.ExecuteOperationSyncResponse:
+        """
+        @summary 维护应用下资源API（同步操作）
+        
+        @param request: ExecuteOperationSyncRequest
+        @return: ExecuteOperationSyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_operation_sync_with_options(request, runtime)
 
@@ -752,6 +936,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ExecuteOperationSyncRequest,
     ) -> bpstudio_20210931_models.ExecuteOperationSyncResponse:
+        """
+        @summary 维护应用下资源API（同步操作）
+        
+        @param request: ExecuteOperationSyncRequest
+        @return: ExecuteOperationSyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_operation_sync_with_options_async(request, runtime)
 
@@ -760,6 +950,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetApplicationResponse:
+        """
+        @summary The URL of the application topology image.
+        
+        @param request: GetApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -790,6 +987,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetApplicationResponse:
+        """
+        @summary The URL of the application topology image.
+        
+        @param request: GetApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -819,6 +1023,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetApplicationRequest,
     ) -> bpstudio_20210931_models.GetApplicationResponse:
+        """
+        @summary The URL of the application topology image.
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_application_with_options(request, runtime)
 
@@ -826,6 +1036,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetApplicationRequest,
     ) -> bpstudio_20210931_models.GetApplicationResponse:
+        """
+        @summary The URL of the application topology image.
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
@@ -834,6 +1050,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetExecuteOperationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetExecuteOperationResultResponse:
+        """
+        @summary Asynchronously queries the result of an operation that is performed on a service instance.
+        
+        @param request: GetExecuteOperationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecuteOperationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.operation_id):
@@ -864,6 +1087,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetExecuteOperationResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetExecuteOperationResultResponse:
+        """
+        @summary Asynchronously queries the result of an operation that is performed on a service instance.
+        
+        @param request: GetExecuteOperationResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecuteOperationResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.operation_id):
@@ -893,6 +1123,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetExecuteOperationResultRequest,
     ) -> bpstudio_20210931_models.GetExecuteOperationResultResponse:
+        """
+        @summary Asynchronously queries the result of an operation that is performed on a service instance.
+        
+        @param request: GetExecuteOperationResultRequest
+        @return: GetExecuteOperationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_execute_operation_result_with_options(request, runtime)
 
@@ -900,6 +1136,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetExecuteOperationResultRequest,
     ) -> bpstudio_20210931_models.GetExecuteOperationResultResponse:
+        """
+        @summary Asynchronously queries the result of an operation that is performed on a service instance.
+        
+        @param request: GetExecuteOperationResultRequest
+        @return: GetExecuteOperationResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_execute_operation_result_with_options_async(request, runtime)
 
@@ -908,6 +1150,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetFoTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        """
+        @summary 获取容灾切换任务状态
+        
+        @param request: GetFoTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFoTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -936,6 +1185,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetFoTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        """
+        @summary 获取容灾切换任务状态
+        
+        @param request: GetFoTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFoTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.task_id):
@@ -963,6 +1219,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetFoTaskStatusRequest,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        """
+        @summary 获取容灾切换任务状态
+        
+        @param request: GetFoTaskStatusRequest
+        @return: GetFoTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_fo_task_status_with_options(request, runtime)
 
@@ -970,6 +1232,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetFoTaskStatusRequest,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
+        """
+        @summary 获取容灾切换任务状态
+        
+        @param request: GetFoTaskStatusRequest
+        @return: GetFoTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_fo_task_status_with_options_async(request, runtime)
 
@@ -978,6 +1246,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        """
+        @summary 获取容灾服务可切换的可用区列表
+        
+        @param request: GetPotentialFailZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPotentialFailZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.is_plan_id):
@@ -1008,6 +1283,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        """
+        @summary 获取容灾服务可切换的可用区列表
+        
+        @param request: GetPotentialFailZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPotentialFailZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.is_plan_id):
@@ -1037,6 +1319,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        """
+        @summary 获取容灾服务可切换的可用区列表
+        
+        @param request: GetPotentialFailZonesRequest
+        @return: GetPotentialFailZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_potential_fail_zones_with_options(request, runtime)
 
@@ -1044,6 +1332,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
+        """
+        @summary 获取容灾服务可切换的可用区列表
+        
+        @param request: GetPotentialFailZonesRequest
+        @return: GetPotentialFailZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_potential_fail_zones_with_options_async(request, runtime)
 
@@ -1052,6 +1346,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
+        """
+        @summary Get template images and information about architecture diagrams.
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region):
@@ -1084,6 +1385,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
+        """
+        @summary Get template images and information about architecture diagrams.
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region):
@@ -1115,6 +1423,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetTemplateRequest,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
+        """
+        @summary Get template images and information about architecture diagrams.
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_template_with_options(request, runtime)
 
@@ -1122,6 +1436,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetTemplateRequest,
     ) -> bpstudio_20210931_models.GetTemplateResponse:
+        """
+        @summary Get template images and information about architecture diagrams.
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_with_options_async(request, runtime)
 
@@ -1131,8 +1451,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTokenResponse:
         """
-        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
-        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        @deprecated OpenAPI GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        
+        @summary Obtains a temporary token that is used to read the architecture diagram. The validity period of the token is 30 minutes.
+        
+        @description >Danger:  This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.
         
         @param request: GetTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1168,8 +1491,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTokenResponse:
         """
-        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
-        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        @deprecated OpenAPI GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        
+        @summary Obtains a temporary token that is used to read the architecture diagram. The validity period of the token is 30 minutes.
+        
+        @description >Danger:  This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.
         
         @param request: GetTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1204,8 +1530,11 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTokenRequest,
     ) -> bpstudio_20210931_models.GetTokenResponse:
         """
-        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
-        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        @deprecated OpenAPI GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        
+        @summary Obtains a temporary token that is used to read the architecture diagram. The validity period of the token is 30 minutes.
+        
+        @description >Danger:  This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1219,8 +1548,11 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTokenRequest,
     ) -> bpstudio_20210931_models.GetTokenResponse:
         """
-        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
-        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        @deprecated OpenAPI GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        
+        @summary Obtains a temporary token that is used to read the architecture diagram. The validity period of the token is 30 minutes.
+        
+        @description >Danger:  This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.
         
         @param request: GetTokenRequest
         @return: GetTokenResponse
@@ -1234,6 +1566,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.InitAppFailOverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        """
+        @summary 准备应用切换
+        
+        @param request: InitAppFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitAppFailOverResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1262,6 +1601,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.InitAppFailOverRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        """
+        @summary 准备应用切换
+        
+        @param request: InitAppFailOverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitAppFailOverResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1289,6 +1635,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.InitAppFailOverRequest,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        """
+        @summary 准备应用切换
+        
+        @param request: InitAppFailOverRequest
+        @return: InitAppFailOverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.init_app_fail_over_with_options(request, runtime)
 
@@ -1296,6 +1648,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.InitAppFailOverRequest,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
+        """
+        @summary 准备应用切换
+        
+        @param request: InitAppFailOverRequest
+        @return: InitAppFailOverResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.init_app_fail_over_with_options_async(request, runtime)
 
@@ -1304,6 +1662,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ListApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListApplicationResponse:
+        """
+        @summary This API provides a list of all applications under the current user. The optional keyword parameter defines the keywords contained in the application name.
+        
+        @param request: ListApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1346,6 +1711,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ListApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListApplicationResponse:
+        """
+        @summary This API provides a list of all applications under the current user. The optional keyword parameter defines the keywords contained in the application name.
+        
+        @param request: ListApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1387,6 +1759,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ListApplicationRequest,
     ) -> bpstudio_20210931_models.ListApplicationResponse:
+        """
+        @summary This API provides a list of all applications under the current user. The optional keyword parameter defines the keywords contained in the application name.
+        
+        @param request: ListApplicationRequest
+        @return: ListApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_application_with_options(request, runtime)
 
@@ -1394,6 +1772,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ListApplicationRequest,
     ) -> bpstudio_20210931_models.ListApplicationResponse:
+        """
+        @summary This API provides a list of all applications under the current user. The optional keyword parameter defines the keywords contained in the application name.
+        
+        @param request: ListApplicationRequest
+        @return: ListApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_application_with_options_async(request, runtime)
 
@@ -1401,6 +1785,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        """
+        @summary 获取已经创建的APP
+        
+        @param request: ListFoCreatedAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoCreatedAppsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListFoCreatedApps',
@@ -1422,6 +1813,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        """
+        @summary 获取已经创建的APP
+        
+        @param request: ListFoCreatedAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFoCreatedAppsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListFoCreatedApps',
@@ -1440,10 +1838,20 @@ class Client(OpenApiClient):
         )
 
     def list_fo_created_apps(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        """
+        @summary 获取已经创建的APP
+        
+        @return: ListFoCreatedAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_fo_created_apps_with_options(runtime)
 
     async def list_fo_created_apps_async(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        """
+        @summary 获取已经创建的APP
+        
+        @return: ListFoCreatedAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_fo_created_apps_with_options_async(runtime)
 
@@ -1452,6 +1860,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of one or more applications or templates.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1493,6 +1908,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of one or more applications or templates.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1533,6 +1955,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ListTagResourcesRequest,
     ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of one or more applications or templates.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -1540,6 +1968,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ListTagResourcesRequest,
     ) -> bpstudio_20210931_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags of one or more applications or templates.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -1548,6 +1982,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ListTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
+        """
+        @summary Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
+        
+        @param request: ListTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1588,6 +2029,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ListTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
+        """
+        @summary Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
+        
+        @param request: ListTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.keyword):
@@ -1627,6 +2075,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ListTemplateRequest,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
+        """
+        @summary Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
+        
+        @param request: ListTemplateRequest
+        @return: ListTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_template_with_options(request, runtime)
 
@@ -1634,6 +2088,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ListTemplateRequest,
     ) -> bpstudio_20210931_models.ListTemplateResponse:
+        """
+        @summary Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
+        
+        @param request: ListTemplateRequest
+        @return: ListTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_template_with_options_async(request, runtime)
 
@@ -1642,6 +2102,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ReleaseApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ReleaseApplicationResponse:
+        """
+        @summary Releases the resources of an application.
+        
+        @param request: ReleaseApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1674,6 +2141,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ReleaseApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ReleaseApplicationResponse:
+        """
+        @summary Releases the resources of an application.
+        
+        @param request: ReleaseApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1705,6 +2179,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ReleaseApplicationRequest,
     ) -> bpstudio_20210931_models.ReleaseApplicationResponse:
+        """
+        @summary Releases the resources of an application.
+        
+        @param request: ReleaseApplicationRequest
+        @return: ReleaseApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_application_with_options(request, runtime)
 
@@ -1712,6 +2192,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ReleaseApplicationRequest,
     ) -> bpstudio_20210931_models.ReleaseApplicationResponse:
+        """
+        @summary Releases the resources of an application.
+        
+        @param request: ReleaseApplicationRequest
+        @return: ReleaseApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_application_with_options_async(request, runtime)
 
@@ -1720,6 +2206,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ValidateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValidateApplicationResponse:
+        """
+        @summary Verifies the resources of an application. ValidateApplication is an asynchronous operation. You can call the GetApplication operation to query the verification result.
+        
+        @param request: ValidateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1754,6 +2247,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ValidateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValidateApplicationResponse:
+        """
+        @summary Verifies the resources of an application. ValidateApplication is an asynchronous operation. You can call the GetApplication operation to query the verification result.
+        
+        @param request: ValidateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1787,6 +2287,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ValidateApplicationRequest,
     ) -> bpstudio_20210931_models.ValidateApplicationResponse:
+        """
+        @summary Verifies the resources of an application. ValidateApplication is an asynchronous operation. You can call the GetApplication operation to query the verification result.
+        
+        @param request: ValidateApplicationRequest
+        @return: ValidateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.validate_application_with_options(request, runtime)
 
@@ -1794,6 +2300,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ValidateApplicationRequest,
     ) -> bpstudio_20210931_models.ValidateApplicationResponse:
+        """
+        @summary Verifies the resources of an application. ValidateApplication is an asynchronous operation. You can call the GetApplication operation to query the verification result.
+        
+        @param request: ValidateApplicationRequest
+        @return: ValidateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.validate_application_with_options_async(request, runtime)
 
@@ -1802,6 +2314,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ValuateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
+        """
+        @summary Queries the prices of resources of an application. You can call the GetApplication operation to obtain the query results.
+        
+        @param request: ValuateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValuateApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1834,6 +2353,13 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.ValuateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
+        """
+        @summary Queries the prices of resources of an application. You can call the GetApplication operation to obtain the query results.
+        
+        @param request: ValuateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValuateApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1865,6 +2391,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ValuateApplicationRequest,
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
+        """
+        @summary Queries the prices of resources of an application. You can call the GetApplication operation to obtain the query results.
+        
+        @param request: ValuateApplicationRequest
+        @return: ValuateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.valuate_application_with_options(request, runtime)
 
@@ -1872,6 +2404,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ValuateApplicationRequest,
     ) -> bpstudio_20210931_models.ValuateApplicationResponse:
+        """
+        @summary Queries the prices of resources of an application. You can call the GetApplication operation to obtain the query results.
+        
+        @param request: ValuateApplicationRequest
+        @return: ValuateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.valuate_application_with_options_async(request, runtime)
 
@@ -1880,6 +2418,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.ValuateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        """
+        @summary Queries the price of a template.
+        
+        @param tmp_req: ValuateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValuateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.ValuateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1924,6 +2469,13 @@ class Client(OpenApiClient):
         tmp_req: bpstudio_20210931_models.ValuateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        """
+        @summary Queries the price of a template.
+        
+        @param tmp_req: ValuateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValuateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = bpstudio_20210931_models.ValuateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1967,6 +2519,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ValuateTemplateRequest,
     ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        """
+        @summary Queries the price of a template.
+        
+        @param request: ValuateTemplateRequest
+        @return: ValuateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.valuate_template_with_options(request, runtime)
 
@@ -1974,5 +2532,11 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.ValuateTemplateRequest,
     ) -> bpstudio_20210931_models.ValuateTemplateResponse:
+        """
+        @summary Queries the price of a template.
+        
+        @param request: ValuateTemplateRequest
+        @return: ValuateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.valuate_template_with_options_async(request, runtime)
