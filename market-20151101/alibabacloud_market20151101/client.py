@@ -71,6 +71,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.ActivateLicenseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.ActivateLicenseResponse:
+        """
+        @summary 增加STS支持
+        
+        @param request: ActivateLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateLicenseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identification):
@@ -101,6 +108,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.ActivateLicenseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.ActivateLicenseResponse:
+        """
+        @summary 增加STS支持
+        
+        @param request: ActivateLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateLicenseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identification):
@@ -130,6 +144,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.ActivateLicenseRequest,
     ) -> market_20151101_models.ActivateLicenseResponse:
+        """
+        @summary 增加STS支持
+        
+        @param request: ActivateLicenseRequest
+        @return: ActivateLicenseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.activate_license_with_options(request, runtime)
 
@@ -137,6 +157,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.ActivateLicenseRequest,
     ) -> market_20151101_models.ActivateLicenseResponse:
+        """
+        @summary 增加STS支持
+        
+        @param request: ActivateLicenseRequest
+        @return: ActivateLicenseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.activate_license_with_options_async(request, runtime)
 
@@ -145,6 +171,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.AutoRenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.AutoRenewInstanceResponse:
+        """
+        @param request: AutoRenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AutoRenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renew_cycle):
@@ -181,6 +212,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.AutoRenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.AutoRenewInstanceResponse:
+        """
+        @param request: AutoRenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AutoRenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renew_cycle):
@@ -216,6 +252,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.AutoRenewInstanceRequest,
     ) -> market_20151101_models.AutoRenewInstanceResponse:
+        """
+        @param request: AutoRenewInstanceRequest
+        @return: AutoRenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.auto_renew_instance_with_options(request, runtime)
 
@@ -223,6 +263,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.AutoRenewInstanceRequest,
     ) -> market_20151101_models.AutoRenewInstanceResponse:
+        """
+        @param request: AutoRenewInstanceRequest
+        @return: AutoRenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.auto_renew_instance_with_options_async(request, runtime)
 
@@ -231,6 +275,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.CreateOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.CreateOrderResponse:
+        """
+        @param request: CreateOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -269,6 +318,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.CreateOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.CreateOrderResponse:
+        """
+        @param request: CreateOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -306,6 +360,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.CreateOrderRequest,
     ) -> market_20151101_models.CreateOrderResponse:
+        """
+        @param request: CreateOrderRequest
+        @return: CreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_order_with_options(request, runtime)
 
@@ -313,6 +371,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.CreateOrderRequest,
     ) -> market_20151101_models.CreateOrderResponse:
+        """
+        @param request: CreateOrderRequest
+        @return: CreateOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_order_with_options_async(request, runtime)
 
@@ -321,6 +383,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.CrossAccountVerifyTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        """
+        @param request: CrossAccountVerifyTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CrossAccountVerifyTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.token):
@@ -349,6 +416,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.CrossAccountVerifyTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        """
+        @param request: CrossAccountVerifyTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CrossAccountVerifyTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.token):
@@ -376,6 +448,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.CrossAccountVerifyTokenRequest,
     ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        """
+        @param request: CrossAccountVerifyTokenRequest
+        @return: CrossAccountVerifyTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cross_account_verify_token_with_options(request, runtime)
 
@@ -383,6 +459,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.CrossAccountVerifyTokenRequest,
     ) -> market_20151101_models.CrossAccountVerifyTokenResponse:
+        """
+        @param request: CrossAccountVerifyTokenRequest
+        @return: CrossAccountVerifyTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cross_account_verify_token_with_options_async(request, runtime)
 
@@ -391,6 +471,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeApiMeteringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeApiMeteringResponse:
+        """
+        @summary 查询API用量
+        
+        @param request: DescribeApiMeteringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiMeteringResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -417,6 +504,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeApiMeteringRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeApiMeteringResponse:
+        """
+        @summary 查询API用量
+        
+        @param request: DescribeApiMeteringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApiMeteringResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -442,6 +536,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeApiMeteringRequest,
     ) -> market_20151101_models.DescribeApiMeteringResponse:
+        """
+        @summary 查询API用量
+        
+        @param request: DescribeApiMeteringRequest
+        @return: DescribeApiMeteringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_api_metering_with_options(request, runtime)
 
@@ -449,6 +549,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeApiMeteringRequest,
     ) -> market_20151101_models.DescribeApiMeteringResponse:
+        """
+        @summary 查询API用量
+        
+        @param request: DescribeApiMeteringRequest
+        @return: DescribeApiMeteringResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_api_metering_with_options_async(request, runtime)
 
@@ -457,6 +563,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeCurrentNodeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeCurrentNodeInfoResponse:
+        """
+        @param request: DescribeCurrentNodeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCurrentNodeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -485,6 +596,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeCurrentNodeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeCurrentNodeInfoResponse:
+        """
+        @param request: DescribeCurrentNodeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCurrentNodeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -512,6 +628,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeCurrentNodeInfoRequest,
     ) -> market_20151101_models.DescribeCurrentNodeInfoResponse:
+        """
+        @param request: DescribeCurrentNodeInfoRequest
+        @return: DescribeCurrentNodeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_current_node_info_with_options(request, runtime)
 
@@ -519,6 +639,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeCurrentNodeInfoRequest,
     ) -> market_20151101_models.DescribeCurrentNodeInfoResponse:
+        """
+        @param request: DescribeCurrentNodeInfoRequest
+        @return: DescribeCurrentNodeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_current_node_info_with_options_async(request, runtime)
 
@@ -527,6 +651,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeDistributionProductsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        """
+        @summary 分页获取推广商品
+        
+        @param request: DescribeDistributionProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistributionProductsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -553,6 +684,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeDistributionProductsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        """
+        @summary 分页获取推广商品
+        
+        @param request: DescribeDistributionProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistributionProductsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -578,6 +716,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeDistributionProductsRequest,
     ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        """
+        @summary 分页获取推广商品
+        
+        @param request: DescribeDistributionProductsRequest
+        @return: DescribeDistributionProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_distribution_products_with_options(request, runtime)
 
@@ -585,6 +729,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeDistributionProductsRequest,
     ) -> market_20151101_models.DescribeDistributionProductsResponse:
+        """
+        @summary 分页获取推广商品
+        
+        @param request: DescribeDistributionProductsRequest
+        @return: DescribeDistributionProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_distribution_products_with_options_async(request, runtime)
 
@@ -593,6 +743,13 @@ class Client(OpenApiClient):
         tmp_req: market_20151101_models.DescribeDistributionProductsLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        """
+        @summary 获取并生成推广商品-链接
+        
+        @param tmp_req: DescribeDistributionProductsLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistributionProductsLinkResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = market_20151101_models.DescribeDistributionProductsLinkShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -625,6 +782,13 @@ class Client(OpenApiClient):
         tmp_req: market_20151101_models.DescribeDistributionProductsLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        """
+        @summary 获取并生成推广商品-链接
+        
+        @param tmp_req: DescribeDistributionProductsLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDistributionProductsLinkResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = market_20151101_models.DescribeDistributionProductsLinkShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -656,6 +820,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeDistributionProductsLinkRequest,
     ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        """
+        @summary 获取并生成推广商品-链接
+        
+        @param request: DescribeDistributionProductsLinkRequest
+        @return: DescribeDistributionProductsLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_distribution_products_link_with_options(request, runtime)
 
@@ -663,6 +833,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeDistributionProductsLinkRequest,
     ) -> market_20151101_models.DescribeDistributionProductsLinkResponse:
+        """
+        @summary 获取并生成推广商品-链接
+        
+        @param request: DescribeDistributionProductsLinkRequest
+        @return: DescribeDistributionProductsLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_distribution_products_link_with_options_async(request, runtime)
 
@@ -671,6 +847,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -703,6 +884,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -734,6 +920,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeInstanceRequest,
     ) -> market_20151101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_with_options(request, runtime)
 
@@ -741,6 +931,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeInstanceRequest,
     ) -> market_20151101_models.DescribeInstanceResponse:
+        """
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
@@ -749,6 +943,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.codes):
@@ -785,6 +984,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.codes):
@@ -820,6 +1024,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeInstancesRequest,
     ) -> market_20151101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -827,6 +1035,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeInstancesRequest,
     ) -> market_20151101_models.DescribeInstancesResponse:
+        """
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -835,6 +1047,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeLicenseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeLicenseResponse:
+        """
+        @summary 获取License
+        
+        @param request: DescribeLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLicenseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.license_code):
@@ -863,6 +1082,13 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeLicenseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeLicenseResponse:
+        """
+        @summary 获取License
+        
+        @param request: DescribeLicenseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLicenseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.license_code):
@@ -890,6 +1116,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeLicenseRequest,
     ) -> market_20151101_models.DescribeLicenseResponse:
+        """
+        @summary 获取License
+        
+        @param request: DescribeLicenseRequest
+        @return: DescribeLicenseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_license_with_options(request, runtime)
 
@@ -897,6 +1129,12 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeLicenseRequest,
     ) -> market_20151101_models.DescribeLicenseResponse:
+        """
+        @summary 获取License
+        
+        @param request: DescribeLicenseRequest
+        @return: DescribeLicenseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_license_with_options_async(request, runtime)
 
@@ -905,6 +1143,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeOrderResponse:
+        """
+        @param request: DescribeOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -933,6 +1176,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeOrderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeOrderResponse:
+        """
+        @param request: DescribeOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_id):
@@ -960,6 +1208,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeOrderRequest,
     ) -> market_20151101_models.DescribeOrderResponse:
+        """
+        @param request: DescribeOrderRequest
+        @return: DescribeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_order_with_options(request, runtime)
 
@@ -967,6 +1219,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeOrderRequest,
     ) -> market_20151101_models.DescribeOrderResponse:
+        """
+        @param request: DescribeOrderRequest
+        @return: DescribeOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_order_with_options_async(request, runtime)
 
@@ -975,6 +1231,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribePriceResponse:
+        """
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity):
@@ -1005,6 +1266,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribePriceResponse:
+        """
+        @param request: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity):
@@ -1034,6 +1300,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribePriceRequest,
     ) -> market_20151101_models.DescribePriceResponse:
+        """
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -1041,6 +1311,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribePriceRequest,
     ) -> market_20151101_models.DescribePriceResponse:
+        """
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 
@@ -1049,6 +1323,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProductResponse:
+        """
+        @param request: DescribeProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -1081,6 +1360,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProductResponse:
+        """
+        @param request: DescribeProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -1112,6 +1396,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProductRequest,
     ) -> market_20151101_models.DescribeProductResponse:
+        """
+        @param request: DescribeProductRequest
+        @return: DescribeProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_product_with_options(request, runtime)
 
@@ -1119,6 +1407,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProductRequest,
     ) -> market_20151101_models.DescribeProductResponse:
+        """
+        @param request: DescribeProductRequest
+        @return: DescribeProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_product_with_options_async(request, runtime)
 
@@ -1127,6 +1419,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProductsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProductsResponse:
+        """
+        @param request: DescribeProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -1161,6 +1458,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProductsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProductsResponse:
+        """
+        @param request: DescribeProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProductsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter):
@@ -1194,6 +1496,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProductsRequest,
     ) -> market_20151101_models.DescribeProductsResponse:
+        """
+        @param request: DescribeProductsRequest
+        @return: DescribeProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_products_with_options(request, runtime)
 
@@ -1201,6 +1507,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProductsRequest,
     ) -> market_20151101_models.DescribeProductsResponse:
+        """
+        @param request: DescribeProductsRequest
+        @return: DescribeProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_products_with_options_async(request, runtime)
 
@@ -1209,6 +1519,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectAttachmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectAttachmentsResponse:
+        """
+        @param request: DescribeProjectAttachmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectAttachmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1237,6 +1552,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectAttachmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectAttachmentsResponse:
+        """
+        @param request: DescribeProjectAttachmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectAttachmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1264,6 +1584,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectAttachmentsRequest,
     ) -> market_20151101_models.DescribeProjectAttachmentsResponse:
+        """
+        @param request: DescribeProjectAttachmentsRequest
+        @return: DescribeProjectAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_attachments_with_options(request, runtime)
 
@@ -1271,6 +1595,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectAttachmentsRequest,
     ) -> market_20151101_models.DescribeProjectAttachmentsResponse:
+        """
+        @param request: DescribeProjectAttachmentsRequest
+        @return: DescribeProjectAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_attachments_with_options_async(request, runtime)
 
@@ -1279,6 +1607,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectInfoResponse:
+        """
+        @param request: DescribeProjectInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1307,6 +1640,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectInfoResponse:
+        """
+        @param request: DescribeProjectInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1334,6 +1672,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectInfoRequest,
     ) -> market_20151101_models.DescribeProjectInfoResponse:
+        """
+        @param request: DescribeProjectInfoRequest
+        @return: DescribeProjectInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_info_with_options(request, runtime)
 
@@ -1341,6 +1683,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectInfoRequest,
     ) -> market_20151101_models.DescribeProjectInfoResponse:
+        """
+        @param request: DescribeProjectInfoRequest
+        @return: DescribeProjectInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_info_with_options_async(request, runtime)
 
@@ -1349,6 +1695,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectMessagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectMessagesResponse:
+        """
+        @param request: DescribeProjectMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectMessagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1379,6 +1730,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectMessagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectMessagesResponse:
+        """
+        @param request: DescribeProjectMessagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectMessagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1408,6 +1764,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectMessagesRequest,
     ) -> market_20151101_models.DescribeProjectMessagesResponse:
+        """
+        @param request: DescribeProjectMessagesRequest
+        @return: DescribeProjectMessagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_messages_with_options(request, runtime)
 
@@ -1415,6 +1775,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectMessagesRequest,
     ) -> market_20151101_models.DescribeProjectMessagesResponse:
+        """
+        @param request: DescribeProjectMessagesRequest
+        @return: DescribeProjectMessagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_messages_with_options_async(request, runtime)
 
@@ -1424,8 +1788,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
         """
+        @description *\
         *\
-        **\
         
         @param request: DescribeProjectNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1460,8 +1824,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
         """
+        @description *\
         *\
-        **\
         
         @param request: DescribeProjectNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1495,8 +1859,8 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectNodesRequest,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
         """
+        @description *\
         *\
-        **\
         
         @param request: DescribeProjectNodesRequest
         @return: DescribeProjectNodesResponse
@@ -1509,8 +1873,8 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectNodesRequest,
     ) -> market_20151101_models.DescribeProjectNodesResponse:
         """
+        @description *\
         *\
-        **\
         
         @param request: DescribeProjectNodesRequest
         @return: DescribeProjectNodesResponse
@@ -1523,6 +1887,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectOperateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectOperateLogsResponse:
+        """
+        @param request: DescribeProjectOperateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectOperateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1551,6 +1920,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.DescribeProjectOperateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.DescribeProjectOperateLogsResponse:
+        """
+        @param request: DescribeProjectOperateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectOperateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1578,6 +1952,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectOperateLogsRequest,
     ) -> market_20151101_models.DescribeProjectOperateLogsResponse:
+        """
+        @param request: DescribeProjectOperateLogsRequest
+        @return: DescribeProjectOperateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_operate_logs_with_options(request, runtime)
 
@@ -1585,6 +1963,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.DescribeProjectOperateLogsRequest,
     ) -> market_20151101_models.DescribeProjectOperateLogsResponse:
+        """
+        @param request: DescribeProjectOperateLogsRequest
+        @return: DescribeProjectOperateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_operate_logs_with_options_async(request, runtime)
 
@@ -1593,6 +1975,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.FinishCurrentProjectNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.FinishCurrentProjectNodeResponse:
+        """
+        @param request: FinishCurrentProjectNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishCurrentProjectNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1627,6 +2014,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.FinishCurrentProjectNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.FinishCurrentProjectNodeResponse:
+        """
+        @param request: FinishCurrentProjectNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishCurrentProjectNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1660,6 +2052,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.FinishCurrentProjectNodeRequest,
     ) -> market_20151101_models.FinishCurrentProjectNodeResponse:
+        """
+        @param request: FinishCurrentProjectNodeRequest
+        @return: FinishCurrentProjectNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.finish_current_project_node_with_options(request, runtime)
 
@@ -1667,6 +2063,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.FinishCurrentProjectNodeRequest,
     ) -> market_20151101_models.FinishCurrentProjectNodeResponse:
+        """
+        @param request: FinishCurrentProjectNodeRequest
+        @return: FinishCurrentProjectNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.finish_current_project_node_with_options_async(request, runtime)
 
@@ -1675,6 +2075,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.PauseProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.PauseProjectResponse:
+        """
+        @param request: PauseProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1707,6 +2112,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.PauseProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.PauseProjectResponse:
+        """
+        @param request: PauseProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1738,6 +2148,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.PauseProjectRequest,
     ) -> market_20151101_models.PauseProjectResponse:
+        """
+        @param request: PauseProjectRequest
+        @return: PauseProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pause_project_with_options(request, runtime)
 
@@ -1745,6 +2159,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.PauseProjectRequest,
     ) -> market_20151101_models.PauseProjectResponse:
+        """
+        @param request: PauseProjectRequest
+        @return: PauseProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pause_project_with_options_async(request, runtime)
 
@@ -1753,6 +2171,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.PushMeteringDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.PushMeteringDataResponse:
+        """
+        @param request: PushMeteringDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMeteringDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.metering):
@@ -1781,6 +2204,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.PushMeteringDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.PushMeteringDataResponse:
+        """
+        @param request: PushMeteringDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMeteringDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.metering):
@@ -1808,6 +2236,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.PushMeteringDataRequest,
     ) -> market_20151101_models.PushMeteringDataResponse:
+        """
+        @param request: PushMeteringDataRequest
+        @return: PushMeteringDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_metering_data_with_options(request, runtime)
 
@@ -1815,6 +2247,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.PushMeteringDataRequest,
     ) -> market_20151101_models.PushMeteringDataResponse:
+        """
+        @param request: PushMeteringDataRequest
+        @return: PushMeteringDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_metering_data_with_options_async(request, runtime)
 
@@ -1823,6 +2259,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.ResumeProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.ResumeProjectResponse:
+        """
+        @param request: ResumeProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1855,6 +2296,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.ResumeProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.ResumeProjectResponse:
+        """
+        @param request: ResumeProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1886,6 +2332,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.ResumeProjectRequest,
     ) -> market_20151101_models.ResumeProjectResponse:
+        """
+        @param request: ResumeProjectRequest
+        @return: ResumeProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_project_with_options(request, runtime)
 
@@ -1893,6 +2343,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.ResumeProjectRequest,
     ) -> market_20151101_models.ResumeProjectResponse:
+        """
+        @param request: ResumeProjectRequest
+        @return: ResumeProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_project_with_options_async(request, runtime)
 
@@ -1901,6 +2355,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.RollbackCurrentProjectNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.RollbackCurrentProjectNodeResponse:
+        """
+        @param request: RollbackCurrentProjectNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackCurrentProjectNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1933,6 +2392,11 @@ class Client(OpenApiClient):
         request: market_20151101_models.RollbackCurrentProjectNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> market_20151101_models.RollbackCurrentProjectNodeResponse:
+        """
+        @param request: RollbackCurrentProjectNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackCurrentProjectNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1964,6 +2428,10 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.RollbackCurrentProjectNodeRequest,
     ) -> market_20151101_models.RollbackCurrentProjectNodeResponse:
+        """
+        @param request: RollbackCurrentProjectNodeRequest
+        @return: RollbackCurrentProjectNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rollback_current_project_node_with_options(request, runtime)
 
@@ -1971,5 +2439,9 @@ class Client(OpenApiClient):
         self,
         request: market_20151101_models.RollbackCurrentProjectNodeRequest,
     ) -> market_20151101_models.RollbackCurrentProjectNodeResponse:
+        """
+        @param request: RollbackCurrentProjectNodeRequest
+        @return: RollbackCurrentProjectNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rollback_current_project_node_with_options_async(request, runtime)

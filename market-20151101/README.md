@@ -28,7 +28,7 @@ pip install alibabacloud_market20151101
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/market-20151101/ChangeLog.md).
 
 ## References
 

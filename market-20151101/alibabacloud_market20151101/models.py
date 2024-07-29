@@ -11,6 +11,7 @@ class ActivateLicenseRequest(TeaModel):
         license_code: str = None,
     ):
         self.identification = identification
+        # This parameter is required.
         self.license_code = license_code
 
     def validate(self):
@@ -82,9 +83,6 @@ class ActivateLicenseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -125,8 +123,10 @@ class AutoRenewInstanceRequest(TeaModel):
     ):
         self.auto_renew_cycle = auto_renew_cycle
         self.auto_renew_duration = auto_renew_duration
+        # This parameter is required.
         self.order_biz_id = order_biz_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -216,9 +216,6 @@ class AutoRenewInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -258,11 +255,15 @@ class CreateOrderRequest(TeaModel):
         owner_id: str = None,
         payment_type: str = None,
     ):
+        # This parameter is required.
         self.client_token = client_token
+        # This parameter is required.
         self.commodity = commodity
         self.order_souce = order_souce
+        # This parameter is required.
         self.order_type = order_type
         self.owner_id = owner_id
+        # This parameter is required.
         self.payment_type = payment_type
 
     def validate(self):
@@ -385,9 +386,6 @@ class CreateOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -555,9 +553,6 @@ class CrossAccountVerifyTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -594,6 +589,7 @@ class DescribeApiMeteringRequest(TeaModel):
         product_code: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.page_num = page_num
         self.product_code = product_code
         self.type = type
@@ -632,6 +628,7 @@ class DescribeApiMeteringResponseBodyResult(TeaModel):
         aliyun_pk: int = None,
         product_code: str = None,
         product_name: str = None,
+        total_capacity: int = None,
         total_quota: int = None,
         total_usage: int = None,
         unit: str = None,
@@ -639,6 +636,7 @@ class DescribeApiMeteringResponseBodyResult(TeaModel):
         self.aliyun_pk = aliyun_pk
         self.product_code = product_code
         self.product_name = product_name
+        self.total_capacity = total_capacity
         self.total_quota = total_quota
         self.total_usage = total_usage
         self.unit = unit
@@ -658,6 +656,8 @@ class DescribeApiMeteringResponseBodyResult(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_name is not None:
             result['ProductName'] = self.product_name
+        if self.total_capacity is not None:
+            result['TotalCapacity'] = self.total_capacity
         if self.total_quota is not None:
             result['TotalQuota'] = self.total_quota
         if self.total_usage is not None:
@@ -674,6 +674,8 @@ class DescribeApiMeteringResponseBodyResult(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductName') is not None:
             self.product_name = m.get('ProductName')
+        if m.get('TotalCapacity') is not None:
+            self.total_capacity = m.get('TotalCapacity')
         if m.get('TotalQuota') is not None:
             self.total_quota = m.get('TotalQuota')
         if m.get('TotalUsage') is not None:
@@ -785,9 +787,6 @@ class DescribeApiMeteringResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -822,6 +821,7 @@ class DescribeCurrentNodeInfoRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1014,9 +1014,6 @@ class DescribeCurrentNodeInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1052,7 +1049,9 @@ class DescribeDistributionProductsRequestFilter(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1087,7 +1086,9 @@ class DescribeDistributionProductsRequest(TeaModel):
         page_size: int = None,
     ):
         self.filter = filter
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -1302,9 +1303,6 @@ class DescribeDistributionProductsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1339,6 +1337,7 @@ class DescribeDistributionProductsLinkRequest(TeaModel):
         self,
         codes: List[str] = None,
     ):
+        # This parameter is required.
         self.codes = codes
 
     def validate(self):
@@ -1366,6 +1365,7 @@ class DescribeDistributionProductsLinkShrinkRequest(TeaModel):
         self,
         codes_shrink: str = None,
     ):
+        # This parameter is required.
         self.codes_shrink = codes_shrink
 
     def validate(self):
@@ -1493,9 +1493,6 @@ class DescribeDistributionProductsLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1532,6 +1529,7 @@ class DescribeInstanceRequest(TeaModel):
         order_type: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.order_type = order_type
         self.owner_id = owner_id
@@ -1862,6 +1860,7 @@ class DescribeInstanceResponseBodyRelationalData(TeaModel):
 class DescribeInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        active_address: str = None,
         app_json: str = None,
         auto_renewal: str = None,
         began_on: int = None,
@@ -1873,6 +1872,7 @@ class DescribeInstanceResponseBody(TeaModel):
         host_json: str = None,
         instance_id: int = None,
         is_trial: bool = None,
+        license_code: str = None,
         modules: DescribeInstanceResponseBodyModules = None,
         order_id: int = None,
         product_code: str = None,
@@ -1883,6 +1883,7 @@ class DescribeInstanceResponseBody(TeaModel):
         status: str = None,
         supplier_name: str = None,
     ):
+        self.active_address = active_address
         self.app_json = app_json
         self.auto_renewal = auto_renewal
         self.began_on = began_on
@@ -1894,6 +1895,7 @@ class DescribeInstanceResponseBody(TeaModel):
         self.host_json = host_json
         self.instance_id = instance_id
         self.is_trial = is_trial
+        self.license_code = license_code
         self.modules = modules
         self.order_id = order_id
         self.product_code = product_code
@@ -1916,6 +1918,8 @@ class DescribeInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.active_address is not None:
+            result['ActiveAddress'] = self.active_address
         if self.app_json is not None:
             result['AppJson'] = self.app_json
         if self.auto_renewal is not None:
@@ -1938,6 +1942,8 @@ class DescribeInstanceResponseBody(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.is_trial is not None:
             result['IsTrial'] = self.is_trial
+        if self.license_code is not None:
+            result['LicenseCode'] = self.license_code
         if self.modules is not None:
             result['Modules'] = self.modules.to_map()
         if self.order_id is not None:
@@ -1960,6 +1966,8 @@ class DescribeInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActiveAddress') is not None:
+            self.active_address = m.get('ActiveAddress')
         if m.get('AppJson') is not None:
             self.app_json = m.get('AppJson')
         if m.get('AutoRenewal') is not None:
@@ -1982,6 +1990,8 @@ class DescribeInstanceResponseBody(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('IsTrial') is not None:
             self.is_trial = m.get('IsTrial')
+        if m.get('LicenseCode') is not None:
+            self.license_code = m.get('LicenseCode')
         if m.get('Modules') is not None:
             temp_model = DescribeInstanceResponseBodyModules()
             self.modules = temp_model.from_map(m['Modules'])
@@ -2017,9 +2027,6 @@ class DescribeInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2060,7 +2067,9 @@ class DescribeInstancesRequest(TeaModel):
     ):
         self.codes = codes
         self.except_codes = except_codes
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.product_type = product_type
 
@@ -2323,9 +2332,6 @@ class DescribeInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2360,6 +2366,7 @@ class DescribeLicenseRequest(TeaModel):
         self,
         license_code: str = None,
     ):
+        # This parameter is required.
         self.license_code = license_code
 
     def validate(self):
@@ -2640,9 +2647,6 @@ class DescribeLicenseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2677,6 +2681,7 @@ class DescribeOrderRequest(TeaModel):
         self,
         order_id: str = None,
     ):
+        # This parameter is required.
         self.order_id = order_id
 
     def validate(self):
@@ -2923,9 +2928,6 @@ class DescribeOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2961,7 +2963,9 @@ class DescribePriceRequest(TeaModel):
         commodity: str = None,
         order_type: str = None,
     ):
+        # This parameter is required.
         self.commodity = commodity
+        # This parameter is required.
         self.order_type = order_type
 
     def validate(self):
@@ -3270,9 +3274,6 @@ class DescribePriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3311,6 +3312,7 @@ class DescribeProductRequest(TeaModel):
     ):
         # AliUid
         self.ali_uid = ali_uid
+        # This parameter is required.
         self.code = code
         self.query_draft = query_draft
 
@@ -4179,9 +4181,6 @@ class DescribeProductResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4514,9 +4513,6 @@ class DescribeProductsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4551,6 +4547,7 @@ class DescribeProjectAttachmentsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4743,9 +4740,6 @@ class DescribeProjectAttachmentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4780,6 +4774,7 @@ class DescribeProjectInfoRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4978,9 +4973,6 @@ class DescribeProjectInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5016,6 +5008,7 @@ class DescribeProjectMessagesRequest(TeaModel):
         instance_id: str = None,
         page_index: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.page_index = page_index
 
@@ -5159,9 +5152,6 @@ class DescribeProjectMessagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5196,6 +5186,7 @@ class DescribeProjectNodesRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5394,9 +5385,6 @@ class DescribeProjectNodesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5431,6 +5419,7 @@ class DescribeProjectOperateLogsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5563,9 +5552,6 @@ class DescribeProjectOperateLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5603,7 +5589,9 @@ class FinishCurrentProjectNodeRequest(TeaModel):
         remark: str = None,
         template_form: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.node_id = node_id
         self.remark = remark
         self.template_form = template_form
@@ -5691,9 +5679,6 @@ class FinishCurrentProjectNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5730,7 +5715,9 @@ class PauseProjectRequest(TeaModel):
         node_id: int = None,
         remark: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.node_id = node_id
         self.remark = remark
 
@@ -5813,9 +5800,6 @@ class PauseProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5917,9 +5901,6 @@ class PushMeteringDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5956,7 +5937,9 @@ class ResumeProjectRequest(TeaModel):
         node_id: int = None,
         remark: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.node_id = node_id
         self.remark = remark
 
@@ -6039,9 +6022,6 @@ class ResumeProjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6078,7 +6058,9 @@ class RollbackCurrentProjectNodeRequest(TeaModel):
         node_id: int = None,
         remark: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.node_id = node_id
         self.remark = remark
 
@@ -6161,9 +6143,6 @@ class RollbackCurrentProjectNodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

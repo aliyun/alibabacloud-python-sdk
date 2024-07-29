@@ -1,3 +1,10 @@
+2024-07-29 Version: 3.0.4
+- Update API CrossAccountVerifyToken: update response param.
+- Update API DescribeApiMetering: update param type.
+- Update API DescribeApiMetering: update response param.
+- Update API DescribeInstance: update response param.
+
+
 2023-06-20 Version: 3.0.3
 - Add DistributionProducts API.
 
