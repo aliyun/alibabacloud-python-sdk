@@ -23497,6 +23497,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.pass_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
 
+    def pass_release_stage_pipeline_validate_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.PassReleaseStagePipelineValidateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.PassReleaseStagePipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @param request: PassReleaseStagePipelineValidateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PassReleaseStagePipelineValidateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['jobId'] = request.job_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PassReleaseStagePipelineValidate',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3ApassPipelineValidate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.PassReleaseStagePipelineValidateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pass_release_stage_pipeline_validate_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.PassReleaseStagePipelineValidateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.PassReleaseStagePipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @param request: PassReleaseStagePipelineValidateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PassReleaseStagePipelineValidateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['jobId'] = request.job_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PassReleaseStagePipelineValidate',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3ApassPipelineValidate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.PassReleaseStagePipelineValidateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pass_release_stage_pipeline_validate(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.PassReleaseStagePipelineValidateRequest,
+    ) -> devops_20210625_models.PassReleaseStagePipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @param request: PassReleaseStagePipelineValidateRequest
+        @return: PassReleaseStagePipelineValidateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.pass_release_stage_pipeline_validate_with_options(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
+    async def pass_release_stage_pipeline_validate_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.PassReleaseStagePipelineValidateRequest,
+    ) -> devops_20210625_models.PassReleaseStagePipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @param request: PassReleaseStagePipelineValidateRequest
+        @return: PassReleaseStagePipelineValidateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.pass_release_stage_pipeline_validate_with_options_async(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
     def refuse_pipeline_validate_with_options(
         self,
         organization_id: str,
@@ -23598,6 +23722,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.refuse_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
+
+    def refuse_release_stage_pipeline_validate_with_options(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.RefuseReleaseStagePipelineValidateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.RefuseReleaseStagePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @param request: RefuseReleaseStagePipelineValidateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefuseReleaseStagePipelineValidateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['jobId'] = request.job_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefuseReleaseStagePipelineValidate',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3ArefusePipelineValidate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.RefuseReleaseStagePipelineValidateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refuse_release_stage_pipeline_validate_with_options_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.RefuseReleaseStagePipelineValidateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.RefuseReleaseStagePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @param request: RefuseReleaseStagePipelineValidateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefuseReleaseStagePipelineValidateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['jobId'] = request.job_id
+        if not UtilClient.is_unset(request.organization_id):
+            query['organizationId'] = request.organization_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefuseReleaseStagePipelineValidate',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/appstack/apps/{OpenApiUtilClient.get_encode_param(app_name)}/releaseWorkflows/{OpenApiUtilClient.get_encode_param(release_workflow_sn)}/releaseStages/{OpenApiUtilClient.get_encode_param(release_stage_sn)}/executions/{OpenApiUtilClient.get_encode_param(execution_number)}%3ArefusePipelineValidate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.RefuseReleaseStagePipelineValidateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refuse_release_stage_pipeline_validate(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.RefuseReleaseStagePipelineValidateRequest,
+    ) -> devops_20210625_models.RefuseReleaseStagePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @param request: RefuseReleaseStagePipelineValidateRequest
+        @return: RefuseReleaseStagePipelineValidateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.refuse_release_stage_pipeline_validate_with_options(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
+
+    async def refuse_release_stage_pipeline_validate_async(
+        self,
+        app_name: str,
+        release_workflow_sn: str,
+        release_stage_sn: str,
+        execution_number: str,
+        request: devops_20210625_models.RefuseReleaseStagePipelineValidateRequest,
+    ) -> devops_20210625_models.RefuseReleaseStagePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @param request: RefuseReleaseStagePipelineValidateRequest
+        @return: RefuseReleaseStagePipelineValidateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.refuse_release_stage_pipeline_validate_with_options_async(app_name, release_workflow_sn, release_stage_sn, execution_number, request, headers, runtime)
 
     def release_workspace_with_options(
         self,

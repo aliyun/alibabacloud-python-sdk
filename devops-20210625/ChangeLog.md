@@ -1,3 +1,8 @@
+2024-07-29 Version: 4.23.0
+- Support API PassReleaseStagePipelineValidate.
+- Support API RefuseReleaseStagePipelineValidate.
+
+
 2024-07-26 Version: 4.22.0
 - Support API CancelExecutionReleaseStage.
 - Support API ExecuteChangeRequestReleaseStage.
