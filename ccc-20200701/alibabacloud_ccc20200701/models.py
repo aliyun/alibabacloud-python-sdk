@@ -26205,6 +26205,7 @@ class ListCallDetailRecordsResponseBodyDataList(TeaModel):
         agent_names: str = None,
         broker: str = None,
         call_duration: str = None,
+        call_ids: str = None,
         called_number: str = None,
         callee_location: str = None,
         caller_location: str = None,
@@ -26240,6 +26241,7 @@ class ListCallDetailRecordsResponseBodyDataList(TeaModel):
         self.agent_names = agent_names
         self.broker = broker
         self.call_duration = call_duration
+        self.call_ids = call_ids
         self.called_number = called_number
         self.callee_location = callee_location
         self.caller_location = caller_location
@@ -26289,6 +26291,8 @@ class ListCallDetailRecordsResponseBodyDataList(TeaModel):
             result['Broker'] = self.broker
         if self.call_duration is not None:
             result['CallDuration'] = self.call_duration
+        if self.call_ids is not None:
+            result['CallIds'] = self.call_ids
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
         if self.callee_location is not None:
@@ -26361,6 +26365,8 @@ class ListCallDetailRecordsResponseBodyDataList(TeaModel):
             self.broker = m.get('Broker')
         if m.get('CallDuration') is not None:
             self.call_duration = m.get('CallDuration')
+        if m.get('CallIds') is not None:
+            self.call_ids = m.get('CallIds')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
         if m.get('CalleeLocation') is not None:
