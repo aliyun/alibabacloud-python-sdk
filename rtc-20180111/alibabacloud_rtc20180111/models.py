@@ -437,6 +437,233 @@ class AddRecordTemplateResponse(TeaModel):
         return self
 
 
+class CreateAppRecordTemplateRequestRecordTemplate(TeaModel):
+    def __init__(
+        self,
+        delay_stop_time: int = None,
+        file_prefix: str = None,
+        file_split_interval: int = None,
+        formats: List[str] = None,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+    ):
+        self.delay_stop_time = delay_stop_time
+        # This parameter is required.
+        self.file_prefix = file_prefix
+        # This parameter is required.
+        self.file_split_interval = file_split_interval
+        # This parameter is required.
+        self.formats = formats
+        self.layout_ids = layout_ids
+        # This parameter is required.
+        self.media_encode = media_encode
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delay_stop_time is not None:
+            result['DelayStopTime'] = self.delay_stop_time
+        if self.file_prefix is not None:
+            result['FilePrefix'] = self.file_prefix
+        if self.file_split_interval is not None:
+            result['FileSplitInterval'] = self.file_split_interval
+        if self.formats is not None:
+            result['Formats'] = self.formats
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DelayStopTime') is not None:
+            self.delay_stop_time = m.get('DelayStopTime')
+        if m.get('FilePrefix') is not None:
+            self.file_prefix = m.get('FilePrefix')
+        if m.get('FileSplitInterval') is not None:
+            self.file_split_interval = m.get('FileSplitInterval')
+        if m.get('Formats') is not None:
+            self.formats = m.get('Formats')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateAppRecordTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        record_template: CreateAppRecordTemplateRequestRecordTemplate = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.record_template = record_template
+
+    def validate(self):
+        if self.record_template:
+            self.record_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_template is not None:
+            result['RecordTemplate'] = self.record_template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordTemplate') is not None:
+            temp_model = CreateAppRecordTemplateRequestRecordTemplate()
+            self.record_template = temp_model.from_map(m['RecordTemplate'])
+        return self
+
+
+class CreateAppRecordTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        record_template_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.record_template_shrink = record_template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_template_shrink is not None:
+            result['RecordTemplate'] = self.record_template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordTemplate') is not None:
+            self.record_template_shrink = m.get('RecordTemplate')
+        return self
+
+
+class CreateAppRecordTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateAppRecordTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAppRecordTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAppRecordTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
     def __init__(
         self,
@@ -1119,6 +1346,187 @@ class CreateMPULayoutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateMPULayoutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAppRecordTemplateRequestTemplate(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteAppRecordTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        template: DeleteAppRecordTemplateRequestTemplate = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            self.template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.template is not None:
+            result['Template'] = self.template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Template') is not None:
+            temp_model = DeleteAppRecordTemplateRequestTemplate()
+            self.template = temp_model.from_map(m['Template'])
+        return self
+
+
+class DeleteAppRecordTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        template_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.template_shrink = template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.template_shrink is not None:
+            result['Template'] = self.template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Template') is not None:
+            self.template_shrink = m.get('Template')
+        return self
+
+
+class DeleteAppRecordTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAppRecordTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAppRecordTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAppRecordTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1838,6 +2246,381 @@ class DeleteRecordTemplateResponse(TeaModel):
         return self
 
 
+class DescribeAllCallbackResponseBodyCallbacksSubEvent(TeaModel):
+    def __init__(
+        self,
+        event: int = None,
+        event_name: str = None,
+        type: int = None,
+    ):
+        self.event = event
+        self.event_name = event_name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.event_name is not None:
+            result['EventName'] = self.event_name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('EventName') is not None:
+            self.event_name = m.get('EventName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeAllCallbackResponseBodyCallbacks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        name: str = None,
+        sub_event: List[DescribeAllCallbackResponseBodyCallbacksSubEvent] = None,
+    ):
+        self.category = category
+        self.name = name
+        self.sub_event = sub_event
+
+    def validate(self):
+        if self.sub_event:
+            for k in self.sub_event:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SubEvent'] = []
+        if self.sub_event is not None:
+            for k in self.sub_event:
+                result['SubEvent'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.sub_event = []
+        if m.get('SubEvent') is not None:
+            for k in m.get('SubEvent'):
+                temp_model = DescribeAllCallbackResponseBodyCallbacksSubEvent()
+                self.sub_event.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAllCallbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        callbacks: List[DescribeAllCallbackResponseBodyCallbacks] = None,
+        request_id: str = None,
+    ):
+        self.callbacks = callbacks
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.callbacks:
+            for k in self.callbacks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Callbacks'] = []
+        if self.callbacks is not None:
+            for k in self.callbacks:
+                result['Callbacks'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.callbacks = []
+        if m.get('Callbacks') is not None:
+            for k in m.get('Callbacks'):
+                temp_model = DescribeAllCallbackResponseBodyCallbacks()
+                self.callbacks.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAllCallbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAllCallbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAllCallbackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppCallStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeAppCallStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeAppCallStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppCallStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppCallStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppCallbackSecretKeyRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeAppCallbackSecretKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        callback_secret_key: str = None,
+        request_id: str = None,
+    ):
+        self.callback_secret_key = callback_secret_key
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.callback_secret_key is not None:
+            result['CallbackSecretKey'] = self.callback_secret_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallbackSecretKey') is not None:
+            self.callback_secret_key = m.get('CallbackSecretKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAppCallbackSecretKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppCallbackSecretKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppCallbackSecretKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAppKeyRequest(TeaModel):
     def __init__(
         self,
@@ -1943,6 +2726,858 @@ class DescribeAppKeyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAppKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppLayoutsRequestCondition(TeaModel):
+    def __init__(
+        self,
+        layout_id: str = None,
+        name: str = None,
+    ):
+        self.layout_id = layout_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeAppLayoutsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition: DescribeAppLayoutsRequestCondition = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.condition = condition
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            temp_model = DescribeAppLayoutsRequestCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppLayoutsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        condition_shrink: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.condition_shrink = condition_shrink
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.condition_shrink is not None:
+            result['Condition'] = self.condition_shrink
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Condition') is not None:
+            self.condition_shrink = m.get('Condition')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppLayoutsResponseBodyLayoutsPanes(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        pane_id: int = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+        zorder: int = None,
+    ):
+        self.height = height
+        self.pane_id = pane_id
+        self.width = width
+        self.x = x
+        self.y = y
+        self.zorder = zorder
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zorder is not None:
+            result['ZOrder'] = self.zorder
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('ZOrder') is not None:
+            self.zorder = m.get('ZOrder')
+        return self
+
+
+class DescribeAppLayoutsResponseBodyLayouts(TeaModel):
+    def __init__(
+        self,
+        layout_id: str = None,
+        name: str = None,
+        panes: List[DescribeAppLayoutsResponseBodyLayoutsPanes] = None,
+    ):
+        self.layout_id = layout_id
+        self.name = name
+        self.panes = panes
+
+    def validate(self):
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        if self.name is not None:
+            result['Name'] = self.name
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = DescribeAppLayoutsResponseBodyLayoutsPanes()
+                self.panes.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAppLayoutsResponseBody(TeaModel):
+    def __init__(
+        self,
+        layouts: List[DescribeAppLayoutsResponseBodyLayouts] = None,
+        request_id: str = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        self.layouts = layouts
+        self.request_id = request_id
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.layouts:
+            for k in self.layouts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Layouts'] = []
+        if self.layouts is not None:
+            for k in self.layouts:
+                result['Layouts'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.layouts = []
+        if m.get('Layouts') is not None:
+            for k in m.get('Layouts'):
+                temp_model = DescribeAppLayoutsResponseBodyLayouts()
+                self.layouts.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeAppLayoutsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppLayoutsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppLayoutsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppLiveStreamStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DescribeAppLiveStreamStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeAppLiveStreamStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppLiveStreamStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppLiveStreamStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppRecordStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DescribeAppRecordStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeAppRecordStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppRecordStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppRecordStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAppRecordTemplatesRequestCondition(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeAppRecordTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        condition: DescribeAppRecordTemplatesRequestCondition = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        self.condition = condition
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Condition') is not None:
+            temp_model = DescribeAppRecordTemplatesRequestCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppRecordTemplatesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        condition_shrink: str = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        self.condition_shrink = condition_shrink
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.condition_shrink is not None:
+            result['Condition'] = self.condition_shrink
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Condition') is not None:
+            self.condition_shrink = m.get('Condition')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeAppRecordTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        create_time: bytes = None,
+        delay_stop_time: int = None,
+        file_prefix: str = None,
+        file_split_interval: int = None,
+        formats: List[str] = None,
+        layout_ids: List[int] = None,
+        media_encode: int = None,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.create_time = create_time
+        self.delay_stop_time = delay_stop_time
+        self.file_prefix = file_prefix
+        self.file_split_interval = file_split_interval
+        self.formats = formats
+        self.layout_ids = layout_ids
+        self.media_encode = media_encode
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.delay_stop_time is not None:
+            result['DelayStopTime'] = self.delay_stop_time
+        if self.file_prefix is not None:
+            result['FilePrefix'] = self.file_prefix
+        if self.file_split_interval is not None:
+            result['FileSplitInterval'] = self.file_split_interval
+        if self.formats is not None:
+            result['Formats'] = self.formats
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DelayStopTime') is not None:
+            self.delay_stop_time = m.get('DelayStopTime')
+        if m.get('FilePrefix') is not None:
+            self.file_prefix = m.get('FilePrefix')
+        if m.get('FileSplitInterval') is not None:
+            self.file_split_interval = m.get('FileSplitInterval')
+        if m.get('Formats') is not None:
+            self.formats = m.get('Formats')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeAppRecordTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        templates: List[DescribeAppRecordTemplatesResponseBodyTemplates] = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.templates = templates
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.templates:
+            for k in self.templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Templates'] = []
+        if self.templates is not None:
+            for k in self.templates:
+                result['Templates'].append(k.to_map() if k else None)
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.templates = []
+        if m.get('Templates') is not None:
+            for k in m.get('Templates'):
+                temp_model = DescribeAppRecordTemplatesResponseBodyTemplates()
+                self.templates.append(temp_model.from_map(k))
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeAppRecordTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppRecordTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppRecordTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3716,6 +5351,180 @@ class DescribeCallListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCallListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCallbacksRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class DescribeCallbacksResponseBodyCallbacks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        check_status: str = None,
+        code: str = None,
+        conf: str = None,
+        msg: str = None,
+        status: int = None,
+        sub_event: List[int] = None,
+    ):
+        self.category = category
+        self.check_status = check_status
+        self.code = code
+        self.conf = conf
+        self.msg = msg
+        self.status = status
+        self.sub_event = sub_event
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.check_status is not None:
+            result['CheckStatus'] = self.check_status
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.conf is not None:
+            result['Conf'] = self.conf
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_event is not None:
+            result['SubEvent'] = self.sub_event
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CheckStatus') is not None:
+            self.check_status = m.get('CheckStatus')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Conf') is not None:
+            self.conf = m.get('Conf')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubEvent') is not None:
+            self.sub_event = m.get('SubEvent')
+        return self
+
+
+class DescribeCallbacksResponseBody(TeaModel):
+    def __init__(
+        self,
+        callbacks: List[DescribeCallbacksResponseBodyCallbacks] = None,
+        request_id: str = None,
+    ):
+        self.callbacks = callbacks
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.callbacks:
+            for k in self.callbacks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Callbacks'] = []
+        if self.callbacks is not None:
+            for k in self.callbacks:
+                result['Callbacks'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.callbacks = []
+        if m.get('Callbacks') is not None:
+            for k in m.get('Callbacks'):
+                temp_model = DescribeCallbacksResponseBodyCallbacks()
+                self.callbacks.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCallbacksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCallbacksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCallbacksResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5748,6 +7557,138 @@ class DescribeChannelUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeChannelUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeChannelsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeChannelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+        records: List[str] = None,
+        request_id: str = None,
+        total_cnt: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+        self.records = records
+        self.request_id = request_id
+        self.total_cnt = total_cnt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.records is not None:
+            result['Records'] = self.records
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_cnt is not None:
+            result['TotalCnt'] = self.total_cnt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Records') is not None:
+            self.records = m.get('Records')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCnt') is not None:
+            self.total_cnt = m.get('TotalCnt')
+        return self
+
+
+class DescribeChannelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeChannelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeChannelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11748,6 +13689,432 @@ class DescribeRtcUserCntDataResponse(TeaModel):
         return self
 
 
+class DescribeStreamingOutStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        channel_id: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.channel_id = channel_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribeStreamingOutStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        status: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeStreamingOutStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeStreamingOutStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeStreamingOutStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSystemLayoutListRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        page_num: int = None,
+        page_size: int = None,
+    ):
+        self.owner_id = owner_id
+        self.page_num = page_num
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes(TeaModel):
+    def __init__(
+        self,
+        height: float = None,
+        major_pane: int = None,
+        pane_id: int = None,
+        width: float = None,
+        x: float = None,
+        y: float = None,
+        zorder: int = None,
+    ):
+        self.height = height
+        # MajorPane。
+        self.major_pane = major_pane
+        self.pane_id = pane_id
+        self.width = width
+        self.x = x
+        self.y = y
+        self.zorder = zorder
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.major_pane is not None:
+            result['MajorPane'] = self.major_pane
+        if self.pane_id is not None:
+            result['PaneId'] = self.pane_id
+        if self.width is not None:
+            result['Width'] = self.width
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        if self.zorder is not None:
+            result['ZOrder'] = self.zorder
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('MajorPane') is not None:
+            self.major_pane = m.get('MajorPane')
+        if m.get('PaneId') is not None:
+            self.pane_id = m.get('PaneId')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        if m.get('ZOrder') is not None:
+            self.zorder = m.get('ZOrder')
+        return self
+
+
+class DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes(TeaModel):
+    def __init__(
+        self,
+        panes: List[DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes] = None,
+    ):
+        self.panes = panes
+
+    def validate(self):
+        if self.panes:
+            for k in self.panes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Panes'] = []
+        if self.panes is not None:
+            for k in self.panes:
+                result['Panes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.panes = []
+        if m.get('Panes') is not None:
+            for k in m.get('Panes'):
+                temp_model = DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes()
+                self.panes.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSystemLayoutListResponseBodyLayoutsLayout(TeaModel):
+    def __init__(
+        self,
+        audio_mix_count: int = None,
+        layout_id: int = None,
+        name: str = None,
+        panes: DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes = None,
+    ):
+        # AudioMixCount。
+        self.audio_mix_count = audio_mix_count
+        self.layout_id = layout_id
+        self.name = name
+        self.panes = panes
+
+    def validate(self):
+        if self.panes:
+            self.panes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audio_mix_count is not None:
+            result['AudioMixCount'] = self.audio_mix_count
+        if self.layout_id is not None:
+            result['LayoutId'] = self.layout_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.panes is not None:
+            result['Panes'] = self.panes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioMixCount') is not None:
+            self.audio_mix_count = m.get('AudioMixCount')
+        if m.get('LayoutId') is not None:
+            self.layout_id = m.get('LayoutId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Panes') is not None:
+            temp_model = DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes()
+            self.panes = temp_model.from_map(m['Panes'])
+        return self
+
+
+class DescribeSystemLayoutListResponseBodyLayouts(TeaModel):
+    def __init__(
+        self,
+        layout: List[DescribeSystemLayoutListResponseBodyLayoutsLayout] = None,
+    ):
+        self.layout = layout
+
+    def validate(self):
+        if self.layout:
+            for k in self.layout:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Layout'] = []
+        if self.layout is not None:
+            for k in self.layout:
+                result['Layout'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.layout = []
+        if m.get('Layout') is not None:
+            for k in m.get('Layout'):
+                temp_model = DescribeSystemLayoutListResponseBodyLayoutsLayout()
+                self.layout.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSystemLayoutListResponseBody(TeaModel):
+    def __init__(
+        self,
+        layouts: DescribeSystemLayoutListResponseBodyLayouts = None,
+        request_id: str = None,
+        total_num: int = None,
+        total_page: int = None,
+    ):
+        self.layouts = layouts
+        self.request_id = request_id
+        self.total_num = total_num
+        self.total_page = total_page
+
+    def validate(self):
+        if self.layouts:
+            self.layouts.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.layouts is not None:
+            result['Layouts'] = self.layouts.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Layouts') is not None:
+            temp_model = DescribeSystemLayoutListResponseBodyLayouts()
+            self.layouts = temp_model.from_map(m['Layouts'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeSystemLayoutListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSystemLayoutListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSystemLayoutListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUsageAreaDistributionStatDataRequest(TeaModel):
     def __init__(
         self,
@@ -13128,6 +15495,538 @@ class ModifyAppResponse(TeaModel):
         return self
 
 
+class ModifyAppCallbackStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class ModifyAppCallbackStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppCallbackStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppCallbackStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppCallbackStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppLiveStreamStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class ModifyAppLiveStreamStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppLiveStreamStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppLiveStreamStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppLiveStreamStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppRecordStatusRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class ModifyAppRecordStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppRecordStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppRecordStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppRecordStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAppRecordTemplateRequestRecordTemplate(TeaModel):
+    def __init__(
+        self,
+        delay_stop_time: int = None,
+        file_prefix: str = None,
+        file_split_interval: int = None,
+        formats: List[str] = None,
+        layout_ids: List[str] = None,
+        media_encode: int = None,
+        name: str = None,
+        template_id: str = None,
+    ):
+        self.delay_stop_time = delay_stop_time
+        # This parameter is required.
+        self.file_prefix = file_prefix
+        # This parameter is required.
+        self.file_split_interval = file_split_interval
+        # This parameter is required.
+        self.formats = formats
+        # This parameter is required.
+        self.layout_ids = layout_ids
+        # This parameter is required.
+        self.media_encode = media_encode
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delay_stop_time is not None:
+            result['DelayStopTime'] = self.delay_stop_time
+        if self.file_prefix is not None:
+            result['FilePrefix'] = self.file_prefix
+        if self.file_split_interval is not None:
+            result['FileSplitInterval'] = self.file_split_interval
+        if self.formats is not None:
+            result['Formats'] = self.formats
+        if self.layout_ids is not None:
+            result['LayoutIds'] = self.layout_ids
+        if self.media_encode is not None:
+            result['MediaEncode'] = self.media_encode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DelayStopTime') is not None:
+            self.delay_stop_time = m.get('DelayStopTime')
+        if m.get('FilePrefix') is not None:
+            self.file_prefix = m.get('FilePrefix')
+        if m.get('FileSplitInterval') is not None:
+            self.file_split_interval = m.get('FileSplitInterval')
+        if m.get('Formats') is not None:
+            self.formats = m.get('Formats')
+        if m.get('LayoutIds') is not None:
+            self.layout_ids = m.get('LayoutIds')
+        if m.get('MediaEncode') is not None:
+            self.media_encode = m.get('MediaEncode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ModifyAppRecordTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        record_template: ModifyAppRecordTemplateRequestRecordTemplate = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.record_template = record_template
+
+    def validate(self):
+        if self.record_template:
+            self.record_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_template is not None:
+            result['RecordTemplate'] = self.record_template.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordTemplate') is not None:
+            temp_model = ModifyAppRecordTemplateRequestRecordTemplate()
+            self.record_template = temp_model.from_map(m['RecordTemplate'])
+        return self
+
+
+class ModifyAppRecordTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        client_token: str = None,
+        record_template_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.record_template_shrink = record_template_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_template_shrink is not None:
+            result['RecordTemplate'] = self.record_template_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordTemplate') is not None:
+            self.record_template_shrink = m.get('RecordTemplate')
+        return self
+
+
+class ModifyAppRecordTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAppRecordTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAppRecordTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAppRecordTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
     def __init__(
         self,
@@ -13320,6 +16219,228 @@ class ModifyAppStreamingOutTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAppStreamingOutTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyCallbackMetaRequestCallback(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        conf: str = None,
+        sub_event: List[int] = None,
+    ):
+        # This parameter is required.
+        self.category = category
+        # This parameter is required.
+        self.conf = conf
+        self.sub_event = sub_event
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.conf is not None:
+            result['Conf'] = self.conf
+        if self.sub_event is not None:
+            result['SubEvent'] = self.sub_event
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Conf') is not None:
+            self.conf = m.get('Conf')
+        if m.get('SubEvent') is not None:
+            self.sub_event = m.get('SubEvent')
+        return self
+
+
+class ModifyCallbackMetaRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        callback: ModifyCallbackMetaRequestCallback = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.callback = callback
+        self.owner_id = owner_id
+
+    def validate(self):
+        if self.callback:
+            self.callback.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.callback is not None:
+            result['Callback'] = self.callback.to_map()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Callback') is not None:
+            temp_model = ModifyCallbackMetaRequestCallback()
+            self.callback = temp_model.from_map(m['Callback'])
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class ModifyCallbackMetaShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        callback_shrink: str = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.callback_shrink = callback_shrink
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.callback_shrink is not None:
+            result['Callback'] = self.callback_shrink
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Callback') is not None:
+            self.callback_shrink = m.get('Callback')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class ModifyCallbackMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # code
+        self.code = code
+        # httpStatusCode
+        self.http_status_code = http_status_code
+        # message
+        self.message = message
+        # requestId
+        self.request_id = request_id
+        # success
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyCallbackMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCallbackMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCallbackMetaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13915,6 +17036,175 @@ class RemoveUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RemoveUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartCategoryCallbackRequestCallback(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+    ):
+        # This parameter is required.
+        self.category = category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        return self
+
+
+class StartCategoryCallbackRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        callback: StartCategoryCallbackRequestCallback = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.callback = callback
+
+    def validate(self):
+        if self.callback:
+            self.callback.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.callback is not None:
+            result['Callback'] = self.callback.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Callback') is not None:
+            temp_model = StartCategoryCallbackRequestCallback()
+            self.callback = temp_model.from_map(m['Callback'])
+        return self
+
+
+class StartCategoryCallbackShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        callback_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.callback_shrink = callback_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.callback_shrink is not None:
+            result['Callback'] = self.callback_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Callback') is not None:
+            self.callback_shrink = m.get('Callback')
+        return self
+
+
+class StartCategoryCallbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartCategoryCallbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartCategoryCallbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartCategoryCallbackResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17119,6 +20409,175 @@ class StartStreamingOutResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartStreamingOutResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopCategoryCallbackRequestCallback(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+    ):
+        # This parameter is required.
+        self.category = category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        return self
+
+
+class StopCategoryCallbackRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        callback: StopCategoryCallbackRequestCallback = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.callback = callback
+
+    def validate(self):
+        if self.callback:
+            self.callback.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.callback is not None:
+            result['Callback'] = self.callback.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Callback') is not None:
+            temp_model = StopCategoryCallbackRequestCallback()
+            self.callback = temp_model.from_map(m['Callback'])
+        return self
+
+
+class StopCategoryCallbackShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        callback_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.callback_shrink = callback_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.callback_shrink is not None:
+            result['Callback'] = self.callback_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Callback') is not None:
+            self.callback_shrink = m.get('Callback')
+        return self
+
+
+class StopCategoryCallbackResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopCategoryCallbackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopCategoryCallbackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopCategoryCallbackResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

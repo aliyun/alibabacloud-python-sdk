@@ -1,3 +1,26 @@
+2024-07-29 Version: 3.3.0
+- Support API CreateAppRecordTemplate.
+- Support API DeleteAppRecordTemplate.
+- Support API DescribeAllCallback.
+- Support API DescribeAppCallStatus.
+- Support API DescribeAppCallbackSecretKey.
+- Support API DescribeAppLayouts.
+- Support API DescribeAppLiveStreamStatus.
+- Support API DescribeAppRecordStatus.
+- Support API DescribeAppRecordTemplates.
+- Support API DescribeCallbacks.
+- Support API DescribeChannels.
+- Support API DescribeStreamingOutStatus.
+- Support API DescribeSystemLayoutList.
+- Support API ModifyAppCallbackStatus.
+- Support API ModifyAppLiveStreamStatus.
+- Support API ModifyAppRecordStatus.
+- Support API ModifyAppRecordTemplate.
+- Support API ModifyCallbackMeta.
+- Support API StartCategoryCallback.
+- Support API StopCategoryCallback.
+
+
 2024-06-21 Version: 3.2.0
 - Support API DescribeAppRecordingFiles.
 - Update API CreateAppStreamingOutTemplate: update param StreamingOutTemplate.

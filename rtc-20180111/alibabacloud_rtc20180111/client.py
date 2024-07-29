@@ -201,6 +201,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_record_template_with_options_async(request, runtime)
 
+    def create_app_record_template_with_options(
+        self,
+        tmp_req: rtc_20180111_models.CreateAppRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateAppRecordTemplateResponse:
+        """
+        @summary 增加应用录制模版
+        
+        @param tmp_req: CreateAppRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppRecordTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateAppRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_template):
+            request.record_template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_template, 'RecordTemplate', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_template_shrink):
+            query['RecordTemplate'] = request.record_template_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAppRecordTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_record_template_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.CreateAppRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.CreateAppRecordTemplateResponse:
+        """
+        @summary 增加应用录制模版
+        
+        @param tmp_req: CreateAppRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppRecordTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.CreateAppRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_template):
+            request.record_template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_template, 'RecordTemplate', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_template_shrink):
+            query['RecordTemplate'] = request.record_template_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAppRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.CreateAppRecordTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_record_template(
+        self,
+        request: rtc_20180111_models.CreateAppRecordTemplateRequest,
+    ) -> rtc_20180111_models.CreateAppRecordTemplateResponse:
+        """
+        @summary 增加应用录制模版
+        
+        @param request: CreateAppRecordTemplateRequest
+        @return: CreateAppRecordTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_app_record_template_with_options(request, runtime)
+
+    async def create_app_record_template_async(
+        self,
+        request: rtc_20180111_models.CreateAppRecordTemplateRequest,
+    ) -> rtc_20180111_models.CreateAppRecordTemplateResponse:
+        """
+        @summary 增加应用录制模版
+        
+        @param request: CreateAppRecordTemplateRequest
+        @return: CreateAppRecordTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_app_record_template_with_options_async(request, runtime)
+
     def create_app_streaming_out_template_with_options(
         self,
         tmp_req: rtc_20180111_models.CreateAppStreamingOutTemplateRequest,
@@ -648,6 +760,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_mpulayout_with_options_async(request, runtime)
+
+    def delete_app_record_template_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DeleteAppRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteAppRecordTemplateResponse:
+        """
+        @summary 删除应用录制模版
+        
+        @param tmp_req: DeleteAppRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppRecordTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DeleteAppRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.template_shrink):
+            query['Template'] = request.template_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAppRecordTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_record_template_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DeleteAppRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DeleteAppRecordTemplateResponse:
+        """
+        @summary 删除应用录制模版
+        
+        @param tmp_req: DeleteAppRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppRecordTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DeleteAppRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.template):
+            request.template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template, 'Template', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.template_shrink):
+            query['Template'] = request.template_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DeleteAppRecordTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_record_template(
+        self,
+        request: rtc_20180111_models.DeleteAppRecordTemplateRequest,
+    ) -> rtc_20180111_models.DeleteAppRecordTemplateResponse:
+        """
+        @summary 删除应用录制模版
+        
+        @param request: DeleteAppRecordTemplateRequest
+        @return: DeleteAppRecordTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_record_template_with_options(request, runtime)
+
+    async def delete_app_record_template_async(
+        self,
+        request: rtc_20180111_models.DeleteAppRecordTemplateRequest,
+    ) -> rtc_20180111_models.DeleteAppRecordTemplateResponse:
+        """
+        @summary 删除应用录制模版
+        
+        @param request: DeleteAppRecordTemplateRequest
+        @return: DeleteAppRecordTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_record_template_with_options_async(request, runtime)
 
     def delete_app_streaming_out_template_with_options(
         self,
@@ -1237,6 +1461,272 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_template_with_options_async(request, runtime)
 
+    def describe_all_callback_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAllCallbackResponse:
+        """
+        @summary 列出系统支持的事件回调
+        
+        @param request: DescribeAllCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAllCallbackResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeAllCallback',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAllCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_all_callback_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAllCallbackResponse:
+        """
+        @summary 列出系统支持的事件回调
+        
+        @param request: DescribeAllCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAllCallbackResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeAllCallback',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAllCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_all_callback(self) -> rtc_20180111_models.DescribeAllCallbackResponse:
+        """
+        @summary 列出系统支持的事件回调
+        
+        @return: DescribeAllCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_all_callback_with_options(runtime)
+
+    async def describe_all_callback_async(self) -> rtc_20180111_models.DescribeAllCallbackResponse:
+        """
+        @summary 列出系统支持的事件回调
+        
+        @return: DescribeAllCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_all_callback_with_options_async(runtime)
+
+    def describe_app_call_status_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppCallStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppCallStatusResponse:
+        """
+        @summary 查看app回调开关
+        
+        @param request: DescribeAppCallStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppCallStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppCallStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppCallStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_call_status_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppCallStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppCallStatusResponse:
+        """
+        @summary 查看app回调开关
+        
+        @param request: DescribeAppCallStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppCallStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppCallStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppCallStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_call_status(
+        self,
+        request: rtc_20180111_models.DescribeAppCallStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppCallStatusResponse:
+        """
+        @summary 查看app回调开关
+        
+        @param request: DescribeAppCallStatusRequest
+        @return: DescribeAppCallStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_call_status_with_options(request, runtime)
+
+    async def describe_app_call_status_async(
+        self,
+        request: rtc_20180111_models.DescribeAppCallStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppCallStatusResponse:
+        """
+        @summary 查看app回调开关
+        
+        @param request: DescribeAppCallStatusRequest
+        @return: DescribeAppCallStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_call_status_with_options_async(request, runtime)
+
+    def describe_app_callback_secret_key_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppCallbackSecretKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppCallbackSecretKeyResponse:
+        """
+        @summary 获取app回调密钥
+        
+        @param request: DescribeAppCallbackSecretKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppCallbackSecretKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppCallbackSecretKey',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppCallbackSecretKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_callback_secret_key_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppCallbackSecretKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppCallbackSecretKeyResponse:
+        """
+        @summary 获取app回调密钥
+        
+        @param request: DescribeAppCallbackSecretKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppCallbackSecretKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppCallbackSecretKey',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppCallbackSecretKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_callback_secret_key(
+        self,
+        request: rtc_20180111_models.DescribeAppCallbackSecretKeyRequest,
+    ) -> rtc_20180111_models.DescribeAppCallbackSecretKeyResponse:
+        """
+        @summary 获取app回调密钥
+        
+        @param request: DescribeAppCallbackSecretKeyRequest
+        @return: DescribeAppCallbackSecretKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_callback_secret_key_with_options(request, runtime)
+
+    async def describe_app_callback_secret_key_async(
+        self,
+        request: rtc_20180111_models.DescribeAppCallbackSecretKeyRequest,
+    ) -> rtc_20180111_models.DescribeAppCallbackSecretKeyResponse:
+        """
+        @summary 获取app回调密钥
+        
+        @param request: DescribeAppCallbackSecretKeyRequest
+        @return: DescribeAppCallbackSecretKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_callback_secret_key_with_options_async(request, runtime)
+
     def describe_app_key_with_options(
         self,
         request: rtc_20180111_models.DescribeAppKeyRequest,
@@ -1336,6 +1826,390 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_key_with_options_async(request, runtime)
+
+    def describe_app_layouts_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DescribeAppLayoutsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppLayoutsResponse:
+        """
+        @summary 查询app自定义布局
+        
+        @param tmp_req: DescribeAppLayoutsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppLayoutsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeAppLayoutsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.condition):
+            request.condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.condition, 'Condition', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppLayouts',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppLayoutsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_layouts_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DescribeAppLayoutsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppLayoutsResponse:
+        """
+        @summary 查询app自定义布局
+        
+        @param tmp_req: DescribeAppLayoutsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppLayoutsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeAppLayoutsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.condition):
+            request.condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.condition, 'Condition', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppLayouts',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppLayoutsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_layouts(
+        self,
+        request: rtc_20180111_models.DescribeAppLayoutsRequest,
+    ) -> rtc_20180111_models.DescribeAppLayoutsResponse:
+        """
+        @summary 查询app自定义布局
+        
+        @param request: DescribeAppLayoutsRequest
+        @return: DescribeAppLayoutsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_layouts_with_options(request, runtime)
+
+    async def describe_app_layouts_async(
+        self,
+        request: rtc_20180111_models.DescribeAppLayoutsRequest,
+    ) -> rtc_20180111_models.DescribeAppLayoutsResponse:
+        """
+        @summary 查询app自定义布局
+        
+        @param request: DescribeAppLayoutsRequest
+        @return: DescribeAppLayoutsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_layouts_with_options_async(request, runtime)
+
+    def describe_app_live_stream_status_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppLiveStreamStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppLiveStreamStatusResponse:
+        """
+        @summary 查看应用旁路开关
+        
+        @param request: DescribeAppLiveStreamStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppLiveStreamStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppLiveStreamStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppLiveStreamStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_live_stream_status_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppLiveStreamStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppLiveStreamStatusResponse:
+        """
+        @summary 查看应用旁路开关
+        
+        @param request: DescribeAppLiveStreamStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppLiveStreamStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppLiveStreamStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppLiveStreamStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_live_stream_status(
+        self,
+        request: rtc_20180111_models.DescribeAppLiveStreamStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppLiveStreamStatusResponse:
+        """
+        @summary 查看应用旁路开关
+        
+        @param request: DescribeAppLiveStreamStatusRequest
+        @return: DescribeAppLiveStreamStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_live_stream_status_with_options(request, runtime)
+
+    async def describe_app_live_stream_status_async(
+        self,
+        request: rtc_20180111_models.DescribeAppLiveStreamStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppLiveStreamStatusResponse:
+        """
+        @summary 查看应用旁路开关
+        
+        @param request: DescribeAppLiveStreamStatusRequest
+        @return: DescribeAppLiveStreamStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_live_stream_status_with_options_async(request, runtime)
+
+    def describe_app_record_status_with_options(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppRecordStatusResponse:
+        """
+        @summary 查询应用录制开关
+        
+        @param request: DescribeAppRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppRecordStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppRecordStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppRecordStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_record_status_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppRecordStatusResponse:
+        """
+        @summary 查询应用录制开关
+        
+        @param request: DescribeAppRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppRecordStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppRecordStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppRecordStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_record_status(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppRecordStatusResponse:
+        """
+        @summary 查询应用录制开关
+        
+        @param request: DescribeAppRecordStatusRequest
+        @return: DescribeAppRecordStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_record_status_with_options(request, runtime)
+
+    async def describe_app_record_status_async(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordStatusRequest,
+    ) -> rtc_20180111_models.DescribeAppRecordStatusResponse:
+        """
+        @summary 查询应用录制开关
+        
+        @param request: DescribeAppRecordStatusRequest
+        @return: DescribeAppRecordStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_record_status_with_options_async(request, runtime)
+
+    def describe_app_record_templates_with_options(
+        self,
+        tmp_req: rtc_20180111_models.DescribeAppRecordTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppRecordTemplatesResponse:
+        """
+        @summary 应用录制模版列表
+        
+        @param tmp_req: DescribeAppRecordTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppRecordTemplatesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeAppRecordTemplatesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.condition):
+            request.condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.condition, 'Condition', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppRecordTemplates',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppRecordTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_record_templates_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.DescribeAppRecordTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeAppRecordTemplatesResponse:
+        """
+        @summary 应用录制模版列表
+        
+        @param tmp_req: DescribeAppRecordTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppRecordTemplatesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.DescribeAppRecordTemplatesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.condition):
+            request.condition_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.condition, 'Condition', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppRecordTemplates',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeAppRecordTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_record_templates(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordTemplatesRequest,
+    ) -> rtc_20180111_models.DescribeAppRecordTemplatesResponse:
+        """
+        @summary 应用录制模版列表
+        
+        @param request: DescribeAppRecordTemplatesRequest
+        @return: DescribeAppRecordTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_record_templates_with_options(request, runtime)
+
+    async def describe_app_record_templates_async(
+        self,
+        request: rtc_20180111_models.DescribeAppRecordTemplatesRequest,
+    ) -> rtc_20180111_models.DescribeAppRecordTemplatesResponse:
+        """
+        @summary 应用录制模版列表
+        
+        @param request: DescribeAppRecordTemplatesRequest
+        @return: DescribeAppRecordTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_record_templates_with_options_async(request, runtime)
 
     def describe_app_recording_files_with_options(
         self,
@@ -2012,6 +2886,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_call_list_with_options_async(request, runtime)
+
+    def describe_callbacks_with_options(
+        self,
+        request: rtc_20180111_models.DescribeCallbacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCallbacksResponse:
+        """
+        @summary app事件回调列表
+        
+        @param request: DescribeCallbacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCallbacksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallbacks',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCallbacksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_callbacks_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeCallbacksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCallbacksResponse:
+        """
+        @summary app事件回调列表
+        
+        @param request: DescribeCallbacksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCallbacksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallbacks',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCallbacksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_callbacks(
+        self,
+        request: rtc_20180111_models.DescribeCallbacksRequest,
+    ) -> rtc_20180111_models.DescribeCallbacksResponse:
+        """
+        @summary app事件回调列表
+        
+        @param request: DescribeCallbacksRequest
+        @return: DescribeCallbacksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_callbacks_with_options(request, runtime)
+
+    async def describe_callbacks_async(
+        self,
+        request: rtc_20180111_models.DescribeCallbacksRequest,
+    ) -> rtc_20180111_models.DescribeCallbacksResponse:
+        """
+        @summary app事件回调列表
+        
+        @param request: DescribeCallbacksRequest
+        @return: DescribeCallbacksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_callbacks_with_options_async(request, runtime)
 
     def describe_channel_with_options(
         self,
@@ -3068,6 +4038,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_users_with_options_async(request, runtime)
+
+    def describe_channels_with_options(
+        self,
+        request: rtc_20180111_models.DescribeChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelsResponse:
+        """
+        @summary 查询在线频道列表
+        
+        @param request: DescribeChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannels',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channels_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelsResponse:
+        """
+        @summary 查询在线频道列表
+        
+        @param request: DescribeChannelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannels',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channels(
+        self,
+        request: rtc_20180111_models.DescribeChannelsRequest,
+    ) -> rtc_20180111_models.DescribeChannelsResponse:
+        """
+        @summary 查询在线频道列表
+        
+        @param request: DescribeChannelsRequest
+        @return: DescribeChannelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channels_with_options(request, runtime)
+
+    async def describe_channels_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelsRequest,
+    ) -> rtc_20180111_models.DescribeChannelsResponse:
+        """
+        @summary 查询在线频道列表
+        
+        @param request: DescribeChannelsRequest
+        @return: DescribeChannelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channels_with_options_async(request, runtime)
 
     def describe_end_point_event_list_with_options(
         self,
@@ -5281,6 +6343,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_user_cnt_data_with_options_async(request, runtime)
 
+    def describe_streaming_out_status_with_options(
+        self,
+        request: rtc_20180111_models.DescribeStreamingOutStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeStreamingOutStatusResponse:
+        """
+        @summary 查询旁路推流状态
+        
+        @param request: DescribeStreamingOutStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingOutStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingOutStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeStreamingOutStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_streaming_out_status_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeStreamingOutStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeStreamingOutStatusResponse:
+        """
+        @summary 查询旁路推流状态
+        
+        @param request: DescribeStreamingOutStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingOutStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingOutStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeStreamingOutStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_streaming_out_status(
+        self,
+        request: rtc_20180111_models.DescribeStreamingOutStatusRequest,
+    ) -> rtc_20180111_models.DescribeStreamingOutStatusResponse:
+        """
+        @summary 查询旁路推流状态
+        
+        @param request: DescribeStreamingOutStatusRequest
+        @return: DescribeStreamingOutStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_streaming_out_status_with_options(request, runtime)
+
+    async def describe_streaming_out_status_async(
+        self,
+        request: rtc_20180111_models.DescribeStreamingOutStatusRequest,
+    ) -> rtc_20180111_models.DescribeStreamingOutStatusResponse:
+        """
+        @summary 查询旁路推流状态
+        
+        @param request: DescribeStreamingOutStatusRequest
+        @return: DescribeStreamingOutStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_streaming_out_status_with_options_async(request, runtime)
+
+    def describe_system_layout_list_with_options(
+        self,
+        request: rtc_20180111_models.DescribeSystemLayoutListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeSystemLayoutListResponse:
+        """
+        @summary 系统内置布局
+        
+        @param request: DescribeSystemLayoutListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSystemLayoutListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSystemLayoutList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeSystemLayoutListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_system_layout_list_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeSystemLayoutListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeSystemLayoutListResponse:
+        """
+        @summary 系统内置布局
+        
+        @param request: DescribeSystemLayoutListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSystemLayoutListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSystemLayoutList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeSystemLayoutListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_system_layout_list(
+        self,
+        request: rtc_20180111_models.DescribeSystemLayoutListRequest,
+    ) -> rtc_20180111_models.DescribeSystemLayoutListResponse:
+        """
+        @summary 系统内置布局
+        
+        @param request: DescribeSystemLayoutListRequest
+        @return: DescribeSystemLayoutListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_system_layout_list_with_options(request, runtime)
+
+    async def describe_system_layout_list_async(
+        self,
+        request: rtc_20180111_models.DescribeSystemLayoutListRequest,
+    ) -> rtc_20180111_models.DescribeSystemLayoutListResponse:
+        """
+        @summary 系统内置布局
+        
+        @param request: DescribeSystemLayoutListRequest
+        @return: DescribeSystemLayoutListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_system_layout_list_with_options_async(request, runtime)
+
     def describe_usage_area_distribution_stat_data_with_options(
         self,
         request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
@@ -6201,6 +7471,414 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_with_options_async(request, runtime)
 
+    def modify_app_callback_status_with_options(
+        self,
+        request: rtc_20180111_models.ModifyAppCallbackStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppCallbackStatusResponse:
+        """
+        @summary 更新app回调事件开关
+        
+        @param request: ModifyAppCallbackStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppCallbackStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppCallbackStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppCallbackStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_callback_status_with_options_async(
+        self,
+        request: rtc_20180111_models.ModifyAppCallbackStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppCallbackStatusResponse:
+        """
+        @summary 更新app回调事件开关
+        
+        @param request: ModifyAppCallbackStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppCallbackStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppCallbackStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppCallbackStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_callback_status(
+        self,
+        request: rtc_20180111_models.ModifyAppCallbackStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppCallbackStatusResponse:
+        """
+        @summary 更新app回调事件开关
+        
+        @param request: ModifyAppCallbackStatusRequest
+        @return: ModifyAppCallbackStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_callback_status_with_options(request, runtime)
+
+    async def modify_app_callback_status_async(
+        self,
+        request: rtc_20180111_models.ModifyAppCallbackStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppCallbackStatusResponse:
+        """
+        @summary 更新app回调事件开关
+        
+        @param request: ModifyAppCallbackStatusRequest
+        @return: ModifyAppCallbackStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_callback_status_with_options_async(request, runtime)
+
+    def modify_app_live_stream_status_with_options(
+        self,
+        request: rtc_20180111_models.ModifyAppLiveStreamStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppLiveStreamStatusResponse:
+        """
+        @summary 修改应用旁路开关
+        
+        @param request: ModifyAppLiveStreamStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppLiveStreamStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppLiveStreamStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppLiveStreamStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_live_stream_status_with_options_async(
+        self,
+        request: rtc_20180111_models.ModifyAppLiveStreamStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppLiveStreamStatusResponse:
+        """
+        @summary 修改应用旁路开关
+        
+        @param request: ModifyAppLiveStreamStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppLiveStreamStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppLiveStreamStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppLiveStreamStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_live_stream_status(
+        self,
+        request: rtc_20180111_models.ModifyAppLiveStreamStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppLiveStreamStatusResponse:
+        """
+        @summary 修改应用旁路开关
+        
+        @param request: ModifyAppLiveStreamStatusRequest
+        @return: ModifyAppLiveStreamStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_live_stream_status_with_options(request, runtime)
+
+    async def modify_app_live_stream_status_async(
+        self,
+        request: rtc_20180111_models.ModifyAppLiveStreamStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppLiveStreamStatusResponse:
+        """
+        @summary 修改应用旁路开关
+        
+        @param request: ModifyAppLiveStreamStatusRequest
+        @return: ModifyAppLiveStreamStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_live_stream_status_with_options_async(request, runtime)
+
+    def modify_app_record_status_with_options(
+        self,
+        request: rtc_20180111_models.ModifyAppRecordStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppRecordStatusResponse:
+        """
+        @summary 修改应用录制开关
+        
+        @param request: ModifyAppRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppRecordStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppRecordStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppRecordStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_record_status_with_options_async(
+        self,
+        request: rtc_20180111_models.ModifyAppRecordStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppRecordStatusResponse:
+        """
+        @summary 修改应用录制开关
+        
+        @param request: ModifyAppRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppRecordStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppRecordStatus',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppRecordStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_record_status(
+        self,
+        request: rtc_20180111_models.ModifyAppRecordStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppRecordStatusResponse:
+        """
+        @summary 修改应用录制开关
+        
+        @param request: ModifyAppRecordStatusRequest
+        @return: ModifyAppRecordStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_record_status_with_options(request, runtime)
+
+    async def modify_app_record_status_async(
+        self,
+        request: rtc_20180111_models.ModifyAppRecordStatusRequest,
+    ) -> rtc_20180111_models.ModifyAppRecordStatusResponse:
+        """
+        @summary 修改应用录制开关
+        
+        @param request: ModifyAppRecordStatusRequest
+        @return: ModifyAppRecordStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_record_status_with_options_async(request, runtime)
+
+    def modify_app_record_template_with_options(
+        self,
+        tmp_req: rtc_20180111_models.ModifyAppRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppRecordTemplateResponse:
+        """
+        @summary 修改应用录制模版
+        
+        @param tmp_req: ModifyAppRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppRecordTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyAppRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_template):
+            request.record_template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_template, 'RecordTemplate', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_template_shrink):
+            query['RecordTemplate'] = request.record_template_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppRecordTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_record_template_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.ModifyAppRecordTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyAppRecordTemplateResponse:
+        """
+        @summary 修改应用录制模版
+        
+        @param tmp_req: ModifyAppRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppRecordTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyAppRecordTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.record_template):
+            request.record_template_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_template, 'RecordTemplate', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_template_shrink):
+            query['RecordTemplate'] = request.record_template_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAppRecordTemplate',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyAppRecordTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app_record_template(
+        self,
+        request: rtc_20180111_models.ModifyAppRecordTemplateRequest,
+    ) -> rtc_20180111_models.ModifyAppRecordTemplateResponse:
+        """
+        @summary 修改应用录制模版
+        
+        @param request: ModifyAppRecordTemplateRequest
+        @return: ModifyAppRecordTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_app_record_template_with_options(request, runtime)
+
+    async def modify_app_record_template_async(
+        self,
+        request: rtc_20180111_models.ModifyAppRecordTemplateRequest,
+    ) -> rtc_20180111_models.ModifyAppRecordTemplateResponse:
+        """
+        @summary 修改应用录制模版
+        
+        @param request: ModifyAppRecordTemplateRequest
+        @return: ModifyAppRecordTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_app_record_template_with_options_async(request, runtime)
+
     def modify_app_streaming_out_template_with_options(
         self,
         tmp_req: rtc_20180111_models.ModifyAppStreamingOutTemplateRequest,
@@ -6308,6 +7986,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_streaming_out_template_with_options_async(request, runtime)
+
+    def modify_callback_meta_with_options(
+        self,
+        tmp_req: rtc_20180111_models.ModifyCallbackMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyCallbackMetaResponse:
+        """
+        @summary 更新app回调
+        
+        @param tmp_req: ModifyCallbackMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCallbackMetaResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyCallbackMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback):
+            request.callback_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback, 'Callback', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callback_shrink):
+            query['Callback'] = request.callback_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCallbackMeta',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyCallbackMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_callback_meta_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.ModifyCallbackMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.ModifyCallbackMetaResponse:
+        """
+        @summary 更新app回调
+        
+        @param tmp_req: ModifyCallbackMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCallbackMetaResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.ModifyCallbackMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback):
+            request.callback_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback, 'Callback', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callback_shrink):
+            query['Callback'] = request.callback_shrink
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCallbackMeta',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.ModifyCallbackMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_callback_meta(
+        self,
+        request: rtc_20180111_models.ModifyCallbackMetaRequest,
+    ) -> rtc_20180111_models.ModifyCallbackMetaResponse:
+        """
+        @summary 更新app回调
+        
+        @param request: ModifyCallbackMetaRequest
+        @return: ModifyCallbackMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_callback_meta_with_options(request, runtime)
+
+    async def modify_callback_meta_async(
+        self,
+        request: rtc_20180111_models.ModifyCallbackMetaRequest,
+    ) -> rtc_20180111_models.ModifyCallbackMetaResponse:
+        """
+        @summary 更新app回调
+        
+        @param request: ModifyCallbackMetaRequest
+        @return: ModifyCallbackMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_callback_meta_with_options_async(request, runtime)
 
     def modify_mpulayout_with_options(
         self,
@@ -6620,6 +8410,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_users_with_options_async(request, runtime)
+
+    def start_category_callback_with_options(
+        self,
+        tmp_req: rtc_20180111_models.StartCategoryCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StartCategoryCallbackResponse:
+        """
+        @summary 开启某个事件回调
+        
+        @param tmp_req: StartCategoryCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCategoryCallbackResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartCategoryCallbackShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback):
+            request.callback_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback, 'Callback', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callback_shrink):
+            query['Callback'] = request.callback_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartCategoryCallback',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StartCategoryCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_category_callback_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.StartCategoryCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StartCategoryCallbackResponse:
+        """
+        @summary 开启某个事件回调
+        
+        @param tmp_req: StartCategoryCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCategoryCallbackResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StartCategoryCallbackShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback):
+            request.callback_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback, 'Callback', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callback_shrink):
+            query['Callback'] = request.callback_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartCategoryCallback',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StartCategoryCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_category_callback(
+        self,
+        request: rtc_20180111_models.StartCategoryCallbackRequest,
+    ) -> rtc_20180111_models.StartCategoryCallbackResponse:
+        """
+        @summary 开启某个事件回调
+        
+        @param request: StartCategoryCallbackRequest
+        @return: StartCategoryCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_category_callback_with_options(request, runtime)
+
+    async def start_category_callback_async(
+        self,
+        request: rtc_20180111_models.StartCategoryCallbackRequest,
+    ) -> rtc_20180111_models.StartCategoryCallbackResponse:
+        """
+        @summary 开启某个事件回调
+        
+        @param request: StartCategoryCallbackRequest
+        @return: StartCategoryCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_category_callback_with_options_async(request, runtime)
 
     def start_cloud_record_with_options(
         self,
@@ -7262,6 +9160,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_streaming_out_with_options_async(request, runtime)
+
+    def stop_category_callback_with_options(
+        self,
+        tmp_req: rtc_20180111_models.StopCategoryCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StopCategoryCallbackResponse:
+        """
+        @summary 关闭某个事件回调
+        
+        @param tmp_req: StopCategoryCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCategoryCallbackResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StopCategoryCallbackShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback):
+            request.callback_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback, 'Callback', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callback_shrink):
+            query['Callback'] = request.callback_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCategoryCallback',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StopCategoryCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_category_callback_with_options_async(
+        self,
+        tmp_req: rtc_20180111_models.StopCategoryCallbackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.StopCategoryCallbackResponse:
+        """
+        @summary 关闭某个事件回调
+        
+        @param tmp_req: StopCategoryCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCategoryCallbackResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rtc_20180111_models.StopCategoryCallbackShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.callback):
+            request.callback_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.callback, 'Callback', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.callback_shrink):
+            query['Callback'] = request.callback_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopCategoryCallback',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.StopCategoryCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_category_callback(
+        self,
+        request: rtc_20180111_models.StopCategoryCallbackRequest,
+    ) -> rtc_20180111_models.StopCategoryCallbackResponse:
+        """
+        @summary 关闭某个事件回调
+        
+        @param request: StopCategoryCallbackRequest
+        @return: StopCategoryCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_category_callback_with_options(request, runtime)
+
+    async def stop_category_callback_async(
+        self,
+        request: rtc_20180111_models.StopCategoryCallbackRequest,
+    ) -> rtc_20180111_models.StopCategoryCallbackResponse:
+        """
+        @summary 关闭某个事件回调
+        
+        @param request: StopCategoryCallbackRequest
+        @return: StopCategoryCallbackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_category_callback_with_options_async(request, runtime)
 
     def stop_channel_with_options(
         self,
