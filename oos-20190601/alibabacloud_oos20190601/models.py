@@ -11233,6 +11233,228 @@ class ListGitRepositoriesResponse(TeaModel):
         return self
 
 
+class ListInstancePackageStatesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        template_names: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.region_id = region_id
+        self.template_names = template_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_names is not None:
+            result['TemplateNames'] = self.template_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateNames') is not None:
+            self.template_names = m.get('TemplateNames')
+        return self
+
+
+class ListInstancePackageStatesResponseBodyPackageStates(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        parameters: str = None,
+        publisher: str = None,
+        template_category: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_version: str = None,
+        template_version_name: str = None,
+        update_time: str = None,
+    ):
+        self.description = description
+        self.parameters = parameters
+        self.publisher = publisher
+        self.template_category = template_category
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_version = template_version
+        self.template_version_name = template_version_name
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.publisher is not None:
+            result['Publisher'] = self.publisher
+        if self.template_category is not None:
+            result['TemplateCategory'] = self.template_category
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        if self.template_version_name is not None:
+            result['TemplateVersionName'] = self.template_version_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('Publisher') is not None:
+            self.publisher = m.get('Publisher')
+        if m.get('TemplateCategory') is not None:
+            self.template_category = m.get('TemplateCategory')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        if m.get('TemplateVersionName') is not None:
+            self.template_version_name = m.get('TemplateVersionName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListInstancePackageStatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: str = None,
+        next_token: str = None,
+        package_states: List[ListInstancePackageStatesResponseBodyPackageStates] = None,
+        request_id: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.package_states = package_states
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.package_states:
+            for k in self.package_states:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['PackageStates'] = []
+        if self.package_states is not None:
+            for k in self.package_states:
+                result['PackageStates'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.package_states = []
+        if m.get('PackageStates') is not None:
+            for k in m.get('PackageStates'):
+                temp_model = ListInstancePackageStatesResponseBodyPackageStates()
+                self.package_states.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListInstancePackageStatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListInstancePackageStatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListInstancePackageStatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListInstancePatchStatesRequest(TeaModel):
     def __init__(
         self,
@@ -16072,10 +16294,11 @@ class ListTemplatesRequest(TeaModel):
         self.created_date_before = created_date_before
         # Specifies whether to query the template that is configured with a trigger.
         self.has_trigger = has_trigger
+        # Specifies whether the template is an example template
         self.is_example = is_example
-        # The template is favorite or not.
+        # Specifies whether the template is added to favorites.
         self.is_favorite = is_favorite
-        # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+        # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
         # The token that is used to retrieve the next page of results.
         self.next_token = next_token
@@ -16244,10 +16467,11 @@ class ListTemplatesShrinkRequest(TeaModel):
         self.created_date_before = created_date_before
         # Specifies whether to query the template that is configured with a trigger.
         self.has_trigger = has_trigger
+        # Specifies whether the template is an example template
         self.is_example = is_example
-        # The template is favorite or not.
+        # Specifies whether the template is added to favorites.
         self.is_favorite = is_favorite
-        # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+        # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
         # The token that is used to retrieve the next page of results.
         self.next_token = next_token
@@ -16404,27 +16628,27 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
     ):
         # The template type.
         self.category = category
-        # The constraints of template
+        # The template constraints.
         self.constraints = constraints
         # The user who created the template.
         self.created_by = created_by
-        # The time when the template was created.
+        # The creation time of the template.
         self.created_date = created_date
         # The template description.
         self.description = description
         # Indicates whether the template was configured with a trigger.
         self.has_trigger = has_trigger
-        # The SHA-256 value of the template content.
+        # The SHA256 value of the template content.
         self.hash = hash
-        # The template is favorite or not.
+        # Indicates whether the template is added to favorites.
         self.is_favorite = is_favorite
         # The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If **ShareType** is set to **Private**, the value of this parameter is `-1`.
         # 
-        # >  This parameter is valid only if the value of **ShareType** is set to **Public**.
+        # >  This parameter is valid only if **ShareType** is set to **Public**.
         self.popularity = popularity
-        # The publisher of template.
+        # The user who published the template.
         self.publisher = publisher
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The share type of the template. The share type of a template created by a user is **Private**. Valid values:
         # 
@@ -16433,7 +16657,7 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.share_type = share_type
         # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags = tags
-        # The template format. The system automatically determines whether the format is JSON or YAML.
+        # The template format. The system automatically determines whether the format of the template is JSON or YAML.
         self.template_format = template_format
         # The template ID.
         self.template_id = template_id
@@ -16441,11 +16665,11 @@ class ListTemplatesResponseBodyTemplates(TeaModel):
         self.template_name = template_name
         # The template type.
         self.template_type = template_type
-        # The template version. The name of the version consists of the letter v and a number. The number starts from 1.
+        # The template version. The version contains the letter v and a number. The number starts from 1.
         self.template_version = template_version
         # The number of times for which the private template is executed. If **ShareType** is set to **Public**, the value of this parameter is `-1`.
         # 
-        # >  This parameter is valid only if the value of **ShareType** is **Private**.
+        # >  This parameter is valid only if **ShareType** is set to **Private**.
         self.total_execution_count = total_execution_count
         # The user who last updated the template.
         self.updated_by = updated_by
@@ -19252,6 +19476,195 @@ class UpdateExecutionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateExecutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateInstancePackageStateRequest(TeaModel):
+    def __init__(
+        self,
+        configure_action: str = None,
+        instance_id: str = None,
+        parameters: Dict[str, Any] = None,
+        region_id: str = None,
+        template_name: str = None,
+        template_version: str = None,
+    ):
+        # This parameter is required.
+        self.configure_action = configure_action
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.parameters = parameters
+        self.region_id = region_id
+        # This parameter is required.
+        self.template_name = template_name
+        self.template_version = template_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configure_action is not None:
+            result['ConfigureAction'] = self.configure_action
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigureAction') is not None:
+            self.configure_action = m.get('ConfigureAction')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        return self
+
+
+class UpdateInstancePackageStateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        configure_action: str = None,
+        instance_id: str = None,
+        parameters_shrink: str = None,
+        region_id: str = None,
+        template_name: str = None,
+        template_version: str = None,
+    ):
+        # This parameter is required.
+        self.configure_action = configure_action
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.parameters_shrink = parameters_shrink
+        self.region_id = region_id
+        # This parameter is required.
+        self.template_name = template_name
+        self.template_version = template_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configure_action is not None:
+            result['ConfigureAction'] = self.configure_action
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigureAction') is not None:
+            self.configure_action = m.get('ConfigureAction')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
+        return self
+
+
+class UpdateInstancePackageStateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateInstancePackageStateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateInstancePackageStateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateInstancePackageStateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

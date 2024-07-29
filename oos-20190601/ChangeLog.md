@@ -1,3 +1,8 @@
+2024-07-29 Version: 3.2.0
+- Support API ListInstancePackageStates.
+- Support API UpdateInstancePackageState.
+
+
 2024-07-11 Version: 3.1.2
 - Update API ListGitRepositories: add param RegionId.
 - Update API ListTemplates: add param IsExample.

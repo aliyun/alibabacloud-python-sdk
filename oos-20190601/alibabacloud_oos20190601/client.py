@@ -5225,6 +5225,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_git_repositories_with_options_async(request, runtime)
 
+    def list_instance_package_states_with_options(
+        self,
+        request: oos_20190601_models.ListInstancePackageStatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstancePackageStatesResponse:
+        """
+        @summary 列出实例软件包状态
+        
+        @param request: ListInstancePackageStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancePackageStatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_names):
+            query['TemplateNames'] = request.template_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstancePackageStates',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstancePackageStatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_package_states_with_options_async(
+        self,
+        request: oos_20190601_models.ListInstancePackageStatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.ListInstancePackageStatesResponse:
+        """
+        @summary 列出实例软件包状态
+        
+        @param request: ListInstancePackageStatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancePackageStatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_names):
+            query['TemplateNames'] = request.template_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstancePackageStates',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.ListInstancePackageStatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_package_states(
+        self,
+        request: oos_20190601_models.ListInstancePackageStatesRequest,
+    ) -> oos_20190601_models.ListInstancePackageStatesResponse:
+        """
+        @summary 列出实例软件包状态
+        
+        @param request: ListInstancePackageStatesRequest
+        @return: ListInstancePackageStatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_package_states_with_options(request, runtime)
+
+    async def list_instance_package_states_async(
+        self,
+        request: oos_20190601_models.ListInstancePackageStatesRequest,
+    ) -> oos_20190601_models.ListInstancePackageStatesResponse:
+        """
+        @summary 列出实例软件包状态
+        
+        @param request: ListInstancePackageStatesRequest
+        @return: ListInstancePackageStatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_package_states_with_options_async(request, runtime)
+
     def list_instance_patch_states_with_options(
         self,
         request: oos_20190601_models.ListInstancePatchStatesRequest,
@@ -8740,6 +8852,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_execution_with_options_async(request, runtime)
+
+    def update_instance_package_state_with_options(
+        self,
+        tmp_req: oos_20190601_models.UpdateInstancePackageStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
+        """
+        @summary 更新实例软件包状态
+        
+        @param tmp_req: UpdateInstancePackageStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstancePackageStateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateInstancePackageStateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.configure_action):
+            query['ConfigureAction'] = request.configure_action
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstancePackageState',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateInstancePackageStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_package_state_with_options_async(
+        self,
+        tmp_req: oos_20190601_models.UpdateInstancePackageStateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
+        """
+        @summary 更新实例软件包状态
+        
+        @param tmp_req: UpdateInstancePackageStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstancePackageStateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateInstancePackageStateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.configure_action):
+            query['ConfigureAction'] = request.configure_action
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.template_version):
+            query['TemplateVersion'] = request.template_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstancePackageState',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.UpdateInstancePackageStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_package_state(
+        self,
+        request: oos_20190601_models.UpdateInstancePackageStateRequest,
+    ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
+        """
+        @summary 更新实例软件包状态
+        
+        @param request: UpdateInstancePackageStateRequest
+        @return: UpdateInstancePackageStateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_instance_package_state_with_options(request, runtime)
+
+    async def update_instance_package_state_async(
+        self,
+        request: oos_20190601_models.UpdateInstancePackageStateRequest,
+    ) -> oos_20190601_models.UpdateInstancePackageStateResponse:
+        """
+        @summary 更新实例软件包状态
+        
+        @param request: UpdateInstancePackageStateRequest
+        @return: UpdateInstancePackageStateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_instance_package_state_with_options_async(request, runtime)
 
     def update_ops_item_with_options(
         self,
