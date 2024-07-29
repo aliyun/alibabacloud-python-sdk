@@ -1,0 +1,40 @@
+2024-07-29 Version: 1.0.0
+- Support API UpgradeMinorVersion.
+- Update API CreateDB: update param DBInstanceId.
+- Update API CreateDB: update param DBName.
+- Update API CreateDB: update param RegionId.
+- Update API CreateDBInstance: update response param.
+- Update API DeleteDB: update param DBInstanceId.
+- Update API DeleteDB: update param DBName.
+- Update API DeleteDB: update param RegionId.
+- Update API DeleteDBInstance: update param DBInstanceId.
+- Update API DeleteEndpoint: update param DBInstanceId.
+- Update API DescribeAccountAuthority: update param Account.
+- Update API DescribeAccountAuthority: update param DBInstanceId.
+- Update API DescribeAccountAuthority: update param RegionId.
+- Update API DescribeAccounts: update param DBInstanceId.
+- Update API DescribeDBInstanceAttribute: update param DBInstanceId.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstanceDataSources: update param DBInstanceId.
+- Update API DescribeEndpoints: update param DBInstanceId.
+- Update API DescribeProcessList: update param DBInstanceId.
+- Update API DescribeSecurityIPList: update param DBInstanceId.
+- Update API DescribeSlowLogRecords: update param DBInstanceId.
+- Update API DescribeSlowLogTrend: update param DBInstanceId.
+- Update API KillProcess: update param DBInstanceId.
+- Update API ModifyAccountAuthority: update param Account.
+- Update API ModifyAccountAuthority: update param DBInstanceId.
+- Update API ModifyAccountAuthority: update param DmlAuthSetting.
+- Update API ModifyAccountAuthority: update param RegionId.
+- Update API ModifyAccountDescription: update param Account.
+- Update API ModifyAccountDescription: update param DBInstanceId.
+- Update API ModifyAccountDescription: update param Description.
+- Update API ModifyAccountDescription: update param RegionId.
+- Update API ModifyDBInstanceClass: update param DBInstanceId.
+- Update API ModifyDBInstanceConnectionString: update param DBInstanceId.
+- Update API ModifySecurityIPList: update param DBInstanceId.
+- Update API RestartDBInstance: update param DBInstanceId.
+- Update API StartDBInstance: update param DBInstanceId.
+- Update API StopDBInstance: update param DBInstanceId.
+
+
