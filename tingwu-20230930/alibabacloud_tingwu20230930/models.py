@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class CreateTaskRequestInput(TeaModel):
@@ -240,6 +240,92 @@ class CreateTaskRequestParametersMeetingAssistance(TeaModel):
         return self
 
 
+class CreateTaskRequestParametersServiceInspectionInspectionContents(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        title: str = None,
+    ):
+        self.content = content
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CreateTaskRequestParametersServiceInspection(TeaModel):
+    def __init__(
+        self,
+        inspection_contents: List[CreateTaskRequestParametersServiceInspectionInspectionContents] = None,
+        inspection_introduction: str = None,
+        scene_introduction: str = None,
+        speaker_map: Dict[str, Any] = None,
+    ):
+        self.inspection_contents = inspection_contents
+        self.inspection_introduction = inspection_introduction
+        self.scene_introduction = scene_introduction
+        self.speaker_map = speaker_map
+
+    def validate(self):
+        if self.inspection_contents:
+            for k in self.inspection_contents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InspectionContents'] = []
+        if self.inspection_contents is not None:
+            for k in self.inspection_contents:
+                result['InspectionContents'].append(k.to_map() if k else None)
+        if self.inspection_introduction is not None:
+            result['InspectionIntroduction'] = self.inspection_introduction
+        if self.scene_introduction is not None:
+            result['SceneIntroduction'] = self.scene_introduction
+        if self.speaker_map is not None:
+            result['SpeakerMap'] = self.speaker_map
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inspection_contents = []
+        if m.get('InspectionContents') is not None:
+            for k in m.get('InspectionContents'):
+                temp_model = CreateTaskRequestParametersServiceInspectionInspectionContents()
+                self.inspection_contents.append(temp_model.from_map(k))
+        if m.get('InspectionIntroduction') is not None:
+            self.inspection_introduction = m.get('InspectionIntroduction')
+        if m.get('SceneIntroduction') is not None:
+            self.scene_introduction = m.get('SceneIntroduction')
+        if m.get('SpeakerMap') is not None:
+            self.speaker_map = m.get('SpeakerMap')
+        return self
+
+
 class CreateTaskRequestParametersSummarization(TeaModel):
     def __init__(
         self,
@@ -453,6 +539,8 @@ class CreateTaskRequestParameters(TeaModel):
         meeting_assistance: CreateTaskRequestParametersMeetingAssistance = None,
         meeting_assistance_enabled: bool = None,
         ppt_extraction_enabled: bool = None,
+        service_inspection: CreateTaskRequestParametersServiceInspection = None,
+        service_inspection_enabled: bool = None,
         summarization: CreateTaskRequestParametersSummarization = None,
         summarization_enabled: bool = None,
         text_polish_enabled: bool = None,
@@ -468,6 +556,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.meeting_assistance = meeting_assistance
         self.meeting_assistance_enabled = meeting_assistance_enabled
         self.ppt_extraction_enabled = ppt_extraction_enabled
+        self.service_inspection = service_inspection
+        self.service_inspection_enabled = service_inspection_enabled
         self.summarization = summarization
         self.summarization_enabled = summarization_enabled
         self.text_polish_enabled = text_polish_enabled
@@ -483,6 +573,8 @@ class CreateTaskRequestParameters(TeaModel):
             self.extra_params.validate()
         if self.meeting_assistance:
             self.meeting_assistance.validate()
+        if self.service_inspection:
+            self.service_inspection.validate()
         if self.summarization:
             self.summarization.validate()
         if self.transcoding:
@@ -512,6 +604,10 @@ class CreateTaskRequestParameters(TeaModel):
             result['MeetingAssistanceEnabled'] = self.meeting_assistance_enabled
         if self.ppt_extraction_enabled is not None:
             result['PptExtractionEnabled'] = self.ppt_extraction_enabled
+        if self.service_inspection is not None:
+            result['ServiceInspection'] = self.service_inspection.to_map()
+        if self.service_inspection_enabled is not None:
+            result['ServiceInspectionEnabled'] = self.service_inspection_enabled
         if self.summarization is not None:
             result['Summarization'] = self.summarization.to_map()
         if self.summarization_enabled is not None:
@@ -547,6 +643,11 @@ class CreateTaskRequestParameters(TeaModel):
             self.meeting_assistance_enabled = m.get('MeetingAssistanceEnabled')
         if m.get('PptExtractionEnabled') is not None:
             self.ppt_extraction_enabled = m.get('PptExtractionEnabled')
+        if m.get('ServiceInspection') is not None:
+            temp_model = CreateTaskRequestParametersServiceInspection()
+            self.service_inspection = temp_model.from_map(m['ServiceInspection'])
+        if m.get('ServiceInspectionEnabled') is not None:
+            self.service_inspection_enabled = m.get('ServiceInspectionEnabled')
         if m.get('Summarization') is not None:
             temp_model = CreateTaskRequestParametersSummarization()
             self.summarization = temp_model.from_map(m['Summarization'])

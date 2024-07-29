@@ -1,3 +1,7 @@
+2024-07-29 Version: 2.0.15
+- Update API CreateTask: update param body.
+
+
 2024-06-21 Version: 2.0.14
 - Generated python 2023-09-30 for tingwu.
 
