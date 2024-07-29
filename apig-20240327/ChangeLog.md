@@ -1,3 +1,7 @@
+2024-07-29 Version: 1.0.2
+- Update API ListDomains: add param gatewayId.
+
+
 2024-07-26 Version: 1.0.1
 - Update API ListHttpApis: add param publishedOnly.
 

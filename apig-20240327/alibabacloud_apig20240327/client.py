@@ -2593,6 +2593,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -2635,6 +2637,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):

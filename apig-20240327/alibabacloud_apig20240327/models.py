@@ -3640,6 +3640,364 @@ class ResourceStatistic(TeaModel):
         return self
 
 
+class RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation_id: str = None,
+    ):
+        self.name = name
+        self.operation_id = operation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operation_id is not None:
+            result['operationId'] = self.operation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operationId') is not None:
+            self.operation_id = m.get('operationId')
+        return self
+
+
+class RouteRulesConflictInfoConflictsDetailsConflictingMatch(TeaModel):
+    def __init__(
+        self,
+        match: HttpRouteMatch = None,
+        operation_info: RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo = None,
+    ):
+        self.match = match
+        self.operation_info = operation_info
+
+    def validate(self):
+        if self.match:
+            self.match.validate()
+        if self.operation_info:
+            self.operation_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.operation_info is not None:
+            result['operationInfo'] = self.operation_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('operationInfo') is not None:
+            temp_model = RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo()
+            self.operation_info = temp_model.from_map(m['operationInfo'])
+        return self
+
+
+class RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation_id: str = None,
+    ):
+        self.name = name
+        self.operation_id = operation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.operation_id is not None:
+            result['operationId'] = self.operation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('operationId') is not None:
+            self.operation_id = m.get('operationId')
+        return self
+
+
+class RouteRulesConflictInfoConflictsDetailsDetectedMatch(TeaModel):
+    def __init__(
+        self,
+        match: HttpRouteMatch = None,
+        operation_info: RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo = None,
+    ):
+        self.match = match
+        self.operation_info = operation_info
+
+    def validate(self):
+        if self.match:
+            self.match.validate()
+        if self.operation_info:
+            self.operation_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match is not None:
+            result['match'] = self.match.to_map()
+        if self.operation_info is not None:
+            result['operationInfo'] = self.operation_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('match') is not None:
+            temp_model = HttpRouteMatch()
+            self.match = temp_model.from_map(m['match'])
+        if m.get('operationInfo') is not None:
+            temp_model = RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo()
+            self.operation_info = temp_model.from_map(m['operationInfo'])
+        return self
+
+
+class RouteRulesConflictInfoConflictsDetails(TeaModel):
+    def __init__(
+        self,
+        conflicting_match: RouteRulesConflictInfoConflictsDetailsConflictingMatch = None,
+        detected_match: RouteRulesConflictInfoConflictsDetailsDetectedMatch = None,
+        level: str = None,
+    ):
+        self.conflicting_match = conflicting_match
+        self.detected_match = detected_match
+        self.level = level
+
+    def validate(self):
+        if self.conflicting_match:
+            self.conflicting_match.validate()
+        if self.detected_match:
+            self.detected_match.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conflicting_match is not None:
+            result['conflictingMatch'] = self.conflicting_match.to_map()
+        if self.detected_match is not None:
+            result['detectedMatch'] = self.detected_match.to_map()
+        if self.level is not None:
+            result['level'] = self.level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('conflictingMatch') is not None:
+            temp_model = RouteRulesConflictInfoConflictsDetailsConflictingMatch()
+            self.conflicting_match = temp_model.from_map(m['conflictingMatch'])
+        if m.get('detectedMatch') is not None:
+            temp_model = RouteRulesConflictInfoConflictsDetailsDetectedMatch()
+            self.detected_match = temp_model.from_map(m['detectedMatch'])
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        return self
+
+
+class RouteRulesConflictInfoConflictsEnvironmentInfo(TeaModel):
+    def __init__(
+        self,
+        environment_id: str = None,
+        name: str = None,
+    ):
+        self.environment_id = environment_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class RouteRulesConflictInfoConflicts(TeaModel):
+    def __init__(
+        self,
+        details: List[RouteRulesConflictInfoConflictsDetails] = None,
+        environment_info: RouteRulesConflictInfoConflictsEnvironmentInfo = None,
+        resource_id: str = None,
+        resource_name: str = None,
+        resource_type: str = None,
+    ):
+        self.details = details
+        self.environment_info = environment_info
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+        if self.environment_info:
+            self.environment_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['details'].append(k.to_map() if k else None)
+        if self.environment_info is not None:
+            result['environmentInfo'] = self.environment_info.to_map()
+        if self.resource_id is not None:
+            result['resourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['resourceName'] = self.resource_name
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.details = []
+        if m.get('details') is not None:
+            for k in m.get('details'):
+                temp_model = RouteRulesConflictInfoConflictsDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('environmentInfo') is not None:
+            temp_model = RouteRulesConflictInfoConflictsEnvironmentInfo()
+            self.environment_info = temp_model.from_map(m['environmentInfo'])
+        if m.get('resourceId') is not None:
+            self.resource_id = m.get('resourceId')
+        if m.get('resourceName') is not None:
+            self.resource_name = m.get('resourceName')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class RouteRulesConflictInfoDomainInfo(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        name: str = None,
+    ):
+        self.domain_id = domain_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['domainId'] = self.domain_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainId') is not None:
+            self.domain_id = m.get('domainId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class RouteRulesConflictInfo(TeaModel):
+    def __init__(
+        self,
+        conflicts: List[RouteRulesConflictInfoConflicts] = None,
+        domain_info: RouteRulesConflictInfoDomainInfo = None,
+    ):
+        self.conflicts = conflicts
+        self.domain_info = domain_info
+
+    def validate(self):
+        if self.conflicts:
+            for k in self.conflicts:
+                if k:
+                    k.validate()
+        if self.domain_info:
+            self.domain_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['conflicts'] = []
+        if self.conflicts is not None:
+            for k in self.conflicts:
+                result['conflicts'].append(k.to_map() if k else None)
+        if self.domain_info is not None:
+            result['domainInfo'] = self.domain_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.conflicts = []
+        if m.get('conflicts') is not None:
+            for k in m.get('conflicts'):
+                temp_model = RouteRulesConflictInfoConflicts()
+                self.conflicts.append(temp_model.from_map(k))
+        if m.get('domainInfo') is not None:
+            temp_model = RouteRulesConflictInfoDomainInfo()
+            self.domain_info = temp_model.from_map(m['domainInfo'])
+        return self
+
+
 class ServiceLinkedRole(TeaModel):
     def __init__(
         self,
@@ -7669,10 +8027,12 @@ class GetHttpApiOperationResponse(TeaModel):
 class ListDomainsRequest(TeaModel):
     def __init__(
         self,
+        gateway_id: str = None,
         name_like: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.gateway_id = gateway_id
         self.name_like = name_like
         self.page_number = page_number
         self.page_size = page_size
@@ -7686,6 +8046,8 @@ class ListDomainsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
         if self.name_like is not None:
             result['nameLike'] = self.name_like
         if self.page_number is not None:
@@ -7696,6 +8058,8 @@ class ListDomainsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
         if m.get('nameLike') is not None:
             self.name_like = m.get('nameLike')
         if m.get('pageNumber') is not None:
