@@ -438,11 +438,13 @@ class CheckResourceStockRequest(TeaModel):
         self,
         acp_spec_id: str = None,
         biz_region_id: str = None,
+        gpu_acceleration: bool = None,
         zone_id: str = None,
     ):
         self.acp_spec_id = acp_spec_id
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        self.gpu_acceleration = gpu_acceleration
         self.zone_id = zone_id
 
     def validate(self):
@@ -458,6 +460,8 @@ class CheckResourceStockRequest(TeaModel):
             result['AcpSpecId'] = self.acp_spec_id
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+        if self.gpu_acceleration is not None:
+            result['GpuAcceleration'] = self.gpu_acceleration
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -468,6 +472,8 @@ class CheckResourceStockRequest(TeaModel):
             self.acp_spec_id = m.get('AcpSpecId')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+        if m.get('GpuAcceleration') is not None:
+            self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self

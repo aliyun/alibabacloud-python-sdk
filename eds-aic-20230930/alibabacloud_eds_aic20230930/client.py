@@ -372,6 +372,8 @@ class Client(OpenApiClient):
             query['AcpSpecId'] = request.acp_spec_id
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.gpu_acceleration):
+            query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -411,6 +413,8 @@ class Client(OpenApiClient):
             query['AcpSpecId'] = request.acp_spec_id
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.gpu_acceleration):
+            query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(

@@ -1,3 +1,7 @@
+2024-07-29 Version: 1.3.2
+- Update API CheckResourceStock: add param GpuAcceleration.
+
+
 2024-07-24 Version: 1.3.1
 - Update API CreateAndroidInstanceGroup: add param GpuAcceleration.
 - Update API DescribeAndroidInstanceGroups: update response param.
