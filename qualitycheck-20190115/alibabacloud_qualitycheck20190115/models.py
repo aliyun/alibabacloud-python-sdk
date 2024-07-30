@@ -8608,6 +8608,7 @@ class GetResultResponseBodyDataResultInfoAsrResultAsrResult(TeaModel):
         begin: int = None,
         emotion_value: int = None,
         end: int = None,
+        identity: str = None,
         role: str = None,
         speech_rate: int = None,
         words: str = None,
@@ -8615,6 +8616,7 @@ class GetResultResponseBodyDataResultInfoAsrResultAsrResult(TeaModel):
         self.begin = begin
         self.emotion_value = emotion_value
         self.end = end
+        self.identity = identity
         self.role = role
         self.speech_rate = speech_rate
         self.words = words
@@ -8634,6 +8636,8 @@ class GetResultResponseBodyDataResultInfoAsrResultAsrResult(TeaModel):
             result['EmotionValue'] = self.emotion_value
         if self.end is not None:
             result['End'] = self.end
+        if self.identity is not None:
+            result['Identity'] = self.identity
         if self.role is not None:
             result['Role'] = self.role
         if self.speech_rate is not None:
@@ -8650,6 +8654,8 @@ class GetResultResponseBodyDataResultInfoAsrResultAsrResult(TeaModel):
             self.emotion_value = m.get('EmotionValue')
         if m.get('End') is not None:
             self.end = m.get('End')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('SpeechRate') is not None:
