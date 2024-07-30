@@ -8790,14 +8790,32 @@ class DescribeDestinationPortEventRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # The type of the attack event that you want to query. Valid values:
+        # 
+        # *   **defense**: attack events that trigger traffic scrubbing.
+        # *   **blackhole**: attack events that trigger blackhole filtering.
+        # 
         # This parameter is required.
         self.event_type = event_type
+        # The IP address of the attacker.
+        # 
         # This parameter is required.
         self.ip = ip
+        # The number of destination ports to return. The ports are sorted in descending order of the number of received request packets. By default, the first **10** ports are returned.
+        # 
         # This parameter is required.
         self.range = range
+        # The region in which your service is deployed. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland.
+        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region = region
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -8843,7 +8861,9 @@ class DescribeDestinationPortEventResponseBodyPortList(TeaModel):
         dst_port: str = None,
         in_pkts: int = None,
     ):
+        # The destination port.
         self.dst_port = dst_port
+        # The number of request packets received by the destination port.
         self.in_pkts = in_pkts
 
     def validate(self):
@@ -8876,7 +8896,9 @@ class DescribeDestinationPortEventResponseBody(TeaModel):
         port_list: List[DescribeDestinationPortEventResponseBodyPortList] = None,
         request_id: str = None,
     ):
+        # The ports.
         self.port_list = port_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22543,12 +22565,14 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(TeaModel):
     def __init__(
         self,
         content: str = None,
+        content_list: str = None,
         field: str = None,
         header_name: str = None,
         match_method: str = None,
     ):
         # The match content.
         self.content = content
+        self.content_list = content_list
         # The match field.
         self.field = field
         # The custom HTTP request header.
@@ -22569,6 +22593,8 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.content_list is not None:
+            result['ContentList'] = self.content_list
         if self.field is not None:
             result['Field'] = self.field
         if self.header_name is not None:
@@ -22581,6 +22607,8 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(TeaModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('ContentList') is not None:
+            self.content_list = m.get('ContentList')
         if m.get('Field') is not None:
             self.field = m.get('Field')
         if m.get('HeaderName') is not None:
@@ -27312,14 +27340,14 @@ class ModifyHeadersRequest(TeaModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
-        # The key-value pair of the custom header. Key indicates the header name and Value indicates the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+        # The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
         # 
         # Take note of the following items:
         # 
         # *   Do not use X-Forwarded-ClientSrcPort as a custom header.
-        # *   Do not use a standard HTTP header such as User-Agent. If you use a standard HTTP header, the original header may be overwritten.
+        # *   Do not use a standard HTTP header such as User-Agent. Otherwise, the original header may be overwritten.
         # 
-        # > If you set Key to X-Forwarded-ClientSrcPort, the actual source port of the client that accesses Anti-DDoS Pro or Anti-DDoS Premium (a Layer 7 proxy) is obtained. In this case, the Value is "".
+        # >  If you specify a key of X-Forwarded-ClientSrcPort, the system obtains the originating port of the client that accesses Anti-DDoS Proxy (a Layer 7 proxy). In this case, the value is an empty string.
         # 
         # This parameter is required.
         self.custom_headers = custom_headers

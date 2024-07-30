@@ -1,3 +1,7 @@
+2024-07-30 Version: 2.4.2
+- Update API DescribeWebCCRulesV2: update response param.
+
+
 2024-07-11 Version: 2.4.1
 - Generated python 2020-01-01 for ddoscoo.
 

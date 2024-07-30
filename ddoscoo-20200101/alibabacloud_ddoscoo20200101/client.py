@@ -6475,7 +6475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
         """
-        @summary 查询目的端口事件
+        @summary Queries the number of request packets received by the destination ports of the attacked IP address that is protected by Anti-DDoS Proxy.
         
         @param request: DescribeDestinationPortEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6518,7 +6518,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
         """
-        @summary 查询目的端口事件
+        @summary Queries the number of request packets received by the destination ports of the attacked IP address that is protected by Anti-DDoS Proxy.
         
         @param request: DescribeDestinationPortEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6560,7 +6560,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeDestinationPortEventRequest,
     ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
         """
-        @summary 查询目的端口事件
+        @summary Queries the number of request packets received by the destination ports of the attacked IP address that is protected by Anti-DDoS Proxy.
         
         @param request: DescribeDestinationPortEventRequest
         @return: DescribeDestinationPortEventResponse
@@ -6573,7 +6573,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeDestinationPortEventRequest,
     ) -> ddoscoo_20200101_models.DescribeDestinationPortEventResponse:
         """
-        @summary 查询目的端口事件
+        @summary Queries the number of request packets received by the destination ports of the attacked IP address that is protected by Anti-DDoS Proxy.
         
         @param request: DescribeDestinationPortEventRequest
         @return: DescribeDestinationPortEventResponse
