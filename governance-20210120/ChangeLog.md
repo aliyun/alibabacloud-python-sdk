@@ -1,3 +1,7 @@
+2024-07-30 Version: 0.1.0
+- Support API UpdateAccountFactoryBaseline.
+
+
 2024-07-19 Version: 0.0.6
 - Update API EnrollAccount: update param AccountNamePrefix.
 - Update API EnrollAccount: update param DisplayName.

@@ -588,3 +588,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_enrolled_accounts_with_options_async(request, runtime)
+
+    def update_account_factory_baseline_with_options(
+        self,
+        request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
+        """
+        @summary 更新账号工厂基线
+        
+        @param request: UpdateAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccountFactoryBaselineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
+        if not UtilClient.is_unset(request.baseline_items):
+            query['BaselineItems'] = request.baseline_items
+        if not UtilClient.is_unset(request.baseline_name):
+            query['BaselineName'] = request.baseline_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAccountFactoryBaseline',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_account_factory_baseline_with_options_async(
+        self,
+        request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
+        """
+        @summary 更新账号工厂基线
+        
+        @param request: UpdateAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAccountFactoryBaselineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
+        if not UtilClient.is_unset(request.baseline_items):
+            query['BaselineItems'] = request.baseline_items
+        if not UtilClient.is_unset(request.baseline_name):
+            query['BaselineName'] = request.baseline_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAccountFactoryBaseline',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.UpdateAccountFactoryBaselineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_account_factory_baseline(
+        self,
+        request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
+    ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
+        """
+        @summary 更新账号工厂基线
+        
+        @param request: UpdateAccountFactoryBaselineRequest
+        @return: UpdateAccountFactoryBaselineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_account_factory_baseline_with_options(request, runtime)
+
+    async def update_account_factory_baseline_async(
+        self,
+        request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
+    ) -> governance_20210120_models.UpdateAccountFactoryBaselineResponse:
+        """
+        @summary 更新账号工厂基线
+        
+        @param request: UpdateAccountFactoryBaselineRequest
+        @return: UpdateAccountFactoryBaselineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_account_factory_baseline_with_options_async(request, runtime)
