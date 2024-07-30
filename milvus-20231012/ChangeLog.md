@@ -1,3 +1,8 @@
+2024-07-30 Version: 1.0.3
+- Update API UpdatePublicNetworkStatus: update param Cidr.
+- Update API UpdatePublicNetworkStatus: update param PublicNetworkEnabled.
+
+
 2024-07-12 Version: 1.0.2
 - Update API UpdatePublicNetworkStatus: add param Cidr.
 
