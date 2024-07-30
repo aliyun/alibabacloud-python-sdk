@@ -31161,6 +31161,7 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
         desc: str = None,
         name: str = None,
         remark: str = None,
+        support_sample_rate: str = None,
         tag: str = None,
         voice: str = None,
         voice_type: str = None,
@@ -31169,6 +31170,7 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
         self.desc = desc
         self.name = name
         self.remark = remark
+        self.support_sample_rate = support_sample_rate
         self.tag = tag
         self.voice = voice
         self.voice_type = voice_type
@@ -31189,6 +31191,8 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
             result['Name'] = self.name
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.support_sample_rate is not None:
+            result['SupportSampleRate'] = self.support_sample_rate
         if self.tag is not None:
             result['Tag'] = self.tag
         if self.voice is not None:
@@ -31207,6 +31211,8 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(TeaModel):
             self.name = m.get('Name')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('SupportSampleRate') is not None:
+            self.support_sample_rate = m.get('SupportSampleRate')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
         if m.get('Voice') is not None:

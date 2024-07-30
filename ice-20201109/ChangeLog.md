@@ -1,3 +1,7 @@
+2024-07-30 Version: 3.1.1
+- Update API ListSmartVoiceGroups: update response param.
+
+
 2024-07-25 Version: 3.1.0
 - Support API SubmitMediaAiAnalysisJob.
 
