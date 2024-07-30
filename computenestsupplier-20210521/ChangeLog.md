@@ -1,3 +1,7 @@
+2024-07-30 Version: 2.6.1
+- Update API UpdateService: update param UpdateOption.
+
+
 2024-07-22 Version: 2.6.0
 - Support API ListServiceSharedAccounts.
 - Support API RemoveServiceSharedAccounts.

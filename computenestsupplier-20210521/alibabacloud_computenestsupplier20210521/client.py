@@ -871,7 +871,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.CreateServiceUsageResponse:
         """
-        @summary 创建代销申请
+        @summary Create  Service resell application.
         
         @param request: CreateServiceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -910,7 +910,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.CreateServiceUsageResponse:
         """
-        @summary 创建代销申请
+        @summary Create  Service resell application.
         
         @param request: CreateServiceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -948,7 +948,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.CreateServiceUsageRequest,
     ) -> compute_nest_supplier_20210521_models.CreateServiceUsageResponse:
         """
-        @summary 创建代销申请
+        @summary Create  Service resell application.
         
         @param request: CreateServiceUsageRequest
         @return: CreateServiceUsageResponse
@@ -961,7 +961,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.CreateServiceUsageRequest,
     ) -> compute_nest_supplier_20210521_models.CreateServiceUsageResponse:
         """
-        @summary 创建代销申请
+        @summary Create  Service resell application.
         
         @param request: CreateServiceUsageRequest
         @return: CreateServiceUsageResponse
@@ -3657,6 +3657,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
         """
+        @summary Remove  service shared account.
+        
         @param request: RemoveServiceSharedAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveServiceSharedAccountsResponse
@@ -3698,6 +3700,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
         """
+        @summary Remove  service shared account.
+        
         @param request: RemoveServiceSharedAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveServiceSharedAccountsResponse
@@ -3738,6 +3742,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsRequest,
     ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
         """
+        @summary Remove  service shared account.
+        
         @param request: RemoveServiceSharedAccountsRequest
         @return: RemoveServiceSharedAccountsResponse
         """
@@ -3749,6 +3755,8 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsRequest,
     ) -> compute_nest_supplier_20210521_models.RemoveServiceSharedAccountsResponse:
         """
+        @summary Remove  service shared account.
+        
         @param request: RemoveServiceSharedAccountsRequest
         @return: RemoveServiceSharedAccountsResponse
         """

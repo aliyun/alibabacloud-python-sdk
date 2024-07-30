@@ -198,12 +198,20 @@ class ApproveServiceUsageRequest(TeaModel):
         type: int = None,
         user_ali_uid: int = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # Approval comments.
         self.comments = comments
+        # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # ServiceSharedAccountType，
         self.type = type
+        # User ali uid.
+        # 
         # This parameter is required.
         self.user_ali_uid = user_ali_uid
 
@@ -252,6 +260,7 @@ class ApproveServiceUsageResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1982,9 +1991,12 @@ class CreateServiceUsageRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The region ID.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
 
@@ -8085,7 +8097,11 @@ class ListServiceSharedAccountsRequestFilter(TeaModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # 
+        # *   Name: the name of the service.
         self.name = name
+        # The parameter value N of the filter. Valid values of N: 1 to 10.
         self.value = value
 
     def validate(self):
@@ -8122,12 +8138,22 @@ class ListServiceSharedAccountsRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
     ):
+        # The filters.
         self.filter = filter
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The permissions on the service. Valid values:
+        # 
+        # *   Deployable: Permissions to deploy the service.
+        # *   Accessible: Permissions to access the service.
         self.permission = permission
+        # The region ID where the service instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
         self.service_id = service_id
 
     def validate(self):
@@ -8189,11 +8215,23 @@ class ListServiceSharedAccountsResponseBodyShareAccount(TeaModel):
         update_time: str = None,
         user_ali_uid: str = None,
     ):
+        # The time when the service was created.
         self.create_time = create_time
+        # Service logo.
         self.logo = logo
+        # The name of the service instance. The value must meet the following requirements:
+        # 
+        # *   The name cannot exceed 64 characters in length.
+        # *   It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
         self.name = name
+        # The permissions on the service. Valid values:
+        # 
+        # *   Deployable: Permissions to deploy the service.
+        # *   Accessible: Permissions to access the service.
         self.permission = permission
+        # The service ID.
         self.service_id = service_id
+        # The time when the service was updated.
         self.update_time = update_time
         self.user_ali_uid = user_ali_uid
 
@@ -8250,10 +8288,14 @@ class ListServiceSharedAccountsResponseBody(TeaModel):
         share_account: List[ListServiceSharedAccountsResponseBodyShareAccount] = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
         self.share_account = share_account
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10057,11 +10099,22 @@ class RemoveServiceSharedAccountsRequest(TeaModel):
         type: str = None,
         user_ali_uids: List[int] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The share type of the service. Default value: SharedAccount. Valid values:
+        # 
+        # *   SharedAccount: The service is shared by multiple accounts.
+        # *   Reseller: The service is distributed.
         self.type = type
         # This parameter is required.
         self.user_ali_uids = user_ali_uids
@@ -10107,6 +10160,7 @@ class RemoveServiceSharedAccountsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11247,8 +11301,10 @@ class UpdateServiceRequestServiceInfo(TeaModel):
 class UpdateServiceRequestUpdateOption(TeaModel):
     def __init__(
         self,
+        update_artifact: bool = None,
         update_from: str = None,
     ):
+        self.update_artifact = update_artifact
         # The options for update the service. Valid values:
         # - CODE
         # - PARAMETERS
@@ -11263,12 +11319,16 @@ class UpdateServiceRequestUpdateOption(TeaModel):
             return _map
 
         result = dict()
+        if self.update_artifact is not None:
+            result['UpdateArtifact'] = self.update_artifact
         if self.update_from is not None:
             result['UpdateFrom'] = self.update_from
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('UpdateArtifact') is not None:
+            self.update_artifact = m.get('UpdateArtifact')
         if m.get('UpdateFrom') is not None:
             self.update_from = m.get('UpdateFrom')
         return self
