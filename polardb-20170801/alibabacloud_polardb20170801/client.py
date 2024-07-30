@@ -1659,12 +1659,18 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.polar_scc_timeout_action):
+            query['PolarSccTimeoutAction'] = request.polar_scc_timeout_action
+        if not UtilClient.is_unset(request.polar_scc_wait_timeout):
+            query['PolarSccWaitTimeout'] = request.polar_scc_wait_timeout
         if not UtilClient.is_unset(request.read_write_mode):
             query['ReadWriteMode'] = request.read_write_mode
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scc_mode):
+            query['SccMode'] = request.scc_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1716,12 +1722,18 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.polar_scc_timeout_action):
+            query['PolarSccTimeoutAction'] = request.polar_scc_timeout_action
+        if not UtilClient.is_unset(request.polar_scc_wait_timeout):
+            query['PolarSccWaitTimeout'] = request.polar_scc_wait_timeout
         if not UtilClient.is_unset(request.read_write_mode):
             query['ReadWriteMode'] = request.read_write_mode
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scc_mode):
+            query['SccMode'] = request.scc_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13605,12 +13617,18 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.polar_scc_timeout_action):
+            query['PolarSccTimeoutAction'] = request.polar_scc_timeout_action
+        if not UtilClient.is_unset(request.polar_scc_wait_timeout):
+            query['PolarSccWaitTimeout'] = request.polar_scc_wait_timeout
         if not UtilClient.is_unset(request.read_write_mode):
             query['ReadWriteMode'] = request.read_write_mode
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scc_mode):
+            query['SccMode'] = request.scc_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13660,12 +13678,18 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.polar_scc_timeout_action):
+            query['PolarSccTimeoutAction'] = request.polar_scc_timeout_action
+        if not UtilClient.is_unset(request.polar_scc_wait_timeout):
+            query['PolarSccWaitTimeout'] = request.polar_scc_wait_timeout
         if not UtilClient.is_unset(request.read_write_mode):
             query['ReadWriteMode'] = request.read_write_mode
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scc_mode):
+            query['SccMode'] = request.scc_mode
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -2214,9 +2214,12 @@ class CreateDBClusterEndpointRequest(TeaModel):
         nodes: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        polar_scc_timeout_action: str = None,
+        polar_scc_wait_timeout: str = None,
         read_write_mode: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scc_mode: str = None,
     ):
         # Specifies whether to automatically associate newly added nodes with the cluster endpoint. Valid values:
         # 
@@ -2278,6 +2281,8 @@ class CreateDBClusterEndpointRequest(TeaModel):
         self.nodes = nodes
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.polar_scc_timeout_action = polar_scc_timeout_action
+        self.polar_scc_wait_timeout = polar_scc_wait_timeout
         # The read/write mode. Valid values:
         # 
         # *   **ReadWrite**: receives and forwards read and write requests. Automatic read/write splitting is enabled.
@@ -2287,6 +2292,7 @@ class CreateDBClusterEndpointRequest(TeaModel):
         self.read_write_mode = read_write_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scc_mode = scc_mode
 
     def validate(self):
         pass
@@ -2315,12 +2321,18 @@ class CreateDBClusterEndpointRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.polar_scc_timeout_action is not None:
+            result['PolarSccTimeoutAction'] = self.polar_scc_timeout_action
+        if self.polar_scc_wait_timeout is not None:
+            result['PolarSccWaitTimeout'] = self.polar_scc_wait_timeout
         if self.read_write_mode is not None:
             result['ReadWriteMode'] = self.read_write_mode
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scc_mode is not None:
+            result['SccMode'] = self.scc_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -2343,12 +2355,18 @@ class CreateDBClusterEndpointRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PolarSccTimeoutAction') is not None:
+            self.polar_scc_timeout_action = m.get('PolarSccTimeoutAction')
+        if m.get('PolarSccWaitTimeout') is not None:
+            self.polar_scc_wait_timeout = m.get('PolarSccWaitTimeout')
         if m.get('ReadWriteMode') is not None:
             self.read_write_mode = m.get('ReadWriteMode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SccMode') is not None:
+            self.scc_mode = m.get('SccMode')
         return self
 
 
@@ -8934,6 +8952,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         max_connections: int = None,
         max_iops: int = None,
         memory_size: str = None,
+        mirror_ins_name: str = None,
         orca: str = None,
         remote_memory_size: str = None,
         scc_mode: str = None,
@@ -8991,6 +9010,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
         self.memory_size = memory_size
+        self.mirror_ins_name = mirror_ins_name
         self.orca = orca
         self.remote_memory_size = remote_memory_size
         # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
@@ -9047,6 +9067,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['MaxIOPS'] = self.max_iops
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
+        if self.mirror_ins_name is not None:
+            result['MirrorInsName'] = self.mirror_ins_name
         if self.orca is not None:
             result['Orca'] = self.orca
         if self.remote_memory_size is not None:
@@ -9093,6 +9115,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.max_iops = m.get('MaxIOPS')
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+        if m.get('MirrorInsName') is not None:
+            self.mirror_ins_name = m.get('MirrorInsName')
         if m.get('Orca') is not None:
             self.orca = m.get('Orca')
         if m.get('RemoteMemorySize') is not None:
@@ -10507,7 +10531,10 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
         endpoint_type: str = None,
         node_with_roles: str = None,
         nodes: str = None,
+        polar_scc_timeout_action: str = None,
+        polar_scc_wait_timeout: str = None,
         read_write_mode: str = None,
+        scc_mode: str = None,
     ):
         # The details of the endpoint.
         self.address_items = address_items
@@ -10554,11 +10581,14 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
         self.node_with_roles = node_with_roles
         # The nodes in the endpoint.
         self.nodes = nodes
+        self.polar_scc_timeout_action = polar_scc_timeout_action
+        self.polar_scc_wait_timeout = polar_scc_wait_timeout
         # The read/write mode. Valid values:
         # 
         # *   **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
         # *   **ReadOnly**: handles read-only requests.
         self.read_write_mode = read_write_mode
+        self.scc_mode = scc_mode
 
     def validate(self):
         if self.address_items:
@@ -10592,8 +10622,14 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
             result['NodeWithRoles'] = self.node_with_roles
         if self.nodes is not None:
             result['Nodes'] = self.nodes
+        if self.polar_scc_timeout_action is not None:
+            result['PolarSccTimeoutAction'] = self.polar_scc_timeout_action
+        if self.polar_scc_wait_timeout is not None:
+            result['PolarSccWaitTimeout'] = self.polar_scc_wait_timeout
         if self.read_write_mode is not None:
             result['ReadWriteMode'] = self.read_write_mode
+        if self.scc_mode is not None:
+            result['SccMode'] = self.scc_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -10619,8 +10655,14 @@ class DescribeDBClusterEndpointsResponseBodyItems(TeaModel):
             self.node_with_roles = m.get('NodeWithRoles')
         if m.get('Nodes') is not None:
             self.nodes = m.get('Nodes')
+        if m.get('PolarSccTimeoutAction') is not None:
+            self.polar_scc_timeout_action = m.get('PolarSccTimeoutAction')
+        if m.get('PolarSccWaitTimeout') is not None:
+            self.polar_scc_wait_timeout = m.get('PolarSccWaitTimeout')
         if m.get('ReadWriteMode') is not None:
             self.read_write_mode = m.get('ReadWriteMode')
+        if m.get('SccMode') is not None:
+            self.scc_mode = m.get('SccMode')
         return self
 
 
@@ -12486,6 +12528,7 @@ class DescribeDBClusterServerlessConfRequest(TeaModel):
 class DescribeDBClusterServerlessConfResponseBody(TeaModel):
     def __init__(
         self,
+        agile_scale_max: str = None,
         allow_shut_down: str = None,
         dbcluster_id: str = None,
         request_id: str = None,
@@ -12500,7 +12543,9 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         serverless_rule_cpu_shrink_threshold: str = None,
         serverless_rule_mode: str = None,
         switchs: str = None,
+        traditional_scale_max_threshold: str = None,
     ):
+        self.agile_scale_max = agile_scale_max
         # Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
         # 
         # *   **true**\
@@ -12526,6 +12571,7 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
         self.serverless_rule_mode = serverless_rule_mode
         self.switchs = switchs
+        self.traditional_scale_max_threshold = traditional_scale_max_threshold
 
     def validate(self):
         pass
@@ -12536,6 +12582,8 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.agile_scale_max is not None:
+            result['AgileScaleMax'] = self.agile_scale_max
         if self.allow_shut_down is not None:
             result['AllowShutDown'] = self.allow_shut_down
         if self.dbcluster_id is not None:
@@ -12564,10 +12612,14 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
             result['ServerlessRuleMode'] = self.serverless_rule_mode
         if self.switchs is not None:
             result['Switchs'] = self.switchs
+        if self.traditional_scale_max_threshold is not None:
+            result['TraditionalScaleMaxThreshold'] = self.traditional_scale_max_threshold
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgileScaleMax') is not None:
+            self.agile_scale_max = m.get('AgileScaleMax')
         if m.get('AllowShutDown') is not None:
             self.allow_shut_down = m.get('AllowShutDown')
         if m.get('DBClusterId') is not None:
@@ -12596,6 +12648,8 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
             self.serverless_rule_mode = m.get('ServerlessRuleMode')
         if m.get('Switchs') is not None:
             self.switchs = m.get('Switchs')
+        if m.get('TraditionalScaleMaxThreshold') is not None:
+            self.traditional_scale_max_threshold = m.get('TraditionalScaleMaxThreshold')
         return self
 
 
@@ -25962,9 +26016,12 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         nodes: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        polar_scc_timeout_action: str = None,
+        polar_scc_wait_timeout: str = None,
         read_write_mode: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scc_mode: str = None,
     ):
         # Specifies whether to automatically associate newly added nodes with the cluster endpoint. Default value: Disable. Valid values:
         # 
@@ -26053,6 +26110,8 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         self.nodes = nodes
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.polar_scc_timeout_action = polar_scc_timeout_action
+        self.polar_scc_wait_timeout = polar_scc_wait_timeout
         # The read/write mode. Valid values:
         # 
         # *   **ReadWrite**: The cluster endpoint handles read and write requests. Automatic read/write splitting is enabled.
@@ -26060,6 +26119,7 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         self.read_write_mode = read_write_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scc_mode = scc_mode
 
     def validate(self):
         pass
@@ -26086,12 +26146,18 @@ class ModifyDBClusterEndpointRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.polar_scc_timeout_action is not None:
+            result['PolarSccTimeoutAction'] = self.polar_scc_timeout_action
+        if self.polar_scc_wait_timeout is not None:
+            result['PolarSccWaitTimeout'] = self.polar_scc_wait_timeout
         if self.read_write_mode is not None:
             result['ReadWriteMode'] = self.read_write_mode
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.scc_mode is not None:
+            result['SccMode'] = self.scc_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -26112,12 +26178,18 @@ class ModifyDBClusterEndpointRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('PolarSccTimeoutAction') is not None:
+            self.polar_scc_timeout_action = m.get('PolarSccTimeoutAction')
+        if m.get('PolarSccWaitTimeout') is not None:
+            self.polar_scc_wait_timeout = m.get('PolarSccWaitTimeout')
         if m.get('ReadWriteMode') is not None:
             self.read_write_mode = m.get('ReadWriteMode')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SccMode') is not None:
+            self.scc_mode = m.get('SccMode')
         return self
 
 
