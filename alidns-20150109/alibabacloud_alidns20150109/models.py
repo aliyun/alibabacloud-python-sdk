@@ -9638,6 +9638,10 @@ class DescribeCloudGtmSummaryRequest(TeaModel):
         self,
         accept_language: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
 
     def validate(self):
@@ -9668,9 +9672,13 @@ class DescribeCloudGtmSummaryResponseBody(TeaModel):
         monitor_task_total_quota: int = None,
         request_id: str = None,
     ):
+        # The total number of instances within the current account.
         self.instance_total_count = instance_total_count
+        # The total number of configured health check tasks.
         self.monitor_task_total_count = monitor_task_total_count
+        # The quota on the number of health check tasks.
         self.monitor_task_total_quota = monitor_task_total_quota
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29577,12 +29585,14 @@ class DescribePdnsUdpIpSegmentsResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
+        total_pages: str = None,
     ):
         self.ip_segments = ip_segments
         self.page_number = page_number
         self.page_size = page_size
         self.request_id = request_id
         self.total_count = total_count
+        self.total_pages = total_pages
 
     def validate(self):
         if self.ip_segments:
@@ -29608,6 +29618,8 @@ class DescribePdnsUdpIpSegmentsResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
         return result
 
     def from_map(self, m: dict = None):
@@ -29625,6 +29637,8 @@ class DescribePdnsUdpIpSegmentsResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
         return self
 
 
@@ -43112,9 +43126,29 @@ class UpdateCloudGtmInstanceConfigAlertRequestAlertConfig(TeaModel):
         notice_type: str = None,
         sms_notice: bool = None,
     ):
+        # Specifies whether to configure DingTalk notifications. Valid values:
+        # 
+        # *   true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
+        # *   false: DingTalk notifications are not configured.
         self.dingtalk_notice = dingtalk_notice
+        # Specifies whether to configure email notifications. Valid values:
+        # 
+        # *   true: Email notifications are configured. Emails are sent when alerts are triggered.
+        # *   false: Email notifications are not configured.
         self.email_notice = email_notice
+        # The type of the alert event. Valid values:
+        # 
+        # *   addr_alert: The address is unavailable.
+        # *   addr_resume: The address becomes available.
+        # *   addr_pool_unavailable: The address pool is unavailable.
+        # *   addr_pool_available: The address pool becomes available.
         self.notice_type = notice_type
+        # Specifies whether to configure text message notifications. Valid values:
+        # 
+        # *   true: Text message notifications are configured. Text messages are sent when alerts are triggered.
+        # *   false: Text message notifications are not configured.
+        # 
+        # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
 
     def validate(self):
@@ -43160,12 +43194,25 @@ class UpdateCloudGtmInstanceConfigAlertRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The alert configurations.
         self.alert_config = alert_config
+        # The alert contact groups.
         self.alert_group = alert_group
+        # The alert configuration mode of the instance. Valid values:
+        # 
+        # *   global: global alert configuration
+        # *   instance_config: custom alert configuration
         self.alert_mode = alert_mode
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when an A record and an AAAA record are configured for the access domain name that is bound to the GTM instance. This ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -43231,12 +43278,25 @@ class UpdateCloudGtmInstanceConfigAlertShrinkRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The alert configurations.
         self.alert_config_shrink = alert_config_shrink
+        # The alert contact groups.
         self.alert_group_shrink = alert_group_shrink
+        # The alert configuration mode of the instance. Valid values:
+        # 
+        # *   global: global alert configuration
+        # *   instance_config: custom alert configuration
         self.alert_mode = alert_mode
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when an A record and an AAAA record are configured for the access domain name that is bound to the GTM instance. This ID uniquely identifies a configuration.
         self.config_id = config_id
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -43289,7 +43349,12 @@ class UpdateCloudGtmInstanceConfigAlertResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
