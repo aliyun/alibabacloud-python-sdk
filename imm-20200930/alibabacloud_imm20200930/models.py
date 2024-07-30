@@ -7225,6 +7225,7 @@ class BatchGetFileMetaRequest(TeaModel):
         dataset_name: str = None,
         project_name: str = None,
         uris: List[str] = None,
+        with_fields: List[str] = None,
     ):
         # This parameter is required.
         self.dataset_name = dataset_name
@@ -7232,6 +7233,7 @@ class BatchGetFileMetaRequest(TeaModel):
         self.project_name = project_name
         # This parameter is required.
         self.uris = uris
+        self.with_fields = with_fields
 
     def validate(self):
         pass
@@ -7248,6 +7250,8 @@ class BatchGetFileMetaRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.uris is not None:
             result['URIs'] = self.uris
+        if self.with_fields is not None:
+            result['WithFields'] = self.with_fields
         return result
 
     def from_map(self, m: dict = None):
@@ -7258,6 +7262,8 @@ class BatchGetFileMetaRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('URIs') is not None:
             self.uris = m.get('URIs')
+        if m.get('WithFields') is not None:
+            self.with_fields = m.get('WithFields')
         return self
 
 
@@ -7267,6 +7273,7 @@ class BatchGetFileMetaShrinkRequest(TeaModel):
         dataset_name: str = None,
         project_name: str = None,
         uris_shrink: str = None,
+        with_fields_shrink: str = None,
     ):
         # This parameter is required.
         self.dataset_name = dataset_name
@@ -7274,6 +7281,7 @@ class BatchGetFileMetaShrinkRequest(TeaModel):
         self.project_name = project_name
         # This parameter is required.
         self.uris_shrink = uris_shrink
+        self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
         pass
@@ -7290,6 +7298,8 @@ class BatchGetFileMetaShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.uris_shrink is not None:
             result['URIs'] = self.uris_shrink
+        if self.with_fields_shrink is not None:
+            result['WithFields'] = self.with_fields_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -7300,6 +7310,8 @@ class BatchGetFileMetaShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('URIs') is not None:
             self.uris_shrink = m.get('URIs')
+        if m.get('WithFields') is not None:
+            self.with_fields_shrink = m.get('WithFields')
         return self
 
 
@@ -19407,6 +19419,7 @@ class GetFileMetaRequest(TeaModel):
         dataset_name: str = None,
         project_name: str = None,
         uri: str = None,
+        with_fields: List[str] = None,
     ):
         # This parameter is required.
         self.dataset_name = dataset_name
@@ -19414,6 +19427,7 @@ class GetFileMetaRequest(TeaModel):
         self.project_name = project_name
         # This parameter is required.
         self.uri = uri
+        self.with_fields = with_fields
 
     def validate(self):
         pass
@@ -19430,6 +19444,8 @@ class GetFileMetaRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.uri is not None:
             result['URI'] = self.uri
+        if self.with_fields is not None:
+            result['WithFields'] = self.with_fields
         return result
 
     def from_map(self, m: dict = None):
@@ -19440,6 +19456,56 @@ class GetFileMetaRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('URI') is not None:
             self.uri = m.get('URI')
+        if m.get('WithFields') is not None:
+            self.with_fields = m.get('WithFields')
+        return self
+
+
+class GetFileMetaShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        project_name: str = None,
+        uri: str = None,
+        with_fields_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dataset_name = dataset_name
+        # This parameter is required.
+        self.project_name = project_name
+        # This parameter is required.
+        self.uri = uri
+        self.with_fields_shrink = with_fields_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.uri is not None:
+            result['URI'] = self.uri
+        if self.with_fields_shrink is not None:
+            result['WithFields'] = self.with_fields_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        if m.get('WithFields') is not None:
+            self.with_fields_shrink = m.get('WithFields')
         return self
 
 

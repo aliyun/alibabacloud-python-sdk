@@ -637,6 +637,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.uris):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -644,6 +646,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.uris_shrink):
             query['URIs'] = request.uris_shrink
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -680,6 +684,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.uris):
             request.uris_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.uris, 'URIs', 'json')
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -687,6 +693,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.uris_shrink):
             query['URIs'] = request.uris_shrink
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7930,17 +7938,21 @@ class Client(OpenApiClient):
 
     def get_file_meta_with_options(
         self,
-        request: imm_20200930_models.GetFileMetaRequest,
+        tmp_req: imm_20200930_models.GetFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetFileMetaResponse:
         """
         @summary 获取文件元信息
         
-        @param request: GetFileMetaRequest
+        @param tmp_req: GetFileMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileMetaResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetFileMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -7948,6 +7960,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.uri):
             query['URI'] = request.uri
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7969,17 +7983,21 @@ class Client(OpenApiClient):
 
     async def get_file_meta_with_options_async(
         self,
-        request: imm_20200930_models.GetFileMetaRequest,
+        tmp_req: imm_20200930_models.GetFileMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetFileMetaResponse:
         """
         @summary 获取文件元信息
         
-        @param request: GetFileMetaRequest
+        @param tmp_req: GetFileMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileMetaResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.GetFileMetaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -7987,6 +8005,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.uri):
             query['URI'] = request.uri
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
