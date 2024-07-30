@@ -2982,8 +2982,6 @@ class ListExchangesRequest(TeaModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return. Valid values: **1 to 100**\
-        # 
-        # This parameter is required.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 

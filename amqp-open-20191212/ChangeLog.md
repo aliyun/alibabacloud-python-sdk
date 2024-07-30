@@ -1,3 +1,8 @@
+2024-07-30 Version: 1.3.1
+- Update API ListExchanges: update param RegionId.
+- Update API ListExchanges: update param MaxResults.
+
+
 2024-07-11 Version: 1.3.0
 - Support API UpdateInstance.
 - Update API CreateExchange: add param XDelayedType.
