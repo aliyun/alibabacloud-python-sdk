@@ -4319,7 +4319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetApplicationProvisioningConfigResponse:
         """
-        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: GetApplicationProvisioningConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4356,7 +4356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.GetApplicationProvisioningConfigResponse:
         """
-        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: GetApplicationProvisioningConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4392,7 +4392,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetApplicationProvisioningConfigRequest,
     ) -> eiam_20211201_models.GetApplicationProvisioningConfigResponse:
         """
-        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: GetApplicationProvisioningConfigRequest
         @return: GetApplicationProvisioningConfigResponse
@@ -4405,7 +4405,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.GetApplicationProvisioningConfigRequest,
     ) -> eiam_20211201_models.GetApplicationProvisioningConfigResponse:
         """
-        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: GetApplicationProvisioningConfigRequest
         @return: GetApplicationProvisioningConfigResponse
@@ -5784,6 +5784,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_root_organizational_unit_with_options_async(request, runtime)
+
+    def get_synchronization_job_with_options(
+        self,
+        request: eiam_20211201_models.GetSynchronizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetSynchronizationJobResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: GetSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSynchronizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSynchronizationJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetSynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_synchronization_job_with_options_async(
+        self,
+        request: eiam_20211201_models.GetSynchronizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.GetSynchronizationJobResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: GetSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSynchronizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.synchronization_job_id):
+            query['SynchronizationJobId'] = request.synchronization_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSynchronizationJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.GetSynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_synchronization_job(
+        self,
+        request: eiam_20211201_models.GetSynchronizationJobRequest,
+    ) -> eiam_20211201_models.GetSynchronizationJobResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: GetSynchronizationJobRequest
+        @return: GetSynchronizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_synchronization_job_with_options(request, runtime)
+
+    async def get_synchronization_job_async(
+        self,
+        request: eiam_20211201_models.GetSynchronizationJobRequest,
+    ) -> eiam_20211201_models.GetSynchronizationJobResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: GetSynchronizationJobRequest
+        @return: GetSynchronizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_synchronization_job_with_options_async(request, runtime)
 
     def get_user_with_options(
         self,
@@ -7955,6 +8055,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(runtime)
 
+    def list_synchronization_jobs_with_options(
+        self,
+        request: eiam_20211201_models.ListSynchronizationJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListSynchronizationJobsResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: ListSynchronizationJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSynchronizationJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.target_ids):
+            query['TargetIds'] = request.target_ids
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSynchronizationJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListSynchronizationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_synchronization_jobs_with_options_async(
+        self,
+        request: eiam_20211201_models.ListSynchronizationJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.ListSynchronizationJobsResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: ListSynchronizationJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSynchronizationJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.target_ids):
+            query['TargetIds'] = request.target_ids
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSynchronizationJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.ListSynchronizationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_synchronization_jobs(
+        self,
+        request: eiam_20211201_models.ListSynchronizationJobsRequest,
+    ) -> eiam_20211201_models.ListSynchronizationJobsResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: ListSynchronizationJobsRequest
+        @return: ListSynchronizationJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_synchronization_jobs_with_options(request, runtime)
+
+    async def list_synchronization_jobs_async(
+        self,
+        request: eiam_20211201_models.ListSynchronizationJobsRequest,
+    ) -> eiam_20211201_models.ListSynchronizationJobsResponse:
+        """
+        @summary 查询同步任务
+        
+        @param request: ListSynchronizationJobsRequest
+        @return: ListSynchronizationJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_synchronization_jobs_with_options_async(request, runtime)
+
     def list_users_with_options(
         self,
         request: eiam_20211201_models.ListUsersRequest,
@@ -9055,6 +9291,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.revoke_application_from_users_with_options_async(request, runtime)
 
+    def run_synchronization_job_with_options(
+        self,
+        request: eiam_20211201_models.RunSynchronizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.RunSynchronizationJobResponse:
+        """
+        @summary 运行同步任务
+        
+        @param request: RunSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSynchronizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_id):
+            query['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunSynchronizationJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.RunSynchronizationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_synchronization_job_with_options_async(
+        self,
+        request: eiam_20211201_models.RunSynchronizationJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.RunSynchronizationJobResponse:
+        """
+        @summary 运行同步任务
+        
+        @param request: RunSynchronizationJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunSynchronizationJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_id):
+            query['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunSynchronizationJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.RunSynchronizationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_synchronization_job(
+        self,
+        request: eiam_20211201_models.RunSynchronizationJobRequest,
+    ) -> eiam_20211201_models.RunSynchronizationJobResponse:
+        """
+        @summary 运行同步任务
+        
+        @param request: RunSynchronizationJobRequest
+        @return: RunSynchronizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_synchronization_job_with_options(request, runtime)
+
+    async def run_synchronization_job_async(
+        self,
+        request: eiam_20211201_models.RunSynchronizationJobRequest,
+    ) -> eiam_20211201_models.RunSynchronizationJobResponse:
+        """
+        @summary 运行同步任务
+        
+        @param request: RunSynchronizationJobRequest
+        @return: RunSynchronizationJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_synchronization_job_with_options_async(request, runtime)
+
     def set_application_grant_scope_with_options(
         self,
         request: eiam_20211201_models.SetApplicationGrantScopeRequest,
@@ -9165,7 +9505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.SetApplicationProvisioningConfigResponse:
         """
-        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: SetApplicationProvisioningConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9210,7 +9550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eiam_20211201_models.SetApplicationProvisioningConfigResponse:
         """
-        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: SetApplicationProvisioningConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9254,7 +9594,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.SetApplicationProvisioningConfigRequest,
     ) -> eiam_20211201_models.SetApplicationProvisioningConfigResponse:
         """
-        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: SetApplicationProvisioningConfigRequest
         @return: SetApplicationProvisioningConfigResponse
@@ -9267,7 +9607,7 @@ class Client(OpenApiClient):
         request: eiam_20211201_models.SetApplicationProvisioningConfigRequest,
     ) -> eiam_20211201_models.SetApplicationProvisioningConfigResponse:
         """
-        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+        @summary Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
         
         @param request: SetApplicationProvisioningConfigRequest
         @return: SetApplicationProvisioningConfigResponse

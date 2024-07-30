@@ -5147,7 +5147,7 @@ class GetApplicationProvisioningConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -5413,9 +5413,10 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig(
         self.application_id = application_id
         # The configuration of the custom event callback protocol of IDaaS.
         self.callback_provisioning_config = callback_provisioning_config
-        # Client-side rendering, Valid values: 
-        # - standard：standard mode.
-        # - template：template mode.
+        # The rendering mode of the account synchronization page. Valid values:
+        # 
+        # *   standard: standard mode
+        # *   template: template mode
         self.config_operate_mode = config_operate_mode
         # The ID of the instance.
         self.instance_id = instance_id
@@ -5504,7 +5505,7 @@ class GetApplicationProvisioningConfigResponseBody(TeaModel):
     ):
         # The configuration of the account synchronization feature for the application.
         self.application_provisioning_config = application_provisioning_config
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6942,7 +6943,7 @@ class GetGroupResponseBodyGroup(TeaModel):
         self.group_source_id = group_source_id
         # The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
         # 
-        # *build_in：Create By Self。
+        # *build_in:Create By Self.
         self.group_source_type = group_source_type
         # The instance ID.
         self.instance_id = instance_id
@@ -8653,6 +8654,1777 @@ class GetRootOrganizationalUnitResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetRootOrganizationalUnitResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSynchronizationJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        synchronization_job_id: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 同步任务ID
+        # 
+        # This parameter is required.
+        self.synchronization_job_id = synchronization_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.synchronization_job_id is not None:
+            result['SynchronizationJobId'] = self.synchronization_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SynchronizationJobId') is not None:
+            self.synchronization_job_id = m.get('SynchronizationJobId')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded = None,
+        created: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated = None,
+        deleted: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted = None,
+        pushed: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed = None,
+        same: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame = None,
+        updated: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded = None,
+        created: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated = None,
+        deleted: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted = None,
+        pushed: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed = None,
+        same: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame = None,
+        updated: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded = None,
+        created: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated = None,
+        deleted: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted = None,
+        pushed: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed = None,
+        same: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame = None,
+        updated: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded = None,
+        created: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated = None,
+        deleted: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted = None,
+        pushed: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed = None,
+        same: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame = None,
+        updated: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJobResult(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        group_member_statistics: GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics = None,
+        group_statistics: GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics = None,
+        organizational_unit_statistics: GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics = None,
+        user_statistics: GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics = None,
+    ):
+        # 同步结果错误码
+        self.error_code = error_code
+        # 同步结果错误信息描述
+        self.error_message = error_message
+        # 组成员同步结果统计
+        self.group_member_statistics = group_member_statistics
+        # 组同步结果统计
+        self.group_statistics = group_statistics
+        # 组织同步结果统计
+        self.organizational_unit_statistics = organizational_unit_statistics
+        # 用户同步结果统计
+        self.user_statistics = user_statistics
+
+    def validate(self):
+        if self.group_member_statistics:
+            self.group_member_statistics.validate()
+        if self.group_statistics:
+            self.group_statistics.validate()
+        if self.organizational_unit_statistics:
+            self.organizational_unit_statistics.validate()
+        if self.user_statistics:
+            self.user_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.group_member_statistics is not None:
+            result['GroupMemberStatistics'] = self.group_member_statistics.to_map()
+        if self.group_statistics is not None:
+            result['GroupStatistics'] = self.group_statistics.to_map()
+        if self.organizational_unit_statistics is not None:
+            result['OrganizationalUnitStatistics'] = self.organizational_unit_statistics.to_map()
+        if self.user_statistics is not None:
+            result['UserStatistics'] = self.user_statistics.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GroupMemberStatistics') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics()
+            self.group_member_statistics = temp_model.from_map(m['GroupMemberStatistics'])
+        if m.get('GroupStatistics') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics()
+            self.group_statistics = temp_model.from_map(m['GroupStatistics'])
+        if m.get('OrganizationalUnitStatistics') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics()
+            self.organizational_unit_statistics = temp_model.from_map(m['OrganizationalUnitStatistics'])
+        if m.get('UserStatistics') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics()
+            self.user_statistics = temp_model.from_map(m['UserStatistics'])
+        return self
+
+
+class GetSynchronizationJobResponseBodySynchronizationJob(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        end_time: int = None,
+        result: GetSynchronizationJobResponseBodySynchronizationJobResult = None,
+        start_time: int = None,
+        status: str = None,
+        synchronization_job_id: str = None,
+        target_id: str = None,
+        target_type: str = None,
+        trigger_type: str = None,
+    ):
+        # 同步任务方向
+        self.direction = direction
+        # 同步结束时间
+        self.end_time = end_time
+        # 同步任务结果
+        self.result = result
+        # 同步开始时间
+        self.start_time = start_time
+        # 同步任务状态
+        self.status = status
+        # 同步任务ID
+        self.synchronization_job_id = synchronization_job_id
+        # 同步目标ID
+        self.target_id = target_id
+        # 同步目标类型
+        self.target_type = target_type
+        # 同步触发类型
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.synchronization_job_id is not None:
+            result['SynchronizationJobId'] = self.synchronization_job_id
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Result') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJobResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SynchronizationJobId') is not None:
+            self.synchronization_job_id = m.get('SynchronizationJobId')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class GetSynchronizationJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        synchronization_job: GetSynchronizationJobResponseBodySynchronizationJob = None,
+    ):
+        self.request_id = request_id
+        self.synchronization_job = synchronization_job
+
+    def validate(self):
+        if self.synchronization_job:
+            self.synchronization_job.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.synchronization_job is not None:
+            result['SynchronizationJob'] = self.synchronization_job.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SynchronizationJob') is not None:
+            temp_model = GetSynchronizationJobResponseBodySynchronizationJob()
+            self.synchronization_job = temp_model.from_map(m['SynchronizationJob'])
+        return self
+
+
+class GetSynchronizationJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSynchronizationJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSynchronizationJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10883,8 +12655,6 @@ class ListGroupsResponseBodyGroups(TeaModel):
         # The source ID of the group. If the group was imported from other services, this value indicates the external source ID. By default, the source ID is the instance ID.
         self.group_source_id = group_source_id
         # The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
-        # 
-        # *\
         self.group_source_type = group_source_type
         # The instance ID.
         self.instance_id = instance_id
@@ -13102,6 +14872,1857 @@ class ListRegionsResponse(TeaModel):
         return self
 
 
+class ListSynchronizationJobsRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: int = None,
+        status: str = None,
+        target_ids: List[str] = None,
+        target_type: str = None,
+    ):
+        # 同步方向[ingress,egress]
+        self.direction = direction
+        # 同步结束时间
+        self.end_time = end_time
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 分页查询时每页行数。默认值为20，最大值为100。
+        self.max_results = max_results
+        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        self.next_token = next_token
+        # 当前查询的列表页码，默认为1。
+        self.page_number = page_number
+        # 当前查询的列表页码，默认为20。
+        self.page_size = page_size
+        # 同步开始时间
+        self.start_time = start_time
+        # 同步状态[pending,running,suspending,failed,partial_success,success]
+        self.status = status
+        # 同步目标ID
+        self.target_ids = target_ids
+        # 同步目标类型[identity_provider,organizational_unit,application,user]
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.target_ids is not None:
+            result['TargetIds'] = self.target_ids
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TargetIds') is not None:
+            self.target_ids = m.get('TargetIds')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded = None,
+        created: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated = None,
+        deleted: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted = None,
+        pushed: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed = None,
+        same: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame = None,
+        updated: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded = None,
+        created: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated = None,
+        deleted: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted = None,
+        pushed: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed = None,
+        same: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame = None,
+        updated: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded = None,
+        created: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated = None,
+        deleted: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted = None,
+        pushed: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed = None,
+        same: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame = None,
+        updated: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        skipped: int = None,
+        success: int = None,
+        total: int = None,
+    ):
+        # 失败数目
+        self.failed = failed
+        # 跳过数目
+        self.skipped = skipped
+        # 成功数目
+        self.success = success
+        # 总共数目
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.skipped is not None:
+            result['Skipped'] = self.skipped
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Skipped') is not None:
+            self.skipped = m.get('Skipped')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics(TeaModel):
+    def __init__(
+        self,
+        binded: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded = None,
+        created: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated = None,
+        deleted: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted = None,
+        pushed: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed = None,
+        same: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame = None,
+        updated: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated = None,
+    ):
+        # 绑定结果统计
+        self.binded = binded
+        # 创建结果统计
+        self.created = created
+        # 删除结果统计
+        self.deleted = deleted
+        # 推送结果统计
+        self.pushed = pushed
+        # 相同结果统计
+        self.same = same
+        # 更新结果统计
+        self.updated = updated
+
+    def validate(self):
+        if self.binded:
+            self.binded.validate()
+        if self.created:
+            self.created.validate()
+        if self.deleted:
+            self.deleted.validate()
+        if self.pushed:
+            self.pushed.validate()
+        if self.same:
+            self.same.validate()
+        if self.updated:
+            self.updated.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.binded is not None:
+            result['Binded'] = self.binded.to_map()
+        if self.created is not None:
+            result['Created'] = self.created.to_map()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted.to_map()
+        if self.pushed is not None:
+            result['Pushed'] = self.pushed.to_map()
+        if self.same is not None:
+            result['Same'] = self.same.to_map()
+        if self.updated is not None:
+            result['Updated'] = self.updated.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Binded') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded()
+            self.binded = temp_model.from_map(m['Binded'])
+        if m.get('Created') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated()
+            self.created = temp_model.from_map(m['Created'])
+        if m.get('Deleted') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted()
+            self.deleted = temp_model.from_map(m['Deleted'])
+        if m.get('Pushed') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed()
+            self.pushed = temp_model.from_map(m['Pushed'])
+        if m.get('Same') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame()
+            self.same = temp_model.from_map(m['Same'])
+        if m.get('Updated') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated()
+            self.updated = temp_model.from_map(m['Updated'])
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobsResult(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        group_member_statistics: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics = None,
+        group_statistics: ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics = None,
+        organizational_unit_statistics: ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics = None,
+        user_statistics: ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics = None,
+    ):
+        # 同步结果错误码
+        self.error_code = error_code
+        # 同步结果错误信息描述
+        self.error_message = error_message
+        # 组成员同步结果统计
+        self.group_member_statistics = group_member_statistics
+        # 组同步结果统计
+        self.group_statistics = group_statistics
+        # 组织同步结果统计
+        self.organizational_unit_statistics = organizational_unit_statistics
+        # 用户同步结果统计
+        self.user_statistics = user_statistics
+
+    def validate(self):
+        if self.group_member_statistics:
+            self.group_member_statistics.validate()
+        if self.group_statistics:
+            self.group_statistics.validate()
+        if self.organizational_unit_statistics:
+            self.organizational_unit_statistics.validate()
+        if self.user_statistics:
+            self.user_statistics.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.group_member_statistics is not None:
+            result['GroupMemberStatistics'] = self.group_member_statistics.to_map()
+        if self.group_statistics is not None:
+            result['GroupStatistics'] = self.group_statistics.to_map()
+        if self.organizational_unit_statistics is not None:
+            result['OrganizationalUnitStatistics'] = self.organizational_unit_statistics.to_map()
+        if self.user_statistics is not None:
+            result['UserStatistics'] = self.user_statistics.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GroupMemberStatistics') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics()
+            self.group_member_statistics = temp_model.from_map(m['GroupMemberStatistics'])
+        if m.get('GroupStatistics') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics()
+            self.group_statistics = temp_model.from_map(m['GroupStatistics'])
+        if m.get('OrganizationalUnitStatistics') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics()
+            self.organizational_unit_statistics = temp_model.from_map(m['OrganizationalUnitStatistics'])
+        if m.get('UserStatistics') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics()
+            self.user_statistics = temp_model.from_map(m['UserStatistics'])
+        return self
+
+
+class ListSynchronizationJobsResponseBodySynchronizationJobs(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        end_time: int = None,
+        result: ListSynchronizationJobsResponseBodySynchronizationJobsResult = None,
+        start_time: int = None,
+        status: str = None,
+        synchronization_job_id: str = None,
+        target_id: str = None,
+        target_type: str = None,
+        trigger_type: str = None,
+    ):
+        # 同步任务方向
+        self.direction = direction
+        # 同步结束时间
+        self.end_time = end_time
+        # 同步任务结果
+        self.result = result
+        # 同步开始时间
+        self.start_time = start_time
+        # 同步任务状态
+        self.status = status
+        # 同步任务ID
+        self.synchronization_job_id = synchronization_job_id
+        # 同步目标ID
+        self.target_id = target_id
+        # 同步目标类型
+        self.target_type = target_type
+        # 同步触发类型
+        self.trigger_type = trigger_type
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.synchronization_job_id is not None:
+            result['SynchronizationJobId'] = self.synchronization_job_id
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.trigger_type is not None:
+            result['TriggerType'] = self.trigger_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Result') is not None:
+            temp_model = ListSynchronizationJobsResponseBodySynchronizationJobsResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SynchronizationJobId') is not None:
+            self.synchronization_job_id = m.get('SynchronizationJobId')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('TriggerType') is not None:
+            self.trigger_type = m.get('TriggerType')
+        return self
+
+
+class ListSynchronizationJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        synchronization_jobs: List[ListSynchronizationJobsResponseBodySynchronizationJobs] = None,
+        total_count: int = None,
+    ):
+        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        self.next_token = next_token
+        self.request_id = request_id
+        self.synchronization_jobs = synchronization_jobs
+        self.total_count = total_count
+
+    def validate(self):
+        if self.synchronization_jobs:
+            for k in self.synchronization_jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SynchronizationJobs'] = []
+        if self.synchronization_jobs is not None:
+            for k in self.synchronization_jobs:
+                result['SynchronizationJobs'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.synchronization_jobs = []
+        if m.get('SynchronizationJobs') is not None:
+            for k in m.get('SynchronizationJobs'):
+                temp_model = ListSynchronizationJobsResponseBodySynchronizationJobs()
+                self.synchronization_jobs.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListSynchronizationJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSynchronizationJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSynchronizationJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUsersRequest(TeaModel):
     def __init__(
         self,
@@ -14857,6 +18478,128 @@ class RevokeApplicationFromUsersResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RevokeApplicationFromUsersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunSynchronizationJobRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        target_id: str = None,
+        target_type: str = None,
+    ):
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # 同步目标ID
+        # 
+        # This parameter is required.
+        self.target_id = target_id
+        # 同步目标类型
+        # 
+        # This parameter is required.
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.target_id is not None:
+            result['TargetId'] = self.target_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TargetId') is not None:
+            self.target_id = m.get('TargetId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class RunSynchronizationJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        synchronization_job_id: str = None,
+    ):
+        self.request_id = request_id
+        self.synchronization_job_id = synchronization_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.synchronization_job_id is not None:
+            result['SynchronizationJobId'] = self.synchronization_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SynchronizationJobId') is not None:
+            self.synchronization_job_id = m.get('SynchronizationJobId')
+        return self
+
+
+class RunSynchronizationJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunSynchronizationJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunSynchronizationJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

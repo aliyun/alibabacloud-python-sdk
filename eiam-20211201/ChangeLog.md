@@ -1,3 +1,9 @@
+2024-07-30 Version: 1.4.0
+- Support API GetSynchronizationJob.
+- Support API ListSynchronizationJobs.
+- Support API RunSynchronizationJob.
+
+
 2024-05-29 Version: 1.3.3
 - Update API GetApplicationProvisioningScope: update param ApplicationId.
 - Update API GetApplicationProvisioningScope: update param InstanceId.
