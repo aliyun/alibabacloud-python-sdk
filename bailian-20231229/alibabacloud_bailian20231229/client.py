@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_category_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.AddCategoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.AddCategoryResponse:
+        """
+        @param request: AddCategoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_name):
+            body['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
+        if not UtilClient.is_unset(request.parent_category_id):
+            body['ParentCategoryId'] = request.parent_category_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddCategory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/category/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_category_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.AddCategoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.AddCategoryResponse:
+        """
+        @param request: AddCategoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_name):
+            body['CategoryName'] = request.category_name
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
+        if not UtilClient.is_unset(request.parent_category_id):
+            body['ParentCategoryId'] = request.parent_category_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddCategory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/category/',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.AddCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_category(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.AddCategoryRequest,
+    ) -> bailian_20231229_models.AddCategoryResponse:
+        """
+        @param request: AddCategoryRequest
+        @return: AddCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_category_with_options(workspace_id, request, headers, runtime)
+
+    async def add_category_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.AddCategoryRequest,
+    ) -> bailian_20231229_models.AddCategoryResponse:
+        """
+        @param request: AddCategoryRequest
+        @return: AddCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_category_with_options_async(workspace_id, request, headers, runtime)
+
     def add_file_with_options(
         self,
         workspace_id: str,
@@ -460,6 +568,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_index_with_options_async(workspace_id, request, headers, runtime)
+
+    def delete_category_with_options(
+        self,
+        category_id: str,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteCategoryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCategoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteCategory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/category/{OpenApiUtilClient.get_encode_param(category_id)}/',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_category_with_options_async(
+        self,
+        category_id: str,
+        workspace_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteCategoryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCategoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteCategory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/category/{OpenApiUtilClient.get_encode_param(category_id)}/',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_category(
+        self,
+        category_id: str,
+        workspace_id: str,
+    ) -> bailian_20231229_models.DeleteCategoryResponse:
+        """
+        @return: DeleteCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_category_with_options(category_id, workspace_id, headers, runtime)
+
+    async def delete_category_async(
+        self,
+        category_id: str,
+        workspace_id: str,
+    ) -> bailian_20231229_models.DeleteCategoryResponse:
+        """
+        @return: DeleteCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_category_with_options_async(category_id, workspace_id, headers, runtime)
 
     def delete_file_with_options(
         self,
@@ -988,6 +1182,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_index_job_status_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_category_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListCategoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListCategoryResponse:
+        """
+        @summary ListCategory
+        
+        @param request: ListCategoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.parent_category_id):
+            body['ParentCategoryId'] = request.parent_category_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCategory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/categories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListCategoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_category_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListCategoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListCategoryResponse:
+        """
+        @summary ListCategory
+        
+        @param request: ListCategoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category_type):
+            body['CategoryType'] = request.category_type
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.parent_category_id):
+            body['ParentCategoryId'] = request.parent_category_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCategory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/categories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListCategoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_category(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListCategoryRequest,
+    ) -> bailian_20231229_models.ListCategoryResponse:
+        """
+        @summary ListCategory
+        
+        @param request: ListCategoryRequest
+        @return: ListCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_category_with_options(workspace_id, request, headers, runtime)
+
+    async def list_category_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListCategoryRequest,
+    ) -> bailian_20231229_models.ListCategoryResponse:
+        """
+        @summary ListCategory
+        
+        @param request: ListCategoryRequest
+        @return: ListCategoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_category_with_options_async(workspace_id, request, headers, runtime)
 
     def list_chunks_with_options(
         self,

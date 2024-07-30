@@ -1,3 +1,9 @@
+2024-07-30 Version: 1.5.0
+- Support API AddCategory.
+- Support API DeleteCategory.
+- Support API ListCategory.
+
+
 2024-07-23 Version: 1.4.1
 - Update API Retrieve: add param SearchFilters.
 - Update API Retrieve: update param RerankTopN.
