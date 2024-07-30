@@ -951,7 +951,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.CreateScheduledScalingRuleResponse:
         """
-        @summary 创建定时伸缩配置
+        @summary Creates a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param tmp_req: CreateScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1012,7 +1014,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.CreateScheduledScalingRuleResponse:
         """
-        @summary 创建定时伸缩配置
+        @summary Creates a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param tmp_req: CreateScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1072,7 +1076,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.CreateScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.CreateScheduledScalingRuleResponse:
         """
-        @summary 创建定时伸缩配置
+        @summary Creates a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: CreateScheduledScalingRuleRequest
         @return: CreateScheduledScalingRuleResponse
@@ -1085,7 +1091,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.CreateScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.CreateScheduledScalingRuleResponse:
         """
-        @summary 创建定时伸缩配置
+        @summary Creates a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: CreateScheduledScalingRuleRequest
         @return: CreateScheduledScalingRuleResponse
@@ -1695,7 +1703,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary 删除定时伸缩规则
+        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
         
         @param request: DeleteScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1734,7 +1744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary 删除定时伸缩规则
+        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
         
         @param request: DeleteScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1772,7 +1784,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.DeleteScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary 删除定时伸缩规则
+        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
         
         @param request: DeleteScheduledScalingRuleRequest
         @return: DeleteScheduledScalingRuleResponse
@@ -1785,7 +1799,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.DeleteScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.DeleteScheduledScalingRuleResponse:
         """
-        @summary 删除定时伸缩规则
+        @summary Deletes a scheduled scaling task for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instance.
         
         @param request: DeleteScheduledScalingRuleRequest
         @return: DeleteScheduledScalingRuleResponse
@@ -2539,7 +2555,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary 查询自动伸缩配置
+        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2576,7 +2594,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary 查询自动伸缩配置
+        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2612,7 +2632,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetAutoScalingConfigurationRequest,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary 查询自动伸缩配置
+        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @return: GetAutoScalingConfigurationResponse
@@ -2625,7 +2647,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetAutoScalingConfigurationRequest,
     ) -> alikafka_20190916_models.GetAutoScalingConfigurationResponse:
         """
-        @summary 查询自动伸缩配置
+        @summary Queries the configurations of the scheduled scaling rule of a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)*This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: GetAutoScalingConfigurationRequest
         @return: GetAutoScalingConfigurationResponse
@@ -2761,6 +2785,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
             query['ConsumerId'] = request.consumer_id
+        if not UtilClient.is_unset(request.hide_last_timestamp):
+            query['HideLastTimestamp'] = request.hide_last_timestamp
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -2800,6 +2826,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.consumer_id):
             query['ConsumerId'] = request.consumer_id
+        if not UtilClient.is_unset(request.hide_last_timestamp):
+            query['HideLastTimestamp'] = request.hide_last_timestamp
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -3183,7 +3211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetTopicStatusResponse:
         """
-        @summary Queries the status information about messages in a specified topic.
+        @summary Queries the messaging status of a topic.
         
         @param request: GetTopicStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3222,7 +3250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetTopicStatusResponse:
         """
-        @summary Queries the status information about messages in a specified topic.
+        @summary Queries the messaging status of a topic.
         
         @param request: GetTopicStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3260,7 +3288,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetTopicStatusRequest,
     ) -> alikafka_20190916_models.GetTopicStatusResponse:
         """
-        @summary Queries the status information about messages in a specified topic.
+        @summary Queries the messaging status of a topic.
         
         @param request: GetTopicStatusRequest
         @return: GetTopicStatusResponse
@@ -3273,7 +3301,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetTopicStatusRequest,
     ) -> alikafka_20190916_models.GetTopicStatusResponse:
         """
-        @summary Queries the status information about messages in a specified topic.
+        @summary Queries the messaging status of a topic.
         
         @param request: GetTopicStatusRequest
         @return: GetTopicStatusResponse
@@ -3287,7 +3315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetTopicSubscribeStatusResponse:
         """
-        @summary Obtains the information about a group that subscribes to a topic.
+        @summary Queries the information about the groups that subscribe to a topic.
         
         @param request: GetTopicSubscribeStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3326,7 +3354,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.GetTopicSubscribeStatusResponse:
         """
-        @summary Obtains the information about a group that subscribes to a topic.
+        @summary Queries the information about the groups that subscribe to a topic.
         
         @param request: GetTopicSubscribeStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3364,7 +3392,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetTopicSubscribeStatusRequest,
     ) -> alikafka_20190916_models.GetTopicSubscribeStatusResponse:
         """
-        @summary Obtains the information about a group that subscribes to a topic.
+        @summary Queries the information about the groups that subscribe to a topic.
         
         @param request: GetTopicSubscribeStatusRequest
         @return: GetTopicSubscribeStatusResponse
@@ -3377,7 +3405,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.GetTopicSubscribeStatusRequest,
     ) -> alikafka_20190916_models.GetTopicSubscribeStatusResponse:
         """
-        @summary Obtains the information about a group that subscribes to a topic.
+        @summary Queries the information about the groups that subscribe to a topic.
         
         @param request: GetTopicSubscribeStatusRequest
         @return: GetTopicSubscribeStatusResponse
@@ -3607,7 +3635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ModifyPartitionNumResponse:
         """
-        @summary Changes the number of partitions in a specified topic.
+        @summary Changes the number of partitions in a topic.
         
         @param request: ModifyPartitionNumRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3648,7 +3676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ModifyPartitionNumResponse:
         """
-        @summary Changes the number of partitions in a specified topic.
+        @summary Changes the number of partitions in a topic.
         
         @param request: ModifyPartitionNumRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3688,7 +3716,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ModifyPartitionNumRequest,
     ) -> alikafka_20190916_models.ModifyPartitionNumResponse:
         """
-        @summary Changes the number of partitions in a specified topic.
+        @summary Changes the number of partitions in a topic.
         
         @param request: ModifyPartitionNumRequest
         @return: ModifyPartitionNumResponse
@@ -3701,7 +3729,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ModifyPartitionNumRequest,
     ) -> alikafka_20190916_models.ModifyPartitionNumResponse:
         """
-        @summary Changes the number of partitions in a specified topic.
+        @summary Changes the number of partitions in a topic.
         
         @param request: ModifyPartitionNumRequest
         @return: ModifyPartitionNumResponse
@@ -3715,7 +3743,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary 修改定时伸缩规则
+        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3756,7 +3786,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary 修改定时伸缩规则
+        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3796,7 +3828,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ModifyScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary 修改定时伸缩规则
+        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @return: ModifyScheduledScalingRuleResponse
@@ -3809,7 +3843,9 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ModifyScheduledScalingRuleRequest,
     ) -> alikafka_20190916_models.ModifyScheduledScalingRuleResponse:
         """
-        @summary 修改定时伸缩规则
+        @summary Modifies a scheduled scaling rule for a serverless ApsaraMQ for Kafka V3 instance.
+        
+        @description ###### [](#-v3-serverless-)This operation is supported only by serverless ApsaraMQ for Kafka V3 instances.
         
         @param request: ModifyScheduledScalingRuleRequest
         @return: ModifyScheduledScalingRuleResponse
@@ -4023,7 +4059,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ReleaseInstanceResponse:
         """
-        @summary Releases a pay-as-you-go Message Queue for Apache Kafka instance.
+        @summary Releases a pay-as-you-go instance.
         
         @description You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
         
@@ -4064,7 +4100,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alikafka_20190916_models.ReleaseInstanceResponse:
         """
-        @summary Releases a pay-as-you-go Message Queue for Apache Kafka instance.
+        @summary Releases a pay-as-you-go instance.
         
         @description You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
         
@@ -4104,7 +4140,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ReleaseInstanceRequest,
     ) -> alikafka_20190916_models.ReleaseInstanceResponse:
         """
-        @summary Releases a pay-as-you-go Message Queue for Apache Kafka instance.
+        @summary Releases a pay-as-you-go instance.
         
         @description You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
         
@@ -4119,7 +4155,7 @@ class Client(OpenApiClient):
         request: alikafka_20190916_models.ReleaseInstanceRequest,
     ) -> alikafka_20190916_models.ReleaseInstanceResponse:
         """
-        @summary Releases a pay-as-you-go Message Queue for Apache Kafka instance.
+        @summary Releases a pay-as-you-go instance.
         
         @description You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
         

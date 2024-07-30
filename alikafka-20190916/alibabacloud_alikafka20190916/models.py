@@ -345,10 +345,12 @@ class CreateAclRequest(TeaModel):
         # 
         # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_permission_type = acl_permission_type
-        # The name or ID of the resource.
+        # The resource name.
         # 
-        # *   The value can be the name of a topic, consumer group, or cluster, or the ID of a transaction.
-        # *   You can use an asterisk (\\*) to represent the names or IDs of all relevant resources.
+        # *   The value can be a topic name, a group ID, a cluster name, or a transaction ID.
+        # *   You can use an asterisk (\\*) to specify the names of all resources of the specified type.
+        # 
+        # > You can use an asterisk (\\*) to query the resources on which permissions are granted only after you grant the user the required permissions on all resources.
         # 
         # This parameter is required.
         self.acl_resource_name = acl_resource_name
@@ -370,11 +372,8 @@ class CreateAclRequest(TeaModel):
         self.acl_resource_type = acl_resource_type
         # The source IP address.
         # 
-        # > 
-        # 
-        # *   You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
-        # 
-        # *   This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # > -  You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+        # > -  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.host = host
         # The instance ID.
         # 
@@ -386,7 +385,9 @@ class CreateAclRequest(TeaModel):
         self.region_id = region_id
         # The username.
         # 
-        # You can use an asterisk (\\*) to represent all usernames.
+        # *   You can use an asterisk (\\*) to specify all usernames.
+        # 
+        # > You can use an asterisk (\\*) to query the authorized users only after you grant the required permissions to all users.
         # 
         # This parameter is required.
         self.username = username
@@ -921,7 +922,6 @@ class CreatePostPayOrderRequest(TeaModel):
         # Valid values if you set PaidType to 3:
         # 
         # *   normal: Serverless Standard Edition
-        # *   professional: Serverless Professional Edition
         # 
         # For more information about the instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
@@ -1158,7 +1158,6 @@ class CreatePostPayOrderShrinkRequest(TeaModel):
         # Valid values if you set PaidType to 3:
         # 
         # *   normal: Serverless Standard Edition
-        # *   professional: Serverless Professional Edition
         # 
         # For more information about the instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
@@ -1562,40 +1561,54 @@ class CreatePrePayOrderRequest(TeaModel):
         tag: List[CreatePrePayOrderRequestTag] = None,
         topic_quota: int = None,
     ):
-        # The configurations of ApsaraMQ for Confluent components.
+        # The configurations of Confluent.
+        # 
+        # >  When you create an ApsaraMQ for Confluent instance, you must configure this parameter.
         self.confluent_config = confluent_config
-        # The deployment mode of the instance. Valid values:
+        # The type of the network in which the instance is deployed. Valid values:
         # 
-        # *   **4**: deploys the instance that allows access from the Internet and a VPC.
-        # *   **5**: deploys the instance that allows access only from a VPC.
+        # *   **4**: Internet and virtual private cloud (VPC)
+        # *   **5**: VPC
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, set the value to 5. After the instance is created, you can specify whether to enable each component.
         self.deploy_type = deploy_type
-        # The disk size. Unit: GB.
+        # The disk size. Unit: GB
         # 
-        # For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.disk_type = disk_type
         # The subscription duration. Unit: months. Default value: 1. Valid values:
         # 
         # *   **1 to 12**\
         self.duration = duration
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic in the instance.
         # 
-        # *   This parameter is required if the **DeployType** parameter is set to **4**.
-        # *   For more information about the valid values, see [Pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # *   If you set **DeployType** to **4**, you must configure this parameter.
+        # *   For information about the valid values, see [Pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.eip_max = eip_max
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The maximum traffic in the instance. We recommend that you do not configure this parameter.
         # 
-        # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must set one of **IoMax** and **IoMaxSpec**. If both parameters are configured, the value of **IoMaxSpec** is used. We recommend that you configure only **IoMaxSpec**.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
-        # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must configure one of **IoMax** and **IoMaxSpec**. If both parameters are configured, the value of **IoMaxSpec** is used. We recommend that you configure only **IoMaxSpec**.
+        # *   For more information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
         # The billing method of the instance. Valid values:
         # 
@@ -1604,9 +1617,11 @@ class CreatePrePayOrderRequest(TeaModel):
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
@@ -1616,22 +1631,26 @@ class CreatePrePayOrderRequest(TeaModel):
         # 
         # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The edition of the instance. Valid values:
+        # The instance edition. Valid values:
         # 
         # *   **normal**: Standard Edition (High Write)
         # *   **professional**: Professional Edition (High Write)
         # *   **professionalForHighRead**: Professional Edition (High Read)
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.spec_type = spec_type
         # The tags.
         self.tag = tag
         # The number of topics. We recommend that you do not configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -1785,40 +1804,54 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         tag: List[CreatePrePayOrderShrinkRequestTag] = None,
         topic_quota: int = None,
     ):
-        # The configurations of ApsaraMQ for Confluent components.
+        # The configurations of Confluent.
+        # 
+        # >  When you create an ApsaraMQ for Confluent instance, you must configure this parameter.
         self.confluent_config_shrink = confluent_config_shrink
-        # The deployment mode of the instance. Valid values:
+        # The type of the network in which the instance is deployed. Valid values:
         # 
-        # *   **4**: deploys the instance that allows access from the Internet and a VPC.
-        # *   **5**: deploys the instance that allows access only from a VPC.
+        # *   **4**: Internet and virtual private cloud (VPC)
+        # *   **5**: VPC
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, set the value to 5. After the instance is created, you can specify whether to enable each component.
         self.deploy_type = deploy_type
-        # The disk size. Unit: GB.
+        # The disk size. Unit: GB
         # 
-        # For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.disk_size = disk_size
         # The disk type. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.disk_type = disk_type
         # The subscription duration. Unit: months. Default value: 1. Valid values:
         # 
         # *   **1 to 12**\
         self.duration = duration
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic in the instance.
         # 
-        # *   This parameter is required if the **DeployType** parameter is set to **4**.
-        # *   For more information about the valid values, see [Pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # *   If you set **DeployType** to **4**, you must configure this parameter.
+        # *   For information about the valid values, see [Pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.eip_max = eip_max
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The maximum traffic in the instance. We recommend that you do not configure this parameter.
         # 
-        # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must set one of **IoMax** and **IoMaxSpec**. If both parameters are configured, the value of **IoMaxSpec** is used. We recommend that you configure only **IoMaxSpec**.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.io_max = io_max
         # The traffic specification of the instance. We recommend that you configure this parameter.
         # 
-        # *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must configure one of **IoMax** and **IoMaxSpec**. If both parameters are configured, the value of **IoMaxSpec** is used. We recommend that you configure only **IoMaxSpec**.
+        # *   For more information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.io_max_spec = io_max_spec
         # The billing method of the instance. Valid values:
         # 
@@ -1827,9 +1860,11 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         self.paid_type = paid_type
         # The number of partitions. We recommend that you configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
@@ -1839,22 +1874,26 @@ class CreatePrePayOrderShrinkRequest(TeaModel):
         # 
         # If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # The edition of the instance. Valid values:
+        # The instance edition. Valid values:
         # 
         # *   **normal**: Standard Edition (High Write)
         # *   **professional**: Professional Edition (High Write)
         # *   **professionalForHighRead**: Professional Edition (High Read)
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.spec_type = spec_type
         # The tags.
         self.tag = tag
         # The number of topics. We recommend that you do not configure this parameter.
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
+        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
+        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
+        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # >  If you create an ApsaraMQ for Confluent instance, you do not need to configure this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):
@@ -2069,10 +2108,11 @@ class CreateSaslUserRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The SASL mechanism. Valid values:
+        # The type of the Simple Authentication and Security Layer (SASL) user. Valid values:
         # 
-        # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. Message Queue for Apache Kafka provides an optimized PLAIN mechanism that allows you to dynamically create SASL users for an instance without the need to restart the instance.
-        # *   **scram**: a mechanism that uses usernames and passwords to verify user identities. This mechanism provides better security protection than the PLAIN mechanism. Message Queue for Apache Kafka uses SCRAM-SHA-256.
+        # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. ApsaraMQ for Kafka provides an improved PLAIN mechanism that allows you to dynamically add SASL users without the need to restart an instance.
+        # *   **SCRAM**: a mechanism that uses usernames and passwords to verify user identities. Compared with the PLAIN mechanism, this mechanism provides better security protection. ApsaraMQ for Kafka uses the SCRAM-SHA-256 algorithm.
+        # *   **LDAP**: This value is available only for the SASL users of ApsaraMQ for Confluent instances.
         # 
         # Default value: **plain**.
         self.type = type
@@ -2227,26 +2267,69 @@ class CreateScheduledScalingRuleRequest(TeaModel):
         time_zone: str = None,
         weekly_types: List[str] = None,
     ):
+        # The duration of each scheduled scaling task. Unit: minutes.
+        # 
+        # >  The value of this parameter must be greater than or equal to 15.
+        # 
         # This parameter is required.
         self.duration_minutes = duration_minutes
+        # Specifies whether to enable the scheduled scaling rule. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The time when the scheduled scaling task is executed.
+        # 
+        # If you set ScheduleType to at, make sure that the value of this parameter is at least 30 minutes later than the current point in time.
+        # 
+        # >Notice: To prevent the broker from repeatedly executing instance upgrade and downgrade tasks, make sure that the interval between two consecutive scheduled scaling tasks is at least 60 minutes.
+        # 
         # This parameter is required.
         self.first_scheduled_time = first_scheduled_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The frequency to execute the scheduled scaling task. This parameter is required only if you set ScheduleType to repeat. Valid values:
+        # 
+        # *   Daily: The scheduled scaling task is executed every day.
+        # 
+        # *   Weekly: The scheduled scaling task is executed every week.
         self.repeat_type = repeat_type
+        # The reserved production capacity for scheduled scaling. Unit: MB/s.
+        # 
+        # >  You must specify a higher value than the instance specification for at least one of ReservedPubFlow and ReservedSubFlow.
+        # 
         # This parameter is required.
         self.reserved_pub_flow = reserved_pub_flow
+        # The reserved consumption capacity for scheduled scaling. Unit: MB/s.
+        # 
+        # >  You must specify a higher value than the instance specification for at least one of ReservedPubFlow and ReservedSubFlow.
+        # 
         # This parameter is required.
         self.reserved_sub_flow = reserved_sub_flow
+        # The name of the scheduled scaling rule.
+        # 
+        # >  The name of the scheduled scaling rule cannot be the same as the names of other rules for the instance.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The type of the scheduled scaling task. Valid values:
+        # 
+        # *   at: The scheduled scaling task is executed only once.
+        # *   repeat: The scheduled scaling task is repeatedly executed.
+        # 
         # This parameter is required.
         self.schedule_type = schedule_type
+        # The time zone in Coordinated Universal Time (UTC).
+        # 
         # This parameter is required.
         self.time_zone = time_zone
+        # The day on which the scheduled scaling task is executed every week. You can specify multiple days.
         self.weekly_types = weekly_types
 
     def validate(self):
@@ -2329,26 +2412,69 @@ class CreateScheduledScalingRuleShrinkRequest(TeaModel):
         time_zone: str = None,
         weekly_types_shrink: str = None,
     ):
+        # The duration of each scheduled scaling task. Unit: minutes.
+        # 
+        # >  The value of this parameter must be greater than or equal to 15.
+        # 
         # This parameter is required.
         self.duration_minutes = duration_minutes
+        # Specifies whether to enable the scheduled scaling rule. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The time when the scheduled scaling task is executed.
+        # 
+        # If you set ScheduleType to at, make sure that the value of this parameter is at least 30 minutes later than the current point in time.
+        # 
+        # >Notice: To prevent the broker from repeatedly executing instance upgrade and downgrade tasks, make sure that the interval between two consecutive scheduled scaling tasks is at least 60 minutes.
+        # 
         # This parameter is required.
         self.first_scheduled_time = first_scheduled_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The frequency to execute the scheduled scaling task. This parameter is required only if you set ScheduleType to repeat. Valid values:
+        # 
+        # *   Daily: The scheduled scaling task is executed every day.
+        # 
+        # *   Weekly: The scheduled scaling task is executed every week.
         self.repeat_type = repeat_type
+        # The reserved production capacity for scheduled scaling. Unit: MB/s.
+        # 
+        # >  You must specify a higher value than the instance specification for at least one of ReservedPubFlow and ReservedSubFlow.
+        # 
         # This parameter is required.
         self.reserved_pub_flow = reserved_pub_flow
+        # The reserved consumption capacity for scheduled scaling. Unit: MB/s.
+        # 
+        # >  You must specify a higher value than the instance specification for at least one of ReservedPubFlow and ReservedSubFlow.
+        # 
         # This parameter is required.
         self.reserved_sub_flow = reserved_sub_flow
+        # The name of the scheduled scaling rule.
+        # 
+        # >  The name of the scheduled scaling rule cannot be the same as the names of other rules for the instance.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The type of the scheduled scaling task. Valid values:
+        # 
+        # *   at: The scheduled scaling task is executed only once.
+        # *   repeat: The scheduled scaling task is repeatedly executed.
+        # 
         # This parameter is required.
         self.schedule_type = schedule_type
+        # The time zone in Coordinated Universal Time (UTC).
+        # 
         # This parameter is required.
         self.time_zone = time_zone
+        # The day on which the scheduled scaling task is executed every week. You can specify multiple days.
         self.weekly_types_shrink = weekly_types_shrink
 
     def validate(self):
@@ -2423,10 +2549,16 @@ class CreateScheduledScalingRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The value 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -2567,11 +2699,11 @@ class CreateTopicRequest(TeaModel):
         self.compact_topic = compact_topic
         # The additional configurations.
         # 
-        # *   The value of this parameter must be in JSON format.
-        # *   The key must be **replications**. The value indicates the number of replicas for the topic. The value must be an integer that ranges from 1 to 3.
-        # *   This parameter is available only when **LocalTopic** is set to **true**, or the instance is of the **Open Source Edition (Local Disk)**.****\
+        # *   The value must be in JSON format.
+        # *   Set Key to **replications**. This value specifies the number of replicas of the topic. The value must be an integer that ranges from 1 to 3.
+        # *   You can configure this parameter only if you set **LocalTopic** to **true** or specify **Open Source Edition (Local Disk)** as the instance edition.****\
         # 
-        # > If you specify this parameter, **ReplicationFactor** does not take effect.
+        # >  If you specify replications in this parameter, **ReplicationFactor** does not take effect.
         self.config = config
         # The instance ID.
         # 
@@ -2801,10 +2933,12 @@ class DeleteAclRequest(TeaModel):
     ):
         # The operation allowed by the access control list (ACL). Valid values:
         # 
-        # *   **Write**: data writes
-        # *   **Read**: data reads
+        # *   **Write**\
+        # *   **Read**\
         # *   **Describe**: reads of transactional IDs
         # *   **IdempotentWrite**: idempotent data writes to clusters
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **DESCRIBE_CONFIGS**: configuration queries. This value is available only for ApsaraMQ for Kafka V3 instances.
         # 
         # This parameter is required.
         self.acl_operation_type = acl_operation_type
@@ -2814,8 +2948,10 @@ class DeleteAclRequest(TeaModel):
         # 
         # *   **Write**: data writes
         # *   **Read**: data reads
-        # *   **Describe**: reads of **transactional IDs**\
-        # *   **IdempotentWrite**: idempotent data writes to **clusters**\
+        # *   **Describe**: reads of transactional IDs
+        # *   **IdempotentWrite**: idempotent data writes to clusters
+        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # *   **DESCRIBE_CONFIGS**: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
         # 
         # >  This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_operation_types = acl_operation_types
@@ -2850,6 +2986,9 @@ class DeleteAclRequest(TeaModel):
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
         # The IP address of the source.
+        # 
+        # > - You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+        # >- This parameter is available only for serverless ApsaraMQ for Kafka V3 instances.
         self.host = host
         # The ID of the instance.
         # 
@@ -3301,10 +3440,11 @@ class DeleteSaslUserRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The SASL mechanism. Valid values:
+        # The type of the Simple Authentication and Security Layer (SASL) user. Valid values:
         # 
-        # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. Message Queue for Apache Kafka provides an optimized PLAIN mechanism that allows you to dynamically create SASL users for an instance without the need to restart the instance.
-        # *   **scram**: a mechanism that uses usernames and passwords to verify user identities. This mechanism provides better security protection than the PLAIN mechanism. Message Queue for Apache Kafka uses SCRAM-SHA-256.
+        # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. ApsaraMQ for Kafka provides an improved PLAIN mechanism that allows you to dynamically add SASL users without the need to restart an instance.
+        # *   **SCRAM**: a mechanism that uses usernames and passwords to verify user identities. Compared with the PLAIN mechanism, this mechanism provides better security protection. ApsaraMQ for Kafka uses the SCRAM-SHA-256 algorithm.
+        # *   **LDAP**: This value is available only for the SASL users of ApsaraMQ for Confluent instances.
         # 
         # Default value: **plain**.
         self.type = type
@@ -3446,10 +3586,18 @@ class DeleteScheduledScalingRuleRequest(TeaModel):
         region_id: str = None,
         rule_name: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the scheduled scaling rule.
+        # 
+        # >  You can delete only rules that are disabled and rules that are scheduled only once and have been executed.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
 
@@ -3489,10 +3637,13 @@ class DeleteScheduledScalingRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The responses code. The value 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3719,12 +3870,27 @@ class DescribeAclsRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
+        # The types of operations allowed by the ACL. Separate multiple operation types with commas (,).
+        # - Valid values:
+        # - Write
+        # - Read
+        # - Describe: reads of transactional IDs.
+        # - IdempotentWrite: idempotent data writes to clusters.
+        # - IDEMPOTENT_WRITE: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # - DESCRIBE_CONFIGS: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_operation_type = acl_operation_type
+        # The authorization method. Valid values:
+        # - DENY
+        # - ALLOW
+        # > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_permission_type = acl_permission_type
-        # The name or ID of the resource.
+        # The resource name.
         # 
-        # *   The value can be the name of a topic or a consumer group.
-        # *   You can use an asterisk (\\*) to represent the names of all topics or consumer groups.
+        # *   The value can be the name of a topic or consumer group.
+        # *   You can use an asterisk (\\*) to specify the names of all topics or consumer groups.
+        # 
+        # > You can query the resources on which permissions are granted only after you grant the user the required permissions on all resources.
         # 
         # This parameter is required.
         self.acl_resource_name = acl_resource_name
@@ -3740,6 +3906,9 @@ class DescribeAclsRequest(TeaModel):
         # 
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
+        # The source IP address.
+        # >-  You can specify only a specific IP address or use the asterisk (*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
+        # > - This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.host = host
         # The ID of the instance.
         # 
@@ -3749,7 +3918,11 @@ class DescribeAclsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the user.
+        # The username.
+        # 
+        # *   You can use an asterisk (\\*) to specify all users.
+        # 
+        # > You can use an asterisk (\\*) to query the authorized users only after you grant the required permissions to all users.
         # 
         # This parameter is required.
         self.username = username
@@ -3817,11 +3990,20 @@ class DescribeAclsResponseBodyKafkaAclListKafkaAclVO(TeaModel):
         host: str = None,
         username: str = None,
     ):
-        # The operation type. Valid values:
-        # 
-        # *   **Write**\
-        # *   **Read**\
+        # The types of operations allowed by the ACL. Separate multiple operation types with commas (,).
+        # - Valid values:
+        # - Write
+        # - Read
+        # - Describe: reads of transactional IDs.
+        # - IdempotentWrite: idempotent data writes to clusters.
+        # - IDEMPOTENT_WRITE: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # - DESCRIBE_CONFIGS: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
+        # > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_operation_type = acl_operation_type
+        # The authorization method. Valid values:
+        # - DENY
+        # - ALLOW
+        # > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
         self.acl_permission_type = acl_permission_type
         # The resource name.
         # 
@@ -4070,14 +4252,15 @@ class DescribeSaslUsersResponseBodySaslUserListSaslUserVO(TeaModel):
     ):
         # The encryption method.
         # 
-        # >  This field is available only for ApsaraMQ for Kafka V3 Serverless instances.
+        # >  This field is available only for serverless ApsaraMQ for Kafka V3 instances.
         self.mechanism = mechanism
         # The password.
         self.password = password
-        # The type. Valid values:
+        # The type of the SASL user. Valid values:
         # 
         # *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. ApsaraMQ for Kafka provides an improved PLAIN mechanism that allows you to dynamically add SASL users without the need to restart an instance.
         # *   **SCRAM**: a mechanism that uses usernames and passwords to verify user identities. Compared with the PLAIN mechanism, this mechanism provides better security protection. ApsaraMQ for Kafka uses the SCRAM-SHA-256 algorithm.
+        # *   **LDAP**: This value is available only for the SASL users of ApsaraMQ for Confluent instances.
         # 
         # Default value: **plain**.
         self.type = type
@@ -4967,8 +5150,12 @@ class GetAutoScalingConfigurationRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -5040,18 +5227,41 @@ class GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledS
         time_zone: str = None,
         weekly_types: GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes = None,
     ):
+        # The duration of a scheduled scaling task. Unit: minutes.
         self.duration_minutes = duration_minutes
+        # Indicates whether the scheduled scaling rule is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The estimated scale-in duration. Unit: seconds.
         self.estimated_elastic_scaling_down_time_secs = estimated_elastic_scaling_down_time_secs
+        # The estimated scale-out duration. Unit: seconds.
         self.estimated_elastic_scaling_up_time_secs = estimated_elastic_scaling_up_time_secs
+        # The timestamp that indicates the start time of the scheduled scaling task.
         self.first_scheduled_time = first_scheduled_time
+        # The frequency at which the scheduled scaling task is executed. This parameter is returned only if ScheduleType is set to repeat. Valid values:
+        # 
+        # *   Daily: The scheduled scaling task is executed every day.
+        # 
+        # *   Weekly: The scheduled scaling task is executed every week.
         self.repeat_type = repeat_type
+        # The reserved production capacity for scheduled scaling. Unit: MB/s.
         self.reserved_pub_flow = reserved_pub_flow
+        # The reserved consumption capacity for scheduled scaling. Unit: MB/s.
         self.reserved_sub_flow = reserved_sub_flow
+        # The ID of the scheduled scaling rule.
         self.rule_id = rule_id
+        # The name of the scheduled scaling rule.
         self.rule_name = rule_name
+        # The type of the scheduled scaling task. Valid values:
+        # 
+        # *   at: The scheduled scaling task is executed only once.
+        # *   repeat: The scheduled scaling task is repeatedly executed.
         self.schedule_type = schedule_type
+        # The time zone in Coordinated Universal Time (UTC).
         self.time_zone = time_zone
+        # The day on which the scheduled scaling task is repeatedly executed. You can specify multiple days for this parameter.
         self.weekly_types = weekly_types
 
     def validate(self):
@@ -5164,6 +5374,7 @@ class GetAutoScalingConfigurationResponseBodyData(TeaModel):
         self,
         scheduled_scaling_rules: GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules = None,
     ):
+        # The scheduled scaling rules.
         self.scheduled_scaling_rules = scheduled_scaling_rules
 
     def validate(self):
@@ -5197,11 +5408,15 @@ class GetAutoScalingConfigurationResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The value 200 indicates that the request was successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -5637,6 +5852,7 @@ class GetConsumerProgressRequest(TeaModel):
     def __init__(
         self,
         consumer_id: str = None,
+        hide_last_timestamp: bool = None,
         instance_id: str = None,
         region_id: str = None,
     ):
@@ -5644,6 +5860,7 @@ class GetConsumerProgressRequest(TeaModel):
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
+        self.hide_last_timestamp = hide_last_timestamp
         # The ID of the instance.
         # 
         # This parameter is required.
@@ -5664,6 +5881,8 @@ class GetConsumerProgressRequest(TeaModel):
         result = dict()
         if self.consumer_id is not None:
             result['ConsumerId'] = self.consumer_id
+        if self.hide_last_timestamp is not None:
+            result['HideLastTimestamp'] = self.hide_last_timestamp
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
@@ -5674,6 +5893,8 @@ class GetConsumerProgressRequest(TeaModel):
         m = m or dict()
         if m.get('ConsumerId') is not None:
             self.consumer_id = m.get('ConsumerId')
+        if m.get('HideLastTimestamp') is not None:
+            self.hide_last_timestamp = m.get('HideLastTimestamp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
@@ -6163,10 +6384,11 @@ class GetInstanceListRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group. You can obtain this ID on the Resource Group page in the Resource Management console.
         self.resource_group_id = resource_group_id
-        # 实例系列标识，可根据系列号来过滤不同系列的实例。取值如下：
-        # - v2
-        # - v3
-        # - confluent
+        # The instance version. You can use instance versions to filter different versions of instances. Valid values:
+        # 
+        # *   v2
+        # *   v3
+        # *   confluent
         self.series = series
         # The tags.
         self.tag = tag
@@ -6522,7 +6744,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.deploy_type = deploy_type
         # The disk size. Unit: GB
         self.disk_size = disk_size
-        # The disk type. Valid values:
+        # The disk type of the instance. Valid values:
         # 
         # *   **0**: ultra disk
         # *   **1**: standard SSD
@@ -6574,7 +6796,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # 
         # >  This parameter is returned only if the instance is a serverless ApsaraMQ for Kafka V3 instance.
         self.reserved_subscribe_capacity = reserved_subscribe_capacity
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
         # 
@@ -6586,7 +6808,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         # *   If the instance is deployed in the ApsaraMQ for Kafka console or by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation without a security group configured, no value is returned.
         # *   If the instance is deployed by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation with a security group configured, the returned value is the configured security group.
         self.security_group = security_group
-        # 实例系列标识。返回值有 v2 ，v3，confluent。
+        # The instance version. Valid values: v2, v3, and confluent.
         self.series = series
         # >  This parameter is out of date. We recommend that you refer to the ViewInstanceStatusCode parameter.
         # 
@@ -7414,6 +7636,7 @@ class GetTopicListResponseBodyTopicListTopicVO(TeaModel):
         # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
         # *   The name must be 3 to 64 characters in length. If the name contains more than 64 characters, the system automatically truncates the name.
         self.topic = topic
+        # The topic configuration.
         self.topic_config = topic_config
 
     def validate(self):
@@ -7930,7 +8153,7 @@ class GetTopicSubscribeStatusRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # You can call the [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) operation to query instances.
+        # You can call the [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) operation to query the list of instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -7940,7 +8163,7 @@ class GetTopicSubscribeStatusRequest(TeaModel):
         self.region_id = region_id
         # The topic name.
         # 
-        # You can call the [GetTopicList](https://help.aliyun.com/document_detail/437677.html) operation to query topics.
+        # You can call the [GetTopicList](https://help.aliyun.com/document_detail/437677.html) operation to query the list of topics.
         # 
         # This parameter is required.
         self.topic = topic
@@ -8113,15 +8336,15 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the resource tag.
         # 
         # *   If you leave this parameter empty, the keys of all tags are matched.
-        # *   The tag key must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag key cannot contain http:// or https://.
+        # *   The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.key = key
-        # The tag value.
+        # The value of the resource tag.
         # 
-        # *   If you do not specify the tag key, you cannot specify the tag value. If you leave this parameter empty, the values of all tags are matched.
-        # *   The tag value must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag value cannot contain http:// or https://.
+        # *   If you leave Key empty, you must also leave this parameter empty. If you leave this parameter empty, the values of all tags are matched.
+        # *   The tag value can be up to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with acs: or aliyun.
         self.value = value
 
     def validate(self):
@@ -8163,15 +8386,15 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. The following items describe the formats of resource IDs:
+        # The ID of the resource whose tags you want to query. The resource ID follows the following rules:
         # 
         # *   Instance ID: instanceId
         # *   Topic ID: Kafka_alikafka_instanceId_topic
         # *   Group ID: Kafka_alikafka_instanceId_consumerGroup
         # 
-        # For example, you create an instance whose ID is alikafka_post-cn-v0h1fgs2xxxx, a topic whose name is test-topic, and a group whose ID is test-consumer-group. In this case, the resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
+        # For example, if the instance ID is alikafka_post-cn-v0h1fgs2xxxx, the topic name is test-topic, and the group name is test-consumer-group, the resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group, respectively.
         # 
-        # >  You must specify one of the **ResourceId** and **Tag** parameters to query the tags that are attached to a resource. Otherwise, the call fails.
+        # >  You must configure one of **ResourceId** and **Tag** to query the tags that are bound to a resource. Otherwise, the request fails.
         self.resource_id = resource_id
         # The type of the resource whose tags you want to query. The value is an enumerated value. Valid values:
         # 
@@ -8707,12 +8930,25 @@ class ModifyScheduledScalingRuleRequest(TeaModel):
         region_id: str = None,
         rule_name: str = None,
     ):
+        # Specifies whether to enable the scheduled scaling rule. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If the scaling task is scheduled to execute only once and you want to enable the scheduled scaling rule, make sure that the value of this parameter is at least 30 minutes later than the current point in time.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the scheduled scaling rule.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
 
@@ -8756,10 +8992,15 @@ class ModifyScheduledScalingRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
+        # 
+        # The value **200** indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9006,20 +9247,6 @@ class QueryMessageRequest(TeaModel):
         # *   byOffset: queries messages by offset. If you select this value, you must configure Partition and Offset.
         # *   byTimestamp: queries messages by time. If you select this value, you must configure BeginTime.
         # 
-        # <!---->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # This parameter is required.
         self.query_type = query_type
         # The ID of the region where the resource resides.
@@ -9115,11 +9342,11 @@ class QueryMessageResponseBodyMessageList(TeaModel):
         self.topic = topic
         # The truncated size of the message key. Unit: bytes.
         # 
-        # >  A maximum of 1 KB content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/zh/apsaramq-for-kafka/query-messages).
+        # >  A maximum of 1 KB of content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/document_detail/113172.html).
         self.truncated_key_size = truncated_key_size
         # The truncated size of the message value. Unit: bytes.
         # 
-        # >  A maximum of 1 KB content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/zh/apsaramq-for-kafka/query-messages).
+        # >  A maximum of 1 KB of content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/document_detail/113172.html).
         self.truncated_value_size = truncated_value_size
         # The message value.
         self.value = value
@@ -9599,25 +9826,26 @@ class StartInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The initial configurations of ApsaraMQ for Kafka. The value must be a valid JSON string.
+        # The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings. If you do not specify this parameter, it is left empty.
         # 
-        # If you do not specify this parameter, it is left empty.
+        # > - You cannot configure this parameter when you deploy an ApsaraMQ for Confluent instance.
+        # > - You cannot configure enable.acl for instances whose versions are earlier than 2.2.0.
         # 
-        # The following parameters can be configured for **Config**:
+        # The **Config** parameter supports the following parameters:
         # 
         # *   **enable.vpc_sasl_ssl**: specifies whether to enable VPC transmission encryption. Valid values:
         # 
         #     *   **true**: enables VPC transmission encryption. If you enable VPC transmission encryption, you must also enable access control list (ACL).
-        #     *   **false**: disables VPC transmission encryption. By default, VPC transmission encryption is disabled.
+        #     *   **false**: disables VPC transmission encryption. This is the default value.
         # 
         # *   **enable.acl**: specifies whether to enable ACL. Valid values:
         # 
         #     *   **true**: enables ACL.
-        #     *   **false**: disables ACL. By default, ACL is disabled.
+        #     *   **false**: disables the ACL feature. This is the default value.
         # 
-        # *   **kafka.log.retention.hours**: the maximum message retention period when the disk capacity is sufficient. Unit: hours. Valid values: 24 to 480. Default value: **72**. When the disk usage reaches 85%, the disk capacity is considered insufficient and the system deletes messages in the order in which they are stored to ensure service availability.
+        # *   **kafka.log.retention.hours**: the maximum message retention period when the disk capacity is sufficient. Unit: hours. Valid values: 24 to 480. Default value: **72**. When the disk usage reaches 85%, the disk capacity is insufficient. In this case, the system deletes the earliest stored messages to ensure service availability.
         # 
-        # *   **kafka.message.max.bytes**: the maximum size of messages that ApsaraMQ for Kafka can send and receive. Unit: bytes. Valid values: 1048576 to 10485760. Default value: **1048576**. Before you change the value of this parameter, make sure that the new value matches the corresponding configurations on the producers and consumers.
+        # *   **kafka.message.max.bytes**: the maximum size of a message that can be sent and received by ApsaraMQ for Kafka. Unit: bytes. Valid values: 1048576 to 10485760. Default value: **1048576**. Before you change the maximum message size to a new value, make sure that the new value matches the configurations of the producers and consumers.
         self.config = config
         # Specifies whether cross-zone deployment is required. Valid values:
         # 
@@ -9626,12 +9854,12 @@ class StartInstanceRequest(TeaModel):
         # 
         # Default value: true.
         self.cross_zone = cross_zone
-        # The deployment mode of the instance. Valid values:
+        # The deployment mode. If the instance is an ApsaraMQ for Kafka V2 instance, this parameter is required. If the instance is an ApsaraMQ for Kafka V3 instance or an ApsaraMQ for Confluent instance, this parameter is optional. Valid values:
         # 
-        # *   **vpc**: deploys the instance that allows access only from a VPC.
-        # *   **eip**: deploys the instance that allows access from the Internet and a VPC.
+        # *   **vpc**: deploys the instance in a virtual private cloud (VPC).
+        # *   **eip**: deploys the instance over the Internet and in the VPC.
         # 
-        # The deployment mode of the instance must match the type of the instance. If the instance allows access only from a VPC, set the value to **vpc**. If the instance allows access from the Internet and a VPC, set the value to **eip**.
+        # The deployment mode of the ApsaraMQ for Kafka instance must be consistent with the instance type. If the instance is a VPC-connected instance, set this parameter to **vpc**. If the instance is an Internet- and VPC-connected instance, set this parameter to **eip**.
         self.deploy_module = deploy_module
         # The ID of the instance.
         # 
@@ -9656,6 +9884,8 @@ class StartInstanceRequest(TeaModel):
         # The ID of the key that is used for disk encryption in the region where the instance is deployed. You can obtain the ID of the key in the [Key Management Service (KMS) console](https://kms.console.aliyun.com/?spm=a2c4g.11186623.2.5.336745b8hfiU21) or create a key. For more information, see [Manage CMKs](https://help.aliyun.com/document_detail/181610.html).
         # 
         # If this parameter is configured, disk encryption is enabled for the instance. You cannot disable disk encryption after disk encryption is enabled. When you call this operation, the system checks whether the AliyunServiceRoleForAlikafkaInstanceEncryption service-linked role is created. If the role is not created, the system automatically creates the role. For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/190460.html).
+        # 
+        # > When you deploy a serverless ApsaraMQ for Kafka V3 instance, you cannot configure this parameter.
         self.kmskey_id = kmskey_id
         # The name of the instance.
         # 
@@ -9663,9 +9893,10 @@ class StartInstanceRequest(TeaModel):
         self.name = name
         # The alert contact.
         self.notifier = notifier
-        # The password that corresponds to the username.
+        # The instance password.
         # 
-        # This parameter is available only if you deploy an instance that allows access from the Internet and a VPC.
+        # *   This parameter is available only for Internet- and VPC- connected ApsaraMQ for Kafka V2 and V3 instances.
+        # *   If the instance is an ApsaraMQ for Confluent instance, this parameter is required. The value of this parameter must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ! @ # $ % ^ & \\* () _ + - =\
         self.password = password
         # The region ID of the instance.
         # 
@@ -9675,29 +9906,40 @@ class StartInstanceRequest(TeaModel):
         # 
         # If you do not specify this parameter, ApsaraMQ for Kafka automatically configures a security group for your instance. If you specify this parameter, you must create a security group in advance. For more information, see [Create a security group](https://help.aliyun.com/document_detail/25468.html).
         self.security_group = security_group
-        # The two-dimensional arrays that consist of the candidate set for primary zones and the candidate set for secondary zones.
+        # The two-dimensional arrays that consist of the candidate set for primary zones and the candidate set for secondary zones. Custom code in the `zone {zone}` format and standard code in the `cn-RegionID-{zone}` format are supported.
         # 
-        # *   If you set CrossZone to true and specify Zone H and Zone F as the candidate set for primary zones and Zone K as the candidate set for secondary zones, set this parameter to `[[\\"zoneh\\",\\"zonef\\"],[\\"zonek\\"]]`.
+        # *   If you set CrossZone to true and specify Zone H and Zone F as the candidate set for primary zones and Zone K as the candidate set for secondary zones, set this parameter to `[["zoneh","zonef"],["zonek"]]`.
         # 
-        #     **\
+        # > If you specify multiple zones as the primary or secondary zones, the system deploys the instance in one of the zones without prioritizing them. For example, if you set this parameter to `[["zoneh","zonef"],["zonek"]]`, the primary zone in which the instance is deployed can be Zone H or Zone F, and the secondary zone is Zone K.
         # 
-        #     **Note** If you specify multiple zones as the primary or secondary zones, the system deploys the instance in one of the zones without prioritizing them. For example, if you set this parameter to `[[\\"zoneh\\",\\"zonef\\"],[\\"zonek\\"]]`, the primary zone in which the instance is deployed can be Zone H or Zone F, and the secondary zone is Zone K.
-        # 
-        # *   If you set CrossZone to false and want to deploy the instance in Zone K, set this parameter to `[[\\"zonek\\"],[]]`. In this case, the value of this parameter must still be two-dimensional arrays, but the array that specifies the candidate for secondary zones is left empty.
+        # *   If you set CrossZone to false and want to deploy the instance in Zone K, set this parameter to `[["zonek"],[]]`. In this case, the value of this parameter must still be two-dimensional arrays, but the array that specifies the candidate for secondary zones is left empty.
         self.selected_zones = selected_zones
-        # The version of ApsaraMQ for Kafka. Valid values: 0.10.2 and 2.2.0.
+        # The version of the ApsaraMQ for Kafka instance. Valid values:
+        # 
+        # *   ApsaraMQ for Kafka V2 instances: 2.2.0 and 2.6.2.
+        # *   ApsaraMQ for Kafka V3 instances: 3.3.1.
+        # *   ApsaraMQ for Confluent instances: 7.4.0.
+        # 
+        # Default value:
+        # 
+        # *   ApsaraMQ for Kafka V2 instances: 2.2.0.
+        # *   ApsaraMQ for Kafka V3 instances: 3.3.1.
+        # *   ApsaraMQ for Confluent instances: 7.4.0.
         self.service_version = service_version
         # The mobile phone number of the alert contact.
         self.user_phone_num = user_phone_num
-        # The username that is used to access the instance.
+        # The instance username.
         # 
-        # This parameter is available only if you deploy an instance that allows access from the Internet and a VPC.
+        # *   This parameter is available only for Internet- and VPC- connected ApsaraMQ for Kafka V2 and V3 instances.
+        # *   If the instance is an ApsaraMQ for Confluent instance, set this parameter to root or leave this parameter empty.
+        # 
+        # Default value for ApsaraMQ for Kafka V2 and V3 instances: username. Default value for ApsaraMQ for Confluent instances: root.
         self.username = username
         # The ID of the vSwitch to which you want to connect the instance.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The vSwitch IDs.
+        # The IDs of the vSwitches with which the instance is associated. If the instance is an ApsaraMQ for Kafka V2 or V3 instance, this parameter is required. If the instance is an ApsaraMQ for Confluent instance, you must configure one of VSwitchIds and VSwitchId. If you configure both of the parameters, the value of VSwitchIds takes effect.
         self.v_switch_ids = v_switch_ids
         # The ID of the virtual private cloud (VPC) in which you want to deploy the instance.
         # 
@@ -10036,17 +10278,17 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the resource tag.
         # 
         # *   You must specify this parameter.
-        # *   The tag key must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+        # *   The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
+        # The value of the resource tag.
         # 
         # *   You can leave this parameter empty.
-        # *   The tag value must be 1 to 128 characters in length and cannot start with acs: or aliyun. The tag key cannot contain http:// or https://.
+        # *   The tag value can be up to 128 characters in length and cannot contain http:// or https://. The tag value cannot start with acs: or aliyun.
         self.value = value
 
     def validate(self):
@@ -10088,7 +10330,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of resource IDs.
+        # The resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -10249,7 +10491,7 @@ class UntagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag key.
+        # The key of the resource tag.
         self.tag_key = tag_key
 
     def validate(self):
@@ -10391,10 +10633,10 @@ class UpdateAllowedIpRequest(TeaModel):
         self.instance_id = instance_id
         # The port range. Valid values:
         # 
-        # *   **9092/9092**: the port range for access from virtual private clouds (VPCs) by using the default endpoint.
-        # *   **9093/9093**: the port range for access from the Internet.
-        # *   **9094/9094**: the port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
-        # *   **9095/9095**: the port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
+        # *   **9092/9092**: Messages are transmitted in a virtual private cloud (VPC) by using the PLAINTEXT protocol.
+        # *   **9093/9093**: Messages are transmitted over the Internet by using the SASL_SSL protocol.
+        # *   **9094/9094**: Messages are transmitted in a VPC by using the SASL_PLAINTEXT protocol.
+        # *   **9095/9095**: Messages are transmitted in a VPC by using the SASL_SSL protocol.
         # 
         # This parameter must correspond to **AllowdedListType**.
         # 
@@ -10626,7 +10868,7 @@ class UpdateConsumerOffsetRequest(TeaModel):
         # *   The name must be **3 to 64** characters in length. If a name contains more than **64** characters, the name is automatically truncated.
         # *   The name of a topic cannot be changed after the topic is created.
         # 
-        # **If you want to reset the consumer offsets of all topics to which the consumer subscribes, specify an empty string.
+        # **If you want to reset the consumer offsets of all topics to which the consumer subscribes, specify an empty string.**\
         # 
         # This parameter is required.
         self.topic = topic
@@ -10728,7 +10970,7 @@ class UpdateConsumerOffsetShrinkRequest(TeaModel):
         # *   The name must be **3 to 64** characters in length. If a name contains more than **64** characters, the name is automatically truncated.
         # *   The name of a topic cannot be changed after the topic is created.
         # 
-        # **If you want to reset the consumer offsets of all topics to which the consumer subscribes, specify an empty string.
+        # **If you want to reset the consumer offsets of all topics to which the consumer subscribes, specify an empty string.**\
         # 
         # This parameter is required.
         self.topic = topic
@@ -11385,13 +11627,9 @@ class UpgradePostPayOrderRequest(TeaModel):
         # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > 
-        # 
-        # *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
-        # 
-        # *   If you set **EipModel** to **false**, set **EipMax** to **0**.
-        # 
-        # *   When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # > -  If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
+        # >- If you set **EipModel** to **false**, set **EipMax** to **0**.
+        # >- When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.eip_max = eip_max
         # Specifies whether to enable Internet access for the instance. Valid values:
         # 
@@ -11443,7 +11681,6 @@ class UpgradePostPayOrderRequest(TeaModel):
         # Valid values for this parameter if you set PaidType to 3:
         # 
         # *   normal: Serverless Standard Edition
-        # *   professional: Serverless Professional Edition
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
@@ -11546,13 +11783,9 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
         # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > 
-        # 
-        # *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
-        # 
-        # *   If you set **EipModel** to **false**, set **EipMax** to **0**.
-        # 
-        # *   When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
+        # > -  If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
+        # >- If you set **EipModel** to **false**, set **EipMax** to **0**.
+        # >- When you create an ApsaraMQ for Kafka V3 serverless instance, you do not need to configure this parameter.
         self.eip_max = eip_max
         # Specifies whether to enable Internet access for the instance. Valid values:
         # 
@@ -11604,7 +11837,6 @@ class UpgradePostPayOrderShrinkRequest(TeaModel):
         # Valid values for this parameter if you set PaidType to 3:
         # 
         # *   normal: Serverless Standard Edition
-        # *   professional: Serverless Professional Edition
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type

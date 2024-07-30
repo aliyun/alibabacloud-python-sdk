@@ -1,3 +1,7 @@
+2024-07-30 Version: 2.7.1
+- Update API GetConsumerProgress: add param HideLastTimestamp.
+
+
 2024-05-16 Version: 2.7.0
 - Support API CreateScheduledScalingRule.
 - Support API DeleteScheduledScalingRule.
