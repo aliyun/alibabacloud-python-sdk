@@ -1,3 +1,7 @@
+2024-07-31 Version: 2.0.5
+- Update API UpgradeEngineVersion: update param body.
+
+
 2024-07-22 Version: 2.0.4
 - Update API CreateSnapshot: update param InstanceId.
 - Update API CreateSnapshot: update param ClientToken.

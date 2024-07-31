@@ -38025,14 +38025,55 @@ class UpdateXpackMonitorConfigResponse(TeaModel):
         return self
 
 
+class UpgradeEngineVersionRequestPlugins(TeaModel):
+    def __init__(
+        self,
+        file_version: str = None,
+        name: str = None,
+        version: str = None,
+    ):
+        self.file_version = file_version
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_version is not None:
+            result['fileVersion'] = self.file_version
+        if self.name is not None:
+            result['name'] = self.name
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileVersion') is not None:
+            self.file_version = m.get('fileVersion')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
 class UpgradeEngineVersionRequest(TeaModel):
     def __init__(
         self,
+        plugins: List[UpgradeEngineVersionRequestPlugins] = None,
         type: str = None,
         version: str = None,
         client_token: str = None,
         dry_run: bool = None,
     ):
+        self.plugins = plugins
         self.type = type
         self.version = version
         # The moderation results.
@@ -38046,7 +38087,10 @@ class UpgradeEngineVersionRequest(TeaModel):
         self.dry_run = dry_run
 
     def validate(self):
-        pass
+        if self.plugins:
+            for k in self.plugins:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38054,6 +38098,10 @@ class UpgradeEngineVersionRequest(TeaModel):
             return _map
 
         result = dict()
+        result['plugins'] = []
+        if self.plugins is not None:
+            for k in self.plugins:
+                result['plugins'].append(k.to_map() if k else None)
         if self.type is not None:
             result['type'] = self.type
         if self.version is not None:
@@ -38066,6 +38114,11 @@ class UpgradeEngineVersionRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.plugins = []
+        if m.get('plugins') is not None:
+            for k in m.get('plugins'):
+                temp_model = UpgradeEngineVersionRequestPlugins()
+                self.plugins.append(temp_model.from_map(k))
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('version') is not None:

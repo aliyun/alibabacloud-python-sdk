@@ -21360,6 +21360,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
+        if not UtilClient.is_unset(request.plugins):
+            body['plugins'] = request.plugins
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         if not UtilClient.is_unset(request.version):
@@ -21409,6 +21411,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
         body = {}
+        if not UtilClient.is_unset(request.plugins):
+            body['plugins'] = request.plugins
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         if not UtilClient.is_unset(request.version):
