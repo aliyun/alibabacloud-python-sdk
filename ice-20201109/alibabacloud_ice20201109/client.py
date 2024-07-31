@@ -5428,6 +5428,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_play_list_with_options_async(request, runtime)
 
+    def describe_rtc_robot_instance_with_options(
+        self,
+        request: ice20201109_models.DescribeRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeRtcRobotInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeRtcRobotInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_robot_instance_with_options_async(
+        self,
+        request: ice20201109_models.DescribeRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.DescribeRtcRobotInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.DescribeRtcRobotInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_robot_instance(
+        self,
+        request: ice20201109_models.DescribeRtcRobotInstanceRequest,
+    ) -> ice20201109_models.DescribeRtcRobotInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeRtcRobotInstanceRequest
+        @return: DescribeRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rtc_robot_instance_with_options(request, runtime)
+
+    async def describe_rtc_robot_instance_async(
+        self,
+        request: ice20201109_models.DescribeRtcRobotInstanceRequest,
+    ) -> ice20201109_models.DescribeRtcRobotInstanceResponse:
+        """
+        @summary 查询实例
+        
+        @param request: DescribeRtcRobotInstanceRequest
+        @return: DescribeRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rtc_robot_instance_with_options_async(request, runtime)
+
     def detect_audio_for_customized_voice_job_with_options(
         self,
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
@@ -16202,6 +16298,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_event_callback_with_options_async(request, runtime)
 
+    def start_rtc_robot_instance_with_options(
+        self,
+        tmp_req: ice20201109_models.StartRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartRtcRobotInstanceResponse:
+        """
+        @summary 开启一个机器人实例
+        
+        @param tmp_req: StartRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.StartRtcRobotInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auth_token):
+            query['AuthToken'] = request.auth_token
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.config_shrink):
+            query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.robot_id):
+            query['RobotId'] = request.robot_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartRtcRobotInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_rtc_robot_instance_with_options_async(
+        self,
+        tmp_req: ice20201109_models.StartRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StartRtcRobotInstanceResponse:
+        """
+        @summary 开启一个机器人实例
+        
+        @param tmp_req: StartRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.StartRtcRobotInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.auth_token):
+            query['AuthToken'] = request.auth_token
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.config_shrink):
+            query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.robot_id):
+            query['RobotId'] = request.robot_id
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StartRtcRobotInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_rtc_robot_instance(
+        self,
+        request: ice20201109_models.StartRtcRobotInstanceRequest,
+    ) -> ice20201109_models.StartRtcRobotInstanceResponse:
+        """
+        @summary 开启一个机器人实例
+        
+        @param request: StartRtcRobotInstanceRequest
+        @return: StartRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_rtc_robot_instance_with_options(request, runtime)
+
+    async def start_rtc_robot_instance_async(
+        self,
+        request: ice20201109_models.StartRtcRobotInstanceRequest,
+    ) -> ice20201109_models.StartRtcRobotInstanceResponse:
+        """
+        @summary 开启一个机器人实例
+        
+        @param request: StartRtcRobotInstanceRequest
+        @return: StartRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_rtc_robot_instance_with_options_async(request, runtime)
+
     def start_workflow_with_options(
         self,
         request: ice20201109_models.StartWorkflowRequest,
@@ -16305,6 +16525,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_workflow_with_options_async(request, runtime)
+
+    def stop_rtc_robot_instance_with_options(
+        self,
+        request: ice20201109_models.StopRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopRtcRobotInstanceResponse:
+        """
+        @summary 停止一个机器人实例
+        
+        @param request: StopRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StopRtcRobotInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_rtc_robot_instance_with_options_async(
+        self,
+        request: ice20201109_models.StopRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.StopRtcRobotInstanceResponse:
+        """
+        @summary 停止一个机器人实例
+        
+        @param request: StopRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.StopRtcRobotInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_rtc_robot_instance(
+        self,
+        request: ice20201109_models.StopRtcRobotInstanceRequest,
+    ) -> ice20201109_models.StopRtcRobotInstanceResponse:
+        """
+        @summary 停止一个机器人实例
+        
+        @param request: StopRtcRobotInstanceRequest
+        @return: StopRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_rtc_robot_instance_with_options(request, runtime)
+
+    async def stop_rtc_robot_instance_async(
+        self,
+        request: ice20201109_models.StopRtcRobotInstanceRequest,
+    ) -> ice20201109_models.StopRtcRobotInstanceResponse:
+        """
+        @summary 停止一个机器人实例
+        
+        @param request: StopRtcRobotInstanceRequest
+        @return: StopRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_rtc_robot_instance_with_options_async(request, runtime)
 
     def submit_asrjob_with_options(
         self,
@@ -20973,6 +21289,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_pipeline_with_options_async(request, runtime)
+
+    def update_rtc_robot_instance_with_options(
+        self,
+        tmp_req: ice20201109_models.UpdateRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateRtcRobotInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param tmp_req: UpdateRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateRtcRobotInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_shrink):
+            query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateRtcRobotInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rtc_robot_instance_with_options_async(
+        self,
+        tmp_req: ice20201109_models.UpdateRtcRobotInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.UpdateRtcRobotInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param tmp_req: UpdateRtcRobotInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRtcRobotInstanceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.UpdateRtcRobotInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config):
+            request.config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config, 'Config', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.config_shrink):
+            query['Config'] = request.config_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRtcRobotInstance',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.UpdateRtcRobotInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rtc_robot_instance(
+        self,
+        request: ice20201109_models.UpdateRtcRobotInstanceRequest,
+    ) -> ice20201109_models.UpdateRtcRobotInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param request: UpdateRtcRobotInstanceRequest
+        @return: UpdateRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_rtc_robot_instance_with_options(request, runtime)
+
+    async def update_rtc_robot_instance_async(
+        self,
+        request: ice20201109_models.UpdateRtcRobotInstanceRequest,
+    ) -> ice20201109_models.UpdateRtcRobotInstanceResponse:
+        """
+        @summary 修改实例的配置
+        
+        @param request: UpdateRtcRobotInstanceRequest
+        @return: UpdateRtcRobotInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rtc_robot_instance_with_options_async(request, runtime)
 
     def update_template_with_options(
         self,

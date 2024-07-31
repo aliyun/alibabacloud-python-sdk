@@ -1,3 +1,11 @@
+2024-07-31 Version: 3.2.0
+- Support API DescribeRtcRobotInstance.
+- Support API StartRtcRobotInstance.
+- Support API StopRtcRobotInstance.
+- Support API UpdateRtcRobotInstance.
+- Update API ListSmartVoiceGroups: update response param.
+
+
 2024-07-30 Version: 3.1.1
 - Update API ListSmartVoiceGroups: update response param.
 
