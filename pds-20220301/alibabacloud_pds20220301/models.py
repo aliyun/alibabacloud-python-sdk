@@ -5875,13 +5875,126 @@ class JWTPayload(TeaModel):
         return self
 
 
+class KnowledgeFile(TeaModel):
+    def __init__(
+        self,
+        creator_id: str = None,
+        drive_id: str = None,
+        file_category: str = None,
+        file_created_at: int = None,
+        file_creator_id: str = None,
+        file_id: str = None,
+        file_image_time: int = None,
+        file_name: str = None,
+        file_name_path: str = None,
+        file_size: int = None,
+        file_updated_at: int = None,
+        joined_at: int = None,
+        knowledge_base_id: str = None,
+        knowledge_category_id: str = None,
+        revision_id: str = None,
+    ):
+        self.creator_id = creator_id
+        self.drive_id = drive_id
+        self.file_category = file_category
+        self.file_created_at = file_created_at
+        self.file_creator_id = file_creator_id
+        self.file_id = file_id
+        self.file_image_time = file_image_time
+        self.file_name = file_name
+        self.file_name_path = file_name_path
+        self.file_size = file_size
+        self.file_updated_at = file_updated_at
+        self.joined_at = joined_at
+        self.knowledge_base_id = knowledge_base_id
+        self.knowledge_category_id = knowledge_category_id
+        self.revision_id = revision_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_id is not None:
+            result['creator_id'] = self.creator_id
+        if self.drive_id is not None:
+            result['drive_id'] = self.drive_id
+        if self.file_category is not None:
+            result['file_category'] = self.file_category
+        if self.file_created_at is not None:
+            result['file_created_at'] = self.file_created_at
+        if self.file_creator_id is not None:
+            result['file_creator_id'] = self.file_creator_id
+        if self.file_id is not None:
+            result['file_id'] = self.file_id
+        if self.file_image_time is not None:
+            result['file_image_time'] = self.file_image_time
+        if self.file_name is not None:
+            result['file_name'] = self.file_name
+        if self.file_name_path is not None:
+            result['file_name_path'] = self.file_name_path
+        if self.file_size is not None:
+            result['file_size'] = self.file_size
+        if self.file_updated_at is not None:
+            result['file_updated_at'] = self.file_updated_at
+        if self.joined_at is not None:
+            result['joined_at'] = self.joined_at
+        if self.knowledge_base_id is not None:
+            result['knowledge_base_id'] = self.knowledge_base_id
+        if self.knowledge_category_id is not None:
+            result['knowledge_category_id'] = self.knowledge_category_id
+        if self.revision_id is not None:
+            result['revision_id'] = self.revision_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator_id') is not None:
+            self.creator_id = m.get('creator_id')
+        if m.get('drive_id') is not None:
+            self.drive_id = m.get('drive_id')
+        if m.get('file_category') is not None:
+            self.file_category = m.get('file_category')
+        if m.get('file_created_at') is not None:
+            self.file_created_at = m.get('file_created_at')
+        if m.get('file_creator_id') is not None:
+            self.file_creator_id = m.get('file_creator_id')
+        if m.get('file_id') is not None:
+            self.file_id = m.get('file_id')
+        if m.get('file_image_time') is not None:
+            self.file_image_time = m.get('file_image_time')
+        if m.get('file_name') is not None:
+            self.file_name = m.get('file_name')
+        if m.get('file_name_path') is not None:
+            self.file_name_path = m.get('file_name_path')
+        if m.get('file_size') is not None:
+            self.file_size = m.get('file_size')
+        if m.get('file_updated_at') is not None:
+            self.file_updated_at = m.get('file_updated_at')
+        if m.get('joined_at') is not None:
+            self.joined_at = m.get('joined_at')
+        if m.get('knowledge_base_id') is not None:
+            self.knowledge_base_id = m.get('knowledge_base_id')
+        if m.get('knowledge_category_id') is not None:
+            self.knowledge_category_id = m.get('knowledge_category_id')
+        if m.get('revision_id') is not None:
+            self.revision_id = m.get('revision_id')
+        return self
+
+
 class KnowledgeFileItem(TeaModel):
     def __init__(
         self,
         drive_id: str = None,
         file_id: str = None,
     ):
+        # This parameter is required.
         self.drive_id = drive_id
+        # This parameter is required.
         self.file_id = file_id
 
     def validate(self):
@@ -6168,7 +6281,7 @@ class PersonalRightsInfoResponse(TeaModel):
         is_expires: bool = None,
         name: str = None,
         other_rights: 'PersonalRightsInfoResponse' = None,
-        privileges: DataBoxPrivileges = None,
+        privileges: List[DataBoxPrivileges] = None,
         spu_id: str = None,
         title: str = None,
     ):
@@ -6188,7 +6301,9 @@ class PersonalRightsInfoResponse(TeaModel):
         if self.other_rights:
             self.other_rights.validate()
         if self.privileges:
-            self.privileges.validate()
+            for k in self.privileges:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6208,8 +6323,10 @@ class PersonalRightsInfoResponse(TeaModel):
             result['name'] = self.name
         if self.other_rights is not None:
             result['other_rights'] = self.other_rights.to_map()
+        result['privileges'] = []
         if self.privileges is not None:
-            result['privileges'] = self.privileges.to_map()
+            for k in self.privileges:
+                result['privileges'].append(k.to_map() if k else None)
         if self.spu_id is not None:
             result['spu_id'] = self.spu_id
         if self.title is not None:
@@ -6232,9 +6349,11 @@ class PersonalRightsInfoResponse(TeaModel):
         if m.get('other_rights') is not None:
             temp_model = PersonalRightsInfoResponse()
             self.other_rights = temp_model.from_map(m['other_rights'])
+        self.privileges = []
         if m.get('privileges') is not None:
-            temp_model = DataBoxPrivileges()
-            self.privileges = temp_model.from_map(m['privileges'])
+            for k in m.get('privileges'):
+                temp_model = DataBoxPrivileges()
+                self.privileges.append(temp_model.from_map(k))
         if m.get('spu_id') is not None:
             self.spu_id = m.get('spu_id')
         if m.get('title') is not None:
