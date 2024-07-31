@@ -1966,6 +1966,7 @@ class DescAccountSummaryResponseBody(TeaModel):
     def __init__(
         self,
         daily_quota: int = None,
+        daily_remain_free_quota: str = None,
         dayu_status: int = None,
         domains: int = None,
         enable_times: int = None,
@@ -1984,6 +1985,7 @@ class DescAccountSummaryResponseBody(TeaModel):
         user_status: int = None,
     ):
         self.daily_quota = daily_quota
+        self.daily_remain_free_quota = daily_remain_free_quota
         self.dayu_status = dayu_status
         self.domains = domains
         self.enable_times = enable_times
@@ -2012,6 +2014,8 @@ class DescAccountSummaryResponseBody(TeaModel):
         result = dict()
         if self.daily_quota is not None:
             result['DailyQuota'] = self.daily_quota
+        if self.daily_remain_free_quota is not None:
+            result['DailyRemainFreeQuota'] = self.daily_remain_free_quota
         if self.dayu_status is not None:
             result['DayuStatus'] = self.dayu_status
         if self.domains is not None:
@@ -2050,6 +2054,8 @@ class DescAccountSummaryResponseBody(TeaModel):
         m = m or dict()
         if m.get('DailyQuota') is not None:
             self.daily_quota = m.get('DailyQuota')
+        if m.get('DailyRemainFreeQuota') is not None:
+            self.daily_remain_free_quota = m.get('DailyRemainFreeQuota')
         if m.get('DayuStatus') is not None:
             self.dayu_status = m.get('DayuStatus')
         if m.get('Domains') is not None:

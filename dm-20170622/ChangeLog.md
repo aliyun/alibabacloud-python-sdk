@@ -1,3 +1,7 @@
+2024-07-31 Version: 1.2.4
+- Update API DescAccountSummary: update response param.
+
+
 2024-07-16 Version: 1.2.3
 - Update API BatchSendMail: add param UnSubscribeFilterLevel.
 - Update API BatchSendMail: add param UnSubscribeLinkType.
