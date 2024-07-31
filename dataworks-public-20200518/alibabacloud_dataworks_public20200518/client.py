@@ -287,9 +287,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
+        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: AddProjectMemberToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -330,9 +330,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
+        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: AddProjectMemberToRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -372,9 +372,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddProjectMemberToRoleRequest,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
+        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: AddProjectMemberToRoleRequest
         @return: AddProjectMemberToRoleResponse
@@ -387,9 +387,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddProjectMemberToRoleRequest,
     ) -> dataworks_public_20200518_models.AddProjectMemberToRoleResponse:
         """
-        @summary For more information about how to add your Alibaba Cloud account or a RAM user as a member of a DataWorks workspace, see [Add a member to a DataWorks workspace](https://help.aliyun.com/document_detail/136941.html).
+        @summary Assigns a role to a member of a DataWorks workspace. Before you call this operation, you must add your account to a DataWorks workspace as a member.
         
-        @description The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to query the ID.
+        @description For information about how to add an account to a DataWorks workspace as a member, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: AddProjectMemberToRoleRequest
         @return: AddProjectMemberToRoleResponse
@@ -403,7 +403,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
         """
-        @summary 添加识别规则
+        @summary Adds a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: AddRecognizeRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -472,7 +472,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
         """
-        @summary 添加识别规则
+        @summary Adds a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: AddRecognizeRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -540,7 +540,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
         """
-        @summary 添加识别规则
+        @summary Adds a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: AddRecognizeRuleRequest
         @return: AddRecognizeRuleResponse
@@ -553,7 +553,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.AddRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.AddRecognizeRuleResponse:
         """
-        @summary 添加识别规则
+        @summary Adds a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: AddRecognizeRuleRequest
         @return: AddRecognizeRuleResponse
@@ -667,6 +667,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
         """
+        @summary Processes a permission request order.
+        
         @param request: ApprovePermissionApplyOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ApprovePermissionApplyOrderResponse
@@ -704,6 +706,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
         """
+        @summary Processes a permission request order.
+        
         @param request: ApprovePermissionApplyOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ApprovePermissionApplyOrderResponse
@@ -740,6 +744,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
         """
+        @summary Processes a permission request order.
+        
         @param request: ApprovePermissionApplyOrderRequest
         @return: ApprovePermissionApplyOrderResponse
         """
@@ -751,6 +757,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ApprovePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.ApprovePermissionApplyOrderResponse:
         """
+        @summary Processes a permission request order.
+        
         @param request: ApprovePermissionApplyOrderRequest
         @return: ApprovePermissionApplyOrderResponse
         """
@@ -763,7 +771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
         """
-        @summary 扩展程序回调接口
+        @summary Sends the processing result of an extension point event by an extension to DataWorks.
         
         @param request: CallbackExtensionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -804,7 +812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
         """
-        @summary 扩展程序回调接口
+        @summary Sends the processing result of an extension point event by an extension to DataWorks.
         
         @param request: CallbackExtensionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -844,7 +852,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CallbackExtensionRequest,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
         """
-        @summary 扩展程序回调接口
+        @summary Sends the processing result of an extension point event by an extension to DataWorks.
         
         @param request: CallbackExtensionRequest
         @return: CallbackExtensionResponse
@@ -857,7 +865,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CallbackExtensionRequest,
     ) -> dataworks_public_20200518_models.CallbackExtensionResponse:
         """
-        @summary 扩展程序回调接口
+        @summary Sends the processing result of an extension point event by an extension to DataWorks.
         
         @param request: CallbackExtensionRequest
         @return: CallbackExtensionResponse
@@ -871,7 +879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
         """
-        @summary Modifies the resource group that you specify when you activate DataWorks or purchase a DataWorks exclusive resource group.
+        @summary Changes the resource group to which a resource belongs.
         
         @param request: ChangeResourceManagerResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -910,7 +918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
         """
-        @summary Modifies the resource group that you specify when you activate DataWorks or purchase a DataWorks exclusive resource group.
+        @summary Changes the resource group to which a resource belongs.
         
         @param request: ChangeResourceManagerResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -948,7 +956,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
         """
-        @summary Modifies the resource group that you specify when you activate DataWorks or purchase a DataWorks exclusive resource group.
+        @summary Changes the resource group to which a resource belongs.
         
         @param request: ChangeResourceManagerResourceGroupRequest
         @return: ChangeResourceManagerResourceGroupResponse
@@ -961,7 +969,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ChangeResourceManagerResourceGroupRequest,
     ) -> dataworks_public_20200518_models.ChangeResourceManagerResourceGroupResponse:
         """
-        @summary Modifies the resource group that you specify when you activate DataWorks or purchase a DataWorks exclusive resource group.
+        @summary Changes the resource group to which a resource belongs.
         
         @param request: ChangeResourceManagerResourceGroupRequest
         @return: ChangeResourceManagerResourceGroupResponse
@@ -975,6 +983,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
         """
+        @summary Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. You can call this operation to return the check events for the file that you want to deploy to DataWorks.
+        
         @param request: CheckFileDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckFileDeploymentResponse
@@ -1012,6 +1022,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
         """
+        @summary Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. You can call this operation to return the check events for the file that you want to deploy to DataWorks.
+        
         @param request: CheckFileDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckFileDeploymentResponse
@@ -1048,6 +1060,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckFileDeploymentRequest,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
         """
+        @summary Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. You can call this operation to return the check events for the file that you want to deploy to DataWorks.
+        
         @param request: CheckFileDeploymentRequest
         @return: CheckFileDeploymentResponse
         """
@@ -1059,6 +1073,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckFileDeploymentRequest,
     ) -> dataworks_public_20200518_models.CheckFileDeploymentResponse:
         """
+        @summary Returns the check events of a file. After you commit your file that is created on the DataStudio page, the system checks the file and returns check events before the system deploys the file. You must determine whether the check can be continued based on the events. You can call this operation to return the check events for the file that you want to deploy to DataWorks.
+        
         @param request: CheckFileDeploymentRequest
         @return: CheckFileDeploymentResponse
         """
@@ -1071,7 +1087,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        @summary Checks whether a partition in a MaxCompute metatable exists.
         
         @param request: CheckMetaPartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1116,7 +1132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        @summary Checks whether a partition in a MaxCompute metatable exists.
         
         @param request: CheckMetaPartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1160,7 +1176,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaPartitionRequest,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        @summary Checks whether a partition in a MaxCompute metatable exists.
         
         @param request: CheckMetaPartitionRequest
         @return: CheckMetaPartitionResponse
@@ -1173,7 +1189,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaPartitionRequest,
     ) -> dataworks_public_20200518_models.CheckMetaPartitionResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaPartition**.
+        @summary Checks whether a partition in a MaxCompute metatable exists.
         
         @param request: CheckMetaPartitionRequest
         @return: CheckMetaPartitionResponse
@@ -1187,7 +1203,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        @summary Checks whether a metatable exists.
         
         @param request: CheckMetaTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1230,7 +1246,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        @summary Checks whether a metatable exists.
         
         @param request: CheckMetaTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1272,7 +1288,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaTableRequest,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        @summary Checks whether a metatable exists.
         
         @param request: CheckMetaTableRequest
         @return: CheckMetaTableResponse
@@ -1285,7 +1301,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CheckMetaTableRequest,
     ) -> dataworks_public_20200518_models.CheckMetaTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CheckMetaTable**.
+        @summary Checks whether a metatable exists.
         
         @param request: CheckMetaTableRequest
         @return: CheckMetaTableResponse
@@ -1299,7 +1315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
         """
-        @summary 创建基线
+        @summary Creates a baseline.
         
         @param request: CreateBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1348,7 +1364,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
         """
-        @summary 创建基线
+        @summary Creates a baseline.
         
         @param request: CreateBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1396,7 +1412,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateBaselineRequest,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
         """
-        @summary 创建基线
+        @summary Creates a baseline.
         
         @param request: CreateBaselineRequest
         @return: CreateBaselineResponse
@@ -1409,7 +1425,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateBaselineRequest,
     ) -> dataworks_public_20200518_models.CreateBaselineResponse:
         """
-        @summary 创建基线
+        @summary Creates a baseline.
         
         @param request: CreateBaselineRequest
         @return: CreateBaselineResponse
@@ -1533,7 +1549,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateConnection is deprecated
         
-        @summary 创建数据源
+        @summary Adds a data source.
         
         @param request: CreateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1583,7 +1599,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateConnection is deprecated
         
-        @summary 创建数据源
+        @summary Adds a data source.
         
         @param request: CreateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1632,7 +1648,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateConnection is deprecated
         
-        @summary 创建数据源
+        @summary Adds a data source.
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -1648,7 +1664,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateConnection is deprecated
         
-        @summary 创建数据源
+        @summary Adds a data source.
         
         @param request: CreateConnectionRequest
         @return: CreateConnectionResponse
@@ -1663,7 +1679,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成新版告警规则
+        @summary Creates an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param tmp_req: CreateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1714,7 +1732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成新版告警规则
+        @summary Creates an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param tmp_req: CreateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1764,7 +1784,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成新版告警规则
+        @summary Creates an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: CreateDIAlarmRuleRequest
         @return: CreateDIAlarmRuleResponse
@@ -1777,7 +1799,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.CreateDIAlarmRuleResponse:
         """
-        @summary 创建数据集成新版告警规则
+        @summary Creates an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: CreateDIAlarmRuleRequest
         @return: CreateDIAlarmRuleResponse
@@ -1791,7 +1815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成新版解决方案任务
+        @summary Creates a synchronization task of a new version in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres and batch synchronization of all data in a MySQL database to Hive.
         
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1866,7 +1890,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成新版解决方案任务
+        @summary Creates a synchronization task of a new version in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres and batch synchronization of all data in a MySQL database to Hive.
         
         @param tmp_req: CreateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1940,7 +1964,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDIJobRequest,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成新版解决方案任务
+        @summary Creates a synchronization task of a new version in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres and batch synchronization of all data in a MySQL database to Hive.
         
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
@@ -1953,7 +1977,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDIJobRequest,
     ) -> dataworks_public_20200518_models.CreateDIJobResponse:
         """
-        @summary 创建数据集成新版解决方案任务
+        @summary Creates a synchronization task of a new version in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres and batch synchronization of all data in a MySQL database to Hive.
         
         @param request: CreateDIJobRequest
         @return: CreateDIJobResponse
@@ -2339,6 +2363,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
         """
+        @summary Creates an API.
+        
         @param request: CreateDataServiceApiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDataServiceApiResponse
@@ -2408,6 +2434,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
         """
+        @summary Creates an API.
+        
         @param request: CreateDataServiceApiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDataServiceApiResponse
@@ -2476,6 +2504,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
         """
+        @summary Creates an API.
+        
         @param request: CreateDataServiceApiRequest
         @return: CreateDataServiceApiResponse
         """
@@ -2487,6 +2517,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.CreateDataServiceApiResponse:
         """
+        @summary Creates an API.
+        
         @param request: CreateDataServiceApiRequest
         @return: CreateDataServiceApiResponse
         """
@@ -2835,7 +2867,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
         """
-        @summary 创建数据源
+        @summary Adds a data source to DataWorks.
         
         @param request: CreateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2882,7 +2914,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
         """
-        @summary 创建数据源
+        @summary Adds a data source to DataWorks.
         
         @param request: CreateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2928,7 +2960,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataSourceRequest,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
         """
-        @summary 创建数据源
+        @summary Adds a data source to DataWorks.
         
         @param request: CreateDataSourceRequest
         @return: CreateDataSourceResponse
@@ -2941,7 +2973,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateDataSourceRequest,
     ) -> dataworks_public_20200518_models.CreateDataSourceResponse:
         """
-        @summary 创建数据源
+        @summary Adds a data source to DataWorks.
         
         @param request: CreateDataSourceRequest
         @return: CreateDataSourceResponse
@@ -2955,7 +2987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
         """
-        @summary 新建导出任务
+        @summary Creates an export task. You can use this operation to create an export task but cannot use this operation to start the created export task.
         
         @param request: CreateExportMigrationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3000,7 +3032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
         """
-        @summary 新建导出任务
+        @summary Creates an export task. You can use this operation to create an export task but cannot use this operation to start the created export task.
         
         @param request: CreateExportMigrationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3044,7 +3076,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateExportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
         """
-        @summary 新建导出任务
+        @summary Creates an export task. You can use this operation to create an export task but cannot use this operation to start the created export task.
         
         @param request: CreateExportMigrationRequest
         @return: CreateExportMigrationResponse
@@ -3057,7 +3089,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateExportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateExportMigrationResponse:
         """
-        @summary 新建导出任务
+        @summary Creates an export task. You can use this operation to create an export task but cannot use this operation to start the created export task.
         
         @param request: CreateExportMigrationRequest
         @return: CreateExportMigrationResponse
@@ -3391,12 +3423,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
+        @summary Creates an import task. The import task contains the import packages of data sources, nodes, and tables.
+        
         @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
         config.setEndpoint(popEndpoint);
         config.setRegionId(regionId);
+        
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
         request.setName("test_migration_api_" + System.currentTimeMillis());
@@ -3456,12 +3491,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
+        @summary Creates an import task. The import task contains the import packages of data sources, nodes, and tables.
+        
         @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
         config.setEndpoint(popEndpoint);
         config.setRegionId(regionId);
+        
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
         request.setName("test_migration_api_" + System.currentTimeMillis());
@@ -3520,12 +3558,15 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateImportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
+        @summary Creates an import task. The import task contains the import packages of data sources, nodes, and tables.
+        
         @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
         config.setEndpoint(popEndpoint);
         config.setRegionId(regionId);
+        
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
         request.setName("test_migration_api_" + System.currentTimeMillis());
@@ -3547,12 +3588,15 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateImportMigrationRequest,
     ) -> dataworks_public_20200518_models.CreateImportMigrationResponse:
         """
+        @summary Creates an import task. The import task contains the import packages of data sources, nodes, and tables.
+        
         @description The import package must be uploaded. Example of the upload method:
         Config config = new Config();
         config.setAccessKeyId(accessId);
         config.setAccessKeySecret(accessKey);
         config.setEndpoint(popEndpoint);
         config.setRegionId(regionId);
+        
         Client client = new Client(config);
         CreateImportMigrationAdvanceRequest request = new CreateImportMigrationAdvanceRequest();
         request.setName("test_migration_api_" + System.currentTimeMillis());
@@ -3721,6 +3765,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateManualDag is deprecated
         
+        @summary Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow on the Operation Center page only after the manually triggered workflow is committed and deployed.
+        
         @param request: CreateManualDagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateManualDagResponse
@@ -3771,6 +3817,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateManualDag is deprecated
         
+        @summary Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow on the Operation Center page only after the manually triggered workflow is committed and deployed.
+        
         @param request: CreateManualDagRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateManualDagResponse
@@ -3820,6 +3868,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateManualDag is deprecated
         
+        @summary Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow on the Operation Center page only after the manually triggered workflow is committed and deployed.
+        
         @param request: CreateManualDagRequest
         @return: CreateManualDagResponse
         Deprecated
@@ -3833,6 +3883,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.CreateManualDagResponse:
         """
         @deprecated OpenAPI CreateManualDag is deprecated
+        
+        @summary Triggers a manually triggered workflow to run. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find the manually triggered workflow on the Operation Center page only after the manually triggered workflow is committed and deployed.
         
         @param request: CreateManualDagRequest
         @return: CreateManualDagResponse
@@ -4067,6 +4119,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
         """
+        @summary Creates a permission request order.
+        
         @param request: CreatePermissionApplyOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePermissionApplyOrderResponse
@@ -4114,6 +4168,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
         """
+        @summary Creates a permission request order.
+        
         @param request: CreatePermissionApplyOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePermissionApplyOrderResponse
@@ -4160,6 +4216,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
         """
+        @summary Creates a permission request order.
+        
         @param request: CreatePermissionApplyOrderRequest
         @return: CreatePermissionApplyOrderResponse
         """
@@ -4171,6 +4229,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreatePermissionApplyOrderRequest,
     ) -> dataworks_public_20200518_models.CreatePermissionApplyOrderResponse:
         """
+        @summary Creates a permission request order.
+        
         @param request: CreatePermissionApplyOrderRequest
         @return: CreatePermissionApplyOrderResponse
         """
@@ -4183,7 +4243,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
         """
-        @summary 创建项目
+        @summary Creates a DataWorks workspace.
         
         @param tmp_req: CreateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4238,7 +4298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
         """
-        @summary 创建项目
+        @summary Creates a DataWorks workspace.
         
         @param tmp_req: CreateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4292,7 +4352,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateProjectRequest,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
         """
-        @summary 创建项目
+        @summary Creates a DataWorks workspace.
         
         @param request: CreateProjectRequest
         @return: CreateProjectResponse
@@ -4305,7 +4365,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateProjectRequest,
     ) -> dataworks_public_20200518_models.CreateProjectResponse:
         """
-        @summary 创建项目
+        @summary Creates a DataWorks workspace.
         
         @param request: CreateProjectRequest
         @return: CreateProjectResponse
@@ -4319,6 +4379,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
         """
+        @summary Adds a user to a DataWorks workspace.
+        
         @param request: CreateProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateProjectMemberResponse
@@ -4358,6 +4420,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
         """
+        @summary Adds a user to a DataWorks workspace.
+        
         @param request: CreateProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateProjectMemberResponse
@@ -4396,6 +4460,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
         """
+        @summary Adds a user to a DataWorks workspace.
+        
         @param request: CreateProjectMemberRequest
         @return: CreateProjectMemberResponse
         """
@@ -4407,6 +4473,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateProjectMemberRequest,
     ) -> dataworks_public_20200518_models.CreateProjectMemberResponse:
         """
+        @summary Adds a user to a DataWorks workspace.
+        
         @param request: CreateProjectMemberRequest
         @return: CreateProjectMemberResponse
         """
@@ -4419,6 +4487,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
         """
+        @summary Creates a partition filter expression.
+        
         @param request: CreateQualityEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityEntityResponse
@@ -4462,6 +4532,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
         """
+        @summary Creates a partition filter expression.
+        
         @param request: CreateQualityEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityEntityResponse
@@ -4504,6 +4576,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityEntityRequest,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
         """
+        @summary Creates a partition filter expression.
+        
         @param request: CreateQualityEntityRequest
         @return: CreateQualityEntityResponse
         """
@@ -4515,6 +4589,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityEntityRequest,
     ) -> dataworks_public_20200518_models.CreateQualityEntityResponse:
         """
+        @summary Creates a partition filter expression.
+        
         @param request: CreateQualityEntityRequest
         @return: CreateQualityEntityResponse
         """
@@ -4527,6 +4603,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
         """
+        @summary Creates a subscriber for a partition filter expression.
+        
         @param request: CreateQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityFollowerResponse
@@ -4568,6 +4646,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
         """
+        @summary Creates a subscriber for a partition filter expression.
+        
         @param request: CreateQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityFollowerResponse
@@ -4608,6 +4688,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
         """
+        @summary Creates a subscriber for a partition filter expression.
+        
         @param request: CreateQualityFollowerRequest
         @return: CreateQualityFollowerResponse
         """
@@ -4619,6 +4701,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.CreateQualityFollowerResponse:
         """
+        @summary Creates a subscriber for a partition filter expression.
+        
         @param request: CreateQualityFollowerRequest
         @return: CreateQualityFollowerResponse
         """
@@ -4631,6 +4715,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
         """
+        @summary Associates a node with a partition filter expression.
+        
         @param request: CreateQualityRelativeNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityRelativeNodeResponse
@@ -4678,6 +4764,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
         """
+        @summary Associates a node with a partition filter expression.
+        
         @param request: CreateQualityRelativeNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityRelativeNodeResponse
@@ -4724,6 +4812,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRelativeNodeRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
         """
+        @summary Associates a node with a partition filter expression.
+        
         @param request: CreateQualityRelativeNodeRequest
         @return: CreateQualityRelativeNodeResponse
         """
@@ -4735,6 +4825,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRelativeNodeRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRelativeNodeResponse:
         """
+        @summary Associates a node with a partition filter expression.
+        
         @param request: CreateQualityRelativeNodeRequest
         @return: CreateQualityRelativeNodeResponse
         """
@@ -4747,6 +4839,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
         """
+        @summary Creates a monitoring rule.
+        
         @param request: CreateQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityRuleResponse
@@ -4818,6 +4912,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
         """
+        @summary Creates a monitoring rule.
+        
         @param request: CreateQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateQualityRuleResponse
@@ -4888,6 +4984,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
         """
+        @summary Creates a monitoring rule.
+        
         @param request: CreateQualityRuleRequest
         @return: CreateQualityRuleResponse
         """
@@ -4899,6 +4997,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.CreateQualityRuleResponse:
         """
+        @summary Creates a monitoring rule.
+        
         @param request: CreateQualityRuleRequest
         @return: CreateQualityRuleResponse
         """
@@ -4911,6 +5011,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @param request: CreateRemindRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateRemindResponse
@@ -4974,6 +5076,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @param request: CreateRemindRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateRemindResponse
@@ -5036,6 +5140,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateRemindRequest,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @param request: CreateRemindRequest
         @return: CreateRemindResponse
         """
@@ -5047,6 +5153,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateRemindRequest,
     ) -> dataworks_public_20200518_models.CreateRemindResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @param request: CreateRemindRequest
         @return: CreateRemindResponse
         """
@@ -5343,7 +5451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        @summary Creates a MaxCompute table or view.
         
         @param request: CreateTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5418,7 +5526,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        @summary Creates a MaxCompute table or view.
         
         @param request: CreateTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5492,7 +5600,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableRequest,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        @summary Creates a MaxCompute table or view.
         
         @param request: CreateTableRequest
         @return: CreateTableResponse
@@ -5505,7 +5613,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableRequest,
     ) -> dataworks_public_20200518_models.CreateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *CreateTable**.
+        @summary Creates a MaxCompute table or view.
         
         @param request: CreateTableRequest
         @return: CreateTableResponse
@@ -5519,7 +5627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
         """
-        @summary The ID of the DataWorks workspace.
+        @summary Creates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5560,7 +5668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
         """
-        @summary The ID of the DataWorks workspace.
+        @summary Creates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5600,7 +5708,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableLevelRequest,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
         """
-        @summary The ID of the DataWorks workspace.
+        @summary Creates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableLevelRequest
         @return: CreateTableLevelResponse
@@ -5613,7 +5721,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableLevelRequest,
     ) -> dataworks_public_20200518_models.CreateTableLevelResponse:
         """
-        @summary The ID of the DataWorks workspace.
+        @summary Creates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableLevelRequest
         @return: CreateTableLevelResponse
@@ -5627,7 +5735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
         """
-        @summary Creates a table folder. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Creates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5668,7 +5776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
         """
-        @summary Creates a table folder. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Creates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5708,7 +5816,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableThemeRequest,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
         """
-        @summary Creates a table folder. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Creates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableThemeRequest
         @return: CreateTableThemeResponse
@@ -5721,7 +5829,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.CreateTableThemeRequest,
     ) -> dataworks_public_20200518_models.CreateTableThemeResponse:
         """
-        @summary Creates a table folder. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Creates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: CreateTableThemeRequest
         @return: CreateTableThemeResponse
@@ -5871,6 +5979,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
         """
+        @summary Deletes a baseline based on its ID. You can delete a baseline only if the nodes in the baseline does not have ancestor nodes. You can call the UpdateBaseline operation to delete the relationships between the nodes and their ancestor nodes.
+        
         @param request: DeleteBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteBaselineResponse
@@ -5906,6 +6016,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
         """
+        @summary Deletes a baseline based on its ID. You can delete a baseline only if the nodes in the baseline does not have ancestor nodes. You can call the UpdateBaseline operation to delete the relationships between the nodes and their ancestor nodes.
+        
         @param request: DeleteBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteBaselineResponse
@@ -5940,6 +6052,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteBaselineRequest,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
         """
+        @summary Deletes a baseline based on its ID. You can delete a baseline only if the nodes in the baseline does not have ancestor nodes. You can call the UpdateBaseline operation to delete the relationships between the nodes and their ancestor nodes.
+        
         @param request: DeleteBaselineRequest
         @return: DeleteBaselineResponse
         """
@@ -5951,6 +6065,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteBaselineRequest,
     ) -> dataworks_public_20200518_models.DeleteBaselineResponse:
         """
+        @summary Deletes a baseline based on its ID. You can delete a baseline only if the nodes in the baseline does not have ancestor nodes. You can call the UpdateBaseline operation to delete the relationships between the nodes and their ancestor nodes.
+        
         @param request: DeleteBaselineRequest
         @return: DeleteBaselineResponse
         """
@@ -6061,7 +6177,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteConnection is deprecated
         
-        @summary 删除数据源
+        @summary Removes a data source.
         
         @param request: DeleteConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6099,7 +6215,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteConnection is deprecated
         
-        @summary 删除数据源
+        @summary Removes a data source.
         
         @param request: DeleteConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6136,7 +6252,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteConnection is deprecated
         
-        @summary 删除数据源
+        @summary Removes a data source.
         
         @param request: DeleteConnectionRequest
         @return: DeleteConnectionResponse
@@ -6152,7 +6268,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteConnection is deprecated
         
-        @summary 删除数据源
+        @summary Removes a data source.
         
         @param request: DeleteConnectionRequest
         @return: DeleteConnectionResponse
@@ -6167,7 +6283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
         """
-        @summary 删除数据集成新版告警规则
+        @summary Deletes an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks whose MigrationType is set to RealtimeIncremental.
         
         @param request: DeleteDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6202,7 +6320,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
         """
-        @summary 删除数据集成新版告警规则
+        @summary Deletes an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks whose MigrationType is set to RealtimeIncremental.
         
         @param request: DeleteDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6236,7 +6356,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
         """
-        @summary 删除数据集成新版告警规则
+        @summary Deletes an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks whose MigrationType is set to RealtimeIncremental.
         
         @param request: DeleteDIAlarmRuleRequest
         @return: DeleteDIAlarmRuleResponse
@@ -6249,7 +6371,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteDIAlarmRuleResponse:
         """
-        @summary 删除数据集成新版告警规则
+        @summary Deletes an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks whose MigrationType is set to RealtimeIncremental.
         
         @param request: DeleteDIAlarmRuleRequest
         @return: DeleteDIAlarmRuleResponse
@@ -6263,7 +6387,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成新版解决方案任务
+        @summary Deletes a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param request: DeleteDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6298,7 +6422,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成新版解决方案任务
+        @summary Deletes a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param request: DeleteDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6332,7 +6456,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIJobRequest,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成新版解决方案任务
+        @summary Deletes a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param request: DeleteDIJobRequest
         @return: DeleteDIJobResponse
@@ -6345,7 +6469,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDIJobRequest,
     ) -> dataworks_public_20200518_models.DeleteDIJobResponse:
         """
-        @summary 删除数据集成新版解决方案任务
+        @summary Deletes a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param request: DeleteDIJobRequest
         @return: DeleteDIJobResponse
@@ -6359,7 +6483,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a synchronization task. You can call this operation to delete only a real-time synchronization task.
+        
+        @description If you want to delete a batch synchronization task, call the DeleteFile operation. For more information, see [Delete a synchronization task](https://help.aliyun.com/document_detail/321443.html).
         
         @param request: DeleteDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6398,7 +6524,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a synchronization task. You can call this operation to delete only a real-time synchronization task.
+        
+        @description If you want to delete a batch synchronization task, call the DeleteFile operation. For more information, see [Delete a synchronization task](https://help.aliyun.com/document_detail/321443.html).
         
         @param request: DeleteDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6436,7 +6564,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a synchronization task. You can call this operation to delete only a real-time synchronization task.
+        
+        @description If you want to delete a batch synchronization task, call the DeleteFile operation. For more information, see [Delete a synchronization task](https://help.aliyun.com/document_detail/321443.html).
         
         @param request: DeleteDISyncTaskRequest
         @return: DeleteDISyncTaskResponse
@@ -6449,7 +6579,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeleteDISyncTaskResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a synchronization task. You can call this operation to delete only a real-time synchronization task.
+        
+        @description If you want to delete a batch synchronization task, call the DeleteFile operation. For more information, see [Delete a synchronization task](https://help.aliyun.com/document_detail/321443.html).
         
         @param request: DeleteDISyncTaskRequest
         @return: DeleteDISyncTaskResponse
@@ -6675,6 +6807,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
         """
+        @summary Removes a data source.
+        
         @param request: DeleteDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDataSourceResponse
@@ -6708,6 +6842,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
         """
+        @summary Removes a data source.
+        
         @param request: DeleteDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDataSourceResponse
@@ -6740,6 +6876,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataSourceRequest,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
         """
+        @summary Removes a data source.
+        
         @param request: DeleteDataSourceRequest
         @return: DeleteDataSourceResponse
         """
@@ -6751,6 +6889,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteDataSourceRequest,
     ) -> dataworks_public_20200518_models.DeleteDataSourceResponse:
         """
+        @summary Removes a data source.
+        
         @param request: DeleteDataSourceRequest
         @return: DeleteDataSourceResponse
         """
@@ -6763,7 +6903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
         
         @param request: DeleteFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6802,7 +6942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
         
         @param request: DeleteFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6840,7 +6980,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFileRequest,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
         
         @param request: DeleteFileRequest
         @return: DeleteFileResponse
@@ -6853,7 +6993,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFileRequest,
     ) -> dataworks_public_20200518_models.DeleteFileResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
         
         @param request: DeleteFileRequest
         @return: DeleteFileResponse
@@ -6963,7 +7103,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
         """
-        @summary Removes a metatable from a specified category.
+        @summary Removes a table from a specified category.
         
         @param request: DeleteFromMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7000,7 +7140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
         """
-        @summary Removes a metatable from a specified category.
+        @summary Removes a table from a specified category.
         
         @param request: DeleteFromMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7036,7 +7176,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFromMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
         """
-        @summary Removes a metatable from a specified category.
+        @summary Removes a table from a specified category.
         
         @param request: DeleteFromMetaCategoryRequest
         @return: DeleteFromMetaCategoryResponse
@@ -7049,7 +7189,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteFromMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.DeleteFromMetaCategoryResponse:
         """
-        @summary Removes a metatable from a specified category.
+        @summary Removes a table from a specified category.
         
         @param request: DeleteFromMetaCategoryRequest
         @return: DeleteFromMetaCategoryResponse
@@ -7063,7 +7203,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary 删除血缘, 支持删除用户自定义血缘关系
+        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param request: DeleteLineageRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7102,7 +7244,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary 删除血缘, 支持删除用户自定义血缘关系
+        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param request: DeleteLineageRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7140,7 +7284,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary 删除血缘, 支持删除用户自定义血缘关系
+        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param request: DeleteLineageRelationRequest
         @return: DeleteLineageRelationResponse
@@ -7153,7 +7299,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteLineageRelationRequest,
     ) -> dataworks_public_20200518_models.DeleteLineageRelationResponse:
         """
-        @summary 删除血缘, 支持删除用户自定义血缘关系
+        @summary Deletes the lineage between entities. You can call this operation to delete only custom lineages that are registered by users.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param request: DeleteLineageRelationRequest
         @return: DeleteLineageRelationResponse
@@ -7455,6 +7603,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
         """
+        @summary Removes a user from a DataWorks workspace.
+        
         @param request: DeleteProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteProjectMemberResponse
@@ -7490,6 +7640,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
         """
+        @summary Removes a user from a DataWorks workspace.
+        
         @param request: DeleteProjectMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteProjectMemberResponse
@@ -7524,6 +7676,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
         """
+        @summary Removes a user from a DataWorks workspace.
+        
         @param request: DeleteProjectMemberRequest
         @return: DeleteProjectMemberResponse
         """
@@ -7535,6 +7689,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteProjectMemberRequest,
     ) -> dataworks_public_20200518_models.DeleteProjectMemberResponse:
         """
+        @summary Removes a user from a DataWorks workspace.
+        
         @param request: DeleteProjectMemberRequest
         @return: DeleteProjectMemberResponse
         """
@@ -7547,6 +7703,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
         """
+        @summary Deletes a partition filter expression.
+        
         @param request: DeleteQualityEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteQualityEntityResponse
@@ -7586,6 +7744,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
         """
+        @summary Deletes a partition filter expression.
+        
         @param request: DeleteQualityEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteQualityEntityResponse
@@ -7624,6 +7784,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityEntityRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
         """
+        @summary Deletes a partition filter expression.
+        
         @param request: DeleteQualityEntityRequest
         @return: DeleteQualityEntityResponse
         """
@@ -7635,6 +7797,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityEntityRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityEntityResponse:
         """
+        @summary Deletes a partition filter expression.
+        
         @param request: DeleteQualityEntityRequest
         @return: DeleteQualityEntityResponse
         """
@@ -7647,7 +7811,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
+        @summary Deletes a subscriber of a partition filter expression.
+        
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transform, and load (ETL). This way, you can prevent tasks from producing unexpected dirty data that affects the smooth running of tasks and business decision-making. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule that is created based on the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors at the earliest opportunity. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7686,7 +7852,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
+        @summary Deletes a subscriber of a partition filter expression.
+        
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transform, and load (ETL). This way, you can prevent tasks from producing unexpected dirty data that affects the smooth running of tasks and business decision-making. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule that is created based on the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors at the earliest opportunity. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7724,7 +7892,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
+        @summary Deletes a subscriber of a partition filter expression.
+        
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transform, and load (ETL). This way, you can prevent tasks from producing unexpected dirty data that affects the smooth running of tasks and business decision-making. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule that is created based on the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors at the earliest opportunity. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @return: DeleteQualityFollowerResponse
@@ -7737,7 +7907,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityFollowerResponse:
         """
-        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transformation, load (ETL). Thereby, Data Quality automatically blocks the nodes that involve dirty data to stop dirty data from spreading downstream. This prevents nodes from producing unexpected dirty data that affects normal use and business decisions. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule described by the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors in a timely manner. For more information, see [Configure monitoring rules for MaxCompute](https://help.aliyun.com/document_detail/73690.html).
+        @summary Deletes a subscriber of a partition filter expression.
+        
+        @description In Data Quality, you must configure monitoring rules based on a partition filter expression. Data Quality uses these rules to detect changes in source data and dirty data generated during the process of extract, transform, and load (ETL). This way, you can prevent tasks from producing unexpected dirty data that affects the smooth running of tasks and business decision-making. You can go to the Manage Subscriptions page to add subscribers for a partition filter expression. When the monitoring rule that is created based on the partition filter expression is triggered, the subscribers can receive notifications and troubleshoot errors at the earliest opportunity. For more information, see [Configure monitoring rules](https://help.aliyun.com/document_detail/73690.html).
         
         @param request: DeleteQualityFollowerRequest
         @return: DeleteQualityFollowerResponse
@@ -7867,6 +8039,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
         """
+        @summary Deletes a monitoring rule.
+        
         @param request: DeleteQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteQualityRuleResponse
@@ -7904,6 +8078,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
         """
+        @summary Deletes a monitoring rule.
+        
         @param request: DeleteQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteQualityRuleResponse
@@ -7940,6 +8116,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
         """
+        @summary Deletes a monitoring rule.
+        
         @param request: DeleteQualityRuleRequest
         @return: DeleteQualityRuleResponse
         """
@@ -7951,6 +8129,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteQualityRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteQualityRuleResponse:
         """
+        @summary Deletes a monitoring rule.
+        
         @param request: DeleteQualityRuleRequest
         @return: DeleteQualityRuleResponse
         """
@@ -7963,7 +8143,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
         """
-        @summary 删除识别规则
+        @summary Deletes sensitive field types.
         
         @param request: DeleteRecognizeRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8000,7 +8180,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
         """
-        @summary 删除识别规则
+        @summary Deletes sensitive field types.
         
         @param request: DeleteRecognizeRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8036,7 +8216,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
         """
-        @summary 删除识别规则
+        @summary Deletes sensitive field types.
         
         @param request: DeleteRecognizeRuleRequest
         @return: DeleteRecognizeRuleResponse
@@ -8049,7 +8229,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.DeleteRecognizeRuleResponse:
         """
-        @summary 删除识别规则
+        @summary Deletes sensitive field types.
         
         @param request: DeleteRecognizeRuleRequest
         @return: DeleteRecognizeRuleResponse
@@ -8263,6 +8443,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
         """
+        @summary Deletes a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTableLevelResponse
@@ -8298,6 +8480,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
         """
+        @summary Deletes a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTableLevelResponse
@@ -8332,6 +8516,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableLevelRequest,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
         """
+        @summary Deletes a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableLevelRequest
         @return: DeleteTableLevelResponse
         """
@@ -8343,6 +8529,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableLevelRequest,
     ) -> dataworks_public_20200518_models.DeleteTableLevelResponse:
         """
+        @summary Deletes a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableLevelRequest
         @return: DeleteTableLevelResponse
         """
@@ -8355,6 +8543,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
         """
+        @summary Deletes a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTableThemeResponse
@@ -8390,6 +8580,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
         """
+        @summary Deletes a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteTableThemeResponse
@@ -8424,6 +8616,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableThemeRequest,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
         """
+        @summary Deletes a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableThemeRequest
         @return: DeleteTableThemeResponse
         """
@@ -8435,6 +8629,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeleteTableThemeRequest,
     ) -> dataworks_public_20200518_models.DeleteTableThemeResponse:
         """
+        @summary Deletes a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: DeleteTableThemeRequest
         @return: DeleteTableThemeResponse
         """
@@ -8447,7 +8643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        @summary Deploys a real-time synchronization task.
         
         @param request: DeployDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8486,7 +8682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        @summary Deploys a real-time synchronization task.
         
         @param request: DeployDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8524,7 +8720,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        @summary Deploys a real-time synchronization task.
         
         @param request: DeployDISyncTaskRequest
         @return: DeployDISyncTaskResponse
@@ -8537,7 +8733,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.DeployDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *DeployDISyncTask**.
+        @summary Deploys a real-time synchronization task.
         
         @param request: DeployDISyncTaskRequest
         @return: DeployDISyncTaskResponse
@@ -8551,6 +8747,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
         """
+        @summary Deploys a file to the production environment.
+        
         @param request: DeployFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeployFileResponse
@@ -8592,6 +8790,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
         """
+        @summary Deploys a file to the production environment.
+        
         @param request: DeployFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeployFileResponse
@@ -8632,6 +8832,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployFileRequest,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
         """
+        @summary Deploys a file to the production environment.
+        
         @param request: DeployFileRequest
         @return: DeployFileResponse
         """
@@ -8643,6 +8845,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DeployFileRequest,
     ) -> dataworks_public_20200518_models.DeployFileResponse:
         """
+        @summary Deploys a file to the production environment.
+        
         @param request: DeployFileRequest
         @return: DeployFileResponse
         """
@@ -8655,6 +8859,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
         """
+        @summary Masks data.
+        
         @param request: DesensitizeDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DesensitizeDataResponse
@@ -8686,6 +8892,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
         """
+        @summary Masks data.
+        
         @param request: DesensitizeDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DesensitizeDataResponse
@@ -8716,6 +8924,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DesensitizeDataRequest,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
         """
+        @summary Masks data.
+        
         @param request: DesensitizeDataRequest
         @return: DesensitizeDataResponse
         """
@@ -8727,6 +8937,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DesensitizeDataRequest,
     ) -> dataworks_public_20200518_models.DesensitizeDataResponse:
         """
+        @summary Masks data.
+        
         @param request: DesensitizeDataRequest
         @return: DesensitizeDataResponse
         """
@@ -8739,7 +8951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏规则
+        @summary Adds or modifies a data masking rule.
         
         @param tmp_req: DsgDesensPlanAddOrUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8778,7 +8990,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏规则
+        @summary Adds or modifies a data masking rule.
         
         @param tmp_req: DsgDesensPlanAddOrUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8816,7 +9028,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏规则
+        @summary Adds or modifies a data masking rule.
         
         @param request: DsgDesensPlanAddOrUpdateRequest
         @return: DsgDesensPlanAddOrUpdateResponse
@@ -8829,7 +9041,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏规则
+        @summary Adds or modifies a data masking rule.
         
         @param request: DsgDesensPlanAddOrUpdateRequest
         @return: DsgDesensPlanAddOrUpdateResponse
@@ -8843,7 +9055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
         """
-        @summary 删除脱敏规则
+        @summary Deletes a data masking rule created in Data Security Guard.
         
         @param tmp_req: DsgDesensPlanDeleteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8884,7 +9096,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
         """
-        @summary 删除脱敏规则
+        @summary Deletes a data masking rule created in Data Security Guard.
         
         @param tmp_req: DsgDesensPlanDeleteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8924,7 +9136,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
         """
-        @summary 删除脱敏规则
+        @summary Deletes a data masking rule created in Data Security Guard.
         
         @param request: DsgDesensPlanDeleteRequest
         @return: DsgDesensPlanDeleteResponse
@@ -8937,7 +9149,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanDeleteResponse:
         """
-        @summary 删除脱敏规则
+        @summary Deletes a data masking rule created in Data Security Guard.
         
         @param request: DsgDesensPlanDeleteRequest
         @return: DsgDesensPlanDeleteResponse
@@ -8951,7 +9163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
         """
-        @summary 查询脱敏规则列表
+        @summary Queries a list of data masking rules.
         
         @param request: DsgDesensPlanQueryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8984,7 +9196,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
         """
-        @summary 查询脱敏规则列表
+        @summary Queries a list of data masking rules.
         
         @param request: DsgDesensPlanQueryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9016,7 +9228,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanQueryListRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
         """
-        @summary 查询脱敏规则列表
+        @summary Queries a list of data masking rules.
         
         @param request: DsgDesensPlanQueryListRequest
         @return: DsgDesensPlanQueryListResponse
@@ -9029,7 +9241,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanQueryListRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanQueryListResponse:
         """
-        @summary 查询脱敏规则列表
+        @summary Queries a list of data masking rules.
         
         @param request: DsgDesensPlanQueryListRequest
         @return: DsgDesensPlanQueryListResponse
@@ -9043,7 +9255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
         """
-        @summary 修改脱敏规则生效状态
+        @summary Modifies the status of a data masking rule.
         
         @param tmp_req: DsgDesensPlanUpdateStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9086,7 +9298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
         """
-        @summary 修改脱敏规则生效状态
+        @summary Modifies the status of a data masking rule.
         
         @param tmp_req: DsgDesensPlanUpdateStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9128,7 +9340,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanUpdateStatusRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
         """
-        @summary 修改脱敏规则生效状态
+        @summary Modifies the status of a data masking rule.
         
         @param request: DsgDesensPlanUpdateStatusRequest
         @return: DsgDesensPlanUpdateStatusResponse
@@ -9141,7 +9353,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgDesensPlanUpdateStatusRequest,
     ) -> dataworks_public_20200518_models.DsgDesensPlanUpdateStatusResponse:
         """
-        @summary 修改脱敏规则生效状态
+        @summary Modifies the status of a data masking rule.
         
         @param request: DsgDesensPlanUpdateStatusRequest
         @return: DsgDesensPlanUpdateStatusResponse
@@ -9155,7 +9367,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
         """
-        @summary 查询引擎实例列表
+        @summary Queries a list of compute engines of different types in the current tenant.
         
         @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9188,7 +9400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
         """
-        @summary 查询引擎实例列表
+        @summary Queries a list of compute engines of different types in the current tenant.
         
         @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9220,7 +9432,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
     ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
         """
-        @summary 查询引擎实例列表
+        @summary Queries a list of compute engines of different types in the current tenant.
         
         @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
         @return: DsgPlatformQueryProjectsAndSchemaFromMetaResponse
@@ -9233,7 +9445,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaRequest,
     ) -> dataworks_public_20200518_models.DsgPlatformQueryProjectsAndSchemaFromMetaResponse:
         """
-        @summary 查询引擎实例列表
+        @summary Queries a list of compute engines of different types in the current tenant.
         
         @param request: DsgPlatformQueryProjectsAndSchemaFromMetaRequest
         @return: DsgPlatformQueryProjectsAndSchemaFromMetaResponse
@@ -9247,7 +9459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
         """
-        @summary 查询能够选择的敏感类型模版列表
+        @summary Queries a list of available sensitive field type templates and the data masking rules supported by the templates. You can refer to the response parameters of this operation to configure a data masking rule.
         
         @param request: DsgQueryDefaultTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9280,7 +9492,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
         """
-        @summary 查询能够选择的敏感类型模版列表
+        @summary Queries a list of available sensitive field type templates and the data masking rules supported by the templates. You can refer to the response parameters of this operation to configure a data masking rule.
         
         @param request: DsgQueryDefaultTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9312,7 +9524,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgQueryDefaultTemplatesRequest,
     ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
         """
-        @summary 查询能够选择的敏感类型模版列表
+        @summary Queries a list of available sensitive field type templates and the data masking rules supported by the templates. You can refer to the response parameters of this operation to configure a data masking rule.
         
         @param request: DsgQueryDefaultTemplatesRequest
         @return: DsgQueryDefaultTemplatesResponse
@@ -9325,7 +9537,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgQueryDefaultTemplatesRequest,
     ) -> dataworks_public_20200518_models.DsgQueryDefaultTemplatesResponse:
         """
-        @summary 查询能够选择的敏感类型模版列表
+        @summary Queries a list of available sensitive field type templates and the data masking rules supported by the templates. You can refer to the response parameters of this operation to configure a data masking rule.
         
         @param request: DsgQueryDefaultTemplatesRequest
         @return: DsgQueryDefaultTemplatesResponse
@@ -9339,7 +9551,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
         """
-        @summary 识别结果查询
+        @summary Queries the identification results of sensitive data.
+        
+        @description The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
+        You can search for a specific identification result based on filter conditions such as data source type and workspace.
+        You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+        This operation supports paged query.
         
         @param request: DsgQuerySensResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9402,7 +9619,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
         """
-        @summary 识别结果查询
+        @summary Queries the identification results of sensitive data.
+        
+        @description The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
+        You can search for a specific identification result based on filter conditions such as data source type and workspace.
+        You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+        This operation supports paged query.
         
         @param request: DsgQuerySensResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9464,7 +9686,12 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgQuerySensResultRequest,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
         """
-        @summary 识别结果查询
+        @summary Queries the identification results of sensitive data.
+        
+        @description The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
+        You can search for a specific identification result based on filter conditions such as data source type and workspace.
+        You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+        This operation supports paged query.
         
         @param request: DsgQuerySensResultRequest
         @return: DsgQuerySensResultResponse
@@ -9477,7 +9704,12 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgQuerySensResultRequest,
     ) -> dataworks_public_20200518_models.DsgQuerySensResultResponse:
         """
-        @summary 识别结果查询
+        @summary Queries the identification results of sensitive data.
+        
+        @description The query capability of the API operation is similar to the query feature in Data Security Guard in the DataWorks console. The API operation can be used to query the identification results of sensitive data of a tenant based on the association with the tenant ID.
+        You can search for a specific identification result based on filter conditions such as data source type and workspace.
+        You can sort the identification results of sensitive data of a tenant based on the values of a field in ascending or descending order.
+        This operation supports paged query.
         
         @param request: DsgQuerySensResultRequest
         @return: DsgQuerySensResultResponse
@@ -9491,6 +9723,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
         """
+        @summary Starts a sensitive data identification task in Data Security Guard.
+        
         @param tmp_req: DsgRunSensIdentifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DsgRunSensIdentifyResponse
@@ -9530,6 +9764,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
         """
+        @summary Starts a sensitive data identification task in Data Security Guard.
+        
         @param tmp_req: DsgRunSensIdentifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DsgRunSensIdentifyResponse
@@ -9568,6 +9804,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
         """
+        @summary Starts a sensitive data identification task in Data Security Guard.
+        
         @param request: DsgRunSensIdentifyRequest
         @return: DsgRunSensIdentifyResponse
         """
@@ -9579,6 +9817,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgRunSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgRunSensIdentifyResponse:
         """
+        @summary Starts a sensitive data identification task in Data Security Guard.
+        
         @param request: DsgRunSensIdentifyRequest
         @return: DsgRunSensIdentifyResponse
         """
@@ -9591,7 +9831,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
         """
-        @summary 新增或编辑二级场景
+        @summary Adds or modifies a level-2 data masking scenario.
         
         @param tmp_req: DsgSceneAddOrUpdateSceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9630,7 +9870,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
         """
-        @summary 新增或编辑二级场景
+        @summary Adds or modifies a level-2 data masking scenario.
         
         @param tmp_req: DsgSceneAddOrUpdateSceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9668,7 +9908,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneRequest,
     ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
         """
-        @summary 新增或编辑二级场景
+        @summary Adds or modifies a level-2 data masking scenario.
         
         @param request: DsgSceneAddOrUpdateSceneRequest
         @return: DsgSceneAddOrUpdateSceneResponse
@@ -9681,7 +9921,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneRequest,
     ) -> dataworks_public_20200518_models.DsgSceneAddOrUpdateSceneResponse:
         """
-        @summary 新增或编辑二级场景
+        @summary Adds or modifies a level-2 data masking scenario.
         
         @param request: DsgSceneAddOrUpdateSceneRequest
         @return: DsgSceneAddOrUpdateSceneResponse
@@ -9695,7 +9935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
         """
-        @summary 查询场景列表
+        @summary Queries a list of data masking scenarios.
         
         @param request: DsgSceneQuerySceneListByNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9728,7 +9968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
         """
-        @summary 查询场景列表
+        @summary Queries a list of data masking scenarios.
         
         @param request: DsgSceneQuerySceneListByNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9760,7 +10000,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgSceneQuerySceneListByNameRequest,
     ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
         """
-        @summary 查询场景列表
+        @summary Queries a list of data masking scenarios.
         
         @param request: DsgSceneQuerySceneListByNameRequest
         @return: DsgSceneQuerySceneListByNameResponse
@@ -9773,7 +10013,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgSceneQuerySceneListByNameRequest,
     ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
         """
-        @summary 查询场景列表
+        @summary Queries a list of data masking scenarios.
         
         @param request: DsgSceneQuerySceneListByNameRequest
         @return: DsgSceneQuerySceneListByNameResponse
@@ -9787,7 +10027,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
         """
-        @summary 删除二级场景
+        @summary Deletes a level-2 data masking scenario created in Data Security Guard.
         
         @param tmp_req: DsgScenedDeleteSceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9826,7 +10066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
         """
-        @summary 删除二级场景
+        @summary Deletes a level-2 data masking scenario created in Data Security Guard.
         
         @param tmp_req: DsgScenedDeleteSceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9864,7 +10104,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgScenedDeleteSceneRequest,
     ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
         """
-        @summary 删除二级场景
+        @summary Deletes a level-2 data masking scenario created in Data Security Guard.
         
         @param request: DsgScenedDeleteSceneRequest
         @return: DsgScenedDeleteSceneResponse
@@ -9877,7 +10117,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgScenedDeleteSceneRequest,
     ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
         """
-        @summary 删除二级场景
+        @summary Deletes a level-2 data masking scenario created in Data Security Guard.
         
         @param request: DsgScenedDeleteSceneRequest
         @return: DsgScenedDeleteSceneResponse
@@ -9891,7 +10131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
         """
-        @summary 识别任务停止
+        @summary Stops a sensitive data identification task.
         
         @param request: DsgStopSensIdentifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9928,7 +10168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
         """
-        @summary 识别任务停止
+        @summary Stops a sensitive data identification task.
         
         @param request: DsgStopSensIdentifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9964,7 +10204,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
         """
-        @summary 识别任务停止
+        @summary Stops a sensitive data identification task.
         
         @param request: DsgStopSensIdentifyRequest
         @return: DsgStopSensIdentifyResponse
@@ -9977,7 +10217,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
     ) -> dataworks_public_20200518_models.DsgStopSensIdentifyResponse:
         """
-        @summary 识别任务停止
+        @summary Stops a sensitive data identification task.
         
         @param request: DsgStopSensIdentifyRequest
         @return: DsgStopSensIdentifyResponse
@@ -9991,7 +10231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
         """
-        @summary 新增或编辑用户组
+        @summary Adds or modifies a user group.
         
         @param tmp_req: DsgUserGroupAddOrUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10030,7 +10270,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
         """
-        @summary 新增或编辑用户组
+        @summary Adds or modifies a user group.
         
         @param tmp_req: DsgUserGroupAddOrUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10068,7 +10308,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupAddOrUpdateRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
         """
-        @summary 新增或编辑用户组
+        @summary Adds or modifies a user group.
         
         @param request: DsgUserGroupAddOrUpdateRequest
         @return: DsgUserGroupAddOrUpdateResponse
@@ -10081,7 +10321,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupAddOrUpdateRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupAddOrUpdateResponse:
         """
-        @summary 新增或编辑用户组
+        @summary Adds or modifies a user group.
         
         @param request: DsgUserGroupAddOrUpdateRequest
         @return: DsgUserGroupAddOrUpdateResponse
@@ -10095,7 +10335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
         """
-        @summary 删除用户组
+        @summary Deletes a user group configured in Data Security Guard.
         
         @param tmp_req: DsgUserGroupDeleteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10134,7 +10374,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
         """
-        @summary 删除用户组
+        @summary Deletes a user group configured in Data Security Guard.
         
         @param tmp_req: DsgUserGroupDeleteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10172,7 +10412,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupDeleteRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
         """
-        @summary 删除用户组
+        @summary Deletes a user group configured in Data Security Guard.
         
         @param request: DsgUserGroupDeleteRequest
         @return: DsgUserGroupDeleteResponse
@@ -10185,7 +10425,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupDeleteRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupDeleteResponse:
         """
-        @summary 删除用户组
+        @summary Deletes a user group configured in Data Security Guard.
         
         @param request: DsgUserGroupDeleteRequest
         @return: DsgUserGroupDeleteResponse
@@ -10199,6 +10439,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
         """
+        @summary Queries a list of MaxCompute roles that can be selected by the members of a user group when the user group is created or modified by the tenant in Data Security Guard.
+        
         @param request: DsgUserGroupGetOdpsRoleGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DsgUserGroupGetOdpsRoleGroupsResponse
@@ -10230,6 +10472,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
         """
+        @summary Queries a list of MaxCompute roles that can be selected by the members of a user group when the user group is created or modified by the tenant in Data Security Guard.
+        
         @param request: DsgUserGroupGetOdpsRoleGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DsgUserGroupGetOdpsRoleGroupsResponse
@@ -10260,6 +10504,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
         """
+        @summary Queries a list of MaxCompute roles that can be selected by the members of a user group when the user group is created or modified by the tenant in Data Security Guard.
+        
         @param request: DsgUserGroupGetOdpsRoleGroupsRequest
         @return: DsgUserGroupGetOdpsRoleGroupsResponse
         """
@@ -10271,6 +10517,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupGetOdpsRoleGroupsResponse:
         """
+        @summary Queries a list of MaxCompute roles that can be selected by the members of a user group when the user group is created or modified by the tenant in Data Security Guard.
+        
         @param request: DsgUserGroupGetOdpsRoleGroupsRequest
         @return: DsgUserGroupGetOdpsRoleGroupsResponse
         """
@@ -10283,7 +10531,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
         """
-        @summary 查询用户组列表
+        @summary Queries a list of user groups in Data Security Guard.
         
         @param request: DsgUserGroupQueryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10316,7 +10564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
         """
-        @summary 查询用户组列表
+        @summary Queries a list of user groups in Data Security Guard.
         
         @param request: DsgUserGroupQueryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10348,7 +10596,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupQueryListRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
         """
-        @summary 查询用户组列表
+        @summary Queries a list of user groups in Data Security Guard.
         
         @param request: DsgUserGroupQueryListRequest
         @return: DsgUserGroupQueryListResponse
@@ -10361,7 +10609,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgUserGroupQueryListRequest,
     ) -> dataworks_public_20200518_models.DsgUserGroupQueryListResponse:
         """
-        @summary 查询用户组列表
+        @summary Queries a list of user groups in Data Security Guard.
         
         @param request: DsgUserGroupQueryListRequest
         @return: DsgUserGroupQueryListResponse
@@ -10374,7 +10622,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
         """
-        @summary 查询当前用户列表
+        @summary Queries a list of users or roles of the current tenant.
         
         @param request: DsgUserGroupQueryUserListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10402,7 +10650,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
         """
-        @summary 查询当前用户列表
+        @summary Queries a list of users or roles of the current tenant.
         
         @param request: DsgUserGroupQueryUserListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10427,7 +10675,7 @@ class Client(OpenApiClient):
 
     def dsg_user_group_query_user_list(self) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
         """
-        @summary 查询当前用户列表
+        @summary Queries a list of users or roles of the current tenant.
         
         @return: DsgUserGroupQueryUserListResponse
         """
@@ -10436,7 +10684,7 @@ class Client(OpenApiClient):
 
     async def dsg_user_group_query_user_list_async(self) -> dataworks_public_20200518_models.DsgUserGroupQueryUserListResponse:
         """
-        @summary 查询当前用户列表
+        @summary Queries a list of users or roles of the current tenant.
         
         @return: DsgUserGroupQueryUserListResponse
         """
@@ -10449,7 +10697,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏白名单
+        @summary Adds or modifies a data masking whitelist.
         
         @param tmp_req: DsgWhiteListAddOrUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10488,7 +10736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏白名单
+        @summary Adds or modifies a data masking whitelist.
         
         @param tmp_req: DsgWhiteListAddOrUpdateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10526,7 +10774,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgWhiteListAddOrUpdateRequest,
     ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏白名单
+        @summary Adds or modifies a data masking whitelist.
         
         @param request: DsgWhiteListAddOrUpdateRequest
         @return: DsgWhiteListAddOrUpdateResponse
@@ -10539,7 +10787,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgWhiteListAddOrUpdateRequest,
     ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
         """
-        @summary 新增或编辑脱敏白名单
+        @summary Adds or modifies a data masking whitelist.
         
         @param request: DsgWhiteListAddOrUpdateRequest
         @return: DsgWhiteListAddOrUpdateResponse
@@ -10553,7 +10801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
         """
-        @summary 删除脱敏白名单
+        @summary Deletes a data masking whitelist configured in Data Security Guard.
         
         @param tmp_req: DsgWhiteListDeleteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10592,7 +10840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
         """
-        @summary 删除脱敏白名单
+        @summary Deletes a data masking whitelist configured in Data Security Guard.
         
         @param tmp_req: DsgWhiteListDeleteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10630,7 +10878,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgWhiteListDeleteListRequest,
     ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
         """
-        @summary 删除脱敏白名单
+        @summary Deletes a data masking whitelist configured in Data Security Guard.
         
         @param request: DsgWhiteListDeleteListRequest
         @return: DsgWhiteListDeleteListResponse
@@ -10643,7 +10891,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgWhiteListDeleteListRequest,
     ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
         """
-        @summary 删除脱敏白名单
+        @summary Deletes a data masking whitelist configured in Data Security Guard.
         
         @param request: DsgWhiteListDeleteListRequest
         @return: DsgWhiteListDeleteListResponse
@@ -10657,7 +10905,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
         """
-        @summary 查询脱敏白名单
+        @summary Queries a data masking whitelist.
         
         @param request: DsgWhiteListQueryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10690,7 +10938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
         """
-        @summary 查询脱敏白名单
+        @summary Queries a data masking whitelist.
         
         @param request: DsgWhiteListQueryListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10722,7 +10970,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgWhiteListQueryListRequest,
     ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
         """
-        @summary 查询脱敏白名单
+        @summary Queries a data masking whitelist.
         
         @param request: DsgWhiteListQueryListRequest
         @return: DsgWhiteListQueryListResponse
@@ -10735,7 +10983,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.DsgWhiteListQueryListRequest,
     ) -> dataworks_public_20200518_models.DsgWhiteListQueryListResponse:
         """
-        @summary 查询脱敏白名单
+        @summary Queries a data masking whitelist.
         
         @param request: DsgWhiteListQueryListRequest
         @return: DsgWhiteListQueryListResponse
@@ -10749,7 +10997,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
         """
-        @summary 修改识别规则
+        @summary Edits a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: EditRecognizeRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10820,7 +11068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
         """
-        @summary 修改识别规则
+        @summary Edits a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: EditRecognizeRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10890,7 +11138,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
         """
-        @summary 修改识别规则
+        @summary Edits a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: EditRecognizeRuleRequest
         @return: EditRecognizeRuleResponse
@@ -10903,7 +11151,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.EditRecognizeRuleRequest,
     ) -> dataworks_public_20200518_models.EditRecognizeRuleResponse:
         """
-        @summary 修改识别规则
+        @summary Edits a sensitive field that is defined based on the category and sensitivity level of data in Data Security Guard.
         
         @param request: EditRecognizeRuleRequest
         @return: EditRecognizeRuleResponse
@@ -11021,6 +11269,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
         """
+        @summary Exports a list of data sources.
+        
         @param request: ExportDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExportDataSourcesResponse
@@ -11052,6 +11302,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
         """
+        @summary Exports a list of data sources.
+        
         @param request: ExportDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ExportDataSourcesResponse
@@ -11082,6 +11334,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
         """
+        @summary Exports a list of data sources.
+        
         @param request: ExportDataSourcesRequest
         @return: ExportDataSourcesResponse
         """
@@ -11093,6 +11347,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ExportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ExportDataSourcesResponse:
         """
+        @summary Exports a list of data sources.
+        
         @param request: ExportDataSourcesRequest
         @return: ExportDataSourcesResponse
         """
@@ -11105,10 +11361,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
-        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates an ID for an asynchronous thread that is used to create a synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to directly create a batch synchronization task in Data Integration. To create a real-time synchronization task or another type of synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can use the parameters as request parameters of [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) and call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a real-time synchronization task or another type of synchronization task. DataWorks allows you to create real-time synchronization tasks and other types of synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11149,10 +11404,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
-        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates an ID for an asynchronous thread that is used to create a synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to directly create a batch synchronization task in Data Integration. To create a real-time synchronization task or another type of synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can use the parameters as request parameters of [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) and call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a real-time synchronization task or another type of synchronization task. DataWorks allows you to create real-time synchronization tasks and other types of synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11192,10 +11446,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
-        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates an ID for an asynchronous thread that is used to create a synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to directly create a batch synchronization task in Data Integration. To create a real-time synchronization task or another type of synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can use the parameters as request parameters of [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) and call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a real-time synchronization task or another type of synchronization task. DataWorks allows you to create real-time synchronization tasks and other types of synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @return: GenerateDISyncTaskConfigForCreatingResponse
@@ -11208,10 +11461,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForCreatingResponse:
         """
-        @summary DataWorks allows you to use only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization node in Data Integration. To create a real-time synchronization node or a synchronization solution, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation and use the parameters as request parameters to create a real-time synchronization node or a synchronization solution in Data Integration.
-        DataWorks allows you to create real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates an ID for an asynchronous thread that is used to create a synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to directly create a batch synchronization task in Data Integration. To create a real-time synchronization task or another type of synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can use the parameters as request parameters of [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) and call the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a real-time synchronization task or another type of synchronization task. DataWorks allows you to create real-time synchronization tasks and other types of synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForCreatingRequest
         @return: GenerateDISyncTaskConfigForCreatingResponse
@@ -11225,9 +11477,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates the JSON for an asynchronous thread that is used to update a real-time synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization task in Data Integration. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11270,9 +11522,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates the JSON for an asynchronous thread that is used to update a real-time synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization task in Data Integration. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11314,9 +11566,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates the JSON for an asynchronous thread that is used to update a real-time synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization task in Data Integration. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @return: GenerateDISyncTaskConfigForUpdatingResponse
@@ -11329,9 +11581,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingRequest,
     ) -> dataworks_public_20200518_models.GenerateDISyncTaskConfigForUpdatingResponse:
         """
-        @summary DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization node in Data Integration. To update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization node or a synchronization solution in Data Integration. DataWorks allows you to update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Generates the JSON for an asynchronous thread that is used to update a real-time synchronization task in Data Integration.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to use only the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To update a real-time synchronization task, you must first call the GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the UpdateDISyncTask operation and use the parameters as request parameters to update a real-time synchronization task in Data Integration. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: GenerateDISyncTaskConfigForUpdatingRequest
         @return: GenerateDISyncTaskConfigForUpdatingResponse
@@ -11345,7 +11597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
         """
-        @summary 获取告警信息
+        @summary Queries alert information based on the alert ID that is specified by the AlertId parameter.
         
         @param request: GetAlertMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11380,7 +11632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
         """
-        @summary 获取告警信息
+        @summary Queries alert information based on the alert ID that is specified by the AlertId parameter.
         
         @param request: GetAlertMessageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11414,7 +11666,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetAlertMessageRequest,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
         """
-        @summary 获取告警信息
+        @summary Queries alert information based on the alert ID that is specified by the AlertId parameter.
         
         @param request: GetAlertMessageRequest
         @return: GetAlertMessageResponse
@@ -11427,7 +11679,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetAlertMessageRequest,
     ) -> dataworks_public_20200518_models.GetAlertMessageResponse:
         """
-        @summary 获取告警信息
+        @summary Queries alert information based on the alert ID that is specified by the AlertId parameter.
         
         @param request: GetAlertMessageRequest
         @return: GetAlertMessageResponse
@@ -11441,7 +11693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
         """
-        @summary 根据基线id查询基线
+        @summary Queries the information about a baseline based on its ID.
         
         @param request: GetBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11478,7 +11730,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
         """
-        @summary 根据基线id查询基线
+        @summary Queries the information about a baseline based on its ID.
         
         @param request: GetBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11514,7 +11766,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineRequest,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
         """
-        @summary 根据基线id查询基线
+        @summary Queries the information about a baseline based on its ID.
         
         @param request: GetBaselineRequest
         @return: GetBaselineResponse
@@ -11527,7 +11779,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineRequest,
     ) -> dataworks_public_20200518_models.GetBaselineResponse:
         """
-        @summary 根据基线id查询基线
+        @summary Queries the information about a baseline based on its ID.
         
         @param request: GetBaselineRequest
         @return: GetBaselineResponse
@@ -11541,6 +11793,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
         """
+        @summary Queries the configurations of a baseline.
+        
         @param request: GetBaselineConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetBaselineConfigResponse
@@ -11574,6 +11828,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
         """
+        @summary Queries the configurations of a baseline.
+        
         @param request: GetBaselineConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetBaselineConfigResponse
@@ -11606,6 +11862,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineConfigRequest,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
         """
+        @summary Queries the configurations of a baseline.
+        
         @param request: GetBaselineConfigRequest
         @return: GetBaselineConfigResponse
         """
@@ -11617,6 +11875,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetBaselineConfigRequest,
     ) -> dataworks_public_20200518_models.GetBaselineConfigResponse:
         """
+        @summary Queries the configurations of a baseline.
+        
         @param request: GetBaselineConfigRequest
         @return: GetBaselineConfigResponse
         """
@@ -12025,7 +12285,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
         """
-        @summary 查询数据集成新版告警规则
+        @summary Queries the details of an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: GetDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12060,7 +12322,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
         """
-        @summary 查询数据集成新版告警规则
+        @summary Queries the details of an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: GetDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12094,7 +12358,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
         """
-        @summary 查询数据集成新版告警规则
+        @summary Queries the details of an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: GetDIAlarmRuleRequest
         @return: GetDIAlarmRuleResponse
@@ -12107,7 +12373,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.GetDIAlarmRuleResponse:
         """
-        @summary 查询数据集成新版告警规则
+        @summary Queries the details of an alert rule for a Data Integration task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: GetDIAlarmRuleRequest
         @return: GetDIAlarmRuleResponse
@@ -12121,7 +12389,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
         """
-        @summary 查询数据集成新版解决方案任务
+        @summary Queries the information about a new-version synchronization task created in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: GetDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12158,7 +12426,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
         """
-        @summary 查询数据集成新版解决方案任务
+        @summary Queries the information about a new-version synchronization task created in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: GetDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12194,7 +12462,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIJobRequest,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
         """
-        @summary 查询数据集成新版解决方案任务
+        @summary Queries the information about a new-version synchronization task created in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: GetDIJobRequest
         @return: GetDIJobResponse
@@ -12207,7 +12475,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDIJobRequest,
     ) -> dataworks_public_20200518_models.GetDIJobResponse:
         """
-        @summary 查询数据集成新版解决方案任务
+        @summary Queries the information about a new-version synchronization task created in Data Integration. The following types of synchronization tasks are supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: GetDIJobRequest
         @return: GetDIJobResponse
@@ -12221,7 +12489,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        @summary Queries the status of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncInstanceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12260,7 +12528,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        @summary Queries the status of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncInstanceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12298,7 +12566,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        @summary Queries the status of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncInstanceInfoRequest
         @return: GetDISyncInstanceInfoResponse
@@ -12311,7 +12579,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncInstanceInfoRequest,
     ) -> dataworks_public_20200518_models.GetDISyncInstanceInfoResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncInstanceInfo**.
+        @summary Queries the status of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncInstanceInfoRequest
         @return: GetDISyncInstanceInfoResponse
@@ -12325,7 +12593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        @summary Queries the details of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12364,7 +12632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        @summary Queries the details of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12402,7 +12670,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        @summary Queries the details of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncTaskRequest
         @return: GetDISyncTaskResponse
@@ -12415,7 +12683,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.GetDISyncTaskResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDISyncTask**.
+        @summary Queries the details of a real-time synchronization task or a data synchronization solution.
         
         @param request: GetDISyncTaskRequest
         @return: GetDISyncTaskResponse
@@ -12429,21 +12697,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
-        You can call the GetDag operation to query the details of the DAG for a manually triggered
-        workflow, a manually triggered node, or a data backfill instance. However, you cannot
-        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        @summary Queries the information about a directed acyclic graph (DAG). You can call the GetDag operation to query the information about the DAG for a manually triggered workflow, a manually triggered node, or a data backfill instance. However, you cannot query the information about the DAG for an auto triggered node or an auto triggered workflow.
         
         @description Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
-        CREATED: The DAG is created.
-        RUNNING: The DAG is running.
-        FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
+        CREATED
+        RUNNING
+        FAILURE
+        SUCCESS
         
         @param request: GetDagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12480,21 +12745,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
-        You can call the GetDag operation to query the details of the DAG for a manually triggered
-        workflow, a manually triggered node, or a data backfill instance. However, you cannot
-        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        @summary Queries the information about a directed acyclic graph (DAG). You can call the GetDag operation to query the information about the DAG for a manually triggered workflow, a manually triggered node, or a data backfill instance. However, you cannot query the information about the DAG for an auto triggered node or an auto triggered workflow.
         
         @description Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
-        CREATED: The DAG is created.
-        RUNNING: The DAG is running.
-        FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
+        CREATED
+        RUNNING
+        FAILURE
+        SUCCESS
         
         @param request: GetDagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12530,21 +12792,18 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDagRequest,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
-        You can call the GetDag operation to query the details of the DAG for a manually triggered
-        workflow, a manually triggered node, or a data backfill instance. However, you cannot
-        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        @summary Queries the information about a directed acyclic graph (DAG). You can call the GetDag operation to query the information about the DAG for a manually triggered workflow, a manually triggered node, or a data backfill instance. However, you cannot query the information about the DAG for an auto triggered node or an auto triggered workflow.
         
         @description Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
-        CREATED: The DAG is created.
-        RUNNING: The DAG is running.
-        FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
+        CREATED
+        RUNNING
+        FAILURE
+        SUCCESS
         
         @param request: GetDagRequest
         @return: GetDagResponse
@@ -12557,21 +12816,18 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDagRequest,
     ) -> dataworks_public_20200518_models.GetDagResponse:
         """
-        @summary Queries the details of a directed acyclic graph (DAG) based on the ID of the DAG.
-        You can call the GetDag operation to query the details of the DAG for a manually triggered
-        workflow, a manually triggered node, or a data backfill instance. However, you cannot
-        query the details of the DAG for an auto triggered node or an auto triggered workflow.
+        @summary Queries the information about a directed acyclic graph (DAG). You can call the GetDag operation to query the information about the DAG for a manually triggered workflow, a manually triggered node, or a data backfill instance. However, you cannot query the information about the DAG for an auto triggered node or an auto triggered workflow.
         
         @description Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
-        CREATED: The DAG is created.
-        RUNNING: The DAG is running.
-        FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
+        CREATED
+        RUNNING
+        FAILURE
+        SUCCESS
         
         @param request: GetDagRequest
         @return: GetDagResponse
@@ -12689,6 +12945,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
         """
+        @summary Queries the test results of an API in DataService Studio.
+        
         @param request: GetDataServiceApiTestRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDataServiceApiTestResponse
@@ -12720,6 +12978,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
         """
+        @summary Queries the test results of an API in DataService Studio.
+        
         @param request: GetDataServiceApiTestRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetDataServiceApiTestResponse
@@ -12750,6 +13010,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
         """
+        @summary Queries the test results of an API in DataService Studio.
+        
         @param request: GetDataServiceApiTestRequest
         @return: GetDataServiceApiTestResponse
         """
@@ -12761,6 +13023,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.GetDataServiceApiTestResponse:
         """
+        @summary Queries the test results of an API in DataService Studio.
+        
         @param request: GetDataServiceApiTestRequest
         @return: GetDataServiceApiTestResponse
         """
@@ -13189,7 +13453,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        @summary Queries the metadata of a specified data source.
         
         @param request: GetDataSourceMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13232,7 +13496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        @summary Queries the metadata of a specified data source.
         
         @param request: GetDataSourceMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13274,7 +13538,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataSourceMetaRequest,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        @summary Queries the metadata of a specified data source.
         
         @param request: GetDataSourceMetaRequest
         @return: GetDataSourceMetaResponse
@@ -13287,7 +13551,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDataSourceMetaRequest,
     ) -> dataworks_public_20200518_models.GetDataSourceMetaResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetDataSourceMeta**.
+        @summary Queries the metadata of a specified data source.
         
         @param request: GetDataSourceMetaRequest
         @return: GetDataSourceMetaResponse
@@ -13301,7 +13565,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
         """
-        @summary Queries the details of a deployment task.
+        @summary Queries the information about a deployment package.
         
         @param request: GetDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13340,7 +13604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
         """
-        @summary Queries the details of a deployment task.
+        @summary Queries the information about a deployment package.
         
         @param request: GetDeploymentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13378,7 +13642,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDeploymentRequest,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
         """
-        @summary Queries the details of a deployment task.
+        @summary Queries the information about a deployment package.
         
         @param request: GetDeploymentRequest
         @return: GetDeploymentResponse
@@ -13391,7 +13655,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetDeploymentRequest,
     ) -> dataworks_public_20200518_models.GetDeploymentResponse:
         """
-        @summary Queries the details of a deployment task.
+        @summary Queries the information about a deployment package.
         
         @param request: GetDeploymentRequest
         @return: GetDeploymentResponse
@@ -13405,7 +13669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
         """
-        @summary 获取开放平台扩展程序详情
+        @summary Queries the details of an extension.
         
         @param request: GetExtensionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13440,7 +13704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
         """
-        @summary 获取开放平台扩展程序详情
+        @summary Queries the details of an extension.
         
         @param request: GetExtensionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13474,7 +13738,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetExtensionRequest,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
         """
-        @summary 获取开放平台扩展程序详情
+        @summary Queries the details of an extension.
         
         @param request: GetExtensionRequest
         @return: GetExtensionResponse
@@ -13487,7 +13751,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetExtensionRequest,
     ) -> dataworks_public_20200518_models.GetExtensionResponse:
         """
-        @summary 获取开放平台扩展程序详情
+        @summary Queries the details of an extension.
         
         @param request: GetExtensionRequest
         @return: GetExtensionResponse
@@ -13501,6 +13765,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileResponse
@@ -13540,6 +13806,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileResponse
@@ -13578,6 +13846,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileRequest,
     ) -> dataworks_public_20200518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @return: GetFileResponse
         """
@@ -13589,6 +13859,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileRequest,
     ) -> dataworks_public_20200518_models.GetFileResponse:
         """
+        @summary Queries the information about a file.
+        
         @param request: GetFileRequest
         @return: GetFileResponse
         """
@@ -13601,6 +13873,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
         """
+        @summary Queries the distribution of node types.
+        
         @param request: GetFileTypeStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileTypeStatisticResponse
@@ -13636,6 +13910,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
         """
+        @summary Queries the distribution of node types.
+        
         @param request: GetFileTypeStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileTypeStatisticResponse
@@ -13670,6 +13946,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
         """
+        @summary Queries the distribution of node types.
+        
         @param request: GetFileTypeStatisticRequest
         @return: GetFileTypeStatisticResponse
         """
@@ -13681,6 +13959,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileTypeStatisticRequest,
     ) -> dataworks_public_20200518_models.GetFileTypeStatisticResponse:
         """
+        @summary Queries the distribution of node types.
+        
         @param request: GetFileTypeStatisticRequest
         @return: GetFileTypeStatisticResponse
         """
@@ -13693,6 +13973,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileVersionResponse
@@ -13732,6 +14014,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetFileVersionResponse
@@ -13770,6 +14054,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileVersionRequest,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @return: GetFileVersionResponse
         """
@@ -13781,6 +14067,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetFileVersionRequest,
     ) -> dataworks_public_20200518_models.GetFileVersionResponse:
         """
+        @summary Queries the information about a file version.
+        
         @param request: GetFileVersionRequest
         @return: GetFileVersionResponse
         """
@@ -13893,7 +14181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
         """
-        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13930,7 +14218,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
         """
-        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13966,7 +14254,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
         """
-        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @return: GetIDEEventDetailResponse
@@ -13979,7 +14267,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetIDEEventDetailRequest,
     ) -> dataworks_public_20200518_models.GetIDEEventDetailResponse:
         """
-        @summary Queries the data snapshot of an extension point based on the ID of an open message when the related extension point event is triggered.
+        @summary Queries the data snapshot of an extension point based on the ID of a message in DataWorks OpenEvent when the related extension point event is triggered.
         
         @param request: GetIDEEventDetailRequest
         @return: GetIDEEventDetailResponse
@@ -13993,6 +14281,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
@@ -14028,6 +14318,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
@@ -14062,6 +14354,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceRequest,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
@@ -14073,6 +14367,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceRequest,
     ) -> dataworks_public_20200518_models.GetInstanceResponse:
         """
+        @summary Queries the information about an instance.
+        
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
@@ -14086,6 +14382,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
         """
         @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
+        
+        @summary Queries the ranking of the running durations of instances.
         
         @param request: GetInstanceConsumeTimeRankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14125,6 +14423,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
         
+        @summary Queries the ranking of the running durations of instances.
+        
         @param request: GetInstanceConsumeTimeRankRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceConsumeTimeRankResponse
@@ -14162,6 +14462,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
         
+        @summary Queries the ranking of the running durations of instances.
+        
         @param request: GetInstanceConsumeTimeRankRequest
         @return: GetInstanceConsumeTimeRankResponse
         Deprecated
@@ -14175,6 +14477,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceConsumeTimeRankResponse:
         """
         @deprecated OpenAPI GetInstanceConsumeTimeRank is deprecated
+        
+        @summary Queries the ranking of the running durations of instances.
         
         @param request: GetInstanceConsumeTimeRankRequest
         @return: GetInstanceConsumeTimeRankResponse
@@ -14190,6 +14494,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
         """
         @deprecated OpenAPI GetInstanceCountTrend is deprecated
+        
+        @summary Queries the quantity trend of auto triggered instances.
         
         @param request: GetInstanceCountTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14231,6 +14537,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceCountTrend is deprecated
         
+        @summary Queries the quantity trend of auto triggered instances.
+        
         @param request: GetInstanceCountTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceCountTrendResponse
@@ -14270,6 +14578,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceCountTrend is deprecated
         
+        @summary Queries the quantity trend of auto triggered instances.
+        
         @param request: GetInstanceCountTrendRequest
         @return: GetInstanceCountTrendResponse
         Deprecated
@@ -14283,6 +14593,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceCountTrendResponse:
         """
         @deprecated OpenAPI GetInstanceCountTrend is deprecated
+        
+        @summary Queries the quantity trend of auto triggered instances.
         
         @param request: GetInstanceCountTrendRequest
         @return: GetInstanceCountTrendResponse
@@ -14298,6 +14610,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
         """
         @deprecated OpenAPI GetInstanceErrorRank is deprecated
+        
+        @summary Queries the ranking of nodes on which errors occur within the last month.
         
         @param request: GetInstanceErrorRankRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14335,6 +14649,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceErrorRank is deprecated
         
+        @summary Queries the ranking of nodes on which errors occur within the last month.
+        
         @param request: GetInstanceErrorRankRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceErrorRankResponse
@@ -14370,6 +14686,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceErrorRank is deprecated
         
+        @summary Queries the ranking of nodes on which errors occur within the last month.
+        
         @param request: GetInstanceErrorRankRequest
         @return: GetInstanceErrorRankResponse
         Deprecated
@@ -14383,6 +14701,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetInstanceErrorRankResponse:
         """
         @deprecated OpenAPI GetInstanceErrorRank is deprecated
+        
+        @summary Queries the ranking of nodes on which errors occur within the last month.
         
         @param request: GetInstanceErrorRankRequest
         @return: GetInstanceErrorRankResponse
@@ -14511,6 +14831,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
+        @summary Queries the statistics of instances in different states.
+        
         @param request: GetInstanceStatusCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceStatusCountResponse
@@ -14551,6 +14873,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
+        @summary Queries the statistics of instances in different states.
+        
         @param request: GetInstanceStatusCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceStatusCountResponse
@@ -14590,6 +14914,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
+        @summary Queries the statistics of instances in different states.
+        
         @param request: GetInstanceStatusCountRequest
         @return: GetInstanceStatusCountResponse
         Deprecated
@@ -14604,6 +14930,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetInstanceStatusCount is deprecated
         
+        @summary Queries the statistics of instances in different states.
+        
         @param request: GetInstanceStatusCountRequest
         @return: GetInstanceStatusCountResponse
         Deprecated
@@ -14617,6 +14945,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
         """
+        @summary Queries the number of instances that are in each state.
+        
         @param request: GetInstanceStatusStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceStatusStatisticResponse
@@ -14660,6 +14990,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
         """
+        @summary Queries the number of instances that are in each state.
+        
         @param request: GetInstanceStatusStatisticRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceStatusStatisticResponse
@@ -14702,6 +15034,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
         """
+        @summary Queries the number of instances that are in each state.
+        
         @param request: GetInstanceStatusStatisticRequest
         @return: GetInstanceStatusStatisticResponse
         """
@@ -14713,6 +15047,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetInstanceStatusStatisticRequest,
     ) -> dataworks_public_20200518_models.GetInstanceStatusStatisticResponse:
         """
+        @summary Queries the number of instances that are in each state.
+        
         @param request: GetInstanceStatusStatisticRequest
         @return: GetInstanceStatusStatisticResponse
         """
@@ -14726,6 +15062,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetManualDagInstancesResponse:
         """
         @deprecated OpenAPI GetManualDagInstances is deprecated
+        
+        @summary Queries the information about instances in a manually triggered workflow.
         
         @param request: GetManualDagInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14767,6 +15105,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetManualDagInstances is deprecated
         
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: GetManualDagInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetManualDagInstancesResponse
@@ -14806,6 +15146,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetManualDagInstances is deprecated
         
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: GetManualDagInstancesRequest
         @return: GetManualDagInstancesResponse
         Deprecated
@@ -14820,6 +15162,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetManualDagInstances is deprecated
         
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: GetManualDagInstancesRequest
         @return: GetManualDagInstancesResponse
         Deprecated
@@ -14833,7 +15177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
         """
-        @summary Queries a category tree.
+        @summary Queries the information about a category tree.
         
         @param request: GetMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14872,7 +15216,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
         """
-        @summary Queries a category tree.
+        @summary Queries the information about a category tree.
         
         @param request: GetMetaCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14910,7 +15254,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
         """
-        @summary Queries a category tree.
+        @summary Queries the information about a category tree.
         
         @param request: GetMetaCategoryRequest
         @return: GetMetaCategoryResponse
@@ -14923,7 +15267,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCategoryRequest,
     ) -> dataworks_public_20200518_models.GetMetaCategoryResponse:
         """
-        @summary Queries a category tree.
+        @summary Queries the information about a category tree.
         
         @param request: GetMetaCategoryRequest
         @return: GetMetaCategoryResponse
@@ -14937,7 +15281,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
         """
-        @summary Queries the details of a collection.
+        @summary Queries the information about a collection.
         
         @param request: GetMetaCollectionDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14972,7 +15316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
         """
-        @summary Queries the details of a collection.
+        @summary Queries the information about a collection.
         
         @param request: GetMetaCollectionDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15006,7 +15350,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
         """
-        @summary Queries the details of a collection.
+        @summary Queries the information about a collection.
         
         @param request: GetMetaCollectionDetailRequest
         @return: GetMetaCollectionDetailResponse
@@ -15019,7 +15363,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaCollectionDetailRequest,
     ) -> dataworks_public_20200518_models.GetMetaCollectionDetailResponse:
         """
-        @summary Queries the details of a collection.
+        @summary Queries the information about a collection.
         
         @param request: GetMetaCollectionDetailRequest
         @return: GetMetaCollectionDetailResponse
@@ -15161,7 +15505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        @summary Queries the basic metadata information about a compute engine instance.
         
         @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
@@ -15197,7 +15541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        @summary Queries the basic metadata information about a compute engine instance.
         
         @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
@@ -15232,7 +15576,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        @summary Queries the basic metadata information about a compute engine instance.
         
         @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
@@ -15248,7 +15592,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBInfoRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBInfoResponse:
         """
-        @summary The ID of the compute engine instance. Specify the ID in the Engine type.Engine name format.
+        @summary Queries the basic metadata information about a compute engine instance.
         
         @description The ID of the EMR cluster. This parameter is required only if you set the DataSourceType parameter to emr.
         You can log on to the [EMR console](https://emr.console.aliyun.com/?spm=a2c4g.11186623.0.0.965cc5c2GeiHet#/cn-hangzhou) to obtain the ID of the EMR cluster.
@@ -15265,7 +15609,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        @summary Queries metatables in a compute engine instance.
         
         @param request: GetMetaDBTableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15310,7 +15654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        @summary Queries metatables in a compute engine instance.
         
         @param request: GetMetaDBTableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15354,7 +15698,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBTableListRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        @summary Queries metatables in a compute engine instance.
         
         @param request: GetMetaDBTableListRequest
         @return: GetMetaDBTableListResponse
@@ -15367,7 +15711,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaDBTableListRequest,
     ) -> dataworks_public_20200518_models.GetMetaDBTableListResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaDBTableList**.
+        @summary Queries metatables in a compute engine instance.
         
         @param request: GetMetaDBTableListRequest
         @return: GetMetaDBTableListResponse
@@ -15473,7 +15817,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        @summary Queries the change logs of a metatable.
+        
+        @description > This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: GetMetaTableChangeLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15520,7 +15866,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        @summary Queries the change logs of a metatable.
+        
+        @description > This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: GetMetaTableChangeLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15566,7 +15914,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableChangeLogRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        @summary Queries the change logs of a metatable.
+        
+        @description > This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: GetMetaTableChangeLogRequest
         @return: GetMetaTableChangeLogResponse
@@ -15579,7 +15929,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableChangeLogRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableChangeLogResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableChangeLog**.
+        @summary Queries the change logs of a metatable.
+        
+        @description > This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: GetMetaTableChangeLogRequest
         @return: GetMetaTableChangeLogResponse
@@ -15593,7 +15945,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        @summary Queries the field information of a metatable.
         
         @param request: GetMetaTableColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15626,7 +15978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        @summary Queries the field information of a metatable.
         
         @param request: GetMetaTableColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15658,7 +16010,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableColumnRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        @summary Queries the field information of a metatable.
         
         @param request: GetMetaTableColumnRequest
         @return: GetMetaTableColumnResponse
@@ -15671,7 +16023,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableColumnRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableColumnResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableColumn**.
+        @summary Queries the field information of a metatable.
         
         @param request: GetMetaTableColumnRequest
         @return: GetMetaTableColumnResponse
@@ -15777,7 +16129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
         """
-        @summary Queries the instructions on how to use a metatable.
+        @summary Queries the instructions on how to use a table.
         
         @param request: GetMetaTableIntroWikiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15814,7 +16166,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
         """
-        @summary Queries the instructions on how to use a metatable.
+        @summary Queries the instructions on how to use a table.
         
         @param request: GetMetaTableIntroWikiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15850,7 +16202,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
         """
-        @summary Queries the instructions on how to use a metatable.
+        @summary Queries the instructions on how to use a table.
         
         @param request: GetMetaTableIntroWikiRequest
         @return: GetMetaTableIntroWikiResponse
@@ -15863,7 +16215,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableIntroWikiResponse:
         """
-        @summary Queries the instructions on how to use a metatable.
+        @summary Queries the instructions on how to use a table.
         
         @param request: GetMetaTableIntroWikiRequest
         @return: GetMetaTableIntroWikiResponse
@@ -15877,7 +16229,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        @summary Queries the lineage of a metatable.
         
         @param request: GetMetaTableLineageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15926,7 +16278,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        @summary Queries the lineage of a metatable.
         
         @param request: GetMetaTableLineageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15974,7 +16326,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableLineageRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        @summary Queries the lineage of a metatable.
         
         @param request: GetMetaTableLineageRequest
         @return: GetMetaTableLineageResponse
@@ -15987,7 +16339,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableLineageRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableLineageResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetMetaTableLineage**.
+        @summary Queries the lineage of a metatable.
         
         @param request: GetMetaTableLineageRequest
         @return: GetMetaTableLineageResponse
@@ -16093,6 +16445,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
         """
+        @summary Queries the output information of a metatable.
+        
         @param request: GetMetaTableOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMetaTableOutputResponse
@@ -16136,6 +16490,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
         """
+        @summary Queries the output information of a metatable.
+        
         @param request: GetMetaTableOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMetaTableOutputResponse
@@ -16178,6 +16534,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableOutputRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
         """
+        @summary Queries the output information of a metatable.
+        
         @param request: GetMetaTableOutputRequest
         @return: GetMetaTableOutputResponse
         """
@@ -16189,6 +16547,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableOutputRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableOutputResponse:
         """
+        @summary Queries the output information of a metatable.
+        
         @param request: GetMetaTableOutputRequest
         @return: GetMetaTableOutputResponse
         """
@@ -16201,9 +16561,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        @summary Queries the partitions of a metatable.
+        @summary Obtains a list of partitions in a metatable.
         
-        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine. If you query partitions of a metatable in an EMR compute engine, only DataLake clusters that use Data Lake Formation (DLF) to manage metadata and Hadoop clusters whose cluster version is earlier than 3.41.0 or 5.7.0 are supported.
         
         @param tmp_req: GetMetaTablePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16256,9 +16616,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        @summary Queries the partitions of a metatable.
+        @summary Obtains a list of partitions in a metatable.
         
-        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine. If you query partitions of a metatable in an EMR compute engine, only DataLake clusters that use Data Lake Formation (DLF) to manage metadata and Hadoop clusters whose cluster version is earlier than 3.41.0 or 5.7.0 are supported.
         
         @param tmp_req: GetMetaTablePartitionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16310,9 +16670,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        @summary Queries the partitions of a metatable.
+        @summary Obtains a list of partitions in a metatable.
         
-        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine. If you query partitions of a metatable in an EMR compute engine, only DataLake clusters that use Data Lake Formation (DLF) to manage metadata and Hadoop clusters whose cluster version is earlier than 3.41.0 or 5.7.0 are supported.
         
         @param request: GetMetaTablePartitionRequest
         @return: GetMetaTablePartitionResponse
@@ -16325,9 +16685,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTablePartitionRequest,
     ) -> dataworks_public_20200518_models.GetMetaTablePartitionResponse:
         """
-        @summary Queries the partitions of a metatable.
+        @summary Obtains a list of partitions in a metatable.
         
-        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine instance.
+        @description You can call this operation to query only the partitions of a metatable in a MaxCompute or E-MapReduce (EMR) compute engine. If you query partitions of a metatable in an EMR compute engine, only DataLake clusters that use Data Lake Formation (DLF) to manage metadata and Hadoop clusters whose cluster version is earlier than 3.41.0 or 5.7.0 are supported.
         
         @param request: GetMetaTablePartitionRequest
         @return: GetMetaTablePartitionResponse
@@ -16457,7 +16817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
         """
-        @summary Queries information about table folders and table levels.
+        @summary Queries the information about the themes and levels of a metatable.
         
         @param request: GetMetaTableThemeLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16490,7 +16850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
         """
-        @summary Queries information about table folders and table levels.
+        @summary Queries the information about the themes and levels of a metatable.
         
         @param request: GetMetaTableThemeLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16522,7 +16882,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
         """
-        @summary Queries information about table folders and table levels.
+        @summary Queries the information about the themes and levels of a metatable.
         
         @param request: GetMetaTableThemeLevelRequest
         @return: GetMetaTableThemeLevelResponse
@@ -16535,7 +16895,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMetaTableThemeLevelRequest,
     ) -> dataworks_public_20200518_models.GetMetaTableThemeLevelResponse:
         """
-        @summary Queries information about table folders and table levels.
+        @summary Queries the information about the themes and levels of a metatable.
         
         @param request: GetMetaTableThemeLevelRequest
         @return: GetMetaTableThemeLevelResponse
@@ -16549,6 +16909,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
         """
+        @summary Queries the progress of a migration task.
+        
         @param request: GetMigrationProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMigrationProcessResponse
@@ -16584,6 +16946,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
         """
+        @summary Queries the progress of a migration task.
+        
         @param request: GetMigrationProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetMigrationProcessResponse
@@ -16618,6 +16982,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMigrationProcessRequest,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
         """
+        @summary Queries the progress of a migration task.
+        
         @param request: GetMigrationProcessRequest
         @return: GetMigrationProcessResponse
         """
@@ -16629,6 +16995,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetMigrationProcessRequest,
     ) -> dataworks_public_20200518_models.GetMigrationProcessResponse:
         """
+        @summary Queries the progress of a migration task.
+        
         @param request: GetMigrationProcessRequest
         @return: GetMigrationProcessResponse
         """
@@ -16841,6 +17209,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: GetNodeChildrenRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeChildrenResponse
@@ -16876,6 +17246,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: GetNodeChildrenRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeChildrenResponse
@@ -16910,6 +17282,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeChildrenRequest,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: GetNodeChildrenRequest
         @return: GetNodeChildrenResponse
         """
@@ -16921,6 +17295,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetNodeChildrenRequest,
     ) -> dataworks_public_20200518_models.GetNodeChildrenResponse:
         """
+        @summary Queries a list of instances.
+        
         @param request: GetNodeChildrenRequest
         @return: GetNodeChildrenResponse
         """
@@ -17035,6 +17411,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
+        @summary Queries the nodes associated with a baseline.
+        
         @param request: GetNodeOnBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeOnBaselineResponse
@@ -17071,6 +17449,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
+        @summary Queries the nodes associated with a baseline.
+        
         @param request: GetNodeOnBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeOnBaselineResponse
@@ -17106,6 +17486,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeOnBaseline is deprecated
         
+        @summary Queries the nodes associated with a baseline.
+        
         @param request: GetNodeOnBaselineRequest
         @return: GetNodeOnBaselineResponse
         Deprecated
@@ -17119,6 +17501,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetNodeOnBaselineResponse:
         """
         @deprecated OpenAPI GetNodeOnBaseline is deprecated
+        
+        @summary Queries the nodes associated with a baseline.
         
         @param request: GetNodeOnBaselineRequest
         @return: GetNodeOnBaselineResponse
@@ -17235,6 +17619,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
+        @summary Queries the information about node types, including the code and name of a node type.
+        
         @param request: GetNodeTypeListInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeTypeListInfoResponse
@@ -17281,6 +17667,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
+        @summary Queries the information about node types, including the code and name of a node type.
+        
         @param request: GetNodeTypeListInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNodeTypeListInfoResponse
@@ -17326,6 +17714,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
+        @summary Queries the information about node types, including the code and name of a node type.
+        
         @param request: GetNodeTypeListInfoRequest
         @return: GetNodeTypeListInfoResponse
         Deprecated
@@ -17340,6 +17730,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetNodeTypeListInfo is deprecated
         
+        @summary Queries the information about node types, including the code and name of a node type.
+        
         @param request: GetNodeTypeListInfoRequest
         @return: GetNodeTypeListInfoResponse
         Deprecated
@@ -17353,6 +17745,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to the high-risk sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpRiskDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOpRiskDataResponse
@@ -17384,6 +17778,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to the high-risk sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpRiskDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOpRiskDataResponse
@@ -17414,6 +17810,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpRiskDataRequest,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to the high-risk sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpRiskDataRequest
         @return: GetOpRiskDataResponse
         """
@@ -17425,6 +17823,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpRiskDataRequest,
     ) -> dataworks_public_20200518_models.GetOpRiskDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to the high-risk sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpRiskDataRequest
         @return: GetOpRiskDataResponse
         """
@@ -17437,6 +17837,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpSensitiveDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOpSensitiveDataResponse
@@ -17468,6 +17870,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpSensitiveDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetOpSensitiveDataResponse
@@ -17498,6 +17902,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpSensitiveDataRequest
         @return: GetOpSensitiveDataResponse
         """
@@ -17509,6 +17915,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOpSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetOpSensitiveDataResponse:
         """
+        @summary Queries the records that are generated on a specified date for access to sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetOpSensitiveDataRequest
         @return: GetOpSensitiveDataResponse
         """
@@ -17521,7 +17929,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        @summary Queries the option settings of an extension in a workspace.
         
         @param request: GetOptionValueForProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17558,7 +17966,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        @summary Queries the option settings of an extension in a workspace.
         
         @param request: GetOptionValueForProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17594,7 +18002,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        @summary Queries the option settings of an extension in a workspace.
         
         @param request: GetOptionValueForProjectRequest
         @return: GetOptionValueForProjectResponse
@@ -17607,7 +18015,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetOptionValueForProjectRequest,
     ) -> dataworks_public_20200518_models.GetOptionValueForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *GetOptionValueForProject**.
+        @summary Queries the option settings of an extension in a workspace.
         
         @param request: GetOptionValueForProjectRequest
         @return: GetOptionValueForProjectResponse
@@ -17621,7 +18029,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
         """
-        @summary Queries the details about a permission request order.
+        @summary Queries the details of a permission request order.
         
         @param request: GetPermissionApplyOrderDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17656,7 +18064,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
         """
-        @summary Queries the details about a permission request order.
+        @summary Queries the details of a permission request order.
         
         @param request: GetPermissionApplyOrderDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17690,7 +18098,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
         """
-        @summary Queries the details about a permission request order.
+        @summary Queries the details of a permission request order.
         
         @param request: GetPermissionApplyOrderDetailRequest
         @return: GetPermissionApplyOrderDetailResponse
@@ -17703,7 +18111,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetPermissionApplyOrderDetailRequest,
     ) -> dataworks_public_20200518_models.GetPermissionApplyOrderDetailResponse:
         """
-        @summary Queries the details about a permission request order.
+        @summary Queries the details of a permission request order.
         
         @param request: GetPermissionApplyOrderDetailRequest
         @return: GetPermissionApplyOrderDetailResponse
@@ -17717,7 +18125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17754,7 +18162,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17790,7 +18198,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectRequest,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @return: GetProjectResponse
@@ -17803,7 +18211,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetProjectRequest,
     ) -> dataworks_public_20200518_models.GetProjectResponse:
         """
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectRequest
         @return: GetProjectResponse
@@ -17819,7 +18227,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetProjectDetail is deprecated
         
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17857,7 +18265,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetProjectDetail is deprecated
         
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17894,7 +18302,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetProjectDetail is deprecated
         
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectDetailRequest
         @return: GetProjectDetailResponse
@@ -17910,7 +18318,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetProjectDetail is deprecated
         
-        @summary 查询工作空间详情
+        @summary Queries the information about a DataWorks workspace.
         
         @param request: GetProjectDetailRequest
         @return: GetProjectDetailResponse
@@ -18125,6 +18533,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
         """
+        @summary Queries the information about a monitoring rule.
+        
         @param request: GetQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetQualityRuleResponse
@@ -18162,6 +18572,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
         """
+        @summary Queries the information about a monitoring rule.
+        
         @param request: GetQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetQualityRuleResponse
@@ -18198,6 +18610,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityRuleRequest,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
         """
+        @summary Queries the information about a monitoring rule.
+        
         @param request: GetQualityRuleRequest
         @return: GetQualityRuleResponse
         """
@@ -18209,6 +18623,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetQualityRuleRequest,
     ) -> dataworks_public_20200518_models.GetQualityRuleResponse:
         """
+        @summary Queries the information about a monitoring rule.
+        
         @param request: GetQualityRuleRequest
         @return: GetQualityRuleResponse
         """
@@ -18329,6 +18745,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
         """
+        @summary Queries the latest sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetSensitiveDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSensitiveDataResponse
@@ -18360,6 +18778,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
         """
+        @summary Queries the latest sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetSensitiveDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSensitiveDataResponse
@@ -18390,6 +18810,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
         """
+        @summary Queries the latest sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetSensitiveDataRequest
         @return: GetSensitiveDataResponse
         """
@@ -18401,6 +18823,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.GetSensitiveDataResponse:
         """
+        @summary Queries the latest sensitive data in all the DataWorks workspaces of a tenant.
+        
         @param request: GetSensitiveDataRequest
         @return: GetSensitiveDataResponse
         """
@@ -18414,6 +18838,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.GetSuccessInstanceTrendResponse:
         """
         @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
+        
+        @summary Queries the statistics of instances in different periods of a day.
         
         @param request: GetSuccessInstanceTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18451,6 +18877,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
+        @summary Queries the statistics of instances in different periods of a day.
+        
         @param request: GetSuccessInstanceTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetSuccessInstanceTrendResponse
@@ -18486,6 +18914,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
+        @summary Queries the statistics of instances in different periods of a day.
+        
         @param request: GetSuccessInstanceTrendRequest
         @return: GetSuccessInstanceTrendResponse
         Deprecated
@@ -18500,6 +18930,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI GetSuccessInstanceTrend is deprecated
         
+        @summary Queries the statistics of instances in different periods of a day.
+        
         @param request: GetSuccessInstanceTrendRequest
         @return: GetSuccessInstanceTrendResponse
         Deprecated
@@ -18513,6 +18945,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
+        @summary Queries the information about an event.
+        
         @description ***\
         
         @param request: GetTopicRequest
@@ -18548,6 +18982,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
+        @summary Queries the information about an event.
+        
         @description ***\
         
         @param request: GetTopicRequest
@@ -18582,6 +19018,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicRequest,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
+        @summary Queries the information about an event.
+        
         @description ***\
         
         @param request: GetTopicRequest
@@ -18595,6 +19033,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.GetTopicRequest,
     ) -> dataworks_public_20200518_models.GetTopicResponse:
         """
+        @summary Queries the information about an event.
+        
         @description ***\
         
         @param request: GetTopicRequest
@@ -18697,9 +19137,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
-        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
+        @summary Imports data sources from your on-premises machine to a specific DataWorks workspace.
+        
+        @description You can import self-managed data sources or data sources that are exported from other DataWorks workspaces to a specific DataWorks workspace.
+        To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18736,9 +19178,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
-        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
+        @summary Imports data sources from your on-premises machine to a specific DataWorks workspace.
+        
+        @description You can import self-managed data sources or data sources that are exported from other DataWorks workspaces to a specific DataWorks workspace.
+        To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18774,9 +19218,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ImportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
-        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
+        @summary Imports data sources from your on-premises machine to a specific DataWorks workspace.
+        
+        @description You can import self-managed data sources or data sources that are exported from other DataWorks workspaces to a specific DataWorks workspace.
+        To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @return: ImportDataSourcesResponse
@@ -18789,9 +19235,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ImportDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ImportDataSourcesResponse:
         """
-        @description You can import self-managed data sources or data sources that are exported from other Dataworks workspaces to a specified DataWorks workspace.
-        To import a self-managed data source to DataWorks, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
-        For more information about how to export data sources from DataWorks workspaces to on-premises devices, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
+        @summary Imports data sources from your on-premises machine to a specific DataWorks workspace.
+        
+        @description You can import self-managed data sources or data sources that are exported from other DataWorks workspaces to a specific DataWorks workspace.
+        To import a self-managed data source to a DataWorks workspace, the data source type must be supported by DataWorks. For more information about the types of data sources supported by DataWorks, see [Supported data stores](https://help.aliyun.com/document_detail/181656.html).
+        For more information about how to export data sources from DataWorks workspaces to your on-premises machine, see [ExportDataSources](https://help.aliyun.com/document_detail/279570.html).
         
         @param request: ImportDataSourcesRequest
         @return: ImportDataSourcesResponse
@@ -18805,6 +19253,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
         """
+        @summary Queries a list of alerts.
+        
         @param request: ListAlertMessagesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAlertMessagesResponse
@@ -18854,6 +19304,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
         """
+        @summary Queries a list of alerts.
+        
         @param request: ListAlertMessagesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListAlertMessagesResponse
@@ -18902,6 +19354,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListAlertMessagesRequest,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
         """
+        @summary Queries a list of alerts.
+        
         @param request: ListAlertMessagesRequest
         @return: ListAlertMessagesResponse
         """
@@ -18913,6 +19367,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListAlertMessagesRequest,
     ) -> dataworks_public_20200518_models.ListAlertMessagesResponse:
         """
+        @summary Queries a list of alerts.
+        
         @param request: ListAlertMessagesRequest
         @return: ListAlertMessagesResponse
         """
@@ -18925,6 +19381,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
         """
+        @summary Queries a list of baselines.
+        
         @param request: ListBaselineConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListBaselineConfigsResponse
@@ -18972,6 +19430,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
         """
+        @summary Queries a list of baselines.
+        
         @param request: ListBaselineConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListBaselineConfigsResponse
@@ -19018,6 +19478,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineConfigsRequest,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
         """
+        @summary Queries a list of baselines.
+        
         @param request: ListBaselineConfigsRequest
         @return: ListBaselineConfigsResponse
         """
@@ -19029,6 +19491,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineConfigsRequest,
     ) -> dataworks_public_20200518_models.ListBaselineConfigsResponse:
         """
+        @summary Queries a list of baselines.
+        
         @param request: ListBaselineConfigsRequest
         @return: ListBaselineConfigsResponse
         """
@@ -19041,7 +19505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
         """
-        @summary Queries baseline instances.
+        @summary Queries a list of baseline instances.
         
         @param request: ListBaselineStatusesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19094,7 +19558,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
         """
-        @summary Queries baseline instances.
+        @summary Queries a list of baseline instances.
         
         @param request: ListBaselineStatusesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19146,7 +19610,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineStatusesRequest,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
         """
-        @summary Queries baseline instances.
+        @summary Queries a list of baseline instances.
         
         @param request: ListBaselineStatusesRequest
         @return: ListBaselineStatusesResponse
@@ -19159,7 +19623,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselineStatusesRequest,
     ) -> dataworks_public_20200518_models.ListBaselineStatusesResponse:
         """
-        @summary Queries baseline instances.
+        @summary Queries a list of baseline instances.
         
         @param request: ListBaselineStatusesRequest
         @return: ListBaselineStatusesResponse
@@ -19173,7 +19637,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
         """
-        @summary 查询基线列表
+        @summary Obtains a list of baselines.
         
         @param request: ListBaselinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19222,7 +19686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
         """
-        @summary 查询基线列表
+        @summary Obtains a list of baselines.
         
         @param request: ListBaselinesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19270,7 +19734,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselinesRequest,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
         """
-        @summary 查询基线列表
+        @summary Obtains a list of baselines.
         
         @param request: ListBaselinesRequest
         @return: ListBaselinesResponse
@@ -19283,7 +19747,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBaselinesRequest,
     ) -> dataworks_public_20200518_models.ListBaselinesResponse:
         """
-        @summary 查询基线列表
+        @summary Obtains a list of baselines.
         
         @param request: ListBaselinesRequest
         @return: ListBaselinesResponse
@@ -19297,7 +19761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
         """
-        @summary Queries workflows.
+        @summary Queries a list of workflows.
         
         @param request: ListBusinessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19340,7 +19804,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
         """
-        @summary Queries workflows.
+        @summary Queries a list of workflows.
         
         @param request: ListBusinessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19382,7 +19846,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBusinessRequest,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
         """
-        @summary Queries workflows.
+        @summary Queries a list of workflows.
         
         @param request: ListBusinessRequest
         @return: ListBusinessResponse
@@ -19395,7 +19859,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListBusinessRequest,
     ) -> dataworks_public_20200518_models.ListBusinessResponse:
         """
-        @summary Queries workflows.
+        @summary Queries a list of workflows.
         
         @param request: ListBusinessRequest
         @return: ListBusinessResponse
@@ -19409,7 +19873,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
         """
-        @summary Queries compute engine instances.
+        @summary Queries a list of compute engines that are associated with a DataWorks workspace.
         
         @param request: ListCalcEnginesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19454,7 +19918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
         """
-        @summary Queries compute engine instances.
+        @summary Queries a list of compute engines that are associated with a DataWorks workspace.
         
         @param request: ListCalcEnginesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19498,7 +19962,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListCalcEnginesRequest,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
         """
-        @summary Queries compute engine instances.
+        @summary Queries a list of compute engines that are associated with a DataWorks workspace.
         
         @param request: ListCalcEnginesRequest
         @return: ListCalcEnginesResponse
@@ -19511,13 +19975,197 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListCalcEnginesRequest,
     ) -> dataworks_public_20200518_models.ListCalcEnginesResponse:
         """
-        @summary Queries compute engine instances.
+        @summary Queries a list of compute engines that are associated with a DataWorks workspace.
         
         @param request: ListCalcEnginesRequest
         @return: ListCalcEnginesResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_calc_engines_with_options_async(request, runtime)
+
+    def list_cluster_configs_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListClusterConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListClusterConfigsResponse:
+        """
+        @summary 列出集群的配置信息
+        
+        @param request: ListClusterConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterConfigs',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListClusterConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_configs_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListClusterConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListClusterConfigsResponse:
+        """
+        @summary 列出集群的配置信息
+        
+        @param request: ListClusterConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusterConfigs',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListClusterConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_configs(
+        self,
+        request: dataworks_public_20200518_models.ListClusterConfigsRequest,
+    ) -> dataworks_public_20200518_models.ListClusterConfigsResponse:
+        """
+        @summary 列出集群的配置信息
+        
+        @param request: ListClusterConfigsRequest
+        @return: ListClusterConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cluster_configs_with_options(request, runtime)
+
+    async def list_cluster_configs_async(
+        self,
+        request: dataworks_public_20200518_models.ListClusterConfigsRequest,
+    ) -> dataworks_public_20200518_models.ListClusterConfigsResponse:
+        """
+        @summary 列出集群的配置信息
+        
+        @param request: ListClusterConfigsRequest
+        @return: ListClusterConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cluster_configs_with_options_async(request, runtime)
+
+    def list_clusters_with_options(
+        self,
+        request: dataworks_public_20200518_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListClustersResponse:
+        """
+        @summary 列出注册到 DataWorks 的集群的信息
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_clusters_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.ListClustersResponse:
+        """
+        @summary 列出注册到 DataWorks 的集群的信息
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.ListClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_clusters(
+        self,
+        request: dataworks_public_20200518_models.ListClustersRequest,
+    ) -> dataworks_public_20200518_models.ListClustersResponse:
+        """
+        @summary 列出注册到 DataWorks 的集群的信息
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_clusters_with_options(request, runtime)
+
+    async def list_clusters_async(
+        self,
+        request: dataworks_public_20200518_models.ListClustersRequest,
+    ) -> dataworks_public_20200518_models.ListClustersResponse:
+        """
+        @summary 列出注册到 DataWorks 的集群的信息
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_clusters_with_options_async(request, runtime)
 
     def list_connections_with_options(
         self,
@@ -19527,7 +20175,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListConnections is deprecated
         
-        @summary 查询数据源
+        @summary Queries a list of data sources.
         
         @param request: ListConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19563,7 +20211,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListConnections is deprecated
         
-        @summary 查询数据源
+        @summary Queries a list of data sources.
         
         @param request: ListConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19598,7 +20246,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListConnections is deprecated
         
-        @summary 查询数据源
+        @summary Queries a list of data sources.
         
         @param request: ListConnectionsRequest
         @return: ListConnectionsResponse
@@ -19614,7 +20262,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListConnections is deprecated
         
-        @summary 查询数据源
+        @summary Queries a list of data sources.
         
         @param request: ListConnectionsRequest
         @return: ListConnectionsResponse
@@ -19629,7 +20277,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查询数据集成新版告警规则列表
+        @summary Queries a list of alert rules for a new-version synchronization task. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: ListDIAlarmRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19668,7 +20318,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查询数据集成新版告警规则列表
+        @summary Queries a list of alert rules for a new-version synchronization task. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: ListDIAlarmRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19706,7 +20358,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查询数据集成新版告警规则列表
+        @summary Queries a list of alert rules for a new-version synchronization task. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: ListDIAlarmRulesRequest
         @return: ListDIAlarmRulesResponse
@@ -19719,7 +20373,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIAlarmRulesRequest,
     ) -> dataworks_public_20200518_models.ListDIAlarmRulesResponse:
         """
-        @summary 查询数据集成新版告警规则列表
+        @summary Queries a list of alert rules for a new-version synchronization task. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization.
         
         @param request: ListDIAlarmRulesRequest
         @return: ListDIAlarmRulesResponse
@@ -19733,7 +20389,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
         """
-        @summary 查询数据集成新版解决方案任务列表
+        @summary Queries a list of new-version synchronization tasks. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can call this operation to obtain only the basic information about the tasks. If you want to obtain the details of a task, call the GetDIJob operation.
         
         @param request: ListDIJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19778,7 +20436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
         """
-        @summary 查询数据集成新版解决方案任务列表
+        @summary Queries a list of new-version synchronization tasks. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can call this operation to obtain only the basic information about the tasks. If you want to obtain the details of a task, call the GetDIJob operation.
         
         @param request: ListDIJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19822,7 +20482,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIJobsRequest,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
         """
-        @summary 查询数据集成新版解决方案任务列表
+        @summary Queries a list of new-version synchronization tasks. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can call this operation to obtain only the basic information about the tasks. If you want to obtain the details of a task, call the GetDIJob operation.
         
         @param request: ListDIJobsRequest
         @return: ListDIJobsResponse
@@ -19835,7 +20497,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIJobsRequest,
     ) -> dataworks_public_20200518_models.ListDIJobsResponse:
         """
-        @summary 查询数据集成新版解决方案任务列表
+        @summary Queries a list of new-version synchronization tasks. The following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
+        
+        @description You can call this operation to obtain only the basic information about the tasks. If you want to obtain the details of a task, call the GetDIJob operation.
         
         @param request: ListDIJobsRequest
         @return: ListDIJobsResponse
@@ -19849,7 +20513,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Queries the default global configurations of synchronization solutions in a specified DataWorks workspace.
+        
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19888,7 +20554,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Queries the default global configurations of synchronization solutions in a specified DataWorks workspace.
+        
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19926,7 +20594,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Queries the default global configurations of synchronization solutions in a specified DataWorks workspace.
+        
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @return: ListDIProjectConfigResponse
@@ -19939,7 +20609,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.ListDIProjectConfigResponse:
         """
-        @description DataWorks allows you to set the default global configuration for only the processing rules of DDL messages in sync solutions. After you configure the *processing rules of DDL messages** in sync solutions, the configuration is set as the default global configuration and applies to all real-time sync nodes. You can also modify the **processing rules of DDL messages** based on your business requirements. For more information, see [Sync solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Queries the default global configurations of synchronization solutions in a specified DataWorks workspace.
+        
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: ListDIProjectConfigRequest
         @return: ListDIProjectConfigResponse
@@ -19953,18 +20625,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        @summary Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq.
+        
+        @description Supported DAG types:
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
         CREATED: The DAG is created.
         RUNNING: The DAG is running.
         FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
-        
-        @description The operation that you want to perform. Set the value to *ListDags**.
+        SUCCESS: The DAG is successfully run.
         
         @param request: ListDagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20001,18 +20673,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        @summary Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq.
+        
+        @description Supported DAG types:
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
         CREATED: The DAG is created.
         RUNNING: The DAG is running.
         FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
-        
-        @description The operation that you want to perform. Set the value to *ListDags**.
+        SUCCESS: The DAG is successfully run.
         
         @param request: ListDagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20048,18 +20720,18 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDagsRequest,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        @summary Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq.
+        
+        @description Supported DAG types:
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
         CREATED: The DAG is created.
         RUNNING: The DAG is running.
         FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
-        
-        @description The operation that you want to perform. Set the value to *ListDags**.
+        SUCCESS: The DAG is successfully run.
         
         @param request: ListDagsRequest
         @return: ListDagsResponse
@@ -20072,18 +20744,18 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDagsRequest,
     ) -> dataworks_public_20200518_models.ListDagsResponse:
         """
-        @summary Supported DAG types:
-        MANUAL: the DAG for a manually triggered workflow.
-        SMOKE_TEST: the DAG for a smoke testing workflow.
-        SUPPLY_DATA: the DAG for a data backfill instance.
-        BUSINESS_PROCESS_DAG: the DAG for a one-time workflow.
+        @summary Queries the details of directed acyclic graphs (DAGs) for a single data backfill instance based on OpSeq.
+        
+        @description Supported DAG types:
+        MANUAL: DAG for a manually triggered workflow
+        SMOKE_TEST: DAG for a smoke testing workflow
+        SUPPLY_DATA: DAG for a data backfill instance
+        BUSINESS_PROCESS_DAG: DAG for a one-time workflow
         Supported DAG states:
         CREATED: The DAG is created.
         RUNNING: The DAG is running.
         FAILURE: The DAG fails to run.
-        SUCCESS: The DAG successfully runs.
-        
-        @description The operation that you want to perform. Set the value to *ListDags**.
+        SUCCESS: The DAG is successfully run.
         
         @param request: ListDagsRequest
         @return: ListDagsResponse
@@ -20213,7 +20885,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
         """
-        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the previous month.
         
         @param request: ListDataServiceApiTestRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20246,7 +20918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
         """
-        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the previous month.
         
         @param request: ListDataServiceApiTestRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20278,7 +20950,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
         """
-        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the previous month.
         
         @param request: ListDataServiceApiTestRequest
         @return: ListDataServiceApiTestResponse
@@ -20291,7 +20963,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServiceApiTestRequest,
     ) -> dataworks_public_20200518_models.ListDataServiceApiTestResponse:
         """
-        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the last month.
+        @summary Queries the test records of a DataService Studio API. This API operation allows you to query only the test records that are generated within the previous month.
         
         @param request: ListDataServiceApiTestRequest
         @return: ListDataServiceApiTestResponse
@@ -20877,7 +21549,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
         """
-        @summary Queries the information about APIs in the published state.
+        @summary Queries a list of APIs in the published state.
         
         @param request: ListDataServicePublishedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20924,7 +21596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
         """
-        @summary Queries the information about APIs in the published state.
+        @summary Queries a list of APIs in the published state.
         
         @param request: ListDataServicePublishedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20970,7 +21642,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServicePublishedApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
         """
-        @summary Queries the information about APIs in the published state.
+        @summary Queries a list of APIs in the published state.
         
         @param request: ListDataServicePublishedApisRequest
         @return: ListDataServicePublishedApisResponse
@@ -20983,7 +21655,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataServicePublishedApisRequest,
     ) -> dataworks_public_20200518_models.ListDataServicePublishedApisResponse:
         """
-        @summary Queries the information about APIs in the published state.
+        @summary Queries a list of APIs in the published state.
         
         @param request: ListDataServicePublishedApisRequest
         @return: ListDataServicePublishedApisResponse
@@ -20997,7 +21669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
         """
-        @summary 查询数据源
+        @summary Queries the data sources added to a DataWorks workspace.
         
         @param request: ListDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21030,7 +21702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
         """
-        @summary 查询数据源
+        @summary Queries the data sources added to a DataWorks workspace.
         
         @param request: ListDataSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21062,7 +21734,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
         """
-        @summary 查询数据源
+        @summary Queries the data sources added to a DataWorks workspace.
         
         @param request: ListDataSourcesRequest
         @return: ListDataSourcesResponse
@@ -21075,7 +21747,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDataSourcesRequest,
     ) -> dataworks_public_20200518_models.ListDataSourcesResponse:
         """
-        @summary 查询数据源
+        @summary Queries the data sources added to a DataWorks workspace.
         
         @param request: ListDataSourcesRequest
         @return: ListDataSourcesResponse
@@ -21089,7 +21761,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages. This operation is equivalent to viewing a list of deployment packages on the Deployment Packages page of the DataWorks console.
         
         @param request: ListDeploymentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21142,7 +21814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages. This operation is equivalent to viewing a list of deployment packages on the Deployment Packages page of the DataWorks console.
         
         @param request: ListDeploymentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21194,7 +21866,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDeploymentsRequest,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages. This operation is equivalent to viewing a list of deployment packages on the Deployment Packages page of the DataWorks console.
         
         @param request: ListDeploymentsRequest
         @return: ListDeploymentsResponse
@@ -21207,7 +21879,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListDeploymentsRequest,
     ) -> dataworks_public_20200518_models.ListDeploymentsResponse:
         """
-        @summary 查询发布包列表
+        @summary Queries a list of deployment packages. This operation is equivalent to viewing a list of deployment packages on the Deployment Packages page of the DataWorks console.
         
         @param request: ListDeploymentsRequest
         @return: ListDeploymentsResponse
@@ -21221,7 +21893,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        @summary Queries a list of built-in and custom extensions that are enabled in a workspace.
+        
+        @description For information about codes of extension point events, see [Development references: Extension point event codes](https://help.aliyun.com/document_detail/463357.html).
         
         @param request: ListEnabledExtensionsForProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21260,7 +21934,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        @summary Queries a list of built-in and custom extensions that are enabled in a workspace.
+        
+        @description For information about codes of extension point events, see [Development references: Extension point event codes](https://help.aliyun.com/document_detail/463357.html).
         
         @param request: ListEnabledExtensionsForProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21298,7 +21974,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEnabledExtensionsForProjectRequest,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        @summary Queries a list of built-in and custom extensions that are enabled in a workspace.
+        
+        @description For information about codes of extension point events, see [Development references: Extension point event codes](https://help.aliyun.com/document_detail/463357.html).
         
         @param request: ListEnabledExtensionsForProjectRequest
         @return: ListEnabledExtensionsForProjectResponse
@@ -21311,7 +21989,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEnabledExtensionsForProjectRequest,
     ) -> dataworks_public_20200518_models.ListEnabledExtensionsForProjectResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListEnabledExtensionsForProject**.
+        @summary Queries a list of built-in and custom extensions that are enabled in a workspace.
+        
+        @description For information about codes of extension point events, see [Development references: Extension point event codes](https://help.aliyun.com/document_detail/463357.html).
         
         @param request: ListEnabledExtensionsForProjectRequest
         @return: ListEnabledExtensionsForProjectResponse
@@ -21325,7 +22005,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
         """
-        @summary List entities by tags
+        @summary Queries a list of entities by tag. Only entities of the maxcompute-table type are supported.
         
         @param tmp_req: ListEntitiesByTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21362,7 +22042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
         """
-        @summary List entities by tags
+        @summary Queries a list of entities by tag. Only entities of the maxcompute-table type are supported.
         
         @param tmp_req: ListEntitiesByTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21398,7 +22078,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
         """
-        @summary List entities by tags
+        @summary Queries a list of entities by tag. Only entities of the maxcompute-table type are supported.
         
         @param request: ListEntitiesByTagsRequest
         @return: ListEntitiesByTagsResponse
@@ -21411,7 +22091,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEntitiesByTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntitiesByTagsResponse:
         """
-        @summary List entities by tags
+        @summary Queries a list of entities by tag. Only entities of the maxcompute-table type are supported.
         
         @param request: ListEntitiesByTagsRequest
         @return: ListEntitiesByTagsResponse
@@ -21425,7 +22105,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
         """
-        @summary List entity tags by given qualified name
+        @summary Queries a list of tags of an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: ListEntityTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21458,7 +22138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
         """
-        @summary List entity tags by given qualified name
+        @summary Queries a list of tags of an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: ListEntityTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21490,7 +22170,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEntityTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
         """
-        @summary List entity tags by given qualified name
+        @summary Queries a list of tags of an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: ListEntityTagsRequest
         @return: ListEntityTagsResponse
@@ -21503,7 +22183,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListEntityTagsRequest,
     ) -> dataworks_public_20200518_models.ListEntityTagsResponse:
         """
-        @summary List entity tags by given qualified name
+        @summary Queries a list of tags of an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: ListEntityTagsRequest
         @return: ListEntityTagsResponse
@@ -21517,7 +22197,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        @summary Queries a list of extensions.
         
         @param request: ListExtensionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21554,7 +22234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        @summary Queries a list of extensions.
         
         @param request: ListExtensionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21590,7 +22270,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListExtensionsRequest,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        @summary Queries a list of extensions.
         
         @param request: ListExtensionsRequest
         @return: ListExtensionsResponse
@@ -21603,7 +22283,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListExtensionsRequest,
     ) -> dataworks_public_20200518_models.ListExtensionsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListExtensions**.
+        @summary Queries a list of extensions.
         
         @param request: ListExtensionsRequest
         @return: ListExtensionsResponse
@@ -21617,6 +22297,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
         """
+        @summary Queries the information about node types, such as the code and name.
+        
         @param request: ListFileTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFileTypeResponse
@@ -21660,6 +22342,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
         """
+        @summary Queries the information about node types, such as the code and name.
+        
         @param request: ListFileTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFileTypeResponse
@@ -21702,6 +22386,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileTypeRequest,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
         """
+        @summary Queries the information about node types, such as the code and name.
+        
         @param request: ListFileTypeRequest
         @return: ListFileTypeResponse
         """
@@ -21713,6 +22399,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFileTypeRequest,
     ) -> dataworks_public_20200518_models.ListFileTypeResponse:
         """
+        @summary Queries the information about node types, such as the code and name.
+        
         @param request: ListFileTypeRequest
         @return: ListFileTypeResponse
         """
@@ -21969,6 +22657,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
         """
+        @summary Queries a list of folders.
+        
         @param request: ListFoldersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFoldersResponse
@@ -22010,6 +22700,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
         """
+        @summary Queries a list of folders.
+        
         @param request: ListFoldersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListFoldersResponse
@@ -22050,6 +22742,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFoldersRequest,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
         """
+        @summary Queries a list of folders.
+        
         @param request: ListFoldersRequest
         @return: ListFoldersResponse
         """
@@ -22061,6 +22755,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListFoldersRequest,
     ) -> dataworks_public_20200518_models.ListFoldersResponse:
         """
+        @summary Queries a list of folders.
+        
         @param request: ListFoldersRequest
         @return: ListFoldersResponse
         """
@@ -22073,7 +22769,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        @summary Queries information about inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a PAI node.
         
         @param request: ListInnerNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22120,7 +22816,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        @summary Queries information about inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a PAI node.
         
         @param request: ListInnerNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22166,7 +22862,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInnerNodesRequest,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        @summary Queries information about inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a PAI node.
         
         @param request: ListInnerNodesRequest
         @return: ListInnerNodesResponse
@@ -22179,7 +22875,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInnerNodesRequest,
     ) -> dataworks_public_20200518_models.ListInnerNodesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInnerNodes**.
+        @summary Queries information about inner nodes. For example, you can call this operation to query the inner nodes of a node group or a do-while node. You cannot call this operation to query the inner nodes of a PAI node.
         
         @param request: ListInnerNodesRequest
         @return: ListInnerNodesResponse
@@ -22193,6 +22889,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
         """
+        @summary Queries the trend of the number of auto triggered node instances within a specified period of time.
+        
         @param request: ListInstanceAmountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstanceAmountResponse
@@ -22230,6 +22928,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
         """
+        @summary Queries the trend of the number of auto triggered node instances within a specified period of time.
+        
         @param request: ListInstanceAmountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstanceAmountResponse
@@ -22266,6 +22966,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
         """
+        @summary Queries the trend of the number of auto triggered node instances within a specified period of time.
+        
         @param request: ListInstanceAmountRequest
         @return: ListInstanceAmountResponse
         """
@@ -22277,6 +22979,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceAmountRequest,
     ) -> dataworks_public_20200518_models.ListInstanceAmountResponse:
         """
+        @summary Queries the trend of the number of auto triggered node instances within a specified period of time.
+        
         @param request: ListInstanceAmountRequest
         @return: ListInstanceAmountResponse
         """
@@ -22289,7 +22993,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        @summary Queries information about the historical records of all instances. One historical record is generated if an instance is rerun once.
         
         @param request: ListInstanceHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22326,7 +23030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        @summary Queries information about the historical records of all instances. One historical record is generated if an instance is rerun once.
         
         @param request: ListInstanceHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22362,7 +23066,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        @summary Queries information about the historical records of all instances. One historical record is generated if an instance is rerun once.
         
         @param request: ListInstanceHistoryRequest
         @return: ListInstanceHistoryResponse
@@ -22375,7 +23079,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListInstanceHistoryRequest,
     ) -> dataworks_public_20200518_models.ListInstanceHistoryResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListInstanceHistory**.
+        @summary Queries information about the historical records of all instances. One historical record is generated if an instance is rerun once.
         
         @param request: ListInstanceHistoryRequest
         @return: ListInstanceHistoryResponse
@@ -22541,7 +23245,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
         """
-        @summary 查询血缘V2, 支持各种实体的血缘查询
+        @summary Queries the ancestor or descendant lineage of an entity.
         
         @param request: ListLineageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22584,7 +23288,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
         """
-        @summary 查询血缘V2, 支持各种实体的血缘查询
+        @summary Queries the ancestor or descendant lineage of an entity.
         
         @param request: ListLineageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22626,7 +23330,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListLineageRequest,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
         """
-        @summary 查询血缘V2, 支持各种实体的血缘查询
+        @summary Queries the ancestor or descendant lineage of an entity.
         
         @param request: ListLineageRequest
         @return: ListLineageResponse
@@ -22639,7 +23343,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListLineageRequest,
     ) -> dataworks_public_20200518_models.ListLineageResponse:
         """
-        @summary 查询血缘V2, 支持各种实体的血缘查询
+        @summary Queries the ancestor or descendant lineage of an entity.
         
         @param request: ListLineageRequest
         @return: ListLineageResponse
@@ -22653,6 +23357,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
         """
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: ListManualDagInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListManualDagInstancesResponse
@@ -22690,6 +23396,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
         """
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: ListManualDagInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListManualDagInstancesResponse
@@ -22726,6 +23434,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
         """
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: ListManualDagInstancesRequest
         @return: ListManualDagInstancesResponse
         """
@@ -22737,6 +23447,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListManualDagInstancesRequest,
     ) -> dataworks_public_20200518_models.ListManualDagInstancesResponse:
         """
+        @summary Queries the information about instances in a manually triggered workflow.
+        
         @param request: ListManualDagInstancesRequest
         @return: ListManualDagInstancesResponse
         """
@@ -22969,7 +23681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        @summary Queries information about collections. Collections include data albums that are displayed on the DataMap page and categories that are created in the data albums. You can call this API operation to query collections by type.
+        @summary Queries information about collections. Collections include data albums that are displayed on the Data Map page and categories that are created in the data albums. You can call this API operation to query collections by type.
         
         @description The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
         
@@ -23022,7 +23734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        @summary Queries information about collections. Collections include data albums that are displayed on the DataMap page and categories that are created in the data albums. You can call this API operation to query collections by type.
+        @summary Queries information about collections. Collections include data albums that are displayed on the Data Map page and categories that are created in the data albums. You can call this API operation to query collections by type.
         
         @description The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
         
@@ -23074,7 +23786,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        @summary Queries information about collections. Collections include data albums that are displayed on the DataMap page and categories that are created in the data albums. You can call this API operation to query collections by type.
+        @summary Queries information about collections. Collections include data albums that are displayed on the Data Map page and categories that are created in the data albums. You can call this API operation to query collections by type.
         
         @description The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
         
@@ -23089,7 +23801,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaCollectionsRequest,
     ) -> dataworks_public_20200518_models.ListMetaCollectionsResponse:
         """
-        @summary Queries information about collections. Collections include data albums that are displayed on the DataMap page and categories that are created in the data albums. You can call this API operation to query collections by type.
+        @summary Queries information about collections. Collections include data albums that are displayed on the Data Map page and categories that are created in the data albums. You can call this API operation to query collections by type.
         
         @description The type can be ALBUM or ALBUM_CATEGORY. ALBUM indicates data albums. ALBUM_CATEGORY indicates categories.
         
@@ -23105,6 +23817,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
         """
+        @summary Queries a list of metadatabases.
+        
         @param request: ListMetaDBRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListMetaDBResponse
@@ -23136,6 +23850,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
         """
+        @summary Queries a list of metadatabases.
+        
         @param request: ListMetaDBRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListMetaDBResponse
@@ -23166,6 +23882,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaDBRequest,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
         """
+        @summary Queries a list of metadatabases.
+        
         @param request: ListMetaDBRequest
         @return: ListMetaDBResponse
         """
@@ -23177,6 +23895,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMetaDBRequest,
     ) -> dataworks_public_20200518_models.ListMetaDBResponse:
         """
+        @summary Queries a list of metadatabases.
+        
         @param request: ListMetaDBRequest
         @return: ListMetaDBResponse
         """
@@ -23189,7 +23909,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        @summary Queries a list of migration tasks.
         
         @param request: ListMigrationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23232,7 +23952,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        @summary Queries a list of migration tasks.
         
         @param request: ListMigrationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23274,7 +23994,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMigrationsRequest,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        @summary Queries a list of migration tasks.
         
         @param request: ListMigrationsRequest
         @return: ListMigrationsResponse
@@ -23287,7 +24007,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListMigrationsRequest,
     ) -> dataworks_public_20200518_models.ListMigrationsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListMigrations**.
+        @summary Queries a list of migration tasks.
         
         @param request: ListMigrationsRequest
         @return: ListMigrationsResponse
@@ -23302,6 +24022,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListNodeIOResponse:
         """
         @deprecated OpenAPI ListNodeIO is deprecated
+        
+        @summary Queries the information about one level of ancestor or descendant nodes of a node.
         
         @param request: ListNodeIORequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23343,6 +24065,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListNodeIO is deprecated
         
+        @summary Queries the information about one level of ancestor or descendant nodes of a node.
+        
         @param request: ListNodeIORequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodeIOResponse
@@ -23382,6 +24106,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListNodeIO is deprecated
         
+        @summary Queries the information about one level of ancestor or descendant nodes of a node.
+        
         @param request: ListNodeIORequest
         @return: ListNodeIOResponse
         Deprecated
@@ -23396,6 +24122,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListNodeIO is deprecated
         
+        @summary Queries the information about one level of ancestor or descendant nodes of a node.
+        
         @param request: ListNodeIORequest
         @return: ListNodeIOResponse
         Deprecated
@@ -23409,6 +24137,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
         """
+        @summary Queries the input and output information about a node. Only the ancestor or descendant nodes at the nearest level can be queried each time.
+        
         @param request: ListNodeInputOrOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodeInputOrOutputResponse
@@ -23446,6 +24176,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
         """
+        @summary Queries the input and output information about a node. Only the ancestor or descendant nodes at the nearest level can be queried each time.
+        
         @param request: ListNodeInputOrOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodeInputOrOutputResponse
@@ -23482,6 +24214,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
         """
+        @summary Queries the input and output information about a node. Only the ancestor or descendant nodes at the nearest level can be queried each time.
+        
         @param request: ListNodeInputOrOutputRequest
         @return: ListNodeInputOrOutputResponse
         """
@@ -23493,6 +24227,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodeInputOrOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodeInputOrOutputResponse:
         """
+        @summary Queries the input and output information about a node. Only the ancestor or descendant nodes at the nearest level can be queried each time.
+        
         @param request: ListNodeInputOrOutputRequest
         @return: ListNodeInputOrOutputResponse
         """
@@ -23633,6 +24369,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
         """
+        @summary Queries nodes in a baseline.
+        
         @param request: ListNodesByBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodesByBaselineResponse
@@ -23666,6 +24404,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
         """
+        @summary Queries nodes in a baseline.
+        
         @param request: ListNodesByBaselineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodesByBaselineResponse
@@ -23698,6 +24438,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
         """
+        @summary Queries nodes in a baseline.
+        
         @param request: ListNodesByBaselineRequest
         @return: ListNodesByBaselineResponse
         """
@@ -23709,6 +24451,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByBaselineRequest,
     ) -> dataworks_public_20200518_models.ListNodesByBaselineResponse:
         """
+        @summary Queries nodes in a baseline.
+        
         @param request: ListNodesByBaselineRequest
         @return: ListNodesByBaselineResponse
         """
@@ -23721,6 +24465,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
         """
+        @summary Queries nodes based on the output of the nodes.
+        
         @param request: ListNodesByOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodesByOutputResponse
@@ -23756,6 +24502,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
         """
+        @summary Queries nodes based on the output of the nodes.
+        
         @param request: ListNodesByOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListNodesByOutputResponse
@@ -23790,6 +24538,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
         """
+        @summary Queries nodes based on the output of the nodes.
+        
         @param request: ListNodesByOutputRequest
         @return: ListNodesByOutputResponse
         """
@@ -23801,6 +24551,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListNodesByOutputRequest,
     ) -> dataworks_public_20200518_models.ListNodesByOutputResponse:
         """
+        @summary Queries nodes based on the output of the nodes.
+        
         @param request: ListNodesByOutputRequest
         @return: ListNodesByOutputResponse
         """
@@ -23813,6 +24565,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
+        @summary Queries a list of permission request orders.
+        
         @param request: ListPermissionApplyOrdersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPermissionApplyOrdersResponse
@@ -23866,6 +24620,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
+        @summary Queries a list of permission request orders.
+        
         @param request: ListPermissionApplyOrdersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListPermissionApplyOrdersResponse
@@ -23918,6 +24674,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
+        @summary Queries a list of permission request orders.
+        
         @param request: ListPermissionApplyOrdersRequest
         @return: ListPermissionApplyOrdersResponse
         """
@@ -23929,6 +24687,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
+        @summary Queries a list of permission request orders.
+        
         @param request: ListPermissionApplyOrdersRequest
         @return: ListPermissionApplyOrdersResponse
         """
@@ -23942,6 +24702,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.ListProgramTypeCountResponse:
         """
         @deprecated OpenAPI ListProgramTypeCount is deprecated
+        
+        @summary Queries the distribution of different types of nodes.
         
         @param request: ListProgramTypeCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23981,6 +24743,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListProgramTypeCount is deprecated
         
+        @summary Queries the distribution of different types of nodes.
+        
         @param request: ListProgramTypeCountRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProgramTypeCountResponse
@@ -24018,6 +24782,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListProgramTypeCount is deprecated
         
+        @summary Queries the distribution of different types of nodes.
+        
         @param request: ListProgramTypeCountRequest
         @return: ListProgramTypeCountResponse
         Deprecated
@@ -24032,6 +24798,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI ListProgramTypeCount is deprecated
         
+        @summary Queries the distribution of different types of nodes.
+        
         @param request: ListProgramTypeCountRequest
         @return: ListProgramTypeCountResponse
         Deprecated
@@ -24045,7 +24813,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @summary Queries the IDs of the workspaces on which a specific Alibaba Cloud account or RAM user has permissions in a specific region.
+        
+        @description An Alibaba Cloud account can assume a role such as the developer, O\\&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24080,7 +24850,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @summary Queries the IDs of the workspaces on which a specific Alibaba Cloud account or RAM user has permissions in a specific region.
+        
+        @description An Alibaba Cloud account can assume a role such as the developer, O\\&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24114,7 +24886,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectIdsRequest,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @summary Queries the IDs of the workspaces on which a specific Alibaba Cloud account or RAM user has permissions in a specific region.
+        
+        @description An Alibaba Cloud account can assume a role such as the developer, O\\&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @return: ListProjectIdsResponse
@@ -24127,7 +24901,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectIdsRequest,
     ) -> dataworks_public_20200518_models.ListProjectIdsResponse:
         """
-        @description For example, an Alibaba Cloud account can assume the developer, O&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
+        @summary Queries the IDs of the workspaces on which a specific Alibaba Cloud account or RAM user has permissions in a specific region.
+        
+        @description An Alibaba Cloud account can assume a role such as the developer, O\\&M engineer, or workspace administrator role in a workspace. For more information, see [Manage members and roles](https://help.aliyun.com/document_detail/136941.html).
         
         @param request: ListProjectIdsRequest
         @return: ListProjectIdsResponse
@@ -24141,7 +24917,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
         """
-        @summary Queries members in a DataWorks workspace.
+        @summary Queries a list of existing members in a DataWorks workspace.
         
         @param request: ListProjectMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24180,7 +24956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
         """
-        @summary Queries members in a DataWorks workspace.
+        @summary Queries a list of existing members in a DataWorks workspace.
         
         @param request: ListProjectMembersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24218,7 +24994,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectMembersRequest,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
         """
-        @summary Queries members in a DataWorks workspace.
+        @summary Queries a list of existing members in a DataWorks workspace.
         
         @param request: ListProjectMembersRequest
         @return: ListProjectMembersResponse
@@ -24231,7 +25007,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectMembersRequest,
     ) -> dataworks_public_20200518_models.ListProjectMembersResponse:
         """
-        @summary Queries members in a DataWorks workspace.
+        @summary Queries a list of existing members in a DataWorks workspace.
         
         @param request: ListProjectMembersRequest
         @return: ListProjectMembersResponse
@@ -24245,7 +25021,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
         """
-        @summary A topic is added to describe how to call the ListProjectRoles operation to query all roles in a workspace.
+        @summary Queries a list of roles in a DataWorks workspace.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
@@ -24283,7 +25059,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
         """
-        @summary A topic is added to describe how to call the ListProjectRoles operation to query all roles in a workspace.
+        @summary Queries a list of roles in a DataWorks workspace.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
@@ -24320,7 +25096,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectRolesRequest,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
         """
-        @summary A topic is added to describe how to call the ListProjectRoles operation to query all roles in a workspace.
+        @summary Queries a list of roles in a DataWorks workspace.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
@@ -24336,7 +25112,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectRolesRequest,
     ) -> dataworks_public_20200518_models.ListProjectRolesResponse:
         """
-        @summary A topic is added to describe how to call the ListProjectRoles operation to query all roles in a workspace.
+        @summary Queries a list of roles in a DataWorks workspace.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=dataworks-public\\&api=ListProjectRoles\\&type=RPC\\&version=2020-05-18)
@@ -24353,7 +25129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
         """
-        @summary 查询工作空间
+        @summary Queries a list of DataWorks workspaces of the tenant to which a user belongs.
         
         @param tmp_req: ListProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24398,7 +25174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
         """
-        @summary 查询工作空间
+        @summary Queries a list of DataWorks workspaces of the tenant to which a user belongs.
         
         @param tmp_req: ListProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24442,7 +25218,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectsRequest,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
         """
-        @summary 查询工作空间
+        @summary Queries a list of DataWorks workspaces of the tenant to which a user belongs.
         
         @param request: ListProjectsRequest
         @return: ListProjectsResponse
@@ -24455,7 +25231,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListProjectsRequest,
     ) -> dataworks_public_20200518_models.ListProjectsResponse:
         """
-        @summary 查询工作空间
+        @summary Queries a list of DataWorks workspaces of the tenant to which a user belongs.
         
         @param request: ListProjectsRequest
         @return: ListProjectsResponse
@@ -24469,6 +25245,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
+        @summary Queries a list of historical check results based on a partition filter expression.
+        
         @description ***\
         
         @param request: ListQualityResultsByEntityRequest
@@ -24516,6 +25294,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
+        @summary Queries a list of historical check results based on a partition filter expression.
+        
         @description ***\
         
         @param request: ListQualityResultsByEntityRequest
@@ -24562,6 +25342,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
+        @summary Queries a list of historical check results based on a partition filter expression.
+        
         @description ***\
         
         @param request: ListQualityResultsByEntityRequest
@@ -24575,6 +25357,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByEntityRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByEntityResponse:
         """
+        @summary Queries a list of historical check results based on a partition filter expression.
+        
         @description ***\
         
         @param request: ListQualityResultsByEntityRequest
@@ -24589,6 +25373,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
         """
+        @summary Queries monitoring results after the data quality of a data source or a compute engine is monitored based on monitoring rules.
+        
         @param request: ListQualityResultsByRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListQualityResultsByRuleResponse
@@ -24634,6 +25420,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
         """
+        @summary Queries monitoring results after the data quality of a data source or a compute engine is monitored based on monitoring rules.
+        
         @param request: ListQualityResultsByRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListQualityResultsByRuleResponse
@@ -24678,6 +25466,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByRuleRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
         """
+        @summary Queries monitoring results after the data quality of a data source or a compute engine is monitored based on monitoring rules.
+        
         @param request: ListQualityResultsByRuleRequest
         @return: ListQualityResultsByRuleResponse
         """
@@ -24689,6 +25479,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityResultsByRuleRequest,
     ) -> dataworks_public_20200518_models.ListQualityResultsByRuleResponse:
         """
+        @summary Queries monitoring results after the data quality of a data source or a compute engine is monitored based on monitoring rules.
+        
         @param request: ListQualityResultsByRuleRequest
         @return: ListQualityResultsByRuleResponse
         """
@@ -24701,6 +25493,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
         """
+        @summary Queries monitoring rules based on a partition filter expression.
+        
         @param request: ListQualityRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListQualityRulesResponse
@@ -24742,6 +25536,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
         """
+        @summary Queries monitoring rules based on a partition filter expression.
+        
         @param request: ListQualityRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListQualityRulesResponse
@@ -24782,6 +25578,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityRulesRequest,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
         """
+        @summary Queries monitoring rules based on a partition filter expression.
+        
         @param request: ListQualityRulesRequest
         @return: ListQualityRulesResponse
         """
@@ -24793,6 +25591,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListQualityRulesRequest,
     ) -> dataworks_public_20200518_models.ListQualityRulesResponse:
         """
+        @summary Queries monitoring rules based on a partition filter expression.
+        
         @param request: ListQualityRulesRequest
         @return: ListQualityRulesResponse
         """
@@ -24805,6 +25605,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
         """
+        @summary Queries synchronization tasks in Data Integration that use a specific data source.
+        
         @param request: ListRefDISyncTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRefDISyncTasksResponse
@@ -24848,6 +25650,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
         """
+        @summary Queries synchronization tasks in Data Integration that use a specific data source.
+        
         @param request: ListRefDISyncTasksRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListRefDISyncTasksResponse
@@ -24890,6 +25694,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRefDISyncTasksRequest,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
         """
+        @summary Queries synchronization tasks in Data Integration that use a specific data source.
+        
         @param request: ListRefDISyncTasksRequest
         @return: ListRefDISyncTasksResponse
         """
@@ -24901,6 +25707,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRefDISyncTasksRequest,
     ) -> dataworks_public_20200518_models.ListRefDISyncTasksResponse:
         """
+        @summary Queries synchronization tasks in Data Integration that use a specific data source.
+        
         @param request: ListRefDISyncTasksRequest
         @return: ListRefDISyncTasksResponse
         """
@@ -24913,7 +25721,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
         """
-        @summary Queries custom alert rules.
+        @summary Queries a list of custom alert rules.
         
         @param request: ListRemindsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24960,7 +25768,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
         """
-        @summary Queries custom alert rules.
+        @summary Queries a list of custom alert rules.
         
         @param request: ListRemindsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25006,7 +25814,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRemindsRequest,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
         """
-        @summary Queries custom alert rules.
+        @summary Queries a list of custom alert rules.
         
         @param request: ListRemindsRequest
         @return: ListRemindsResponse
@@ -25019,7 +25827,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListRemindsRequest,
     ) -> dataworks_public_20200518_models.ListRemindsResponse:
         """
-        @summary Queries custom alert rules.
+        @summary Queries a list of custom alert rules.
         
         @param request: ListRemindsRequest
         @return: ListRemindsResponse
@@ -25033,7 +25841,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
         """
-        @summary 查询资源组
+        @summary Queries a list of resource groups of a specific type.
         
         @param tmp_req: ListResourceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25080,7 +25888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
         """
-        @summary 查询资源组
+        @summary Queries a list of resource groups of a specific type.
         
         @param tmp_req: ListResourceGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25126,7 +25934,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListResourceGroupsRequest,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
         """
-        @summary 查询资源组
+        @summary Queries a list of resource groups of a specific type.
         
         @param request: ListResourceGroupsRequest
         @return: ListResourceGroupsResponse
@@ -25139,7 +25947,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListResourceGroupsRequest,
     ) -> dataworks_public_20200518_models.ListResourceGroupsResponse:
         """
-        @summary 查询资源组
+        @summary Queries a list of resource groups of a specific type.
         
         @param request: ListResourceGroupsRequest
         @return: ListResourceGroupsResponse
@@ -25153,7 +25961,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        @summary Queries a list of on-duty engineers in a shift schedule.
         
         @param request: ListShiftPersonnelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25196,7 +26004,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        @summary Queries a list of on-duty engineers in a shift schedule.
         
         @param request: ListShiftPersonnelsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25238,7 +26046,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftPersonnelsRequest,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        @summary Queries a list of on-duty engineers in a shift schedule.
         
         @param request: ListShiftPersonnelsRequest
         @return: ListShiftPersonnelsResponse
@@ -25251,7 +26059,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftPersonnelsRequest,
     ) -> dataworks_public_20200518_models.ListShiftPersonnelsResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftPersonnels**.
+        @summary Queries a list of on-duty engineers in a shift schedule.
         
         @param request: ListShiftPersonnelsRequest
         @return: ListShiftPersonnelsResponse
@@ -25265,7 +26073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        @summary Queries a list of shift schedules in Operation Center.
         
         @param request: ListShiftSchedulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25306,7 +26114,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        @summary Queries a list of shift schedules in Operation Center.
         
         @param request: ListShiftSchedulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25346,7 +26154,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftSchedulesRequest,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        @summary Queries a list of shift schedules in Operation Center.
         
         @param request: ListShiftSchedulesRequest
         @return: ListShiftSchedulesResponse
@@ -25359,7 +26167,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListShiftSchedulesRequest,
     ) -> dataworks_public_20200518_models.ListShiftSchedulesResponse:
         """
-        @summary The operation that you want to perform. Set the value to *ListShiftSchedules**.
+        @summary Queries a list of shift schedules in Operation Center.
         
         @param request: ListShiftSchedulesRequest
         @return: ListShiftSchedulesResponse
@@ -25469,7 +26277,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
         """
-        @summary Queries table levels. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table levels. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25502,7 +26310,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
         """
-        @summary Queries table levels. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table levels. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25534,7 +26342,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableLevelRequest,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
         """
-        @summary Queries table levels. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table levels. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableLevelRequest
         @return: ListTableLevelResponse
@@ -25547,7 +26355,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableLevelRequest,
     ) -> dataworks_public_20200518_models.ListTableLevelResponse:
         """
-        @summary Queries table levels. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table levels. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableLevelRequest
         @return: ListTableLevelResponse
@@ -25561,7 +26369,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
         """
-        @summary Queries table folders. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table themes. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25594,7 +26402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
         """
-        @summary Queries table folders. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table themes. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25626,7 +26434,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableThemeRequest,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
         """
-        @summary Queries table folders. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table themes. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableThemeRequest
         @return: ListTableThemeResponse
@@ -25639,7 +26447,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListTableThemeRequest,
     ) -> dataworks_public_20200518_models.ListTableThemeResponse:
         """
-        @summary Queries table folders. This API operation will be replaced soon. We recommend that you do not call this API operation.
+        @summary Queries a list of table themes. This operation will be replaced soon. We recommend that you do not call this operation.
         
         @param request: ListTableThemeRequest
         @return: ListTableThemeResponse
@@ -25781,8 +26589,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
         """
-        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
-        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
         
         @param request: MountDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25821,8 +26628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
         """
-        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
-        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
         
         @param request: MountDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25860,8 +26666,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.MountDirectoryRequest,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
         """
-        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
-        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
         
         @param request: MountDirectoryRequest
         @return: MountDirectoryResponse
@@ -25874,8 +26679,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.MountDirectoryRequest,
     ) -> dataworks_public_20200518_models.MountDirectoryResponse:
         """
-        @summary The ID of the directory that you want to add to the left-side navigation pane of DataAnalysis. This parameter is used together with the TargetType parameter.
-        For example, if you set the TargetType parameter to META_ALBUM, you must set the TargetId parameter to the ID of the related data album. You can call the [ListMetaCollections](https://help.aliyun.com/document_detail/469938.html) operation to obtain the ID of the data album. The ID is indicated by the QualifiedName parameter.
+        @summary Adds a directory to the left-side navigation pane of DataAnalysis.
         
         @param request: MountDirectoryRequest
         @return: MountDirectoryResponse
@@ -25889,7 +26693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
         """
-        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        @summary Undeploys a node.
         
         @param request: OfflineNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25926,7 +26730,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
         """
-        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        @summary Undeploys a node.
         
         @param request: OfflineNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25962,7 +26766,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.OfflineNodeRequest,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
         """
-        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        @summary Undeploys a node.
         
         @param request: OfflineNodeRequest
         @return: OfflineNodeResponse
@@ -25975,7 +26779,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.OfflineNodeRequest,
     ) -> dataworks_public_20200518_models.OfflineNodeResponse:
         """
-        @summary The operation that you want to perform. Set the value to *OfflineNode**.
+        @summary Undeploys a node.
         
         @param request: OfflineNodeRequest
         @return: OfflineNodeResponse
@@ -25989,6 +26793,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
         """
+        @summary Publishes an API.
+        
         @param request: PublishDataServiceApiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PublishDataServiceApiResponse
@@ -26026,6 +26832,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
         """
+        @summary Publishes an API.
+        
         @param request: PublishDataServiceApiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PublishDataServiceApiResponse
@@ -26062,6 +26870,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.PublishDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
         """
+        @summary Publishes an API.
+        
         @param request: PublishDataServiceApiRequest
         @return: PublishDataServiceApiResponse
         """
@@ -26073,6 +26883,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.PublishDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.PublishDataServiceApiResponse:
         """
+        @summary Publishes an API.
+        
         @param request: PublishDataServiceApiRequest
         @return: PublishDataServiceApiResponse
         """
@@ -26085,10 +26897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
-        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Queries the execution results of an asynchronous task.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization task or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization task. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26127,10 +26938,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
-        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Queries the execution results of an asynchronous task.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization task or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization task. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26168,10 +26978,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultRequest,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
-        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Queries the execution results of an asynchronous task.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization task or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization task. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @return: QueryDISyncTaskConfigProcessResultResponse
@@ -26184,10 +26993,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultRequest,
     ) -> dataworks_public_20200518_models.QueryDISyncTaskConfigProcessResultResponse:
         """
-        @summary DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) or [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to create or update a batch synchronization node in Data Integration. To create or update a real-time synchronization node or a synchronization solution, you must first call the GenerateDISyncTaskConfigForCreating or GenerateDISyncTaskConfigForUpdating operation to generate the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization node or a synchronization solution.
-        DataWorks allows you to create or update real-time synchronization nodes and synchronization solutions in Data Integration only in asynchronous mode.
+        @summary Queries the execution results of an asynchronous task.
         
-        @description The operation that you want to perform.
+        @description DataWorks allows you to call only the [CreateDISyncTask](https://help.aliyun.com/document_detail/278725.html) operation to create a batch synchronization task or the [UpdateDISyncTask](https://help.aliyun.com/document_detail/289109.html) operation to update a batch synchronization task in Data Integration. To create or update a real-time synchronization task, you must first call the [GenerateDISyncTaskConfigForCreating](https://help.aliyun.com/document_detail/383463.html) or [GenerateDISyncTaskConfigForUpdating](https://help.aliyun.com/document_detail/383464.html) operation to obtain the ID of an asynchronous thread and call the [QueryDISyncTaskConfigProcessResult](https://help.aliyun.com/document_detail/383465.html) operation to obtain the asynchronously generated parameters based on the ID. Then, you can call the CreateDISyncTask or UpdateDISyncTask operation and use the parameters as request parameters to create or update a real-time synchronization task. DataWorks allows you to create or update real-time synchronization tasks in Data Integration only in asynchronous mode.
         
         @param request: QueryDISyncTaskConfigProcessResultRequest
         @return: QueryDISyncTaskConfigProcessResultResponse
@@ -26201,7 +27009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
         """
-        @summary 获取模版列表
+        @summary Queries the default data category and data sensitivity level template defined by Data Security Guard.
         
         @param request: QueryDefaultTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26236,7 +27044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
         """
-        @summary 获取模版列表
+        @summary Queries the default data category and data sensitivity level template defined by Data Security Guard.
         
         @param request: QueryDefaultTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26270,7 +27078,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
         """
-        @summary 获取模版列表
+        @summary Queries the default data category and data sensitivity level template defined by Data Security Guard.
         
         @param request: QueryDefaultTemplateRequest
         @return: QueryDefaultTemplateResponse
@@ -26283,7 +27091,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryDefaultTemplateRequest,
     ) -> dataworks_public_20200518_models.QueryDefaultTemplateResponse:
         """
-        @summary 获取模版列表
+        @summary Queries the default data category and data sensitivity level template defined by Data Security Guard.
         
         @param request: QueryDefaultTemplateRequest
         @return: QueryDefaultTemplateResponse
@@ -26297,7 +27105,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
         """
-        @summary 建模平台弹外的公共处理
+        @summary Queries information about objects that are created in Data Modeling by using fast modeling language (FML) statements.
+        
+        @description    Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+        The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+        A maximum of 1,000 entries can be returned each time you call this API operation.
         
         @param request: QueryPublicModelEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26334,7 +27146,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
         """
-        @summary 建模平台弹外的公共处理
+        @summary Queries information about objects that are created in Data Modeling by using fast modeling language (FML) statements.
+        
+        @description    Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+        The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+        A maximum of 1,000 entries can be returned each time you call this API operation.
         
         @param request: QueryPublicModelEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26370,7 +27186,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
         """
-        @summary 建模平台弹外的公共处理
+        @summary Queries information about objects that are created in Data Modeling by using fast modeling language (FML) statements.
+        
+        @description    Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+        The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+        A maximum of 1,000 entries can be returned each time you call this API operation.
         
         @param request: QueryPublicModelEngineRequest
         @return: QueryPublicModelEngineResponse
@@ -26383,7 +27203,11 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryPublicModelEngineRequest,
     ) -> dataworks_public_20200518_models.QueryPublicModelEngineResponse:
         """
-        @summary 建模平台弹外的公共处理
+        @summary Queries information about objects that are created in Data Modeling by using fast modeling language (FML) statements.
+        
+        @description    Each time you call this API operation, you must use FML statements to query information about objects that are created in Data Modeling.
+        The information about the objects can be queried by page, except for data layers, business processes, and data domains. You can add an offset to the end of an FML statement. The num LIMIT num statement specifies the offset when the information about the objects is queried, and the number of pages to return each time. The offset value must be a multiple of the number of pages.
+        A maximum of 1,000 entries can be returned each time you call this API operation.
         
         @param request: QueryPublicModelEngineRequest
         @return: QueryPublicModelEngineResponse
@@ -26397,7 +27221,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
         """
-        @summary 获取识别规则类型数据
+        @summary Queries the type of a sensitive data identification rule.
         
         @param request: QueryRecognizeDataByRuleTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26434,7 +27258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
         """
-        @summary 获取识别规则类型数据
+        @summary Queries the type of a sensitive data identification rule.
         
         @param request: QueryRecognizeDataByRuleTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26470,7 +27294,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
         """
-        @summary 获取识别规则类型数据
+        @summary Queries the type of a sensitive data identification rule.
         
         @param request: QueryRecognizeDataByRuleTypeRequest
         @return: QueryRecognizeDataByRuleTypeResponse
@@ -26483,7 +27307,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeDataByRuleTypeResponse:
         """
-        @summary 获取识别规则类型数据
+        @summary Queries the type of a sensitive data identification rule.
         
         @param request: QueryRecognizeDataByRuleTypeRequest
         @return: QueryRecognizeDataByRuleTypeResponse
@@ -26497,7 +27321,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
         """
-        @summary 查询识别规则详情
+        @summary Queries the details of a specified sensitive field in Data Security Guard.
         
         @param request: QueryRecognizeRuleDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26534,7 +27358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
         """
-        @summary 查询识别规则详情
+        @summary Queries the details of a specified sensitive field in Data Security Guard.
         
         @param request: QueryRecognizeRuleDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26570,7 +27394,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
         """
-        @summary 查询识别规则详情
+        @summary Queries the details of a specified sensitive field in Data Security Guard.
         
         @param request: QueryRecognizeRuleDetailRequest
         @return: QueryRecognizeRuleDetailResponse
@@ -26583,7 +27407,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QueryRecognizeRuleDetailRequest,
     ) -> dataworks_public_20200518_models.QueryRecognizeRuleDetailResponse:
         """
-        @summary 查询识别规则详情
+        @summary Queries the details of a specified sensitive field in Data Security Guard.
         
         @param request: QueryRecognizeRuleDetailRequest
         @return: QueryRecognizeRuleDetailResponse
@@ -26596,7 +27420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
         """
-        @summary 获取识别规则类型
+        @summary Queries the built-in sensitive data identification rule that is used to configure a sensitive field.
         
         @param request: QueryRecognizeRulesTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26624,7 +27448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
         """
-        @summary 获取识别规则类型
+        @summary Queries the built-in sensitive data identification rule that is used to configure a sensitive field.
         
         @param request: QueryRecognizeRulesTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26649,7 +27473,7 @@ class Client(OpenApiClient):
 
     def query_recognize_rules_type(self) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
         """
-        @summary 获取识别规则类型
+        @summary Queries the built-in sensitive data identification rule that is used to configure a sensitive field.
         
         @return: QueryRecognizeRulesTypeResponse
         """
@@ -26658,7 +27482,7 @@ class Client(OpenApiClient):
 
     async def query_recognize_rules_type_async(self) -> dataworks_public_20200518_models.QueryRecognizeRulesTypeResponse:
         """
-        @summary 获取识别规则类型
+        @summary Queries the built-in sensitive data identification rule that is used to configure a sensitive field.
         
         @return: QueryRecognizeRulesTypeResponse
         """
@@ -26671,7 +27495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
         """
-        @summary 获取分类
+        @summary Queries data categories.
         
         @param request: QuerySensClassificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26708,7 +27532,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
         """
-        @summary 获取分类
+        @summary Queries data categories.
         
         @param request: QuerySensClassificationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26744,7 +27568,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensClassificationRequest,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
         """
-        @summary 获取分类
+        @summary Queries data categories.
         
         @param request: QuerySensClassificationRequest
         @return: QuerySensClassificationResponse
@@ -26757,7 +27581,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensClassificationRequest,
     ) -> dataworks_public_20200518_models.QuerySensClassificationResponse:
         """
-        @summary 获取分类
+        @summary Queries data categories.
         
         @param request: QuerySensClassificationRequest
         @return: QuerySensClassificationResponse
@@ -26771,7 +27595,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
         """
-        @summary 获取分级
+        @summary Queries data sensitivity levels in Data Security Guard.
         
         @param request: QuerySensLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26808,7 +27632,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
         """
-        @summary 获取分级
+        @summary Queries data sensitivity levels in Data Security Guard.
         
         @param request: QuerySensLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26844,7 +27668,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensLevelRequest,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
         """
-        @summary 获取分级
+        @summary Queries data sensitivity levels in Data Security Guard.
         
         @param request: QuerySensLevelRequest
         @return: QuerySensLevelResponse
@@ -26857,7 +27681,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensLevelRequest,
     ) -> dataworks_public_20200518_models.QuerySensLevelResponse:
         """
-        @summary 获取分级
+        @summary Queries data sensitivity levels in Data Security Guard.
         
         @param request: QuerySensLevelRequest
         @return: QuerySensLevelResponse
@@ -26871,7 +27695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
         """
-        @summary 获取敏感字段
+        @summary Queries sensitive data identification rules.
         
         @param request: QuerySensNodeInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26918,7 +27742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
         """
-        @summary 获取敏感字段
+        @summary Queries sensitive data identification rules.
         
         @param request: QuerySensNodeInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26964,7 +27788,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
         """
-        @summary 获取敏感字段
+        @summary Queries sensitive data identification rules.
         
         @param request: QuerySensNodeInfoRequest
         @return: QuerySensNodeInfoResponse
@@ -26977,7 +27801,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.QuerySensNodeInfoRequest,
     ) -> dataworks_public_20200518_models.QuerySensNodeInfoResponse:
         """
-        @summary 获取敏感字段
+        @summary Queries sensitive data identification rules.
         
         @param request: QuerySensNodeInfoRequest
         @return: QuerySensNodeInfoResponse
@@ -26991,7 +27815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
         """
-        @summary 注册实体关系，支持用户注册自定义的实体关系
+        @summary Registers the lineage between self-managed entities to DataWorks.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param tmp_req: RegisterLineageRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27030,7 +27856,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
         """
-        @summary 注册实体关系，支持用户注册自定义的实体关系
+        @summary Registers the lineage between self-managed entities to DataWorks.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param tmp_req: RegisterLineageRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27068,7 +27896,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RegisterLineageRelationRequest,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
         """
-        @summary 注册实体关系，支持用户注册自定义的实体关系
+        @summary Registers the lineage between self-managed entities to DataWorks.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param request: RegisterLineageRelationRequest
         @return: RegisterLineageRelationResponse
@@ -27081,7 +27911,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RegisterLineageRelationRequest,
     ) -> dataworks_public_20200518_models.RegisterLineageRelationResponse:
         """
-        @summary 注册实体关系，支持用户注册自定义的实体关系
+        @summary Registers the lineage between self-managed entities to DataWorks.
+        
+        @description This operation is in the trial phase. Users who need to call this operation can apply for it. The users can call this operation after the administrator adds the users to the trial list.
         
         @param request: RegisterLineageRelationRequest
         @return: RegisterLineageRelationResponse
@@ -27095,7 +27927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
         """
-        @summary Remove entity tags by given qualified name and tag keys
+        @summary Removes tags from an entity. Only entities of the maxcompute-table type are supported.
         
         @param tmp_req: RemoveEntityTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27138,7 +27970,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
         """
-        @summary Remove entity tags by given qualified name and tag keys
+        @summary Removes tags from an entity. Only entities of the maxcompute-table type are supported.
         
         @param tmp_req: RemoveEntityTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27180,7 +28012,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RemoveEntityTagsRequest,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
         """
-        @summary Remove entity tags by given qualified name and tag keys
+        @summary Removes tags from an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: RemoveEntityTagsRequest
         @return: RemoveEntityTagsResponse
@@ -27193,7 +28025,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RemoveEntityTagsRequest,
     ) -> dataworks_public_20200518_models.RemoveEntityTagsResponse:
         """
-        @summary Remove entity tags by given qualified name and tag keys
+        @summary Removes tags from an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: RemoveEntityTagsRequest
         @return: RemoveEntityTagsResponse
@@ -27207,6 +28039,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
         """
+        @summary Removes a role from a user in a DataWorks workspace.
+        
         @param request: RemoveProjectMemberFromRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveProjectMemberFromRoleResponse
@@ -27244,6 +28078,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
         """
+        @summary Removes a role from a user in a DataWorks workspace.
+        
         @param request: RemoveProjectMemberFromRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RemoveProjectMemberFromRoleResponse
@@ -27280,6 +28116,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
         """
+        @summary Removes a role from a user in a DataWorks workspace.
+        
         @param request: RemoveProjectMemberFromRoleRequest
         @return: RemoveProjectMemberFromRoleResponse
         """
@@ -27291,6 +28129,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RemoveProjectMemberFromRoleRequest,
     ) -> dataworks_public_20200518_models.RemoveProjectMemberFromRoleResponse:
         """
+        @summary Removes a role from a user in a DataWorks workspace.
+        
         @param request: RemoveProjectMemberFromRoleRequest
         @return: RemoveProjectMemberFromRoleResponse
         """
@@ -27503,7 +28343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
         """
-        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Revokes permissions on table fields from a user.
         
         @param request: RevokeColumnPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27548,7 +28388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
         """
-        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Revokes permissions on table fields from a user.
         
         @param request: RevokeColumnPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27592,7 +28432,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
         """
-        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Revokes permissions on table fields from a user.
         
         @param request: RevokeColumnPermissionRequest
         @return: RevokeColumnPermissionResponse
@@ -27605,7 +28445,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeColumnPermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeColumnPermissionResponse:
         """
-        @summary The ID of the region where the MaxCompute project that contains the destination fields resides. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Revokes permissions on table fields from a user.
         
         @param request: RevokeColumnPermissionRequest
         @return: RevokeColumnPermissionResponse
@@ -27619,6 +28459,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
         """
+        @summary Revokes permissions on a table from a user.
+        
         @param request: RevokeTablePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeTablePermissionResponse
@@ -27662,6 +28504,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
         """
+        @summary Revokes permissions on a table from a user.
+        
         @param request: RevokeTablePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RevokeTablePermissionResponse
@@ -27704,6 +28548,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeTablePermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
         """
+        @summary Revokes permissions on a table from a user.
+        
         @param request: RevokeTablePermissionRequest
         @return: RevokeTablePermissionResponse
         """
@@ -27715,6 +28561,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RevokeTablePermissionRequest,
     ) -> dataworks_public_20200518_models.RevokeTablePermissionResponse:
         """
+        @summary Revokes permissions on a table from a user.
+        
         @param request: RevokeTablePermissionRequest
         @return: RevokeTablePermissionResponse
         """
@@ -27727,6 +28575,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
+        @summary Creates a workflow to backfill data.
+        
         @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
@@ -27790,6 +28640,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
+        @summary Creates a workflow to backfill data.
+        
         @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
@@ -27852,6 +28704,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
+        @summary Creates a workflow to backfill data.
+        
         @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
@@ -27865,6 +28719,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunCycleDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunCycleDagNodesResponse:
         """
+        @summary Creates a workflow to backfill data.
+        
         @description For more information about data backfill, see [Backfill data](https://help.aliyun.com/document_detail/137937.html).
         
         @param request: RunCycleDagNodesRequest
@@ -27879,7 +28735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
         """
-        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find a manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
         
         @param request: RunManualDagNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27934,7 +28790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
         """
-        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find a manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
         
         @param request: RunManualDagNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27988,7 +28844,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunManualDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
         """
-        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find a manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
         
         @param request: RunManualDagNodesRequest
         @return: RunManualDagNodesResponse
@@ -28001,7 +28857,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunManualDagNodesRequest,
     ) -> dataworks_public_20200518_models.RunManualDagNodesResponse:
         """
-        @summary The region ID. For example, the ID of the China (Shanghai) region is cn-shanghai, and that of the China (Zhangjiakou) region is cn-zhangjiakou. The system automatically determines the value of this parameter based on the endpoint used to call the operation.
+        @summary Runs nodes in a manually triggered workflow. Before you call this operation, make sure that the manually triggered workflow is committed and deployed. You can find a manually triggered workflow in Operation Center only after the manually triggered workflow is committed and deployed.
         
         @param request: RunManualDagNodesRequest
         @return: RunManualDagNodesResponse
@@ -28015,6 +28871,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
         """
+        @summary Creates a workflow to perform smoke testing.
+        
         @param request: RunSmokeTestRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunSmokeTestResponse
@@ -28056,6 +28914,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
         """
+        @summary Creates a workflow to perform smoke testing.
+        
         @param request: RunSmokeTestRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunSmokeTestResponse
@@ -28096,6 +28956,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunSmokeTestRequest,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
         """
+        @summary Creates a workflow to perform smoke testing.
+        
         @param request: RunSmokeTestRequest
         @return: RunSmokeTestResponse
         """
@@ -28107,6 +28969,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunSmokeTestRequest,
     ) -> dataworks_public_20200518_models.RunSmokeTestResponse:
         """
+        @summary Creates a workflow to perform smoke testing.
+        
         @param request: RunSmokeTestRequest
         @return: RunSmokeTestResponse
         """
@@ -28119,6 +28983,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
         """
+        @summary Runs a manually triggered node.
+        
         @param request: RunTriggerNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunTriggerNodeResponse
@@ -28158,6 +29024,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
         """
+        @summary Runs a manually triggered node.
+        
         @param request: RunTriggerNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RunTriggerNodeResponse
@@ -28196,6 +29064,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunTriggerNodeRequest,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
         """
+        @summary Runs a manually triggered node.
+        
         @param request: RunTriggerNodeRequest
         @return: RunTriggerNodeResponse
         """
@@ -28207,6 +29077,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.RunTriggerNodeRequest,
     ) -> dataworks_public_20200518_models.RunTriggerNodeResponse:
         """
+        @summary Runs a manually triggered node.
+        
         @param request: RunTriggerNodeRequest
         @return: RunTriggerNodeResponse
         """
@@ -28219,7 +29091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
         """
-        @summary 保存api测试结果
+        @summary Saves the test results of an API.
         
         @param request: SaveDataServiceApiTestResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28262,7 +29134,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
         """
-        @summary 保存api测试结果
+        @summary Saves the test results of an API.
         
         @param request: SaveDataServiceApiTestResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28304,7 +29176,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SaveDataServiceApiTestResultRequest,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
         """
-        @summary 保存api测试结果
+        @summary Saves the test results of an API.
         
         @param request: SaveDataServiceApiTestResultRequest
         @return: SaveDataServiceApiTestResultResponse
@@ -28317,7 +29189,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SaveDataServiceApiTestResultRequest,
     ) -> dataworks_public_20200518_models.SaveDataServiceApiTestResultResponse:
         """
-        @summary 保存api测试结果
+        @summary Saves the test results of an API.
         
         @param request: SaveDataServiceApiTestResultRequest
         @return: SaveDataServiceApiTestResultResponse
@@ -28331,6 +29203,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
         """
+        @summary Checks whether input data contains sensitive data.
+        
         @param request: ScanSensitiveDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ScanSensitiveDataResponse
@@ -28362,6 +29236,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
         """
+        @summary Checks whether input data contains sensitive data.
+        
         @param request: ScanSensitiveDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ScanSensitiveDataResponse
@@ -28392,6 +29268,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ScanSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
         """
+        @summary Checks whether input data contains sensitive data.
+        
         @param request: ScanSensitiveDataRequest
         @return: ScanSensitiveDataResponse
         """
@@ -28403,6 +29281,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ScanSensitiveDataRequest,
     ) -> dataworks_public_20200518_models.ScanSensitiveDataResponse:
         """
+        @summary Checks whether input data contains sensitive data.
+        
         @param request: ScanSensitiveDataRequest
         @return: ScanSensitiveDataResponse
         """
@@ -28415,9 +29295,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        @summary Queries metatables based on specific conditions.
         
-        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @description You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine.
         
         @param request: SearchMetaTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28466,9 +29346,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        @summary Queries metatables based on specific conditions.
         
-        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @description You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine.
         
         @param request: SearchMetaTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28516,9 +29396,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchMetaTablesRequest,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        @summary Queries metatables based on specific conditions.
         
-        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @description You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine.
         
         @param request: SearchMetaTablesRequest
         @return: SearchMetaTablesResponse
@@ -28531,9 +29411,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SearchMetaTablesRequest,
     ) -> dataworks_public_20200518_models.SearchMetaTablesResponse:
         """
-        @summary For more information about the example on how to use the SearchMetaTables operation, see [Examples of DataWorks API operations](https://developer.aliyun.com/article/780879?groupCode=dataworks).
+        @summary Queries metatables based on specific conditions.
         
-        @description The operation that you want to perform. Set the value to *SearchMetaTables**.
+        @description You can call this operation to query only metatables in a MaxCompute or E-MapReduce (EMR) compute engine.
         
         @param request: SearchMetaTablesRequest
         @return: SearchMetaTablesResponse
@@ -28548,6 +29428,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
         """
         @deprecated OpenAPI SearchNodesByOutput is deprecated
+        
+        @summary Queries a node based on the output.
         
         @param request: SearchNodesByOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28587,6 +29469,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI SearchNodesByOutput is deprecated
         
+        @summary Queries a node based on the output.
+        
         @param request: SearchNodesByOutputRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SearchNodesByOutputResponse
@@ -28624,6 +29508,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI SearchNodesByOutput is deprecated
         
+        @summary Queries a node based on the output.
+        
         @param request: SearchNodesByOutputRequest
         @return: SearchNodesByOutputResponse
         Deprecated
@@ -28637,6 +29523,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.SearchNodesByOutputResponse:
         """
         @deprecated OpenAPI SearchNodesByOutput is deprecated
+        
+        @summary Queries a node based on the output.
         
         @param request: SearchNodesByOutputRequest
         @return: SearchNodesByOutputResponse
@@ -28652,6 +29540,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.SetDataSourceShareResponse:
         """
         @deprecated OpenAPI SetDataSourceShare is deprecated
+        
+        @summary Shares a data source to a specific DataWorks workspace or a specific user.
         
         @param request: SetDataSourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28697,6 +29587,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI SetDataSourceShare is deprecated
         
+        @summary Shares a data source to a specific DataWorks workspace or a specific user.
+        
         @param request: SetDataSourceShareRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDataSourceShareResponse
@@ -28740,6 +29632,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI SetDataSourceShare is deprecated
         
+        @summary Shares a data source to a specific DataWorks workspace or a specific user.
+        
         @param request: SetDataSourceShareRequest
         @return: SetDataSourceShareResponse
         Deprecated
@@ -28754,6 +29648,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI SetDataSourceShare is deprecated
         
+        @summary Shares a data source to a specific DataWorks workspace or a specific user.
+        
         @param request: SetDataSourceShareRequest
         @return: SetDataSourceShareResponse
         Deprecated
@@ -28767,7 +29663,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
         """
-        @summary Set entity tags by given qualified name and tags
+        @summary Configures tags for an entity. Only entities of the maxcompute-table type are supported.
         
         @param tmp_req: SetEntityTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28810,7 +29706,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
         """
-        @summary Set entity tags by given qualified name and tags
+        @summary Configures tags for an entity. Only entities of the maxcompute-table type are supported.
         
         @param tmp_req: SetEntityTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28852,7 +29748,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetEntityTagsRequest,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
         """
-        @summary Set entity tags by given qualified name and tags
+        @summary Configures tags for an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: SetEntityTagsRequest
         @return: SetEntityTagsResponse
@@ -28865,7 +29761,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetEntityTagsRequest,
     ) -> dataworks_public_20200518_models.SetEntityTagsResponse:
         """
-        @summary Set entity tags by given qualified name and tags
+        @summary Configures tags for an entity. Only entities of the maxcompute-table type are supported.
         
         @param request: SetEntityTagsRequest
         @return: SetEntityTagsResponse
@@ -28879,7 +29775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        @summary Sets the state of a failed instance to successful.
         
         @param request: SetSuccessInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28916,7 +29812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        @summary Sets the state of a failed instance to successful.
         
         @param request: SetSuccessInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28952,7 +29848,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetSuccessInstanceRequest,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        @summary Sets the state of a failed instance to successful.
         
         @param request: SetSuccessInstanceRequest
         @return: SetSuccessInstanceResponse
@@ -28965,7 +29861,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SetSuccessInstanceRequest,
     ) -> dataworks_public_20200518_models.SetSuccessInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SetSuccessInstance**.
+        @summary Sets the state of a failed instance to successful.
         
         @param request: SetSuccessInstanceRequest
         @return: SetSuccessInstanceResponse
@@ -28979,7 +29875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成新版解决方案任务
+        @summary Starts a synchronization task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param tmp_req: StartDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29022,7 +29918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成新版解决方案任务
+        @summary Starts a synchronization task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param tmp_req: StartDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29064,7 +29960,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartDIJobRequest,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成新版解决方案任务
+        @summary Starts a synchronization task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param request: StartDIJobRequest
         @return: StartDIJobResponse
@@ -29077,7 +29973,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartDIJobRequest,
     ) -> dataworks_public_20200518_models.StartDIJobResponse:
         """
-        @summary 启动数据集成新版解决方案任务
+        @summary Starts a synchronization task of a new version. Only the following type of task is supported: real-time data synchronization from a MySQL database to Hologres.
         
         @param request: StartDIJobRequest
         @return: StartDIJobResponse
@@ -29091,7 +29987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Starts a real-time synchronization task or a synchronization solution.
         
         @param request: StartDISyncInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29132,7 +30028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Starts a real-time synchronization task or a synchronization solution.
         
         @param request: StartDISyncInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29172,7 +30068,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Starts a real-time synchronization task or a synchronization solution.
         
         @param request: StartDISyncInstanceRequest
         @return: StartDISyncInstanceResponse
@@ -29185,7 +30081,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StartDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Starts a real-time synchronization task or a synchronization solution.
         
         @param request: StartDISyncInstanceRequest
         @return: StartDISyncInstanceResponse
@@ -29199,6 +30095,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
         """
+        @summary Starts a migration task.
+        
         @param request: StartMigrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartMigrationResponse
@@ -29234,6 +30132,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
         """
+        @summary Starts a migration task.
+        
         @param request: StartMigrationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartMigrationResponse
@@ -29268,6 +30168,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartMigrationRequest,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
         """
+        @summary Starts a migration task.
+        
         @param request: StartMigrationRequest
         @return: StartMigrationResponse
         """
@@ -29279,6 +30181,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StartMigrationRequest,
     ) -> dataworks_public_20200518_models.StartMigrationResponse:
         """
+        @summary Starts a migration task.
+        
         @param request: StartMigrationRequest
         @return: StartMigrationResponse
         """
@@ -29291,7 +30195,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
         """
-        @summary 停止数据集成新版解决方案任务
+        @summary Stops a new-version synchronization task. The following type of synchronization task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: StopDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29326,7 +30230,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
         """
-        @summary 停止数据集成新版解决方案任务
+        @summary Stops a new-version synchronization task. The following type of synchronization task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: StopDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29360,7 +30264,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDIJobRequest,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
         """
-        @summary 停止数据集成新版解决方案任务
+        @summary Stops a new-version synchronization task. The following type of synchronization task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: StopDIJobRequest
         @return: StopDIJobResponse
@@ -29373,7 +30277,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDIJobRequest,
     ) -> dataworks_public_20200518_models.StopDIJobResponse:
         """
-        @summary 停止数据集成新版解决方案任务
+        @summary Stops a new-version synchronization task. The following type of synchronization task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: StopDIJobRequest
         @return: StopDIJobResponse
@@ -29387,7 +30291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Stops a real-time synchronization task.
         
         @param request: StopDISyncInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29426,7 +30330,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Stops a real-time synchronization task.
         
         @param request: StopDISyncInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29464,7 +30368,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Stops a real-time synchronization task.
         
         @param request: StopDISyncInstanceRequest
         @return: StopDISyncInstanceResponse
@@ -29477,7 +30381,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.StopDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Stops a real-time synchronization task.
         
         @param request: StopDISyncInstanceRequest
         @return: StopDISyncInstanceResponse
@@ -29491,6 +30395,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
         """
+        @summary Terminates an instance.
+        
         @param request: StopInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopInstanceResponse
@@ -29526,6 +30432,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
         """
+        @summary Terminates an instance.
+        
         @param request: StopInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StopInstanceResponse
@@ -29560,6 +30468,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopInstanceRequest,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
         """
+        @summary Terminates an instance.
+        
         @param request: StopInstanceRequest
         @return: StopInstanceResponse
         """
@@ -29571,6 +30481,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.StopInstanceRequest,
     ) -> dataworks_public_20200518_models.StopInstanceResponse:
         """
+        @summary Terminates an instance.
+        
         @param request: StopInstanceRequest
         @return: StopInstanceResponse
         """
@@ -29583,7 +30495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
         """
-        @summary 发布APi
+        @summary Submits an API in DataService Studio.
         
         @param request: SubmitDataServiceApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29622,7 +30534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
         """
-        @summary 发布APi
+        @summary Submits an API in DataService Studio.
         
         @param request: SubmitDataServiceApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29660,7 +30572,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
         """
-        @summary 发布APi
+        @summary Submits an API in DataService Studio.
         
         @param request: SubmitDataServiceApiRequest
         @return: SubmitDataServiceApiResponse
@@ -29673,7 +30585,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitDataServiceApiRequest,
     ) -> dataworks_public_20200518_models.SubmitDataServiceApiResponse:
         """
-        @summary 发布APi
+        @summary Submits an API in DataService Studio.
         
         @param request: SubmitDataServiceApiRequest
         @return: SubmitDataServiceApiResponse
@@ -29687,7 +30599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        @summary Commits a file to the development environment of the scheduling system to generate a task.
         
         @param request: SubmitFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29730,7 +30642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        @summary Commits a file to the development environment of the scheduling system to generate a task.
         
         @param request: SubmitFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29772,7 +30684,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitFileRequest,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        @summary Commits a file to the development environment of the scheduling system to generate a task.
         
         @param request: SubmitFileRequest
         @return: SubmitFileResponse
@@ -29785,7 +30697,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.SubmitFileRequest,
     ) -> dataworks_public_20200518_models.SubmitFileResponse:
         """
-        @summary The operation that you want to perform. Set the value to *SubmitFile**.
+        @summary Commits a file to the development environment of the scheduling system to generate a task.
         
         @param request: SubmitFileRequest
         @return: SubmitFileResponse
@@ -29899,7 +30811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        @summary Undeploys a real-time synchronization task.
         
         @param request: TerminateDISyncInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29938,7 +30850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        @summary Undeploys a real-time synchronization task.
         
         @param request: TerminateDISyncInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29976,7 +30888,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TerminateDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        @summary Undeploys a real-time synchronization task.
         
         @param request: TerminateDISyncInstanceRequest
         @return: TerminateDISyncInstanceResponse
@@ -29989,7 +30901,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TerminateDISyncInstanceRequest,
     ) -> dataworks_public_20200518_models.TerminateDISyncInstanceResponse:
         """
-        @summary The operation that you want to perform. Set the value to *TerminateDISyncInstance**.
+        @summary Undeploys a real-time synchronization task.
         
         @param request: TerminateDISyncInstanceRequest
         @return: TerminateDISyncInstanceResponse
@@ -30123,6 +31035,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
         """
+        @summary Tests the network connectivity between a data source and a resource group.
+        
         @param request: TestNetworkConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TestNetworkConnectionResponse
@@ -30162,6 +31076,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
         """
+        @summary Tests the network connectivity between a data source and a resource group.
+        
         @param request: TestNetworkConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TestNetworkConnectionResponse
@@ -30200,6 +31116,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TestNetworkConnectionRequest,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
         """
+        @summary Tests the network connectivity between a data source and a resource group.
+        
         @param request: TestNetworkConnectionRequest
         @return: TestNetworkConnectionResponse
         """
@@ -30211,6 +31129,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TestNetworkConnectionRequest,
     ) -> dataworks_public_20200518_models.TestNetworkConnectionResponse:
         """
+        @summary Tests the network connectivity between a data source and a resource group.
+        
         @param request: TestNetworkConnectionRequest
         @return: TestNetworkConnectionResponse
         """
@@ -30223,6 +31143,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
         """
+        @summary Queries the ranking of the running durations of instances.
+        
         @param request: TopTenElapsedTimeInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TopTenElapsedTimeInstanceResponse
@@ -30256,6 +31178,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
         """
+        @summary Queries the ranking of the running durations of instances.
+        
         @param request: TopTenElapsedTimeInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TopTenElapsedTimeInstanceResponse
@@ -30288,6 +31212,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
         """
+        @summary Queries the ranking of the running durations of instances.
+        
         @param request: TopTenElapsedTimeInstanceRequest
         @return: TopTenElapsedTimeInstanceResponse
         """
@@ -30299,6 +31225,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenElapsedTimeInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenElapsedTimeInstanceResponse:
         """
+        @summary Queries the ranking of the running durations of instances.
+        
         @param request: TopTenElapsedTimeInstanceRequest
         @return: TopTenElapsedTimeInstanceResponse
         """
@@ -30311,6 +31239,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
         """
+        @summary Queries the ranking of nodes on which errors occur within the previous month.
+        
         @param request: TopTenErrorTimesInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TopTenErrorTimesInstanceResponse
@@ -30344,6 +31274,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
         """
+        @summary Queries the ranking of nodes on which errors occur within the previous month.
+        
         @param request: TopTenErrorTimesInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: TopTenErrorTimesInstanceResponse
@@ -30376,6 +31308,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
         """
+        @summary Queries the ranking of nodes on which errors occur within the previous month.
+        
         @param request: TopTenErrorTimesInstanceRequest
         @return: TopTenErrorTimesInstanceResponse
         """
@@ -30387,6 +31321,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.TopTenErrorTimesInstanceRequest,
     ) -> dataworks_public_20200518_models.TopTenErrorTimesInstanceResponse:
         """
+        @summary Queries the ranking of nodes on which errors occur within the previous month.
+        
         @param request: TopTenErrorTimesInstanceRequest
         @return: TopTenErrorTimesInstanceResponse
         """
@@ -30399,7 +31335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
         """
-        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
         
         @param request: UmountDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30438,7 +31374,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
         """
-        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
         
         @param request: UmountDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30476,7 +31412,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UmountDirectoryRequest,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
         """
-        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
         
         @param request: UmountDirectoryRequest
         @return: UmountDirectoryResponse
@@ -30489,7 +31425,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UmountDirectoryRequest,
     ) -> dataworks_public_20200518_models.UmountDirectoryResponse:
         """
-        @summary 将数据专辑从数据分析的左侧导航目录移除（卸载）
+        @summary Removes a directory from the left-side navigation pane of DataAnalysis.
         
         @param request: UmountDirectoryRequest
         @return: UmountDirectoryResponse
@@ -30769,6 +31705,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_business_with_options_async(request, runtime)
 
+    def update_cluster_configs_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.UpdateClusterConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
+        """
+        @summary 更新集群的配置信息
+        
+        @param tmp_req: UpdateClusterConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterConfigsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.UpdateClusterConfigsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config_values):
+            request.config_values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_values, 'ConfigValues', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.config_values_shrink):
+            body['ConfigValues'] = request.config_values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterConfigs',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateClusterConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cluster_configs_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.UpdateClusterConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
+        """
+        @summary 更新集群的配置信息
+        
+        @param tmp_req: UpdateClusterConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterConfigsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.UpdateClusterConfigsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.config_values):
+            request.config_values_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.config_values, 'ConfigValues', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.config_values_shrink):
+            body['ConfigValues'] = request.config_values_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateClusterConfigs',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.UpdateClusterConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cluster_configs(
+        self,
+        request: dataworks_public_20200518_models.UpdateClusterConfigsRequest,
+    ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
+        """
+        @summary 更新集群的配置信息
+        
+        @param request: UpdateClusterConfigsRequest
+        @return: UpdateClusterConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cluster_configs_with_options(request, runtime)
+
+    async def update_cluster_configs_async(
+        self,
+        request: dataworks_public_20200518_models.UpdateClusterConfigsRequest,
+    ) -> dataworks_public_20200518_models.UpdateClusterConfigsResponse:
+        """
+        @summary 更新集群的配置信息
+        
+        @param request: UpdateClusterConfigsRequest
+        @return: UpdateClusterConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cluster_configs_with_options_async(request, runtime)
+
     def update_connection_with_options(
         self,
         request: dataworks_public_20200518_models.UpdateConnectionRequest,
@@ -30776,6 +31832,8 @@ class Client(OpenApiClient):
     ) -> dataworks_public_20200518_models.UpdateConnectionResponse:
         """
         @deprecated OpenAPI UpdateConnection is deprecated
+        
+        @summary Updates a data source.
         
         @param request: UpdateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30821,6 +31879,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI UpdateConnection is deprecated
         
+        @summary Updates a data source.
+        
         @param request: UpdateConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateConnectionResponse
@@ -30864,6 +31924,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI UpdateConnection is deprecated
         
+        @summary Updates a data source.
+        
         @param request: UpdateConnectionRequest
         @return: UpdateConnectionResponse
         Deprecated
@@ -30878,6 +31940,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI UpdateConnection is deprecated
         
+        @summary Updates a data source.
+        
         @param request: UpdateConnectionRequest
         @return: UpdateConnectionResponse
         Deprecated
@@ -30891,7 +31955,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成新版告警规则
+        @summary Updates an alert rule for a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization. You must update all fields in the alert rule.
         
         @param tmp_req: UpdateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30942,7 +32008,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成新版告警规则
+        @summary Updates an alert rule for a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization. You must update all fields in the alert rule.
         
         @param tmp_req: UpdateDIAlarmRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30992,7 +32060,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成新版告警规则
+        @summary Updates an alert rule for a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization. You must update all fields in the alert rule.
         
         @param request: UpdateDIAlarmRuleRequest
         @return: UpdateDIAlarmRuleResponse
@@ -31005,7 +32075,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIAlarmRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateDIAlarmRuleResponse:
         """
-        @summary 更新数据集成新版告警规则
+        @summary Updates an alert rule for a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
+        
+        @description You can configure alert rules only for tasks that can be used for real-time data synchronization. You must update all fields in the alert rule.
         
         @param request: UpdateDIAlarmRuleRequest
         @return: UpdateDIAlarmRuleResponse
@@ -31019,7 +32091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成新版解决方案任务
+        @summary Updates a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param tmp_req: UpdateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31074,7 +32146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成新版解决方案任务
+        @summary Updates a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param tmp_req: UpdateDIJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31128,7 +32200,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIJobRequest,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成新版解决方案任务
+        @summary Updates a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: UpdateDIJobRequest
         @return: UpdateDIJobResponse
@@ -31141,7 +32213,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIJobRequest,
     ) -> dataworks_public_20200518_models.UpdateDIJobResponse:
         """
-        @summary 更新数据集成新版解决方案任务
+        @summary Updates a new-version synchronization task. The following type of task is supported: real-time synchronization of all data in a MySQL database to Hologres.
         
         @param request: UpdateDIJobRequest
         @return: UpdateDIJobResponse
@@ -31155,9 +32227,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Modifies the default global configuration of synchronization solutions in a DataWorks workspace.
         
-        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: UpdateDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31198,9 +32270,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Modifies the default global configuration of synchronization solutions in a DataWorks workspace.
         
-        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: UpdateDIProjectConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31240,9 +32312,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Modifies the default global configuration of synchronization solutions in a DataWorks workspace.
         
-        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: UpdateDIProjectConfigRequest
         @return: UpdateDIProjectConfigResponse
@@ -31255,9 +32327,9 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDIProjectConfigRequest,
     ) -> dataworks_public_20200518_models.UpdateDIProjectConfigResponse:
         """
-        @summary DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
+        @summary Modifies the default global configuration of synchronization solutions in a DataWorks workspace.
         
-        @description The operation that you want to perform. Set the value to *UpdateDIProjectConfig**.
+        @description DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the *processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization tasks in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](https://help.aliyun.com/document_detail/199008.html).
         
         @param request: UpdateDIProjectConfigRequest
         @return: UpdateDIProjectConfigResponse
@@ -31271,6 +32343,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
         """
+        @summary Updates a data synchronization task.
+        
         @param request: UpdateDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDISyncTaskResponse
@@ -31312,6 +32386,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
         """
+        @summary Updates a data synchronization task.
+        
         @param request: UpdateDISyncTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDISyncTaskResponse
@@ -31352,6 +32428,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
         """
+        @summary Updates a data synchronization task.
+        
         @param request: UpdateDISyncTaskRequest
         @return: UpdateDISyncTaskResponse
         """
@@ -31363,6 +32441,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDISyncTaskRequest,
     ) -> dataworks_public_20200518_models.UpdateDISyncTaskResponse:
         """
+        @summary Updates a data synchronization task.
+        
         @param request: UpdateDISyncTaskRequest
         @return: UpdateDISyncTaskResponse
         """
@@ -31523,6 +32603,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
         """
+        @summary Updates a data source.
+        
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDataSourceResponse
@@ -31564,6 +32646,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
         """
+        @summary Updates a data source.
+        
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateDataSourceResponse
@@ -31604,6 +32688,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDataSourceRequest,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
         """
+        @summary Updates a data source.
+        
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
         """
@@ -31615,6 +32701,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateDataSourceRequest,
     ) -> dataworks_public_20200518_models.UpdateDataSourceResponse:
         """
+        @summary Updates a data source.
+        
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
         """
@@ -31627,6 +32715,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
+        @summary Updates a file.
+        
         @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
@@ -31720,6 +32810,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
+        @summary Updates a file.
+        
         @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
@@ -31812,6 +32904,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFileRequest,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
+        @summary Updates a file.
+        
         @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
@@ -31825,6 +32919,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFileRequest,
     ) -> dataworks_public_20200518_models.UpdateFileResponse:
         """
+        @summary Updates a file.
+        
         @description When you debug or call this operation, you must specify new values for the specified parameters to ensure that the values are different from the original configurations of the file. For example, if the original value of a parameter is A, you must change the value of this parameter to B before you commit the node. If you set the parameter to A, an exception that indicates invalid data occurs.
         
         @param request: UpdateFileRequest
@@ -31839,6 +32935,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
         """
+        @summary Updates a folder.
+        
         @param request: UpdateFolderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateFolderResponse
@@ -31878,6 +32976,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
         """
+        @summary Updates a folder.
+        
         @param request: UpdateFolderRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateFolderResponse
@@ -31916,6 +33016,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFolderRequest,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
         """
+        @summary Updates a folder.
+        
         @param request: UpdateFolderRequest
         @return: UpdateFolderResponse
         """
@@ -31927,6 +33029,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateFolderRequest,
     ) -> dataworks_public_20200518_models.UpdateFolderResponse:
         """
+        @summary Updates a folder.
+        
         @param request: UpdateFolderRequest
         @return: UpdateFolderResponse
         """
@@ -31939,7 +33043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Returns the check result of an extension point event to DataStudio after the extension point event is triggered during data development and checked by an extension.
         
         @param request: UpdateIDEEventResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31980,7 +33084,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Returns the check result of an extension point event to DataStudio after the extension point event is triggered during data development and checked by an extension.
         
         @param request: UpdateIDEEventResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32020,7 +33124,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Returns the check result of an extension point event to DataStudio after the extension point event is triggered during data development and checked by an extension.
         
         @param request: UpdateIDEEventResultRequest
         @return: UpdateIDEEventResultResponse
@@ -32033,7 +33137,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateIDEEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateIDEEventResultResponse:
         """
-        @summary The operation that you want to perform.
+        @summary Returns the check result of an extension point event to DataStudio after the extension point event is triggered during data development and checked by an extension.
         
         @param request: UpdateIDEEventResultRequest
         @return: UpdateIDEEventResultResponse
@@ -32151,7 +33255,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        @summary Updates a collection.
+        @summary Updates the name and comment of a collection.
         
         @description Only the name and comment of a collection can be updated.
         
@@ -32192,7 +33296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        @summary Updates a collection.
+        @summary Updates the name and comment of a collection.
         
         @description Only the name and comment of a collection can be updated.
         
@@ -32232,7 +33336,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        @summary Updates a collection.
+        @summary Updates the name and comment of a collection.
         
         @description Only the name and comment of a collection can be updated.
         
@@ -32247,7 +33351,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaCollectionRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaCollectionResponse:
         """
-        @summary Updates a collection.
+        @summary Updates the name and comment of a collection.
         
         @description Only the name and comment of a collection can be updated.
         
@@ -32403,7 +33507,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
         """
-        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        @summary Updates the instructions on how to use a table. If no instruction on how to use the table is available, the instructions that are configured by calling this operation are added.
         
         @param request: UpdateMetaTableIntroWikiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32442,7 +33546,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
         """
-        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        @summary Updates the instructions on how to use a table. If no instruction on how to use the table is available, the instructions that are configured by calling this operation are added.
         
         @param request: UpdateMetaTableIntroWikiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32480,7 +33584,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
         """
-        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        @summary Updates the instructions on how to use a table. If no instruction on how to use the table is available, the instructions that are configured by calling this operation are added.
         
         @param request: UpdateMetaTableIntroWikiRequest
         @return: UpdateMetaTableIntroWikiResponse
@@ -32493,7 +33597,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateMetaTableIntroWikiRequest,
     ) -> dataworks_public_20200518_models.UpdateMetaTableIntroWikiResponse:
         """
-        @summary Updates the instructions on how to use a metatable. If no instruction on how to use the metatable is available, the instructions that are specified by calling this operation are added.
+        @summary Updates the instructions on how to use a table. If no instruction on how to use the table is available, the instructions that are configured by calling this operation are added.
         
         @param request: UpdateMetaTableIntroWikiRequest
         @return: UpdateMetaTableIntroWikiResponse
@@ -32507,6 +33611,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
         """
+        @summary Changes the owner of a node.
+        
         @param request: UpdateNodeOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNodeOwnerResponse
@@ -32544,6 +33650,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
         """
+        @summary Changes the owner of a node.
+        
         @param request: UpdateNodeOwnerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNodeOwnerResponse
@@ -32580,6 +33688,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeOwnerRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
         """
+        @summary Changes the owner of a node.
+        
         @param request: UpdateNodeOwnerRequest
         @return: UpdateNodeOwnerResponse
         """
@@ -32591,6 +33701,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeOwnerRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeOwnerResponse:
         """
+        @summary Changes the owner of a node.
+        
         @param request: UpdateNodeOwnerRequest
         @return: UpdateNodeOwnerResponse
         """
@@ -32603,6 +33715,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
         """
+        @summary Freezes or unfreezes a node.
+        
         @param request: UpdateNodeRunModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNodeRunModeResponse
@@ -32640,6 +33754,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
         """
+        @summary Freezes or unfreezes a node.
+        
         @param request: UpdateNodeRunModeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateNodeRunModeResponse
@@ -32676,6 +33792,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeRunModeRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
         """
+        @summary Freezes or unfreezes a node.
+        
         @param request: UpdateNodeRunModeRequest
         @return: UpdateNodeRunModeResponse
         """
@@ -32687,6 +33805,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateNodeRunModeRequest,
     ) -> dataworks_public_20200518_models.UpdateNodeRunModeResponse:
         """
+        @summary Freezes or unfreezes a node.
+        
         @param request: UpdateNodeRunModeRequest
         @return: UpdateNodeRunModeResponse
         """
@@ -32699,6 +33819,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
         """
+        @summary Updates a subscription relationship.
+        
         @param request: UpdateQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateQualityFollowerResponse
@@ -32740,6 +33862,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
         """
+        @summary Updates a subscription relationship.
+        
         @param request: UpdateQualityFollowerRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateQualityFollowerResponse
@@ -32780,6 +33904,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
         """
+        @summary Updates a subscription relationship.
+        
         @param request: UpdateQualityFollowerRequest
         @return: UpdateQualityFollowerResponse
         """
@@ -32791,6 +33917,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityFollowerRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityFollowerResponse:
         """
+        @summary Updates a subscription relationship.
+        
         @param request: UpdateQualityFollowerRequest
         @return: UpdateQualityFollowerResponse
         """
@@ -32803,6 +33931,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
         """
+        @summary Updates a monitoring rule.
+        
         @param request: UpdateQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateQualityRuleResponse
@@ -32878,6 +34008,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
         """
+        @summary Updates a monitoring rule.
+        
         @param request: UpdateQualityRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateQualityRuleResponse
@@ -32952,6 +34084,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
         """
+        @summary Updates a monitoring rule.
+        
         @param request: UpdateQualityRuleRequest
         @return: UpdateQualityRuleResponse
         """
@@ -32963,6 +34097,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateQualityRuleRequest,
     ) -> dataworks_public_20200518_models.UpdateQualityRuleResponse:
         """
+        @summary Updates a monitoring rule.
+        
         @param request: UpdateQualityRuleRequest
         @return: UpdateQualityRuleResponse
         """
@@ -32975,6 +34111,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
         """
+        @summary Modifies a custom alert rule.
+        
         @param request: UpdateRemindRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateRemindResponse
@@ -33042,6 +34180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
         """
+        @summary Modifies a custom alert rule.
+        
         @param request: UpdateRemindRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateRemindResponse
@@ -33108,6 +34248,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateRemindRequest,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
         """
+        @summary Modifies a custom alert rule.
+        
         @param request: UpdateRemindRequest
         @return: UpdateRemindResponse
         """
@@ -33119,6 +34261,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateRemindRequest,
     ) -> dataworks_public_20200518_models.UpdateRemindResponse:
         """
+        @summary Modifies a custom alert rule.
+        
         @param request: UpdateRemindRequest
         @return: UpdateRemindResponse
         """
@@ -33131,7 +34275,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        @summary Updates a MaxCompute table.
         
         @param request: UpdateTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33206,7 +34350,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        @summary Updates a MaxCompute table.
         
         @param request: UpdateTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33280,7 +34424,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableRequest,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        @summary Updates a MaxCompute table.
         
         @param request: UpdateTableRequest
         @return: UpdateTableResponse
@@ -33293,7 +34437,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableRequest,
     ) -> dataworks_public_20200518_models.UpdateTableResponse:
         """
-        @summary The operation that you want to perform. Set the value to *UpdateTable**.
+        @summary Updates a MaxCompute table.
         
         @param request: UpdateTableRequest
         @return: UpdateTableResponse
@@ -33307,6 +34451,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
         """
+        @summary Updates the fields in a MaxCompute table.
+        
         @param request: UpdateTableAddColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableAddColumnResponse
@@ -33344,6 +34490,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
         """
+        @summary Updates the fields in a MaxCompute table.
+        
         @param request: UpdateTableAddColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableAddColumnResponse
@@ -33380,6 +34528,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
         """
+        @summary Updates the fields in a MaxCompute table.
+        
         @param request: UpdateTableAddColumnRequest
         @return: UpdateTableAddColumnResponse
         """
@@ -33391,6 +34541,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableAddColumnRequest,
     ) -> dataworks_public_20200518_models.UpdateTableAddColumnResponse:
         """
+        @summary Updates the fields in a MaxCompute table.
+        
         @param request: UpdateTableAddColumnRequest
         @return: UpdateTableAddColumnResponse
         """
@@ -33403,6 +34555,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
         """
+        @summary Updates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableLevelResponse
@@ -33444,6 +34598,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
         """
+        @summary Updates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableLevelRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableLevelResponse
@@ -33484,6 +34640,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableLevelRequest,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
         """
+        @summary Updates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableLevelRequest
         @return: UpdateTableLevelResponse
         """
@@ -33495,6 +34653,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableLevelRequest,
     ) -> dataworks_public_20200518_models.UpdateTableLevelResponse:
         """
+        @summary Updates a table level. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableLevelRequest
         @return: UpdateTableLevelResponse
         """
@@ -33507,6 +34667,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
         """
+        @summary Modifies the information about a table, such as the table folder, level, and category.
+        
         @param request: UpdateTableModelInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableModelInfoResponse
@@ -33548,6 +34710,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
         """
+        @summary Modifies the information about a table, such as the table folder, level, and category.
+        
         @param request: UpdateTableModelInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableModelInfoResponse
@@ -33588,6 +34752,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableModelInfoRequest,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
         """
+        @summary Modifies the information about a table, such as the table folder, level, and category.
+        
         @param request: UpdateTableModelInfoRequest
         @return: UpdateTableModelInfoResponse
         """
@@ -33599,6 +34765,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableModelInfoRequest,
     ) -> dataworks_public_20200518_models.UpdateTableModelInfoResponse:
         """
+        @summary Modifies the information about a table, such as the table folder, level, and category.
+        
         @param request: UpdateTableModelInfoRequest
         @return: UpdateTableModelInfoResponse
         """
@@ -33611,6 +34779,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
         """
+        @summary Updates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableThemeResponse
@@ -33648,6 +34818,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
         """
+        @summary Updates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableThemeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTableThemeResponse
@@ -33684,6 +34856,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableThemeRequest,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
         """
+        @summary Updates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableThemeRequest
         @return: UpdateTableThemeResponse
         """
@@ -33695,6 +34869,8 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateTableThemeRequest,
     ) -> dataworks_public_20200518_models.UpdateTableThemeResponse:
         """
+        @summary Updates a table theme. This operation will be replaced soon. We recommend that you do not call this operation.
+        
         @param request: UpdateTableThemeRequest
         @return: UpdateTableThemeResponse
         """
@@ -33839,7 +35015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
         """
-        @summary 更新运维中心扩展程序的回调结果
+        @summary Returns the processing result sent by an extension after a process in Operation Center is blocked by the extension.
         
         @param request: UpdateWorkbenchEventResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33880,7 +35056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
         """
-        @summary 更新运维中心扩展程序的回调结果
+        @summary Returns the processing result sent by an extension after a process in Operation Center is blocked by the extension.
         
         @param request: UpdateWorkbenchEventResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33920,7 +35096,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
         """
-        @summary 更新运维中心扩展程序的回调结果
+        @summary Returns the processing result sent by an extension after a process in Operation Center is blocked by the extension.
         
         @param request: UpdateWorkbenchEventResultRequest
         @return: UpdateWorkbenchEventResultResponse
@@ -33933,7 +35109,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.UpdateWorkbenchEventResultRequest,
     ) -> dataworks_public_20200518_models.UpdateWorkbenchEventResultResponse:
         """
-        @summary 更新运维中心扩展程序的回调结果
+        @summary Returns the processing result sent by an extension after a process in Operation Center is blocked by the extension.
         
         @param request: UpdateWorkbenchEventResultRequest
         @return: UpdateWorkbenchEventResultResponse

@@ -1,3 +1,13 @@
+2024-07-31 Version: 6.0.0
+- Support API ListClusterConfigs.
+- Support API ListClusters.
+- Support API UpdateClusterConfigs.
+- Update API GetQualityRule: update response param.
+- Update API QuerySensNodeInfo: add param RegionId.
+- Update API QuerySensNodeInfo: delete param regionId.
+- Update API UpdateDataSource: update param Content.
+
+
 2024-06-07 Version: 5.7.0
 - Support API ListMeasureData.
 
