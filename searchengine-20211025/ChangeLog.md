@@ -1,3 +1,8 @@
+2024-07-31 Version: 4.2.3
+- Update API GetFile: update response param.
+- Update API GetIndex: update response param.
+
+
 2024-07-17 Version: 4.2.2
 - Update API GetInstance: update response param.
 - Update API ListInstances: update response param.

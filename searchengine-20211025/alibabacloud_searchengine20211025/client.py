@@ -2794,7 +2794,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeletePublicUrlResponse:
         """
-        @summary Deletes a public endpoint.
+        @summary 删除公网域名
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2826,7 +2826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeletePublicUrlResponse:
         """
-        @summary Deletes a public endpoint.
+        @summary 删除公网域名
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2856,7 +2856,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.DeletePublicUrlResponse:
         """
-        @summary Deletes a public endpoint.
+        @summary 删除公网域名
         
         @return: DeletePublicUrlResponse
         """
@@ -2869,7 +2869,7 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> searchengine_20211025_models.DeletePublicUrlResponse:
         """
-        @summary Deletes a public endpoint.
+        @summary 删除公网域名
         
         @return: DeletePublicUrlResponse
         """
@@ -3307,11 +3307,11 @@ class Client(OpenApiClient):
         """
         @summary Performs a forced switchover.
         
-        @description \\### Method
+        @description ### [](#)Method
         ```java
         PUT
         ```
-        ### URI
+        ### [](#uri)URI
         ```java
         /openapi/ha3/instances/{instanceId}/force-switch/{fsmId}
         ```
@@ -3349,11 +3349,11 @@ class Client(OpenApiClient):
         """
         @summary Performs a forced switchover.
         
-        @description \\### Method
+        @description ### [](#)Method
         ```java
         PUT
         ```
-        ### URI
+        ### [](#uri)URI
         ```java
         /openapi/ha3/instances/{instanceId}/force-switch/{fsmId}
         ```
@@ -3389,11 +3389,11 @@ class Client(OpenApiClient):
         """
         @summary Performs a forced switchover.
         
-        @description \\### Method
+        @description ### [](#)Method
         ```java
         PUT
         ```
-        ### URI
+        ### [](#uri)URI
         ```java
         /openapi/ha3/instances/{instanceId}/force-switch/{fsmId}
         ```
@@ -3412,11 +3412,11 @@ class Client(OpenApiClient):
         """
         @summary Performs a forced switchover.
         
-        @description \\### Method
+        @description ### [](#)Method
         ```java
         PUT
         ```
-        ### URI
+        ### [](#uri)URI
         ```java
         /openapi/ha3/instances/{instanceId}/force-switch/{fsmId}
         ```
@@ -9728,7 +9728,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
         """
-        @summary Modifies an online policy of an index.
+        @summary Modifies the online policy of an index.
         
         @param request: ModifyIndexOnlineStrategyRequest
         @param headers: map
@@ -9770,7 +9770,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
         """
-        @summary Modifies an online policy of an index.
+        @summary Modifies the online policy of an index.
         
         @param request: ModifyIndexOnlineStrategyRequest
         @param headers: map
@@ -9810,7 +9810,7 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexOnlineStrategyRequest,
     ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
         """
-        @summary Modifies an online policy of an index.
+        @summary Modifies the online policy of an index.
         
         @param request: ModifyIndexOnlineStrategyRequest
         @return: ModifyIndexOnlineStrategyResponse
@@ -9828,7 +9828,7 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexOnlineStrategyRequest,
     ) -> searchengine_20211025_models.ModifyIndexOnlineStrategyResponse:
         """
-        @summary Modifies an online policy of an index.
+        @summary Modifies the online policy of an index.
         
         @param request: ModifyIndexOnlineStrategyRequest
         @return: ModifyIndexOnlineStrategyResponse

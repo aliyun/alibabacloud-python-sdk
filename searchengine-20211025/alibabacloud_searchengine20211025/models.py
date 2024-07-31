@@ -5040,9 +5040,9 @@ class ForceSwitchResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # id of request
+        # The request ID.
         self.request_id = request_id
-        # The information about the index
+        # The index information.
         self.result = result
 
     def validate(self):
@@ -7640,6 +7640,7 @@ class GetFileResponseBodyResult(TeaModel):
         self,
         content: str = None,
         data_source: str = None,
+        extend: Dict[str, List[str]] = None,
         full_path_name: str = None,
         is_dir: bool = None,
         name: str = None,
@@ -7649,6 +7650,7 @@ class GetFileResponseBodyResult(TeaModel):
         self.content = content
         # The data source.
         self.data_source = data_source
+        self.extend = extend
         # The full path of the file.
         self.full_path_name = full_path_name
         # Indicates whether the file is a directory.
@@ -7671,6 +7673,8 @@ class GetFileResponseBodyResult(TeaModel):
             result['content'] = self.content
         if self.data_source is not None:
             result['dataSource'] = self.data_source
+        if self.extend is not None:
+            result['extend'] = self.extend
         if self.full_path_name is not None:
             result['fullPathName'] = self.full_path_name
         if self.is_dir is not None:
@@ -7687,6 +7691,8 @@ class GetFileResponseBodyResult(TeaModel):
             self.content = m.get('content')
         if m.get('dataSource') is not None:
             self.data_source = m.get('dataSource')
+        if m.get('extend') is not None:
+            self.extend = m.get('extend')
         if m.get('fullPathName') is not None:
             self.full_path_name = m.get('fullPathName')
         if m.get('isDir') is not None:
@@ -8123,6 +8129,7 @@ class GetIndexResponseBodyResult(TeaModel):
         data_source_info: GetIndexResponseBodyResultDataSourceInfo = None,
         description: str = None,
         domain: str = None,
+        extend: Dict[str, List[str]] = None,
         full_update_time: str = None,
         full_version: int = None,
         inc_update_time: str = None,
@@ -8148,6 +8155,7 @@ class GetIndexResponseBodyResult(TeaModel):
         self.description = description
         # The deployment name of the index.
         self.domain = domain
+        self.extend = extend
         # The time when full data in the index was last updated.
         self.full_update_time = full_update_time
         # The data version.
@@ -8209,6 +8217,8 @@ class GetIndexResponseBodyResult(TeaModel):
             result['description'] = self.description
         if self.domain is not None:
             result['domain'] = self.domain
+        if self.extend is not None:
+            result['extend'] = self.extend
         if self.full_update_time is not None:
             result['fullUpdateTime'] = self.full_update_time
         if self.full_version is not None:
@@ -8251,6 +8261,8 @@ class GetIndexResponseBodyResult(TeaModel):
             self.description = m.get('description')
         if m.get('domain') is not None:
             self.domain = m.get('domain')
+        if m.get('extend') is not None:
+            self.extend = m.get('extend')
         if m.get('fullUpdateTime') is not None:
             self.full_update_time = m.get('fullUpdateTime')
         if m.get('fullVersion') is not None:
@@ -13344,7 +13356,12 @@ class ListInstanceSpecsRequest(TeaModel):
         self,
         type: str = None,
     ):
-        # The node type. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster.
+        # The node type. Valid values:
+        # 
+        # *   qrs: Query Result Searcher (QRS) Worker
+        # *   search: Searcher Worker
+        # *   index: index node
+        # *   cluster: cluster
         # 
         # This parameter is required.
         self.type = type
@@ -13377,13 +13394,13 @@ class ListInstanceSpecsResponseBodyResult(TeaModel):
         mem: int = None,
         min_disk: int = None,
     ):
-        # The number of CPU cores.
+        # The number of vCPUs.
         self.cpu = cpu
-        # The maximum storage space of a Searcher worker.
+        # The maximum storage of a single data node. Unit: GB.
         self.max_disk = max_disk
-        # The memory. Unit: GB.
+        # The memory of the instance. Unit: GB.
         self.mem = mem
-        # The minimum storage space of a Searcher worker.
+        # The minimum storage of a single data node. Unit: GB.
         self.min_disk = min_disk
 
     def validate(self):
@@ -13424,9 +13441,9 @@ class ListInstanceSpecsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListInstanceSpecsResponseBodyResult] = None,
     ):
-        # id of request
+        # The request ID.
         self.request_id = request_id
-        # The result.
+        # The instance types.
         self.result = result
 
     def validate(self):
@@ -18642,7 +18659,7 @@ class ModifyPublicUrlIpListRequest(TeaModel):
         self,
         body: Dict[str, str] = None,
     ):
-        # The request parameters.
+        # The request body.
         self.body = body
 
     def validate(self):
@@ -20261,7 +20278,7 @@ class StartIndexResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result.
+        # The index map.
         self.result = result
 
     def validate(self):
@@ -20337,7 +20354,7 @@ class StopIndexResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result.
+        # The index map.
         self.result = result
 
     def validate(self):
