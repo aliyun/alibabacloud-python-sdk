@@ -191,6 +191,8 @@ class Client(OpenApiClient):
             query['JobDescription'] = request.job_description
         if not UtilClient.is_unset(request.job_name):
             query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_scheduler):
+            query['JobScheduler'] = request.job_scheduler
         if not UtilClient.is_unset(request.tasks_shrink):
             query['Tasks'] = request.tasks_shrink
         req = open_api_models.OpenApiRequest(
@@ -238,6 +240,8 @@ class Client(OpenApiClient):
             query['JobDescription'] = request.job_description
         if not UtilClient.is_unset(request.job_name):
             query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.job_scheduler):
+            query['JobScheduler'] = request.job_scheduler
         if not UtilClient.is_unset(request.tasks_shrink):
             query['Tasks'] = request.tasks_shrink
         req = open_api_models.OpenApiRequest(

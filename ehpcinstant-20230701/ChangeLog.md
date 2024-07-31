@@ -1,3 +1,16 @@
+2024-07-31 Version: 1.0.3
+- Update API CreateJob: add param JobScheduler.
+- Update API CreateJob: update param Tasks.
+- Update API CreateJob: update response param.
+- Update API GetImage: add param ImageCategory.
+- Update API GetImage: add param ImageType.
+- Update API GetImage: update response param.
+- Update API GetJob: update response param.
+- Update API ListImages: add param ImageCategory.
+- Update API ListImages: add param ImageType.
+- Update API ListImages: update response param.
+
+
 2024-05-15 Version: 1.0.2
 - Update API CreateJob: update param Tasks.
 - Update API CreateJob: update response param.

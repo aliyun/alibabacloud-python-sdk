@@ -860,12 +860,14 @@ class CreateJobRequest(TeaModel):
         deployment_policy: CreateJobRequestDeploymentPolicy = None,
         job_description: str = None,
         job_name: str = None,
+        job_scheduler: str = None,
         tasks: List[CreateJobRequestTasks] = None,
     ):
         self.deployment_policy = deployment_policy
         self.job_description = job_description
         # This parameter is required.
         self.job_name = job_name
+        self.job_scheduler = job_scheduler
         # This parameter is required.
         self.tasks = tasks
 
@@ -889,6 +891,8 @@ class CreateJobRequest(TeaModel):
             result['JobDescription'] = self.job_description
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.job_scheduler is not None:
+            result['JobScheduler'] = self.job_scheduler
         result['Tasks'] = []
         if self.tasks is not None:
             for k in self.tasks:
@@ -904,6 +908,8 @@ class CreateJobRequest(TeaModel):
             self.job_description = m.get('JobDescription')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('JobScheduler') is not None:
+            self.job_scheduler = m.get('JobScheduler')
         self.tasks = []
         if m.get('Tasks') is not None:
             for k in m.get('Tasks'):
@@ -918,12 +924,14 @@ class CreateJobShrinkRequest(TeaModel):
         deployment_policy_shrink: str = None,
         job_description: str = None,
         job_name: str = None,
+        job_scheduler: str = None,
         tasks_shrink: str = None,
     ):
         self.deployment_policy_shrink = deployment_policy_shrink
         self.job_description = job_description
         # This parameter is required.
         self.job_name = job_name
+        self.job_scheduler = job_scheduler
         # This parameter is required.
         self.tasks_shrink = tasks_shrink
 
@@ -942,6 +950,8 @@ class CreateJobShrinkRequest(TeaModel):
             result['JobDescription'] = self.job_description
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.job_scheduler is not None:
+            result['JobScheduler'] = self.job_scheduler
         if self.tasks_shrink is not None:
             result['Tasks'] = self.tasks_shrink
         return result
@@ -954,6 +964,8 @@ class CreateJobShrinkRequest(TeaModel):
             self.job_description = m.get('JobDescription')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('JobScheduler') is not None:
+            self.job_scheduler = m.get('JobScheduler')
         if m.get('Tasks') is not None:
             self.tasks_shrink = m.get('Tasks')
         return self
@@ -2497,6 +2509,7 @@ class GetJobResponseBodyJobInfo(TeaModel):
         job_description: str = None,
         job_id: str = None,
         job_name: str = None,
+        job_scheduler: str = None,
         start_time: str = None,
         status: str = None,
         tasks: List[GetJobResponseBodyJobInfoTasks] = None,
@@ -2507,6 +2520,7 @@ class GetJobResponseBodyJobInfo(TeaModel):
         self.job_description = job_description
         self.job_id = job_id
         self.job_name = job_name
+        self.job_scheduler = job_scheduler
         self.start_time = start_time
         self.status = status
         self.tasks = tasks
@@ -2537,6 +2551,8 @@ class GetJobResponseBodyJobInfo(TeaModel):
             result['JobId'] = self.job_id
         if self.job_name is not None:
             result['JobName'] = self.job_name
+        if self.job_scheduler is not None:
+            result['JobScheduler'] = self.job_scheduler
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.status is not None:
@@ -2562,6 +2578,8 @@ class GetJobResponseBodyJobInfo(TeaModel):
             self.job_id = m.get('JobId')
         if m.get('JobName') is not None:
             self.job_name = m.get('JobName')
+        if m.get('JobScheduler') is not None:
+            self.job_scheduler = m.get('JobScheduler')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('Status') is not None:
