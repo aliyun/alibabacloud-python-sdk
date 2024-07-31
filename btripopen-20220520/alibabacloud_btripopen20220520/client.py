@@ -13491,6 +13491,106 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.HotelOrderDetailInfoHeaders()
         return await self.hotel_order_detail_info_with_options_async(request, headers, runtime)
 
+    def hotel_order_info_query_with_options(
+        self,
+        order_id: str,
+        headers: btrip_open_20220520_models.HotelOrderInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelOrderInfoQueryResponse:
+        """
+        @summary 自营酒店订单查询
+        
+        @param headers: HotelOrderInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderInfoQueryResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='HotelOrderInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/order/v1/hotelOrders/{OpenApiUtilClient.get_encode_param(order_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelOrderInfoQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hotel_order_info_query_with_options_async(
+        self,
+        order_id: str,
+        headers: btrip_open_20220520_models.HotelOrderInfoQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelOrderInfoQueryResponse:
+        """
+        @summary 自营酒店订单查询
+        
+        @param headers: HotelOrderInfoQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelOrderInfoQueryResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='HotelOrderInfoQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/order/v1/hotelOrders/{OpenApiUtilClient.get_encode_param(order_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelOrderInfoQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hotel_order_info_query(
+        self,
+        order_id: str,
+    ) -> btrip_open_20220520_models.HotelOrderInfoQueryResponse:
+        """
+        @summary 自营酒店订单查询
+        
+        @return: HotelOrderInfoQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelOrderInfoQueryHeaders()
+        return self.hotel_order_info_query_with_options(order_id, headers, runtime)
+
+    async def hotel_order_info_query_async(
+        self,
+        order_id: str,
+    ) -> btrip_open_20220520_models.HotelOrderInfoQueryResponse:
+        """
+        @summary 自营酒店订单查询
+        
+        @return: HotelOrderInfoQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelOrderInfoQueryHeaders()
+        return await self.hotel_order_info_query_with_options_async(order_id, headers, runtime)
+
     def hotel_order_list_query_with_options(
         self,
         request: btrip_open_20220520_models.HotelOrderListQueryRequest,
@@ -14666,6 +14766,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.HotelStaticInfoHeaders()
         return await self.hotel_static_info_with_options_async(request, headers, runtime)
+
+    def hotel_suggest_v2with_options(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestV2Request,
+        headers: btrip_open_20220520_models.HotelSuggestV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelSuggestV2Response:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestV2Request
+        @param headers: HotelSuggestV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelSuggestV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.check_in):
+            query['check_in'] = request.check_in
+        if not UtilClient.is_unset(request.check_out):
+            query['check_out'] = request.check_out
+        if not UtilClient.is_unset(request.city_code):
+            query['city_code'] = request.city_code
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.search_type):
+            query['search_type'] = request.search_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='HotelSuggestV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v2/suggest-infos',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelSuggestV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def hotel_suggest_v2with_options_async(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestV2Request,
+        headers: btrip_open_20220520_models.HotelSuggestV2Headers,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.HotelSuggestV2Response:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestV2Request
+        @param headers: HotelSuggestV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HotelSuggestV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.check_in):
+            query['check_in'] = request.check_in
+        if not UtilClient.is_unset(request.check_out):
+            query['check_out'] = request.check_out
+        if not UtilClient.is_unset(request.city_code):
+            query['city_code'] = request.city_code
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.search_type):
+            query['search_type'] = request.search_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='HotelSuggestV2',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/dtb-hotel/v2/suggest-infos',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.HotelSuggestV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def hotel_suggest_v2(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestV2Request,
+    ) -> btrip_open_20220520_models.HotelSuggestV2Response:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestV2Request
+        @return: HotelSuggestV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelSuggestV2Headers()
+        return self.hotel_suggest_v2with_options(request, headers, runtime)
+
+    async def hotel_suggest_v2_async(
+        self,
+        request: btrip_open_20220520_models.HotelSuggestV2Request,
+    ) -> btrip_open_20220520_models.HotelSuggestV2Response:
+        """
+        @summary 酒店关键词搜索
+        
+        @param request: HotelSuggestV2Request
+        @return: HotelSuggestV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.HotelSuggestV2Headers()
+        return await self.hotel_suggest_v2with_options_async(request, headers, runtime)
 
     def ie_flight_bill_settlement_query_with_options(
         self,

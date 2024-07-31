@@ -1,3 +1,9 @@
+2024-07-31 Version: 4.2.0
+- Support API HotelOrderInfoQuery.
+- Support API HotelSuggestV2.
+- Update API MealOrderDetailQuery: update response param.
+
+
 2024-07-26 Version: 4.1.1
 - Update API ApplyAdd: add param default_standard.
 - Update API ApplyAdd: update param itinerary_list.
