@@ -1,7 +1,123 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class AddCustomImageShareAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account: List[int] = None,
+        client_token: str = None,
+        image_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.account = account
+        self.client_token = client_token
+        # This parameter is required.
+        self.image_id = image_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AddCustomImageShareAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddCustomImageShareAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomImageShareAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomImageShareAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class AllocatePublicConnectionRequest(TeaModel):
@@ -11,11 +127,15 @@ class AllocatePublicConnectionRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -93,9 +213,6 @@ class AllocatePublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -125,6 +242,388 @@ class AllocatePublicConnectionResponse(TeaModel):
         return self
 
 
+class ApplyFirewallTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_template_id: str = None,
+        instance_id: str = None,
+        instance_ids: List[str] = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The ID of the firewall template.
+        # 
+        # This parameter is required.
+        self.firewall_template_id = firewall_template_id
+        # The ID of the simple application server.
+        self.instance_id = instance_id
+        # The IDs of the simple application servers.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ApplyFirewallTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The ID of the execution to apply the template.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ApplyFirewallTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyFirewallTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyFirewallTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AttachKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_ids: List[str] = None,
+        key_pair_name: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The IDs of simple application servers. You can specify a maximum of 50 IDs of simple application servers.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        # The name of the key pair that you want to bind to the simple application server. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        # 
+        # This parameter is required.
+        self.key_pair_name = key_pair_name
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AttachKeyPairResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
+        success: str = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The simple application server ID.
+        self.instance_id = instance_id
+        # The response message.
+        self.message = message
+        # Indicates whether the key pair is bound to the simple application server successfully. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AttachKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        fail_count: int = None,
+        request_id: str = None,
+        results: List[AttachKeyPairResponseBodyResults] = None,
+        total_count: int = None,
+    ):
+        # The total number of simple application servers to which the key pair failed to be bound.
+        self.fail_count = fail_count
+        # The request ID.
+        self.request_id = request_id
+        # The results.
+        self.results = results
+        # The total number of simple application servers to which the key pair is bound.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = AttachKeyPairResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class AttachKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCommandRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N that you want to add to the command. Valid values of N: 1 to 20.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        self.key = key
+        # The value of tag N that you want to add to the command. Valid values of N: 1 to 20.
+        # 
+        # The tag value can be an empty string. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCommandRequest(TeaModel):
     def __init__(
         self,
@@ -133,21 +632,67 @@ class CreateCommandRequest(TeaModel):
         enable_parameter: bool = None,
         name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        tag: List[CreateCommandRequestTag] = None,
         timeout: int = None,
         type: str = None,
         working_dir: str = None,
     ):
+        # The command content. When you specify this parameter, take note of the following items:
+        # 
+        # *   When `EnableParameter` is set to true, the custom parameter feature is enabled, and you can configure custom parameters in the command based on the following rules:
+        # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
+        # *   You can specify up to 20 custom parameters.
+        # *   The name of a custom parameter can contain only letters, digits, underscores (_), and hyphens (-). The name is case-insensitive.
+        # *   The name of a custom parameter cannot exceed 64 bytes in length.
+        # 
+        # This parameter is required.
         self.command_content = command_content
+        # The description of the command. The description supports all character sets and can be up to 512 characters in length.
         self.description = description
+        # Specifies whether to use custom parameters in the command.
+        # 
+        # Default value: false.
         self.enable_parameter = enable_parameter
+        # The name of the command. The name supports all character sets and can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.name = name
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The tags that you want to add to the command. You can specify up to 20 tags.
+        self.tag = tag
+        # The timeout period for the command execution on the instance.
+        # 
+        # If a command execution task times out, Command Assistant forcefully terminates the task process. Valid values: 10 to 86400. Unit: seconds. The period of 86400 seconds is equal to 24 hours.
+        # 
+        # Default value: 60.
         self.timeout = timeout
+        # The language type of the command. Valid values:
+        # 
+        # *   RunBatScript: batch command, applicable to Windows instances
+        # *   RunPowerShellScript: PowerShell command, applicable to Windows instances
+        # *   RunShellScript: shell command, applicable to Linux instances
+        # 
+        # This parameter is required.
         self.type = type
+        # The working directory of the command on the ECS instance.
+        # 
+        # Default values:
+        # 
+        # *   For a Linux instance, the default value is the home directory of the root user, which is the `/root` directory.
+        # *   For a Windows instance, the default value is the directory where the Cloud Assistant client process resides. Example: `C:\\Windows\\System32`.
         self.working_dir = working_dir
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -165,6 +710,12 @@ class CreateCommandRequest(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.timeout is not None:
             result['Timeout'] = self.timeout
         if self.type is not None:
@@ -185,6 +736,13 @@ class CreateCommandRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCommandRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Timeout') is not None:
             self.timeout = m.get('Timeout')
         if m.get('Type') is not None:
@@ -200,7 +758,9 @@ class CreateCommandResponseBody(TeaModel):
         command_id: str = None,
         request_id: str = None,
     ):
+        # The command ID.
         self.command_id = command_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -239,9 +799,6 @@ class CreateCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -271,6 +828,45 @@ class CreateCommandResponse(TeaModel):
         return self
 
 
+class CreateCustomImageRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N that you want to add to the custom image. Valid values of N: 1 to 20.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        self.key = key
+        # The value of tag N that you want to add to the custom image. Valid values of N: 1 to 20.
+        # 
+        # The tag value can be an empty string. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateCustomImageRequest(TeaModel):
     def __init__(
         self,
@@ -280,25 +876,40 @@ class CreateCustomImageRequest(TeaModel):
         image_name: str = None,
         instance_id: str = None,
         region_id: str = None,
+        resoure_group_id: str = None,
         system_snapshot_id: str = None,
+        tag: List[CreateCustomImageRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the data disk snapshot.
         self.data_snapshot_id = data_snapshot_id
         # The description of the custom image.
         self.description = description
-        # The name of the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter or a digit. This parameter is empty by default.
+        # The name of the custom image. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter or a digit. This parameter is empty by default.
+        # 
+        # This parameter is required.
         self.image_name = image_name
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the database. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the database. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resoure_group_id = resoure_group_id
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
+        # The tags that you want to add to the custom image. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -318,8 +929,14 @@ class CreateCustomImageRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resoure_group_id is not None:
+            result['ResoureGroupId'] = self.resoure_group_id
         if self.system_snapshot_id is not None:
             result['SystemSnapshotId'] = self.system_snapshot_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -336,8 +953,15 @@ class CreateCustomImageRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResoureGroupId') is not None:
+            self.resoure_group_id = m.get('ResoureGroupId')
         if m.get('SystemSnapshotId') is not None:
             self.system_snapshot_id = m.get('SystemSnapshotId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateCustomImageRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -388,9 +1012,6 @@ class CreateCustomImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -430,21 +1051,33 @@ class CreateFirewallRuleRequest(TeaModel):
         remark: str = None,
         rule_protocol: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The port range. Valid values: 165535. Specify a port range in the format of \<start port number>/\<end port number>. Example: 1024/1055, which indicates the port range of 10241055.
+        # The port range.
+        # 
+        # *   When the transport layer protocol is TCP and/or UDP, the port range is 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: 1024/1055, which specifies the port range from 1024 to 1055.
+        # *   When the transport layer protocol is ICMP, the port range is -1/-1, which indicates all ports.
+        # 
+        # This parameter is required.
         self.port = port
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The remarks of the firewall rule.
         self.remark = remark
         # The transport layer protocol. Valid values:
         # 
-        # *   TCP: the TCP protocol
-        # *   UDP: the UDP protocol
-        # *   TCP+UDP: the TCP and UDP protocols
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
+        # 
+        # This parameter is required.
         self.rule_protocol = rule_protocol
 
     def validate(self):
@@ -534,9 +1167,6 @@ class CreateFirewallRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -574,9 +1204,21 @@ class CreateFirewallRulesRequestFirewallRules(TeaModel):
         rule_protocol: str = None,
         source_cidr_ip: str = None,
     ):
+        # The port number.
+        # 
+        # *   When the transport layer protocol is TCP and/or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+        # *   When the transport layer protocol is ICMP, the port number range is -1/-1, which indicates all ports.
         self.port = port
+        # The description of the firewall rule.
         self.remark = remark
+        # The transport layer protocol. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
         self.rule_protocol = rule_protocol
+        # The IP address or CIDR block that is allowed in the firewall rule.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -611,6 +1253,45 @@ class CreateFirewallRulesRequestFirewallRules(TeaModel):
         return self
 
 
+class CreateFirewallRulesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. Valid values of N: 1 to 20.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        self.key = key
+        # The tag value. Valid values of N: 1 to 20.
+        # 
+        # The tag value can be an empty string. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateFirewallRulesRequest(TeaModel):
     def __init__(
         self,
@@ -618,19 +1299,30 @@ class CreateFirewallRulesRequest(TeaModel):
         firewall_rules: List[CreateFirewallRulesRequestFirewallRules] = None,
         instance_id: str = None,
         region_id: str = None,
+        tag: List[CreateFirewallRulesRequestTag] = None,
     ):
         # The client token.
         self.client_token = client_token
-        # The remarks of the firewall rule.
+        # Details about the firewall rules.
         self.firewall_rules = firewall_rules
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The tags that you want to add to the firewall. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
         if self.firewall_rules:
             for k in self.firewall_rules:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
                 if k:
                     k.validate()
 
@@ -650,6 +1342,10 @@ class CreateFirewallRulesRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -665,6 +1361,50 @@ class CreateFirewallRulesRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateFirewallRulesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateFirewallRulesShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. Valid values of N: 1 to 20.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        self.key = key
+        # The tag value. Valid values of N: 1 to 20.
+        # 
+        # The tag value can be an empty string. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -675,18 +1415,28 @@ class CreateFirewallRulesShrinkRequest(TeaModel):
         firewall_rules_shrink: str = None,
         instance_id: str = None,
         region_id: str = None,
+        tag: List[CreateFirewallRulesShrinkRequestTag] = None,
     ):
         # The client token.
         self.client_token = client_token
-        # The remarks of the firewall rule.
+        # Details about the firewall rules.
         self.firewall_rules_shrink = firewall_rules_shrink
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The tags that you want to add to the firewall. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -702,6 +1452,10 @@ class CreateFirewallRulesShrinkRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -714,14 +1468,22 @@ class CreateFirewallRulesShrinkRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateFirewallRulesShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
 class CreateFirewallRulesResponseBody(TeaModel):
     def __init__(
         self,
+        firewall_rule_ids: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs of the firewall rules that you created.
+        self.firewall_rule_ids = firewall_rule_ids
         # The request ID.
         self.request_id = request_id
 
@@ -734,12 +1496,16 @@ class CreateFirewallRulesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.firewall_rule_ids is not None:
+            result['FirewallRuleIds'] = self.firewall_rule_ids
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FirewallRuleIds') is not None:
+            self.firewall_rule_ids = m.get('FirewallRuleIds')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -757,9 +1523,6 @@ class CreateFirewallRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -789,6 +1552,470 @@ class CreateFirewallRulesResponse(TeaModel):
         return self
 
 
+class CreateFirewallTemplateRequestFirewallRule(TeaModel):
+    def __init__(
+        self,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # 
+        # >  If you set RuleProtocol to ICMP, you must set Port to -1/-1.
+        # 
+        # This parameter is required.
+        self.port = port
+        # The remarks of the firewall rule.
+        self.remark = remark
+        # The transport layer protocol that the rule supports. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
+        # 
+        # This parameter is required.
+        self.rule_protocol = rule_protocol
+        # The source address to which you want to grant access permissions. CIDR blocks and IPv4 addresses are supported.
+        # 
+        # This parameter is required.
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class CreateFirewallTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        firewall_rule: List[CreateFirewallTemplateRequestFirewallRule] = None,
+        name: str = None,
+        region_id: str = None,
+    ):
+        # The description of the firewall template.
+        self.description = description
+        # The details of the firewall rule.
+        self.firewall_rule = firewall_rule
+        # The name of the firewall template.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The region ID of the simple application server to which the firewall template belongs. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.firewall_rule:
+            for k in self.firewall_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['FirewallRule'] = []
+        if self.firewall_rule is not None:
+            for k in self.firewall_rule:
+                result['FirewallRule'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.firewall_rule = []
+        if m.get('FirewallRule') is not None:
+            for k in m.get('FirewallRule'):
+                temp_model = CreateFirewallTemplateRequestFirewallRule()
+                self.firewall_rule.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateFirewallTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        firewall_template_id: str = None,
+        request_id: str = None,
+    ):
+        # The ID of the firewall template.
+        self.firewall_template_id = firewall_template_id
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFirewallTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFirewallTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFirewallTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateFirewallTemplateRulesRequestFirewallRule(TeaModel):
+    def __init__(
+        self,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # 
+        # >  If you set RuleProtocol to ICMP, you must set Port to -1/-1.
+        # 
+        # This parameter is required.
+        self.port = port
+        # The remarks of the firewall rule.
+        self.remark = remark
+        # The transport layer protocol that the rule supports. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
+        # 
+        # This parameter is required.
+        self.rule_protocol = rule_protocol
+        # The source address to which you want to grant access permissions. CIDR blocks and IPv4 addresses are supported.
+        # 
+        # This parameter is required.
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class CreateFirewallTemplateRulesRequest(TeaModel):
+    def __init__(
+        self,
+        firewall_rule: List[CreateFirewallTemplateRulesRequestFirewallRule] = None,
+        firewall_template_id: str = None,
+        region_id: str = None,
+    ):
+        # The details of the firewall rule.
+        # 
+        # This parameter is required.
+        self.firewall_rule = firewall_rule
+        # The ID of the firewall template.
+        # 
+        # This parameter is required.
+        self.firewall_template_id = firewall_template_id
+        # The region ID of the simple application server to which the firewall template is applied. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.firewall_rule:
+            for k in self.firewall_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FirewallRule'] = []
+        if self.firewall_rule is not None:
+            for k in self.firewall_rule:
+                result['FirewallRule'].append(k.to_map() if k else None)
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.firewall_rule = []
+        if m.get('FirewallRule') is not None:
+            for k in m.get('FirewallRule'):
+                temp_model = CreateFirewallTemplateRulesRequestFirewallRule()
+                self.firewall_rule.append(temp_model.from_map(k))
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules(TeaModel):
+    def __init__(
+        self,
+        firewall_template_rule_id: str = None,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        # The ID of the firewall template rule.
+        self.firewall_template_rule_id = firewall_template_rule_id
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # 
+        # >  If you set RuleProtocol to ICMP, you must set Port to -1/-1.
+        self.port = port
+        # The remarks of the firewall rule.
+        self.remark = remark
+        # The transport layer protocol that the rule supports. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP: the ICMP protocol
+        self.rule_protocol = rule_protocol
+        # The source address to which you want to grant access permissions. CIDR blocks and IPv4 addresses are supported.
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_template_rule_id is not None:
+            result['FirewallTemplateRuleId'] = self.firewall_template_rule_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallTemplateRuleId') is not None:
+            self.firewall_template_rule_id = m.get('FirewallTemplateRuleId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class CreateFirewallTemplateRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        firewall_template_rules: List[CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules] = None,
+        request_id: str = None,
+    ):
+        # The firewall template rules.
+        self.firewall_template_rules = firewall_template_rules
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.firewall_template_rules:
+            for k in self.firewall_template_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FirewallTemplateRules'] = []
+        if self.firewall_template_rules is not None:
+            for k in self.firewall_template_rules:
+                result['FirewallTemplateRules'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.firewall_template_rules = []
+        if m.get('FirewallTemplateRules') is not None:
+            for k in m.get('FirewallTemplateRules'):
+                temp_model = CreateFirewallTemplateRulesResponseBodyFirewallTemplateRules()
+                self.firewall_template_rules.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateFirewallTemplateRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFirewallTemplateRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFirewallTemplateRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateInstanceKeyPairRequest(TeaModel):
     def __init__(
         self,
@@ -797,13 +2024,19 @@ class CreateInstanceKeyPairRequest(TeaModel):
         key_pair_name: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the key pair.
+        # 
+        # This parameter is required.
         self.key_pair_name = key_pair_name
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -899,9 +2132,6 @@ class CreateInstanceKeyPairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -962,7 +2192,7 @@ class CreateInstancesRequest(TeaModel):
         # 
         # Default value: PrePaid.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The size of the data disk that is attached to the server. Unit: GB. Valid values: 0 to 16380. The value must be an integral multiple of 20.
         # 
@@ -971,13 +2201,21 @@ class CreateInstancesRequest(TeaModel):
         # 
         # Default value: 0.
         self.data_disk_size = data_disk_size
-        # The image ID. You can call the [ListImages](~~189313~~) operation to query the available images in the specified region.
+        # The image ID. You can call the [ListImages](https://help.aliyun.com/document_detail/189313.html) operation to query the available images in the specified region.
+        # 
+        # This parameter is required.
         self.image_id = image_id
         # The subscription period of the servers. Unit: months. Valid values: 1, 3, 6, 12, 24, and 36.
+        # 
+        # This parameter is required.
         self.period = period
-        # The plan ID. You can call the [ListPlans](~~189314~~) operation to query all plans provided by Simple Application Server in the specified region.
+        # The plan ID. You can call the [ListPlans](https://help.aliyun.com/document_detail/189314.html) operation to query all plans provided by Simple Application Server in the specified region.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1083,9 +2321,6 @@ class CreateInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1115,25 +2350,208 @@ class CreateInstancesResponse(TeaModel):
         return self
 
 
+class CreateKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        key_pair_name: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The name of the key pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://.
+        # 
+        # This parameter is required.
+        self.key_pair_name = key_pair_name
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        key_pair_name: str = None,
+        private_key_body: str = None,
+        request_id: str = None,
+    ):
+        # The name of the key pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://.
+        self.key_pair_name = key_pair_name
+        # The private key of the key pair. The PEM-encoded private key is in PKCS#8 format.
+        self.private_key_body = private_key_body
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.private_key_body is not None:
+            result['PrivateKeyBody'] = self.private_key_body
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('PrivateKeyBody') is not None:
+            self.private_key_body = m.get('PrivateKeyBody')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSnapshotRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag to add to the snapshot. Valid values of N: 1 to 20.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        self.key = key
+        # The value of the tag to add to the snapshot. Valid values of N: 1 to 20.
+        # 
+        # The tag value can be an empty string. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateSnapshotRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
         disk_id: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         snapshot_name: str = None,
+        tag: List[CreateSnapshotRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The disk ID.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
         # The region ID of the simple application server to which the disk is attached.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The snapshot name. The name must be 2 to 50 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The snapshot name. The name must be 2 to 50 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.snapshot_name = snapshot_name
+        # The tags that you want to add to the snapshot. You can specify up to 20 tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1147,8 +2565,14 @@ class CreateSnapshotRequest(TeaModel):
             result['DiskId'] = self.disk_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.snapshot_name is not None:
             result['SnapshotName'] = self.snapshot_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1159,8 +2583,15 @@ class CreateSnapshotRequest(TeaModel):
             self.disk_id = m.get('DiskId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SnapshotName') is not None:
             self.snapshot_name = m.get('SnapshotName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateSnapshotRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1211,9 +2642,6 @@ class CreateSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1249,7 +2677,13 @@ class DeleteCommandRequest(TeaModel):
         command_id: str = None,
         region_id: str = None,
     ):
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
+        # 
+        # This parameter is required.
         self.command_id = command_id
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1281,6 +2715,7 @@ class DeleteCommandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1315,9 +2750,6 @@ class DeleteCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1354,11 +2786,15 @@ class DeleteCustomImageRequest(TeaModel):
         image_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The custom image ID.
+        # 
+        # This parameter is required.
         self.image_id = image_id
-        # The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the custom image. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1429,9 +2865,6 @@ class DeleteCustomImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1461,6 +2894,121 @@ class DeleteCustomImageResponse(TeaModel):
         return self
 
 
+class DeleteCustomImagesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        image_ids: str = None,
+        region_id: str = None,
+    ):
+        # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html)
+        self.client_token = client_token
+        # The ID of the custom image. The value can be a JSON array that consists of up to 15 image IDs. Separate multiple image IDs with commas (,).
+        # 
+        # This parameter is required.
+        self.image_ids = image_ids
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.image_ids is not None:
+            result['ImageIds'] = self.image_ids
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ImageIds') is not None:
+            self.image_ids = m.get('ImageIds')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteCustomImagesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomImagesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomImagesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomImagesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFirewallRuleRequest(TeaModel):
     def __init__(
         self,
@@ -1469,13 +3017,19 @@ class DeleteFirewallRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the firewall rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -1550,9 +3104,6 @@ class DeleteFirewallRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1582,6 +3133,434 @@ class DeleteFirewallRuleResponse(TeaModel):
         return self
 
 
+class DeleteFirewallRulesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        rule_ids: List[str] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The ID of the simple application server.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The IDs of the firewall rules that you want to delete.
+        self.rule_ids = rule_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.rule_ids is not None:
+            result['RuleIds'] = self.rule_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RuleIds') is not None:
+            self.rule_ids = m.get('RuleIds')
+        return self
+
+
+class DeleteFirewallRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        rule_ids_shrink: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The ID of the simple application server.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The IDs of the firewall rules that you want to delete.
+        self.rule_ids_shrink = rule_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.rule_ids_shrink is not None:
+            result['RuleIds'] = self.rule_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RuleIds') is not None:
+            self.rule_ids_shrink = m.get('RuleIds')
+        return self
+
+
+class DeleteFirewallRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFirewallRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFirewallRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFirewallRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFirewallTemplateRulesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_template_id: str = None,
+        firewall_template_rule_id: List[str] = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The ID of the firewall template.
+        # 
+        # This parameter is required.
+        self.firewall_template_id = firewall_template_id
+        # The IDs of the firewall template rules.
+        # 
+        # This parameter is required.
+        self.firewall_template_rule_id = firewall_template_rule_id
+        # The ID of the simple application server to which the firewall template is applied.
+        self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.firewall_template_rule_id is not None:
+            result['FirewallTemplateRuleId'] = self.firewall_template_rule_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('FirewallTemplateRuleId') is not None:
+            self.firewall_template_rule_id = m.get('FirewallTemplateRuleId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteFirewallTemplateRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFirewallTemplateRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFirewallTemplateRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFirewallTemplateRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteFirewallTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_template_id: List[str] = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The IDs of the firewall templates.
+        # 
+        # This parameter is required.
+        self.firewall_template_id = firewall_template_id
+        # The ID of the simple application server to which the firewall templates belong.
+        self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteFirewallTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteFirewallTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFirewallTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFirewallTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteInstanceKeyPairRequest(TeaModel):
     def __init__(
         self,
@@ -1589,11 +3568,15 @@ class DeleteInstanceKeyPairRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1664,9 +3647,6 @@ class DeleteInstanceKeyPairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1696,6 +3676,121 @@ class DeleteInstanceKeyPairResponse(TeaModel):
         return self
 
 
+class DeleteKeyPairsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        key_pair_names: List[str] = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The names of the SSH key pairs. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with http:// or https://. You can specify the names of a maximum of 50 SSH key pairs.
+        # 
+        # This parameter is required.
+        self.key_pair_names = key_pair_names
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.key_pair_names is not None:
+            result['KeyPairNames'] = self.key_pair_names
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('KeyPairNames') is not None:
+            self.key_pair_names = m.get('KeyPairNames')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteKeyPairsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteKeyPairsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteKeyPairsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteKeyPairsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSnapshotRequest(TeaModel):
     def __init__(
         self,
@@ -1703,11 +3798,15 @@ class DeleteSnapshotRequest(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The region ID of the snapshot.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The snapshot ID.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -1778,9 +3877,6 @@ class DeleteSnapshotResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1817,11 +3913,15 @@ class DeleteSnapshotsRequest(TeaModel):
         region_id: str = None,
         snapshot_ids: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The snapshot IDs. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate multiple snapshot IDs with commas (,).
+        # 
+        # This parameter is required.
         self.snapshot_ids = snapshot_ids
 
     def validate(self):
@@ -1892,9 +3992,6 @@ class DeleteSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1924,6 +4021,321 @@ class DeleteSnapshotsResponse(TeaModel):
         return self
 
 
+class DescribeCloudAssistantAttributesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # The IDs of the simple application servers.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID of the specified simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCloudAssistantAttributesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # The IDs of the simple application servers.
+        # 
+        # This parameter is required.
+        self.instance_ids_shrink = instance_ids_shrink
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID of the specified simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeCloudAssistantAttributesResponseBodyCloudAssistant(TeaModel):
+    def __init__(
+        self,
+        active_task_count: int = None,
+        cloud_assistant_status: str = None,
+        cloud_assistant_version: str = None,
+        instance_id: str = None,
+        invocation_count: int = None,
+        last_heartbeat_time: str = None,
+        last_invoked_time: str = None,
+        ostype: str = None,
+        support_session_manager: bool = None,
+    ):
+        # The number of active tasks in Command Assistant.
+        self.active_task_count = active_task_count
+        # Indicates whether Command Assistant is running. Valid values:
+        # 
+        # true: Heartbeats are detected in the last 2 minutes.
+        # 
+        # false: Heartbeats are not detected in the last 2 minutes.
+        self.cloud_assistant_status = cloud_assistant_status
+        # The version number of the Command Assistant agent. Null is returned if the Command Assistant agent is not installed or is not running.
+        self.cloud_assistant_version = cloud_assistant_version
+        # The ID of the simple application server.
+        self.instance_id = instance_id
+        # The number of completed tasks in Command Assistant.
+        self.invocation_count = invocation_count
+        # The time when the last heartbeat of Command Assistant was detected. The value is updated every minute on average. The interval can be 55, 60, or 65 seconds.
+        self.last_heartbeat_time = last_heartbeat_time
+        # The time when commands were last run.
+        self.last_invoked_time = last_invoked_time
+        # The OS type of the simple application server. Valid values:
+        # 
+        # *   Windows
+        # *   Linux
+        # *   FreeBSD
+        self.ostype = ostype
+        # Indicates whether Command Assistant supports session management. If Command Assistant does not support session management, the version of the Command Assistant agent is too earlier. We recommend that you update your Command Assistant agent to the latest version.
+        # 
+        # To use the session management feature, you must make sure that the version of your Command Assistant agent meets one of the following requirements:
+        # 
+        # If your simple application server runs Linux, the version of the Command Assistant agent on the server must be 2.2.3.189 or later. If your simple application server runs Windows, the version of the Command Assistant agent on the server must be 2.1.3.189 or later.
+        self.support_session_manager = support_session_manager
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_task_count is not None:
+            result['ActiveTaskCount'] = self.active_task_count
+        if self.cloud_assistant_status is not None:
+            result['CloudAssistantStatus'] = self.cloud_assistant_status
+        if self.cloud_assistant_version is not None:
+            result['CloudAssistantVersion'] = self.cloud_assistant_version
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.invocation_count is not None:
+            result['InvocationCount'] = self.invocation_count
+        if self.last_heartbeat_time is not None:
+            result['LastHeartbeatTime'] = self.last_heartbeat_time
+        if self.last_invoked_time is not None:
+            result['LastInvokedTime'] = self.last_invoked_time
+        if self.ostype is not None:
+            result['OSType'] = self.ostype
+        if self.support_session_manager is not None:
+            result['SupportSessionManager'] = self.support_session_manager
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveTaskCount') is not None:
+            self.active_task_count = m.get('ActiveTaskCount')
+        if m.get('CloudAssistantStatus') is not None:
+            self.cloud_assistant_status = m.get('CloudAssistantStatus')
+        if m.get('CloudAssistantVersion') is not None:
+            self.cloud_assistant_version = m.get('CloudAssistantVersion')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InvocationCount') is not None:
+            self.invocation_count = m.get('InvocationCount')
+        if m.get('LastHeartbeatTime') is not None:
+            self.last_heartbeat_time = m.get('LastHeartbeatTime')
+        if m.get('LastInvokedTime') is not None:
+            self.last_invoked_time = m.get('LastInvokedTime')
+        if m.get('OSType') is not None:
+            self.ostype = m.get('OSType')
+        if m.get('SupportSessionManager') is not None:
+            self.support_session_manager = m.get('SupportSessionManager')
+        return self
+
+
+class DescribeCloudAssistantAttributesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cloud_assistant: List[DescribeCloudAssistantAttributesResponseBodyCloudAssistant] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The Command Assistant information.
+        self.cloud_assistant = cloud_assistant
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.cloud_assistant:
+            for k in self.cloud_assistant:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CloudAssistant'] = []
+        if self.cloud_assistant is not None:
+            for k in self.cloud_assistant:
+                result['CloudAssistant'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cloud_assistant = []
+        if m.get('CloudAssistant') is not None:
+            for k in m.get('CloudAssistant'):
+                temp_model = DescribeCloudAssistantAttributesResponseBodyCloudAssistant()
+                self.cloud_assistant.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeCloudAssistantAttributesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudAssistantAttributesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudAssistantAttributesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCloudAssistantStatusRequest(TeaModel):
     def __init__(
         self,
@@ -1947,6 +4359,8 @@ class DescribeCloudAssistantStatusRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID of the simple application servers.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2004,6 +4418,8 @@ class DescribeCloudAssistantStatusShrinkRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID of the simple application servers.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2157,9 +4573,6 @@ class DescribeCloudAssistantStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2196,11 +4609,15 @@ class DescribeCloudMonitorAgentStatusesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2238,8 +4655,21 @@ class DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList(TeaModel):
         instance_id: str = None,
         status: str = None,
     ):
+        # Indicates whether the Cloud Monitor agent was automatically installed on the simple application server. Valid values:
+        # 
+        # - true
+        # - false
         self.auto_install = auto_install
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The running status of the Cloud Monitoring plug-in. Possible values are:
+        # 
+        # - running: Cloud Monitoring plug-in running.
+        # - stopped: Cloud Monitoring plug-in stopped.
+        # - installing: Cloud Monitoring plug-in installing.
+        # - install_faild: Cloud Monitoring plug-in installation failed.
+        # - abnormal: Cloud Monitoring plug-in installation abnormal.
+        # - not_installed: Cloud Monitoring plug-in not installed.
         self.status = status
 
     def validate(self):
@@ -2276,10 +4706,7 @@ class DescribeCloudMonitorAgentStatusesResponseBody(TeaModel):
         instance_status_list: List[DescribeCloudMonitorAgentStatusesResponseBodyInstanceStatusList] = None,
         request_id: str = None,
     ):
-        # Indicates whether the Cloud Monitor agent was automatically installed on the simple application server. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the Cloud Monitor agent was automatically installed on the simple application server.
         self.instance_status_list = instance_status_list
         # The request ID.
         self.request_id = request_id
@@ -2328,9 +4755,6 @@ class DescribeCloudMonitorAgentStatusesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2373,14 +4797,60 @@ class DescribeCommandInvocationsRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
         self.command_id = command_id
+        # The command name. If both CommandName and InstanceId are specified, CommandName does not take effect.
         self.command_name = command_name
+        # The command type. Valid values:
+        # 
+        # *   RunBatScript: batch command, applicable to Windows instances
+        # *   RunPowerShellScript: PowerShell command, applicable to Windows instances
+        # *   RunShellScript: shell command, applicable to Linux instances
         self.command_type = command_type
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The overall execution state of the command. The value of this parameter depends on the execution status of the command on all the involved instances. Valid values:
+        # 
+        # *   Pending: The command is being verified or sent. When the execution state on at least one instance is Pending, the overall execution state is Pending.
+        # 
+        # *   Running: The command is being run on the instances. When the execution state on at least one instance is Running, the overall execution state is Running.
+        # 
+        # *   Success: When the execution state on at least one instance is Success and the execution state on other instances is Stopped or Success, the overall execution state is Success.
+        # 
+        #     *   Command that is set to run immediately: The command execution is complete, and the exit code is 0.
+        # 
+        # *   Failed: When the execution state on all instances is Stopped or Failed, the overall execution state is Failed. When the execution state on an instance is one of the following values, Failed is returned as the overall execution state:
+        # 
+        #     *   Invalid: The command is invalid.
+        #     *   Aborted: The command fails to be sent.
+        #     *   Failed: The command execution is complete, and the exit code is not 0.
+        #     *   Timeout: The command execution times out.
+        #     *   Error: An error occurs when the command is being run.
+        # 
+        # *   Stopping: The command task is being stopped. When the execution state on at least one instance is Stopping, the overall execution state is Stopping.
+        # 
+        # *   Stopped: The command task is stopped. When the execution state on all instances is Stopped, the overall execution state is Stopped. When the execution state on an instance is one of the following values, Stopped is returned as the overall execution state:
+        # 
+        #     *   Cancelled: The command task is canceled.
+        #     *   Terminated: The command task is terminated.
+        # 
+        # *   PartialFailed: The command execution succeeds on some instances and fails on other instances. When the execution state on some instances is Success and the execution state on other instances is Failed or Stopped, the overall execution state is PartialFailed.
+        # 
+        # >  The value of the `InvokeStatus` response parameter is similar to the value of InvocationStatus. We recommend that you ignore InvokeStatus and check the value of InvocationStatus.
         self.invocation_status = invocation_status
+        # The execution ID of the command.
         self.invoke_id = invoke_id
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2447,13 +4917,88 @@ class DescribeCommandInvocationsResponseBodyCommandInvocationsInvokeInstances(Te
         output: str = None,
         start_time: str = None,
     ):
+        # The error code returned if the command failed to be sent or run.
+        # 
+        # *   null: The command is run as expected.
+        # *   InstanceNotExists: The specified instance does not exist or is released.
+        # *   InstanceReleased: The instance is released when the command is being run.
+        # *   InstanceNotRunning: The instance is not in the Running state when the command is being run.
+        # *   CommandNotApplicable: The command is not applicable to the specified instance.
+        # *   AccountNotExists: The specified account does not exist.
+        # *   DirectoryNotExists: The specified directory does not exist.
+        # *   BadCronExpression: The specified CRON expression for the execution schedule is invalid.
+        # *   ClientNotRunning: Cloud Assistant Agent is not running.
+        # *   ClientNotResponse: Cloud Assistant Agent does not respond to your request.
+        # *   ClientIsUpgrading: Cloud Assistant Agent is being updated.
+        # *   ClientNeedUpgrade: Cloud Assistant Agent needs to be updated.
+        # *   DeliveryTimeout: The request to send the command timed out.
+        # *   ExecutionTimeout: The command execution timed out.
+        # *   ExecutionException: An exception occurred when the command was being run.
+        # *   ExecutionInterrupted: The command execution is interrupted.
+        # *   ExitCodeNonzero: The command execution is complete, and the exit code is not 0.
         self.error_code = error_code
+        # The error message returned if the command failed to be sent or run. Valid values:
+        # 
+        # *   null: The command is run as expected.
+        # *   the specified instance does not exists: The specified instance does not exist or is released.
+        # *   the instance has released when create task: The instance is released when the command is being run.
+        # *   the instance is not running when create task: The instance is not in the Running state when the command is being run.
+        # *   the command is not applicable: The command is not applicable to the specified instance.
+        # *   the specified account does not exists: The specified account does not exist.
+        # *   the specified directory does not exists: The specified directory does not exist.
+        # *   the cron job expression is invalid: The specified CRON expression for the execution schedule is invalid.
+        # *   the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
+        # *   the aliyun service in the instance does not response: Cloud Assistant Agent does not respond to your request.
+        # *   the aliyun service in the instance is upgrading now: Cloud Assistant Agent is being updated.
+        # *   the aliyun service in the instance need upgrade: Cloud Assistant Agent needs to be updated.
+        # *   the command delivery has been timeout: The request to send the command timed out.
+        # *   the command execution has been timeout: The command execution timed out.
+        # *   the command execution got an exception: An exception occurred when the command was being run.
+        # *   the command execution has been interrupted: The command execution is interrupted.
+        # *   the command execution exit code is not zero: The command execution is complete, and the exit code is not 0.
         self.error_info = error_info
+        # The exit code of the command.
+        # 
+        # *   For Linux instances, the exit code is the exit code of the shell command.
+        # *   For Windows instances, the exit code is the exit code of the batch or PowerShell command.
         self.exit_code = exit_code
+        # The end of the time range during which the command is run on the instance.
         self.finish_time = finish_time
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The execution state of the command on a single instance. Valid values:
+        # 
+        # *   Pending: The command is being verified or sent.
+        # 
+        # *   Invalid: The specified command type or parameter is invalid.
+        # 
+        # *   Aborted: The command failed to be sent to the instance. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
+        # 
+        # *   Running: The command is being run on the instance.
+        # 
+        # *   Success:
+        # 
+        #     *   Command that is set to run only once: The command execution is complete, and the exit code is 0.
+        #     *   Command that is set to run on a schedule: The previous command execution is complete, the exit code is 0, and the specified cycle ends.
+        # 
+        # *   Failed:
+        # 
+        #     *   Command that is set to run only once: The command execution is complete, and the exit code is not 0.
+        #     *   Command that is set to run on a schedule: The previous command execution is complete, the exit code is not 0, and the specified cycle is about to end.
+        # 
+        # *   Error: The command execution cannot proceed due to an exception.
+        # 
+        # *   Timeout: The command execution timed out.
+        # 
+        # *   Cancelled: The command execution is canceled, and the command is not started.
+        # 
+        # *   Stopping: The command task is being stopped.
+        # 
+        # *   Terminated: The command is terminated when it is being run.
         self.invocation_status = invocation_status
+        # The command output.
         self.output = output
+        # The beginning of the time range during which the command is run on the instance.
         self.start_time = start_time
 
     def validate(self):
@@ -2521,18 +5066,43 @@ class DescribeCommandInvocationsResponseBodyCommandInvocations(TeaModel):
         username: str = None,
         working_dir: str = None,
     ):
+        # The content of the command.
         self.command_content = command_content
+        # The description of the command.
         self.command_description = command_description
+        # The command ID.
         self.command_id = command_id
+        # The command name.
         self.command_name = command_name
+        # The command type.
         self.command_type = command_type
+        # The time when the command was created.
         self.creation_time = creation_time
+        # The overall execution state of the command. Valid values:
+        # 
+        # *   Pending: The command is being verified or sent.
+        # *   Invalid: The specified command type or parameter is invalid.
+        # *   Aborted: The command failed to be sent to the instances. To send a command to an instance, make sure that the instance is in the Running state and the command is sent to the instance within 1 minute.
+        # *   Running: The command is being run on the instances.
+        # *   Success: The command execution is complete, and the exit code is 0.
+        # *   Failed: The command execution is complete, and the exit code is not 0.
+        # *   Error: The command execution cannot proceed due to an exception.
+        # *   Timeout: The command execution timed out.
+        # *   Cancelled: The command execution is canceled, and the command is not started.
+        # *   Stopping: The command in the Running state is being stopped.
+        # *   Terminated: The command is terminated when it is being run.
         self.invocation_status = invocation_status
+        # The execution ID of the command.
         self.invoke_id = invoke_id
+        # The instances on which the command is run.
         self.invoke_instances = invoke_instances
+        # The custom parameters in the command. If no custom parameter exists in the command, the default value is {}.
         self.parameters = parameters
+        # The timeout period. Unit: seconds.
         self.timeout = timeout
+        # The username that is used to run the command.
         self.username = username
+        # The working directory of the command.
         self.working_dir = working_dir
 
     def validate(self):
@@ -2620,10 +5190,15 @@ class DescribeCommandInvocationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The command executions.
         self.command_invocations = command_invocations
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -2682,9 +5257,6 @@ class DescribeCommandInvocationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2714,6 +5286,41 @@ class DescribeCommandInvocationsResponse(TeaModel):
         return self
 
 
+class DescribeCommandsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the command. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        self.key = key
+        # The tag value of the command. A tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeCommandsRequest(TeaModel):
     def __init__(
         self,
@@ -2723,18 +5330,53 @@ class DescribeCommandsRequest(TeaModel):
         page_size: str = None,
         provider: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        tag: List[DescribeCommandsRequestTag] = None,
         type: str = None,
     ):
+        # The command ID.
         self.command_id = command_id
+        # The command name. Fuzzy match is not supported.
         self.name = name
+        # The page number.
+        # 
+        # Pages start from 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The provider of the common command. Take note of the following items:
+        # 
+        # *   If you set this parameter to `AlibabaCloud`, all the common commands provided by Alibaba Cloud are queried.
+        # *   If you set this parameter to `User`, all the custom commands created by you are queried.
+        # 
+        # This parameter is required.
         self.provider = provider
+        # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The tags that are bound to the command.
+        self.tag = tag
+        # The language type of the command. Valid values:
+        # 
+        # *   RunBatScript: batch command, applicable to Windows instances
+        # *   RunPowerShellScript: PowerShell command, applicable to Windows instances
+        # *   RunShellScript: shell command, applicable to Linux instances
         self.type = type
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2754,6 +5396,12 @@ class DescribeCommandsRequest(TeaModel):
             result['Provider'] = self.provider
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2772,6 +5420,13 @@ class DescribeCommandsRequest(TeaModel):
             self.provider = m.get('Provider')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeCommandsRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2786,10 +5441,20 @@ class DescribeCommandsResponseBodyCommandsParameterDefinitions(TeaModel):
         possible_values: List[str] = None,
         required: bool = None,
     ):
+        # The default value of the custom parameter.
         self.default_value = default_value
+        # The description of the custom parameter.
         self.description = description
+        # The name of the custom parameter.
         self.parameter_name = parameter_name
+        # The valid values of the custom parameter.
         self.possible_values = possible_values
+        # Indicates whether the custom parameter is required. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.required = required
 
     def validate(self):
@@ -2828,6 +5493,41 @@ class DescribeCommandsResponseBodyCommandsParameterDefinitions(TeaModel):
         return self
 
 
+class DescribeCommandsResponseBodyCommandsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the command.
+        self.key = key
+        # The tag value of the command.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeCommandsResponseBodyCommands(TeaModel):
     def __init__(
         self,
@@ -2840,26 +5540,48 @@ class DescribeCommandsResponseBodyCommands(TeaModel):
         parameter_definitions: List[DescribeCommandsResponseBodyCommandsParameterDefinitions] = None,
         parameter_names: List[str] = None,
         provider: str = None,
+        resource_group_id: str = None,
+        tags: List[DescribeCommandsResponseBodyCommandsTags] = None,
         timeout: int = None,
         type: str = None,
         working_dir: str = None,
     ):
+        # The content of the command.
         self.command_content = command_content
+        # The command ID.
         self.command_id = command_id
+        # The time when the command was created.
         self.creation_time = creation_time
+        # The description of the command.
         self.description = description
+        # Indicates whether the custom parameter feature is enabled for the command.
         self.enable_parameter = enable_parameter
+        # The name of the command.
         self.name = name
+        # Details of the custom parameter.
         self.parameter_definitions = parameter_definitions
+        # The custom parameter names that are parsed from the command content specified when the command was created. The custom parameter names are returned in the list format. If the custom parameter feature is disabled, an empty list is returned.
         self.parameter_names = parameter_names
+        # The provider of the command.
         self.provider = provider
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The tags that are bound to the command.
+        self.tags = tags
+        # The timeout period of the command.
         self.timeout = timeout
+        # The type of the command.
         self.type = type
+        # The execution path of the command.
         self.working_dir = working_dir
 
     def validate(self):
         if self.parameter_definitions:
             for k in self.parameter_definitions:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -2889,6 +5611,12 @@ class DescribeCommandsResponseBodyCommands(TeaModel):
             result['ParameterNames'] = self.parameter_names
         if self.provider is not None:
             result['Provider'] = self.provider
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.timeout is not None:
             result['Timeout'] = self.timeout
         if self.type is not None:
@@ -2920,6 +5648,13 @@ class DescribeCommandsResponseBodyCommands(TeaModel):
             self.parameter_names = m.get('ParameterNames')
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeCommandsResponseBodyCommandsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Timeout') is not None:
             self.timeout = m.get('Timeout')
         if m.get('Type') is not None:
@@ -2938,10 +5673,15 @@ class DescribeCommandsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The queried commands.
         self.commands = commands
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of commands.
         self.total_count = total_count
 
     def validate(self):
@@ -3000,9 +5740,6 @@ class DescribeCommandsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3043,10 +5780,14 @@ class DescribeDatabaseErrorLogsRequest(TeaModel):
         start_time: str = None,
     ):
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The page number.
         self.page_number = page_number
@@ -3054,11 +5795,15 @@ class DescribeDatabaseErrorLogsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the Simple Database Service instance.
         # 
-        # You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3107,7 +5852,9 @@ class DescribeDatabaseErrorLogsResponseBodyErrorLogs(TeaModel):
         create_time: str = None,
         error_info: str = None,
     ):
+        # The time when the resource was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
+        # The error message returned.
         self.error_info = error_info
 
     def validate(self):
@@ -3143,7 +5890,7 @@ class DescribeDatabaseErrorLogsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The time when the error log entry was generated. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the error log entry was generated. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.error_logs = error_logs
@@ -3212,9 +5959,6 @@ class DescribeDatabaseErrorLogsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3254,10 +5998,14 @@ class DescribeDatabaseInstanceMetricDataRequest(TeaModel):
         start_time: str = None,
     ):
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The name of the metric. Valid values:
         # 
@@ -3265,12 +6013,18 @@ class DescribeDatabaseInstanceMetricDataRequest(TeaModel):
         # *   MySQL_DetailedSpaceUsage: The total space usage, data space, log space, temporary space, and system space of the instance.
         # *   MySQL_Sessions : The total number of active connections.
         # *   MySQL_IOPS: The IOPS of the instance.
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -3320,9 +6074,9 @@ class DescribeDatabaseInstanceMetricDataResponseBody(TeaModel):
     ):
         # The data format. Valid values:
         # 
-        # *   cpuusage\&memusage
-        # *   active_session\&total_session
-        # *   ins_size\&data_size\&log_size\&tmp_size\&other_size
+        # *   cpuusage\\&memusage
+        # *   active_session\\&total_session
+        # *   ins_size\\&data_size\\&log_size\\&tmp_size\\&other_size
         # *   io
         self.data_format = data_format
         # The monitoring data.
@@ -3391,9 +6145,6 @@ class DescribeDatabaseInstanceMetricDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3430,8 +6181,12 @@ class DescribeDatabaseInstanceParametersRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3468,11 +6223,26 @@ class DescribeDatabaseInstanceParametersResponseBodyConfigParameters(TeaModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The check code that indicates the valid values of the parameter.
         self.checking_code = checking_code
+        # Does it support modifying parameter values. Possible values:
+        # 
+        # - true:Support modifying parameter values.
+        # 
+        # - false:Modifying parameter values is not supported.
         self.force_modify = force_modify
+        # Specifies whether to forcibly restart the instance after parameters are modified. Valid values:
+        # 
+        # *   true: forcibly restarts the instance. If a new parameter value takes effect only after the instance restarts, you must set this parameter to true. Otherwise, the new parameter value cannot take effect.
+        # *   false: does not forcibly restart the instance.
+        # 
+        # Default value: false.
         self.force_restart = force_restart
+        # The description of the parameter.
         self.parameter_description = parameter_description
+        # The name of the parameter.
         self.parameter_name = parameter_name
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -3525,11 +6295,26 @@ class DescribeDatabaseInstanceParametersResponseBodyRunningParameters(TeaModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The check code that indicates the valid values of the parameter.
         self.checking_code = checking_code
+        # Does it support modifying parameter values. Possible values:
+        # 
+        # - true:Support modifying parameter values.
+        # 
+        # - false:Modifying parameter values is not supported.
         self.force_modify = force_modify
+        # Specifies whether to forcibly restart the instance after parameters are modified. Valid values:
+        # 
+        # *   true: forcibly restarts the instance. If a new parameter value takes effect only after the instance restarts, you must set this parameter to true. Otherwise, the new parameter value cannot take effect.
+        # *   false: does not forcibly restart the instance.
+        # 
+        # Default value: false.
         self.force_restart = force_restart
+        # The description of the parameter.
         self.parameter_description = parameter_description
+        # The name of the parameter.
         self.parameter_name = parameter_name
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -3664,9 +6449,6 @@ class DescribeDatabaseInstanceParametersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3719,6 +6501,8 @@ class DescribeDatabaseInstancesRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID of the Simple Database Service instances.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3773,21 +6557,63 @@ class DescribeDatabaseInstancesResponseBodyDatabaseInstances(TeaModel):
         storage: int = None,
         super_account_name: str = None,
     ):
+        # The business status of the instance. Valid values:
+        # 
+        # *   normal
+        # *   expired
+        # *   overdue
         self.business_status = business_status
+        # The billing method of the Simple Database Service instance. Set the value to PrePaid. This value indicates the subscription billing method.
+        # 
+        # Default value: PrePaid.
         self.charge_type = charge_type
+        # The number of vCPUs.
         self.cpu = cpu
+        # The time when the instance was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The plan edition ID of the Simple Database Service instance. Valid values:
+        # 
+        # *   swas.db.c1m1s25: CNY 35/month.
+        # *   swas.db.c1m2s80: CNY 100/month.
+        # *   swas.db.c2m4s120: CNY 200/month.
+        # *   swas.db.c2m8s240: CNY 300/month.
         self.database_instance_edition = database_instance_edition
+        # The ID of the Simple Database Service instance.
         self.database_instance_id = database_instance_id
+        # The name of the Simple Database Service instance.
         self.database_instance_name = database_instance_name
+        # The status of the Simple Database Service instance. Valid values:
+        # 
+        # *   Pending: The instance is being created.
+        # *   Restarting: The instance is being restarted.
+        # *   Running: The instance is running.
+        # *   Stopping: The instance is being stopped.
+        # *   Stopped: The instance is stopped.
+        # *   UPGRADING: The instance is being upgraded.
+        # *   DISABLED: The instance is disabled.
         self.database_instance_status = database_instance_status
+        # The database engine version of the instance. Valid values:
+        # 
+        # *   5.7: MySQL 5.7.
+        # *   8.0: MySQL 8.0.
         self.database_version = database_version
+        # The time when the instance expires. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 
+        # >  The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.expired_time = expired_time
+        # The memory size of the instance. Unit: GB.
         self.memory = memory
+        # The private endpoint.
         self.private_connection = private_connection
+        # The public endpoint.
+        # 
+        # >  This parameter is displayed only after you apply for a public endpoint for the instance and a public endpoint is assigned to the instance. You can call [AllocatePublicConnection](https://help.aliyun.com/document_detail/451413.html) to apply for a public endpoint for the instance.
         self.public_connection = public_connection
+        # The region ID of the Simple Database Service instances.
         self.region_id = region_id
+        # The size of the enhanced SSD (ESSD). Unit: GB.
         self.storage = storage
+        # The name of the super administrator account of the Simple Database Service instance.
         self.super_account_name = super_account_name
 
     def validate(self):
@@ -3879,7 +6705,7 @@ class DescribeDatabaseInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The name of the super administrator account of the Simple Database Service instance.
+        # The information about the Simple Database Service instances.
         self.database_instances = database_instances
         # The page number.
         self.page_number = page_number
@@ -3946,9 +6772,6 @@ class DescribeDatabaseInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3981,7 +6804,6 @@ class DescribeDatabaseInstancesResponse(TeaModel):
 class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
     def __init__(
         self,
-        acs_product: str = None,
         database_instance_id: str = None,
         end_time: str = None,
         page_number: int = None,
@@ -3989,14 +6811,17 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        self.acs_product = acs_product
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
         # The end of the time range to query. The end time must be later than the start time. The interval between the start time and the end time must be less than 7 days.
         # 
-        # Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The page number.
         # 
@@ -4008,13 +6833,17 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query.
         # 
-        # Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # > The time displayed in the Simple Application Server console is in the format of UTC+8.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4026,8 +6855,6 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.acs_product is not None:
-            result['AcsProduct'] = self.acs_product
         if self.database_instance_id is not None:
             result['DatabaseInstanceId'] = self.database_instance_id
         if self.end_time is not None:
@@ -4044,8 +6871,6 @@ class DescribeDatabaseSlowLogRecordsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AcsProduct') is not None:
-            self.acs_product = m.get('AcsProduct')
         if m.get('DatabaseInstanceId') is not None:
             self.database_instance_id = m.get('DatabaseInstanceId')
         if m.get('EndTime') is not None:
@@ -4074,14 +6899,25 @@ class DescribeDatabaseSlowLogRecordsResponseBodySlowLogs(TeaModel):
         return_row_counts: int = None,
         sqltext: str = None,
     ):
+        # The name of the database.
         self.dbname = dbname
+        # The time when the execution of the SQL statement started. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 
+        # >  The time displayed in the Simple Application Server console is in the format of UTC+8.
         self.execution_start_time = execution_start_time
+        # The name and IP address of the client that is connected to the database.
         self.host_address = host_address
+        # The lock duration of the SQL statement. Unit: seconds.
         self.lock_times = lock_times
+        # The number of rows parsed by the SQL statement.
         self.parse_row_counts = parse_row_counts
+        # The execution duration of the slow query. Unit: millisecond.
         self.query_time_ms = query_time_ms
+        # The execution duration of the slow query. Unit: seconds.
         self.query_times = query_times
+        # The number of rows returned by the SQL statement.
         self.return_row_counts = return_row_counts
+        # The details of the SQL statement.
         self.sqltext = sqltext
 
     def validate(self):
@@ -4163,7 +6999,7 @@ class DescribeDatabaseSlowLogRecordsResponseBody(TeaModel):
         self.physical_ioread = physical_ioread
         # The request ID.
         self.request_id = request_id
-        # The database name.
+        # The slow query logs returned.
         self.slow_logs = slow_logs
         # The total number of entries returned.
         self.total_count = total_count
@@ -4232,9 +7068,6 @@ class DescribeDatabaseSlowLogRecordsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4264,6 +7097,843 @@ class DescribeDatabaseSlowLogRecordsResponse(TeaModel):
         return self
 
 
+class DescribeFirewallTemplateApplyResultsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_template_id: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        task_id: List[str] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The ID of the firewall template.
+        self.firewall_template_id = firewall_template_id
+        # The ID of the simple application server to which the template belongs.
+        self.instance_id = instance_id
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 20.
+        self.page_size = page_size
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the execution to apply the template.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        status: str = None,
+    ):
+        # The ID of the simple application server.
+        self.instance_id = instance_id
+        # The status of applying the firewall template to the simple application servers. Valid values:
+        # 
+        # *   Running: The firewall template is being applied to the simple application servers.
+        # *   Failed: The firewall template is applied to none of the simple application servers.
+        # *   Success: The firewall template is applied to all the simple application servers.
+        # *   PartFailed: The firewall template fails to be applied to some simple application servers.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeFirewallTemplateApplyResultsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        failed_count: str = None,
+        firewall_template_id: str = None,
+        instance_apply_results: List[DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults] = None,
+        status: str = None,
+        task_id: str = None,
+        total_count: str = None,
+    ):
+        # The time when the firewall template was applied to the simple application servers.
+        self.create_time = create_time
+        # The total number of simple application servers to which the firewall template fails to apply.
+        self.failed_count = failed_count
+        # The ID of the firewall template.
+        self.firewall_template_id = firewall_template_id
+        # The result of applying the firewall template to the simple application servers.
+        self.instance_apply_results = instance_apply_results
+        # The status of applying the template to all simple application servers. Valid values:
+        # 
+        # *   Running: The firewall template is being applied to simple application servers.
+        # *   Failed: The firewall template is applied to none of simple application servers.
+        # *   Success: The firewall template is applied to all simple application servers.
+        # *   PartFailed: The firewall template fails to be applied to some simple application servers.
+        self.status = status
+        # The ID of the execution to apply the template.
+        self.task_id = task_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.instance_apply_results:
+            for k in self.instance_apply_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        result['InstanceApplyResults'] = []
+        if self.instance_apply_results is not None:
+            for k in self.instance_apply_results:
+                result['InstanceApplyResults'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        self.instance_apply_results = []
+        if m.get('InstanceApplyResults') is not None:
+            for k in m.get('InstanceApplyResults'):
+                temp_model = DescribeFirewallTemplateApplyResultsResponseBodyDataInstanceApplyResults()
+                self.instance_apply_results.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeFirewallTemplateApplyResultsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+        data: List[DescribeFirewallTemplateApplyResultsResponseBodyData] = None,
+    ):
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 20.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+        # The returned results.
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeFirewallTemplateApplyResultsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeFirewallTemplateApplyResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFirewallTemplateApplyResultsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFirewallTemplateApplyResultsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeFirewallTemplateRulesApplyResultRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        firewall_template_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        task_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The ID of the firewall template.
+        # 
+        # This parameter is required.
+        self.firewall_template_id = firewall_template_id
+        # The ID of the simple application server.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the execution to apply the template rule.
+        # 
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribeFirewallTemplateRulesApplyResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_info: str = None,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+        success: bool = None,
+    ):
+        # The error codes when the firewall template rule fails to be applied.
+        self.error_code = error_code
+        # The error message that is displayed when the firewall template rule fails to be applied.
+        self.error_info = error_info
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # 
+        # >  If you set RuleProtocol to ICMP, you must set Port to -1/-1.
+        self.port = port
+        # The remarks of the firewall rule.
+        self.remark = remark
+        # The transport layer protocol that the rule supports. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
+        self.rule_protocol = rule_protocol
+        # The source address to which you want to grant access permissions. CIDR blocks and IPv4 addresses are supported.
+        self.source_cidr_ip = source_cidr_ip
+        # The status of applying the firewall template rule to the simple application servers.
+        # 
+        # *   Pending: The template rule does not start to be applied to the simple application servers.
+        # *   Applying: The template rule is being applied to the simple application servers.
+        # *   Success: The template rule is successfully applied to the simple application servers.
+        # *   PartFailed: The template rule fails to be applied to some simple application servers.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorInfo') is not None:
+            self.error_info = m.get('ErrorInfo')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeFirewallTemplateRulesApplyResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        data: List[DescribeFirewallTemplateRulesApplyResultResponseBodyData] = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The returned results.
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = DescribeFirewallTemplateRulesApplyResultResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeFirewallTemplateRulesApplyResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFirewallTemplateRulesApplyResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFirewallTemplateRulesApplyResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeFirewallTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        firewall_template_id: List[str] = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # The IDs of the firewall templates.
+        self.firewall_template_id = firewall_template_id
+        # The name of the firewall template.
+        self.name = name
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 20.
+        self.page_size = page_size
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules(TeaModel):
+    def __init__(
+        self,
+        firewall_template_rule_id: str = None,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        # The ID of the firewall template rule.
+        self.firewall_template_rule_id = firewall_template_rule_id
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # 
+        # >  If you set RuleProtocol to ICMP, you must set Port to -1/-1.
+        self.port = port
+        # The remarks of the firewall template rule.
+        self.remark = remark
+        # The transport layer protocol that the rule supports. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
+        self.rule_protocol = rule_protocol
+        # The source address to which you want to grant access permissions. CIDR blocks and IPv4 addresses are supported.
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_template_rule_id is not None:
+            result['FirewallTemplateRuleId'] = self.firewall_template_rule_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallTemplateRuleId') is not None:
+            self.firewall_template_rule_id = m.get('FirewallTemplateRuleId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class DescribeFirewallTemplatesResponseBodyFirewallTemplates(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creation_time: str = None,
+        description: str = None,
+        firewall_template_id: str = None,
+        firewall_template_rules: List[DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules] = None,
+        name: str = None,
+    ):
+        # The time when the firewall template was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # 
+        # >  The time displayed in the Simple Application Server console is in the format of UTC+8.
+        self.create_time = create_time
+        # The time when the firewall template was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.creation_time = creation_time
+        # The description of the firewall template.
+        self.description = description
+        # The ID of the firewall template.
+        self.firewall_template_id = firewall_template_id
+        # The details of the firewall template rules.
+        self.firewall_template_rules = firewall_template_rules
+        # The name of the firewall template.
+        self.name = name
+
+    def validate(self):
+        if self.firewall_template_rules:
+            for k in self.firewall_template_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        result['FirewallTemplateRules'] = []
+        if self.firewall_template_rules is not None:
+            for k in self.firewall_template_rules:
+                result['FirewallTemplateRules'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        self.firewall_template_rules = []
+        if m.get('FirewallTemplateRules') is not None:
+            for k in m.get('FirewallTemplateRules'):
+                temp_model = DescribeFirewallTemplatesResponseBodyFirewallTemplatesFirewallTemplateRules()
+                self.firewall_template_rules.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeFirewallTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        firewall_templates: List[DescribeFirewallTemplatesResponseBodyFirewallTemplates] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The information about the queried firewall templates.
+        self.firewall_templates = firewall_templates
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page. Default value: 20.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.firewall_templates:
+            for k in self.firewall_templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FirewallTemplates'] = []
+        if self.firewall_templates is not None:
+            for k in self.firewall_templates:
+                result['FirewallTemplates'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.firewall_templates = []
+        if m.get('FirewallTemplates') is not None:
+            for k in m.get('FirewallTemplates'):
+                temp_model = DescribeFirewallTemplatesResponseBodyFirewallTemplates()
+                self.firewall_templates.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeFirewallTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFirewallTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFirewallTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceKeyPairRequest(TeaModel):
     def __init__(
         self,
@@ -4271,11 +7941,15 @@ class DescribeInstanceKeyPairRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4360,9 +8034,6 @@ class DescribeInstanceKeyPairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4399,11 +8070,15 @@ class DescribeInstancePasswordsSettingRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4488,9 +8163,6 @@ class DescribeInstancePasswordsSettingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4527,11 +8199,15 @@ class DescribeInstanceVncUrlRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4609,9 +8285,6 @@ class DescribeInstanceVncUrlResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4649,10 +8322,16 @@ class DescribeInvocationResultRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The execution ID. You can call the [DescribeInvocations](~~439368~~) operation to query execution IDs.
+        # The execution ID. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/439368.html) operation to query execution IDs.
+        # 
+        # This parameter is required.
         self.invoke_id = invoke_id
-        # The region ID of the simple application server. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4886,9 +8565,6 @@ class DescribeInvocationResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4928,6 +8604,8 @@ class DescribeInvocationsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The status of the command execution. Valid values:
         # 
@@ -4947,7 +8625,9 @@ class DescribeInvocationsRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5160,9 +8840,6 @@ class DescribeInvocationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5205,7 +8882,7 @@ class DescribeMonitorDataRequest(TeaModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The end of the time range to query. The following formats are supported:
         # 
@@ -5213,21 +8890,27 @@ class DescribeMonitorDataRequest(TeaModel):
         # *   Time format: YYYY-MM-DDThh:mm:ssZ.
         # 
         # > The interval between the start time and the end time is less than or equal to 31 days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of entries per page. Valid values: 1 to 1440.
         self.length = length
-        # The metric name. Valid values:
+        # The name of the metric. Valid values:
         # 
         # *   MEMORY_ACTUALUSEDSPACE: the memory usage. Unit: bytes.
         # *   DISKUSAGE_USED: the disk usage. Unit: bytes.
-        # *   CPU_UTILIZATION: the CPU utilization in percentage.
-        # *   VPC_PUBLICIP_INTERNETOUT_RATE: the outbound bandwidth rate of the network. Unit: bits/s.
-        # *   VPC_PUBLICIP_INTERNETIN_RATE: the inbound bandwidth rate of the network. Unit: bits/s.
+        # *   CPU_UTILIZATION: the CPU usage, in percentage.
+        # *   VPC_PUBLICIP_INTERNETOUT_RATE: the outbound bandwidth. Unit: bits/s.
+        # *   VPC_PUBLICIP_INTERNETIN_RATE: the inbound bandwidth. Unit: bits/s.
         # *   DISK_READ_IOPS: the read IOPS of the disk. Unit: count/s.
         # *   DISK_WRITE_IOPS: the write IOPS of the disk. Unit: count/s.
         # *   FLOW_USED: the traffic usage. Unit: bytes.
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
@@ -5240,8 +8923,12 @@ class DescribeMonitorDataRequest(TeaModel):
         # **\
         # 
         # ****\
+        # 
+        # This parameter is required.
         self.period = period
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The beginning of the time range to query. The following formats are supported:
         # 
@@ -5255,6 +8942,8 @@ class DescribeMonitorDataRequest(TeaModel):
         # **\
         # 
         # ****\
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5378,9 +9067,6 @@ class DescribeMonitorDataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5417,11 +9103,15 @@ class DescribeSecurityAgentStatusRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5503,9 +9193,6 @@ class DescribeSecurityAgentStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5535,6 +9222,211 @@ class DescribeSecurityAgentStatusResponse(TeaModel):
         return self
 
 
+class DetachKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        instance_ids: List[str] = None,
+        key_pair_name: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The IDs of the simple application servers from which you want to unbind SSH key pairs. You can specify a maximum of 50 IDs of simple application servers.
+        # 
+        # This parameter is required.
+        self.instance_ids = instance_ids
+        # The name of the key pair. The name must be globally unique. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        # 
+        # This parameter is required.
+        self.key_pair_name = key_pair_name
+        # The region ID of the simple application servers.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DetachKeyPairResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        message: str = None,
+        success: str = None,
+    ):
+        # The HTTP status code.
+        self.code = code
+        # The ID of the simple application server.
+        self.instance_id = instance_id
+        # The response message.
+        self.message = message
+        # Indicates whether the key pair is unbound from the simple application server successfully. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DetachKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        fail_count: int = None,
+        request_id: str = None,
+        results: List[DetachKeyPairResponseBodyResults] = None,
+        total_count: int = None,
+    ):
+        # The total number of simple application servers from which you fail to unbind key pairs.
+        self.fail_count = fail_count
+        # The request ID.
+        self.request_id = request_id
+        # The request results.
+        self.results = results
+        # The total number of simple application servers from which the SSH key pair is unbound.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DetachKeyPairResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DetachKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableFirewallRuleRequest(TeaModel):
     def __init__(
         self,
@@ -5544,15 +9436,21 @@ class DisableFirewallRuleRequest(TeaModel):
         remark: str = None,
         rule_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The remarks of the firewall rule.
         self.remark = remark
         # The ID of the firewall rule. You can call the ListFirewallRules operation to query the ID of the firewall rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -5631,9 +9529,6 @@ class DisableFirewallRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5673,15 +9568,21 @@ class EnableFirewallRuleRequest(TeaModel):
         rule_id: str = None,
         source_cidr_ip: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The remarks of the firewall rule.
         self.remark = remark
         # The ID of the firewall rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The IP address or CIDR block that is allowed in the firewall policy.
         self.source_cidr_ip = source_cidr_ip
@@ -5766,9 +9667,6 @@ class EnableFirewallRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5798,6 +9696,137 @@ class EnableFirewallRuleResponse(TeaModel):
         return self
 
 
+class ImportKeyPairRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        key_pair_name: str = None,
+        public_key_body: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The name of the key pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with http:// or https://.
+        # 
+        # This parameter is required.
+        self.key_pair_name = key_pair_name
+        # The public key of the key pair.
+        # 
+        # This parameter is required.
+        self.public_key_body = public_key_body
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.public_key_body is not None:
+            result['PublicKeyBody'] = self.public_key_body
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('PublicKeyBody') is not None:
+            self.public_key_body = m.get('PublicKeyBody')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ImportKeyPairResponseBody(TeaModel):
+    def __init__(
+        self,
+        key_pair_name: str = None,
+        request_id: str = None,
+    ):
+        # The name of the key pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with http:// or https://.
+        self.key_pair_name = key_pair_name
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportKeyPairResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportKeyPairResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportKeyPairResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InstallCloudAssistantRequest(TeaModel):
     def __init__(
         self,
@@ -5805,8 +9834,12 @@ class InstallCloudAssistantRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the simple application servers.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5840,8 +9873,12 @@ class InstallCloudAssistantShrinkRequest(TeaModel):
         region_id: str = None,
     ):
         # The IDs of the simple application servers.
+        # 
+        # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5908,9 +9945,6 @@ class InstallCloudAssistantResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5948,7 +9982,7 @@ class InstallCloudMonitorAgentRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Specifies whether to forcibly install the CloudMonitor agent. Valid values:
         # 
@@ -5956,8 +9990,12 @@ class InstallCloudMonitorAgentRequest(TeaModel):
         # *   false: does not forcibly install the CloudMonitor agent.
         self.force = force
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6032,9 +10070,6 @@ class InstallCloudMonitorAgentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6073,10 +10108,31 @@ class InvokeCommandRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
+        # The command ID. You can call the DescribeCommands operation to query all available command IDs.
+        # 
+        # This parameter is required.
         self.command_id = command_id
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 50 IDs of simple application servers. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
+        # The key-value pairs of custom parameters to specify when the custom parameter feature is enabled.
+        # 
+        # *   You can specify up to 10 custom parameters. Each key in a Map collection cannot be an empty string and can be up to 64 characters in length.
+        # *   Values in a Map collection can be empty strings. The total length of the custom parameters and the original command cannot exceed 18 KB after they are encoded in Base64.
+        # *   The custom parameter names that you specify for the Parameters parameter must be included in the custom parameter names that you specified when you created the command.
+        # *   You can use empty strings to represent the custom parameters that are not specified. If you want to disable the custom parameter feature, you can leave this parameter empty.
         self.parameters = parameters
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The name of the user who runs the command in a simple application server. The username cannot exceed 255 characters in length.
+        # 
+        # *   For Linux servers, the default value is the root username.
+        # *   For Windows servers, the default value is the system username.
+        # 
+        # You can change the user to run the command only for Linux simple application servers.
         self.username = username
 
     def validate(self):
@@ -6124,10 +10180,31 @@ class InvokeCommandShrinkRequest(TeaModel):
         region_id: str = None,
         username: str = None,
     ):
+        # The command ID. You can call the DescribeCommands operation to query all available command IDs.
+        # 
+        # This parameter is required.
         self.command_id = command_id
+        # The IDs of the simple application servers. The value can be a JSON array that consists of up to 50 IDs of simple application servers. Separate multiple IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
+        # The key-value pairs of custom parameters to specify when the custom parameter feature is enabled.
+        # 
+        # *   You can specify up to 10 custom parameters. Each key in a Map collection cannot be an empty string and can be up to 64 characters in length.
+        # *   Values in a Map collection can be empty strings. The total length of the custom parameters and the original command cannot exceed 18 KB after they are encoded in Base64.
+        # *   The custom parameter names that you specify for the Parameters parameter must be included in the custom parameter names that you specified when you created the command.
+        # *   You can use empty strings to represent the custom parameters that are not specified. If you want to disable the custom parameter feature, you can leave this parameter empty.
         self.parameters_shrink = parameters_shrink
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The name of the user who runs the command in a simple application server. The username cannot exceed 255 characters in length.
+        # 
+        # *   For Linux servers, the default value is the root username.
+        # *   For Windows servers, the default value is the system username.
+        # 
+        # You can change the user to run the command only for Linux simple application servers.
         self.username = username
 
     def validate(self):
@@ -6172,7 +10249,9 @@ class InvokeCommandResponseBody(TeaModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
+        # The execution ID of the command.
         self.invoke_id = invoke_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6211,9 +10290,6 @@ class InvokeCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6243,6 +10319,227 @@ class InvokeCommandResponse(TeaModel):
         return self
 
 
+class ListCustomImageShareAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        image_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.image_id = image_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListCustomImageShareAccountsResponseBodyImageShareUsers(TeaModel):
+    def __init__(
+        self,
+        shared_time: str = None,
+        user_id: int = None,
+    ):
+        self.shared_time = shared_time
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.shared_time is not None:
+            result['SharedTime'] = self.shared_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SharedTime') is not None:
+            self.shared_time = m.get('SharedTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListCustomImageShareAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        image_share_users: List[ListCustomImageShareAccountsResponseBodyImageShareUsers] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.image_share_users = image_share_users
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.image_share_users:
+            for k in self.image_share_users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ImageShareUsers'] = []
+        if self.image_share_users is not None:
+            for k in self.image_share_users:
+                result['ImageShareUsers'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.image_share_users = []
+        if m.get('ImageShareUsers') is not None:
+            for k in m.get('ImageShareUsers'):
+                temp_model = ListCustomImageShareAccountsResponseBodyImageShareUsers()
+                self.image_share_users.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomImageShareAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomImageShareAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomImageShareAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCustomImagesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        self.key = key
+        # The value of tag N. A tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListCustomImagesRequest(TeaModel):
     def __init__(
         self,
@@ -6250,12 +10547,16 @@ class ListCustomImagesRequest(TeaModel):
         data_snapshot_id: str = None,
         image_ids: str = None,
         image_names: str = None,
+        instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        share: bool = None,
         system_snapshot_id: str = None,
+        tag: List[ListCustomImagesRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the data disk snapshot.
         self.data_snapshot_id = data_snapshot_id
@@ -6263,6 +10564,7 @@ class ListCustomImagesRequest(TeaModel):
         self.image_ids = image_ids
         # The image names of the simple application servers. The value can be a JSON array that consists of up to 100 image names. Separate multiple image names with commas (,).
         self.image_names = image_names
+        self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
@@ -6270,13 +10572,23 @@ class ListCustomImagesRequest(TeaModel):
         # *   Maximum value: 100.
         # *   Default value: 10.
         self.page_size = page_size
-        # The region ID of the simple application servers corresponding to the custom images. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers corresponding to the custom images. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        self.share = share
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
+        # Tag N of the custom image.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6292,14 +10604,24 @@ class ListCustomImagesRequest(TeaModel):
             result['ImageIds'] = self.image_ids
         if self.image_names is not None:
             result['ImageNames'] = self.image_names
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.share is not None:
+            result['Share'] = self.share
         if self.system_snapshot_id is not None:
             result['SystemSnapshotId'] = self.system_snapshot_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6312,60 +10634,38 @@ class ListCustomImagesRequest(TeaModel):
             self.image_ids = m.get('ImageIds')
         if m.get('ImageNames') is not None:
             self.image_names = m.get('ImageNames')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Share') is not None:
+            self.share = m.get('Share')
         if m.get('SystemSnapshotId') is not None:
             self.system_snapshot_id = m.get('SystemSnapshotId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListCustomImagesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
-class ListCustomImagesResponseBodyCustomImages(TeaModel):
+class ListCustomImagesResponseBodyCustomImagesTags(TeaModel):
     def __init__(
         self,
-        creation_time: str = None,
-        data_snapshot_id: str = None,
-        data_snapshot_name: str = None,
-        description: str = None,
-        image_id: str = None,
-        in_share: bool = None,
-        instance_id: str = None,
-        instance_name: str = None,
-        name: str = None,
-        region_id: str = None,
-        status: str = None,
-        system_snapshot_id: str = None,
-        system_snapshot_name: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        # The time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        self.creation_time = creation_time
-        # The ID of the data disk snapshot.
-        self.data_snapshot_id = data_snapshot_id
-        # The name of the data disk snapshot.
-        self.data_snapshot_name = data_snapshot_name
-        # The description of the custom image.
-        self.description = description
-        # The ID of the custom image.
-        self.image_id = image_id
-        # Indicates whether the custom image is shared with Elastic Compute Service (ECS).
-        self.in_share = in_share
-        # The ID of the simple application server.
-        self.instance_id = instance_id
-        # The name of the simple application server.
-        self.instance_name = instance_name
-        # The name of the custom image.
-        self.name = name
-        # The region ID of the custom images.
-        self.region_id = region_id
-        # The status of the custom image.
-        self.status = status
-        # The ID of the system disk snapshot.
-        self.system_snapshot_id = system_snapshot_id
-        # The name of the system disk snapshot.
-        self.system_snapshot_name = system_snapshot_name
+        # The tag key of the custom image.
+        self.key = key
+        # The tag value of the custom image.
+        self.value = value
 
     def validate(self):
         pass
@@ -6376,6 +10676,93 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListCustomImagesResponseBodyCustomImages(TeaModel):
+    def __init__(
+        self,
+        create_instances: List[str] = None,
+        creation_time: str = None,
+        data_snapshot_id: str = None,
+        data_snapshot_name: str = None,
+        description: str = None,
+        image_id: str = None,
+        in_share: bool = None,
+        in_share_user: bool = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        name: str = None,
+        os_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        system_snapshot_id: str = None,
+        system_snapshot_name: str = None,
+        tags: List[ListCustomImagesResponseBodyCustomImagesTags] = None,
+        user_id: int = None,
+    ):
+        self.create_instances = create_instances
+        # The time when the snapshot was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+        self.creation_time = creation_time
+        # The ID of the data disk snapshot.
+        self.data_snapshot_id = data_snapshot_id
+        # The name of the data disk snapshot.
+        self.data_snapshot_name = data_snapshot_name
+        # The description of the custom image.
+        self.description = description
+        # The ID of the custom image.
+        self.image_id = image_id
+        # Indicates whether the custom image is shared to Elastic Compute Service (ECS).
+        self.in_share = in_share
+        self.in_share_user = in_share_user
+        # The ID of the simple application server.
+        self.instance_id = instance_id
+        # The name of the simple application server.
+        self.instance_name = instance_name
+        # The name of the custom image.
+        self.name = name
+        self.os_type = os_type
+        # The region ID.
+        self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The status of the custom image.
+        self.status = status
+        # The ID of the system disk snapshot.
+        self.system_snapshot_id = system_snapshot_id
+        # The name of the system disk snapshot.
+        self.system_snapshot_name = system_snapshot_name
+        # The tags of the custom image.
+        self.tags = tags
+        self.user_id = user_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_instances is not None:
+            result['CreateInstances'] = self.create_instances
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.data_snapshot_id is not None:
@@ -6388,24 +10775,38 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
             result['ImageId'] = self.image_id
         if self.in_share is not None:
             result['InShare'] = self.in_share
+        if self.in_share_user is not None:
+            result['InShareUser'] = self.in_share_user
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.name is not None:
             result['Name'] = self.name
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.system_snapshot_id is not None:
             result['SystemSnapshotId'] = self.system_snapshot_id
         if self.system_snapshot_name is not None:
             result['SystemSnapshotName'] = self.system_snapshot_name
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateInstances') is not None:
+            self.create_instances = m.get('CreateInstances')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('DataSnapshotId') is not None:
@@ -6418,20 +10819,33 @@ class ListCustomImagesResponseBodyCustomImages(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('InShare') is not None:
             self.in_share = m.get('InShare')
+        if m.get('InShareUser') is not None:
+            self.in_share_user = m.get('InShareUser')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('SystemSnapshotId') is not None:
             self.system_snapshot_id = m.get('SystemSnapshotId')
         if m.get('SystemSnapshotName') is not None:
             self.system_snapshot_name = m.get('SystemSnapshotName')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListCustomImagesResponseBodyCustomImagesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -6444,7 +10858,7 @@ class ListCustomImagesResponseBody(TeaModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The queried custom images.
+        # The array of queried custom images.
         self.custom_images = custom_images
         # The page number.
         self.page_number = page_number
@@ -6511,9 +10925,6 @@ class ListCustomImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6543,6 +10954,41 @@ class ListCustomImagesResponse(TeaModel):
         return self
 
 
+class ListDisksRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. The tag key can be up to 64 characters in length. Valid values of N: 1 to 20.
+        self.key = key
+        # The tag value. The tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListDisksRequest(TeaModel):
     def __init__(
         self,
@@ -6552,13 +10998,15 @@ class ListDisksRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
+        tag: List[ListDisksRequestTag] = None,
     ):
         # The IDs of the disks. The value can be a JSON array that consists of up to 100 disk IDs. Separate multiple disk IDs with commas (,).
         self.disk_ids = disk_ids
-        # The type of the disk. Valid values:
+        # The disk type. Valid values:
         # 
-        # *   System: system disk.
-        # *   Data: data disk.
+        # *   system: system disk
+        # *   data: data disk
         # 
         # By default, system disks and data disks are both queried.
         self.disk_type = disk_type
@@ -6575,10 +11023,19 @@ class ListDisksRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID of the disks.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The tags that are added to the disks.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6598,6 +11055,12 @@ class ListDisksRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6614,6 +11077,48 @@ class ListDisksRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListDisksRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListDisksResponseBodyDisksTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -6631,51 +11136,61 @@ class ListDisksResponseBodyDisks(TeaModel):
         instance_name: str = None,
         region_id: str = None,
         remark: str = None,
+        resource_group_id: str = None,
         size: int = None,
         status: str = None,
+        tags: List[ListDisksResponseBodyDisksTags] = None,
     ):
         # The category of the disk. Valid values:
         # 
-        # *   ESSD: an enhanced SSD (ESSD) at performance level 0 (PL0).
-        # *   SSD: a standard SSD.
+        # *   ESSD: enhanced SSD (ESSD) of PL0
+        # *   SSD: standard SSD
+        # *   CLOUD_EFFICIENCY: ultra disk
         self.category = category
-        # The time when the disk was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the disk was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The device name of the disk on the simple application server.
+        # The device name of the disk after the disk is attached to the simple application server.
         self.device = device
         # The billing method of the disk.
         self.disk_charge_type = disk_charge_type
-        # The ID of the disk.
+        # The disk ID.
         self.disk_id = disk_id
         # The name of the disk.
         self.disk_name = disk_name
-        # The type of the disk. Valid values:
+        # The disk type. Valid values:
         # 
-        # *   System: system disk.
-        # *   Data: data disk.
+        # *   system: system disk
+        # *   data: data disk
         self.disk_type = disk_type
         # The ID of the simple application server to which the disk is attached.
         self.instance_id = instance_id
-        # Name of the simple application server.
+        # The name of the simple application server.
         self.instance_name = instance_name
-        # The region ID of the disks.
+        # The region ID.
         self.region_id = region_id
-        # Description about the disk.
+        # The remarks of the disk.
         self.remark = remark
+        # The ID of the resource group to which the disk belongs.
+        self.resource_group_id = resource_group_id
         # The size of the disk. Unit: GB.
         self.size = size
         # The status of the disk. Valid values:
         # 
         # *   ReIniting: The disk is being initialized.
         # *   Creating: The disk is being created.
-        # *   In_Use: The disk is being used.
+        # *   In_use: The disk is in use.
         # *   Available: The disk can be attached.
         # *   Attaching: The disk is being attached.
         # *   Detaching: The disk is being detached.
         self.status = status
+        # The tags that are added to the disks.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6705,10 +11220,16 @@ class ListDisksResponseBodyDisks(TeaModel):
             result['RegionId'] = self.region_id
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.size is not None:
             result['Size'] = self.size
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6735,10 +11256,17 @@ class ListDisksResponseBodyDisks(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListDisksResponseBodyDisksTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -6751,7 +11279,7 @@ class ListDisksResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the disks.
+        # The queried disks.
         self.disks = disks
         # The page number.
         self.page_number = page_number
@@ -6818,9 +11346,6 @@ class ListDisksResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6850,15 +11375,56 @@ class ListDisksResponse(TeaModel):
         return self
 
 
+class ListFirewallRulesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        self.key = key
+        # The value of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListFirewallRulesRequest(TeaModel):
     def __init__(
         self,
+        firewall_rule_id: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        tag: List[ListFirewallRulesRequestTag] = None,
     ):
+        # The ID of the firewall rule.
+        self.firewall_rule_id = firewall_rule_id
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number.
         # 
@@ -6873,7 +11439,70 @@ class ListFirewallRulesRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The tags of the firewall rule.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_rule_id is not None:
+            result['FirewallRuleId'] = self.firewall_rule_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallRuleId') is not None:
+            self.firewall_rule_id = m.get('FirewallRuleId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListFirewallRulesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListFirewallRulesResponseBodyFirewallRulesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        self.key = key
+        # The value of tag N to be added to the firewall rule. Valid values of N: 1 to 20.
+        self.value = value
 
     def validate(self):
         pass
@@ -6884,26 +11513,18 @@ class ListFirewallRulesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -6916,8 +11537,9 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
         rule_id: str = None,
         rule_protocol: str = None,
         source_cidr_ip: str = None,
+        tags: List[ListFirewallRulesResponseBodyFirewallRulesTags] = None,
     ):
-        # The firewall policy.
+        # The firewall policy. Valid values:
         # 
         # *   accept: Access is allowed.
         # *   drop: Access is refused.
@@ -6930,15 +11552,20 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
         self.rule_id = rule_id
         # The transport layer protocol. Valid values:
         # 
-        # *   TCP: the TCP protocol.
-        # *   UDP: the UDP protocol
-        # *   TCP+UDP: the TCP and UDP protocols
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
         self.rule_protocol = rule_protocol
-        # The IP address or CIDR block that is allowed by the firewall rule.
+        # The source CIDR block.
         self.source_cidr_ip = source_cidr_ip
+        # The tags of the firewall rule.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6958,6 +11585,10 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
             result['RuleProtocol'] = self.rule_protocol
         if self.source_cidr_ip is not None:
             result['SourceCidrIp'] = self.source_cidr_ip
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -6974,6 +11605,11 @@ class ListFirewallRulesResponseBodyFirewallRules(TeaModel):
             self.rule_protocol = m.get('RuleProtocol')
         if m.get('SourceCidrIp') is not None:
             self.source_cidr_ip = m.get('SourceCidrIp')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListFirewallRulesResponseBodyFirewallRulesTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -6986,7 +11622,7 @@ class ListFirewallRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the firewall rules.
+        # The array of firewall rules.
         self.firewall_rules = firewall_rules
         # The page number.
         self.page_number = page_number
@@ -7053,9 +11689,6 @@ class ListFirewallRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7100,7 +11733,9 @@ class ListImagesRequest(TeaModel):
         # *   app: application images
         # *   custom: custom images
         self.image_type = image_type
-        # The region ID of the images. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the images. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7252,9 +11887,6 @@ class ListImagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7291,8 +11923,12 @@ class ListInstancePlansModificationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7471,9 +12107,6 @@ class ListInstancePlansModificationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7517,7 +12150,9 @@ class ListInstanceStatusRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7558,7 +12193,18 @@ class ListInstanceStatusResponseBodyInstanceStatuses(TeaModel):
         instance_id: str = None,
         status: str = None,
     ):
+        # The ID of the simple application server.
         self.instance_id = instance_id
+        # The status of the simple application server. Valid values:
+        # 
+        # *   Pending
+        # *   Starting
+        # *   Running
+        # *   Stopping
+        # *   Stopped
+        # *   Resetting
+        # *   Upgrading
+        # *   Disabled
         self.status = status
 
     def validate(self):
@@ -7661,9 +12307,6 @@ class ListInstanceStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7693,16 +12336,54 @@ class ListInstanceStatusResponse(TeaModel):
         return self
 
 
+class ListInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the simple application servers. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        self.key = key
+        # The tag value of the simple application servers. A tag value can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
         charge_type: str = None,
         instance_ids: str = None,
+        instance_name: str = None,
         page_number: int = None,
         page_size: int = None,
         public_ip_addresses: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
+        tag: List[ListInstancesRequestTag] = None,
     ):
         # The billing method of the simple application servers. Set the value to PrePaid, which indicates the subscription billing method.
         # 
@@ -7712,6 +12393,8 @@ class ListInstancesRequest(TeaModel):
         # 
         # > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
         self.instance_ids = instance_ids
+        # The name of the simple application servers, which supports fuzzy search using wildcard *.
+        self.instance_name = instance_name
         # The page number.
         # 
         # Default value: 1.
@@ -7725,21 +12408,30 @@ class ListInstancesRequest(TeaModel):
         # > If you specify both `InstanceIds` and `PublicIpAddresses`, make sure that the specified IDs and the specified public IP addresses belong to the same simple application servers. Otherwise, an empty result is returned.
         self.public_ip_addresses = public_ip_addresses
         # The region ID of the simple application servers.
-        self.region_id = region_id
-        # 实例状态，可能值：
         # 
-        # - Pending：准备中
-        # - Starting：启动中
-        # - Running：运行中
-        # - Stopping：停止中
-        # - Stopped：停止
-        # - Resetting：重置中
-        # - Upgrading：升级中
-        # - Disabled：不可用
+        # This parameter is required.
+        self.region_id = region_id
+        # The ID of the resource group to which the simple application servers belong.
+        self.resource_group_id = resource_group_id
+        # The status of the simple application servers. Valid values:
+        # 
+        # *   Pending
+        # *   Starting
+        # *   Running
+        # *   Stopping
+        # *   Stopped
+        # *   Resetting
+        # *   Upgrading
+        # *   Disabled
         self.status = status
+        # The tags that are added to the simple application servers.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7751,6 +12443,8 @@ class ListInstancesRequest(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7759,8 +12453,14 @@ class ListInstancesRequest(TeaModel):
             result['PublicIpAddresses'] = self.public_ip_addresses
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -7769,6 +12469,8 @@ class ListInstancesRequest(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -7777,6 +12479,182 @@ class ListInstancesRequest(TeaModel):
             self.public_ip_addresses = m.get('PublicIpAddresses')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListInstancesResponseBodyInstancesDisksDiskTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListInstancesResponseBodyInstancesDisks(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        creation_time: str = None,
+        device: str = None,
+        disk_charge_type: str = None,
+        disk_id: str = None,
+        disk_name: str = None,
+        disk_tags: List[ListInstancesResponseBodyInstancesDisksDiskTags] = None,
+        disk_type: str = None,
+        region_id: str = None,
+        remark: str = None,
+        resource_group_id: str = None,
+        size: int = None,
+        status: str = None,
+    ):
+        # The category of the disk. Valid values:
+        # 
+        # *   ESSD: ESSD of PL0
+        # *   SSD: standard SSD
+        # *   CLOUD_EFFICIENCY: an ultra disk.
+        self.category = category
+        # The time when the simple application server was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        self.creation_time = creation_time
+        # The device name of the disk after the disk is attached to the simple application server.
+        self.device = device
+        # The billing method of the disk.
+        self.disk_charge_type = disk_charge_type
+        # The disk ID.
+        self.disk_id = disk_id
+        # The disk name.
+        self.disk_name = disk_name
+        # The tags that are added to the disk.
+        self.disk_tags = disk_tags
+        # The disk type. Valid values:
+        # 
+        # *   system: system disk
+        # *   data: data disk
+        self.disk_type = disk_type
+        # The region ID.
+        self.region_id = region_id
+        # The remarks of the disk.
+        self.remark = remark
+        # The ID of the resource group to which the disk belongs.
+        self.resource_group_id = resource_group_id
+        # The disk size. Unit: GB.
+        self.size = size
+        # The status of the disk. Valid values:
+        # 
+        # *   ReIniting: The disk is being initialized.
+        # *   Creating: The disk is being created.
+        # *   In_use: The disk is in use.
+        # *   Available: The disk can be attached.
+        # *   Attaching: The disk is being attached.
+        # *   Detaching: The disk is being detached.
+        self.status = status
+
+    def validate(self):
+        if self.disk_tags:
+            for k in self.disk_tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.device is not None:
+            result['Device'] = self.device
+        if self.disk_charge_type is not None:
+            result['DiskChargeType'] = self.disk_charge_type
+        if self.disk_id is not None:
+            result['DiskId'] = self.disk_id
+        if self.disk_name is not None:
+            result['DiskName'] = self.disk_name
+        result['DiskTags'] = []
+        if self.disk_tags is not None:
+            for k in self.disk_tags:
+                result['DiskTags'].append(k.to_map() if k else None)
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+        if m.get('DiskChargeType') is not None:
+            self.disk_charge_type = m.get('DiskChargeType')
+        if m.get('DiskId') is not None:
+            self.disk_id = m.get('DiskId')
+        if m.get('DiskName') is not None:
+            self.disk_name = m.get('DiskName')
+        self.disk_tags = []
+        if m.get('DiskTags') is not None:
+            for k in m.get('DiskTags'):
+                temp_model = ListInstancesResponseBodyInstancesDisksDiskTags()
+                self.disk_tags.append(temp_model.from_map(k))
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -7796,9 +12674,9 @@ class ListInstancesResponseBodyInstancesImage(TeaModel):
         self.image_contact = image_contact
         # The URL of the image icon.
         self.image_icon_url = image_icon_url
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
-        # The image type. Valid values:
+        # The type of the image. Valid values:
         # 
         # *   system
         # *   app
@@ -7861,22 +12739,22 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
     ):
         # The bandwidth of the server.
         self.bandwidth = bandwidth
-        # The number of vCPUs.
+        # The number of vCPUs of the simple application server.
         self.cpu = cpu
         # The category of the disk. Valid values:
         # 
-        # *   ESSD: an enhanced SSD (ESSD) at performance level 0 (PL0).
-        # *   SSD: a standard SSD.
-        # *   CLOUD_EFFICIENCY: an ultra disk.
+        # *   ESSD: enhanced SSD (ESSD) of PL0
+        # *   SSD: standard SSD
+        # *   CLOUD_EFFICIENCY: ultra disk
         self.disk_category = disk_category
         # The disk size.
         self.disk_size = disk_size
         # The amount of the traffic.
         # 
-        # *   A value of 0 indicates that the server is a bandwidth-based server.
-        # *   A value of none-zero indicates that the server is a data transfer plan-based server.
+        # *   A value of 0 indicates the traffic amount of a bandwidth-based simple application server.
+        # *   A non-zero value indicates the traffic amount of a data transfer plan-based simple application server.
         self.flow = flow
-        # The memory size.
+        # The memory size of the server.
         self.memory = memory
 
     def validate(self):
@@ -7919,6 +12797,41 @@ class ListInstancesResponseBodyInstancesResourceSpec(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the simple application server.
+        self.key = key
+        # The tag value of the simple application server.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesResponseBodyInstances(TeaModel):
     def __init__(
         self,
@@ -7929,6 +12842,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         creation_time: str = None,
         ddos_status: str = None,
         disable_reason: str = None,
+        disks: List[ListInstancesResponseBodyInstancesDisks] = None,
         expired_time: str = None,
         image: ListInstancesResponseBodyInstancesImage = None,
         image_id: str = None,
@@ -7938,8 +12852,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
         plan_id: str = None,
         public_ip_address: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_spec: ListInstancesResponseBodyInstancesResourceSpec = None,
         status: str = None,
+        tags: List[ListInstancesResponseBodyInstancesTags] = None,
         uuid: str = None,
     ):
         # The status of the server. Valid values:
@@ -7950,11 +12866,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.business_status = business_status
         # The billing method of the simple application server.
         self.charge_type = charge_type
-        # Indicates whether the plan is a bundle plan.
+        # Indicates whether the simple application server uses a bundle plan.
         self.combination = combination
-        # The ID of the bundle plan.
+        # The ID of the simple application server that uses a bundle plan.
         self.combination_instance_id = combination_instance_id
-        # The time when the simple application server was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the simple application server was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The DDoS protection status of the server. Valid values:
         # 
@@ -7965,48 +12881,62 @@ class ListInstancesResponseBodyInstances(TeaModel):
         # The reason why the server is disabled. Valid values:
         # 
         # *   FINANCIAL: The server is locked due to overdue payments.
-        # *   SECURITY: The server is locked due to security reasons.
-        # *   EXPIRED: The server has expired.
+        # *   SECURITY: The server is locked for security reasons.
+        # *   EXPIRED: The server is expired.
         self.disable_reason = disable_reason
-        # The time when the server expires. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The disks that are attached to the simple application server.
+        self.disks = disks
+        # The time when the simple application server expires. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expired_time = expired_time
         # The description of the image.
         self.image = image
-        # The ID of an image.
+        # The ID of the image.
         self.image_id = image_id
-        # The internal IP address of the simple application server.
+        # The private IP address of the simple application server.
         self.inner_ip_address = inner_ip_address
         # The ID of the simple application server.
         self.instance_id = instance_id
-        # The name of the server.
+        # The name of the simple application server.
         self.instance_name = instance_name
-        # The plan ID.
+        # The ID of the instance plan.
         self.plan_id = plan_id
-        # The public IP address of the server.
+        # The public IP address.
         self.public_ip_address = public_ip_address
-        # The region ID of the servers.
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group to which the server belongs.
+        self.resource_group_id = resource_group_id
         # The specifications of the resource.
         self.resource_spec = resource_spec
         # The status of the simple application server. Valid values:
         # 
-        # *   Pending
-        # *   Starting
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Resetting
-        # *   Upgrading
-        # *   Disabled
+        # *   Pending: The server is being prepared.
+        # *   Starting: The server is being started.
+        # *   Running: The server is running.
+        # *   Stopping: The server is being stopped.
+        # *   Stopped: The server is stopped.
+        # *   Resetting: The server is being reset.
+        # *   Upgrading: The server is being upgraded.
+        # *   Disabled: The server is not available.
         self.status = status
-        # The universally unique identifier (UUID) of the server.
+        # The tags that are added to the simple application server.
+        self.tags = tags
+        # The universally unique identifier (UUID) of the simple application server.
         self.uuid = uuid
 
     def validate(self):
+        if self.disks:
+            for k in self.disks:
+                if k:
+                    k.validate()
         if self.image:
             self.image.validate()
         if self.resource_spec:
             self.resource_spec.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8028,6 +12958,10 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['DdosStatus'] = self.ddos_status
         if self.disable_reason is not None:
             result['DisableReason'] = self.disable_reason
+        result['Disks'] = []
+        if self.disks is not None:
+            for k in self.disks:
+                result['Disks'].append(k.to_map() if k else None)
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
         if self.image is not None:
@@ -8046,10 +12980,16 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['PublicIpAddress'] = self.public_ip_address
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_spec is not None:
             result['ResourceSpec'] = self.resource_spec.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         return result
@@ -8070,6 +13010,11 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.ddos_status = m.get('DdosStatus')
         if m.get('DisableReason') is not None:
             self.disable_reason = m.get('DisableReason')
+        self.disks = []
+        if m.get('Disks') is not None:
+            for k in m.get('Disks'):
+                temp_model = ListInstancesResponseBodyInstancesDisks()
+                self.disks.append(temp_model.from_map(k))
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
         if m.get('Image') is not None:
@@ -8089,11 +13034,18 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.public_ip_address = m.get('PublicIpAddress')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceSpec') is not None:
             temp_model = ListInstancesResponseBodyInstancesResourceSpec()
             self.resource_spec = temp_model.from_map(m['ResourceSpec'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListInstancesResponseBodyInstancesTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         return self
@@ -8175,9 +13127,6 @@ class ListInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8210,14 +13159,16 @@ class ListInstancesResponse(TeaModel):
 class ListInstancesTrafficPackagesRequest(TeaModel):
     def __init__(
         self,
-        acs_product: str = None,
         instance_ids: str = None,
         region_id: str = None,
     ):
-        self.acs_product = acs_product
         # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8229,8 +13180,6 @@ class ListInstancesTrafficPackagesRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.acs_product is not None:
-            result['AcsProduct'] = self.acs_product
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.region_id is not None:
@@ -8239,8 +13188,6 @@ class ListInstancesTrafficPackagesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AcsProduct') is not None:
-            self.acs_product = m.get('AcsProduct')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('RegionId') is not None:
@@ -8361,9 +13308,6 @@ class ListInstancesTrafficPackagesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8393,12 +13337,226 @@ class ListInstancesTrafficPackagesResponse(TeaModel):
         return self
 
 
+class ListKeyPairsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        key_pair_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The name of the AccessKey pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with http:// or https://.
+        self.key_pair_name = key_pair_name
+        # The page number. Page starts from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListKeyPairsResponseBodyKeyPairs(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        instance_ids: List[str] = None,
+        key_pair_name: str = None,
+        public_key: str = None,
+    ):
+        # The time when the AccessKey pair was created.
+        self.creation_time = creation_time
+        # The IDs of simple application servers. A maximum of 50 IDs of simple application servers can be returned.
+        self.instance_ids = instance_ids
+        # The name of the AccessKey pair. The name must be 2 to 64 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter and cannot start with http:// or https://.
+        self.key_pair_name = key_pair_name
+        # The content of the public key.
+        self.public_key = public_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
+        if self.public_key is not None:
+            result['PublicKey'] = self.public_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
+        if m.get('PublicKey') is not None:
+            self.public_key = m.get('PublicKey')
+        return self
+
+
+class ListKeyPairsResponseBody(TeaModel):
+    def __init__(
+        self,
+        key_pairs: List[ListKeyPairsResponseBodyKeyPairs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # Details about the queried AccessKey pairs.
+        self.key_pairs = key_pairs
+        # The page number.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID.
+        self.request_id = request_id
+        # The total number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.key_pairs:
+            for k in self.key_pairs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KeyPairs'] = []
+        if self.key_pairs is not None:
+            for k in self.key_pairs:
+                result['KeyPairs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_pairs = []
+        if m.get('KeyPairs') is not None:
+            for k in m.get('KeyPairs'):
+                temp_model = ListKeyPairsResponseBodyKeyPairs()
+                self.key_pairs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListKeyPairsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListKeyPairsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListKeyPairsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPlansRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
     ):
-        # The region ID of the plans. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the plans. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8575,9 +13733,6 @@ class ListPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8604,6 +13759,37 @@ class ListPlansResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = ListPlansResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        # The language of the response. Valid values:
+        # 
+        # *   **zh-CN** (default): Chinese
+        # *   **en-US**: English
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
         return self
 
 
@@ -8655,7 +13841,7 @@ class ListRegionsResponseBody(TeaModel):
         regions: List[ListRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The region ID.
+        # The regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -8704,9 +13890,6 @@ class ListRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8736,19 +13919,54 @@ class ListRegionsResponse(TeaModel):
         return self
 
 
+class ListSnapshotsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N that you want to add to the snapshot. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        self.key = key
+        # The value of tag N that you want to add to the snapshot. A tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListSnapshotsRequest(TeaModel):
     def __init__(
         self,
-        acs_product: str = None,
         disk_id: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         snapshot_ids: str = None,
         source_disk_type: str = None,
+        tag: List[ListSnapshotsRequestTag] = None,
     ):
-        self.acs_product = acs_product
         # The disk ID.
         self.disk_id = disk_id
         # The ID of the simple application server.
@@ -8762,7 +13980,11 @@ class ListSnapshotsRequest(TeaModel):
         # Default value: 10.
         self.page_size = page_size
         # The region ID of the simple application server that corresponds to the snapshots.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
         # The snapshot IDs. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate multiple snapshot IDs with commas (,).
         self.snapshot_ids = snapshot_ids
         # The type of the source disk. Valid values:
@@ -8770,9 +13992,14 @@ class ListSnapshotsRequest(TeaModel):
         # *   system: system disk.
         # *   data: data disk.
         self.source_disk_type = source_disk_type
+        # Tag N that you want to add to the snapshot.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8780,8 +14007,6 @@ class ListSnapshotsRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.acs_product is not None:
-            result['AcsProduct'] = self.acs_product
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
         if self.instance_id is not None:
@@ -8792,16 +14017,20 @@ class ListSnapshotsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.snapshot_ids is not None:
             result['SnapshotIds'] = self.snapshot_ids
         if self.source_disk_type is not None:
             result['SourceDiskType'] = self.source_disk_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AcsProduct') is not None:
-            self.acs_product = m.get('AcsProduct')
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
         if m.get('InstanceId') is not None:
@@ -8812,10 +14041,52 @@ class ListSnapshotsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SnapshotIds') is not None:
             self.snapshot_ids = m.get('SnapshotIds')
         if m.get('SourceDiskType') is not None:
             self.source_disk_type = m.get('SourceDiskType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListSnapshotsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListSnapshotsResponseBodySnapshotsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key of the snapshot.
+        self.key = key
+        # The tag value of the snapshot.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -8827,32 +14098,36 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
         progress: str = None,
         region_id: str = None,
         remark: str = None,
+        resource_group_id: str = None,
         rollback_time: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
         source_disk_id: str = None,
         source_disk_type: str = None,
         status: str = None,
+        tags: List[ListSnapshotsResponseBodySnapshotsTags] = None,
     ):
-        # The time when the snapshot was created. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the snapshot was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The ID of the simple application server.
         # 
-        # Note: This parameter has a value for system disk snapshots. This parameter is left empty for data disk snapshots.
+        # Note: This parameter has a value returned for only system disk snapshots.
         self.instance_id = instance_id
         # The progress of snapshot creation.
         self.progress = progress
-        # The region ID of the snapshots.
+        # The region ID.
         self.region_id = region_id
         # The remarks of the snapshot.
         self.remark = remark
+        # The ID of the resource group to which the snapshot belongs.
+        self.resource_group_id = resource_group_id
         # The time when the last disk rollback was performed.
         self.rollback_time = rollback_time
         # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The name of the snapshot.
         self.snapshot_name = snapshot_name
-        # The ID of the source disk based on which the snapshot is created. This parameter has a value even if the source disk is released.
+        # The ID of the source disk. This parameter has a value even after the source disk is released.
         self.source_disk_id = source_disk_id
         # The type of the source disk. Valid values:
         # 
@@ -8865,9 +14140,14 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
         # *   Accomplished: The snapshot is created.
         # *   Failed: The snapshot failed to be created.
         self.status = status
+        # The tags of the snapshot.
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8885,6 +14165,8 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
             result['RegionId'] = self.region_id
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.rollback_time is not None:
             result['RollbackTime'] = self.rollback_time
         if self.snapshot_id is not None:
@@ -8897,6 +14179,10 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
             result['SourceDiskType'] = self.source_disk_type
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -8911,6 +14197,8 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RollbackTime') is not None:
             self.rollback_time = m.get('RollbackTime')
         if m.get('SnapshotId') is not None:
@@ -8923,6 +14211,11 @@ class ListSnapshotsResponseBodySnapshots(TeaModel):
             self.source_disk_type = m.get('SourceDiskType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListSnapshotsResponseBodySnapshotsTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -9002,9 +14295,6 @@ class ListSnapshotsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9034,27 +14324,319 @@ class ListSnapshotsResponse(TeaModel):
         return self
 
 
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N that you want to add to the simple application server. A tag key can be 1 to 64 characters in length. Valid values of N: 1 to 20.
+        self.key = key
+        # The value of tag N that you want to add to the simple application server. A tag value can be up to 64 characters in length. Valid values of N: 1 to 20.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html)
+        self.client_token = client_token
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        self.next_token = next_token
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The resource IDs. You can specify up to 50 resource IDs.
+        self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   instance
+        # *   snapshot
+        # *   customimage
+        # *   command
+        # *   firewallrule
+        # *   disk
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+        # The tags. You can specify up to 20 tags.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The resource ID.
+        self.resource_id = resource_id
+        # The resource type.
+        self.resource_type = resource_type
+        # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
+    ):
+        self.tag_resource = tag_resource
+
+    def validate(self):
+        if self.tag_resource:
+            for k in self.tag_resource:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['TagResource'] = []
+        if self.tag_resource is not None:
+            for k in self.tag_resource:
+                result['TagResource'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_resource = []
+        if m.get('TagResource') is not None:
+            for k in m.get('TagResource'):
+                temp_model = ListTagResourcesResponseBodyTagResourcesTagResource()
+                self.tag_resource.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: ListTagResourcesResponseBodyTagResources = None,
+    ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # A collection of resource IDs and tags. The information includes the resource IDs, resource types, and key-value pairs.
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            self.tag_resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tag_resources is not None:
+            result['TagResources'] = self.tag_resources.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TagResources') is not None:
+            temp_model = ListTagResourcesResponseBodyTagResources()
+            self.tag_resources = temp_model.from_map(m['TagResources'])
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class LoginInstanceRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
         password: str = None,
+        port: int = None,
         region_id: str = None,
         username: str = None,
     ):
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The password that corresponds to the username.
         # 
         # *   For a Linux server, you do not need to enter a password.
-        # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](~~60055~~).
+        # *   For a Windows server, enter the password that you set. If you have not set a password for the simple application server, set a password. For more information, see [Reset the password](https://help.aliyun.com/document_detail/60055.html).
         self.password = password
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        self.port = port
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The username of the simple application server.
         # 
         # *   For a Linux server, you do not need to enter a username.
-        # *   For a Windows server, the default username is `administrator`.
+        # *   For a Windows server, the default username `administrator` is used.
         self.username = username
 
     def validate(self):
@@ -9070,6 +14652,8 @@ class LoginInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.password is not None:
             result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.username is not None:
@@ -9082,6 +14666,8 @@ class LoginInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Username') is not None:
@@ -9136,9 +14722,6 @@ class LoginInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9176,13 +14759,19 @@ class ModifyDatabaseInstanceDescriptionRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_description = database_instance_description
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9257,9 +14846,6 @@ class ModifyDatabaseInstanceDescriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9298,9 +14884,11 @@ class ModifyDatabaseInstanceParameterRequest(TeaModel):
         parameters: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
         # Specifies whether to forcibly restart the instance after parameters are modified. Valid values:
         # 
@@ -9310,8 +14898,12 @@ class ModifyDatabaseInstanceParameterRequest(TeaModel):
         # Default value: false.
         self.force_restart = force_restart
         # The JSON strings that consist of instance parameters and the values of the instance parameters. The parameter values are of the string type. Format: {"Parameter name 1":"Parameter value 1","Parameter name 2":"Parameter value 2"...}.
+        # 
+        # This parameter is required.
         self.parameters = parameters
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9390,9 +14982,6 @@ class ModifyDatabaseInstanceParameterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9434,23 +15023,33 @@ class ModifyFirewallRuleRequest(TeaModel):
         rule_protocol: str = None,
         source_cidr_ip: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The port range. Valid values: 165535. Specify a port range in the format of \<start port number>/\<end port number>. Example: `1024/1055`, which indicates that the port range of 10241055.
+        # The port range. Valid values: 165535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 10241055.
+        # 
+        # This parameter is required.
         self.port = port
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The remarks of the firewall rule.
         self.remark = remark
         # The ID of the firewall rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The transport layer protocol. Valid values:
         # 
         # *   TCP: the TCP protocol
         # *   UDP: the UDP protocol
         # *   TCP+UDP: the TCP and UDP protocols
+        # 
+        # This parameter is required.
         self.rule_protocol = rule_protocol
         # The IP address or CIDR block that is allowed in the firewall rule.
         self.source_cidr_ip = source_cidr_ip
@@ -9543,9 +15142,6 @@ class ModifyFirewallRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9575,6 +15171,222 @@ class ModifyFirewallRuleResponse(TeaModel):
         return self
 
 
+class ModifyFirewallTemplateRequestFirewallTemplateRule(TeaModel):
+    def __init__(
+        self,
+        firewall_template_rule_id: str = None,
+        port: str = None,
+        remark: str = None,
+        rule_protocol: str = None,
+        source_cidr_ip: str = None,
+    ):
+        # The ID of the firewall rule.
+        # 
+        # This parameter is required.
+        self.firewall_template_rule_id = firewall_template_rule_id
+        # The port range. Valid values: 1 to 65535. Specify a port range in the format of \\<start port number>/\\<end port number>. Example: `1024/1055`, which indicates that the port range of 1024 to 1055.
+        # 
+        # >  If you set RuleProtocol to ICMP, you must set Port to -1/-1.
+        self.port = port
+        # The remarks of the firewall template rule.
+        self.remark = remark
+        # The transport layer protocol that the rule supports. Valid values:
+        # 
+        # *   TCP
+        # *   UDP
+        # *   TCP+UDP
+        # *   ICMP
+        self.rule_protocol = rule_protocol
+        # The source address to which you want to grant access permissions. CIDR blocks and IPv4 addresses are supported.
+        self.source_cidr_ip = source_cidr_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.firewall_template_rule_id is not None:
+            result['FirewallTemplateRuleId'] = self.firewall_template_rule_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.rule_protocol is not None:
+            result['RuleProtocol'] = self.rule_protocol
+        if self.source_cidr_ip is not None:
+            result['SourceCidrIp'] = self.source_cidr_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FirewallTemplateRuleId') is not None:
+            self.firewall_template_rule_id = m.get('FirewallTemplateRuleId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RuleProtocol') is not None:
+            self.rule_protocol = m.get('RuleProtocol')
+        if m.get('SourceCidrIp') is not None:
+            self.source_cidr_ip = m.get('SourceCidrIp')
+        return self
+
+
+class ModifyFirewallTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        firewall_template_id: str = None,
+        firewall_template_rule: List[ModifyFirewallTemplateRequestFirewallTemplateRule] = None,
+        instance_id: str = None,
+        name: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The description of the firewall template.
+        self.description = description
+        # The ID of the firewall template.
+        # 
+        # This parameter is required.
+        self.firewall_template_id = firewall_template_id
+        # The firewall rule in the template.
+        self.firewall_template_rule = firewall_template_rule
+        # The ID of the simple application server to which the firewall template is applied.
+        self.instance_id = instance_id
+        # The name of the firewall template.
+        self.name = name
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.firewall_template_rule:
+            for k in self.firewall_template_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.firewall_template_id is not None:
+            result['FirewallTemplateId'] = self.firewall_template_id
+        result['FirewallTemplateRule'] = []
+        if self.firewall_template_rule is not None:
+            for k in self.firewall_template_rule:
+                result['FirewallTemplateRule'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FirewallTemplateId') is not None:
+            self.firewall_template_id = m.get('FirewallTemplateId')
+        self.firewall_template_rule = []
+        if m.get('FirewallTemplateRule') is not None:
+            for k in m.get('FirewallTemplateRule'):
+                temp_model = ModifyFirewallTemplateRequestFirewallTemplateRule()
+                self.firewall_template_rule.append(temp_model.from_map(k))
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyFirewallTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyFirewallTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyFirewallTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyFirewallTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyImageShareStatusRequest(TeaModel):
     def __init__(
         self,
@@ -9583,16 +15395,22 @@ class ModifyImageShareStatusRequest(TeaModel):
         operation: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The image ID.
+        # 
+        # This parameter is required.
         self.image_id = image_id
         # Valid values:
         # 
         # *   Share
         # *   UnShare
+        # 
+        # This parameter is required.
         self.operation = operation
-        # The region ID of the custom image. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the custom image. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9667,9 +15485,6 @@ class ModifyImageShareStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9707,11 +15522,15 @@ class ModifyInstanceVncPasswordRequest(TeaModel):
         region_id: str = None,
         vnc_password: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The existing VNC password.
         self.vnc_password = vnc_password
@@ -9788,9 +15607,6 @@ class ModifyInstanceVncPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9827,11 +15643,15 @@ class RebootInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9902,9 +15722,6 @@ class RebootInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9942,7 +15759,7 @@ class RebootInstancesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Specifies whether to forcibly restart the servers. Valid values:
         # 
@@ -9952,8 +15769,12 @@ class RebootInstancesRequest(TeaModel):
         # Default value: false
         self.force_reboot = force_reboot
         # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10028,9 +15849,6 @@ class RebootInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10067,11 +15885,15 @@ class ReleasePublicConnectionRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10142,9 +15964,6 @@ class ReleasePublicConnectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10174,6 +15993,122 @@ class ReleasePublicConnectionResponse(TeaModel):
         return self
 
 
+class RemoveCustomImageShareAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account: List[int] = None,
+        client_token: str = None,
+        image_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.account = account
+        self.client_token = client_token
+        # This parameter is required.
+        self.image_id = image_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account is not None:
+            result['Account'] = self.account
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Account') is not None:
+            self.account = m.get('Account')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class RemoveCustomImageShareAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RemoveCustomImageShareAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RemoveCustomImageShareAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RemoveCustomImageShareAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RenewInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -10182,13 +16117,19 @@ class RenewInstanceRequest(TeaModel):
         period: int = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The renewal period. Unit: month. Valid values: 1, 3, 6, 12, 24, and 36.
+        # 
+        # This parameter is required.
         self.period = period
         # The region ID of the server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10263,9 +16204,6 @@ class RenewInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10304,12 +16242,18 @@ class ResetDatabaseAccountPasswordRequest(TeaModel):
         region_id: str = None,
     ):
         # The password of the database administrator account.
+        # 
+        # This parameter is required.
         self.account_password = account_password
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10384,9 +16328,6 @@ class ResetDatabaseAccountPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10424,13 +16365,19 @@ class ResetDiskRequest(TeaModel):
         region_id: str = None,
         snapshot_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the disk to be rolled back.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
         # The region ID of the simple application server for which the snapshot is created.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The snapshot ID.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -10505,9 +16452,6 @@ class ResetDiskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10545,13 +16489,17 @@ class ResetSystemRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
-        # The ID of the image that is used to replace the image of the simple application server. If you do not specify this parameter, the current image of the simple application server is replaced by default.
+        # The ID of the destination image. If you do not specify this parameter, the current image is reset.
         self.image_id = image_id
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10626,9 +16574,6 @@ class ResetSystemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10665,11 +16610,15 @@ class RestartDatabaseInstanceRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10740,9 +16689,6 @@ class RestartDatabaseInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10792,16 +16738,22 @@ class RunCommandRequest(TeaModel):
         # *   If you set `EnableParameter` to true, the custom parameter feature is enabled in the command content and you can configure custom parameters based on the following rules:
         # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
         # *   The number of custom parameters cannot be greater than 20.
-        # *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
+        # *   A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is case-insensitive.
         # *   Each custom parameter name cannot exceed 64 bytes in length.
+        # 
+        # This parameter is required.
         self.command_content = command_content
         # Specifies whether to enable the custom parameter feature.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the command.
+        # 
+        # This parameter is required.
         self.name = name
         # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is executed.
         # 
@@ -10814,7 +16766,9 @@ class RunCommandRequest(TeaModel):
         # 
         # This parameter is empty by default, which indicates to disable the custom parameter feature.
         self.parameters = parameters
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The timeout period of the command on the server.
         # 
@@ -10827,15 +16781,17 @@ class RunCommandRequest(TeaModel):
         # *   RunBatScript: batch commands (applicable to Windows servers).
         # *   RunPowerShellScript: PowerShell commands (applicable to Windows servers).
         # *   RunShellScript: shell commands (applicable to Linux servers).
+        # 
+        # This parameter is required.
         self.type = type
         # The name of the password to be used to run the command on a Windows server.
         # 
         # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
         self.windows_password_name = windows_password_name
-        # The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
+        # The execution path of the command. Custom paths are supported. Default execution paths vary based on the operating systems of the servers.
         # 
-        # *   For Linux servers, the default execution path is the /home directory of the root user.
-        # *   For Windows servers, the default execution path is C:\Windows\system32.
+        # *   For Linux servers, the default path is /root of the root user.
+        # *   For Windows servers, the default path is C:\\Windows\\system32.
         self.working_dir = working_dir
         # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks. Default values:
         # 
@@ -10923,16 +16879,22 @@ class RunCommandShrinkRequest(TeaModel):
         # *   If you set `EnableParameter` to true, the custom parameter feature is enabled in the command content and you can configure custom parameters based on the following rules:
         # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
         # *   The number of custom parameters cannot be greater than 20.
-        # *   A custom parameter name can contain only letters, digits, underscores (\_), and hyphens (-). The name is case-insensitive.
+        # *   A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is case-insensitive.
         # *   Each custom parameter name cannot exceed 64 bytes in length.
+        # 
+        # This parameter is required.
         self.command_content = command_content
         # Specifies whether to enable the custom parameter feature.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the command.
+        # 
+        # This parameter is required.
         self.name = name
         # The custom parameters in the key-value pair format that are to be passed in when the command includes custom parameters. For example, if the command content is `echo {{name}}`, you can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced with the paired Jack value to generate a new command. As a result, the `echo Jack` command is executed.
         # 
@@ -10945,7 +16907,9 @@ class RunCommandShrinkRequest(TeaModel):
         # 
         # This parameter is empty by default, which indicates to disable the custom parameter feature.
         self.parameters_shrink = parameters_shrink
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The timeout period of the command on the server.
         # 
@@ -10958,15 +16922,17 @@ class RunCommandShrinkRequest(TeaModel):
         # *   RunBatScript: batch commands (applicable to Windows servers).
         # *   RunPowerShellScript: PowerShell commands (applicable to Windows servers).
         # *   RunShellScript: shell commands (applicable to Linux servers).
+        # 
+        # This parameter is required.
         self.type = type
         # The name of the password to be used to run the command on a Windows server.
         # 
         # If you want to use a username other than the default "system" username to run the command on a Windows server, you must specify both the WindowsPasswordName and WorkingUser parameters. To mitigate the risk of password leaks, the password is stored in plaintext in Operation Orchestration Service (OOS) Parameter Store, and only the name of the password is passed in by using WindowsPasswordName.
         self.windows_password_name = windows_password_name
-        # The execution path of the command. You can specify a value for the parameter. Default execution paths vary based on the operating systems of the servers.
+        # The execution path of the command. Custom paths are supported. Default execution paths vary based on the operating systems of the servers.
         # 
-        # *   For Linux servers, the default execution path is the /home directory of the root user.
-        # *   For Windows servers, the default execution path is C:\Windows\system32.
+        # *   For Linux servers, the default path is /root of the root user.
+        # *   For Windows servers, the default path is C:\\Windows\\system32.
         self.working_dir = working_dir
         # A user of the server who runs the command. We recommend that you run the command as a regular user to reduce security risks. Default values:
         # 
@@ -11081,9 +17047,6 @@ class RunCommandResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11120,11 +17083,15 @@ class StartDatabaseInstanceRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11195,9 +17162,6 @@ class StartDatabaseInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11234,11 +17198,15 @@ class StartInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11309,9 +17277,6 @@ class StartInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11348,11 +17313,15 @@ class StartInstancesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11423,9 +17392,6 @@ class StartInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11462,8 +17428,12 @@ class StartTerminalSessionRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11551,9 +17521,6 @@ class StartTerminalSessionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11590,11 +17557,15 @@ class StopDatabaseInstanceRequest(TeaModel):
         database_instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the Simple Database Service instance.
+        # 
+        # This parameter is required.
         self.database_instance_id = database_instance_id
-        # The region ID of the Simple Database Service instance. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the Simple Database Service instance. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11665,9 +17636,6 @@ class StopDatabaseInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11704,11 +17672,15 @@ class StopInstanceRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11779,9 +17751,6 @@ class StopInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11819,7 +17788,7 @@ class StopInstancesRequest(TeaModel):
         instance_ids: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Specifies whether to forcibly stop the servers.
         # 
@@ -11827,8 +17796,12 @@ class StopInstancesRequest(TeaModel):
         # *   **false**: normally stops the servers. This is the default value.
         self.force_stop = force_stop
         # The IDs of the simple application servers. The value can be a JSON array that consists of up to 100 simple application server IDs. Separate multiple server IDs with commas (,).
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
-        # The region ID of the simple application servers. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application servers. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11903,9 +17876,6 @@ class StopInstancesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11935,6 +17905,338 @@ class StopInstancesResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of tag N that you want to add to the simple application server. Valid values of N: 1 to 20.
+        # 
+        # You cannot specify an empty string as a tag key. A tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        self.key = key
+        # The value of tag N that you want to add to the simple application server. Valid values of N: 1 to 20.
+        # 
+        # You can specify an empty string as a tag value. A tag value can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The resource IDs. You can specify up to 50 resource IDs.
+        # 
+        # This parameter is required.
+        self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   instance
+        # *   snapshot
+        # *   customimage
+        # *   command
+        # *   firewallrule
+        # *   disk
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+        # The tags. You can specify up to 20 tags.
+        # 
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        client_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        # Specifies whether to remove all tags. This parameter takes effect only when TagKey.N is not specified. Valid values: true and false. Default value: false.
+        self.all = all
+        # The client token that you want to use to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        self.client_token = client_token
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The resource IDs. You can specify up to 50 resource IDs.
+        # 
+        # This parameter is required.
+        self.resource_id = resource_id
+        # The resource type. Valid values:
+        # 
+        # *   instance
+        # *   snapshot
+        # *   customimage
+        # *   command
+        # *   firewallrule
+        # *   disk
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+        # The key of tag N. Valid values of N: 1 to 20.
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateCommandAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -11945,11 +18247,21 @@ class UpdateCommandAttributeRequest(TeaModel):
         timeout: int = None,
         working_dir: str = None,
     ):
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
+        # 
+        # This parameter is required.
         self.command_id = command_id
+        # The description of the command. The description supports all character sets and can be up to 512 characters in length.
         self.description = description
+        # The name of the command. The name supports all character sets and can be up to 128 characters in length.
         self.name = name
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The maximum timeout period for the command execution on the ECS instance. Unit: seconds. When a command that you created cannot be run, the command execution times out. When the execution times out, the command process is forcefully terminated and the PID of the command is canceled. Default value: 60.
         self.timeout = timeout
+        # The working directory of the command. The directory can be up to 200 characters in length.
         self.working_dir = working_dir
 
     def validate(self):
@@ -11997,6 +18309,7 @@ class UpdateCommandAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12031,9 +18344,6 @@ class UpdateCommandAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12071,13 +18381,19 @@ class UpdateDiskAttributeRequest(TeaModel):
         region_id: str = None,
         remark: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The disk ID. You can call the ListDisks operation to query the ID of data disk.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The remarks of the data disk.
+        # 
+        # This parameter is required.
         self.remark = remark
 
     def validate(self):
@@ -12152,9 +18468,6 @@ class UpdateDiskAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12193,17 +18506,25 @@ class UpdateInstanceAttributeRequest(TeaModel):
         password: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
-        self.instance_id = instance_id
-        # The name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
-        self.instance_name = instance_name
-        # The new password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Only the following special characters are supported:
         # 
-        # `()~!@#$%^&*-+=|{}[]:;<>,.?/`
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The name of the simple application server. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        self.instance_name = instance_name
+        # The new password of the simple application server. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters:
+        # 
+        #     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/\
+        # 
+        # For Windows instances, the password cannot start with a forward slash (/).
+        # 
+        # >  For security reasons, we recommend that you use HTTPS to send requests if the `Password parameter` is specified.
         self.password = password
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12282,9 +18603,6 @@ class UpdateInstanceAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12322,13 +18640,17 @@ class UpdateSnapshotAttributeRequest(TeaModel):
         remark: str = None,
         snapshot_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The remarks of the snapshot of the simple application server.
         self.remark = remark
         # The snapshot ID. You can call the ListSnapshots operation to query the snapshot ID.
+        # 
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -12403,9 +18725,6 @@ class UpdateSnapshotAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12443,13 +18762,19 @@ class UpgradeInstanceRequest(TeaModel):
         plan_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the new plan. You can call the [ListPlans](~~189314~~) operation to query the plans provided by Simple Application Server.
+        # The ID of the new plan. You can call the [ListPlans](https://help.aliyun.com/document_detail/189314.html) operation to query the plans provided by Simple Application Server.
+        # 
+        # This parameter is required.
         self.plan_id = plan_id
         # The region ID of the simple application server.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12524,9 +18849,6 @@ class UpgradeInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12565,15 +18887,19 @@ class UploadInstanceKeyPairRequest(TeaModel):
         public_key: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the simple application server.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The public key.
         self.public_key = public_key
-        # The region ID of the simple application server. You can call the [ListRegions](~~189315~~) operation to query the most recent region list.
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12652,9 +18978,6 @@ class UploadInstanceKeyPairResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
