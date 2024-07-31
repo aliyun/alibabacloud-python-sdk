@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.ConvertInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ConvertInstanceResponse:
+        """
+        @summary 按量付费转包年包月
+        
+        @param tmp_req: ConvertInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.ConvertInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -88,6 +95,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.ConvertInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ConvertInstanceResponse:
+        """
+        @summary 按量付费转包年包月
+        
+        @param tmp_req: ConvertInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.ConvertInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -129,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.ConvertInstanceRequest,
     ) -> foasconsole_20211028_models.ConvertInstanceResponse:
+        """
+        @summary 按量付费转包年包月
+        
+        @param request: ConvertInstanceRequest
+        @return: ConvertInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.convert_instance_with_options(request, runtime)
 
@@ -136,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.ConvertInstanceRequest,
     ) -> foasconsole_20211028_models.ConvertInstanceResponse:
+        """
+        @summary 按量付费转包年包月
+        
+        @param request: ConvertInstanceRequest
+        @return: ConvertInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.convert_instance_with_options_async(request, runtime)
 
@@ -144,6 +170,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param tmp_req: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.CreateInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -228,6 +261,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param tmp_req: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.CreateInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -311,6 +351,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.CreateInstanceRequest,
     ) -> foasconsole_20211028_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -318,6 +364,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.CreateInstanceRequest,
     ) -> foasconsole_20211028_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -326,6 +378,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.CreateNamespaceResponse:
+        """
+        @summary 创建命名空间
+        
+        @param tmp_req: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.CreateNamespaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -366,6 +425,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.CreateNamespaceResponse:
+        """
+        @summary 创建命名空间
+        
+        @param tmp_req: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.CreateNamespaceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -405,6 +471,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.CreateNamespaceRequest,
     ) -> foasconsole_20211028_models.CreateNamespaceResponse:
+        """
+        @summary 创建命名空间
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_namespace_with_options(request, runtime)
 
@@ -412,6 +484,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.CreateNamespaceRequest,
     ) -> foasconsole_20211028_models.CreateNamespaceResponse:
+        """
+        @summary 创建命名空间
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
 
@@ -420,6 +498,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DeleteInstanceResponse:
+        """
+        @summary 释放按量付费的实例
+        
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -450,6 +535,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DeleteInstanceResponse:
+        """
+        @summary 释放按量付费的实例
+        
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -479,6 +571,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DeleteInstanceRequest,
     ) -> foasconsole_20211028_models.DeleteInstanceResponse:
+        """
+        @summary 释放按量付费的实例
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_instance_with_options(request, runtime)
 
@@ -486,6 +584,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DeleteInstanceRequest,
     ) -> foasconsole_20211028_models.DeleteInstanceResponse:
+        """
+        @summary 释放按量付费的实例
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
 
@@ -494,6 +598,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DeleteNamespaceResponse:
+        """
+        @summary 删除namespace
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -526,6 +637,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DeleteNamespaceResponse:
+        """
+        @summary 删除namespace
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -557,6 +675,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DeleteNamespaceRequest,
     ) -> foasconsole_20211028_models.DeleteNamespaceResponse:
+        """
+        @summary 删除namespace
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_namespace_with_options(request, runtime)
 
@@ -564,6 +688,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DeleteNamespaceRequest,
     ) -> foasconsole_20211028_models.DeleteNamespaceResponse:
+        """
+        @summary 删除namespace
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
@@ -572,6 +702,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeInstancesResponse:
+        """
+        @summary instance列表
+        
+        @param tmp_req: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.DescribeInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -602,6 +739,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeInstancesResponse:
+        """
+        @summary instance列表
+        
+        @param tmp_req: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.DescribeInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -631,6 +775,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DescribeInstancesRequest,
     ) -> foasconsole_20211028_models.DescribeInstancesResponse:
+        """
+        @summary instance列表
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -638,6 +788,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DescribeInstancesRequest,
     ) -> foasconsole_20211028_models.DescribeInstancesResponse:
+        """
+        @summary instance列表
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -646,6 +802,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.DescribeNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeNamespacesResponse:
+        """
+        @summary namespace列表
+        
+        @param tmp_req: DescribeNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.DescribeNamespacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -676,6 +839,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.DescribeNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeNamespacesResponse:
+        """
+        @summary namespace列表
+        
+        @param tmp_req: DescribeNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNamespacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.DescribeNamespacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -705,6 +875,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DescribeNamespacesRequest,
     ) -> foasconsole_20211028_models.DescribeNamespacesResponse:
+        """
+        @summary namespace列表
+        
+        @param request: DescribeNamespacesRequest
+        @return: DescribeNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_namespaces_with_options(request, runtime)
 
@@ -712,6 +888,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DescribeNamespacesRequest,
     ) -> foasconsole_20211028_models.DescribeNamespacesResponse:
+        """
+        @summary namespace列表
+        
+        @param request: DescribeNamespacesRequest
+        @return: DescribeNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_namespaces_with_options_async(request, runtime)
 
@@ -719,6 +901,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeSupportedRegionsResponse:
+        """
+        @summary 获取支持的region列表
+        
+        @param request: DescribeSupportedRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportedRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeSupportedRegions',
@@ -740,6 +929,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeSupportedRegionsResponse:
+        """
+        @summary 获取支持的region列表
+        
+        @param request: DescribeSupportedRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportedRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeSupportedRegions',
@@ -758,10 +954,20 @@ class Client(OpenApiClient):
         )
 
     def describe_supported_regions(self) -> foasconsole_20211028_models.DescribeSupportedRegionsResponse:
+        """
+        @summary 获取支持的region列表
+        
+        @return: DescribeSupportedRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_supported_regions_with_options(runtime)
 
     async def describe_supported_regions_async(self) -> foasconsole_20211028_models.DescribeSupportedRegionsResponse:
+        """
+        @summary 获取支持的region列表
+        
+        @return: DescribeSupportedRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_supported_regions_with_options_async(runtime)
 
@@ -770,6 +976,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.DescribeSupportedZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeSupportedZonesResponse:
+        """
+        @summary 获取支持的zoneId列表
+        
+        @param request: DescribeSupportedZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportedZonesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -796,6 +1009,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.DescribeSupportedZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.DescribeSupportedZonesResponse:
+        """
+        @summary 获取支持的zoneId列表
+        
+        @param request: DescribeSupportedZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportedZonesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -821,6 +1041,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DescribeSupportedZonesRequest,
     ) -> foasconsole_20211028_models.DescribeSupportedZonesResponse:
+        """
+        @summary 获取支持的zoneId列表
+        
+        @param request: DescribeSupportedZonesRequest
+        @return: DescribeSupportedZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_supported_zones_with_options(request, runtime)
 
@@ -828,6 +1054,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.DescribeSupportedZonesRequest,
     ) -> foasconsole_20211028_models.DescribeSupportedZonesResponse:
+        """
+        @summary 获取支持的zoneId列表
+        
+        @param request: DescribeSupportedZonesRequest
+        @return: DescribeSupportedZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_supported_zones_with_options_async(request, runtime)
 
@@ -836,6 +1068,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ListTagResourcesResponse:
+        """
+        @summary 列举flinkasi标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -872,6 +1111,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ListTagResourcesResponse:
+        """
+        @summary 列举flinkasi标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -907,6 +1153,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.ListTagResourcesRequest,
     ) -> foasconsole_20211028_models.ListTagResourcesResponse:
+        """
+        @summary 列举flinkasi标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -914,6 +1166,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.ListTagResourcesRequest,
     ) -> foasconsole_20211028_models.ListTagResourcesResponse:
+        """
+        @summary 列举flinkasi标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -923,7 +1181,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse:
         """
-        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        @deprecated OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        
+        @summary 扩容/缩容
         
         @param tmp_req: ModifyPrepayInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -979,7 +1239,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse:
         """
-        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        @deprecated OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        
+        @summary 扩容/缩容
         
         @param tmp_req: ModifyPrepayInstanceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1034,7 +1296,9 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ModifyPrepayInstanceSpecRequest,
     ) -> foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse:
         """
-        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        @deprecated OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        
+        @summary 扩容/缩容
         
         @param request: ModifyPrepayInstanceSpecRequest
         @return: ModifyPrepayInstanceSpecResponse
@@ -1048,7 +1312,9 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ModifyPrepayInstanceSpecRequest,
     ) -> foasconsole_20211028_models.ModifyPrepayInstanceSpecResponse:
         """
-        @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        @deprecated OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+        
+        @summary 扩容/缩容
         
         @param request: ModifyPrepayInstanceSpecRequest
         @return: ModifyPrepayInstanceSpecResponse
@@ -1063,7 +1329,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse:
         """
-        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        @deprecated OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        
+        @summary 修改namespace资源分配
         
         @param tmp_req: ModifyPrepayNamespaceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1109,7 +1377,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse:
         """
-        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        @deprecated OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        
+        @summary 修改namespace资源分配
         
         @param tmp_req: ModifyPrepayNamespaceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1154,7 +1424,9 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ModifyPrepayNamespaceSpecRequest,
     ) -> foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse:
         """
-        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        @deprecated OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        
+        @summary 修改namespace资源分配
         
         @param request: ModifyPrepayNamespaceSpecRequest
         @return: ModifyPrepayNamespaceSpecResponse
@@ -1168,7 +1440,9 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ModifyPrepayNamespaceSpecRequest,
     ) -> foasconsole_20211028_models.ModifyPrepayNamespaceSpecResponse:
         """
-        @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        @deprecated OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+        
+        @summary 修改namespace资源分配
         
         @param request: ModifyPrepayNamespaceSpecRequest
         @return: ModifyPrepayNamespaceSpecResponse
@@ -1182,6 +1456,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.QueryConvertInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryConvertInstancePriceResponse:
+        """
+        @summary 按量付费转包年包月询价
+        
+        @param tmp_req: QueryConvertInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConvertInstancePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.QueryConvertInstancePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1224,6 +1505,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.QueryConvertInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryConvertInstancePriceResponse:
+        """
+        @summary 按量付费转包年包月询价
+        
+        @param tmp_req: QueryConvertInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConvertInstancePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.QueryConvertInstancePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1265,6 +1553,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryConvertInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryConvertInstancePriceResponse:
+        """
+        @summary 按量付费转包年包月询价
+        
+        @param request: QueryConvertInstancePriceRequest
+        @return: QueryConvertInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_convert_instance_price_with_options(request, runtime)
 
@@ -1272,6 +1566,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryConvertInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryConvertInstancePriceResponse:
+        """
+        @summary 按量付费转包年包月询价
+        
+        @param request: QueryConvertInstancePriceRequest
+        @return: QueryConvertInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_convert_instance_price_with_options_async(request, runtime)
 
@@ -1280,6 +1580,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.QueryCreateInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryCreateInstancePriceResponse:
+        """
+        @summary 获取创建实例的价格
+        
+        @param tmp_req: QueryCreateInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCreateInstancePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.QueryCreateInstancePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1350,6 +1657,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.QueryCreateInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryCreateInstancePriceResponse:
+        """
+        @summary 获取创建实例的价格
+        
+        @param tmp_req: QueryCreateInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCreateInstancePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.QueryCreateInstancePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1419,6 +1733,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryCreateInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryCreateInstancePriceResponse:
+        """
+        @summary 获取创建实例的价格
+        
+        @param request: QueryCreateInstancePriceRequest
+        @return: QueryCreateInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_create_instance_price_with_options(request, runtime)
 
@@ -1426,6 +1746,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryCreateInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryCreateInstancePriceResponse:
+        """
+        @summary 获取创建实例的价格
+        
+        @param request: QueryCreateInstancePriceRequest
+        @return: QueryCreateInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_create_instance_price_with_options_async(request, runtime)
 
@@ -1434,6 +1760,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.QueryModifyInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryModifyInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例修改资源规格的价格
+        
+        @param tmp_req: QueryModifyInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryModifyInstancePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.QueryModifyInstancePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1482,6 +1815,13 @@ class Client(OpenApiClient):
         tmp_req: foasconsole_20211028_models.QueryModifyInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryModifyInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例修改资源规格的价格
+        
+        @param tmp_req: QueryModifyInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryModifyInstancePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.QueryModifyInstancePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1529,6 +1869,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryModifyInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryModifyInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例修改资源规格的价格
+        
+        @param request: QueryModifyInstancePriceRequest
+        @return: QueryModifyInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_modify_instance_price_with_options(request, runtime)
 
@@ -1536,6 +1882,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryModifyInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryModifyInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例修改资源规格的价格
+        
+        @param request: QueryModifyInstancePriceRequest
+        @return: QueryModifyInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_modify_instance_price_with_options_async(request, runtime)
 
@@ -1544,6 +1896,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.QueryRenewInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryRenewInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例续费价格
+        
+        @param request: QueryRenewInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRenewInstancePriceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -1578,6 +1937,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.QueryRenewInstancePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.QueryRenewInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例续费价格
+        
+        @param request: QueryRenewInstancePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRenewInstancePriceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -1611,6 +1977,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryRenewInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryRenewInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例续费价格
+        
+        @param request: QueryRenewInstancePriceRequest
+        @return: QueryRenewInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_renew_instance_price_with_options(request, runtime)
 
@@ -1618,6 +1990,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.QueryRenewInstancePriceRequest,
     ) -> foasconsole_20211028_models.QueryRenewInstancePriceResponse:
+        """
+        @summary 查询付费类型为包年包月的实例续费价格
+        
+        @param request: QueryRenewInstancePriceRequest
+        @return: QueryRenewInstancePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_renew_instance_price_with_options_async(request, runtime)
 
@@ -1626,6 +2004,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.RenewInstanceResponse:
+        """
+        @summary 续费
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -1660,6 +2045,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.RenewInstanceResponse:
+        """
+        @summary 续费
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -1693,6 +2085,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.RenewInstanceRequest,
     ) -> foasconsole_20211028_models.RenewInstanceResponse:
+        """
+        @summary 续费
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_instance_with_options(request, runtime)
 
@@ -1700,6 +2098,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.RenewInstanceRequest,
     ) -> foasconsole_20211028_models.RenewInstanceResponse:
+        """
+        @summary 续费
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
 
@@ -1708,6 +2112,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1742,6 +2153,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1775,6 +2193,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.TagResourcesRequest,
     ) -> foasconsole_20211028_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -1782,6 +2206,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.TagResourcesRequest,
     ) -> foasconsole_20211028_models.TagResourcesResponse:
+        """
+        @summary 打标签接口
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -1790,6 +2220,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.UntagResourcesResponse:
+        """
+        @summary flinkasi去标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -1826,6 +2263,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.UntagResourcesResponse:
+        """
+        @summary flinkasi去标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -1861,6 +2305,12 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.UntagResourcesRequest,
     ) -> foasconsole_20211028_models.UntagResourcesResponse:
+        """
+        @summary flinkasi去标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -1868,5 +2318,11 @@ class Client(OpenApiClient):
         self,
         request: foasconsole_20211028_models.UntagResourcesRequest,
     ) -> foasconsole_20211028_models.UntagResourcesResponse:
+        """
+        @summary flinkasi去标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)

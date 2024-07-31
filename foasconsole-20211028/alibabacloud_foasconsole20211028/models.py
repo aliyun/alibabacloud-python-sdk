@@ -10,7 +10,9 @@ class ConvertInstanceRequestNamespaceResourceSpecsResourceSpec(TeaModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # This parameter is required.
         self.cpu = cpu
+        # This parameter is required.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -43,7 +45,9 @@ class ConvertInstanceRequestNamespaceResourceSpecs(TeaModel):
         namespace: str = None,
         resource_spec: ConvertInstanceRequestNamespaceResourceSpecsResourceSpec = None,
     ):
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.resource_spec = resource_spec
 
     def validate(self):
@@ -82,11 +86,17 @@ class ConvertInstanceRequest(TeaModel):
         pricing_cycle: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_auto_renew = is_auto_renew
+        # This parameter is required.
         self.namespace_resource_specs = namespace_resource_specs
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -147,11 +157,17 @@ class ConvertInstanceShrinkRequest(TeaModel):
         pricing_cycle: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_auto_renew = is_auto_renew
+        # This parameter is required.
         self.namespace_resource_specs_shrink = namespace_resource_specs_shrink
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -370,8 +386,10 @@ class CreateInstanceRequestStorageOss(TeaModel):
 class CreateInstanceRequestStorage(TeaModel):
     def __init__(
         self,
+        fully_managed: bool = None,
         oss: CreateInstanceRequestStorageOss = None,
     ):
+        self.fully_managed = fully_managed
         self.oss = oss
 
     def validate(self):
@@ -384,12 +402,16 @@ class CreateInstanceRequestStorage(TeaModel):
             return _map
 
         result = dict()
+        if self.fully_managed is not None:
+            result['FullyManaged'] = self.fully_managed
         if self.oss is not None:
             result['Oss'] = self.oss.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FullyManaged') is not None:
+            self.fully_managed = m.get('FullyManaged')
         if m.get('Oss') is not None:
             temp_model = CreateInstanceRequestStorageOss()
             self.oss = temp_model.from_map(m['Oss'])
@@ -457,6 +479,7 @@ class CreateInstanceRequest(TeaModel):
     ):
         self.architecture_type = architecture_type
         self.auto_renew = auto_renew
+        # This parameter is required.
         self.charge_type = charge_type
         self.duration = duration
         self.extra = extra
@@ -464,18 +487,24 @@ class CreateInstanceRequest(TeaModel):
         self.ha_resource_spec = ha_resource_spec
         self.ha_vswitch_ids = ha_vswitch_ids
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.instance_name = instance_name
         self.monitor_type = monitor_type
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # This parameter is required.
         self.region = region
         self.resource_group_id = resource_group_id
         self.resource_spec = resource_spec
+        # This parameter is required.
         self.storage = storage
         self.tag = tag
         self.use_promotion_code = use_promotion_code
+        # This parameter is required.
         self.v_switch_ids = v_switch_ids
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -627,6 +656,7 @@ class CreateInstanceShrinkRequest(TeaModel):
     ):
         self.architecture_type = architecture_type
         self.auto_renew = auto_renew
+        # This parameter is required.
         self.charge_type = charge_type
         self.duration = duration
         self.extra = extra
@@ -634,18 +664,24 @@ class CreateInstanceShrinkRequest(TeaModel):
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.instance_name = instance_name
         self.monitor_type = monitor_type
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # This parameter is required.
         self.region = region
         self.resource_group_id = resource_group_id
         self.resource_spec_shrink = resource_spec_shrink
+        # This parameter is required.
         self.storage_shrink = storage_shrink
         self.tag_shrink = tag_shrink
         self.use_promotion_code = use_promotion_code
+        # This parameter is required.
         self.v_switch_ids_shrink = v_switch_ids_shrink
+        # This parameter is required.
         self.vpc_id = vpc_id
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -757,9 +793,13 @@ class CreateInstanceResponseBodyOrderInfo(TeaModel):
         self,
         instance_id: str = None,
         order_id: int = None,
+        storage_instance_id: str = None,
+        storage_order_id: int = None,
     ):
         self.instance_id = instance_id
         self.order_id = order_id
+        self.storage_instance_id = storage_instance_id
+        self.storage_order_id = storage_order_id
 
     def validate(self):
         pass
@@ -774,6 +814,10 @@ class CreateInstanceResponseBodyOrderInfo(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.storage_instance_id is not None:
+            result['StorageInstanceId'] = self.storage_instance_id
+        if self.storage_order_id is not None:
+            result['StorageOrderId'] = self.storage_order_id
         return result
 
     def from_map(self, m: dict = None):
@@ -782,6 +826,10 @@ class CreateInstanceResponseBodyOrderInfo(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('StorageInstanceId') is not None:
+            self.storage_instance_id = m.get('StorageInstanceId')
+        if m.get('StorageOrderId') is not None:
+            self.storage_order_id = m.get('StorageOrderId')
         return self
 
 
@@ -910,8 +958,11 @@ class CreateNamespaceRequest(TeaModel):
         resource_spec: CreateNamespaceRequestResourceSpec = None,
     ):
         self.ha = ha
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region = region
         self.resource_spec = resource_spec
 
@@ -963,8 +1014,11 @@ class CreateNamespaceShrinkRequest(TeaModel):
         resource_spec_shrink: str = None,
     ):
         self.ha = ha
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region = region
         self.resource_spec_shrink = resource_spec_shrink
 
@@ -1084,7 +1138,9 @@ class DeleteInstanceRequest(TeaModel):
         instance_id: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -1192,8 +1248,11 @@ class DeleteNamespaceRequest(TeaModel):
         namespace: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -1348,6 +1407,7 @@ class DescribeInstancesRequest(TeaModel):
         self.instance_id = instance_id
         self.page_index = page_index
         self.page_size = page_size
+        # This parameter is required.
         self.region = region
         self.resource_group_id = resource_group_id
         self.tags = tags
@@ -1425,6 +1485,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         self.instance_id = instance_id
         self.page_index = page_index
         self.page_size = page_size
+        # This parameter is required.
         self.region = region
         self.resource_group_id = resource_group_id
         self.tags_shrink = tags_shrink
@@ -1477,6 +1538,39 @@ class DescribeInstancesShrinkRequest(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesClusterUsedStorage(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        used_storage: float = None,
+    ):
+        self.cluster_id = cluster_id
+        self.used_storage = used_storage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.used_storage is not None:
+            result['UsedStorage'] = self.used_storage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('UsedStorage') is not None:
+            self.used_storage = m.get('UsedStorage')
+        return self
+
+
 class DescribeInstancesResponseBodyInstancesHaResourceSpec(TeaModel):
     def __init__(
         self,
@@ -1516,7 +1610,9 @@ class DescribeInstancesResponseBodyInstancesHostAliases(TeaModel):
         host_names: List[str] = None,
         ip: str = None,
     ):
+        # This parameter is required.
         self.host_names = host_names
+        # This parameter is required.
         self.ip = ip
 
     def validate(self):
@@ -1606,8 +1702,12 @@ class DescribeInstancesResponseBodyInstancesStorageOss(TeaModel):
 class DescribeInstancesResponseBodyInstancesStorage(TeaModel):
     def __init__(
         self,
+        fully_managed: bool = None,
+        order_state: str = None,
         oss: DescribeInstancesResponseBodyInstancesStorageOss = None,
     ):
+        self.fully_managed = fully_managed
+        self.order_state = order_state
         self.oss = oss
 
     def validate(self):
@@ -1620,12 +1720,20 @@ class DescribeInstancesResponseBodyInstancesStorage(TeaModel):
             return _map
 
         result = dict()
+        if self.fully_managed is not None:
+            result['FullyManaged'] = self.fully_managed
+        if self.order_state is not None:
+            result['OrderState'] = self.order_state
         if self.oss is not None:
             result['Oss'] = self.oss.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FullyManaged') is not None:
+            self.fully_managed = m.get('FullyManaged')
+        if m.get('OrderState') is not None:
+            self.order_state = m.get('OrderState')
         if m.get('Oss') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesStorageOss()
             self.oss = temp_model.from_map(m['Oss'])
@@ -1672,6 +1780,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         ask_cluster_id: str = None,
         charge_type: str = None,
         cluster_status: str = None,
+        cluster_used_storage: DescribeInstancesResponseBodyInstancesClusterUsedStorage = None,
         ha: bool = None,
         ha_resource_spec: DescribeInstancesResponseBodyInstancesHaResourceSpec = None,
         ha_vswitch_ids: List[str] = None,
@@ -1698,10 +1807,12 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.ask_cluster_id = ask_cluster_id
         self.charge_type = charge_type
         self.cluster_status = cluster_status
+        self.cluster_used_storage = cluster_used_storage
         self.ha = ha
         self.ha_resource_spec = ha_resource_spec
         self.ha_vswitch_ids = ha_vswitch_ids
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.host_aliases = host_aliases
         self.instance_id = instance_id
         self.instance_name = instance_name
@@ -1721,6 +1832,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.cluster_used_storage:
+            self.cluster_used_storage.validate()
         if self.ha_resource_spec:
             self.ha_resource_spec.validate()
         if self.host_aliases:
@@ -1750,6 +1863,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.cluster_status is not None:
             result['ClusterStatus'] = self.cluster_status
+        if self.cluster_used_storage is not None:
+            result['ClusterUsedStorage'] = self.cluster_used_storage.to_map()
         if self.ha is not None:
             result['Ha'] = self.ha
         if self.ha_resource_spec is not None:
@@ -1808,6 +1923,9 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterStatus') is not None:
             self.cluster_status = m.get('ClusterStatus')
+        if m.get('ClusterUsedStorage') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesClusterUsedStorage()
+            self.cluster_used_storage = temp_model.from_map(m['ClusterUsedStorage'])
         if m.get('Ha') is not None:
             self.ha = m.get('Ha')
         if m.get('HaResourceSpec') is not None:
@@ -2019,10 +2137,12 @@ class DescribeNamespacesRequest(TeaModel):
         tags: List[DescribeNamespacesRequestTags] = None,
     ):
         self.ha = ha
+        # This parameter is required.
         self.instance_id = instance_id
         self.namespace = namespace
         self.page_index = page_index
         self.page_size = page_size
+        # This parameter is required.
         self.region = region
         self.tags = tags
 
@@ -2090,10 +2210,12 @@ class DescribeNamespacesShrinkRequest(TeaModel):
         tags_shrink: str = None,
     ):
         self.ha = ha
+        # This parameter is required.
         self.instance_id = instance_id
         self.namespace = namespace
         self.page_index = page_index
         self.page_size = page_size
+        # This parameter is required.
         self.region = region
         self.tags_shrink = tags_shrink
 
@@ -2766,8 +2888,10 @@ class ListTagResourcesRequest(TeaModel):
         tag: List[ListTagResourcesRequestTag] = None,
     ):
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -2999,7 +3123,9 @@ class ModifyPrepayInstanceSpecRequestResourceSpec(TeaModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # This parameter is required.
         self.cpu = cpu
+        # This parameter is required.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -3041,8 +3167,11 @@ class ModifyPrepayInstanceSpecRequest(TeaModel):
         self.ha_resource_spec = ha_resource_spec
         self.ha_vswitch_ids = ha_vswitch_ids
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.resource_spec = resource_spec
 
     def validate(self):
@@ -3109,8 +3238,11 @@ class ModifyPrepayInstanceSpecShrinkRequest(TeaModel):
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.resource_spec_shrink = resource_spec_shrink
 
     def validate(self):
@@ -3243,7 +3375,9 @@ class ModifyPrepayNamespaceSpecRequestResourceSpec(TeaModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # This parameter is required.
         self.cpu = cpu
+        # This parameter is required.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -3278,9 +3412,13 @@ class ModifyPrepayNamespaceSpecRequest(TeaModel):
         region: str = None,
         resource_spec: ModifyPrepayNamespaceSpecRequestResourceSpec = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.resource_spec = resource_spec
 
     def validate(self):
@@ -3325,9 +3463,13 @@ class ModifyPrepayNamespaceSpecShrinkRequest(TeaModel):
         region: str = None,
         resource_spec_shrink: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.resource_spec_shrink = resource_spec_shrink
 
     def validate(self):
@@ -3442,7 +3584,9 @@ class QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec(TeaMode
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # This parameter is required.
         self.cpu = cpu
+        # This parameter is required.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -3475,7 +3619,9 @@ class QueryConvertInstancePriceRequestNamespaceResourceSpecs(TeaModel):
         namespace: str = None,
         resource_spec: QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec = None,
     ):
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.resource_spec = resource_spec
 
     def validate(self):
@@ -3514,11 +3660,17 @@ class QueryConvertInstancePriceRequest(TeaModel):
         pricing_cycle: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_auto_renew = is_auto_renew
+        # This parameter is required.
         self.namespace_resource_specs = namespace_resource_specs
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -3579,11 +3731,17 @@ class QueryConvertInstancePriceShrinkRequest(TeaModel):
         pricing_cycle: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.is_auto_renew = is_auto_renew
+        # This parameter is required.
         self.namespace_resource_specs_shrink = namespace_resource_specs_shrink
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -4101,6 +4259,7 @@ class QueryCreateInstancePriceRequest(TeaModel):
     ):
         self.architecture_type = architecture_type
         self.auto_renew = auto_renew
+        # This parameter is required.
         self.charge_type = charge_type
         self.duration = duration
         self.extra = extra
@@ -4109,6 +4268,7 @@ class QueryCreateInstancePriceRequest(TeaModel):
         self.instance_name = instance_name
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # This parameter is required.
         self.region = region
         self.resource_spec = resource_spec
         self.storage = storage
@@ -4232,6 +4392,7 @@ class QueryCreateInstancePriceShrinkRequest(TeaModel):
     ):
         self.architecture_type = architecture_type
         self.auto_renew = auto_renew
+        # This parameter is required.
         self.charge_type = charge_type
         self.duration = duration
         self.extra = extra
@@ -4240,6 +4401,7 @@ class QueryCreateInstancePriceShrinkRequest(TeaModel):
         self.instance_name = instance_name
         self.pricing_cycle = pricing_cycle
         self.promotion_code = promotion_code
+        # This parameter is required.
         self.region = region
         self.resource_spec_shrink = resource_spec_shrink
         self.storage_shrink = storage_shrink
@@ -4701,7 +4863,9 @@ class QueryModifyInstancePriceRequestResourceSpec(TeaModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
+        # This parameter is required.
         self.cpu = cpu
+        # This parameter is required.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -4743,8 +4907,11 @@ class QueryModifyInstancePriceRequest(TeaModel):
         self.ha_resource_spec = ha_resource_spec
         self.ha_vswitch_ids = ha_vswitch_ids
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.resource_spec = resource_spec
 
     def validate(self):
@@ -4811,8 +4978,11 @@ class QueryModifyInstancePriceShrinkRequest(TeaModel):
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
         self.ha_zone_id = ha_zone_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.resource_spec_shrink = resource_spec_shrink
 
     def validate(self):
@@ -5197,9 +5367,13 @@ class QueryRenewInstancePriceRequest(TeaModel):
         pricing_cycle: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -5572,9 +5746,13 @@ class RenewInstanceRequest(TeaModel):
         pricing_cycle: str = None,
         region: str = None,
     ):
+        # This parameter is required.
         self.duration = duration
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -5731,9 +5909,13 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -5878,8 +6060,11 @@ class UntagResourcesRequest(TeaModel):
         tag_key: List[str] = None,
     ):
         self.all = all
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag_key = tag_key
 
