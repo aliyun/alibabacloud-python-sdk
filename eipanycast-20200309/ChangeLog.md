@@ -1,3 +1,7 @@
+2024-07-31 Version: 1.1.3
+- Update API DescribeAnycastEipAddress: update response param.
+
+
 2024-02-04 Version: 1.1.2
 - Generated python 2020-03-09 for Eipanycast.
 

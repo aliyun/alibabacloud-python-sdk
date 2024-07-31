@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.AllocateAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.AllocateAnycastEipAddressResponse:
+        """
+        @summary Creates an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: AllocateAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -88,6 +95,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.AllocateAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.AllocateAnycastEipAddressResponse:
+        """
+        @summary Creates an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: AllocateAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
@@ -129,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.AllocateAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.AllocateAnycastEipAddressResponse:
+        """
+        @summary Creates an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: AllocateAnycastEipAddressRequest
+        @return: AllocateAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allocate_anycast_eip_address_with_options(request, runtime)
 
@@ -136,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.AllocateAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.AllocateAnycastEipAddressResponse:
+        """
+        @summary Creates an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: AllocateAnycastEipAddressRequest
+        @return: AllocateAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_anycast_eip_address_with_options_async(request, runtime)
 
@@ -144,6 +170,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.AssociateAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.AssociateAnycastEipAddressResponse:
+        """
+        @summary Associates an Anycast elastic IP address (Anycast EIP) with an endpoint.
+        
+        @param request: AssociateAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -188,6 +221,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.AssociateAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.AssociateAnycastEipAddressResponse:
+        """
+        @summary Associates an Anycast elastic IP address (Anycast EIP) with an endpoint.
+        
+        @param request: AssociateAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -231,6 +271,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.AssociateAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.AssociateAnycastEipAddressResponse:
+        """
+        @summary Associates an Anycast elastic IP address (Anycast EIP) with an endpoint.
+        
+        @param request: AssociateAnycastEipAddressRequest
+        @return: AssociateAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_anycast_eip_address_with_options(request, runtime)
 
@@ -238,6 +284,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.AssociateAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.AssociateAnycastEipAddressResponse:
+        """
+        @summary Associates an Anycast elastic IP address (Anycast EIP) with an endpoint.
+        
+        @param request: AssociateAnycastEipAddressRequest
+        @return: AssociateAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_anycast_eip_address_with_options_async(request, runtime)
 
@@ -246,6 +298,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.DescribeAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.DescribeAnycastEipAddressResponse:
+        """
+        @summary Queries Anycast elastic IP addresses (Anycast EIPs) associated with specified instance IP addresses or instance IDs, including instance status, maximum bandwidth, and associated resources.
+        
+        @param request: DescribeAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -278,6 +337,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.DescribeAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.DescribeAnycastEipAddressResponse:
+        """
+        @summary Queries Anycast elastic IP addresses (Anycast EIPs) associated with specified instance IP addresses or instance IDs, including instance status, maximum bandwidth, and associated resources.
+        
+        @param request: DescribeAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -309,6 +375,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.DescribeAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.DescribeAnycastEipAddressResponse:
+        """
+        @summary Queries Anycast elastic IP addresses (Anycast EIPs) associated with specified instance IP addresses or instance IDs, including instance status, maximum bandwidth, and associated resources.
+        
+        @param request: DescribeAnycastEipAddressRequest
+        @return: DescribeAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_anycast_eip_address_with_options(request, runtime)
 
@@ -316,6 +388,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.DescribeAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.DescribeAnycastEipAddressResponse:
+        """
+        @summary Queries Anycast elastic IP addresses (Anycast EIPs) associated with specified instance IP addresses or instance IDs, including instance status, maximum bandwidth, and associated resources.
+        
+        @param request: DescribeAnycastEipAddressRequest
+        @return: DescribeAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_anycast_eip_address_with_options_async(request, runtime)
 
@@ -324,6 +402,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.DescribeAnycastPopLocationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.DescribeAnycastPopLocationsResponse:
+        """
+        @summary Queries the information about the access points in an area.
+        
+        @param request: DescribeAnycastPopLocationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnycastPopLocationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_location):
@@ -352,6 +437,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.DescribeAnycastPopLocationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.DescribeAnycastPopLocationsResponse:
+        """
+        @summary Queries the information about the access points in an area.
+        
+        @param request: DescribeAnycastPopLocationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnycastPopLocationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_location):
@@ -379,6 +471,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.DescribeAnycastPopLocationsRequest,
     ) -> eipanycast_20200309_models.DescribeAnycastPopLocationsResponse:
+        """
+        @summary Queries the information about the access points in an area.
+        
+        @param request: DescribeAnycastPopLocationsRequest
+        @return: DescribeAnycastPopLocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_anycast_pop_locations_with_options(request, runtime)
 
@@ -386,6 +484,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.DescribeAnycastPopLocationsRequest,
     ) -> eipanycast_20200309_models.DescribeAnycastPopLocationsResponse:
+        """
+        @summary Queries the information about the access points in an area.
+        
+        @param request: DescribeAnycastPopLocationsRequest
+        @return: DescribeAnycastPopLocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_anycast_pop_locations_with_options_async(request, runtime)
 
@@ -394,6 +498,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.DescribeAnycastServerRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.DescribeAnycastServerRegionsResponse:
+        """
+        @summary Queries the regions where you can associate Anycast elastic IP addresses (Anycast EIPs) with endpoints.
+        
+        @param request: DescribeAnycastServerRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnycastServerRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_location):
@@ -422,6 +533,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.DescribeAnycastServerRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.DescribeAnycastServerRegionsResponse:
+        """
+        @summary Queries the regions where you can associate Anycast elastic IP addresses (Anycast EIPs) with endpoints.
+        
+        @param request: DescribeAnycastServerRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnycastServerRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_location):
@@ -449,6 +567,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.DescribeAnycastServerRegionsRequest,
     ) -> eipanycast_20200309_models.DescribeAnycastServerRegionsResponse:
+        """
+        @summary Queries the regions where you can associate Anycast elastic IP addresses (Anycast EIPs) with endpoints.
+        
+        @param request: DescribeAnycastServerRegionsRequest
+        @return: DescribeAnycastServerRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_anycast_server_regions_with_options(request, runtime)
 
@@ -456,6 +580,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.DescribeAnycastServerRegionsRequest,
     ) -> eipanycast_20200309_models.DescribeAnycastServerRegionsResponse:
+        """
+        @summary Queries the regions where you can associate Anycast elastic IP addresses (Anycast EIPs) with endpoints.
+        
+        @param request: DescribeAnycastServerRegionsRequest
+        @return: DescribeAnycastServerRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_anycast_server_regions_with_options_async(request, runtime)
 
@@ -464,6 +594,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ListAnycastEipAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
+        """
+        @summary 查询指定接入区域已创建的Anycast EIP实例
+        
+        @param request: ListAnycastEipAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnycastEipAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_eip_address):
@@ -518,6 +655,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ListAnycastEipAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
+        """
+        @summary 查询指定接入区域已创建的Anycast EIP实例
+        
+        @param request: ListAnycastEipAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAnycastEipAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_eip_address):
@@ -571,6 +715,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ListAnycastEipAddressesRequest,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
+        """
+        @summary 查询指定接入区域已创建的Anycast EIP实例
+        
+        @param request: ListAnycastEipAddressesRequest
+        @return: ListAnycastEipAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_anycast_eip_addresses_with_options(request, runtime)
 
@@ -578,6 +728,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ListAnycastEipAddressesRequest,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
+        """
+        @summary 查询指定接入区域已创建的Anycast EIP实例
+        
+        @param request: ListAnycastEipAddressesRequest
+        @return: ListAnycastEipAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_anycast_eip_addresses_with_options_async(request, runtime)
 
@@ -586,6 +742,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -622,6 +785,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -657,6 +827,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ListTagResourcesRequest,
     ) -> eipanycast_20200309_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -664,6 +840,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ListTagResourcesRequest,
     ) -> eipanycast_20200309_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -672,6 +854,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ModifyAnycastEipAddressAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressAttributeResponse:
+        """
+        @summary Modifies the name and description of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAnycastEipAddressAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -704,6 +893,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ModifyAnycastEipAddressAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressAttributeResponse:
+        """
+        @summary Modifies the name and description of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAnycastEipAddressAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -735,6 +931,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ModifyAnycastEipAddressAttributeRequest,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressAttributeResponse:
+        """
+        @summary Modifies the name and description of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressAttributeRequest
+        @return: ModifyAnycastEipAddressAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_anycast_eip_address_attribute_with_options(request, runtime)
 
@@ -742,6 +944,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ModifyAnycastEipAddressAttributeRequest,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressAttributeResponse:
+        """
+        @summary Modifies the name and description of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressAttributeRequest
+        @return: ModifyAnycastEipAddressAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_anycast_eip_address_attribute_with_options_async(request, runtime)
 
@@ -750,6 +958,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ModifyAnycastEipAddressSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressSpecResponse:
+        """
+        @summary Modifies the maximum bandwidth of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAnycastEipAddressSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -780,6 +995,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ModifyAnycastEipAddressSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressSpecResponse:
+        """
+        @summary Modifies the maximum bandwidth of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAnycastEipAddressSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -809,6 +1031,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ModifyAnycastEipAddressSpecRequest,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressSpecResponse:
+        """
+        @summary Modifies the maximum bandwidth of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressSpecRequest
+        @return: ModifyAnycastEipAddressSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_anycast_eip_address_spec_with_options(request, runtime)
 
@@ -816,6 +1044,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ModifyAnycastEipAddressSpecRequest,
     ) -> eipanycast_20200309_models.ModifyAnycastEipAddressSpecResponse:
+        """
+        @summary Modifies the maximum bandwidth of an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ModifyAnycastEipAddressSpecRequest
+        @return: ModifyAnycastEipAddressSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_anycast_eip_address_spec_with_options_async(request, runtime)
 
@@ -824,6 +1058,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ReleaseAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ReleaseAnycastEipAddressResponse:
+        """
+        @summary Releases an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ReleaseAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -854,6 +1095,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ReleaseAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ReleaseAnycastEipAddressResponse:
+        """
+        @summary Releases an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ReleaseAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -883,6 +1131,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ReleaseAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.ReleaseAnycastEipAddressResponse:
+        """
+        @summary Releases an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ReleaseAnycastEipAddressRequest
+        @return: ReleaseAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_anycast_eip_address_with_options(request, runtime)
 
@@ -890,6 +1144,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.ReleaseAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.ReleaseAnycastEipAddressResponse:
+        """
+        @summary Releases an Anycast elastic IP address (Anycast EIP).
+        
+        @param request: ReleaseAnycastEipAddressRequest
+        @return: ReleaseAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_anycast_eip_address_with_options_async(request, runtime)
 
@@ -898,6 +1158,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -930,6 +1197,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -961,6 +1235,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.TagResourcesRequest,
     ) -> eipanycast_20200309_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -968,6 +1248,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.TagResourcesRequest,
     ) -> eipanycast_20200309_models.TagResourcesResponse:
+        """
+        @summary Creates and adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -976,6 +1262,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.UnassociateAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.UnassociateAnycastEipAddressResponse:
+        """
+        @summary Disassociates an Anycast elastic IP address (Anycast EIP) from an endpoint.
+        
+        @param request: UnassociateAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassociateAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -1016,6 +1309,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.UnassociateAnycastEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.UnassociateAnycastEipAddressResponse:
+        """
+        @summary Disassociates an Anycast elastic IP address (Anycast EIP) from an endpoint.
+        
+        @param request: UnassociateAnycastEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassociateAnycastEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -1055,6 +1355,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.UnassociateAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.UnassociateAnycastEipAddressResponse:
+        """
+        @summary Disassociates an Anycast elastic IP address (Anycast EIP) from an endpoint.
+        
+        @param request: UnassociateAnycastEipAddressRequest
+        @return: UnassociateAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unassociate_anycast_eip_address_with_options(request, runtime)
 
@@ -1062,6 +1368,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.UnassociateAnycastEipAddressRequest,
     ) -> eipanycast_20200309_models.UnassociateAnycastEipAddressResponse:
+        """
+        @summary Disassociates an Anycast elastic IP address (Anycast EIP) from an endpoint.
+        
+        @param request: UnassociateAnycastEipAddressRequest
+        @return: UnassociateAnycastEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unassociate_anycast_eip_address_with_options_async(request, runtime)
 
@@ -1070,6 +1382,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from Anycast EIPs.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -1102,6 +1421,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from Anycast EIPs.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -1133,6 +1459,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.UntagResourcesRequest,
     ) -> eipanycast_20200309_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from Anycast EIPs.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -1140,6 +1472,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.UntagResourcesRequest,
     ) -> eipanycast_20200309_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from Anycast EIPs.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -1148,6 +1486,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsResponse:
+        """
+        @summary If an Anycast EIP is associated with endpoints in different regions, you can change the access points that are mapped to an endpoint. You can call UpdateAnycastEipAddressAssociations to add or delete endpoints to modify the mappings between endpoints and access points.
+        
+        @param request: UpdateAnycastEipAddressAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAnycastEipAddressAssociationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -1188,6 +1533,13 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsResponse:
+        """
+        @summary If an Anycast EIP is associated with endpoints in different regions, you can change the access points that are mapped to an endpoint. You can call UpdateAnycastEipAddressAssociations to add or delete endpoints to modify the mappings between endpoints and access points.
+        
+        @param request: UpdateAnycastEipAddressAssociationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAnycastEipAddressAssociationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.anycast_id):
@@ -1227,6 +1579,12 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsRequest,
     ) -> eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsResponse:
+        """
+        @summary If an Anycast EIP is associated with endpoints in different regions, you can change the access points that are mapped to an endpoint. You can call UpdateAnycastEipAddressAssociations to add or delete endpoints to modify the mappings between endpoints and access points.
+        
+        @param request: UpdateAnycastEipAddressAssociationsRequest
+        @return: UpdateAnycastEipAddressAssociationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_anycast_eip_address_associations_with_options(request, runtime)
 
@@ -1234,5 +1592,11 @@ class Client(OpenApiClient):
         self,
         request: eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsRequest,
     ) -> eipanycast_20200309_models.UpdateAnycastEipAddressAssociationsResponse:
+        """
+        @summary If an Anycast EIP is associated with endpoints in different regions, you can change the access points that are mapped to an endpoint. You can call UpdateAnycastEipAddressAssociations to add or delete endpoints to modify the mappings between endpoints and access points.
+        
+        @param request: UpdateAnycastEipAddressAssociationsRequest
+        @return: UpdateAnycastEipAddressAssociationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_anycast_eip_address_associations_with_options_async(request, runtime)
