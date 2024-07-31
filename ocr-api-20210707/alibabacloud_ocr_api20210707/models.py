@@ -5538,6 +5538,7 @@ class RecognizeEduPaperCutRequest(TeaModel):
         self,
         cut_type: str = None,
         image_type: str = None,
+        output_oricoord: bool = None,
         subject: str = None,
         url: str = None,
         body: BinaryIO = None,
@@ -5546,6 +5547,7 @@ class RecognizeEduPaperCutRequest(TeaModel):
         self.cut_type = cut_type
         # This parameter is required.
         self.image_type = image_type
+        self.output_oricoord = output_oricoord
         self.subject = subject
         self.url = url
         self.body = body
@@ -5563,6 +5565,8 @@ class RecognizeEduPaperCutRequest(TeaModel):
             result['CutType'] = self.cut_type
         if self.image_type is not None:
             result['ImageType'] = self.image_type
+        if self.output_oricoord is not None:
+            result['OutputOricoord'] = self.output_oricoord
         if self.subject is not None:
             result['Subject'] = self.subject
         if self.url is not None:
@@ -5577,6 +5581,8 @@ class RecognizeEduPaperCutRequest(TeaModel):
             self.cut_type = m.get('CutType')
         if m.get('ImageType') is not None:
             self.image_type = m.get('ImageType')
+        if m.get('OutputOricoord') is not None:
+            self.output_oricoord = m.get('OutputOricoord')
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')
         if m.get('Url') is not None:

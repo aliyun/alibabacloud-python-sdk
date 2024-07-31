@@ -2427,6 +2427,8 @@ class Client(OpenApiClient):
             query['CutType'] = request.cut_type
         if not UtilClient.is_unset(request.image_type):
             query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
         if not UtilClient.is_unset(request.subject):
             query['Subject'] = request.subject
         if not UtilClient.is_unset(request.url):
@@ -2470,6 +2472,8 @@ class Client(OpenApiClient):
             query['CutType'] = request.cut_type
         if not UtilClient.is_unset(request.image_type):
             query['ImageType'] = request.image_type
+        if not UtilClient.is_unset(request.output_oricoord):
+            query['OutputOricoord'] = request.output_oricoord
         if not UtilClient.is_unset(request.subject):
             query['Subject'] = request.subject
         if not UtilClient.is_unset(request.url):
