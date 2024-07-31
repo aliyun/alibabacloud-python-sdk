@@ -1,3 +1,7 @@
+2024-07-31 Version: 1.2.2
+- Update API DescAccountSummary: update response param.
+
+
 2024-07-16 Version: 1.2.1
 - Update API GetTrackList: add param AccountName.
 - Update API GetTrackList: add param TagName.
