@@ -1,3 +1,9 @@
+2024-07-31 Version: 1.0.4
+- Update API GetSubscriptionAttributes: update response param.
+- Update API ListSubscriptionByTopic: update param TopicName.
+- Update API ListSubscriptionByTopic: update response param.
+
+
 2024-05-27 Version: 1.0.3
 - Update API CreateQueue: add param Tag.
 - Update API CreateTopic: add param Tag.

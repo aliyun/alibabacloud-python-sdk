@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateQueueResponse:
         """
-        @summary CreateQueue
+        @summary Creates a queue.
         
         @param request: CreateQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -96,7 +96,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateQueueResponse:
         """
-        @summary CreateQueue
+        @summary Creates a queue.
         
         @param request: CreateQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -144,7 +144,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateQueueRequest,
     ) -> mns_open_20220119_models.CreateQueueResponse:
         """
-        @summary CreateQueue
+        @summary Creates a queue.
         
         @param request: CreateQueueRequest
         @return: CreateQueueResponse
@@ -157,7 +157,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateQueueRequest,
     ) -> mns_open_20220119_models.CreateQueueResponse:
         """
-        @summary CreateQueue
+        @summary Creates a queue.
         
         @param request: CreateQueueRequest
         @return: CreateQueueResponse
@@ -171,7 +171,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateTopicResponse:
         """
-        @summary CreateTopic
+        @summary Creates a topic.
         
         @param request: CreateTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -214,7 +214,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateTopicResponse:
         """
-        @summary CreateTopic
+        @summary Creates a topic.
         
         @param request: CreateTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -256,7 +256,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateTopicRequest,
     ) -> mns_open_20220119_models.CreateTopicResponse:
         """
-        @summary CreateTopic
+        @summary Creates a topic.
         
         @param request: CreateTopicRequest
         @return: CreateTopicResponse
@@ -269,7 +269,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateTopicRequest,
     ) -> mns_open_20220119_models.CreateTopicResponse:
         """
-        @summary CreateTopic
+        @summary Creates a topic.
         
         @param request: CreateTopicRequest
         @return: CreateTopicResponse
@@ -283,7 +283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
         """
-        @summary DeleteQueue
+        @summary Deletes a queue.
         
         @param request: DeleteQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -318,7 +318,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
         """
-        @summary DeleteQueue
+        @summary Deletes a queue.
         
         @param request: DeleteQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -352,7 +352,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteQueueRequest,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
         """
-        @summary DeleteQueue
+        @summary Deletes a queue.
         
         @param request: DeleteQueueRequest
         @return: DeleteQueueResponse
@@ -365,7 +365,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteQueueRequest,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
         """
-        @summary DeleteQueue
+        @summary Deletes a queue.
         
         @param request: DeleteQueueRequest
         @return: DeleteQueueResponse
@@ -379,7 +379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
         """
-        @summary 删除订阅主题
+        @summary Deletes a topic.
         
         @param request: DeleteTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -414,7 +414,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
         """
-        @summary 删除订阅主题
+        @summary Deletes a topic.
         
         @param request: DeleteTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -448,7 +448,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteTopicRequest,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
         """
-        @summary 删除订阅主题
+        @summary Deletes a topic.
         
         @param request: DeleteTopicRequest
         @return: DeleteTopicResponse
@@ -461,7 +461,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteTopicRequest,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
         """
-        @summary 删除订阅主题
+        @summary Deletes a topic.
         
         @param request: DeleteTopicRequest
         @return: DeleteTopicResponse
@@ -475,7 +475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
         """
-        @summary GetQueueAttributes
+        @summary Queries the attributes of an existing queue.
         
         @param request: GetQueueAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -512,7 +512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
         """
-        @summary GetQueueAttributes
+        @summary Queries the attributes of an existing queue.
         
         @param request: GetQueueAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -548,7 +548,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetQueueAttributesRequest,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
         """
-        @summary GetQueueAttributes
+        @summary Queries the attributes of an existing queue.
         
         @param request: GetQueueAttributesRequest
         @return: GetQueueAttributesResponse
@@ -561,7 +561,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetQueueAttributesRequest,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
         """
-        @summary GetQueueAttributes
+        @summary Queries the attributes of an existing queue.
         
         @param request: GetQueueAttributesRequest
         @return: GetQueueAttributesResponse
@@ -575,7 +575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
         """
-        @summary GetSubscription
+        @summary Queries the attributes of a subscription.
         
         @param request: GetSubscriptionAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -612,7 +612,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
         """
-        @summary GetSubscription
+        @summary Queries the attributes of a subscription.
         
         @param request: GetSubscriptionAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -648,7 +648,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
         """
-        @summary GetSubscription
+        @summary Queries the attributes of a subscription.
         
         @param request: GetSubscriptionAttributesRequest
         @return: GetSubscriptionAttributesResponse
@@ -661,7 +661,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
         """
-        @summary GetSubscription
+        @summary Queries the attributes of a subscription.
         
         @param request: GetSubscriptionAttributesRequest
         @return: GetSubscriptionAttributesResponse
@@ -675,7 +675,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
         """
-        @summary 查询主题
+        @summary Queries the attributes of a topic.
         
         @param request: GetTopicAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -712,7 +712,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
         """
-        @summary 查询主题
+        @summary Queries the attributes of a topic.
         
         @param request: GetTopicAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -748,7 +748,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetTopicAttributesRequest,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
         """
-        @summary 查询主题
+        @summary Queries the attributes of a topic.
         
         @param request: GetTopicAttributesRequest
         @return: GetTopicAttributesResponse
@@ -761,7 +761,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetTopicAttributesRequest,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
         """
-        @summary 查询主题
+        @summary Queries the attributes of a topic.
         
         @param request: GetTopicAttributesRequest
         @return: GetTopicAttributesResponse
@@ -775,7 +775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListQueueResponse:
         """
-        @summary ListQueue
+        @summary Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
         
         @param request: ListQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -816,7 +816,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListQueueResponse:
         """
-        @summary ListQueue
+        @summary Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
         
         @param request: ListQueueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -856,7 +856,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListQueueRequest,
     ) -> mns_open_20220119_models.ListQueueResponse:
         """
-        @summary ListQueue
+        @summary Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
         
         @param request: ListQueueRequest
         @return: ListQueueResponse
@@ -869,7 +869,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListQueueRequest,
     ) -> mns_open_20220119_models.ListQueueResponse:
         """
-        @summary ListQueue
+        @summary Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
         
         @param request: ListQueueRequest
         @return: ListQueueResponse
@@ -883,7 +883,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
         """
-        @summary ListSubscription
+        @summary Queries all subscriptions to a topic. The subscriptions are displayed by page.
         
         @param request: ListSubscriptionByTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -924,7 +924,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
         """
-        @summary ListSubscription
+        @summary Queries all subscriptions to a topic. The subscriptions are displayed by page.
         
         @param request: ListSubscriptionByTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -964,7 +964,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListSubscriptionByTopicRequest,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
         """
-        @summary ListSubscription
+        @summary Queries all subscriptions to a topic. The subscriptions are displayed by page.
         
         @param request: ListSubscriptionByTopicRequest
         @return: ListSubscriptionByTopicResponse
@@ -977,7 +977,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListSubscriptionByTopicRequest,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
         """
-        @summary ListSubscription
+        @summary Queries all subscriptions to a topic. The subscriptions are displayed by page.
         
         @param request: ListSubscriptionByTopicRequest
         @return: ListSubscriptionByTopicResponse
@@ -991,7 +991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListTopicResponse:
         """
-        @summary ListTopic
+        @summary Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
         
         @param request: ListTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1032,7 +1032,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListTopicResponse:
         """
-        @summary ListTopic
+        @summary Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
         
         @param request: ListTopicRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1072,7 +1072,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListTopicRequest,
     ) -> mns_open_20220119_models.ListTopicResponse:
         """
-        @summary ListTopic
+        @summary Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
         
         @param request: ListTopicRequest
         @return: ListTopicResponse
@@ -1085,7 +1085,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListTopicRequest,
     ) -> mns_open_20220119_models.ListTopicResponse:
         """
-        @summary ListTopic
+        @summary Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
         
         @param request: ListTopicRequest
         @return: ListTopicResponse
@@ -1099,7 +1099,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
         """
-        @summary SetQueueAttributes
+        @summary Modifies a queue.
         
         @param request: SetQueueAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1146,7 +1146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
         """
-        @summary SetQueueAttributes
+        @summary Modifies a queue.
         
         @param request: SetQueueAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1192,7 +1192,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetQueueAttributesRequest,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
         """
-        @summary SetQueueAttributes
+        @summary Modifies a queue.
         
         @param request: SetQueueAttributesRequest
         @return: SetQueueAttributesResponse
@@ -1205,7 +1205,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetQueueAttributesRequest,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
         """
-        @summary SetQueueAttributes
+        @summary Modifies a queue.
         
         @param request: SetQueueAttributesRequest
         @return: SetQueueAttributesResponse
@@ -1219,7 +1219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
         """
-        @summary ModifySubscription
+        @summary Modifies the attributes of a subscription.
         
         @param request: SetSubscriptionAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1258,7 +1258,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
         """
-        @summary ModifySubscription
+        @summary Modifies the attributes of a subscription.
         
         @param request: SetSubscriptionAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1296,7 +1296,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
         """
-        @summary ModifySubscription
+        @summary Modifies the attributes of a subscription.
         
         @param request: SetSubscriptionAttributesRequest
         @return: SetSubscriptionAttributesResponse
@@ -1309,7 +1309,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
         """
-        @summary ModifySubscription
+        @summary Modifies the attributes of a subscription.
         
         @param request: SetSubscriptionAttributesRequest
         @return: SetSubscriptionAttributesResponse
@@ -1323,7 +1323,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
         """
-        @summary 编辑订阅主题
+        @summary Modifies the attributes of a topic.
         
         @param request: SetTopicAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1362,7 +1362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
         """
-        @summary 编辑订阅主题
+        @summary Modifies the attributes of a topic.
         
         @param request: SetTopicAttributesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1400,7 +1400,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetTopicAttributesRequest,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
         """
-        @summary 编辑订阅主题
+        @summary Modifies the attributes of a topic.
         
         @param request: SetTopicAttributesRequest
         @return: SetTopicAttributesResponse
@@ -1413,7 +1413,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetTopicAttributesRequest,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
         """
-        @summary 编辑订阅主题
+        @summary Modifies the attributes of a topic.
         
         @param request: SetTopicAttributesRequest
         @return: SetTopicAttributesResponse
@@ -1427,7 +1427,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SubscribeResponse:
         """
-        @summary CreateSubscription
+        @summary Creates a subscription to a topic.
         
         @param request: SubscribeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1474,7 +1474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SubscribeResponse:
         """
-        @summary CreateSubscription
+        @summary Creates a subscription to a topic.
         
         @param request: SubscribeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1520,7 +1520,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SubscribeRequest,
     ) -> mns_open_20220119_models.SubscribeResponse:
         """
-        @summary CreateSubscription
+        @summary Creates a subscription to a topic.
         
         @param request: SubscribeRequest
         @return: SubscribeResponse
@@ -1533,7 +1533,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SubscribeRequest,
     ) -> mns_open_20220119_models.SubscribeResponse:
         """
-        @summary CreateSubscription
+        @summary Creates a subscription to a topic.
         
         @param request: SubscribeRequest
         @return: SubscribeResponse
@@ -1547,7 +1547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
         """
-        @summary DeleteSubscription
+        @summary Deletes a subscription.
         
         @param request: UnsubscribeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1584,7 +1584,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
         """
-        @summary DeleteSubscription
+        @summary Deletes a subscription.
         
         @param request: UnsubscribeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1620,7 +1620,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.UnsubscribeRequest,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
         """
-        @summary DeleteSubscription
+        @summary Deletes a subscription.
         
         @param request: UnsubscribeRequest
         @return: UnsubscribeResponse
@@ -1633,7 +1633,7 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.UnsubscribeRequest,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
         """
-        @summary DeleteSubscription
+        @summary Deletes a subscription.
         
         @param request: UnsubscribeRequest
         @return: UnsubscribeResponse

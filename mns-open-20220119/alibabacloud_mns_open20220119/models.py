@@ -49,14 +49,25 @@ class CreateQueueRequest(TeaModel):
         tag: List[CreateQueueRequestTag] = None,
         visibility_timeout: int = None,
     ):
+        # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        # Specifies whether to enable the logging feature. Valid values:
+        # 
+        # *   True
+        # *   False (default)
         self.enable_logging = enable_logging
+        # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
         self.message_retention_period = message_retention_period
+        # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
         self.polling_wait_seconds = polling_wait_seconds
+        # The name of the queue.
+        # 
         # This parameter is required.
         self.queue_name = queue_name
         self.tag = tag
+        # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
@@ -122,8 +133,11 @@ class CreateQueueResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -164,11 +178,17 @@ class CreateQueueResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -260,7 +280,9 @@ class CreateTopicRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -295,9 +317,17 @@ class CreateTopicRequest(TeaModel):
         tag: List[CreateTopicRequestTag] = None,
         topic_name: str = None,
     ):
+        # Specifies whether to enable the logging feature. Valid values:
+        # 
+        # *   True
+        # *   False (default)
         self.enable_logging = enable_logging
+        # The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.max_message_size = max_message_size
+        # The tags.
         self.tag = tag
+        # The name of the topic that you want to create.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -348,8 +378,11 @@ class CreateTopicResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -390,11 +423,17 @@ class CreateTopicResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -485,6 +524,8 @@ class DeleteQueueRequest(TeaModel):
         self,
         queue_name: str = None,
     ):
+        # The name of the queue.
+        # 
         # This parameter is required.
         self.queue_name = queue_name
 
@@ -515,8 +556,11 @@ class DeleteQueueResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -557,11 +601,17 @@ class DeleteQueueResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -652,6 +702,8 @@ class DeleteTopicRequest(TeaModel):
         self,
         topic_name: str = None,
     ):
+        # The name of the topic that you want to delete.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -685,11 +737,17 @@ class DeleteTopicResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -812,6 +870,8 @@ class GetQueueAttributesRequest(TeaModel):
         queue_name: str = None,
         tag: List[GetQueueAttributesRequestTag] = None,
     ):
+        # The name of the queue.
+        # 
         # This parameter is required.
         self.queue_name = queue_name
         self.tag = tag
@@ -898,18 +958,33 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         tags: List[GetQueueAttributesResponseBodyDataTags] = None,
         visibility_timeout: int = None,
     ):
+        # The total number of messages that are in the Active state in the queue. The value is an approximate number.
         self.active_messages = active_messages
+        # The time when the queue was created.
         self.create_time = create_time
+        # The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
         self.delay_messages = delay_messages
+        # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
+        # The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
         self.inactive_messages = inactive_messages
+        # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # Indicates whether the logging feature is enabled. Valid values:
+        # 
+        # *   True
+        # *   False
         self.logging_enabled = logging_enabled
+        # The maximum length of the message that is sent to the queue. Unit: bytes.
         self.maximum_message_size = maximum_message_size
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
         self.message_retention_period = message_retention_period
+        # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Unit: seconds.
         self.polling_wait_seconds = polling_wait_seconds
+        # The name of the queue.
         self.queue_name = queue_name
         self.tags = tags
+        # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
@@ -998,11 +1073,17 @@ class GetQueueAttributesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1094,8 +1175,12 @@ class GetSubscriptionAttributesRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The name of the subscription.
+        # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        # The name of the topic.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -1136,14 +1221,30 @@ class GetSubscriptionAttributesResponseBodyData(TeaModel):
         topic_name: str = None,
         topic_owner: str = None,
     ):
+        # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The endpoint to which the messages are pushed.
         self.endpoint = endpoint
+        # The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
         self.filter_tag = filter_tag
+        # The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # The content format of the messages that are pushed to the endpoint. Valid values:
+        # 
+        # *   XML
+        # *   JSON
+        # *   SIMPLIFIED
         self.notify_content_format = notify_content_format
+        # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+        # 
+        # *   BACKOFF_RETRY
+        # *   EXPONENTIAL_DECAY_RETRY
         self.notify_strategy = notify_strategy
+        # The name of the subscription.
         self.subscription_name = subscription_name
+        # The name of the topic.
         self.topic_name = topic_name
+        # The Alibaba Cloud account ID of the topic owner.
         self.topic_owner = topic_owner
 
     def validate(self):
@@ -1208,11 +1309,17 @@ class GetSubscriptionAttributesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1338,6 +1445,8 @@ class GetTopicAttributesRequest(TeaModel):
         topic_name: str = None,
     ):
         self.tag = tag
+        # The name of the topic.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -1418,13 +1527,23 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         tags: List[GetTopicAttributesResponseBodyDataTags] = None,
         topic_name: str = None,
     ):
+        # The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The time when the topic was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # Indicates whether the logging feature is enabled. Valid values:
+        # 
+        # *   True
+        # *   False
         self.logging_enabled = logging_enabled
+        # The maximum length of the message that is sent to the topic. Unit: bytes.
         self.max_message_size = max_message_size
+        # The number of messages in the topic.
         self.message_count = message_count
+        # The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
         self.message_retention_period = message_retention_period
         self.tags = tags
+        # The name of the topic.
         self.topic_name = topic_name
 
     def validate(self):
@@ -1493,11 +1612,17 @@ class GetTopicAttributesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1624,8 +1749,11 @@ class ListQueueRequest(TeaModel):
         queue_name: str = None,
         tag: List[ListQueueRequestTag] = None,
     ):
+        # The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
         self.page_num = page_num
+        # The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
         self.page_size = page_size
+        # The name of the queue.
         self.queue_name = queue_name
         self.tag = tag
 
@@ -1719,18 +1847,33 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         tags: List[ListQueueResponseBodyDataPageDataTags] = None,
         visibility_timeout: int = None,
     ):
+        # The total number of messages that are in the Active state in the queue. The value is an approximate number.
         self.active_messages = active_messages
+        # The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
         self.delay_messages = delay_messages
+        # The period after which all messages sent to the queue are consumed. Unit: seconds.
         self.delay_seconds = delay_seconds
+        # The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
         self.inactive_messages = inactive_messages
+        # The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # Indicates whether the logging feature is enabled. Valid values:
+        # 
+        # *   True
+        # *   False
         self.logging_enabled = logging_enabled
+        # The maximum length of the message that is sent to the queue. Unit: bytes.
         self.maximum_message_size = maximum_message_size
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
         self.message_retention_period = message_retention_period
+        # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Unit: seconds.
         self.polling_wait_seconds = polling_wait_seconds
+        # The name of the queue.
         self.queue_name = queue_name
         self.tags = tags
+        # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
@@ -1819,11 +1962,17 @@ class ListQueueResponseBodyData(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The data returned on the current page.
         self.page_data = page_data
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of pages returned.
         self.pages = pages
+        # The number of entries on the current page.
         self.size = size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -1884,11 +2033,17 @@ class ListQueueResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1982,10 +2137,13 @@ class ListSubscriptionByTopicRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
         self.page_num = page_num
+        # The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
         self.page_size = page_size
+        # The name of the subscription.
         self.subscription_name = subscription_name
-        # This parameter is required.
+        # The name of the topic.
         self.topic_name = topic_name
 
     def validate(self):
@@ -2033,14 +2191,30 @@ class ListSubscriptionByTopicResponseBodyDataPageData(TeaModel):
         topic_name: str = None,
         topic_owner: str = None,
     ):
+        # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The endpoint to which the messages are pushed.
         self.endpoint = endpoint
+        # The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
         self.filter_tag = filter_tag
+        # The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # The content format of the messages that are pushed to the endpoint. Valid values:
+        # 
+        # *   XML
+        # *   JSON
+        # *   SIMPLIFIED
         self.notify_content_format = notify_content_format
+        # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+        # 
+        # *   BACKOFF_RETRY
+        # *   EXPONENTIAL_DECAY_RETRY
         self.notify_strategy = notify_strategy
+        # The name of the subscription.
         self.subscription_name = subscription_name
+        # The name of the topic.
         self.topic_name = topic_name
+        # The Alibaba Cloud account ID of the topic owner.
         self.topic_owner = topic_owner
 
     def validate(self):
@@ -2105,11 +2279,17 @@ class ListSubscriptionByTopicResponseBodyData(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # The data returned on the current page.
         self.page_data = page_data
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of pages returned.
         self.pages = pages
+        # The number of entries on the current page.
         self.size = size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -2170,11 +2350,17 @@ class ListSubscriptionByTopicResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2301,9 +2487,12 @@ class ListTopicRequest(TeaModel):
         tag: List[ListTopicRequestTag] = None,
         topic_name: str = None,
     ):
+        # The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
         self.page_num = page_num
+        # The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
         self.page_size = page_size
         self.tag = tag
+        # The name of the topic.
         self.topic_name = topic_name
 
     def validate(self):
@@ -2393,14 +2582,24 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         topic_name: str = None,
         topic_url: str = None,
     ):
+        # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # Indicates whether the logging feature is enabled.
+        # 
+        # *   True
+        # *   False
         self.logging_enabled = logging_enabled
+        # The maximum length of the message that is sent to the topic. Unit: bytes.
         self.max_message_size = max_message_size
+        # The number of messages in the topic.
         self.message_count = message_count
+        # The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
         self.message_retention_period = message_retention_period
         self.tags = tags
         self.topic_inner_url = topic_inner_url
+        # The name of the topic.
         self.topic_name = topic_name
         self.topic_url = topic_url
 
@@ -2476,9 +2675,13 @@ class ListTopicResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The data returned on the current page.
         self.page_data = page_data
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -2531,11 +2734,17 @@ class ListTopicResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2632,13 +2841,24 @@ class SetQueueAttributesRequest(TeaModel):
         queue_name: str = None,
         visibility_timeout: int = None,
     ):
+        # The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
         self.delay_seconds = delay_seconds
+        # Specifies whether to enable the logging feature. Valid values:
+        # 
+        # *   True
+        # *   False (default)
         self.enable_logging = enable_logging
+        # The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
+        # The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
         self.message_retention_period = message_retention_period
+        # The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
         self.polling_wait_seconds = polling_wait_seconds
+        # The name of the queue.
+        # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
@@ -2692,8 +2912,11 @@ class SetQueueAttributesResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2734,11 +2957,17 @@ class SetQueueAttributesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2831,9 +3060,17 @@ class SetSubscriptionAttributesRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+        # 
+        # *   BACKOFF_RETRY
+        # *   EXPONENTIAL_DECAY_RETRY
         self.notify_strategy = notify_strategy
+        # The name of the subscription.
+        # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        # The name of the topic.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -2872,8 +3109,11 @@ class SetSubscriptionAttributesResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2914,11 +3154,17 @@ class SetSubscriptionAttributesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3011,8 +3257,15 @@ class SetTopicAttributesRequest(TeaModel):
         max_message_size: int = None,
         topic_name: str = None,
     ):
+        # Specifies whether to enable the logging feature. Valid values:
+        # 
+        # *   True
+        # *   False (default)
         self.enable_logging = enable_logging
+        # The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.max_message_size = max_message_size
+        # The name of the topic.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -3051,8 +3304,11 @@ class SetTopicAttributesResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3093,11 +3349,17 @@ class SetTopicAttributesResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3194,15 +3456,47 @@ class SubscribeRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The receiver endpoint. The format of the endpoint varies based on the terminal type.
+        # 
+        # *   If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
+        # *   If you set PushType to queue, set Endpoint to a `queue name`.
+        # *   If you set PushType to mpush, set Endpoint to an `AppKey`.
+        # *   If you set PushType to alisms, set Endpoint to a `mobile number`.
+        # *   If you set PushType to email, set Endpoint to an `email address`.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
+        # 
+        # By default, no tag is specified to filter messages.
         self.message_tag = message_tag
+        # The content format of the messages that are pushed to the endpoint. Valid values:
+        # 
+        # *   XML
+        # *   JSON
+        # *   SIMPLIFIED
         self.notify_content_format = notify_content_format
+        # The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+        # 
+        # *   BACKOFF_RETRY
+        # *   EXPONENTIAL_DECAY_RETRY
         self.notify_strategy = notify_strategy
+        # The terminal type. Valid values:
+        # 
+        # *   http: HTTP services
+        # *   queue: queues
+        # *   mpush: mobile devices
+        # *   alisms: Alibaba Cloud Short Message Service (SMS)
+        # *   email: emails
+        # 
         # This parameter is required.
         self.push_type = push_type
+        # The name of the subscription.
+        # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        # The name of the topic.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -3260,11 +3554,17 @@ class SubscribeResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3354,8 +3654,12 @@ class UnsubscribeRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The name of the subscription.
+        # 
         # This parameter is required.
         self.subscription_name = subscription_name
+        # The name of the topic.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 
@@ -3390,8 +3694,11 @@ class UnsubscribeResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -3432,11 +3739,17 @@ class UnsubscribeResponseBody(TeaModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The response status.
         self.status = status
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
