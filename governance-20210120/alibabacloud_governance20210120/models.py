@@ -4,6 +4,476 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class BatchEnrollAccountsRequestAccounts(TeaModel):
+    def __init__(
+        self,
+        account_uid: int = None,
+    ):
+        self.account_uid = account_uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_uid is not None:
+            result['AccountUid'] = self.account_uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountUid') is not None:
+            self.account_uid = m.get('AccountUid')
+        return self
+
+
+class BatchEnrollAccountsRequestBaselineItems(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        name: str = None,
+        skip: bool = None,
+        version: str = None,
+    ):
+        self.config = config
+        self.name = name
+        self.skip = skip
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.skip is not None:
+            result['Skip'] = self.skip
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Skip') is not None:
+            self.skip = m.get('Skip')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class BatchEnrollAccountsRequest(TeaModel):
+    def __init__(
+        self,
+        accounts: List[BatchEnrollAccountsRequestAccounts] = None,
+        baseline_id: str = None,
+        baseline_items: List[BatchEnrollAccountsRequestBaselineItems] = None,
+        region_id: str = None,
+    ):
+        self.accounts = accounts
+        self.baseline_id = baseline_id
+        self.baseline_items = baseline_items
+        self.region_id = region_id
+
+    def validate(self):
+        if self.accounts:
+            for k in self.accounts:
+                if k:
+                    k.validate()
+        if self.baseline_items:
+            for k in self.baseline_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Accounts'] = []
+        if self.accounts is not None:
+            for k in self.accounts:
+                result['Accounts'].append(k.to_map() if k else None)
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        result['BaselineItems'] = []
+        if self.baseline_items is not None:
+            for k in self.baseline_items:
+                result['BaselineItems'].append(k.to_map() if k else None)
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.accounts = []
+        if m.get('Accounts') is not None:
+            for k in m.get('Accounts'):
+                temp_model = BatchEnrollAccountsRequestAccounts()
+                self.accounts.append(temp_model.from_map(k))
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        self.baseline_items = []
+        if m.get('BaselineItems') is not None:
+            for k in m.get('BaselineItems'):
+                temp_model = BatchEnrollAccountsRequestBaselineItems()
+                self.baseline_items.append(temp_model.from_map(k))
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class BatchEnrollAccountsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchEnrollAccountsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchEnrollAccountsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchEnrollAccountsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAccountFactoryBaselineRequestBaselineItems(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        name: str = None,
+        version: str = None,
+    ):
+        self.config = config
+        self.name = name
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['Config'] = self.config
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Config') is not None:
+            self.config = m.get('Config')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CreateAccountFactoryBaselineRequest(TeaModel):
+    def __init__(
+        self,
+        baseline_items: List[CreateAccountFactoryBaselineRequestBaselineItems] = None,
+        baseline_name: str = None,
+        description: str = None,
+        region_id: str = None,
+    ):
+        self.baseline_items = baseline_items
+        self.baseline_name = baseline_name
+        self.description = description
+        # RegionId
+        self.region_id = region_id
+
+    def validate(self):
+        if self.baseline_items:
+            for k in self.baseline_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaselineItems'] = []
+        if self.baseline_items is not None:
+            for k in self.baseline_items:
+                result['BaselineItems'].append(k.to_map() if k else None)
+        if self.baseline_name is not None:
+            result['BaselineName'] = self.baseline_name
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.baseline_items = []
+        if m.get('BaselineItems') is not None:
+            for k in m.get('BaselineItems'):
+                temp_model = CreateAccountFactoryBaselineRequestBaselineItems()
+                self.baseline_items.append(temp_model.from_map(k))
+        if m.get('BaselineName') is not None:
+            self.baseline_name = m.get('BaselineName')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class CreateAccountFactoryBaselineResponseBody(TeaModel):
+    def __init__(
+        self,
+        baseline_id: str = None,
+        request_id: str = None,
+    ):
+        self.baseline_id = baseline_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAccountFactoryBaselineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAccountFactoryBaselineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAccountFactoryBaselineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAccountFactoryBaselineRequest(TeaModel):
+    def __init__(
+        self,
+        baseline_id: str = None,
+        region_id: str = None,
+    ):
+        self.baseline_id = baseline_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.baseline_id is not None:
+            result['BaselineId'] = self.baseline_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaselineId') is not None:
+            self.baseline_id = m.get('BaselineId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DeleteAccountFactoryBaselineResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAccountFactoryBaselineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAccountFactoryBaselineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAccountFactoryBaselineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnrollAccountRequestBaselineItems(TeaModel):
     def __init__(
         self,
@@ -955,6 +1425,250 @@ class GetEnrolledAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEnrolledAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAccountFactoryBaselineItemsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        names: List[str] = None,
+        next_token: str = None,
+        region_id: str = None,
+        type: str = None,
+        versions: List[str] = None,
+    ):
+        self.max_results = max_results
+        self.names = names
+        self.next_token = next_token
+        # RegionId
+        self.region_id = region_id
+        self.type = type
+        self.versions = versions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.names is not None:
+            result['Names'] = self.names
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.versions is not None:
+            result['Versions'] = self.versions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Versions') is not None:
+            self.versions = m.get('Versions')
+        return self
+
+
+class ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+        version: str = None,
+    ):
+        self.name = name
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListAccountFactoryBaselineItemsResponseBodyBaselineItems(TeaModel):
+    def __init__(
+        self,
+        depends_on: List[ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn] = None,
+        description: str = None,
+        name: str = None,
+        type: str = None,
+        version: str = None,
+    ):
+        self.depends_on = depends_on
+        self.description = description
+        self.name = name
+        self.type = type
+        self.version = version
+
+    def validate(self):
+        if self.depends_on:
+            for k in self.depends_on:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DependsOn'] = []
+        if self.depends_on is not None:
+            for k in self.depends_on:
+                result['DependsOn'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.depends_on = []
+        if m.get('DependsOn') is not None:
+            for k in m.get('DependsOn'):
+                temp_model = ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn()
+                self.depends_on.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListAccountFactoryBaselineItemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        baseline_items: List[ListAccountFactoryBaselineItemsResponseBodyBaselineItems] = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.baseline_items = baseline_items
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.baseline_items:
+            for k in self.baseline_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaselineItems'] = []
+        if self.baseline_items is not None:
+            for k in self.baseline_items:
+                result['BaselineItems'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.baseline_items = []
+        if m.get('BaselineItems') is not None:
+            for k in m.get('BaselineItems'):
+                temp_model = ListAccountFactoryBaselineItemsResponseBodyBaselineItems()
+                self.baseline_items.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAccountFactoryBaselineItemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAccountFactoryBaselineItemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAccountFactoryBaselineItemsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -41,6 +41,322 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_enroll_accounts_with_options(
+        self,
+        request: governance_20210120_models.BatchEnrollAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.BatchEnrollAccountsResponse:
+        """
+        @summary 账号工厂批量注册账号
+        
+        @param request: BatchEnrollAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEnrollAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accounts):
+            query['Accounts'] = request.accounts
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
+        if not UtilClient.is_unset(request.baseline_items):
+            query['BaselineItems'] = request.baseline_items
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEnrollAccounts',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.BatchEnrollAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_enroll_accounts_with_options_async(
+        self,
+        request: governance_20210120_models.BatchEnrollAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.BatchEnrollAccountsResponse:
+        """
+        @summary 账号工厂批量注册账号
+        
+        @param request: BatchEnrollAccountsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchEnrollAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accounts):
+            query['Accounts'] = request.accounts
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
+        if not UtilClient.is_unset(request.baseline_items):
+            query['BaselineItems'] = request.baseline_items
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchEnrollAccounts',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.BatchEnrollAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_enroll_accounts(
+        self,
+        request: governance_20210120_models.BatchEnrollAccountsRequest,
+    ) -> governance_20210120_models.BatchEnrollAccountsResponse:
+        """
+        @summary 账号工厂批量注册账号
+        
+        @param request: BatchEnrollAccountsRequest
+        @return: BatchEnrollAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_enroll_accounts_with_options(request, runtime)
+
+    async def batch_enroll_accounts_async(
+        self,
+        request: governance_20210120_models.BatchEnrollAccountsRequest,
+    ) -> governance_20210120_models.BatchEnrollAccountsResponse:
+        """
+        @summary 账号工厂批量注册账号
+        
+        @param request: BatchEnrollAccountsRequest
+        @return: BatchEnrollAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_enroll_accounts_with_options_async(request, runtime)
+
+    def create_account_factory_baseline_with_options(
+        self,
+        request: governance_20210120_models.CreateAccountFactoryBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
+        """
+        @summary 创建账号工厂基线
+        
+        @param request: CreateAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountFactoryBaselineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_items):
+            query['BaselineItems'] = request.baseline_items
+        if not UtilClient.is_unset(request.baseline_name):
+            query['BaselineName'] = request.baseline_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccountFactoryBaseline',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.CreateAccountFactoryBaselineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_account_factory_baseline_with_options_async(
+        self,
+        request: governance_20210120_models.CreateAccountFactoryBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
+        """
+        @summary 创建账号工厂基线
+        
+        @param request: CreateAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAccountFactoryBaselineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_items):
+            query['BaselineItems'] = request.baseline_items
+        if not UtilClient.is_unset(request.baseline_name):
+            query['BaselineName'] = request.baseline_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAccountFactoryBaseline',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.CreateAccountFactoryBaselineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_account_factory_baseline(
+        self,
+        request: governance_20210120_models.CreateAccountFactoryBaselineRequest,
+    ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
+        """
+        @summary 创建账号工厂基线
+        
+        @param request: CreateAccountFactoryBaselineRequest
+        @return: CreateAccountFactoryBaselineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_account_factory_baseline_with_options(request, runtime)
+
+    async def create_account_factory_baseline_async(
+        self,
+        request: governance_20210120_models.CreateAccountFactoryBaselineRequest,
+    ) -> governance_20210120_models.CreateAccountFactoryBaselineResponse:
+        """
+        @summary 创建账号工厂基线
+        
+        @param request: CreateAccountFactoryBaselineRequest
+        @return: CreateAccountFactoryBaselineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_account_factory_baseline_with_options_async(request, runtime)
+
+    def delete_account_factory_baseline_with_options(
+        self,
+        request: governance_20210120_models.DeleteAccountFactoryBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
+        """
+        @summary 删除账号工厂基线
+        
+        @param request: DeleteAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountFactoryBaselineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccountFactoryBaseline',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_account_factory_baseline_with_options_async(
+        self,
+        request: governance_20210120_models.DeleteAccountFactoryBaselineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
+        """
+        @summary 删除账号工厂基线
+        
+        @param request: DeleteAccountFactoryBaselineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccountFactoryBaselineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.baseline_id):
+            query['BaselineId'] = request.baseline_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAccountFactoryBaseline',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.DeleteAccountFactoryBaselineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_account_factory_baseline(
+        self,
+        request: governance_20210120_models.DeleteAccountFactoryBaselineRequest,
+    ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
+        """
+        @summary 删除账号工厂基线
+        
+        @param request: DeleteAccountFactoryBaselineRequest
+        @return: DeleteAccountFactoryBaselineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_account_factory_baseline_with_options(request, runtime)
+
+    async def delete_account_factory_baseline_async(
+        self,
+        request: governance_20210120_models.DeleteAccountFactoryBaselineRequest,
+    ) -> governance_20210120_models.DeleteAccountFactoryBaselineResponse:
+        """
+        @summary 删除账号工厂基线
+        
+        @param request: DeleteAccountFactoryBaselineRequest
+        @return: DeleteAccountFactoryBaselineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_account_factory_baseline_with_options_async(request, runtime)
+
     def enroll_account_with_options(
         self,
         request: governance_20210120_models.EnrollAccountRequest,
@@ -380,6 +696,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_enrolled_account_with_options_async(request, runtime)
+
+    def list_account_factory_baseline_items_with_options(
+        self,
+        request: governance_20210120_models.ListAccountFactoryBaselineItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
+        """
+        @summary 获取账号工厂基线元素列表
+        
+        @param request: ListAccountFactoryBaselineItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountFactoryBaselineItemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccountFactoryBaselineItems',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_account_factory_baseline_items_with_options_async(
+        self,
+        request: governance_20210120_models.ListAccountFactoryBaselineItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
+        """
+        @summary 获取账号工厂基线元素列表
+        
+        @param request: ListAccountFactoryBaselineItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountFactoryBaselineItemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.versions):
+            query['Versions'] = request.versions
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAccountFactoryBaselineItems',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListAccountFactoryBaselineItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_account_factory_baseline_items(
+        self,
+        request: governance_20210120_models.ListAccountFactoryBaselineItemsRequest,
+    ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
+        """
+        @summary 获取账号工厂基线元素列表
+        
+        @param request: ListAccountFactoryBaselineItemsRequest
+        @return: ListAccountFactoryBaselineItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_account_factory_baseline_items_with_options(request, runtime)
+
+    async def list_account_factory_baseline_items_async(
+        self,
+        request: governance_20210120_models.ListAccountFactoryBaselineItemsRequest,
+    ) -> governance_20210120_models.ListAccountFactoryBaselineItemsResponse:
+        """
+        @summary 获取账号工厂基线元素列表
+        
+        @param request: ListAccountFactoryBaselineItemsRequest
+        @return: ListAccountFactoryBaselineItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_account_factory_baseline_items_with_options_async(request, runtime)
 
     def list_account_factory_baselines_with_options(
         self,

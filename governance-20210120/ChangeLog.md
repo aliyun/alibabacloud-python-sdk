@@ -1,3 +1,11 @@
+2024-07-31 Version: 0.2.0
+- Support API BatchEnrollAccounts.
+- Support API CreateAccountFactoryBaseline.
+- Support API DeleteAccountFactoryBaseline.
+- Support API ListAccountFactoryBaselineItems.
+- Support API UpdateAccountFactoryBaseline.
+
+
 2024-07-30 Version: 0.1.0
 - Support API UpdateAccountFactoryBaseline.
 
