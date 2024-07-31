@@ -576,6 +576,534 @@ class ApplyFileUploadLeaseResponse(TeaModel):
         return self
 
 
+class CreateAndPulishAgentRequestApplicationConfigHistoryConfig(TeaModel):
+    def __init__(
+        self,
+        enable_adb_record: bool = None,
+        enable_record: bool = None,
+        instance_id: str = None,
+        region: str = None,
+        store_code: str = None,
+    ):
+        self.enable_adb_record = enable_adb_record
+        self.enable_record = enable_record
+        self.instance_id = instance_id
+        self.region = region
+        self.store_code = store_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_adb_record is not None:
+            result['enableAdbRecord'] = self.enable_adb_record
+        if self.enable_record is not None:
+            result['enableRecord'] = self.enable_record
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.region is not None:
+            result['region'] = self.region
+        if self.store_code is not None:
+            result['storeCode'] = self.store_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableAdbRecord') is not None:
+            self.enable_adb_record = m.get('enableAdbRecord')
+        if m.get('enableRecord') is not None:
+            self.enable_record = m.get('enableRecord')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('storeCode') is not None:
+            self.store_code = m.get('storeCode')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfigLongTermMemory(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfigParameters(TeaModel):
+    def __init__(
+        self,
+        dialog_round: int = None,
+        max_tokens: int = None,
+        temperature: float = None,
+    ):
+        self.dialog_round = dialog_round
+        self.max_tokens = max_tokens
+        self.temperature = temperature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialog_round is not None:
+            result['dialogRound'] = self.dialog_round
+        if self.max_tokens is not None:
+            result['maxTokens'] = self.max_tokens
+        if self.temperature is not None:
+            result['temperature'] = self.temperature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dialogRound') is not None:
+            self.dialog_round = m.get('dialogRound')
+        if m.get('maxTokens') is not None:
+            self.max_tokens = m.get('maxTokens')
+        if m.get('temperature') is not None:
+            self.temperature = m.get('temperature')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfigRagConfig(TeaModel):
+    def __init__(
+        self,
+        enable_citation: bool = None,
+        enable_search: bool = None,
+        knowledge_base_code_list: List[str] = None,
+        top_k: int = None,
+    ):
+        self.enable_citation = enable_citation
+        self.enable_search = enable_search
+        self.knowledge_base_code_list = knowledge_base_code_list
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_citation is not None:
+            result['enableCitation'] = self.enable_citation
+        if self.enable_search is not None:
+            result['enableSearch'] = self.enable_search
+        if self.knowledge_base_code_list is not None:
+            result['knowledgeBaseCodeList'] = self.knowledge_base_code_list
+        if self.top_k is not None:
+            result['topK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableCitation') is not None:
+            self.enable_citation = m.get('enableCitation')
+        if m.get('enableSearch') is not None:
+            self.enable_search = m.get('enableSearch')
+        if m.get('knowledgeBaseCodeList') is not None:
+            self.knowledge_base_code_list = m.get('knowledgeBaseCodeList')
+        if m.get('topK') is not None:
+            self.top_k = m.get('topK')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfigSecurityConfig(TeaModel):
+    def __init__(
+        self,
+        processing_strategy: str = None,
+    ):
+        self.processing_strategy = processing_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.processing_strategy is not None:
+            result['processingStrategy'] = self.processing_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('processingStrategy') is not None:
+            self.processing_strategy = m.get('processingStrategy')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfigTools(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfigWorkFlows(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateAndPulishAgentRequestApplicationConfig(TeaModel):
+    def __init__(
+        self,
+        history_config: CreateAndPulishAgentRequestApplicationConfigHistoryConfig = None,
+        long_term_memory: CreateAndPulishAgentRequestApplicationConfigLongTermMemory = None,
+        parameters: CreateAndPulishAgentRequestApplicationConfigParameters = None,
+        rag_config: CreateAndPulishAgentRequestApplicationConfigRagConfig = None,
+        security_config: CreateAndPulishAgentRequestApplicationConfigSecurityConfig = None,
+        tools: List[CreateAndPulishAgentRequestApplicationConfigTools] = None,
+        work_flows: List[CreateAndPulishAgentRequestApplicationConfigWorkFlows] = None,
+    ):
+        self.history_config = history_config
+        self.long_term_memory = long_term_memory
+        self.parameters = parameters
+        self.rag_config = rag_config
+        self.security_config = security_config
+        self.tools = tools
+        self.work_flows = work_flows
+
+    def validate(self):
+        if self.history_config:
+            self.history_config.validate()
+        if self.long_term_memory:
+            self.long_term_memory.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.rag_config:
+            self.rag_config.validate()
+        if self.security_config:
+            self.security_config.validate()
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+        if self.work_flows:
+            for k in self.work_flows:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.history_config is not None:
+            result['historyConfig'] = self.history_config.to_map()
+        if self.long_term_memory is not None:
+            result['longTermMemory'] = self.long_term_memory.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.rag_config is not None:
+            result['ragConfig'] = self.rag_config.to_map()
+        if self.security_config is not None:
+            result['securityConfig'] = self.security_config.to_map()
+        result['tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['tools'].append(k.to_map() if k else None)
+        result['workFlows'] = []
+        if self.work_flows is not None:
+            for k in self.work_flows:
+                result['workFlows'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('historyConfig') is not None:
+            temp_model = CreateAndPulishAgentRequestApplicationConfigHistoryConfig()
+            self.history_config = temp_model.from_map(m['historyConfig'])
+        if m.get('longTermMemory') is not None:
+            temp_model = CreateAndPulishAgentRequestApplicationConfigLongTermMemory()
+            self.long_term_memory = temp_model.from_map(m['longTermMemory'])
+        if m.get('parameters') is not None:
+            temp_model = CreateAndPulishAgentRequestApplicationConfigParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('ragConfig') is not None:
+            temp_model = CreateAndPulishAgentRequestApplicationConfigRagConfig()
+            self.rag_config = temp_model.from_map(m['ragConfig'])
+        if m.get('securityConfig') is not None:
+            temp_model = CreateAndPulishAgentRequestApplicationConfigSecurityConfig()
+            self.security_config = temp_model.from_map(m['securityConfig'])
+        self.tools = []
+        if m.get('tools') is not None:
+            for k in m.get('tools'):
+                temp_model = CreateAndPulishAgentRequestApplicationConfigTools()
+                self.tools.append(temp_model.from_map(k))
+        self.work_flows = []
+        if m.get('workFlows') is not None:
+            for k in m.get('workFlows'):
+                temp_model = CreateAndPulishAgentRequestApplicationConfigWorkFlows()
+                self.work_flows.append(temp_model.from_map(k))
+        return self
+
+
+class CreateAndPulishAgentRequest(TeaModel):
+    def __init__(
+        self,
+        application_config: CreateAndPulishAgentRequestApplicationConfig = None,
+        instructions: str = None,
+        model_id: str = None,
+        name: str = None,
+    ):
+        self.application_config = application_config
+        self.instructions = instructions
+        self.model_id = model_id
+        self.name = name
+
+    def validate(self):
+        if self.application_config:
+            self.application_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_config is not None:
+            result['applicationConfig'] = self.application_config.to_map()
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationConfig') is not None:
+            temp_model = CreateAndPulishAgentRequestApplicationConfig()
+            self.application_config = temp_model.from_map(m['applicationConfig'])
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateAndPulishAgentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_config_shrink: str = None,
+        instructions: str = None,
+        model_id: str = None,
+        name: str = None,
+    ):
+        self.application_config_shrink = application_config_shrink
+        self.instructions = instructions
+        self.model_id = model_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_config_shrink is not None:
+            result['applicationConfig'] = self.application_config_shrink
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationConfig') is not None:
+            self.application_config_shrink = m.get('applicationConfig')
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateAndPulishAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateAndPulishAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAndPulishAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAndPulishAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateIndexRequestColumns(TeaModel):
     def __init__(
         self,
@@ -1001,6 +1529,104 @@ class CreateIndexResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateIndexResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1979,6 +2605,497 @@ class GetIndexJobStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetIndexJobStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig(TeaModel):
+    def __init__(
+        self,
+        enable_adb_record: bool = None,
+        enable_record: bool = None,
+        instance_id: str = None,
+        region: str = None,
+        store_code: str = None,
+    ):
+        self.enable_adb_record = enable_adb_record
+        self.enable_record = enable_record
+        self.instance_id = instance_id
+        self.region = region
+        self.store_code = store_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_adb_record is not None:
+            result['enableAdbRecord'] = self.enable_adb_record
+        if self.enable_record is not None:
+            result['enableRecord'] = self.enable_record
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.region is not None:
+            result['region'] = self.region
+        if self.store_code is not None:
+            result['storeCode'] = self.store_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableAdbRecord') is not None:
+            self.enable_adb_record = m.get('enableAdbRecord')
+        if m.get('enableRecord') is not None:
+            self.enable_record = m.get('enableRecord')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('storeCode') is not None:
+            self.store_code = m.get('storeCode')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigParameters(TeaModel):
+    def __init__(
+        self,
+        dialog_round: int = None,
+        max_tokens: int = None,
+        temperature: float = None,
+    ):
+        self.dialog_round = dialog_round
+        self.max_tokens = max_tokens
+        self.temperature = temperature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialog_round is not None:
+            result['dialogRound'] = self.dialog_round
+        if self.max_tokens is not None:
+            result['maxTokens'] = self.max_tokens
+        if self.temperature is not None:
+            result['temperature'] = self.temperature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dialogRound') is not None:
+            self.dialog_round = m.get('dialogRound')
+        if m.get('maxTokens') is not None:
+            self.max_tokens = m.get('maxTokens')
+        if m.get('temperature') is not None:
+            self.temperature = m.get('temperature')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigRagConfig(TeaModel):
+    def __init__(
+        self,
+        enable_citation: bool = None,
+        enable_search: bool = None,
+        knowledge_base_code_list: List[str] = None,
+        top_k: int = None,
+    ):
+        self.enable_citation = enable_citation
+        self.enable_search = enable_search
+        self.knowledge_base_code_list = knowledge_base_code_list
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_citation is not None:
+            result['enableCitation'] = self.enable_citation
+        if self.enable_search is not None:
+            result['enableSearch'] = self.enable_search
+        if self.knowledge_base_code_list is not None:
+            result['knowledgeBaseCodeList'] = self.knowledge_base_code_list
+        if self.top_k is not None:
+            result['topK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableCitation') is not None:
+            self.enable_citation = m.get('enableCitation')
+        if m.get('enableSearch') is not None:
+            self.enable_search = m.get('enableSearch')
+        if m.get('knowledgeBaseCodeList') is not None:
+            self.knowledge_base_code_list = m.get('knowledgeBaseCodeList')
+        if m.get('topK') is not None:
+            self.top_k = m.get('topK')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigSecurity(TeaModel):
+    def __init__(
+        self,
+        processing_strategy: str = None,
+    ):
+        self.processing_strategy = processing_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.processing_strategy is not None:
+            result['processingStrategy'] = self.processing_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('processingStrategy') is not None:
+            self.processing_strategy = m.get('processingStrategy')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigTools(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetPublishedAgentResponseBodyDataApplicationConfig(TeaModel):
+    def __init__(
+        self,
+        history_config: GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig = None,
+        long_term_memory: GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory = None,
+        parameters: GetPublishedAgentResponseBodyDataApplicationConfigParameters = None,
+        rag_config: GetPublishedAgentResponseBodyDataApplicationConfigRagConfig = None,
+        security: GetPublishedAgentResponseBodyDataApplicationConfigSecurity = None,
+        tools: List[GetPublishedAgentResponseBodyDataApplicationConfigTools] = None,
+        work_flows: List[GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows] = None,
+    ):
+        self.history_config = history_config
+        self.long_term_memory = long_term_memory
+        self.parameters = parameters
+        self.rag_config = rag_config
+        self.security = security
+        self.tools = tools
+        self.work_flows = work_flows
+
+    def validate(self):
+        if self.history_config:
+            self.history_config.validate()
+        if self.long_term_memory:
+            self.long_term_memory.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.rag_config:
+            self.rag_config.validate()
+        if self.security:
+            self.security.validate()
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+        if self.work_flows:
+            for k in self.work_flows:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.history_config is not None:
+            result['historyConfig'] = self.history_config.to_map()
+        if self.long_term_memory is not None:
+            result['longTermMemory'] = self.long_term_memory.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.rag_config is not None:
+            result['ragConfig'] = self.rag_config.to_map()
+        if self.security is not None:
+            result['security'] = self.security.to_map()
+        result['tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['tools'].append(k.to_map() if k else None)
+        result['workFlows'] = []
+        if self.work_flows is not None:
+            for k in self.work_flows:
+                result['workFlows'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('historyConfig') is not None:
+            temp_model = GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig()
+            self.history_config = temp_model.from_map(m['historyConfig'])
+        if m.get('longTermMemory') is not None:
+            temp_model = GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory()
+            self.long_term_memory = temp_model.from_map(m['longTermMemory'])
+        if m.get('parameters') is not None:
+            temp_model = GetPublishedAgentResponseBodyDataApplicationConfigParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('ragConfig') is not None:
+            temp_model = GetPublishedAgentResponseBodyDataApplicationConfigRagConfig()
+            self.rag_config = temp_model.from_map(m['ragConfig'])
+        if m.get('security') is not None:
+            temp_model = GetPublishedAgentResponseBodyDataApplicationConfigSecurity()
+            self.security = temp_model.from_map(m['security'])
+        self.tools = []
+        if m.get('tools') is not None:
+            for k in m.get('tools'):
+                temp_model = GetPublishedAgentResponseBodyDataApplicationConfigTools()
+                self.tools.append(temp_model.from_map(k))
+        self.work_flows = []
+        if m.get('workFlows') is not None:
+            for k in m.get('workFlows'):
+                temp_model = GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows()
+                self.work_flows.append(temp_model.from_map(k))
+        return self
+
+
+class GetPublishedAgentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        application_config: GetPublishedAgentResponseBodyDataApplicationConfig = None,
+        code: str = None,
+        instructions: str = None,
+        model_id: str = None,
+        name: str = None,
+    ):
+        self.application_config = application_config
+        self.code = code
+        self.instructions = instructions
+        self.model_id = model_id
+        self.name = name
+
+    def validate(self):
+        if self.application_config:
+            self.application_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_config is not None:
+            result['applicationConfig'] = self.application_config.to_map()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationConfig') is not None:
+            temp_model = GetPublishedAgentResponseBodyDataApplicationConfig()
+            self.application_config = temp_model.from_map(m['applicationConfig'])
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class GetPublishedAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPublishedAgentResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetPublishedAgentResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetPublishedAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPublishedAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPublishedAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3058,6 +4175,583 @@ class ListIndicesResponse(TeaModel):
         return self
 
 
+class ListPublishedAgentRequest(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['pageNo'] = self.page_no
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('pageNo') is not None:
+            self.page_no = m.get('pageNo')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig(TeaModel):
+    def __init__(
+        self,
+        enable_adb_record: bool = None,
+        enable_record: bool = None,
+        instance_id: str = None,
+        region: str = None,
+        store_code: str = None,
+    ):
+        self.enable_adb_record = enable_adb_record
+        self.enable_record = enable_record
+        self.instance_id = instance_id
+        self.region = region
+        self.store_code = store_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_adb_record is not None:
+            result['enableAdbRecord'] = self.enable_adb_record
+        if self.enable_record is not None:
+            result['enableRecord'] = self.enable_record
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.region is not None:
+            result['region'] = self.region
+        if self.store_code is not None:
+            result['storeCode'] = self.store_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableAdbRecord') is not None:
+            self.enable_adb_record = m.get('enableAdbRecord')
+        if m.get('enableRecord') is not None:
+            self.enable_record = m.get('enableRecord')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('storeCode') is not None:
+            self.store_code = m.get('storeCode')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigParameters(TeaModel):
+    def __init__(
+        self,
+        dialog_round: int = None,
+        max_tokens: int = None,
+        temperature: float = None,
+    ):
+        self.dialog_round = dialog_round
+        self.max_tokens = max_tokens
+        self.temperature = temperature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialog_round is not None:
+            result['dialogRound'] = self.dialog_round
+        if self.max_tokens is not None:
+            result['maxTokens'] = self.max_tokens
+        if self.temperature is not None:
+            result['temperature'] = self.temperature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dialogRound') is not None:
+            self.dialog_round = m.get('dialogRound')
+        if m.get('maxTokens') is not None:
+            self.max_tokens = m.get('maxTokens')
+        if m.get('temperature') is not None:
+            self.temperature = m.get('temperature')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig(TeaModel):
+    def __init__(
+        self,
+        enable_citation: bool = None,
+        enable_search: bool = None,
+        knowledge_base_code_list: List[str] = None,
+        top_k: int = None,
+    ):
+        self.enable_citation = enable_citation
+        self.enable_search = enable_search
+        self.knowledge_base_code_list = knowledge_base_code_list
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_citation is not None:
+            result['enableCitation'] = self.enable_citation
+        if self.enable_search is not None:
+            result['enableSearch'] = self.enable_search
+        if self.knowledge_base_code_list is not None:
+            result['knowledgeBaseCodeList'] = self.knowledge_base_code_list
+        if self.top_k is not None:
+            result['topK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableCitation') is not None:
+            self.enable_citation = m.get('enableCitation')
+        if m.get('enableSearch') is not None:
+            self.enable_search = m.get('enableSearch')
+        if m.get('knowledgeBaseCodeList') is not None:
+            self.knowledge_base_code_list = m.get('knowledgeBaseCodeList')
+        if m.get('topK') is not None:
+            self.top_k = m.get('topK')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigSecurity(TeaModel):
+    def __init__(
+        self,
+        processing_strategy: str = None,
+    ):
+        self.processing_strategy = processing_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.processing_strategy is not None:
+            result['processingStrategy'] = self.processing_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('processingStrategy') is not None:
+            self.processing_strategy = m.get('processingStrategy')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigTools(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListPublishedAgentResponseBodyDataListApplicationConfig(TeaModel):
+    def __init__(
+        self,
+        history_config: ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig = None,
+        long_term_memory: ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory = None,
+        parameters: ListPublishedAgentResponseBodyDataListApplicationConfigParameters = None,
+        rag_config: ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig = None,
+        security: ListPublishedAgentResponseBodyDataListApplicationConfigSecurity = None,
+        tools: List[ListPublishedAgentResponseBodyDataListApplicationConfigTools] = None,
+        work_flows: List[ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows] = None,
+    ):
+        self.history_config = history_config
+        self.long_term_memory = long_term_memory
+        self.parameters = parameters
+        self.rag_config = rag_config
+        self.security = security
+        self.tools = tools
+        self.work_flows = work_flows
+
+    def validate(self):
+        if self.history_config:
+            self.history_config.validate()
+        if self.long_term_memory:
+            self.long_term_memory.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.rag_config:
+            self.rag_config.validate()
+        if self.security:
+            self.security.validate()
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+        if self.work_flows:
+            for k in self.work_flows:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.history_config is not None:
+            result['historyConfig'] = self.history_config.to_map()
+        if self.long_term_memory is not None:
+            result['longTermMemory'] = self.long_term_memory.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.rag_config is not None:
+            result['ragConfig'] = self.rag_config.to_map()
+        if self.security is not None:
+            result['security'] = self.security.to_map()
+        result['tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['tools'].append(k.to_map() if k else None)
+        result['workFlows'] = []
+        if self.work_flows is not None:
+            for k in self.work_flows:
+                result['workFlows'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('historyConfig') is not None:
+            temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig()
+            self.history_config = temp_model.from_map(m['historyConfig'])
+        if m.get('longTermMemory') is not None:
+            temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory()
+            self.long_term_memory = temp_model.from_map(m['longTermMemory'])
+        if m.get('parameters') is not None:
+            temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('ragConfig') is not None:
+            temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig()
+            self.rag_config = temp_model.from_map(m['ragConfig'])
+        if m.get('security') is not None:
+            temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigSecurity()
+            self.security = temp_model.from_map(m['security'])
+        self.tools = []
+        if m.get('tools') is not None:
+            for k in m.get('tools'):
+                temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigTools()
+                self.tools.append(temp_model.from_map(k))
+        self.work_flows = []
+        if m.get('workFlows') is not None:
+            for k in m.get('workFlows'):
+                temp_model = ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows()
+                self.work_flows.append(temp_model.from_map(k))
+        return self
+
+
+class ListPublishedAgentResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        application_config: ListPublishedAgentResponseBodyDataListApplicationConfig = None,
+        code: str = None,
+        instructions: str = None,
+        model_id: str = None,
+        name: str = None,
+    ):
+        self.application_config = application_config
+        self.code = code
+        self.instructions = instructions
+        self.model_id = model_id
+        self.name = name
+
+    def validate(self):
+        if self.application_config:
+            self.application_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_config is not None:
+            result['applicationConfig'] = self.application_config.to_map()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationConfig') is not None:
+            temp_model = ListPublishedAgentResponseBodyDataListApplicationConfig()
+            self.application_config = temp_model.from_map(m['applicationConfig'])
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class ListPublishedAgentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[ListPublishedAgentResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['list'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['list'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['pageNo'] = self.page_no
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('list') is not None:
+            for k in m.get('list'):
+                temp_model = ListPublishedAgentResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('pageNo') is not None:
+            self.page_no = m.get('pageNo')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListPublishedAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListPublishedAgentResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListPublishedAgentResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListPublishedAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPublishedAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPublishedAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RetrieveRequestRerank(TeaModel):
     def __init__(
         self,
@@ -3872,6 +5566,534 @@ class SubmitIndexJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitIndexJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigHistoryConfig(TeaModel):
+    def __init__(
+        self,
+        enable_adb_record: bool = None,
+        enable_record: bool = None,
+        instance_id: str = None,
+        region: str = None,
+        store_code: str = None,
+    ):
+        self.enable_adb_record = enable_adb_record
+        self.enable_record = enable_record
+        self.instance_id = instance_id
+        self.region = region
+        self.store_code = store_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_adb_record is not None:
+            result['enableAdbRecord'] = self.enable_adb_record
+        if self.enable_record is not None:
+            result['enableRecord'] = self.enable_record
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.region is not None:
+            result['region'] = self.region
+        if self.store_code is not None:
+            result['storeCode'] = self.store_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableAdbRecord') is not None:
+            self.enable_adb_record = m.get('enableAdbRecord')
+        if m.get('enableRecord') is not None:
+            self.enable_record = m.get('enableRecord')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('storeCode') is not None:
+            self.store_code = m.get('storeCode')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigLongTermMemory(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigParameters(TeaModel):
+    def __init__(
+        self,
+        dialog_round: int = None,
+        max_tokens: int = None,
+        temperature: float = None,
+    ):
+        self.dialog_round = dialog_round
+        self.max_tokens = max_tokens
+        self.temperature = temperature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dialog_round is not None:
+            result['dialogRound'] = self.dialog_round
+        if self.max_tokens is not None:
+            result['maxTokens'] = self.max_tokens
+        if self.temperature is not None:
+            result['temperature'] = self.temperature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dialogRound') is not None:
+            self.dialog_round = m.get('dialogRound')
+        if m.get('maxTokens') is not None:
+            self.max_tokens = m.get('maxTokens')
+        if m.get('temperature') is not None:
+            self.temperature = m.get('temperature')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigRagConfig(TeaModel):
+    def __init__(
+        self,
+        enable_citation: bool = None,
+        enable_search: bool = None,
+        knowledge_base_code_list: List[str] = None,
+        top_k: int = None,
+    ):
+        self.enable_citation = enable_citation
+        self.enable_search = enable_search
+        self.knowledge_base_code_list = knowledge_base_code_list
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_citation is not None:
+            result['enableCitation'] = self.enable_citation
+        if self.enable_search is not None:
+            result['enableSearch'] = self.enable_search
+        if self.knowledge_base_code_list is not None:
+            result['knowledgeBaseCodeList'] = self.knowledge_base_code_list
+        if self.top_k is not None:
+            result['topK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableCitation') is not None:
+            self.enable_citation = m.get('enableCitation')
+        if m.get('enableSearch') is not None:
+            self.enable_search = m.get('enableSearch')
+        if m.get('knowledgeBaseCodeList') is not None:
+            self.knowledge_base_code_list = m.get('knowledgeBaseCodeList')
+        if m.get('topK') is not None:
+            self.top_k = m.get('topK')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigSecurity(TeaModel):
+    def __init__(
+        self,
+        processing_strategy: str = None,
+    ):
+        self.processing_strategy = processing_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.processing_strategy is not None:
+            result['processingStrategy'] = self.processing_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('processingStrategy') is not None:
+            self.processing_strategy = m.get('processingStrategy')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigTools(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfigWorkFlows(TeaModel):
+    def __init__(
+        self,
+        type: str = None,
+    ):
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class UpdateAndPublishAgentRequestApplicationConfig(TeaModel):
+    def __init__(
+        self,
+        history_config: UpdateAndPublishAgentRequestApplicationConfigHistoryConfig = None,
+        long_term_memory: UpdateAndPublishAgentRequestApplicationConfigLongTermMemory = None,
+        parameters: UpdateAndPublishAgentRequestApplicationConfigParameters = None,
+        rag_config: UpdateAndPublishAgentRequestApplicationConfigRagConfig = None,
+        security: UpdateAndPublishAgentRequestApplicationConfigSecurity = None,
+        tools: List[UpdateAndPublishAgentRequestApplicationConfigTools] = None,
+        work_flows: List[UpdateAndPublishAgentRequestApplicationConfigWorkFlows] = None,
+    ):
+        self.history_config = history_config
+        self.long_term_memory = long_term_memory
+        self.parameters = parameters
+        self.rag_config = rag_config
+        self.security = security
+        self.tools = tools
+        self.work_flows = work_flows
+
+    def validate(self):
+        if self.history_config:
+            self.history_config.validate()
+        if self.long_term_memory:
+            self.long_term_memory.validate()
+        if self.parameters:
+            self.parameters.validate()
+        if self.rag_config:
+            self.rag_config.validate()
+        if self.security:
+            self.security.validate()
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+        if self.work_flows:
+            for k in self.work_flows:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.history_config is not None:
+            result['historyConfig'] = self.history_config.to_map()
+        if self.long_term_memory is not None:
+            result['longTermMemory'] = self.long_term_memory.to_map()
+        if self.parameters is not None:
+            result['parameters'] = self.parameters.to_map()
+        if self.rag_config is not None:
+            result['ragConfig'] = self.rag_config.to_map()
+        if self.security is not None:
+            result['security'] = self.security.to_map()
+        result['tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['tools'].append(k.to_map() if k else None)
+        result['workFlows'] = []
+        if self.work_flows is not None:
+            for k in self.work_flows:
+                result['workFlows'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('historyConfig') is not None:
+            temp_model = UpdateAndPublishAgentRequestApplicationConfigHistoryConfig()
+            self.history_config = temp_model.from_map(m['historyConfig'])
+        if m.get('longTermMemory') is not None:
+            temp_model = UpdateAndPublishAgentRequestApplicationConfigLongTermMemory()
+            self.long_term_memory = temp_model.from_map(m['longTermMemory'])
+        if m.get('parameters') is not None:
+            temp_model = UpdateAndPublishAgentRequestApplicationConfigParameters()
+            self.parameters = temp_model.from_map(m['parameters'])
+        if m.get('ragConfig') is not None:
+            temp_model = UpdateAndPublishAgentRequestApplicationConfigRagConfig()
+            self.rag_config = temp_model.from_map(m['ragConfig'])
+        if m.get('security') is not None:
+            temp_model = UpdateAndPublishAgentRequestApplicationConfigSecurity()
+            self.security = temp_model.from_map(m['security'])
+        self.tools = []
+        if m.get('tools') is not None:
+            for k in m.get('tools'):
+                temp_model = UpdateAndPublishAgentRequestApplicationConfigTools()
+                self.tools.append(temp_model.from_map(k))
+        self.work_flows = []
+        if m.get('workFlows') is not None:
+            for k in m.get('workFlows'):
+                temp_model = UpdateAndPublishAgentRequestApplicationConfigWorkFlows()
+                self.work_flows.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateAndPublishAgentRequest(TeaModel):
+    def __init__(
+        self,
+        application_config: UpdateAndPublishAgentRequestApplicationConfig = None,
+        instructions: str = None,
+        model_id: str = None,
+        name: str = None,
+    ):
+        self.application_config = application_config
+        self.instructions = instructions
+        self.model_id = model_id
+        self.name = name
+
+    def validate(self):
+        if self.application_config:
+            self.application_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_config is not None:
+            result['applicationConfig'] = self.application_config.to_map()
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationConfig') is not None:
+            temp_model = UpdateAndPublishAgentRequestApplicationConfig()
+            self.application_config = temp_model.from_map(m['applicationConfig'])
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateAndPublishAgentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_config_shrink: str = None,
+        instructions: str = None,
+        model_id: str = None,
+        name: str = None,
+    ):
+        self.application_config_shrink = application_config_shrink
+        self.instructions = instructions
+        self.model_id = model_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_config_shrink is not None:
+            result['applicationConfig'] = self.application_config_shrink
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationConfig') is not None:
+            self.application_config_shrink = m.get('applicationConfig')
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateAndPublishAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateAndPublishAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAndPublishAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAndPublishAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

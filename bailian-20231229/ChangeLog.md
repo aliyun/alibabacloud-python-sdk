@@ -1,3 +1,11 @@
+2024-07-31 Version: 1.6.0
+- Support API CreateAndPulishAgent.
+- Support API DeleteAgent.
+- Support API GetPublishedAgent.
+- Support API ListPublishedAgent.
+- Support API UpdateAndPublishAgent.
+
+
 2024-07-30 Version: 1.5.0
 - Support API AddCategory.
 - Support API DeleteCategory.

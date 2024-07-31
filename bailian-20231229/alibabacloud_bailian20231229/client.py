@@ -385,6 +385,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.apply_file_upload_lease_with_options_async(category_id, workspace_id, request, headers, runtime)
 
+    def create_and_pulish_agent_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.CreateAndPulishAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreateAndPulishAgentResponse:
+        """
+        @summary 创建并发布智能体应用
+        
+        @param tmp_req: CreateAndPulishAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndPulishAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.CreateAndPulishAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_config):
+            request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_config_shrink):
+            body['applicationConfig'] = request.application_config_shrink
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAndPulishAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateAndPulishAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_and_pulish_agent_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.CreateAndPulishAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreateAndPulishAgentResponse:
+        """
+        @summary 创建并发布智能体应用
+        
+        @param tmp_req: CreateAndPulishAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndPulishAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.CreateAndPulishAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_config):
+            request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_config_shrink):
+            body['applicationConfig'] = request.application_config_shrink
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAndPulishAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateAndPulishAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_and_pulish_agent(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreateAndPulishAgentRequest,
+    ) -> bailian_20231229_models.CreateAndPulishAgentResponse:
+        """
+        @summary 创建并发布智能体应用
+        
+        @param request: CreateAndPulishAgentRequest
+        @return: CreateAndPulishAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_and_pulish_agent_with_options(workspace_id, request, headers, runtime)
+
+    async def create_and_pulish_agent_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreateAndPulishAgentRequest,
+    ) -> bailian_20231229_models.CreateAndPulishAgentResponse:
+        """
+        @summary 创建并发布智能体应用
+        
+        @param request: CreateAndPulishAgentRequest
+        @return: CreateAndPulishAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_and_pulish_agent_with_options_async(workspace_id, request, headers, runtime)
+
     def create_index_with_options(
         self,
         workspace_id: str,
@@ -568,6 +696,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_index_with_options_async(workspace_id, request, headers, runtime)
+
+    def delete_agent_with_options(
+        self,
+        workspace_id: str,
+        app_code: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteAgentResponse:
+        """
+        @summary 删除智能体
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAgentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_with_options_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteAgentResponse:
+        """
+        @summary 删除智能体
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAgentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent(
+        self,
+        workspace_id: str,
+        app_code: str,
+    ) -> bailian_20231229_models.DeleteAgentResponse:
+        """
+        @summary 删除智能体
+        
+        @return: DeleteAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_agent_with_options(workspace_id, app_code, headers, runtime)
+
+    async def delete_agent_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+    ) -> bailian_20231229_models.DeleteAgentResponse:
+        """
+        @summary 删除智能体
+        
+        @return: DeleteAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_with_options_async(workspace_id, app_code, headers, runtime)
 
     def delete_category_with_options(
         self,
@@ -1183,6 +1405,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_index_job_status_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_published_agent_with_options(
+        self,
+        workspace_id: str,
+        app_code: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetPublishedAgentResponse:
+        """
+        @summary 获取发布态智能体应用
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublishedAgentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPublishedAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPublishedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_published_agent_with_options_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetPublishedAgentResponse:
+        """
+        @summary 获取发布态智能体应用
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublishedAgentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetPublishedAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetPublishedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_published_agent(
+        self,
+        workspace_id: str,
+        app_code: str,
+    ) -> bailian_20231229_models.GetPublishedAgentResponse:
+        """
+        @summary 获取发布态智能体应用
+        
+        @return: GetPublishedAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_published_agent_with_options(workspace_id, app_code, headers, runtime)
+
+    async def get_published_agent_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+    ) -> bailian_20231229_models.GetPublishedAgentResponse:
+        """
+        @summary 获取发布态智能体应用
+        
+        @return: GetPublishedAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_published_agent_with_options_async(workspace_id, app_code, headers, runtime)
+
     def list_category_with_options(
         self,
         workspace_id: str,
@@ -1667,6 +1983,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_indices_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_published_agent_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPublishedAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListPublishedAgentResponse:
+        """
+        @summary 查询已发布的智能体应用列表
+        
+        @param request: ListPublishedAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublishedAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['pageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublishedAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPublishedAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_published_agent_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPublishedAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListPublishedAgentResponse:
+        """
+        @summary 查询已发布的智能体应用列表
+        
+        @param request: ListPublishedAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublishedAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['pageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPublishedAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListPublishedAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_published_agent(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPublishedAgentRequest,
+    ) -> bailian_20231229_models.ListPublishedAgentResponse:
+        """
+        @summary 查询已发布的智能体应用列表
+        
+        @param request: ListPublishedAgentRequest
+        @return: ListPublishedAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_published_agent_with_options(workspace_id, request, headers, runtime)
+
+    async def list_published_agent_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListPublishedAgentRequest,
+    ) -> bailian_20231229_models.ListPublishedAgentResponse:
+        """
+        @summary 查询已发布的智能体应用列表
+        
+        @param request: ListPublishedAgentRequest
+        @return: ListPublishedAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_published_agent_with_options_async(workspace_id, request, headers, runtime)
+
     def retrieve_with_options(
         self,
         workspace_id: str,
@@ -2074,3 +2502,135 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_index_job_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_and_publish_agent_with_options(
+        self,
+        workspace_id: str,
+        app_code: str,
+        tmp_req: bailian_20231229_models.UpdateAndPublishAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentResponse:
+        """
+        @summary 更新并发布智能体应用
+        
+        @param tmp_req: UpdateAndPublishAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAndPublishAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.UpdateAndPublishAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_config):
+            request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_config_shrink):
+            body['applicationConfig'] = request.application_config_shrink
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAndPublishAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_and_publish_agent_with_options_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+        tmp_req: bailian_20231229_models.UpdateAndPublishAgentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentResponse:
+        """
+        @summary 更新并发布智能体应用
+        
+        @param tmp_req: UpdateAndPublishAgentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAndPublishAgentResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.UpdateAndPublishAgentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.application_config):
+            request.application_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.application_config, 'applicationConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.application_config_shrink):
+            body['applicationConfig'] = request.application_config_shrink
+        if not UtilClient.is_unset(request.instructions):
+            body['instructions'] = request.instructions
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAndPublishAgent',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/application/agents/{OpenApiUtilClient.get_encode_param(app_code)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateAndPublishAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_and_publish_agent(
+        self,
+        workspace_id: str,
+        app_code: str,
+        request: bailian_20231229_models.UpdateAndPublishAgentRequest,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentResponse:
+        """
+        @summary 更新并发布智能体应用
+        
+        @param request: UpdateAndPublishAgentRequest
+        @return: UpdateAndPublishAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_and_publish_agent_with_options(workspace_id, app_code, request, headers, runtime)
+
+    async def update_and_publish_agent_async(
+        self,
+        workspace_id: str,
+        app_code: str,
+        request: bailian_20231229_models.UpdateAndPublishAgentRequest,
+    ) -> bailian_20231229_models.UpdateAndPublishAgentResponse:
+        """
+        @summary 更新并发布智能体应用
+        
+        @param request: UpdateAndPublishAgentRequest
+        @return: UpdateAndPublishAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_and_publish_agent_with_options_async(workspace_id, app_code, request, headers, runtime)
