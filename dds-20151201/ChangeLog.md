@@ -1,3 +1,51 @@
+2024-08-01 Version: 8.0.0
+- Support API RestartNode.
+- Delete API RestoreDBInstance.
+- Update API CheckRecoveryCondition: add param DestRegion.
+- Update API CheckRecoveryCondition: add param InstanceType.
+- Update API CheckRecoveryCondition: add param RestoreType.
+- Update API CheckRecoveryCondition: add param SrcRegion.
+- Update API CreateDBInstance: add param RestoreType.
+- Update API CreateDBInstance: add param SrcRegion.
+- Update API CreateDBInstance: update param Engine.
+- Update API CreateDBInstance: update param EngineVersion.
+- Update API CreateDBInstance: update param StorageEngine.
+- Update API CreateShardingDBInstance: add param BackupId.
+- Update API CreateShardingDBInstance: add param DestRegion.
+- Update API CreateShardingDBInstance: add param RestoreType.
+- Update API CreateShardingDBInstance: add param SrcRegion.
+- Update API DescribeBackupPolicy: add param InstanceType.
+- Update API DescribeBackupPolicy: add param SrcRegion.
+- Update API DescribeBackupPolicy: update response param.
+- Update API DescribeBackups: add param DestRegion.
+- Update API DescribeBackups: add param SrcRegion.
+- Update API DescribeBackups: update response param.
+- Update API DescribeClusterBackups: add param DestRegion.
+- Update API DescribeClusterBackups: add param SrcRegion.
+- Update API DescribeClusterBackups: update response param.
+- Update API DescribeDBInstanceAttribute: update response param.
+- Update API DescribeDBInstancePerformance: add param Interval.
+- Update API DescribeDBInstances: update response param.
+- Update API DescribePrice: update response param.
+- Update API DestroyInstance: update param DBInstanceId.
+- Update API DestroyInstance: update param InstanceId.
+- Update API MigrateAvailableZone: add param HiddenZoneId.
+- Update API MigrateAvailableZone: add param SecondaryZoneId.
+- Update API ModifyBackupPolicy: add param BackupRetentionPolicyOnClusterDeletion.
+- Update API ModifyBackupPolicy: add param CrossBackupPeriod.
+- Update API ModifyBackupPolicy: add param CrossBackupType.
+- Update API ModifyBackupPolicy: add param CrossLogRetentionType.
+- Update API ModifyBackupPolicy: add param CrossLogRetentionValue.
+- Update API ModifyBackupPolicy: add param CrossRetentionType.
+- Update API ModifyBackupPolicy: add param CrossRetentionValue.
+- Update API ModifyBackupPolicy: add param DestRegion.
+- Update API ModifyBackupPolicy: add param EnableCrossLogBackup.
+- Update API ModifyBackupPolicy: add param InstanceType.
+- Update API ModifyBackupPolicy: add param SrcRegion.
+- Update API ModifyBackupPolicy: update param PreferredBackupPeriod.
+- Update API ModifyBackupPolicy: update param PreferredBackupTime.
+
+
 2024-04-16 Version: 7.0.0
 - Update API DescribeBackupTasks: update param BackupJobId.
 - Update API DescribeBackupTasks: update response param.
