@@ -7831,6 +7831,7 @@ class ApplyAddRequestExternalTravelerList(TeaModel):
         self,
         attribute: str = None,
         cost_center_id: int = None,
+        external_user_id: str = None,
         invoice_id: int = None,
         payment_department_id: str = None,
         payment_department_name: str = None,
@@ -7844,6 +7845,7 @@ class ApplyAddRequestExternalTravelerList(TeaModel):
     ):
         self.attribute = attribute
         self.cost_center_id = cost_center_id
+        self.external_user_id = external_user_id
         self.invoice_id = invoice_id
         self.payment_department_id = payment_department_id
         self.payment_department_name = payment_department_name
@@ -7868,6 +7870,8 @@ class ApplyAddRequestExternalTravelerList(TeaModel):
             result['attribute'] = self.attribute
         if self.cost_center_id is not None:
             result['cost_center_id'] = self.cost_center_id
+        if self.external_user_id is not None:
+            result['external_user_id'] = self.external_user_id
         if self.invoice_id is not None:
             result['invoice_id'] = self.invoice_id
         if self.payment_department_id is not None:
@@ -7896,6 +7900,8 @@ class ApplyAddRequestExternalTravelerList(TeaModel):
             self.attribute = m.get('attribute')
         if m.get('cost_center_id') is not None:
             self.cost_center_id = m.get('cost_center_id')
+        if m.get('external_user_id') is not None:
+            self.external_user_id = m.get('external_user_id')
         if m.get('invoice_id') is not None:
             self.invoice_id = m.get('invoice_id')
         if m.get('payment_department_id') is not None:
@@ -10058,6 +10064,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         train_acceleration_package_invoice_fee: str = None,
         train_invoice_fee: str = None,
         vehicle_invoice_fee: str = None,
+        vehicle_normal_invoice_fee: str = None,
     ):
         self.contact = contact
         self.email = email
@@ -10082,6 +10089,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         self.train_acceleration_package_invoice_fee = train_acceleration_package_invoice_fee
         self.train_invoice_fee = train_invoice_fee
         self.vehicle_invoice_fee = vehicle_invoice_fee
+        self.vehicle_normal_invoice_fee = vehicle_normal_invoice_fee
 
     def validate(self):
         pass
@@ -10136,6 +10144,8 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
             result['train_invoice_fee'] = self.train_invoice_fee
         if self.vehicle_invoice_fee is not None:
             result['vehicle_invoice_fee'] = self.vehicle_invoice_fee
+        if self.vehicle_normal_invoice_fee is not None:
+            result['vehicle_normal_invoice_fee'] = self.vehicle_normal_invoice_fee
         return result
 
     def from_map(self, m: dict = None):
@@ -10184,6 +10194,8 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
             self.train_invoice_fee = m.get('train_invoice_fee')
         if m.get('vehicle_invoice_fee') is not None:
             self.vehicle_invoice_fee = m.get('vehicle_invoice_fee')
+        if m.get('vehicle_normal_invoice_fee') is not None:
+            self.vehicle_normal_invoice_fee = m.get('vehicle_normal_invoice_fee')
         return self
 
 
@@ -10587,6 +10599,7 @@ class ApplyListQueryResponseBodyModuleListExternalTravelerList(TeaModel):
         attribute: str = None,
         cost_center_name: str = None,
         depart_id: str = None,
+        external_user_id: str = None,
         invoice_name: str = None,
         payment_department_name: str = None,
         project_code: str = None,
@@ -10597,6 +10610,7 @@ class ApplyListQueryResponseBodyModuleListExternalTravelerList(TeaModel):
         self.attribute = attribute
         self.cost_center_name = cost_center_name
         self.depart_id = depart_id
+        self.external_user_id = external_user_id
         self.invoice_name = invoice_name
         self.payment_department_name = payment_department_name
         self.project_code = project_code
@@ -10619,6 +10633,8 @@ class ApplyListQueryResponseBodyModuleListExternalTravelerList(TeaModel):
             result['cost_center_name'] = self.cost_center_name
         if self.depart_id is not None:
             result['depart_id'] = self.depart_id
+        if self.external_user_id is not None:
+            result['external_user_id'] = self.external_user_id
         if self.invoice_name is not None:
             result['invoice_name'] = self.invoice_name
         if self.payment_department_name is not None:
@@ -10641,6 +10657,8 @@ class ApplyListQueryResponseBodyModuleListExternalTravelerList(TeaModel):
             self.cost_center_name = m.get('cost_center_name')
         if m.get('depart_id') is not None:
             self.depart_id = m.get('depart_id')
+        if m.get('external_user_id') is not None:
+            self.external_user_id = m.get('external_user_id')
         if m.get('invoice_name') is not None:
             self.invoice_name = m.get('invoice_name')
         if m.get('payment_department_name') is not None:
@@ -11619,6 +11637,7 @@ class ApplyModifyRequestExternalTravelerList(TeaModel):
         self,
         attribute: str = None,
         cost_center_id: int = None,
+        external_user_id: str = None,
         invoice_id: int = None,
         payment_department_id: str = None,
         payment_department_name: str = None,
@@ -11632,6 +11651,7 @@ class ApplyModifyRequestExternalTravelerList(TeaModel):
     ):
         self.attribute = attribute
         self.cost_center_id = cost_center_id
+        self.external_user_id = external_user_id
         self.invoice_id = invoice_id
         self.payment_department_id = payment_department_id
         self.payment_department_name = payment_department_name
@@ -11656,6 +11676,8 @@ class ApplyModifyRequestExternalTravelerList(TeaModel):
             result['attribute'] = self.attribute
         if self.cost_center_id is not None:
             result['cost_center_id'] = self.cost_center_id
+        if self.external_user_id is not None:
+            result['external_user_id'] = self.external_user_id
         if self.invoice_id is not None:
             result['invoice_id'] = self.invoice_id
         if self.payment_department_id is not None:
@@ -11684,6 +11706,8 @@ class ApplyModifyRequestExternalTravelerList(TeaModel):
             self.attribute = m.get('attribute')
         if m.get('cost_center_id') is not None:
             self.cost_center_id = m.get('cost_center_id')
+        if m.get('external_user_id') is not None:
+            self.external_user_id = m.get('external_user_id')
         if m.get('invoice_id') is not None:
             self.invoice_id = m.get('invoice_id')
         if m.get('payment_department_id') is not None:
@@ -13544,6 +13568,7 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
         cost_center_name: str = None,
         depart_id: str = None,
         economy_discount: int = None,
+        external_user_id: str = None,
         first_discount: int = None,
         flight_cabins: str = None,
         flight_intl_rule_code: int = None,
@@ -13571,6 +13596,7 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
         self.cost_center_name = cost_center_name
         self.depart_id = depart_id
         self.economy_discount = economy_discount
+        self.external_user_id = external_user_id
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
         self.flight_intl_rule_code = flight_intl_rule_code
@@ -13619,6 +13645,8 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
             result['depart_id'] = self.depart_id
         if self.economy_discount is not None:
             result['economy_discount'] = self.economy_discount
+        if self.external_user_id is not None:
+            result['external_user_id'] = self.external_user_id
         if self.first_discount is not None:
             result['first_discount'] = self.first_discount
         if self.flight_cabins is not None:
@@ -13679,6 +13707,8 @@ class ApplyQueryResponseBodyModuleExternalTravelerList(TeaModel):
             self.depart_id = m.get('depart_id')
         if m.get('economy_discount') is not None:
             self.economy_discount = m.get('economy_discount')
+        if m.get('external_user_id') is not None:
+            self.external_user_id = m.get('external_user_id')
         if m.get('first_discount') is not None:
             self.first_discount = m.get('first_discount')
         if m.get('flight_cabins') is not None:
@@ -26554,6 +26584,227 @@ class ExternalUserDeleteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExternalUserDeleteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExternalUserQueryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class ExternalUserQueryResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        birthday: str = None,
+        corp_id: str = None,
+        email: str = None,
+        external_user_id: str = None,
+        phone: str = None,
+        real_name: str = None,
+        real_name_en: str = None,
+        user_id: str = None,
+        user_nick: str = None,
+        user_type: int = None,
+    ):
+        self.birthday = birthday
+        self.corp_id = corp_id
+        self.email = email
+        self.external_user_id = external_user_id
+        self.phone = phone
+        self.real_name = real_name
+        self.real_name_en = real_name_en
+        self.user_id = user_id
+        self.user_nick = user_nick
+        self.user_type = user_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.birthday is not None:
+            result['birthday'] = self.birthday
+        if self.corp_id is not None:
+            result['corp_id'] = self.corp_id
+        if self.email is not None:
+            result['email'] = self.email
+        if self.external_user_id is not None:
+            result['external_user_id'] = self.external_user_id
+        if self.phone is not None:
+            result['phone'] = self.phone
+        if self.real_name is not None:
+            result['real_name'] = self.real_name
+        if self.real_name_en is not None:
+            result['real_name_en'] = self.real_name_en
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        if self.user_nick is not None:
+            result['user_nick'] = self.user_nick
+        if self.user_type is not None:
+            result['user_type'] = self.user_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('birthday') is not None:
+            self.birthday = m.get('birthday')
+        if m.get('corp_id') is not None:
+            self.corp_id = m.get('corp_id')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('external_user_id') is not None:
+            self.external_user_id = m.get('external_user_id')
+        if m.get('phone') is not None:
+            self.phone = m.get('phone')
+        if m.get('real_name') is not None:
+            self.real_name = m.get('real_name')
+        if m.get('real_name_en') is not None:
+            self.real_name_en = m.get('real_name_en')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        if m.get('user_nick') is not None:
+            self.user_nick = m.get('user_nick')
+        if m.get('user_type') is not None:
+            self.user_type = m.get('user_type')
+        return self
+
+
+class ExternalUserQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        module: ExternalUserQueryResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.module is not None:
+            result['module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('module') is not None:
+            temp_model = ExternalUserQueryResponseBodyModule()
+            self.module = temp_model.from_map(m['module'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class ExternalUserQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExternalUserQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExternalUserQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -109728,6 +109979,7 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
         train_acceleration_package_invoice_fee: str = None,
         train_invoice_fee: str = None,
         vehicle_invoice_fee: str = None,
+        vehicle_normal_invoice_fee: str = None,
     ):
         self.contact = contact
         self.email = email
@@ -109751,6 +110003,7 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
         self.train_acceleration_package_invoice_fee = train_acceleration_package_invoice_fee
         self.train_invoice_fee = train_invoice_fee
         self.vehicle_invoice_fee = vehicle_invoice_fee
+        self.vehicle_normal_invoice_fee = vehicle_normal_invoice_fee
 
     def validate(self):
         pass
@@ -109805,6 +110058,8 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
             result['train_invoice_fee'] = self.train_invoice_fee
         if self.vehicle_invoice_fee is not None:
             result['vehicle_invoice_fee'] = self.vehicle_invoice_fee
+        if self.vehicle_normal_invoice_fee is not None:
+            result['vehicle_normal_invoice_fee'] = self.vehicle_normal_invoice_fee
         return result
 
     def from_map(self, m: dict = None):
@@ -109853,6 +110108,8 @@ class WaitApplyInvoiceTaskDetailQueryResponseBodyModule(TeaModel):
             self.train_invoice_fee = m.get('train_invoice_fee')
         if m.get('vehicle_invoice_fee') is not None:
             self.vehicle_invoice_fee = m.get('vehicle_invoice_fee')
+        if m.get('vehicle_normal_invoice_fee') is not None:
+            self.vehicle_normal_invoice_fee = m.get('vehicle_normal_invoice_fee')
         return self
 
 

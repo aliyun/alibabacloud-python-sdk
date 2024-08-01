@@ -6971,6 +6971,106 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ExternalUserDeleteHeaders()
         return await self.external_user_delete_with_options_async(external_user_id, headers, runtime)
 
+    def external_user_query_with_options(
+        self,
+        external_user_id: str,
+        headers: btrip_open_20220520_models.ExternalUserQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserQueryResponse:
+        """
+        @summary 查询外部出行人
+        
+        @param headers: ExternalUserQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserQueryResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ExternalUserQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers/{OpenApiUtilClient.get_encode_param(external_user_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def external_user_query_with_options_async(
+        self,
+        external_user_id: str,
+        headers: btrip_open_20220520_models.ExternalUserQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.ExternalUserQueryResponse:
+        """
+        @summary 查询外部出行人
+        
+        @param headers: ExternalUserQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExternalUserQueryResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ExternalUserQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/user/v1/externalUsers/{OpenApiUtilClient.get_encode_param(external_user_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.ExternalUserQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def external_user_query(
+        self,
+        external_user_id: str,
+    ) -> btrip_open_20220520_models.ExternalUserQueryResponse:
+        """
+        @summary 查询外部出行人
+        
+        @return: ExternalUserQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserQueryHeaders()
+        return self.external_user_query_with_options(external_user_id, headers, runtime)
+
+    async def external_user_query_async(
+        self,
+        external_user_id: str,
+    ) -> btrip_open_20220520_models.ExternalUserQueryResponse:
+        """
+        @summary 查询外部出行人
+        
+        @return: ExternalUserQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.ExternalUserQueryHeaders()
+        return await self.external_user_query_with_options_async(external_user_id, headers, runtime)
+
     def external_user_update_with_options(
         self,
         external_user_id: str,

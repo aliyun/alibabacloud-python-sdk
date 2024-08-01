@@ -1,3 +1,13 @@
+2024-08-01 Version: 4.3.0
+- Support API ExternalUserQuery.
+- Update API ApplyAdd: update param external_traveler_list.
+- Update API ApplyInvoiceTask: update param invoice_task_list.
+- Update API ApplyListQuery: update response param.
+- Update API ApplyModify: update param external_traveler_list.
+- Update API ApplyQuery: update response param.
+- Update API WaitApplyInvoiceTaskDetailQuery: update response param.
+
+
 2024-07-31 Version: 4.2.0
 - Support API HotelOrderInfoQuery.
 - Support API HotelSuggestV2.
