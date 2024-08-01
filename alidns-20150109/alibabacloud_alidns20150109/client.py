@@ -2717,6 +2717,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.ip_token):
+            query['IpToken'] = request.ip_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
@@ -2756,6 +2758,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.ip_token):
+            query['IpToken'] = request.ip_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.name):
@@ -22931,6 +22935,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.ip_token):
+            query['IpToken'] = request.ip_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
@@ -22968,6 +22974,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.ip_token):
+            query['IpToken'] = request.ip_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(

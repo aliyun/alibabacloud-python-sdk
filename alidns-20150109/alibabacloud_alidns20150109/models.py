@@ -752,7 +752,7 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         self.addr = addr
         # The information about the source region of the address. The value of this parameter is a JSON string. Valid values:
         # 
-        # *   LineCode: the line code of the source region for the address
+        # *   lineCode: the line code of the source region for the address
         # 
         # *   lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
         # 
@@ -762,7 +762,7 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         # 
         # This parameter is required.
         self.attribute_info = attribute_info
-        # The weight of the address pool.
+        # The weight of the address.
         self.lba_weight = lba_weight
         # The return mode of the addresses: Valid values:
         # 
@@ -772,7 +772,7 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         # 
         # This parameter is required.
         self.mode = mode
-        # The remarks.
+        # The description of the address pool.
         self.remark = remark
 
     def validate(self):
@@ -892,7 +892,7 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         self.lba_strategy = lba_strategy
         # The extended information. The required parameters vary based on the value of ProtocolType.
         # 
-        # *   When ProtocolType is set to HTTP or HTTPS:
+        # *   HTTP or HTTPS
         # 
         #     *   port: the port that you want to check
         # 
@@ -900,7 +900,7 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         # 
         #     *   path: the URL path
         # 
-        #     *   code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value.
+        #     *   code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value. Values: 400, 500.
         # 
         #     *   failureRate: the failure rate
         # 
@@ -914,7 +914,7 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   When ProtocolType is set to PING:
+        # *   PING
         # 
         #     *   failureRate: the failure rate
         # 
@@ -927,7 +927,7 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         #         *   IPV4
         #         *   IPV6
         # 
-        # *   When ProtocolType is set to TCP:
+        # *   TCP
         # 
         #     *   port: the port that you want to check
         # 
@@ -1059,7 +1059,7 @@ class AddDnsGtmAddressPoolResponseBody(TeaModel):
     ):
         # The ID of the address pool.
         self.addr_pool_id = addr_pool_id
-        # The ID of the health check task.
+        # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
         # The request ID.
         self.request_id = request_id
@@ -4423,10 +4423,12 @@ class CreatePdnsUdpIpSegmentRequest(TeaModel):
     def __init__(
         self,
         ip: str = None,
+        ip_token: str = None,
         lang: str = None,
         name: str = None,
     ):
         self.ip = ip
+        self.ip_token = ip_token
         self.lang = lang
         self.name = name
 
@@ -4441,6 +4443,8 @@ class CreatePdnsUdpIpSegmentRequest(TeaModel):
         result = dict()
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.ip_token is not None:
+            result['IpToken'] = self.ip_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.name is not None:
@@ -4451,6 +4455,8 @@ class CreatePdnsUdpIpSegmentRequest(TeaModel):
         m = m or dict()
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('IpToken') is not None:
+            self.ip_token = m.get('IpToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('Name') is not None:
@@ -47725,9 +47731,11 @@ class ValidatePdnsUdpIpSegmentRequest(TeaModel):
     def __init__(
         self,
         ip: str = None,
+        ip_token: str = None,
         lang: str = None,
     ):
         self.ip = ip
+        self.ip_token = ip_token
         self.lang = lang
 
     def validate(self):
@@ -47741,6 +47749,8 @@ class ValidatePdnsUdpIpSegmentRequest(TeaModel):
         result = dict()
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.ip_token is not None:
+            result['IpToken'] = self.ip_token
         if self.lang is not None:
             result['Lang'] = self.lang
         return result
@@ -47749,6 +47759,8 @@ class ValidatePdnsUdpIpSegmentRequest(TeaModel):
         m = m or dict()
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('IpToken') is not None:
+            self.ip_token = m.get('IpToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         return self
