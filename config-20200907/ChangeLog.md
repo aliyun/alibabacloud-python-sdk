@@ -1,3 +1,16 @@
+2024-08-01 Version: 3.0.6
+- Update API CreateAggregateConfigDeliveryChannel: add param CompliantSnapshot.
+- Update API CreateAggregateConfigRule: update param ExcludeTagsScope.
+- Update API CreateAggregateConfigRule: update param TagsScope.
+- Update API CreateConfigDeliveryChannel: add param CompliantSnapshot.
+- Update API GetAggregateConfigDeliveryChannel: update response param.
+- Update API GetConfigDeliveryChannel: update response param.
+- Update API ListAggregateConfigDeliveryChannels: update response param.
+- Update API ListConfigDeliveryChannels: update response param.
+- Update API UpdateAggregateConfigDeliveryChannel: add param CompliantSnapshot.
+- Update API UpdateConfigDeliveryChannel: add param CompliantSnapshot.
+
+
 2024-06-19 Version: 3.0.5
 - Update API CreateAggregateCompliancePack: add param ExcludeRegionIdsScope.
 - Update API CreateAggregateCompliancePack: add param ExcludeResourceGroupIdsScope.
